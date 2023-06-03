@@ -1,5 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:injectable/injectable.dart';
 import '../../domain/entities/user.dart';
 
 abstract interface class UserDataSource {
@@ -7,6 +8,7 @@ abstract interface class UserDataSource {
   Future<void> saveUser(User user);
 }
 
+@LazySingleton(as: UserDataSource)
 final class UserDataSourceImpl implements UserDataSource {
   @override
   Stream<User?> listenUser() async* {

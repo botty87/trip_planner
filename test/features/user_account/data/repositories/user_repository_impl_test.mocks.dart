@@ -29,14 +29,14 @@ import 'package:trip_planner/features/user_account/domain/entities/user.dart'
 /// See the documentation for Mockito's code generation for more information.
 class MockUserDataSource extends _i1.Mock implements _i2.UserDataSource {
   @override
-  _i3.Stream<_i4.User> listenUser() => (super.noSuchMethod(
+  _i3.Stream<_i4.User?> listenUser() => (super.noSuchMethod(
         Invocation.method(
           #listenUser,
           [],
         ),
-        returnValue: _i3.Stream<_i4.User>.empty(),
-        returnValueForMissingStub: _i3.Stream<_i4.User>.empty(),
-      ) as _i3.Stream<_i4.User>);
+        returnValue: _i3.Stream<_i4.User?>.empty(),
+        returnValueForMissingStub: _i3.Stream<_i4.User?>.empty(),
+      ) as _i3.Stream<_i4.User?>);
   @override
   _i3.Future<void> saveUser(_i4.User? user) => (super.noSuchMethod(
         Invocation.method(

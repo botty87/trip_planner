@@ -11,7 +11,9 @@ abstract class StreamUseCase<Type, Params> {
   Stream<Either<Failure, Type>> call(Params params);
 }
 
-class NoParams extends Equatable {
+final class NoParams extends Equatable {
+  const NoParams();
+  
   @override
   List<Object> get props => [];
 }

@@ -2,8 +2,10 @@ part of 'user_cubit.dart';
 
 @freezed
 class UserState with _$UserState {
-  const factory UserState.loggedOut() = _LoggedOut;
-  const factory UserState.loggedIn() = _LoggedIn;
-  const factory UserState.loading() = _Loading;
-  const factory UserState.error() = _Error;
+  const factory UserState.loggedOut() = UserStateLoggedOut;
+  const factory UserState.loggedIn({
+    required User user,
+  }) = UserStateLoggedIn;
+  const factory UserState.loading() = UserStateLoading;
+  const factory UserState.error() = UserStateError;
 }

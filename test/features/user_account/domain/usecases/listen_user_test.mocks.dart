@@ -42,16 +42,16 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// See the documentation for Mockito's code generation for more information.
 class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
   @override
-  _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User>> listenUser() =>
+  _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User?>> listenUser() =>
       (super.noSuchMethod(
         Invocation.method(
           #listenUser,
           [],
         ),
-        returnValue: _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User>>.empty(),
+        returnValue: _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User?>>.empty(),
         returnValueForMissingStub:
-            _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User>>.empty(),
-      ) as _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User>>);
+            _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User?>>.empty(),
+      ) as _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User?>>);
   @override
   _i4.Future<_i2.Either<_i5.UserFailure, void>> saveUser(_i6.User? user) =>
       (super.noSuchMethod(

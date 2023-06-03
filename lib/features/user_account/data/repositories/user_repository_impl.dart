@@ -6,7 +6,7 @@ import 'package:trip_planner/features/user_account/domain/repositories/user_repo
 import '../../errors/user_failure.dart';
 import '../datasources/user_data_source.dart';
 
-@Injectable(as: UserRepository)
+@LazySingleton(as: UserRepository)
 final class UserRepositoryImpl implements UserRepository {
   final UserDataSource userDataSource;
 
