@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:trip_planner/core/di/di.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 
