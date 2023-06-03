@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';
+import 'routes/app_router.gr.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -16,13 +17,17 @@ class HomePage extends StatelessWidget {
       child: BlocListener<UserCubit, UserState>(
         listenWhen: (previous, current) {
           //Avoid to change route if user is already logged in
-          if(previous is UserStateLoggedIn && current is UserStateLoggedIn) {
+          if (previous is UserStateLoggedIn && current is UserStateLoggedIn) {
             return false;
           }
           return true;
-        } ,
+        },
         listener: (context, state) {
-          // TODO: implement listener
+          state.mapOrNull(
+            loggedOut: (_) => context.router.replaceAll(const [LoginSignupRoute()]),
+            loggedIn: (_) => throw UnimplementedError(),
+            error: (_) => throw UnimplementedError(), 
+          );
         },
         child: Scaffold(
           body: Center(
