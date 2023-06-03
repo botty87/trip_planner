@@ -1,7 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:trip_planner/core/di/di.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp();
   configureDependencies();
   runApp(const MyApp());
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>178262421662-41i61rvacmtpn0ta1j0ipfmif7p7npod.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.178262421662-41i61rvacmtpn0ta1j0ipfmif7p7npod</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>178262421662-2o4eo75uk6fbfqqiu6m270vo348c1r6g.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAn1995xM3OjXMhfjEeIpoLGwIHQQayErU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>178262421662</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.tripPlanner.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>trip-planner-11ffe</string>
+	<key>STORAGE_BUCKET</key>
+	<string>trip-planner-11ffe.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:178262421662:ios:bd2e5bd34973e8e3e10b8f</string>
+	<key>DATABASE_URL</key>
+	<string>https://trip-planner-11ffe.firebaseio.com</string>
+</dict>
+</plist>
