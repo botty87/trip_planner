@@ -1,9 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:trip_planner/core/di/di.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  //Firebase config
   await Firebase.initializeApp();
+  if(kDebugMode) {
+    await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  }
+  
   configureDependencies();
   runApp(const MyApp());
 }

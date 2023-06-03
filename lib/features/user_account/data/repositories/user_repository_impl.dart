@@ -13,7 +13,7 @@ final class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.userDataSource);
 
   @override
-  Stream<Either<UserFailure, User>> listenUser() async* {
+  Stream<Either<UserFailure, User?>> listenUser() async* {
     try {
       yield* userDataSource.listenUser().map((user) => right(user));
     } catch (e) {

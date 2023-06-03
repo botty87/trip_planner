@@ -5,13 +5,13 @@ import '../../../../core/usecases/usecase.dart';
 import '../entities/user.dart';
 import '../repositories/user_repository.dart';
 
-class ListenUser implements StreamUseCase<User, NoParams> {
+class ListenUser implements StreamUseCase<User?, NoParams> {
   final UserRepository repository;
 
   ListenUser(this.repository);
 
   @override
-  Stream<Either<Failure, User>> call(NoParams params) {
+  Stream<Either<Failure, User?>> call(NoParams params) {
     return repository.listenUser();
   }
 }
