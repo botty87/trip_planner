@@ -28,8 +28,12 @@ final class UserRepositoryImpl implements UserRepository {
   }
   
   @override
-  Future<Either<UserFailure, void>> registerUser({required String email, required String password, required String name}) {
-    // TODO: implement registerUser
-    throw UnimplementedError();
+  Future<Either<UserFailure, void>> registerUser({required String email, required String password, required String name}) async {
+    try {
+      await userDataSource.registerUser(email: email, password: password, name: name);
+      return right(null);
+    } catch (e) {
+      return left(UserFailure());
+    }
   }
 }

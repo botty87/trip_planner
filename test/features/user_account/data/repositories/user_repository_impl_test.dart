@@ -12,7 +12,7 @@ import 'user_repository_impl_test.mocks.dart';
 @GenerateNiceMocks([MockSpec<UserDataSource>()])
 
 void main() {
-  late MockUserDataSource userDataSource;
+  late MockUserDataSource mockUserDataSource;
   late UserRepositoryImpl userRepositoryImpl;
 
   //User for the test
@@ -23,13 +23,13 @@ void main() {
   );
 
   setUp(() {
-    userDataSource = MockUserDataSource();
-    userRepositoryImpl = UserRepositoryImpl(userDataSource);
+    mockUserDataSource = MockUserDataSource();
+    userRepositoryImpl = UserRepositoryImpl(mockUserDataSource);
   });
 
   test('should listen user from the data source', () async {
     // arrange
-    when(userDataSource.listenUser())
+    when(mockUserDataSource.listenUser())
         .thenAnswer((_) => Stream.value(tUser));
     
     // act
@@ -37,20 +37,34 @@ void main() {
 
     // assert
     await expectLater(result, emits(right(tUser)));
-    verify(userDataSource.listenUser());
-    verifyNoMoreInteractions(userDataSource);
+    verify(mockUserDataSource.listenUser());
+    verifyNoMoreInteractions(mockUserDataSource);
   });
 
   test('should return a failure when there is an exception on data source', () async {
     // arrange
-    when(userDataSource.listenUser()).thenAnswer((realInvocation) => throw Exception());
+    when(mockUserDataSource.listenUser()).thenAnswer((realInvocation) => throw Exception());
     
     // act
     final result = userRepositoryImpl.listenUser();
 
     // assert
     await expectLater(result, emits(left(UserFailure())));
-    verify(userDataSource.listenUser());
-    verifyNoMoreInteractions(userDataSource);
+    verify(mockUserDataSource.listenUser());
+    verifyNoMoreInteractions(mockUserDataSource);
+  });
+
+  test('should register user on data source', () async {
+    // arrange
+    when(mockUserDataSource.registerUser(email: '', password: '', name: ''))
+        .thenAnswer((_) async => null);
+    
+    // act
+    final result = await userRepositoryImpl.registerUser(email: '', password: '', name: '');
+
+    // assert
+    expect(result, right(null));
+    verify(mockUserDataSource.registerUser(email: '', password: '', name: ''));
+    verifyNoMoreInteractions(mockUserDataSource);
   });
 }

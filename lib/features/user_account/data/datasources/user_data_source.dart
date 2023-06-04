@@ -6,6 +6,8 @@ import '../../domain/entities/user.dart';
 abstract interface class UserDataSource {
   Stream<User?> listenUser();
   Future<void> saveUser(User user);
+
+  registerUser({required String email, required String password, required String name});
 }
 
 @LazySingleton(as: UserDataSource)
@@ -28,6 +30,12 @@ final class UserDataSourceImpl implements UserDataSource {
   @override
   Future<void> saveUser(User user) {
     // TODO: implement saveUser
+    throw UnimplementedError();
+  }
+  
+  @override
+  registerUser({required String email, required String password, required String name}) {
+    // TODO: implement registerUser
     throw UnimplementedError();
   }
 
