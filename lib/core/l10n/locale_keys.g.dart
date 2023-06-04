@@ -14,5 +14,9 @@ abstract class  LocaleKeys {
   static const passwordsDontMatch = 'passwordsDontMatch';
   static const passwordEmpty = 'passwordEmpty';
   static const nameEmpty = 'nameEmpty';
+  static const emailAlreadyInUse = 'emailAlreadyInUse';
+  static const weakPassword = 'weakPassword';
+  static const networkRequestFailed = 'networkRequestFailed';
+  static const unknownError = 'unknownError';
 
 }

@@ -38,12 +38,21 @@ class MockUserDataSource extends _i1.Mock implements _i2.UserDataSource {
         returnValueForMissingStub: _i3.Stream<_i4.User?>.empty(),
       ) as _i3.Stream<_i4.User?>);
   @override
-  _i3.Future<void> saveUser(_i4.User? user) => (super.noSuchMethod(
+  dynamic registerUser({
+    required String? email,
+    required String? password,
+    required String? name,
+  }) =>
+      super.noSuchMethod(
         Invocation.method(
-          #saveUser,
-          [user],
+          #registerUser,
+          [],
+          {
+            #email: email,
+            #password: password,
+            #name: name,
+          },
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValueForMissingStub: null,
+      );
 }

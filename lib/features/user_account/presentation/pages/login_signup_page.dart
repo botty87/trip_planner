@@ -11,6 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
+import '../../../../core/widgets/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
 
 part '../widgets/login_section.dart';
@@ -30,36 +31,47 @@ class LoginSignupPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(LocaleKeys.appName.tr()),
         ),
-        body: Column(
-          children: [
-            BlocSelector<LoginSignupCubit, LoginSignupState, bool>(
-              selector: (state) {
-                return state.isLoading;
-              },
-              builder: (context, isLoading) {
-                return isLoading ? LinearProgressIndicator(minHeight: 1) : SizedBox(height: 1);
-              },
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: DEFAULT_PAGE_PADDING,
-                child: Column(
-                  children: [
-                    SvgPicture(
-                      AssetBytesLoader(Assets.svg.loginSvg),
-                      height: 200,
-                    ),
-                    SizedBox(height: VERTICAL_SPACE),
-                    _LoginSection(),
-                    SizedBox(height: VERTICAL_SPACE_L),
-                    _NewUserRow(),
-                    SizedBox(height: VERTICAL_SPACE_L),
-                    _SignUpSection(),
-                  ],
+        body: BlocListener<LoginSignupCubit, LoginSignupState>(
+          listenWhen: (previous, current) {
+            return (previous.authenticationError != current.authenticationError) &&
+                (current.authenticationError != null);
+          },
+          listener: (context, state) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              Snackbars.error(state.authenticationError!),
+            );
+          },
+          child: Column(
+            children: [
+              BlocSelector<LoginSignupCubit, LoginSignupState, bool>(
+                selector: (state) {
+                  return state.isLoading;
+                },
+                builder: (context, isLoading) {
+                  return isLoading ? LinearProgressIndicator(minHeight: 1) : SizedBox(height: 1);
+                },
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: DEFAULT_PAGE_PADDING,
+                  child: Column(
+                    children: [
+                      SvgPicture(
+                        AssetBytesLoader(Assets.svg.loginSvg),
+                        height: 200,
+                      ),
+                      SizedBox(height: VERTICAL_SPACE),
+                      _LoginSection(),
+                      SizedBox(height: VERTICAL_SPACE_L),
+                      _NewUserRow(),
+                      SizedBox(height: VERTICAL_SPACE_L),
+                      _SignUpSection(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

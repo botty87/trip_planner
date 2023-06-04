@@ -5,5 +5,17 @@ part 'user_failure.freezed.dart';
 
 @freezed
 class UserFailure with _$UserFailure implements Failure {
-  factory UserFailure() = _UserFailure;
+  factory UserFailure({
+    UserFailureCode? code,
+  }) = _UserFailure;
+}
+
+enum UserFailureCode {
+  userNotFound,
+  emailAlreadyInUse,
+  weakPassword,
+  wrongPassword,
+  tooManyRequests,
+  userDisabled,
+  networkRequestFailed,
 }

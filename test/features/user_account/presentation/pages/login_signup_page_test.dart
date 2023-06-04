@@ -2,12 +2,17 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
+import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart';
 
+import 'login_signup_page_test.mocks.dart';
+
 class MockLoginSignupCubit extends MockCubit<LoginSignupState> implements LoginSignupCubit {}
 
+@GenerateNiceMocks([MockSpec<RegisterUser>()])
 void main() {
   group('LoginSignupPage', () {
     group('Test initial page state', () {
@@ -86,9 +91,11 @@ void main() {
 
     group('test text events', () {
       late LoginSignupCubit loginSignupCubit;
+      late MockRegisterUser mockRegisterUser;
 
       setUp(() {
-        loginSignupCubit = LoginSignupCubit();
+        mockRegisterUser = MockRegisterUser();
+        loginSignupCubit = LoginSignupCubit(mockRegisterUser);
       });
 
       testWidgets('should display error message when email is invalid', (widgetTester) async {

@@ -5,13 +5,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 
+import '../../../domain/usecases/register_user.dart';
+import '../../../errors/user_failure.dart';
+
 part 'login_signup_state.dart';
 
 part 'login_signup_cubit.freezed.dart';
 
 @injectable
 class LoginSignupCubit extends Cubit<LoginSignupState> {
-  LoginSignupCubit() : super(LoginSignupState());
+  final RegisterUser registerUser;
+  LoginSignupCubit(this.registerUser) : super(LoginSignupState());
 
   void emailChanged(String email) {
     emit(state.copyWith(email: email, emailError: null));
@@ -33,7 +37,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
 
   void recoverPassword() {}
 
-  void signUp() {
+  void signUp() async {
     bool hasError = false;
 
     //verify if email is valid
@@ -61,6 +65,39 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
 
     if (hasError) return;
 
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(isLoading: true, authenticationError: null));
+
+    final result = await registerUser(RegisterUserParams(
+      email: state.email!,
+      password: state.password!,
+      name: state.name!,
+    ));
+
+    result.fold(
+      (failure) {
+        emit(state.copyWith(
+          isLoading: false,
+          authenticationError: _getAuthenticationErrorMessage(failure.code),
+        ));
+      },
+      (_) {
+        emit(state.copyWith(
+          isLoading: false,
+        ));
+      },
+    );
+  }
+
+  String _getAuthenticationErrorMessage(UserFailureCode? code) {
+    switch (code) {
+      case UserFailureCode.emailAlreadyInUse:
+        return LocaleKeys.emailAlreadyInUse.tr();
+      case UserFailureCode.weakPassword:
+        return LocaleKeys.weakPassword.tr();
+      case UserFailureCode.networkRequestFailed:
+        return LocaleKeys.networkRequestFailed.tr();
+      default:
+        return LocaleKeys.unknownError.tr();
+    }
   }
 }

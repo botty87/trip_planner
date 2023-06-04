@@ -11,5 +11,9 @@
     "invalidEmail" : "Invalid email",
     "passwordsDontMatch" : "Passwords don't match",
     "passwordEmpty" : "Password can't be empty",
-    "nameEmpty" : "Name can't be empty"
+    "nameEmpty" : "Name can't be empty",
+    "emailAlreadyInUse" : "Email already in use",
+    "weakPassword" : "Password should be at least 6 characters",
+    "networkRequestFailed" : "Network request failed",
+    "unknownError" : "Unknown error"
 }

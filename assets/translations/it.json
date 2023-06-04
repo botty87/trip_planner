@@ -11,5 +11,9 @@
     "invalidEmail" : "Email non valida",
     "passwordsNotMatch" : "Le password non coincidono",
     "passwordEmpty" : "La password non può essere vuota",
-    "nameEmpty" : "Il nome non può essere vuoto"
+    "nameEmpty" : "Il nome non può essere vuoto",
+    "emailAlreadyInUse" : "Email già in uso",
+    "weakPassword" : "La password deve essere lunga almeno 6 caratteri",
+    "networkRequestFailed" : "Errore di rete",
+    "unknownError" : "Errore sconosciuto" 
 }
