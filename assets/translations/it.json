@@ -1,0 +1,8 @@
+{
+    "appName" : "Trip Planner",
+    "login" : "Login",
+    "email" : "Email",
+    "password" : "Password",
+    "recoverPassword" : "Recupera password",
+    "register" : "Registrati"
+}
