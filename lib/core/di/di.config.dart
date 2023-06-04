@@ -20,10 +20,12 @@ import 'package:trip_planner/features/user_account/domain/repositories/user_repo
     as _i6;
 import 'package:trip_planner/features/user_account/domain/usecases/listen_user.dart'
     as _i8;
+import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart'
+    as _i9;
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
     as _i4;
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart'
-    as _i9;
+    as _i10;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -43,8 +45,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i7.UserRepositoryImpl(gh<_i5.UserDataSource>()));
     gh.lazySingleton<_i8.ListenUser>(
         () => _i8.ListenUser(gh<_i6.UserRepository>()));
-    gh.lazySingleton<_i9.UserCubit>(
-        () => _i9.UserCubit(listenUser: gh<_i8.ListenUser>()));
+    gh.lazySingleton<_i9.RegisterUser>(
+        () => _i9.RegisterUser(gh<_i6.UserRepository>()));
+    gh.lazySingleton<_i10.UserCubit>(
+        () => _i10.UserCubit(listenUser: gh<_i8.ListenUser>()));
     return this;
   }
 }

@@ -26,4 +26,10 @@ final class UserRepositoryImpl implements UserRepository {
     // TODO: implement saveUser
     throw UnimplementedError();
   }
+  
+  @override
+  Future<Either<UserFailure, void>> registerUser({required String email, required String password, required String name}) {
+    // TODO: implement registerUser
+    throw UnimplementedError();
+  }
 }
