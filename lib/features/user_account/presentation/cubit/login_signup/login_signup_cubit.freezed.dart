@@ -20,6 +20,10 @@ mixin _$LoginSignupState {
   String? get password => throw _privateConstructorUsedError;
   String? get confirmPassword => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get emailError => throw _privateConstructorUsedError;
+  String? get passwordError => throw _privateConstructorUsedError;
+  String? get nameError => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginSignupStateCopyWith<LoginSignupState> get copyWith =>
@@ -33,7 +37,14 @@ abstract class $LoginSignupStateCopyWith<$Res> {
       _$LoginSignupStateCopyWithImpl<$Res, LoginSignupState>;
   @useResult
   $Res call(
-      {String? email, String? password, String? confirmPassword, String? name});
+      {String? email,
+      String? password,
+      String? confirmPassword,
+      String? name,
+      String? emailError,
+      String? passwordError,
+      String? nameError,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -53,6 +64,10 @@ class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState>
     Object? password = freezed,
     Object? confirmPassword = freezed,
     Object? name = freezed,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
+    Object? nameError = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       email: freezed == email
@@ -71,6 +86,22 @@ class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameError: freezed == nameError
+          ? _value.nameError
+          : nameError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -84,7 +115,14 @@ abstract class _$$_LoginSignupStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? email, String? password, String? confirmPassword, String? name});
+      {String? email,
+      String? password,
+      String? confirmPassword,
+      String? name,
+      String? emailError,
+      String? passwordError,
+      String? nameError,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -102,6 +140,10 @@ class __$$_LoginSignupStateCopyWithImpl<$Res>
     Object? password = freezed,
     Object? confirmPassword = freezed,
     Object? name = freezed,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
+    Object? nameError = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_$_LoginSignupState(
       email: freezed == email
@@ -120,6 +162,22 @@ class __$$_LoginSignupStateCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameError: freezed == nameError
+          ? _value.nameError
+          : nameError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -128,7 +186,14 @@ class __$$_LoginSignupStateCopyWithImpl<$Res>
 
 class _$_LoginSignupState implements _LoginSignupState {
   _$_LoginSignupState(
-      {this.email, this.password, this.confirmPassword, this.name});
+      {this.email,
+      this.password,
+      this.confirmPassword,
+      this.name,
+      this.emailError,
+      this.passwordError,
+      this.nameError,
+      this.isLoading = false});
 
   @override
   final String? email;
@@ -138,10 +203,19 @@ class _$_LoginSignupState implements _LoginSignupState {
   final String? confirmPassword;
   @override
   final String? name;
+  @override
+  final String? emailError;
+  @override
+  final String? passwordError;
+  @override
+  final String? nameError;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'LoginSignupState(email: $email, password: $password, confirmPassword: $confirmPassword, name: $name)';
+    return 'LoginSignupState(email: $email, password: $password, confirmPassword: $confirmPassword, name: $name, emailError: $emailError, passwordError: $passwordError, nameError: $nameError, isLoading: $isLoading)';
   }
 
   @override
@@ -154,12 +228,20 @@ class _$_LoginSignupState implements _LoginSignupState {
                 other.password == password) &&
             (identical(other.confirmPassword, confirmPassword) ||
                 other.confirmPassword == confirmPassword) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.emailError, emailError) ||
+                other.emailError == emailError) &&
+            (identical(other.passwordError, passwordError) ||
+                other.passwordError == passwordError) &&
+            (identical(other.nameError, nameError) ||
+                other.nameError == nameError) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, email, password, confirmPassword, name);
+  int get hashCode => Object.hash(runtimeType, email, password, confirmPassword,
+      name, emailError, passwordError, nameError, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -173,7 +255,11 @@ abstract class _LoginSignupState implements LoginSignupState {
       {final String? email,
       final String? password,
       final String? confirmPassword,
-      final String? name}) = _$_LoginSignupState;
+      final String? name,
+      final String? emailError,
+      final String? passwordError,
+      final String? nameError,
+      final bool isLoading}) = _$_LoginSignupState;
 
   @override
   String? get email;
@@ -183,6 +269,14 @@ abstract class _LoginSignupState implements LoginSignupState {
   String? get confirmPassword;
   @override
   String? get name;
+  @override
+  String? get emailError;
+  @override
+  String? get passwordError;
+  @override
+  String? get nameError;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$_LoginSignupStateCopyWith<_$_LoginSignupState> get copyWith =>

@@ -10,5 +10,9 @@ abstract class  LocaleKeys {
   static const confirmPassword = 'confirmPassword';
   static const name = 'name';
   static const newHere = 'newHere';
+  static const invalidEmail = 'invalidEmail';
+  static const passwordsDontMatch = 'passwordsDontMatch';
+  static const passwordEmpty = 'passwordEmpty';
+  static const nameEmpty = 'nameEmpty';
 
 }

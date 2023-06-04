@@ -8,6 +8,10 @@ class LoginSignupState with _$LoginSignupState {
     String? password,
     String? confirmPassword,
     String? name,
+    String? emailError,
+    String? passwordError,
+    String? nameError,
+    @Default(false) bool isLoading,
   }) = _LoginSignupState;
 
 }

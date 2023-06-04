@@ -7,5 +7,9 @@
     "register" : "Registrati",
     "confirmPassword" : "Conferma password",
     "name" : "Nome",
-    "newHere" : "Nuovo utente?"
+    "newHere" : "Nuovo utente?",
+    "invalidEmail" : "Email non valida",
+    "passwordsNotMatch" : "Le password non coincidono",
+    "passwordEmpty" : "La password non può essere vuota",
+    "nameEmpty" : "Il nome non può essere vuoto"
 }

@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
         },
         listener: (context, state) {
           state.mapOrNull(
-            loggedOut: (_) => context.router.replaceAll(const [LoginSignupRoute()]),
+            loggedOut: (_) => context.router.replaceAll([LoginSignupRoute()]),
             loggedIn: (_) => throw UnimplementedError(),
             error: (_) => throw UnimplementedError(), 
           );

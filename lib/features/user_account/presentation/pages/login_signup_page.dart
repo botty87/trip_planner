@@ -19,34 +19,47 @@ part '../widgets/new_user_row.dart';
 
 @RoutePage()
 class LoginSignupPage extends StatelessWidget {
-  const LoginSignupPage({super.key});
+  late final LoginSignupCubit _cubit;
+  LoginSignupPage({super.key, LoginSignupCubit? cubit}) : _cubit = cubit ?? getIt();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginSignupCubit>(
-      create: (context) => getIt(),
+      create: (context) => _cubit,
       child: Scaffold(
         appBar: AppBar(
           title: Text(LocaleKeys.appName.tr()),
         ),
-        body: SafeArea(
-          minimum: const EdgeInsets.all(DEFAULT_PADDING),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SvgPicture(
-                  AssetBytesLoader(Assets.svg.loginSvg),
-                  height: 200,
-                ),
-                SizedBox(height: VERTICAL_SPACE),
-                _LoginSection(),
-                SizedBox(height: VERTICAL_SPACE_L),
-                _NewUserRow(),
-                SizedBox(height: VERTICAL_SPACE_L),
-                _SignUpSection(),
-              ],
+        body: Column(
+          children: [
+            BlocSelector<LoginSignupCubit, LoginSignupState, bool>(
+              selector: (state) {
+                return state.isLoading;
+              },
+              builder: (context, isLoading) {
+                return isLoading ? LinearProgressIndicator(minHeight: 1) : SizedBox(height: 1);
+              },
             ),
-          ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: DEFAULT_PAGE_PADDING,
+                child: Column(
+                  children: [
+                    SvgPicture(
+                      AssetBytesLoader(Assets.svg.loginSvg),
+                      height: 200,
+                    ),
+                    SizedBox(height: VERTICAL_SPACE),
+                    _LoginSection(),
+                    SizedBox(height: VERTICAL_SPACE_L),
+                    _NewUserRow(),
+                    SizedBox(height: VERTICAL_SPACE_L),
+                    _SignUpSection(),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -9,32 +9,70 @@ class _LoginSection extends StatelessWidget {
 
     return Column(
       children: [
-        TextField(
-          decoration: InputDecoration(
-            labelText: LocaleKeys.email.tr(),
-          ),
-          onChanged: cubit.emailChanged,
+        BlocSelector<LoginSignupCubit, LoginSignupState, String?>(
+          selector: (state) {
+            return state.emailError;
+          },
+          builder: (context, emailError) {
+            return TextField(
+              key: const Key('login_email_text_field'),
+              decoration: InputDecoration(
+                labelText: LocaleKeys.email.tr(),
+                errorText: emailError,
+              ),
+              onChanged: cubit.emailChanged,
+            );
+          },
         ),
         SizedBox(height: VERTICAL_SPACE),
-        TextField(
-          decoration: InputDecoration(
-            labelText: LocaleKeys.password.tr(),
-          ),
-          onChanged: cubit.passwordChanged,
+        BlocSelector<LoginSignupCubit, LoginSignupState, String?>(
+          selector: (state) {
+            return state.passwordError;
+          },
+          builder: (context, passwordError) {
+            return TextField(
+              key: const Key('login_password_text_field'),
+              decoration: InputDecoration(
+                labelText: LocaleKeys.password.tr(),
+                errorText: passwordError,
+              ),
+              onChanged: cubit.passwordChanged,
+            );
+          },
         ),
         SizedBox(height: VERTICAL_SPACE_L),
-        ElevatedButton(
-          onPressed: () {
-            //context.router.push(HomeRoute());
+        BlocSelector<LoginSignupCubit, LoginSignupState, bool>(
+          selector: (state) {
+            return state.isLoading;
           },
-          child: Text(LocaleKeys.login.tr()),
+          builder: (context, isLoading) {
+            return ElevatedButton(
+              onPressed: isLoading
+                  ? null
+                  : () {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      cubit.login();
+                    },
+              child: Text(LocaleKeys.login.tr()),
+            );
+          },
         ),
         SizedBox(height: VERTICAL_SPACE),
-        TextButton(
-          onPressed: () {
-            //context.router.push(SignupRoute());
+        BlocSelector<LoginSignupCubit, LoginSignupState, bool>(
+          selector: (state) {
+            return state.isLoading;
           },
-          child: Text(LocaleKeys.recoverPassword.tr()),
+          builder: (context, state) {
+            return TextButton(
+              onPressed: state
+                  ? null
+                  : () {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      cubit.recoverPassword();
+                    },
+              child: Text(LocaleKeys.recoverPassword.tr()),
+            );
+          },
         ),
       ],
     );
