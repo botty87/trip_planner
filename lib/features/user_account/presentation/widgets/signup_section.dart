@@ -1,7 +1,7 @@
 part of '../pages/login_signup_page.dart';
 
 class _SignUpSection extends StatelessWidget {
-  const _SignUpSection({super.key});
+  const _SignUpSection();
 
   @override
   Widget build(BuildContext context) {

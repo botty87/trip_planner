@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:dartz/dartz.dart';
 import 'package:trip_planner/features/user_account/errors/user_failure.dart';

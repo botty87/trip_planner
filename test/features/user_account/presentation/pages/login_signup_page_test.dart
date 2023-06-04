@@ -9,8 +9,6 @@ import 'package:trip_planner/features/user_account/presentation/pages/login_sign
 class MockLoginSignupCubit extends MockCubit<LoginSignupState> implements LoginSignupCubit {}
 
 void main() {
-  late MockLoginSignupCubit mockLoginSignupCubit;
-
   group('LoginSignupPage', () {
     group('Test initial page state', () {
       late MockLoginSignupCubit mockLoginSignupCubit;

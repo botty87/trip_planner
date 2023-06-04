@@ -59,7 +59,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
       hasError = true;
     }
 
-    //if (hasError) return;
+    if (hasError) return;
 
     emit(state.copyWith(isLoading: true));
   }
