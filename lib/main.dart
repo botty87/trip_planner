@@ -6,14 +6,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:json_theme/json_theme.dart';
+import 'package:trip_planner/core/bloc_observer.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/routes/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  Bloc.observer = SimpleBlocObserver();
 
   //Firebase config
   await Firebase.initializeApp();
@@ -26,7 +29,7 @@ void main() async {
   final themeJson = jsonDecode(themeStr);
   var theme = ThemeDecoder.decodeThemeData(themeJson)!;
   theme = theme.copyWith(
-    textTheme: GoogleFonts.outfitTextTheme(theme.textTheme),
+    textTheme: GoogleFonts.jostTextTheme(theme.textTheme),
   );
 
   configureDependencies();

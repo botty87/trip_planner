@@ -7,5 +7,8 @@ abstract class  LocaleKeys {
   static const password = 'password';
   static const recoverPassword = 'recoverPassword';
   static const register = 'register';
+  static const confirmPassword = 'confirmPassword';
+  static const name = 'name';
+  static const newHere = 'newHere';
 
 }

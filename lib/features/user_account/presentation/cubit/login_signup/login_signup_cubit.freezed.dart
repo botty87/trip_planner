@@ -15,13 +15,25 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LoginSignupState {}
+mixin _$LoginSignupState {
+  String? get email => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
+  String? get confirmPassword => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LoginSignupStateCopyWith<LoginSignupState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $LoginSignupStateCopyWith<$Res> {
   factory $LoginSignupStateCopyWith(
           LoginSignupState value, $Res Function(LoginSignupState) then) =
       _$LoginSignupStateCopyWithImpl<$Res, LoginSignupState>;
+  @useResult
+  $Res call(
+      {String? email, String? password, String? confirmPassword, String? name});
 }
 
 /// @nodoc
@@ -33,13 +45,46 @@ class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? confirmPassword = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_value.copyWith(
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+      confirmPassword: freezed == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_LoginSignupStateCopyWith<$Res> {
+abstract class _$$_LoginSignupStateCopyWith<$Res>
+    implements $LoginSignupStateCopyWith<$Res> {
   factory _$$_LoginSignupStateCopyWith(
           _$_LoginSignupState value, $Res Function(_$_LoginSignupState) then) =
       __$$_LoginSignupStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? email, String? password, String? confirmPassword, String? name});
 }
 
 /// @nodoc
@@ -49,28 +94,97 @@ class __$$_LoginSignupStateCopyWithImpl<$Res>
   __$$_LoginSignupStateCopyWithImpl(
       _$_LoginSignupState _value, $Res Function(_$_LoginSignupState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? confirmPassword = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_$_LoginSignupState(
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+      confirmPassword: freezed == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_LoginSignupState implements _LoginSignupState {
-  _$_LoginSignupState();
+  _$_LoginSignupState(
+      {this.email, this.password, this.confirmPassword, this.name});
+
+  @override
+  final String? email;
+  @override
+  final String? password;
+  @override
+  final String? confirmPassword;
+  @override
+  final String? name;
 
   @override
   String toString() {
-    return 'LoginSignupState()';
+    return 'LoginSignupState(email: $email, password: $password, confirmPassword: $confirmPassword, name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoginSignupState);
+        (other.runtimeType == runtimeType &&
+            other is _$_LoginSignupState &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, email, password, confirmPassword, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoginSignupStateCopyWith<_$_LoginSignupState> get copyWith =>
+      __$$_LoginSignupStateCopyWithImpl<_$_LoginSignupState>(this, _$identity);
 }
 
 abstract class _LoginSignupState implements LoginSignupState {
-  factory _LoginSignupState() = _$_LoginSignupState;
+  factory _LoginSignupState(
+      {final String? email,
+      final String? password,
+      final String? confirmPassword,
+      final String? name}) = _$_LoginSignupState;
+
+  @override
+  String? get email;
+  @override
+  String? get password;
+  @override
+  String? get confirmPassword;
+  @override
+  String? get name;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LoginSignupStateCopyWith<_$_LoginSignupState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

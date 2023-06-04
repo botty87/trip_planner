@@ -9,6 +9,104 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsGoogleFontsGen {
+  const $AssetsGoogleFontsGen();
+
+  /// File path: assets/google_fonts/Jost-Black.ttf
+  String get jostBlack => 'assets/google_fonts/Jost-Black.ttf';
+
+  /// File path: assets/google_fonts/Jost-BlackItalic.ttf
+  String get jostBlackItalic => 'assets/google_fonts/Jost-BlackItalic.ttf';
+
+  /// File path: assets/google_fonts/Jost-Bold.ttf
+  String get jostBold => 'assets/google_fonts/Jost-Bold.ttf';
+
+  /// File path: assets/google_fonts/Jost-BoldItalic.ttf
+  String get jostBoldItalic => 'assets/google_fonts/Jost-BoldItalic.ttf';
+
+  /// File path: assets/google_fonts/Jost-ExtraBold.ttf
+  String get jostExtraBold => 'assets/google_fonts/Jost-ExtraBold.ttf';
+
+  /// File path: assets/google_fonts/Jost-ExtraBoldItalic.ttf
+  String get jostExtraBoldItalic =>
+      'assets/google_fonts/Jost-ExtraBoldItalic.ttf';
+
+  /// File path: assets/google_fonts/Jost-ExtraLight.ttf
+  String get jostExtraLight => 'assets/google_fonts/Jost-ExtraLight.ttf';
+
+  /// File path: assets/google_fonts/Jost-ExtraLightItalic.ttf
+  String get jostExtraLightItalic =>
+      'assets/google_fonts/Jost-ExtraLightItalic.ttf';
+
+  /// File path: assets/google_fonts/Jost-Italic-VariableFont_wght.ttf
+  String get jostItalicVariableFontWght =>
+      'assets/google_fonts/Jost-Italic-VariableFont_wght.ttf';
+
+  /// File path: assets/google_fonts/Jost-Italic.ttf
+  String get jostItalic => 'assets/google_fonts/Jost-Italic.ttf';
+
+  /// File path: assets/google_fonts/Jost-Light.ttf
+  String get jostLight => 'assets/google_fonts/Jost-Light.ttf';
+
+  /// File path: assets/google_fonts/Jost-LightItalic.ttf
+  String get jostLightItalic => 'assets/google_fonts/Jost-LightItalic.ttf';
+
+  /// File path: assets/google_fonts/Jost-Medium.ttf
+  String get jostMedium => 'assets/google_fonts/Jost-Medium.ttf';
+
+  /// File path: assets/google_fonts/Jost-MediumItalic.ttf
+  String get jostMediumItalic => 'assets/google_fonts/Jost-MediumItalic.ttf';
+
+  /// File path: assets/google_fonts/Jost-Regular.ttf
+  String get jostRegular => 'assets/google_fonts/Jost-Regular.ttf';
+
+  /// File path: assets/google_fonts/Jost-SemiBold.ttf
+  String get jostSemiBold => 'assets/google_fonts/Jost-SemiBold.ttf';
+
+  /// File path: assets/google_fonts/Jost-SemiBoldItalic.ttf
+  String get jostSemiBoldItalic =>
+      'assets/google_fonts/Jost-SemiBoldItalic.ttf';
+
+  /// File path: assets/google_fonts/Jost-Thin.ttf
+  String get jostThin => 'assets/google_fonts/Jost-Thin.ttf';
+
+  /// File path: assets/google_fonts/Jost-ThinItalic.ttf
+  String get jostThinItalic => 'assets/google_fonts/Jost-ThinItalic.ttf';
+
+  /// File path: assets/google_fonts/Jost-VariableFont_wght.ttf
+  String get jostVariableFontWght =>
+      'assets/google_fonts/Jost-VariableFont_wght.ttf';
+
+  /// File path: assets/google_fonts/KaushanScript-Regular.ttf
+  String get kaushanScriptRegular =>
+      'assets/google_fonts/KaushanScript-Regular.ttf';
+
+  /// List of all assets
+  List<String> get values => [
+        jostBlack,
+        jostBlackItalic,
+        jostBold,
+        jostBoldItalic,
+        jostExtraBold,
+        jostExtraBoldItalic,
+        jostExtraLight,
+        jostExtraLightItalic,
+        jostItalicVariableFontWght,
+        jostItalic,
+        jostLight,
+        jostLightItalic,
+        jostMedium,
+        jostMediumItalic,
+        jostRegular,
+        jostSemiBold,
+        jostSemiBoldItalic,
+        jostThin,
+        jostThinItalic,
+        jostVariableFontWght,
+        kaushanScriptRegular
+      ];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 }
@@ -40,6 +138,7 @@ class Assets {
   Assets._();
 
   static const String appainterTheme = 'assets/appainter_theme.json';
+  static const $AssetsGoogleFontsGen googleFonts = $AssetsGoogleFontsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();

@@ -4,5 +4,8 @@
     "email" : "Email",
     "password" : "Password",
     "recoverPassword" : "Recover Password",
-    "register" : "Register"
+    "register" : "Register",
+    "confirmPassword" : "Confirm Password",
+    "name" : "Name",
+    "newHere" : "New here?"
 }
