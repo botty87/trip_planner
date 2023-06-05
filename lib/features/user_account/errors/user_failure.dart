@@ -11,9 +11,9 @@ class UserFailure with _$UserFailure implements Failure {
 }
 
 enum UserFailureCode {
-  userNotFound,
   emailAlreadyInUse,
   weakPassword,
+  userNotFound,
   wrongPassword,
   tooManyRequests,
   userDisabled,
