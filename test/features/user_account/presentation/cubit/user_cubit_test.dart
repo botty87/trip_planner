@@ -29,7 +29,7 @@ void main() {
     setUp: () {
       when(mockListenUser(any)).thenAnswer((_) => Stream.value(right(null)));
     },
-    build: () => UserCubit(listenUser: mockListenUser),
+    build: () => UserCubit(listenUserState: mockListenUser),
     expect: () => const <UserState>[UserState.loggedOut()],
   );
 
@@ -38,7 +38,7 @@ void main() {
     setUp: () {
       when(mockListenUser(any)).thenAnswer((_) => Stream.value(right(tUser)));
     },
-    build: () => UserCubit(listenUser: mockListenUser),
+    build: () => UserCubit(listenUserState: mockListenUser),
     expect: () => <UserState>[UserState.loggedIn(user: tUser)],
   );
 }

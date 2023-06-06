@@ -11,17 +11,18 @@ part 'user_cubit.freezed.dart';
 
 @lazySingleton
 class UserCubit extends Cubit<UserState> {
-  final ListenUser listenUser;
+  final ListenUser listenUserState;
 
-  UserCubit({required this.listenUser}) : super(const UserState.loading()) {
-    listenUser(const NoParams()).listen((result) {
+  UserCubit({required this.listenUserState}) : super(const UserState.loading()) {
+    listenUserState(const NoParams()).listen((result) {
       result.fold(
         (failure) => emit(const UserState.error()),
         (user) {
-          if (user == null)
+          if (user == null) {
             emit(const UserState.loggedOut());
-          else
+          } else {
             emit(UserState.loggedIn(user: user));
+          }
         },
       );
     });

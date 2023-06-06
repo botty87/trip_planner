@@ -21,6 +21,9 @@ class _SignUpSection extends StatelessWidget {
                 errorText: passwordError,
               ),
               onChanged: cubit.confirmPasswordChanged,
+              obscureText: true,
+              textInputAction: TextInputAction.next,
+              autofillHints: [AutofillHints.newPassword],
             );
           },
         ),
@@ -37,6 +40,9 @@ class _SignUpSection extends StatelessWidget {
                 errorText: nameError,
               ),
               onChanged: cubit.nameChanged,
+              textInputAction: TextInputAction.done,
+              autofillHints: [AutofillHints.name],
+              onSubmitted: (_) => _signUp(context),
             );
           },
         ),
@@ -48,17 +54,18 @@ class _SignUpSection extends StatelessWidget {
           builder: (context, isLoading) {
             return ElevatedButton(
               key: const Key('signup_button'),
-              onPressed: isLoading
-                  ? null
-                  : () {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                      cubit.signUp();
-                    },
+              onPressed: isLoading ? null : () => _signUp(context),
               child: Text(LocaleKeys.register.tr()),
             );
           },
         ),
       ],
     );
+  }
+
+  _signUp(BuildContext context) {
+    final cubit = context.read<LoginSignupCubit>();
+    FocusManager.instance.primaryFocus?.unfocus();
+    cubit.signUp();
   }
 }

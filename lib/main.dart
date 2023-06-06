@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,6 +13,9 @@ import 'package:json_theme/json_theme.dart';
 import 'package:trip_planner/core/bloc_observer.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/routes/app_router.dart';
+
+import 'core/routes/app_router.gr.dart';
+import 'features/user_account/presentation/cubit/user/user_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,14 +54,34 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Flutter Demo 2',
-      theme: theme,
-      routerConfig: getIt<AppRouter>().config(),
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      scrollBehavior: const MaterialScrollBehavior().copyWith(scrollbars: false),
+    return BlocProvider<UserCubit>.value(
+      value: getIt(),
+      child: BlocListener<UserCubit, UserState>(
+        listenWhen: (previous, current) {
+          //Avoid to change route if user is already logged in
+          if (previous is UserStateLoggedIn && current is UserStateLoggedIn) {
+            return false;
+          }
+          return true;
+        },
+        listener: (context, state) {
+          final router = getIt<AppRouter>();
+          state.mapOrNull(
+            loggedOut: (_) => router.replaceAll([LoginSignupRoute()]),
+            loggedIn: (_) => router.replaceAll([TripsRoute()]),
+            error: (_) => throw UnimplementedError(), 
+          );
+        },
+        child: MaterialApp.router(
+          title: 'Flutter Demo 2',
+          theme: theme,
+          routerConfig: getIt<AppRouter>().config(),
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          scrollBehavior: const MaterialScrollBehavior().copyWith(scrollbars: false),
+        ),
+      ),
     );
   }
 }

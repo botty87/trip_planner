@@ -21,6 +21,9 @@ class _LoginSection extends StatelessWidget {
                 errorText: emailError,
               ),
               onChanged: cubit.emailChanged,
+              textInputAction: TextInputAction.next,
+              autofillHints: [AutofillHints.username],
+              keyboardType: TextInputType.emailAddress,
             );
           },
         ),
@@ -37,6 +40,9 @@ class _LoginSection extends StatelessWidget {
                 errorText: passwordError,
               ),
               onChanged: cubit.passwordChanged,
+              obscureText: true,
+              textInputAction: TextInputAction.done,
+              autofillHints: [AutofillHints.password],
             );
           },
         ),

@@ -10,7 +10,6 @@ import 'package:trip_planner/features/user_account/errors/user_failure.dart';
 import 'user_repository_impl_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<UserDataSource>()])
-
 void main() {
   late MockUserDataSource mockUserDataSource;
   late UserRepositoryImpl userRepositoryImpl;
@@ -29,9 +28,8 @@ void main() {
 
   test('should listen user from the data source', () async {
     // arrange
-    when(mockUserDataSource.listenUser())
-        .thenAnswer((_) => Stream.value(tUser));
-    
+    when(mockUserDataSource.listenUser()).thenAnswer((_) => Stream.value(tUser));
+
     // act
     final result = userRepositoryImpl.listenUser();
 
@@ -44,7 +42,7 @@ void main() {
   test('should return a failure when there is an exception on data source', () async {
     // arrange
     when(mockUserDataSource.listenUser()).thenAnswer((realInvocation) => throw Exception());
-    
+
     // act
     final result = userRepositoryImpl.listenUser();
 
@@ -58,7 +56,7 @@ void main() {
     // arrange
     when(mockUserDataSource.registerUser(email: '', password: '', name: ''))
         .thenAnswer((_) async => null);
-    
+
     // act
     final result = await userRepositoryImpl.registerUser(email: '', password: '', name: '');
 
