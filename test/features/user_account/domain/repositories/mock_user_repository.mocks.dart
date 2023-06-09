@@ -121,4 +121,29 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.UserFailure, void>> loginUser() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #loginUser,
+          [],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
+            _FakeEither_0<_i5.UserFailure, void>(
+          this,
+          Invocation.method(
+            #loginUser,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
+                _FakeEither_0<_i5.UserFailure, void>(
+          this,
+          Invocation.method(
+            #loginUser,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);
 }

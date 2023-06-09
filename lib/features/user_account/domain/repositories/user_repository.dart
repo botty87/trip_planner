@@ -9,4 +9,6 @@ abstract interface class UserRepository {
 
   Future<Either<UserFailure, void>> registerUser(
       {required String email, required String password, required String name});
+
+  Future<Either<UserFailure, void>> loginUser();
 }

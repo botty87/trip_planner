@@ -49,4 +49,10 @@ final class UserRepositoryImpl implements UserRepository {
       return left(UserFailure(code: UserFailureCode.networkRequestFailed));
     }
   }
+  
+  @override
+  Future<Either<UserFailure, void>> loginUser() {
+    // TODO: implement loginUser
+    throw UnimplementedError();
+  }
 }
