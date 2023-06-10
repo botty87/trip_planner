@@ -31,16 +31,32 @@ class LoginSignupPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(LocaleKeys.appName.tr()),
         ),
-        body: BlocListener<LoginSignupCubit, LoginSignupState>(
-          listenWhen: (previous, current) {
-            return (previous.authenticationError != current.authenticationError) &&
-                (current.authenticationError != null);
-          },
-          listener: (context, state) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              Snackbars.error(state.authenticationError!),
-            );
-          },
+        body: MultiBlocListener(
+          listeners: [
+            BlocListener<LoginSignupCubit, LoginSignupState>(
+              listenWhen: (previous, current) {
+                return (previous.authenticationError != current.authenticationError) &&
+                    (current.authenticationError != null);
+              },
+              listener: (context, state) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  Snackbars.error(state.authenticationError!),
+                );
+              },
+            ),
+            BlocListener<LoginSignupCubit, LoginSignupState>(
+              listenWhen: (previous, current) {
+                return (previous.successMessage != current.successMessage) &&
+                    (current.successMessage != null);
+              },
+              listener: (context, state) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  Snackbars.success(state.successMessage!),
+                );
+                context.router.pop();
+              },
+            ),
+          ],
           child: Column(
             children: [
               BlocSelector<LoginSignupCubit, LoginSignupState, bool>(

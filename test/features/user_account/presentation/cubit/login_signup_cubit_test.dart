@@ -25,10 +25,6 @@ void main() {
     mockRecoverPassword = MockRecoverPassword();
   });
 
-  group('registration tests', () { 
-    
-  });
-
   blocTest<LoginSignupCubit, LoginSignupState>(
     'should emit updated email state when email is changed',
     build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
@@ -136,7 +132,7 @@ void main() {
             name: 'name',
             isLoading: false),
       ],
-    );    
+    );
 
     blocTest<LoginSignupCubit, LoginSignupState>(
       'should emit authentication error when registerUser returns an error',
@@ -165,6 +161,82 @@ void main() {
     );
   });
 
-  
+  group('login tests', () {
+    blocTest<LoginSignupCubit, LoginSignupState>(
+      'should emit user not found when email is invalid',
+      setUp: () {
+        when(mockLoginUser(any)).thenAnswer((_) async => left(UserFailure(code: UserFailureCode.userNotFound)));
+      },
+      seed: () => LoginSignupState(email: 'email'),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
+      act: (cubit) => cubit.login(),
+      expect: () => [
+        LoginSignupState(isLoading: true, email: 'email'),
+        LoginSignupState(isLoading: false, email: 'email', authenticationError: LocaleKeys.userNotFound),
+      ],
+    );
 
+    blocTest<LoginSignupCubit, LoginSignupState>(
+      'should emit isLoading true, call loginUser and emit isLoading false when email and password are valid',
+      setUp: () {
+        when(mockLoginUser(any)).thenAnswer((_) async => right(null));
+      },
+      seed: () => LoginSignupState(email: 'email', password: 'password'),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
+      act: (cubit) => cubit.login(),
+      expect: () => [
+        LoginSignupState(email: 'email', password: 'password', isLoading: true),
+        LoginSignupState(email: 'email', password: 'password', isLoading: false),
+      ],
+    );
+
+    blocTest<LoginSignupCubit, LoginSignupState>(
+      'should emit authentication error when loginUser returns an error',
+      setUp: () {
+        when(mockLoginUser(any)).thenAnswer((_) async => left(UserFailure()));
+      },
+      seed: () => LoginSignupState(email: 'email', password: 'password'),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
+      act: (cubit) => cubit.login(),
+      expect: () => [
+        LoginSignupState(email: 'email', password: 'password', isLoading: true),
+        LoginSignupState(
+            email: 'email',
+            password: 'password',
+            isLoading: false,
+            authenticationError: LocaleKeys.unknownError.tr()),
+      ],
+    );
+  });
+
+  group('recover password tests', () { 
+    blocTest<LoginSignupCubit, LoginSignupState>(
+      'should user not found error when email is invalid',
+      setUp: () {
+        when(mockRecoverPassword(any)).thenAnswer((_) async => left(UserFailure(code: UserFailureCode.userNotFound)));
+      },
+      seed: () => LoginSignupState(email: 'email'),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
+      act: (cubit) => cubit.recoverUserPassword(),
+      expect: () => [
+        LoginSignupState(isLoading: true, email: 'email'),
+        LoginSignupState(email: 'email', authenticationError: LocaleKeys.userNotFound, isLoading: false),
+      ],
+    );
+
+    blocTest<LoginSignupCubit, LoginSignupState>(
+      'should emit isLoading true, call recoverPassword and emit isLoading false when email is valid, with recoverPasswordSuccess message',
+      setUp: () {
+        when(mockRecoverPassword(any)).thenAnswer((_) async => right(null));
+      },
+      seed: () => LoginSignupState(email: 'email'),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
+      act: (cubit) => cubit.recoverUserPassword(),
+      expect: () => [
+        LoginSignupState(email: 'email', isLoading: true),
+        LoginSignupState(email: 'email', isLoading: false, successMessage: LocaleKeys.recoverPasswordSuccess.tr()),
+      ],
+    );
+
+  });
 }
