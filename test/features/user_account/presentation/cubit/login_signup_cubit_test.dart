@@ -5,23 +5,33 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
+import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart';
+import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart';
 import 'package:trip_planner/features/user_account/errors/user_failure.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';
 
-import '../pages/login_signup_page_test.mocks.dart';
+import 'login_signup_cubit_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<RegisterUser>()])
+@GenerateNiceMocks([MockSpec<RegisterUser>(), MockSpec<LoginUser>(), MockSpec<RecoverPassword>()])
 void main() {
   late MockRegisterUser mockRegisterUser;
+  late MockLoginUser mockLoginUser;
+  late MockRecoverPassword mockRecoverPassword;
 
   setUp(() {
     mockRegisterUser = MockRegisterUser();
+    mockLoginUser = MockLoginUser();
+    mockRecoverPassword = MockRecoverPassword();
+  });
+
+  group('registration tests', () { 
+    
   });
 
   blocTest<LoginSignupCubit, LoginSignupState>(
     'should emit updated email state when email is changed',
-    build: () => LoginSignupCubit(mockRegisterUser),
+    build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
     act: (cubit) => cubit.emailChanged('email'),
     expect: () => [
       LoginSignupState(email: 'email'),
@@ -30,7 +40,7 @@ void main() {
 
   blocTest<LoginSignupCubit, LoginSignupState>(
     'should emit updated password state when password is changed',
-    build: () => LoginSignupCubit(mockRegisterUser),
+    build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
     act: (cubit) => cubit.passwordChanged('password'),
     expect: () => [
       LoginSignupState(password: 'password'),
@@ -39,7 +49,7 @@ void main() {
 
   blocTest<LoginSignupCubit, LoginSignupState>(
     'should emit updated confirmPassword state when confirmPassword is changed',
-    build: () => LoginSignupCubit(mockRegisterUser),
+    build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
     act: (cubit) => cubit.confirmPasswordChanged('confirmPassword'),
     expect: () => [
       LoginSignupState(confirmPassword: 'confirmPassword'),
@@ -48,7 +58,7 @@ void main() {
 
   blocTest<LoginSignupCubit, LoginSignupState>(
     'should emit updated name state when name is changed',
-    build: () => LoginSignupCubit(mockRegisterUser),
+    build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
     act: (cubit) => cubit.nameChanged('name'),
     expect: () => [
       LoginSignupState(name: 'name'),
@@ -59,7 +69,7 @@ void main() {
     blocTest<LoginSignupCubit, LoginSignupState>(
       'should emit email error when email is invalid, password empty error when password is empty and name empty error when name is empty',
       seed: () => LoginSignupState(email: 'email'),
-      build: () => LoginSignupCubit(mockRegisterUser),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
       act: (cubit) => cubit.signUp(),
       expect: () => [
         LoginSignupState(email: 'email', emailError: LocaleKeys.invalidEmail),
@@ -79,7 +89,7 @@ void main() {
       'should emit email error when email is invalid, password mismatch error when passwords are not equals and name empty error when name is empty',
       seed: () => LoginSignupState(
           email: 'email', password: 'password', confirmPassword: 'confirmPassword'),
-      build: () => LoginSignupCubit(mockRegisterUser),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
       act: (cubit) => cubit.signUp(),
       expect: () => [
         LoginSignupState(
@@ -110,7 +120,7 @@ void main() {
       },
       seed: () => LoginSignupState(
           email: 'email@email.it', password: 'password', confirmPassword: 'password', name: 'name'),
-      build: () => LoginSignupCubit(mockRegisterUser),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
       act: (cubit) => cubit.signUp(),
       expect: () => [
         LoginSignupState(
@@ -135,7 +145,7 @@ void main() {
       },
       seed: () => LoginSignupState(
           email: 'email@email.it', password: 'password', confirmPassword: 'password', name: 'name'),
-      build: () => LoginSignupCubit(mockRegisterUser),
+      build: () => LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword),
       act: (cubit) => cubit.signUp(),
       expect: () => [
         LoginSignupState(
@@ -154,4 +164,7 @@ void main() {
       ],
     );
   });
+
+  
+
 }

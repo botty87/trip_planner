@@ -15,5 +15,8 @@
     "emailAlreadyInUse" : "Email già in uso",
     "weakPassword" : "La password deve essere lunga almeno 6 caratteri",
     "networkRequestFailed" : "Errore di rete",
-    "unknownError" : "Errore sconosciuto" 
+    "unknownError" : "Errore sconosciuto",
+    "userNotFound" : "Utente non trovato",
+    "wrongPassword" : "Password errata",
+    "recoverPasswordSuccess" : "Ti abbiamo inviato una mail per recuperare la password"
 }

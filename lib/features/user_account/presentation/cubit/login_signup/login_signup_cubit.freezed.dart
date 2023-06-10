@@ -25,6 +25,7 @@ mixin _$LoginSignupState {
   String? get nameError => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String? get authenticationError => throw _privateConstructorUsedError;
+  String? get successMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginSignupStateCopyWith<LoginSignupState> get copyWith =>
@@ -46,7 +47,8 @@ abstract class $LoginSignupStateCopyWith<$Res> {
       String? passwordError,
       String? nameError,
       bool isLoading,
-      String? authenticationError});
+      String? authenticationError,
+      String? successMessage});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState>
     Object? nameError = freezed,
     Object? isLoading = null,
     Object? authenticationError = freezed,
+    Object? successMessage = freezed,
   }) {
     return _then(_value.copyWith(
       email: freezed == email
@@ -109,6 +112,10 @@ class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState>
           ? _value.authenticationError
           : authenticationError // ignore: cast_nullable_to_non_nullable
               as String?,
+      successMessage: freezed == successMessage
+          ? _value.successMessage
+          : successMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -130,7 +137,8 @@ abstract class _$$_LoginSignupStateCopyWith<$Res>
       String? passwordError,
       String? nameError,
       bool isLoading,
-      String? authenticationError});
+      String? authenticationError,
+      String? successMessage});
 }
 
 /// @nodoc
@@ -153,6 +161,7 @@ class __$$_LoginSignupStateCopyWithImpl<$Res>
     Object? nameError = freezed,
     Object? isLoading = null,
     Object? authenticationError = freezed,
+    Object? successMessage = freezed,
   }) {
     return _then(_$_LoginSignupState(
       email: freezed == email
@@ -191,6 +200,10 @@ class __$$_LoginSignupStateCopyWithImpl<$Res>
           ? _value.authenticationError
           : authenticationError // ignore: cast_nullable_to_non_nullable
               as String?,
+      successMessage: freezed == successMessage
+          ? _value.successMessage
+          : successMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -207,7 +220,8 @@ class _$_LoginSignupState implements _LoginSignupState {
       this.passwordError,
       this.nameError,
       this.isLoading = false,
-      this.authenticationError});
+      this.authenticationError,
+      this.successMessage});
 
   @override
   final String? email;
@@ -228,10 +242,12 @@ class _$_LoginSignupState implements _LoginSignupState {
   final bool isLoading;
   @override
   final String? authenticationError;
+  @override
+  final String? successMessage;
 
   @override
   String toString() {
-    return 'LoginSignupState(email: $email, password: $password, confirmPassword: $confirmPassword, name: $name, emailError: $emailError, passwordError: $passwordError, nameError: $nameError, isLoading: $isLoading, authenticationError: $authenticationError)';
+    return 'LoginSignupState(email: $email, password: $password, confirmPassword: $confirmPassword, name: $name, emailError: $emailError, passwordError: $passwordError, nameError: $nameError, isLoading: $isLoading, authenticationError: $authenticationError, successMessage: $successMessage)';
   }
 
   @override
@@ -254,7 +270,9 @@ class _$_LoginSignupState implements _LoginSignupState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.authenticationError, authenticationError) ||
-                other.authenticationError == authenticationError));
+                other.authenticationError == authenticationError) &&
+            (identical(other.successMessage, successMessage) ||
+                other.successMessage == successMessage));
   }
 
   @override
@@ -268,7 +286,8 @@ class _$_LoginSignupState implements _LoginSignupState {
       passwordError,
       nameError,
       isLoading,
-      authenticationError);
+      authenticationError,
+      successMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -287,7 +306,8 @@ abstract class _LoginSignupState implements LoginSignupState {
       final String? passwordError,
       final String? nameError,
       final bool isLoading,
-      final String? authenticationError}) = _$_LoginSignupState;
+      final String? authenticationError,
+      final String? successMessage}) = _$_LoginSignupState;
 
   @override
   String? get email;
@@ -307,6 +327,8 @@ abstract class _LoginSignupState implements LoginSignupState {
   bool get isLoading;
   @override
   String? get authenticationError;
+  @override
+  String? get successMessage;
   @override
   @JsonKey(ignore: true)
   _$$_LoginSignupStateCopyWith<_$_LoginSignupState> get copyWith =>

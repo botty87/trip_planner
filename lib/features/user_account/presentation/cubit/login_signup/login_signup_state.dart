@@ -13,6 +13,7 @@ class LoginSignupState with _$LoginSignupState {
     String? nameError,
     @Default(false) bool isLoading,
     String? authenticationError,
+    String? successMessage,
   }) = _LoginSignupState;
 
 }

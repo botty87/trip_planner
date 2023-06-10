@@ -55,4 +55,28 @@ class MockUserDataSource extends _i1.Mock implements _i2.UserDataSource {
         ),
         returnValueForMissingStub: null,
       );
+  @override
+  dynamic loginUser({
+    required String? email,
+    required String? password,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #loginUser,
+          [],
+          {
+            #email: email,
+            #password: password,
+          },
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  dynamic recoverPassword(String? email) => super.noSuchMethod(
+        Invocation.method(
+          #recoverPassword,
+          [email],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

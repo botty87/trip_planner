@@ -11,6 +11,10 @@ import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
     as _i2;
+import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart'
+    as _i7;
+import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart'
+    as _i8;
 import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart'
     as _i4;
 import 'package:trip_planner/features/user_account/errors/user_failure.dart'
@@ -67,6 +71,94 @@ class MockRegisterUser extends _i1.Mock implements _i4.RegisterUser {
   @override
   _i5.Future<_i3.Either<_i6.UserFailure, void>> call(
           _i4.RegisterUserParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
+            _FakeEither_1<_i6.UserFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
+                _FakeEither_1<_i6.UserFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i5.Future<_i3.Either<_i6.UserFailure, void>>);
+}
+
+/// A class which mocks [LoginUser].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLoginUser extends _i1.Mock implements _i7.LoginUser {
+  @override
+  _i2.UserRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeUserRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeUserRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.UserRepository);
+  @override
+  _i5.Future<_i3.Either<_i6.UserFailure, void>> call(
+          _i7.LoginUserParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
+            _FakeEither_1<_i6.UserFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
+                _FakeEither_1<_i6.UserFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i5.Future<_i3.Either<_i6.UserFailure, void>>);
+}
+
+/// A class which mocks [RecoverPassword].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockRecoverPassword extends _i1.Mock implements _i8.RecoverPassword {
+  @override
+  _i2.UserRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeUserRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeUserRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.UserRepository);
+  @override
+  _i5.Future<_i3.Either<_i6.UserFailure, void>> call(
+          _i8.RecoverPasswordParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,

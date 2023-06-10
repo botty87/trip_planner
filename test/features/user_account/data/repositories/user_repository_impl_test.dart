@@ -39,30 +39,94 @@ void main() {
     verifyNoMoreInteractions(mockUserDataSource);
   });
 
-  test('should return a failure when there is an exception on data source', () async {
-    // arrange
-    when(mockUserDataSource.listenUser()).thenAnswer((realInvocation) => throw Exception());
+  group('listen user', () {
+    test('should return a failure when there is an exception on data source', () async {
+      // arrange
+      when(mockUserDataSource.listenUser()).thenAnswer((realInvocation) => throw Exception());
 
-    // act
-    final result = userRepositoryImpl.listenUser();
+      // act
+      final result = userRepositoryImpl.listenUser();
 
-    // assert
-    await expectLater(result, emits(left(UserFailure())));
-    verify(mockUserDataSource.listenUser());
-    verifyNoMoreInteractions(mockUserDataSource);
+      // assert
+      await expectLater(result, emits(left(UserFailure())));
+      verify(mockUserDataSource.listenUser());
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
   });
 
-  test('should register user on data source', () async {
-    // arrange
-    when(mockUserDataSource.registerUser(email: '', password: '', name: ''))
-        .thenAnswer((_) async => null);
+  group('register user', () {
+    test('should register user on data source', () async {
+      // arrange
+      when(mockUserDataSource.registerUser(email: '', password: '', name: ''))
+          .thenAnswer((_) async => null);
 
-    // act
-    final result = await userRepositoryImpl.registerUser(email: '', password: '', name: '');
+      // act
+      final result = await userRepositoryImpl.registerUser(email: '', password: '', name: '');
 
-    // assert
-    expect(result, right(null));
-    verify(mockUserDataSource.registerUser(email: '', password: '', name: ''));
-    verifyNoMoreInteractions(mockUserDataSource);
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.registerUser(email: '', password: '', name: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+  });
+
+  group('login user', () {
+    test('should login user on data source', () async {
+      // arrange
+      when(mockUserDataSource.loginUser(email: '', password: ''))
+          .thenAnswer((_) async => null);
+
+      // act
+      final result = await userRepositoryImpl.loginUser(email: '', password: '');
+
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.loginUser(email: '', password: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when there is an exception on data source', () async {
+      // arrange
+      when(mockUserDataSource.loginUser(email: '', password: ''))
+          .thenAnswer((realInvocation) => throw Exception());
+
+      // act
+      final result = await userRepositoryImpl.loginUser(email: '', password: '');
+
+      // assert
+      expect(result, left(UserFailure()));
+      verify(mockUserDataSource.loginUser(email: '', password: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+  });
+
+  group('recover password', () {
+    test('should recover password on data source', () async {
+      // arrange
+      when(mockUserDataSource.recoverPassword(''))
+          .thenAnswer((_) async => null);
+
+      // act
+      final result = await userRepositoryImpl.recoverPassword('');
+
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.recoverPassword(''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when there is an exception on data source', () async {
+      // arrange
+      when(mockUserDataSource.recoverPassword(''))
+          .thenAnswer((realInvocation) => throw Exception());
+
+      // act
+      final result = await userRepositoryImpl.recoverPassword('');
+
+      // assert
+      expect(result, left(UserFailure()));
+      verify(mockUserDataSource.recoverPassword(''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
   });
 }

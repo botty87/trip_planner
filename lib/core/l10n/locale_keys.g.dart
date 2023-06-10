@@ -18,5 +18,8 @@ abstract class  LocaleKeys {
   static const weakPassword = 'weakPassword';
   static const networkRequestFailed = 'networkRequestFailed';
   static const unknownError = 'unknownError';
+  static const userNotFound = 'userNotFound';
+  static const wrongPassword = 'wrongPassword';
+  static const recoverPasswordSuccess = 'recoverPasswordSuccess';
 
 }

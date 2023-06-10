@@ -74,7 +74,7 @@ class _LoginSection extends StatelessWidget {
                   ? null
                   : () {
                       FocusManager.instance.primaryFocus?.unfocus();
-                      cubit.recoverPassword();
+                      cubit.recoverUserPassword();
                     },
               child: Text(LocaleKeys.recoverPassword.tr()),
             );

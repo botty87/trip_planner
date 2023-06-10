@@ -122,11 +122,18 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
         )),
       ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);
   @override
-  _i4.Future<_i2.Either<_i5.UserFailure, void>> loginUser() =>
+  _i4.Future<_i2.Either<_i5.UserFailure, void>> loginUser({
+    required String? email,
+    required String? password,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #loginUser,
           [],
+          {
+            #email: email,
+            #password: password,
+          },
         ),
         returnValue: _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
             _FakeEither_0<_i5.UserFailure, void>(
@@ -134,6 +141,10 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           Invocation.method(
             #loginUser,
             [],
+            {
+              #email: email,
+              #password: password,
+            },
           ),
         )),
         returnValueForMissingStub:
@@ -143,6 +154,36 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           Invocation.method(
             #loginUser,
             [],
+            {
+              #email: email,
+              #password: password,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.UserFailure, void>> recoverPassword(
+          String? email) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recoverPassword,
+          [email],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
+            _FakeEither_0<_i5.UserFailure, void>(
+          this,
+          Invocation.method(
+            #recoverPassword,
+            [email],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
+                _FakeEither_0<_i5.UserFailure, void>(
+          this,
+          Invocation.method(
+            #recoverPassword,
+            [email],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);

@@ -46,13 +46,47 @@ final class UserRepositoryImpl implements UserRepository {
           return left(UserFailure());
       }
     } catch (e) {
-      return left(UserFailure(code: UserFailureCode.networkRequestFailed));
+      return left(UserFailure());
     }
   }
   
   @override
-  Future<Either<UserFailure, void>> loginUser() {
-    // TODO: implement loginUser
-    throw UnimplementedError();
+  Future<Either<UserFailure, void>> loginUser({required String email, required String password}) async {
+    try {
+      await userDataSource.loginUser(email: email, password: password);
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'user-not-found':
+          return left(UserFailure(code: UserFailureCode.userNotFound));
+        case 'wrong-password':
+          return left(UserFailure(code: UserFailureCode.wrongPassword));
+        case 'network-request-failed':
+          return left(UserFailure(code: UserFailureCode.networkRequestFailed));
+        default:
+          return left(UserFailure());
+      }
+    } catch (e) {
+      return left(UserFailure());
+    }
+  }
+  
+  @override
+  Future<Either<UserFailure, void>> recoverPassword(String email) async {
+    try {
+      await userDataSource.recoverPassword(email);
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'user-not-found':
+          return left(UserFailure(code: UserFailureCode.userNotFound));
+        case 'network-request-failed':
+          return left(UserFailure(code: UserFailureCode.networkRequestFailed));
+        default:
+          return left(UserFailure());
+      }
+    } catch (e) {
+      return left(UserFailure());
+    }
   }
 }

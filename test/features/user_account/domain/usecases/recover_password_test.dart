@@ -1,47 +1,47 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart';
+import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart';
 import 'package:trip_planner/features/user_account/errors/user_failure.dart';
 
 import '../repositories/mock_user_repository.mocks.dart';
 
 void main() {
-  late LoginUser usecase;
+  late RecoverPassword usecase;
   late MockUserRepository mockUserRepository;
 
   setUp(() {
     mockUserRepository = MockUserRepository();
-    usecase = LoginUser(mockUserRepository);
+    usecase = RecoverPassword(mockUserRepository);
   });
 
-  test('should login user from the repository', () async {
+  test('should recover password from the repository', () async {
     // arrange
-    when(mockUserRepository.loginUser(email: '', password: '')).thenAnswer((_) async {
-      return Right(null);
+    when(mockUserRepository.recoverPassword('')).thenAnswer((_) async {
+      return right(null);
     });
 
     // act
-    final result = await usecase(LoginUserParams(email: '', password: ''));
+    final result = await usecase(RecoverPasswordParams(email: ''));
 
     // assert
-    expect(result, Right(null));
-    verify(mockUserRepository.loginUser(email: '', password: ''));
+    expect(result, right(null));
+    verify(mockUserRepository.recoverPassword(''));
     verifyNoMoreInteractions(mockUserRepository);
   });
 
   test('should return a failure when there is an error', () async {
     // arrange
-    when(mockUserRepository.loginUser(email: '', password: '')).thenAnswer((_) async {
+    when(mockUserRepository.recoverPassword('')).thenAnswer((_) async {
       return left(UserFailure());
     });
 
     // act
-    final result = await usecase(LoginUserParams(email: '', password: ''));
+    final result = await usecase(RecoverPasswordParams(email: ''));
 
     // assert
     expect(result, left(UserFailure()));
-    verify(mockUserRepository.loginUser(email: '', password: ''));
+    verify(mockUserRepository.recoverPassword(''));
     verifyNoMoreInteractions(mockUserRepository);
   });
 }

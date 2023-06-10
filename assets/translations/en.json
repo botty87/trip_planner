@@ -15,5 +15,8 @@
     "emailAlreadyInUse" : "Email already in use",
     "weakPassword" : "Password should be at least 6 characters",
     "networkRequestFailed" : "Network request failed",
-    "unknownError" : "Unknown error"
+    "unknownError" : "Unknown error",
+    "userNotFound" : "User not found",
+    "wrongPassword" : "Wrong password",
+    "recoverPasswordSuccess" : "An email has been sent to you with instructions on how to reset your password"
 }
