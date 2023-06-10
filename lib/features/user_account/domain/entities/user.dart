@@ -4,7 +4,7 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-class User with _$User {
+sealed class User with _$User {
 
   factory User({
     required String id,
@@ -13,5 +13,4 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-  //Map<String, dynamic> toJson() => _$UserToJson(this);
 }
