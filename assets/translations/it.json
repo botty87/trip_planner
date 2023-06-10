@@ -21,5 +21,8 @@
     "recoverPasswordSuccess" : "Ti abbiamo inviato una mail per recuperare la password",
     "newTrip" : "Nuovo viaggio",
     "noTripAddOne" : "Nessun viaggio ancora?\nAggiungine uno!",
-    "tripsPageTitle" : "I tuoi viaggi"
+    "tripsPageTitle" : "I tuoi viaggi",
+    "whatNameTrip" : "Come si chiama il viaggio?",
+    "createTrip" : "Crea viaggio",
+    "tripNameEmpty" : "Il nome del viaggio non può essere vuoto"
 }

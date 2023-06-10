@@ -24,5 +24,8 @@ abstract class  LocaleKeys {
   static const newTrip = 'newTrip';
   static const noTripAddOne = 'noTripAddOne';
   static const tripsPageTitle = 'tripsPageTitle';
+  static const whatNameTrip = 'whatNameTrip';
+  static const createTrip = 'createTrip';
+  static const tripNameEmpty = 'tripNameEmpty';
 
 }
