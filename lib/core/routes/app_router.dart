@@ -14,5 +14,6 @@ class AppRouter extends $AppRouter {
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
         AutoRoute(page: TripsRoute.page),
+        AutoRoute(page: NewTripRoute.page),
       ];
 }

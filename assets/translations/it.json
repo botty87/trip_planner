@@ -18,5 +18,6 @@
     "unknownError" : "Errore sconosciuto",
     "userNotFound" : "Utente non trovato",
     "wrongPassword" : "Password errata",
-    "recoverPasswordSuccess" : "Ti abbiamo inviato una mail per recuperare la password"
+    "recoverPasswordSuccess" : "Ti abbiamo inviato una mail per recuperare la password",
+    "newTrip" : "Nuovo viaggio"
 }

@@ -21,5 +21,6 @@ abstract class  LocaleKeys {
   static const userNotFound = 'userNotFound';
   static const wrongPassword = 'wrongPassword';
   static const recoverPasswordSuccess = 'recoverPasswordSuccess';
+  static const newTrip = 'newTrip';
 
 }
