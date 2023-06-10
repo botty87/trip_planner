@@ -19,5 +19,7 @@
     "userNotFound" : "User not found",
     "wrongPassword" : "Wrong password",
     "recoverPasswordSuccess" : "An email has been sent to you with instructions on how to reset your password",
-    "newTrip" : "New Trip"
+    "newTrip" : "New Trip",
+    "noTripAddOne" : "No trips yet?\nAdd one!",
+    "tripsPageTitle" : "Your trips"
 }

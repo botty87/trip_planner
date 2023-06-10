@@ -114,11 +114,17 @@ class $AssetsImagesGen {
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/arrow.svg.vec
+  String get arrowSvg => 'assets/svg/arrow.svg.vec';
+
   /// File path: assets/svg/login.svg.vec
   String get loginSvg => 'assets/svg/login.svg.vec';
 
+  /// File path: assets/svg/trip.svg.vec
+  String get tripSvg => 'assets/svg/trip.svg.vec';
+
   /// List of all assets
-  List<String> get values => [loginSvg];
+  List<String> get values => [arrowSvg, loginSvg, tripSvg];
 }
 
 class $AssetsTranslationsGen {

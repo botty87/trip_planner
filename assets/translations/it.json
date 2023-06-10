@@ -19,5 +19,7 @@
     "userNotFound" : "Utente non trovato",
     "wrongPassword" : "Password errata",
     "recoverPasswordSuccess" : "Ti abbiamo inviato una mail per recuperare la password",
-    "newTrip" : "Nuovo viaggio"
+    "newTrip" : "Nuovo viaggio",
+    "noTripAddOne" : "Nessun viaggio ancora?\nAggiungine uno!",
+    "tripsPageTitle" : "I tuoi viaggi"
 }

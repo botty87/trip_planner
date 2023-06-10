@@ -22,5 +22,7 @@ abstract class  LocaleKeys {
   static const wrongPassword = 'wrongPassword';
   static const recoverPasswordSuccess = 'recoverPasswordSuccess';
   static const newTrip = 'newTrip';
+  static const noTripAddOne = 'noTripAddOne';
+  static const tripsPageTitle = 'tripsPageTitle';
 
 }
