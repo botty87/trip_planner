@@ -10,6 +10,7 @@ sealed class Trip with _$Trip {
     @JsonKey(includeFromJson: false, includeToJson: false)
     String? id,
     required String name,
+    String? description,
     required String userId,
   }) = _Trip;
 

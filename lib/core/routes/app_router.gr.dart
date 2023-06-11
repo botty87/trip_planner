@@ -11,6 +11,8 @@
 import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:flutter/material.dart' as _i6;
 import 'package:trip_planner/core/home_page.dart' as _i1;
+import 'package:trip_planner/features/trips/presentation/cubit/new_trip_cubit.dart'
+    as _i8;
 import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart'
     as _i4;
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
@@ -49,9 +51,14 @@ abstract class $AppRouter extends _i5.RootStackRouter {
       );
     },
     NewTripRoute.name: (routeData) {
+      final args = routeData.argsAs<NewTripRouteArgs>(
+          orElse: () => const NewTripRouteArgs());
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.NewTripPage(),
+        child: _i4.NewTripPage(
+          cubit: args.cubit,
+          key: args.key,
+        ),
       );
     },
   };
@@ -125,14 +132,38 @@ class TripsRoute extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.NewTripPage]
-class NewTripRoute extends _i5.PageRouteInfo<void> {
-  const NewTripRoute({List<_i5.PageRouteInfo>? children})
-      : super(
+class NewTripRoute extends _i5.PageRouteInfo<NewTripRouteArgs> {
+  NewTripRoute({
+    _i8.NewTripCubit? cubit,
+    _i6.Key? key,
+    List<_i5.PageRouteInfo>? children,
+  }) : super(
           NewTripRoute.name,
+          args: NewTripRouteArgs(
+            cubit: cubit,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'NewTripRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i5.PageInfo<NewTripRouteArgs> page =
+      _i5.PageInfo<NewTripRouteArgs>(name);
+}
+
+class NewTripRouteArgs {
+  const NewTripRouteArgs({
+    this.cubit,
+    this.key,
+  });
+
+  final _i8.NewTripCubit? cubit;
+
+  final _i6.Key? key;
+
+  @override
+  String toString() {
+    return 'NewTripRouteArgs{cubit: $cubit, key: $key}';
+  }
 }

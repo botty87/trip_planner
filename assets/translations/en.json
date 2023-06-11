@@ -24,5 +24,7 @@
     "tripsPageTitle" : "Your trips",
     "whatNameTrip" : "What's the name of your trip?",
     "createTrip" : "Create Trip",
-    "tripNameEmpty" : "Trip name can't be empty"
+    "tripNameEmpty" : "Trip name can't be empty",
+    "tripDescription" : "Trip Description",
+    "tripSaveError" : "Error saving trip"
 }

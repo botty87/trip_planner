@@ -17,44 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$NewTripState {
   String? get tripName => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? tripName) $default, {
-    required TResult Function(String? tripName, String message) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? tripName)? $default, {
-    TResult? Function(String? tripName, String message)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? tripName)? $default, {
-    TResult Function(String? tripName, String message)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_NewTripState value) $default, {
-    required TResult Function(_NewTripStateError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_NewTripState value)? $default, {
-    TResult? Function(_NewTripStateError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_NewTripState value)? $default, {
-    TResult Function(_NewTripStateError value)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  String? get tripDescription => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewTripStateCopyWith<NewTripState> get copyWith =>
@@ -67,7 +31,7 @@ abstract class $NewTripStateCopyWith<$Res> {
           NewTripState value, $Res Function(NewTripState) then) =
       _$NewTripStateCopyWithImpl<$Res, NewTripState>;
   @useResult
-  $Res call({String? tripName});
+  $Res call({String? tripName, String? tripDescription, String? errorMessage});
 }
 
 /// @nodoc
@@ -84,11 +48,21 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
   @override
   $Res call({
     Object? tripName = freezed,
+    Object? tripDescription = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       tripName: freezed == tripName
           ? _value.tripName
           : tripName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tripDescription: freezed == tripDescription
+          ? _value.tripDescription
+          : tripDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -102,7 +76,7 @@ abstract class _$$_NewTripStateCopyWith<$Res>
       __$$_NewTripStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? tripName});
+  $Res call({String? tripName, String? tripDescription, String? errorMessage});
 }
 
 /// @nodoc
@@ -117,11 +91,21 @@ class __$$_NewTripStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tripName = freezed,
+    Object? tripDescription = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$_NewTripState(
       tripName: freezed == tripName
           ? _value.tripName
           : tripName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tripDescription: freezed == tripDescription
+          ? _value.tripDescription
+          : tripDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -130,14 +114,19 @@ class __$$_NewTripStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NewTripState implements _NewTripState {
-  const _$_NewTripState({this.tripName});
+  const _$_NewTripState(
+      {this.tripName, this.tripDescription, this.errorMessage});
 
   @override
   final String? tripName;
+  @override
+  final String? tripDescription;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'NewTripState(tripName: $tripName)';
+    return 'NewTripState(tripName: $tripName, tripDescription: $tripDescription, errorMessage: $errorMessage)';
   }
 
   @override
@@ -146,238 +135,38 @@ class _$_NewTripState implements _NewTripState {
         (other.runtimeType == runtimeType &&
             other is _$_NewTripState &&
             (identical(other.tripName, tripName) ||
-                other.tripName == tripName));
+                other.tripName == tripName) &&
+            (identical(other.tripDescription, tripDescription) ||
+                other.tripDescription == tripDescription) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tripName);
+  int get hashCode =>
+      Object.hash(runtimeType, tripName, tripDescription, errorMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_NewTripStateCopyWith<_$_NewTripState> get copyWith =>
       __$$_NewTripStateCopyWithImpl<_$_NewTripState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? tripName) $default, {
-    required TResult Function(String? tripName, String message) error,
-  }) {
-    return $default(tripName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? tripName)? $default, {
-    TResult? Function(String? tripName, String message)? error,
-  }) {
-    return $default?.call(tripName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? tripName)? $default, {
-    TResult Function(String? tripName, String message)? error,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(tripName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_NewTripState value) $default, {
-    required TResult Function(_NewTripStateError value) error,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_NewTripState value)? $default, {
-    TResult? Function(_NewTripStateError value)? error,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_NewTripState value)? $default, {
-    TResult Function(_NewTripStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _NewTripState implements NewTripState {
-  const factory _NewTripState({final String? tripName}) = _$_NewTripState;
+  const factory _NewTripState(
+      {final String? tripName,
+      final String? tripDescription,
+      final String? errorMessage}) = _$_NewTripState;
 
   @override
   String? get tripName;
+  @override
+  String? get tripDescription;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$_NewTripStateCopyWith<_$_NewTripState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_NewTripStateErrorCopyWith<$Res>
-    implements $NewTripStateCopyWith<$Res> {
-  factory _$$_NewTripStateErrorCopyWith(_$_NewTripStateError value,
-          $Res Function(_$_NewTripStateError) then) =
-      __$$_NewTripStateErrorCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? tripName, String message});
-}
-
-/// @nodoc
-class __$$_NewTripStateErrorCopyWithImpl<$Res>
-    extends _$NewTripStateCopyWithImpl<$Res, _$_NewTripStateError>
-    implements _$$_NewTripStateErrorCopyWith<$Res> {
-  __$$_NewTripStateErrorCopyWithImpl(
-      _$_NewTripStateError _value, $Res Function(_$_NewTripStateError) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? tripName = freezed,
-    Object? message = null,
-  }) {
-    return _then(_$_NewTripStateError(
-      tripName: freezed == tripName
-          ? _value.tripName
-          : tripName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_NewTripStateError implements _NewTripStateError {
-  const _$_NewTripStateError({this.tripName, required this.message});
-
-  @override
-  final String? tripName;
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'NewTripState.error(tripName: $tripName, message: $message)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NewTripStateError &&
-            (identical(other.tripName, tripName) ||
-                other.tripName == tripName) &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, tripName, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_NewTripStateErrorCopyWith<_$_NewTripStateError> get copyWith =>
-      __$$_NewTripStateErrorCopyWithImpl<_$_NewTripStateError>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? tripName) $default, {
-    required TResult Function(String? tripName, String message) error,
-  }) {
-    return error(tripName, message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? tripName)? $default, {
-    TResult? Function(String? tripName, String message)? error,
-  }) {
-    return error?.call(tripName, message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? tripName)? $default, {
-    TResult Function(String? tripName, String message)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(tripName, message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_NewTripState value) $default, {
-    required TResult Function(_NewTripStateError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_NewTripState value)? $default, {
-    TResult? Function(_NewTripStateError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_NewTripState value)? $default, {
-    TResult Function(_NewTripStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _NewTripStateError implements NewTripState {
-  const factory _NewTripStateError(
-      {final String? tripName,
-      required final String message}) = _$_NewTripStateError;
-
-  @override
-  String? get tripName;
-  String get message;
-  @override
-  @JsonKey(ignore: true)
-  _$$_NewTripStateErrorCopyWith<_$_NewTripStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

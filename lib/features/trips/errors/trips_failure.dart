@@ -5,5 +5,5 @@ part 'trips_failure.freezed.dart';
 
 @freezed
 class TripsFailure with _$TripsFailure implements Failure{
-  const factory TripsFailure() = _TripsFailure;
+  const factory TripsFailure({String? message}) = _TripsFailure;
 }

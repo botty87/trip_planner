@@ -18,7 +18,7 @@ class TripsPage extends StatelessWidget {
         body: NoTripsWidget(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            context.pushRoute(const NewTripRoute());
+            context.pushRoute(NewTripRoute());
           },
           child: Icon(Icons.add),
         ));

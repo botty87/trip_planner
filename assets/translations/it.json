@@ -24,5 +24,7 @@
     "tripsPageTitle" : "I tuoi viaggi",
     "whatNameTrip" : "Come si chiama il viaggio?",
     "createTrip" : "Crea viaggio",
-    "tripNameEmpty" : "Il nome del viaggio non può essere vuoto"
+    "tripNameEmpty" : "Il nome del viaggio non può essere vuoto",
+    "tripDescription" : "Descrizione",
+    "tripSaveError" : "Errore nel salvataggio del viaggio"
 }

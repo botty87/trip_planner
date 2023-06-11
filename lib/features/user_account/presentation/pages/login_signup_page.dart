@@ -12,6 +12,7 @@ import 'package:trip_planner/features/user_account/presentation/cubit/login_sign
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../core/widgets/snackbars.dart';
+import '../../../../core/widgets/stateless_cubit_widget.dart';
 import '../../../../gen/assets.gen.dart';
 
 part '../widgets/login_section.dart';
@@ -19,15 +20,12 @@ part '../widgets/signup_section.dart';
 part '../widgets/new_user_row.dart';
 
 @RoutePage()
-class LoginSignupPage extends StatelessWidget {
-  late final LoginSignupCubit _cubit;
-  LoginSignupPage({super.key, LoginSignupCubit? cubit}) : _cubit = cubit ?? getIt();
-
+class LoginSignupPage extends StatelessCubitWidget<LoginSignupCubit> {
+  LoginSignupPage({super.key, super.cubit});
+  
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider<LoginSignupCubit>(
-      create: (context) => _cubit,
-      child: Scaffold(
+  Widget buildWidget(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
           title: Text(LocaleKeys.appName.tr()),
         ),
@@ -89,7 +87,6 @@ class LoginSignupPage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

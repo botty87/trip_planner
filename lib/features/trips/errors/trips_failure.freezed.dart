@@ -15,13 +15,21 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TripsFailure {}
+mixin _$TripsFailure {
+  String? get message => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $TripsFailureCopyWith<TripsFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $TripsFailureCopyWith<$Res> {
   factory $TripsFailureCopyWith(
           TripsFailure value, $Res Function(TripsFailure) then) =
       _$TripsFailureCopyWithImpl<$Res, TripsFailure>;
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -33,13 +41,30 @@ class _$TripsFailureCopyWithImpl<$Res, $Val extends TripsFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_value.copyWith(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_TripsFailureCopyWith<$Res> {
+abstract class _$$_TripsFailureCopyWith<$Res>
+    implements $TripsFailureCopyWith<$Res> {
   factory _$$_TripsFailureCopyWith(
           _$_TripsFailure value, $Res Function(_$_TripsFailure) then) =
       __$$_TripsFailureCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -49,28 +74,59 @@ class __$$_TripsFailureCopyWithImpl<$Res>
   __$$_TripsFailureCopyWithImpl(
       _$_TripsFailure _value, $Res Function(_$_TripsFailure) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_TripsFailure(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_TripsFailure implements _TripsFailure {
-  const _$_TripsFailure();
+  const _$_TripsFailure({this.message});
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'TripsFailure()';
+    return 'TripsFailure(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TripsFailure);
+        (other.runtimeType == runtimeType &&
+            other is _$_TripsFailure &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TripsFailureCopyWith<_$_TripsFailure> get copyWith =>
+      __$$_TripsFailureCopyWithImpl<_$_TripsFailure>(this, _$identity);
 }
 
 abstract class _TripsFailure implements TripsFailure {
-  const factory _TripsFailure() = _$_TripsFailure;
+  const factory _TripsFailure({final String? message}) = _$_TripsFailure;
+
+  @override
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TripsFailureCopyWith<_$_TripsFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
