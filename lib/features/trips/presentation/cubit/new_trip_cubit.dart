@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,8 +14,9 @@ part 'new_trip_cubit.freezed.dart';
 class NewTripCubit extends Cubit<NewTripState> {
   final CreateTrip _createTrip;
   final UserCubit _userCubit;
+  final AutoRoute _autoRoute;
 
-  NewTripCubit(this._userCubit, this._createTrip) : super(const NewTripState());
+  NewTripCubit(this._userCubit, this._createTrip, this._autoRoute) : super(const NewTripState());
 
   void tripNameChanged(String tripName) {
     emit(state.copyWith(tripName: tripName));
@@ -46,6 +48,7 @@ class NewTripCubit extends Cubit<NewTripState> {
           errorMessage += "\n\n${failure.message!}";
         }
         emit(state.copyWith(errorMessage: errorMessage));
+        emit(state.copyWith(errorMessage: null));
       },
       (_) => emit(state.copyWith(errorMessage: null)),
     );

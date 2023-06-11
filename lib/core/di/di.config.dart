@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:auto_route/auto_route.dart' as _i18;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:trip_planner/core/routes/app_router.dart' as _i3;
@@ -79,6 +80,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i17.NewTripCubit>(() => _i17.NewTripCubit(
           gh<_i15.UserCubit>(),
           gh<_i10.CreateTrip>(),
+          gh<_i18.AutoRoute>(),
         ));
     return this;
   }
