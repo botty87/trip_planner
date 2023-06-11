@@ -6,6 +6,7 @@ sealed class NewTripState with _$NewTripState {
     String? tripName,
     String? tripDescription,
     String? errorMessage,
+    @Default(false) bool isLoading,
   }) = _NewTripState;
 
 }

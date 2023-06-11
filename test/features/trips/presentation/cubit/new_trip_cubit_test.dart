@@ -15,33 +15,31 @@ import 'new_trip_cubit_test.mocks.dart';
 
 class MockUserCubit extends MockCubit<UserState> implements UserCubit {}
 
-@GenerateNiceMocks([MockSpec<CreateTrip>(), MockSpec<AutoRoute>()])
+@GenerateNiceMocks([MockSpec<CreateTrip>()])
 void main() {
   group('NewTripCubit', () {
     late MockUserCubit mockUserTrip;
     late MockCreateTrip mockCreateTrip;
-    late MockAutoRoute mockAutoRoute;
 
     setUp(() {
       mockUserTrip = MockUserCubit();
       mockCreateTrip = MockCreateTrip();
-      mockAutoRoute = MockAutoRoute();
     });
 
     blocTest<NewTripCubit, NewTripState>('When name change emit state with name changed',
-        build: () => NewTripCubit(mockUserTrip, mockCreateTrip, mockAutoRoute),
+        build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         act: (cubit) => cubit.tripNameChanged('test'),
         expect: () => [NewTripState(tripName: 'test')]);
 
     blocTest<NewTripCubit, NewTripState>(
         'When description change emit state with description changed',
-        build: () => NewTripCubit(mockUserTrip, mockCreateTrip, mockAutoRoute),
+        build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         act: (cubit) => cubit.tripDescriptionChanged('test'),
         expect: () => [NewTripState(tripDescription: 'test')]);
 
     blocTest<NewTripCubit, NewTripState>(
       'When create trip with empty name emit state with error message',
-      build: () => NewTripCubit(mockUserTrip, mockCreateTrip, mockAutoRoute),
+      build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
       act: (cubit) => cubit.createTrip(),
       expect: () => [
         NewTripState(errorMessage: LocaleKeys.tripNameEmpty),
@@ -62,13 +60,15 @@ void main() {
       blocTest<NewTripCubit, NewTripState>(
         'When create trip with valid name emit state with error message null',
         setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => Right(null)),
-        build: () => NewTripCubit(mockUserTrip, mockCreateTrip, mockAutoRoute),
+        build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         act: (cubit) {
           cubit.tripNameChanged('test');
           cubit.createTrip();
         },
         expect: () => [
           NewTripState(tripName: 'test'),
+          NewTripState(tripName: 'test', isLoading: true),
+          NewTripState(tripName: 'test', isLoading: false),
         ],
         verify: (bloc) => verify(mockCreateTrip(any)).called(1),
       );
@@ -76,14 +76,15 @@ void main() {
       blocTest<NewTripCubit, NewTripState>(
         'When create trip with valid name emit state with error message when error occurs',
         setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => Left(TripsFailure())),
-        build: () => NewTripCubit(mockUserTrip, mockCreateTrip, mockAutoRoute),
+        build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         act: (cubit) {
           cubit.tripNameChanged('test');
           cubit.createTrip();
         },
         expect: () => [
           NewTripState(tripName: 'test', errorMessage: null),
-          NewTripState(tripName: 'test', errorMessage: LocaleKeys.tripSaveError),
+          NewTripState(tripName: 'test', isLoading: true),
+          NewTripState(tripName: 'test', errorMessage: LocaleKeys.tripSaveError, isLoading: false),
           NewTripState(tripName: 'test', errorMessage: null),
         ],
         verify: (bloc) => verify(mockCreateTrip(any)).called(1),

@@ -14,9 +14,8 @@ part 'new_trip_cubit.freezed.dart';
 class NewTripCubit extends Cubit<NewTripState> {
   final CreateTrip _createTrip;
   final UserCubit _userCubit;
-  final AutoRoute _autoRoute;
 
-  NewTripCubit(this._userCubit, this._createTrip, this._autoRoute) : super(const NewTripState());
+  NewTripCubit(this._userCubit, this._createTrip) : super(const NewTripState());
 
   void tripNameChanged(String tripName) {
     emit(state.copyWith(tripName: tripName));
@@ -26,13 +25,16 @@ class NewTripCubit extends Cubit<NewTripState> {
     emit(state.copyWith(tripDescription: tripDescription));
   }
 
-  void createTrip() async {
+  //On true navigate to trips page
+  Future<bool> createTrip() async {
     if (state.tripName == null || state.tripName!.isEmpty) {
       emit(state.copyWith(errorMessage: LocaleKeys.tripNameEmpty.tr()));
       emit(state.copyWith(errorMessage: null));
-      return;
+      return false;
     }
 
+    emit(state.copyWith(isLoading: true));
+    
     assert (_userCubit.state is UserStateLoggedIn);
     final userId = (_userCubit.state as UserStateLoggedIn).user.id;
     final result = await _createTrip(CreateTripParams(
@@ -41,16 +43,20 @@ class NewTripCubit extends Cubit<NewTripState> {
       tripDescription: state.tripDescription,
     ));
 
-    result.fold(
+    return result.fold<bool>(
       (failure) {
         String errorMessage = LocaleKeys.tripSaveError.tr();
         if(failure.message != null) {
           errorMessage += "\n\n${failure.message!}";
         }
-        emit(state.copyWith(errorMessage: errorMessage));
+        emit(state.copyWith(errorMessage: errorMessage, isLoading: false));
         emit(state.copyWith(errorMessage: null));
+        return false;
       },
-      (_) => emit(state.copyWith(errorMessage: null)),
+      (_) {
+        emit(state.copyWith(isLoading: false));
+        return true;
+      },
     );
   }
 }

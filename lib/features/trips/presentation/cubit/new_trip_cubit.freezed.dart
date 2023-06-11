@@ -19,6 +19,7 @@ mixin _$NewTripState {
   String? get tripName => throw _privateConstructorUsedError;
   String? get tripDescription => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewTripStateCopyWith<NewTripState> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $NewTripStateCopyWith<$Res> {
           NewTripState value, $Res Function(NewTripState) then) =
       _$NewTripStateCopyWithImpl<$Res, NewTripState>;
   @useResult
-  $Res call({String? tripName, String? tripDescription, String? errorMessage});
+  $Res call(
+      {String? tripName,
+      String? tripDescription,
+      String? errorMessage,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -50,6 +55,7 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
     Object? tripName = freezed,
     Object? tripDescription = freezed,
     Object? errorMessage = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       tripName: freezed == tripName
@@ -64,6 +70,10 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -76,7 +86,11 @@ abstract class _$$_NewTripStateCopyWith<$Res>
       __$$_NewTripStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? tripName, String? tripDescription, String? errorMessage});
+  $Res call(
+      {String? tripName,
+      String? tripDescription,
+      String? errorMessage,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -93,6 +107,7 @@ class __$$_NewTripStateCopyWithImpl<$Res>
     Object? tripName = freezed,
     Object? tripDescription = freezed,
     Object? errorMessage = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_$_NewTripState(
       tripName: freezed == tripName
@@ -107,6 +122,10 @@ class __$$_NewTripStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -115,7 +134,10 @@ class __$$_NewTripStateCopyWithImpl<$Res>
 
 class _$_NewTripState implements _NewTripState {
   const _$_NewTripState(
-      {this.tripName, this.tripDescription, this.errorMessage});
+      {this.tripName,
+      this.tripDescription,
+      this.errorMessage,
+      this.isLoading = false});
 
   @override
   final String? tripName;
@@ -123,10 +145,13 @@ class _$_NewTripState implements _NewTripState {
   final String? tripDescription;
   @override
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'NewTripState(tripName: $tripName, tripDescription: $tripDescription, errorMessage: $errorMessage)';
+    return 'NewTripState(tripName: $tripName, tripDescription: $tripDescription, errorMessage: $errorMessage, isLoading: $isLoading)';
   }
 
   @override
@@ -139,12 +164,14 @@ class _$_NewTripState implements _NewTripState {
             (identical(other.tripDescription, tripDescription) ||
                 other.tripDescription == tripDescription) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, tripName, tripDescription, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, tripName, tripDescription, errorMessage, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -157,7 +184,8 @@ abstract class _NewTripState implements NewTripState {
   const factory _NewTripState(
       {final String? tripName,
       final String? tripDescription,
-      final String? errorMessage}) = _$_NewTripState;
+      final String? errorMessage,
+      final bool isLoading}) = _$_NewTripState;
 
   @override
   String? get tripName;
@@ -165,6 +193,8 @@ abstract class _NewTripState implements NewTripState {
   String? get tripDescription;
   @override
   String? get errorMessage;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$_NewTripStateCopyWith<_$_NewTripState> get copyWith =>
