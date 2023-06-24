@@ -25,6 +25,7 @@ void main() {
     final trip = Trip(
       userId: 'userId',
       name: 'name',
+      createdAt: DateTime.now(),
     );
 
     test('should return right(null) when TripsDataSource.addTrip completes', () async {
