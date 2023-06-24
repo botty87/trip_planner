@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trip_planner/core/constants.dart';
-import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';

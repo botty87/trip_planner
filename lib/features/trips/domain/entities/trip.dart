@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../../core/utilities/data_converter.dart';
 
 part 'trip.freezed.dart';
 part 'trip.g.dart';
@@ -12,6 +15,8 @@ sealed class Trip with _$Trip {
     required String name,
     String? description,
     required String userId,
+    @JsonKey(toJson: dateTimeToTimestamp , fromJson: dateTimeFromTimestamp )
+    required DateTime createdAt,
   }) = _Trip;
 
 

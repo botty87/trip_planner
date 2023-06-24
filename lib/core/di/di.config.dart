@@ -20,8 +20,10 @@ import 'package:trip_planner/features/trips/domain/repositories/trips_repository
     as _i5;
 import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart'
     as _i10;
+import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart'
+    as _i11;
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip_cubit.dart'
-    as _i17;
+    as _i18;
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
     as _i7;
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart'
@@ -29,17 +31,17 @@ import 'package:trip_planner/features/user_account/data/repositories/user_reposi
 import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
     as _i8;
 import 'package:trip_planner/features/user_account/domain/usecases/listen_user.dart'
-    as _i11;
-import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart'
     as _i12;
-import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart'
+import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart'
     as _i13;
-import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart'
+import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart'
     as _i14;
-import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
-    as _i16;
-import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart'
+import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart'
     as _i15;
+import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
+    as _i17;
+import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart'
+    as _i16;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -61,23 +63,25 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i9.UserRepositoryImpl(gh<_i7.UserDataSource>()));
     gh.lazySingleton<_i10.CreateTrip>(
         () => _i10.CreateTrip(gh<_i5.TripsRepository>()));
-    gh.lazySingleton<_i11.ListenUser>(
-        () => _i11.ListenUser(gh<_i8.UserRepository>()));
-    gh.lazySingleton<_i12.LoginUser>(
-        () => _i12.LoginUser(gh<_i8.UserRepository>()));
-    gh.lazySingleton<_i13.RecoverPassword>(
-        () => _i13.RecoverPassword(gh<_i8.UserRepository>()));
-    gh.lazySingleton<_i14.RegisterUser>(
-        () => _i14.RegisterUser(gh<_i8.UserRepository>()));
-    gh.lazySingleton<_i15.UserCubit>(
-        () => _i15.UserCubit(listenUserState: gh<_i11.ListenUser>()));
-    gh.factory<_i16.LoginSignupCubit>(() => _i16.LoginSignupCubit(
-          gh<_i14.RegisterUser>(),
-          gh<_i12.LoginUser>(),
-          gh<_i13.RecoverPassword>(),
+    gh.lazySingleton<_i11.ListenTrips>(
+        () => _i11.ListenTrips(gh<_i5.TripsRepository>()));
+    gh.lazySingleton<_i12.ListenUser>(
+        () => _i12.ListenUser(gh<_i8.UserRepository>()));
+    gh.lazySingleton<_i13.LoginUser>(
+        () => _i13.LoginUser(gh<_i8.UserRepository>()));
+    gh.lazySingleton<_i14.RecoverPassword>(
+        () => _i14.RecoverPassword(gh<_i8.UserRepository>()));
+    gh.lazySingleton<_i15.RegisterUser>(
+        () => _i15.RegisterUser(gh<_i8.UserRepository>()));
+    gh.lazySingleton<_i16.UserCubit>(
+        () => _i16.UserCubit(listenUserState: gh<_i12.ListenUser>()));
+    gh.factory<_i17.LoginSignupCubit>(() => _i17.LoginSignupCubit(
+          gh<_i15.RegisterUser>(),
+          gh<_i13.LoginUser>(),
+          gh<_i14.RecoverPassword>(),
         ));
-    gh.factory<_i17.NewTripCubit>(() => _i17.NewTripCubit(
-          gh<_i15.UserCubit>(),
+    gh.factory<_i18.NewTripCubit>(() => _i18.NewTripCubit(
+          gh<_i16.UserCubit>(),
           gh<_i10.CreateTrip>(),
         ));
     return this;

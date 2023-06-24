@@ -19,6 +19,7 @@ class CreateTrip implements UseCase<void, CreateTripParams> {
         name: params.tripName,
         description: params.tripDescription,
         userId: params.userId,
+        createdAt: params.createdAt,
       ),
     );
   }
@@ -28,6 +29,7 @@ class CreateTripParams {
   final String tripName;
   final String? tripDescription;
   final String userId;
+  final DateTime createdAt = DateTime.now();
 
   CreateTripParams({
     required this.tripName,

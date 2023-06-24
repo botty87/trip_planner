@@ -25,6 +25,8 @@ mixin _$Trip {
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
+  @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,10 +39,13 @@ abstract class $TripCopyWith<$Res> {
       _$TripCopyWithImpl<$Res, Trip>;
   @useResult
   $Res call(
-      {@JsonKey(includeFromJson: false, includeToJson: false) String? id,
+      {@JsonKey(includeFromJson: false, includeToJson: false)
+          String? id,
       String name,
       String? description,
-      String userId});
+      String userId,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+          DateTime createdAt});
 }
 
 /// @nodoc
@@ -60,6 +65,7 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
     Object? name = null,
     Object? description = freezed,
     Object? userId = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -78,6 +84,10 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -89,10 +99,13 @@ abstract class _$$_TripCopyWith<$Res> implements $TripCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(includeFromJson: false, includeToJson: false) String? id,
+      {@JsonKey(includeFromJson: false, includeToJson: false)
+          String? id,
       String name,
       String? description,
-      String userId});
+      String userId,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+          DateTime createdAt});
 }
 
 /// @nodoc
@@ -108,6 +121,7 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
     Object? name = null,
     Object? description = freezed,
     Object? userId = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_Trip(
       id: freezed == id
@@ -126,6 +140,10 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -134,10 +152,13 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
 @JsonSerializable()
 class _$_Trip implements _Trip {
   _$_Trip(
-      {@JsonKey(includeFromJson: false, includeToJson: false) this.id,
+      {@JsonKey(includeFromJson: false, includeToJson: false)
+          this.id,
       required this.name,
       this.description,
-      required this.userId});
+      required this.userId,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+          required this.createdAt});
 
   factory _$_Trip.fromJson(Map<String, dynamic> json) => _$$_TripFromJson(json);
 
@@ -150,10 +171,13 @@ class _$_Trip implements _Trip {
   final String? description;
   @override
   final String userId;
+  @override
+  @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'Trip(id: $id, name: $name, description: $description, userId: $userId)';
+    return 'Trip(id: $id, name: $name, description: $description, userId: $userId, createdAt: $createdAt)';
   }
 
   @override
@@ -165,12 +189,15 @@ class _$_Trip implements _Trip {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, userId);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, description, userId, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -188,10 +215,13 @@ class _$_Trip implements _Trip {
 
 abstract class _Trip implements Trip {
   factory _Trip(
-      {@JsonKey(includeFromJson: false, includeToJson: false) final String? id,
+      {@JsonKey(includeFromJson: false, includeToJson: false)
+          final String? id,
       required final String name,
       final String? description,
-      required final String userId}) = _$_Trip;
+      required final String userId,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+          required final DateTime createdAt}) = _$_Trip;
 
   factory _Trip.fromJson(Map<String, dynamic> json) = _$_Trip.fromJson;
 
@@ -204,6 +234,9 @@ abstract class _Trip implements Trip {
   String? get description;
   @override
   String get userId;
+  @override
+  @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_TripCopyWith<_$_Trip> get copyWith => throw _privateConstructorUsedError;
