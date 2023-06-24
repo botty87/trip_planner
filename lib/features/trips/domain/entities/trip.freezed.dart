@@ -20,11 +20,13 @@ Trip _$TripFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Trip {
+// ignore: invalid_annotation_target
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
+  String get userId =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   DateTime get createdAt => throw _privateConstructorUsedError;
 
@@ -162,6 +164,7 @@ class _$_Trip implements _Trip {
 
   factory _$_Trip.fromJson(Map<String, dynamic> json) => _$$_TripFromJson(json);
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final String? id;
@@ -171,6 +174,7 @@ class _$_Trip implements _Trip {
   final String? description;
   @override
   final String userId;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   final DateTime createdAt;
@@ -225,7 +229,7 @@ abstract class _Trip implements Trip {
 
   factory _Trip.fromJson(Map<String, dynamic> json) = _$_Trip.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get id;
   @override
@@ -234,7 +238,7 @@ abstract class _Trip implements Trip {
   String? get description;
   @override
   String get userId;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   DateTime get createdAt;
   @override

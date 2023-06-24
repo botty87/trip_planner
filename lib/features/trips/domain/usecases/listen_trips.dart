@@ -14,8 +14,7 @@ class ListenTrips implements StreamUseCase<List<Trip>, ListenTripsParams> {
 
   @override
   Stream<Either<Failure, List<Trip>>> call(params) {
-    // TODO: implement call
-    throw UnimplementedError();
+    return _repository.listenTrips(params.userId);
   }
 }
 

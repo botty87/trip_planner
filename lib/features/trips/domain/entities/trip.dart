@@ -10,11 +10,13 @@ part 'trip.g.dart';
 @freezed
 sealed class Trip with _$Trip {
   factory Trip({
+    // ignore: invalid_annotation_target
     @JsonKey(includeFromJson: false, includeToJson: false)
     String? id,
     required String name,
     String? description,
     required String userId,
+    // ignore: invalid_annotation_target
     @JsonKey(toJson: dateTimeToTimestamp , fromJson: dateTimeFromTimestamp )
     required DateTime createdAt,
   }) = _Trip;

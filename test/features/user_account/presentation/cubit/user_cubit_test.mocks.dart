@@ -9,7 +9,6 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/core/error/failures.dart' as _i6;
 import 'package:trip_planner/core/usecases/usecase.dart' as _i8;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
     as _i7;
@@ -17,6 +16,8 @@ import 'package:trip_planner/features/user_account/domain/repositories/user_repo
     as _i2;
 import 'package:trip_planner/features/user_account/domain/usecases/listen_user.dart'
     as _i3;
+import 'package:trip_planner/features/user_account/errors/user_failure.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -57,14 +58,15 @@ class MockListenUser extends _i1.Mock implements _i3.ListenUser {
         ),
       ) as _i2.UserRepository);
   @override
-  _i4.Stream<_i5.Either<_i6.Failure, _i7.User?>> call(_i8.NoParams? params) =>
+  _i4.Stream<_i5.Either<_i6.UserFailure, _i7.User?>> call(
+          _i8.NoParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i4.Stream<_i5.Either<_i6.Failure, _i7.User?>>.empty(),
+        returnValue: _i4.Stream<_i5.Either<_i6.UserFailure, _i7.User?>>.empty(),
         returnValueForMissingStub:
-            _i4.Stream<_i5.Either<_i6.Failure, _i7.User?>>.empty(),
-      ) as _i4.Stream<_i5.Either<_i6.Failure, _i7.User?>>);
+            _i4.Stream<_i5.Either<_i6.UserFailure, _i7.User?>>.empty(),
+      ) as _i4.Stream<_i5.Either<_i6.UserFailure, _i7.User?>>);
 }
