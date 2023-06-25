@@ -28,7 +28,6 @@ final class TripsDataSourceImpl implements TripsDataSource {
         .where('userId', isEqualTo: userId)
         .snapshots()
         .map((snapshot) {
-          final pippo = snapshot;
           return snapshot.docs.map((doc) => doc.data()).toList();
         });
   }
