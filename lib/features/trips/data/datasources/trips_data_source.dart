@@ -5,6 +5,7 @@ import '../../domain/entities/trip.dart';
 
 abstract class TripsDataSource {
   Future<void> addTrip(Trip trip);
+  Stream<List<Trip>> listenTrips(String userId);
 }
 
 @LazySingleton(as: TripsDataSource)
@@ -12,12 +13,23 @@ final class TripsDataSourceImpl implements TripsDataSource {
   TripsDataSourceImpl();
 
   final _tripsCollection = FirebaseFirestore.instance.collection('trips').withConverter<Trip>(
-        fromFirestore: (snapshot, _) => Trip.fromJson(snapshot.data()!),
+        fromFirestore: (snapshot, _) => Trip.fromJson(snapshot.data()!).copyWith(id: snapshot.id),
         toFirestore: (trip, _) => trip.toJson(),
       );
 
   @override
   Future<void> addTrip(Trip trip) async {
-    await _tripsCollection.add(trip); 
+    await _tripsCollection.add(trip);
+  }
+
+  @override
+  Stream<List<Trip>> listenTrips(String userId) async* {
+    yield* _tripsCollection
+        .where('userId', isEqualTo: userId)
+        .snapshots()
+        .map((snapshot) {
+          final pippo = snapshot;
+          return snapshot.docs.map((doc) => doc.data()).toList();
+        });
   }
 }

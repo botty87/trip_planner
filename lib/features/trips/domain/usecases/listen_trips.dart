@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:trip_planner/core/error/failures.dart';
 import 'package:trip_planner/core/usecases/usecase.dart';
 
+import '../../errors/trips_failure.dart';
 import '../entities/trip.dart';
 import '../repositories/trips_repository.dart';
 
@@ -13,7 +14,7 @@ class ListenTrips implements StreamUseCase<List<Trip>, ListenTripsParams> {
   ListenTrips(this._repository);
 
   @override
-  Stream<Either<Failure, List<Trip>>> call(params) {
+  Stream<Either<TripsFailure, List<Trip>>> call(params) {
     return _repository.listenTrips(params.userId);
   }
 }

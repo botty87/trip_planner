@@ -24,6 +24,8 @@ import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart'
     as _i11;
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip_cubit.dart'
     as _i18;
+import 'package:trip_planner/features/trips/presentation/cubit/trips_cubit.dart'
+    as _i19;
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
     as _i7;
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart'
@@ -83,6 +85,10 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i18.NewTripCubit>(() => _i18.NewTripCubit(
           gh<_i16.UserCubit>(),
           gh<_i10.CreateTrip>(),
+        ));
+    gh.factory<_i19.TripsCubit>(() => _i19.TripsCubit(
+          gh<_i11.ListenTrips>(),
+          gh<_i16.UserCubit>(),
         ));
     return this;
   }

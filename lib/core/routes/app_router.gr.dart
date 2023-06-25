@@ -8,27 +8,31 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/material.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i6;
+import 'package:flutter/material.dart' as _i7;
 import 'package:trip_planner/core/home_page.dart' as _i1;
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip_cubit.dart'
-    as _i8;
+    as _i10;
+import 'package:trip_planner/features/trips/presentation/cubit/trips_cubit.dart'
+    as _i9;
 import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart'
     as _i4;
+import 'package:trip_planner/features/trips/presentation/pages/temp_page.dart'
+    as _i5;
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
     as _i3;
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
-    as _i7;
+    as _i8;
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart'
     as _i2;
 
-abstract class $AppRouter extends _i5.RootStackRouter {
+abstract class $AppRouter extends _i6.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i5.PageFactory> pagesMap = {
+  final Map<String, _i6.PageFactory> pagesMap = {
     HomeRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
+      return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.HomePage(),
       );
@@ -36,7 +40,7 @@ abstract class $AppRouter extends _i5.RootStackRouter {
     LoginSignupRoute.name: (routeData) {
       final args = routeData.argsAs<LoginSignupRouteArgs>(
           orElse: () => const LoginSignupRouteArgs());
-      return _i5.AutoRoutePage<dynamic>(
+      return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i2.LoginSignupPage(
           key: args.key,
@@ -45,15 +49,20 @@ abstract class $AppRouter extends _i5.RootStackRouter {
       );
     },
     TripsRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
+      final args = routeData.argsAs<TripsRouteArgs>(
+          orElse: () => const TripsRouteArgs());
+      return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.TripsPage(),
+        child: _i3.TripsPage(
+          key: args.key,
+          cubit: args.cubit,
+        ),
       );
     },
     NewTripRoute.name: (routeData) {
       final args = routeData.argsAs<NewTripRouteArgs>(
           orElse: () => const NewTripRouteArgs());
-      return _i5.AutoRoutePage<dynamic>(
+      return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i4.NewTripPage(
           cubit: args.cubit,
@@ -61,13 +70,19 @@ abstract class $AppRouter extends _i5.RootStackRouter {
         ),
       );
     },
+    TempRoute.name: (routeData) {
+      return _i6.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i5.TempPage(),
+      );
+    },
   };
 }
 
 /// generated route for
 /// [_i1.HomePage]
-class HomeRoute extends _i5.PageRouteInfo<void> {
-  const HomeRoute({List<_i5.PageRouteInfo>? children})
+class HomeRoute extends _i6.PageRouteInfo<void> {
+  const HomeRoute({List<_i6.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -75,16 +90,16 @@ class HomeRoute extends _i5.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.LoginSignupPage]
-class LoginSignupRoute extends _i5.PageRouteInfo<LoginSignupRouteArgs> {
+class LoginSignupRoute extends _i6.PageRouteInfo<LoginSignupRouteArgs> {
   LoginSignupRoute({
-    _i6.Key? key,
-    _i7.LoginSignupCubit? cubit,
-    List<_i5.PageRouteInfo>? children,
+    _i7.Key? key,
+    _i8.LoginSignupCubit? cubit,
+    List<_i6.PageRouteInfo>? children,
   }) : super(
           LoginSignupRoute.name,
           args: LoginSignupRouteArgs(
@@ -96,8 +111,8 @@ class LoginSignupRoute extends _i5.PageRouteInfo<LoginSignupRouteArgs> {
 
   static const String name = 'LoginSignupRoute';
 
-  static const _i5.PageInfo<LoginSignupRouteArgs> page =
-      _i5.PageInfo<LoginSignupRouteArgs>(name);
+  static const _i6.PageInfo<LoginSignupRouteArgs> page =
+      _i6.PageInfo<LoginSignupRouteArgs>(name);
 }
 
 class LoginSignupRouteArgs {
@@ -106,9 +121,9 @@ class LoginSignupRouteArgs {
     this.cubit,
   });
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 
-  final _i7.LoginSignupCubit? cubit;
+  final _i8.LoginSignupCubit? cubit;
 
   @override
   String toString() {
@@ -118,25 +133,49 @@ class LoginSignupRouteArgs {
 
 /// generated route for
 /// [_i3.TripsPage]
-class TripsRoute extends _i5.PageRouteInfo<void> {
-  const TripsRoute({List<_i5.PageRouteInfo>? children})
-      : super(
+class TripsRoute extends _i6.PageRouteInfo<TripsRouteArgs> {
+  TripsRoute({
+    _i7.Key? key,
+    _i9.TripsCubit? cubit,
+    List<_i6.PageRouteInfo>? children,
+  }) : super(
           TripsRoute.name,
+          args: TripsRouteArgs(
+            key: key,
+            cubit: cubit,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'TripsRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i6.PageInfo<TripsRouteArgs> page =
+      _i6.PageInfo<TripsRouteArgs>(name);
+}
+
+class TripsRouteArgs {
+  const TripsRouteArgs({
+    this.key,
+    this.cubit,
+  });
+
+  final _i7.Key? key;
+
+  final _i9.TripsCubit? cubit;
+
+  @override
+  String toString() {
+    return 'TripsRouteArgs{key: $key, cubit: $cubit}';
+  }
 }
 
 /// generated route for
 /// [_i4.NewTripPage]
-class NewTripRoute extends _i5.PageRouteInfo<NewTripRouteArgs> {
+class NewTripRoute extends _i6.PageRouteInfo<NewTripRouteArgs> {
   NewTripRoute({
-    _i8.NewTripCubit? cubit,
-    _i6.Key? key,
-    List<_i5.PageRouteInfo>? children,
+    _i10.NewTripCubit? cubit,
+    _i7.Key? key,
+    List<_i6.PageRouteInfo>? children,
   }) : super(
           NewTripRoute.name,
           args: NewTripRouteArgs(
@@ -148,8 +187,8 @@ class NewTripRoute extends _i5.PageRouteInfo<NewTripRouteArgs> {
 
   static const String name = 'NewTripRoute';
 
-  static const _i5.PageInfo<NewTripRouteArgs> page =
-      _i5.PageInfo<NewTripRouteArgs>(name);
+  static const _i6.PageInfo<NewTripRouteArgs> page =
+      _i6.PageInfo<NewTripRouteArgs>(name);
 }
 
 class NewTripRouteArgs {
@@ -158,12 +197,26 @@ class NewTripRouteArgs {
     this.key,
   });
 
-  final _i8.NewTripCubit? cubit;
+  final _i10.NewTripCubit? cubit;
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 
   @override
   String toString() {
     return 'NewTripRouteArgs{cubit: $cubit, key: $key}';
   }
+}
+
+/// generated route for
+/// [_i5.TempPage]
+class TempRoute extends _i6.PageRouteInfo<void> {
+  const TempRoute({List<_i6.PageRouteInfo>? children})
+      : super(
+          TempRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TempRoute';
+
+  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
 }

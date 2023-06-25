@@ -1,10 +1,10 @@
 part of 'trips_cubit.dart';
 
-abstract class TripsState extends Equatable {
-  const TripsState();
+@freezed
+class TripsState with _$TripsState {
 
-  @override
-  List<Object> get props => [];
+  factory TripsState({
+    @Default([]) List<Trip> trips,
+  }) = _TripsState;
+
 }
-
-class TripsInitial extends TripsState {}

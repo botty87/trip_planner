@@ -26,5 +26,14 @@ class TripsRepositoryImpl implements TripsRepository {
       return left(TripsFailure());
     }
   }
+  
+  @override
+  Stream<Either<TripsFailure, List<Trip>>> listenTrips(String userId) async* {
+    try {
+      yield* tripsDataSource.listenTrips(userId).map((trips) => right(trips));
+    } catch (e) {
+      yield left(TripsFailure());
+    }
+  }
 
 }
