@@ -10,8 +10,6 @@ import 'package:trip_planner/features/trips/presentation/widgets/no_trips_widget
 
 import '../widgets/trips_list_widget.dart';
 
-
-
 @RoutePage()
 class TripsPage extends StatelessWidget {
   TripsPage({super.key});

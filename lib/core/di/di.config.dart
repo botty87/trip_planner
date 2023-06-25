@@ -78,9 +78,9 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i16.UserCubit>(
         () => _i16.UserCubit(listenUserState: gh<_i12.ListenUser>()));
     gh.factory<_i17.LoginSignupCubit>(() => _i17.LoginSignupCubit(
-          gh<_i15.RegisterUser>(),
-          gh<_i13.LoginUser>(),
-          gh<_i14.RecoverPassword>(),
+          registerUser: gh<_i15.RegisterUser>(),
+          loginUser: gh<_i13.LoginUser>(),
+          recoverPassword: gh<_i14.RecoverPassword>(),
         ));
     gh.factory<_i18.NewTripCubit>(() => _i18.NewTripCubit(
           gh<_i16.UserCubit>(),

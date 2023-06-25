@@ -1,18 +1,24 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
+import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart';
-
 
 class MockNewTripCubit extends MockCubit<NewTripState> implements NewTripCubit {}
 
 void main() {
+  setUp(() async {
+    await GetIt.I.reset();
+    GetIt.I.registerSingleton<NewTripCubit>(MockNewTripCubit());
+  });
+
   testWidgets(
     'We have the trip image, trip name text field, trip description text field and create trip button',
     (widgetTester) async {
       // arrange
-      final mockNewTripCubit = MockNewTripCubit();
+      final mockNewTripCubit = getIt<NewTripCubit>();
       whenListen(
         mockNewTripCubit,
         Stream.fromIterable([const NewTripState()]),
@@ -21,9 +27,7 @@ void main() {
       await widgetTester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: NewTripPage(
-              cubit: mockNewTripCubit,
-            ),
+            body: NewTripPage(),
           ),
         ),
       );

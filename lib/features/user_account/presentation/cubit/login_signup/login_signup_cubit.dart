@@ -20,7 +20,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
   final LoginUser loginUser;
   final RecoverPassword recoverPassword;
 
-  LoginSignupCubit(this.registerUser, this.loginUser, this.recoverPassword) : super(LoginSignupState());
+  LoginSignupCubit({required this.registerUser, required this.loginUser, required this.recoverPassword}) : super(LoginSignupState());
 
   void emailChanged(String email) {
     emit(state.copyWith(email: email, emailError: null));

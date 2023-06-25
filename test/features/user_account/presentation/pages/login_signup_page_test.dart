@@ -2,7 +2,9 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mockito/annotations.dart';
+import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart';
@@ -18,16 +20,15 @@ class MockLoginSignupCubit extends MockCubit<LoginSignupState> implements LoginS
 void main() {
   group('LoginSignupPage', () {
     group('Test initial page state', () {
-      late MockLoginSignupCubit mockLoginSignupCubit;
-
-      setUp(() {
-        mockLoginSignupCubit = MockLoginSignupCubit();
+      setUp(() async {
+        await GetIt.I.reset();
+        GetIt.I.registerSingleton<LoginSignupCubit>(MockLoginSignupCubit());
       });
 
       testWidgets('should display 4 text fields', (WidgetTester tester) async {
         final initialState = LoginSignupState();
         whenListen(
-          mockLoginSignupCubit,
+          getIt<LoginSignupCubit>(),
           Stream.fromIterable([initialState]),
           initialState: initialState,
         );
@@ -36,7 +37,6 @@ void main() {
           MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
-                cubit: mockLoginSignupCubit,
               ),
             ),
           ),
@@ -59,7 +59,7 @@ void main() {
       testWidgets('should display login,recover password and signup buttons', (widgetTester) async {
         final initialState = LoginSignupState();
         whenListen(
-          mockLoginSignupCubit,
+          getIt<LoginSignupCubit>(),
           Stream.fromIterable([initialState]),
           initialState: initialState,
         );
@@ -68,7 +68,6 @@ void main() {
           MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
-                cubit: mockLoginSignupCubit,
               ),
             ),
           ),
@@ -92,16 +91,14 @@ void main() {
     });
 
     group('test text events', () {
-      late LoginSignupCubit loginSignupCubit;
-      late MockRegisterUser mockRegisterUser;
-      late MockLoginUser mockLoginUser;
-      late MockRecoverPassword mockRecoverPassword;
 
-      setUp(() {
-        mockRegisterUser = MockRegisterUser();
-        mockLoginUser = MockLoginUser();
-        mockRecoverPassword = MockRecoverPassword();
-        loginSignupCubit = LoginSignupCubit(mockRegisterUser, mockLoginUser, mockRecoverPassword);
+      setUp(() async {
+        await GetIt.I.reset();
+        GetIt.I.registerSingleton<LoginSignupCubit>(LoginSignupCubit(
+          registerUser: MockRegisterUser(),
+          loginUser: MockLoginUser(),
+          recoverPassword: MockRecoverPassword(),
+        ));
       });
 
       testWidgets('should display error message when email is invalid', (widgetTester) async {
@@ -110,7 +107,6 @@ void main() {
           MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
-                cubit: loginSignupCubit,
               ),
             ),
           ),
@@ -132,7 +128,6 @@ void main() {
           MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
-                cubit: loginSignupCubit,
               ),
             ),
           ),
@@ -154,7 +149,6 @@ void main() {
           MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
-                cubit: loginSignupCubit,
               ),
             ),
           ),
@@ -178,7 +172,6 @@ void main() {
           MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
-                cubit: loginSignupCubit,
               ),
             ),
           ),
