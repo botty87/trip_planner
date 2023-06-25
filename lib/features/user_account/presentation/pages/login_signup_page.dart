@@ -5,13 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trip_planner/core/constants.dart';
+import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../core/widgets/snackbars.dart';
-import '../../../../core/widgets/stateless_cubit_widget.dart';
 import '../../../../gen/assets.gen.dart';
 
 part '../widgets/login_section.dart';
@@ -19,12 +19,14 @@ part '../widgets/signup_section.dart';
 part '../widgets/new_user_row.dart';
 
 @RoutePage()
-class LoginSignupPage extends StatelessCubitWidget<LoginSignupCubit> {
-  LoginSignupPage({super.key, super.cubit});
-  
+class LoginSignupPage extends StatelessWidget {
+  LoginSignupPage({super.key});
+
   @override
-  Widget buildWidget(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) {
+    return BlocProvider<LoginSignupCubit>(
+      create: (context) => getIt(),
+      child: Scaffold(
         appBar: AppBar(
           title: Text(LocaleKeys.appName.tr()),
         ),
@@ -86,6 +88,7 @@ class LoginSignupPage extends StatelessCubitWidget<LoginSignupCubit> {
             ],
           ),
         ),
-      );
+      ),
+    );
   }
 }
