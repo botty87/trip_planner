@@ -8,7 +8,7 @@ import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
 
-import '../../domain/entities/trip.dart';
+import '../../../domain/entities/trip.dart';
 
 part 'trips_cubit.freezed.dart';
 part 'trips_state.dart';

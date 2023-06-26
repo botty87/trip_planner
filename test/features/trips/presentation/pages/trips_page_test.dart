@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
-import 'package:trip_planner/features/trips/presentation/cubit/trips_cubit.dart';
+import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/no_trips_widget.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trips_list_widget.dart';

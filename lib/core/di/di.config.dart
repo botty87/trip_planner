@@ -22,9 +22,9 @@ import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart'
     as _i10;
 import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart'
     as _i11;
-import 'package:trip_planner/features/trips/presentation/cubit/new_trip_cubit.dart'
+import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
     as _i18;
-import 'package:trip_planner/features/trips/presentation/cubit/trips_cubit.dart'
+import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart'
     as _i19;
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
     as _i7;

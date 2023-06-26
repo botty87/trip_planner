@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:trip_planner/core/di/di.dart';
-import 'package:trip_planner/features/trips/presentation/cubit/new_trip_cubit.dart';
+import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart';
 
 class MockNewTripCubit extends MockCubit<NewTripState> implements NewTripCubit {}

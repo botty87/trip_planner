@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:trip_planner/features/trips/presentation/cubit/new_trip_cubit.dart';
+import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../core/widgets/snackbars.dart';
