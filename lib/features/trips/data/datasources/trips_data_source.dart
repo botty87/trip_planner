@@ -26,6 +26,7 @@ final class TripsDataSourceImpl implements TripsDataSource {
   Stream<List<Trip>> listenTrips(String userId) async* {
     yield* _tripsCollection
         .where('userId', isEqualTo: userId)
+        .orderBy('name')
         .snapshots()
         .map((snapshot) {
           return snapshot.docs.map((doc) => doc.data()).toList();
