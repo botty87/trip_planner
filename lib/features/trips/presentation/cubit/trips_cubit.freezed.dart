@@ -92,7 +92,7 @@ class __$$_TripsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TripsState implements _TripsState {
-  _$_TripsState({final List<Trip> trips = const []}) : _trips = trips;
+  const _$_TripsState({final List<Trip> trips = const []}) : _trips = trips;
 
   final List<Trip> _trips;
   @override
@@ -128,7 +128,7 @@ class _$_TripsState implements _TripsState {
 }
 
 abstract class _TripsState implements TripsState {
-  factory _TripsState({final List<Trip> trips}) = _$_TripsState;
+  const factory _TripsState({final List<Trip> trips}) = _$_TripsState;
 
   @override
   List<Trip> get trips;
