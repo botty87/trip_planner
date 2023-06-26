@@ -1,7 +1,9 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart';
@@ -58,16 +60,33 @@ void main() {
       ]),
       initialState: TripsState(trips: trips),
     );
-    await widgetTester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: TripsPage(),
-        ),
-      ),
-    );
-    // act
-    final tripsList = find.byType(TripsListWidget);
-    // assert
-    expect(tripsList, findsOneWidget);
+    await widgetTester.runAsync(() async {
+      SharedPreferences.setMockInitialValues({});
+
+      await EasyLocalization.ensureInitialized();
+      await widgetTester.pumpWidget(EasyLocalization(
+        supportedLocales: [Locale('it'), Locale('en')],
+        path: 'assets/translations',
+        fallbackLocale: Locale('en'),
+        useOnlyLangCode: true,
+        child: Builder(builder: (context) {
+          return MaterialApp(
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            home: Scaffold(
+              body: TripsPage(),
+            ),
+          );
+        }),
+      ));
+
+      await widgetTester.pumpAndSettle();
+
+      // act
+      final tripsList = find.byType(TripsListWidget);
+      // assert
+      expect(tripsList, findsOneWidget);
+    });
   });
 }
