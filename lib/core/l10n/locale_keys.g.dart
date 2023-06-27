@@ -24,10 +24,13 @@ abstract class  LocaleKeys {
   static const newTrip = 'newTrip';
   static const noTripAddOne = 'noTripAddOne';
   static const tripsPageTitle = 'tripsPageTitle';
-  static const whatNameTrip = 'whatNameTrip';
+  static const tripName = 'tripName';
+  static const tripNameHint = 'tripNameHint';
   static const createTrip = 'createTrip';
   static const tripNameEmpty = 'tripNameEmpty';
   static const tripDescription = 'tripDescription';
+  static const tripDescriptionHint = 'tripDescriptionHint';
   static const tripSaveError = 'tripSaveError';
+  static const editTrip = 'editTrip';
 
 }

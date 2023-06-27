@@ -7,8 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart';
-import 'package:trip_planner/features/trips/presentation/widgets/no_trips_widget.dart';
-import 'package:trip_planner/features/trips/presentation/widgets/trips_list_widget.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/trips_page/no_trips_widget.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/trips_page/trips_list_widget.dart';
 
 class MockTripsCubit extends MockCubit<TripsState> implements TripsCubit {}
 

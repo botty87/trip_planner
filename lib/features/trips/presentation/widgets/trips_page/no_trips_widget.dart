@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
-import '../../../../core/constants.dart';
-import '../../../../gen/assets.gen.dart';
+import '../../../../../core/constants.dart';
+import '../../../../../gen/assets.gen.dart';
 
 class NoTripsWidget extends StatelessWidget {
   const NoTripsWidget({super.key});

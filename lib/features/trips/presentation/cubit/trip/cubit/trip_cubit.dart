@@ -10,4 +10,17 @@ part 'trip_cubit.freezed.dart';
 @injectable
 class TripCubit extends Cubit<TripState> {
   TripCubit({@factoryParam required Trip trip}) : super(TripState(trip: trip));
+
+  void edit() {
+    emit(TripState.editing(
+      trip: state.trip,
+      name: state.trip.name,
+      description: state.trip.description,
+    ));
+  }
+
+  void nameChanged(String value) {
+    assert(state is TripStateEditing);
+    emit((state as TripStateEditing).copyWith(name: value));
+  }
 }

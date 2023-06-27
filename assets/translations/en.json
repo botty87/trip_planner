@@ -22,9 +22,12 @@
     "newTrip" : "New Trip",
     "noTripAddOne" : "No trips yet?\nAdd one!",
     "tripsPageTitle" : "Your trips",
-    "whatNameTrip" : "What's the name of your trip?",
+    "tripName" : "Trip Name",
+    "tripNameHint" : "What's the name of your trip?",
     "createTrip" : "Create Trip",
     "tripNameEmpty" : "Trip name can't be empty",
     "tripDescription" : "Trip Description",
-    "tripSaveError" : "Error saving trip"
+    "tripDescriptionHint" : "What's your trip about?",
+    "tripSaveError" : "Error saving trip",
+    "editTrip" : "Edit Trip"
 }

@@ -6,9 +6,9 @@ import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/core/routes/app_router.gr.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart';
-import 'package:trip_planner/features/trips/presentation/widgets/no_trips_widget.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/trips_page/no_trips_widget.dart';
 
-import '../widgets/trips_list_widget.dart';
+import '../widgets/trips_page/trips_list_widget.dart';
 
 @RoutePage()
 class TripsPage extends StatelessWidget {

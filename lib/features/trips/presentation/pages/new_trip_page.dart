@@ -62,7 +62,8 @@ class NewTripPage extends StatelessWidget {
                         TextField(
                           key: Key('tripNameTextField'),
                           decoration: InputDecoration(
-                            labelText: LocaleKeys.whatNameTrip.tr(),
+                            labelText: LocaleKeys.tripName.tr(),
+                            hintText: LocaleKeys.tripNameHint.tr(),
                           ),
                           onChanged: (value) => cubit.tripNameChanged(value),
                         ),
@@ -71,6 +72,7 @@ class NewTripPage extends StatelessWidget {
                           key: Key('tripDescriptionTextField'),
                           decoration: InputDecoration(
                             labelText: LocaleKeys.tripDescription.tr(),
+                            hintText: LocaleKeys.tripDescriptionHint.tr(),
                           ),
                           onChanged: (value) => cubit.tripDescriptionChanged(value),
                           maxLines: 4,

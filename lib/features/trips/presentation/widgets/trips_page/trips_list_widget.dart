@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trip_planner/core/constants.dart';
-import 'package:trip_planner/features/trips/presentation/widgets/trip_card.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/trips_page/trip_card.dart';
 
-import '../cubit/trips/trips_cubit.dart';
+import '../../cubit/trips/trips_cubit.dart';
 
 class TripsListWidget extends StatelessWidget {
   const TripsListWidget({Key? key}) : super(key: key);
