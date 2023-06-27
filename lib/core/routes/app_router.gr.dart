@@ -11,12 +11,13 @@
 import 'package:auto_route/auto_route.dart' as _i6;
 import 'package:flutter/material.dart' as _i7;
 import 'package:trip_planner/core/home_page.dart' as _i1;
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i8;
 import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart'
-    as _i4;
-import 'package:trip_planner/features/trips/presentation/pages/trip_page.dart'
     as _i5;
-import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
+import 'package:trip_planner/features/trips/presentation/pages/trip_page.dart'
     as _i3;
+import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
+    as _i4;
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart'
     as _i2;
 
@@ -39,12 +40,22 @@ abstract class $AppRouter extends _i6.RootStackRouter {
         child: _i2.LoginSignupPage(key: args.key),
       );
     },
+    TripRoute.name: (routeData) {
+      final args = routeData.argsAs<TripRouteArgs>();
+      return _i6.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i3.TripPage(
+          args.trip,
+          key: args.key,
+        ),
+      );
+    },
     TripsRoute.name: (routeData) {
       final args = routeData.argsAs<TripsRouteArgs>(
           orElse: () => const TripsRouteArgs());
       return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.TripsPage(key: args.key),
+        child: _i4.TripsPage(key: args.key),
       );
     },
     NewTripRoute.name: (routeData) {
@@ -52,13 +63,7 @@ abstract class $AppRouter extends _i6.RootStackRouter {
           orElse: () => const NewTripRouteArgs());
       return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i4.NewTripPage(key: args.key),
-      );
-    },
-    TripRoute.name: (routeData) {
-      return _i6.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i5.TripPage(),
+        child: _i5.NewTripPage(key: args.key),
       );
     },
   };
@@ -108,7 +113,45 @@ class LoginSignupRouteArgs {
 }
 
 /// generated route for
-/// [_i3.TripsPage]
+/// [_i3.TripPage]
+class TripRoute extends _i6.PageRouteInfo<TripRouteArgs> {
+  TripRoute({
+    required _i8.Trip trip,
+    _i7.Key? key,
+    List<_i6.PageRouteInfo>? children,
+  }) : super(
+          TripRoute.name,
+          args: TripRouteArgs(
+            trip: trip,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TripRoute';
+
+  static const _i6.PageInfo<TripRouteArgs> page =
+      _i6.PageInfo<TripRouteArgs>(name);
+}
+
+class TripRouteArgs {
+  const TripRouteArgs({
+    required this.trip,
+    this.key,
+  });
+
+  final _i8.Trip trip;
+
+  final _i7.Key? key;
+
+  @override
+  String toString() {
+    return 'TripRouteArgs{trip: $trip, key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i4.TripsPage]
 class TripsRoute extends _i6.PageRouteInfo<TripsRouteArgs> {
   TripsRoute({
     _i7.Key? key,
@@ -137,7 +180,7 @@ class TripsRouteArgs {
 }
 
 /// generated route for
-/// [_i4.NewTripPage]
+/// [_i5.NewTripPage]
 class NewTripRoute extends _i6.PageRouteInfo<NewTripRouteArgs> {
   NewTripRoute({
     _i7.Key? key,
@@ -163,18 +206,4 @@ class NewTripRouteArgs {
   String toString() {
     return 'NewTripRouteArgs{key: $key}';
   }
-}
-
-/// generated route for
-/// [_i5.TripPage]
-class TripRoute extends _i6.PageRouteInfo<void> {
-  const TripRoute({List<_i6.PageRouteInfo>? children})
-      : super(
-          TripRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'TripRoute';
-
-  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
 }

@@ -107,10 +107,6 @@ class $AssetsGoogleFontsGen {
       ];
 }
 
-class $AssetsImagesGen {
-  const $AssetsImagesGen();
-}
-
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
@@ -148,7 +144,6 @@ class Assets {
 
   static const String appainterTheme = 'assets/appainter_theme.json';
   static const $AssetsGoogleFontsGen googleFonts = $AssetsGoogleFontsGen();
-  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 

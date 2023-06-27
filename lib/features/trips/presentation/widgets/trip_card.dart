@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:trip_planner/core/routes/app_router.gr.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 
 class TripCard extends StatelessWidget {
@@ -8,14 +10,17 @@ class TripCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _TripNameWidget(name: trip.name),
-          if (trip.description != null) _TripDescriptionWidget(description: trip.description!),
-          _TripCreatedAtWidget(createdAt: trip.createdAt),
-        ],
+    return InkWell(
+      onTap: () => context.router.push(TripRoute(trip: trip)),
+      child: Card(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _TripNameWidget(name: trip.name),
+            if (trip.description != null) _TripDescriptionWidget(description: trip.description!),
+            _TripCreatedAtWidget(createdAt: trip.createdAt),
+          ],
+        ),
       ),
     );
   }
