@@ -1,0 +1,451 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.ART",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.ART",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.ART",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.FOOD",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.FOOD",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.FOOD",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.HIST",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.HIST",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.HIST",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "categories.NAT",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "country",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "language",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "country",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "language",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "country",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "language",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "level",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "level",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "level",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.CAR",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.CAR",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.CAR",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.MOBI",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.MOBI",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.MOBI",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.PUTR",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.PUTR",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.PUTR",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.ROBI",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.ROBI",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.ROBI",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.WALK",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "averageRate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.WALK",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "publishTime",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "public_trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "transports.WALK",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "totalImport",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
