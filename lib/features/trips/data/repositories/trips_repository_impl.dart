@@ -9,7 +9,7 @@ import '../datasources/trips_data_source.dart';
 
 @LazySingleton(as: TripsRepository)
 class TripsRepositoryImpl implements TripsRepository {
-  final TripsDataSource tripsDataSource;  
+  final TripsDataSource tripsDataSource;
 
   TripsRepositoryImpl({
     required this.tripsDataSource,
@@ -20,13 +20,13 @@ class TripsRepositoryImpl implements TripsRepository {
     try {
       await tripsDataSource.addTrip(trip);
       return right(null);
-    } on FirebaseException  {
+    } on FirebaseException {
       return left(TripsFailure());
     } on Exception {
       return left(TripsFailure());
     }
   }
-  
+
   @override
   Stream<Either<TripsFailure, List<Trip>>> listenTrips(String userId) async* {
     try {
@@ -36,4 +36,10 @@ class TripsRepositoryImpl implements TripsRepository {
     }
   }
 
+  @override
+  Future<Either<TripsFailure, void>> updateTrip(
+      String tripId, String tripName, String? tripDescription) {
+    // TODO: implement updateTrip
+    throw UnimplementedError();
+  }
 }

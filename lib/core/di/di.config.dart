@@ -23,12 +23,14 @@ import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart'
     as _i12;
 import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart'
     as _i13;
+import 'package:trip_planner/features/trips/domain/usecases/save_trip.dart'
+    as _i18;
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
-    as _i20;
+    as _i21;
 import 'package:trip_planner/features/trips/presentation/cubit/trip/cubit/trip_cubit.dart'
     as _i4;
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart'
-    as _i21;
+    as _i22;
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
     as _i9;
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart'
@@ -44,9 +46,9 @@ import 'package:trip_planner/features/user_account/domain/usecases/recover_passw
 import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart'
     as _i17;
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
-    as _i19;
+    as _i20;
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart'
-    as _i18;
+    as _i19;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -83,20 +85,22 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i16.RecoverPassword(gh<_i10.UserRepository>()));
     gh.lazySingleton<_i17.RegisterUser>(
         () => _i17.RegisterUser(gh<_i10.UserRepository>()));
-    gh.lazySingleton<_i18.UserCubit>(
-        () => _i18.UserCubit(listenUserState: gh<_i14.ListenUser>()));
-    gh.factory<_i19.LoginSignupCubit>(() => _i19.LoginSignupCubit(
+    gh.lazySingleton<_i18.SaveTrip>(
+        () => _i18.SaveTrip(gh<_i7.TripsRepository>()));
+    gh.lazySingleton<_i19.UserCubit>(
+        () => _i19.UserCubit(listenUserState: gh<_i14.ListenUser>()));
+    gh.factory<_i20.LoginSignupCubit>(() => _i20.LoginSignupCubit(
           registerUser: gh<_i17.RegisterUser>(),
           loginUser: gh<_i15.LoginUser>(),
           recoverPassword: gh<_i16.RecoverPassword>(),
         ));
-    gh.factory<_i20.NewTripCubit>(() => _i20.NewTripCubit(
-          gh<_i18.UserCubit>(),
+    gh.factory<_i21.NewTripCubit>(() => _i21.NewTripCubit(
+          gh<_i19.UserCubit>(),
           gh<_i12.CreateTrip>(),
         ));
-    gh.factory<_i21.TripsCubit>(() => _i21.TripsCubit(
+    gh.factory<_i22.TripsCubit>(() => _i22.TripsCubit(
           gh<_i13.ListenTrips>(),
-          gh<_i18.UserCubit>(),
+          gh<_i19.UserCubit>(),
         ));
     return this;
   }
