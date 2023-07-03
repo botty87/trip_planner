@@ -1,7 +1,7 @@
 part of '../../pages/trip_page.dart';
 
 class _TripHeader extends StatelessWidget {
-  const _TripHeader({super.key});
+  const _TripHeader();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _TripHeader extends StatelessWidget {
 }
 
 class _TripEditingForm extends StatelessWidget {
-  const _TripEditingForm({super.key});
+  const _TripEditingForm();
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,10 @@ class _TripEditingForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         _TripNameField(),
-        const SizedBox(height: 8),
+        const SizedBox(height: VERTICAL_SPACE_S),
         _TripDescriptionField(),
+        const SizedBox(height: VERTICAL_SPACE_L),
+        _SaveCancelButtons(),
       ],
     );
   }
@@ -68,6 +70,28 @@ class _TripDescriptionField extends StatelessWidget {
       onChanged: (value) => context.read<TripCubit>().descriptionChanged(value),
       keyboardType: TextInputType.multiline,
       maxLines: null,
+      textAlign: TextAlign.justify,
+    );
+  }
+}
+
+class _SaveCancelButtons extends StatelessWidget {
+  const _SaveCancelButtons();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        ElevatedButton(
+          onPressed: () => context.read<TripCubit>().cancel(),
+          child: Text(LocaleKeys.cancel.tr()),
+        ),
+        ElevatedButton(
+          onPressed: () => context.read<TripCubit>().save(),
+          child: Text(LocaleKeys.save.tr()),
+        ),
+      ],
     );
   }
 }

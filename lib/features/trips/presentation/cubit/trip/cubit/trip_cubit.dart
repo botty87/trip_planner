@@ -29,5 +29,10 @@ class TripCubit extends Cubit<TripState> {
     emit((state as TripStateEditing).copyWith(description: value));
   }
 
-  void discardChanges() {}
+
+  void cancel() {
+    emit(TripState(trip: state.trip));
+  }
+
+  save() {}
 }

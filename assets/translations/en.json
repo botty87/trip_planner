@@ -33,5 +33,6 @@
     "discardChanges" : "Discard Changes",
     "discardChangesQuestion" : "Are you sure you want to discard your changes?",
     "cancel" : "Cancel",
-    "discard" : "Discard"
+    "discard" : "Discard",
+    "save" : "Save"
 }

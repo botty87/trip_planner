@@ -33,5 +33,6 @@
     "discardChanges": "Scarta modifiche",
     "discardChangesQuestion": "Scartare le modifiche?",
     "cancel": "Annulla",
-    "discard": "Scarta"
+    "discard": "Scarta",
+    "save": "Salva"
 }

@@ -36,5 +36,6 @@ abstract class  LocaleKeys {
   static const discardChangesQuestion = 'discardChangesQuestion';
   static const cancel = 'cancel';
   static const discard = 'discard';
+  static const save = 'save';
 
 }
