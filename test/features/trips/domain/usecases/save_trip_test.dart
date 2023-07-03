@@ -23,9 +23,9 @@ void main() {
     when(mockTripsRepository.updateTrip(any, any, any)).thenAnswer((_) async => right(null));
     // act
     final result = await useCase(SaveTripParams(
-      tripId: tripId,
-      tripName: tripName,
-      tripDescription: tripDescription,
+      id: tripId,
+      name: tripName,
+      description: tripDescription,
     ));
     // assert
     expect(result, right(null));
@@ -38,12 +38,13 @@ void main() {
     const tripId = 'tripId';
     const tripName = 'Trip Name';
     const tripDescription = 'Trip Description';
-    when(mockTripsRepository.updateTrip(any, any, any)).thenAnswer((_) async => left(TripsFailure()));
+    when(mockTripsRepository.updateTrip(any, any, any))
+        .thenAnswer((_) async => left(TripsFailure()));
     // act
     final result = await useCase(SaveTripParams(
-      tripId: tripId,
-      tripName: tripName,
-      tripDescription: tripDescription,
+      id: tripId,
+      name: tripName,
+      description: tripDescription,
     ));
     // assert
     expect(result, left(TripsFailure()));

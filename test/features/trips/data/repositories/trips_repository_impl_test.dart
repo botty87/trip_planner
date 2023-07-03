@@ -80,4 +80,28 @@ void main() {
       verifyNoMoreInteractions(mockTripsDataSource);
     });
   });
+
+  group('update trip', () {
+    final tripId = 'tripId';
+    final tripName = 'tripName';
+    final tripDescription = 'tripDescription';
+
+    test('should return right(null) when TripsDataSource.updateTrip completes', () async {
+      when(mockTripsDataSource.updateTrip(tripId, tripName, tripDescription)).thenAnswer((_) async => null);
+
+      // act
+      final result = await tripsRepositoryImpl.updateTrip(tripId, tripName, tripDescription);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(TripsFailure()) when TripsDataSource.updateTrip throws', () async {
+      when(mockTripsDataSource.updateTrip(tripId, tripName, tripDescription)).thenThrow(Exception());
+
+      // act
+      final result = await tripsRepositoryImpl.updateTrip(tripId, tripName, tripDescription);
+      // assert
+      expect(result, equals(left(TripsFailure())));
+    });
+   });
 }

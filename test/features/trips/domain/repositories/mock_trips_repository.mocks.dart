@@ -79,17 +79,17 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
       ) as _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>);
   @override
   _i4.Future<_i2.Either<_i5.TripsFailure, void>> updateTrip(
-    String? tripId,
-    String? tripName,
-    String? tripDescription,
+    String? id,
+    String? name,
+    String? description,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateTrip,
           [
-            tripId,
-            tripName,
-            tripDescription,
+            id,
+            name,
+            description,
           ],
         ),
         returnValue: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
@@ -98,9 +98,9 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
           Invocation.method(
             #updateTrip,
             [
-              tripId,
-              tripName,
-              tripDescription,
+              id,
+              name,
+              description,
             ],
           ),
         )),
@@ -111,9 +111,9 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
           Invocation.method(
             #updateTrip,
             [
-              tripId,
-              tripName,
-              tripDescription,
+              id,
+              name,
+              description,
             ],
           ),
         )),

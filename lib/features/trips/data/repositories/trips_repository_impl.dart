@@ -38,8 +38,14 @@ class TripsRepositoryImpl implements TripsRepository {
 
   @override
   Future<Either<TripsFailure, void>> updateTrip(
-      String tripId, String tripName, String? tripDescription) {
-    // TODO: implement updateTrip
-    throw UnimplementedError();
+      String id, String name, String? description) async {
+    try {
+      await tripsDataSource.updateTrip(id, name, description);
+      return right(null);
+    } on FirebaseException {
+      return left(TripsFailure());
+    } on Exception {
+      return left(TripsFailure());
+    }
   }
 }

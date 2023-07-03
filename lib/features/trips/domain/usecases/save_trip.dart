@@ -14,21 +14,21 @@ class SaveTrip implements UseCase<void, SaveTripParams> {
   @override
   Future<Either<TripsFailure, void>> call(SaveTripParams params) async {
     return await repository.updateTrip(
-      params.tripId,
-      params.tripName,
-      params.tripDescription,
+      params.id,
+      params.name,
+      params.description,
     );
   }
 }
 
 class SaveTripParams {
-  final String tripId;
-  final String tripName;
-  final String? tripDescription;
+  final String id;
+  final String name;
+  final String? description;
 
   SaveTripParams({
-    required this.tripId,
-    required this.tripName,
-    this.tripDescription,
+    required this.id,
+    required this.name,
+    this.description,
   });
 }

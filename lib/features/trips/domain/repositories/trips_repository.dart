@@ -7,5 +7,5 @@ abstract class TripsRepository {
   Future<Either<TripsFailure, void>> addTrip(Trip trip);
   Stream<Either<TripsFailure, List<Trip>>> listenTrips(String userId);
 
-  Future<Either<TripsFailure, void>> updateTrip(String tripId, String tripName, String? tripDescription);
+  Future<Either<TripsFailure, void>> updateTrip(String id, String name, String? description);
 }

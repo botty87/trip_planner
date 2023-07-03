@@ -6,6 +6,7 @@ import '../../domain/entities/trip.dart';
 abstract class TripsDataSource {
   Future<void> addTrip(Trip trip);
   Stream<List<Trip>> listenTrips(String userId);
+  Future<void> updateTrip(String tripId, String tripName, String? tripDescription);
 }
 
 @LazySingleton(as: TripsDataSource)
@@ -31,5 +32,11 @@ final class TripsDataSourceImpl implements TripsDataSource {
         .map((snapshot) {
           return snapshot.docs.map((doc) => doc.data()).toList();
         });
+  }
+  
+  @override
+  Future<void> updateTrip(String tripId, String tripName, String? tripDescription) {
+    // TODO: implement updateTrip
+    throw UnimplementedError();
   }
 }
