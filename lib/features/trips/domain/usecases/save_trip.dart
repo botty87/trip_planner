@@ -29,6 +29,6 @@ class SaveTripParams {
   SaveTripParams({
     required this.id,
     required this.name,
-    this.description,
+    required this.description,
   });
 }

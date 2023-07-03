@@ -47,17 +47,17 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
       ) as _i3.Stream<List<_i4.Trip>>);
   @override
   _i3.Future<void> updateTrip(
-    String? tripId,
-    String? tripName,
-    String? tripDescription,
+    String? id,
+    String? name,
+    String? description,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateTrip,
           [
-            tripId,
-            tripName,
-            tripDescription,
+            id,
+            name,
+            description,
           ],
         ),
         returnValue: _i3.Future<void>.value(),

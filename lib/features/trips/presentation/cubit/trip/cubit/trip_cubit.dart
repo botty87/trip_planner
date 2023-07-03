@@ -3,13 +3,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../domain/entities/trip.dart';
+import '../../../../domain/usecases/save_trip.dart';
 
-part 'trip_state.dart';
 part 'trip_cubit.freezed.dart';
+part 'trip_state.dart';
 
 @injectable
 class TripCubit extends Cubit<TripState> {
-  TripCubit({@factoryParam required Trip trip}) : super(TripState(trip: trip));
+  final SaveTrip _saveTrip;
+  TripCubit({@factoryParam required Trip trip, required SaveTrip saveTrip})
+      : _saveTrip = saveTrip,
+        super(TripState(trip: trip));
 
   void edit() {
     emit(TripState.editing(
@@ -29,10 +33,31 @@ class TripCubit extends Cubit<TripState> {
     emit((state as TripStateEditing).copyWith(description: value));
   }
 
-
-  void cancel() {
+  void editCancel() {
     emit(TripState(trip: state.trip));
   }
 
-  save() {}
+  save() async {
+    assert(state is TripStateEditing);
+    final tripId = state.trip.id!;
+    final tripDescription = (state as TripStateEditing).description;
+    final tripName = (state as TripStateEditing).name;
+
+    final result = await _saveTrip(SaveTripParams(
+      id: tripId,
+      name: tripName,
+      description: tripDescription,
+    ));
+
+    result.fold(
+      (failure) {
+        //TODO implements!
+      },
+      (_) => emit(TripState(
+          trip: state.trip.copyWith(
+        name: tripName,
+        description: tripDescription,
+      ))),
+    );
+  }
 }

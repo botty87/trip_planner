@@ -84,7 +84,7 @@ class _SaveCancelButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ElevatedButton(
-          onPressed: () => context.read<TripCubit>().cancel(),
+          onPressed: () => context.read<TripCubit>().editCancel(),
           child: Text(LocaleKeys.cancel.tr()),
         ),
         ElevatedButton(
