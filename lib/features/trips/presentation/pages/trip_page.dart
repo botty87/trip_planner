@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -21,15 +22,36 @@ class TripPage extends StatelessWidget {
     return BlocProvider<TripCubit>(
       create: (context) => getIt<TripCubit>(param1: _trip),
       child: Builder(builder: (context) {
-        return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(kToolbarHeight),
-            child: _TripPageAppBar(),
+        return WillPopScope(
+          onWillPop: () async {
+            final isEditing = context.read<TripCubit>().state is TripStateEditing;
+            if (isEditing) {
+              return _showDiscardDialog(context);
+            }
+            return true;
+          },
+          child: Scaffold(
+            appBar: PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight),
+              child: _TripPageAppBar(),
+            ),
+            body: _TripPageBody(),
           ),
-          body: _TripPageBody(),
         );
       }),
     );
+  }
+
+  Future<bool> _showDiscardDialog(BuildContext context) async {
+    final result = await showOkCancelAlertDialog(
+      context: context,
+      title: LocaleKeys.discardChanges.tr(),
+      message: LocaleKeys.discardChangesQuestion.tr(),
+      okLabel: LocaleKeys.discard.tr(),
+      cancelLabel: LocaleKeys.cancel.tr(),
+    );
+
+    return result == OkCancelResult.ok;
   }
 }
 

@@ -23,4 +23,11 @@ class TripCubit extends Cubit<TripState> {
     assert(state is TripStateEditing);
     emit((state as TripStateEditing).copyWith(name: value));
   }
+
+  descriptionChanged(String value) {
+    assert(state is TripStateEditing);
+    emit((state as TripStateEditing).copyWith(description: value));
+  }
+
+  void discardChanges() {}
 }

@@ -29,5 +29,9 @@
     "tripDescription" : "Trip Description",
     "tripDescriptionHint" : "What's your trip about?",
     "tripSaveError" : "Error saving trip",
-    "editTrip" : "Edit Trip"
+    "editTrip" : "Edit Trip",
+    "discardChanges" : "Discard Changes",
+    "discardChangesQuestion" : "Are you sure you want to discard your changes?",
+    "cancel" : "Cancel",
+    "discard" : "Discard"
 }

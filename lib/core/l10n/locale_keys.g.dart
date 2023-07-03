@@ -32,5 +32,9 @@ abstract class  LocaleKeys {
   static const tripDescriptionHint = 'tripDescriptionHint';
   static const tripSaveError = 'tripSaveError';
   static const editTrip = 'editTrip';
+  static const discardChanges = 'discardChanges';
+  static const discardChangesQuestion = 'discardChangesQuestion';
+  static const cancel = 'cancel';
+  static const discard = 'discard';
 
 }

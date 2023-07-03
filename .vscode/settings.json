@@ -7,5 +7,13 @@
   // Remove from file watching
   "files.watcherExclude": {
     "**/.fvm": true
-  }
+  },
+  "editor.minimap.autohide": true,
+  "editor.minimap.enabled": true,
+  "editor.minimap.scale": 1,
+  "editor.minimap.showSlider": "mouseover",
+  "editor.minimap.side": "right",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false
 }

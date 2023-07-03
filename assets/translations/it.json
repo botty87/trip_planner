@@ -29,5 +29,9 @@
     "tripDescription" : "Descrizione",
     "tripDescriptionHint" : "Descrivi il tuo viaggio",
     "tripSaveError" : "Errore nel salvataggio del viaggio",
-    "editTrip" : "Modifica viaggio"
+    "editTrip" : "Modifica viaggio",
+    "discardChanges": "Scarta modifiche",
+    "discardChangesQuestion": "Scartare le modifiche?",
+    "cancel": "Annulla",
+    "discard": "Scarta"
 }

@@ -28,15 +28,14 @@ class _TripEditingForm extends StatelessWidget {
       children: [
         _TripNameField(),
         const SizedBox(height: 8),
-        //_TripDescriptionField(),
+        _TripDescriptionField(),
       ],
-    
     );
   }
 }
 
 class _TripNameField extends StatelessWidget {
-  const _TripNameField({super.key});
+  const _TripNameField();
 
   @override
   Widget build(BuildContext context) {
@@ -53,3 +52,22 @@ class _TripNameField extends StatelessWidget {
   }
 }
 
+class _TripDescriptionField extends StatelessWidget {
+  const _TripDescriptionField();
+
+  @override
+  Widget build(BuildContext context) {
+    final trip = context.read<TripCubit>().state.trip;
+
+    return TextFormField(
+      initialValue: trip.description,
+      decoration: InputDecoration(
+        labelText: LocaleKeys.tripDescription.tr(),
+        hintText: LocaleKeys.tripDescriptionHint.tr(),
+      ),
+      onChanged: (value) => context.read<TripCubit>().descriptionChanged(value),
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+    );
+  }
+}
