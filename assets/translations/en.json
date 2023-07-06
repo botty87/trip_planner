@@ -35,5 +35,10 @@
     "cancel" : "Cancel",
     "discard" : "Discard",
     "save" : "Save",
-    "addDayTrip" : "Add Day of trip"
+    "addDayTrip" : "Add Day of trip",
+    "newDayTrip" : "New Day of trip",
+    "dayTripName" : "Day of trip Name",
+    "dayTripNameHint" : "What's the name of your day of trip?",
+    "dayTripDescription" : "Day of trip Description",
+    "dayTripDescriptionHint" : "What's your day of trip about?",
 }

@@ -35,5 +35,10 @@
     "cancel": "Annulla",
     "discard": "Scarta",
     "save": "Salva",
-    "addDayTrip": "Aggiungi giornata di viaggio"
+    "addDayTrip": "Aggiungi giornata di viaggio",
+    "newDayTrip": "Nuova giornata di viaggio",
+    "dayTripName": "Nome della giornata di viaggio",
+    "dayTripNameHint": "Come si chiama la giornata di viaggio?",
+    "dayTripDescription": "Descrizione",
+    "dayTripDescriptionHint": "Cosa farai in questa giornata di viaggio?"
 }

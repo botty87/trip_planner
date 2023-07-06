@@ -10,6 +10,7 @@ import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../core/constants.dart';
+import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../domain/entities/day_trip.dart';
@@ -19,6 +20,7 @@ import '../cubit/trip/trip_cubit.dart';
 part '../widgets/trip_page/trip_header.dart';
 part '../widgets/trip_page/day_trips_list.dart';
 part '../widgets/trip_page/day_trip_card.dart';
+part '../widgets/trip_page/add_day_trip_card.dart';
 
 @RoutePage()
 class TripPage extends StatelessWidget {

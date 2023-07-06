@@ -38,5 +38,10 @@ abstract class  LocaleKeys {
   static const discard = 'discard';
   static const save = 'save';
   static const addDayTrip = 'addDayTrip';
+  static const newDayTrip = 'newDayTrip';
+  static const dayTripName = 'dayTripName';
+  static const dayTripNameHint = 'dayTripNameHint';
+  static const dayTripDescription = 'dayTripDescription';
+  static const dayTripDescriptionHint = 'dayTripDescriptionHint';
 
 }
