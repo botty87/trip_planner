@@ -33,28 +33,28 @@ class NewDayTripPage extends StatelessWidget {
           },
           child: Builder(builder: (context) {
             final cubit = context.read<NewDayTripCubit>();
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                BlocSelector<NewDayTripCubit, NewDayTripState, bool>(
-                    selector: (state) => state.isSaving,
-                    builder: (context, isSaving) {
-                      if (isSaving) {
-                        return LinearProgressIndicator(minHeight: 1);
-                      } else {
-                        return const SizedBox(height: 1);
-                      }
-                    }),
-                Expanded(
-                  child: SvgPicture(
-                    key: Key('tripImage'),
-                    AssetBytesLoader(Assets.svg.travelersSvg),
+            return SafeArea(
+              minimum: DEFAULT_PAGE_PADDING,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  BlocSelector<NewDayTripCubit, NewDayTripState, bool>(
+                      selector: (state) => state.isSaving,
+                      builder: (context, isSaving) {
+                        if (isSaving) {
+                          return LinearProgressIndicator(minHeight: 1);
+                        } else {
+                          return const SizedBox(height: 1);
+                        }
+                      }),
+                  Expanded(
+                    child: SvgPicture(
+                      key: Key('tripImage'),
+                      AssetBytesLoader(Assets.svg.addNewDayTripSvg),
+                    ),
                   ),
-                ),
-                const SizedBox(height: VERTICAL_SPACE_L),
-                Expanded(
-                  child: SafeArea(
-                    minimum: DEFAULT_PAGE_PADDING,
+                  const SizedBox(height: VERTICAL_SPACE_L),
+                  Expanded(
                     child: Column(
                       children: [
                         TextField(
@@ -97,8 +97,8 @@ class NewDayTripPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           }),
         ),

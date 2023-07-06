@@ -47,8 +47,6 @@ class TripCubit extends Cubit<TripState> {
 
     emit((state as TripStateEditing).copyWith(isSaving: true));
 
-    await Future.delayed(Duration(seconds: 5));
-
     final result = await _saveTrip(SaveTripParams(
       id: tripId,
       name: tripName,

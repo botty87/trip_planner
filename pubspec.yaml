@@ -44,10 +44,12 @@ dependencies:
   flutter_svg: ^2.0.7
   freezed_annotation: ^2.2.0
   get_it: ^7.6.0
+  golden_toolkit: ^0.15.0
   google_fonts: ^4.0.4
   injectable: ^2.1.2
   json_annotation: ^4.8.1
   json_theme: ^4.0.0
+  logger: ^1.4.0
   mockito: ^5.4.1
   shared_preferences: ^2.1.2
 

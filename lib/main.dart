@@ -20,7 +20,8 @@ import 'features/user_account/presentation/cubit/user/user_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  Bloc.observer = SimpleBlocObserver();
+  configureDependencies();
+  Bloc.observer = getIt<BlocObserver>();
 
   //Firebase config
   await Firebase.initializeApp();
@@ -37,7 +38,7 @@ void main() async {
     textTheme: GoogleFonts.jostTextTheme(theme.textTheme),
   );
 
-  configureDependencies();
+  
   runApp(EasyLocalization(
     supportedLocales: [Locale('it'), Locale('en')],
     path: 'assets/translations',
