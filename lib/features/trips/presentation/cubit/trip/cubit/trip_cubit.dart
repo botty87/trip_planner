@@ -43,6 +43,10 @@ class TripCubit extends Cubit<TripState> {
     final tripDescription = (state as TripStateEditing).description;
     final tripName = (state as TripStateEditing).name;
 
+    emit((state as TripStateEditing).copyWith(isSaving: true));
+
+    await Future.delayed(Duration(seconds: 5));
+
     final result = await _saveTrip(SaveTripParams(
       id: tripId,
       name: tripName,
@@ -51,7 +55,10 @@ class TripCubit extends Cubit<TripState> {
 
     result.fold(
       (failure) {
-        //TODO implements!
+        emit((state as TripStateEditing).copyWith(
+          isSaving: false,
+          errorMessage: failure.message,
+        ));
       },
       (_) => emit(TripState(
           trip: state.trip.copyWith(

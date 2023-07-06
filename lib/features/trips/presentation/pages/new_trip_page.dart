@@ -25,9 +25,7 @@ class NewTripPage extends StatelessWidget {
           title: Text(LocaleKeys.newTrip.tr()),
         ),
         body: BlocListener<NewTripCubit, NewTripState>(
-          listenWhen: (previous, current) {
-            return current.errorMessage != null;
-          },
+          listenWhen: (previous, current) => current.errorMessage != null,
           listener: (context, state) {
             ScaffoldMessenger.of(context).showSnackBar(
               Snackbars.error(state.errorMessage!),

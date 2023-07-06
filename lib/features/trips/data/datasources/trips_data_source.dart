@@ -38,7 +38,7 @@ final class TripsDataSourceImpl implements TripsDataSource {
   Future<void> updateTrip(String id, String name, String? description) async {
     await _tripsCollection.doc(id).update({
       'name': name,
-      'description': description,
+      'description': description?.isEmpty ?? true ? null : description,
     });
   }
 }

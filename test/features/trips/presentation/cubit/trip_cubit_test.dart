@@ -56,9 +56,14 @@ void main() {
   blocTest<TripCubit, TripState>(
     'On save emit TripState with updated trip',
     seed: () => TripState.editing(trip: trip, name: 'new name', description: trip.description),
-    setUp: () => when(mockSaveTrip.call(any)).thenAnswer((_) async => Right(trip.copyWith(name: 'new name'))),
+    setUp: () => when(mockSaveTrip.call(any))
+        .thenAnswer((_) async => Right(trip.copyWith(name: 'new name'))),
     act: (cubit) => cubit.save(),
-    expect: () => [TripState(trip: trip.copyWith(name: 'new name'))],
+    expect: () => [
+      TripState.editing(
+          trip: trip, name: 'new name', description: trip.description, isSaving: true),
+      TripState(trip: trip.copyWith(name: 'new name'))
+    ],
     build: () => TripCubit(trip: trip, saveTrip: mockSaveTrip),
   );
 }

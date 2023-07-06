@@ -44,7 +44,7 @@ void main() {
       );
     },
     build: () => TripsCubit(mockListenTrips, mockUserCubit),
-    act: (cubit) => cubit,
+    act: (cubit) => cubit, 
     expect: () => [
       TripsState(trips: trips),
     ],

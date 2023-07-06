@@ -80,15 +80,17 @@ class _SaveCancelButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSaving = context.select((TripCubit cubit) =>
+        cubit.state is TripStateEditing && (cubit.state as TripStateEditing).isSaving);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ElevatedButton(
-          onPressed: () => context.read<TripCubit>().editCancel(),
+          onPressed: isSaving ? null : () => context.read<TripCubit>().editCancel(),
           child: Text(LocaleKeys.cancel.tr()),
         ),
         ElevatedButton(
-          onPressed: () => context.read<TripCubit>().save(),
+          onPressed: isSaving ? null : () => context.read<TripCubit>().save(),
           child: Text(LocaleKeys.save.tr()),
         ),
       ],

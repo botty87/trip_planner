@@ -7,6 +7,7 @@ import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 
+import '../../../../core/widgets/snackbars.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/cubit/trip_cubit.dart';
 
@@ -35,7 +36,15 @@ class TripPage extends StatelessWidget {
               preferredSize: const Size.fromHeight(kToolbarHeight),
               child: _TripPageAppBar(),
             ),
-            body: _TripPageBody(),
+            body: BlocListener<TripCubit, TripState>(
+              listenWhen: (previous, current) => current.errorMessage != null,
+              listener: (context, state) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  Snackbars.error(state.errorMessage!),
+                );
+              },
+              child: _TripPageBody(),
+            ),
           ),
         );
       }),
@@ -80,16 +89,31 @@ class _TripPageAppBar extends StatelessWidget {
 class _TripPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        minimum: DEFAULT_PAGE_PADDING,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _TripHeader(),
-          ],
+    return Column(
+      children: [
+        BlocSelector<TripCubit, TripState, bool>(
+            selector: (state) => state is TripStateEditing && state.isSaving,
+            builder: (context, isLoading) {
+              if (isLoading) {
+                return LinearProgressIndicator(minHeight: 1);
+              } else {
+                return const SizedBox(height: 1);
+              }
+            }),
+        Expanded(
+          child: SingleChildScrollView(
+            child: SafeArea(
+              minimum: DEFAULT_PAGE_PADDING,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _TripHeader(),
+                ],
+              ),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
