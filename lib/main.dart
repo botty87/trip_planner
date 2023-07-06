@@ -10,7 +10,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:json_theme/json_theme.dart';
-import 'package:trip_planner/core/bloc_observer.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/routes/app_router.dart';
 
