@@ -110,6 +110,9 @@ class $AssetsGoogleFontsGen {
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/add_day_trip.svg.vec
+  String get addDayTripSvg => 'assets/svg/add_day_trip.svg.vec';
+
   /// File path: assets/svg/arrow.svg.vec
   String get arrowSvg => 'assets/svg/arrow.svg.vec';
 
@@ -123,7 +126,8 @@ class $AssetsSvgGen {
   String get tripSvg => 'assets/svg/trip.svg.vec';
 
   /// List of all assets
-  List<String> get values => [arrowSvg, loginSvg, travelersSvg, tripSvg];
+  List<String> get values =>
+      [addDayTripSvg, arrowSvg, loginSvg, travelersSvg, tripSvg];
 }
 
 class $AssetsTranslationsGen {

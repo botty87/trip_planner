@@ -17,28 +17,32 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TripState {
   Trip get trip => throw _privateConstructorUsedError;
+  List<DayTrip> get dayTrips => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Trip trip, String? errorMessage) $default, {
-    required TResult Function(Trip trip, String name, String? description,
-            bool isSaving, String? errorMessage)
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)
+        $default, {
+    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)
         editing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Trip trip, String? errorMessage)? $default, {
-    TResult? Function(Trip trip, String name, String? description,
-            bool isSaving, String? errorMessage)?
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
+        $default, {
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)?
         editing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Trip trip, String? errorMessage)? $default, {
-    TResult Function(Trip trip, String name, String? description, bool isSaving,
-            String? errorMessage)?
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
+        $default, {
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)?
         editing,
     required TResult orElse(),
   }) =>
@@ -73,7 +77,7 @@ abstract class $TripStateCopyWith<$Res> {
   factory $TripStateCopyWith(TripState value, $Res Function(TripState) then) =
       _$TripStateCopyWithImpl<$Res, TripState>;
   @useResult
-  $Res call({Trip trip, String? errorMessage});
+  $Res call({Trip trip, List<DayTrip> dayTrips, String? errorMessage});
 
   $TripCopyWith<$Res> get trip;
 }
@@ -92,6 +96,7 @@ class _$TripStateCopyWithImpl<$Res, $Val extends TripState>
   @override
   $Res call({
     Object? trip = null,
+    Object? dayTrips = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -99,6 +104,10 @@ class _$TripStateCopyWithImpl<$Res, $Val extends TripState>
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as Trip,
+      dayTrips: null == dayTrips
+          ? _value.dayTrips
+          : dayTrips // ignore: cast_nullable_to_non_nullable
+              as List<DayTrip>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -122,7 +131,7 @@ abstract class _$$_TripStateCopyWith<$Res> implements $TripStateCopyWith<$Res> {
       __$$_TripStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Trip trip, String? errorMessage});
+  $Res call({Trip trip, List<DayTrip> dayTrips, String? errorMessage});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -140,6 +149,7 @@ class __$$_TripStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? trip = null,
+    Object? dayTrips = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$_TripState(
@@ -147,6 +157,10 @@ class __$$_TripStateCopyWithImpl<$Res>
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as Trip,
+      dayTrips: null == dayTrips
+          ? _value._dayTrips
+          : dayTrips // ignore: cast_nullable_to_non_nullable
+              as List<DayTrip>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -158,16 +172,28 @@ class __$$_TripStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TripState implements _TripState {
-  const _$_TripState({required this.trip, this.errorMessage});
+  const _$_TripState(
+      {required this.trip,
+      required final List<DayTrip> dayTrips,
+      this.errorMessage})
+      : _dayTrips = dayTrips;
 
   @override
   final Trip trip;
+  final List<DayTrip> _dayTrips;
+  @override
+  List<DayTrip> get dayTrips {
+    if (_dayTrips is EqualUnmodifiableListView) return _dayTrips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dayTrips);
+  }
+
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'TripState(trip: $trip, errorMessage: $errorMessage)';
+    return 'TripState(trip: $trip, dayTrips: $dayTrips, errorMessage: $errorMessage)';
   }
 
   @override
@@ -176,12 +202,14 @@ class _$_TripState implements _TripState {
         (other.runtimeType == runtimeType &&
             other is _$_TripState &&
             (identical(other.trip, trip) || other.trip == trip) &&
+            const DeepCollectionEquality().equals(other._dayTrips, _dayTrips) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, trip, errorMessage);
+  int get hashCode => Object.hash(runtimeType, trip,
+      const DeepCollectionEquality().hash(_dayTrips), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -192,36 +220,39 @@ class _$_TripState implements _TripState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Trip trip, String? errorMessage) $default, {
-    required TResult Function(Trip trip, String name, String? description,
-            bool isSaving, String? errorMessage)
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)
+        $default, {
+    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)
         editing,
   }) {
-    return $default(trip, errorMessage);
+    return $default(trip, dayTrips, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Trip trip, String? errorMessage)? $default, {
-    TResult? Function(Trip trip, String name, String? description,
-            bool isSaving, String? errorMessage)?
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
+        $default, {
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)?
         editing,
   }) {
-    return $default?.call(trip, errorMessage);
+    return $default?.call(trip, dayTrips, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Trip trip, String? errorMessage)? $default, {
-    TResult Function(Trip trip, String name, String? description, bool isSaving,
-            String? errorMessage)?
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
+        $default, {
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)?
         editing,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(trip, errorMessage);
+      return $default(trip, dayTrips, errorMessage);
     }
     return orElse();
   }
@@ -260,10 +291,14 @@ class _$_TripState implements _TripState {
 
 abstract class _TripState implements TripState {
   const factory _TripState(
-      {required final Trip trip, final String? errorMessage}) = _$_TripState;
+      {required final Trip trip,
+      required final List<DayTrip> dayTrips,
+      final String? errorMessage}) = _$_TripState;
 
   @override
   Trip get trip;
+  @override
+  List<DayTrip> get dayTrips;
   @override
   String? get errorMessage;
   @override
@@ -282,6 +317,7 @@ abstract class _$$TripStateEditingCopyWith<$Res>
   @useResult
   $Res call(
       {Trip trip,
+      List<DayTrip> dayTrips,
       String name,
       String? description,
       bool isSaving,
@@ -303,6 +339,7 @@ class __$$TripStateEditingCopyWithImpl<$Res>
   @override
   $Res call({
     Object? trip = null,
+    Object? dayTrips = null,
     Object? name = null,
     Object? description = freezed,
     Object? isSaving = null,
@@ -313,6 +350,10 @@ class __$$TripStateEditingCopyWithImpl<$Res>
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as Trip,
+      dayTrips: null == dayTrips
+          ? _value._dayTrips
+          : dayTrips // ignore: cast_nullable_to_non_nullable
+              as List<DayTrip>,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -338,13 +379,23 @@ class __$$TripStateEditingCopyWithImpl<$Res>
 class _$TripStateEditing implements TripStateEditing {
   const _$TripStateEditing(
       {required this.trip,
+      required final List<DayTrip> dayTrips,
       required this.name,
       required this.description,
       this.isSaving = false,
-      this.errorMessage});
+      this.errorMessage})
+      : _dayTrips = dayTrips;
 
   @override
   final Trip trip;
+  final List<DayTrip> _dayTrips;
+  @override
+  List<DayTrip> get dayTrips {
+    if (_dayTrips is EqualUnmodifiableListView) return _dayTrips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dayTrips);
+  }
+
   @override
   final String name;
   @override
@@ -357,7 +408,7 @@ class _$TripStateEditing implements TripStateEditing {
 
   @override
   String toString() {
-    return 'TripState.editing(trip: $trip, name: $name, description: $description, isSaving: $isSaving, errorMessage: $errorMessage)';
+    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, isSaving: $isSaving, errorMessage: $errorMessage)';
   }
 
   @override
@@ -366,6 +417,7 @@ class _$TripStateEditing implements TripStateEditing {
         (other.runtimeType == runtimeType &&
             other is _$TripStateEditing &&
             (identical(other.trip, trip) || other.trip == trip) &&
+            const DeepCollectionEquality().equals(other._dayTrips, _dayTrips) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -376,8 +428,14 @@ class _$TripStateEditing implements TripStateEditing {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, trip, name, description, isSaving, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      trip,
+      const DeepCollectionEquality().hash(_dayTrips),
+      name,
+      description,
+      isSaving,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -388,36 +446,40 @@ class _$TripStateEditing implements TripStateEditing {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Trip trip, String? errorMessage) $default, {
-    required TResult Function(Trip trip, String name, String? description,
-            bool isSaving, String? errorMessage)
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)
+        $default, {
+    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)
         editing,
   }) {
-    return editing(trip, name, description, isSaving, errorMessage);
+    return editing(trip, dayTrips, name, description, isSaving, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Trip trip, String? errorMessage)? $default, {
-    TResult? Function(Trip trip, String name, String? description,
-            bool isSaving, String? errorMessage)?
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
+        $default, {
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)?
         editing,
   }) {
-    return editing?.call(trip, name, description, isSaving, errorMessage);
+    return editing?.call(
+        trip, dayTrips, name, description, isSaving, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Trip trip, String? errorMessage)? $default, {
-    TResult Function(Trip trip, String name, String? description, bool isSaving,
-            String? errorMessage)?
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
+        $default, {
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, bool isSaving, String? errorMessage)?
         editing,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(trip, name, description, isSaving, errorMessage);
+      return editing(trip, dayTrips, name, description, isSaving, errorMessage);
     }
     return orElse();
   }
@@ -457,6 +519,7 @@ class _$TripStateEditing implements TripStateEditing {
 abstract class TripStateEditing implements TripState {
   const factory TripStateEditing(
       {required final Trip trip,
+      required final List<DayTrip> dayTrips,
       required final String name,
       required final String? description,
       final bool isSaving,
@@ -464,6 +527,8 @@ abstract class TripStateEditing implements TripState {
 
   @override
   Trip get trip;
+  @override
+  List<DayTrip> get dayTrips;
   String get name;
   String? get description;
   bool get isSaving;

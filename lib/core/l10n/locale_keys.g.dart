@@ -37,5 +37,6 @@ abstract class  LocaleKeys {
   static const cancel = 'cancel';
   static const discard = 'discard';
   static const save = 'save';
+  static const addDayTrip = 'addDayTrip';
 
 }

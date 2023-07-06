@@ -34,5 +34,6 @@
     "discardChangesQuestion" : "Are you sure you want to discard your changes?",
     "cancel" : "Cancel",
     "discard" : "Discard",
-    "save" : "Save"
+    "save" : "Save",
+    "addDayTrip" : "Add Day of trip"
 }

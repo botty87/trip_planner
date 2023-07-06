@@ -2,8 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../domain/entities/trip.dart';
-import '../../../../domain/usecases/save_trip.dart';
+import '../../../domain/entities/day_trip.dart';
+import '../../../domain/entities/trip.dart';
+import '../../../domain/usecases/save_trip.dart';
 
 part 'trip_cubit.freezed.dart';
 part 'trip_state.dart';
@@ -13,11 +14,12 @@ class TripCubit extends Cubit<TripState> {
   final SaveTrip _saveTrip;
   TripCubit({@factoryParam required Trip trip, required SaveTrip saveTrip})
       : _saveTrip = saveTrip,
-        super(TripState(trip: trip));
+        super(TripState(trip: trip, dayTrips: []));
 
   void edit() {
     emit(TripState.editing(
       trip: state.trip,
+      dayTrips: state.dayTrips,
       name: state.trip.name,
       description: state.trip.description,
     ));
@@ -34,7 +36,7 @@ class TripCubit extends Cubit<TripState> {
   }
 
   void editCancel() {
-    emit(TripState(trip: state.trip));
+    emit(TripState(trip: state.trip, dayTrips: state.dayTrips));
   }
 
   save() async {
@@ -62,9 +64,10 @@ class TripCubit extends Cubit<TripState> {
       },
       (_) => emit(TripState(
           trip: state.trip.copyWith(
-        name: tripName,
-        description: tripDescription,
-      ))),
+            name: tripName,
+            description: tripDescription,
+          ),
+          dayTrips: state.dayTrips)),
     );
   }
 }

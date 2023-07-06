@@ -5,7 +5,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/save_trip.dart';
-import 'package:trip_planner/features/trips/presentation/cubit/trip/cubit/trip_cubit.dart';
+import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
 
 import 'trip_cubit_test.mocks.dart';
 

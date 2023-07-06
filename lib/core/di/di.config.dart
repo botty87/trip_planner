@@ -27,7 +27,7 @@ import 'package:trip_planner/features/trips/domain/usecases/save_trip.dart'
     as _i16;
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
     as _i21;
-import 'package:trip_planner/features/trips/presentation/cubit/trip/cubit/trip_cubit.dart'
+import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart'
     as _i17;
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart'
     as _i22;
