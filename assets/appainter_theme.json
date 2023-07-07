@@ -132,7 +132,6 @@
     "isDense": false
   },
   "materialTapTargetSize": "shrinkWrap",
-  "platform": "macOS",
   "primaryColor": "#ff006a60",
   "primaryColorDark": "#ff1976d2",
   "primaryColorLight": "#ffbbdefb",
