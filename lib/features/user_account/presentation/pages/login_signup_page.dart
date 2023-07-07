@@ -73,7 +73,7 @@ class LoginSignupPage extends StatelessWidget {
                     children: [
                       SvgPicture(
                         AssetBytesLoader(Assets.svg.loginSvg),
-                        height: 200,
+                        height: 200, //TODO: responsive
                       ),
                       SizedBox(height: VERTICAL_SPACE),
                       _LoginSection(),

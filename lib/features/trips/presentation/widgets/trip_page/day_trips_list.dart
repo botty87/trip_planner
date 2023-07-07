@@ -6,16 +6,16 @@ class _DayTripsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dayTrips = context.select((TripCubit cubit) => cubit.state.dayTrips);
-    if (dayTrips.isEmpty) {
-      return const _AddDayTripCard();
-    } else {
-      return ListView.builder(
-        itemCount: dayTrips.length,
-        itemBuilder: (context, index) {
-          final dayTrip = dayTrips[index];
-          return _DayTripCard(key: ValueKey(dayTrip.id), dayTrip: dayTrip);
-        },
-      );
-    }
+
+    return Padding(
+      padding: dayTrips.isNotEmpty ? const EdgeInsets.only(top: VERTICAL_SPACE_L) : EdgeInsets.zero,
+      child: Column(
+        children: [
+          if (dayTrips.isNotEmpty) ...[
+            //TODO: Add DayTripsList
+          ],
+        ],
+      ),
+    );
   }
 }

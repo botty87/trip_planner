@@ -41,4 +41,7 @@
     "dayTripNameHint" : "What's the name of your day of trip?",
     "dayTripDescription" : "Day of trip Description",
     "dayTripDescriptionHint" : "What's your day of trip about?",
+    "deleteTrip" : "Delete Trip",
+    "deleteTripQuestion" : "Are you sure you want to delete this trip?",
+    "delete" : "Delete"
 }

@@ -43,5 +43,8 @@ abstract class  LocaleKeys {
   static const dayTripNameHint = 'dayTripNameHint';
   static const dayTripDescription = 'dayTripDescription';
   static const dayTripDescriptionHint = 'dayTripDescriptionHint';
+  static const deleteTrip = 'deleteTrip';
+  static const deleteTripQuestion = 'deleteTripQuestion';
+  static const delete = 'delete';
 
 }

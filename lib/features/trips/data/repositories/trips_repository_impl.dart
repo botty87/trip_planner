@@ -48,4 +48,16 @@ class TripsRepositoryImpl implements TripsRepository {
       return left(TripsFailure());
     }
   }
+  
+  @override
+  Future<Either<TripsFailure, void>> deleteTrip(Trip trip) async {
+    try {
+      await tripsDataSource.deleteTrip(trip);
+      return right(null);
+    } on FirebaseException {
+      return left(TripsFailure());
+    } on Exception {
+      return left(TripsFailure());
+    }
+  }
 }

@@ -2,7 +2,7 @@ part of '../../pages/trip_page.dart';
 
 class _DayTripCard extends StatelessWidget {
   final DayTrip dayTrip;
-  const _DayTripCard({super.key, required this.dayTrip});
+  const _DayTripCard({required this.dayTrip});
 
   @override
   Widget build(BuildContext context) {

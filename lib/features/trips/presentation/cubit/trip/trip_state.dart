@@ -16,4 +16,11 @@ sealed class TripState with _$TripState {
     @Default(false) final bool isSaving,
     String? errorMessage,
   }) = TripStateEditing;
+
+  const factory TripState.deleting({
+    required final Trip trip,
+    required final List<DayTrip> dayTrips,
+    @Default(false) final bool deleted,
+    String? errorMessage,
+  }) = TripStateDeleting;
 }

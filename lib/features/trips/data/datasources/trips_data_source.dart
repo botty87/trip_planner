@@ -7,6 +7,8 @@ abstract class TripsDataSource {
   Future<void> addTrip(Trip trip);
   Stream<List<Trip>> listenTrips(String userId);
   Future<void> updateTrip(String id, String name, String? description);
+
+  Future<void> deleteTrip(Trip trip);
 }
 
 @LazySingleton(as: TripsDataSource)
@@ -40,5 +42,10 @@ final class TripsDataSourceImpl implements TripsDataSource {
       'name': name,
       'description': description?.isEmpty ?? true ? null : description,
     });
+  }
+  
+  @override
+  Future<void> deleteTrip(Trip trip) async {
+    await _tripsCollection.doc(trip.id).delete();
   }
 }

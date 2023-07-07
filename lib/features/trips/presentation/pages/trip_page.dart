@@ -17,10 +17,11 @@ import '../../domain/entities/day_trip.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/trip_cubit.dart';
 
-part '../widgets/trip_page/trip_header.dart';
-part '../widgets/trip_page/day_trips_list.dart';
-part '../widgets/trip_page/day_trip_card.dart';
 part '../widgets/trip_page/add_day_trip_card.dart';
+part '../widgets/trip_page/day_trip_card.dart';
+part '../widgets/trip_page/day_trips_list.dart';
+part '../widgets/trip_page/trip_header.dart';
+part '../widgets/trip_page/delete_trip_button.dart';
 
 @RoutePage()
 class TripPage extends StatelessWidget {
@@ -45,13 +46,24 @@ class TripPage extends StatelessWidget {
               preferredSize: const Size.fromHeight(kToolbarHeight),
               child: _TripPageAppBar(),
             ),
-            body: BlocListener<TripCubit, TripState>(
-              listenWhen: (previous, current) => current.errorMessage != null,
-              listener: (context, state) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  Snackbars.error(state.errorMessage!),
-                );
-              },
+            body: MultiBlocListener(
+              listeners: [
+                BlocListener<TripCubit, TripState>(
+                  listenWhen: (previous, current) => current.errorMessage != null,
+                  listener: (context, state) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      Snackbars.error(state.errorMessage!),
+                    );
+                  },
+                ),
+                BlocListener<TripCubit, TripState>(
+                  listenWhen: (previous, current) =>
+                      current is TripStateDeleting && current.deleted,
+                  listener: (context, state) {
+                    context.router.pop();
+                  },
+                ),
+              ],
               child: _TripPageBody(),
             ),
           ),
@@ -101,7 +113,8 @@ class _TripPageBody extends StatelessWidget {
     return Column(
       children: [
         BlocSelector<TripCubit, TripState, bool>(
-            selector: (state) => state is TripStateEditing && state.isSaving,
+            selector: (state) =>
+                (state is TripStateEditing && state.isSaving) || state is TripStateDeleting,
             builder: (context, isLoading) {
               if (isLoading) {
                 return LinearProgressIndicator(minHeight: 1);
@@ -117,8 +130,11 @@ class _TripPageBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   _TripHeader(),
-                  const SizedBox(height: VERTICAL_SPACE_L),
                   const _DayTripsList(),
+                  const SizedBox(height: VERTICAL_SPACE_L),
+                  const _AddDayTripCard(),
+                  const SizedBox(height: VERTICAL_SPACE_L),
+                  _DeleteTripButton(),
                 ],
               ),
             ),

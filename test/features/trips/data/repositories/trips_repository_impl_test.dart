@@ -14,6 +14,13 @@ void main() {
   late MockTripsDataSource mockTripsDataSource;
   late TripsRepositoryImpl tripsRepositoryImpl;
 
+  final tTrip = Trip(
+    id: 'id',
+    userId: 'userId',
+    name: 'name',
+    createdAt: DateTime.now(),
+  );
+
   setUp(() {
     mockTripsDataSource = MockTripsDataSource();
     tripsRepositoryImpl = TripsRepositoryImpl(
@@ -100,6 +107,26 @@ void main() {
 
       // act
       final result = await tripsRepositoryImpl.updateTrip(tripId, tripName, tripDescription);
+      // assert
+      expect(result, equals(left(TripsFailure())));
+    });
+   });
+
+   group('delete trip', () { 
+    test('should return right(null) when TripsDataSource.deleteTrip completes', () async {
+      when(mockTripsDataSource.deleteTrip(tTrip)).thenAnswer((_) async => null);
+
+      // act
+      final result = await tripsRepositoryImpl.deleteTrip(tTrip);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(TripsFailure()) when TripsDataSource.deleteTrip throws', () async {
+      when(mockTripsDataSource.deleteTrip(tTrip)).thenThrow(Exception());
+
+      // act
+      final result = await tripsRepositoryImpl.deleteTrip(tTrip);
       // assert
       expect(result, equals(left(TripsFailure())));
     });

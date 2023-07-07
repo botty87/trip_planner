@@ -12,9 +12,11 @@ class _AddDayTripCard extends StatelessWidget {
           padding: CARD_PADDING,
           child: Column(
             children: [
-              SvgPicture(
-                AssetBytesLoader(Assets.svg.addDayTripSvg),
-                height: 180,
+              AspectRatio(
+                aspectRatio: 3 / 2,
+                child: SvgPicture(
+                  AssetBytesLoader(Assets.svg.addDayTripSvg),
+                ),
               ),
               const SizedBox(height: VERTICAL_SPACE_L),
               Text(
