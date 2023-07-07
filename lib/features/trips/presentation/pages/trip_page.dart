@@ -20,8 +20,9 @@ import '../cubit/trip/trip_cubit.dart';
 part '../widgets/trip_page/add_day_trip_card.dart';
 part '../widgets/trip_page/day_trip_card.dart';
 part '../widgets/trip_page/day_trips_list.dart';
-part '../widgets/trip_page/trip_header.dart';
 part '../widgets/trip_page/delete_trip_button.dart';
+part '../widgets/trip_page/trip_editing_form.dart';
+part '../widgets/trip_page/trip_header.dart';
 
 @RoutePage()
 class TripPage extends StatelessWidget {
@@ -126,16 +127,27 @@ class _TripPageBody extends StatelessWidget {
           child: SingleChildScrollView(
             child: SafeArea(
               minimum: DEFAULT_PAGE_PADDING,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _TripHeader(),
-                  const _DayTripsList(),
-                  const SizedBox(height: VERTICAL_SPACE_L),
-                  const _AddDayTripCard(),
-                  const SizedBox(height: VERTICAL_SPACE_L),
-                  _DeleteTripButton(),
-                ],
+              child: BlocSelector<TripCubit, TripState, bool>(
+                selector: (state) {
+                  return state is TripStateEditing;
+                },
+                builder: (context, isEditing) {
+                  if (isEditing) {
+                    return const _TripEditingForm();
+                  } else {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        _TripHeader(),
+                        const _DayTripsList(),
+                        const SizedBox(height: VERTICAL_SPACE_L),
+                        const _AddDayTripCard(),
+                        const SizedBox(height: VERTICAL_SPACE_L),
+                        _DeleteTripButton(),
+                      ],
+                    );
+                  }
+                },
               ),
             ),
           ),
