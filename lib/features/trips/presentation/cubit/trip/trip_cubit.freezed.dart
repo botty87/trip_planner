@@ -186,7 +186,7 @@ class __$$_TripStateCopyWithImpl<$Res>
 class _$_TripState implements _TripState {
   const _$_TripState(
       {required this.trip,
-      required final List<DayTrip> dayTrips,
+      final List<DayTrip> dayTrips = const [],
       this.errorMessage})
       : _dayTrips = dayTrips;
 
@@ -194,6 +194,7 @@ class _$_TripState implements _TripState {
   final Trip trip;
   final List<DayTrip> _dayTrips;
   @override
+  @JsonKey()
   List<DayTrip> get dayTrips {
     if (_dayTrips is EqualUnmodifiableListView) return _dayTrips;
     // ignore: implicit_dynamic_type
@@ -316,7 +317,7 @@ class _$_TripState implements _TripState {
 abstract class _TripState implements TripState {
   const factory _TripState(
       {required final Trip trip,
-      required final List<DayTrip> dayTrips,
+      final List<DayTrip> dayTrips,
       final String? errorMessage}) = _$_TripState;
 
   @override
@@ -403,7 +404,7 @@ class __$$TripStateEditingCopyWithImpl<$Res>
 class _$TripStateEditing implements TripStateEditing {
   const _$TripStateEditing(
       {required this.trip,
-      required final List<DayTrip> dayTrips,
+      final List<DayTrip> dayTrips = const [],
       required this.name,
       required this.description,
       this.isSaving = false,
@@ -414,6 +415,7 @@ class _$TripStateEditing implements TripStateEditing {
   final Trip trip;
   final List<DayTrip> _dayTrips;
   @override
+  @JsonKey()
   List<DayTrip> get dayTrips {
     if (_dayTrips is EqualUnmodifiableListView) return _dayTrips;
     // ignore: implicit_dynamic_type
@@ -555,7 +557,7 @@ class _$TripStateEditing implements TripStateEditing {
 abstract class TripStateEditing implements TripState {
   const factory TripStateEditing(
       {required final Trip trip,
-      required final List<DayTrip> dayTrips,
+      final List<DayTrip> dayTrips,
       required final String name,
       required final String? description,
       final bool isSaving,
@@ -633,7 +635,7 @@ class __$$TripStateDeletingCopyWithImpl<$Res>
 class _$TripStateDeleting implements TripStateDeleting {
   const _$TripStateDeleting(
       {required this.trip,
-      required final List<DayTrip> dayTrips,
+      final List<DayTrip> dayTrips = const [],
       this.deleted = false,
       this.errorMessage})
       : _dayTrips = dayTrips;
@@ -642,6 +644,7 @@ class _$TripStateDeleting implements TripStateDeleting {
   final Trip trip;
   final List<DayTrip> _dayTrips;
   @override
+  @JsonKey()
   List<DayTrip> get dayTrips {
     if (_dayTrips is EqualUnmodifiableListView) return _dayTrips;
     // ignore: implicit_dynamic_type
@@ -768,7 +771,7 @@ class _$TripStateDeleting implements TripStateDeleting {
 abstract class TripStateDeleting implements TripState {
   const factory TripStateDeleting(
       {required final Trip trip,
-      required final List<DayTrip> dayTrips,
+      final List<DayTrip> dayTrips,
       final bool deleted,
       final String? errorMessage}) = _$TripStateDeleting;
 

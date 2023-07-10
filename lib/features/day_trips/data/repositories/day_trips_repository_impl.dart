@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:trip_planner/core/error/failures.dart';
 import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart';
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 
@@ -21,6 +23,15 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       return left(DayTripsFailure(message: e.message));
     } on Exception {
       return left(DayTripsFailure());
+    }
+  }
+
+  @override
+  Stream<Either<DayTripsFailure, List<DayTrip>>> listenDayTrips(String tripId) async* {
+    try {
+      yield* _dayTripsDataSource.listenDayTrips(tripId).map((dayTrips) => right(dayTrips));
+    } catch (e) {
+      yield left(DayTripsFailure());
     }
   }
 }

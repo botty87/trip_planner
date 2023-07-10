@@ -9,6 +9,8 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
+    as _i6;
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i3;
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
@@ -84,4 +86,17 @@ class MockDayTripsRepository extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+  @override
+  _i4.Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>> listenDayTrips(
+          String? tripId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenDayTrips,
+          [tripId],
+        ),
+        returnValue: _i4
+            .Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>.empty(),
+        returnValueForMissingStub: _i4
+            .Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>.empty(),
+      ) as _i4.Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>);
 }

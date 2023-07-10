@@ -4,6 +4,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart';
 import 'package:trip_planner/features/day_trips/data/repositories/day_trips_repository_impl.dart';
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 
 import 'day_trips_repository_impl_test.mocks.dart';
@@ -37,6 +38,32 @@ void main() {
       final result = await repository.createDayTrip(name: 'name', tripId: 'tripId');
       // assert
       expect(result, equals(left(DayTripsFailure(message: 'Exception'))));
+    });
+  });
+
+  group('listenDayTrips', () { 
+    test('should return right(List<DayTrip>) when listenDayTrips', () async {
+      final tDayTrip = DayTrip(
+        id: 'id',
+        name: 'name',
+        description: 'description',
+      );
+      final tDayTrips = [tDayTrip];
+      when(mockDayTripsDataSource.listenDayTrips(any)).thenAnswer((_) => Stream.value(tDayTrips));
+
+      // act
+      final result = repository.listenDayTrips('tripId');
+      // assert
+      expect(result, emitsInOrder([right(tDayTrips)]));
+    });
+
+    test('should return left(DayTripsFailure()) when listenDayTrips throws', () async {
+      when(mockDayTripsDataSource.listenDayTrips(any)).thenThrow(Exception());
+
+      // act
+      final result = repository.listenDayTrips('tripId');
+      // assert
+      expect(result, emitsInOrder([left(DayTripsFailure())]));
     });
   });
 }

@@ -6,6 +6,8 @@ import '../../domain/entities/day_trip.dart';
 abstract class DayTripsDataSource {
   Future<void> createDayTrip(
       {required String name, String? description, required String tripId});
+
+  Stream<List<DayTrip>> listenDayTrips(String tripId);
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -22,5 +24,14 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
   Future<void> createDayTrip(
       {required String name, String? description, required String tripId}) async {
     await _dayTripsCollection(tripId).add(DayTrip(name: name, description: description));
+  }
+  
+  @override
+  Stream<List<DayTrip>> listenDayTrips(String tripId) async* {
+    yield* _dayTripsCollection(tripId)
+        .snapshots()
+        .map((snapshot) {
+          return snapshot.docs.map((doc) => doc.data()).toList();
+        });
   }
 }

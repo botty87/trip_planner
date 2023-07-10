@@ -1,10 +1,15 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 
 import '../../../../day_trips/domain/entities/day_trip.dart';
+import '../../../../day_trips/domain/usecases/listen_day_trips.dart';
+import '../../../../day_trips/errors/day_trips_failure.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/delete_trip.dart';
 import '../../../domain/usecases/save_trip.dart';
@@ -16,14 +21,30 @@ part 'trip_state.dart';
 class TripCubit extends Cubit<TripState> {
   final SaveTrip _saveTrip;
   final DeleteTrip _deleteTrip;
+  final ListenDayTrips _listenDayTrips;
+  late final StreamSubscription<Either<DayTripsFailure, List<DayTrip>>> _dayTripsSubscription;
 
   TripCubit(
       {@factoryParam required Trip trip,
       required SaveTrip saveTrip,
-      required DeleteTrip deleteTrip})
+      required DeleteTrip deleteTrip,
+      required ListenDayTrips listenDayTrips})
       : _saveTrip = saveTrip,
         _deleteTrip = deleteTrip,
-        super(TripState(trip: trip, dayTrips: []));
+        _listenDayTrips = listenDayTrips,
+        super(TripState(trip: trip, dayTrips: [])) {
+    _dayTripsSubscription =
+        _listenDayTrips(ListenDayTripsParams(tripId: trip.id!)).listen((result) {
+      result.fold(
+        (failure) {
+          //TODO: handle failure
+        },
+        (dayTrips) {
+          emit(TripState(trip: state.trip, dayTrips: dayTrips));
+        },
+      );
+    });
+  }
 
   void edit() {
     emit(TripState.editing(
@@ -97,5 +118,11 @@ class TripCubit extends Cubit<TripState> {
         deleted: true,
       )),
     );
+  }
+
+  @override
+  Future<void> close() {
+    _dayTripsSubscription.cancel();
+    return super.close();
   }
 }

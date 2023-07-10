@@ -10,6 +10,8 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart'
     as _i2;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -46,4 +48,14 @@ class MockDayTripsDataSource extends _i1.Mock
         returnValue: _i3.Future<void>.value(),
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
+  @override
+  _i3.Stream<List<_i4.DayTrip>> listenDayTrips(String? tripId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenDayTrips,
+          [tripId],
+        ),
+        returnValue: _i3.Stream<List<_i4.DayTrip>>.empty(),
+        returnValueForMissingStub: _i3.Stream<List<_i4.DayTrip>>.empty(),
+      ) as _i3.Stream<List<_i4.DayTrip>>);
 }
