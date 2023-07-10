@@ -20,8 +20,8 @@ class TripsRepositoryImpl implements TripsRepository {
     try {
       await tripsDataSource.addTrip(trip);
       return right(null);
-    } on FirebaseException {
-      return left(TripsFailure());
+    } on FirebaseException catch (e) {
+      return left(TripsFailure(message: e.message));
     } on Exception {
       return left(TripsFailure());
     }

@@ -1,6 +1,6 @@
 part of '../../pages/trip_page.dart';
 
-class _DayTripCard extends StatelessWidget {
+/* class _DayTripCard extends StatelessWidget {
   final DayTrip dayTrip;
   const _DayTripCard({required this.dayTrip});
 
@@ -20,4 +20,4 @@ class _DayTripCard extends StatelessWidget {
       ),
     );
   }
-}
+} */

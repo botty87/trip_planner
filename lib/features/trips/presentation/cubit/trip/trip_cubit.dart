@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 
-import '../../../domain/entities/day_trip.dart';
+import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/delete_trip.dart';
 import '../../../domain/usecases/save_trip.dart';
@@ -64,7 +66,7 @@ class TripCubit extends Cubit<TripState> {
       (failure) {
         emit((state as TripStateEditing).copyWith(
           isSaving: false,
-          errorMessage: failure.message,
+          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
         ));
       },
       (_) => emit(TripState(

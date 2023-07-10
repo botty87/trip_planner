@@ -7,9 +7,11 @@ part 'day_trip.g.dart';
 sealed class DayTrip with _$DayTrip {
 
   factory DayTrip({
-    required String id,
+    // ignore: invalid_annotation_target
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default('') String id,
     required String name,
-    required String description,
+    String? description,
   }) = _DayTrip;
 
   factory DayTrip.fromJson(Map<String, dynamic> json) => _$DayTripFromJson(json);

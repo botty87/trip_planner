@@ -14,23 +14,37 @@ import '../cubit/new_day_trip/new_day_trip_cubit.dart';
 
 @RoutePage()
 class NewDayTripPage extends StatelessWidget {
-  NewDayTripPage({super.key});
+  final String _tripId;
+  NewDayTripPage({super.key, @pathParam required String tripId}) : _tripId = tripId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<NewDayTripCubit>(
-      create: (context) => getIt(),
+      create: (context) => getIt(param1: _tripId),
       child: Scaffold(
         appBar: AppBar(
           title: Text(LocaleKeys.newDayTrip.tr()),
         ),
-        body: BlocListener<NewDayTripCubit, NewDayTripState>(
-          listenWhen: (previous, current) => current.errorMessage != null,
-          listener: (context, state) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              Snackbars.error(state.errorMessage!),
-            );
-          },
+        body: MultiBlocListener(
+          listeners: [
+            BlocListener<NewDayTripCubit, NewDayTripState>(
+              listenWhen: (previous, current) => current.errorMessage != null,
+              listener: (context, state) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  Snackbars.error(state.errorMessage!),
+                );
+              },
+            ),
+            BlocListener<NewDayTripCubit, NewDayTripState>(
+              listenWhen: (previous, current) => current.createSuccess,
+              listener: (context, state) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  Snackbars.success(LocaleKeys.dayTripCreated.tr()),
+                );
+                context.router.pop();
+              },
+            ),
+          ],
           child: Builder(builder: (context) {
             final cubit = context.read<NewDayTripCubit>();
             return SafeArea(
@@ -83,14 +97,7 @@ class NewDayTripPage extends StatelessWidget {
                             return ElevatedButton(
                               key: Key('addDayTripButton'),
                               child: Text(LocaleKeys.addDayTrip.tr()),
-                              onPressed: isSaving
-                                  ? null
-                                  : () async {
-                                      if (await cubit.createDayTrip()) {
-                                        context.popRoute();
-                                      }
-                                      ;
-                                    },
+                              onPressed: isSaving ? null : () => cubit.createDayTrip(),
                             );
                           },
                         ),

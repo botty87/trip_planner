@@ -6,6 +6,8 @@ class NewDayTripState with _$NewDayTripState {
     final String? name,
     final String? description,
     @Default(false) final bool isSaving,
+    @Default(false) final bool createSuccess,
     String? errorMessage,
   }) = _NewDayTripState;
+
 }

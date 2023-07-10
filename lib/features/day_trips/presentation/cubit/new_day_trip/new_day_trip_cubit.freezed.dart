@@ -19,6 +19,7 @@ mixin _$NewDayTripState {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
+  bool get createSuccess => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,7 +34,11 @@ abstract class $NewDayTripStateCopyWith<$Res> {
       _$NewDayTripStateCopyWithImpl<$Res, NewDayTripState>;
   @useResult
   $Res call(
-      {String? name, String? description, bool isSaving, String? errorMessage});
+      {String? name,
+      String? description,
+      bool isSaving,
+      bool createSuccess,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -52,6 +57,7 @@ class _$NewDayTripStateCopyWithImpl<$Res, $Val extends NewDayTripState>
     Object? name = freezed,
     Object? description = freezed,
     Object? isSaving = null,
+    Object? createSuccess = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +72,10 @@ class _$NewDayTripStateCopyWithImpl<$Res, $Val extends NewDayTripState>
       isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createSuccess: null == createSuccess
+          ? _value.createSuccess
+          : createSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -84,7 +94,11 @@ abstract class _$$_NewDayTripStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? name, String? description, bool isSaving, String? errorMessage});
+      {String? name,
+      String? description,
+      bool isSaving,
+      bool createSuccess,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -101,6 +115,7 @@ class __$$_NewDayTripStateCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? isSaving = null,
+    Object? createSuccess = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$_NewDayTripState(
@@ -116,6 +131,10 @@ class __$$_NewDayTripStateCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      createSuccess: null == createSuccess
+          ? _value.createSuccess
+          : createSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -128,7 +147,11 @@ class __$$_NewDayTripStateCopyWithImpl<$Res>
 
 class _$_NewDayTripState implements _NewDayTripState {
   const _$_NewDayTripState(
-      {this.name, this.description, this.isSaving = false, this.errorMessage});
+      {this.name,
+      this.description,
+      this.isSaving = false,
+      this.createSuccess = false,
+      this.errorMessage});
 
   @override
   final String? name;
@@ -138,11 +161,14 @@ class _$_NewDayTripState implements _NewDayTripState {
   @JsonKey()
   final bool isSaving;
   @override
+  @JsonKey()
+  final bool createSuccess;
+  @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'NewDayTripState(name: $name, description: $description, isSaving: $isSaving, errorMessage: $errorMessage)';
+    return 'NewDayTripState(name: $name, description: $description, isSaving: $isSaving, createSuccess: $createSuccess, errorMessage: $errorMessage)';
   }
 
   @override
@@ -155,13 +181,15 @@ class _$_NewDayTripState implements _NewDayTripState {
                 other.description == description) &&
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
+            (identical(other.createSuccess, createSuccess) ||
+                other.createSuccess == createSuccess) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, description, isSaving, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, name, description, isSaving, createSuccess, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -175,6 +203,7 @@ abstract class _NewDayTripState implements NewDayTripState {
       {final String? name,
       final String? description,
       final bool isSaving,
+      final bool createSuccess,
       final String? errorMessage}) = _$_NewDayTripState;
 
   @override
@@ -183,6 +212,8 @@ abstract class _NewDayTripState implements NewDayTripState {
   String? get description;
   @override
   bool get isSaving;
+  @override
+  bool get createSuccess;
   @override
   String? get errorMessage;
   @override

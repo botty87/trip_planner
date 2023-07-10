@@ -20,9 +20,11 @@ DayTrip _$DayTripFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DayTrip {
+// ignore: invalid_annotation_target
+  @JsonKey(includeFromJson: false, includeToJson: false)
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,10 @@ abstract class $DayTripCopyWith<$Res> {
   factory $DayTripCopyWith(DayTrip value, $Res Function(DayTrip) then) =
       _$DayTripCopyWithImpl<$Res, DayTrip>;
   @useResult
-  $Res call({String id, String name, String description});
+  $Res call(
+      {@JsonKey(includeFromJson: false, includeToJson: false) String id,
+      String name,
+      String? description});
 }
 
 /// @nodoc
@@ -52,7 +57,7 @@ class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? description = null,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -63,10 +68,10 @@ class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +83,10 @@ abstract class _$$_DayTripCopyWith<$Res> implements $DayTripCopyWith<$Res> {
       __$$_DayTripCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String description});
+  $Res call(
+      {@JsonKey(includeFromJson: false, includeToJson: false) String id,
+      String name,
+      String? description});
 }
 
 /// @nodoc
@@ -93,7 +101,7 @@ class __$$_DayTripCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? description = null,
+    Object? description = freezed,
   }) {
     return _then(_$_DayTrip(
       id: null == id
@@ -104,10 +112,10 @@ class __$$_DayTripCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -115,17 +123,22 @@ class __$$_DayTripCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DayTrip implements _DayTrip {
-  _$_DayTrip({required this.id, required this.name, required this.description});
+  _$_DayTrip(
+      {@JsonKey(includeFromJson: false, includeToJson: false) this.id = '',
+      required this.name,
+      this.description});
 
   factory _$_DayTrip.fromJson(Map<String, dynamic> json) =>
       _$$_DayTripFromJson(json);
 
+// ignore: invalid_annotation_target
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final String id;
   @override
   final String name;
   @override
-  final String description;
+  final String? description;
 
   @override
   String toString() {
@@ -163,18 +176,19 @@ class _$_DayTrip implements _DayTrip {
 
 abstract class _DayTrip implements DayTrip {
   factory _DayTrip(
-      {required final String id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) final String id,
       required final String name,
-      required final String description}) = _$_DayTrip;
+      final String? description}) = _$_DayTrip;
 
   factory _DayTrip.fromJson(Map<String, dynamic> json) = _$_DayTrip.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
+  @JsonKey(includeFromJson: false, includeToJson: false)
   String get id;
   @override
   String get name;
   @override
-  String get description;
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$$_DayTripCopyWith<_$_DayTrip> get copyWith =>

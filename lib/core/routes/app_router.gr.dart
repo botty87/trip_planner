@@ -11,11 +11,11 @@
 import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:flutter/material.dart' as _i8;
 import 'package:trip_planner/core/home_page.dart' as _i1;
-import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i9;
-import 'package:trip_planner/features/trips/presentation/pages/new_day_trip_page.dart'
-    as _i5;
-import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart'
+import 'package:trip_planner/features/day_trips/presentation/pages/new_day_trip_page.dart'
     as _i6;
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i9;
+import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart'
+    as _i5;
 import 'package:trip_planner/features/trips/presentation/pages/trip_page.dart'
     as _i3;
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
@@ -60,20 +60,25 @@ abstract class $AppRouter extends _i7.RootStackRouter {
         child: _i4.TripsPage(key: args.key),
       );
     },
-    NewDayTripRoute.name: (routeData) {
-      final args = routeData.argsAs<NewDayTripRouteArgs>(
-          orElse: () => const NewDayTripRouteArgs());
-      return _i7.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i5.NewDayTripPage(key: args.key),
-      );
-    },
     NewTripRoute.name: (routeData) {
       final args = routeData.argsAs<NewTripRouteArgs>(
           orElse: () => const NewTripRouteArgs());
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i6.NewTripPage(key: args.key),
+        child: _i5.NewTripPage(key: args.key),
+      );
+    },
+    NewDayTripRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<NewDayTripRouteArgs>(
+          orElse: () =>
+              NewDayTripRouteArgs(tripId: pathParams.getString('tripId')));
+      return _i7.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i6.NewDayTripPage(
+          key: args.key,
+          tripId: args.tripId,
+        ),
       );
     },
   };
@@ -190,36 +195,7 @@ class TripsRouteArgs {
 }
 
 /// generated route for
-/// [_i5.NewDayTripPage]
-class NewDayTripRoute extends _i7.PageRouteInfo<NewDayTripRouteArgs> {
-  NewDayTripRoute({
-    _i8.Key? key,
-    List<_i7.PageRouteInfo>? children,
-  }) : super(
-          NewDayTripRoute.name,
-          args: NewDayTripRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'NewDayTripRoute';
-
-  static const _i7.PageInfo<NewDayTripRouteArgs> page =
-      _i7.PageInfo<NewDayTripRouteArgs>(name);
-}
-
-class NewDayTripRouteArgs {
-  const NewDayTripRouteArgs({this.key});
-
-  final _i8.Key? key;
-
-  @override
-  String toString() {
-    return 'NewDayTripRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [_i6.NewTripPage]
+/// [_i5.NewTripPage]
 class NewTripRoute extends _i7.PageRouteInfo<NewTripRouteArgs> {
   NewTripRoute({
     _i8.Key? key,
@@ -244,5 +220,44 @@ class NewTripRouteArgs {
   @override
   String toString() {
     return 'NewTripRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i6.NewDayTripPage]
+class NewDayTripRoute extends _i7.PageRouteInfo<NewDayTripRouteArgs> {
+  NewDayTripRoute({
+    _i8.Key? key,
+    required String tripId,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+          NewDayTripRoute.name,
+          args: NewDayTripRouteArgs(
+            key: key,
+            tripId: tripId,
+          ),
+          rawPathParams: {'tripId': tripId},
+          initialChildren: children,
+        );
+
+  static const String name = 'NewDayTripRoute';
+
+  static const _i7.PageInfo<NewDayTripRouteArgs> page =
+      _i7.PageInfo<NewDayTripRouteArgs>(name);
+}
+
+class NewDayTripRouteArgs {
+  const NewDayTripRouteArgs({
+    this.key,
+    required this.tripId,
+  });
+
+  final _i8.Key? key;
+
+  final String tripId;
+
+  @override
+  String toString() {
+    return 'NewDayTripRouteArgs{key: $key, tripId: $tripId}';
   }
 }
