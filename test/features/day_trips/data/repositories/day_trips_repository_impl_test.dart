@@ -37,7 +37,7 @@ void main() {
       // act
       final result = await repository.createDayTrip(name: 'name', tripId: 'tripId');
       // assert
-      expect(result, equals(left(DayTripsFailure(message: 'Exception'))));
+      expect(result, equals(left(DayTripsFailure())));
     });
   });
 

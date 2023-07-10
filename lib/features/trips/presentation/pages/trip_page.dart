@@ -13,7 +13,6 @@ import '../../../../core/constants.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
-import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/trip_cubit.dart';
 

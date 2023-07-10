@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/core/error/failures.dart';
 import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart';
