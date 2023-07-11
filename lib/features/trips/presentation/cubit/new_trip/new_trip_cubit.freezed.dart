@@ -19,6 +19,7 @@ mixin _$NewTripState {
   String? get tripName => throw _privateConstructorUsedError;
   String? get tripDescription => throw _privateConstructorUsedError;
   DateTime? get startDate => throw _privateConstructorUsedError;
+  bool get isStartDateBeforeToday => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get createSuccess => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $NewTripStateCopyWith<$Res> {
       {String? tripName,
       String? tripDescription,
       DateTime? startDate,
+      bool isStartDateBeforeToday,
       String? errorMessage,
       bool isLoading,
       bool createSuccess});
@@ -59,6 +61,7 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
     Object? tripName = freezed,
     Object? tripDescription = freezed,
     Object? startDate = freezed,
+    Object? isStartDateBeforeToday = null,
     Object? errorMessage = freezed,
     Object? isLoading = null,
     Object? createSuccess = null,
@@ -76,6 +79,10 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      isStartDateBeforeToday: null == isStartDateBeforeToday
+          ? _value.isStartDateBeforeToday
+          : isStartDateBeforeToday // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -104,6 +111,7 @@ abstract class _$$_NewTripStateCopyWith<$Res>
       {String? tripName,
       String? tripDescription,
       DateTime? startDate,
+      bool isStartDateBeforeToday,
       String? errorMessage,
       bool isLoading,
       bool createSuccess});
@@ -123,6 +131,7 @@ class __$$_NewTripStateCopyWithImpl<$Res>
     Object? tripName = freezed,
     Object? tripDescription = freezed,
     Object? startDate = freezed,
+    Object? isStartDateBeforeToday = null,
     Object? errorMessage = freezed,
     Object? isLoading = null,
     Object? createSuccess = null,
@@ -140,6 +149,10 @@ class __$$_NewTripStateCopyWithImpl<$Res>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      isStartDateBeforeToday: null == isStartDateBeforeToday
+          ? _value.isStartDateBeforeToday
+          : isStartDateBeforeToday // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -163,6 +176,7 @@ class _$_NewTripState implements _NewTripState {
       {this.tripName,
       this.tripDescription,
       this.startDate,
+      this.isStartDateBeforeToday = false,
       this.errorMessage,
       this.isLoading = false,
       this.createSuccess = false});
@@ -174,6 +188,9 @@ class _$_NewTripState implements _NewTripState {
   @override
   final DateTime? startDate;
   @override
+  @JsonKey()
+  final bool isStartDateBeforeToday;
+  @override
   final String? errorMessage;
   @override
   @JsonKey()
@@ -184,7 +201,7 @@ class _$_NewTripState implements _NewTripState {
 
   @override
   String toString() {
-    return 'NewTripState(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, errorMessage: $errorMessage, isLoading: $isLoading, createSuccess: $createSuccess)';
+    return 'NewTripState(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday, errorMessage: $errorMessage, isLoading: $isLoading, createSuccess: $createSuccess)';
   }
 
   @override
@@ -198,6 +215,8 @@ class _$_NewTripState implements _NewTripState {
                 other.tripDescription == tripDescription) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
+            (identical(other.isStartDateBeforeToday, isStartDateBeforeToday) ||
+                other.isStartDateBeforeToday == isStartDateBeforeToday) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isLoading, isLoading) ||
@@ -207,8 +226,15 @@ class _$_NewTripState implements _NewTripState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tripName, tripDescription,
-      startDate, errorMessage, isLoading, createSuccess);
+  int get hashCode => Object.hash(
+      runtimeType,
+      tripName,
+      tripDescription,
+      startDate,
+      isStartDateBeforeToday,
+      errorMessage,
+      isLoading,
+      createSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -222,6 +248,7 @@ abstract class _NewTripState implements NewTripState {
       {final String? tripName,
       final String? tripDescription,
       final DateTime? startDate,
+      final bool isStartDateBeforeToday,
       final String? errorMessage,
       final bool isLoading,
       final bool createSuccess}) = _$_NewTripState;
@@ -232,6 +259,8 @@ abstract class _NewTripState implements NewTripState {
   String? get tripDescription;
   @override
   DateTime? get startDate;
+  @override
+  bool get isStartDateBeforeToday;
   @override
   String? get errorMessage;
   @override

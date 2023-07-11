@@ -49,6 +49,6 @@
     "dayTripCreated" : "Giornata di viaggio creata!",
     "tripStartDateEmpty" : "La data di inizio del viaggio non può essere vuota",
     "tripStartDate": "Data di inizio del viaggio",
-    "tripStartDateHint": "Quando inizia il tuo viaggio?",
-    "tripCreated" : "Viaggio creato!"
+    "tripCreated" : "Viaggio creato!",
+    "startDateBeforeTodayWarning" : "La data di inizio del viaggio è precedente a quella odierna! È corretto?"
 }

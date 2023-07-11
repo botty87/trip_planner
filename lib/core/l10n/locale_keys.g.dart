@@ -51,7 +51,7 @@ abstract class  LocaleKeys {
   static const dayTripCreated = 'dayTripCreated';
   static const tripStartDateEmpty = 'tripStartDateEmpty';
   static const tripStartDate = 'tripStartDate';
-  static const tripStartDateHint = 'tripStartDateHint';
   static const tripCreated = 'tripCreated';
+  static const startDateBeforeTodayWarning = 'startDateBeforeTodayWarning';
 
 }

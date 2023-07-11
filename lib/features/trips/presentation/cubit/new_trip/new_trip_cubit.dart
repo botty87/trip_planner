@@ -24,6 +24,12 @@ class NewTripCubit extends Cubit<NewTripState> {
     emit(state.copyWith(tripDescription: tripDescription));
   }
 
+  void startDateChanged(DateTime startDate) {
+    emit(state.copyWith(
+        startDate: startDate,
+        isStartDateBeforeToday: startDate.isBefore(DateTime.now().add(const Duration(days: -1)))));
+  }
+
   createTrip() async {
     if (state.tripName == null || state.tripName!.isEmpty) {
       emit(state.copyWith(errorMessage: LocaleKeys.tripNameEmpty.tr()));
@@ -31,15 +37,15 @@ class NewTripCubit extends Cubit<NewTripState> {
       return;
     }
 
-    if(state.startDate == null) {
+    if (state.startDate == null) {
       emit(state.copyWith(errorMessage: LocaleKeys.tripStartDateEmpty.tr()));
       emit(state.copyWith(errorMessage: null));
       return;
     }
 
     emit(state.copyWith(isLoading: true));
-    
-    assert (_userCubit.state is UserStateLoggedIn);
+
+    assert(_userCubit.state is UserStateLoggedIn);
     final userId = (_userCubit.state as UserStateLoggedIn).user.id;
     final result = await _createTrip(CreateTripParams(
       userId: userId,
@@ -51,7 +57,7 @@ class NewTripCubit extends Cubit<NewTripState> {
     result.fold(
       (failure) {
         String errorMessage = LocaleKeys.tripSaveError.tr();
-        if(failure.message != null) {
+        if (failure.message != null) {
           errorMessage += "\n\n${failure.message!}";
         }
         emit(state.copyWith(errorMessage: errorMessage, isLoading: false));
