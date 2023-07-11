@@ -11,8 +11,10 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import '../../../../core/widgets/separated_column.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/trip_cubit.dart';
 
@@ -139,7 +141,7 @@ class _TripPageBody extends StatelessWidget {
                       children: [
                         _TripHeader(),
                         const _DayTripsList(),
-                        const SizedBox(height: VERTICAL_SPACE_L),
+                        const SizedBox(height: VERTICAL_SPACE_S),
                         const _AddDayTripCard(),
                         const SizedBox(height: VERTICAL_SPACE_L),
                         _DeleteTripButton(),

@@ -9,6 +9,7 @@ class _AddDayTripCard extends StatelessWidget {
       onTap: () =>
           context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id!)),
       child: Card(
+        color: Colors.amberAccent[100],
         child: Padding(
           padding: CARD_PADDING,
           child: Column(

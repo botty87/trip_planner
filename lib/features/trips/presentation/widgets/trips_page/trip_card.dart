@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/routes/app_router.gr.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 
@@ -13,13 +14,16 @@ class TripCard extends StatelessWidget {
     return InkWell(
       onTap: () => context.router.push(TripRoute(trip: trip)),
       child: Card(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _TripNameWidget(name: trip.name),
-            if (trip.description != null) _TripDescriptionWidget(description: trip.description!),
-            _TripCreatedAtWidget(createdAt: trip.createdAt),
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(VERTICAL_SPACE),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _TripNameWidget(name: trip.name),
+              if (trip.description != null) _TripDescriptionWidget(description: trip.description!),
+              _TripCreatedAtWidget(createdAt: trip.createdAt),
+            ],
+          ),
         ),
       ),
     );
@@ -33,7 +37,7 @@ class _TripNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.symmetric(vertical: VERTICAL_SPACE_S),
       child: Text(
         name,
         style: Theme.of(context).textTheme.titleLarge,
@@ -52,7 +56,7 @@ class _TripDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.symmetric(vertical: VERTICAL_SPACE_S),
       child: Text(
         description,
         style: Theme.of(context).textTheme.bodyLarge,

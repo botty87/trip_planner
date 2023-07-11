@@ -9,11 +9,12 @@ class _DayTripsList extends StatelessWidget {
 
     return Padding(
       padding: dayTrips.isNotEmpty ? const EdgeInsets.only(top: VERTICAL_SPACE_L) : EdgeInsets.zero,
-      child: Column(
+      child: SeparatedColumn(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        separatorBuilder: (BuildContext context, int index) =>
+            const SizedBox(height: VERTICAL_SPACE_S),
         children: [
-          if (dayTrips.isNotEmpty) ...[
-            //TODO: Add DayTripsList
-          ],
+          ...dayTrips.map((dayTrip) => _DayTripCard(dayTrip: dayTrip)),
         ],
       ),
     );
