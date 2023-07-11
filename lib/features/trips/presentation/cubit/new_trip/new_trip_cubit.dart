@@ -24,12 +24,17 @@ class NewTripCubit extends Cubit<NewTripState> {
     emit(state.copyWith(tripDescription: tripDescription));
   }
 
-  //On true navigate to trips page
-  Future<bool> createTrip() async {
+  createTrip() async {
     if (state.tripName == null || state.tripName!.isEmpty) {
       emit(state.copyWith(errorMessage: LocaleKeys.tripNameEmpty.tr()));
       emit(state.copyWith(errorMessage: null));
-      return false;
+      return;
+    }
+
+    if(state.startDate == null) {
+      emit(state.copyWith(errorMessage: LocaleKeys.tripStartDateEmpty.tr()));
+      emit(state.copyWith(errorMessage: null));
+      return;
     }
 
     emit(state.copyWith(isLoading: true));
@@ -40,9 +45,10 @@ class NewTripCubit extends Cubit<NewTripState> {
       userId: userId,
       tripName: state.tripName!,
       tripDescription: state.tripDescription,
+      startDate: state.startDate!,
     ));
 
-    return result.fold<bool>(
+    result.fold(
       (failure) {
         String errorMessage = LocaleKeys.tripSaveError.tr();
         if(failure.message != null) {
@@ -50,11 +56,9 @@ class NewTripCubit extends Cubit<NewTripState> {
         }
         emit(state.copyWith(errorMessage: errorMessage, isLoading: false));
         emit(state.copyWith(errorMessage: null));
-        return false;
       },
       (_) {
-        emit(state.copyWith(isLoading: false));
-        return true;
+        emit(state.copyWith(isLoading: false, createSuccess: true));
       },
     );
   }

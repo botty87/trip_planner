@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$NewTripState {
   String? get tripName => throw _privateConstructorUsedError;
   String? get tripDescription => throw _privateConstructorUsedError;
+  DateTime? get startDate => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get createSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewTripStateCopyWith<NewTripState> get copyWith =>
@@ -35,8 +37,10 @@ abstract class $NewTripStateCopyWith<$Res> {
   $Res call(
       {String? tripName,
       String? tripDescription,
+      DateTime? startDate,
       String? errorMessage,
-      bool isLoading});
+      bool isLoading,
+      bool createSuccess});
 }
 
 /// @nodoc
@@ -54,8 +58,10 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
   $Res call({
     Object? tripName = freezed,
     Object? tripDescription = freezed,
+    Object? startDate = freezed,
     Object? errorMessage = freezed,
     Object? isLoading = null,
+    Object? createSuccess = null,
   }) {
     return _then(_value.copyWith(
       tripName: freezed == tripName
@@ -66,6 +72,10 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
           ? _value.tripDescription
           : tripDescription // ignore: cast_nullable_to_non_nullable
               as String?,
+      startDate: freezed == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -73,6 +83,10 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createSuccess: null == createSuccess
+          ? _value.createSuccess
+          : createSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -89,8 +103,10 @@ abstract class _$$_NewTripStateCopyWith<$Res>
   $Res call(
       {String? tripName,
       String? tripDescription,
+      DateTime? startDate,
       String? errorMessage,
-      bool isLoading});
+      bool isLoading,
+      bool createSuccess});
 }
 
 /// @nodoc
@@ -106,8 +122,10 @@ class __$$_NewTripStateCopyWithImpl<$Res>
   $Res call({
     Object? tripName = freezed,
     Object? tripDescription = freezed,
+    Object? startDate = freezed,
     Object? errorMessage = freezed,
     Object? isLoading = null,
+    Object? createSuccess = null,
   }) {
     return _then(_$_NewTripState(
       tripName: freezed == tripName
@@ -118,6 +136,10 @@ class __$$_NewTripStateCopyWithImpl<$Res>
           ? _value.tripDescription
           : tripDescription // ignore: cast_nullable_to_non_nullable
               as String?,
+      startDate: freezed == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -125,6 +147,10 @@ class __$$_NewTripStateCopyWithImpl<$Res>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createSuccess: null == createSuccess
+          ? _value.createSuccess
+          : createSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -136,22 +162,29 @@ class _$_NewTripState implements _NewTripState {
   const _$_NewTripState(
       {this.tripName,
       this.tripDescription,
+      this.startDate,
       this.errorMessage,
-      this.isLoading = false});
+      this.isLoading = false,
+      this.createSuccess = false});
 
   @override
   final String? tripName;
   @override
   final String? tripDescription;
   @override
+  final DateTime? startDate;
+  @override
   final String? errorMessage;
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final bool createSuccess;
 
   @override
   String toString() {
-    return 'NewTripState(tripName: $tripName, tripDescription: $tripDescription, errorMessage: $errorMessage, isLoading: $isLoading)';
+    return 'NewTripState(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, errorMessage: $errorMessage, isLoading: $isLoading, createSuccess: $createSuccess)';
   }
 
   @override
@@ -163,15 +196,19 @@ class _$_NewTripState implements _NewTripState {
                 other.tripName == tripName) &&
             (identical(other.tripDescription, tripDescription) ||
                 other.tripDescription == tripDescription) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+                other.isLoading == isLoading) &&
+            (identical(other.createSuccess, createSuccess) ||
+                other.createSuccess == createSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, tripName, tripDescription, errorMessage, isLoading);
+  int get hashCode => Object.hash(runtimeType, tripName, tripDescription,
+      startDate, errorMessage, isLoading, createSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -184,17 +221,23 @@ abstract class _NewTripState implements NewTripState {
   const factory _NewTripState(
       {final String? tripName,
       final String? tripDescription,
+      final DateTime? startDate,
       final String? errorMessage,
-      final bool isLoading}) = _$_NewTripState;
+      final bool isLoading,
+      final bool createSuccess}) = _$_NewTripState;
 
   @override
   String? get tripName;
   @override
   String? get tripDescription;
   @override
+  DateTime? get startDate;
+  @override
   String? get errorMessage;
   @override
   bool get isLoading;
+  @override
+  bool get createSuccess;
   @override
   @JsonKey(ignore: true)
   _$$_NewTripStateCopyWith<_$_NewTripState> get copyWith =>

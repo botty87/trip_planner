@@ -40,17 +40,17 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// See the documentation for Mockito's code generation for more information.
 class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
   @override
-  _i4.Future<_i2.Either<_i5.TripsFailure, void>> addTrip(_i6.Trip? trip) =>
+  _i4.Future<_i2.Either<_i5.TripsFailure, void>> createTrip(_i6.Trip? trip) =>
       (super.noSuchMethod(
         Invocation.method(
-          #addTrip,
+          #createTrip,
           [trip],
         ),
         returnValue: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
             _FakeEither_0<_i5.TripsFailure, void>(
           this,
           Invocation.method(
-            #addTrip,
+            #createTrip,
             [trip],
           ),
         )),
@@ -59,7 +59,7 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
                 _FakeEither_0<_i5.TripsFailure, void>(
           this,
           Invocation.method(
-            #addTrip,
+            #createTrip,
             [trip],
           ),
         )),

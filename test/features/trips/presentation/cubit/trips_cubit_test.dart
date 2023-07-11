@@ -25,6 +25,7 @@ void main() {
       description: 'test',
       userId: '1',
       createdAt: DateTime.now(),
+      startDate: DateTime.now(),
     ),
   ];
 

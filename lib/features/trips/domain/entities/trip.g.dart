@@ -11,6 +11,7 @@ _$_Trip _$$_TripFromJson(Map<String, dynamic> json) => _$_Trip(
       description: json['description'] as String?,
       userId: json['userId'] as String,
       createdAt: dateTimeFromTimestamp(json['createdAt'] as Timestamp),
+      startDate: dateTimeFromTimestamp(json['startDate'] as Timestamp),
     );
 
 Map<String, dynamic> _$$_TripToJson(_$_Trip instance) => <String, dynamic>{
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$_TripToJson(_$_Trip instance) => <String, dynamic>{
       'description': instance.description,
       'userId': instance.userId,
       'createdAt': dateTimeToTimestamp(instance.createdAt),
+      'startDate': dateTimeToTimestamp(instance.startDate),
     };

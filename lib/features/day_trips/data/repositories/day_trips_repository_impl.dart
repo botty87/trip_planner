@@ -13,10 +13,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
   DayTripsRepositoryImpl(this._dayTripsDataSource);
 
   @override
-  Future<Either<DayTripsFailure, void>> createDayTrip(
-      {required String name, String? description, required String tripId}) async {
+  Future<Either<DayTripsFailure, void>> addDayTrip(
+      {required String tripId, required DayTrip dayTrip}) async {
     try {
-      await _dayTripsDataSource.createDayTrip(name: name, description: description, tripId: tripId);
+      await _dayTripsDataSource.addDayTrip(tripId: tripId, dayTrip: dayTrip);
       return right(null);
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));

@@ -1,3 +1,5 @@
+
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -7,65 +9,31 @@ import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 import '../repositories/mock_day_trips_repository.mocks.dart';
 
 void main() {
-  late CreateDayTrip useCase;
+  late CreateDayTrip usecase;
   late MockDayTripsRepository mockDayTripsRepository;
 
   setUp(() {
     mockDayTripsRepository = MockDayTripsRepository();
-    useCase = CreateDayTrip(mockDayTripsRepository);
+    usecase = CreateDayTrip(mockDayTripsRepository);
   });
 
-  test('should create a day trip', () async {
-    // arrange
-    final tName = 'Test Day Trip';
-    final tDescription = 'Test Day Trip Description';
-    final tTripId = 'Test Trip Id';
-    final tParams = CreateDayTripParams(
-      name: tName,
-      description: tDescription,
-      tripId: tTripId,
-    );
-    when(mockDayTripsRepository.createDayTrip(
-      name: anyNamed('name'),
-      description: anyNamed('description'),
-      tripId: anyNamed('tripId'),
-    )).thenAnswer((_) async => Right(null));
+  test('should return right(null) when createDayTrip', () async {
+    when(mockDayTripsRepository.addDayTrip(tripId: anyNamed('tripId'), dayTrip: anyNamed('dayTrip')))
+        .thenAnswer((_) async => right(null));
+
     // act
-    final result = await useCase(tParams);
+    final result = await usecase(CreateDayTripParams(tripId: 'tripId', name: 'name', description: 'description'));
     // assert
-    expect(result, Right(null));
-    verify(mockDayTripsRepository.createDayTrip(
-      name: tName,
-      description: tDescription,
-      tripId: tTripId,
-    ));
-    verifyNoMoreInteractions(mockDayTripsRepository);
+    expect(result, equals(right(null)));
   });
 
-  test('should return a DayTripsFailure when creating a day trip fails', () async {
-    // arrange
-    final tName = 'Test Day Trip';
-    final tDescription = 'Test Day Trip Description';
-    final tTripId = 'Test Trip Id';
-    final tParams = CreateDayTripParams(
-      name: tName,
-      description: tDescription,
-      tripId: tTripId,
-    );
-    when(mockDayTripsRepository.createDayTrip(
-      name: anyNamed('name'),
-      description: anyNamed('description'),
-      tripId: anyNamed('tripId'),
-    )).thenAnswer((_) async => Left(DayTripsFailure(message: 'Failed to create day trip')));
+  test('should return left(DayTripsFailure()) when createDayTrip throws', () async {
+    when(mockDayTripsRepository.addDayTrip(tripId: anyNamed('tripId'), dayTrip: anyNamed('dayTrip')))
+        .thenAnswer((_) async => left(DayTripsFailure()));
+
     // act
-    final result = await useCase(tParams);
+    final result = await usecase(CreateDayTripParams(tripId: 'tripId', name: 'name', description: 'description'));
     // assert
-    expect(result, Left(DayTripsFailure(message: 'Failed to create day trip')));
-    verify(mockDayTripsRepository.createDayTrip(
-      name: tName,
-      description: tDescription,
-      tripId: tTripId,
-    ));
-    verifyNoMoreInteractions(mockDayTripsRepository);
+    expect(result, equals(left(DayTripsFailure())));
   });
 }

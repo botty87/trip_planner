@@ -43,31 +43,28 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 class MockDayTripsRepository extends _i1.Mock
     implements _i3.DayTripsRepository {
   @override
-  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> createDayTrip({
-    required String? name,
-    String? description,
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> addDayTrip({
     required String? tripId,
+    required _i6.DayTrip? dayTrip,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
-          #createDayTrip,
+          #addDayTrip,
           [],
           {
-            #name: name,
-            #description: description,
             #tripId: tripId,
+            #dayTrip: dayTrip,
           },
         ),
         returnValue: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
             _FakeEither_0<_i5.DayTripsFailure, void>(
           this,
           Invocation.method(
-            #createDayTrip,
+            #addDayTrip,
             [],
             {
-              #name: name,
-              #description: description,
               #tripId: tripId,
+              #dayTrip: dayTrip,
             },
           ),
         )),
@@ -76,12 +73,11 @@ class MockDayTripsRepository extends _i1.Mock
                 _FakeEither_0<_i5.DayTripsFailure, void>(
           this,
           Invocation.method(
-            #createDayTrip,
+            #addDayTrip,
             [],
             {
-              #name: name,
-              #description: description,
               #tripId: tripId,
+              #dayTrip: dayTrip,
             },
           ),
         )),

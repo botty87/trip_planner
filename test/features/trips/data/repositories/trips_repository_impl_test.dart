@@ -19,6 +19,7 @@ void main() {
     userId: 'userId',
     name: 'name',
     createdAt: DateTime.now(),
+    startDate: DateTime.now(),
   );
 
   setUp(() {
@@ -29,40 +30,28 @@ void main() {
   });
 
   group('addTrip', () {
-    final trip = Trip(
-      userId: 'userId',
-      name: 'name',
-      createdAt: DateTime.now(),
-    );
-
     test('should return right(null) when TripsDataSource.addTrip completes', () async {
-      when(mockTripsDataSource.addTrip(trip)).thenAnswer((_) async => null);
+      when(mockTripsDataSource.addTrip(tTrip)).thenAnswer((_) async => null);
 
       // act
-      final result = await tripsRepositoryImpl.addTrip(trip);
+      final result = await tripsRepositoryImpl.createTrip(tTrip);
       // assert
       expect(result, equals(right(null)));
     });
 
     test('should return left(TripsFailure()) when TripsDataSource.addTrip throws', () async {
-      when(mockTripsDataSource.addTrip(trip)).thenThrow(Exception());
+      when(mockTripsDataSource.addTrip(tTrip)).thenThrow(Exception());
 
       // act
-      final result = await tripsRepositoryImpl.addTrip(trip);
+      final result = await tripsRepositoryImpl.createTrip(tTrip);
       // assert
       expect(result, equals(left(TripsFailure())));
     });
   });
 
-  group('listen trips', () { 
+  group('listen trips', () {
     final userId = 'userId';
-    final trips = [
-      Trip(
-        userId: 'userId',
-        name: 'name',
-        createdAt: DateTime.now(),
-      ),
-    ];
+    final trips = [tTrip];
 
     test('should return right(trips) when TripsDataSource.listenTrips completes', () async {
       when(mockTripsDataSource.listenTrips(userId)).thenAnswer((_) => Stream.value(trips));
@@ -80,7 +69,7 @@ void main() {
 
       // act
       final result = tripsRepositoryImpl.listenTrips(userId);
-      
+
       // assert
       await expectLater(result, emits(left(TripsFailure())));
       verify(mockTripsDataSource.listenTrips(userId));
@@ -94,7 +83,8 @@ void main() {
     final tripDescription = 'tripDescription';
 
     test('should return right(null) when TripsDataSource.updateTrip completes', () async {
-      when(mockTripsDataSource.updateTrip(tripId, tripName, tripDescription)).thenAnswer((_) async => null);
+      when(mockTripsDataSource.updateTrip(tripId, tripName, tripDescription))
+          .thenAnswer((_) async => null);
 
       // act
       final result = await tripsRepositoryImpl.updateTrip(tripId, tripName, tripDescription);
@@ -103,16 +93,17 @@ void main() {
     });
 
     test('should return left(TripsFailure()) when TripsDataSource.updateTrip throws', () async {
-      when(mockTripsDataSource.updateTrip(tripId, tripName, tripDescription)).thenThrow(Exception());
+      when(mockTripsDataSource.updateTrip(tripId, tripName, tripDescription))
+          .thenThrow(Exception());
 
       // act
       final result = await tripsRepositoryImpl.updateTrip(tripId, tripName, tripDescription);
       // assert
       expect(result, equals(left(TripsFailure())));
     });
-   });
+  });
 
-   group('delete trip', () { 
+  group('delete trip', () {
     test('should return right(null) when TripsDataSource.deleteTrip completes', () async {
       when(mockTripsDataSource.deleteTrip(tTrip)).thenAnswer((_) async => null);
 
@@ -130,5 +121,5 @@ void main() {
       // assert
       expect(result, equals(left(TripsFailure())));
     });
-   });
+  });
 }

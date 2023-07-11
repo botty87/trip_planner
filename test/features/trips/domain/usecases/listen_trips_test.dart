@@ -19,6 +19,7 @@ void main() {
       description: 'Trip 1 description',
       userId: '123',
       createdAt: DateTime.now(),
+      startDate: DateTime.now()
     ),
   ];
 

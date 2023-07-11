@@ -14,12 +14,13 @@ class CreateTrip implements UseCase<void, CreateTripParams> {
 
   @override
   Future<Either<TripsFailure, void>> call(CreateTripParams params) async {
-    return await repository.addTrip(
-      Trip(
+    return await repository.createTrip(
+      Trip.create(
         name: params.tripName,
         description: params.tripDescription,
         userId: params.userId,
         createdAt: params.createdAt,
+        startDate: params.startDate,
       ),
     );
   }
@@ -30,10 +31,12 @@ class CreateTripParams {
   final String? tripDescription;
   final String userId;
   final DateTime createdAt = DateTime.now();
+  final DateTime startDate;
 
   CreateTripParams({
     required this.tripName,
     this.tripDescription,
     required this.userId,
+    required this.startDate,
   });
 }

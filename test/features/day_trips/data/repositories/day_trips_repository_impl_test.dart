@@ -14,6 +14,14 @@ void main() {
   late MockDayTripsDataSource mockDayTripsDataSource;
   late DayTripsRepositoryImpl repository;
 
+  final tDayTrip = DayTrip(
+    id: 'id',
+    name: 'name',
+    description: 'description',
+  );
+  
+  const tTripId = 'tripId';
+
   setUp(() {
     mockDayTripsDataSource = MockDayTripsDataSource();
     repository = DayTripsRepositoryImpl(mockDayTripsDataSource);
@@ -21,27 +29,27 @@ void main() {
 
   group('createDayTrip', () {
     test('should return right(null) when createDayTrip', () async {
-      when(mockDayTripsDataSource.createDayTrip(name: 'name', tripId: 'tripId'))
+      when(mockDayTripsDataSource.addDayTrip(tripId: tTripId, dayTrip: tDayTrip))
           .thenAnswer((_) async => null);
 
       // act
-      final result = await repository.createDayTrip(name: 'name', tripId: 'tripId');
+      final result = await repository.addDayTrip(tripId: tTripId, dayTrip: tDayTrip);
       // assert
       expect(result, equals(right(null)));
     });
 
     test('should return left(DayTripsFailure()) when createDayTrip throws', () async {
-      when(mockDayTripsDataSource.createDayTrip(name: 'name', tripId: 'tripId'))
+      when(mockDayTripsDataSource.addDayTrip(tripId: tTripId, dayTrip: tDayTrip))
           .thenThrow(Exception());
 
       // act
-      final result = await repository.createDayTrip(name: 'name', tripId: 'tripId');
+      final result = await repository.addDayTrip(tripId: tTripId, dayTrip: tDayTrip);
       // assert
       expect(result, equals(left(DayTripsFailure())));
     });
   });
 
-  group('listenDayTrips', () { 
+  group('listenDayTrips', () {
     test('should return right(List<DayTrip>) when listenDayTrips', () async {
       final tDayTrip = DayTrip(
         id: 'id',

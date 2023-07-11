@@ -36,55 +36,62 @@ void main() {
         act: (cubit) => cubit.tripDescriptionChanged('test'),
         expect: () => [NewTripState(tripDescription: 'test')]);
 
-    blocTest<NewTripCubit, NewTripState>(
-      'When create trip with empty name emit state with error message',
-      build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
-      act: (cubit) => cubit.createTrip(),
-      expect: () => [
-        NewTripState(errorMessage: LocaleKeys.tripNameEmpty),
-        NewTripState(errorMessage: null),
-      ],
-    );
+    group('Create trip tests', () {
+      final tUser = User(id: '1', email: '');
+      final tStartDate = DateTime.now();
 
-    group('Create trips tests', () {
-      final user = User(id: '1', email: '');
       setUp(() {
         whenListen(
           mockUserTrip,
-          Stream.fromIterable([UserStateLoggedIn(user: user)]),
-          initialState: UserStateLoggedIn(user: user),
+          Stream.fromIterable([UserStateLoggedIn(user: tUser)]),
+          initialState: UserStateLoggedIn(user: tUser),
         );
       });
 
       blocTest<NewTripCubit, NewTripState>(
-        'When create trip with valid name emit state with error message null',
-        setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => Right(null)),
+        'When create trip with empty name emit state with error message',
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
-        act: (cubit) {
-          cubit.tripNameChanged('test');
-          cubit.createTrip();
-        },
+        act: (cubit) => cubit.createTrip(),
         expect: () => [
-          NewTripState(tripName: 'test'),
-          NewTripState(tripName: 'test', isLoading: true),
-          NewTripState(tripName: 'test', isLoading: false),
+          NewTripState(errorMessage: LocaleKeys.tripNameEmpty),
+          NewTripState(errorMessage: null),
+        ],
+      );
+
+      blocTest<NewTripCubit, NewTripState>(
+        'When create trip with empty startDate emit state with error message',
+        build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
+        seed: () => NewTripState(tripName: 'test'),
+        act: (cubit) => cubit.createTrip(),
+        expect: () => [
+          NewTripState(errorMessage: LocaleKeys.tripStartDateEmpty, tripName: 'test'),
+          NewTripState(errorMessage: null, tripName: 'test'),
+        ],
+      );
+
+      blocTest<NewTripCubit, NewTripState>(
+        'When create trip with valid name and startDate emit state with error message null',
+        setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => Right(null)),
+        seed: () => NewTripState(tripName: 'test', startDate: tStartDate),
+        build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
+        act: (cubit) => cubit.createTrip(),
+        expect: () => [
+          NewTripState(tripName: 'test', isLoading: true, startDate: tStartDate),
+          NewTripState(tripName: 'test', isLoading: false, createSuccess: true, startDate: tStartDate),
         ],
         verify: (bloc) => verify(mockCreateTrip(any)).called(1),
       );
 
       blocTest<NewTripCubit, NewTripState>(
-        'When create trip with valid name emit state with error message when error occurs',
+        'When create trip with valid name and startDate emit state with error message when error occurs',
         setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => Left(TripsFailure())),
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
-        act: (cubit) {
-          cubit.tripNameChanged('test');
-          cubit.createTrip();
-        },
+        seed: () => NewTripState(tripName: 'test', startDate: tStartDate),
+        act: (cubit) => cubit.createTrip(),
         expect: () => [
-          NewTripState(tripName: 'test', errorMessage: null),
-          NewTripState(tripName: 'test', isLoading: true),
-          NewTripState(tripName: 'test', errorMessage: LocaleKeys.tripSaveError, isLoading: false),
-          NewTripState(tripName: 'test', errorMessage: null),
+          NewTripState(tripName: 'test', isLoading: true, startDate: tStartDate),
+          NewTripState(tripName: 'test', errorMessage: LocaleKeys.tripSaveError, isLoading: false, startDate: tStartDate),
+          NewTripState(tripName: 'test', errorMessage: null, startDate: tStartDate),
         ],
         verify: (bloc) => verify(mockCreateTrip(any)).called(1),
       );

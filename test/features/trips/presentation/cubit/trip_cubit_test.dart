@@ -18,7 +18,13 @@ void main() {
   late MockListenDayTrips mockListenDayTrips;
 
   final trip = Trip(
-      id: '1', name: 'name', description: 'description', createdAt: DateTime.now(), userId: '1');
+    id: '1',
+    name: 'name',
+    description: 'description',
+    createdAt: DateTime.now(),
+    userId: '1',
+    startDate: DateTime.now(),
+  );
 
   setUp(() {
     mockSaveTrip = MockSaveTrip();

@@ -46,5 +46,6 @@
     "delete" : "Delete",
     "dayTripNameEmpty" : "Day of trip name can't be empty",
     "unknownErrorRetry" : "Unknown error, please try again",
-    "dayTripCreated" : "Day of trip created!"
+    "dayTripCreated" : "Day of trip created!",
+    "tripStartDateEmpty" : "Trip start date can't be empty"
 }

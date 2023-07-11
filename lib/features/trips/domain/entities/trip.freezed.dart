@@ -22,13 +22,16 @@ Trip _$TripFromJson(Map<String, dynamic> json) {
 mixin _$Trip {
 // ignore: invalid_annotation_target
   @JsonKey(includeFromJson: false, includeToJson: false)
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String get userId =>
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get createdAt =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+  DateTime get startDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,12 +45,14 @@ abstract class $TripCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(includeFromJson: false, includeToJson: false)
-          String? id,
+          String id,
       String name,
       String? description,
       String userId,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          DateTime createdAt});
+          DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+          DateTime startDate});
 }
 
 /// @nodoc
@@ -63,17 +68,18 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? description = freezed,
     Object? userId = null,
     Object? createdAt = null,
+    Object? startDate = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -89,6 +95,10 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -102,12 +112,14 @@ abstract class _$$_TripCopyWith<$Res> implements $TripCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(includeFromJson: false, includeToJson: false)
-          String? id,
+          String id,
       String name,
       String? description,
       String userId,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          DateTime createdAt});
+          DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+          DateTime startDate});
 }
 
 /// @nodoc
@@ -119,17 +131,18 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? description = freezed,
     Object? userId = null,
     Object? createdAt = null,
+    Object? startDate = null,
   }) {
     return _then(_$_Trip(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -146,6 +159,10 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -155,19 +172,21 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
 class _$_Trip implements _Trip {
   _$_Trip(
       {@JsonKey(includeFromJson: false, includeToJson: false)
-          this.id,
+          this.id = '',
       required this.name,
       this.description,
       required this.userId,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          required this.createdAt});
+          required this.createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+          required this.startDate});
 
   factory _$_Trip.fromJson(Map<String, dynamic> json) => _$$_TripFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  final String? id;
+  final String id;
   @override
   final String name;
   @override
@@ -178,10 +197,14 @@ class _$_Trip implements _Trip {
   @override
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   final DateTime createdAt;
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+  final DateTime startDate;
 
   @override
   String toString() {
-    return 'Trip(id: $id, name: $name, description: $description, userId: $userId, createdAt: $createdAt)';
+    return 'Trip(id: $id, name: $name, description: $description, userId: $userId, createdAt: $createdAt, startDate: $startDate)';
   }
 
   @override
@@ -195,13 +218,15 @@ class _$_Trip implements _Trip {
                 other.description == description) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, description, userId, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, description, userId, createdAt, startDate);
 
   @JsonKey(ignore: true)
   @override
@@ -220,18 +245,20 @@ class _$_Trip implements _Trip {
 abstract class _Trip implements Trip {
   factory _Trip(
       {@JsonKey(includeFromJson: false, includeToJson: false)
-          final String? id,
+          final String id,
       required final String name,
       final String? description,
       required final String userId,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          required final DateTime createdAt}) = _$_Trip;
+          required final DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+          required final DateTime startDate}) = _$_Trip;
 
   factory _Trip.fromJson(Map<String, dynamic> json) = _$_Trip.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(includeFromJson: false, includeToJson: false)
-  String? get id;
+  String get id;
   @override
   String get name;
   @override
@@ -241,6 +268,9 @@ abstract class _Trip implements Trip {
   @override // ignore: invalid_annotation_target
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   DateTime get createdAt;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+  DateTime get startDate;
   @override
   @JsonKey(ignore: true)
   _$$_TripCopyWith<_$_Trip> get copyWith => throw _privateConstructorUsedError;

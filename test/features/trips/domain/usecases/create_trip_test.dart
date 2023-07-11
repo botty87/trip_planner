@@ -19,12 +19,12 @@ void main() {
     // arrange
     const tripName = 'Trip Name';
     const userId = 'userId';
-    when(mockTripsRepository.addTrip(any)).thenAnswer((_) async => right(null));
+    when(mockTripsRepository.createTrip(any)).thenAnswer((_) async => right(null));
     // act
-    final result = await useCase(CreateTripParams(tripName: tripName, userId: userId));
+    final result = await useCase(CreateTripParams(tripName: tripName, userId: userId, startDate: DateTime.now()));
     // assert
     expect(result, right(null));
-    verify(mockTripsRepository.addTrip(any));
+    verify(mockTripsRepository.createTrip(any));
     verifyNoMoreInteractions(mockTripsRepository);
   });
 
@@ -32,12 +32,12 @@ void main() {
     // arrange
     const tripName = 'Trip Name';
     const userId = 'userId';
-    when(mockTripsRepository.addTrip(any)).thenAnswer((_) async => left(TripsFailure()));
+    when(mockTripsRepository.createTrip(any)).thenAnswer((_) async => left(TripsFailure()));
     // act
-    final result = await useCase(CreateTripParams(tripName: tripName, userId: userId));
+    final result = await useCase(CreateTripParams(tripName: tripName, userId: userId, startDate: DateTime.now()));
     // assert
     expect(result, left(TripsFailure()));
-    verify(mockTripsRepository.addTrip(any));
+    verify(mockTripsRepository.createTrip(any));
     verifyNoMoreInteractions(mockTripsRepository);
   });
 }

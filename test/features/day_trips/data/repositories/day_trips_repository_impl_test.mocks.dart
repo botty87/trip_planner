@@ -30,19 +30,17 @@ import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
 class MockDayTripsDataSource extends _i1.Mock
     implements _i2.DayTripsDataSource {
   @override
-  _i3.Future<void> createDayTrip({
-    required String? name,
-    String? description,
+  _i3.Future<void> addDayTrip({
     required String? tripId,
+    required _i4.DayTrip? dayTrip,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
-          #createDayTrip,
+          #addDayTrip,
           [],
           {
-            #name: name,
-            #description: description,
             #tripId: tripId,
+            #dayTrip: dayTrip,
           },
         ),
         returnValue: _i3.Future<void>.value(),

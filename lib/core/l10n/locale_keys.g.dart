@@ -49,5 +49,6 @@ abstract class  LocaleKeys {
   static const dayTripNameEmpty = 'dayTripNameEmpty';
   static const unknownErrorRetry = 'unknownErrorRetry';
   static const dayTripCreated = 'dayTripCreated';
+  static const tripStartDateEmpty = 'tripStartDateEmpty';
 
 }

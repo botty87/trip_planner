@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../../errors/day_trips_failure.dart';
@@ -13,11 +14,9 @@ class CreateDayTrip implements UseCase<void, CreateDayTripParams> {
 
   @override
   Future<Either<DayTripsFailure, void>> call(CreateDayTripParams params) async {
-    return await repository.createDayTrip(
-      name: params.name,
-      description: params.description,
-      tripId: params.tripId,
-    );
+    return await repository.addDayTrip(
+        tripId: params.tripId,
+        dayTrip: DayTrip.create(name: params.name, description: params.description));
   }
 }
 
@@ -26,7 +25,7 @@ class CreateDayTripParams {
   final String? description;
   final String tripId;
 
-  CreateDayTripParams({
+  const CreateDayTripParams({
     required this.name,
     this.description,
     required this.tripId,

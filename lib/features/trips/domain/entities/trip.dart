@@ -12,15 +12,31 @@ sealed class Trip with _$Trip {
   factory Trip({
     // ignore: invalid_annotation_target
     @JsonKey(includeFromJson: false, includeToJson: false)
-    String? id,
+    @Default('') String id,
     required String name,
     String? description,
     required String userId,
     // ignore: invalid_annotation_target
     @JsonKey(toJson: dateTimeToTimestamp , fromJson: dateTimeFromTimestamp )
     required DateTime createdAt,
+    // ignore: invalid_annotation_target
+    @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+    required DateTime startDate,
   }) = _Trip;
 
+  factory Trip.create({
+    required String name,
+    String? description,
+    required String userId,
+    required DateTime createdAt,
+    required DateTime startDate,
+  }) => Trip(
+    name: name,
+    description: description,
+    userId: userId,
+    createdAt: createdAt,
+    startDate: startDate,
+  );
 
   factory Trip.fromJson(Map<String, dynamic> json) => _$TripFromJson(json);
 }

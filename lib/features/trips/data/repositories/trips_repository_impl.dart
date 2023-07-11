@@ -16,7 +16,7 @@ class TripsRepositoryImpl implements TripsRepository {
   });
 
   @override
-  Future<Either<TripsFailure, void>> addTrip(Trip trip) async {
+  Future<Either<TripsFailure, void>> createTrip(Trip trip) async {
     try {
       await tripsDataSource.addTrip(trip);
       return right(null);
@@ -37,8 +37,7 @@ class TripsRepositoryImpl implements TripsRepository {
   }
 
   @override
-  Future<Either<TripsFailure, void>> updateTrip(
-      String id, String name, String? description) async {
+  Future<Either<TripsFailure, void>> updateTrip(String id, String name, String? description) async {
     try {
       await tripsDataSource.updateTrip(id, name, description);
       return right(null);
@@ -48,7 +47,7 @@ class TripsRepositoryImpl implements TripsRepository {
       return left(TripsFailure());
     }
   }
-  
+
   @override
   Future<Either<TripsFailure, void>> deleteTrip(Trip trip) async {
     try {

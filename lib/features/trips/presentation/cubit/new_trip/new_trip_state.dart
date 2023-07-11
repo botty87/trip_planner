@@ -5,8 +5,10 @@ sealed class NewTripState with _$NewTripState {
   const factory NewTripState({
     String? tripName,
     String? tripDescription,
+    DateTime? startDate,
     String? errorMessage,
     @Default(false) bool isLoading,
+    @Default(false) bool createSuccess,
   }) = _NewTripState;
 
 }

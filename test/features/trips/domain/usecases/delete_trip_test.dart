@@ -17,6 +17,7 @@ void main() {
     description: 'description',
     userId: 'userId',
     createdAt: DateTime.now(),
+    startDate: DateTime.now()
   );
 
   setUp(() {
