@@ -12,6 +12,10 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
 
+part '../widgets/new_trip_page/create_trip_button.dart';
+part '../widgets/new_trip_page/trip_description_text_field.dart';
+part '../widgets/new_trip_page/trip_name_text_field.dart';
+
 @RoutePage()
 class NewTripPage extends StatelessWidget {
   NewTripPage({super.key});
@@ -24,13 +28,26 @@ class NewTripPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(LocaleKeys.newTrip.tr()),
         ),
-        body: BlocListener<NewTripCubit, NewTripState>(
-          listenWhen: (previous, current) => current.errorMessage != null,
-          listener: (context, state) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              Snackbars.error(state.errorMessage!),
-            );
-          },
+        body: MultiBlocListener(
+          listeners: [
+            BlocListener<NewTripCubit, NewTripState>(
+              listenWhen: (previous, current) => current.errorMessage != null,
+              listener: (context, state) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  Snackbars.error(state.errorMessage!),
+                );
+              },
+            ),
+            BlocListener<NewTripCubit, NewTripState>(
+              listenWhen: (previous, current) => current.createSuccess,
+              listener: (context, state) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  Snackbars.success(LocaleKeys.tripCreated.tr()),
+                );
+                context.router.pop();
+              },
+            ),
+          ],
           child: Builder(builder: (context) {
             final cubit = context.read<NewTripCubit>();
             return Column(
@@ -57,43 +74,11 @@ class NewTripPage extends StatelessWidget {
                     minimum: DEFAULT_PAGE_PADDING,
                     child: Column(
                       children: [
-                        TextField(
-                          key: Key('tripNameTextField'),
-                          decoration: InputDecoration(
-                            labelText: LocaleKeys.tripName.tr(),
-                            hintText: LocaleKeys.tripNameHint.tr(),
-                          ),
-                          onChanged: (value) => cubit.tripNameChanged(value),
-                        ),
+                        _TripNameTextField(key: Key('tripNameTextField')),
                         const SizedBox(height: VERTICAL_SPACE),
-                        TextField(
-                          key: Key('tripDescriptionTextField'),
-                          decoration: InputDecoration(
-                            labelText: LocaleKeys.tripDescription.tr(),
-                            hintText: LocaleKeys.tripDescriptionHint.tr(),
-                          ),
-                          onChanged: (value) => cubit.tripDescriptionChanged(value),
-                          maxLines: 4,
-                          minLines: 1,
-                        ),
+                        _TripDescriptionTextField(key: Key('tripDescriptionTextField')),
                         const SizedBox(height: VERTICAL_SPACE_L),
-                        BlocSelector<NewTripCubit, NewTripState, bool>(
-                          selector: (state) => state.isLoading,
-                          builder: (context, isLoading) {
-                            return ElevatedButton(
-                              key: Key('createTripButton'),
-                              child: Text(LocaleKeys.createTrip.tr()),
-                              onPressed: isLoading
-                                  ? null
-                                  : () async {
-                                      if (await cubit.createTrip()) {
-                                        context.popRoute();
-                                      }
-                                      ;
-                                    },
-                            );
-                          },
-                        ),
+                        _CreateTripButton(),
                       ],
                     ),
                   ),

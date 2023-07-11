@@ -47,5 +47,8 @@
     "dayTripNameEmpty": "Il nome della giornata di viaggio non può essere vuoto",
     "unknownErrorRetry": "Errore sconosciuto, riprova",
     "dayTripCreated" : "Giornata di viaggio creata!",
-    "tripStartDateEmpty" : "La data di inizio del viaggio non può essere vuota"
+    "tripStartDateEmpty" : "La data di inizio del viaggio non può essere vuota",
+    "tripStartDate": "Data di inizio del viaggio",
+    "tripStartDateHint": "Quando inizia il tuo viaggio?",
+    "tripCreated" : "Viaggio creato!"
 }

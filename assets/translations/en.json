@@ -47,5 +47,8 @@
     "dayTripNameEmpty" : "Day of trip name can't be empty",
     "unknownErrorRetry" : "Unknown error, please try again",
     "dayTripCreated" : "Day of trip created!",
-    "tripStartDateEmpty" : "Trip start date can't be empty"
+    "tripStartDateEmpty" : "Trip start date can't be empty",
+    "tripStartDate" : "Trip Start Date",
+    "tripStartDateHint" : "When does your trip start?",
+    "tripCreated" : "Trip created!"
 }
