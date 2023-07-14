@@ -1,11 +1,9 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../cubit/new_trip/new_trip_cubit.dart';
 
 part 'trip_name_text_field.dart';
 part 'trip_description_text_field.dart';

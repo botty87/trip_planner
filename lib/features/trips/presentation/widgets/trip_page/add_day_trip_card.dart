@@ -7,7 +7,7 @@ class _AddDayTripCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () =>
-          context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id!)),
+          context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id)),
       child: Card(
         color: Colors.amberAccent[100],
         child: Padding(

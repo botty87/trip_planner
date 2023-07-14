@@ -34,7 +34,7 @@ class TripCubit extends Cubit<TripState> {
         _listenDayTrips = listenDayTrips,
         super(TripState(trip: trip, dayTrips: [])) {
     _dayTripsSubscription =
-        _listenDayTrips(ListenDayTripsParams(tripId: trip.id!)).listen((result) {
+        _listenDayTrips(ListenDayTripsParams(tripId: trip.id)).listen((result) {
       result.fold(
         (failure) {
           //TODO: handle failure
@@ -71,7 +71,7 @@ class TripCubit extends Cubit<TripState> {
 
   save() async {
     assert(state is TripStateEditing);
-    final tripId = state.trip.id!;
+    final tripId = state.trip.id;
     final tripDescription = (state as TripStateEditing).description;
     final tripName = (state as TripStateEditing).name;
 
