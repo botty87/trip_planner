@@ -6,8 +6,8 @@ import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
 
-part 'new_trip_state.dart';
 part 'new_trip_cubit.freezed.dart';
+part 'new_trip_state.dart';
 
 @injectable
 class NewTripCubit extends Cubit<NewTripState> {
@@ -16,11 +16,11 @@ class NewTripCubit extends Cubit<NewTripState> {
 
   NewTripCubit(this._userCubit, this._createTrip) : super(const NewTripState());
 
-  void tripNameChanged(String tripName) {
+  void nameChanged(String tripName) {
     emit(state.copyWith(tripName: tripName));
   }
 
-  void tripDescriptionChanged(String tripDescription) {
+  void descriptionChanged(String tripDescription) {
     emit(state.copyWith(tripDescription: tripDescription));
   }
 

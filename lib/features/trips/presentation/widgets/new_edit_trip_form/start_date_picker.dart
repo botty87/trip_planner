@@ -1,12 +1,14 @@
-part of '../../pages/new_trip_page.dart';
+part of 'new_edit_trip_form.dart';
 
 class _StartDatePicker extends StatelessWidget {
-  const _StartDatePicker({super.key});
+  final ValueChanged<List<DateTime?>> onValueChanged;
+  final Stream<bool> isStartDateBeforeToday;
+
+  const _StartDatePicker(
+      {super.key, required this.onValueChanged, required this.isStartDateBeforeToday});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<NewTripCubit>();
-
     return Column(
       children: [
         Text(LocaleKeys.tripStartDate.tr(),
@@ -36,6 +38,7 @@ class _StartDatePicker extends StatelessWidget {
                   ),
                 );
               }
+              return null;
             },
             dayBorderRadius: BorderRadius.circular(8),
             yearBuilder: (
@@ -68,12 +71,12 @@ class _StartDatePicker extends StatelessWidget {
             },
           ),
           value: [],
-          onValueChanged: (dates) => cubit.startDateChanged(dates.first!),
+          onValueChanged: onValueChanged,
         ),
-        BlocSelector<NewTripCubit, NewTripState, bool>(
-          selector: (state) => state.isStartDateBeforeToday,
-          builder: (context, isStartDateBeforeToday) {
-            if (isStartDateBeforeToday) {
+        StreamBuilder<bool>(
+          stream: isStartDateBeforeToday,
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            if (snapshot.data ?? false) {
               return Text(
                 LocaleKeys.startDateBeforeTodayWarning.tr(),
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(

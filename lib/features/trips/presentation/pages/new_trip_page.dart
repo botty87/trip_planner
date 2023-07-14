@@ -1,23 +1,29 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/new_edit_trip_form/new_edit_trip_form.dart';
 
 import '../../../../core/widgets/snackbars.dart';
 
 part '../widgets/new_trip_page/create_trip_button.dart';
-part '../widgets/new_trip_page/start_date_picker.dart';
-part '../widgets/new_trip_page/trip_description_text_field.dart';
-part '../widgets/new_trip_page/trip_name_text_field.dart';
 
 @RoutePage()
-class NewTripPage extends StatelessWidget {
+class NewTripPage extends StatefulWidget {
   NewTripPage({super.key});
+
+  @override
+  State<NewTripPage> createState() => _NewTripPageState();
+}
+
+class _NewTripPageState extends State<NewTripPage> {
+  final isLoading = StreamController<bool>();
+  final isStartDateBeforeToday = StreamController<bool>();
 
   @override
   Widget build(BuildContext context) {
@@ -46,44 +52,39 @@ class NewTripPage extends StatelessWidget {
                 context.router.pop();
               },
             ),
+            BlocListener<NewTripCubit, NewTripState>(
+              listenWhen: (previous, current) => previous.isLoading != current.isLoading,
+              listener: (context, state) {
+                isLoading.add(state.isLoading);
+              },
+            ),
+            BlocListener<NewTripCubit, NewTripState>(
+              listenWhen: (previous, current) => previous.isStartDateBeforeToday != current.isStartDateBeforeToday,
+              listener: (context, state) {
+                isStartDateBeforeToday.add(state.isStartDateBeforeToday);
+              },
+            ),
           ],
           child: Builder(builder: (context) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                BlocSelector<NewTripCubit, NewTripState, bool>(
-                    selector: (state) => state.isLoading,
-                    builder: (context, isLoading) {
-                      if (isLoading) {
-                        return LinearProgressIndicator(minHeight: 1);
-                      } else {
-                        return const SizedBox(height: 1);
-                      }
-                    }),
-                const SizedBox(height: VERTICAL_SPACE_L),
-                Expanded(
-                  child: SafeArea(
-                    child: SingleChildScrollView(
-                      padding: DEFAULT_PAGE_PADDING,
-                      child: Column(
-                        children: [
-                          _TripNameTextField(key: Key('tripNameTextField')),
-                          const SizedBox(height: VERTICAL_SPACE),
-                          _TripDescriptionTextField(key: Key('tripDescriptionTextField')),
-                          const SizedBox(height: VERTICAL_SPACE_L),
-                          _StartDatePicker(key: Key('startDatePicker')),
-                          const SizedBox(height: VERTICAL_SPACE_L),
-                          _CreateTripButton(),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            final cubit = context.read<NewTripCubit>();
+            return NewEditTripForm(
+              onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+              onNameChanged: (String value) => cubit.nameChanged(value),
+              onStartDateChanged: (List<DateTime?> value) => cubit.startDateChanged(value.first!),
+              saveSection: _CreateTripButton(),
+              isLoading: isLoading.stream,
+              isStartDateBeforeToday: isStartDateBeforeToday.stream,
             );
           }),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    isLoading.close();
+    isStartDateBeforeToday.close();
+    super.dispose();
   }
 }

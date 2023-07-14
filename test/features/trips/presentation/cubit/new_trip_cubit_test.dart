@@ -27,13 +27,13 @@ void main() {
 
     blocTest<NewTripCubit, NewTripState>('When name change emit state with name changed',
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
-        act: (cubit) => cubit.tripNameChanged('test'),
+        act: (cubit) => cubit.nameChanged('test'),
         expect: () => [NewTripState(tripName: 'test')]);
 
     blocTest<NewTripCubit, NewTripState>(
         'When description change emit state with description changed',
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
-        act: (cubit) => cubit.tripDescriptionChanged('test'),
+        act: (cubit) => cubit.descriptionChanged('test'),
         expect: () => [NewTripState(tripDescription: 'test')]);
 
     group('Create trip tests', () {
@@ -77,7 +77,8 @@ void main() {
         act: (cubit) => cubit.createTrip(),
         expect: () => [
           NewTripState(tripName: 'test', isLoading: true, startDate: tStartDate),
-          NewTripState(tripName: 'test', isLoading: false, createSuccess: true, startDate: tStartDate),
+          NewTripState(
+              tripName: 'test', isLoading: false, createSuccess: true, startDate: tStartDate),
         ],
         verify: (bloc) => verify(mockCreateTrip(any)).called(1),
       );
@@ -90,7 +91,11 @@ void main() {
         act: (cubit) => cubit.createTrip(),
         expect: () => [
           NewTripState(tripName: 'test', isLoading: true, startDate: tStartDate),
-          NewTripState(tripName: 'test', errorMessage: LocaleKeys.tripSaveError, isLoading: false, startDate: tStartDate),
+          NewTripState(
+              tripName: 'test',
+              errorMessage: LocaleKeys.tripSaveError,
+              isLoading: false,
+              startDate: tStartDate),
           NewTripState(tripName: 'test', errorMessage: null, startDate: tStartDate),
         ],
         verify: (bloc) => verify(mockCreateTrip(any)).called(1),

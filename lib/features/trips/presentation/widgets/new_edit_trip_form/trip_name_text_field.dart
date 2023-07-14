@@ -1,18 +1,17 @@
-part of '../../pages/new_trip_page.dart';
+part of 'new_edit_trip_form.dart';
 
 class _TripNameTextField extends StatelessWidget {
-  const _TripNameTextField({super.key});
+  final ValueChanged<String> onChanged;
+  const _TripNameTextField({super.key, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<NewTripCubit>();
-
     return TextField(
       decoration: InputDecoration(
         labelText: LocaleKeys.tripName.tr(),
         hintText: LocaleKeys.tripNameHint.tr(),
       ),
-      onChanged: (value) => cubit.tripNameChanged(value),
+      onChanged: onChanged,
     );
   }
 }
