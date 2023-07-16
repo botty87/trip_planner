@@ -65,11 +65,11 @@ class TripCubit extends Cubit<TripState> {
     emit((state as TripStateEditing).copyWith(description: value));
   }
 
-  void editCancel() {
+  void cancelEditing() {
     emit(TripState(trip: state.trip, dayTrips: state.dayTrips));
   }
 
-  save() async {
+  saveChanges() async {
     assert(state is TripStateEditing);
     final tripId = state.trip.id;
     final tripDescription = (state as TripStateEditing).description;

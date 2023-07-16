@@ -1,14 +1,15 @@
 part of 'new_edit_trip_form.dart';
 
-class _StartDatePicker extends StatelessWidget {
-  final ValueChanged<List<DateTime?>> onValueChanged;
-  final Stream<bool> isStartDateBeforeToday;
+class _StartDatePicker extends HookWidget {
+  final ValueChanged<DateTime> onValueChanged;
+  final DateTime? initialStartDate;
 
-  const _StartDatePicker(
-      {super.key, required this.onValueChanged, required this.isStartDateBeforeToday});
+  const _StartDatePicker({super.key, required this.onValueChanged, this.initialStartDate});
 
   @override
   Widget build(BuildContext context) {
+    final isStartDateBeforeToday = useStreamController<bool>();
+
     return Column(
       children: [
         Text(LocaleKeys.tripStartDate.tr(),
@@ -70,11 +71,16 @@ class _StartDatePicker extends StatelessWidget {
               }
             },
           ),
-          value: [],
-          onValueChanged: onValueChanged,
+          value: [initialStartDate],
+          onValueChanged: (value) {
+            assert(value.first != null);
+            onValueChanged(value.first!);
+            isStartDateBeforeToday
+                .add(value.first!.isBefore(DateTime.now().add(Duration(days: -1))) ?? false);
+          },
         ),
         StreamBuilder<bool>(
-          stream: isStartDateBeforeToday,
+          stream: isStartDateBeforeToday.stream,
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
             if (snapshot.data ?? false) {
               return Text(

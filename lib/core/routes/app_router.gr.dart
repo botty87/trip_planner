@@ -74,11 +74,9 @@ abstract class $AppRouter extends _i7.RootStackRouter {
       );
     },
     NewTripRoute.name: (routeData) {
-      final args = routeData.argsAs<NewTripRouteArgs>(
-          orElse: () => const NewTripRouteArgs());
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i6.NewTripPage(key: args.key),
+        child: _i6.NewTripPage(),
       );
     },
   };
@@ -235,29 +233,14 @@ class TripsRouteArgs {
 
 /// generated route for
 /// [_i6.NewTripPage]
-class NewTripRoute extends _i7.PageRouteInfo<NewTripRouteArgs> {
-  NewTripRoute({
-    _i8.Key? key,
-    List<_i7.PageRouteInfo>? children,
-  }) : super(
+class NewTripRoute extends _i7.PageRouteInfo<void> {
+  const NewTripRoute({List<_i7.PageRouteInfo>? children})
+      : super(
           NewTripRoute.name,
-          args: NewTripRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'NewTripRoute';
 
-  static const _i7.PageInfo<NewTripRouteArgs> page =
-      _i7.PageInfo<NewTripRouteArgs>(name);
-}
-
-class NewTripRouteArgs {
-  const NewTripRouteArgs({this.key});
-
-  final _i8.Key? key;
-
-  @override
-  String toString() {
-    return 'NewTripRouteArgs{key: $key}';
-  }
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
