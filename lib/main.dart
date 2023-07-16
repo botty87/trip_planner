@@ -9,13 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:trip_planner/core/di/di.dart';
 
 import 'core/my_app.dart';
-import 'core/routes/app_router.gr.dart';
-import 'features/user_account/presentation/cubit/user/user_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

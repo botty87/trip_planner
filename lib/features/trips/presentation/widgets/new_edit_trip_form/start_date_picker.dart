@@ -76,7 +76,7 @@ class _StartDatePicker extends HookWidget {
             assert(value.first != null);
             onValueChanged(value.first!);
             isStartDateBeforeToday
-                .add(value.first!.isBefore(DateTime.now().add(Duration(days: -1))) ?? false);
+                .add(value.first!.isBefore(DateTime.now().add(Duration(days: -1))));
           },
         ),
         StreamBuilder<bool>(

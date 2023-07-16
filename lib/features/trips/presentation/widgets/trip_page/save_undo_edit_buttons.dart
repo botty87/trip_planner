@@ -1,7 +1,7 @@
 part of '../../pages/trip_page.dart';
 
 class _SaveUndoEditButtons extends StatelessWidget {
-  const _SaveUndoEditButtons({super.key});
+  const _SaveUndoEditButtons();
 
   @override
   Widget build(BuildContext context) {
