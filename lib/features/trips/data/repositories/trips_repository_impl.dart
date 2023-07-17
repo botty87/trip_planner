@@ -37,9 +37,9 @@ class TripsRepositoryImpl implements TripsRepository {
   }
 
   @override
-  Future<Either<TripsFailure, void>> updateTrip(String id, String name, String? description) async {
+  Future<Either<TripsFailure, void>> updateTrip(String id, String name, String? description, DateTime startDate) async {
     try {
-      await tripsDataSource.updateTrip(id, name, description);
+      await tripsDataSource.updateTrip(id, name, description, startDate);
       return right(null);
     } on FirebaseException {
       return left(TripsFailure());

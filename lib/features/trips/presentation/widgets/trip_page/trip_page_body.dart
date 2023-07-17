@@ -16,7 +16,7 @@ class _TripPageBody extends HookWidget {
             return NewEditTripForm(
               onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
               onNameChanged: (String value) => cubit.nameChanged(value),
-              onStartDateChanged: (DateTime value) {},
+              onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
               saveSection: _SaveUndoEditButtons(),
               isLoading: isLoading.stream,
               initialTripName: cubit.state.trip.name,

@@ -50,6 +50,7 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
     String? id,
     String? name,
     String? description,
+    DateTime? startDate,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -58,6 +59,7 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
             id,
             name,
             description,
+            startDate,
           ],
         ),
         returnValue: _i3.Future<void>.value(),

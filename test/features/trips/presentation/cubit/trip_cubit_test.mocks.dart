@@ -21,7 +21,7 @@ import 'package:trip_planner/features/trips/domain/repositories/trips_repository
     as _i2;
 import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart'
     as _i8;
-import 'package:trip_planner/features/trips/domain/usecases/save_trip.dart'
+import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart'
     as _i5;
 import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i7;
 
@@ -68,10 +68,10 @@ class _FakeDayTripsRepository_2 extends _i1.SmartFake
         );
 }
 
-/// A class which mocks [SaveTrip].
+/// A class which mocks [UpdateTrip].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSaveTrip extends _i1.Mock implements _i5.SaveTrip {
+class MockUpdateTrip extends _i1.Mock implements _i5.UpdateTrip {
   @override
   _i2.TripsRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -86,7 +86,7 @@ class MockSaveTrip extends _i1.Mock implements _i5.SaveTrip {
       ) as _i2.TripsRepository);
   @override
   _i6.Future<_i3.Either<_i7.TripsFailure, void>> call(
-          _i5.SaveTripParams? params) =>
+          _i5.UpdateTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,

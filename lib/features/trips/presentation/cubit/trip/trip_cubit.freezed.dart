@@ -23,8 +23,14 @@ mixin _$TripState {
   TResult when<TResult extends Object?>(
     TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)
         $default, {
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)
@@ -35,8 +41,14 @@ mixin _$TripState {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
         $default, {
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)?
@@ -47,8 +59,14 @@ mixin _$TripState {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
         $default, {
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)?
@@ -235,8 +253,14 @@ class _$_TripState implements _TripState {
   TResult when<TResult extends Object?>(
     TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)
         $default, {
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)
@@ -250,8 +274,14 @@ class _$_TripState implements _TripState {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
         $default, {
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)?
@@ -265,8 +295,14 @@ class _$_TripState implements _TripState {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
         $default, {
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)?
@@ -345,6 +381,7 @@ abstract class _$$TripStateEditingCopyWith<$Res>
       List<DayTrip> dayTrips,
       String name,
       String? description,
+      DateTime startDate,
       bool isSaving,
       String? errorMessage});
 
@@ -367,6 +404,7 @@ class __$$TripStateEditingCopyWithImpl<$Res>
     Object? dayTrips = null,
     Object? name = null,
     Object? description = freezed,
+    Object? startDate = null,
     Object? isSaving = null,
     Object? errorMessage = freezed,
   }) {
@@ -387,6 +425,10 @@ class __$$TripStateEditingCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
@@ -407,6 +449,7 @@ class _$TripStateEditing implements TripStateEditing {
       final List<DayTrip> dayTrips = const [],
       required this.name,
       required this.description,
+      required this.startDate,
       this.isSaving = false,
       this.errorMessage})
       : _dayTrips = dayTrips;
@@ -427,6 +470,8 @@ class _$TripStateEditing implements TripStateEditing {
   @override
   final String? description;
   @override
+  final DateTime startDate;
+  @override
   @JsonKey()
   final bool isSaving;
   @override
@@ -434,7 +479,7 @@ class _$TripStateEditing implements TripStateEditing {
 
   @override
   String toString() {
-    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, isSaving: $isSaving, errorMessage: $errorMessage)';
+    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isSaving: $isSaving, errorMessage: $errorMessage)';
   }
 
   @override
@@ -447,6 +492,8 @@ class _$TripStateEditing implements TripStateEditing {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -460,6 +507,7 @@ class _$TripStateEditing implements TripStateEditing {
       const DeepCollectionEquality().hash(_dayTrips),
       name,
       description,
+      startDate,
       isSaving,
       errorMessage);
 
@@ -474,14 +522,21 @@ class _$TripStateEditing implements TripStateEditing {
   TResult when<TResult extends Object?>(
     TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)
         $default, {
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)
         deleting,
   }) {
-    return editing(trip, dayTrips, name, description, isSaving, errorMessage);
+    return editing(
+        trip, dayTrips, name, description, startDate, isSaving, errorMessage);
   }
 
   @override
@@ -489,15 +544,21 @@ class _$TripStateEditing implements TripStateEditing {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
         $default, {
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)?
         deleting,
   }) {
     return editing?.call(
-        trip, dayTrips, name, description, isSaving, errorMessage);
+        trip, dayTrips, name, description, startDate, isSaving, errorMessage);
   }
 
   @override
@@ -505,8 +566,14 @@ class _$TripStateEditing implements TripStateEditing {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
         $default, {
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)?
@@ -514,7 +581,8 @@ class _$TripStateEditing implements TripStateEditing {
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(trip, dayTrips, name, description, isSaving, errorMessage);
+      return editing(
+          trip, dayTrips, name, description, startDate, isSaving, errorMessage);
     }
     return orElse();
   }
@@ -560,6 +628,7 @@ abstract class TripStateEditing implements TripState {
       final List<DayTrip> dayTrips,
       required final String name,
       required final String? description,
+      required final DateTime startDate,
       final bool isSaving,
       final String? errorMessage}) = _$TripStateEditing;
 
@@ -569,6 +638,7 @@ abstract class TripStateEditing implements TripState {
   List<DayTrip> get dayTrips;
   String get name;
   String? get description;
+  DateTime get startDate;
   bool get isSaving;
   @override
   String? get errorMessage;
@@ -689,8 +759,14 @@ class _$TripStateDeleting implements TripStateDeleting {
   TResult when<TResult extends Object?>(
     TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)
         $default, {
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)
@@ -704,8 +780,14 @@ class _$TripStateDeleting implements TripStateDeleting {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
         $default, {
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)?
@@ -719,8 +801,14 @@ class _$TripStateDeleting implements TripStateDeleting {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(Trip trip, List<DayTrip> dayTrips, String? errorMessage)?
         $default, {
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, bool isSaving, String? errorMessage)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips, bool deleted,
             String? errorMessage)?

@@ -6,29 +6,32 @@ import '../../errors/trips_failure.dart';
 import '../repositories/trips_repository.dart';
 
 @lazySingleton
-class SaveTrip implements UseCase<void, SaveTripParams> {
+class UpdateTrip implements UseCase<void, UpdateTripParams> {
   final TripsRepository repository;
 
-  SaveTrip(this.repository);
+  UpdateTrip(this.repository);
 
   @override
-  Future<Either<TripsFailure, void>> call(SaveTripParams params) async {
+  Future<Either<TripsFailure, void>> call(UpdateTripParams params) async {
     return await repository.updateTrip(
       params.id,
       params.name,
       params.description,
+      params.startDate,
     );
   }
 }
 
-class SaveTripParams {
+class UpdateTripParams {
   final String id;
   final String name;
   final String? description;
+  final DateTime startDate;
 
-  SaveTripParams({
+  UpdateTripParams({
     required this.id,
     required this.name,
     required this.description,
+    required this.startDate,
   });
 }

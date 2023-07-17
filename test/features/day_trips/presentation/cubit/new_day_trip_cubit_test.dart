@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -7,6 +8,7 @@ import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/create_day_trip.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/new_day_trip/new_day_trip_cubit.dart';
+import 'package:easy_logger/easy_logger.dart';
 
 import 'new_day_trip_cubit_test.mocks.dart';
 
@@ -15,6 +17,10 @@ void main() {
   late MockCreateDayTrip mockCreateDayTrip;
 
   const tTripId = 'test';
+
+  setUpAll(() async {
+    EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
+  });
 
   setUp(() {
     mockCreateDayTrip = MockCreateDayTrip();

@@ -78,26 +78,27 @@ void main() {
   });
 
   group('update trip', () {
-    final tripId = 'tripId';
-    final tripName = 'tripName';
-    final tripDescription = 'tripDescription';
+    final tTripId = 'tripId';
+    final tTripName = 'tripName';
+    final tTripDescription = 'tripDescription';
+    final tStartDate = DateTime.now();
 
     test('should return right(null) when TripsDataSource.updateTrip completes', () async {
-      when(mockTripsDataSource.updateTrip(tripId, tripName, tripDescription))
+      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate))
           .thenAnswer((_) async => null);
 
       // act
-      final result = await tripsRepositoryImpl.updateTrip(tripId, tripName, tripDescription);
+      final result = await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate);
       // assert
       expect(result, equals(right(null)));
     });
 
     test('should return left(TripsFailure()) when TripsDataSource.updateTrip throws', () async {
-      when(mockTripsDataSource.updateTrip(tripId, tripName, tripDescription))
+      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate))
           .thenThrow(Exception());
 
       // act
-      final result = await tripsRepositoryImpl.updateTrip(tripId, tripName, tripDescription);
+      final result = await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate);
       // assert
       expect(result, equals(left(TripsFailure())));
     });

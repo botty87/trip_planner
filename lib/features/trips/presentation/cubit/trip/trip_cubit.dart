@@ -12,29 +12,28 @@ import '../../../../day_trips/domain/usecases/listen_day_trips.dart';
 import '../../../../day_trips/errors/day_trips_failure.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/delete_trip.dart';
-import '../../../domain/usecases/save_trip.dart';
+import '../../../domain/usecases/update_trip.dart';
 
 part 'trip_cubit.freezed.dart';
 part 'trip_state.dart';
 
 @injectable
 class TripCubit extends Cubit<TripState> {
-  final SaveTrip _saveTrip;
+  final UpdateTrip _saveTrip;
   final DeleteTrip _deleteTrip;
   final ListenDayTrips _listenDayTrips;
   late final StreamSubscription<Either<DayTripsFailure, List<DayTrip>>> _dayTripsSubscription;
 
   TripCubit(
       {@factoryParam required Trip trip,
-      required SaveTrip saveTrip,
+      required UpdateTrip saveTrip,
       required DeleteTrip deleteTrip,
       required ListenDayTrips listenDayTrips})
       : _saveTrip = saveTrip,
         _deleteTrip = deleteTrip,
         _listenDayTrips = listenDayTrips,
         super(TripState(trip: trip, dayTrips: [])) {
-    _dayTripsSubscription =
-        _listenDayTrips(ListenDayTripsParams(tripId: trip.id)).listen((result) {
+    _dayTripsSubscription = _listenDayTrips(ListenDayTripsParams(tripId: trip.id)).listen((result) {
       result.fold(
         (failure) {
           //TODO: handle failure
@@ -52,6 +51,7 @@ class TripCubit extends Cubit<TripState> {
       dayTrips: state.dayTrips,
       name: state.trip.name,
       description: state.trip.description,
+      startDate: state.trip.startDate,
     ));
   }
 
@@ -60,9 +60,14 @@ class TripCubit extends Cubit<TripState> {
     emit((state as TripStateEditing).copyWith(name: value));
   }
 
-  descriptionChanged(String value) {
+  void descriptionChanged(String value) {
     assert(state is TripStateEditing);
     emit((state as TripStateEditing).copyWith(description: value));
+  }
+
+  void startDateChanged(DateTime value) {
+    assert(state is TripStateEditing);
+    emit((state as TripStateEditing).copyWith(startDate: value));
   }
 
   void cancelEditing() {
@@ -74,13 +79,15 @@ class TripCubit extends Cubit<TripState> {
     final tripId = state.trip.id;
     final tripDescription = (state as TripStateEditing).description;
     final tripName = (state as TripStateEditing).name;
+    final tripStartDate = (state as TripStateEditing).startDate;
 
     emit((state as TripStateEditing).copyWith(isSaving: true));
 
-    final result = await _saveTrip(SaveTripParams(
+    final result = await _saveTrip(UpdateTripParams(
       id: tripId,
       name: tripName,
       description: tripDescription,
+      startDate: tripStartDate,
     ));
 
     result.fold(
@@ -94,6 +101,7 @@ class TripCubit extends Cubit<TripState> {
           trip: state.trip.copyWith(
             name: tripName,
             description: tripDescription,
+            startDate: tripStartDate,
           ),
           dayTrips: state.dayTrips)),
     );

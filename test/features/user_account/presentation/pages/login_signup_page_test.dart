@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mockito/annotations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart';
@@ -11,6 +12,8 @@ import 'package:trip_planner/features/user_account/domain/usecases/recover_passw
 import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart';
+import 'package:easy_logger/easy_logger.dart';
+
 
 import 'login_signup_page_test.mocks.dart';
 
@@ -18,6 +21,11 @@ class MockLoginSignupCubit extends MockCubit<LoginSignupState> implements LoginS
 
 @GenerateNiceMocks([MockSpec<RegisterUser>(), MockSpec<LoginUser>(), MockSpec<RecoverPassword>()])
 void main() {
+  
+  setUpAll(() {
+    EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
+  });
+  
   group('LoginSignupPage', () {
     group('Test initial page state', () {
       setUp(() async {

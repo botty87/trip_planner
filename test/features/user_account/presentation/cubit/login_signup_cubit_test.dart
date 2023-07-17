@@ -10,6 +10,7 @@ import 'package:trip_planner/features/user_account/domain/usecases/recover_passw
 import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart';
 import 'package:trip_planner/features/user_account/errors/user_failure.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';
+import 'package:easy_logger/easy_logger.dart';
 
 import 'login_signup_cubit_test.mocks.dart';
 
@@ -18,6 +19,10 @@ void main() {
   late MockRegisterUser mockRegisterUser;
   late MockLoginUser mockLoginUser;
   late MockRecoverPassword mockRecoverPassword;
+
+  setUpAll(() async {
+    EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
+  });
 
   setUp(() {
     mockRegisterUser = MockRegisterUser();

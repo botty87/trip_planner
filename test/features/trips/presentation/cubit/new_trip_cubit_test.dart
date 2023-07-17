@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -9,6 +10,7 @@ import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
+import 'package:easy_logger/easy_logger.dart';
 
 import 'new_trip_cubit_test.mocks.dart';
 
@@ -16,6 +18,10 @@ class MockUserCubit extends MockCubit<UserState> implements UserCubit {}
 
 @GenerateNiceMocks([MockSpec<CreateTrip>()])
 void main() {
+  setUpAll(() async {
+    EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
+  });
+
   group('NewTripCubit', () {
     late MockUserCubit mockUserTrip;
     late MockCreateTrip mockCreateTrip;

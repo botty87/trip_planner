@@ -13,6 +13,7 @@ sealed class TripState with _$TripState {
     @Default([]) final List<DayTrip> dayTrips,
     required final String name,
     required final String? description,
+    required final DateTime startDate,
     @Default(false) final bool isSaving,
     String? errorMessage,
   }) = TripStateEditing;
