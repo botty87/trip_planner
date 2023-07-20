@@ -8,16 +8,15 @@ sealed class DayTrip with _$DayTrip {
   factory DayTrip({
     // ignore: invalid_annotation_target
     @JsonKey(includeFromJson: false, includeToJson: false) @Default('') String id,
-    required String name,
+    required int index,
     String? description,
   }) = _DayTrip;
 
   factory DayTrip.create({
-    required String name,
     String? description,
   }) =>
       DayTrip(
-        name: name,
+        index: 0,
         description: description,
       );
 

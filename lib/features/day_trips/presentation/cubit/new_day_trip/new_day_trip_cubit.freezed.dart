@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewDayTripState {
-  String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get createSuccess => throw _privateConstructorUsedError;
@@ -34,8 +33,7 @@ abstract class $NewDayTripStateCopyWith<$Res> {
       _$NewDayTripStateCopyWithImpl<$Res, NewDayTripState>;
   @useResult
   $Res call(
-      {String? name,
-      String? description,
+      {String? description,
       bool isSaving,
       bool createSuccess,
       String? errorMessage});
@@ -54,17 +52,12 @@ class _$NewDayTripStateCopyWithImpl<$Res, $Val extends NewDayTripState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
     Object? description = freezed,
     Object? isSaving = null,
     Object? createSuccess = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -94,8 +87,7 @@ abstract class _$$_NewDayTripStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? name,
-      String? description,
+      {String? description,
       bool isSaving,
       bool createSuccess,
       String? errorMessage});
@@ -112,17 +104,12 @@ class __$$_NewDayTripStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
     Object? description = freezed,
     Object? isSaving = null,
     Object? createSuccess = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$_NewDayTripState(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -147,14 +134,11 @@ class __$$_NewDayTripStateCopyWithImpl<$Res>
 
 class _$_NewDayTripState implements _NewDayTripState {
   const _$_NewDayTripState(
-      {this.name,
-      this.description,
+      {this.description,
       this.isSaving = false,
       this.createSuccess = false,
       this.errorMessage});
 
-  @override
-  final String? name;
   @override
   final String? description;
   @override
@@ -168,7 +152,7 @@ class _$_NewDayTripState implements _NewDayTripState {
 
   @override
   String toString() {
-    return 'NewDayTripState(name: $name, description: $description, isSaving: $isSaving, createSuccess: $createSuccess, errorMessage: $errorMessage)';
+    return 'NewDayTripState(description: $description, isSaving: $isSaving, createSuccess: $createSuccess, errorMessage: $errorMessage)';
   }
 
   @override
@@ -176,7 +160,6 @@ class _$_NewDayTripState implements _NewDayTripState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NewDayTripState &&
-            (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.isSaving, isSaving) ||
@@ -189,7 +172,7 @@ class _$_NewDayTripState implements _NewDayTripState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, description, isSaving, createSuccess, errorMessage);
+      runtimeType, description, isSaving, createSuccess, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -200,14 +183,11 @@ class _$_NewDayTripState implements _NewDayTripState {
 
 abstract class _NewDayTripState implements NewDayTripState {
   const factory _NewDayTripState(
-      {final String? name,
-      final String? description,
+      {final String? description,
       final bool isSaving,
       final bool createSuccess,
       final String? errorMessage}) = _$_NewDayTripState;
 
-  @override
-  String? get name;
   @override
   String? get description;
   @override

@@ -19,25 +19,14 @@ class NewDayTripCubit extends Cubit<NewDayTripState> {
         _tripId = tripId,
         super(NewDayTripState());
 
-  nameChanged(String value) {
-    emit(state.copyWith(name: value));
-  }
-
   descriptionChanged(String value) {
     emit(state.copyWith(description: value));
   }
 
   createDayTrip() async {
-    if (state.name == null || state.name!.isEmpty) {
-      emit(state.copyWith(errorMessage: LocaleKeys.dayTripNameEmpty.tr()));
-      emit(state.copyWith(errorMessage: null));
-      return;
-    }
-
     emit(state.copyWith(isSaving: true));
 
     final result = await _createDayTrip(CreateDayTripParams(
-      name: state.name!,
       description: state.description,
       tripId: _tripId,
     ));

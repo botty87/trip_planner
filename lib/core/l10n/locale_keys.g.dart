@@ -46,12 +46,12 @@ abstract class  LocaleKeys {
   static const deleteTrip = 'deleteTrip';
   static const deleteTripQuestion = 'deleteTripQuestion';
   static const delete = 'delete';
-  static const dayTripNameEmpty = 'dayTripNameEmpty';
   static const unknownErrorRetry = 'unknownErrorRetry';
   static const dayTripCreated = 'dayTripCreated';
   static const tripStartDateEmpty = 'tripStartDateEmpty';
   static const tripStartDate = 'tripStartDate';
   static const tripCreated = 'tripCreated';
   static const startDateBeforeTodayWarning = 'startDateBeforeTodayWarning';
+  static const day = 'day';
 
 }

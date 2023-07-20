@@ -13,7 +13,9 @@ class _DayTripCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _DayTripNameWidget(name: dayTrip.name),
+              _DayTripNameWidget(
+                index: dayTrip.index,
+              ),
               if (dayTrip.description != null)
                 _DayTripDescriptionWidget(description: dayTrip.description!),
             ],
@@ -25,15 +27,15 @@ class _DayTripCard extends StatelessWidget {
 }
 
 class _DayTripNameWidget extends StatelessWidget {
-  final String name;
-  const _DayTripNameWidget({required this.name});
+  final int index;
+  const _DayTripNameWidget({required this.index});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: VERTICAL_SPACE_S),
       child: Text(
-        name,
+        "${LocaleKeys.day.tr()} $index",
         style: Theme.of(context).textTheme.titleLarge,
         textAlign: TextAlign.center,
         maxLines: 1,

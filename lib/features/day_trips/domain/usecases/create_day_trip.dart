@@ -16,17 +16,15 @@ class CreateDayTrip implements UseCase<void, CreateDayTripParams> {
   Future<Either<DayTripsFailure, void>> call(CreateDayTripParams params) async {
     return await repository.addDayTrip(
         tripId: params.tripId,
-        dayTrip: DayTrip.create(name: params.name, description: params.description));
+        dayTrip: DayTrip.create(description: params.description));
   }
 }
 
 class CreateDayTripParams {
-  final String name;
   final String? description;
   final String tripId;
 
   const CreateDayTripParams({
-    required this.name,
     this.description,
     required this.tripId,
   });

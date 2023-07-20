@@ -7,12 +7,12 @@ part of 'day_trip.dart';
 // **************************************************************************
 
 _$_DayTrip _$$_DayTripFromJson(Map<String, dynamic> json) => _$_DayTrip(
-      name: json['name'] as String,
+      index: json['index'] as int,
       description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$$_DayTripToJson(_$_DayTrip instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'index': instance.index,
       'description': instance.description,
     };

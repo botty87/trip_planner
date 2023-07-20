@@ -44,11 +44,11 @@
     "deleteTrip" : "Delete Trip",
     "deleteTripQuestion" : "Are you sure you want to delete this trip?",
     "delete" : "Delete",
-    "dayTripNameEmpty" : "Day of trip name can't be empty",
     "unknownErrorRetry" : "Unknown error, please try again",
     "dayTripCreated" : "Day of trip created!",
     "tripStartDateEmpty" : "Trip start date can't be empty",
     "tripStartDate" : "Trip Start Date",
     "tripCreated" : "Trip created!",
-    "startDateBeforeTodayWarning" : "Start date is before today! Is this correct?"
+    "startDateBeforeTodayWarning" : "Start date is before today! Is this correct?",
+    "day" : "Day"
 }
