@@ -9,6 +9,7 @@ import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 
 import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../../../day_trips/domain/usecases/listen_day_trips.dart';
+import '../../../../day_trips/domain/usecases/update_day_trips_indexes.dart';
 import '../../../../day_trips/errors/day_trips_failure.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/delete_trip.dart';
@@ -22,16 +23,19 @@ class TripCubit extends Cubit<TripState> {
   final UpdateTrip _saveTrip;
   final DeleteTrip _deleteTrip;
   final ListenDayTrips _listenDayTrips;
+  final UpdateDayTripsIndexes _updateDayTripsIndexes;
   late final StreamSubscription<Either<DayTripsFailure, List<DayTrip>>> _dayTripsSubscription;
 
   TripCubit(
       {@factoryParam required Trip trip,
       required UpdateTrip saveTrip,
       required DeleteTrip deleteTrip,
-      required ListenDayTrips listenDayTrips})
+      required ListenDayTrips listenDayTrips,
+      required UpdateDayTripsIndexes updateDayTripsIndexes})
       : _saveTrip = saveTrip,
         _deleteTrip = deleteTrip,
         _listenDayTrips = listenDayTrips,
+        _updateDayTripsIndexes = updateDayTripsIndexes,
         super(TripState(trip: trip, dayTrips: [])) {
     _dayTripsSubscription = _listenDayTrips(ListenDayTripsParams(tripId: trip.id)).listen((result) {
       result.fold(
@@ -126,6 +130,26 @@ class TripCubit extends Cubit<TripState> {
         deleted: true,
       )),
     );
+  }
+
+  void reorderDayTrips(int oldIndex, int newIndex) {
+    //fix for a bug when newIndex > oldIndex
+    if (newIndex > oldIndex) newIndex--;
+    final List<DayTrip> dayTripsToUpdate = [];
+
+    dayTripsToUpdate.add(state.dayTrips[oldIndex].copyWith(index: newIndex));
+    if (newIndex > oldIndex) {
+      for (int i = oldIndex + 1; i <= newIndex; i++) {
+        dayTripsToUpdate.add(state.dayTrips[i].copyWith(index: i - 1));
+      }
+    } else {
+      for (int i = oldIndex - 1; i >= newIndex; i--) {
+        dayTripsToUpdate.add(state.dayTrips[i].copyWith(index: i + 1));
+      }
+    }
+
+    _updateDayTripsIndexes(
+        UpdateDayTripsIndexesParams(dayTrips: dayTripsToUpdate, tripId: state.trip.id));
   }
 
   @override

@@ -22,7 +22,7 @@ void main() {
         .thenAnswer((_) async => right(null));
 
     // act
-    final result = await usecase(CreateDayTripParams(tripId: 'tripId', name: 'name', description: 'description'));
+    final result = await usecase(CreateDayTripParams(tripId: 'tripId', description: 'description'));
     // assert
     expect(result, equals(right(null)));
   });
@@ -32,7 +32,7 @@ void main() {
         .thenAnswer((_) async => left(DayTripsFailure()));
 
     // act
-    final result = await usecase(CreateDayTripParams(tripId: 'tripId', name: 'name', description: 'description'));
+    final result = await usecase(CreateDayTripParams(tripId: 'tripId', description: 'description'));
     // assert
     expect(result, equals(left(DayTripsFailure())));
   });

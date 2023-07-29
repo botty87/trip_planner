@@ -56,4 +56,21 @@ class MockDayTripsDataSource extends _i1.Mock
         returnValue: _i3.Stream<List<_i4.DayTrip>>.empty(),
         returnValueForMissingStub: _i3.Stream<List<_i4.DayTrip>>.empty(),
       ) as _i3.Stream<List<_i4.DayTrip>>);
+  @override
+  _i3.Future<void> updateDayTripsIndexes({
+    required String? tripId,
+    required List<_i4.DayTrip>? dayTrips,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDayTripsIndexes,
+          [],
+          {
+            #tripId: tripId,
+            #dayTrips: dayTrips,
+          },
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }

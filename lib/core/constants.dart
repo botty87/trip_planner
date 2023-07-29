@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const double PAGE_HORIZONTAL_PADDING = 16.0;
 const double PAGE_VERTICAL_PADDING = 20.0;
+const double VERTICAL_SPACE_XS = 4.0;
 const double VERTICAL_SPACE_S = 8.0;
 const double VERTICAL_SPACE = 12.0;
 const double VERTICAL_SPACE_L = 16.0;

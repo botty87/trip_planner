@@ -95,4 +95,44 @@ class MockDayTripsRepository extends _i1.Mock
         returnValueForMissingStub: _i4
             .Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>.empty(),
       ) as _i4.Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>);
+  @override
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> updateDayTripsIndexes({
+    required String? tripId,
+    required List<_i6.DayTrip>? dayTrips,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDayTripsIndexes,
+          [],
+          {
+            #tripId: tripId,
+            #dayTrips: dayTrips,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTripsIndexes,
+            [],
+            {
+              #tripId: tripId,
+              #dayTrips: dayTrips,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTripsIndexes,
+            [],
+            {
+              #tripId: tripId,
+              #dayTrips: dayTrips,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
 }

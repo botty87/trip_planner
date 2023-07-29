@@ -26,12 +26,6 @@ void main() {
     mockCreateDayTrip = MockCreateDayTrip();
   });
 
-  blocTest<NewDayTripCubit, NewDayTripState>(
-    'When name change emit state with name changed',
-    build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId),
-    act: (cubit) => cubit.nameChanged('test'),
-    expect: () => [NewDayTripState(name: 'test')],
-  );
 
   blocTest<NewDayTripCubit, NewDayTripState>(
     'When description change emit state with description changed',
@@ -40,40 +34,31 @@ void main() {
     expect: () => [NewDayTripState(description: 'test')],
   );
 
-  group('create day trip', () { 
-    blocTest<NewDayTripCubit, NewDayTripState>(
-      'When create day trip with empty name emit state with error message',
-      build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId),
-      act: (cubit) => cubit.createDayTrip(),
-      expect: () => [
-        NewDayTripState(errorMessage: LocaleKeys.dayTripNameEmpty),
-        NewDayTripState(errorMessage: null),
-      ],
-    );
+  group('Create day trip', () { 
 
     blocTest<NewDayTripCubit, NewDayTripState>(
-      'When create day trip with name emit state with isSaving true, createSuccess true and no error message',
+      'When create day trip emit state with isSaving true, createSuccess true and no error message',
       build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId),
-      seed: () => NewDayTripState(name: 'test'),
+      seed: () => NewDayTripState(),
       setUp: () => when(mockCreateDayTrip(any)).thenAnswer((_) async => right(null)),
       act: (cubit) => cubit.createDayTrip(),
       verify: (_) => verify(mockCreateDayTrip(any)).called(1),
       expect: () => [
-        NewDayTripState(name: 'test', isSaving: true),
-        NewDayTripState(name: 'test', isSaving: false, createSuccess: true),
+        NewDayTripState(isSaving: true),
+        NewDayTripState(isSaving: false, createSuccess: true),
       ],
     );
 
     blocTest<NewDayTripCubit, NewDayTripState>(
       'When create day trip with name emit state with isSaving true, createSuccess false and error message',
       build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId),
-      seed: () => NewDayTripState(name: 'test'),
+      seed: () => NewDayTripState(),
       setUp: () => when(mockCreateDayTrip(any)).thenAnswer((_) async => left(const DayTripsFailure())),
       act: (cubit) => cubit.createDayTrip(),
       verify: (_) => verify(mockCreateDayTrip(any)).called(1),
       expect: () => [
-        NewDayTripState(name: 'test', isSaving: true),
-        NewDayTripState(name: 'test', isSaving: false, errorMessage: LocaleKeys.unknownErrorRetry),
+        NewDayTripState(isSaving: true),
+        NewDayTripState(isSaving: false, errorMessage: LocaleKeys.unknownErrorRetry),
       ],
     );
   });

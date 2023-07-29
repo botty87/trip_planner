@@ -33,4 +33,16 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       yield left(DayTripsFailure());
     }
   }
+  
+  @override
+  Future<Either<DayTripsFailure, void>> updateDayTripsIndexes({required String tripId, required List<DayTrip> dayTrips}) async {
+    try {
+      await _dayTripsDataSource.updateDayTripsIndexes(tripId: tripId, dayTrips: dayTrips);
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(DayTripsFailure(message: e.message));
+    } on Exception {
+      return left(DayTripsFailure());
+    }
+  }
 }

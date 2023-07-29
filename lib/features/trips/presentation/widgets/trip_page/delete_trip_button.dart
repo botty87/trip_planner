@@ -12,19 +12,21 @@ class _DeleteTripButton extends StatelessWidget {
         },
         builder: (context, isDeleting) {
           return ElevatedButton(
-            onPressed: isDeleting ? null : () async {
-              final result = await showOkCancelAlertDialog(
-                context: context,
-                title: LocaleKeys.deleteTrip.tr(),
-                message: LocaleKeys.deleteTripQuestion.tr(),
-                okLabel: LocaleKeys.delete.tr(),
-                cancelLabel: LocaleKeys.cancel.tr(),
-              );
+            onPressed: isDeleting
+                ? null
+                : () async {
+                    final result = await showOkCancelAlertDialog(
+                      context: context,
+                      title: LocaleKeys.deleteTrip.tr(),
+                      message: LocaleKeys.deleteTripQuestion.tr(),
+                      okLabel: LocaleKeys.delete.tr(),
+                      cancelLabel: LocaleKeys.cancel.tr(),
+                    );
 
-              if (result == OkCancelResult.ok) {
-                context.read<TripCubit>().deleteTrip();
-              }
-            },
+                    if (result == OkCancelResult.ok) {
+                      context.read<TripCubit>().deleteTrip();
+                    }
+                  },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
               shape: const StadiumBorder(),

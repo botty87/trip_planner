@@ -1,8 +1,10 @@
 part of '../../pages/trip_page.dart';
 
 class _DayTripCard extends StatelessWidget {
+  final DateTime _tripStartDate;
   final DayTrip dayTrip;
-  const _DayTripCard({required this.dayTrip});
+  const _DayTripCard({required this.dayTrip, required DateTime tripStartDate})
+      : _tripStartDate = tripStartDate;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +15,8 @@ class _DayTripCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _DayTripNameWidget(
-                index: dayTrip.index,
-              ),
+              _DayTripNameWidget(index: dayTrip.index),
+              _DayTripDateWidget(index: dayTrip.index, tripStartDate: _tripStartDate),
               if (dayTrip.description != null)
                 _DayTripDescriptionWidget(description: dayTrip.description!),
             ],
@@ -35,12 +36,29 @@ class _DayTripNameWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: VERTICAL_SPACE_S),
       child: Text(
-        "${LocaleKeys.day.tr()} $index",
+        "${LocaleKeys.day.tr()} ${index + 1}",
         style: Theme.of(context).textTheme.titleLarge,
         textAlign: TextAlign.center,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
+    );
+  }
+}
+
+class _DayTripDateWidget extends StatelessWidget {
+  final int index;
+  final DateTime tripStartDate;
+  const _DayTripDateWidget({required this.index, required this.tripStartDate});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "${DateFormat.yMMMMd().format(tripStartDate.add(Duration(days: index)))}",
+      style: Theme.of(context).textTheme.bodyLarge,
+      textAlign: TextAlign.center,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }

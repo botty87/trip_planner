@@ -25,8 +25,8 @@ void main() {
     // arrange
     final tDayTip = DayTrip(
       id: 'Test Day Trip Id',
-      name: 'Test Day Trip',
       description: 'Test Day Trip Description',
+      index: 0,
     );
     final tDayTrips = [tDayTip];
     when(mockDayTripsRepository.listenDayTrips(

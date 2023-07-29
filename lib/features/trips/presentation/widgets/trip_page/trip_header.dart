@@ -7,11 +7,17 @@ class _TripHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final trip = context.read<TripCubit>().state.trip;
 
-    return Text(
-      trip.description ?? '',
-      style: Theme.of(context).textTheme.bodyLarge,
-      textAlign: TextAlign.justify,
-    );
+    if (trip.description != null) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_S),
+        child: Text(
+          trip.description ?? '',
+          style: Theme.of(context).textTheme.bodyLarge,
+          textAlign: TextAlign.justify,
+        ),
+      );
+    } else {
+      return SizedBox.shrink();
+    }
   }
 }
-

@@ -29,7 +29,6 @@ class _TripPageBody extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _TripHeader(),
                   const _DayTripsList(),
                   const SizedBox(height: VERTICAL_SPACE_S),
                   const _AddDayTripCard(),

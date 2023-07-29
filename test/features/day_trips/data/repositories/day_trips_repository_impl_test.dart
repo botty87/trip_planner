@@ -16,7 +16,7 @@ void main() {
 
   final tDayTrip = DayTrip(
     id: 'id',
-    name: 'name',
+    index: 0,
     description: 'description',
   );
   
@@ -51,11 +51,7 @@ void main() {
 
   group('listenDayTrips', () {
     test('should return right(List<DayTrip>) when listenDayTrips', () async {
-      final tDayTrip = DayTrip(
-        id: 'id',
-        name: 'name',
-        description: 'description',
-      );
+      
       final tDayTrips = [tDayTrip];
       when(mockDayTripsDataSource.listenDayTrips(any)).thenAnswer((_) => Stream.value(tDayTrips));
 
@@ -72,6 +68,28 @@ void main() {
       final result = repository.listenDayTrips('tripId');
       // assert
       expect(result, emitsInOrder([left(DayTripsFailure())]));
+    });
+  });
+
+  group('updateDayTripsIndexes', () { 
+    test('should return right(null) when updateDayTripsIndexes', () async {
+      when(mockDayTripsDataSource.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]))
+          .thenAnswer((_) async => null);
+
+      // act
+      final result = await repository.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(DayTripsFailure()) when updateDayTripsIndexes throws', () async {
+      when(mockDayTripsDataSource.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]))
+          .thenThrow(Exception());
+
+      // act
+      final result = await repository.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]);
+      // assert
+      expect(result, equals(left(DayTripsFailure())));
     });
   });
 }

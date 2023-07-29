@@ -15,6 +15,8 @@ import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_re
     as _i4;
 import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trips.dart'
     as _i9;
+import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trips_indexes.dart'
+    as _i12;
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
     as _i10;
 import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
@@ -185,4 +187,37 @@ class MockListenDayTrips extends _i1.Mock implements _i9.ListenDayTrips {
         returnValueForMissingStub: _i6.Stream<
             _i3.Either<_i10.DayTripsFailure, List<_i11.DayTrip>>>.empty(),
       ) as _i6.Stream<_i3.Either<_i10.DayTripsFailure, List<_i11.DayTrip>>>);
+}
+
+/// A class which mocks [UpdateDayTripsIndexes].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUpdateDayTripsIndexes extends _i1.Mock
+    implements _i12.UpdateDayTripsIndexes {
+  @override
+  _i6.Future<_i3.Either<_i10.DayTripsFailure, void>> call(
+          _i12.UpdateDayTripsIndexesParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i6.Future<_i3.Either<_i10.DayTripsFailure, void>>.value(
+            _FakeEither_1<_i10.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i6.Future<_i3.Either<_i10.DayTripsFailure, void>>.value(
+                _FakeEither_1<_i10.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i3.Either<_i10.DayTripsFailure, void>>);
 }

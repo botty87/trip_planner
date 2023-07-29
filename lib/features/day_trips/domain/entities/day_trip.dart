@@ -16,7 +16,7 @@ sealed class DayTrip with _$DayTrip {
     String? description,
   }) =>
       DayTrip(
-        index: 0,
+        index: -1,
         description: description,
       );
 
