@@ -13,6 +13,13 @@ class _DayTripsList extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: dayTrips.length,
+      proxyDecorator: (child, index, animation) {
+        return TransparentListDecorator(
+          child: child,
+          index: index,
+          animation: animation,
+        );
+      },
       itemBuilder: (context, index) {
         final dayTrip = dayTrips[index];
         return Padding(

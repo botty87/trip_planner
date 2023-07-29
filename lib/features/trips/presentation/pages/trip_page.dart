@@ -14,6 +14,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/snackbars.dart';
+import '../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../domain/entities/trip.dart';

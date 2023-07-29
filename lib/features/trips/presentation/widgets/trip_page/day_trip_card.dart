@@ -3,7 +3,7 @@ part of '../../pages/trip_page.dart';
 class _DayTripCard extends StatelessWidget {
   final DateTime _tripStartDate;
   final DayTrip dayTrip;
-  const _DayTripCard({required this.dayTrip, required DateTime tripStartDate})
+  const _DayTripCard({required this.dayTrip, required DateTime tripStartDate, super.key})
       : _tripStartDate = tripStartDate;
 
   @override
