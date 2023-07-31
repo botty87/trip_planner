@@ -3,18 +3,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:vector_graphics/vector_graphics.dart';
+import 'package:trip_planner/features/day_trips/presentation/widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
 import '../../../../core/widgets/snackbars.dart';
-import '../../../../gen/assets.gen.dart';
 import '../cubit/new_day_trip/new_day_trip_cubit.dart';
 
-part '../widgets/new_day_trip_page/description_widget.dart';
 part '../widgets/new_day_trip_page/add_day_trip_button.dart';
 
 @RoutePage()
@@ -56,38 +53,20 @@ class _NewDayTripPageBody extends HookWidget {
       context.router.pop();
     }, listenWhen: (current) => current.createSuccess);
 
+    //show saving indicator if needed
+    final isSaving = useStreamController<bool>();
+    useBlocListener<NewDayTripCubit, NewDayTripState>(
+        context.read(), (bloc, state, context) => isSaving.add(state.isSaving),
+        listenWhen: (current) => current.isSaving != current.isSaving);
+
+    final cubit = context.read<NewDayTripCubit>();
+
     return SafeArea(
-      minimum: DEFAULT_PAGE_PADDING,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          BlocSelector<NewDayTripCubit, NewDayTripState, bool>(
-              selector: (state) => state.isSaving,
-              builder: (context, isSaving) {
-                if (isSaving) {
-                  return LinearProgressIndicator(minHeight: 1);
-                } else {
-                  return const SizedBox(height: 1);
-                }
-              }),
-          Expanded(
-            child: SvgPicture(
-              key: Key('tripImage'),
-              AssetBytesLoader(Assets.svg.addNewDayTripSvg),
-            ),
-          ),
-          const SizedBox(height: VERTICAL_SPACE_L),
-          Expanded(
-            child: Column(
-              children: const [
-                _DescriptionWidget(),
-                SizedBox(height: VERTICAL_SPACE_L),
-                _AddDayTripButton(),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+        minimum: DEFAULT_PAGE_PADDING,
+        child: NewEditDayTripForm(
+          isSaving: isSaving.stream,
+          onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+          saveSection: _AddDayTripButton(),
+        ));
   }
 }

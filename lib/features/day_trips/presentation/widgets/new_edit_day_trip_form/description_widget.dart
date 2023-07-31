@@ -1,18 +1,19 @@
-part of '../../pages/new_day_trip_page.dart';
+part of 'new_edit_day_trip_form.dart';
 
 class _DescriptionWidget extends StatelessWidget {
-  const _DescriptionWidget();
+  final ValueChanged<String> onDescriptionChanged;
+
+  const _DescriptionWidget({required this.onDescriptionChanged});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<NewDayTripCubit>();
     return TextField(
       key: Key('descriptionTextField'),
       decoration: InputDecoration(
         labelText: LocaleKeys.dayTripDescription.tr(),
         hintText: LocaleKeys.dayTripDescriptionHint.tr(),
       ),
-      onChanged: (value) => cubit.descriptionChanged(value),
+      onChanged: onDescriptionChanged,
       maxLines: 4,
       minLines: 1,
     );
