@@ -1,7 +1,7 @@
 part of '../../pages/day_trip_page.dart';
 
 class _DayTripDescription extends StatelessWidget {
-  const _DayTripDescription({super.key});
+  const _DayTripDescription();
 
   @override
   Widget build(BuildContext context) {
