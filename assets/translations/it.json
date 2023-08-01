@@ -50,5 +50,6 @@
     "tripStartDate": "Data di inizio del viaggio",
     "tripCreated" : "Viaggio creato!",
     "startDateBeforeTodayWarning" : "La data di inizio del viaggio è precedente a quella odierna! È corretto?",
-    "day": "Giorno"
+    "day": "Giorno",
+    "tripStop": "Tappa di viaggio"
 }

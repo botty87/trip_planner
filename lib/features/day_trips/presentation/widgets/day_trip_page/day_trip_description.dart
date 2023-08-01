@@ -1,17 +1,17 @@
-part of '../../pages/trip_page.dart';
+part of '../../pages/day_trip_page.dart';
 
-class _TripHeader extends StatelessWidget {
-  const _TripHeader();
+class _DayTripDescription extends StatelessWidget {
+  const _DayTripDescription({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final trip = context.read<TripCubit>().state.trip;
+    final dayTrip = context.read<DayTripCubit>().state.dayTrip;
 
-    if (trip.description != null) {
+    if (dayTrip.description != null) {
       return Padding(
         padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_S),
         child: Text(
-          trip.description!,
+          dayTrip.description!,
           style: Theme.of(context).textTheme.bodyLarge,
           textAlign: TextAlign.justify,
         ),

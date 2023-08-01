@@ -1,7 +1,7 @@
-part of '../../pages/trip_page.dart';
+part of '../../pages/day_trip_page.dart';
 
-final class _AddDayTripCard extends AddDestinationCard {
-  const _AddDayTripCard();
+final class _AddDayTripStopCard extends AddDestinationCard {
+  const _AddDayTripStopCard();
 
   @override
   String get assetName => Assets.svg.addDayTripSvg;
@@ -12,7 +12,7 @@ final class _AddDayTripCard extends AddDestinationCard {
   @override
   void Function(BuildContext context) get onTap {
     return (BuildContext context) {
-      context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id));
+      //TODO: Implement onTap
     };
   }
 }

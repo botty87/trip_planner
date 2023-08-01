@@ -53,5 +53,6 @@ abstract class  LocaleKeys {
   static const tripCreated = 'tripCreated';
   static const startDateBeforeTodayWarning = 'startDateBeforeTodayWarning';
   static const day = 'day';
+  static const tripStop = 'tripStop';
 
 }

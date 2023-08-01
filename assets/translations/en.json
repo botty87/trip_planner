@@ -50,5 +50,6 @@
     "tripStartDate" : "Trip Start Date",
     "tripCreated" : "Trip created!",
     "startDateBeforeTodayWarning" : "Start date is before today! Is this correct?",
-    "day" : "Day"
+    "day" : "Day",
+    "tripStop" : "Trip stop"
 }

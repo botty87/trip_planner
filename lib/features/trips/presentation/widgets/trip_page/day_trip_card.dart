@@ -23,6 +23,8 @@ class _DayTripCard extends StatelessWidget {
           ),
         ),
       ),
+      onTap: () => context.router
+          .push(DayTripRoute(trip: context.read<TripCubit>().state.trip, dayTrip: dayTrip)),
     );
   }
 }
