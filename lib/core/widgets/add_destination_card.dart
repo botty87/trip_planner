@@ -8,6 +8,7 @@ import '../constants.dart';
 abstract base class AddDestinationCard extends StatelessWidget {
   abstract final String assetName;
   abstract final String title;
+  abstract final Color color;
   abstract final void Function(BuildContext context) onTap;
 
   const AddDestinationCard({super.key});
@@ -17,7 +18,7 @@ abstract base class AddDestinationCard extends StatelessWidget {
     return InkWell(
       onTap: () => onTap.call(context),
       child: Card(
-        color: Colors.amberAccent[100],
+        color: color,
         child: Padding(
           padding: CARD_PADDING,
           child: Column(

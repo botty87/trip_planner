@@ -5,6 +5,6 @@ class TripsState with _$TripsState {
 
   const factory TripsState({
     @Default([]) List<Trip> trips,
+    @Default(true) bool isLoading,
   }) = _TripsState;
-
 }

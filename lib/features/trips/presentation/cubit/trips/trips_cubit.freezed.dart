@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TripsState {
   List<Trip> get trips => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TripsStateCopyWith<TripsState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $TripsStateCopyWith<$Res> {
           TripsState value, $Res Function(TripsState) then) =
       _$TripsStateCopyWithImpl<$Res, TripsState>;
   @useResult
-  $Res call({List<Trip> trips});
+  $Res call({List<Trip> trips, bool isLoading});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$TripsStateCopyWithImpl<$Res, $Val extends TripsState>
   @override
   $Res call({
     Object? trips = null,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       trips: null == trips
           ? _value.trips
           : trips // ignore: cast_nullable_to_non_nullable
               as List<Trip>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_TripsStateCopyWith<$Res>
       __$$_TripsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Trip> trips});
+  $Res call({List<Trip> trips, bool isLoading});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_TripsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? trips = null,
+    Object? isLoading = null,
   }) {
     return _then(_$_TripsState(
       trips: null == trips
           ? _value._trips
           : trips // ignore: cast_nullable_to_non_nullable
               as List<Trip>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -92,7 +103,9 @@ class __$$_TripsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TripsState implements _TripsState {
-  const _$_TripsState({final List<Trip> trips = const []}) : _trips = trips;
+  const _$_TripsState(
+      {final List<Trip> trips = const [], this.isLoading = true})
+      : _trips = trips;
 
   final List<Trip> _trips;
   @override
@@ -104,8 +117,12 @@ class _$_TripsState implements _TripsState {
   }
 
   @override
+  @JsonKey()
+  final bool isLoading;
+
+  @override
   String toString() {
-    return 'TripsState(trips: $trips)';
+    return 'TripsState(trips: $trips, isLoading: $isLoading)';
   }
 
   @override
@@ -113,12 +130,14 @@ class _$_TripsState implements _TripsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TripsState &&
-            const DeepCollectionEquality().equals(other._trips, _trips));
+            const DeepCollectionEquality().equals(other._trips, _trips) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_trips));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_trips), isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -128,10 +147,13 @@ class _$_TripsState implements _TripsState {
 }
 
 abstract class _TripsState implements TripsState {
-  const factory _TripsState({final List<Trip> trips}) = _$_TripsState;
+  const factory _TripsState({final List<Trip> trips, final bool isLoading}) =
+      _$_TripsState;
 
   @override
   List<Trip> get trips;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$_TripsStateCopyWith<_$_TripsState> get copyWith =>

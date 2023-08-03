@@ -27,7 +27,7 @@ class TripsCubit extends Cubit<TripsState> {
         (failure) {
           //TODO handle failure
         },
-        (trips) => emit(TripsState(trips: trips)),
+        (trips) => emit(TripsState(trips: trips, isLoading: false)),
       );
     });
   }

@@ -15,4 +15,7 @@ final class _AddDayTripCard extends AddDestinationCard {
       context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id));
     };
   }
+
+  @override
+  Color get color => Colors.amberAccent[100]!;
 }
