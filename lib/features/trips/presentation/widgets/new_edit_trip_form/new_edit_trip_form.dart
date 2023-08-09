@@ -34,6 +34,57 @@ class NewEditTripForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /* return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        StreamBuilder<bool>(
+          stream: isLoading,
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            if (snapshot.data ?? false) {
+              return LinearProgressIndicator(minHeight: 1);
+            } else {
+              return const SizedBox(height: 1);
+            }
+          },
+        ),
+        Expanded(
+          child: DraggableScrollableSheet(
+            initialChildSize: 1,
+            minChildSize: 0.85,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return SingleChildScrollView(
+                controller: scrollController,
+                child: SafeArea(
+                  minimum: DEFAULT_PAGE_PADDING,
+                  child: Column(
+                    children: [
+                      _TripNameTextField(
+                          key: Key('tripNameTextField'),
+                          onChanged: onNameChanged,
+                          initialTripName: initialTripName),
+                      const SizedBox(height: VERTICAL_SPACE),
+                      _TripDescriptionTextField(
+                          key: Key('tripDescriptionTextField'),
+                          onChanged: onDescriptionChanged,
+                          initialTripDescription: initialTripDescription),
+                      const SizedBox(height: VERTICAL_SPACE_L),
+                      _StartDatePicker(
+                        key: Key('startDatePicker'),
+                        onValueChanged: onStartDateChanged,
+                        initialStartDate: initialStartDate,
+                      ),
+                      const SizedBox(height: VERTICAL_SPACE_L),
+                      saveSection,
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    ); */
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -48,28 +99,30 @@ class NewEditTripForm extends StatelessWidget {
           },
         ),
         Expanded(
-          child: SingleChildScrollView(
-            padding: DEFAULT_PAGE_PADDING,
-            child: Column(
-              children: [
-                _TripNameTextField(
-                    key: Key('tripNameTextField'),
-                    onChanged: onNameChanged,
-                    initialTripName: initialTripName),
-                const SizedBox(height: VERTICAL_SPACE),
-                _TripDescriptionTextField(
-                    key: Key('tripDescriptionTextField'),
-                    onChanged: onDescriptionChanged,
-                    initialTripDescription: initialTripDescription),
-                const SizedBox(height: VERTICAL_SPACE_L),
-                _StartDatePicker(
-                  key: Key('startDatePicker'),
-                  onValueChanged: onStartDateChanged,
-                  initialStartDate: initialStartDate,
-                ),
-                const SizedBox(height: VERTICAL_SPACE_L),
-                saveSection,
-              ],
+          child: SafeArea(
+            minimum: DEFAULT_PAGE_PADDING,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  _TripNameTextField(
+                      key: Key('tripNameTextField'),
+                      onChanged: onNameChanged,
+                      initialTripName: initialTripName),
+                  const SizedBox(height: VERTICAL_SPACE),
+                  _TripDescriptionTextField(
+                      key: Key('tripDescriptionTextField'),
+                      onChanged: onDescriptionChanged,
+                      initialTripDescription: initialTripDescription),
+                  const SizedBox(height: VERTICAL_SPACE_L),
+                  _StartDatePicker(
+                    key: Key('startDatePicker'),
+                    onValueChanged: onStartDateChanged,
+                    initialStartDate: initialStartDate,
+                  ),
+                  const SizedBox(height: VERTICAL_SPACE_L),
+                  saveSection,
+                ],
+              ),
             ),
           ),
         ),

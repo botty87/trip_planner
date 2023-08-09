@@ -6,6 +6,12 @@ class DayTripState with _$DayTripState {
     required Trip trip,
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
-    
   }) = _DayTripState;
+
+  const factory DayTripState.editing({
+    required Trip trip,
+    required DayTrip dayTrip,
+    @Default([]) List<TripStop> tripStops,
+    required String? description,
+  }) = DayTripStateEditing;
 }

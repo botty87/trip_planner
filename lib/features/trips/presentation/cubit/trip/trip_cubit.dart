@@ -78,10 +78,17 @@ class TripCubit extends Cubit<TripState> {
     emit(TripState(trip: state.trip, dayTrips: state.dayTrips));
   }
 
-  saveChanges() async {
+  Future<bool> saveChanges() async {
+    String? getTripDescription() {
+      if ((state as TripStateEditing).description?.isNotEmpty ?? false)
+        return (state as TripStateEditing).description!;
+      else
+        return null;
+    }
+
     assert(state is TripStateEditing);
     final tripId = state.trip.id;
-    final tripDescription = (state as TripStateEditing).description;
+    final tripDescription = getTripDescription();
     final tripName = (state as TripStateEditing).name;
     final tripStartDate = (state as TripStateEditing).startDate;
 
@@ -94,20 +101,24 @@ class TripCubit extends Cubit<TripState> {
       startDate: tripStartDate,
     ));
 
-    result.fold(
+    return result.fold(
       (failure) {
         emit((state as TripStateEditing).copyWith(
           isSaving: false,
           errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
         ));
+        return false;
       },
-      (_) => emit(TripState(
-          trip: state.trip.copyWith(
-            name: tripName,
-            description: tripDescription,
-            startDate: tripStartDate,
-          ),
-          dayTrips: state.dayTrips)),
+      (_) {
+        emit(TripState(
+            trip: state.trip.copyWith(
+              name: tripName,
+              description: tripDescription,
+              startDate: tripStartDate,
+            ),
+            dayTrips: state.dayTrips));
+        return true;
+      },
     );
   }
 
@@ -156,5 +167,11 @@ class TripCubit extends Cubit<TripState> {
   Future<void> close() {
     _dayTripsSubscription.cancel();
     return super.close();
+  }
+
+  void modalBottomEditingDismissed() {
+    if (state is TripStateEditing) {
+      emit(TripState(trip: state.trip, dayTrips: state.dayTrips));
+    }
   }
 }

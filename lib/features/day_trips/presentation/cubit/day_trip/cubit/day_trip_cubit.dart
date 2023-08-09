@@ -16,4 +16,13 @@ class DayTripCubit extends Cubit<DayTripState> {
           trip: trip,
           dayTrip: dayTrip,
         ));
+
+  edit() {
+    emit(DayTripState.editing(
+      trip: state.trip,
+      dayTrip: state.dayTrip,
+      tripStops: state.tripStops,
+      description: state.dayTrip.description,
+    ));
+  }
 }

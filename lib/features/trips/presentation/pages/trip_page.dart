@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -22,9 +24,9 @@ part '../widgets/trip_page/add_day_trip_card.dart';
 part '../widgets/trip_page/day_trip_card.dart';
 part '../widgets/trip_page/day_trips_list.dart';
 part '../widgets/trip_page/delete_trip_button.dart';
+part '../widgets/trip_page/save_undo_edit_buttons.dart';
 part '../widgets/trip_page/trip_header.dart';
 part '../widgets/trip_page/trip_page_body.dart';
-part '../widgets/trip_page/save_undo_edit_buttons.dart';
 
 @RoutePage()
 class TripPage extends StatelessWidget {
@@ -35,56 +37,14 @@ class TripPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<TripCubit>(
       create: (context) => getIt<TripCubit>(param1: _trip),
-      child: Builder(builder: (context) {
-        return WillPopScope(
-          onWillPop: () async {
-            final isEditing = context.read<TripCubit>().state is TripStateEditing;
-            if (isEditing) {
-              return _showDiscardDialog(context);
-            }
-            return true;
-          },
-          child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: _TripPageAppBar(),
-            ),
-            body: MultiBlocListener(
-              listeners: [
-                BlocListener<TripCubit, TripState>(
-                  listenWhen: (previous, current) => current.errorMessage != null,
-                  listener: (context, state) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      Snackbars.error(state.errorMessage!),
-                    );
-                  },
-                ),
-                BlocListener<TripCubit, TripState>(
-                  listenWhen: (previous, current) =>
-                      current is TripStateDeleting && current.deleted,
-                  listener: (context, state) {
-                    context.router.pop();
-                  },
-                ),
-              ],
-              child: _TripPageBody(),
-            ),
-          ),
-        );
-      }),
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: _TripPageAppBar(),
+        ),
+        body: _TripPageBody(),
+      ),
     );
-  }
-
-  Future<bool> _showDiscardDialog(BuildContext context) async {
-    final result = await showOkCancelAlertDialog(
-      context: context,
-      title: LocaleKeys.discardChanges.tr(),
-      message: LocaleKeys.discardChangesQuestion.tr(),
-      okLabel: LocaleKeys.discard.tr(),
-      cancelLabel: LocaleKeys.cancel.tr(),
-    );
-
-    return result == OkCancelResult.ok;
   }
 }
 
@@ -93,19 +53,17 @@ class _TripPageAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final trip = context.read<TripCubit>().state.trip;
-    final isEditing = context.select((TripCubit cubit) => cubit.state is TripStateEditing);
+    final tripName = context.select<TripCubit, String>((cubit) => cubit.state.trip.name);
 
     return AppBar(
-      title: Text(isEditing ? LocaleKeys.editTrip.tr() : trip.name),
-      actions: isEditing
-          ? null
-          : [
-              IconButton(
-                icon: const Icon(Icons.edit),
-                onPressed: () => context.read<TripCubit>().edit(),
-              ),
-            ],
+      title: Text(tripName),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.edit),
+          onPressed: () => context.read<TripCubit>().edit(),
+        ),
+      ],
     );
+    
   }
 }

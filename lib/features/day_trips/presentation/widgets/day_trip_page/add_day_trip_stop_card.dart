@@ -12,7 +12,12 @@ final class _AddDayTripStopCard extends AddDestinationCard {
   @override
   void Function(BuildContext context) get onTap {
     return (BuildContext context) {
-      //TODO: Implement onTap
+      final dayTripState = context.read<DayTripCubit>().state;
+
+      context.router.push(NewTripStopRoute(
+        trip: dayTripState.trip,
+        dayTrip: dayTripState.dayTrip,
+      ));
     };
   }
 

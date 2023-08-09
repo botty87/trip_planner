@@ -45,9 +45,7 @@ void main() {
       );
     },
     build: () => TripsCubit(mockListenTrips, mockUserCubit),
-    act: (cubit) => cubit, 
-    expect: () => [
-      TripsState(trips: trips),
-    ],
+    act: (cubit) => cubit,
+    expect: () => [TripsState(trips: trips, isLoading: false)],
   );
 }

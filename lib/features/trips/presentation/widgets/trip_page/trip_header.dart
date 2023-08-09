@@ -5,19 +5,18 @@ class _TripHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final trip = context.read<TripCubit>().state.trip;
+    final tripDescription =
+        context.select<TripCubit, String?>((cubit) => cubit.state.trip.description);
 
-    if (trip.description != null) {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_S),
-        child: Text(
-          trip.description!,
-          style: Theme.of(context).textTheme.bodyLarge,
-          textAlign: TextAlign.justify,
-        ),
-      );
-    } else {
-      return SizedBox.shrink();
-    }
+    return tripDescription != null
+        ? Padding(
+            padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_S),
+            child: Text(
+              tripDescription!,
+              style: Theme.of(context).textTheme.bodyLarge,
+              textAlign: TextAlign.justify,
+            ),
+          )
+        : SizedBox.shrink();
   }
 }

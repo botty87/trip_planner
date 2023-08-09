@@ -52,5 +52,6 @@
     "startDateBeforeTodayWarning" : "Start date is before today! Is this correct?",
     "day" : "Day",
     "tripStop" : "Trip stop",
-    "addDestination" : "Add Destination"
+    "addDestination" : "Add Destination",
+    "editDayTrip" : "Edit Day of trip"
 }

@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/add_destination_card.dart';
 import '../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../gen/assets.gen.dart';
@@ -33,7 +35,57 @@ class DayTripPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<DayTripCubit>(
       create: (context) => getIt(param1: _trip, param2: _dayTrip),
-      child: const _DayTripPageBody(),
+      child:  WillPopScope(
+        onWillPop: () async {
+          final isEditing = context.read<DayTripCubit>().state is DayTripStateEditing;
+          if (isEditing) {
+            return _showDiscardDialog(context);
+          }
+          return true;
+        },
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(kToolbarHeight),
+            child: _DayTripPageAppBar(),
+          ),
+          body: _DayTripPageBody(),
+        ),
+      ),
+    );
+  }
+
+  Future<bool> _showDiscardDialog(BuildContext context) async {
+    final result = await showOkCancelAlertDialog(
+      context: context,
+      title: LocaleKeys.discardChanges.tr(),
+      message: LocaleKeys.discardChangesQuestion.tr(),
+      okLabel: LocaleKeys.discard.tr(),
+      cancelLabel: LocaleKeys.cancel.tr(),
+    );
+
+    return result == OkCancelResult.ok;
+  }
+}
+
+class _DayTripPageAppBar extends StatelessWidget {
+  const _DayTripPageAppBar();
+
+  @override
+  Widget build(BuildContext context) {
+    final isEditing = context.select((DayTripCubit cubit) => cubit.state is DayTripStateEditing);
+
+    return AppBar(
+      title: Text(isEditing
+          ? LocaleKeys.editDayTrip.tr()
+          : "${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
+      actions: isEditing
+          ? null
+          : [
+              IconButton(
+                icon: const Icon(Icons.edit),
+                onPressed: () => context.read<DayTripCubit>().edit(),
+              ),
+            ],
     );
   }
 }
