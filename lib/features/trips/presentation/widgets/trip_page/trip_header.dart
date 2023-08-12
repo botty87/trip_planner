@@ -12,7 +12,7 @@ class _TripHeader extends StatelessWidget {
         ? Padding(
             padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_S),
             child: Text(
-              tripDescription!,
+              tripDescription,
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.justify,
             ),
