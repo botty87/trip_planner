@@ -5,13 +5,13 @@ class _DayTripDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dayTrip = context.read<DayTripCubit>().state.dayTrip;
+    final dayTripDescritption = context.select((DayTripCubit cubit) => cubit.state.dayTrip.description);
 
-    if (dayTrip.description != null) {
+    if (dayTripDescritption != null) {
       return Padding(
         padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_S),
         child: Text(
-          dayTrip.description!,
+          dayTripDescritption,
           style: Theme.of(context).textTheme.bodyLarge,
           textAlign: TextAlign.justify,
         ),
