@@ -135,4 +135,48 @@ class MockDayTripsRepository extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> updateDayTrip({
+    required String? id,
+    required String? tripId,
+    required String? description,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDayTrip,
+          [],
+          {
+            #id: id,
+            #tripId: tripId,
+            #description: description,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTrip,
+            [],
+            {
+              #id: id,
+              #tripId: tripId,
+              #description: description,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTrip,
+            [],
+            {
+              #id: id,
+              #tripId: tripId,
+              #description: description,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
 }

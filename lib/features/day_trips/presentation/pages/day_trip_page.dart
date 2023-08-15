@@ -1,26 +1,31 @@
-import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart';
+import 'package:trip_planner/features/day_trips/presentation/widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/add_destination_card.dart';
+import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../gen/assets.gen.dart';
 
-part '../widgets/day_trip_page/day_date_widget.dart';
-part '../widgets/day_trip_page/trip_stops_list.dart';
-part '../widgets/day_trip_page/day_trip_header.dart';
-part '../widgets/day_trip_page/day_trip_description.dart';
 part '../widgets/day_trip_page/add_day_trip_stop_card.dart';
+part '../widgets/day_trip_page/day_date_widget.dart';
+part '../widgets/day_trip_page/day_trip_description.dart';
+part '../widgets/day_trip_page/day_trip_header.dart';
 part '../widgets/day_trip_page/day_trip_page_body.dart';
+part '../widgets/day_trip_page/trip_stops_list.dart';
+part '../widgets/day_trip_page/save_cancel_edit_buttons.dart';
 
 @RoutePage()
 class DayTripPage extends StatelessWidget {
@@ -35,35 +40,14 @@ class DayTripPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<DayTripCubit>(
       create: (context) => getIt(param1: _trip, param2: _dayTrip),
-      child:  WillPopScope(
-        onWillPop: () async {
-          final isEditing = context.read<DayTripCubit>().state is DayTripStateEditing;
-          if (isEditing) {
-            return _showDiscardDialog(context);
-          }
-          return true;
-        },
-        child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(kToolbarHeight),
-            child: _DayTripPageAppBar(),
-          ),
-          body: _DayTripPageBody(),
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: _DayTripPageAppBar(),
         ),
+        body: _DayTripPageBody(),
       ),
     );
-  }
-
-  Future<bool> _showDiscardDialog(BuildContext context) async {
-    final result = await showOkCancelAlertDialog(
-      context: context,
-      title: LocaleKeys.discardChanges.tr(),
-      message: LocaleKeys.discardChangesQuestion.tr(),
-      okLabel: LocaleKeys.discard.tr(),
-      cancelLabel: LocaleKeys.cancel.tr(),
-    );
-
-    return result == OkCancelResult.ok;
   }
 }
 
@@ -72,20 +56,14 @@ class _DayTripPageAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isEditing = context.select((DayTripCubit cubit) => cubit.state is DayTripStateEditing);
-
     return AppBar(
-      title: Text(isEditing
-          ? LocaleKeys.editDayTrip.tr()
-          : "${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
-      actions: isEditing
-          ? null
-          : [
-              IconButton(
-                icon: const Icon(Icons.edit),
-                onPressed: () => context.read<DayTripCubit>().edit(),
-              ),
-            ],
+      title: Text("${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.edit),
+          onPressed: () => context.read<DayTripCubit>().edit(),
+        ),
+      ],
     );
   }
 }

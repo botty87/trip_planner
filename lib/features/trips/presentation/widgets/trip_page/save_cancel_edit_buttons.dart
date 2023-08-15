@@ -1,8 +1,8 @@
 part of '../../pages/trip_page.dart';
 
-class _SaveUndoEditButtons extends StatelessWidget {
+class _SaveCancelEditButtons extends StatelessWidget {
   final BuildContext _ctx;
-  const _SaveUndoEditButtons({required BuildContext context}) : _ctx = context;
+  const _SaveCancelEditButtons({required BuildContext context}) : _ctx = context;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +41,7 @@ class _SaveUndoEditButtons extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: VERTICAL_SPACE_S),
             _ErrorMesage(cubit: cubit),
           ],
         );

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
-import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/presentation/widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
@@ -61,12 +60,10 @@ class _NewDayTripPageBody extends HookWidget {
 
     final cubit = context.read<NewDayTripCubit>();
 
-    return SafeArea(
-        minimum: DEFAULT_PAGE_PADDING,
-        child: NewEditDayTripForm(
-          isSaving: isSaving.stream,
-          onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-          saveSection: _AddDayTripButton(),
-        ));
+    return NewEditDayTripForm(
+      isSaving: isSaving.stream,
+      onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+      saveSection: _AddDayTripButton(),
+    );
   }
 }

@@ -11,4 +11,10 @@ abstract class DayTripsRepository {
 
   Future<Either<DayTripsFailure, void>> updateDayTripsIndexes(
       {required String tripId, required List<DayTrip> dayTrips});
+
+  Future<Either<DayTripsFailure, void>> updateDayTrip({
+    required String id,
+    required String tripId,
+    required String? description,
+  });
 }

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:trip_planner/features/day_trips/presentation/widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
-import 'package:easy_logger/easy_logger.dart';
 
 void main() {
   setUpAll(() async {
@@ -76,7 +76,7 @@ void main() {
               saveSection: const SizedBox(),
               onDescriptionChanged: (value) {},
               isSaving: Stream.value(false),
-              initialTripDescription: 'description'),
+              initialDayTripDescription: 'description'),
         ),
       ),
     );

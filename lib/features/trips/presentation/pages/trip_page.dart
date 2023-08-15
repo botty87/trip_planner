@@ -24,7 +24,7 @@ part '../widgets/trip_page/add_day_trip_card.dart';
 part '../widgets/trip_page/day_trip_card.dart';
 part '../widgets/trip_page/day_trips_list.dart';
 part '../widgets/trip_page/delete_trip_button.dart';
-part '../widgets/trip_page/save_undo_edit_buttons.dart';
+part '../widgets/trip_page/save_cancel_edit_buttons.dart';
 part '../widgets/trip_page/trip_header.dart';
 part '../widgets/trip_page/trip_page_body.dart';
 

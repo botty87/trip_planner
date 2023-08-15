@@ -9,6 +9,11 @@ abstract class DayTripsDataSource {
   Stream<List<DayTrip>> listenDayTrips(String tripId);
 
   Future<void> updateDayTripsIndexes({required String tripId, required List<DayTrip> dayTrips});
+  Future<void> updateDayTrip({
+    required String id,
+    required String tripId,
+    required String? description,
+  });
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -52,5 +57,12 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
     }
 
     await batch.commit();
+  }
+  
+  @override
+  Future<void> updateDayTrip({required String id, required String tripId, required String? description}) async {
+    await _dayTripsCollection(tripId).doc(id).update({
+      'description': description?.isEmpty ?? true ? null : description,
+    });
   }
 }

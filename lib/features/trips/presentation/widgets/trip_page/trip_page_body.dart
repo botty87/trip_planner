@@ -11,7 +11,8 @@ class _TripPageBody extends HookWidget {
         BlocListener<TripCubit, TripState>(
           listener: (context, state) =>
               ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(state.errorMessage!)),
-          listenWhen: (previous, current) => current.errorMessage != null,
+          listenWhen: (previous, current) =>
+              current.errorMessage != null && previous.errorMessage != current.errorMessage,
         ),
         //Pop page if deleted
         BlocListener<TripCubit, TripState>(
@@ -66,7 +67,7 @@ class _TripPageBody extends HookWidget {
             onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
             onNameChanged: (String value) => cubit.nameChanged(value),
             onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
-            saveSection: _SaveUndoEditButtons(
+            saveSection: _SaveCancelEditButtons(
               context: context,
             ),
             isLoading: isSaving.stream,

@@ -6,6 +6,7 @@ class DayTripState with _$DayTripState {
     required Trip trip,
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
+    String? errorMessage,
   }) = _DayTripState;
 
   const factory DayTripState.editing({
@@ -13,5 +14,15 @@ class DayTripState with _$DayTripState {
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
     required String? description,
+    String? errorMessage,
+    @Default(false) final bool isSaving,
   }) = DayTripStateEditing;
+
+  const factory DayTripState.deleting({
+    required Trip trip,
+    required DayTrip dayTrip,
+    @Default([]) List<TripStop> tripStops,
+    String? errorMessage,
+    @Default(false) final bool deleted,
+  }) = DayTripStateDeleting;
 }

@@ -92,4 +92,26 @@ void main() {
       expect(result, equals(left(DayTripsFailure())));
     });
   });
+
+  group('updateDayTrip', () {
+    test('should return right(null) when updateDayTrip', () async {
+      when(mockDayTripsDataSource.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
+          .thenAnswer((_) async => null);
+
+      // act
+      final result = await repository.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(DayTripsFailure()) when updateDayTrip throws', () async {
+      when(mockDayTripsDataSource.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
+          .thenThrow(Exception());
+
+      // act
+      final result = await repository.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
+      // assert
+      expect(result, equals(left(DayTripsFailure())));
+    });
+  });
 }

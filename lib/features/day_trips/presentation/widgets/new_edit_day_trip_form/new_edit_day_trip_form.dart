@@ -15,14 +15,14 @@ class NewEditDayTripForm extends StatelessWidget {
   final ValueChanged<String> onDescriptionChanged;
   final Widget saveSection;
 
-  final String? initialTripDescription;
+  final String? initialDayTripDescription;
 
   const NewEditDayTripForm(
       {super.key,
       required this.isSaving,
       required this.onDescriptionChanged,
       required this.saveSection,
-      this.initialTripDescription});
+      this.initialDayTripDescription});
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +39,36 @@ class NewEditDayTripForm extends StatelessWidget {
               }
             }),
         Expanded(
-          child: SvgPicture(
-            key: Key('tripImage'),
-            AssetBytesLoader(Assets.svg.addNewDayTripSvg),
-          ),
-        ),
-        const SizedBox(height: VERTICAL_SPACE_L),
-        Expanded(
-          child: Column(
-            children: [
-              _DescriptionWidget(
-                key: Key('descriptionWidget'),
-                onDescriptionChanged: onDescriptionChanged,
-                initialTripDescription: initialTripDescription,
+          child: SafeArea(
+            minimum: DEFAULT_PAGE_PADDING,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      return SvgPicture(
+                        width: constraints.maxWidth,
+                        height: constraints.maxWidth,
+                        key: Key('tripImage'),
+                        AssetBytesLoader(Assets.svg.addNewDayTripSvg),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: VERTICAL_SPACE_L),
+                  Column(
+                    children: [
+                      _DescriptionWidget(
+                        key: Key('descriptionWidget'),
+                        onDescriptionChanged: onDescriptionChanged,
+                        initialDayTripDescription: initialDayTripDescription,
+                      ),
+                      const SizedBox(height: VERTICAL_SPACE_L),
+                      saveSection,
+                    ],
+                  ),
+                ],
               ),
-              const SizedBox(height: VERTICAL_SPACE_L),
-              saveSection,
-            ],
+            ),
           ),
         ),
       ],
