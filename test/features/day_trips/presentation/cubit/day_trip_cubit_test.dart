@@ -7,7 +7,6 @@ import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
-import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
 
 import 'day_trip_cubit_test.mocks.dart';
 
