@@ -9,6 +9,7 @@ import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trips
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart';
+import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
 
 import 'trip_cubit_test.mocks.dart';
@@ -117,7 +118,7 @@ void main() {
     seed: () => TripState.editing(
         trip: tTrip, name: tTrip.name, description: tTrip.description, startDate: tTrip.startDate),
     act: (cubit) => cubit.cancelEditing(),
-    expect: () => [TripState(trip: tTrip)],
+    expect: () => [TripState.normal(trip: tTrip)],
     build: () => TripCubit(
         trip: tTrip,
         saveTrip: mockUpdateTrip,
@@ -126,29 +127,66 @@ void main() {
         updateDayTripsIndexes: mockUpdateDayTripsIndexes),
   );
 
-  blocTest<TripCubit, TripState>(
-    'On save emit TripState with updated trip',
-    seed: () => TripState.editing(
-        trip: tTrip, name: 'new name', description: tTrip.description, startDate: tTrip.startDate),
-    setUp: () => when(mockUpdateTrip.call(any))
-        .thenAnswer((_) async => Right(tTrip.copyWith(name: 'new name'))),
-    act: (cubit) => cubit.saveChanges(),
-    expect: () => [
-      TripState.editing(
+  group('saveChanges', () {
+    blocTest<TripCubit, TripState>(
+      'On save emit TripState with updated trip',
+      seed: () => TripState.editing(
           trip: tTrip,
           name: 'new name',
           description: tTrip.description,
-          isSaving: true,
           startDate: tTrip.startDate),
-      TripState(trip: tTrip.copyWith(name: 'new name'))
-    ],
-    build: () => TripCubit(
-        trip: tTrip,
-        saveTrip: mockUpdateTrip,
-        deleteTrip: mockDeleteTrip,
-        listenDayTrips: mockListenDayTrips,
-        updateDayTripsIndexes: mockUpdateDayTripsIndexes),
-  );
+      setUp: () => when(mockUpdateTrip.call(any))
+          .thenAnswer((_) async => Right(tTrip.copyWith(name: 'new name'))),
+      act: (cubit) => cubit.saveChanges(),
+      expect: () => [
+        TripState.editing(
+            trip: tTrip,
+            name: 'new name',
+            description: tTrip.description,
+            isSaving: true,
+            startDate: tTrip.startDate),
+        TripState.normal(trip: tTrip.copyWith(name: 'new name'))
+      ],
+      build: () => TripCubit(
+          trip: tTrip,
+          saveTrip: mockUpdateTrip,
+          deleteTrip: mockDeleteTrip,
+          listenDayTrips: mockListenDayTrips,
+          updateDayTripsIndexes: mockUpdateDayTripsIndexes),
+    );
+
+    blocTest<TripCubit, TripState>(
+      'On save emit TripStateError and then TripStateEditing if updateTrip fails',
+      seed: () => TripState.editing(
+          trip: tTrip,
+          name: 'new name',
+          description: tTrip.description,
+          startDate: tTrip.startDate),
+      setUp: () => when(mockUpdateTrip.call(any))
+          .thenAnswer((_) async => Left(TripsFailure(message: 'error'))),
+      act: (cubit) => cubit.saveChanges(),
+      expect: () => [
+        TripState.editing(
+            trip: tTrip,
+            name: 'new name',
+            description: tTrip.description,
+            isSaving: true,
+            startDate: tTrip.startDate),
+        TripState.error(trip: tTrip, errorMessage: 'error'),
+        TripState.editing(
+            trip: tTrip,
+            name: 'new name',
+            description: tTrip.description,
+            startDate: tTrip.startDate),
+      ],
+      build: () => TripCubit(
+          trip: tTrip,
+          saveTrip: mockUpdateTrip,
+          deleteTrip: mockDeleteTrip,
+          listenDayTrips: mockListenDayTrips,
+          updateDayTripsIndexes: mockUpdateDayTripsIndexes),
+    );
+  });
 
   group('Test day trips indexes reorder', () {
     final tDayTrips = [
@@ -159,7 +197,7 @@ void main() {
     ];
 
     blocTest<TripCubit, TripState>('On reorderDayTrips call updateDayTripsIndexes',
-        seed: () => TripState(trip: tTrip, dayTrips: tDayTrips),
+        seed: () => TripState.normal(trip: tTrip, dayTrips: tDayTrips),
         act: (cubit) => cubit.reorderDayTrips(0, 2),
         build: () => TripCubit(
             trip: tTrip,
@@ -167,7 +205,38 @@ void main() {
             deleteTrip: mockDeleteTrip,
             listenDayTrips: mockListenDayTrips,
             updateDayTripsIndexes: mockUpdateDayTripsIndexes),
-        verify: (_) => verify(mockUpdateDayTripsIndexes
-              .call(any)));
+        verify: (_) => verify(mockUpdateDayTripsIndexes.call(any)));
+  });
+
+  group('modalBottomEditingDismissed', () {
+    blocTest<TripCubit, TripState>(
+      'On modalBottomEditingDismissed emit TripState if previous state is TripStateEditing',
+      seed: () => TripState.editing(
+          trip: tTrip,
+          name: tTrip.name,
+          description: tTrip.description,
+          startDate: tTrip.startDate),
+      act: (cubit) => cubit.modalBottomEditingDismissed(),
+      expect: () => [TripState.normal(trip: tTrip)],
+      build: () => TripCubit(
+          trip: tTrip,
+          saveTrip: mockUpdateTrip,
+          deleteTrip: mockDeleteTrip,
+          listenDayTrips: mockListenDayTrips,
+          updateDayTripsIndexes: mockUpdateDayTripsIndexes),
+    );
+
+    blocTest<TripCubit, TripState>(
+      'On modalBottomEditingDismissed emit nothing if previous state is not TripStateEditing',
+      seed: () => TripState.normal(trip: tTrip),
+      act: (cubit) => cubit.modalBottomEditingDismissed(),
+      expect: () => [],
+      build: () => TripCubit(
+          trip: tTrip,
+          saveTrip: mockUpdateTrip,
+          deleteTrip: mockDeleteTrip,
+          listenDayTrips: mockListenDayTrips,
+          updateDayTripsIndexes: mockUpdateDayTripsIndexes),
+    );
   });
 }
