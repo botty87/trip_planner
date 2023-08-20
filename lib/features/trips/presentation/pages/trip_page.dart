@@ -13,6 +13,7 @@ import 'package:trip_planner/features/trips/presentation/widgets/new_edit_trip_f
 import '../../../../core/constants.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/delete_trip_button.dart';
+import '../../../../core/widgets/save_cancel_edit_buttons.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../gen/assets.gen.dart';

@@ -5,20 +5,23 @@ class _TripPageBody extends HookWidget {
   Widget build(BuildContext context) {
     final isSaving = useStreamController<bool>();
     final isDeleting = useStreamController<bool>();
+    final errorMessage = useStreamController<String?>();
 
     return MultiBlocListener(
       listeners: [
-        //Show error snackbar if error
+        //Show error snackbar if error and update errorMessage stream when error
         BlocListener<TripCubit, TripState>(
-          listener: (context, state) =>
-              ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(state.errorMessage!)),
-          listenWhen: (previous, current) =>
-              current.errorMessage != null && previous.errorMessage != current.errorMessage,
+          listener: (context, state) {
+            final errorState = state as TripStateError;
+            ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorState.errorMessage));
+            errorMessage.add(errorState.errorMessage);
+          },
+          listenWhen: (previous, current) => current is TripStateError,
         ),
         //Pop page if deleted
         BlocListener<TripCubit, TripState>(
           listener: (context, state) => context.router.pop(),
-          listenWhen: (previous, current) => current is TripStateDeleting && current.deleted,
+          listenWhen: (previous, current) => current is TripStateDeleted,
         ),
         //Update isDeleting stream when deleting
         BlocListener<TripCubit, TripState>(
@@ -38,9 +41,14 @@ class _TripPageBody extends HookWidget {
         ),
         //Show modal bottom sheet if editing
         BlocListener<TripCubit, TripState>(
-            listener: (context, state) => _showModalBottomEditing(context, isSaving),
+            listener: (context, state) => _showModalBottomEditing(context, isSaving, errorMessage),
             listenWhen: (previous, current) =>
                 previous is! TripStateEditing && current is TripStateEditing),
+        //Close modal bottom sheet if editing dismissed
+        BlocListener<TripCubit, TripState>(
+            listener: (context, state) => Navigator.of(context).pop(),
+            listenWhen: (previous, current) =>
+                previous is TripStateEditing && current is TripStateNormal),
       ],
       child: SafeArea(
         child: SingleChildScrollView(
@@ -60,7 +68,8 @@ class _TripPageBody extends HookWidget {
     );
   }
 
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving) {
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+      StreamController<String?> errorMessage) {
     final cubit = context.read<TripCubit>();
     showModalBottomSheet(
       context: context,
@@ -76,7 +85,10 @@ class _TripPageBody extends HookWidget {
             onNameChanged: (String value) => cubit.nameChanged(value),
             onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
             saveSection: _SaveCancelEditButtons(
-              context: context,
+              isSaving: isSaving.stream,
+              onCancel: () => cubit.modalBottomEditingDismissed(),
+              onSave: () => cubit.saveChanges(),
+              errorMessage: errorMessage.stream,
             ),
             isLoading: isSaving.stream,
             initialTripName: cubit.state.trip.name,
