@@ -3,13 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooked_bloc/hooked_bloc.dart';
-import 'package:trip_planner/core/di/di.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:trip_planner/features/day_trips/presentation/widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
+import '../../../../core/di/di.dart';
+import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../cubit/new_day_trip/new_day_trip_cubit.dart';
+import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
 part '../widgets/new_day_trip_page/add_day_trip_button.dart';
 
@@ -37,33 +36,42 @@ class _NewDayTripPageBody extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    //On error show snackbar
-    useBlocListener<NewDayTripCubit, NewDayTripState>(context.read(), (bloc, state, context) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        Snackbars.error(state.errorMessage!),
-      );
-    }, listenWhen: (current) => current.errorMessage != null);
-
-    //On success show snackbar and pop
-    useBlocListener<NewDayTripCubit, NewDayTripState>(context.read(), (bloc, state, context) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        Snackbars.success(LocaleKeys.dayTripCreated.tr()),
-      );
-      context.router.pop();
-    }, listenWhen: (current) => current.createSuccess);
-
-    //show saving indicator if needed
     final isSaving = useStreamController<bool>();
-    useBlocListener<NewDayTripCubit, NewDayTripState>(
-        context.read(), (bloc, state, context) => isSaving.add(state.isSaving),
-        listenWhen: (current) => current.isSaving != current.isSaving);
-
     final cubit = context.read<NewDayTripCubit>();
 
-    return NewEditDayTripForm(
-      isSaving: isSaving.stream,
-      onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-      saveSection: _AddDayTripButton(),
+    return MultiBlocListener(
+      listeners: [
+        //On error show snackbar
+        BlocListener<NewDayTripCubit, NewDayTripState>(
+          listener: (context, state) => ScaffoldMessenger.of(context).showSnackBar(
+            Snackbars.error((state as NewDayTripStateError).errorMessage),
+          ),
+          listenWhen: (previous, current) => current is NewDayTripStateError,
+        ),
+        //On success show snackbar and pop
+        BlocListener<NewDayTripCubit, NewDayTripState>(
+          listener: (context, state) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              Snackbars.success(LocaleKeys.dayTripCreated.tr()),
+            );
+            context.router.pop();
+          },
+          listenWhen: (previous, current) => current is NewDayTripStateCreated,
+        ),
+        //On saving update isSaving stream
+        BlocListener<NewDayTripCubit, NewDayTripState>(
+          listener: (context, state) => isSaving.add(state is NewDayTripStateSaving),
+          listenWhen: (previous, current) {
+            return (current is NewDayTripStateSaving && previous is NewDayTripStateNormal) ||
+                (current is NewDayTripStateNormal && previous is NewDayTripStateSaving);
+          },
+        ),
+      ],
+      child: NewEditDayTripForm(
+        isSaving: isSaving.stream,
+        onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+        saveSection: _AddDayTripButton(isSaving: isSaving.stream),
+      ),
     );
   }
 }

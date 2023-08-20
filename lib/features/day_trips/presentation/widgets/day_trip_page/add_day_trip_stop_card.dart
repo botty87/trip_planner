@@ -15,8 +15,8 @@ final class _AddDayTripStopCard extends AddDestinationCard {
       final dayTripState = context.read<DayTripCubit>().state;
 
       context.router.push(NewTripStopRoute(
-        trip: dayTripState.trip,
-        dayTrip: dayTripState.dayTrip,
+        trip: dayTripState.trip.id,
+        dayTrip: dayTripState.dayTrip.id,
       ));
     };
   }

@@ -254,8 +254,8 @@ class NewTripRoute extends _i9.PageRouteInfo<void> {
 class NewTripStopRoute extends _i9.PageRouteInfo<NewTripStopRouteArgs> {
   NewTripStopRoute({
     _i10.Key? key,
-    required _i11.Trip trip,
-    required _i12.DayTrip dayTrip,
+    required String trip,
+    required String dayTrip,
     List<_i9.PageRouteInfo>? children,
   }) : super(
           NewTripStopRoute.name,
@@ -282,9 +282,9 @@ class NewTripStopRouteArgs {
 
   final _i10.Key? key;
 
-  final _i11.Trip trip;
+  final String trip;
 
-  final _i12.DayTrip dayTrip;
+  final String dayTrip;
 
   @override
   String toString() {

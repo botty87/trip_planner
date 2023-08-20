@@ -1,12 +1,21 @@
 part of 'new_day_trip_cubit.dart';
 
 @freezed
-class NewDayTripState with _$NewDayTripState {
-  const factory NewDayTripState({
+sealed class NewDayTripState with _$NewDayTripState {
+  const factory NewDayTripState.normal({
     final String? description,
-    @Default(false) final bool isSaving,
-    @Default(false) final bool createSuccess,
-    String? errorMessage,
-  }) = _NewDayTripState;
+  }) = NewDayTripStateNormal;
 
+  const factory NewDayTripState.saving({
+    required final String? description,
+  }) = NewDayTripStateSaving;
+
+const factory NewDayTripState.created({
+    final String? description,
+  }) = NewDayTripStateCreated;
+
+  const factory NewDayTripState.error({
+    required final String? description,
+    required final String errorMessage,
+  }) = NewDayTripStateError;
 }

@@ -1,18 +1,20 @@
 part of '../../pages/new_day_trip_page.dart';
 
 class _AddDayTripButton extends StatelessWidget {
-  const _AddDayTripButton();
+  final Stream<bool> isSaving;
+
+  const _AddDayTripButton({required this.isSaving});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<NewDayTripCubit>();
-    return BlocSelector<NewDayTripCubit, NewDayTripState, bool>(
-      selector: (state) => state.isSaving,
-      builder: (context, isSaving) {
+    return StreamBuilder<bool>(
+      stream: isSaving,
+      initialData: false,
+      builder: (context, snapshot) {
         return ElevatedButton(
           key: Key('addDayTripButton'),
           child: Text(LocaleKeys.addDayTrip.tr()),
-          onPressed: isSaving ? null : () => cubit.createDayTrip(),
+          onPressed: snapshot.data! ? null : () => context.read<NewDayTripCubit>().createDayTrip(),
         );
       },
     );

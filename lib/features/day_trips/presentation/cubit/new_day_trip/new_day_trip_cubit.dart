@@ -17,14 +17,14 @@ class NewDayTripCubit extends Cubit<NewDayTripState> {
   NewDayTripCubit({required CreateDayTrip createDayTrip, @factoryParam required String tripId})
       : _createDayTrip = createDayTrip,
         _tripId = tripId,
-        super(NewDayTripState());
+        super(NewDayTripState.normal());
 
   descriptionChanged(String value) {
     emit(state.copyWith(description: value));
   }
 
   createDayTrip() async {
-    emit(state.copyWith(isSaving: true));
+    emit(NewDayTripState.saving(description: state.description));
 
     final result = await _createDayTrip(CreateDayTripParams(
       description: state.description,
@@ -33,16 +33,14 @@ class NewDayTripCubit extends Cubit<NewDayTripState> {
 
     result.fold(
       (failure) {
-        emit(state.copyWith(
-          isSaving: false,
+        emit(NewDayTripState.error(
+          description: state.description,
           errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
         ));
+        emit(NewDayTripState.normal(description: state.description));
       },
       (_) {
-        emit(state.copyWith(
-          isSaving: false,
-          createSuccess: true,
-        ));
+        emit(NewDayTripState.created());
       },
     );
   }

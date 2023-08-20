@@ -55,5 +55,6 @@
     "addDestination" : "Aggiungi destinazione",
     "editDayTrip" : "Modifica giornata di viaggio",
     "deleteDayTrip": "Elimina giorno di viaggio",
-    "deleteDayTripQuestion": "Sei sicuro di voler eliminare il giorno di viaggio?"
+    "deleteDayTripQuestion": "Sei sicuro di voler eliminare il giorno di viaggio?",
+    "newTripStop": "Nuova tappa di viaggio"
 }
