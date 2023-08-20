@@ -1,20 +1,25 @@
 part of 'day_trip_cubit.dart';
 
 @freezed
-class DayTripState with _$DayTripState {
-  const factory DayTripState({
+sealed class DayTripState with _$DayTripState {
+  const factory DayTripState.normal({
+    required Trip trip,
+    required DayTrip dayTrip,
+    @Default([]) List<TripStop> tripStops,
+  }) = DayTripStateNormal;
+
+  const factory DayTripState.error({
     required Trip trip,
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
     String? errorMessage,
-  }) = _DayTripState;
+  }) = DayTripStateError;
 
   const factory DayTripState.editing({
     required Trip trip,
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
     required String? description,
-    String? errorMessage,
     @Default(false) final bool isSaving,
   }) = DayTripStateEditing;
 
@@ -22,7 +27,11 @@ class DayTripState with _$DayTripState {
     required Trip trip,
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
-    String? errorMessage,
-    @Default(false) final bool deleted,
   }) = DayTripStateDeleting;
+
+  const factory DayTripState.deleted({
+    required Trip trip,
+    required DayTrip dayTrip,
+    @Default([]) List<TripStop> tripStops,
+  }) = DayTripStateDeleted;
 }

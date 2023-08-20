@@ -7,25 +7,36 @@ class _DayTripPageBody extends HookWidget {
   Widget build(BuildContext context) {
     final isSaving = useStreamController<bool>();
     final errorMessage = useStreamController<String?>();
+    final isDeleting = useStreamController<bool>();
 
     return MultiBlocListener(
       listeners: [
-        //Show error snackbar if error
+        //Show error snackbar if error and update errorMessage stream when error
         BlocListener<DayTripCubit, DayTripState>(
-          listener: (context, state) => ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(state.errorMessage!)),
-          listenWhen: (previous, current) =>
-              current.errorMessage != null && previous.errorMessage != current.errorMessage,
+          listener: (context, state) {
+            final errorState = state as DayTripStateError;
+            ScaffoldMessenger.of(context)
+              .showSnackBar(Snackbars.error(errorState.errorMessage!));
+            errorMessage.add(errorState.errorMessage);
+          },
+          listenWhen: (previous, current) => current is DayTripStateError,
         ),
-        //Update errorMessage stream when error
-        BlocListener<DayTripCubit, DayTripState>(
+        
+        /* BlocListener<DayTripCubit, DayTripState>(
           listener: (context, state) => errorMessage.add(state.errorMessage),
-          listenWhen: (previous, current) =>
-              previous.errorMessage != current.errorMessage,
-        ),
+          listenWhen: (previous, current) => previous.errorMessage != current.errorMessage,
+        ), */
         //Pop page if deleted
         BlocListener<DayTripCubit, DayTripState>(
           listener: (context, state) => context.router.pop(),
-          listenWhen: (previous, current) => current is DayTripStateDeleting && current.deleted,
+          listenWhen: (previous, current) => current is DayTripStateDeleted,
+        ),
+        //Update isDeleting stream when deleting
+        BlocListener<DayTripCubit, DayTripState>(
+          listener: (context, state) => isDeleting.add(state is DayTripStateDeleting),
+          listenWhen: (previous, current) =>
+              (previous is! DayTripStateDeleting && current is DayTripStateDeleting) ||
+              (previous is DayTripStateDeleting && current is! DayTripStateDeleting),
         ),
         //Update isLoading stream when loading
         BlocListener<DayTripCubit, DayTripState>(
@@ -40,7 +51,12 @@ class _DayTripPageBody extends HookWidget {
         BlocListener<DayTripCubit, DayTripState>(
             listener: (context, state) => _showModalBottomEditing(context, isSaving, errorMessage),
             listenWhen: (previous, current) =>
-                previous is! DayTripStateEditing && current is DayTripStateEditing),
+                previous is DayTripStateNormal && current is DayTripStateEditing),
+        /* //Close modal bottom sheet if editing dismissed
+        BlocListener<DayTripCubit, DayTripState>(
+            listener: (context, state) => Navigator.of(context).pop(),
+            listenWhen: (previous, current) =>
+                previous is DayTripStateEditing && current is DayTripState), */
       ],
       child: SafeArea(
           child: SingleChildScrollView(
@@ -51,13 +67,16 @@ class _DayTripPageBody extends HookWidget {
             _TripStopsList(),
             const SizedBox(height: VERTICAL_SPACE_S),
             _AddDayTripStopCard(),
+            const SizedBox(height: VERTICAL_SPACE_L),
+            _DeleteTripButton(isDeleting: isDeleting.stream),
           ],
         ),
       )),
     );
   }
 
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving, StreamController<String?> errorMessage) {
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+      StreamController<String?> errorMessage) {
     final cubit = context.read<DayTripCubit>();
     showModalBottomSheet(
       context: context,
@@ -78,12 +97,7 @@ class _DayTripPageBody extends HookWidget {
                   cubit.cancelEditing();
                   Navigator.of(context).pop();
                 },
-                onSave: () async {
-                  final success = await cubit.saveChanges();
-                  if (success) {
-                    Navigator.of(context).pop();
-                  }
-                },
+                onSave: () => cubit.saveChanges(),
                 errorMessage: errorMessage.stream,
               ),
             ));

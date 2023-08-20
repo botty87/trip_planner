@@ -2,12 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
-import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart';
 
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../../../trips/domain/entities/trip.dart';
+import '../../../../domain/entities/day_trip.dart';
+import '../../../../domain/usecases/delete_day_trip.dart';
+import '../../../../domain/usecases/update_day_trip.dart';
 
 part 'day_trip_cubit.freezed.dart';
 part 'day_trip_state.dart';
@@ -15,13 +16,16 @@ part 'day_trip_state.dart';
 @injectable
 class DayTripCubit extends Cubit<DayTripState> {
   final UpdateDayTrip _updateDayTrip;
+  final DeleteDayTrip _deleteDayTrip;
 
   DayTripCubit(
       {@factoryParam required Trip trip,
       @factoryParam required DayTrip dayTrip,
-      required UpdateDayTrip updateDayTrip})
+      required UpdateDayTrip updateDayTrip,
+      required DeleteDayTrip deleteDayTrip,})
       : _updateDayTrip = updateDayTrip,
-        super(DayTripState(
+        _deleteDayTrip = deleteDayTrip,
+        super(DayTripState.normal(
           trip: trip,
           dayTrip: dayTrip,
         ));
@@ -37,7 +41,7 @@ class DayTripCubit extends Cubit<DayTripState> {
 
   modalBottomEditingDismissed() {
     if (state is DayTripStateEditing) {
-      emit(DayTripState(
+      emit(DayTripState.normal(
         trip: state.trip,
         dayTrip: state.dayTrip,
         tripStops: state.tripStops,
@@ -52,18 +56,18 @@ class DayTripCubit extends Cubit<DayTripState> {
 
   void cancelEditing() {
     assert(state is DayTripStateEditing);
-    emit(DayTripState(
+    emit(DayTripState.normal(
       trip: state.trip,
       dayTrip: state.dayTrip,
       tripStops: state.tripStops,
     ));
   }
 
-  //Return true if the day trip was saved
-  Future<bool> saveChanges() async {
+  
+  void saveChanges() async {
     assert(state is DayTripStateEditing);
     final editingState = state as DayTripStateEditing;
-    emit(editingState.copyWith(isSaving: true, errorMessage: null));
+    emit(editingState.copyWith(isSaving: true));
     final result = await _updateDayTrip(
       UpdateDayTripParams(
         id: state.dayTrip.id,
@@ -71,21 +75,63 @@ class DayTripCubit extends Cubit<DayTripState> {
         description: editingState.description,
       ),
     );
-    return result.fold(
+    
+    result.fold(
       (failure) {
-        emit(editingState.copyWith(
-          isSaving: false,
+        emit(DayTripState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
           errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
         ));
-        return false;
+        emit(editingState.copyWith(
+          isSaving: false,
+        ));
       },
       (_) {
-        emit(DayTripState(
+        emit(DayTripState.normal(
           trip: state.trip,
           dayTrip: state.dayTrip.copyWith(description: editingState.description),
           tripStops: state.tripStops,
         ));
-        return true;
+      },
+    );
+  }
+
+  void deleteDayTrip() async {
+    emit(DayTripState.deleting(
+      trip: state.trip,
+      dayTrip: state.dayTrip,
+      tripStops: state.tripStops,
+    ));
+
+    final result = await _deleteDayTrip(
+      DeleteDayTripParams(
+        tripId: state.trip.id,
+        dayTripId: state.dayTrip.id,
+      ),
+    );
+
+    result.fold(
+      (failure) {
+        emit(DayTripState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+        ));
+        emit(DayTripState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+        ));
+      },
+      (_) {
+        emit(DayTripState.deleted(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+        ));
       },
     );
   }

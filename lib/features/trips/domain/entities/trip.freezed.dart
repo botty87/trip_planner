@@ -44,15 +44,14 @@ abstract class $TripCopyWith<$Res> {
       _$TripCopyWithImpl<$Res, Trip>;
   @useResult
   $Res call(
-      {@JsonKey(includeFromJson: false, includeToJson: false)
-          String id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       String name,
       String? description,
       String userId,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          DateTime createdAt,
+      DateTime createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          DateTime startDate});
+      DateTime startDate});
 }
 
 /// @nodoc
@@ -111,15 +110,14 @@ abstract class _$$_TripCopyWith<$Res> implements $TripCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(includeFromJson: false, includeToJson: false)
-          String id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       String name,
       String? description,
       String userId,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          DateTime createdAt,
+      DateTime createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          DateTime startDate});
+      DateTime startDate});
 }
 
 /// @nodoc
@@ -171,15 +169,14 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
 @JsonSerializable()
 class _$_Trip implements _Trip {
   _$_Trip(
-      {@JsonKey(includeFromJson: false, includeToJson: false)
-          this.id = '',
+      {@JsonKey(includeFromJson: false, includeToJson: false) this.id = '',
       required this.name,
       this.description,
       required this.userId,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          required this.createdAt,
+      required this.createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          required this.startDate});
+      required this.startDate});
 
   factory _$_Trip.fromJson(Map<String, dynamic> json) => _$$_TripFromJson(json);
 
@@ -244,15 +241,14 @@ class _$_Trip implements _Trip {
 
 abstract class _Trip implements Trip {
   factory _Trip(
-      {@JsonKey(includeFromJson: false, includeToJson: false)
-          final String id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) final String id,
       required final String name,
       final String? description,
       required final String userId,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          required final DateTime createdAt,
+      required final DateTime createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          required final DateTime startDate}) = _$_Trip;
+      required final DateTime startDate}) = _$_Trip;
 
   factory _Trip.fromJson(Map<String, dynamic> json) = _$_Trip.fromJson;
 

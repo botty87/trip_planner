@@ -11,13 +11,7 @@ class _CreateTripButton extends StatelessWidget {
     return ElevatedButton(
       key: Key('createTripButton'),
       child: Text(LocaleKeys.createTrip.tr()),
-      onPressed: isLoading
-          ? null
-          : () async {
-              if (await cubit.createTrip()) {
-                context.popRoute();
-              }
-            },
+      onPressed: isLoading ? null : () => cubit.createTrip(),
     );
   }
 }

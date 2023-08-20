@@ -32,10 +32,10 @@ final class TripsDataSourceImpl implements TripsDataSource {
         .orderBy('name')
         .snapshots()
         .map((snapshot) {
-          return snapshot.docs.map((doc) => doc.data()).toList();
-        });
+      return snapshot.docs.map((doc) => doc.data()).toList();
+    });
   }
-  
+
   @override
   Future<void> updateTrip(String id, String name, String? description, DateTime startDate) async {
     await _tripsCollection.doc(id).update({
@@ -44,9 +44,33 @@ final class TripsDataSourceImpl implements TripsDataSource {
       'startDate': startDate,
     });
   }
-  
+
   @override
   Future<void> deleteTrip(Trip trip) async {
-    await _tripsCollection.doc(trip.id).delete();
+    final batchs = [FirebaseFirestore.instance.batch()];
+    int currentBatchIndex = 0;
+    int currentBatchSize = 1;
+
+    final tripReference = _tripsCollection.doc(trip.id);
+    batchs[currentBatchIndex].delete(tripReference);
+
+    final dayTrips = await FirebaseFirestore.instance
+        .collection('trips')
+        .doc(trip.id)
+        .collection('dayTrips')
+        .get();
+
+    for (final dayTrip in dayTrips.docs) {
+      if (currentBatchSize == 500) {
+        currentBatchIndex++;
+        batchs.add(FirebaseFirestore.instance.batch());
+        currentBatchSize = 0;
+      }
+
+      batchs[currentBatchIndex].delete(dayTrip.reference);
+      currentBatchSize++;
+    }
+
+    await Future.wait(batchs.map((batch) => batch.commit()));
   }
 }

@@ -4,6 +4,7 @@ class _TripPageBody extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isSaving = useStreamController<bool>();
+    final isDeleting = useStreamController<bool>();
 
     return MultiBlocListener(
       listeners: [
@@ -18,6 +19,13 @@ class _TripPageBody extends HookWidget {
         BlocListener<TripCubit, TripState>(
           listener: (context, state) => context.router.pop(),
           listenWhen: (previous, current) => current is TripStateDeleting && current.deleted,
+        ),
+        //Update isDeleting stream when deleting
+        BlocListener<TripCubit, TripState>(
+          listener: (context, state) => isDeleting.add(state is TripStateDeleting),
+          listenWhen: (previous, current) =>
+              (previous is! TripStateDeleting && current is TripStateDeleting) ||
+              (previous is TripStateDeleting && current is! TripStateDeleting),
         ),
         //Update isLoading stream when loading
         BlocListener<TripCubit, TripState>(
@@ -44,7 +52,7 @@ class _TripPageBody extends HookWidget {
               const SizedBox(height: VERTICAL_SPACE_S),
               const _AddDayTripCard(),
               const SizedBox(height: VERTICAL_SPACE_L),
-              _DeleteTripButton(),
+              _DeleteTripButton(isDeleting: isDeleting.stream),
             ],
           ),
         ),

@@ -14,6 +14,8 @@ abstract class DayTripsDataSource {
     required String tripId,
     required String? description,
   });
+
+  Future<void> deleteDayTrip({required String tripId, required String dayTripId});
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -64,5 +66,10 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
     await _dayTripsCollection(tripId).doc(id).update({
       'description': description?.isEmpty ?? true ? null : description,
     });
+  }
+  
+  @override
+  Future<void> deleteDayTrip({required String tripId, required String dayTripId}) async {
+    await _dayTripsCollection(tripId).doc(dayTripId).delete();
   }
 }

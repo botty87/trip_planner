@@ -43,12 +43,11 @@ abstract class $TripStopCopyWith<$Res> {
       _$TripStopCopyWithImpl<$Res, TripStop>;
   @useResult
   $Res call(
-      {@JsonKey(includeFromJson: false, includeToJson: false)
-          String id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       String name,
       String? description,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          DateTime beginHourDate,
+      DateTime beginHourDate,
       int durationInMinutes,
       bool isDone});
 }
@@ -110,12 +109,11 @@ abstract class _$$_TripStopCopyWith<$Res> implements $TripStopCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(includeFromJson: false, includeToJson: false)
-          String id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       String name,
       String? description,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          DateTime beginHourDate,
+      DateTime beginHourDate,
       int durationInMinutes,
       bool isDone});
 }
@@ -171,12 +169,11 @@ class __$$_TripStopCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TripStop implements _TripStop {
   _$_TripStop(
-      {@JsonKey(includeFromJson: false, includeToJson: false)
-          this.id = '',
+      {@JsonKey(includeFromJson: false, includeToJson: false) this.id = '',
       required this.name,
       this.description,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          required this.beginHourDate,
+      required this.beginHourDate,
       required this.durationInMinutes,
       this.isDone = false});
 
@@ -243,12 +240,11 @@ class _$_TripStop implements _TripStop {
 
 abstract class _TripStop implements TripStop {
   factory _TripStop(
-      {@JsonKey(includeFromJson: false, includeToJson: false)
-          final String id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) final String id,
       required final String name,
       final String? description,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-          required final DateTime beginHourDate,
+      required final DateTime beginHourDate,
       required final int durationInMinutes,
       final bool isDone}) = _$_TripStop;
 

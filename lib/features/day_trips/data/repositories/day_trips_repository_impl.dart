@@ -59,4 +59,16 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       return left(DayTripsFailure());
     }
   }
+  
+  @override
+  Future<Either<DayTripsFailure, void>> deleteDayTrip({required String tripId, required String dayTripId}) async {
+    try {
+      await _dayTripsDataSource.deleteDayTrip(tripId: tripId, dayTripId: dayTripId);
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(DayTripsFailure(message: e.message));
+    } on Exception {
+      return left(DayTripsFailure());
+    }
+  }
 }

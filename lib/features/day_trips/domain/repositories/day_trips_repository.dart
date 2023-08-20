@@ -17,4 +17,7 @@ abstract class DayTripsRepository {
     required String tripId,
     required String? description,
   });
+
+  Future<Either<DayTripsFailure, void>> deleteDayTrip(
+      {required String tripId, required String dayTripId});
 }

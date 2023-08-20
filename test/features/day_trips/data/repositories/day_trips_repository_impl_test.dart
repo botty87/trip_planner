@@ -114,4 +114,26 @@ void main() {
       expect(result, equals(left(DayTripsFailure())));
     });
   });
+
+  group('deleteDayTrip', () {
+    test('should return right(null) when deleteDayTrip', () async {
+      when(mockDayTripsDataSource.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id))
+          .thenAnswer((_) async => null);
+
+      // act
+      final result = await repository.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(DayTripsFailure()) when deleteDayTrip throws', () async {
+      when(mockDayTripsDataSource.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id))
+          .thenThrow(Exception());
+
+      // act
+      final result = await repository.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id);
+      // assert
+      expect(result, equals(left(DayTripsFailure())));
+    });
+  });
 }
