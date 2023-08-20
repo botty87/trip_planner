@@ -15,17 +15,11 @@ class _DayTripPageBody extends HookWidget {
         BlocListener<DayTripCubit, DayTripState>(
           listener: (context, state) {
             final errorState = state as DayTripStateError;
-            ScaffoldMessenger.of(context)
-              .showSnackBar(Snackbars.error(errorState.errorMessage!));
+            ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorState.errorMessage!));
             errorMessage.add(errorState.errorMessage);
           },
           listenWhen: (previous, current) => current is DayTripStateError,
         ),
-        
-        /* BlocListener<DayTripCubit, DayTripState>(
-          listener: (context, state) => errorMessage.add(state.errorMessage),
-          listenWhen: (previous, current) => previous.errorMessage != current.errorMessage,
-        ), */
         //Pop page if deleted
         BlocListener<DayTripCubit, DayTripState>(
           listener: (context, state) => context.router.pop(),
@@ -52,11 +46,11 @@ class _DayTripPageBody extends HookWidget {
             listener: (context, state) => _showModalBottomEditing(context, isSaving, errorMessage),
             listenWhen: (previous, current) =>
                 previous is DayTripStateNormal && current is DayTripStateEditing),
-        /* //Close modal bottom sheet if editing dismissed
+        //Close modal bottom sheet if editing dismissed
         BlocListener<DayTripCubit, DayTripState>(
             listener: (context, state) => Navigator.of(context).pop(),
             listenWhen: (previous, current) =>
-                previous is DayTripStateEditing && current is DayTripState), */
+                previous is DayTripStateEditing && current is DayTripStateNormal),
       ],
       child: SafeArea(
           child: SingleChildScrollView(
@@ -93,10 +87,7 @@ class _DayTripPageBody extends HookWidget {
               initialDayTripDescription: cubit.state.dayTrip.description,
               saveSection: _SaveCancelEditButtons(
                 isSaving: isSaving.stream,
-                onCancel: () {
-                  cubit.cancelEditing();
-                  Navigator.of(context).pop();
-                },
+                onCancel: () => cubit.cancelEditing(),
                 onSave: () => cubit.saveChanges(),
                 errorMessage: errorMessage.stream,
               ),

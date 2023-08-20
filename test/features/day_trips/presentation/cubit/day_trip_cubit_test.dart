@@ -151,4 +151,47 @@ void main() {
           deleteDayTrip: mockDeleteDayTrip),
     );
   });
+
+  group('delete day trip', () {
+    blocTest<DayTripCubit, DayTripState>(
+      'On delete emit DayTripStateDeleting and then DayTripStateDeleted if deleteDayTrip succeeds',
+      seed: () =>
+          DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description),
+      setUp: () => when(mockDeleteDayTrip.call(any))
+          .thenAnswer((_) async => Right(null)),
+      act: (cubit) => cubit.deleteDayTrip(),
+      expect: () => [
+        DayTripState.deleting(trip: tTrip, dayTrip: tDayTrip),
+        DayTripState.deleted(trip: tTrip, dayTrip: tDayTrip),
+      ],
+      build: () => DayTripCubit(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          updateDayTrip: mockUpdateDayTrip,
+          deleteDayTrip: mockDeleteDayTrip),
+    );
+
+    blocTest<DayTripCubit, DayTripState>(
+      'On delete emit DayTripStateDeleting and then DayTripStateError and DayTripStateNormal if deleteDayTrip fails',
+      seed: () =>
+          DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description),
+      setUp: () => when(mockDeleteDayTrip.call(any))
+          .thenAnswer((_) async => Left(DayTripsFailure(message: 'error'))),
+      act: (cubit) => cubit.deleteDayTrip(),
+      expect: () => [
+        DayTripState.deleting(trip: tTrip, dayTrip: tDayTrip),
+        DayTripState.error(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            errorMessage: 'error',
+        ),
+        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
+      ],
+      build: () => DayTripCubit(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          updateDayTrip: mockUpdateDayTrip,
+          deleteDayTrip: mockDeleteDayTrip),
+    );
+  });
 }
