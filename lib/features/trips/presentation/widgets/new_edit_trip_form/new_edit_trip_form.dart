@@ -15,7 +15,7 @@ class NewEditTripForm extends StatelessWidget {
   final ValueChanged<String> onNameChanged;
   final ValueChanged<String> onDescriptionChanged;
   final ValueChanged<DateTime> onStartDateChanged;
-  final Stream<bool> isLoading;
+  final Stream<bool> isSaving;
 
   final String? initialTripName;
   final String? initialTripDescription;
@@ -27,7 +27,7 @@ class NewEditTripForm extends StatelessWidget {
       required this.onNameChanged,
       required this.onDescriptionChanged,
       required this.onStartDateChanged,
-      required this.isLoading,
+      required this.isSaving,
       this.initialTripName,
       this.initialTripDescription,
       this.initialStartDate});
@@ -38,7 +38,7 @@ class NewEditTripForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         StreamBuilder<bool>(
-          stream: isLoading,
+          stream: isSaving,
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
             if (snapshot.data ?? false) {
               return LinearProgressIndicator(minHeight: 1);

@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart';
 
@@ -31,35 +30,43 @@ class NewTripPage extends HookWidget {
 class _NewTripPageBody extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final cubit = useBloc<NewTripCubit>();
-    //show error message if needed
-    useBlocListener<NewTripCubit, NewTripState>(
-        cubit,
-        (cubit, state, context) => ScaffoldMessenger.of(context).showSnackBar(
-              Snackbars.error(state.errorMessage!),
-            ),
-        listenWhen: (current) => current.errorMessage != null);
+    final isSaving = useStreamController<bool>();
+    final cubit = context.read<NewTripCubit>();
 
-    //show success message if needed, then navigate back
-    useBlocListener<NewTripCubit, NewTripState>(cubit, (cubit, state, context) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        Snackbars.success(LocaleKeys.tripCreated.tr()),
-      );
-      context.router.pop();
-    }, listenWhen: (current) => current.createSuccess);
-
-    //show loading indicator if needed
-    final isLoading = useStreamController<bool>();
-    useBlocListener<NewTripCubit, NewTripState>(
-        cubit, (cubit, state, context) => isLoading.add(state.isLoading),
-        listenWhen: (current) => current.isLoading != current.isLoading);
-
-    return NewEditTripForm(
-      onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-      onNameChanged: (String value) => cubit.nameChanged(value),
-      onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
-      saveSection: _CreateTripButton(),
-      isLoading: isLoading.stream,
+    return MultiBlocListener(
+      listeners: [
+        //Show error message on error
+        BlocListener<NewTripCubit, NewTripState>(
+          listener: (context, state) => ScaffoldMessenger.of(context).showSnackBar(
+            Snackbars.error((state as NewTripStateError).errorMessage),
+          ),
+          listenWhen: (current, next) => next is NewTripStateError,
+        ),
+        //Show success message on create success
+        BlocListener<NewTripCubit, NewTripState>(
+          listener: (context, state) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              Snackbars.success(LocaleKeys.tripCreated.tr()),
+            );
+            context.router.pop();
+          },
+          listenWhen: (current, next) => next is NewTripStateCreated,
+        ),
+        //Update isSaving stream on state change
+        BlocListener<NewTripCubit, NewTripState>(
+          listener: (context, state) => isSaving.add(state is NewTripStateSaving),
+          listenWhen: (previous, current) =>
+              (current is NewTripStateSaving && previous is! NewTripStateSaving) ||
+              (current is! NewTripStateSaving && previous is NewTripStateSaving),
+        ),
+      ],
+      child: NewEditTripForm(
+        onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+        onNameChanged: (String value) => cubit.nameChanged(value),
+        onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
+        saveSection: _CreateTripButton(isSaving: isSaving.stream),
+        isSaving: isSaving.stream,
+      ),
     );
   }
 }

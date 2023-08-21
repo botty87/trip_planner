@@ -61,10 +61,9 @@ class _NewDayTripPageBody extends HookWidget {
         //On saving update isSaving stream
         BlocListener<NewDayTripCubit, NewDayTripState>(
           listener: (context, state) => isSaving.add(state is NewDayTripStateSaving),
-          listenWhen: (previous, current) {
-            return (current is NewDayTripStateSaving && previous is NewDayTripStateNormal) ||
-                (current is NewDayTripStateNormal && previous is NewDayTripStateSaving);
-          },
+          listenWhen: (previous, current) =>
+              (current is NewDayTripStateSaving && previous is! NewDayTripStateSaving) ||
+              (current is! NewDayTripStateSaving && previous is NewDayTripStateSaving),
         ),
       ],
       child: NewEditDayTripForm(

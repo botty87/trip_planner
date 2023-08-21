@@ -14,7 +14,7 @@ class NewTripCubit extends Cubit<NewTripState> {
   final CreateTrip _createTrip;
   final UserCubit _userCubit;
 
-  NewTripCubit(this._userCubit, this._createTrip) : super(const NewTripState());
+  NewTripCubit(this._userCubit, this._createTrip) : super(const NewTripState.normal());
 
   void nameChanged(String tripName) {
     emit(state.copyWith(tripName: tripName));
@@ -32,18 +32,20 @@ class NewTripCubit extends Cubit<NewTripState> {
 
   createTrip() async {
     if (state.tripName == null || state.tripName!.isEmpty) {
-      emit(state.copyWith(errorMessage: LocaleKeys.tripNameEmpty.tr()));
-      emit(state.copyWith(errorMessage: null));
+      emitError(LocaleKeys.tripNameEmpty.tr());
       return;
     }
 
     if (state.startDate == null) {
-      emit(state.copyWith(errorMessage: LocaleKeys.tripStartDateEmpty.tr()));
-      emit(state.copyWith(errorMessage: null));
+      emitError(LocaleKeys.tripStartDateEmpty.tr());
       return;
     }
 
-    emit(state.copyWith(isLoading: true));
+    emit(NewTripState.saving(
+        tripName: state.tripName,
+        tripDescription: state.tripDescription,
+        startDate: state.startDate,
+        isStartDateBeforeToday: state.isStartDateBeforeToday));
 
     assert(_userCubit.state is UserStateLoggedIn);
     final userId = (_userCubit.state as UserStateLoggedIn).user.id;
@@ -60,12 +62,25 @@ class NewTripCubit extends Cubit<NewTripState> {
         if (failure.message != null) {
           errorMessage += "\n\n${failure.message!}";
         }
-        emit(state.copyWith(errorMessage: errorMessage, isLoading: false));
-        emit(state.copyWith(errorMessage: null));
+        emitError(errorMessage);
       },
       (_) {
-        emit(state.copyWith(isLoading: false, createSuccess: true));
+        emit(NewTripState.created());
       },
     );
+  }
+
+  emitError(String errorMessage) {
+    emit(NewTripState.error(
+        tripName: state.tripName,
+        tripDescription: state.tripDescription,
+        startDate: state.startDate,
+        isStartDateBeforeToday: state.isStartDateBeforeToday,
+        errorMessage: errorMessage));
+    emit(NewTripState.normal(
+        tripName: state.tripName,
+        tripDescription: state.tripDescription,
+        isStartDateBeforeToday: state.isStartDateBeforeToday,
+        startDate: state.startDate));
   }
 }

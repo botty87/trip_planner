@@ -1,17 +1,21 @@
 part of '../../pages/new_trip_page.dart';
 
 class _CreateTripButton extends StatelessWidget {
-  const _CreateTripButton();
+  final Stream<bool> isSaving;
+  const _CreateTripButton({required this.isSaving});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<NewTripCubit>();
-    final isLoading = context.select((NewTripCubit cubit) => cubit.state.isLoading);
-
-    return ElevatedButton(
-      key: Key('createTripButton'),
-      child: Text(LocaleKeys.createTrip.tr()),
-      onPressed: isLoading ? null : () => cubit.createTrip(),
+    return StreamBuilder<bool>(
+      stream: isSaving,
+      initialData: false,
+      builder: (context, snapshot) {
+        return ElevatedButton(
+          key: Key('createTripButton'),
+          child: Text(LocaleKeys.createTrip.tr()),
+          onPressed: snapshot.data! ? null : () => context.read<NewTripCubit>().createTrip(),
+        );
+      },
     );
   }
 }

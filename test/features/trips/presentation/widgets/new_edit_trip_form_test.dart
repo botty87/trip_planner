@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/new_edit_trip_form/new_edit_trip_form.dart';
-import 'package:easy_logger/easy_logger.dart';
 
 void main() {
-
   setUpAll(() async {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
@@ -19,7 +18,7 @@ void main() {
               onNameChanged: (value) {},
               onDescriptionChanged: (value) {},
               onStartDateChanged: (value) {},
-              isLoading: Stream.value(false)),
+              isSaving: Stream.value(false)),
         ),
       ),
     );
@@ -38,7 +37,7 @@ void main() {
               onNameChanged: (value) {},
               onDescriptionChanged: (value) {},
               onStartDateChanged: (value) {},
-              isLoading: Stream.value(true)),
+              isSaving: Stream.value(true)),
         ),
       ),
     );
@@ -55,7 +54,7 @@ void main() {
               onNameChanged: (value) {},
               onDescriptionChanged: (value) {},
               onStartDateChanged: (value) {},
-              isLoading: Stream.value(false)),
+              isSaving: Stream.value(false)),
         ),
       ),
     );
@@ -72,7 +71,7 @@ void main() {
               onNameChanged: (value) {},
               onDescriptionChanged: (value) {},
               onStartDateChanged: (value) {},
-              isLoading: Stream.value(false)),
+              isSaving: Stream.value(false)),
         ),
       ),
     );
@@ -88,7 +87,7 @@ void main() {
               onNameChanged: (value) {},
               onDescriptionChanged: (value) {},
               onStartDateChanged: (value) {},
-              isLoading: Stream.value(false),
+              isSaving: Stream.value(false),
               initialTripName: 'name'),
         ),
       ),
@@ -105,7 +104,7 @@ void main() {
               onNameChanged: (value) {},
               onDescriptionChanged: (value) {},
               onStartDateChanged: (value) {},
-              isLoading: Stream.value(false),
+              isSaving: Stream.value(false),
               initialTripDescription: 'description'),
         ),
       ),

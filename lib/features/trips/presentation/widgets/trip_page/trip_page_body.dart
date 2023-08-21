@@ -90,7 +90,7 @@ class _TripPageBody extends HookWidget {
               onSave: () => cubit.saveChanges(),
               errorMessage: errorMessage.stream,
             ),
-            isLoading: isSaving.stream,
+            isSaving: isSaving.stream,
             initialTripName: cubit.state.trip.name,
             initialTripDescription: cubit.state.trip.description,
             initialStartDate: cubit.state.trip.startDate,
