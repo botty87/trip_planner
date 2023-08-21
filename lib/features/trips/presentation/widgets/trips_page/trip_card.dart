@@ -78,7 +78,7 @@ class _TripCreatedOnWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8),
       child: Text(
-        "${LocaleKeys.createdOn.tr()} ${DateFormat.yMMMMd(context.locale.toString()).format(createdAt)}",
+        "${LocaleKeys.createdOn.tr()} ${DateFormat.yMMMMd().format(createdAt)}",
         style: Theme.of(context).textTheme.bodySmall,
         textAlign: TextAlign.right,
       ),
