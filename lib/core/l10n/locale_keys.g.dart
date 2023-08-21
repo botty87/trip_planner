@@ -59,5 +59,6 @@ abstract class  LocaleKeys {
   static const deleteDayTrip = 'deleteDayTrip';
   static const deleteDayTripQuestion = 'deleteDayTripQuestion';
   static const newTripStop = 'newTripStop';
+  static const createdOn = 'createdOn';
 
 }

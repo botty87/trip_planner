@@ -56,5 +56,6 @@
     "editDayTrip" : "Edit say of trip",
     "deleteDayTrip": "Delete day of trip",
     "deleteDayTripQuestion": "Are you sure you want to delete this day of trip?",
-    "newTripStop" : "New trip stop"
+    "newTripStop" : "New trip stop",
+    "createdOn" : "Created on"
 }

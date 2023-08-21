@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:trip_planner/core/constants.dart';
+import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/core/routes/app_router.gr.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 
@@ -21,7 +22,7 @@ class TripCard extends StatelessWidget {
             children: [
               _TripNameWidget(name: trip.name),
               if (trip.description != null) _TripDescriptionWidget(description: trip.description!),
-              _TripCreatedAtWidget(createdAt: trip.createdAt),
+              _TripCreatedOnWidget(createdAt: trip.createdAt),
             ],
           ),
         ),
@@ -68,18 +69,19 @@ class _TripDescriptionWidget extends StatelessWidget {
   }
 }
 
-class _TripCreatedAtWidget extends StatelessWidget {
+class _TripCreatedOnWidget extends StatelessWidget {
   final DateTime createdAt;
-  const _TripCreatedAtWidget({required this.createdAt});
+  const _TripCreatedOnWidget({required this.createdAt});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(8),
-        child: Text(
-          DateFormat.yMMMMd(context.locale.toString()).format(createdAt),
-          style: Theme.of(context).textTheme.bodySmall,
-          textAlign: TextAlign.right,
-        ));
+      padding: EdgeInsets.all(8),
+      child: Text(
+        "${LocaleKeys.createdOn.tr()} ${DateFormat.yMMMMd(context.locale.toString()).format(createdAt)}",
+        style: Theme.of(context).textTheme.bodySmall,
+        textAlign: TextAlign.right,
+      ),
+    );
   }
 }
