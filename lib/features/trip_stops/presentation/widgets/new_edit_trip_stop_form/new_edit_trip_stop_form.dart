@@ -1,11 +1,15 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:trip_planner/core/utilities/time_of_day.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -15,6 +19,7 @@ import '../../../../../gen/assets.gen.dart';
 
 part 'field_widget.dart';
 part 'time_widget.dart';
+part 'map_widget.dart';
 
 class NewEditTripStopForm extends StatelessWidget {
   final Stream<bool> isSaving;
@@ -109,6 +114,8 @@ class NewEditTripStopForm extends StatelessWidget {
                         ],
                         alignment: WrapAlignment.spaceEvenly,
                       ),
+                      const SizedBox(height: VERTICAL_SPACE_L),
+                      _MapWidget(),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       saveSection,
                     ],
