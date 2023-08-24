@@ -7,6 +7,9 @@ const double VERTICAL_SPACE_S = 8.0;
 const double VERTICAL_SPACE = 12.0;
 const double VERTICAL_SPACE_L = 16.0;
 
+const double HORIZONTAL_SPACE_XS = 4.0;
+const double HORIZONTAL_SPACE_S = 8.0;
+
 const DEFAULT_PAGE_PADDING =
     EdgeInsets.symmetric(horizontal: PAGE_HORIZONTAL_PADDING, vertical: PAGE_VERTICAL_PADDING);
 

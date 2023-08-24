@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,5 +17,21 @@ class NewTripStopCubit extends Cubit<NewTripStopState> {
     @factoryParam required String dayTripId,
   })  : _tripId = tripId,
         _dayTripId = dayTripId,
-        super(NewTripStopState());
+        super(NewTripStopState.normal());
+
+  void nameChanged(String value) {
+    emit(state.copyWith(name: value));
+  }
+
+  void descriptionChanged(String value) {
+    emit(state.copyWith(description: value));
+  }
+
+  void startTimeChanged(TimeOfDay value) {
+    emit(state.copyWith(startTime: value));
+  }
+
+  void endTimeChanged(TimeOfDay value) {
+    emit(state.copyWith(endTime: value));
+  }
 }

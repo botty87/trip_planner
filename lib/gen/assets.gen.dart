@@ -116,6 +116,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/add_new_day_trip.svg.vec
   String get addNewDayTripSvg => 'assets/svg/add_new_day_trip.svg.vec';
 
+  /// File path: assets/svg/add_trip_stop.svg.vec
+  String get addTripStopSvg => 'assets/svg/add_trip_stop.svg.vec';
+
   /// File path: assets/svg/arrow.svg.vec
   String get arrowSvg => 'assets/svg/arrow.svg.vec';
 
@@ -132,6 +135,7 @@ class $AssetsSvgGen {
   List<String> get values => [
         addDayTripSvg,
         addNewDayTripSvg,
+        addTripStopSvg,
         arrowSvg,
         destinationSvg,
         loginSvg,

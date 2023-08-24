@@ -16,10 +16,48 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewTripStopState {
+  String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  bool get isSaving => throw _privateConstructorUsedError;
-  bool get createSuccess => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
+  TimeOfDay? get startTime => throw _privateConstructorUsedError;
+  TimeOfDay? get endTime => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? name, String? description,
+            TimeOfDay? startTime, TimeOfDay? endTime)
+        normal,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? name, String? description, TimeOfDay? startTime,
+            TimeOfDay? endTime)?
+        normal,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? name, String? description, TimeOfDay? startTime,
+            TimeOfDay? endTime)?
+        normal,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NewTripStopStateNormal value) normal,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NewTripStopStateNormal value)? normal,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NewTripStopStateNormal value)? normal,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewTripStopStateCopyWith<NewTripStopState> get copyWith =>
@@ -33,10 +71,10 @@ abstract class $NewTripStopStateCopyWith<$Res> {
       _$NewTripStopStateCopyWithImpl<$Res, NewTripStopState>;
   @useResult
   $Res call(
-      {String? description,
-      bool isSaving,
-      bool createSuccess,
-      String? errorMessage});
+      {String? name,
+      String? description,
+      TimeOfDay? startTime,
+      TimeOfDay? endTime});
 }
 
 /// @nodoc
@@ -52,152 +90,208 @@ class _$NewTripStopStateCopyWithImpl<$Res, $Val extends NewTripStopState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = freezed,
     Object? description = freezed,
-    Object? isSaving = null,
-    Object? createSuccess = null,
-    Object? errorMessage = freezed,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
   }) {
     return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      isSaving: null == isSaving
-          ? _value.isSaving
-          : isSaving // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createSuccess: null == createSuccess
-          ? _value.createSuccess
-          : createSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+      startTime: freezed == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay?,
+      endTime: freezed == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_NewTripStopStateCopyWith<$Res>
+abstract class _$$NewTripStopStateNormalCopyWith<$Res>
     implements $NewTripStopStateCopyWith<$Res> {
-  factory _$$_NewTripStopStateCopyWith(
-          _$_NewTripStopState value, $Res Function(_$_NewTripStopState) then) =
-      __$$_NewTripStopStateCopyWithImpl<$Res>;
+  factory _$$NewTripStopStateNormalCopyWith(_$NewTripStopStateNormal value,
+          $Res Function(_$NewTripStopStateNormal) then) =
+      __$$NewTripStopStateNormalCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? description,
-      bool isSaving,
-      bool createSuccess,
-      String? errorMessage});
+      {String? name,
+      String? description,
+      TimeOfDay? startTime,
+      TimeOfDay? endTime});
 }
 
 /// @nodoc
-class __$$_NewTripStopStateCopyWithImpl<$Res>
-    extends _$NewTripStopStateCopyWithImpl<$Res, _$_NewTripStopState>
-    implements _$$_NewTripStopStateCopyWith<$Res> {
-  __$$_NewTripStopStateCopyWithImpl(
-      _$_NewTripStopState _value, $Res Function(_$_NewTripStopState) _then)
+class __$$NewTripStopStateNormalCopyWithImpl<$Res>
+    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateNormal>
+    implements _$$NewTripStopStateNormalCopyWith<$Res> {
+  __$$NewTripStopStateNormalCopyWithImpl(_$NewTripStopStateNormal _value,
+      $Res Function(_$NewTripStopStateNormal) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = freezed,
     Object? description = freezed,
-    Object? isSaving = null,
-    Object? createSuccess = null,
-    Object? errorMessage = freezed,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
   }) {
-    return _then(_$_NewTripStopState(
+    return _then(_$NewTripStopStateNormal(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      isSaving: null == isSaving
-          ? _value.isSaving
-          : isSaving // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createSuccess: null == createSuccess
-          ? _value.createSuccess
-          : createSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+      startTime: freezed == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay?,
+      endTime: freezed == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_NewTripStopState implements _NewTripStopState {
-  const _$_NewTripStopState(
-      {this.description,
-      this.isSaving = false,
-      this.createSuccess = false,
-      this.errorMessage});
+class _$NewTripStopStateNormal implements NewTripStopStateNormal {
+  const _$NewTripStopStateNormal(
+      {this.name, this.description, this.startTime, this.endTime});
 
+  @override
+  final String? name;
   @override
   final String? description;
   @override
-  @JsonKey()
-  final bool isSaving;
+  final TimeOfDay? startTime;
   @override
-  @JsonKey()
-  final bool createSuccess;
-  @override
-  final String? errorMessage;
+  final TimeOfDay? endTime;
 
   @override
   String toString() {
-    return 'NewTripStopState(description: $description, isSaving: $isSaving, createSuccess: $createSuccess, errorMessage: $errorMessage)';
+    return 'NewTripStopState.normal(name: $name, description: $description, startTime: $startTime, endTime: $endTime)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewTripStopState &&
+            other is _$NewTripStopStateNormal &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.isSaving, isSaving) ||
-                other.isSaving == isSaving) &&
-            (identical(other.createSuccess, createSuccess) ||
-                other.createSuccess == createSuccess) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.startTime, startTime) ||
+                other.startTime == startTime) &&
+            (identical(other.endTime, endTime) || other.endTime == endTime));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, description, isSaving, createSuccess, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, name, description, startTime, endTime);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewTripStopStateCopyWith<_$_NewTripStopState> get copyWith =>
-      __$$_NewTripStopStateCopyWithImpl<_$_NewTripStopState>(this, _$identity);
+  _$$NewTripStopStateNormalCopyWith<_$NewTripStopStateNormal> get copyWith =>
+      __$$NewTripStopStateNormalCopyWithImpl<_$NewTripStopStateNormal>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? name, String? description,
+            TimeOfDay? startTime, TimeOfDay? endTime)
+        normal,
+  }) {
+    return normal(name, description, startTime, endTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? name, String? description, TimeOfDay? startTime,
+            TimeOfDay? endTime)?
+        normal,
+  }) {
+    return normal?.call(name, description, startTime, endTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? name, String? description, TimeOfDay? startTime,
+            TimeOfDay? endTime)?
+        normal,
+    required TResult orElse(),
+  }) {
+    if (normal != null) {
+      return normal(name, description, startTime, endTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NewTripStopStateNormal value) normal,
+  }) {
+    return normal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NewTripStopStateNormal value)? normal,
+  }) {
+    return normal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NewTripStopStateNormal value)? normal,
+    required TResult orElse(),
+  }) {
+    if (normal != null) {
+      return normal(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _NewTripStopState implements NewTripStopState {
-  const factory _NewTripStopState(
-      {final String? description,
-      final bool isSaving,
-      final bool createSuccess,
-      final String? errorMessage}) = _$_NewTripStopState;
+abstract class NewTripStopStateNormal implements NewTripStopState {
+  const factory NewTripStopStateNormal(
+      {final String? name,
+      final String? description,
+      final TimeOfDay? startTime,
+      final TimeOfDay? endTime}) = _$NewTripStopStateNormal;
 
+  @override
+  String? get name;
   @override
   String? get description;
   @override
-  bool get isSaving;
+  TimeOfDay? get startTime;
   @override
-  bool get createSuccess;
-  @override
-  String? get errorMessage;
+  TimeOfDay? get endTime;
   @override
   @JsonKey(ignore: true)
-  _$$_NewTripStopStateCopyWith<_$_NewTripStopState> get copyWith =>
+  _$$NewTripStopStateNormalCopyWith<_$NewTripStopStateNormal> get copyWith =>
       throw _privateConstructorUsedError;
 }

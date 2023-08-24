@@ -47,8 +47,7 @@ class NewEditDayTripForm extends StatelessWidget {
                   LayoutBuilder(
                     builder: (context, constraints) {
                       return SvgPicture(
-                        width: constraints.maxWidth,
-                        height: constraints.maxWidth,
+                        height: constraints.maxWidth * 0.75,
                         key: Key('tripImage'),
                         AssetBytesLoader(Assets.svg.addNewDayTripSvg),
                       );

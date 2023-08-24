@@ -57,5 +57,14 @@
     "deleteDayTrip": "Elimina giorno di viaggio",
     "deleteDayTripQuestion": "Sei sicuro di voler eliminare il giorno di viaggio?",
     "newTripStop": "Nuova tappa di viaggio",
-    "createdOn": "Creato il"
+    "createdOn": "Creato il",
+    "tripStopName": "Nome della tappa di viaggio",
+    "tripStopNameHint": "Come si chiama la tappa di viaggio?",
+    "tripStopDescription": "Descrizione",
+    "tripStopDescriptionHint": "Cosa farai in questa tappa di viaggio?",
+    "tripStopStartTime" : "Ora di inizio",
+    "tripStopEndTime" : "Ora di fine",
+    "setTime" : "Imposta orario",
+    "hours" : "Ore",
+    "minutes" : "Minuti"
 }

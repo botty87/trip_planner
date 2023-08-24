@@ -60,5 +60,14 @@ abstract class  LocaleKeys {
   static const deleteDayTripQuestion = 'deleteDayTripQuestion';
   static const newTripStop = 'newTripStop';
   static const createdOn = 'createdOn';
+  static const tripStopName = 'tripStopName';
+  static const tripStopNameHint = 'tripStopNameHint';
+  static const tripStopDescription = 'tripStopDescription';
+  static const tripStopDescriptionHint = 'tripStopDescriptionHint';
+  static const tripStopStartTime = 'tripStopStartTime';
+  static const tripStopEndTime = 'tripStopEndTime';
+  static const setTime = 'setTime';
+  static const hours = 'hours';
+  static const minutes = 'minutes';
 
 }
