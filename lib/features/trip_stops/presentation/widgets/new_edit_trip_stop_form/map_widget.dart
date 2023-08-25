@@ -1,6 +1,6 @@
 part of 'new_edit_trip_stop_form.dart';
 
-class _MapWidget extends StatelessWidget {
+class _MapWidget extends HookWidget {
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
 
   static const CameraPosition _world = CameraPosition(
@@ -10,26 +10,34 @@ class _MapWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.4,
-      child: Stack(
-        children: [
-          GoogleMap(
-            mapType: MapType.hybrid,
-            initialCameraPosition: _world,
-            onMapCreated: _controller.complete,
-            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-              Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
-            },
-            myLocationButtonEnabled: false,
-            zoomControlsEnabled: false,
+    final placesTextController = useTextEditingController();
+
+    return Column(
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.4,
+          child: Stack(
+            children: [
+              GoogleMap(
+                mapType: MapType.hybrid,
+                initialCameraPosition: _world,
+                onMapCreated: _controller.complete,
+                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                  Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                },
+                myLocationButtonEnabled: false,
+                zoomControlsEnabled: false,
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: _zoomControls(),
+              ),
+            ],
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: _zoomControls(),
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(height: VERTICAL_SPACE_S),
+        
+      ],
     );
   }
 
