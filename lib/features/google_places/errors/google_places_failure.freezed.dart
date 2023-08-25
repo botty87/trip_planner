@@ -21,6 +21,7 @@ mixin _$GooglePlacesFailure {
     required TResult Function() noInternetConnection,
     required TResult Function(String message) requestDenied,
     required TResult Function() requestCancelled,
+    required TResult Function(String? message) unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$GooglePlacesFailure {
     TResult? Function()? noInternetConnection,
     TResult? Function(String message)? requestDenied,
     TResult? Function()? requestCancelled,
+    TResult? Function(String? message)? unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$GooglePlacesFailure {
     TResult Function()? noInternetConnection,
     TResult Function(String message)? requestDenied,
     TResult Function()? requestCancelled,
+    TResult Function(String? message)? unknownError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$GooglePlacesFailure {
     required TResult Function(_NoInternetConnection value) noInternetConnection,
     required TResult Function(_RequestDenied value) requestDenied,
     required TResult Function(_RequestCancelled value) requestCancelled,
+    required TResult Function(_UnknownError value) unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$GooglePlacesFailure {
     TResult? Function(_NoInternetConnection value)? noInternetConnection,
     TResult? Function(_RequestDenied value)? requestDenied,
     TResult? Function(_RequestCancelled value)? requestCancelled,
+    TResult? Function(_UnknownError value)? unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$GooglePlacesFailure {
     TResult Function(_NoInternetConnection value)? noInternetConnection,
     TResult Function(_RequestDenied value)? requestDenied,
     TResult Function(_RequestCancelled value)? requestCancelled,
+    TResult Function(_UnknownError value)? unknownError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$_NoInternetConnection implements _NoInternetConnection {
     required TResult Function() noInternetConnection,
     required TResult Function(String message) requestDenied,
     required TResult Function() requestCancelled,
+    required TResult Function(String? message) unknownError,
   }) {
     return noInternetConnection();
   }
@@ -131,6 +138,7 @@ class _$_NoInternetConnection implements _NoInternetConnection {
     TResult? Function()? noInternetConnection,
     TResult? Function(String message)? requestDenied,
     TResult? Function()? requestCancelled,
+    TResult? Function(String? message)? unknownError,
   }) {
     return noInternetConnection?.call();
   }
@@ -141,6 +149,7 @@ class _$_NoInternetConnection implements _NoInternetConnection {
     TResult Function()? noInternetConnection,
     TResult Function(String message)? requestDenied,
     TResult Function()? requestCancelled,
+    TResult Function(String? message)? unknownError,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -155,6 +164,7 @@ class _$_NoInternetConnection implements _NoInternetConnection {
     required TResult Function(_NoInternetConnection value) noInternetConnection,
     required TResult Function(_RequestDenied value) requestDenied,
     required TResult Function(_RequestCancelled value) requestCancelled,
+    required TResult Function(_UnknownError value) unknownError,
   }) {
     return noInternetConnection(this);
   }
@@ -165,6 +175,7 @@ class _$_NoInternetConnection implements _NoInternetConnection {
     TResult? Function(_NoInternetConnection value)? noInternetConnection,
     TResult? Function(_RequestDenied value)? requestDenied,
     TResult? Function(_RequestCancelled value)? requestCancelled,
+    TResult? Function(_UnknownError value)? unknownError,
   }) {
     return noInternetConnection?.call(this);
   }
@@ -175,6 +186,7 @@ class _$_NoInternetConnection implements _NoInternetConnection {
     TResult Function(_NoInternetConnection value)? noInternetConnection,
     TResult Function(_RequestDenied value)? requestDenied,
     TResult Function(_RequestCancelled value)? requestCancelled,
+    TResult Function(_UnknownError value)? unknownError,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -255,6 +267,7 @@ class _$_RequestDenied implements _RequestDenied {
     required TResult Function() noInternetConnection,
     required TResult Function(String message) requestDenied,
     required TResult Function() requestCancelled,
+    required TResult Function(String? message) unknownError,
   }) {
     return requestDenied(message);
   }
@@ -265,6 +278,7 @@ class _$_RequestDenied implements _RequestDenied {
     TResult? Function()? noInternetConnection,
     TResult? Function(String message)? requestDenied,
     TResult? Function()? requestCancelled,
+    TResult? Function(String? message)? unknownError,
   }) {
     return requestDenied?.call(message);
   }
@@ -275,6 +289,7 @@ class _$_RequestDenied implements _RequestDenied {
     TResult Function()? noInternetConnection,
     TResult Function(String message)? requestDenied,
     TResult Function()? requestCancelled,
+    TResult Function(String? message)? unknownError,
     required TResult orElse(),
   }) {
     if (requestDenied != null) {
@@ -289,6 +304,7 @@ class _$_RequestDenied implements _RequestDenied {
     required TResult Function(_NoInternetConnection value) noInternetConnection,
     required TResult Function(_RequestDenied value) requestDenied,
     required TResult Function(_RequestCancelled value) requestCancelled,
+    required TResult Function(_UnknownError value) unknownError,
   }) {
     return requestDenied(this);
   }
@@ -299,6 +315,7 @@ class _$_RequestDenied implements _RequestDenied {
     TResult? Function(_NoInternetConnection value)? noInternetConnection,
     TResult? Function(_RequestDenied value)? requestDenied,
     TResult? Function(_RequestCancelled value)? requestCancelled,
+    TResult? Function(_UnknownError value)? unknownError,
   }) {
     return requestDenied?.call(this);
   }
@@ -309,6 +326,7 @@ class _$_RequestDenied implements _RequestDenied {
     TResult Function(_NoInternetConnection value)? noInternetConnection,
     TResult Function(_RequestDenied value)? requestDenied,
     TResult Function(_RequestCancelled value)? requestCancelled,
+    TResult Function(_UnknownError value)? unknownError,
     required TResult orElse(),
   }) {
     if (requestDenied != null) {
@@ -369,6 +387,7 @@ class _$_RequestCancelled implements _RequestCancelled {
     required TResult Function() noInternetConnection,
     required TResult Function(String message) requestDenied,
     required TResult Function() requestCancelled,
+    required TResult Function(String? message) unknownError,
   }) {
     return requestCancelled();
   }
@@ -379,6 +398,7 @@ class _$_RequestCancelled implements _RequestCancelled {
     TResult? Function()? noInternetConnection,
     TResult? Function(String message)? requestDenied,
     TResult? Function()? requestCancelled,
+    TResult? Function(String? message)? unknownError,
   }) {
     return requestCancelled?.call();
   }
@@ -389,6 +409,7 @@ class _$_RequestCancelled implements _RequestCancelled {
     TResult Function()? noInternetConnection,
     TResult Function(String message)? requestDenied,
     TResult Function()? requestCancelled,
+    TResult Function(String? message)? unknownError,
     required TResult orElse(),
   }) {
     if (requestCancelled != null) {
@@ -403,6 +424,7 @@ class _$_RequestCancelled implements _RequestCancelled {
     required TResult Function(_NoInternetConnection value) noInternetConnection,
     required TResult Function(_RequestDenied value) requestDenied,
     required TResult Function(_RequestCancelled value) requestCancelled,
+    required TResult Function(_UnknownError value) unknownError,
   }) {
     return requestCancelled(this);
   }
@@ -413,6 +435,7 @@ class _$_RequestCancelled implements _RequestCancelled {
     TResult? Function(_NoInternetConnection value)? noInternetConnection,
     TResult? Function(_RequestDenied value)? requestDenied,
     TResult? Function(_RequestCancelled value)? requestCancelled,
+    TResult? Function(_UnknownError value)? unknownError,
   }) {
     return requestCancelled?.call(this);
   }
@@ -423,6 +446,7 @@ class _$_RequestCancelled implements _RequestCancelled {
     TResult Function(_NoInternetConnection value)? noInternetConnection,
     TResult Function(_RequestDenied value)? requestDenied,
     TResult Function(_RequestCancelled value)? requestCancelled,
+    TResult Function(_UnknownError value)? unknownError,
     required TResult orElse(),
   }) {
     if (requestCancelled != null) {
@@ -434,4 +458,149 @@ class _$_RequestCancelled implements _RequestCancelled {
 
 abstract class _RequestCancelled implements GooglePlacesFailure {
   const factory _RequestCancelled() = _$_RequestCancelled;
+}
+
+/// @nodoc
+abstract class _$$_UnknownErrorCopyWith<$Res> {
+  factory _$$_UnknownErrorCopyWith(
+          _$_UnknownError value, $Res Function(_$_UnknownError) then) =
+      __$$_UnknownErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$_UnknownErrorCopyWithImpl<$Res>
+    extends _$GooglePlacesFailureCopyWithImpl<$Res, _$_UnknownError>
+    implements _$$_UnknownErrorCopyWith<$Res> {
+  __$$_UnknownErrorCopyWithImpl(
+      _$_UnknownError _value, $Res Function(_$_UnknownError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_UnknownError(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UnknownError implements _UnknownError {
+  const _$_UnknownError({this.message});
+
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'GooglePlacesFailure.unknownError(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UnknownError &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UnknownErrorCopyWith<_$_UnknownError> get copyWith =>
+      __$$_UnknownErrorCopyWithImpl<_$_UnknownError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noInternetConnection,
+    required TResult Function(String message) requestDenied,
+    required TResult Function() requestCancelled,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return unknownError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String message)? requestDenied,
+    TResult? Function()? requestCancelled,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return unknownError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noInternetConnection,
+    TResult Function(String message)? requestDenied,
+    TResult Function()? requestCancelled,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (unknownError != null) {
+      return unknownError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
+    required TResult Function(_RequestDenied value) requestDenied,
+    required TResult Function(_RequestCancelled value) requestCancelled,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return unknownError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
+    TResult? Function(_RequestDenied value)? requestDenied,
+    TResult? Function(_RequestCancelled value)? requestCancelled,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return unknownError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
+    TResult Function(_RequestDenied value)? requestDenied,
+    TResult Function(_RequestCancelled value)? requestCancelled,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (unknownError != null) {
+      return unknownError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnknownError implements GooglePlacesFailure {
+  const factory _UnknownError({final String? message}) = _$_UnknownError;
+
+  String? get message;
+  @JsonKey(ignore: true)
+  _$$_UnknownErrorCopyWith<_$_UnknownError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

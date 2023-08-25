@@ -28,6 +28,7 @@ class GooglePlacesRepositoryImpl implements GooglePlacesRepository {
       noInternetConnection: () => const GooglePlacesFailure.noInternetConnection(),
       requestDenied: (message) => GooglePlacesFailure.requestDenied(message: message),
       requestCancelled: () => const GooglePlacesFailure.requestCancelled(),
+      unknownError: (message) => GooglePlacesFailure.unknownError(message: message),
     );
   }
 }
