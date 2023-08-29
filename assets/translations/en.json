@@ -66,5 +66,9 @@
     "tripStopEndTime" : "End time",
     "setTime" : "Set time",
     "hours" : "Hours",
-    "minutes" : "Minutes"
+    "minutes" : "Minutes",
+    "tripStopLocation" : "Location",
+    "tripStopLocationHint" : "Where is your trip stop?",
+    "noInternetConnectionMessage" : "Please check your internet connection and try again",
+    "requestDenied" : "Request denied"
 }

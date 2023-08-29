@@ -66,5 +66,9 @@
     "tripStopEndTime" : "Ora di fine",
     "setTime" : "Imposta orario",
     "hours" : "Ore",
-    "minutes" : "Minuti"
+    "minutes" : "Minuti",
+    "tripStopLocation": "Luogo",
+    "tripStopLocationHint": "Dove si trova la tappa di viaggio?",
+    "noInternetConnectionMessage": "Nessuna connessione a internet",
+    "requestDenied": "Richiesta negata"
 }

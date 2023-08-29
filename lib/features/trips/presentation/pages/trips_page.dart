@@ -24,7 +24,11 @@ class TripsPage extends StatelessWidget {
           title: Text(LocaleKeys.tripsPageTitle.tr()),
         ),
         //body: const _BodyWidget(),
-        body: Center(child: GooglePlacesSuggestionsWidget()),
+        body: Center(
+            child: GooglePlacesSuggestionsWidget(
+          labelText: LocaleKeys.tripStopLocation.tr(),
+          hintText: LocaleKeys.tripStopLocationHint.tr(),
+        )),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             context.pushRoute(NewTripRoute());
