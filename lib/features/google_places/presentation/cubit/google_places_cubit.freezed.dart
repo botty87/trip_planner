@@ -16,29 +16,36 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GooglePlacesState {
+  List<Suggestion> get suggestions => throw _privateConstructorUsedError;
   String get currentQuery => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)
+    required TResult Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)
         normal,
-    required TResult Function(String message, String currentQuery) error,
+    required TResult Function(
+            String message, String currentQuery, List<Suggestion> suggestions)
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)?
+    TResult? Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(String message, String currentQuery)? error,
+    TResult? Function(
+            String message, String currentQuery, List<Suggestion> suggestions)?
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)?
+    TResult Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)?
         normal,
-    TResult Function(String message, String currentQuery)? error,
+    TResult Function(
+            String message, String currentQuery, List<Suggestion> suggestions)?
+        error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -73,7 +80,7 @@ abstract class $GooglePlacesStateCopyWith<$Res> {
           GooglePlacesState value, $Res Function(GooglePlacesState) then) =
       _$GooglePlacesStateCopyWithImpl<$Res, GooglePlacesState>;
   @useResult
-  $Res call({String currentQuery});
+  $Res call({List<Suggestion> suggestions, String currentQuery});
 }
 
 /// @nodoc
@@ -89,9 +96,14 @@ class _$GooglePlacesStateCopyWithImpl<$Res, $Val extends GooglePlacesState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? suggestions = null,
     Object? currentQuery = null,
   }) {
     return _then(_value.copyWith(
+      suggestions: null == suggestions
+          ? _value.suggestions
+          : suggestions // ignore: cast_nullable_to_non_nullable
+              as List<Suggestion>,
       currentQuery: null == currentQuery
           ? _value.currentQuery
           : currentQuery // ignore: cast_nullable_to_non_nullable
@@ -109,7 +121,12 @@ abstract class _$$_GooglePlacesStateNormalCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Suggestion> suggestions, bool isLoading, String currentQuery});
+      {List<Suggestion> suggestions,
+      bool isLoading,
+      String currentQuery,
+      PlaceDetails? placeDetails});
+
+  $PlaceDetailsCopyWith<$Res>? get placeDetails;
 }
 
 /// @nodoc
@@ -126,6 +143,7 @@ class __$$_GooglePlacesStateNormalCopyWithImpl<$Res>
     Object? suggestions = null,
     Object? isLoading = null,
     Object? currentQuery = null,
+    Object? placeDetails = freezed,
   }) {
     return _then(_$_GooglePlacesStateNormal(
       suggestions: null == suggestions
@@ -140,7 +158,23 @@ class __$$_GooglePlacesStateNormalCopyWithImpl<$Res>
           ? _value.currentQuery
           : currentQuery // ignore: cast_nullable_to_non_nullable
               as String,
+      placeDetails: freezed == placeDetails
+          ? _value.placeDetails
+          : placeDetails // ignore: cast_nullable_to_non_nullable
+              as PlaceDetails?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlaceDetailsCopyWith<$Res>? get placeDetails {
+    if (_value.placeDetails == null) {
+      return null;
+    }
+
+    return $PlaceDetailsCopyWith<$Res>(_value.placeDetails!, (value) {
+      return _then(_value.copyWith(placeDetails: value));
+    });
   }
 }
 
@@ -150,7 +184,8 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
   const _$_GooglePlacesStateNormal(
       {final List<Suggestion> suggestions = const [],
       this.isLoading = false,
-      this.currentQuery = ''})
+      this.currentQuery = '',
+      this.placeDetails})
       : _suggestions = suggestions;
 
   final List<Suggestion> _suggestions;
@@ -168,10 +203,12 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
   @override
   @JsonKey()
   final String currentQuery;
+  @override
+  final PlaceDetails? placeDetails;
 
   @override
   String toString() {
-    return 'GooglePlacesState.normal(suggestions: $suggestions, isLoading: $isLoading, currentQuery: $currentQuery)';
+    return 'GooglePlacesState.normal(suggestions: $suggestions, isLoading: $isLoading, currentQuery: $currentQuery, placeDetails: $placeDetails)';
   }
 
   @override
@@ -184,7 +221,9 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.currentQuery, currentQuery) ||
-                other.currentQuery == currentQuery));
+                other.currentQuery == currentQuery) &&
+            (identical(other.placeDetails, placeDetails) ||
+                other.placeDetails == placeDetails));
   }
 
   @override
@@ -192,7 +231,8 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
       runtimeType,
       const DeepCollectionEquality().hash(_suggestions),
       isLoading,
-      currentQuery);
+      currentQuery,
+      placeDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -205,36 +245,42 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)
+    required TResult Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)
         normal,
-    required TResult Function(String message, String currentQuery) error,
+    required TResult Function(
+            String message, String currentQuery, List<Suggestion> suggestions)
+        error,
   }) {
-    return normal(suggestions, isLoading, currentQuery);
+    return normal(suggestions, isLoading, currentQuery, placeDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)?
+    TResult? Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(String message, String currentQuery)? error,
+    TResult? Function(
+            String message, String currentQuery, List<Suggestion> suggestions)?
+        error,
   }) {
-    return normal?.call(suggestions, isLoading, currentQuery);
+    return normal?.call(suggestions, isLoading, currentQuery, placeDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)?
+    TResult Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)?
         normal,
-    TResult Function(String message, String currentQuery)? error,
+    TResult Function(
+            String message, String currentQuery, List<Suggestion> suggestions)?
+        error,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(suggestions, isLoading, currentQuery);
+      return normal(suggestions, isLoading, currentQuery, placeDetails);
     }
     return orElse();
   }
@@ -275,12 +321,15 @@ abstract class _GooglePlacesStateNormal implements GooglePlacesState {
   const factory _GooglePlacesStateNormal(
       {final List<Suggestion> suggestions,
       final bool isLoading,
-      final String currentQuery}) = _$_GooglePlacesStateNormal;
+      final String currentQuery,
+      final PlaceDetails? placeDetails}) = _$_GooglePlacesStateNormal;
 
+  @override
   List<Suggestion> get suggestions;
   bool get isLoading;
   @override
   String get currentQuery;
+  PlaceDetails? get placeDetails;
   @override
   @JsonKey(ignore: true)
   _$$_GooglePlacesStateNormalCopyWith<_$_GooglePlacesStateNormal>
@@ -295,7 +344,8 @@ abstract class _$$_GooglePlacesStateErrorCopyWith<$Res>
       __$$_GooglePlacesStateErrorCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, String currentQuery});
+  $Res call(
+      {String message, String currentQuery, List<Suggestion> suggestions});
 }
 
 /// @nodoc
@@ -311,6 +361,7 @@ class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
     Object? currentQuery = null,
+    Object? suggestions = null,
   }) {
     return _then(_$_GooglePlacesStateError(
       message: null == message
@@ -321,6 +372,10 @@ class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
           ? _value.currentQuery
           : currentQuery // ignore: cast_nullable_to_non_nullable
               as String,
+      suggestions: null == suggestions
+          ? _value._suggestions
+          : suggestions // ignore: cast_nullable_to_non_nullable
+              as List<Suggestion>,
     ));
   }
 }
@@ -329,16 +384,27 @@ class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
 
 class _$_GooglePlacesStateError implements _GooglePlacesStateError {
   const _$_GooglePlacesStateError(
-      {required this.message, required this.currentQuery});
+      {required this.message,
+      required this.currentQuery,
+      final List<Suggestion> suggestions = const []})
+      : _suggestions = suggestions;
 
   @override
   final String message;
   @override
   final String currentQuery;
+  final List<Suggestion> _suggestions;
+  @override
+  @JsonKey()
+  List<Suggestion> get suggestions {
+    if (_suggestions is EqualUnmodifiableListView) return _suggestions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_suggestions);
+  }
 
   @override
   String toString() {
-    return 'GooglePlacesState.error(message: $message, currentQuery: $currentQuery)';
+    return 'GooglePlacesState.error(message: $message, currentQuery: $currentQuery, suggestions: $suggestions)';
   }
 
   @override
@@ -348,11 +414,14 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
             other is _$_GooglePlacesStateError &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.currentQuery, currentQuery) ||
-                other.currentQuery == currentQuery));
+                other.currentQuery == currentQuery) &&
+            const DeepCollectionEquality()
+                .equals(other._suggestions, _suggestions));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message, currentQuery);
+  int get hashCode => Object.hash(runtimeType, message, currentQuery,
+      const DeepCollectionEquality().hash(_suggestions));
 
   @JsonKey(ignore: true)
   @override
@@ -364,36 +433,42 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)
+    required TResult Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)
         normal,
-    required TResult Function(String message, String currentQuery) error,
+    required TResult Function(
+            String message, String currentQuery, List<Suggestion> suggestions)
+        error,
   }) {
-    return error(message, currentQuery);
+    return error(message, currentQuery, suggestions);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)?
+    TResult? Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(String message, String currentQuery)? error,
+    TResult? Function(
+            String message, String currentQuery, List<Suggestion> suggestions)?
+        error,
   }) {
-    return error?.call(message, currentQuery);
+    return error?.call(message, currentQuery, suggestions);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            List<Suggestion> suggestions, bool isLoading, String currentQuery)?
+    TResult Function(List<Suggestion> suggestions, bool isLoading,
+            String currentQuery, PlaceDetails? placeDetails)?
         normal,
-    TResult Function(String message, String currentQuery)? error,
+    TResult Function(
+            String message, String currentQuery, List<Suggestion> suggestions)?
+        error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message, currentQuery);
+      return error(message, currentQuery, suggestions);
     }
     return orElse();
   }
@@ -433,11 +508,14 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
 abstract class _GooglePlacesStateError implements GooglePlacesState {
   const factory _GooglePlacesStateError(
       {required final String message,
-      required final String currentQuery}) = _$_GooglePlacesStateError;
+      required final String currentQuery,
+      final List<Suggestion> suggestions}) = _$_GooglePlacesStateError;
 
   String get message;
   @override
   String get currentQuery;
+  @override
+  List<Suggestion> get suggestions;
   @override
   @JsonKey(ignore: true)
   _$$_GooglePlacesStateErrorCopyWith<_$_GooglePlacesStateError> get copyWith =>

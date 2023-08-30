@@ -7,7 +7,7 @@ class _ErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final String message = context.select<GooglePlacesCubit, String>((cubit) {
       return cubit.state.maybeWhen(
-        error: (message, _) => message,
+        error: (message, _, __) => message,
         orElse: () => '',
       );
     });

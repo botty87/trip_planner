@@ -1,6 +1,6 @@
 part of 'google_places_suggestions_widget.dart';
 
-class _TextInputWidget extends StatelessWidget {
+class _TextInputWidget extends HookWidget {
   final String labelText;
   final String hintText;
 
@@ -9,56 +9,33 @@ class _TextInputWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: labelText,
-        hintText: hintText,
-        error: const _ErrorWidget(),
-      ),
-      onChanged: (value) => context.read<GooglePlacesCubit>().fetchSuggestions(value),
-    );
+    final textController = useTextEditingController();
 
-    /* final List<String> suggestions = context.select<GooglePlacesCubit, List<String>>((cubit) {
-      return cubit.state.maybeWhen(
-        normal: (suggestions, _, __) =>
-            suggestions.map((suggestion) => suggestion.description).toList(),
-        orElse: () => [],
-      );
-    }); */
-
-    /* return Autocomplete<String>(
-      fieldViewBuilder: (BuildContext context, TextEditingController textEditingController,
-          FocusNode focusNode, VoidCallback onFieldSubmitted) {
-        return TextField(
-          controller: textEditingController,
-          focusNode: focusNode,
-          decoration: InputDecoration(
-            labelText: labelText,
-            hintText: hintText,
-            error: const _ErrorWidget(),
-          ),
-        );
-      },
-      optionsBuilder: (TextEditingValue textEditingValue) {
-        final cubit = context.read<GooglePlacesCubit>();
-
-        if (textEditingValue.text.isEmpty) {
-          cubit.clearSuggestions();
-          return const Iterable<String>.empty();
-        } else if (textEditingValue.text.length < 2) {
-          return const Iterable<String>.empty();
-        } else {
-          final previousQuery = cubit.state.maybeWhen(
-            normal: (_, currentQuery, __) => currentQuery,
-            orElse: () => null,
+    //When we have placeDetails we want to clear the text field
+    return BlocListener<GooglePlacesCubit, GooglePlacesState>(
+      listener: (context, state) => textController.clear(),
+      listenWhen: (previous, current) => previous.maybeWhen(
+        normal: (previousSuggestions, previousIsLoading, previousQuery, previousPlaceDetails) {
+          return current.maybeWhen(
+            normal: (currentSuggestions, currentIsLoading, currentQuery, currentPlaceDetails) {
+              return (currentPlaceDetails != previousPlaceDetails) && currentPlaceDetails != null;
+            },
+            orElse: () => false,
           );
-          if (previousQuery != textEditingValue.text) {
-            cubit.fetchSuggestions(textEditingValue.text);
-            Logger().i("Fetching suggestions for ${textEditingValue.text}");
-          }
-          return suggestions;
-        }
-      },
-    ); */
+        },
+        orElse: () => false,
+      ),
+      child: TextField(
+        controller: textController,
+        decoration: InputDecoration(
+          labelText: labelText,
+          hintText: hintText,
+          error: const _ErrorWidget(),
+        ),
+        maxLines: 1,
+        keyboardType: TextInputType.streetAddress,
+        onChanged: (value) => context.read<GooglePlacesCubit>().fetchSuggestions(value),
+      ),
+    );
   }
 }

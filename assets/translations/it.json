@@ -67,7 +67,7 @@
     "setTime" : "Imposta orario",
     "hours" : "Ore",
     "minutes" : "Minuti",
-    "tripStopLocation": "Luogo",
+    "searchTripStopLocation": "Trova luogo",
     "tripStopLocationHint": "Dove si trova la tappa di viaggio?",
     "noInternetConnectionMessage": "Nessuna connessione a internet",
     "requestDenied": "Richiesta negata"

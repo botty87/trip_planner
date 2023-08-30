@@ -7,6 +7,8 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:trip_planner/features/google_places/domain/entities/place_details.dart'
+    as _i7;
 import 'package:trip_planner/features/google_places/domain/entities/suggestion.dart'
     as _i6;
 import 'package:trip_planner/features/google_places/domain/repositories/google_places_repository.dart'
@@ -86,4 +88,46 @@ class MockGooglePlacesRepository extends _i1.Mock
         )),
       ) as _i4
           .Future<_i2.Either<_i5.GooglePlacesFailure, List<_i6.Suggestion>>>);
+  @override
+  _i4.Future<
+      _i2.Either<_i5.GooglePlacesFailure, _i7.PlaceDetails>> fetchPlaceDetails({
+    required String? placeId,
+    required String? token,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #fetchPlaceDetails,
+          [],
+          {
+            #placeId: placeId,
+            #token: token,
+          },
+        ),
+        returnValue: _i4.Future<
+                _i2.Either<_i5.GooglePlacesFailure, _i7.PlaceDetails>>.value(
+            _FakeEither_0<_i5.GooglePlacesFailure, _i7.PlaceDetails>(
+          this,
+          Invocation.method(
+            #fetchPlaceDetails,
+            [],
+            {
+              #placeId: placeId,
+              #token: token,
+            },
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<
+                _i2.Either<_i5.GooglePlacesFailure, _i7.PlaceDetails>>.value(
+            _FakeEither_0<_i5.GooglePlacesFailure, _i7.PlaceDetails>(
+          this,
+          Invocation.method(
+            #fetchPlaceDetails,
+            [],
+            {
+              #placeId: placeId,
+              #token: token,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.GooglePlacesFailure, _i7.PlaceDetails>>);
 }

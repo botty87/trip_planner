@@ -1,24 +1,28 @@
 part of 'google_places_suggestions_widget.dart';
 
 class _SuggestionsWidget extends StatelessWidget {
-  const _SuggestionsWidget();
+  final Function(PlaceDetails?) onSuggestionSelected;
+
+  const _SuggestionsWidget({required this.onSuggestionSelected});
 
   @override
   Widget build(BuildContext context) {
-    final suggestions =
-        context.select<GooglePlacesCubit, List<String>>((cubit) => cubit.state.mapOrNull(
-              normal: (state) =>
-                  state.suggestions.map((suggestion) => suggestion.description).toList(),
-            )!);
+    final suggestions = context.select<GooglePlacesCubit, List<Suggestion>>(
+      (cubit) => cubit.state.map(
+        normal: (state) => state.suggestions,
+        error: (state) => state.suggestions,
+      ),
+    );
 
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       curve: Curves.decelerate,
-      child: suggestions.isEmpty ? const SizedBox.shrink() : _buildSuggestions(suggestions),
+      child:
+          suggestions.isEmpty ? const SizedBox.shrink() : _buildSuggestions(suggestions, context),
     );
   }
 
-  Widget _buildSuggestions(List<String> suggestions) {
+  Widget _buildSuggestions(List<Suggestion> suggestions, BuildContext context) {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -26,8 +30,12 @@ class _SuggestionsWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final suggestion = suggestions[index];
         return ListTile(
-          title: Text(suggestion),
-          onTap: () {},
+          title: Text(suggestion.description),
+          onTap: () async {
+            final result =
+                await context.read<GooglePlacesCubit>().fetchPlaceDetails(suggestion.placeId);
+            onSuggestionSelected(result);
+          },
         );
       },
     );

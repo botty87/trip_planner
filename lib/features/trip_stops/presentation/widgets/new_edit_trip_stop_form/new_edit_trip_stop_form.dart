@@ -119,8 +119,13 @@ class NewEditTripStopForm extends StatelessWidget {
                       _MapWidget(),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       GooglePlacesSuggestionsWidget(
-                        labelText: LocaleKeys.tripStopLocation.tr(),
+                        labelText: LocaleKeys.searchTripStopLocation.tr(),
                         hintText: LocaleKeys.tripStopLocationHint.tr(),
+                        onSuggestionSelected: (placeDetails) {
+                          if (placeDetails != null) {
+                            //TODO: Add location to trip stop
+                          }
+                        },
                       ),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       saveSection,

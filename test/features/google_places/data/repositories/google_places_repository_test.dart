@@ -4,6 +4,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/google_places/data/datasources/google_places_data_source.dart';
 import 'package:trip_planner/features/google_places/data/repositories/google_places_repository_impl.dart';
+import 'package:trip_planner/features/google_places/domain/entities/place_details.dart';
 import 'package:trip_planner/features/google_places/domain/entities/suggestion.dart';
 import 'package:trip_planner/features/google_places/errors/google_places_exception.dart';
 import 'package:trip_planner/features/google_places/errors/google_places_failure.dart';
@@ -21,6 +22,12 @@ void main() {
       placeId: 'placeId',
     )
   ];
+
+  final tPlaceDetails = PlaceDetails(
+    placeId: 'placeId',
+    lat: 0,
+    lng: 0,
+  );
 
   setUp(() {
     mockGooglePlacesDataSource = MockGooglePlacesDataSource();
@@ -71,7 +78,7 @@ void main() {
     });
   });
 
-  test('On success should return a List<Suggestion>', () async {
+  test('Call fetchSuggestion. On success should return a List<Suggestion>', () async {
     when(mockGooglePlacesDataSource.fetchSuggestions(
       query: anyNamed('query'),
       token: anyNamed('token'),
@@ -79,5 +86,15 @@ void main() {
 
     final result = await repository.fetchSuggestions(query: 'query', token: 'token');
     expect(result, Right(tSuggestion));
+  });
+
+  test('Call fetchPlaceDetails. On success should return a PlaceDetails', () async {
+    when(mockGooglePlacesDataSource.fetchPlaceDetails(
+      placeId: anyNamed('placeId'),
+      token: anyNamed('token'),
+    )).thenAnswer((_) async => tPlaceDetails);
+
+    final result = await repository.fetchPlaceDetails(placeId: 'placeId', token: 'token');
+    expect(result, Right(tPlaceDetails));
   });
 }

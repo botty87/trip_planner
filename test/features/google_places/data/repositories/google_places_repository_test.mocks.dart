@@ -3,13 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/google_places/data/datasources/google_places_data_source.dart'
+    as _i3;
+import 'package:trip_planner/features/google_places/domain/entities/place_details.dart'
     as _i2;
 import 'package:trip_planner/features/google_places/domain/entities/suggestion.dart'
-    as _i4;
+    as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,13 +24,23 @@ import 'package:trip_planner/features/google_places/domain/entities/suggestion.d
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakePlaceDetails_0 extends _i1.SmartFake implements _i2.PlaceDetails {
+  _FakePlaceDetails_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [GooglePlacesDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGooglePlacesDataSource extends _i1.Mock
-    implements _i2.GooglePlacesDataSource {
+    implements _i3.GooglePlacesDataSource {
   @override
-  _i3.Future<List<_i4.Suggestion>> fetchSuggestions({
+  _i4.Future<List<_i5.Suggestion>> fetchSuggestions({
     required String? query,
     required String? token,
   }) =>
@@ -41,8 +53,46 @@ class MockGooglePlacesDataSource extends _i1.Mock
             #token: token,
           },
         ),
-        returnValue: _i3.Future<List<_i4.Suggestion>>.value(<_i4.Suggestion>[]),
+        returnValue: _i4.Future<List<_i5.Suggestion>>.value(<_i5.Suggestion>[]),
         returnValueForMissingStub:
-            _i3.Future<List<_i4.Suggestion>>.value(<_i4.Suggestion>[]),
-      ) as _i3.Future<List<_i4.Suggestion>>);
+            _i4.Future<List<_i5.Suggestion>>.value(<_i5.Suggestion>[]),
+      ) as _i4.Future<List<_i5.Suggestion>>);
+  @override
+  _i4.Future<_i2.PlaceDetails> fetchPlaceDetails({
+    required String? placeId,
+    required String? token,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #fetchPlaceDetails,
+          [],
+          {
+            #placeId: placeId,
+            #token: token,
+          },
+        ),
+        returnValue: _i4.Future<_i2.PlaceDetails>.value(_FakePlaceDetails_0(
+          this,
+          Invocation.method(
+            #fetchPlaceDetails,
+            [],
+            {
+              #placeId: placeId,
+              #token: token,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.PlaceDetails>.value(_FakePlaceDetails_0(
+          this,
+          Invocation.method(
+            #fetchPlaceDetails,
+            [],
+            {
+              #placeId: placeId,
+              #token: token,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.PlaceDetails>);
 }

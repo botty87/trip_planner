@@ -69,7 +69,7 @@ abstract class  LocaleKeys {
   static const setTime = 'setTime';
   static const hours = 'hours';
   static const minutes = 'minutes';
-  static const tripStopLocation = 'tripStopLocation';
+  static const searchTripStopLocation = 'searchTripStopLocation';
   static const tripStopLocationHint = 'tripStopLocationHint';
   static const noInternetConnectionMessage = 'noInternetConnectionMessage';
   static const requestDenied = 'requestDenied';

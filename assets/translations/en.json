@@ -67,7 +67,7 @@
     "setTime" : "Set time",
     "hours" : "Hours",
     "minutes" : "Minutes",
-    "tripStopLocation" : "Location",
+    "searchTripStopLocation" : "Search trip stop location",
     "tripStopLocationHint" : "Where is your trip stop?",
     "noInternetConnectionMessage" : "Please check your internet connection and try again",
     "requestDenied" : "Request denied"
