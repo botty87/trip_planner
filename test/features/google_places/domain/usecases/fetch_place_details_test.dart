@@ -2,9 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/google_places/domain/entities/place_details.dart';
-import 'package:trip_planner/features/google_places/domain/entities/suggestion.dart';
 import 'package:trip_planner/features/google_places/domain/usecases/fetch_place_details.dart';
-import 'package:trip_planner/features/google_places/domain/usecases/fetch_suggestions.dart';
 import 'package:trip_planner/features/google_places/errors/google_places_failure.dart';
 
 import '../repositories/mock_google_places_repository.mocks.dart';

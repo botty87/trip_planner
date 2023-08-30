@@ -10,8 +10,6 @@ class _MapWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final placesTextController = useTextEditingController();
-
     return Column(
       children: [
         SizedBox(
