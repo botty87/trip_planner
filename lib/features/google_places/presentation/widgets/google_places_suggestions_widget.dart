@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/features/google_places/domain/entities/place_details.dart';
 import 'package:trip_planner/features/google_places/domain/entities/suggestion.dart';

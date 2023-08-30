@@ -1,6 +1,5 @@
 part of 'google_places_cubit.dart';
 
-
 @freezed
 class GooglePlacesState with _$GooglePlacesState {
   const factory GooglePlacesState.normal({
@@ -9,7 +8,9 @@ class GooglePlacesState with _$GooglePlacesState {
     PlaceDetails? placeDetails,
   }) = _GooglePlacesStateNormal;
 
-  const factory GooglePlacesState.error(
-      {required String message,
-      @Default([]) List<Suggestion> suggestions}) = _GooglePlacesStateError;
+  const factory GooglePlacesState.error({
+    required String message,
+    @Default([]) List<Suggestion> suggestions,
+    required bool showRetryButton,
+  }) = _GooglePlacesStateError;
 }

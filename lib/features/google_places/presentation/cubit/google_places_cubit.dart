@@ -30,30 +30,40 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
         _fetchPlaceDetails = fetchPlaceDetails,
         super(GooglePlacesState.normal());
 
-  void fetchSuggestions(String query) async {
+  void fetchSuggestions(String query, {bool noDebounce = false}) async {
     if (query.length < 2) {
       _clearSuggestions();
       return;
     }
 
-    _debouncerQuery.run(() async {
-      _debounceLoading.run(() {
-        emit(GooglePlacesState.normal(isLoading: true));
-      });
-
+    void fetch() async {
       final result = await _fetchSuggestions(FetchSuggestionsParams(query: query, token: token));
       _debounceLoading.cancel();
       result.fold(
         (failure) {
           failure.maybeMap(
             requestCancelled: (_) {},
-            orElse: () => emit(
-                GooglePlacesState.error(message: _getErrorMessage(failure))),
+            orElse: () => emit(GooglePlacesState.error(
+              message: _getErrorMessage(failure),
+              showRetryButton: true,
+            )),
           );
         },
         (suggestions) => emit(GooglePlacesState.normal(suggestions: suggestions, isLoading: false)),
       );
-    });
+    }
+
+    if (noDebounce) {
+      emit(GooglePlacesState.normal(isLoading: true));
+      fetch();
+    } else {
+      _debouncerQuery.run(() async {
+        _debounceLoading.run(() {
+          emit(GooglePlacesState.normal(isLoading: true));
+        });
+        fetch();
+      });
+    }
   }
 
   void _clearSuggestions() {
@@ -88,6 +98,7 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
           orElse: () => emit(GooglePlacesState.error(
             message: _getErrorMessage(failure),
             suggestions: state.suggestions,
+            showRetryButton: false,
           )),
         );
         return null;

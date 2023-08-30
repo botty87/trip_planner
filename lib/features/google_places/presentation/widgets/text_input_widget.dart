@@ -30,7 +30,11 @@ class _TextInputWidget extends HookWidget {
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
-          error: const _ErrorWidget(),
+          error: _ErrorWidget(
+            onRetry: () => context
+                .read<GooglePlacesCubit>()
+                .fetchSuggestions(textController.text, noDebounce: true),
+          ),
         ),
         maxLines: 1,
         keyboardType: TextInputType.streetAddress,

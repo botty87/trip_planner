@@ -22,7 +22,8 @@ mixin _$GooglePlacesState {
     required TResult Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)
         normal,
-    required TResult Function(String message, List<Suggestion> suggestions)
+    required TResult Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)
         error,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,7 +32,9 @@ mixin _$GooglePlacesState {
     TResult? Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(String message, List<Suggestion> suggestions)? error,
+    TResult? Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)?
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,7 +42,9 @@ mixin _$GooglePlacesState {
     TResult Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)?
         normal,
-    TResult Function(String message, List<Suggestion> suggestions)? error,
+    TResult Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)?
+        error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -224,7 +229,8 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
     required TResult Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)
         normal,
-    required TResult Function(String message, List<Suggestion> suggestions)
+    required TResult Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)
         error,
   }) {
     return normal(suggestions, isLoading, placeDetails);
@@ -236,7 +242,9 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
     TResult? Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(String message, List<Suggestion> suggestions)? error,
+    TResult? Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)?
+        error,
   }) {
     return normal?.call(suggestions, isLoading, placeDetails);
   }
@@ -247,7 +255,9 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
     TResult Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)?
         normal,
-    TResult Function(String message, List<Suggestion> suggestions)? error,
+    TResult Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)?
+        error,
     required TResult orElse(),
   }) {
     if (normal != null) {
@@ -312,7 +322,8 @@ abstract class _$$_GooglePlacesStateErrorCopyWith<$Res>
       __$$_GooglePlacesStateErrorCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, List<Suggestion> suggestions});
+  $Res call(
+      {String message, List<Suggestion> suggestions, bool showRetryButton});
 }
 
 /// @nodoc
@@ -328,6 +339,7 @@ class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
     Object? suggestions = null,
+    Object? showRetryButton = null,
   }) {
     return _then(_$_GooglePlacesStateError(
       message: null == message
@@ -338,6 +350,10 @@ class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
           ? _value._suggestions
           : suggestions // ignore: cast_nullable_to_non_nullable
               as List<Suggestion>,
+      showRetryButton: null == showRetryButton
+          ? _value.showRetryButton
+          : showRetryButton // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -346,7 +362,9 @@ class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
 
 class _$_GooglePlacesStateError implements _GooglePlacesStateError {
   const _$_GooglePlacesStateError(
-      {required this.message, final List<Suggestion> suggestions = const []})
+      {required this.message,
+      final List<Suggestion> suggestions = const [],
+      required this.showRetryButton})
       : _suggestions = suggestions;
 
   @override
@@ -361,8 +379,11 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
   }
 
   @override
+  final bool showRetryButton;
+
+  @override
   String toString() {
-    return 'GooglePlacesState.error(message: $message, suggestions: $suggestions)';
+    return 'GooglePlacesState.error(message: $message, suggestions: $suggestions, showRetryButton: $showRetryButton)';
   }
 
   @override
@@ -372,12 +393,14 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
             other is _$_GooglePlacesStateError &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality()
-                .equals(other._suggestions, _suggestions));
+                .equals(other._suggestions, _suggestions) &&
+            (identical(other.showRetryButton, showRetryButton) ||
+                other.showRetryButton == showRetryButton));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(_suggestions));
+  int get hashCode => Object.hash(runtimeType, message,
+      const DeepCollectionEquality().hash(_suggestions), showRetryButton);
 
   @JsonKey(ignore: true)
   @override
@@ -392,10 +415,11 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
     required TResult Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)
         normal,
-    required TResult Function(String message, List<Suggestion> suggestions)
+    required TResult Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)
         error,
   }) {
-    return error(message, suggestions);
+    return error(message, suggestions, showRetryButton);
   }
 
   @override
@@ -404,9 +428,11 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
     TResult? Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(String message, List<Suggestion> suggestions)? error,
+    TResult? Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)?
+        error,
   }) {
-    return error?.call(message, suggestions);
+    return error?.call(message, suggestions, showRetryButton);
   }
 
   @override
@@ -415,11 +441,13 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
     TResult Function(List<Suggestion> suggestions, bool isLoading,
             PlaceDetails? placeDetails)?
         normal,
-    TResult Function(String message, List<Suggestion> suggestions)? error,
+    TResult Function(
+            String message, List<Suggestion> suggestions, bool showRetryButton)?
+        error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message, suggestions);
+      return error(message, suggestions, showRetryButton);
     }
     return orElse();
   }
@@ -459,11 +487,13 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
 abstract class _GooglePlacesStateError implements GooglePlacesState {
   const factory _GooglePlacesStateError(
       {required final String message,
-      final List<Suggestion> suggestions}) = _$_GooglePlacesStateError;
+      final List<Suggestion> suggestions,
+      required final bool showRetryButton}) = _$_GooglePlacesStateError;
 
   String get message;
   @override
   List<Suggestion> get suggestions;
+  bool get showRetryButton;
   @override
   @JsonKey(ignore: true)
   _$$_GooglePlacesStateErrorCopyWith<_$_GooglePlacesStateError> get copyWith =>

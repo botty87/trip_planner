@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/features/google_places/domain/entities/place_details.dart';
 import 'package:trip_planner/features/google_places/errors/google_places_exception.dart';
@@ -18,18 +18,19 @@ abstract class GooglePlacesDataSource {
 @LazySingleton(as: GooglePlacesDataSource)
 class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
   final Dio client;
-  final Connectivity connectivity;
+  final InternetConnection internetConnection;
   CancelToken? _cancelToken;
 
   static const key = GOOGLE_PLACES_KEY;
 
-  GooglePlacesDataSourceImpl(this.client, this.connectivity);
+  GooglePlacesDataSourceImpl(this.client, this.internetConnection);
 
   @override
   Future<List<Suggestion>> fetchSuggestions({required String query, required String token}) async {
     _cancelToken?.cancel();
 
-    if (connectivity.checkConnectivity() == ConnectivityResult.none) {
+    final hasConnection = await internetConnection.hasInternetAccess;
+    if (!hasConnection) {
       throw GooglePlacesException.noInternetConnection();
     }
 
@@ -65,6 +66,11 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
 
   @override
   Future<PlaceDetails> fetchPlaceDetails({required String placeId, required String token}) async {
+    final hasConnection = await internetConnection.hasInternetAccess;
+    if (!hasConnection) {
+      throw GooglePlacesException.noInternetConnection();
+    }
+
     var request =
         "https://maps.googleapis.com/maps/api/place/details/json?placeid=$placeId&key=$key&sessiontoken=$token";
 
