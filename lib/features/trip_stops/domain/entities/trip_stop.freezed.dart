@@ -20,12 +20,10 @@ TripStop _$TripStopFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TripStop {
-// ignore: invalid_annotation_target
   @JsonKey(includeFromJson: false, includeToJson: false)
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get description =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String? get description => throw _privateConstructorUsedError;
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   DateTime get beginHourDate => throw _privateConstructorUsedError;
   int get durationInMinutes => throw _privateConstructorUsedError;
@@ -180,7 +178,6 @@ class _$_TripStop implements _TripStop {
   factory _$_TripStop.fromJson(Map<String, dynamic> json) =>
       _$$_TripStopFromJson(json);
 
-// ignore: invalid_annotation_target
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final String id;
@@ -188,7 +185,6 @@ class _$_TripStop implements _TripStop {
   final String name;
   @override
   final String? description;
-// ignore: invalid_annotation_target
   @override
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   final DateTime beginHourDate;
@@ -250,14 +246,14 @@ abstract class _TripStop implements TripStop {
 
   factory _TripStop.fromJson(Map<String, dynamic> json) = _$_TripStop.fromJson;
 
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   String get id;
   @override
   String get name;
   @override
   String? get description;
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   DateTime get beginHourDate;
   @override

@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,11 +11,9 @@ part 'trip_stop.g.dart';
 @freezed
 sealed class TripStop with _$TripStop {
   factory TripStop({
-    // ignore: invalid_annotation_target
     @JsonKey(includeFromJson: false, includeToJson: false) @Default('') String id,
     required String name,
     String? description,
-    // ignore: invalid_annotation_target
     @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
     required DateTime beginHourDate,
     required int durationInMinutes,

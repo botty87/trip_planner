@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,16 +12,13 @@ part 'trip.g.dart';
 @freezed
 sealed class Trip with _$Trip {
   factory Trip({
-    // ignore: invalid_annotation_target
     @JsonKey(includeFromJson: false, includeToJson: false)
     @Default('') String id,
     required String name,
     String? description,
     required String userId,
-    // ignore: invalid_annotation_target
     @JsonKey(toJson: dateTimeToTimestamp , fromJson: dateTimeFromTimestamp )
     required DateTime createdAt,
-    // ignore: invalid_annotation_target
     @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
     required DateTime startDate,
   }) = _Trip;

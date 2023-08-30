@@ -20,7 +20,6 @@ DayTrip _$DayTripFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DayTrip {
-// ignore: invalid_annotation_target
   @JsonKey(includeFromJson: false, includeToJson: false)
   String get id => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
@@ -131,7 +130,6 @@ class _$_DayTrip implements _DayTrip {
   factory _$_DayTrip.fromJson(Map<String, dynamic> json) =>
       _$$_DayTripFromJson(json);
 
-// ignore: invalid_annotation_target
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final String id;
@@ -182,7 +180,7 @@ abstract class _DayTrip implements DayTrip {
 
   factory _DayTrip.fromJson(Map<String, dynamic> json) = _$_DayTrip.fromJson;
 
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   String get id;
   @override
