@@ -7,7 +7,7 @@ class _LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isLoading = context.select<GooglePlacesCubit, bool>((cubit) {
       return cubit.state.maybeWhen(
-        normal: (_, isLoading, __, ___) => isLoading,
+        normal: (_, isLoading, __) => isLoading,
         orElse: () => false,
       );
     });

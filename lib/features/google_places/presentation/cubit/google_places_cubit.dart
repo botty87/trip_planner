@@ -31,7 +31,6 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
         super(GooglePlacesState.normal());
 
   void fetchSuggestions(String query) async {
-    emit(state.copyWith(currentQuery: query));
     if (query.length < 2) {
       _clearSuggestions();
       return;
@@ -49,7 +48,7 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
           failure.maybeMap(
             requestCancelled: (_) {},
             orElse: () => emit(
-                GooglePlacesState.error(message: _getErrorMessage(failure), currentQuery: query)),
+                GooglePlacesState.error(message: _getErrorMessage(failure))),
           );
         },
         (suggestions) => emit(GooglePlacesState.normal(suggestions: suggestions, isLoading: false)),
@@ -74,7 +73,6 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
     _debounceLoading.run(() {
       emit(GooglePlacesState.normal(
         isLoading: true,
-        currentQuery: state.currentQuery,
         suggestions: state.suggestions,
       ));
     });
@@ -89,7 +87,6 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
           requestCancelled: (_) {},
           orElse: () => emit(GooglePlacesState.error(
             message: _getErrorMessage(failure),
-            currentQuery: state.currentQuery,
             suggestions: state.suggestions,
           )),
         );

@@ -15,9 +15,9 @@ class _TextInputWidget extends HookWidget {
     return BlocListener<GooglePlacesCubit, GooglePlacesState>(
       listener: (context, state) => textController.clear(),
       listenWhen: (previous, current) => previous.maybeWhen(
-        normal: (previousSuggestions, previousIsLoading, previousQuery, previousPlaceDetails) {
+        normal: (previousSuggestions, previousIsLoading, previousPlaceDetails) {
           return current.maybeWhen(
-            normal: (currentSuggestions, currentIsLoading, currentQuery, currentPlaceDetails) {
+            normal: (currentSuggestions, currentIsLoading, currentPlaceDetails) {
               return (currentPlaceDetails != previousPlaceDetails) && currentPlaceDetails != null;
             },
             orElse: () => false,
