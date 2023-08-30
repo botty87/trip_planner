@@ -1,64 +1,35 @@
 part of 'google_places_suggestions_widget.dart';
 
-class _TextInputWidget extends StatelessWidget {
-  final String labelText;
-  final String hintText;
-
-  const _TextInputWidget({Key? key, required this.labelText, required this.hintText})
-      : super(key: key);
+class _SuggestionsWidget extends StatelessWidget {
+  const _SuggestionsWidget();
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: labelText,
-        hintText: hintText,
-        error: const _ErrorWidget(),
-      ),
-      onChanged: (value) => context.read<GooglePlacesCubit>().fetchSuggestions(value),
+    final suggestions =
+        context.select<GooglePlacesCubit, List<String>>((cubit) => cubit.state.mapOrNull(
+              normal: (state) =>
+                  state.suggestions.map((suggestion) => suggestion.description).toList(),
+            )!);
+
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.decelerate,
+      child: suggestions.isEmpty ? const SizedBox.shrink() : _buildSuggestions(suggestions),
     );
+  }
 
-    /* final List<String> suggestions = context.select<GooglePlacesCubit, List<String>>((cubit) {
-      return cubit.state.maybeWhen(
-        normal: (suggestions, _, __) =>
-            suggestions.map((suggestion) => suggestion.description).toList(),
-        orElse: () => [],
-      );
-    }); */
-
-    /* return Autocomplete<String>(
-      fieldViewBuilder: (BuildContext context, TextEditingController textEditingController,
-          FocusNode focusNode, VoidCallback onFieldSubmitted) {
-        return TextField(
-          controller: textEditingController,
-          focusNode: focusNode,
-          decoration: InputDecoration(
-            labelText: labelText,
-            hintText: hintText,
-            error: const _ErrorWidget(),
-          ),
+  Widget _buildSuggestions(List<String> suggestions) {
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: suggestions.length,
+      itemBuilder: (context, index) {
+        final suggestion = suggestions[index];
+        return ListTile(
+          title: Text(suggestion),
+          onTap: () {},
         );
       },
-      optionsBuilder: (TextEditingValue textEditingValue) {
-        final cubit = context.read<GooglePlacesCubit>();
-
-        if (textEditingValue.text.isEmpty) {
-          cubit.clearSuggestions();
-          return const Iterable<String>.empty();
-        } else if (textEditingValue.text.length < 2) {
-          return const Iterable<String>.empty();
-        } else {
-          final previousQuery = cubit.state.maybeWhen(
-            normal: (_, currentQuery, __) => currentQuery,
-            orElse: () => null,
-          );
-          if (previousQuery != textEditingValue.text) {
-            cubit.fetchSuggestions(textEditingValue.text);
-            Logger().i("Fetching suggestions for ${textEditingValue.text}");
-          }
-          return suggestions;
-        }
-      },
-    ); */
+    );
   }
 }

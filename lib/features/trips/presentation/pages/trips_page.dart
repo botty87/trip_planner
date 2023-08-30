@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/core/routes/app_router.gr.dart';
-import 'package:trip_planner/features/google_places/presentation/widgets/google_places_suggestions_widget.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trips_page/no_trips_widget.dart';
 
@@ -24,11 +23,7 @@ class TripsPage extends StatelessWidget {
           title: Text(LocaleKeys.tripsPageTitle.tr()),
         ),
         //body: const _BodyWidget(),
-        body: Center(
-            child: GooglePlacesSuggestionsWidget(
-          labelText: LocaleKeys.tripStopLocation.tr(),
-          hintText: LocaleKeys.tripStopLocationHint.tr(),
-        )),
+        body: Center(child: _BodyWidget()),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             context.pushRoute(NewTripRoute());

@@ -8,6 +8,7 @@ class Suggestion with _$Suggestion {
 
   factory Suggestion({
     required String description,
+    @JsonKey(name: 'place_id')
     required String placeId,
   }) = _Suggestion;
 

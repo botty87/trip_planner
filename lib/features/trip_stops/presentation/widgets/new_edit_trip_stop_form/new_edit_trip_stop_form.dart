@@ -16,10 +16,11 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
+import '../../../../google_places/presentation/widgets/google_places_suggestions_widget.dart';
 
 part 'field_widget.dart';
-part 'time_widget.dart';
 part 'map_widget.dart';
+part 'time_widget.dart';
 
 class NewEditTripStopForm extends StatelessWidget {
   final Stream<bool> isSaving;
@@ -116,6 +117,11 @@ class NewEditTripStopForm extends StatelessWidget {
                       ),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       _MapWidget(),
+                      const SizedBox(height: VERTICAL_SPACE_L),
+                      GooglePlacesSuggestionsWidget(
+                        labelText: LocaleKeys.tripStopLocation.tr(),
+                        hintText: LocaleKeys.tripStopLocationHint.tr(),
+                      ),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       saveSection,
                     ],

@@ -21,6 +21,7 @@ Suggestion _$SuggestionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Suggestion {
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'place_id')
   String get placeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $SuggestionCopyWith<$Res> {
           Suggestion value, $Res Function(Suggestion) then) =
       _$SuggestionCopyWithImpl<$Res, Suggestion>;
   @useResult
-  $Res call({String description, String placeId});
+  $Res call({String description, @JsonKey(name: 'place_id') String placeId});
 }
 
 /// @nodoc
@@ -75,7 +76,7 @@ abstract class _$$_SuggestionCopyWith<$Res>
       __$$_SuggestionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String description, String placeId});
+  $Res call({String description, @JsonKey(name: 'place_id') String placeId});
 }
 
 /// @nodoc
@@ -108,7 +109,9 @@ class __$$_SuggestionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Suggestion implements _Suggestion {
-  _$_Suggestion({required this.description, required this.placeId});
+  _$_Suggestion(
+      {required this.description,
+      @JsonKey(name: 'place_id') required this.placeId});
 
   factory _$_Suggestion.fromJson(Map<String, dynamic> json) =>
       _$$_SuggestionFromJson(json);
@@ -116,6 +119,7 @@ class _$_Suggestion implements _Suggestion {
   @override
   final String description;
   @override
+  @JsonKey(name: 'place_id')
   final String placeId;
 
   @override
@@ -153,8 +157,9 @@ class _$_Suggestion implements _Suggestion {
 
 abstract class _Suggestion implements Suggestion {
   factory _Suggestion(
-      {required final String description,
-      required final String placeId}) = _$_Suggestion;
+          {required final String description,
+          @JsonKey(name: 'place_id') required final String placeId}) =
+      _$_Suggestion;
 
   factory _Suggestion.fromJson(Map<String, dynamic> json) =
       _$_Suggestion.fromJson;
@@ -162,6 +167,7 @@ abstract class _Suggestion implements Suggestion {
   @override
   String get description;
   @override
+  @JsonKey(name: 'place_id')
   String get placeId;
   @override
   @JsonKey(ignore: true)

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trip_planner/core/di/di.dart';
@@ -5,6 +8,7 @@ import 'package:trip_planner/features/google_places/presentation/cubit/google_pl
 
 part 'error_widget.dart';
 part 'loading_widget.dart';
+part 'text_input_widget.dart';
 part 'suggestions_widget.dart';
 
 class GooglePlacesSuggestionsWidget extends StatelessWidget {
@@ -20,6 +24,7 @@ class GooglePlacesSuggestionsWidget extends StatelessWidget {
         children: [
           const _LoadingWidget(),
           _TextInputWidget(labelText: labelText, hintText: hintText),
+          _SuggestionsWidget(),
         ],
       ),
     );
