@@ -114,7 +114,7 @@ void main() {
       await Future.delayed(Duration(milliseconds: 600));
     },
     expect: () => [
-      GooglePlacesState.error(message: 'Unknown error'),
+      GooglePlacesState.error(message: 'Unknown error', showRetryButton: true),
     ],
     verify: (_) {
       verify(mockFetchSuggestions(any)).called(1);
@@ -154,7 +154,7 @@ void main() {
     ),
     act: (cubit) async => cubit.fetchPlaceDetails('ChIJD7fiBh9u5kcRYJSMaMOCCwQ'),
     expect: () => [
-      GooglePlacesState.error(message: 'Unknown error')
+      GooglePlacesState.error(message: 'Unknown error', showRetryButton: false)
     ],
     verify: (_) {
       verify(mockFetchPlaceDetails(any)).called(1);
