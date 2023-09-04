@@ -8,9 +8,12 @@ final class _DeleteTripButton extends DeleteTripButtonAbstract {
 
   @override
   String get alertDialogMessage => LocaleKeys.deleteDayTripQuestion.tr();
-  
+
   @override
   Function(BuildContext context) get deleteAction => (BuildContext context) {
-      context.read<DayTripCubit>().deleteDayTrip();
-    };
+        context.read<DayTripCubit>().deleteDayTrip();
+      };
+
+  @override
+  String get deleteButtonLabel => LocaleKeys.deleteDayTrip.tr();
 }

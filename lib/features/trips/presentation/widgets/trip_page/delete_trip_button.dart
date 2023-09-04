@@ -13,5 +13,7 @@ final class _DeleteTripButton extends DeleteTripButtonAbstract {
   Function(BuildContext context) get deleteAction => (BuildContext context) {
         context.read<TripCubit>().deleteTrip();
       };
-}
 
+  @override
+  String get deleteButtonLabel => LocaleKeys.deleteTrip.tr();
+}

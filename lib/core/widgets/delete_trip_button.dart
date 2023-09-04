@@ -10,6 +10,7 @@ abstract base class DeleteTripButtonAbstract extends StatelessWidget {
   abstract final Function(BuildContext context) deleteAction;
   abstract final String alertDialogTitle;
   abstract final String alertDialogMessage;
+  abstract final String deleteButtonLabel;
 
   const DeleteTripButtonAbstract({super.key, required this.isDeleting});
 
@@ -41,7 +42,7 @@ abstract base class DeleteTripButtonAbstract extends StatelessWidget {
               shape: const StadiumBorder(),
             ),
             child: Text(
-              LocaleKeys.deleteDayTrip.tr(),
+              deleteButtonLabel,
               style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: Colors.white,
                   ),
