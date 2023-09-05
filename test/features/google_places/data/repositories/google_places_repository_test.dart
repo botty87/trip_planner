@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/google_places/data/datasources/google_places_data_source.dart';
@@ -23,11 +24,7 @@ void main() {
     )
   ];
 
-  final tPlaceDetails = PlaceDetails(
-    placeId: 'placeId',
-    lat: 0,
-    lng: 0,
-  );
+  final tPlaceDetails = const PlaceDetails(placeId: 'placeId', location: const LatLng(0, 0));
 
   setUp(() {
     mockGooglePlacesDataSource = MockGooglePlacesDataSource();

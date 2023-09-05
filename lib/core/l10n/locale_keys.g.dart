@@ -73,5 +73,11 @@ abstract class  LocaleKeys {
   static const tripStopLocationHint = 'tripStopLocationHint';
   static const noInternetConnectionMessage = 'noInternetConnectionMessage';
   static const requestDenied = 'requestDenied';
+  static const addTripStop = 'addTripStop';
+  static const enterTripStopName = 'enterTripStopName';
+  static const enterTripStopLocation = 'enterTripStopLocation';
+  static const enterTripStopStartTime = 'enterTripStopStartTime';
+  static const enterTripStopEndTime = 'enterTripStopEndTime';
+  static const tripStopCreated = 'tripStopCreated';
 
 }

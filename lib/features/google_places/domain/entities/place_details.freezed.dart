@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PlaceDetails {
   String get placeId => throw _privateConstructorUsedError;
-  double get lat => throw _privateConstructorUsedError;
-  double get lng => throw _privateConstructorUsedError;
+  LatLng get location => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceDetailsCopyWith<PlaceDetails> get copyWith =>
@@ -31,7 +30,7 @@ abstract class $PlaceDetailsCopyWith<$Res> {
           PlaceDetails value, $Res Function(PlaceDetails) then) =
       _$PlaceDetailsCopyWithImpl<$Res, PlaceDetails>;
   @useResult
-  $Res call({String placeId, double lat, double lng});
+  $Res call({String placeId, LatLng location});
 }
 
 /// @nodoc
@@ -48,22 +47,17 @@ class _$PlaceDetailsCopyWithImpl<$Res, $Val extends PlaceDetails>
   @override
   $Res call({
     Object? placeId = null,
-    Object? lat = null,
-    Object? lng = null,
+    Object? location = null,
   }) {
     return _then(_value.copyWith(
       placeId: null == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
               as String,
-      lat: null == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      lng: null == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
-              as double,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LatLng,
     ) as $Val);
   }
 }
@@ -76,7 +70,7 @@ abstract class _$$_PlaceDetailsCopyWith<$Res>
       __$$_PlaceDetailsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String placeId, double lat, double lng});
+  $Res call({String placeId, LatLng location});
 }
 
 /// @nodoc
@@ -91,22 +85,17 @@ class __$$_PlaceDetailsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? placeId = null,
-    Object? lat = null,
-    Object? lng = null,
+    Object? location = null,
   }) {
     return _then(_$_PlaceDetails(
       placeId: null == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
               as String,
-      lat: null == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      lng: null == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
-              as double,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LatLng,
     ));
   }
 }
@@ -114,19 +103,16 @@ class __$$_PlaceDetailsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PlaceDetails implements _PlaceDetails {
-  _$_PlaceDetails(
-      {required this.placeId, required this.lat, required this.lng});
+  const _$_PlaceDetails({required this.placeId, required this.location});
 
   @override
   final String placeId;
   @override
-  final double lat;
-  @override
-  final double lng;
+  final LatLng location;
 
   @override
   String toString() {
-    return 'PlaceDetails(placeId: $placeId, lat: $lat, lng: $lng)';
+    return 'PlaceDetails(placeId: $placeId, location: $location)';
   }
 
   @override
@@ -135,12 +121,12 @@ class _$_PlaceDetails implements _PlaceDetails {
         (other.runtimeType == runtimeType &&
             other is _$_PlaceDetails &&
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
-            (identical(other.lat, lat) || other.lat == lat) &&
-            (identical(other.lng, lng) || other.lng == lng));
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, placeId, lat, lng);
+  int get hashCode => Object.hash(runtimeType, placeId, location);
 
   @JsonKey(ignore: true)
   @override
@@ -150,17 +136,14 @@ class _$_PlaceDetails implements _PlaceDetails {
 }
 
 abstract class _PlaceDetails implements PlaceDetails {
-  factory _PlaceDetails(
+  const factory _PlaceDetails(
       {required final String placeId,
-      required final double lat,
-      required final double lng}) = _$_PlaceDetails;
+      required final LatLng location}) = _$_PlaceDetails;
 
   @override
   String get placeId;
   @override
-  double get lat;
-  @override
-  double get lng;
+  LatLng get location;
   @override
   @JsonKey(ignore: true)
   _$$_PlaceDetailsCopyWith<_$_PlaceDetails> get copyWith =>

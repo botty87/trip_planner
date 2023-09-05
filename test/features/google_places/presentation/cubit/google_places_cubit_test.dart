@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/google_places/domain/entities/place_details.dart';
@@ -36,10 +37,9 @@ void main() {
     ),
   ];
 
-  final tPlaceDetails = PlaceDetails(
+  final tPlaceDetails = const PlaceDetails(
     placeId: 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ',
-    lat: 48.856614,
-    lng: 2.3522219,
+    location: const LatLng(48.856614, 2.3522219),
   );
 
   blocTest<GooglePlacesCubit, GooglePlacesState>(

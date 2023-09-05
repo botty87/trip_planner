@@ -8,6 +8,10 @@ class _MapWidget extends HookWidget {
     zoom: 0,
   );
 
+  final Stream<Marker?> marker;
+
+  _MapWidget({required this.marker});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,15 +20,26 @@ class _MapWidget extends HookWidget {
           height: MediaQuery.of(context).size.height * 0.4,
           child: Stack(
             children: [
-              GoogleMap(
-                mapType: MapType.hybrid,
-                initialCameraPosition: _world,
-                onMapCreated: _controller.complete,
-                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-                  Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
-                },
-                myLocationButtonEnabled: false,
-                zoomControlsEnabled: false,
+              StreamBuilder<Marker?>(
+                stream: marker,
+                builder: (context, snapshot) {
+                  if(snapshot.data != null) {
+                    _controller.future.then((controller) => controller.animateCamera(
+                      CameraUpdate.newLatLngZoom(snapshot.data!.position, 15)));
+                  } 
+                  
+                  return GoogleMap(
+                    mapType: MapType.hybrid,
+                    initialCameraPosition: _world,
+                    onMapCreated: _controller.complete,
+                    gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                      Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                    },
+                    myLocationButtonEnabled: false,
+                    zoomControlsEnabled: false,
+                    markers: snapshot.data != null ? {snapshot.data!} : {},
+                  );
+                }
               ),
               Align(
                 alignment: Alignment.bottomRight,
@@ -33,8 +48,6 @@ class _MapWidget extends HookWidget {
             ],
           ),
         ),
-        const SizedBox(height: VERTICAL_SPACE_S),
-        
       ],
     );
   }

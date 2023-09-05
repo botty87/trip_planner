@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/google_places/domain/entities/place_details.dart';
 import 'package:trip_planner/features/google_places/domain/usecases/fetch_place_details.dart';
@@ -11,10 +12,9 @@ void main() {
   late FetchPlaceDetails usecase;
   late MockGooglePlacesRepository mockGooglePlacesRepository;
 
-  final tPlacesDetails = PlaceDetails(
+  final tPlacesDetails = const PlaceDetails(
     placeId: 'test',
-    lat: 0,
-    lng: 0,
+    location: LatLng(0, 0),
   );
 
   setUp(() {

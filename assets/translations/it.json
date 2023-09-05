@@ -67,8 +67,14 @@
     "setTime" : "Imposta orario",
     "hours" : "Ore",
     "minutes" : "Minuti",
-    "searchTripStopLocation": "Trova luogo",
-    "tripStopLocationHint": "Dove si trova la tappa di viaggio?",
-    "noInternetConnectionMessage": "Nessuna connessione a internet",
-    "requestDenied": "Richiesta negata"
+    "searchTripStopLocation" : "Trova luogo",
+    "tripStopLocationHint" : "Dove si trova la tappa di viaggio?",
+    "noInternetConnectionMessage" : "Nessuna connessione a internet",
+    "requestDenied" : "Richiesta negata",
+    "addTripStop" : "Aggiungi tappa di viaggio",
+    "enterTripStopName" : "Inserisci il nome della tappa di viaggio",
+    "enterTripStopLocation" : "Inserisci la posizione della tappa di viaggio",
+    "enterTripStopStartTime" : "Inserisci l'orario di inizio della tappa di viaggio",
+    "enterTripStopEndTime" : "Inserisci l'orario di fine della tappa di viaggio",
+    "tripStopCreated" : "Tappa di viaggio creata!"
 }

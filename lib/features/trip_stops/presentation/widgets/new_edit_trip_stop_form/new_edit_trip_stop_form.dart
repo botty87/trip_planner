@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -17,6 +18,7 @@ import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../google_places/presentation/widgets/google_places_suggestions_widget.dart';
+import '../../cubit/cubit/new_trip_stop_cubit.dart';
 
 part 'field_widget.dart';
 part 'map_widget.dart';
@@ -32,6 +34,7 @@ class NewEditTripStopForm extends StatelessWidget {
 
   final Stream<TimeOfDay?> startTime;
   final Stream<TimeOfDay?> endTime;
+  final Stream<Marker?> marker;
 
   final Widget saveSection;
 
@@ -47,7 +50,8 @@ class NewEditTripStopForm extends StatelessWidget {
       required this.onEndTimeChanged,
       required this.startTime,
       required this.endTime,
-      this.initialTripStopDescription});
+      this.initialTripStopDescription,
+      required this.marker});
 
   @override
   Widget build(BuildContext context) {
@@ -116,19 +120,20 @@ class NewEditTripStopForm extends StatelessWidget {
                         alignment: WrapAlignment.spaceEvenly,
                       ),
                       const SizedBox(height: VERTICAL_SPACE_L),
-                      _MapWidget(),
+                      _MapWidget(marker: marker),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       GooglePlacesSuggestionsWidget(
                         labelText: LocaleKeys.searchTripStopLocation.tr(),
                         hintText: LocaleKeys.tripStopLocationHint.tr(),
                         onSuggestionSelected: (placeDetails) {
                           if (placeDetails != null) {
-                            //TODO: Add location to trip stop
+                            context.read<NewTripStopCubit>().locationChanged(placeDetails.location);
                           }
                         },
                       ),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       saveSection,
+                      const SizedBox(height: VERTICAL_SPACE_L),
                     ],
                   ),
                 ],

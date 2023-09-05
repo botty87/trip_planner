@@ -1,0 +1,75 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:trip_planner/features/trip_stops/data/datasources/trip_stops_data_source.dart';
+import 'package:trip_planner/features/trip_stops/data/repositories/trip_stops_repository_impl.dart';
+import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart';
+
+import 'trip_stops_repository_impl_test.mocks.dart';
+
+
+@GenerateNiceMocks([MockSpec<TripStopsDataSource>()])
+void main() {
+  late MockTripStopsDataSource mockTripStopsDataSource;
+  late TripStopsRepositoryImpl repository;
+  
+  setUp(() {
+    mockTripStopsDataSource = MockTripStopsDataSource();
+    repository = TripStopsRepositoryImpl(mockTripStopsDataSource);
+  });
+
+  group('addTripStop', () {
+    test('should return right(null) when addTripStop', () async {
+      when(mockTripStopsDataSource.addTripStop(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        name: anyNamed('name'),
+        description: anyNamed('description'),
+        location: anyNamed('location'),
+        startTime: anyNamed('startTime'),
+        endTime: anyNamed('endTime'),
+      )).thenAnswer((_) async => null);
+
+      // act
+      final result = await repository.addTripStop(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        name: 'name',
+        description: 'description',
+        location: LatLng(0.0, 0.0),
+        startTime: TimeOfDay(hour: 0, minute: 0),
+        endTime: TimeOfDay(hour: 0, minute: 0),
+      );
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(TripStopsFailure()) when addTripStop throws', () async {
+      when(mockTripStopsDataSource.addTripStop(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        name: anyNamed('name'),
+        description: anyNamed('description'),
+        location: anyNamed('location'),
+        startTime: anyNamed('startTime'),
+        endTime: anyNamed('endTime'),
+      )).thenThrow(Exception());
+
+      // act
+      final result = await repository.addTripStop(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        name: 'name',
+        description: 'description',
+        location: LatLng(0.0, 0.0),
+        startTime: TimeOfDay(hour: 0, minute: 0),
+        endTime: TimeOfDay(hour: 0, minute: 0),
+      );
+      // assert
+      expect(result, equals(left(TripStopsFailure())));
+    });
+  });
+}

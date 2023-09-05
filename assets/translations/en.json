@@ -70,5 +70,11 @@
     "searchTripStopLocation" : "Search trip stop location",
     "tripStopLocationHint" : "Where is your trip stop?",
     "noInternetConnectionMessage" : "Please check your internet connection and try again",
-    "requestDenied" : "Request denied"
+    "requestDenied" : "Request denied",
+    "addTripStop" : "Add trip stop",
+    "enterTripStopName" : "Please enter a trip stop name",
+    "enterTripStopLocation" : "Please enter a trip stop location",
+    "enterTripStopStartTime" : "Please enter a trip stop start time",
+    "enterTripStopEndTime" : "Please enter a trip stop end time",
+    "tripStopCreated" : "Trip stop created!"
 }

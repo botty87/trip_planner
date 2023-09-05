@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:trip_planner/core/constants.dart';
@@ -93,8 +94,7 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
         final location = data['result']['geometry']['location'];
         return PlaceDetails(
           placeId: placeId,
-          lat: location['lat'],
-          lng: location['lng'],
+          location: LatLng(location['lat'], location['lng']),
         );
       case 'REQUEST_DENIED':
         throw GooglePlacesException.requestDenied(message: data['error_message']);

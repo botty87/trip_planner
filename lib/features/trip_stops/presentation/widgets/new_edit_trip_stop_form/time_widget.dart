@@ -28,6 +28,7 @@ class _TimeWidget extends StatelessWidget {
                 return TextButton(
                   key: Key('startTimeButton'),
                   onPressed: () {
+                    onTimeChanged(TimeOfDay.now());
                     _showTimePicker(context, null);
                   },
                   child: Text(LocaleKeys.setTime.tr()),
