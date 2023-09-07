@@ -1,6 +1,5 @@
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 
@@ -23,8 +22,7 @@ class CreateTripStop implements UseCase<void, CreateTripStopParams> {
       name: params.name,
       description: params.description,
       location: params.location,
-      startTime: params.startTime,
-      endTime: params.endTime,
+      duration: params.duration,
     );
   }
 }
@@ -35,8 +33,7 @@ class CreateTripStopParams {
   final String name;
   final String? description;
   final LatLng location;
-  final TimeOfDay startTime;
-  final TimeOfDay endTime;
+  final int duration;
 
   CreateTripStopParams({
     required this.tripId,
@@ -44,7 +41,6 @@ class CreateTripStopParams {
     required this.name,
     this.description,
     required this.location,
-    required this.startTime,
-    required this.endTime,
+    required this.duration,
   });
 }

@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -14,12 +13,11 @@ part 'trip_stop.g.dart';
 sealed class TripStop with _$TripStop {
   const factory TripStop({
     @JsonKey(includeFromJson: false, includeToJson: false) @Default('') String id,
+    required int index,
     required String name,
     String? description,
-    @JsonKey(toJson: timeOfDayToMap, fromJson: timeOfDayFromMap)
-    required TimeOfDay startTime,
-    @JsonKey(toJson: timeOfDayToMap, fromJson: timeOfDayFromMap)
-    required TimeOfDay endTime,
+    //Duration of the stop in minutes
+    required int duration,
     @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
     required LatLng location,
     @Default(false) bool isDone,
@@ -27,16 +25,16 @@ sealed class TripStop with _$TripStop {
 
   factory TripStop.create({
     required String name,
+    required int index,
     String? description,
-    required TimeOfDay startTime,
-    required TimeOfDay endTime,
+    required int duration,
     required LatLng location,
   }) =>
       TripStop(
         name: name,
         description: description,
-        startTime: startTime,
-        endTime: endTime,
+        index: index,
+        duration: duration,
         location: location,
       );
 

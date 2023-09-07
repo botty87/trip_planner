@@ -18,7 +18,6 @@ import '../../../../core/di/di.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/add_destination_card.dart';
 import '../../../../core/widgets/snackbars.dart';
-import '../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../gen/assets.gen.dart';
 
 part '../widgets/day_trip_page/add_day_trip_stop_card.dart';

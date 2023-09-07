@@ -11,7 +11,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:trip_planner/core/utilities/time_of_day.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
@@ -22,18 +21,18 @@ import '../../cubit/cubit/new_trip_stop_cubit.dart';
 
 part 'field_widget.dart';
 part 'map_widget.dart';
-part 'time_widget.dart';
+part 'duration_widget.dart';
 
 class NewEditTripStopForm extends StatelessWidget {
   final Stream<bool> isSaving;
+  final Stream<int> hourDuration;
+  final Stream<int> minuteDuration;
 
   final ValueChanged<String> onNameChanged;
   final ValueChanged<String> onDescriptionChanged;
-  final ValueChanged<TimeOfDay> onStartTimeChanged;
-  final ValueChanged<TimeOfDay> onEndTimeChanged;
+  final ValueChanged<int> onHourDurationChanged;
+  final ValueChanged<int> onMinuteDurationChanged;
 
-  final Stream<TimeOfDay?> startTime;
-  final Stream<TimeOfDay?> endTime;
   final Stream<Marker?> marker;
 
   final Widget saveSection;
@@ -43,13 +42,13 @@ class NewEditTripStopForm extends StatelessWidget {
   const NewEditTripStopForm(
       {super.key,
       required this.isSaving,
+      required this.hourDuration,
+      required this.minuteDuration,
       required this.onNameChanged,
       required this.onDescriptionChanged,
       required this.saveSection,
-      required this.onStartTimeChanged,
-      required this.onEndTimeChanged,
-      required this.startTime,
-      required this.endTime,
+      required this.onHourDurationChanged,
+      required this.onMinuteDurationChanged,
       this.initialTripStopDescription,
       required this.marker});
 
@@ -104,20 +103,12 @@ class NewEditTripStopForm extends StatelessWidget {
                         maxLines: 5,
                       ),
                       const SizedBox(height: VERTICAL_SPACE_L),
-                      Wrap(
-                        children: [
-                          _TimeWidget(
-                            label: LocaleKeys.tripStopStartTime.tr(),
-                            time: startTime,
-                            onTimeChanged: onStartTimeChanged,
-                          ),
-                          _TimeWidget(
-                            label: LocaleKeys.tripStopEndTime.tr(),
-                            time: endTime,
-                            onTimeChanged: onEndTimeChanged,
-                          ),
-                        ],
-                        alignment: WrapAlignment.spaceEvenly,
+                      DurationWidget(
+                        key: const Key('durationWidget'),
+                        onHourDurationChanged: onHourDurationChanged,
+                        onMinuteDurationChanged: onMinuteDurationChanged,
+                        hourDuration: hourDuration,
+                        minuteDuration: minuteDuration,
                       ),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       _MapWidget(marker: marker),

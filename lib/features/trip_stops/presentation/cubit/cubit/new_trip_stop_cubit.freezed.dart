@@ -18,25 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$NewTripStopState {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  TimeOfDay? get startTime => throw _privateConstructorUsedError;
-  TimeOfDay? get endTime => throw _privateConstructorUsedError;
+  int get hourDuration => throw _privateConstructorUsedError;
+  int get minuteDuration => throw _privateConstructorUsedError;
   LatLng? get location => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name, String? description,
-            TimeOfDay? startTime, TimeOfDay? endTime, LatLng? location)
+            int hourDuration, int minuteDuration, LatLng? location)
         normal,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         saving,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         created,
     required TResult Function(
             String? name,
             String? description,
-            TimeOfDay? startTime,
-            TimeOfDay? endTime,
+            int hourDuration,
+            int minuteDuration,
             LatLng? location,
             String errorMessage)
         error,
@@ -44,33 +44,33 @@ mixin _$NewTripStopState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
     required TResult orElse(),
   }) =>
@@ -115,8 +115,8 @@ abstract class $NewTripStopStateCopyWith<$Res> {
   $Res call(
       {String name,
       String? description,
-      TimeOfDay startTime,
-      TimeOfDay endTime,
+      int hourDuration,
+      int minuteDuration,
       LatLng location});
 }
 
@@ -135,8 +135,8 @@ class _$NewTripStopStateCopyWithImpl<$Res, $Val extends NewTripStopState>
   $Res call({
     Object? name = null,
     Object? description = freezed,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? hourDuration = null,
+    Object? minuteDuration = null,
     Object? location = null,
   }) {
     return _then(_value.copyWith(
@@ -148,14 +148,14 @@ class _$NewTripStopStateCopyWithImpl<$Res, $Val extends NewTripStopState>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      startTime: null == startTime
-          ? _value.startTime!
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay,
-      endTime: null == endTime
-          ? _value.endTime!
-          : endTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay,
+      hourDuration: null == hourDuration
+          ? _value.hourDuration
+          : hourDuration // ignore: cast_nullable_to_non_nullable
+              as int,
+      minuteDuration: null == minuteDuration
+          ? _value.minuteDuration
+          : minuteDuration // ignore: cast_nullable_to_non_nullable
+              as int,
       location: null == location
           ? _value.location!
           : location // ignore: cast_nullable_to_non_nullable
@@ -175,8 +175,8 @@ abstract class _$$NewTripStopStateNormalCopyWith<$Res>
   $Res call(
       {String? name,
       String? description,
-      TimeOfDay? startTime,
-      TimeOfDay? endTime,
+      int hourDuration,
+      int minuteDuration,
       LatLng? location});
 }
 
@@ -193,8 +193,8 @@ class __$$NewTripStopStateNormalCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? description = freezed,
-    Object? startTime = freezed,
-    Object? endTime = freezed,
+    Object? hourDuration = null,
+    Object? minuteDuration = null,
     Object? location = freezed,
   }) {
     return _then(_$NewTripStopStateNormal(
@@ -206,14 +206,14 @@ class __$$NewTripStopStateNormalCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      startTime: freezed == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
-      endTime: freezed == endTime
-          ? _value.endTime
-          : endTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
+      hourDuration: null == hourDuration
+          ? _value.hourDuration
+          : hourDuration // ignore: cast_nullable_to_non_nullable
+              as int,
+      minuteDuration: null == minuteDuration
+          ? _value.minuteDuration
+          : minuteDuration // ignore: cast_nullable_to_non_nullable
+              as int,
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -228,8 +228,8 @@ class _$NewTripStopStateNormal implements NewTripStopStateNormal {
   const _$NewTripStopStateNormal(
       {this.name,
       this.description,
-      this.startTime,
-      this.endTime,
+      this.hourDuration = 0,
+      this.minuteDuration = 0,
       this.location});
 
   @override
@@ -237,15 +237,17 @@ class _$NewTripStopStateNormal implements NewTripStopStateNormal {
   @override
   final String? description;
   @override
-  final TimeOfDay? startTime;
+  @JsonKey()
+  final int hourDuration;
   @override
-  final TimeOfDay? endTime;
+  @JsonKey()
+  final int minuteDuration;
   @override
   final LatLng? location;
 
   @override
   String toString() {
-    return 'NewTripStopState.normal(name: $name, description: $description, startTime: $startTime, endTime: $endTime, location: $location)';
+    return 'NewTripStopState.normal(name: $name, description: $description, hourDuration: $hourDuration, minuteDuration: $minuteDuration, location: $location)';
   }
 
   @override
@@ -256,16 +258,17 @@ class _$NewTripStopStateNormal implements NewTripStopStateNormal {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
-            (identical(other.endTime, endTime) || other.endTime == endTime) &&
+            (identical(other.hourDuration, hourDuration) ||
+                other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) ||
+                other.minuteDuration == minuteDuration) &&
             (identical(other.location, location) ||
                 other.location == location));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, description, startTime, endTime, location);
+  int get hashCode => Object.hash(
+      runtimeType, name, description, hourDuration, minuteDuration, location);
 
   @JsonKey(ignore: true)
   @override
@@ -278,64 +281,65 @@ class _$NewTripStopStateNormal implements NewTripStopStateNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name, String? description,
-            TimeOfDay? startTime, TimeOfDay? endTime, LatLng? location)
+            int hourDuration, int minuteDuration, LatLng? location)
         normal,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         saving,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         created,
     required TResult Function(
             String? name,
             String? description,
-            TimeOfDay? startTime,
-            TimeOfDay? endTime,
+            int hourDuration,
+            int minuteDuration,
             LatLng? location,
             String errorMessage)
         error,
   }) {
-    return normal(name, description, startTime, endTime, location);
+    return normal(name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
   }) {
-    return normal?.call(name, description, startTime, endTime, location);
+    return normal?.call(
+        name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(name, description, startTime, endTime, location);
+      return normal(name, description, hourDuration, minuteDuration, location);
     }
     return orElse();
   }
@@ -382,8 +386,8 @@ abstract class NewTripStopStateNormal implements NewTripStopState {
   const factory NewTripStopStateNormal(
       {final String? name,
       final String? description,
-      final TimeOfDay? startTime,
-      final TimeOfDay? endTime,
+      final int hourDuration,
+      final int minuteDuration,
       final LatLng? location}) = _$NewTripStopStateNormal;
 
   @override
@@ -391,9 +395,9 @@ abstract class NewTripStopStateNormal implements NewTripStopState {
   @override
   String? get description;
   @override
-  TimeOfDay? get startTime;
+  int get hourDuration;
   @override
-  TimeOfDay? get endTime;
+  int get minuteDuration;
   @override
   LatLng? get location;
   @override
@@ -413,8 +417,8 @@ abstract class _$$NewTripStopStateSavingCopyWith<$Res>
   $Res call(
       {String name,
       String? description,
-      TimeOfDay startTime,
-      TimeOfDay endTime,
+      int hourDuration,
+      int minuteDuration,
       LatLng location});
 }
 
@@ -431,8 +435,8 @@ class __$$NewTripStopStateSavingCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? description = freezed,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? hourDuration = null,
+    Object? minuteDuration = null,
     Object? location = null,
   }) {
     return _then(_$NewTripStopStateSaving(
@@ -444,14 +448,14 @@ class __$$NewTripStopStateSavingCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay,
-      endTime: null == endTime
-          ? _value.endTime
-          : endTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay,
+      hourDuration: null == hourDuration
+          ? _value.hourDuration
+          : hourDuration // ignore: cast_nullable_to_non_nullable
+              as int,
+      minuteDuration: null == minuteDuration
+          ? _value.minuteDuration
+          : minuteDuration // ignore: cast_nullable_to_non_nullable
+              as int,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -466,8 +470,8 @@ class _$NewTripStopStateSaving implements NewTripStopStateSaving {
   const _$NewTripStopStateSaving(
       {required this.name,
       required this.description,
-      required this.startTime,
-      required this.endTime,
+      required this.hourDuration,
+      required this.minuteDuration,
       required this.location});
 
   @override
@@ -475,15 +479,15 @@ class _$NewTripStopStateSaving implements NewTripStopStateSaving {
   @override
   final String? description;
   @override
-  final TimeOfDay startTime;
+  final int hourDuration;
   @override
-  final TimeOfDay endTime;
+  final int minuteDuration;
   @override
   final LatLng location;
 
   @override
   String toString() {
-    return 'NewTripStopState.saving(name: $name, description: $description, startTime: $startTime, endTime: $endTime, location: $location)';
+    return 'NewTripStopState.saving(name: $name, description: $description, hourDuration: $hourDuration, minuteDuration: $minuteDuration, location: $location)';
   }
 
   @override
@@ -494,16 +498,17 @@ class _$NewTripStopStateSaving implements NewTripStopStateSaving {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
-            (identical(other.endTime, endTime) || other.endTime == endTime) &&
+            (identical(other.hourDuration, hourDuration) ||
+                other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) ||
+                other.minuteDuration == minuteDuration) &&
             (identical(other.location, location) ||
                 other.location == location));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, description, startTime, endTime, location);
+  int get hashCode => Object.hash(
+      runtimeType, name, description, hourDuration, minuteDuration, location);
 
   @JsonKey(ignore: true)
   @override
@@ -516,64 +521,65 @@ class _$NewTripStopStateSaving implements NewTripStopStateSaving {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name, String? description,
-            TimeOfDay? startTime, TimeOfDay? endTime, LatLng? location)
+            int hourDuration, int minuteDuration, LatLng? location)
         normal,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         saving,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         created,
     required TResult Function(
             String? name,
             String? description,
-            TimeOfDay? startTime,
-            TimeOfDay? endTime,
+            int hourDuration,
+            int minuteDuration,
             LatLng? location,
             String errorMessage)
         error,
   }) {
-    return saving(name, description, startTime, endTime, location);
+    return saving(name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
   }) {
-    return saving?.call(name, description, startTime, endTime, location);
+    return saving?.call(
+        name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (saving != null) {
-      return saving(name, description, startTime, endTime, location);
+      return saving(name, description, hourDuration, minuteDuration, location);
     }
     return orElse();
   }
@@ -620,8 +626,8 @@ abstract class NewTripStopStateSaving implements NewTripStopState {
   const factory NewTripStopStateSaving(
       {required final String name,
       required final String? description,
-      required final TimeOfDay startTime,
-      required final TimeOfDay endTime,
+      required final int hourDuration,
+      required final int minuteDuration,
       required final LatLng location}) = _$NewTripStopStateSaving;
 
   @override
@@ -629,9 +635,9 @@ abstract class NewTripStopStateSaving implements NewTripStopState {
   @override
   String? get description;
   @override
-  TimeOfDay get startTime;
+  int get hourDuration;
   @override
-  TimeOfDay get endTime;
+  int get minuteDuration;
   @override
   LatLng get location;
   @override
@@ -651,8 +657,8 @@ abstract class _$$NewTripStopStateCreatedCopyWith<$Res>
   $Res call(
       {String name,
       String? description,
-      TimeOfDay startTime,
-      TimeOfDay endTime,
+      int hourDuration,
+      int minuteDuration,
       LatLng location});
 }
 
@@ -669,8 +675,8 @@ class __$$NewTripStopStateCreatedCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? description = freezed,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? hourDuration = null,
+    Object? minuteDuration = null,
     Object? location = null,
   }) {
     return _then(_$NewTripStopStateCreated(
@@ -682,14 +688,14 @@ class __$$NewTripStopStateCreatedCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay,
-      endTime: null == endTime
-          ? _value.endTime
-          : endTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay,
+      hourDuration: null == hourDuration
+          ? _value.hourDuration
+          : hourDuration // ignore: cast_nullable_to_non_nullable
+              as int,
+      minuteDuration: null == minuteDuration
+          ? _value.minuteDuration
+          : minuteDuration // ignore: cast_nullable_to_non_nullable
+              as int,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -704,8 +710,8 @@ class _$NewTripStopStateCreated implements NewTripStopStateCreated {
   const _$NewTripStopStateCreated(
       {required this.name,
       required this.description,
-      required this.startTime,
-      required this.endTime,
+      required this.hourDuration,
+      required this.minuteDuration,
       required this.location});
 
   @override
@@ -713,15 +719,15 @@ class _$NewTripStopStateCreated implements NewTripStopStateCreated {
   @override
   final String? description;
   @override
-  final TimeOfDay startTime;
+  final int hourDuration;
   @override
-  final TimeOfDay endTime;
+  final int minuteDuration;
   @override
   final LatLng location;
 
   @override
   String toString() {
-    return 'NewTripStopState.created(name: $name, description: $description, startTime: $startTime, endTime: $endTime, location: $location)';
+    return 'NewTripStopState.created(name: $name, description: $description, hourDuration: $hourDuration, minuteDuration: $minuteDuration, location: $location)';
   }
 
   @override
@@ -732,16 +738,17 @@ class _$NewTripStopStateCreated implements NewTripStopStateCreated {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
-            (identical(other.endTime, endTime) || other.endTime == endTime) &&
+            (identical(other.hourDuration, hourDuration) ||
+                other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) ||
+                other.minuteDuration == minuteDuration) &&
             (identical(other.location, location) ||
                 other.location == location));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, description, startTime, endTime, location);
+  int get hashCode => Object.hash(
+      runtimeType, name, description, hourDuration, minuteDuration, location);
 
   @JsonKey(ignore: true)
   @override
@@ -754,64 +761,65 @@ class _$NewTripStopStateCreated implements NewTripStopStateCreated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name, String? description,
-            TimeOfDay? startTime, TimeOfDay? endTime, LatLng? location)
+            int hourDuration, int minuteDuration, LatLng? location)
         normal,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         saving,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         created,
     required TResult Function(
             String? name,
             String? description,
-            TimeOfDay? startTime,
-            TimeOfDay? endTime,
+            int hourDuration,
+            int minuteDuration,
             LatLng? location,
             String errorMessage)
         error,
   }) {
-    return created(name, description, startTime, endTime, location);
+    return created(name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
   }) {
-    return created?.call(name, description, startTime, endTime, location);
+    return created?.call(
+        name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (created != null) {
-      return created(name, description, startTime, endTime, location);
+      return created(name, description, hourDuration, minuteDuration, location);
     }
     return orElse();
   }
@@ -858,8 +866,8 @@ abstract class NewTripStopStateCreated implements NewTripStopState {
   const factory NewTripStopStateCreated(
       {required final String name,
       required final String? description,
-      required final TimeOfDay startTime,
-      required final TimeOfDay endTime,
+      required final int hourDuration,
+      required final int minuteDuration,
       required final LatLng location}) = _$NewTripStopStateCreated;
 
   @override
@@ -867,9 +875,9 @@ abstract class NewTripStopStateCreated implements NewTripStopState {
   @override
   String? get description;
   @override
-  TimeOfDay get startTime;
+  int get hourDuration;
   @override
-  TimeOfDay get endTime;
+  int get minuteDuration;
   @override
   LatLng get location;
   @override
@@ -889,8 +897,8 @@ abstract class _$$NewTripStopStateErrorCopyWith<$Res>
   $Res call(
       {String? name,
       String? description,
-      TimeOfDay? startTime,
-      TimeOfDay? endTime,
+      int hourDuration,
+      int minuteDuration,
       LatLng? location,
       String errorMessage});
 }
@@ -908,8 +916,8 @@ class __$$NewTripStopStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? description = freezed,
-    Object? startTime = freezed,
-    Object? endTime = freezed,
+    Object? hourDuration = null,
+    Object? minuteDuration = null,
     Object? location = freezed,
     Object? errorMessage = null,
   }) {
@@ -922,14 +930,14 @@ class __$$NewTripStopStateErrorCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      startTime: freezed == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
-      endTime: freezed == endTime
-          ? _value.endTime
-          : endTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
+      hourDuration: null == hourDuration
+          ? _value.hourDuration
+          : hourDuration // ignore: cast_nullable_to_non_nullable
+              as int,
+      minuteDuration: null == minuteDuration
+          ? _value.minuteDuration
+          : minuteDuration // ignore: cast_nullable_to_non_nullable
+              as int,
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -948,8 +956,8 @@ class _$NewTripStopStateError implements NewTripStopStateError {
   const _$NewTripStopStateError(
       {required this.name,
       required this.description,
-      required this.startTime,
-      required this.endTime,
+      required this.hourDuration,
+      required this.minuteDuration,
       required this.location,
       required this.errorMessage});
 
@@ -958,9 +966,9 @@ class _$NewTripStopStateError implements NewTripStopStateError {
   @override
   final String? description;
   @override
-  final TimeOfDay? startTime;
+  final int hourDuration;
   @override
-  final TimeOfDay? endTime;
+  final int minuteDuration;
   @override
   final LatLng? location;
   @override
@@ -968,7 +976,7 @@ class _$NewTripStopStateError implements NewTripStopStateError {
 
   @override
   String toString() {
-    return 'NewTripStopState.error(name: $name, description: $description, startTime: $startTime, endTime: $endTime, location: $location, errorMessage: $errorMessage)';
+    return 'NewTripStopState.error(name: $name, description: $description, hourDuration: $hourDuration, minuteDuration: $minuteDuration, location: $location, errorMessage: $errorMessage)';
   }
 
   @override
@@ -979,9 +987,10 @@ class _$NewTripStopStateError implements NewTripStopStateError {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
-            (identical(other.endTime, endTime) || other.endTime == endTime) &&
+            (identical(other.hourDuration, hourDuration) ||
+                other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) ||
+                other.minuteDuration == minuteDuration) &&
             (identical(other.location, location) ||
                 other.location == location) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -989,8 +998,8 @@ class _$NewTripStopStateError implements NewTripStopStateError {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, startTime,
-      endTime, location, errorMessage);
+  int get hashCode => Object.hash(runtimeType, name, description, hourDuration,
+      minuteDuration, location, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -1003,66 +1012,67 @@ class _$NewTripStopStateError implements NewTripStopStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name, String? description,
-            TimeOfDay? startTime, TimeOfDay? endTime, LatLng? location)
+            int hourDuration, int minuteDuration, LatLng? location)
         normal,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         saving,
     required TResult Function(String name, String? description,
-            TimeOfDay startTime, TimeOfDay endTime, LatLng location)
+            int hourDuration, int minuteDuration, LatLng location)
         created,
     required TResult Function(
             String? name,
             String? description,
-            TimeOfDay? startTime,
-            TimeOfDay? endTime,
+            int hourDuration,
+            int minuteDuration,
             LatLng? location,
             String errorMessage)
         error,
   }) {
-    return error(name, description, startTime, endTime, location, errorMessage);
+    return error(name, description, hourDuration, minuteDuration, location,
+        errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult? Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult? Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult? Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult? Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
   }) {
-    return error?.call(
-        name, description, startTime, endTime, location, errorMessage);
+    return error?.call(name, description, hourDuration, minuteDuration,
+        location, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location)?
         normal,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         saving,
-    TResult Function(String name, String? description, TimeOfDay startTime,
-            TimeOfDay endTime, LatLng location)?
+    TResult Function(String name, String? description, int hourDuration,
+            int minuteDuration, LatLng location)?
         created,
-    TResult Function(String? name, String? description, TimeOfDay? startTime,
-            TimeOfDay? endTime, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration,
+            int minuteDuration, LatLng? location, String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(
-          name, description, startTime, endTime, location, errorMessage);
+      return error(name, description, hourDuration, minuteDuration, location,
+          errorMessage);
     }
     return orElse();
   }
@@ -1109,8 +1119,8 @@ abstract class NewTripStopStateError implements NewTripStopState {
   const factory NewTripStopStateError(
       {required final String? name,
       required final String? description,
-      required final TimeOfDay? startTime,
-      required final TimeOfDay? endTime,
+      required final int hourDuration,
+      required final int minuteDuration,
       required final LatLng? location,
       required final String errorMessage}) = _$NewTripStopStateError;
 
@@ -1119,9 +1129,9 @@ abstract class NewTripStopStateError implements NewTripStopState {
   @override
   String? get description;
   @override
-  TimeOfDay? get startTime;
+  int get hourDuration;
   @override
-  TimeOfDay? get endTime;
+  int get minuteDuration;
   @override
   LatLng? get location;
   String get errorMessage;

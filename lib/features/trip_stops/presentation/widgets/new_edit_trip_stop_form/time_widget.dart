@@ -1,4 +1,4 @@
-part of 'new_edit_trip_stop_form.dart';
+/* part of 'new_edit_trip_stop_form.dart';
 
 class _TimeWidget extends StatelessWidget {
   final ValueChanged<TimeOfDay> onTimeChanged;
@@ -114,3 +114,4 @@ class _TimeWidget extends StatelessWidget {
     }
   }
 }
+ */

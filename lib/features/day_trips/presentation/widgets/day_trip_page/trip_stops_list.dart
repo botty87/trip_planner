@@ -7,22 +7,12 @@ class _TripStopsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
 
-    return ReorderableListView.builder(
-      header: _DayTripHeader(),
+    return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: tripStops.length,
-      proxyDecorator: (child, index, animation) {
-        return TransparentListDecorator(
-          child: child,
-          index: index,
-          animation: animation,
-        );
-      },
       itemBuilder: (context, index) {
-        return Placeholder(
-          key: ValueKey(index),
-        );
+        return Placeholder(key: ValueKey(index));
         /* final dayTrip = dayTrips[index];
         return Padding(
           key: ValueKey(dayTrip.id),
@@ -30,7 +20,6 @@ class _TripStopsList extends StatelessWidget {
           child: _DayTripCard(dayTrip: dayTrip, tripStartDate: cubit.state.trip.startDate),
         ); */
       },
-      onReorder: (oldIndex, newIndex) {},
     );
   }
 }

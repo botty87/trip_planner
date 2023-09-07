@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart';
 
 import '../../domain/repositories/trip_stops_repository.dart';
@@ -21,8 +21,7 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
     required String name,
     String? description,
     required LatLng location,
-    required TimeOfDay startTime,
-    required TimeOfDay endTime,
+    required int duration,
   }) async {
     try {
       await _tripStopsDataSource.addTripStop(
@@ -31,14 +30,25 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
         name: name,
         description: description,
         location: location,
-        startTime: startTime,
-        endTime: endTime,
+        duration: duration,
       );
       return right(null);
     } on FirebaseException catch (e) {
       return left(TripStopsFailure(message: e.message));
-    } on Exception {
-      return left(TripStopsFailure());
+    } on Exception catch (e){
+      return left(TripStopsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Stream<Either<TripStopsFailure, List<TripStop>>> listenTripStops(
+      {required String tripId, required String dayTripId}) async* {
+    try {
+      yield* _tripStopsDataSource
+          .listenTripStops(tripId: tripId, dayTripId: dayTripId)
+          .map((tripStops) => right(tripStops));
+    } catch (e) {
+      yield left(TripStopsFailure());
     }
   }
 }

@@ -41,22 +41,22 @@ class _NewTripStopPageBody extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isSaving = useStreamController<bool>();
-    final startTime = useStreamController<TimeOfDay?>();
-    final endTime = useStreamController<TimeOfDay?>();
+    final hourDuration = useStreamController<int>();
+    final minuteDuration = useStreamController<int>();
     final marker = useStreamController<Marker?>();
     final cubit = context.read<NewTripStopCubit>();
 
     return MultiBlocListener(
       listeners: [
-        //When startTime state changes, update the startTime stream
+        //When hour duration changes, update the hour duration stream
         BlocListener<NewTripStopCubit, NewTripStopState>(
-          listenWhen: (previous, current) => previous.startTime != current.startTime,
-          listener: (context, state) => startTime.add(state.startTime),
+          listenWhen: (previous, current) => previous.hourDuration != current.hourDuration,
+          listener: (context, state) => hourDuration.add(state.hourDuration),
         ),
-        //When endTime state changes, update the endTime stream
+        //When minute duration changes, update the minute duration stream
         BlocListener<NewTripStopCubit, NewTripStopState>(
-          listenWhen: (previous, current) => previous.endTime != current.endTime,
-          listener: (context, state) => endTime.add(state.endTime),
+          listenWhen: (previous, current) => previous.minuteDuration != current.minuteDuration,
+          listener: (context, state) => minuteDuration.add(state.minuteDuration),
         ),
         //When location state changes, update the marker stream
         BlocListener<NewTripStopCubit, NewTripStopState>(
@@ -101,12 +101,12 @@ class _NewTripStopPageBody extends HookWidget {
       ],
       child: NewEditTripStopForm(
         isSaving: isSaving.stream,
+        hourDuration: hourDuration.stream,
+        minuteDuration: minuteDuration.stream,
         onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
         onNameChanged: (String value) => cubit.nameChanged(value),
-        onStartTimeChanged: (TimeOfDay value) => cubit.startTimeChanged(value),
-        onEndTimeChanged: (TimeOfDay value) => cubit.endTimeChanged(value),
-        startTime: startTime.stream,
-        endTime: endTime.stream,
+        onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
+        onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
         marker: marker.stream,
         saveSection: _AddDayTripButton(isSaving: isSaving.stream),
       ),

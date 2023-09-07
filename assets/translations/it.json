@@ -62,8 +62,7 @@
     "tripStopNameHint": "Come si chiama la tappa di viaggio?",
     "tripStopDescription": "Descrizione",
     "tripStopDescriptionHint": "Cosa farai in questa tappa di viaggio?",
-    "tripStopStartTime" : "Ora di inizio",
-    "tripStopEndTime" : "Ora di fine",
+    "tripStopEstimatedDuration": "Durata stimata",
     "setTime" : "Imposta orario",
     "hours" : "Ore",
     "minutes" : "Minuti",
@@ -76,5 +75,6 @@
     "enterTripStopLocation" : "Inserisci la posizione della tappa di viaggio",
     "enterTripStopStartTime" : "Inserisci l'orario di inizio della tappa di viaggio",
     "enterTripStopEndTime" : "Inserisci l'orario di fine della tappa di viaggio",
+    "enterTripStopDuration" : "Inserisci la durata della tappa di viaggio",
     "tripStopCreated" : "Tappa di viaggio creata!"
 }

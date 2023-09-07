@@ -64,8 +64,7 @@ abstract class  LocaleKeys {
   static const tripStopNameHint = 'tripStopNameHint';
   static const tripStopDescription = 'tripStopDescription';
   static const tripStopDescriptionHint = 'tripStopDescriptionHint';
-  static const tripStopStartTime = 'tripStopStartTime';
-  static const tripStopEndTime = 'tripStopEndTime';
+  static const tripStopEstimatedDuration = 'tripStopEstimatedDuration';
   static const setTime = 'setTime';
   static const hours = 'hours';
   static const minutes = 'minutes';
@@ -76,8 +75,7 @@ abstract class  LocaleKeys {
   static const addTripStop = 'addTripStop';
   static const enterTripStopName = 'enterTripStopName';
   static const enterTripStopLocation = 'enterTripStopLocation';
-  static const enterTripStopStartTime = 'enterTripStopStartTime';
-  static const enterTripStopEndTime = 'enterTripStopEndTime';
+  static const enterTripStopDuration = 'enterTripStopDuration';
   static const tripStopCreated = 'tripStopCreated';
 
 }

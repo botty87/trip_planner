@@ -6,9 +6,10 @@
 import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:flutter/material.dart' as _i7;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
+    as _i7;
 import 'package:trip_planner/features/trip_stops/domain/repositories/trip_stops_repository.dart'
     as _i3;
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
@@ -47,8 +48,7 @@ class MockTripStopsRepository extends _i1.Mock
     required String? name,
     String? description,
     required _i6.LatLng? location,
-    required _i7.TimeOfDay? startTime,
-    required _i7.TimeOfDay? endTime,
+    required int? duration,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -60,8 +60,7 @@ class MockTripStopsRepository extends _i1.Mock
             #name: name,
             #description: description,
             #location: location,
-            #startTime: startTime,
-            #endTime: endTime,
+            #duration: duration,
           },
         ),
         returnValue: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
@@ -76,8 +75,7 @@ class MockTripStopsRepository extends _i1.Mock
               #name: name,
               #description: description,
               #location: location,
-              #startTime: startTime,
-              #endTime: endTime,
+              #duration: duration,
             },
           ),
         )),
@@ -94,10 +92,30 @@ class MockTripStopsRepository extends _i1.Mock
               #name: name,
               #description: description,
               #location: location,
-              #startTime: startTime,
-              #endTime: endTime,
+              #duration: duration,
             },
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>);
+  @override
+  _i4.Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>
+      listenTripStops({
+    required String? tripId,
+    required String? dayTripId,
+  }) =>
+          (super.noSuchMethod(
+            Invocation.method(
+              #listenTripStops,
+              [],
+              {
+                #tripId: tripId,
+                #dayTripId: dayTripId,
+              },
+            ),
+            returnValue: _i4.Stream<
+                _i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>.empty(),
+            returnValueForMissingStub: _i4.Stream<
+                _i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>.empty(),
+          ) as _i4
+              .Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>);
 }

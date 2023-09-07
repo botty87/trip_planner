@@ -122,7 +122,7 @@ class __$$_DayTripCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DayTrip implements _DayTrip {
-  _$_DayTrip(
+  const _$_DayTrip(
       {@JsonKey(includeFromJson: false, includeToJson: false) this.id = '',
       required this.index,
       this.description});
@@ -173,7 +173,7 @@ class _$_DayTrip implements _DayTrip {
 }
 
 abstract class _DayTrip implements DayTrip {
-  factory _DayTrip(
+  const factory _DayTrip(
       {@JsonKey(includeFromJson: false, includeToJson: false) final String id,
       required final int index,
       final String? description}) = _$_DayTrip;

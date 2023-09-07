@@ -14,12 +14,12 @@ void main() {
   late MockDayTripsDataSource mockDayTripsDataSource;
   late DayTripsRepositoryImpl repository;
 
-  final tDayTrip = DayTrip(
+  const tDayTrip = DayTrip(
     id: 'id',
     index: 0,
     description: 'description',
   );
-  
+
   const tTripId = 'tripId';
 
   setUp(() {
@@ -51,7 +51,6 @@ void main() {
 
   group('listenDayTrips', () {
     test('should return right(List<DayTrip>) when listenDayTrips', () async {
-      
       final tDayTrips = [tDayTrip];
       when(mockDayTripsDataSource.listenDayTrips(any)).thenAnswer((_) => Stream.value(tDayTrips));
 
@@ -71,7 +70,7 @@ void main() {
     });
   });
 
-  group('updateDayTripsIndexes', () { 
+  group('updateDayTripsIndexes', () {
     test('should return right(null) when updateDayTripsIndexes', () async {
       when(mockDayTripsDataSource.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]))
           .thenAnswer((_) async => null);
@@ -95,21 +94,25 @@ void main() {
 
   group('updateDayTrip', () {
     test('should return right(null) when updateDayTrip', () async {
-      when(mockDayTripsDataSource.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
+      when(mockDayTripsDataSource.updateDayTrip(
+              id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
           .thenAnswer((_) async => null);
 
       // act
-      final result = await repository.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
+      final result = await repository.updateDayTrip(
+          id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
       // assert
       expect(result, equals(right(null)));
     });
 
     test('should return left(DayTripsFailure()) when updateDayTrip throws', () async {
-      when(mockDayTripsDataSource.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
+      when(mockDayTripsDataSource.updateDayTrip(
+              id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
           .thenThrow(Exception());
 
       // act
-      final result = await repository.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
+      final result = await repository.updateDayTrip(
+          id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
       // assert
       expect(result, equals(left(DayTripsFailure())));
     });

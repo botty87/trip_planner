@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/mockito.dart';
@@ -24,8 +23,7 @@ void main() {
       name: anyNamed('name'),
       description: anyNamed('description'),
       location: anyNamed('location'),
-      startTime: anyNamed('startTime'),
-      endTime: anyNamed('endTime'),
+      duration: anyNamed('duration'),
     )).thenAnswer((_) async => right(null));
 
     // act
@@ -35,8 +33,7 @@ void main() {
       name: 'name',
       description: 'description',
       location: LatLng(0.0, 0.0),
-      startTime: TimeOfDay(hour: 0, minute: 0),
-      endTime: TimeOfDay(hour: 0, minute: 0),
+      duration: 0,
     ));
     // assert
     expect(result, equals(right(null)));
@@ -49,8 +46,7 @@ void main() {
       name: anyNamed('name'),
       description: anyNamed('description'),
       location: anyNamed('location'),
-      startTime: anyNamed('startTime'),
-      endTime: anyNamed('endTime'),
+      duration: anyNamed('duration'),
     )).thenAnswer((_) async => left(TripStopsFailure()));
 
     // act
@@ -60,8 +56,7 @@ void main() {
       name: 'name',
       description: 'description',
       location: LatLng(0.0, 0.0),
-      startTime: TimeOfDay(hour: 0, minute: 0),
-      endTime: TimeOfDay(hour: 0, minute: 0),
+      duration: 0,
     ));
     // assert
     expect(result, equals(left(TripStopsFailure())));

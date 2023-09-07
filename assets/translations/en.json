@@ -62,8 +62,7 @@
     "tripStopNameHint" : "What's the name of your trip stop?",
     "tripStopDescription" : "Trip stop description",
     "tripStopDescriptionHint" : "What's your trip stop about?",
-    "tripStopStartTime" : "Start time",
-    "tripStopEndTime" : "End time",
+    "tripStopEstimatedDuration" : "Estimated duration",
     "setTime" : "Set time",
     "hours" : "Hours",
     "minutes" : "Minutes",
@@ -74,7 +73,6 @@
     "addTripStop" : "Add trip stop",
     "enterTripStopName" : "Please enter a trip stop name",
     "enterTripStopLocation" : "Please enter a trip stop location",
-    "enterTripStopStartTime" : "Please enter a trip stop start time",
-    "enterTripStopEndTime" : "Please enter a trip stop end time",
+    "enterTripStopDuration" : "Please enter a trip stop duration",
     "tripStopCreated" : "Trip stop created!"
 }

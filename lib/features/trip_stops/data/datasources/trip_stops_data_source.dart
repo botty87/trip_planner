@@ -1,18 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 
 abstract class TripStopsDataSource {
-  Future<void> addTripStop(
-      {required String tripId,
-      required String dayTripId,
-      required String name,
-      String? description,
-      required LatLng location,
-      required TimeOfDay startTime,
-      required TimeOfDay endTime});
+  Future<void> addTripStop({
+    required String tripId,
+    required String dayTripId,
+    required String name,
+    String? description,
+    required LatLng location,
+    required int duration,
+  });
+
+  Stream<List<TripStop>> listenTripStops({required String tripId, required String dayTripId});
 }
 
 @LazySingleton(as: TripStopsDataSource)
@@ -31,23 +32,32 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
           );
 
   @override
-  Future<void> addTripStop(
-      {required String tripId,
-      required String dayTripId,
-      required String name,
-      String? description,
-      required LatLng location,
-      required TimeOfDay startTime,
-      required TimeOfDay endTime}) async {
+  Future<void> addTripStop({
+    required String tripId,
+    required String dayTripId,
+    required String name,
+    String? description,
+    required LatLng location,
+    required int duration,
+  }) async {
     final tripStopsCollection = _tripStopsCollection(tripId, dayTripId);
+    final tripStopsCount = (await tripStopsCollection.count().get()).count;
+
     final tripStop = TripStop.create(
       name: name,
       description: description,
       location: location,
-      startTime: startTime,
-      endTime: endTime,
+      duration: duration,
+      index: tripStopsCount,
     );
 
     await tripStopsCollection.add(tripStop);
+  }
+
+  @override
+  Stream<List<TripStop>> listenTripStops({required String tripId, required String dayTripId}) async* {
+    yield* _tripStopsCollection(tripId, dayTripId).orderBy('index').snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) => doc.data()).toList();
+    });
   }
 }

@@ -5,11 +5,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:flutter/material.dart' as _i5;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/trip_stops/data/datasources/trip_stops_data_source.dart'
     as _i2;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
+    as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -34,8 +35,7 @@ class MockTripStopsDataSource extends _i1.Mock
     required String? name,
     String? description,
     required _i4.LatLng? location,
-    required _i5.TimeOfDay? startTime,
-    required _i5.TimeOfDay? endTime,
+    required int? duration,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -47,11 +47,27 @@ class MockTripStopsDataSource extends _i1.Mock
             #name: name,
             #description: description,
             #location: location,
-            #startTime: startTime,
-            #endTime: endTime,
+            #duration: duration,
           },
         ),
         returnValue: _i3.Future<void>.value(),
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
+  @override
+  _i3.Stream<List<_i5.TripStop>> listenTripStops({
+    required String? tripId,
+    required String? dayTripId,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenTripStops,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+          },
+        ),
+        returnValue: _i3.Stream<List<_i5.TripStop>>.empty(),
+        returnValueForMissingStub: _i3.Stream<List<_i5.TripStop>>.empty(),
+      ) as _i3.Stream<List<_i5.TripStop>>);
 }
