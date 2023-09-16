@@ -35,8 +35,8 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       return right(null);
     } on FirebaseException catch (e) {
       return left(TripStopsFailure(message: e.message));
-    } on Exception catch (e){
-      return left(TripStopsFailure(message: e.toString()));
+    } on Exception {
+      return left(TripStopsFailure());
     }
   }
 
