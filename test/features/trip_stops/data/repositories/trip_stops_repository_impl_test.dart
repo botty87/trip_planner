@@ -15,8 +15,6 @@ void main() {
   late MockTripStopsDataSource mockTripStopsDataSource;
   late TripStopsRepositoryImpl repository;
 
-  const tTripId = 'tripId';
-  const tDayTripId = 'dayTripId';
   const tTripStop = TripStop(
     id: 'id',
     name: 'name',
