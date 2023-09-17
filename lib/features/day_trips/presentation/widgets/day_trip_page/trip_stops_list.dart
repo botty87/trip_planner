@@ -12,7 +12,7 @@ class _TripStopsList extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: tripStops.length,
       itemBuilder: (context, index) {
-        return Placeholder(key: ValueKey(index));
+        return Text("$index");
         /* final dayTrip = dayTrips[index];
         return Padding(
           key: ValueKey(dayTrip.id),

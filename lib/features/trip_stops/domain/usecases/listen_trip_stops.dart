@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:trip_planner/core/usecases/usecase.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart';
 
 import '../repositories/trip_stops_repository.dart';
 
+@lazySingleton
 class ListenTripStops implements StreamUseCase<List<TripStop>, ListenTripStopsParams> {
   final TripStopsRepository repository;
 
