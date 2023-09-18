@@ -9,10 +9,6 @@ class _DayTripsList extends StatelessWidget {
     final cubit = context.read<TripCubit>();
 
     return ReorderableListView.builder(
-      header: BlocSelector<TripCubit, TripState, String?>(
-        selector: (state) => state.trip.description,
-        builder: (context, description) => _TripHeader(headerText: description),
-      ),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: dayTrips.length,

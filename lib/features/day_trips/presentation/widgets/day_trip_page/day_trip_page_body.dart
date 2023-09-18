@@ -58,6 +58,10 @@ class _DayTripPageBody extends HookWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            BlocSelector<DayTripCubit, DayTripState, String?>(
+              selector: (state) => state.dayTrip.description,
+              builder: (context, description) => _DayTripHeader(headerText: description),
+            ),
             _TripStopsList(),
             const SizedBox(height: VERTICAL_SPACE_S),
             _AddDayTripStopCard(),
