@@ -2,7 +2,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../l10n/locale_keys.g.dart';
+import '../../l10n/locale_keys.g.dart';
 
 abstract base class DeleteTripButtonAbstract extends StatelessWidget {
   final Stream<bool> isDeleting;

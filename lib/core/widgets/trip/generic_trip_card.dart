@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 abstract base class GenericTripCard extends StatelessWidget {
   abstract final String name;
@@ -12,7 +12,7 @@ abstract base class GenericTripCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -26,8 +26,7 @@ abstract base class GenericTripCard extends StatelessWidget {
           ),
         ),
       ),
-      onTap: onTap, /* () => context.router
-          .push(DayTripRoute(trip: context.read<TripCubit>().state.trip, dayTrip: dayTrip)), */
+      onTap: onTap,
     );
   }
 }

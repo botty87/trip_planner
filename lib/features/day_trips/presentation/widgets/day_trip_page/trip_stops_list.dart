@@ -8,6 +8,10 @@ class _TripStopsList extends StatelessWidget {
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
 
     return ReorderableListView.builder(
+      header: BlocSelector<DayTripCubit, DayTripState, String?>(
+        selector: (state) => state.dayTrip.description,
+        builder: (context, description) => _DayTripHeader(headerText: description),
+      ),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: tripStops.length,
@@ -20,16 +24,17 @@ class _TripStopsList extends StatelessWidget {
             tripStop: tripStop,
             tripStartDate: DateTime.now(),
             context: context,
-          )
+          ),
         );
-      }, proxyDecorator: (child, index, animation) {
+      },
+      proxyDecorator: (child, index, animation) {
         return TransparentListDecorator(
           child: child,
           index: index,
           animation: animation,
         );
       },
-      onReorder: (int oldIndex, int newIndex) {  },
+      onReorder: (int oldIndex, int newIndex) {},
     );
   }
 }

@@ -2,8 +2,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-import '../l10n/locale_keys.g.dart';
+import '../../constants.dart';
+import '../../l10n/locale_keys.g.dart';
 
 abstract base class SaveCancelEditButtonsAbstract extends StatelessWidget {
   final Stream<bool> _isSaving;

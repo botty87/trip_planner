@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 abstract base class AddDestinationCard extends StatelessWidget {
   abstract final String assetName;
