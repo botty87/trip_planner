@@ -8,6 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:trip_planner/core/di/di.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/core/widgets/add_destination_card.dart';
+import 'package:trip_planner/core/widgets/generic_trip_card.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/new_edit_trip_form/new_edit_trip_form.dart';
 
 import '../../../../core/constants.dart';

@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/core/widgets/delete_trip_button.dart';
+import 'package:trip_planner/core/widgets/generic_trip_card.dart';
 import 'package:trip_planner/core/widgets/save_cancel_edit_buttons.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart';
@@ -18,7 +19,9 @@ import '../../../../core/di/di.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/add_destination_card.dart';
 import '../../../../core/widgets/snackbars.dart';
+import '../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../trip_stops/domain/entities/trip_stop.dart';
 
 part '../widgets/day_trip_page/add_day_trip_stop_card.dart';
 part '../widgets/day_trip_page/day_date_widget.dart';
@@ -28,6 +31,7 @@ part '../widgets/day_trip_page/day_trip_page_body.dart';
 part '../widgets/day_trip_page/trip_stops_list.dart';
 part '../widgets/day_trip_page/save_cancel_edit_buttons.dart';
 part '../widgets/day_trip_page/delete_trip_button.dart';
+part '../widgets/day_trip_page/trip_stop_card.dart';
 
 @RoutePage()
 class DayTripPage extends StatelessWidget {

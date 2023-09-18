@@ -25,7 +25,11 @@ class _DayTripsList extends StatelessWidget {
         return Padding(
           key: ValueKey(dayTrip.id),
           padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_XS),
-          child: _DayTripCard(dayTrip: dayTrip, tripStartDate: cubit.state.trip.startDate),
+          child: _DayTripCard(
+            dayTrip: dayTrip,
+            tripStartDate: cubit.state.trip.startDate,
+            context: context,
+          ),
         );
       },
       onReorder: (oldIndex, newIndex) {
