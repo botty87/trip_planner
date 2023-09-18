@@ -33,6 +33,7 @@ part '../widgets/day_trip_page/trip_stops_list.dart';
 part '../widgets/day_trip_page/save_cancel_edit_buttons.dart';
 part '../widgets/day_trip_page/delete_trip_button.dart';
 part '../widgets/day_trip_page/trip_stop_card.dart';
+part '../widgets/day_trip_page/start_time_widget.dart';
 
 @RoutePage()
 class DayTripPage extends StatelessWidget {

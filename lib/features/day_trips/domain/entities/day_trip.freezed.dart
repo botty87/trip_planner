@@ -24,6 +24,8 @@ mixin _$DayTrip {
   String get id => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
+  TimeOfDay get startTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +40,9 @@ abstract class $DayTripCopyWith<$Res> {
   $Res call(
       {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       int index,
-      String? description});
+      String? description,
+      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
+      TimeOfDay startTime});
 }
 
 /// @nodoc
@@ -57,6 +61,7 @@ class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
     Object? id = null,
     Object? index = null,
     Object? description = freezed,
+    Object? startTime = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -71,6 +76,10 @@ class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay,
     ) as $Val);
   }
 }
@@ -85,7 +94,9 @@ abstract class _$$_DayTripCopyWith<$Res> implements $DayTripCopyWith<$Res> {
   $Res call(
       {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       int index,
-      String? description});
+      String? description,
+      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
+      TimeOfDay startTime});
 }
 
 /// @nodoc
@@ -101,6 +112,7 @@ class __$$_DayTripCopyWithImpl<$Res>
     Object? id = null,
     Object? index = null,
     Object? description = freezed,
+    Object? startTime = null,
   }) {
     return _then(_$_DayTrip(
       id: null == id
@@ -115,6 +127,10 @@ class __$$_DayTripCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay,
     ));
   }
 }
@@ -125,7 +141,9 @@ class _$_DayTrip implements _DayTrip {
   const _$_DayTrip(
       {@JsonKey(includeFromJson: false, includeToJson: false) this.id = '',
       required this.index,
-      this.description});
+      this.description,
+      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
+      this.startTime = const TimeOfDay(hour: 8, minute: 0)});
 
   factory _$_DayTrip.fromJson(Map<String, dynamic> json) =>
       _$$_DayTripFromJson(json);
@@ -137,10 +155,13 @@ class _$_DayTrip implements _DayTrip {
   final int index;
   @override
   final String? description;
+  @override
+  @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
+  final TimeOfDay startTime;
 
   @override
   String toString() {
-    return 'DayTrip(id: $id, index: $index, description: $description)';
+    return 'DayTrip(id: $id, index: $index, description: $description, startTime: $startTime)';
   }
 
   @override
@@ -151,12 +172,15 @@ class _$_DayTrip implements _DayTrip {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.startTime, startTime) ||
+                other.startTime == startTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, index, description);
+  int get hashCode =>
+      Object.hash(runtimeType, id, index, description, startTime);
 
   @JsonKey(ignore: true)
   @override
@@ -176,7 +200,9 @@ abstract class _DayTrip implements DayTrip {
   const factory _DayTrip(
       {@JsonKey(includeFromJson: false, includeToJson: false) final String id,
       required final int index,
-      final String? description}) = _$_DayTrip;
+      final String? description,
+      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
+      final TimeOfDay startTime}) = _$_DayTrip;
 
   factory _DayTrip.fromJson(Map<String, dynamic> json) = _$_DayTrip.fromJson;
 
@@ -187,6 +213,9 @@ abstract class _DayTrip implements DayTrip {
   int get index;
   @override
   String? get description;
+  @override
+  @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
+  TimeOfDay get startTime;
   @override
   @JsonKey(ignore: true)
   _$$_DayTripCopyWith<_$_DayTrip> get copyWith =>
