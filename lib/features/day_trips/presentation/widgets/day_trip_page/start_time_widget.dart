@@ -5,6 +5,14 @@ class _StartTimeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return TimePicker(
+      value: TimeOfDay(hour: 8, minute: 0),
+      iosStylePicker: Platform.isIOS,
+      onChange: (time) {},
+      hourLabel: LocaleKeys.hours.tr(),
+      minuteLabel: LocaleKeys.minutes.tr(),
+      minuteInterval: TimePickerInterval.FIVE,
+      maxMinute: 55,
+    );
   }
 }

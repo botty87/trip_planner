@@ -62,6 +62,8 @@ class _DayTripPageBody extends HookWidget {
               selector: (state) => state.dayTrip.description,
               builder: (context, description) => _DayTripHeader(headerText: description),
             ),
+            _StartTimeWidget(),
+            const SizedBox(height: VERTICAL_SPACE_S),
             _TripStopsList(),
             const SizedBox(height: VERTICAL_SPACE_S),
             _AddDayTripStopCard(),
