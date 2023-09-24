@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TimePickerState {
   TimeOfDay get time => throw _privateConstructorUsedError;
+  SelectedInput get selectedInput => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimePickerStateCopyWith<TimePickerState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $TimePickerStateCopyWith<$Res> {
           TimePickerState value, $Res Function(TimePickerState) then) =
       _$TimePickerStateCopyWithImpl<$Res, TimePickerState>;
   @useResult
-  $Res call({TimeOfDay time});
+  $Res call({TimeOfDay time, SelectedInput selectedInput});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$TimePickerStateCopyWithImpl<$Res, $Val extends TimePickerState>
   @override
   $Res call({
     Object? time = null,
+    Object? selectedInput = null,
   }) {
     return _then(_value.copyWith(
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
+      selectedInput: null == selectedInput
+          ? _value.selectedInput
+          : selectedInput // ignore: cast_nullable_to_non_nullable
+              as SelectedInput,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_TimePickerStateCopyWith<$Res>
       __$$_TimePickerStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TimeOfDay time});
+  $Res call({TimeOfDay time, SelectedInput selectedInput});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_TimePickerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? time = null,
+    Object? selectedInput = null,
   }) {
     return _then(_$_TimePickerState(
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
+      selectedInput: null == selectedInput
+          ? _value.selectedInput
+          : selectedInput // ignore: cast_nullable_to_non_nullable
+              as SelectedInput,
     ));
   }
 }
@@ -92,14 +103,18 @@ class __$$_TimePickerStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TimePickerState implements _TimePickerState {
-  const _$_TimePickerState({required this.time});
+  const _$_TimePickerState(
+      {required this.time, this.selectedInput = SelectedInput.HOUR});
 
   @override
   final TimeOfDay time;
+  @override
+  @JsonKey()
+  final SelectedInput selectedInput;
 
   @override
   String toString() {
-    return 'TimePickerState(time: $time)';
+    return 'TimePickerState(time: $time, selectedInput: $selectedInput)';
   }
 
   @override
@@ -107,11 +122,13 @@ class _$_TimePickerState implements _TimePickerState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TimePickerState &&
-            (identical(other.time, time) || other.time == time));
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.selectedInput, selectedInput) ||
+                other.selectedInput == selectedInput));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, time);
+  int get hashCode => Object.hash(runtimeType, time, selectedInput);
 
   @JsonKey(ignore: true)
   @override
@@ -121,11 +138,14 @@ class _$_TimePickerState implements _TimePickerState {
 }
 
 abstract class _TimePickerState implements TimePickerState {
-  const factory _TimePickerState({required final TimeOfDay time}) =
-      _$_TimePickerState;
+  const factory _TimePickerState(
+      {required final TimeOfDay time,
+      final SelectedInput selectedInput}) = _$_TimePickerState;
 
   @override
   TimeOfDay get time;
+  @override
+  SelectedInput get selectedInput;
   @override
   @JsonKey(ignore: true)
   _$$_TimePickerStateCopyWith<_$_TimePickerState> get copyWith =>

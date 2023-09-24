@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:time_picker/cubit/time_picker_cubit.dart';
+import 'package:time_picker/widgets/timepicker_android.dart';
 
 import '../constants.dart';
 import 'timepicker_ios.dart';
@@ -38,7 +39,6 @@ class TimePicker extends StatelessWidget {
   final String hourLabel;
   final String minuteLabel;
   final TimePickerInterval minuteInterval;
-  final TimePickerInterval secondInterval;
   final int minHour;
   final int maxHour;
   final int minMinute;
@@ -52,7 +52,6 @@ class TimePicker extends StatelessWidget {
     this.hourLabel = 'hours',
     this.minuteLabel = 'minutes',
     this.minuteInterval = TimePickerInterval.ONE,
-    this.secondInterval = TimePickerInterval.ONE,
     this.minHour = 0,
     this.maxHour = 23,
     this.minMinute = 0,
@@ -73,17 +72,28 @@ class TimePicker extends StatelessWidget {
       child: BlocListener<TimePickerCubit, TimePickerState>(
           listener: (context, state) => onChange(state.time),
           listenWhen: (previous, current) => previous.time != current.time,
-          child: iosStylePicker
-              ? TimePickerIos(
-                  hourLabel: hourLabel,
-                  minuteLabel: minuteLabel,
-                  maxHour: maxHour,
-                  minHour: minHour,
-                  maxMinute: maxMinute,
-                  minMinute: minMinute,
-                  minuteInterval: minuteInterval,
-                )
-              : const Placeholder()),
+          child: SizedBox(
+            height: 130,
+            child: !iosStylePicker
+                ? TimePickerIos(
+                    hourLabel: hourLabel,
+                    minuteLabel: minuteLabel,
+                    maxHour: maxHour,
+                    minHour: minHour,
+                    maxMinute: maxMinute,
+                    minMinute: minMinute,
+                    minuteInterval: minuteInterval,
+                  )
+                : TimePickerAndroid(
+                    hourLabel: hourLabel,
+                    minuteLabel: minuteLabel,
+                    maxHour: maxHour,
+                    minHour: minHour,
+                    maxMinute: maxMinute,
+                    minMinute: minMinute,
+                    minuteInterval: minuteInterval,
+                  ),
+          )),
     );
   }
 }

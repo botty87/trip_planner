@@ -14,57 +14,19 @@ double mapRange(
 }
 
 /// Map MinuteInterval enum to division values
-int getDivisions(int diff, TimePickerInterval? interval) {
-  final step = interval?.value ?? TimePickerInterval.DEFAULT.value;
+int getDivisions(int diff, TimePickerInterval interval) {
+  final step = interval.value;
   return (diff / step).round();
-}
-
-/// Get the minimum minute from interval
-double getMin(double? minMinute, TimePickerInterval? interval) {
-  if (minMinute == 0) {
-    return 0;
-  }
-  final step = interval?.value ?? TimePickerInterval.DEFAULT.value;
-
-  double min = -1;
-  double i = 1;
-  while (min < 0) {
-    double val = i * step;
-    if (val >= minMinute!) {
-      min = val;
-    }
-    i++;
-  }
-  return min;
-}
-
-/// Get the maximum minute from interval
-double getMax(double? maxMinute, TimePickerInterval? interval) {
-  if (maxMinute == 59) {
-    return 59;
-  }
-  final step = interval?.value ?? TimePickerInterval.DEFAULT.value;
-
-  double max = 60;
-  double i = 1;
-  while (max > maxMinute!) {
-    double val = 60 - (i * step);
-    if (val <= maxMinute) {
-      max = val;
-    }
-    i++;
-  }
-  return max;
 }
 
 /// Generate a List of minutes
 List<int?> generateMinutes(
   int divisions,
-  TimePickerInterval? interval,
+  TimePickerInterval interval,
   min,
   max,
 ) {
-  final step = interval?.value ?? TimePickerInterval.DEFAULT.value;
+  final step = interval.value;
 
   final minutes = List<int?>.generate(divisions + 1, (index) {
     final val = min.round() + (step * index);

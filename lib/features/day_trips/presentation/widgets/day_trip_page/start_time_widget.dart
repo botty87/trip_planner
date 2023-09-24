@@ -11,8 +11,6 @@ class _StartTimeWidget extends StatelessWidget {
       onChange: (time) {},
       hourLabel: LocaleKeys.hours.tr(),
       minuteLabel: LocaleKeys.minutes.tr(),
-      minuteInterval: TimePickerInterval.FIVE,
-      maxMinute: 55,
     );
   }
 }

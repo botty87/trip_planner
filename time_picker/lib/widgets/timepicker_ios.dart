@@ -15,7 +15,7 @@ class TimePickerIos extends StatelessWidget {
   final int minHour;
   final int maxMinute;
   final int minMinute;
-  final TimePickerInterval? minuteInterval;
+  final TimePickerInterval minuteInterval;
 
   late final _hours = generateHours(
     _hourDiv,
@@ -48,59 +48,23 @@ class TimePickerIos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        //const AmPm(),
-        SizedBox(
-          height: 200,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              DisplayWheel(
-                controller: _hourController,
-                items: _hours,
-                isSelected: true,
-                onChange: (int value) => context.read<TimePickerCubit>().onHourChange(value),
-              ),
-              Text(hourLabel),
-              DisplayWheel(
-                controller: _minuteController,
-                items: _minutes,
-                isSelected: true,
-                onChange: (int value) => context.read<TimePickerCubit>().onMinuteChange(value),
-              ),
-              Text(minuteLabel),
-              /*DisplayWheel(
-                  controller: _minuteController!,
-                  items: minutes,
-                  isSelected: timeState!.selected == SelectedInput.MINUTE,
-                  onChange: (int value) {
-                    timeState!.onMinuteChange(minutes[value]! + 0.0);
-                  },
-                  disabled: timeState!.widget.disableMinute!,
-                ),
-                Text(timeState!.widget.minuteLabel!),
-                ...(timeState!.widget.showSecondSelector
-                    ? [
-                        DisplayWheel(
-                          controller: _secondController!,
-                          items: seconds,
-                          isSelected: timeState!.selected == SelectedInput.SECOND,
-                          onChange: (int value) {
-                            timeState!.onSecondChange(
-                              seconds[value]! + 0.0,
-                            );
-                          },
-                        ),
-                        Text(timeState!.widget.secondLabel!),
-                      ]
-                    : []), */
-            ],
-          ),
+        DisplayWheel(
+          controller: _hourController,
+          items: _hours,
+          isSelected: true,
+          onChange: (int value) => context.read<TimePickerCubit>().onHourChange(value),
         ),
-        //if (!timeState!.widget.hideButtons) const ActionButtons()
+        Text(hourLabel),
+        DisplayWheel(
+          controller: _minuteController,
+          items: _minutes,
+          isSelected: true,
+          onChange: (int value) => context.read<TimePickerCubit>().onMinuteChange(value),
+        ),
+        Text(minuteLabel),
       ],
     );
   }

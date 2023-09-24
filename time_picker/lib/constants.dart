@@ -22,4 +22,4 @@ enum TimePickerInterval {
   const TimePickerInterval(this.value);
 }
 
-enum SelectedInput { HOUR, MINUTE, SECOND }
+enum SelectedInput { HOUR, MINUTE }
