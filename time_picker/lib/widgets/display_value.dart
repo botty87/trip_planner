@@ -6,8 +6,6 @@ import '../cubit/time_picker_cubit.dart';
 
 /// Render the [Hour] or [Minute] value for `Android` picker
 class DisplayValue extends StatelessWidget {
-  /// The [onTap] handler
-  final Null Function()? onTap;
 
   /// [selectedInput] is the [SelectedInput] enum that is used to determine which value is selected
   final SelectedInput selectedInput;
@@ -15,7 +13,6 @@ class DisplayValue extends StatelessWidget {
   /// Constructor for the [Widget]
   const DisplayValue({
     Key? key,
-    this.onTap,
     required this.selectedInput,
   }) : super(key: key);
 
@@ -31,7 +28,6 @@ class DisplayValue extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        onTap?.call();
         context.read<TimePickerCubit>().onSelectedInputChanged(selectedInput);
       },
       child: Padding(

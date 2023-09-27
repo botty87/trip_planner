@@ -36,8 +36,7 @@ class TimePickerAndroid extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DisplayValue(
-              onTap: () {},
+            const DisplayValue(
               selectedInput: SelectedInput.HOUR,
             ),
             Text(
@@ -45,8 +44,7 @@ class TimePickerAndroid extends StatelessWidget {
               textScaleFactor: 0.85,
               style: commonTimeStyles.copyWith(color: Colors.grey),
             ),
-            DisplayValue(
-              onTap: () {},
+            const DisplayValue(
               selectedInput: SelectedInput.MINUTE,
             ),
           ],
