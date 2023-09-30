@@ -18,4 +18,3 @@ const DEFAULT_PAGE_PADDING =
 const CARD_PADDING = EdgeInsets.all(8.0);
 
 const String GOOGLE_MAP_KEY = "AIzaSyAwWfCJktwEdd4nNZGDO7mm6nwgYNVAX5I";
-const String GOOGLE_PLACES_KEY = 'AIzaSyB7DZvf2tol6F_ZvhPSa25ykTr_OWmbVLs';

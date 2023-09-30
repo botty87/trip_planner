@@ -34,7 +34,6 @@ dependencies:
   cloud_firestore: ^4.8.4
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
-  dio: ^5.3.2
   easy_localization: ^3.0.2
   email_validator: ^2.1.17
   equatable: ^2.0.5
@@ -50,17 +49,19 @@ dependencies:
   get_it: ^7.6.0
   golden_toolkit: ^0.15.0
   google_fonts: ^5.1.0
-  google_maps_flutter: ^2.4.0
+  google_maps_flutter: ^2.5.0
+  google_places:
+    path: ./packages/google_places
   injectable: ^2.1.2
-  internet_connection_checker_plus: ^2.0.0
   json_annotation: ^4.8.1
   json_theme: ^6.2.3
   logger: ^2.0.1
   mockito: ^5.4.1
   shared_preferences: ^2.1.2
-  uuid: ^4.0.0
   time_picker:
-    path: ./time_picker
+    path: ./packages/time_picker
+  uuid: ^4.0.0
+  vector_graphics: ^1.1.7
 
 dev_dependencies:
   auto_route_generator: ^7.1.1

@@ -10,12 +10,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_places/google_places.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../../../google_places/presentation/widgets/google_places_suggestions_widget.dart';
 import '../../cubit/cubit/new_trip_stop_cubit.dart';
 
 part 'field_widget.dart';
@@ -60,7 +60,7 @@ class NewEditTripStopForm extends StatelessWidget {
             stream: isSaving,
             builder: (context, isSaving) {
               if (isSaving.data ?? false) {
-                return LinearProgressIndicator(minHeight: 1);
+                return const LinearProgressIndicator(minHeight: 1);
               } else {
                 return const SizedBox(height: 1);
               }
@@ -76,7 +76,7 @@ class NewEditTripStopForm extends StatelessWidget {
                     builder: (context, constraints) {
                       return SvgPicture(
                         height: constraints.maxWidth * 0.75,
-                        key: Key('tripImage'),
+                        key: const Key('tripImage'),
                         AssetBytesLoader(Assets.svg.addTripStopSvg),
                       );
                     },
@@ -86,7 +86,7 @@ class NewEditTripStopForm extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       _FieldWidget(
-                        key: Key('nameWidget'),
+                        key: const Key('nameWidget'),
                         onDescriptionChanged: onNameChanged,
                         initialValue: initialTripStopDescription,
                         label: LocaleKeys.tripStopName.tr(),
@@ -94,7 +94,7 @@ class NewEditTripStopForm extends StatelessWidget {
                       ),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       _FieldWidget(
-                        key: Key('descriptionWidget'),
+                        key: const Key('descriptionWidget'),
                         onDescriptionChanged: onDescriptionChanged,
                         initialValue: initialTripStopDescription,
                         label: LocaleKeys.tripStopDescription.tr(),
@@ -120,6 +120,9 @@ class NewEditTripStopForm extends StatelessWidget {
                             context.read<NewTripStopCubit>().locationChanged(placeDetails.location);
                           }
                         },
+                        noInternetConnectionMessage: LocaleKeys.noInternetConnectionMessage.tr(),
+                        requestDeniedMessage: LocaleKeys.requestDenied.tr(),
+                        unknownErrorMessage: LocaleKeys.unknownError.tr(),
                       ),
                       const SizedBox(height: VERTICAL_SPACE_L),
                       saveSection,
