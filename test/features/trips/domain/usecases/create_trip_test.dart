@@ -32,11 +32,11 @@ void main() {
     // arrange
     const tripName = 'Trip Name';
     const userId = 'userId';
-    when(mockTripsRepository.createTrip(any)).thenAnswer((_) async => left(TripsFailure()));
+    when(mockTripsRepository.createTrip(any)).thenAnswer((_) async => left(const TripsFailure()));
     // act
     final result = await useCase(CreateTripParams(tripName: tripName, userId: userId, startDate: DateTime.now()));
     // assert
-    expect(result, left(TripsFailure()));
+    expect(result, left(const TripsFailure()));
     verify(mockTripsRepository.createTrip(any));
     verifyNoMoreInteractions(mockTripsRepository);
   });

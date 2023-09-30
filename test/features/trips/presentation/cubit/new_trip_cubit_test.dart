@@ -34,13 +34,13 @@ void main() {
     blocTest<NewTripCubit, NewTripState>('When name change emit state with name changed',
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         act: (cubit) => cubit.nameChanged('test'),
-        expect: () => [NewTripState.normal(tripName: 'test')]);
+        expect: () => [const NewTripState.normal(tripName: 'test')]);
 
     blocTest<NewTripCubit, NewTripState>(
         'When description change emit state with description changed',
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         act: (cubit) => cubit.descriptionChanged('test'),
-        expect: () => [NewTripState.normal(tripDescription: 'test')]);
+        expect: () => [const NewTripState.normal(tripDescription: 'test')]);
 
     group('Create trip tests', () {
       final tUser = User(id: '1', email: '');
@@ -59,48 +59,48 @@ void main() {
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         act: (cubit) => cubit.createTrip(),
         expect: () => [
-          NewTripState.error(
+          const NewTripState.error(
             tripName: null,
             errorMessage: LocaleKeys.tripNameEmpty,
             tripDescription: null,
             startDate: null,
           ),
-          NewTripState.normal(),
+          const NewTripState.normal(),
         ],
       );
 
       blocTest<NewTripCubit, NewTripState>(
         'When create trip with empty startDate emit state with error message',
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
-        seed: () => NewTripState.normal(tripName: 'test'),
+        seed: () => const NewTripState.normal(tripName: 'test'),
         act: (cubit) => cubit.createTrip(),
         expect: () => [
-          NewTripState.error(
+          const NewTripState.error(
             tripName: 'test',
             errorMessage: LocaleKeys.tripStartDateEmpty,
             tripDescription: null,
             startDate: null,
           ),
-          NewTripState.normal(tripName: 'test'),
+          const NewTripState.normal(tripName: 'test'),
         ],
       );
 
       blocTest<NewTripCubit, NewTripState>(
         'When create trip with valid name and startDate emit state with error message null',
-        setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => Right(null)),
+        setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => const Right(null)),
         seed: () => NewTripState.normal(tripName: 'test', startDate: tStartDate),
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         act: (cubit) => cubit.createTrip(),
         expect: () => [
           NewTripState.saving(tripName: 'test', startDate: tStartDate, tripDescription: null),
-          NewTripState.created(),
+          const NewTripState.created(),
         ],
         verify: (bloc) => verify(mockCreateTrip(any)).called(1),
       );
 
       blocTest<NewTripCubit, NewTripState>(
         'When create trip with valid name and startDate emit state with error message when error occurs',
-        setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => Left(TripsFailure())),
+        setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => const Left(TripsFailure())),
         build: () => NewTripCubit(mockUserTrip, mockCreateTrip),
         seed: () => NewTripState.normal(tripName: 'test', startDate: tStartDate),
         act: (cubit) => cubit.createTrip(),

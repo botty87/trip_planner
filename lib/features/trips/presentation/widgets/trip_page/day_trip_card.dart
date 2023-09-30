@@ -11,7 +11,7 @@ final class _DayTripCard extends GenericTripCard {
   String get name => "${LocaleKeys.day.tr()} ${dayTrip.index + 1}";
 
   @override
-  String get date => "${DateFormat.yMMMMd().format(tripStartDate.add(Duration(days: dayTrip.index)))}";
+  String get date => DateFormat.yMMMMd().format(tripStartDate.add(Duration(days: dayTrip.index)));
 
   @override
   String? get description => dayTrip.description;

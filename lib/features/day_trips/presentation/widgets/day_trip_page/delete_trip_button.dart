@@ -1,7 +1,7 @@
 part of '../../pages/day_trip_page.dart';
 
 final class _DeleteTripButton extends DeleteTripButtonAbstract {
-  _DeleteTripButton({required super.isDeleting});
+  const _DeleteTripButton({required super.isDeleting});
 
   @override
   String get alertDialogTitle => LocaleKeys.deleteDayTrip.tr();

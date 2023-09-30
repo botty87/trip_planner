@@ -20,18 +20,18 @@ void main() {
         .thenAnswer((_) async => right(null));
 
     // act
-    final result = await usecase(CreateDayTripParams(tripId: 'tripId', description: 'description'));
+    final result = await usecase(const CreateDayTripParams(tripId: 'tripId', description: 'description'));
     // assert
     expect(result, equals(right(null)));
   });
 
   test('should return left(DayTripsFailure()) when createDayTrip throws', () async {
     when(mockDayTripsRepository.addDayTrip(tripId: anyNamed('tripId'), dayTrip: anyNamed('dayTrip')))
-        .thenAnswer((_) async => left(DayTripsFailure()));
+        .thenAnswer((_) async => left(const DayTripsFailure()));
 
     // act
-    final result = await usecase(CreateDayTripParams(tripId: 'tripId', description: 'description'));
+    final result = await usecase(const CreateDayTripParams(tripId: 'tripId', description: 'description'));
     // assert
-    expect(result, equals(left(DayTripsFailure())));
+    expect(result, equals(left(const DayTripsFailure())));
   });
 }

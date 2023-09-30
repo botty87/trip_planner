@@ -33,7 +33,7 @@ abstract base class DeleteTripButtonAbstract extends StatelessWidget {
                       cancelLabel: LocaleKeys.cancel.tr(),
                     );
 
-                    if (result == OkCancelResult.ok) {
+                    if (result == OkCancelResult.ok && context.mounted) {
                       deleteAction.call(context);
                     }
                   },

@@ -2,25 +2,25 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trip_planner/core/constants.dart';
-import 'package:trip_planner/core/di/di.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
+import '../../../../core/constants.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
+import '../cubit/login_signup/login_signup_cubit.dart';
 
 part '../widgets/login_section.dart';
-part '../widgets/signup_section.dart';
 part '../widgets/new_user_row.dart';
+part '../widgets/signup_section.dart';
 
 @RoutePage()
 class LoginSignupPage extends StatelessWidget {
-  LoginSignupPage({super.key});
+  const LoginSignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,24 +63,26 @@ class LoginSignupPage extends StatelessWidget {
                   return state.isLoading;
                 },
                 builder: (context, isLoading) {
-                  return isLoading ? LinearProgressIndicator(minHeight: 1) : SizedBox(height: 1);
+                  return isLoading
+                      ? const LinearProgressIndicator(minHeight: 1)
+                      : const SizedBox(height: 1);
                 },
               ),
               Expanded(
                 child: SingleChildScrollView(
-                  padding: DEFAULT_PAGE_PADDING,
+                  padding: defaultPagePadding,
                   child: Column(
                     children: [
                       SvgPicture(
                         AssetBytesLoader(Assets.svg.loginSvg),
                         height: 200, //TODO: responsive
                       ),
-                      SizedBox(height: VERTICAL_SPACE),
-                      _LoginSection(),
-                      SizedBox(height: VERTICAL_SPACE_L),
-                      _NewUserRow(),
-                      SizedBox(height: VERTICAL_SPACE_L),
-                      _SignUpSection(),
+                      const SizedBox(height: verticalSpace),
+                      const _LoginSection(),
+                      const SizedBox(height: verticalSpaceL),
+                      const _NewUserRow(),
+                      const SizedBox(height: verticalSpaceL),
+                      const _SignUpSection(),
                     ],
                   ),
                 ),

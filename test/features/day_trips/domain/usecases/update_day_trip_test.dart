@@ -37,7 +37,7 @@ void main() {
             id: anyNamed('id'),
             tripId: anyNamed('tripId'),
             description: anyNamed('description')))
-        .thenAnswer((_) async => left(DayTripsFailure()));
+        .thenAnswer((_) async => left(const DayTripsFailure()));
 
     // act
     final result = await usecase(UpdateDayTripParams(
@@ -46,6 +46,6 @@ void main() {
       description: 'description',
     ));
     // assert
-    expect(result, equals(left(DayTripsFailure())));
+    expect(result, equals(left(const DayTripsFailure())));
   });
 }

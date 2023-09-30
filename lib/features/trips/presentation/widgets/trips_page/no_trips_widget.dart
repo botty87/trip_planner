@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
 
 class NoTripsWidget extends StatelessWidget {
@@ -14,7 +14,7 @@ class NoTripsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      minimum: const EdgeInsets.all(VERTICAL_SPACE_L),
+      minimum: const EdgeInsets.all(verticalSpaceL),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/features/trips/domain/entities/trip.dart';
-import 'package:trip_planner/features/trips/errors/trips_failure.dart';
+import '../../domain/entities/trip.dart';
+import '../../errors/trips_failure.dart';
 
 import '../../domain/repositories/trips_repository.dart';
 import '../datasources/trips_data_source.dart';
@@ -23,7 +23,7 @@ class TripsRepositoryImpl implements TripsRepository {
     } on FirebaseException catch (e) {
       return left(TripsFailure(message: e.message));
     } on Exception {
-      return left(TripsFailure());
+      return left(const TripsFailure());
     }
   }
 
@@ -32,7 +32,7 @@ class TripsRepositoryImpl implements TripsRepository {
     try {
       yield* tripsDataSource.listenTrips(userId).map((trips) => right(trips));
     } catch (e) {
-      yield left(TripsFailure());
+      yield left(const TripsFailure());
     }
   }
 
@@ -42,9 +42,9 @@ class TripsRepositoryImpl implements TripsRepository {
       await tripsDataSource.updateTrip(id, name, description, startDate);
       return right(null);
     } on FirebaseException {
-      return left(TripsFailure());
+      return left(const TripsFailure());
     } on Exception {
-      return left(TripsFailure());
+      return left(const TripsFailure());
     }
   }
 
@@ -54,9 +54,9 @@ class TripsRepositoryImpl implements TripsRepository {
       await tripsDataSource.deleteTrip(trip);
       return right(null);
     } on FirebaseException {
-      return left(TripsFailure());
+      return left(const TripsFailure());
     } on Exception {
-      return left(TripsFailure());
+      return left(const TripsFailure());
     }
   }
 }

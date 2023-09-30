@@ -24,7 +24,7 @@ void main() {
     when(mockDayTripsRepository.updateDayTripsIndexes(tripId: anyNamed('tripId'), dayTrips: anyNamed('dayTrips')))
         .thenAnswer((_) async => right(null));
     // act
-    final result = await useCase(UpdateDayTripsIndexesParams(
+    final result = await useCase(const UpdateDayTripsIndexesParams(
       tripId: tTripId,
       dayTrips: tDayTrips,
     ));
@@ -39,7 +39,7 @@ void main() {
     when(mockDayTripsRepository.updateDayTripsIndexes(tripId: anyNamed('tripId'), dayTrips: anyNamed('dayTrips')))
         .thenAnswer((_) async => left(const DayTripsFailure()));
     // act
-    final result = await useCase(UpdateDayTripsIndexesParams(
+    final result = await useCase(const UpdateDayTripsIndexesParams(
       tripId: tTripId,
       dayTrips: tDayTrips,
     ));

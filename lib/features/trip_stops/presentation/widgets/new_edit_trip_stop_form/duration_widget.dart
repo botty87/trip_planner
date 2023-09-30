@@ -25,14 +25,14 @@ class DurationWidget extends StatelessWidget {
                 fontSize: 17,
               ),
         ),
-        const SizedBox(height: VERTICAL_SPACE),
+        const SizedBox(height: verticalSpace),
         _TimeSlider(
           maxValue: 12,
           label: LocaleKeys.hours.tr(),
           onValueChanged: onHourDurationChanged,
           value: hourDuration,
         ),
-        const SizedBox(height: VERTICAL_SPACE),
+        const SizedBox(height: verticalSpace),
         _TimeSlider(
           maxValue: 59,
           label: LocaleKeys.minutes.tr(),
@@ -69,7 +69,7 @@ class _TimeSlider extends StatelessWidget {
               label,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            const SizedBox(width: HORIZONTAL_SPACE),
+            const SizedBox(width: horizontalSpace),
             StreamBuilder<int>(
                 stream: value,
                 initialData: 0,

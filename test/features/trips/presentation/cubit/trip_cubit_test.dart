@@ -136,7 +136,7 @@ void main() {
           description: tTrip.description,
           startDate: tTrip.startDate),
       setUp: () => when(mockUpdateTrip.call(any))
-          .thenAnswer((_) async => Right(tTrip.copyWith(name: 'new name'))),
+          .thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         TripState.editing(
@@ -163,7 +163,7 @@ void main() {
           description: tTrip.description,
           startDate: tTrip.startDate),
       setUp: () => when(mockUpdateTrip.call(any))
-          .thenAnswer((_) async => Left(TripsFailure(message: 'error'))),
+          .thenAnswer((_) async => const Left(TripsFailure(message: 'error'))),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         TripState.editing(
@@ -190,10 +190,10 @@ void main() {
 
   group('Test day trips indexes reorder', () {
     final tDayTrips = [
-      DayTrip(id: '1', index: 0),
-      DayTrip(id: '2', index: 1),
-      DayTrip(id: '3', index: 2),
-      DayTrip(id: '4', index: 3),
+      const DayTrip(id: '1', index: 0),
+      const DayTrip(id: '2', index: 1),
+      const DayTrip(id: '3', index: 2),
+      const DayTrip(id: '4', index: 3),
     ];
 
     blocTest<TripCubit, TripState>('On reorderDayTrips call updateDayTripsIndexes',

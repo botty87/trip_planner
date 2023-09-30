@@ -13,7 +13,7 @@ class _LoadingWidget extends StatelessWidget {
     });
     return Visibility(
         visible: isLoading,
-        child: LinearProgressIndicator(
+        child: const LinearProgressIndicator(
           minHeight: 1,
         ));
   }

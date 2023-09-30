@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trip_planner/core/di/di.dart';
+import 'di/di.dart';
 
 import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'routes/app_router.dart';

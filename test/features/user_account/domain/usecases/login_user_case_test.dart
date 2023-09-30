@@ -18,14 +18,14 @@ void main() {
   test('should login user from the repository', () async {
     // arrange
     when(mockUserRepository.loginUser(email: '', password: '')).thenAnswer((_) async {
-      return Right(null);
+      return const Right(null);
     });
 
     // act
-    final result = await usecase(LoginUserParams(email: '', password: ''));
+    final result = await usecase(const LoginUserParams(email: '', password: ''));
 
     // assert
-    expect(result, Right(null));
+    expect(result, const Right(null));
     verify(mockUserRepository.loginUser(email: '', password: ''));
     verifyNoMoreInteractions(mockUserRepository);
   });
@@ -37,7 +37,7 @@ void main() {
     });
 
     // act
-    final result = await usecase(LoginUserParams(email: '', password: ''));
+    final result = await usecase(const LoginUserParams(email: '', password: ''));
 
     // assert
     expect(result, left(UserFailure()));

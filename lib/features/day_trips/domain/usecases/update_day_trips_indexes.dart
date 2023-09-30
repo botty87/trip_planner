@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
-import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
+import '../entities/day_trip.dart';
+import '../../errors/day_trips_failure.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../repositories/day_trips_repository.dart';

@@ -27,7 +27,7 @@ final class RegisterUserParams extends Equatable {
   final String password;
   final String name;
 
-  RegisterUserParams({
+  const RegisterUserParams({
     required this.email,
     required this.password,
     required this.name,

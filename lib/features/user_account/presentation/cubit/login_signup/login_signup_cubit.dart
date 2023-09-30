@@ -3,7 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
 
 import '../../../domain/usecases/login_user.dart';
 import '../../../domain/usecases/recover_password.dart';

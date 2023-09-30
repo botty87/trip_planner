@@ -29,11 +29,11 @@ void main() {
   test('should return left(DayTripsFailure()) when deleteDayTrip throws', () async {
     when(mockDayTripsRepository.deleteDayTrip(
             tripId: anyNamed('tripId'), dayTripId: anyNamed('dayTripId')))
-        .thenAnswer((_) async => left(DayTripsFailure()));
+        .thenAnswer((_) async => left(const DayTripsFailure()));
 
     // act
     final result = await usecase(DeleteDayTripParams(tripId: 'tripId', dayTripId: 'dayTripId'));
     // assert
-    expect(result, equals(left(DayTripsFailure())));
+    expect(result, equals(left(const DayTripsFailure())));
   });
 }

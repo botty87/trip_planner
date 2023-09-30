@@ -22,7 +22,7 @@ void main() {
     });
 
     // act
-    final result = await usecase(RecoverPasswordParams(email: ''));
+    final result = await usecase(const RecoverPasswordParams(email: ''));
 
     // assert
     expect(result, right(null));
@@ -37,7 +37,7 @@ void main() {
     });
 
     // act
-    final result = await usecase(RecoverPasswordParams(email: ''));
+    final result = await usecase(const RecoverPasswordParams(email: ''));
 
     // assert
     expect(result, left(UserFailure()));

@@ -30,7 +30,7 @@ void main() {
     'When description change emit state with description changed',
     build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId),
     act: (cubit) => cubit.descriptionChanged('test'),
-    expect: () => [NewDayTripState.normal(description: 'test')],
+    expect: () => [const NewDayTripState.normal(description: 'test')],
   );
 
   group('Create day trip', () { 
@@ -38,27 +38,27 @@ void main() {
     blocTest<NewDayTripCubit, NewDayTripState>(
       'When create day trip emit NewDayTripStateSaving then NewDayTripStateCreated state',
       build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId),
-      seed: () => NewDayTripState.normal(),
+      seed: () => const NewDayTripState.normal(),
       setUp: () => when(mockCreateDayTrip(any)).thenAnswer((_) async => right(null)),
       act: (cubit) => cubit.createDayTrip(),
       verify: (_) => verify(mockCreateDayTrip(any)).called(1),
       expect: () => [
-        NewDayTripState.saving(description: null),
-        NewDayTripState.created(description: null),
+        const NewDayTripState.saving(description: null),
+        const NewDayTripState.created(description: null),
       ],
     );
 
     blocTest<NewDayTripCubit, NewDayTripState>(
       'When create day trip fail emit NewDayTripStateSaving then NewDayTripStateError state',
       build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId),
-      seed: () => NewDayTripState.normal(),
+      seed: () => const NewDayTripState.normal(),
       setUp: () => when(mockCreateDayTrip(any)).thenAnswer((_) async => left(const DayTripsFailure())),
       act: (cubit) => cubit.createDayTrip(),
       verify: (_) => verify(mockCreateDayTrip(any)).called(1),
       expect: () => [
-        NewDayTripState.saving(description: null),
+        const NewDayTripState.saving(description: null),
         NewDayTripState.error(description: null, errorMessage: LocaleKeys.unknownErrorRetry.tr()),
-        NewDayTripState.normal(description: null),
+        const NewDayTripState.normal(description: null),
       ],
     );
   });

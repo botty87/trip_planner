@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:trip_planner/core/di/di.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:trip_planner/core/widgets/snackbars.dart';
-import 'package:trip_planner/features/trip_stops/presentation/cubit/cubit/new_trip_stop_cubit.dart';
-import 'package:trip_planner/features/trip_stops/presentation/widgets/new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/l10n/locale_keys.g.dart';
+import '../../../../core/widgets/snackbars.dart';
+import '../cubit/cubit/new_trip_stop_cubit.dart';
+import '../widgets/new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
 
 part '../widgets/new_trip_stop_page/add_trip_stop_button.dart';
 

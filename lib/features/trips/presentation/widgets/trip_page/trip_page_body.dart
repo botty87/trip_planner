@@ -52,7 +52,7 @@ class _TripPageBody extends HookWidget {
       ],
       child: SafeArea(
         child: SingleChildScrollView(
-          padding: DEFAULT_PAGE_PADDING,
+          padding: defaultPagePadding,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -61,9 +61,9 @@ class _TripPageBody extends HookWidget {
                 builder: (context, description) => _TripHeader(headerText: description),
               ),
               const _DayTripsList(),
-              const SizedBox(height: VERTICAL_SPACE_S),
+              const SizedBox(height: verticalSpaceS),
               const _AddDayTripCard(),
-              const SizedBox(height: VERTICAL_SPACE_L),
+              const SizedBox(height: verticalSpaceL),
               _DeleteTripButton(isDeleting: isDeleting.stream),
             ],
           ),

@@ -23,11 +23,11 @@ class _SignUpSection extends StatelessWidget {
               onChanged: cubit.confirmPasswordChanged,
               obscureText: true,
               textInputAction: TextInputAction.next,
-              autofillHints: [AutofillHints.newPassword],
+              autofillHints: const [AutofillHints.newPassword],
             );
           },
         ),
-        SizedBox(height: VERTICAL_SPACE),
+        const SizedBox(height: verticalSpace),
         BlocSelector<LoginSignupCubit, LoginSignupState, String?>(
           selector: (state) {
             return state.nameError;
@@ -41,12 +41,12 @@ class _SignUpSection extends StatelessWidget {
               ),
               onChanged: cubit.nameChanged,
               textInputAction: TextInputAction.done,
-              autofillHints: [AutofillHints.name],
+              autofillHints: const [AutofillHints.name],
               onSubmitted: (_) => _signUp(context),
             );
           },
         ),
-        SizedBox(height: VERTICAL_SPACE_L),
+        const SizedBox(height: verticalSpaceL),
         BlocSelector<LoginSignupCubit, LoginSignupState, bool>(
           selector: (state) {
             return state.isLoading;

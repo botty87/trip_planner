@@ -38,7 +38,7 @@ void main() {
         description: anyNamed('description'),
         location: anyNamed('location'),
         duration: anyNamed('duration'),
-      )).thenAnswer((_) async => null);
+      )).thenAnswer((_) async {});
 
       // act
       final result = await repository.addTripStop(
@@ -46,7 +46,7 @@ void main() {
         dayTripId: 'dayTripId',
         name: 'name',
         description: 'description',
-        location: LatLng(0.0, 0.0),
+        location: const LatLng(0.0, 0.0),
         duration: 0,
       );
       // assert
@@ -69,11 +69,11 @@ void main() {
         dayTripId: 'dayTripId',
         name: 'name',
         description: 'description',
-        location: LatLng(0.0, 0.0),
+        location: const LatLng(0.0, 0.0),
         duration: 0,
       );
       // assert
-      expect(result, equals(left(TripStopsFailure())));
+      expect(result, equals(left(const TripStopsFailure())));
     });
   });
 
@@ -106,7 +106,7 @@ void main() {
         dayTripId: 'dayTripId',
       );
       // assert
-      expect(result, emitsInOrder([left(TripStopsFailure())]));
+      expect(result, emitsInOrder([left(const TripStopsFailure())]));
     });
   });
 }

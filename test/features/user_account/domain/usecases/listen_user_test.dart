@@ -29,7 +29,7 @@ void main() {
     when(mockUserRepository.listenUser()).thenAnswer((_) => Stream.value(Right(tUser)));
 
     // act
-    final result = usecase(NoParams());
+    final result = usecase(const NoParams());
 
     // assert
     expect(result, emits(Right(tUser)));
@@ -42,7 +42,7 @@ void main() {
     when(mockUserRepository.listenUser()).thenAnswer((_) => Stream.value(Left(UserFailure())));
 
     // act
-    final result = usecase(NoParams());
+    final result = usecase(const NoParams());
 
     // assert
     expect(result, emits(Left(UserFailure())));

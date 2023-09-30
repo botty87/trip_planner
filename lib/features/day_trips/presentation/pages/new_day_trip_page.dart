@@ -15,7 +15,7 @@ part '../widgets/new_day_trip_page/add_day_trip_button.dart';
 @RoutePage()
 class NewDayTripPage extends StatelessWidget {
   final String _tripId;
-  NewDayTripPage({super.key, @pathParam required String tripId}) : _tripId = tripId;
+  const NewDayTripPage({super.key, @pathParam required String tripId}) : _tripId = tripId;
 
   @override
   Widget build(BuildContext context) {

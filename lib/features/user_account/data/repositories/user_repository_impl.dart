@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/features/user_account/domain/entities/user.dart';
-import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart';
+import '../../domain/entities/user.dart';
+import '../../domain/repositories/user_repository.dart';
 
 import '../../errors/user_failure.dart';
 import '../datasources/user_data_source.dart';

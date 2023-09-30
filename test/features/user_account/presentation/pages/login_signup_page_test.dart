@@ -41,7 +41,7 @@ void main() {
         );
         // arrange
         await tester.pumpWidget(
-          MaterialApp(
+          const MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
               ),
@@ -72,7 +72,7 @@ void main() {
         );
         // arrange
         await widgetTester.pumpWidget(
-          MaterialApp(
+          const MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
               ),
@@ -111,7 +111,7 @@ void main() {
       testWidgets('should display error message when email is invalid', (widgetTester) async {
         // arrange
         await widgetTester.pumpWidget(
-          MaterialApp(
+          const MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
               ),
@@ -132,7 +132,7 @@ void main() {
       testWidgets('should display error message when password is empty', (widgetTester) async {
         // arrange
         await widgetTester.pumpWidget(
-          MaterialApp(
+          const MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
               ),
@@ -153,7 +153,7 @@ void main() {
       testWidgets('should display error message when passwords mismatch', (widgetTester) async {
         // arrange
         await widgetTester.pumpWidget(
-          MaterialApp(
+          const MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
               ),
@@ -176,7 +176,7 @@ void main() {
       testWidgets('should display error message when name is empty', (widgetTester) async {
         // arrange
         await widgetTester.pumpWidget(
-          MaterialApp(
+          const MaterialApp(
             home: Scaffold(
               body: LoginSignupPage(
               ),

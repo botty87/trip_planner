@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:time_picker/time_picker.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:trip_planner/core/widgets/trip/delete_trip_button.dart';
-import 'package:trip_planner/core/widgets/trip/generic_trip_card.dart';
-import 'package:trip_planner/core/widgets/trip/save_cancel_edit_buttons.dart';
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
-import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart';
-import 'package:trip_planner/features/day_trips/presentation/widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
-import 'package:trip_planner/features/trips/domain/entities/trip.dart';
+import '../../../../core/l10n/locale_keys.g.dart';
+import '../../../../core/widgets/trip/delete_trip_button.dart';
+import '../../../../core/widgets/trip/generic_trip_card.dart';
+import '../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
+import '../../domain/entities/day_trip.dart';
+import '../cubit/day_trip/cubit/day_trip_cubit.dart';
+import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
+import '../../../trips/domain/entities/trip.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
@@ -50,9 +50,9 @@ class DayTripPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<DayTripCubit>(
       create: (context) => getIt(param1: _trip, param2: _dayTrip),
-      child: Scaffold(
+      child: const Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(kToolbarHeight),
+          preferredSize: Size.fromHeight(kToolbarHeight),
           child: _DayTripPageAppBar(),
         ),
         body: _DayTripPageBody(),

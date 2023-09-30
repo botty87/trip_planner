@@ -20,7 +20,7 @@ abstract base class AddDestinationCard extends StatelessWidget {
       child: Card(
         color: color,
         child: Padding(
-          padding: CARD_PADDING,
+          padding: cardPadding,
           child: Column(
             children: [
               AspectRatio(
@@ -29,7 +29,7 @@ abstract base class AddDestinationCard extends StatelessWidget {
                   AssetBytesLoader(assetName),
                 ),
               ),
-              const SizedBox(height: VERTICAL_SPACE_L),
+              const SizedBox(height: verticalSpaceL),
               Text(
                 title,
                 style: GoogleFonts.caveat(

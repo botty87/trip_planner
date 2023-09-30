@@ -14,16 +14,16 @@ class _DayTripsList extends StatelessWidget {
       itemCount: dayTrips.length,
       proxyDecorator: (child, index, animation) {
         return TransparentListDecorator(
-          child: child,
           index: index,
           animation: animation,
+          child: child,
         );
       },
       itemBuilder: (context, index) {
         final dayTrip = dayTrips[index];
         return Padding(
           key: ValueKey(dayTrip.id),
-          padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_XS),
+          padding: const EdgeInsets.only(bottom: verticalSpaceXs),
           child: _DayTripCard(
             dayTrip: dayTrip,
             tripStartDate: cubit.state.trip.startDate,

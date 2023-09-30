@@ -18,9 +18,9 @@ import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../cubit/cubit/new_trip_stop_cubit.dart';
 
+part 'duration_widget.dart';
 part 'field_widget.dart';
 part 'map_widget.dart';
-part 'duration_widget.dart';
 
 class NewEditTripStopForm extends StatelessWidget {
   final Stream<bool> isSaving;
@@ -67,7 +67,7 @@ class NewEditTripStopForm extends StatelessWidget {
             }),
         Expanded(
           child: SafeArea(
-            minimum: DEFAULT_PAGE_PADDING,
+            minimum: defaultPagePadding,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -81,7 +81,7 @@ class NewEditTripStopForm extends StatelessWidget {
                       );
                     },
                   ),
-                  const SizedBox(height: VERTICAL_SPACE_L),
+                  const SizedBox(height: verticalSpaceL),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -92,7 +92,7 @@ class NewEditTripStopForm extends StatelessWidget {
                         label: LocaleKeys.tripStopName.tr(),
                         hint: LocaleKeys.tripStopNameHint.tr(),
                       ),
-                      const SizedBox(height: VERTICAL_SPACE_L),
+                      const SizedBox(height: verticalSpaceL),
                       _FieldWidget(
                         key: const Key('descriptionWidget'),
                         onDescriptionChanged: onDescriptionChanged,
@@ -101,7 +101,7 @@ class NewEditTripStopForm extends StatelessWidget {
                         hint: LocaleKeys.tripStopDescriptionHint.tr(),
                         maxLines: 5,
                       ),
-                      const SizedBox(height: VERTICAL_SPACE_L),
+                      const SizedBox(height: verticalSpaceL),
                       DurationWidget(
                         key: const Key('durationWidget'),
                         onHourDurationChanged: onHourDurationChanged,
@@ -109,9 +109,9 @@ class NewEditTripStopForm extends StatelessWidget {
                         hourDuration: hourDuration,
                         minuteDuration: minuteDuration,
                       ),
-                      const SizedBox(height: VERTICAL_SPACE_L),
+                      const SizedBox(height: verticalSpaceL),
                       _MapWidget(marker: marker),
-                      const SizedBox(height: VERTICAL_SPACE_L),
+                      const SizedBox(height: verticalSpaceL),
                       GooglePlacesSuggestionsWidget(
                         labelText: LocaleKeys.searchTripStopLocation.tr(),
                         hintText: LocaleKeys.tripStopLocationHint.tr(),
@@ -124,9 +124,9 @@ class NewEditTripStopForm extends StatelessWidget {
                         requestDeniedMessage: LocaleKeys.requestDenied.tr(),
                         unknownErrorMessage: LocaleKeys.unknownError.tr(),
                       ),
-                      const SizedBox(height: VERTICAL_SPACE_L),
+                      const SizedBox(height: verticalSpaceL),
                       saveSection,
-                      const SizedBox(height: VERTICAL_SPACE_L),
+                      const SizedBox(height: verticalSpaceL),
                     ],
                   ),
                 ],

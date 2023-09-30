@@ -18,8 +18,8 @@ void main() {
     useCase = ListenTripStops(mockDayTripsRepository);
   });
 
-  final tTripId = 'Test Trip Id';
-  final tDayTripId = 'Test Day Trip Id';
+  const tTripId = 'Test Trip Id';
+  const tDayTripId = 'Test Day Trip Id';
   final tParams = ListenTripStopsParams(
     tripId: tTripId,
     dayTripId: tDayTripId,
@@ -27,11 +27,11 @@ void main() {
 
   test('should listen to trip stops', () async {
     // arrange
-    final tTripStop = TripStop(
+    const tTripStop = TripStop(
       id: 'Test Trip Stop Id',
       name: 'Test Trip Stop Name',
       description: 'Test Trip Stop Description',
-      location: const LatLng(0, 0),
+      location: LatLng(0, 0),
       duration: 0,
       index: 0,
     );
@@ -52,11 +52,11 @@ void main() {
     when(mockDayTripsRepository.listenTripStops(
       tripId: anyNamed('tripId'),
       dayTripId: anyNamed('dayTripId'),
-    )).thenAnswer((_) => Stream.value(left(TripStopsFailure())));
+    )).thenAnswer((_) => Stream.value(left(const TripStopsFailure())));
 
     // act
     final result = useCase(tParams);
     // assert
-    expect(result, emitsInOrder([left(TripStopsFailure())]));
+    expect(result, emitsInOrder([left(const TripStopsFailure())]));
   });
 }

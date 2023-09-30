@@ -3,7 +3,7 @@ part of '../../pages/day_trip_page.dart';
 class _DayDateWidget extends StatelessWidget {
   final DateTime _date;
 
-  _DayDateWidget({required DateTime date}) : _date = date;
+  const _DayDateWidget({required DateTime date}) : _date = date;
 
   @override
   Widget build(BuildContext context) {

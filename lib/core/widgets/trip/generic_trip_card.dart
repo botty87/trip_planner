@@ -8,11 +8,12 @@ abstract base class GenericTripCard extends StatelessWidget {
   abstract final String? description;
   abstract final VoidCallback? onTap;
 
-  const GenericTripCard();
+  const GenericTripCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -26,7 +27,6 @@ abstract base class GenericTripCard extends StatelessWidget {
           ),
         ),
       ),
-      onTap: onTap,
     );
   }
 }
@@ -38,9 +38,8 @@ class _DayTripNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: VERTICAL_SPACE_S),
+      padding: const EdgeInsets.symmetric(vertical: verticalSpaceS),
       child: Text(
-        //"${LocaleKeys.day.tr()} ${index + 1}", TODO just a placeholder, remove
         name,
         style: Theme.of(context).textTheme.titleLarge,
         textAlign: TextAlign.center,
@@ -59,7 +58,6 @@ class _DayTripDateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       date,
-      //"${DateFormat.yMMMMd().format(tripStartDate.add(Duration(days: index)))}", TODO placeholder to remove
       style: Theme.of(context).textTheme.bodyLarge,
       textAlign: TextAlign.center,
       maxLines: 1,
@@ -75,7 +73,7 @@ class _DayTripDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: VERTICAL_SPACE_S),
+      padding: const EdgeInsets.symmetric(vertical: verticalSpaceS),
       child: Text(
         description,
         style: Theme.of(context).textTheme.bodyLarge,

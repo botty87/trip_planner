@@ -39,7 +39,7 @@ void main() {
 
   const tPlaceDetails = PlaceDetails(
     placeId: 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ',
-    location: const LatLng(48.856614, 2.3522219),
+    location: LatLng(48.856614, 2.3522219),
   );
 
   blocTest<GooglePlacesCubit, GooglePlacesState>(

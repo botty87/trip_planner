@@ -22,12 +22,12 @@ class _LoginSection extends StatelessWidget {
               ),
               onChanged: cubit.emailChanged,
               textInputAction: TextInputAction.next,
-              autofillHints: [AutofillHints.username],
+              autofillHints: const [AutofillHints.username],
               keyboardType: TextInputType.emailAddress,
             );
           },
         ),
-        SizedBox(height: VERTICAL_SPACE),
+        const SizedBox(height: verticalSpace),
         BlocSelector<LoginSignupCubit, LoginSignupState, String?>(
           selector: (state) {
             return state.passwordError;
@@ -42,11 +42,11 @@ class _LoginSection extends StatelessWidget {
               onChanged: cubit.passwordChanged,
               obscureText: true,
               textInputAction: TextInputAction.done,
-              autofillHints: [AutofillHints.password],
+              autofillHints: const [AutofillHints.password],
             );
           },
         ),
-        SizedBox(height: VERTICAL_SPACE_L),
+        const SizedBox(height: verticalSpaceL),
         BlocSelector<LoginSignupCubit, LoginSignupState, bool>(
           selector: (state) {
             return state.isLoading;
@@ -63,7 +63,7 @@ class _LoginSection extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: VERTICAL_SPACE),
+        const SizedBox(height: verticalSpace),
         BlocSelector<LoginSignupCubit, LoginSignupState, bool>(
           selector: (state) {
             return state.isLoading;

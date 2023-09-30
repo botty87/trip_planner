@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:trip_planner/core/constants.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:trip_planner/core/routes/app_router.gr.dart';
-import 'package:trip_planner/features/trips/domain/entities/trip.dart';
+
+import '../../../../../core/constants.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../core/routes/app_router.gr.dart';
+import '../../../domain/entities/trip.dart';
 
 class TripCard extends StatelessWidget {
   final Trip trip;
@@ -16,7 +17,7 @@ class TripCard extends StatelessWidget {
       onTap: () => context.router.push(TripRoute(trip: trip)),
       child: Card(
         child: Padding(
-          padding: EdgeInsets.all(VERTICAL_SPACE),
+          padding: const EdgeInsets.all(verticalSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -38,7 +39,7 @@ class _TripNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: VERTICAL_SPACE_S),
+      padding: const EdgeInsets.symmetric(vertical: verticalSpaceS),
       child: Text(
         name,
         style: Theme.of(context).textTheme.titleLarge,
@@ -57,7 +58,7 @@ class _TripDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: VERTICAL_SPACE_S),
+      padding: const EdgeInsets.symmetric(vertical: verticalSpaceS),
       child: Text(
         description,
         style: Theme.of(context).textTheme.bodyLarge,
@@ -76,7 +77,7 @@ class _TripCreatedOnWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Text(
         "${LocaleKeys.createdOn.tr()} ${DateFormat.yMMMMd().format(createdAt)}",
         style: Theme.of(context).textTheme.bodySmall,

@@ -23,9 +23,9 @@ void main() {
       ),
     );
     expect(find.byType(NewEditTripForm), findsOneWidget);
-    expect(find.byKey(Key('tripNameTextField')), findsOneWidget);
-    expect(find.byKey(Key('tripDescriptionTextField')), findsOneWidget);
-    expect(find.byKey(Key('startDatePicker')), findsOneWidget);
+    expect(find.byKey(const Key('tripNameTextField')), findsOneWidget);
+    expect(find.byKey(const Key('tripDescriptionTextField')), findsOneWidget);
+    expect(find.byKey(const Key('startDatePicker')), findsOneWidget);
   });
 
   testWidgets('renders LinearProgressIndicator when isLoading is true', (tester) async {
@@ -75,7 +75,7 @@ void main() {
         ),
       ),
     );
-    expect(find.byKey(Key('saveSectionKey')), findsOneWidget);
+    expect(find.byKey(const Key('saveSectionKey')), findsOneWidget);
   });
 
   testWidgets('renders initial trip name', (tester) async {

@@ -16,14 +16,14 @@ void main() {
     useCase = ListenDayTrips(mockDayTripsRepository);
   });
 
-  final tTripId = 'Test Trip Id';
+  const tTripId = 'Test Trip Id';
   final tParams = ListenDayTripsParams(
     tripId: tTripId,
   );
 
   test('should listen to day trips', () async {
     // arrange
-    final tDayTip = DayTrip(
+    const tDayTip = DayTrip(
       id: 'Test Day Trip Id',
       description: 'Test Day Trip Description',
       index: 0,
@@ -43,11 +43,11 @@ void main() {
     // arrange
     when(mockDayTripsRepository.listenDayTrips(
       any,
-    )).thenAnswer((_) => Stream.value(left(DayTripsFailure())));
+    )).thenAnswer((_) => Stream.value(left(const DayTripsFailure())));
 
     // act
     final result = useCase(tParams);
     // assert
-    expect(result, emitsInOrder([left(DayTripsFailure())]));
+    expect(result, emitsInOrder([left(const DayTripsFailure())]));
   });
 }

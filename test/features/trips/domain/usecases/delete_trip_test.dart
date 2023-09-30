@@ -38,11 +38,11 @@ void main() {
 
   test('should return a TripsFailure when deleting a trip fails', () async {
     // arrange
-    when(mockTripsRepository.deleteTrip(any)).thenAnswer((_) async => left(TripsFailure()));
+    when(mockTripsRepository.deleteTrip(any)).thenAnswer((_) async => left(const TripsFailure()));
     // act
     final result = await useCase(DeleteTripParams(trip: tTrip));
     // assert
-    expect(result, left(TripsFailure()));
+    expect(result, left(const TripsFailure()));
     verify(mockTripsRepository.deleteTrip(any));
     verifyNoMoreInteractions(mockTripsRepository);
   });

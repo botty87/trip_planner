@@ -21,7 +21,7 @@ void main() {
       ),
     );
     expect(find.byType(NewEditDayTripForm), findsOneWidget);
-    expect(find.byKey(Key('descriptionWidget')), findsOneWidget);
+    expect(find.byKey(const Key('descriptionWidget')), findsOneWidget);
   });
 
   testWidgets('renders LinearProgressIndicator when isLoading is true', (tester) async {
@@ -65,7 +65,7 @@ void main() {
         ),
       ),
     );
-    expect(find.byKey(Key('saveSectionKey')), findsOneWidget);
+    expect(find.byKey(const Key('saveSectionKey')), findsOneWidget);
   });
 
   testWidgets('renders initial trip description', (tester) async {

@@ -11,9 +11,9 @@ class _CreateTripButton extends StatelessWidget {
       initialData: false,
       builder: (context, snapshot) {
         return ElevatedButton(
-          key: Key('createTripButton'),
-          child: Text(LocaleKeys.createTrip.tr()),
+          key: const Key('createTripButton'),
           onPressed: snapshot.data! ? null : () => context.read<NewTripCubit>().createTrip(),
+          child: Text(LocaleKeys.createTrip.tr()),
         );
       },
     );

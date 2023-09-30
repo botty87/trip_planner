@@ -15,7 +15,7 @@ class _TripStopsList extends StatelessWidget {
         final tripStop = tripStops[index];
         return Padding(
           key: ValueKey(tripStop.id),
-          padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_XS),
+          padding: const EdgeInsets.only(bottom: verticalSpaceXs),
           child: _TripStopCard(
             tripStop: tripStop,
             tripStartDate: DateTime.now(),
@@ -25,9 +25,9 @@ class _TripStopsList extends StatelessWidget {
       },
       proxyDecorator: (child, index, animation) {
         return TransparentListDecorator(
-          child: child,
           index: index,
           animation: animation,
+          child: child,
         );
       },
       onReorder: (int oldIndex, int newIndex) {},

@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
-import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart';
+import '../../domain/entities/trip_stop.dart';
+import '../../errors/trip_stops_failure.dart';
 
 import '../../domain/repositories/trip_stops_repository.dart';
 import '../datasources/trip_stops_data_source.dart';
@@ -36,7 +36,7 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
     } on FirebaseException catch (e) {
       return left(TripStopsFailure(message: e.message));
     } on Exception {
-      return left(TripStopsFailure());
+      return left(const TripStopsFailure());
     }
   }
 
@@ -48,7 +48,7 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
           .listenTripStops(tripId: tripId, dayTripId: dayTripId)
           .map((tripStops) => right(tripStops));
     } catch (e) {
-      yield left(TripStopsFailure());
+      yield left(const TripStopsFailure());
     }
   }
 }

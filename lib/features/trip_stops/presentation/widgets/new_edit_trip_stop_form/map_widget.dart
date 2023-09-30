@@ -21,26 +21,25 @@ class _MapWidget extends HookWidget {
           child: Stack(
             children: [
               StreamBuilder<Marker?>(
-                stream: marker,
-                builder: (context, snapshot) {
-                  if(snapshot.data != null) {
-                    _controller.future.then((controller) => controller.animateCamera(
-                      CameraUpdate.newLatLngZoom(snapshot.data!.position, 15)));
-                  } 
-                  
-                  return GoogleMap(
-                    mapType: MapType.hybrid,
-                    initialCameraPosition: _world,
-                    onMapCreated: _controller.complete,
-                    gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-                      Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
-                    },
-                    myLocationButtonEnabled: false,
-                    zoomControlsEnabled: false,
-                    markers: snapshot.data != null ? {snapshot.data!} : {},
-                  );
-                }
-              ),
+                  stream: marker,
+                  builder: (context, snapshot) {
+                    if (snapshot.data != null) {
+                      _controller.future.then((controller) => controller
+                          .animateCamera(CameraUpdate.newLatLngZoom(snapshot.data!.position, 15)));
+                    }
+
+                    return GoogleMap(
+                      mapType: MapType.hybrid,
+                      initialCameraPosition: _world,
+                      onMapCreated: _controller.complete,
+                      gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                        Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                      },
+                      myLocationButtonEnabled: false,
+                      zoomControlsEnabled: false,
+                      markers: snapshot.data != null ? {snapshot.data!} : {},
+                    );
+                  }),
               Align(
                 alignment: Alignment.bottomRight,
                 child: _zoomControls(),
@@ -64,7 +63,7 @@ class _MapWidget extends HookWidget {
                   CameraUpdate.zoomOut(),
                 )),
           ),
-          const SizedBox(width: HORIZONTAL_SPACE_S),
+          const SizedBox(width: horizontalSpaceS),
           IconButton.filled(
             icon: const Icon(Icons.add),
             onPressed: () => _controller.future.then((controller) => controller.animateCamera(

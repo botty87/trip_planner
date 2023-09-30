@@ -41,7 +41,7 @@ class NewEditTripForm extends StatelessWidget {
           stream: isSaving,
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
             if (snapshot.data ?? false) {
-              return LinearProgressIndicator(minHeight: 1);
+              return const LinearProgressIndicator(minHeight: 1);
             } else {
               return const SizedBox(height: 1);
             }
@@ -49,26 +49,26 @@ class NewEditTripForm extends StatelessWidget {
         ),
         Expanded(
           child: SafeArea(
-            minimum: DEFAULT_PAGE_PADDING,
+            minimum: defaultPagePadding,
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   _TripNameTextField(
-                      key: Key('tripNameTextField'),
+                      key: const Key('tripNameTextField'),
                       onChanged: onNameChanged,
                       initialTripName: initialTripName),
-                  const SizedBox(height: VERTICAL_SPACE),
+                  const SizedBox(height: verticalSpace),
                   _TripDescriptionTextField(
-                      key: Key('tripDescriptionTextField'),
+                      key: const Key('tripDescriptionTextField'),
                       onChanged: onDescriptionChanged,
                       initialTripDescription: initialTripDescription),
-                  const SizedBox(height: VERTICAL_SPACE_L),
+                  const SizedBox(height: verticalSpaceL),
                   _StartDatePicker(
-                    key: Key('startDatePicker'),
+                    key: const Key('startDatePicker'),
                     onValueChanged: onStartDateChanged,
                     initialStartDate: initialStartDate,
                   ),
-                  const SizedBox(height: VERTICAL_SPACE_L),
+                  const SizedBox(height: verticalSpaceL),
                   saveSection,
                 ],
               ),

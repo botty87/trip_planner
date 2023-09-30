@@ -30,7 +30,7 @@ void main() {
   group('createDayTrip', () {
     test('should return right(null) when createDayTrip', () async {
       when(mockDayTripsDataSource.addDayTrip(tripId: tTripId, dayTrip: tDayTrip))
-          .thenAnswer((_) async => null);
+          .thenAnswer((_) async {});
 
       // act
       final result = await repository.addDayTrip(tripId: tTripId, dayTrip: tDayTrip);
@@ -45,7 +45,7 @@ void main() {
       // act
       final result = await repository.addDayTrip(tripId: tTripId, dayTrip: tDayTrip);
       // assert
-      expect(result, equals(left(DayTripsFailure())));
+      expect(result, equals(left(const DayTripsFailure())));
     });
   });
 
@@ -66,14 +66,14 @@ void main() {
       // act
       final result = repository.listenDayTrips('tripId');
       // assert
-      expect(result, emitsInOrder([left(DayTripsFailure())]));
+      expect(result, emitsInOrder([left(const DayTripsFailure())]));
     });
   });
 
   group('updateDayTripsIndexes', () {
     test('should return right(null) when updateDayTripsIndexes', () async {
       when(mockDayTripsDataSource.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]))
-          .thenAnswer((_) async => null);
+          .thenAnswer((_) async {});
 
       // act
       final result = await repository.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]);
@@ -88,7 +88,7 @@ void main() {
       // act
       final result = await repository.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]);
       // assert
-      expect(result, equals(left(DayTripsFailure())));
+      expect(result, equals(left(const DayTripsFailure())));
     });
   });
 
@@ -96,7 +96,7 @@ void main() {
     test('should return right(null) when updateDayTrip', () async {
       when(mockDayTripsDataSource.updateDayTrip(
               id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
-          .thenAnswer((_) async => null);
+          .thenAnswer((_) async {});
 
       // act
       final result = await repository.updateDayTrip(
@@ -114,14 +114,14 @@ void main() {
       final result = await repository.updateDayTrip(
           id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
       // assert
-      expect(result, equals(left(DayTripsFailure())));
+      expect(result, equals(left(const DayTripsFailure())));
     });
   });
 
   group('deleteDayTrip', () {
     test('should return right(null) when deleteDayTrip', () async {
       when(mockDayTripsDataSource.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id))
-          .thenAnswer((_) async => null);
+          .thenAnswer((_) async {});
 
       // act
       final result = await repository.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id);
@@ -136,7 +136,7 @@ void main() {
       // act
       final result = await repository.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id);
       // assert
-      expect(result, equals(left(DayTripsFailure())));
+      expect(result, equals(left(const DayTripsFailure())));
     });
   });
 }

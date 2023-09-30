@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:json_theme/json_theme.dart';
-import 'package:trip_planner/core/di/di.dart';
+import 'core/di/di.dart';
 
 import 'core/my_app.dart';
 
@@ -36,9 +36,9 @@ void main() async {
   );
 
   runApp(EasyLocalization(
-    supportedLocales: [Locale('it'), Locale('en')],
+    supportedLocales: const [Locale('it'), Locale('en')],
     path: 'assets/translations',
-    fallbackLocale: Locale('en'),
+    fallbackLocale: const Locale('en'),
     useOnlyLangCode: true,
     child: MyApp(theme: theme),
   ));

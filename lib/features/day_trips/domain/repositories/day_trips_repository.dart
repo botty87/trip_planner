@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
+import '../entities/day_trip.dart';
 
 import '../../errors/day_trips_failure.dart';
 

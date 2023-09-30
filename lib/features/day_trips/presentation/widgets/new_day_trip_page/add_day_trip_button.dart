@@ -12,9 +12,9 @@ class _AddDayTripButton extends StatelessWidget {
       initialData: false,
       builder: (context, snapshot) {
         return ElevatedButton(
-          key: Key('addDayTripButton'),
-          child: Text(LocaleKeys.addDayTrip.tr()),
+          key: const Key('addDayTripButton'),
           onPressed: snapshot.data! ? null : () => context.read<NewDayTripCubit>().createDayTrip(),
+          child: Text(LocaleKeys.addDayTrip.tr()),
         );
       },
     );

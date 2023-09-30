@@ -18,11 +18,11 @@ void main() {
   test('should register user from the repository', () async {
     // arrange
     when(mockUserRepository.registerUser(email: '', password: '', name: '')).thenAnswer((_) async {
-      return Right(null);
+      return const Right(null);
     });
 
     // act
-    final result = await usecase(RegisterUserParams(email: '', password: '', name: ''));
+    final result = await usecase(const RegisterUserParams(email: '', password: '', name: ''));
 
     // assert
     expect(result, right(null));
@@ -37,7 +37,7 @@ void main() {
     });
 
     // act
-    final result = await usecase(RegisterUserParams(email: '', password: '', name: ''));
+    final result = await usecase(const RegisterUserParams(email: '', password: '', name: ''));
 
     // assert
     expect(result, left(UserFailure()));

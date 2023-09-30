@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart';
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
-import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart';
-import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
+import '../datasources/day_trips_data_source.dart';
+import '../../domain/entities/day_trip.dart';
+import '../../domain/repositories/day_trips_repository.dart';
+import '../../errors/day_trips_failure.dart';
 
 @LazySingleton(as: DayTripsRepository)
 class DayTripsRepositoryImpl implements DayTripsRepository {
@@ -21,7 +21,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));
     } on Exception {
-      return left(DayTripsFailure());
+      return left(const DayTripsFailure());
     }
   }
 
@@ -30,7 +30,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     try {
       yield* _dayTripsDataSource.listenDayTrips(tripId).map((dayTrips) => right(dayTrips));
     } catch (e) {
-      yield left(DayTripsFailure());
+      yield left(const DayTripsFailure());
     }
   }
 
@@ -43,7 +43,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));
     } on Exception {
-      return left(DayTripsFailure());
+      return left(const DayTripsFailure());
     }
   }
 
@@ -56,7 +56,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));
     } on Exception {
-      return left(DayTripsFailure());
+      return left(const DayTripsFailure());
     }
   }
   
@@ -68,7 +68,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));
     } on Exception {
-      return left(DayTripsFailure());
+      return left(const DayTripsFailure());
     }
   }
 }

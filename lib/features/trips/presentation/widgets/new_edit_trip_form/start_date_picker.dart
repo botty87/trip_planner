@@ -17,7 +17,7 @@ class _StartDatePicker extends HookWidget {
                   color: Theme.of(context).colorScheme.secondary,
                   fontSize: 22,
                 )),
-        const SizedBox(height: VERTICAL_SPACE_S),
+        const SizedBox(height: verticalSpaceS),
         CalendarDatePicker2(
           config: CalendarDatePicker2Config(
             dayBuilder: ({required date, decoration, isDisabled, isSelected, isToday, textStyle}) {
@@ -76,7 +76,7 @@ class _StartDatePicker extends HookWidget {
             assert(value.first != null);
             onValueChanged(value.first!);
             isStartDateBeforeToday
-                .add(value.first!.isBefore(DateTime.now().add(Duration(days: -1))));
+                .add(value.first!.isBefore(DateTime.now().add(const Duration(days: -1))));
           },
         ),
         StreamBuilder<bool>(

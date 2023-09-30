@@ -34,14 +34,14 @@ void main() {
     startDate: DateTime.now(),
   );
 
-  final tDayTrip = DayTrip(
+  const tDayTrip = DayTrip(
     id: '1',
     description: 'description',
     index: 0,
   );
 
   final tTripStops = [
-    TripStop(
+    const TripStop(
       id: '1',
       name: 'name',
       description: 'description',
@@ -105,7 +105,7 @@ void main() {
       seed: () =>
           DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: 'new description'),
       setUp: () => when(mockUpdateDayTrip.call(any))
-          .thenAnswer((_) async => Right(tDayTrip.copyWith(description: 'new description'))),
+          .thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         DayTripState.editing(
@@ -126,7 +126,7 @@ void main() {
       seed: () =>
           DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description),
       setUp: () => when(mockUpdateDayTrip.call(any))
-          .thenAnswer((_) async => Left(DayTripsFailure(message: 'error'))),
+          .thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         DayTripState.editing(
@@ -181,7 +181,7 @@ void main() {
       'On delete emit DayTripStateDeleting and then DayTripStateDeleted if deleteDayTrip succeeds',
       seed: () =>
           DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description),
-      setUp: () => when(mockDeleteDayTrip.call(any)).thenAnswer((_) async => Right(null)),
+      setUp: () => when(mockDeleteDayTrip.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.deleteDayTrip(),
       expect: () => [
         DayTripState.deleting(trip: tTrip, dayTrip: tDayTrip),
@@ -200,7 +200,7 @@ void main() {
       seed: () =>
           DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description),
       setUp: () => when(mockDeleteDayTrip.call(any))
-          .thenAnswer((_) async => Left(DayTripsFailure(message: 'error'))),
+          .thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
       act: (cubit) => cubit.deleteDayTrip(),
       expect: () => [
         DayTripState.deleting(trip: tTrip, dayTrip: tDayTrip),

@@ -1,7 +1,7 @@
 part of '../../pages/day_trip_page.dart';
 
 final class _SaveCancelEditButtons extends SaveCancelEditButtonsAbstract {
-  _SaveCancelEditButtons(
+  const _SaveCancelEditButtons(
       {required super.isSaving,
       required super.onCancel,
       required super.onSave,

@@ -6,7 +6,7 @@ class _StartTimeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TimePicker(
-      value: TimeOfDay(hour: 8, minute: 0),
+      value: const TimeOfDay(hour: 8, minute: 0),
       iosStylePicker: Platform.isIOS,
       onChange: (time) {},
       hourLabel: LocaleKeys.hours.tr(),

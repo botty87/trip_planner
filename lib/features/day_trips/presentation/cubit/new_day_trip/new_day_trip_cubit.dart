@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,7 +17,7 @@ class NewDayTripCubit extends Cubit<NewDayTripState> {
   NewDayTripCubit({required CreateDayTrip createDayTrip, @factoryParam required String tripId})
       : _createDayTrip = createDayTrip,
         _tripId = tripId,
-        super(NewDayTripState.normal());
+        super(const NewDayTripState.normal());
 
   descriptionChanged(String value) {
     emit(state.copyWith(description: value));
@@ -40,7 +40,7 @@ class NewDayTripCubit extends Cubit<NewDayTripState> {
         emit(NewDayTripState.normal(description: state.description));
       },
       (_) {
-        emit(NewDayTripState.created());
+        emit(const NewDayTripState.created());
       },
     );
   }

@@ -33,14 +33,14 @@ class NewEditDayTripForm extends StatelessWidget {
             stream: isSaving,
             builder: (context, isSaving) {
               if (isSaving.data ?? false) {
-                return LinearProgressIndicator(minHeight: 1);
+                return const LinearProgressIndicator(minHeight: 1);
               } else {
                 return const SizedBox(height: 1);
               }
             }),
         Expanded(
           child: SafeArea(
-            minimum: DEFAULT_PAGE_PADDING,
+            minimum: defaultPagePadding,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -48,20 +48,20 @@ class NewEditDayTripForm extends StatelessWidget {
                     builder: (context, constraints) {
                       return SvgPicture(
                         height: constraints.maxWidth * 0.75,
-                        key: Key('tripImage'),
+                        key: const Key('tripImage'),
                         AssetBytesLoader(Assets.svg.addNewDayTripSvg),
                       );
                     },
                   ),
-                  const SizedBox(height: VERTICAL_SPACE_L),
+                  const SizedBox(height: verticalSpaceL),
                   Column(
                     children: [
                       _DescriptionWidget(
-                        key: Key('descriptionWidget'),
+                        key: const Key('descriptionWidget'),
                         onDescriptionChanged: onDescriptionChanged,
                         initialDayTripDescription: initialDayTripDescription,
                       ),
-                      const SizedBox(height: VERTICAL_SPACE_L),
+                      const SizedBox(height: verticalSpaceL),
                       saveSection,
                     ],
                   ),

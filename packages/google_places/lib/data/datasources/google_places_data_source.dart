@@ -21,9 +21,8 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
   final Dio client;
   final InternetConnection internetConnection;
   CancelToken? _cancelToken;
-  
 
-  static const key = GOOGLE_PLACES_KEY;
+  static const key = googlePlacesKey;
 
   GooglePlacesDataSourceImpl(this.client, this.internetConnection);
 

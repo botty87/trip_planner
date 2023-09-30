@@ -5,11 +5,12 @@ class _DayTripDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dayTripDescritption = context.select((DayTripCubit cubit) => cubit.state.dayTrip.description);
+    final dayTripDescritption =
+        context.select((DayTripCubit cubit) => cubit.state.dayTrip.description);
 
     if (dayTripDescritption != null) {
       return Padding(
-        padding: const EdgeInsets.only(bottom: VERTICAL_SPACE_S),
+        padding: const EdgeInsets.only(bottom: verticalSpaceS),
         child: Text(
           dayTripDescritption,
           style: Theme.of(context).textTheme.bodyLarge,
@@ -17,7 +18,7 @@ class _DayTripDescription extends StatelessWidget {
         ),
       );
     } else {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +11,7 @@ abstract base class SaveCancelEditButtonsAbstract extends StatelessWidget {
   final Stream<String?> _errorMessage;
 
   const SaveCancelEditButtonsAbstract({
+    super.key,
     required Stream<bool> isSaving,
     required VoidCallback onCancel,
     required VoidCallback onSave,
@@ -45,7 +45,7 @@ abstract base class SaveCancelEditButtonsAbstract extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: VERTICAL_SPACE_S),
+              const SizedBox(height: verticalSpaceS),
               _ErrorMesage(errorMessage: _errorMessage),
             ],
           );
@@ -66,10 +66,10 @@ class _ErrorMesage extends StatelessWidget {
         final errorMessage = snapshot.data;
 
         return errorMessage == null
-            ? SizedBox.shrink()
+            ? const SizedBox.shrink()
             : Text(
                 errorMessage,
-                style: TextStyle(color: Colors.red),
+                style: const TextStyle(color: Colors.red),
               );
       },
     );

@@ -54,7 +54,7 @@ class _DayTripPageBody extends HookWidget {
       ],
       child: SafeArea(
           child: SingleChildScrollView(
-        padding: DEFAULT_PAGE_PADDING,
+        padding: defaultPagePadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -62,12 +62,12 @@ class _DayTripPageBody extends HookWidget {
               selector: (state) => state.dayTrip.description,
               builder: (context, description) => _DayTripHeader(headerText: description),
             ),
-            _StartTimeWidget(),
-            const SizedBox(height: VERTICAL_SPACE_S),
-            _TripStopsList(),
-            const SizedBox(height: VERTICAL_SPACE_S),
-            _AddDayTripStopCard(),
-            const SizedBox(height: VERTICAL_SPACE_L),
+            const _StartTimeWidget(),
+            const SizedBox(height: verticalSpaceS),
+            const _TripStopsList(),
+            const SizedBox(height: verticalSpaceS),
+            const _AddDayTripStopCard(),
+            const SizedBox(height: verticalSpaceL),
             _DeleteTripButton(isDeleting: isDeleting.stream),
           ],
         ),

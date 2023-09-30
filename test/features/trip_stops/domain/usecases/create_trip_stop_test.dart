@@ -32,7 +32,7 @@ void main() {
       dayTripId: 'dayTripId',
       name: 'name',
       description: 'description',
-      location: LatLng(0.0, 0.0),
+      location: const LatLng(0.0, 0.0),
       duration: 0,
     ));
     // assert
@@ -47,7 +47,7 @@ void main() {
       description: anyNamed('description'),
       location: anyNamed('location'),
       duration: anyNamed('duration'),
-    )).thenAnswer((_) async => left(TripStopsFailure()));
+    )).thenAnswer((_) async => left(const TripStopsFailure()));
 
     // act
     final result = await usecase(CreateTripStopParams(
@@ -55,10 +55,10 @@ void main() {
       dayTripId: 'dayTripId',
       name: 'name',
       description: 'description',
-      location: LatLng(0.0, 0.0),
+      location: const LatLng(0.0, 0.0),
       duration: 0,
     ));
     // assert
-    expect(result, equals(left(TripStopsFailure())));
+    expect(result, equals(left(const TripStopsFailure())));
   });
 }

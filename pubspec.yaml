@@ -35,6 +35,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   easy_localization: ^3.0.2
+  easy_logger: ^0.0.2
   email_validator: ^2.1.17
   equatable: ^2.0.5
   firebase_auth: ^4.7.2

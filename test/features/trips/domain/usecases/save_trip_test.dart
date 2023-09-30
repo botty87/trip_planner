@@ -39,7 +39,7 @@ void main() {
 
   test('should return a TripsFailure when saving a trip fails', () async {
     when(mockTripsRepository.updateTrip(any, any, any, any))
-        .thenAnswer((_) async => left(TripsFailure()));
+        .thenAnswer((_) async => left(const TripsFailure()));
     // act
     final result = await useCase(UpdateTripParams(
       id: tTripId,
@@ -48,7 +48,7 @@ void main() {
       startDate: tStartDate,
     ));
     // assert
-    expect(result, left(TripsFailure()));
+    expect(result, left(const TripsFailure()));
     verify(mockTripsRepository.updateTrip(any, any, any, any));
     verifyNoMoreInteractions(mockTripsRepository);
   });

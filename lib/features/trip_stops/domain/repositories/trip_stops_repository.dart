@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart';
+import '../../errors/trip_stops_failure.dart';
 
 import '../entities/trip_stop.dart';
 

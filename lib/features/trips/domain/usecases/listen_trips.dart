@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/core/usecases/usecase.dart';
+import '../../../../core/usecases/usecase.dart';
 
 import '../../errors/trips_failure.dart';
 import '../entities/trip.dart';

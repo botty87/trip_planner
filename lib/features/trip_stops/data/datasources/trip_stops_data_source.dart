@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
+import '../../domain/entities/trip_stop.dart';
 
 abstract class TripStopsDataSource {
   Future<void> addTripStop({

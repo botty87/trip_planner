@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:trip_planner/core/error/failures.dart';
+import '../../../core/error/failures.dart';
 
 part 'trip_stops_failure.freezed.dart';
 

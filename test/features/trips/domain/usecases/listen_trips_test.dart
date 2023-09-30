@@ -11,7 +11,7 @@ void main() {
   late ListenTrips usecase;
   late MockTripsRepository mockTripsRepository;
 
-  final tUserId = '123';
+  const tUserId = '123';
   final tTrips = [
     Trip(
       id: '123',
@@ -43,13 +43,13 @@ void main() {
 
   test('should return a failure when there is no trips', () async {
     // arrange
-    when(mockTripsRepository.listenTrips(tUserId)).thenAnswer((_) => Stream.value(Left(TripsFailure())));
+    when(mockTripsRepository.listenTrips(tUserId)).thenAnswer((_) => Stream.value(const Left(TripsFailure())));
 
     // act
     final result = usecase(ListenTripsParams(userId: tUserId));
 
     // assert
-    expect(result, emits(Left(TripsFailure())));
+    expect(result, emits(const Left(TripsFailure())));
     verify(mockTripsRepository.listenTrips(tUserId));
     verifyNoMoreInteractions(mockTripsRepository);
   });

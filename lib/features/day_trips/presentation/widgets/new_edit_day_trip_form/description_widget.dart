@@ -13,7 +13,7 @@ class _DescriptionWidget extends HookWidget {
     final descriptionController = useTextEditingController(text: initialDayTripDescription);
 
     return TextField(
-      key: Key('descriptionTextField'),
+      key: const Key('descriptionTextField'),
       decoration: InputDecoration(
         labelText: LocaleKeys.dayTripDescription.tr(),
         hintText: LocaleKeys.dayTripDescriptionHint.tr(),

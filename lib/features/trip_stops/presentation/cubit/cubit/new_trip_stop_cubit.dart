@@ -1,10 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:trip_planner/features/trip_stops/domain/usecases/create_trip_stop.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../domain/usecases/create_trip_stop.dart';
 
 part 'new_trip_stop_cubit.freezed.dart';
 part 'new_trip_stop_state.dart';
@@ -23,7 +23,7 @@ class NewTripStopCubit extends Cubit<NewTripStopState> {
   })  : _tripId = tripId,
         _dayTripId = dayTripId,
         _createTripStop = createTripStop,
-        super(NewTripStopState.normal());
+        super(const NewTripStopState.normal());
 
   void nameChanged(String value) => emit(state.copyWith(name: value));
 
