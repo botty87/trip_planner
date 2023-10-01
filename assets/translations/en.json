@@ -74,5 +74,6 @@
     "enterTripStopName" : "Please enter a trip stop name",
     "enterTripStopLocation" : "Please enter a trip stop location",
     "enterTripStopDuration" : "Please enter a trip stop duration",
-    "tripStopCreated" : "Trip stop created!"
+    "tripStopCreated" : "Trip stop created!",
+    "startTime" : "Start time"
 }

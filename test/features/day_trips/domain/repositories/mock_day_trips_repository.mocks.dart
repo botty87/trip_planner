@@ -6,6 +6,7 @@
 import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
+import 'package:flutter/material.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
     as _i6;
@@ -173,6 +174,50 @@ class MockDayTripsRepository extends _i1.Mock
               #id: id,
               #tripId: tripId,
               #description: description,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> updateDayTripStartTime({
+    required String? id,
+    required String? tripId,
+    required _i7.TimeOfDay? startTime,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDayTripStartTime,
+          [],
+          {
+            #id: id,
+            #tripId: tripId,
+            #startTime: startTime,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTripStartTime,
+            [],
+            {
+              #id: id,
+              #tripId: tripId,
+              #startTime: startTime,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTripStartTime,
+            [],
+            {
+              #id: id,
+              #tripId: tripId,
+              #startTime: startTime,
             },
           ),
         )),

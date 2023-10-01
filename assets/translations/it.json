@@ -73,8 +73,7 @@
     "addTripStop" : "Aggiungi tappa di viaggio",
     "enterTripStopName" : "Inserisci il nome della tappa di viaggio",
     "enterTripStopLocation" : "Inserisci la posizione della tappa di viaggio",
-    "enterTripStopStartTime" : "Inserisci l'orario di inizio della tappa di viaggio",
-    "enterTripStopEndTime" : "Inserisci l'orario di fine della tappa di viaggio",
     "enterTripStopDuration" : "Inserisci la durata della tappa di viaggio",
-    "tripStopCreated" : "Tappa di viaggio creata!"
+    "tripStopCreated" : "Tappa di viaggio creata!",
+    "startTime" : "Ora di inizio"
 }

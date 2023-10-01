@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import '../entities/day_trip.dart';
 
 import '../../errors/day_trips_failure.dart';
@@ -16,6 +17,12 @@ abstract class DayTripsRepository {
     required String id,
     required String tripId,
     required String? description,
+  });
+
+  Future<Either<DayTripsFailure, void>> updateDayTripStartTime({
+    required String id,
+    required String tripId,
+    required TimeOfDay startTime,
   });
 
   Future<Either<DayTripsFailure, void>> deleteDayTrip(

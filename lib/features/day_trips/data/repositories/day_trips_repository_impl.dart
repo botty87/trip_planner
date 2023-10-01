@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/src/material/time.dart';
 import 'package:injectable/injectable.dart';
 import '../datasources/day_trips_data_source.dart';
 import '../../domain/entities/day_trip.dart';
@@ -70,5 +71,11 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     } on Exception {
       return left(const DayTripsFailure());
     }
+  }
+
+  @override
+  Future<Either<DayTripsFailure, void>> updateDayTripStartTime({required String id, required String tripId, required TimeOfDay startTime}) {
+    // TODO: implement updateDayTripStartTime
+    throw UnimplementedError();
   }
 }

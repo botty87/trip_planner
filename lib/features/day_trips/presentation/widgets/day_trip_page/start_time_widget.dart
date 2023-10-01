@@ -5,12 +5,17 @@ class _StartTimeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TimePicker(
-      value: const TimeOfDay(hour: 8, minute: 0),
-      iosStylePicker: Platform.isIOS,
-      onChange: (time) {},
-      hourLabel: LocaleKeys.hours.tr(),
-      minuteLabel: LocaleKeys.minutes.tr(),
+    return Column(
+      children: [
+        Text(LocaleKeys.startTime.tr(), style: Theme.of(context).textTheme.titleLarge),
+        TimePicker(
+          value: const TimeOfDay(hour: 8, minute: 0),
+          iosStylePicker: false,
+          onChange: (time) => context.read<DayTripCubit>().startTimeChanged(time),
+          hourLabel: LocaleKeys.hours.tr(),
+          minuteLabel: LocaleKeys.minutes.tr(),
+        ),
+      ],
     );
   }
 }

@@ -52,11 +52,9 @@ abstract class $AppRouter extends _i9.RootStackRouter {
       );
     },
     LoginSignupRoute.name: (routeData) {
-      final args = routeData.argsAs<LoginSignupRouteArgs>(
-          orElse: () => const LoginSignupRouteArgs());
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.LoginSignupPage(key: args.key),
+        child: const _i3.LoginSignupPage(),
       );
     },
     NewDayTripRoute.name: (routeData) {
@@ -75,7 +73,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
     NewTripRoute.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.NewTripPage(),
+        child: const _i5.NewTripPage(),
       );
     },
     NewTripStopRoute.name: (routeData) {
@@ -100,11 +98,9 @@ abstract class $AppRouter extends _i9.RootStackRouter {
       );
     },
     TripsRoute.name: (routeData) {
-      final args = routeData.argsAs<TripsRouteArgs>(
-          orElse: () => const TripsRouteArgs());
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i8.TripsPage(key: args.key),
+        child: const _i8.TripsPage(),
       );
     },
   };
@@ -169,31 +165,16 @@ class HomeRoute extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.LoginSignupPage]
-class LoginSignupRoute extends _i9.PageRouteInfo<LoginSignupRouteArgs> {
-  LoginSignupRoute({
-    _i10.Key? key,
-    List<_i9.PageRouteInfo>? children,
-  }) : super(
+class LoginSignupRoute extends _i9.PageRouteInfo<void> {
+  const LoginSignupRoute({List<_i9.PageRouteInfo>? children})
+      : super(
           LoginSignupRoute.name,
-          args: LoginSignupRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'LoginSignupRoute';
 
-  static const _i9.PageInfo<LoginSignupRouteArgs> page =
-      _i9.PageInfo<LoginSignupRouteArgs>(name);
-}
-
-class LoginSignupRouteArgs {
-  const LoginSignupRouteArgs({this.key});
-
-  final _i10.Key? key;
-
-  @override
-  String toString() {
-    return 'LoginSignupRouteArgs{key: $key}';
-  }
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
 
 /// generated route for
@@ -332,29 +313,14 @@ class TripRouteArgs {
 
 /// generated route for
 /// [_i8.TripsPage]
-class TripsRoute extends _i9.PageRouteInfo<TripsRouteArgs> {
-  TripsRoute({
-    _i10.Key? key,
-    List<_i9.PageRouteInfo>? children,
-  }) : super(
+class TripsRoute extends _i9.PageRouteInfo<void> {
+  const TripsRoute({List<_i9.PageRouteInfo>? children})
+      : super(
           TripsRoute.name,
-          args: TripsRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'TripsRoute';
 
-  static const _i9.PageInfo<TripsRouteArgs> page =
-      _i9.PageInfo<TripsRouteArgs>(name);
-}
-
-class TripsRouteArgs {
-  const TripsRouteArgs({this.key});
-
-  final _i10.Key? key;
-
-  @override
-  String toString() {
-    return 'TripsRouteArgs{key: $key}';
-  }
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
