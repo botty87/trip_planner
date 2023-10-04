@@ -29,7 +29,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   final UpdateDayTripStartTime _updateDayTripStartTime;
   late final StreamSubscription<Either<TripStopsFailure, List<TripStop>>> _tripStopsSubscription;
 
-  final _startTimeDebouncer = Debouncer(milliseconds: 10000);
+  final _startTimeDebouncer = Debouncer(milliseconds: 5000);
 
   DayTripCubit({
     @factoryParam required Trip trip,
