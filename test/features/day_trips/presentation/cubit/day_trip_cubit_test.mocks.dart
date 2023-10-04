@@ -13,6 +13,8 @@ import 'package:trip_planner/features/day_trips/domain/usecases/delete_day_trip.
     as _i8;
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart'
     as _i5;
+import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart'
+    as _i12;
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
     as _i7;
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
@@ -184,4 +186,49 @@ class MockListenTripStops extends _i1.Mock implements _i9.ListenTripStops {
         returnValueForMissingStub: _i6.Stream<
             _i3.Either<_i10.TripStopsFailure, List<_i11.TripStop>>>.empty(),
       ) as _i6.Stream<_i3.Either<_i10.TripStopsFailure, List<_i11.TripStop>>>);
+}
+
+/// A class which mocks [UpdateDayTripStartTime].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUpdateDayTripStartTime extends _i1.Mock
+    implements _i12.UpdateDayTripStartTime {
+  @override
+  _i2.DayTripsRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeDayTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeDayTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.DayTripsRepository);
+  @override
+  _i6.Future<_i3.Either<_i7.DayTripsFailure, void>> call(
+          _i12.UpdateDayTripStartTimeParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>.value(
+            _FakeEither_1<_i7.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>.value(
+                _FakeEither_1<_i7.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>);
 }

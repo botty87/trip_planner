@@ -118,6 +118,32 @@ void main() {
     });
   });
 
+  group('updateDayTripStartTime', () {
+    test('should return right(null) when updateDayTripStartTime', () async {
+      when(mockDayTripsDataSource.updateDayTripStartTime(
+              id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime))
+          .thenAnswer((_) async {});
+
+      // act
+      final result = await repository.updateDayTripStartTime(
+          id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(DayTripsFailure()) when updateDayTripStartTime throws', () async {
+      when(mockDayTripsDataSource.updateDayTripStartTime(
+              id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime))
+          .thenThrow(Exception());
+
+      // act
+      final result = await repository.updateDayTripStartTime(
+          id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime);
+      // assert
+      expect(result, equals(left(const DayTripsFailure())));
+    });
+  });
+
   group('deleteDayTrip', () {
     test('should return right(null) when deleteDayTrip', () async {
       when(mockDayTripsDataSource.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id))
@@ -139,4 +165,5 @@ void main() {
       expect(result, equals(left(const DayTripsFailure())));
     });
   });
+  
 }

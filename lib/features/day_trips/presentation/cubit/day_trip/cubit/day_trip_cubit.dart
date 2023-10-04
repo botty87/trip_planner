@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../../../core/utilities/debouncer.dart';
 import '../../../../../trip_stops/domain/usecases/listen_trip_stops.dart';
 
 import '../../../../../../core/l10n/locale_keys.g.dart';
@@ -15,6 +16,7 @@ import '../../../../../trips/domain/entities/trip.dart';
 import '../../../../domain/entities/day_trip.dart';
 import '../../../../domain/usecases/delete_day_trip.dart';
 import '../../../../domain/usecases/update_day_trip.dart';
+import '../../../../domain/usecases/update_day_trip_start_time.dart';
 
 part 'day_trip_cubit.freezed.dart';
 part 'day_trip_state.dart';
@@ -24,7 +26,10 @@ class DayTripCubit extends Cubit<DayTripState> {
   final UpdateDayTrip _updateDayTrip;
   final DeleteDayTrip _deleteDayTrip;
   final ListenTripStops _listenTripStops;
+  final UpdateDayTripStartTime _updateDayTripStartTime;
   late final StreamSubscription<Either<TripStopsFailure, List<TripStop>>> _tripStopsSubscription;
+
+  final _startTimeDebouncer = Debouncer(milliseconds: 10000);
 
   DayTripCubit({
     @factoryParam required Trip trip,
@@ -32,9 +37,11 @@ class DayTripCubit extends Cubit<DayTripState> {
     required UpdateDayTrip updateDayTrip,
     required DeleteDayTrip deleteDayTrip,
     required ListenTripStops listenTripStops,
+    required UpdateDayTripStartTime updateDayTripStartTime,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
         _listenTripStops = listenTripStops,
+        _updateDayTripStartTime = updateDayTripStartTime,
         super(DayTripState.normal(
           trip: trip,
           dayTrip: dayTrip,
@@ -73,7 +80,8 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   startTimeChanged(TimeOfDay startTime) {
-    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(startTime: startTime)));
+    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(startTime: startTime), hasStartTimeToSave: true));
+    _startTimeDebouncer.run(() => saveDayTripStopStartTime());
   }
 
   void cancelEditing() {
@@ -115,6 +123,52 @@ class DayTripCubit extends Cubit<DayTripState> {
           dayTrip: state.dayTrip.copyWith(description: editingState.description),
           tripStops: state.tripStops,
         ));
+      },
+    );
+  }
+
+  Future<bool> saveDayTripStopStartTime({bool forced = false}) async {
+    if(forced) {
+      _startTimeDebouncer.cancel();
+      assert(state is DayTripStateNormal);
+      emit((state as DayTripStateNormal).copyWith(explictitStartTimeSave: true));
+    }
+
+    final result = await _updateDayTripStartTime(
+      UpdateDayTripStartTimeParams(
+        id: state.dayTrip.id,
+        tripId: state.trip.id,
+        startTime: state.dayTrip.startTime,
+      ),
+    );
+
+    return result.fold(
+      (failure) {
+        emit(DayTripState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+          hasStartTimeToSave: false,
+        ));
+        emit(DayTripState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+          hasStartTimeToSave: false,
+          explictitStartTimeSave: false,
+        ));
+        return false;
+      },
+      (_) {
+        emit(DayTripState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+          hasStartTimeToSave: false,
+          explictitStartTimeSave: false,
+        ));
+        return true;
       },
     );
   }

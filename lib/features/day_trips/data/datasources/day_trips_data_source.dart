@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/utilities/time_of_day.dart';
 import '../../domain/entities/day_trip.dart';
 
 abstract class DayTripsDataSource {
@@ -13,6 +15,11 @@ abstract class DayTripsDataSource {
     required String id,
     required String tripId,
     required String? description,
+  });
+  Future<void> updateDayTripStartTime({
+    required String id,
+    required String tripId,
+    required TimeOfDay startTime,
   });
 
   Future<void> deleteDayTrip({required String tripId, required String dayTripId});
@@ -71,5 +78,12 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
   @override
   Future<void> deleteDayTrip({required String tripId, required String dayTripId}) async {
     await _dayTripsCollection(tripId).doc(dayTripId).delete();
+  }
+  
+  @override
+  Future<void> updateDayTripStartTime({required String id, required String tripId, required TimeOfDay startTime}) async {
+    await _dayTripsCollection(tripId).doc(id).update({
+      'startTime': startTime.toJson(),
+    });
   }
 }

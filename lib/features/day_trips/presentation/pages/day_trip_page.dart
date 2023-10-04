@@ -50,14 +50,29 @@ class DayTripPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<DayTripCubit>(
       create: (context) => getIt(param1: _trip, param2: _dayTrip),
-      child: const Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: _DayTripPageAppBar(),
-        ),
-        body: _DayTripPageBody(),
+      child: Builder(
+        builder: (BuildContext context) {
+          return WillPopScope(
+            onWillPop: () => _onWillPop(context),
+            child: const Scaffold(
+              appBar: PreferredSize(
+                preferredSize: Size.fromHeight(kToolbarHeight),
+                child: _DayTripPageAppBar(),
+              ),
+              body: _DayTripPageBody(),
+            ),
+          );
+        },
       ),
     );
+  }
+
+  Future<bool> _onWillPop(BuildContext context) async {
+    if (!context.read<DayTripCubit>().state.hasStartTimeToSave) {
+      return true;
+    }
+
+    return context.read<DayTripCubit>().saveDayTripStopStartTime(forced: true);
   }
 }
 

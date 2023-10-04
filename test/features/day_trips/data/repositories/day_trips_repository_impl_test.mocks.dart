@@ -5,6 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
+import 'package:flutter/material.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart'
     as _i2;
@@ -85,6 +86,25 @@ class MockDayTripsDataSource extends _i1.Mock
             #id: id,
             #tripId: tripId,
             #description: description,
+          },
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+  @override
+  _i3.Future<void> updateDayTripStartTime({
+    required String? id,
+    required String? tripId,
+    required _i5.TimeOfDay? startTime,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDayTripStartTime,
+          [],
+          {
+            #id: id,
+            #tripId: tripId,
+            #startTime: startTime,
           },
         ),
         returnValue: _i3.Future<void>.value(),

@@ -58,6 +58,15 @@ class _DayTripPageBody extends HookWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            BlocSelector<DayTripCubit, DayTripState, bool>(
+              selector: (DayTripState state) => state.maybeMap(
+                normal: (state) => state.explictitStartTimeSave,
+                orElse: () => false,
+              ),
+              builder: (BuildContext context, bool explictitStartTimeSave) => explictitStartTimeSave
+                  ? const LinearProgressIndicator(minHeight: 1)
+                  : const SizedBox.shrink(),
+            ),
             BlocSelector<DayTripCubit, DayTripState, String?>(
               selector: (state) => state.dayTrip.description,
               builder: (context, description) => _DayTripHeader(headerText: description),

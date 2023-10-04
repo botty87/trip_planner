@@ -7,6 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/delete_day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
@@ -19,11 +20,13 @@ import 'day_trip_cubit_test.mocks.dart';
   MockSpec<UpdateDayTrip>(),
   MockSpec<DeleteDayTrip>(),
   MockSpec<ListenTripStops>(),
+  MockSpec<UpdateDayTripStartTime>(),
 ])
 void main() {
   late MockUpdateDayTrip mockUpdateDayTrip;
   late MockDeleteDayTrip mockDeleteDayTrip;
   late MockListenTripStops mockListenTripStops;
+  late MockUpdateDayTripStartTime mockUpdateDayTripStartTime;
 
   final tTrip = Trip(
     id: '1',
@@ -55,6 +58,7 @@ void main() {
     mockUpdateDayTrip = MockUpdateDayTrip();
     mockDeleteDayTrip = MockDeleteDayTrip();
     mockListenTripStops = MockListenTripStops();
+    mockUpdateDayTripStartTime = MockUpdateDayTripStartTime();
   });
 
   blocTest<DayTripCubit, DayTripState>(
@@ -68,7 +72,8 @@ void main() {
         dayTrip: tDayTrip,
         updateDayTrip: mockUpdateDayTrip,
         deleteDayTrip: mockDeleteDayTrip,
-        listenTripStops: mockListenTripStops),
+        listenTripStops: mockListenTripStops,
+        updateDayTripStartTime: mockUpdateDayTripStartTime),
   );
 
   blocTest<DayTripCubit, DayTripState>(
@@ -83,7 +88,8 @@ void main() {
         dayTrip: tDayTrip,
         updateDayTrip: mockUpdateDayTrip,
         deleteDayTrip: mockDeleteDayTrip,
-        listenTripStops: mockListenTripStops),
+        listenTripStops: mockListenTripStops,
+        updateDayTripStartTime: mockUpdateDayTripStartTime),
   );
   blocTest<DayTripCubit, DayTripState>(
     'On cancelEditing emit DayTripState with original Daytrip',
@@ -96,7 +102,8 @@ void main() {
         dayTrip: tDayTrip,
         updateDayTrip: mockUpdateDayTrip,
         deleteDayTrip: mockDeleteDayTrip,
-        listenTripStops: mockListenTripStops),
+        listenTripStops: mockListenTripStops,
+        updateDayTripStartTime: mockUpdateDayTripStartTime),
   );
 
   group('saveChanges', () {
@@ -104,8 +111,7 @@ void main() {
       'On save emit DayTripState with updated DayTrip',
       seed: () =>
           DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: 'new description'),
-      setUp: () => when(mockUpdateDayTrip.call(any))
-          .thenAnswer((_) async => const Right(null)),
+      setUp: () => when(mockUpdateDayTrip.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         DayTripState.editing(
@@ -118,7 +124,8 @@ void main() {
           dayTrip: tDayTrip,
           updateDayTrip: mockUpdateDayTrip,
           deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops),
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
     );
 
     blocTest<DayTripCubit, DayTripState>(
@@ -143,7 +150,68 @@ void main() {
           dayTrip: tDayTrip,
           updateDayTrip: mockUpdateDayTrip,
           deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops),
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
+    );
+  });
+
+  group('saveDayTripStartTime', () {
+    blocTest<DayTripCubit, DayTripState>(
+      'On save DayTripStartTime emit nothing and return true if updateDayTripStartTime succeeds',
+      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
+      setUp: () =>
+          when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
+      act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(), true),
+      expect: () => [],
+      build: () => DayTripCubit(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          updateDayTrip: mockUpdateDayTrip,
+          deleteDayTrip: mockDeleteDayTrip,
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
+    );
+
+    blocTest<DayTripCubit, DayTripState>(
+      'On save forced DayTripStartTime emit DayTripStateNormal explictitStartTimeSave true, and return true if updateDayTripStartTime succeeds',
+      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
+      setUp: () =>
+          when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
+      act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(forced: true), true),
+      expect: () => [
+        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: true),
+        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: false),
+      ],
+      build: () => DayTripCubit(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          updateDayTrip: mockUpdateDayTrip,
+          deleteDayTrip: mockDeleteDayTrip,
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
+    );
+
+    blocTest<DayTripCubit, DayTripState>(
+      'On save DayTripStartTime emit DayTripStateError and then DayTripStateNormal if updateDayTrip fails, and return false',
+      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
+      setUp: () => when(mockUpdateDayTripStartTime.call(any))
+          .thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
+      act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(), false),
+      expect: () => [
+        DayTripState.error(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          errorMessage: 'error',
+        ),
+        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
+      ],
+      build: () => DayTripCubit(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          updateDayTrip: mockUpdateDayTrip,
+          deleteDayTrip: mockDeleteDayTrip,
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
     );
   });
 
@@ -159,7 +227,8 @@ void main() {
           dayTrip: tDayTrip,
           updateDayTrip: mockUpdateDayTrip,
           deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops),
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
     );
 
     blocTest<DayTripCubit, DayTripState>(
@@ -172,7 +241,8 @@ void main() {
           dayTrip: tDayTrip,
           updateDayTrip: mockUpdateDayTrip,
           deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops),
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
     );
   });
 
@@ -192,7 +262,8 @@ void main() {
           dayTrip: tDayTrip,
           updateDayTrip: mockUpdateDayTrip,
           deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops),
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
     );
 
     blocTest<DayTripCubit, DayTripState>(
@@ -216,7 +287,8 @@ void main() {
           dayTrip: tDayTrip,
           updateDayTrip: mockUpdateDayTrip,
           deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops),
+          listenTripStops: mockListenTripStops,
+          updateDayTripStartTime: mockUpdateDayTripStartTime),
     );
   });
 
@@ -232,6 +304,7 @@ void main() {
             dayTrip: tDayTrip,
             updateDayTrip: mockUpdateDayTrip,
             deleteDayTrip: mockDeleteDayTrip,
-            listenTripStops: mockListenTripStops));
+            listenTripStops: mockListenTripStops,
+            updateDayTripStartTime: mockUpdateDayTripStartTime));
   });
 }

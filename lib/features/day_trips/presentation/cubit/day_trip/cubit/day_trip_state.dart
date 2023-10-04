@@ -6,6 +6,8 @@ sealed class DayTripState with _$DayTripState {
     required Trip trip,
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
+    @Default(false) bool hasStartTimeToSave,
+    @Default(false) bool explictitStartTimeSave,
   }) = DayTripStateNormal;
 
   const factory DayTripState.error({
@@ -13,6 +15,7 @@ sealed class DayTripState with _$DayTripState {
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
     String? errorMessage,
+    @Default(false) bool hasStartTimeToSave,
   }) = DayTripStateError;
 
   const factory DayTripState.editing({
@@ -21,17 +24,20 @@ sealed class DayTripState with _$DayTripState {
     @Default([]) List<TripStop> tripStops,
     required String? description,
     @Default(false) final bool isSaving,
+    @Default(false) bool hasStartTimeToSave,
   }) = DayTripStateEditing;
 
   const factory DayTripState.deleting({
     required Trip trip,
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
+    @Default(false) bool hasStartTimeToSave,
   }) = DayTripStateDeleting;
 
   const factory DayTripState.deleted({
     required Trip trip,
     required DayTrip dayTrip,
     @Default([]) List<TripStop> tripStops,
+    @Default(false) bool hasStartTimeToSave,
   }) = DayTripStateDeleted;
 }

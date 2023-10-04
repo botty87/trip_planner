@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/src/material/time.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import '../datasources/day_trips_data_source.dart';
 import '../../domain/entities/day_trip.dart';
@@ -74,8 +74,14 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
   }
 
   @override
-  Future<Either<DayTripsFailure, void>> updateDayTripStartTime({required String id, required String tripId, required TimeOfDay startTime}) {
-    // TODO: implement updateDayTripStartTime
-    throw UnimplementedError();
+  Future<Either<DayTripsFailure, void>> updateDayTripStartTime({required String id, required String tripId, required TimeOfDay startTime}) async {
+    try {
+      await _dayTripsDataSource.updateDayTripStartTime(id: id, tripId: tripId, startTime: startTime);
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(DayTripsFailure(message: e.message));
+    } on Exception {
+      return left(const DayTripsFailure());
+    }
   }
 }

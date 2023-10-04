@@ -6,4 +6,9 @@ extension TimeOfDayExtension on TimeOfDay {
     final minute = this.minute.toString().padLeft(2, '0');
     return '$hour:$minute';
   }
+
+  Map<String, dynamic> toJson() => {
+        'hour': hour,
+        'minute': minute,
+      };
 }
