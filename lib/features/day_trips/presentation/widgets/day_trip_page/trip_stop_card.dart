@@ -4,7 +4,7 @@ final class _TripStopCard extends GenericTripCard {
   final TripStop tripStop;
   final DateTime tripStartDate;
   final BuildContext context;
-  final previousTripStopsMinutedDuration;
+  final int previousTripStopsMinutedDuration;
 
   const _TripStopCard({
     required this.tripStop,
