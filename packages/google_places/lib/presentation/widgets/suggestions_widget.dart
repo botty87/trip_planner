@@ -2,8 +2,9 @@ part of 'google_places_suggestions_widget.dart';
 
 class _SuggestionsWidget extends StatelessWidget {
   final Function(PlaceDetails?) onSuggestionSelected;
+  final _suggestionsKey = GlobalKey();
 
-  const _SuggestionsWidget({required this.onSuggestionSelected});
+  _SuggestionsWidget({required this.onSuggestionSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,14 @@ class _SuggestionsWidget extends StatelessWidget {
         error: (state) => state.suggestions,
       ),
     );
+
+    Future.delayed(const Duration(milliseconds: 300), () {
+      final RenderBox? box = _suggestionsKey.currentContext?.findRenderObject() as RenderBox?;
+      if (box != null) {
+        Scrollable.ensureVisible(_suggestionsKey.currentContext!,
+            duration: const Duration(milliseconds: 300), curve: Curves.decelerate);
+      }
+    });
 
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
@@ -24,6 +33,7 @@ class _SuggestionsWidget extends StatelessWidget {
 
   Widget _buildSuggestions(List<Suggestion> suggestions, BuildContext context) {
     return ListView.builder(
+      key: _suggestionsKey,
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: suggestions.length,
