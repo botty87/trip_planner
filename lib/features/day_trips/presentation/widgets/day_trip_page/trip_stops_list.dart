@@ -47,7 +47,10 @@ class _TripStopsList extends StatelessWidget {
           child: child,
         );
       },
-      onReorder: (int oldIndex, int newIndex) {},
+      onReorder: (int oldIndex, int newIndex) {
+        tripStopStartEndTimes.clear();
+        context.read<DayTripCubit>().reorderTripStops(oldIndex, newIndex);
+      },
     );
   }
 

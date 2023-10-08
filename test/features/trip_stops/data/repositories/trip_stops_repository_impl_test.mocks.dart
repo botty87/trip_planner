@@ -70,4 +70,23 @@ class MockTripStopsDataSource extends _i1.Mock
         returnValue: _i3.Stream<List<_i5.TripStop>>.empty(),
         returnValueForMissingStub: _i3.Stream<List<_i5.TripStop>>.empty(),
       ) as _i3.Stream<List<_i5.TripStop>>);
+  @override
+  _i3.Future<void> updateTripStopsIndexes({
+    required String? tripId,
+    required String? dayTripId,
+    required List<_i5.TripStop>? tripStops,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateTripStopsIndexes,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #tripStops: tripStops,
+          },
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }

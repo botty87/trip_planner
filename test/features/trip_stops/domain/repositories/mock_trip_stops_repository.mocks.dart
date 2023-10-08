@@ -118,4 +118,48 @@ class MockTripStopsRepository extends _i1.Mock
                 _i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>.empty(),
           ) as _i4
               .Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>);
+  @override
+  _i4.Future<_i2.Either<_i5.TripStopsFailure, void>> updateTripStopsIndexes({
+    required String? tripId,
+    required String? dayTripId,
+    required List<_i7.TripStop>? tripStops,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateTripStopsIndexes,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #tripStops: tripStops,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #updateTripStopsIndexes,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #tripStops: tripStops,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+                _FakeEither_0<_i5.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #updateTripStopsIndexes,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #tripStops: tripStops,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>);
 }

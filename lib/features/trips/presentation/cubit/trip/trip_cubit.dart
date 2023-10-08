@@ -151,6 +151,7 @@ class TripCubit extends Cubit<TripState> {
   void reorderDayTrips(int oldIndex, int newIndex) {
     //fix for a bug when newIndex > oldIndex
     if (newIndex > oldIndex) newIndex--;
+    
     final List<DayTrip> dayTripsToUpdate = [];
 
     dayTripsToUpdate.add(state.dayTrips[oldIndex].copyWith(index: newIndex));

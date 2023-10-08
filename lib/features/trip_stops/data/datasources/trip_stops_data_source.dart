@@ -14,6 +14,12 @@ abstract class TripStopsDataSource {
   });
 
   Stream<List<TripStop>> listenTripStops({required String tripId, required String dayTripId});
+
+  Future<void> updateTripStopsIndexes({
+    required String tripId,
+    required String dayTripId,
+    required List<TripStop> tripStops,
+  });
 }
 
 @LazySingleton(as: TripStopsDataSource)
@@ -55,9 +61,26 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
   }
 
   @override
-  Stream<List<TripStop>> listenTripStops({required String tripId, required String dayTripId}) async* {
+  Stream<List<TripStop>> listenTripStops(
+      {required String tripId, required String dayTripId}) async* {
     yield* _tripStopsCollection(tripId, dayTripId).orderBy('index').snapshots().map((snapshot) {
       return snapshot.docs.map((doc) => doc.data()).toList();
     });
+  }
+
+  @override
+  Future<void> updateTripStopsIndexes(
+      {required String tripId,
+      required String dayTripId,
+      required List<TripStop> tripStops}) async {
+    final batch = FirebaseFirestore.instance.batch();
+    final tripStopsCollection = _tripStopsCollection(tripId, dayTripId);
+
+    for (var i = 0; i < tripStops.length; i++) {
+      final tripStop = tripStops[i];
+      batch.update(tripStopsCollection.doc(tripStop.id), {'index': tripStop.index});
+    }
+
+    await batch.commit();
   }
 }

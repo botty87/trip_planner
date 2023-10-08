@@ -109,4 +109,40 @@ void main() {
       expect(result, emitsInOrder([left(const TripStopsFailure())]));
     });
   });
+
+  group('update trip stops indexes', () {
+    test('should return void right(null) when updateTripStopsIndexes success', () {
+      when(mockTripStopsDataSource.updateTripStopsIndexes(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStops: anyNamed('tripStops'),
+      )).thenAnswer((_) async {});
+
+      // act
+      final result = repository.updateTripStopsIndexes(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStops: [tTripStop],
+      );
+      // assert
+      expect(result, completion(right(null)));
+    });
+
+    test('should return void left(TripStopsFailure) when updateTripStopsIndexes fails', () {
+      when(mockTripStopsDataSource.updateTripStopsIndexes(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStops: anyNamed('tripStops'),
+      )).thenThrow(Exception());
+
+      // act
+      final result = repository.updateTripStopsIndexes(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStops: [tTripStop],
+      );
+      // assert
+      expect(result, completion(left(const TripStopsFailure())));
+    });
+  });
 }

@@ -211,6 +211,27 @@ class DayTripCubit extends Cubit<DayTripState> {
     );
   }
 
+  void reorderTripStops(int oldIndex, int newIndex) {
+    //fix for a bug when newIndex > oldIndex
+    if (newIndex > oldIndex) newIndex--;
+
+    final List<TripStop> tripStopsToUpdate = [];
+
+    tripStopsToUpdate.add(state.tripStops[oldIndex].copyWith(index: newIndex));
+    if (newIndex > oldIndex) {
+      for (int i = oldIndex + 1; i <= newIndex; i++) {
+        tripStopsToUpdate.add(state.tripStops[i].copyWith(index: i - 1));
+      }
+    } else {
+      for (int i = oldIndex - 1; i >= newIndex; i--) {
+        tripStopsToUpdate.add(state.tripStops[i].copyWith(index: i + 1));
+      }
+    }
+
+    /* _updateDayTripsIndexes(
+        UpdateDayTripsIndexesParams(dayTrips: dayTripsToUpdate, tripId: state.trip.id)); */
+  }
+
   @override
   Future<void> close() {
     _tripStopsSubscription.cancel();
