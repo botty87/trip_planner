@@ -12,6 +12,7 @@ import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart';
+import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stops_indexes.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 
 import 'day_trip_cubit_test.mocks.dart';
@@ -21,12 +22,14 @@ import 'day_trip_cubit_test.mocks.dart';
   MockSpec<DeleteDayTrip>(),
   MockSpec<ListenTripStops>(),
   MockSpec<UpdateDayTripStartTime>(),
+  MockSpec<UpdateTripStopsIndexes>(),
 ])
 void main() {
   late MockUpdateDayTrip mockUpdateDayTrip;
   late MockDeleteDayTrip mockDeleteDayTrip;
   late MockListenTripStops mockListenTripStops;
   late MockUpdateDayTripStartTime mockUpdateDayTripStartTime;
+  late MockUpdateTripStopsIndexes mockUpdateTripStopsIndexes;
 
   final tTrip = Trip(
     id: '1',
@@ -59,7 +62,20 @@ void main() {
     mockDeleteDayTrip = MockDeleteDayTrip();
     mockListenTripStops = MockListenTripStops();
     mockUpdateDayTripStartTime = MockUpdateDayTripStartTime();
+    mockUpdateTripStopsIndexes = MockUpdateTripStopsIndexes();
   });
+
+  DayTripCubit getStandardDayTripCubit() {
+    return DayTripCubit(
+      trip: tTrip,
+      dayTrip: tDayTrip,
+      updateDayTrip: mockUpdateDayTrip,
+      deleteDayTrip: mockDeleteDayTrip,
+      listenTripStops: mockListenTripStops,
+      updateDayTripStartTime: mockUpdateDayTripStartTime,
+      updateDayTripsIndexes: mockUpdateTripStopsIndexes,
+    );
+  }
 
   blocTest<DayTripCubit, DayTripState>(
     'On edit emit DayTripStateEditing',
@@ -67,13 +83,7 @@ void main() {
     act: (cubit) => cubit.edit(),
     expect: () =>
         [DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description)],
-    build: () => DayTripCubit(
-        trip: tTrip,
-        dayTrip: tDayTrip,
-        updateDayTrip: mockUpdateDayTrip,
-        deleteDayTrip: mockDeleteDayTrip,
-        listenTripStops: mockListenTripStops,
-        updateDayTripStartTime: mockUpdateDayTripStartTime),
+    build: () => getStandardDayTripCubit(),
   );
 
   blocTest<DayTripCubit, DayTripState>(
@@ -83,13 +93,7 @@ void main() {
     act: (cubit) => cubit.descriptionChanged('new description'),
     expect: () =>
         [DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: 'new description')],
-    build: () => DayTripCubit(
-        trip: tTrip,
-        dayTrip: tDayTrip,
-        updateDayTrip: mockUpdateDayTrip,
-        deleteDayTrip: mockDeleteDayTrip,
-        listenTripStops: mockListenTripStops,
-        updateDayTripStartTime: mockUpdateDayTripStartTime),
+    build: () => getStandardDayTripCubit(),
   );
   blocTest<DayTripCubit, DayTripState>(
     'On cancelEditing emit DayTripState with original Daytrip',
@@ -97,13 +101,7 @@ void main() {
         DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description),
     act: (cubit) => cubit.cancelEditing(),
     expect: () => [DayTripState.normal(trip: tTrip, dayTrip: tDayTrip)],
-    build: () => DayTripCubit(
-        trip: tTrip,
-        dayTrip: tDayTrip,
-        updateDayTrip: mockUpdateDayTrip,
-        deleteDayTrip: mockDeleteDayTrip,
-        listenTripStops: mockListenTripStops,
-        updateDayTripStartTime: mockUpdateDayTripStartTime),
+    build: () => getStandardDayTripCubit(),
   );
 
   group('saveChanges', () {
@@ -119,13 +117,7 @@ void main() {
         DayTripState.normal(
             trip: tTrip, dayTrip: tDayTrip.copyWith(description: 'new description')),
       ],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
 
     blocTest<DayTripCubit, DayTripState>(
@@ -145,13 +137,7 @@ void main() {
         ),
         DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description),
       ],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
   });
 
@@ -163,13 +149,7 @@ void main() {
           when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(), true),
       expect: () => [],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
 
     blocTest<DayTripCubit, DayTripState>(
@@ -182,13 +162,7 @@ void main() {
         DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: true),
         DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: false),
       ],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
 
     blocTest<DayTripCubit, DayTripState>(
@@ -205,13 +179,7 @@ void main() {
         ),
         DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
       ],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
   });
 
@@ -222,13 +190,7 @@ void main() {
           DayTripState.editing(trip: tTrip, dayTrip: tDayTrip, description: tDayTrip.description),
       act: (cubit) => cubit.modalBottomEditingDismissed(),
       expect: () => [DayTripState.normal(trip: tTrip, dayTrip: tDayTrip)],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
 
     blocTest<DayTripCubit, DayTripState>(
@@ -236,13 +198,7 @@ void main() {
       seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
       act: (cubit) => cubit.modalBottomEditingDismissed(),
       expect: () => [],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
   });
 
@@ -257,13 +213,7 @@ void main() {
         DayTripState.deleting(trip: tTrip, dayTrip: tDayTrip),
         DayTripState.deleted(trip: tTrip, dayTrip: tDayTrip),
       ],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
 
     blocTest<DayTripCubit, DayTripState>(
@@ -282,29 +232,28 @@ void main() {
         ),
         DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
       ],
-      build: () => DayTripCubit(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          updateDayTrip: mockUpdateDayTrip,
-          deleteDayTrip: mockDeleteDayTrip,
-          listenTripStops: mockListenTripStops,
-          updateDayTripStartTime: mockUpdateDayTripStartTime),
+      build: () => getStandardDayTripCubit(),
     );
   });
 
+  blocTest<DayTripCubit, DayTripState>(
+    'On reorderTripStops call updateTripStopsIndexes with new tripStops order',
+    seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+    act: (cubit) => cubit.reorderTripStops(0, 1),
+    expect: () => [],
+    verify: (_) => verify(mockUpdateTripStopsIndexes.call(any)).called(1),
+    build: () => getStandardDayTripCubit(),
+  );
+
   group('listen tripStops', () {
-    blocTest<DayTripCubit, DayTripState>('On listenTripStops emit DayTripState with tripStops',
-        setUp: () =>
-            when(mockListenTripStops.call(any)).thenAnswer((_) => Stream.value(right(tTripStops))),
-        expect: () => [
-              DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
-            ],
-        build: () => DayTripCubit(
-            trip: tTrip,
-            dayTrip: tDayTrip,
-            updateDayTrip: mockUpdateDayTrip,
-            deleteDayTrip: mockDeleteDayTrip,
-            listenTripStops: mockListenTripStops,
-            updateDayTripStartTime: mockUpdateDayTripStartTime));
+    blocTest<DayTripCubit, DayTripState>(
+      'On listenTripStops emit DayTripState with tripStops',
+      setUp: () =>
+          when(mockListenTripStops.call(any)).thenAnswer((_) => Stream.value(right(tTripStops))),
+      expect: () => [
+        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      ],
+      build: () => getStandardDayTripCubit(),
+    );
   });
 }

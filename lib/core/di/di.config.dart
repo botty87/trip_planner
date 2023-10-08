@@ -199,6 +199,7 @@ extension GetItInjectableX on _i1.GetIt {
           deleteDayTrip: gh<_i7.DeleteDayTrip>(),
           listenTripStops: gh<_i30.ListenTripStops>(),
           updateDayTripStartTime: gh<_i17.UpdateDayTripStartTime>(),
+          updateDayTripsIndexes: gh<_i20.UpdateTripStopsIndexes>(),
         ));
     gh.factory<_i43.LoginSignupCubit>(() => _i43.LoginSignupCubit(
           registerUser: gh<_i37.RegisterUser>(),

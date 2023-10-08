@@ -11,6 +11,7 @@ import '../../../../../trip_stops/domain/usecases/listen_trip_stops.dart';
 
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
+import '../../../../../trip_stops/domain/usecases/update_trip_stops_indexes.dart';
 import '../../../../../trip_stops/errors/trip_stops_failure.dart';
 import '../../../../../trips/domain/entities/trip.dart';
 import '../../../../domain/entities/day_trip.dart';
@@ -27,6 +28,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   final DeleteDayTrip _deleteDayTrip;
   final ListenTripStops _listenTripStops;
   final UpdateDayTripStartTime _updateDayTripStartTime;
+  final UpdateTripStopsIndexes _updateDayTripsIndexes;
   late final StreamSubscription<Either<TripStopsFailure, List<TripStop>>> _tripStopsSubscription;
 
   final _startTimeDebouncer = Debouncer(milliseconds: 5000);
@@ -38,10 +40,12 @@ class DayTripCubit extends Cubit<DayTripState> {
     required DeleteDayTrip deleteDayTrip,
     required ListenTripStops listenTripStops,
     required UpdateDayTripStartTime updateDayTripStartTime,
+    required UpdateTripStopsIndexes updateDayTripsIndexes,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
         _listenTripStops = listenTripStops,
         _updateDayTripStartTime = updateDayTripStartTime,
+        _updateDayTripsIndexes = updateDayTripsIndexes,
         super(DayTripState.normal(
           trip: trip,
           dayTrip: dayTrip,
@@ -80,7 +84,8 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   startTimeChanged(TimeOfDay startTime) {
-    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(startTime: startTime), hasStartTimeToSave: true));
+    emit(state.copyWith(
+        dayTrip: state.dayTrip.copyWith(startTime: startTime), hasStartTimeToSave: true));
     _startTimeDebouncer.run(() => saveDayTripStopStartTime());
   }
 
@@ -128,7 +133,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   Future<bool> saveDayTripStopStartTime({bool forced = false}) async {
-    if(forced) {
+    if (forced) {
       _startTimeDebouncer.cancel();
       assert(state is DayTripStateNormal);
       emit((state as DayTripStateNormal).copyWith(explictitStartTimeSave: true));
@@ -228,8 +233,13 @@ class DayTripCubit extends Cubit<DayTripState> {
       }
     }
 
-    /* _updateDayTripsIndexes(
-        UpdateDayTripsIndexesParams(dayTrips: dayTripsToUpdate, tripId: state.trip.id)); */
+    _updateDayTripsIndexes(
+      UpdateTripStopsIndexesParams(
+        tripId: state.trip.id,
+        dayTripId: state.dayTrip.id,
+        tripStops: tripStopsToUpdate,
+      ),
+    );
   }
 
   @override
