@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
         listener: (context, state) {
           final router = getIt<AppRouter>();
           state.mapOrNull(
-            loggedOut: (_) => router.replaceAll([LoginSignupRoute()]),
-            loggedIn: (_) => router.replaceAll([TripsRoute()]),
+            loggedOut: (_) => router.replaceAll([const LoginSignupRoute()]),
+            loggedIn: (_) => router.replaceAll([const TripsRoute()]),
             error: (_) => throw UnimplementedError(),
           );
         },
