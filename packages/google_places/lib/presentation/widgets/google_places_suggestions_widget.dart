@@ -42,12 +42,6 @@ class _GooglePlacesSuggestionsWidgetState extends State<GooglePlacesSuggestionsW
   }
 
   @override
-  void dispose() async {
-    await getIt.reset();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocProvider<GooglePlacesCubit>(
       create: (context) => getIt(),

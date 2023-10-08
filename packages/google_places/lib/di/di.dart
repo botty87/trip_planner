@@ -5,9 +5,15 @@ import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 final getIt = GetIt.instance;
+bool _isInitialized = false;
 
 @injectableInit
-void configureDependencies() => getIt.init();
+void configureDependencies() {
+  if (!_isInitialized) {
+    _isInitialized = true;
+    getIt.init();
+  }
+}
 
 @module
 abstract class Network {
