@@ -45,6 +45,9 @@ class _SuggestionsWidget extends StatelessWidget {
             final result =
                 await context.read<GooglePlacesCubit>().fetchPlaceDetails(suggestion.placeId);
             onSuggestionSelected(result);
+            if(context.mounted) {
+              FocusScope.of(context).unfocus();
+            }
           },
         );
       },
