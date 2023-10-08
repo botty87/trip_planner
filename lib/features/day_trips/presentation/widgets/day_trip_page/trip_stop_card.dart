@@ -2,15 +2,13 @@ part of '../../pages/day_trip_page.dart';
 
 final class _TripStopCard extends GenericTripCard {
   final TripStop tripStop;
-  final DateTime tripStartDate;
+  final Pair<DateTime, DateTime> tripStartEndTimes;
   final BuildContext context;
-  final int previousTripStopsMinutedDuration;
 
   const _TripStopCard({
     required this.tripStop,
-    required this.tripStartDate,
+    required this.tripStartEndTimes,
     required this.context,
-    required this.previousTripStopsMinutedDuration,
   });
 
   @override
@@ -18,11 +16,8 @@ final class _TripStopCard extends GenericTripCard {
 
   @override
   String get date {
-    final tripStopStartDateTime = DateFormat('HH:mm')
-        .format(tripStartDate.add(Duration(minutes: previousTripStopsMinutedDuration)));
-    final tripStopEndDateTime = DateFormat('HH:mm').format(
-        tripStartDate.add(Duration(minutes: previousTripStopsMinutedDuration + tripStop.duration)));
-    return '$tripStopStartDateTime - $tripStopEndDateTime';
+    final dateFormat = DateFormat('HH:mm');
+    return '${dateFormat.format(tripStartEndTimes.first)} - ${dateFormat.format(tripStartEndTimes.second)}';
   }
 
   @override

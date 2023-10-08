@@ -9,10 +9,11 @@ class _TripStopsList extends StatelessWidget {
     final DateTime dayTripStartDateTime = context.select((DayTripCubit cubit) {
       final startDate = cubit.state.trip.startDate;
       final startTime = cubit.state.dayTrip.startTime;
-      return DateTime(startDate.year, startDate.month, startDate.day, startTime.hour, startTime.minute);
+      return DateTime(
+          startDate.year, startDate.month, startDate.day, startTime.hour, startTime.minute);
     });
 
-    int previousTripStopsMinutedDuration = 0;
+    final List<Pair<DateTime, DateTime>> tripStopStartEndTimes = [];
 
     return ReorderableListView.builder(
       shrinkWrap: true,
@@ -20,17 +21,23 @@ class _TripStopsList extends StatelessWidget {
       itemCount: tripStops.length,
       itemBuilder: (context, index) {
         final tripStop = tripStops[index];
+        if (tripStopStartEndTimes.length <= index) {
+          tripStopStartEndTimes.add(_getTripStopsBeforeDuration(
+            tripStops: tripStops,
+            tripStopStartEndTimes: tripStopStartEndTimes,
+            dayTripStartDateTime: dayTripStartDateTime,
+            currentIndex: index,
+          ));
+        }
         final widget = Padding(
           key: ValueKey(tripStop.id),
           padding: const EdgeInsets.only(bottom: verticalSpaceXs),
           child: _TripStopCard(
             tripStop: tripStop,
-            tripStartDate: dayTripStartDateTime,
+            tripStartEndTimes: tripStopStartEndTimes[index],
             context: context,
-            previousTripStopsMinutedDuration: previousTripStopsMinutedDuration,
           ),
         );
-        previousTripStopsMinutedDuration += tripStop.duration;
         return widget;
       },
       proxyDecorator: (child, index, animation) {
@@ -42,5 +49,22 @@ class _TripStopsList extends StatelessWidget {
       },
       onReorder: (int oldIndex, int newIndex) {},
     );
+  }
+
+  Pair<DateTime, DateTime> _getTripStopsBeforeDuration({
+    required List<TripStop> tripStops,
+    required List<Pair<DateTime, DateTime>> tripStopStartEndTimes,
+    required DateTime dayTripStartDateTime,
+    required int currentIndex,
+  }) {
+    final tripStop = tripStops[currentIndex];
+    if (currentIndex == 0) {
+      return Pair(
+          dayTripStartDateTime, dayTripStartDateTime.add(Duration(minutes: tripStop.duration)));
+    } else {
+      final previousTripStopStartEndTime = tripStopStartEndTimes[currentIndex - 1];
+      return Pair(previousTripStopStartEndTime.second,
+          previousTripStopStartEndTime.second.add(Duration(minutes: tripStop.duration)));
+    }
   }
 }

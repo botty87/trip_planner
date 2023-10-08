@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:time_picker/time_picker.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
+import '../../../../core/utilities/pair.dart';
 import '../../../../core/widgets/trip/delete_trip_button.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
