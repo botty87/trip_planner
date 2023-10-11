@@ -13,6 +13,7 @@ class _TripStopsList extends StatelessWidget {
           startDate.year, startDate.month, startDate.day, startTime.hour, startTime.minute);
     });
 
+    //this is needed to avoid the recalculation of the trip start and end times on every build, during the reordering
     final List<Pair<DateTime, DateTime>> tripStopStartEndTimes = [];
 
     return CustomReorderableListView.separated(
@@ -24,7 +25,7 @@ class _TripStopsList extends StatelessWidget {
       itemBuilder: (context, index) {
         final tripStop = tripStops[index];
         if (tripStopStartEndTimes.length <= index) {
-          tripStopStartEndTimes.add(_getTripStopsBeforeDuration(
+          tripStopStartEndTimes.add(_getTripStartEndTimes(
             tripStops: tripStops,
             tripStopStartEndTimes: tripStopStartEndTimes,
             dayTripStartDateTime: dayTripStartDateTime,
@@ -56,7 +57,7 @@ class _TripStopsList extends StatelessWidget {
     );
   }
 
-  Pair<DateTime, DateTime> _getTripStopsBeforeDuration({
+  Pair<DateTime, DateTime> _getTripStartEndTimes({
     required List<TripStop> tripStops,
     required List<Pair<DateTime, DateTime>> tripStopStartEndTimes,
     required DateTime dayTripStartDateTime,
@@ -67,9 +68,11 @@ class _TripStopsList extends StatelessWidget {
       return Pair(
           dayTripStartDateTime, dayTripStartDateTime.add(Duration(minutes: tripStop.duration)));
     } else {
+      final previousTripStop = tripStops[currentIndex - 1];
       final previousTripStopStartEndTime = tripStopStartEndTimes[currentIndex - 1];
-      return Pair(previousTripStopStartEndTime.second,
-          previousTripStopStartEndTime.second.add(Duration(minutes: tripStop.duration)));
+      final startTime = previousTripStopStartEndTime.second
+          .add(Duration(minutes: previousTripStop.travelTimeToNextStop));
+      return Pair(startTime, startTime.add(Duration(minutes: tripStop.duration)));
     }
   }
 }
