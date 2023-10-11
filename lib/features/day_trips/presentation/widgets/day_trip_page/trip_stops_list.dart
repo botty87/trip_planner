@@ -15,9 +15,11 @@ class _TripStopsList extends StatelessWidget {
 
     final List<Pair<DateTime, DateTime>> tripStopStartEndTimes = [];
 
-    return ReorderableListView.builder(
+    return CustomReorderableListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
+      separatorBuilder: (BuildContext context, int index) =>
+          TravelCard(tripStop: tripStops[(index / 2).truncate()]),
       itemCount: tripStops.length,
       itemBuilder: (context, index) {
         final tripStop = tripStops[index];

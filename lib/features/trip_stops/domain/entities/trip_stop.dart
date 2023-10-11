@@ -21,6 +21,7 @@ sealed class TripStop with _$TripStop {
     @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
     required LatLng location,
     @Default(false) bool isDone,
+    @Default(0) int travelTimeToNextStop, // in minutes
   }) = _TripStop;
 
   factory TripStop.create({

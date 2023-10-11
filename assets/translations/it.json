@@ -75,5 +75,9 @@
     "enterTripStopLocation" : "Inserisci la posizione della tappa di viaggio",
     "enterTripStopDuration" : "Inserisci la durata della tappa di viaggio",
     "tripStopCreated" : "Tappa di viaggio creata!",
-    "startTime" : "Ora di inizio"
+    "startTime" : "Ora di inizio",
+    "hour": {
+        "one": "{} ora",
+        "other": "{} ore"
+    }
 }

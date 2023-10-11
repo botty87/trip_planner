@@ -13,85 +13,85 @@ import 'package:flutter_bloc/flutter_bloc.dart' as _i24;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:logger/logger.dart' as _i9;
-import '../bloc_observer.dart' as _i25;
-import 'di.dart' as _i46;
-import '../routes/app_router.dart' as _i3;
-import '../../features/day_trips/data/datasources/day_trips_data_source.dart'
+import 'package:trip_planner/core/bloc_observer.dart' as _i25;
+import 'package:trip_planner/core/di/di.dart' as _i46;
+import 'package:trip_planner/core/routes/app_router.dart' as _i3;
+import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart'
     as _i4;
-import '../../features/day_trips/data/repositories/day_trips_repository_impl.dart'
+import 'package:trip_planner/features/day_trips/data/repositories/day_trips_repository_impl.dart'
     as _i6;
-import '../../features/day_trips/domain/entities/day_trip.dart'
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
     as _i42;
-import '../../features/day_trips/domain/repositories/day_trips_repository.dart'
+import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i5;
-import '../../features/day_trips/domain/usecases/create_day_trip.dart'
+import 'package:trip_planner/features/day_trips/domain/usecases/create_day_trip.dart'
     as _i26;
-import '../../features/day_trips/domain/usecases/delete_day_trip.dart'
+import 'package:trip_planner/features/day_trips/domain/usecases/delete_day_trip.dart'
     as _i7;
-import '../../features/day_trips/domain/usecases/listen_day_trips.dart'
+import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trips.dart'
     as _i8;
-import '../../features/day_trips/domain/usecases/update_day_trip.dart'
+import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart'
     as _i16;
-import '../../features/day_trips/domain/usecases/update_day_trip_start_time.dart'
+import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart'
     as _i17;
-import '../../features/day_trips/domain/usecases/update_day_trips_indexes.dart'
+import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trips_indexes.dart'
     as _i18;
-import '../../features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart'
+import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart'
     as _i41;
-import '../../features/day_trips/presentation/cubit/new_day_trip/new_day_trip_cubit.dart'
+import 'package:trip_planner/features/day_trips/presentation/cubit/new_day_trip/new_day_trip_cubit.dart'
     as _i34;
-import '../../features/trip_stops/data/datasources/trip_stops_data_source.dart'
+import 'package:trip_planner/features/trip_stops/data/datasources/trip_stops_data_source.dart'
     as _i10;
-import '../../features/trip_stops/data/repositories/trip_stops_repository_impl.dart'
+import 'package:trip_planner/features/trip_stops/data/repositories/trip_stops_repository_impl.dart'
     as _i12;
-import '../../features/trip_stops/domain/repositories/trip_stops_repository.dart'
+import 'package:trip_planner/features/trip_stops/domain/repositories/trip_stops_repository.dart'
     as _i11;
-import '../../features/trip_stops/domain/usecases/create_trip_stop.dart'
+import 'package:trip_planner/features/trip_stops/domain/usecases/create_trip_stop.dart'
     as _i28;
-import '../../features/trip_stops/domain/usecases/listen_trip_stops.dart'
+import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart'
     as _i30;
-import '../../features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
+import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
     as _i20;
-import '../../features/trip_stops/presentation/cubit/cubit/new_trip_stop_cubit.dart'
+import 'package:trip_planner/features/trip_stops/presentation/cubit/cubit/new_trip_stop_cubit.dart'
     as _i35;
-import '../../features/trips/data/datasources/trips_data_source.dart'
+import 'package:trip_planner/features/trips/data/datasources/trips_data_source.dart'
     as _i13;
-import '../../features/trips/data/repositories/trips_repository_impl.dart'
+import 'package:trip_planner/features/trips/data/repositories/trips_repository_impl.dart'
     as _i15;
-import '../../features/trips/domain/entities/trip.dart' as _i39;
-import '../../features/trips/domain/repositories/trips_repository.dart'
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i39;
+import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
     as _i14;
-import '../../features/trips/domain/usecases/create_trip.dart'
+import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart'
     as _i27;
-import '../../features/trips/domain/usecases/delete_trip.dart'
+import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart'
     as _i29;
-import '../../features/trips/domain/usecases/listen_trips.dart'
+import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart'
     as _i31;
-import '../../features/trips/domain/usecases/update_trip.dart'
+import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart'
     as _i19;
-import '../../features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
+import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
     as _i44;
-import '../../features/trips/presentation/cubit/trip/trip_cubit.dart'
+import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart'
     as _i38;
-import '../../features/trips/presentation/cubit/trips/trips_cubit.dart'
+import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart'
     as _i45;
-import '../../features/user_account/data/datasources/user_data_source.dart'
+import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
     as _i21;
-import '../../features/user_account/data/repositories/user_repository_impl.dart'
+import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart'
     as _i23;
-import '../../features/user_account/domain/repositories/user_repository.dart'
+import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
     as _i22;
-import '../../features/user_account/domain/usecases/listen_user.dart'
+import 'package:trip_planner/features/user_account/domain/usecases/listen_user.dart'
     as _i32;
-import '../../features/user_account/domain/usecases/login_user.dart'
+import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart'
     as _i33;
-import '../../features/user_account/domain/usecases/recover_password.dart'
+import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart'
     as _i36;
-import '../../features/user_account/domain/usecases/register_user.dart'
+import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart'
     as _i37;
-import '../../features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
+import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
     as _i43;
-import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
+import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart'
     as _i40;
 
 extension GetItInjectableX on _i1.GetIt {

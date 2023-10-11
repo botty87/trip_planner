@@ -13,6 +13,7 @@ _$_TripStop _$$_TripStopFromJson(Map<String, dynamic> json) => _$_TripStop(
       duration: json['duration'] as int,
       location: latLngFromGeoPoint(json['location'] as GeoPoint),
       isDone: json['isDone'] as bool? ?? false,
+      travelTimeToNextStop: json['travelTimeToNextStop'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_TripStopToJson(_$_TripStop instance) =>
@@ -23,4 +24,5 @@ Map<String, dynamic> _$$_TripStopToJson(_$_TripStop instance) =>
       'duration': instance.duration,
       'location': geoPointFromLatLng(instance.location),
       'isDone': instance.isDone,
+      'travelTimeToNextStop': instance.travelTimeToNextStop,
     };
