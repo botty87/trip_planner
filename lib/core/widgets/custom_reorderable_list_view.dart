@@ -39,7 +39,12 @@ class CustomReorderableListView extends ReorderableListView {
               if (separator.key == null) {
                 return KeyedSubtree(
                   key: ValueKey('ReorderableSeparator${index}Key'),
-                  child: IgnorePointer(child: separator),
+                  child: GestureDetector(
+                    child: separator,
+                    onLongPress: () {
+                      //do nothing to disable dragging on separators
+                    },
+                  ),
                 );
               }
 
