@@ -79,5 +79,6 @@
     "hour" : {
         "one" : "{} hour",
         "other" : "{} hours"
-    }
+    },
+    "estimatedTimeTravel" : "Estimated time travel"
 }

@@ -22,4 +22,11 @@ abstract class TripStopsRepository {
     required String dayTripId,
     required List<TripStop> tripStops,
   });
+
+  Future<Either<TripStopsFailure, void>> updateTravelTime({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required int travelTime,
+  });
 }

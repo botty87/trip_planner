@@ -11,6 +11,7 @@ import '../../../../../trip_stops/domain/usecases/listen_trip_stops.dart';
 
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
+import '../../../../../trip_stops/domain/usecases/update_travel_time.dart';
 import '../../../../../trip_stops/domain/usecases/update_trip_stops_indexes.dart';
 import '../../../../../trip_stops/errors/trip_stops_failure.dart';
 import '../../../../../trips/domain/entities/trip.dart';
@@ -29,9 +30,11 @@ class DayTripCubit extends Cubit<DayTripState> {
   final ListenTripStops _listenTripStops;
   final UpdateDayTripStartTime _updateDayTripStartTime;
   final UpdateTripStopsIndexes _updateDayTripsIndexes;
+  final UpdateTravelTime _updateTravelTime;
   late final StreamSubscription<Either<TripStopsFailure, List<TripStop>>> _tripStopsSubscription;
 
   final _startTimeDebouncer = Debouncer(milliseconds: 5000);
+  final _travelTimeDebouncer = Debouncer(milliseconds: 500);
 
   DayTripCubit({
     @factoryParam required Trip trip,
@@ -41,11 +44,13 @@ class DayTripCubit extends Cubit<DayTripState> {
     required ListenTripStops listenTripStops,
     required UpdateDayTripStartTime updateDayTripStartTime,
     required UpdateTripStopsIndexes updateDayTripsIndexes,
+    required UpdateTravelTime updateTravelTime,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
         _listenTripStops = listenTripStops,
         _updateDayTripStartTime = updateDayTripStartTime,
         _updateDayTripsIndexes = updateDayTripsIndexes,
+        _updateTravelTime = updateTravelTime,
         super(DayTripState.normal(
           trip: trip,
           dayTrip: dayTrip,
@@ -246,5 +251,44 @@ class DayTripCubit extends Cubit<DayTripState> {
   Future<void> close() {
     _tripStopsSubscription.cancel();
     return super.close();
+  }
+
+  void updateTravelTimeToNextStop(String id, int inMinutes) async {
+    _travelTimeDebouncer.run(() {
+      assert(state is DayTripStateNormal);
+      emit((state as DayTripStateNormal).copyWith(isSaving: true));
+    });
+
+    final result = await _updateTravelTime(
+      UpdateTravelTimeParams(
+        tripId: state.trip.id,
+        dayTripId: state.dayTrip.id,
+        tripStopId: id,
+        travelTime: inMinutes,
+      ),
+    );
+
+    _travelTimeDebouncer.cancel();
+
+    result.fold(
+      (failure) {
+        emit(DayTripState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+        ));
+        emit(DayTripState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+        ));
+      },
+      (_) => emit(DayTripState.normal(
+        trip: state.trip,
+        dayTrip: state.dayTrip,
+        tripStops: state.tripStops,
+      )),
+    );
   }
 }

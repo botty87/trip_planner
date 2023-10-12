@@ -20,6 +20,13 @@ abstract class TripStopsDataSource {
     required String dayTripId,
     required List<TripStop> tripStops,
   });
+
+  Future<void> updateTravelTime({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required int travelTime,
+  });
 }
 
 @LazySingleton(as: TripStopsDataSource)
@@ -82,5 +89,15 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
     }
 
     await batch.commit();
+  }
+
+  @override
+  Future<void> updateTravelTime(
+      {required String tripId,
+      required String dayTripId,
+      required String tripStopId,
+      required int travelTime}) async {
+    final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
+    await tripStopDoc.update({'travelTimeToNextStop': travelTime});
   }
 }

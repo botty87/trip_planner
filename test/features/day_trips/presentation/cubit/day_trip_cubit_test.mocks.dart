@@ -23,6 +23,8 @@ import 'package:trip_planner/features/trip_stops/domain/repositories/trip_stops_
     as _i4;
 import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart'
     as _i9;
+import 'package:trip_planner/features/trip_stops/domain/usecases/update_travel_time.dart'
+    as _i14;
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
     as _i13;
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
@@ -243,6 +245,38 @@ class MockUpdateTripStopsIndexes extends _i1.Mock
   @override
   _i6.Future<_i3.Either<_i10.TripStopsFailure, void>> call(
           _i13.UpdateTripStopsIndexesParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>.value(
+            _FakeEither_1<_i10.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>.value(
+                _FakeEither_1<_i10.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>);
+}
+
+/// A class which mocks [UpdateTravelTime].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUpdateTravelTime extends _i1.Mock implements _i14.UpdateTravelTime {
+  @override
+  _i6.Future<_i3.Either<_i10.TripStopsFailure, void>> call(
+          _i14.UpdateTravelTimeParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,

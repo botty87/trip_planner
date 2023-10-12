@@ -8,6 +8,7 @@ sealed class DayTripState with _$DayTripState {
     @Default([]) List<TripStop> tripStops,
     @Default(false) bool hasStartTimeToSave,
     @Default(false) bool explictitStartTimeSave,
+    @Default(false) bool isSaving,
   }) = DayTripStateNormal;
 
   const factory DayTripState.error({

@@ -60,7 +60,7 @@ class _DayTripPageBody extends HookWidget {
           children: [
             BlocSelector<DayTripCubit, DayTripState, bool>(
               selector: (DayTripState state) => state.maybeMap(
-                normal: (state) => state.explictitStartTimeSave,
+                normal: (state) => state.explictitStartTimeSave || state.isSaving,
                 orElse: () => false,
               ),
               builder: (BuildContext context, bool explictitStartTimeSave) => explictitStartTimeSave
