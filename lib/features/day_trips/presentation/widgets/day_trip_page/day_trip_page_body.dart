@@ -74,7 +74,7 @@ class _DayTripPageBody extends HookWidget {
             const _StartTimeWidget(),
             const SizedBox(height: verticalSpaceS),
             const _TripStopsList(),
-            const SizedBox(height: verticalSpaceS),
+            const SizedBox(height: verticalSpaceL),
             const _AddDayTripStopCard(),
             const SizedBox(height: verticalSpaceL),
             _DeleteTripButton(isDeleting: isDeleting.stream),
