@@ -18,7 +18,7 @@ import '../../features/day_trips/data/datasources/day_trips_data_source.dart'
     as _i4;
 import '../../features/day_trips/data/repositories/day_trips_repository_impl.dart'
     as _i6;
-import '../../features/day_trips/domain/entities/day_trip.dart' as _i44;
+import '../../features/day_trips/domain/entities/day_trip.dart' as _i45;
 import '../../features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i5;
 import '../../features/day_trips/domain/usecases/create_day_trip.dart' as _i28;
@@ -30,7 +30,7 @@ import '../../features/day_trips/domain/usecases/update_day_trip_start_time.dart
 import '../../features/day_trips/domain/usecases/update_day_trips_indexes.dart'
     as _i19;
 import '../../features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart'
-    as _i43;
+    as _i44;
 import '../../features/day_trips/presentation/cubit/new_day_trip/new_day_trip_cubit.dart'
     as _i36;
 import '../../features/trip_stops/data/datasources/trip_stops_data_source.dart'
@@ -43,6 +43,7 @@ import '../../features/trip_stops/domain/usecases/create_trip_stop.dart'
     as _i30;
 import '../../features/trip_stops/domain/usecases/listen_trip_stops.dart'
     as _i32;
+import '../../features/trip_stops/domain/usecases/trip_stop_done.dart' as _i42;
 import '../../features/trip_stops/domain/usecases/update_travel_time.dart'
     as _i20;
 import '../../features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
@@ -61,9 +62,9 @@ import '../../features/trips/domain/usecases/delete_trip.dart' as _i31;
 import '../../features/trips/domain/usecases/listen_trips.dart' as _i33;
 import '../../features/trips/domain/usecases/update_trip.dart' as _i21;
 import '../../features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
-    as _i46;
+    as _i47;
 import '../../features/trips/presentation/cubit/trip/trip_cubit.dart' as _i40;
-import '../../features/trips/presentation/cubit/trips/trips_cubit.dart' as _i47;
+import '../../features/trips/presentation/cubit/trips/trips_cubit.dart' as _i48;
 import '../../features/user_account/data/datasources/user_data_source.dart'
     as _i23;
 import '../../features/user_account/data/repositories/user_repository_impl.dart'
@@ -76,12 +77,12 @@ import '../../features/user_account/domain/usecases/recover_password.dart'
     as _i38;
 import '../../features/user_account/domain/usecases/register_user.dart' as _i39;
 import '../../features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
-    as _i45;
+    as _i46;
 import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
-    as _i42;
+    as _i43;
 import '../bloc_observer.dart' as _i27;
 import '../routes/app_router.dart' as _i3;
-import 'di.dart' as _i48;
+import 'di.dart' as _i49;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -182,13 +183,15 @@ extension GetItInjectableX on _i1.GetIt {
           listenDayTrips: gh<_i8.ListenDayTrips>(),
           updateDayTripsIndexes: gh<_i19.UpdateDayTripsIndexes>(),
         ));
-    gh.lazySingleton<_i42.UserCubit>(
-        () => _i42.UserCubit(listenUserState: gh<_i34.ListenUser>()));
-    gh.factoryParam<_i43.DayTripCubit, _i41.Trip, _i44.DayTrip>((
+    gh.lazySingleton<_i42.TripStopDone>(
+        () => _i42.TripStopDone(gh<_i12.TripStopsRepository>()));
+    gh.lazySingleton<_i43.UserCubit>(
+        () => _i43.UserCubit(listenUserState: gh<_i34.ListenUser>()));
+    gh.factoryParam<_i44.DayTripCubit, _i41.Trip, _i45.DayTrip>((
       trip,
       dayTrip,
     ) =>
-        _i43.DayTripCubit(
+        _i44.DayTripCubit(
           trip: trip,
           dayTrip: dayTrip,
           updateDayTrip: gh<_i17.UpdateDayTrip>(),
@@ -198,21 +201,21 @@ extension GetItInjectableX on _i1.GetIt {
           updateDayTripsIndexes: gh<_i22.UpdateTripStopsIndexes>(),
           updateTravelTime: gh<_i20.UpdateTravelTime>(),
         ));
-    gh.factory<_i45.LoginSignupCubit>(() => _i45.LoginSignupCubit(
+    gh.factory<_i46.LoginSignupCubit>(() => _i46.LoginSignupCubit(
           registerUser: gh<_i39.RegisterUser>(),
           loginUser: gh<_i35.LoginUser>(),
           recoverPassword: gh<_i38.RecoverPassword>(),
         ));
-    gh.factory<_i46.NewTripCubit>(() => _i46.NewTripCubit(
-          gh<_i42.UserCubit>(),
+    gh.factory<_i47.NewTripCubit>(() => _i47.NewTripCubit(
+          gh<_i43.UserCubit>(),
           gh<_i29.CreateTrip>(),
         ));
-    gh.factory<_i47.TripsCubit>(() => _i47.TripsCubit(
+    gh.factory<_i48.TripsCubit>(() => _i48.TripsCubit(
           gh<_i33.ListenTrips>(),
-          gh<_i42.UserCubit>(),
+          gh<_i43.UserCubit>(),
         ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i48.RegisterModule {}
+class _$RegisterModule extends _i49.RegisterModule {}

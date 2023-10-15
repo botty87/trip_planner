@@ -29,4 +29,11 @@ abstract class TripStopsRepository {
     required String tripStopId,
     required int travelTime,
   });
+
+  Future<Either<TripStopsFailure, void>> updateTripStopDone({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required bool isDone,
+  });
 }

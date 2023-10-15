@@ -27,6 +27,13 @@ abstract class TripStopsDataSource {
     required String tripStopId,
     required int travelTime,
   });
+
+  Future<void> updateTripStopDone({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required bool isDone,
+  });
 }
 
 @LazySingleton(as: TripStopsDataSource)
@@ -99,5 +106,11 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       required int travelTime}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
     await tripStopDoc.update({'travelTimeToNextStop': travelTime});
+  }
+  
+  @override
+  Future<void> updateTripStopDone({required String tripId, required String dayTripId, required String tripStopId, required bool isDone}) {
+    // TODO: implement updateTripStopDone
+    throw UnimplementedError();
   }
 }
