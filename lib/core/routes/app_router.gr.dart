@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
+import 'package:flutter/foundation.dart' as _i14;
 import 'package:flutter/material.dart' as _i11;
 import 'package:trip_planner/core/home_page.dart' as _i2;
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
@@ -18,7 +19,7 @@ import 'package:trip_planner/features/day_trips/presentation/pages/day_trip_page
 import 'package:trip_planner/features/day_trips/presentation/pages/new_day_trip_page.dart'
     as _i4;
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i14;
+    as _i15;
 import 'package:trip_planner/features/trip_stops/presentation/pages/new_trip_stop_page.dart'
     as _i6;
 import 'package:trip_planner/features/trip_stops/presentation/pages/trip_stop_page.dart'
@@ -331,10 +332,10 @@ class TripRouteArgs {
 /// [_i8.TripStopPage]
 class TripStopRoute extends _i10.PageRouteInfo<TripStopRouteArgs> {
   TripStopRoute({
-    _i11.Key? key,
+    _i14.Key? key,
     required _i12.Trip trip,
     required _i13.DayTrip dayTrip,
-    required _i14.TripStop tripStop,
+    required _i15.TripStop tripStop,
     List<_i10.PageRouteInfo>? children,
   }) : super(
           TripStopRoute.name,
@@ -361,13 +362,13 @@ class TripStopRouteArgs {
     required this.tripStop,
   });
 
-  final _i11.Key? key;
+  final _i14.Key? key;
 
   final _i12.Trip trip;
 
   final _i13.DayTrip dayTrip;
 
-  final _i14.TripStop tripStop;
+  final _i15.TripStop tripStop;
 
   @override
   String toString() {

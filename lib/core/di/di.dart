@@ -5,7 +5,7 @@ import 'di.config.dart';
 
 final getIt = GetIt.instance;
 
-@injectableInit
+@InjectableInit(preferRelativeImports: true)
 void configureDependencies() => getIt.init();
 
 @module
