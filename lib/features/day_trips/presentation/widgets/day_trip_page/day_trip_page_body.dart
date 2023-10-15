@@ -67,12 +67,17 @@ class _DayTripPageBody extends HookWidget {
                   ? const LinearProgressIndicator(minHeight: 1)
                   : const SizedBox.shrink(),
             ),
-            BlocSelector<DayTripCubit, DayTripState, String?>(
-              selector: (state) => state.dayTrip.description,
-              builder: (context, description) => _DayTripHeader(headerText: description),
-            ),
             const _StartTimeWidget(),
             const SizedBox(height: verticalSpaceS),
+            BlocSelector<DayTripCubit, DayTripState, String?>(
+              selector: (state) => state.dayTrip.description,
+              builder: (context, description) => Column(
+                children: [
+                  _DayTripDescription(headerText: description),
+                  if (description != null) const SizedBox(height: verticalSpaceS),
+                ],
+              ),
+            ),
             const _TripStopsList(),
             const SizedBox(height: verticalSpaceL),
             const _AddDayTripStopCard(),

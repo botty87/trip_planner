@@ -19,5 +19,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: NewDayTripRoute.page),
         AutoRoute(page: DayTripRoute.page),
         AutoRoute(page: NewTripStopRoute.page),
+        AutoRoute(page: TripStopRoute.page),
       ];
 }

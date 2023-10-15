@@ -80,5 +80,6 @@ abstract class  LocaleKeys {
   static const startTime = 'startTime';
   static const hour = 'hour';
   static const estimatedTimeTravel = 'estimatedTimeTravel';
+  static const done = 'done';
 
 }

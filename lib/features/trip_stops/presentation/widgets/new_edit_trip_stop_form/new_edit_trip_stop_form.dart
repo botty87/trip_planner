@@ -16,7 +16,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../cubit/cubit/new_trip_stop_cubit.dart';
+import '../../cubit/new_trip_stop/new_trip_stop_cubit.dart';
 
 part 'duration_widget.dart';
 part 'field_widget.dart';

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 
-abstract base class GenericTripHeader extends StatelessWidget {
+abstract base class GenericTripDescription extends StatelessWidget {
   final String? headerText;
 
-  const GenericTripHeader({super.key, this.headerText});
+  const GenericTripDescription({super.key, this.headerText});
 
   @override
   Widget build(BuildContext context) {

@@ -80,5 +80,6 @@
         "one" : "{} hour",
         "other" : "{} hours"
     },
-    "estimatedTimeTravel" : "Estimated time travel"
+    "estimatedTimeTravel" : "Estimated time travel",
+    "done" : "Done"
 }

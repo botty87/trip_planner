@@ -31,7 +31,6 @@ import '../../../trip_stops/domain/entities/trip_stop.dart';
 part '../widgets/day_trip_page/add_day_trip_stop_card.dart';
 part '../widgets/day_trip_page/day_date_widget.dart';
 part '../widgets/day_trip_page/day_trip_description.dart';
-part '../widgets/day_trip_page/day_trip_header.dart';
 part '../widgets/day_trip_page/day_trip_page_body.dart';
 part '../widgets/day_trip_page/trip_stops_list.dart';
 part '../widgets/day_trip_page/save_cancel_edit_buttons.dart';

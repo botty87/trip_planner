@@ -7,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/widgets/snackbars.dart';
-import '../cubit/cubit/new_trip_stop_cubit.dart';
+import '../cubit/new_trip_stop/new_trip_stop_cubit.dart';
 import '../widgets/new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
 
 part '../widgets/new_trip_stop_page/add_trip_stop_button.dart';

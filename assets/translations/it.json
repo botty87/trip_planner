@@ -80,5 +80,6 @@
         "one": "{} ora",
         "other": "{} ore"
     },
-    "estimatedTimeTravel" : "Tempo di percorrenza stimato"
+    "estimatedTimeTravel" : "Tempo di percorrenza stimato",
+    "done" : "Completato"
 }

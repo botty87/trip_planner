@@ -47,6 +47,7 @@ dependencies:
   flutter_google_places_sdk: ^0.3.5
   flutter_hooks: ^0.20.0
   flutter_svg: ^2.0.7
+  font_awesome_flutter: ^10.6.0
   freezed_annotation: ^2.4.1
   get_it: ^7.6.0
   golden_toolkit: ^0.15.0
@@ -59,6 +60,7 @@ dependencies:
   json_theme: ^6.2.3
   logger: ^2.0.1
   mockito: ^5.4.1
+  roundcheckbox: ^2.0.5
   shared_preferences: ^2.1.2
   time_picker:
     path: ./packages/time_picker

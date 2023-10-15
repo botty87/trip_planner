@@ -20,7 +20,7 @@ class _DescriptionWidget extends HookWidget {
       ),
       onChanged: onDescriptionChanged,
       controller: descriptionController,
-      maxLines: 4,
+      maxLines: null,
       minLines: 1,
     );
   }

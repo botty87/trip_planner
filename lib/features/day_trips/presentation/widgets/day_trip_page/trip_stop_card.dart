@@ -25,6 +25,8 @@ final class _TripStopCard extends GenericTripCard {
 
   @override
   VoidCallback? get onTap => () {
-        //TODO implement
+        final state = context.read<DayTripCubit>().state;
+        context.router
+            .push(TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop));
       };
 }
