@@ -107,10 +107,14 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
     await tripStopDoc.update({'travelTimeToNextStop': travelTime});
   }
-  
+
   @override
-  Future<void> updateTripStopDone({required String tripId, required String dayTripId, required String tripStopId, required bool isDone}) {
-    // TODO: implement updateTripStopDone
-    throw UnimplementedError();
+  Future<void> updateTripStopDone(
+      {required String tripId,
+      required String dayTripId,
+      required String tripStopId,
+      required bool isDone}) async {
+    final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
+    await tripStopDoc.update({'isDone': isDone});
   }
 }

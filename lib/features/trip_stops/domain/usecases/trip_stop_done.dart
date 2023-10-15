@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
+import '../../errors/trip_stops_failure.dart';
 import '../repositories/trip_stops_repository.dart';
 
 @lazySingleton
@@ -12,7 +13,7 @@ class TripStopDone implements UseCase<void, TripStopDoneParams> {
   const TripStopDone(this._repository);
 
   @override
-  Future<Either<Failure, void>> call(TripStopDoneParams params) {
+  Future<Either<TripStopsFailure, void>> call(TripStopDoneParams params) {
     return _repository.updateTripStopDone(
       tripId: params.tripId,
       dayTripId: params.dayTripId,
