@@ -60,7 +60,6 @@ dependencies:
   json_theme: ^6.2.3
   logger: ^2.0.1
   mockito: ^5.4.1
-  roundcheckbox: ^2.0.5
   shared_preferences: ^2.1.2
   time_picker:
     path: ./packages/time_picker
