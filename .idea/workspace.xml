@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e43dcbd-8f12-413b-81e2-8daca4043e1c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/di/di.config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/di/di.config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/routes/app_router.gr.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes/app_router.gr.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/data/datasources/trips_data_source.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/data/datasources/trips_data_source.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/data/repositories/trips_repository_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/data/repositories/trips_repository_impl.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/domain/usecases/listen_trips.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/domain/usecases/listen_trips.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trips_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trips_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trips_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trips_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/presentation/pages/trips_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/presentation/pages/trips_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/user_account/presentation/cubit/user/user_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/user_account/presentation/cubit/user/user_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/features/trips/data/repositories/trips_repository_impl_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/features/trips/data/repositories/trips_repository_impl_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/features/trips/data/repositories/trips_repository_impl_test.mocks.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/features/trips/data/repositories/trips_repository_impl_test.mocks.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trip_planner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/trip_planner.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

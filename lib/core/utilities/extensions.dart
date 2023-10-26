@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 extension TimeOfDayExtension on TimeOfDay {
   String toFormattedString() {
@@ -11,4 +13,8 @@ extension TimeOfDayExtension on TimeOfDay {
         'hour': hour,
         'minute': minute,
       };
+}
+
+extension LatLngExtension on LatLng {
+  Coords toCoords() => Coords(latitude, longitude);
 }

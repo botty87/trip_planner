@@ -19,4 +19,7 @@ final class _DayTripCard extends GenericTripCard {
   @override
   VoidCallback get onTap => () => context.router
       .push(DayTripRoute(trip: context.read<TripCubit>().state.trip, dayTrip: dayTrip));
+
+  @override
+  Color? get color => null;
 }

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/utilities/time_of_day.dart';
+import '../../../../core/utilities/extensions.dart';
 import '../../domain/entities/day_trip.dart';
 
 abstract class DayTripsDataSource {

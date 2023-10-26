@@ -72,6 +72,8 @@ PODS:
   - GoogleUtilities/Reachability (7.11.5):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (3.1.1)
+  - map_launcher (0.0.1):
+    - Flutter
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
@@ -95,6 +97,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_google_places_sdk_ios (from `.symlinks/plugins/flutter_google_places_sdk_ios/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
+  - map_launcher (from `.symlinks/plugins/map_launcher/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
 
@@ -131,6 +134,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_google_places_sdk_ios/ios"
   google_maps_flutter_ios:
     :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
+  map_launcher:
+    :path: ".symlinks/plugins/map_launcher/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   shared_preferences_foundation:
@@ -159,6 +164,7 @@ SPEC CHECKSUMS:
   GooglePlaces: c57cd5aa7e91d10fa5106c792de74f3bd6436260
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
+  map_launcher: e325db1261d029ff33e08e03baccffe09593ffea
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
@@ -167,4 +173,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f70578d5667efb693268a30793fe031679fc5ccd
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0

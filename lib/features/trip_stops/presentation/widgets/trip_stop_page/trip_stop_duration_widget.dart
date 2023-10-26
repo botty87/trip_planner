@@ -25,7 +25,10 @@ class _TripStopDurationWidget extends StatelessWidget {
         ),
         Text(
           estimatedDurationText,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                color: Colors.grey[800],
+                fontSize: 20,
+              ),
         ),
       ],
     );

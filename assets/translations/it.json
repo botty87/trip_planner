@@ -81,5 +81,6 @@
         "other": "{} ore"
     },
     "estimatedTimeTravel": "Tempo di percorrenza stimato",
-    "done": "Completata"
+    "done": "Completata",
+    "navigateToDestination" : "Naviga verso la destinazione"
 }

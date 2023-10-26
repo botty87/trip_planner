@@ -7,6 +7,7 @@ abstract base class GenericTripCard extends StatelessWidget {
   abstract final String date;
   abstract final String? description;
   abstract final VoidCallback? onTap;
+  abstract final Color? color;
 
   const GenericTripCard({super.key});
 
@@ -15,6 +16,7 @@ abstract base class GenericTripCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        color: color,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

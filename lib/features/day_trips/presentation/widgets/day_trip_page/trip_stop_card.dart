@@ -29,4 +29,7 @@ final class _TripStopCard extends GenericTripCard {
         context.router
             .push(TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop));
       };
+
+  @override
+  Color? get color => tripStop.isDone ? Colors.green[100] : null;
 }

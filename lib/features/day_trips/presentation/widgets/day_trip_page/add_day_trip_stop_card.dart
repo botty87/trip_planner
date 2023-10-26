@@ -22,5 +22,5 @@ final class _AddDayTripStopCard extends AddDestinationCard {
   }
 
   @override
-  Color get color => Colors.green[100]!;
+  Color get color => Colors.amberAccent[100]!;
 }

@@ -81,5 +81,6 @@
         "other" : "{} hours"
     },
     "estimatedTimeTravel" : "Estimated time travel",
-    "done" : "Done"
+    "done" : "Done",
+    "navigateToDestination" : "Navigate to destination"
 }

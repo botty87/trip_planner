@@ -19,14 +19,14 @@ class _TripStopDoneWidget extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleLarge
-                  ?.copyWith(color: isDone ? Colors.green[700] : Colors.red[700]),
+                  ?.copyWith(color: isDone ? Colors.green[700] : Colors.orange[700]),
             ),
           ),
           onTap: () => context.read<TripStopCubit>().isDoneChanged(!isDone),
         ),
         const SizedBox(height: verticalSpaceXs),
         Transform.scale(
-          scale: 1.4,
+          scale: 1.2,
           child: Checkbox(
             shape: const CircleBorder(),
             value: isDone,

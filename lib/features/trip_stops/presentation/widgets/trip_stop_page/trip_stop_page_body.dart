@@ -38,9 +38,11 @@ class _TripStopPageBody extends HookWidget {
               _MapWidget(),
               const SizedBox(height: verticalSpace),
               const Row(
-                children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
               ),
+              const SizedBox(height: verticalSpace),
+              _TripStopNavigateToButton(),
             ],
           ),
         ),
