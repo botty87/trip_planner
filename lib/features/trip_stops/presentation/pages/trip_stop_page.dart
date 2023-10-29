@@ -28,6 +28,7 @@ part '../widgets/trip_stop_page/trip_stop_done_widget.dart';
 part '../widgets/trip_stop_page/map_widget.dart';
 part '../widgets/trip_stop_page/trip_stop_duration_widget.dart';
 part '../widgets/trip_stop_page/trip_stop_navigate_to_button.dart';
+part '../widgets/trip_stop_page/trip_stop_note_widget.dart';
 
 @RoutePage()
 class TripStopPage extends StatelessWidget {
@@ -51,14 +52,23 @@ class TripStopPage extends StatelessWidget {
           tripStop: _tripStop,
         ),
       ),
-      child: const Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: _TripStopPageAppBar(),
-        ),
-        body: _TripStopPageBody(),
-      ),
+      child: Builder(builder: (context) {
+        return WillPopScope(
+          onWillPop: () => _onWillPop(context),
+          child: const Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(kToolbarHeight),
+              child: _TripStopPageAppBar(),
+            ),
+            body: _TripStopPageBody(),
+          ),
+        );
+      }),
     );
+  }
+
+  Future<bool> _onWillPop(BuildContext context) async {
+    return context.read<TripStopCubit>().saveTripStopNote(forced: true);
   }
 }
 

@@ -20,6 +20,12 @@ sealed class TripStopState with _$TripStopState {
     required TripStop tripStop,
   }) = TripStopStateSaving;
 
+  const factory TripStopState.noteSaving({
+    required Trip trip,
+    required DayTrip dayTrip,
+    required TripStop tripStop,
+  }) = TripStopStateNoteSaving;
+
   const factory TripStopState.deleting({
     required Trip trip,
     required DayTrip dayTrip,

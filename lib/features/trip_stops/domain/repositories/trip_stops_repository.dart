@@ -36,4 +36,11 @@ abstract class TripStopsRepository {
     required String tripStopId,
     required bool isDone,
   });
+
+  Future<Either<TripStopsFailure, void>> updateTripStopNote({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required String? note,
+  });
 }

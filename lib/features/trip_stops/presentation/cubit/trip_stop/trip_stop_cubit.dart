@@ -4,10 +4,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../core/utilities/debouncer.dart';
 import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../../../trips/domain/entities/trip.dart';
 import '../../../domain/entities/trip_stop.dart';
 import '../../../domain/usecases/trip_stop_done.dart';
+import '../../../domain/usecases/update_trip_stop_note.dart';
 
 part 'trip_stop_cubit.freezed.dart';
 part 'trip_stop_state.dart';
@@ -15,15 +17,23 @@ part 'trip_stop_state.dart';
 @injectable
 class TripStopCubit extends Cubit<TripStopState> {
   final TripStopDone _tripStopDone;
+  final UpdateTripStopNote _updateTripStopNote;
+
+  final Debouncer _tripStopNoteDebouncer = Debouncer(milliseconds: 5000);
+  bool _hasTripNoteToSave;
 
   TripStopCubit({
     @factoryParam required TripStopCubitParams params,
     required TripStopDone tripStopDone,
+    required UpdateTripStopNote updateTripStopNote,
+
+    //Used only for testing
+    bool? hasTripNoteToSave,
   })  : _tripStopDone = tripStopDone,
+        _updateTripStopNote = updateTripStopNote,
+        _hasTripNoteToSave = hasTripNoteToSave ?? false,
         super(TripStopState.normal(
             trip: params.trip, dayTrip: params.dayTrip, tripStop: params.tripStop));
-
-  edit() {}
 
   isDoneChanged(bool isDone) async {
     final result = await _tripStopDone(TripStopDoneParams(
@@ -34,12 +44,20 @@ class TripStopCubit extends Cubit<TripStopState> {
     ));
 
     result.fold(
-      (failure) => emit(TripStopState.error(
-        trip: state.trip,
-        dayTrip: state.dayTrip,
-        tripStop: state.tripStop,
-        message: failure.message ?? LocaleKeys.unknownError.tr(),
-      )),
+      (failure) {
+        emit(TripStopState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+          message: failure.message ?? LocaleKeys.unknownError.tr(),
+        ));
+
+        emit(TripStopState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+        ));
+      },
       (_) => emit(TripStopState.normal(
         trip: state.trip,
         dayTrip: state.dayTrip,
@@ -47,6 +65,8 @@ class TripStopCubit extends Cubit<TripStopState> {
       )),
     );
   }
+
+  void edit() {}
 
   void onUIError(Exception e) {
     emit(TripStopState.error(
@@ -61,6 +81,62 @@ class TripStopCubit extends Cubit<TripStopState> {
       dayTrip: state.dayTrip,
       tripStop: state.tripStop,
     ));
+  }
+
+  noteChanged(String value) {
+    _hasTripNoteToSave = true;
+    emit(state.copyWith(tripStop: state.tripStop.copyWith(note: value)));
+    _tripStopNoteDebouncer.run(() => saveTripStopNote());
+  }
+
+  Future<bool> saveTripStopNote({bool forced = false}) async {
+    if (!forced && !_hasTripNoteToSave) {
+      return true;
+    }
+
+    if (forced) {
+      _tripStopNoteDebouncer.cancel();
+      emit(TripStopState.noteSaving(
+        trip: state.trip,
+        dayTrip: state.dayTrip,
+        tripStop: state.tripStop,
+      ));
+    }
+
+    final result = await _updateTripStopNote(UpdateTripStopNoteParams(
+      tripId: state.trip.id,
+      dayTripId: state.dayTrip.id,
+      tripStopId: state.tripStop.id,
+      note: state.tripStop.note,
+    ));
+
+    return result.fold(
+      (failure) {
+        emit(TripStopState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+          message: failure.message ?? LocaleKeys.unknownError.tr(),
+        ));
+
+        emit(TripStopState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+        ));
+
+        return false;
+      },
+      (_) {
+        emit(TripStopState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+        ));
+
+        return true;
+      },
+    );
   }
 }
 

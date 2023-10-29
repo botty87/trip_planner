@@ -112,4 +112,25 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       return left(const TripStopsFailure());
     }
   }
+
+  @override
+  Future<Either<TripStopsFailure, void>> updateTripStopNote(
+      {required String tripId,
+      required String dayTripId,
+      required String tripStopId,
+      required String? note}) async {
+    try {
+      await _tripStopsDataSource.updateTripStopNote(
+        tripId: tripId,
+        dayTripId: dayTripId,
+        tripStopId: tripStopId,
+        note: note,
+      );
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(TripStopsFailure(message: e.message));
+    } on Exception {
+      return left(const TripStopsFailure());
+    }
+  }
 }

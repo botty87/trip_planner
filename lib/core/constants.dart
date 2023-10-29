@@ -6,6 +6,7 @@ const double verticalSpaceXs = 4.0;
 const double verticalSpaceS = 8.0;
 const double verticalSpace = 12.0;
 const double verticalSpaceL = 16.0;
+const double verticalSpaceXL = 20.0;
 
 const double horizontalSpaceXs = 4.0;
 const double horizontalSpaceS = 8.0;

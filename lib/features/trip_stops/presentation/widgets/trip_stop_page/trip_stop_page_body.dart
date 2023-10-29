@@ -30,6 +30,15 @@ class _TripStopPageBody extends HookWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              BlocSelector<TripStopCubit, TripStopState, bool>(
+                selector: (state) => state.maybeMap(
+                  noteSaving: (_) => true,
+                  orElse: () => false,
+                ),
+                builder: (context, isSaving) => isSaving
+                    ? const LinearProgressIndicator(minHeight: 1)
+                    : const SizedBox(height: verticalSpace),
+              ),
               BlocSelector<TripStopCubit, TripStopState, String?>(
                 selector: (state) => state.tripStop.description,
                 builder: (context, description) => _TripStopDescription(headerText: description),
@@ -42,7 +51,9 @@ class _TripStopPageBody extends HookWidget {
                 children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
               ),
               const SizedBox(height: verticalSpace),
-              _TripStopNavigateToButton(),
+              const _TripStopNavigateToButton(),
+              const SizedBox(height: verticalSpaceXL),
+              const _TripStopNoteWidget(),
             ],
           ),
         ),

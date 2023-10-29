@@ -226,4 +226,46 @@ void main() {
       expect(result, completion(left(const TripStopsFailure())));
     });
   });
+
+  group('update trip stop note', () {
+    test('should return void right(null) when updateTripStopNote success', () {
+      when(mockTripStopsDataSource.updateTripStopNote(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStopId: anyNamed('tripStopId'),
+        note: anyNamed('note'),
+      )).thenAnswer((_) async {});
+
+      // act
+      final result = repository.updateTripStopNote(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStopId: 'tripStopId',
+        note: 'note',
+      );
+
+      // assert
+      expect(result, completion(right(null)));
+    });
+
+    test('should return void left(TripStopsFailure) when updateTripStopNote fails', () {
+      when(mockTripStopsDataSource.updateTripStopNote(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStopId: anyNamed('tripStopId'),
+        note: anyNamed('note'),
+      )).thenThrow(Exception());
+
+      // act
+      final result = repository.updateTripStopNote(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStopId: 'tripStopId',
+        note: 'note',
+      );
+
+      // assert
+      expect(result, completion(left(const TripStopsFailure())));
+    });
+  });
 }

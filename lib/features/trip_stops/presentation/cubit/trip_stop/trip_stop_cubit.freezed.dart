@@ -28,6 +28,8 @@ mixin _$TripStopState {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         saving,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleting,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleted,
@@ -41,6 +43,8 @@ mixin _$TripStopState {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)?
+        noteSaving,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult? Function(
@@ -53,6 +57,7 @@ mixin _$TripStopState {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? noteSaving,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult Function(
@@ -66,6 +71,7 @@ mixin _$TripStopState {
     required TResult Function(TripStopStateNormal value) normal,
     required TResult Function(TripStopStateEditing value) editing,
     required TResult Function(TripStopStateSaving value) saving,
+    required TResult Function(TripStopStateNoteSaving value) noteSaving,
     required TResult Function(TripStopStateDeleting value) deleting,
     required TResult Function(TripStopStateDeleted value) deleted,
     required TResult Function(TripStopStateError value) error,
@@ -76,6 +82,7 @@ mixin _$TripStopState {
     TResult? Function(TripStopStateNormal value)? normal,
     TResult? Function(TripStopStateEditing value)? editing,
     TResult? Function(TripStopStateSaving value)? saving,
+    TResult? Function(TripStopStateNoteSaving value)? noteSaving,
     TResult? Function(TripStopStateDeleting value)? deleting,
     TResult? Function(TripStopStateDeleted value)? deleted,
     TResult? Function(TripStopStateError value)? error,
@@ -86,6 +93,7 @@ mixin _$TripStopState {
     TResult Function(TripStopStateNormal value)? normal,
     TResult Function(TripStopStateEditing value)? editing,
     TResult Function(TripStopStateSaving value)? saving,
+    TResult Function(TripStopStateNoteSaving value)? noteSaving,
     TResult Function(TripStopStateDeleting value)? deleting,
     TResult Function(TripStopStateDeleted value)? deleted,
     TResult Function(TripStopStateError value)? error,
@@ -268,6 +276,8 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         saving,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleting,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleted,
@@ -284,6 +294,8 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)?
+        noteSaving,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult? Function(
@@ -299,6 +311,7 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? noteSaving,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult Function(
@@ -318,6 +331,7 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     required TResult Function(TripStopStateNormal value) normal,
     required TResult Function(TripStopStateEditing value) editing,
     required TResult Function(TripStopStateSaving value) saving,
+    required TResult Function(TripStopStateNoteSaving value) noteSaving,
     required TResult Function(TripStopStateDeleting value) deleting,
     required TResult Function(TripStopStateDeleted value) deleted,
     required TResult Function(TripStopStateError value) error,
@@ -331,6 +345,7 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     TResult? Function(TripStopStateNormal value)? normal,
     TResult? Function(TripStopStateEditing value)? editing,
     TResult? Function(TripStopStateSaving value)? saving,
+    TResult? Function(TripStopStateNoteSaving value)? noteSaving,
     TResult? Function(TripStopStateDeleting value)? deleting,
     TResult? Function(TripStopStateDeleted value)? deleted,
     TResult? Function(TripStopStateError value)? error,
@@ -344,6 +359,7 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     TResult Function(TripStopStateNormal value)? normal,
     TResult Function(TripStopStateEditing value)? editing,
     TResult Function(TripStopStateSaving value)? saving,
+    TResult Function(TripStopStateNoteSaving value)? noteSaving,
     TResult Function(TripStopStateDeleting value)? deleting,
     TResult Function(TripStopStateDeleted value)? deleted,
     TResult Function(TripStopStateError value)? error,
@@ -473,6 +489,8 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         saving,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleting,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleted,
@@ -489,6 +507,8 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)?
+        noteSaving,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult? Function(
@@ -504,6 +524,7 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? noteSaving,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult Function(
@@ -523,6 +544,7 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     required TResult Function(TripStopStateNormal value) normal,
     required TResult Function(TripStopStateEditing value) editing,
     required TResult Function(TripStopStateSaving value) saving,
+    required TResult Function(TripStopStateNoteSaving value) noteSaving,
     required TResult Function(TripStopStateDeleting value) deleting,
     required TResult Function(TripStopStateDeleted value) deleted,
     required TResult Function(TripStopStateError value) error,
@@ -536,6 +558,7 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     TResult? Function(TripStopStateNormal value)? normal,
     TResult? Function(TripStopStateEditing value)? editing,
     TResult? Function(TripStopStateSaving value)? saving,
+    TResult? Function(TripStopStateNoteSaving value)? noteSaving,
     TResult? Function(TripStopStateDeleting value)? deleting,
     TResult? Function(TripStopStateDeleted value)? deleted,
     TResult? Function(TripStopStateError value)? error,
@@ -549,6 +572,7 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     TResult Function(TripStopStateNormal value)? normal,
     TResult Function(TripStopStateEditing value)? editing,
     TResult Function(TripStopStateSaving value)? saving,
+    TResult Function(TripStopStateNoteSaving value)? noteSaving,
     TResult Function(TripStopStateDeleting value)? deleting,
     TResult Function(TripStopStateDeleted value)? deleted,
     TResult Function(TripStopStateError value)? error,
@@ -678,6 +702,8 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         saving,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleting,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleted,
@@ -694,6 +720,8 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)?
+        noteSaving,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult? Function(
@@ -709,6 +737,7 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? noteSaving,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult Function(
@@ -728,6 +757,7 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     required TResult Function(TripStopStateNormal value) normal,
     required TResult Function(TripStopStateEditing value) editing,
     required TResult Function(TripStopStateSaving value) saving,
+    required TResult Function(TripStopStateNoteSaving value) noteSaving,
     required TResult Function(TripStopStateDeleting value) deleting,
     required TResult Function(TripStopStateDeleted value) deleted,
     required TResult Function(TripStopStateError value) error,
@@ -741,6 +771,7 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     TResult? Function(TripStopStateNormal value)? normal,
     TResult? Function(TripStopStateEditing value)? editing,
     TResult? Function(TripStopStateSaving value)? saving,
+    TResult? Function(TripStopStateNoteSaving value)? noteSaving,
     TResult? Function(TripStopStateDeleting value)? deleting,
     TResult? Function(TripStopStateDeleted value)? deleted,
     TResult? Function(TripStopStateError value)? error,
@@ -754,6 +785,7 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     TResult Function(TripStopStateNormal value)? normal,
     TResult Function(TripStopStateEditing value)? editing,
     TResult Function(TripStopStateSaving value)? saving,
+    TResult Function(TripStopStateNoteSaving value)? noteSaving,
     TResult Function(TripStopStateDeleting value)? deleting,
     TResult Function(TripStopStateDeleted value)? deleted,
     TResult Function(TripStopStateError value)? error,
@@ -781,6 +813,219 @@ abstract class TripStopStateSaving implements TripStopState {
   @override
   @JsonKey(ignore: true)
   _$$TripStopStateSavingCopyWith<_$TripStopStateSaving> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TripStopStateNoteSavingCopyWith<$Res>
+    implements $TripStopStateCopyWith<$Res> {
+  factory _$$TripStopStateNoteSavingCopyWith(_$TripStopStateNoteSaving value,
+          $Res Function(_$TripStopStateNoteSaving) then) =
+      __$$TripStopStateNoteSavingCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Trip trip, DayTrip dayTrip, TripStop tripStop});
+
+  @override
+  $TripCopyWith<$Res> get trip;
+  @override
+  $DayTripCopyWith<$Res> get dayTrip;
+  @override
+  $TripStopCopyWith<$Res> get tripStop;
+}
+
+/// @nodoc
+class __$$TripStopStateNoteSavingCopyWithImpl<$Res>
+    extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateNoteSaving>
+    implements _$$TripStopStateNoteSavingCopyWith<$Res> {
+  __$$TripStopStateNoteSavingCopyWithImpl(_$TripStopStateNoteSaving _value,
+      $Res Function(_$TripStopStateNoteSaving) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trip = null,
+    Object? dayTrip = null,
+    Object? tripStop = null,
+  }) {
+    return _then(_$TripStopStateNoteSaving(
+      trip: null == trip
+          ? _value.trip
+          : trip // ignore: cast_nullable_to_non_nullable
+              as Trip,
+      dayTrip: null == dayTrip
+          ? _value.dayTrip
+          : dayTrip // ignore: cast_nullable_to_non_nullable
+              as DayTrip,
+      tripStop: null == tripStop
+          ? _value.tripStop
+          : tripStop // ignore: cast_nullable_to_non_nullable
+              as TripStop,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TripStopStateNoteSaving implements TripStopStateNoteSaving {
+  const _$TripStopStateNoteSaving(
+      {required this.trip, required this.dayTrip, required this.tripStop});
+
+  @override
+  final Trip trip;
+  @override
+  final DayTrip dayTrip;
+  @override
+  final TripStop tripStop;
+
+  @override
+  String toString() {
+    return 'TripStopState.noteSaving(trip: $trip, dayTrip: $dayTrip, tripStop: $tripStop)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TripStopStateNoteSaving &&
+            (identical(other.trip, trip) || other.trip == trip) &&
+            (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
+            (identical(other.tripStop, tripStop) ||
+                other.tripStop == tripStop));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, trip, dayTrip, tripStop);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TripStopStateNoteSavingCopyWith<_$TripStopStateNoteSaving> get copyWith =>
+      __$$TripStopStateNoteSavingCopyWithImpl<_$TripStopStateNoteSaving>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        editing,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        deleted,
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, TripStop tripStop, String message)
+        error,
+  }) {
+    return noteSaving(trip, dayTrip, tripStop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)?
+        noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
+    TResult? Function(
+            Trip trip, DayTrip dayTrip, TripStop tripStop, String message)?
+        error,
+  }) {
+    return noteSaving?.call(trip, dayTrip, tripStop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
+    TResult Function(
+            Trip trip, DayTrip dayTrip, TripStop tripStop, String message)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (noteSaving != null) {
+      return noteSaving(trip, dayTrip, tripStop);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TripStopStateNormal value) normal,
+    required TResult Function(TripStopStateEditing value) editing,
+    required TResult Function(TripStopStateSaving value) saving,
+    required TResult Function(TripStopStateNoteSaving value) noteSaving,
+    required TResult Function(TripStopStateDeleting value) deleting,
+    required TResult Function(TripStopStateDeleted value) deleted,
+    required TResult Function(TripStopStateError value) error,
+  }) {
+    return noteSaving(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TripStopStateNormal value)? normal,
+    TResult? Function(TripStopStateEditing value)? editing,
+    TResult? Function(TripStopStateSaving value)? saving,
+    TResult? Function(TripStopStateNoteSaving value)? noteSaving,
+    TResult? Function(TripStopStateDeleting value)? deleting,
+    TResult? Function(TripStopStateDeleted value)? deleted,
+    TResult? Function(TripStopStateError value)? error,
+  }) {
+    return noteSaving?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TripStopStateNormal value)? normal,
+    TResult Function(TripStopStateEditing value)? editing,
+    TResult Function(TripStopStateSaving value)? saving,
+    TResult Function(TripStopStateNoteSaving value)? noteSaving,
+    TResult Function(TripStopStateDeleting value)? deleting,
+    TResult Function(TripStopStateDeleted value)? deleted,
+    TResult Function(TripStopStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (noteSaving != null) {
+      return noteSaving(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TripStopStateNoteSaving implements TripStopState {
+  const factory TripStopStateNoteSaving(
+      {required final Trip trip,
+      required final DayTrip dayTrip,
+      required final TripStop tripStop}) = _$TripStopStateNoteSaving;
+
+  @override
+  Trip get trip;
+  @override
+  DayTrip get dayTrip;
+  @override
+  TripStop get tripStop;
+  @override
+  @JsonKey(ignore: true)
+  _$$TripStopStateNoteSavingCopyWith<_$TripStopStateNoteSaving> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -883,6 +1128,8 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         saving,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleting,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleted,
@@ -899,6 +1146,8 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)?
+        noteSaving,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult? Function(
@@ -914,6 +1163,7 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? noteSaving,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult Function(
@@ -933,6 +1183,7 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     required TResult Function(TripStopStateNormal value) normal,
     required TResult Function(TripStopStateEditing value) editing,
     required TResult Function(TripStopStateSaving value) saving,
+    required TResult Function(TripStopStateNoteSaving value) noteSaving,
     required TResult Function(TripStopStateDeleting value) deleting,
     required TResult Function(TripStopStateDeleted value) deleted,
     required TResult Function(TripStopStateError value) error,
@@ -946,6 +1197,7 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     TResult? Function(TripStopStateNormal value)? normal,
     TResult? Function(TripStopStateEditing value)? editing,
     TResult? Function(TripStopStateSaving value)? saving,
+    TResult? Function(TripStopStateNoteSaving value)? noteSaving,
     TResult? Function(TripStopStateDeleting value)? deleting,
     TResult? Function(TripStopStateDeleted value)? deleted,
     TResult? Function(TripStopStateError value)? error,
@@ -959,6 +1211,7 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     TResult Function(TripStopStateNormal value)? normal,
     TResult Function(TripStopStateEditing value)? editing,
     TResult Function(TripStopStateSaving value)? saving,
+    TResult Function(TripStopStateNoteSaving value)? noteSaving,
     TResult Function(TripStopStateDeleting value)? deleting,
     TResult Function(TripStopStateDeleted value)? deleted,
     TResult Function(TripStopStateError value)? error,
@@ -1088,6 +1341,8 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         saving,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleting,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleted,
@@ -1104,6 +1359,8 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)?
+        noteSaving,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult? Function(
@@ -1119,6 +1376,7 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? noteSaving,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult Function(
@@ -1138,6 +1396,7 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     required TResult Function(TripStopStateNormal value) normal,
     required TResult Function(TripStopStateEditing value) editing,
     required TResult Function(TripStopStateSaving value) saving,
+    required TResult Function(TripStopStateNoteSaving value) noteSaving,
     required TResult Function(TripStopStateDeleting value) deleting,
     required TResult Function(TripStopStateDeleted value) deleted,
     required TResult Function(TripStopStateError value) error,
@@ -1151,6 +1410,7 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     TResult? Function(TripStopStateNormal value)? normal,
     TResult? Function(TripStopStateEditing value)? editing,
     TResult? Function(TripStopStateSaving value)? saving,
+    TResult? Function(TripStopStateNoteSaving value)? noteSaving,
     TResult? Function(TripStopStateDeleting value)? deleting,
     TResult? Function(TripStopStateDeleted value)? deleted,
     TResult? Function(TripStopStateError value)? error,
@@ -1164,6 +1424,7 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     TResult Function(TripStopStateNormal value)? normal,
     TResult Function(TripStopStateEditing value)? editing,
     TResult Function(TripStopStateSaving value)? saving,
+    TResult Function(TripStopStateNoteSaving value)? noteSaving,
     TResult Function(TripStopStateDeleting value)? deleting,
     TResult Function(TripStopStateDeleted value)? deleted,
     TResult Function(TripStopStateError value)? error,
@@ -1305,6 +1566,8 @@ class _$TripStopStateError implements TripStopStateError {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         saving,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
+        noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleting,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)
         deleted,
@@ -1321,6 +1584,8 @@ class _$TripStopStateError implements TripStopStateError {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)?
+        noteSaving,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult? Function(
@@ -1336,6 +1601,7 @@ class _$TripStopStateError implements TripStopStateError {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? normal,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? noteSaving,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleting,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop)? deleted,
     TResult Function(
@@ -1355,6 +1621,7 @@ class _$TripStopStateError implements TripStopStateError {
     required TResult Function(TripStopStateNormal value) normal,
     required TResult Function(TripStopStateEditing value) editing,
     required TResult Function(TripStopStateSaving value) saving,
+    required TResult Function(TripStopStateNoteSaving value) noteSaving,
     required TResult Function(TripStopStateDeleting value) deleting,
     required TResult Function(TripStopStateDeleted value) deleted,
     required TResult Function(TripStopStateError value) error,
@@ -1368,6 +1635,7 @@ class _$TripStopStateError implements TripStopStateError {
     TResult? Function(TripStopStateNormal value)? normal,
     TResult? Function(TripStopStateEditing value)? editing,
     TResult? Function(TripStopStateSaving value)? saving,
+    TResult? Function(TripStopStateNoteSaving value)? noteSaving,
     TResult? Function(TripStopStateDeleting value)? deleting,
     TResult? Function(TripStopStateDeleted value)? deleted,
     TResult? Function(TripStopStateError value)? error,
@@ -1381,6 +1649,7 @@ class _$TripStopStateError implements TripStopStateError {
     TResult Function(TripStopStateNormal value)? normal,
     TResult Function(TripStopStateEditing value)? editing,
     TResult Function(TripStopStateSaving value)? saving,
+    TResult Function(TripStopStateNoteSaving value)? noteSaving,
     TResult Function(TripStopStateDeleting value)? deleting,
     TResult Function(TripStopStateDeleted value)? deleted,
     TResult Function(TripStopStateError value)? error,

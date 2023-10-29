@@ -34,6 +34,13 @@ abstract class TripStopsDataSource {
     required String tripStopId,
     required bool isDone,
   });
+
+  Future<void> updateTripStopNote({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required String? note,
+  });
 }
 
 @LazySingleton(as: TripStopsDataSource)
@@ -116,5 +123,15 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       required bool isDone}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
     await tripStopDoc.update({'isDone': isDone});
+  }
+
+  @override
+  Future<void> updateTripStopNote(
+      {required String tripId,
+      required String dayTripId,
+      required String tripStopId,
+      required String? note}) async {
+    final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
+    await tripStopDoc.update({'note': note});
   }
 }

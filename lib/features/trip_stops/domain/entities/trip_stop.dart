@@ -22,6 +22,7 @@ sealed class TripStop with _$TripStop {
     required LatLng location,
     @Default(false) bool isDone,
     @Default(0) int travelTimeToNextStop, // in minutes
+    String? note,
   }) = _TripStop;
 
   factory TripStop.create({

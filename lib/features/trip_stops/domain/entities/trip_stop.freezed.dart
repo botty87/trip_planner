@@ -30,7 +30,9 @@ mixin _$TripStop {
   @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
   LatLng get location => throw _privateConstructorUsedError;
   bool get isDone => throw _privateConstructorUsedError;
-  int get travelTimeToNextStop => throw _privateConstructorUsedError;
+  int get travelTimeToNextStop =>
+      throw _privateConstructorUsedError; // in minutes
+  String? get note => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +54,8 @@ abstract class $TripStopCopyWith<$Res> {
       @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
       LatLng location,
       bool isDone,
-      int travelTimeToNextStop});
+      int travelTimeToNextStop,
+      String? note});
 }
 
 /// @nodoc
@@ -76,6 +79,7 @@ class _$TripStopCopyWithImpl<$Res, $Val extends TripStop>
     Object? location = null,
     Object? isDone = null,
     Object? travelTimeToNextStop = null,
+    Object? note = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -110,6 +114,10 @@ class _$TripStopCopyWithImpl<$Res, $Val extends TripStop>
           ? _value.travelTimeToNextStop
           : travelTimeToNextStop // ignore: cast_nullable_to_non_nullable
               as int,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -130,7 +138,8 @@ abstract class _$$_TripStopCopyWith<$Res> implements $TripStopCopyWith<$Res> {
       @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
       LatLng location,
       bool isDone,
-      int travelTimeToNextStop});
+      int travelTimeToNextStop,
+      String? note});
 }
 
 /// @nodoc
@@ -152,6 +161,7 @@ class __$$_TripStopCopyWithImpl<$Res>
     Object? location = null,
     Object? isDone = null,
     Object? travelTimeToNextStop = null,
+    Object? note = freezed,
   }) {
     return _then(_$_TripStop(
       id: null == id
@@ -186,6 +196,10 @@ class __$$_TripStopCopyWithImpl<$Res>
           ? _value.travelTimeToNextStop
           : travelTimeToNextStop // ignore: cast_nullable_to_non_nullable
               as int,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -202,7 +216,8 @@ class _$_TripStop implements _TripStop {
       @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
       required this.location,
       this.isDone = false,
-      this.travelTimeToNextStop = 0});
+      this.travelTimeToNextStop = 0,
+      this.note});
 
   factory _$_TripStop.fromJson(Map<String, dynamic> json) =>
       _$$_TripStopFromJson(json);
@@ -228,10 +243,13 @@ class _$_TripStop implements _TripStop {
   @override
   @JsonKey()
   final int travelTimeToNextStop;
+// in minutes
+  @override
+  final String? note;
 
   @override
   String toString() {
-    return 'TripStop(id: $id, index: $index, name: $name, description: $description, duration: $duration, location: $location, isDone: $isDone, travelTimeToNextStop: $travelTimeToNextStop)';
+    return 'TripStop(id: $id, index: $index, name: $name, description: $description, duration: $duration, location: $location, isDone: $isDone, travelTimeToNextStop: $travelTimeToNextStop, note: $note)';
   }
 
   @override
@@ -250,13 +268,14 @@ class _$_TripStop implements _TripStop {
                 other.location == location) &&
             (identical(other.isDone, isDone) || other.isDone == isDone) &&
             (identical(other.travelTimeToNextStop, travelTimeToNextStop) ||
-                other.travelTimeToNextStop == travelTimeToNextStop));
+                other.travelTimeToNextStop == travelTimeToNextStop) &&
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, index, name, description,
-      duration, location, isDone, travelTimeToNextStop);
+      duration, location, isDone, travelTimeToNextStop, note);
 
   @JsonKey(ignore: true)
   @override
@@ -282,7 +301,8 @@ abstract class _TripStop implements TripStop {
       @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
       required final LatLng location,
       final bool isDone,
-      final int travelTimeToNextStop}) = _$_TripStop;
+      final int travelTimeToNextStop,
+      final String? note}) = _$_TripStop;
 
   factory _TripStop.fromJson(Map<String, dynamic> json) = _$_TripStop.fromJson;
 
@@ -304,6 +324,8 @@ abstract class _TripStop implements TripStop {
   bool get isDone;
   @override
   int get travelTimeToNextStop;
+  @override // in minutes
+  String? get note;
   @override
   @JsonKey(ignore: true)
   _$$_TripStopCopyWith<_$_TripStop> get copyWith =>
