@@ -7,6 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
+import 'package:trip_planner/features/trip_stops/domain/usecases/delete_trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stop_note.dart';
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart';
@@ -18,10 +19,12 @@ import 'trip_stop_cubit_test.mocks.dart';
 @GenerateNiceMocks([
   MockSpec<TripStopDone>(),
   MockSpec<UpdateTripStopNote>(),
+  MockSpec<DeleteTripStop>(),
 ])
 void main() {
   late MockTripStopDone mockTripStopDone;
   late MockUpdateTripStopNote mockUpdateTripStopNote;
+  late MockDeleteTripStop mockDeleteTripStop;
 
   final tTrip = Trip(
     id: '1',
@@ -50,9 +53,10 @@ void main() {
   setUp(() {
     mockTripStopDone = MockTripStopDone();
     mockUpdateTripStopNote = MockUpdateTripStopNote();
+    mockDeleteTripStop = MockDeleteTripStop();
   });
 
-  TripStopCubit getStandardTripStopCubit({bool hasTripNoteToSave = false}) {
+  TripStopCubit getStandardTripStopCubit() {
     return TripStopCubit(
       params: TripStopCubitParams(
         trip: tTrip,
@@ -61,7 +65,7 @@ void main() {
       ),
       tripStopDone: mockTripStopDone,
       updateTripStopNote: mockUpdateTripStopNote,
-      hasTripNoteToSave: hasTripNoteToSave,
+      deleteTripStop: mockDeleteTripStop,
     );
   }
 
@@ -130,6 +134,7 @@ void main() {
         trip: tTrip,
         dayTrip: tDayTrip,
         tripStop: tTripStop.copyWith(note: 'note'),
+        hasTripNoteToSave: true,
       ),
     ],
   );
@@ -141,7 +146,13 @@ void main() {
         await Future.delayed(const Duration(milliseconds: 500));
         return const Right(null);
       }),
-      build: () => getStandardTripStopCubit(hasTripNoteToSave: true),
+      seed: () => TripStopState.normal(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+        hasTripNoteToSave: true,
+      ),
+      build: () => getStandardTripStopCubit(),
       act: (cubit) => cubit.saveTripStopNote(forced: true),
       expect: () => [
         TripStopState.noteSaving(
@@ -160,7 +171,13 @@ void main() {
     blocTest<TripStopCubit, TripStopState>(
       'on forced = false on success emit TripStopState.normal',
       setUp: () => when(mockUpdateTripStopNote(any)).thenAnswer((_) async => const Right(null)),
-      build: () => getStandardTripStopCubit(hasTripNoteToSave: true),
+      seed: () => TripStopState.normal(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+        hasTripNoteToSave: true,
+      ),
+      build: () => getStandardTripStopCubit(),
       act: (cubit) => cubit.saveTripStopNote(forced: false),
       expect: () => [
         TripStopState.normal(
@@ -175,9 +192,62 @@ void main() {
       'on forced = false on fail emit TripStopState.error then TripStopState.normal',
       setUp: () =>
           when(mockUpdateTripStopNote(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
-      build: () => getStandardTripStopCubit(hasTripNoteToSave: true),
+      seed: () => TripStopState.normal(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+        hasTripNoteToSave: true,
+      ),
+      build: () => getStandardTripStopCubit(),
       act: (cubit) => cubit.saveTripStopNote(forced: false),
       expect: () => [
+        TripStopState.error(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+          message: LocaleKeys.unknownError,
+        ),
+        TripStopState.normal(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+        ),
+      ],
+    );
+  });
+
+  group('on deleteTripStop', () {
+    blocTest<TripStopCubit, TripStopState>(
+      'On success, emits [TripStopState.deleting, TripStopState.deleted]',
+      setUp: () => when(mockDeleteTripStop(any)).thenAnswer((_) async => const Right(null)),
+      build: () => getStandardTripStopCubit(),
+      act: (cubit) => cubit.deleteTripStop(),
+      expect: () => [
+        TripStopState.deleting(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+        ),
+        TripStopState.deleted(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+        ),
+      ],
+    );
+
+    blocTest<TripStopCubit, TripStopState>(
+      'On failure, emits [TripStopState.deleting, TripStopState.error, TripStopState.normal]',
+      setUp: () =>
+          when(mockDeleteTripStop(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
+      build: () => getStandardTripStopCubit(),
+      act: (cubit) => cubit.deleteTripStop(),
+      expect: () => [
+        TripStopState.deleting(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+        ),
         TripStopState.error(
           trip: tTrip,
           dayTrip: tDayTrip,

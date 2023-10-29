@@ -268,4 +268,41 @@ void main() {
       expect(result, completion(left(const TripStopsFailure())));
     });
   });
+
+  group('delete trip stop', () {
+    test('should return void right(null) when deleteTripStop success', () {
+      when(mockTripStopsDataSource.deleteTripStop(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStopId: anyNamed('tripStopId'),
+      )).thenAnswer((_) async {});
+
+      // act
+      final result = repository.deleteTripStop(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStopId: 'tripStopId',
+      );
+      // assert
+      expect(result, completion(right(null)));
+    
+    });
+
+    test('should return void left(TripStopsFailure) when deleteTripStop fails', () {
+      when(mockTripStopsDataSource.deleteTripStop(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStopId: anyNamed('tripStopId'),
+      )).thenThrow(Exception());
+
+      // act
+      final result = repository.deleteTripStop(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStopId: 'tripStopId',
+      );
+      // assert
+      expect(result, completion(left(const TripStopsFailure())));
+    });
+  });
 }

@@ -43,4 +43,10 @@ abstract class TripStopsRepository {
     required String tripStopId,
     required String? note,
   });
+
+  Future<Either<TripStopsFailure, void>> deleteTripStop({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+  });
 }

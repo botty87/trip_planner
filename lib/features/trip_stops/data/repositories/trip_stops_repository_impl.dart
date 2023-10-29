@@ -133,4 +133,21 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       return left(const TripStopsFailure());
     }
   }
+
+  @override
+  Future<Either<TripStopsFailure, void>> deleteTripStop(
+      {required String tripId, required String dayTripId, required String tripStopId}) async {
+    try {
+      await _tripStopsDataSource.deleteTripStop(
+        tripId: tripId,
+        dayTripId: dayTripId,
+        tripStopId: tripStopId,
+      );
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(TripStopsFailure(message: e.message));
+    } on Exception {
+      return left(const TripStopsFailure());
+    }
+  }
 }

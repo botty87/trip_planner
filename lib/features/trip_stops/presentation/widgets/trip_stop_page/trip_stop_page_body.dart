@@ -6,6 +6,7 @@ class _TripStopPageBody extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final errorMessage = useStreamController<String>();
+    final isDeleting = useStreamController<bool>();
 
     return MultiBlocListener(
       listeners: [
@@ -22,6 +23,13 @@ class _TripStopPageBody extends HookWidget {
         BlocListener<TripStopCubit, TripStopState>(
           listener: (context, state) => context.router.pop(),
           listenWhen: (previous, current) => current is TripStopStateDeleted,
+        ),
+        //Update isDeleting stream when deleting
+        BlocListener<TripStopCubit, TripStopState>(
+          listener: (context, state) => isDeleting.add(state is TripStopStateDeleting),
+          listenWhen: (previous, current) =>
+              (previous is! TripStopStateDeleting && current is TripStopStateDeleting) ||
+              (previous is TripStopStateDeleting && current is! TripStopStateDeleting),
         ),
       ],
       child: SafeArea(
@@ -52,8 +60,10 @@ class _TripStopPageBody extends HookWidget {
               ),
               const SizedBox(height: verticalSpace),
               const _TripStopNavigateToButton(),
-              const SizedBox(height: verticalSpaceXL),
+              const SizedBox(height: verticalSpaceXL),  
               const _TripStopNoteWidget(),
+              const SizedBox(height: verticalSpaceL),
+              _DeleteTripStopButton(isDeleting: isDeleting.stream),
             ],
           ),
         ),

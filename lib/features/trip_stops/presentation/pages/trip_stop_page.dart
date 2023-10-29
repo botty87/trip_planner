@@ -21,6 +21,7 @@ import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/trip_stop.dart';
 import '../cubit/trip_stop/trip_stop_cubit.dart';
+import '../../../../core/widgets/trip/delete_trip_button.dart';
 
 part '../widgets/trip_stop_page/trip_stop_page_body.dart';
 part '../widgets/trip_stop_page/trip_stop_description.dart';
@@ -29,6 +30,7 @@ part '../widgets/trip_stop_page/map_widget.dart';
 part '../widgets/trip_stop_page/trip_stop_duration_widget.dart';
 part '../widgets/trip_stop_page/trip_stop_navigate_to_button.dart';
 part '../widgets/trip_stop_page/trip_stop_note_widget.dart';
+part '../widgets/trip_stop_page/delete_trip_stop_button.dart';
 
 @RoutePage()
 class TripStopPage extends StatelessWidget {

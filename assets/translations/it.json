@@ -84,5 +84,7 @@
     "done": "Completata",
     "navigateToDestination" : "Naviga verso la destinazione",
     "note" : "Note",
-    "noteHint" : "Aggiungi una nota"
+    "noteHint" : "Aggiungi una nota, se vuoi 😉",
+    "deleteTripStop": "Elimina tappa di viaggio",
+    "deleteTripStopQuestion": "Sei sicuro di voler eliminare la tappa di viaggio?"
 }

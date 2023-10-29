@@ -3,16 +3,20 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart'
+import 'package:trip_planner/features/trip_stops/domain/repositories/trip_stops_repository.dart'
     as _i3;
+import 'package:trip_planner/features/trip_stops/domain/usecases/delete_trip_stop.dart'
+    as _i8;
+import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart'
+    as _i4;
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stop_note.dart'
-    as _i6;
+    as _i7;
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
-    as _i5;
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -35,20 +39,31 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
         );
 }
 
+class _FakeTripStopsRepository_1 extends _i1.SmartFake
+    implements _i3.TripStopsRepository {
+  _FakeTripStopsRepository_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [TripStopDone].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTripStopDone extends _i1.Mock implements _i3.TripStopDone {
+class MockTripStopDone extends _i1.Mock implements _i4.TripStopDone {
   @override
-  _i4.Future<_i2.Either<_i5.TripStopsFailure, void>> call(
-          _i3.TripStopDoneParams? params) =>
+  _i5.Future<_i2.Either<_i6.TripStopsFailure, void>> call(
+          _i4.TripStopDoneParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-            _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValue: _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i6.TripStopsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -56,32 +71,32 @@ class MockTripStopDone extends _i1.Mock implements _i3.TripStopDone {
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+            _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>.value(
+                _FakeEither_0<_i6.TripStopsFailure, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>);
+      ) as _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>);
 }
 
 /// A class which mocks [UpdateTripStopNote].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUpdateTripStopNote extends _i1.Mock
-    implements _i6.UpdateTripStopNote {
+    implements _i7.UpdateTripStopNote {
   @override
-  _i4.Future<_i2.Either<_i5.TripStopsFailure, void>> call(
-          _i6.UpdateTripStopNoteParams? params) =>
+  _i5.Future<_i2.Either<_i6.TripStopsFailure, void>> call(
+          _i7.UpdateTripStopNoteParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-            _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValue: _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i6.TripStopsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -89,13 +104,57 @@ class MockUpdateTripStopNote extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+            _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>.value(
+                _FakeEither_0<_i6.TripStopsFailure, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>);
+      ) as _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>);
+}
+
+/// A class which mocks [DeleteTripStop].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDeleteTripStop extends _i1.Mock implements _i8.DeleteTripStop {
+  @override
+  _i3.TripStopsRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTripStopsRepository_1(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeTripStopsRepository_1(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i3.TripStopsRepository);
+  @override
+  _i5.Future<_i2.Either<_i6.TripStopsFailure, void>> call(
+          _i8.DeleteTripStopParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i6.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>.value(
+                _FakeEither_0<_i6.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>);
 }

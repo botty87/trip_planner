@@ -41,6 +41,12 @@ abstract class TripStopsDataSource {
     required String tripStopId,
     required String? note,
   });
+
+  Future<void> deleteTripStop({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+  });
 }
 
 @LazySingleton(as: TripStopsDataSource)
@@ -133,5 +139,11 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       required String? note}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
     await tripStopDoc.update({'note': note});
+  }
+  
+  @override
+  Future<void> deleteTripStop({required String tripId, required String dayTripId, required String tripStopId}) async {
+    final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
+    await tripStopDoc.delete();
   }
 }

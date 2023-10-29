@@ -84,5 +84,7 @@ abstract class  LocaleKeys {
   static const navigateToDestination = 'navigateToDestination';
   static const note = 'note';
   static const noteHint = 'noteHint';
+  static const deleteTripStop = 'deleteTripStop';
+  static const deleteTripStopQuestion = 'deleteTripStopQuestion';
 
 }

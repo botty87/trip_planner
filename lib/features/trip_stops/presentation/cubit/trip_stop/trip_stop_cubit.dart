@@ -8,6 +8,7 @@ import '../../../../../core/utilities/debouncer.dart';
 import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../../../trips/domain/entities/trip.dart';
 import '../../../domain/entities/trip_stop.dart';
+import '../../../domain/usecases/delete_trip_stop.dart';
 import '../../../domain/usecases/trip_stop_done.dart';
 import '../../../domain/usecases/update_trip_stop_note.dart';
 
@@ -18,20 +19,17 @@ part 'trip_stop_state.dart';
 class TripStopCubit extends Cubit<TripStopState> {
   final TripStopDone _tripStopDone;
   final UpdateTripStopNote _updateTripStopNote;
+  final DeleteTripStop _deleteTripStop;
 
   final Debouncer _tripStopNoteDebouncer = Debouncer(milliseconds: 5000);
-  bool _hasTripNoteToSave;
-
   TripStopCubit({
     @factoryParam required TripStopCubitParams params,
     required TripStopDone tripStopDone,
     required UpdateTripStopNote updateTripStopNote,
-
-    //Used only for testing
-    bool? hasTripNoteToSave,
+    required DeleteTripStop deleteTripStop,
   })  : _tripStopDone = tripStopDone,
         _updateTripStopNote = updateTripStopNote,
-        _hasTripNoteToSave = hasTripNoteToSave ?? false,
+        _deleteTripStop = deleteTripStop,
         super(TripStopState.normal(
             trip: params.trip, dayTrip: params.dayTrip, tripStop: params.tripStop));
 
@@ -84,13 +82,12 @@ class TripStopCubit extends Cubit<TripStopState> {
   }
 
   noteChanged(String value) {
-    _hasTripNoteToSave = true;
-    emit(state.copyWith(tripStop: state.tripStop.copyWith(note: value)));
+    emit(state.copyWith(tripStop: state.tripStop.copyWith(note: value), hasTripNoteToSave: true));
     _tripStopNoteDebouncer.run(() => saveTripStopNote());
   }
 
   Future<bool> saveTripStopNote({bool forced = false}) async {
-    if (!forced && !_hasTripNoteToSave) {
+    if (!forced && !state.hasTripNoteToSave) {
       return true;
     }
 
@@ -141,6 +138,42 @@ class TripStopCubit extends Cubit<TripStopState> {
 
         return true;
       },
+    );
+  }
+
+  deleteTripStop() async {
+    emit(TripStopState.deleting(
+      trip: state.trip,
+      dayTrip: state.dayTrip,
+      tripStop: state.tripStop,
+    ));
+
+    final result = await _deleteTripStop(DeleteTripStopParams(
+      tripId: state.trip.id,
+      dayTripId: state.dayTrip.id,
+      tripStopId: state.tripStop.id,
+    ));
+
+    result.fold(
+      (failure) {
+        emit(TripStopState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+          message: failure.message ?? LocaleKeys.unknownError.tr(),
+        ));
+
+        emit(TripStopState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+        ));
+      },
+      (_) => emit(TripStopState.deleted(
+        trip: state.trip,
+        dayTrip: state.dayTrip,
+        tripStop: state.tripStop,
+      )),
     );
   }
 }

@@ -84,5 +84,7 @@
     "done" : "Done",
     "navigateToDestination" : "Navigate to destination",
     "note" : "Note",
-    "noteHint" : "Add a note"
+    "noteHint" : "Add a note, if you want 😉",
+    "deleteTripStop": "Delete Trip stop",
+    "deleteTripStopQuestion": "Are you sure you want to delete this trip stop?"
 }
