@@ -137,7 +137,10 @@ void main() {
   group('saveTripStopNote', () {
     blocTest<TripStopCubit, TripStopState>(
       'on forced = true emit TripStopState.noteSaving then TripStopState.normal',
-      setUp: () => when(mockUpdateTripStopNote(any)).thenAnswer((_) async => const Right(null)),
+      setUp: () => when(mockUpdateTripStopNote(any)).thenAnswer((_) async {
+        await Future.delayed(const Duration(milliseconds: 500));
+        return const Right(null);
+      }),
       build: () => getStandardTripStopCubit(hasTripNoteToSave: true),
       act: (cubit) => cubit.saveTripStopNote(forced: true),
       expect: () => [
