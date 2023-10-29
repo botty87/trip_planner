@@ -82,5 +82,7 @@
     },
     "estimatedTimeTravel": "Tempo di percorrenza stimato",
     "done": "Completata",
-    "navigateToDestination" : "Naviga verso la destinazione"
+    "navigateToDestination" : "Naviga verso la destinazione",
+    "note" : "Note",
+    "noteHint" : "Aggiungi una nota"
 }

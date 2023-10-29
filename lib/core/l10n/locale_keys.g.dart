@@ -82,5 +82,7 @@ abstract class  LocaleKeys {
   static const estimatedTimeTravel = 'estimatedTimeTravel';
   static const done = 'done';
   static const navigateToDestination = 'navigateToDestination';
+  static const note = 'note';
+  static const noteHint = 'noteHint';
 
 }

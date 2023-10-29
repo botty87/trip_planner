@@ -82,5 +82,7 @@
     },
     "estimatedTimeTravel" : "Estimated time travel",
     "done" : "Done",
-    "navigateToDestination" : "Navigate to destination"
+    "navigateToDestination" : "Navigate to destination",
+    "note" : "Note",
+    "noteHint" : "Add a note"
 }
