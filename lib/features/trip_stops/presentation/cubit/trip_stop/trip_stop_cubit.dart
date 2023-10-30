@@ -87,7 +87,8 @@ class TripStopCubit extends Cubit<TripStopState> {
   }
 
   Future<bool> saveTripStopNote({bool forced = false}) async {
-    if (!forced && !state.hasTripNoteToSave) {
+    if (!state.hasTripNoteToSave) {
+      _tripStopNoteDebouncer.cancel();
       return true;
     }
 
@@ -97,10 +98,10 @@ class TripStopCubit extends Cubit<TripStopState> {
       _tripStopNoteDebouncer.cancel();
       savingDebouncer = Debouncer(milliseconds: 500);
       savingDebouncer.run(() => emit(TripStopState.noteSaving(
-        trip: state.trip,
-        dayTrip: state.dayTrip,
-        tripStop: state.tripStop,
-      )));
+            trip: state.trip,
+            dayTrip: state.dayTrip,
+            tripStop: state.tripStop,
+          )));
     }
 
     final result = await _updateTripStopNote(UpdateTripStopNoteParams(
