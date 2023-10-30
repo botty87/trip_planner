@@ -15,7 +15,7 @@ class _TripStopNoteWidget extends HookWidget {
             style: Theme.of(context).textTheme.titleLarge,
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 12),
             child: TextField(
               key: const Key('noteTextField'),
               controller: textController,
@@ -23,7 +23,9 @@ class _TripStopNoteWidget extends HookWidget {
               textAlign: TextAlign.justify,
               decoration: InputDecoration(
                 hintText: LocaleKeys.noteHint.tr(),
-                border: InputBorder.none,
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                fillColor: Colors.white.withOpacity(0.75),
+                filled: true,
               ),
               keyboardType: TextInputType.multiline,
               onChanged: (value) => context.read<TripStopCubit>().noteChanged(value),
