@@ -69,6 +69,25 @@ final class TripsDataSourceImpl implements TripsDataSource {
 
       batchs[currentBatchIndex].delete(dayTrip.reference);
       currentBatchSize++;
+
+      final tripStops = await FirebaseFirestore.instance
+          .collection('trips')
+          .doc(trip.id)
+          .collection('dayTrips')
+          .doc(dayTrip.id)
+          .collection('tripStops')
+          .get();
+
+      for (final tripStop in tripStops.docs) {
+        if (currentBatchSize == 500) {
+          currentBatchIndex++;
+          batchs.add(FirebaseFirestore.instance.batch());
+          currentBatchSize = 0;
+        }
+
+        batchs[currentBatchIndex].delete(tripStop.reference);
+        currentBatchSize++;
+      }
     }
 
     await Future.wait(batchs.map((batch) => batch.commit()));

@@ -54,9 +54,10 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
       return snapshot.docs.map((doc) => doc.data()).toList();
     });
   }
-  
+
   @override
-  Future<void> updateDayTripsIndexes({required String tripId, required List<DayTrip> dayTrips}) async {
+  Future<void> updateDayTripsIndexes(
+      {required String tripId, required List<DayTrip> dayTrips}) async {
     final batch = FirebaseFirestore.instance.batch();
     final dayTripsCollection = _dayTripsCollection(tripId);
 
@@ -67,23 +68,51 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
 
     await batch.commit();
   }
-  
+
   @override
-  Future<void> updateDayTrip({required String id, required String tripId, required String? description}) async {
+  Future<void> updateDayTrip(
+      {required String id, required String tripId, required String? description}) async {
     await _dayTripsCollection(tripId).doc(id).update({
       'description': description?.isEmpty ?? true ? null : description,
     });
   }
-  
+
   @override
-  Future<void> deleteDayTrip({required String tripId, required String dayTripId}) async {
-    await _dayTripsCollection(tripId).doc(dayTripId).delete();
-  }
-  
-  @override
-  Future<void> updateDayTripStartTime({required String id, required String tripId, required TimeOfDay startTime}) async {
+  Future<void> updateDayTripStartTime(
+      {required String id, required String tripId, required TimeOfDay startTime}) async {
     await _dayTripsCollection(tripId).doc(id).update({
       'startTime': startTime.toJson(),
     });
+  }
+
+  @override
+  Future<void> deleteDayTrip({required String tripId, required String dayTripId}) async {
+    final batchs = [FirebaseFirestore.instance.batch()];
+    int currentBatchIndex = 0;
+    int currentBatchSize = 1;
+
+    final dayTripReference = _dayTripsCollection(tripId).doc(dayTripId);
+    batchs[currentBatchIndex].delete(dayTripReference);
+
+    final tripStops = await FirebaseFirestore.instance
+        .collection('trips')
+        .doc(tripId)
+        .collection('dayTrips')
+        .doc(dayTripId)
+        .collection('tripStops')
+        .get();
+
+    for (final tripStop in tripStops.docs) {
+      if (currentBatchSize == 500) {
+        currentBatchIndex++;
+        batchs.add(FirebaseFirestore.instance.batch());
+        currentBatchSize = 0;
+      }
+
+      batchs[currentBatchIndex].delete(tripStop.reference);
+      currentBatchSize++;
+    }
+
+    await Future.wait(batchs.map((batch) => batch.commit()));
   }
 }

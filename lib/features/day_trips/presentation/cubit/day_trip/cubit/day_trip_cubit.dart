@@ -138,6 +138,11 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   Future<bool> saveDayTripStopStartTime({bool forced = false}) async {
+    if(!state.hasStartTimeToSave) {
+      _startTimeDebouncer.cancel();
+      return true;
+    }
+
     if (forced) {
       _startTimeDebouncer.cancel();
       assert(state is DayTripStateNormal);

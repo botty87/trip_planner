@@ -69,10 +69,6 @@ class DayTripPage extends StatelessWidget {
   }
 
   Future<bool> _onWillPop(BuildContext context) async {
-    if (!context.read<DayTripCubit>().state.hasStartTimeToSave) {
-      return true;
-    }
-
     return context.read<DayTripCubit>().saveDayTripStopStartTime(forced: true);
   }
 }
