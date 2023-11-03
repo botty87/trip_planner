@@ -22,6 +22,7 @@ import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/trip_stop.dart';
 import '../cubit/trip_stop/trip_stop_cubit.dart';
 import '../../../../core/widgets/trip/delete_trip_button.dart';
+import '../widgets/new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
 
 part '../widgets/trip_stop_page/trip_stop_page_body.dart';
 part '../widgets/trip_stop_page/trip_stop_description.dart';

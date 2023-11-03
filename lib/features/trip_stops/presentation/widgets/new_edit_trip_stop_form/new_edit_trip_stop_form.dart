@@ -10,12 +10,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_places/google_places.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
+import '../../../../google_places/presentation/widgets/google_places_suggestions_widget.dart';
 import '../../cubit/new_trip_stop/new_trip_stop_cubit.dart';
 
 part 'duration_widget.dart';
@@ -34,6 +34,8 @@ class NewEditTripStopForm extends StatelessWidget {
 
   final Stream<Marker?> marker;
 
+  final String? initialTripStopName;
+
   final Widget saveSection;
 
   final String? initialTripStopDescription;
@@ -49,6 +51,7 @@ class NewEditTripStopForm extends StatelessWidget {
       required this.onHourDurationChanged,
       required this.onMinuteDurationChanged,
       this.initialTripStopDescription,
+      this.initialTripStopName,
       required this.marker});
 
   @override
@@ -88,7 +91,7 @@ class NewEditTripStopForm extends StatelessWidget {
                       _FieldWidget(
                         key: const Key('nameWidget'),
                         onDescriptionChanged: onNameChanged,
-                        initialValue: initialTripStopDescription,
+                        initialValue: initialTripStopName,
                         label: LocaleKeys.tripStopName.tr(),
                         hint: LocaleKeys.tripStopNameHint.tr(),
                       ),

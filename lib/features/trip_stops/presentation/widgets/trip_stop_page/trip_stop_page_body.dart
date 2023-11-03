@@ -7,6 +7,9 @@ class _TripStopPageBody extends HookWidget {
   Widget build(BuildContext context) {
     final errorMessage = useStreamController<String>();
     final isDeleting = useStreamController<bool>();
+    final hourDuration = useStreamController<int>();
+    final minuteDuration = useStreamController<int>();
+    final marker = useStreamController<Marker?>();
 
     return MultiBlocListener(
       listeners: [
@@ -31,6 +34,18 @@ class _TripStopPageBody extends HookWidget {
               (previous is! TripStopStateDeleting && current is TripStopStateDeleting) ||
               (previous is TripStopStateDeleting && current is! TripStopStateDeleting),
         ),
+        //Show modal bottom sheet if editing
+        BlocListener<TripStopCubit, TripStopState>(
+            listener: (context, state) => _showModalBottomEditing(
+                  context,
+                  isDeleting,
+                  hourDuration,
+                  minuteDuration,
+                  marker,
+                  errorMessage,
+                ),
+            listenWhen: (previous, current) =>
+                previous is TripStopStateNormal && current is TripStopStateEditing),
       ],
       child: SafeArea(
         child: SingleChildScrollView(
@@ -60,7 +75,7 @@ class _TripStopPageBody extends HookWidget {
               ),
               const SizedBox(height: verticalSpace),
               const _TripStopNavigateToButton(),
-              const SizedBox(height: verticalSpaceXL),  
+              const SizedBox(height: verticalSpaceXL),
               const _TripStopNoteWidget(),
               const SizedBox(height: verticalSpaceL),
               _DeleteTripStopButton(isDeleting: isDeleting.stream),
@@ -69,5 +84,47 @@ class _TripStopPageBody extends HookWidget {
         ),
       ),
     );
+  }
+
+  _showModalBottomEditing(
+    BuildContext context,
+    StreamController<bool> isSaving,
+    StreamController<int> hourDuration,
+    StreamController<int> minuteDuration,
+    StreamController<Marker?> marker,
+    StreamController<String?> errorMessage,
+  ) async {
+    final cubit = context.read<TripStopCubit>();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      useRootNavigator: true,
+      isDismissible: false,
+      builder: (_) {
+        return FractionallySizedBox(
+          heightFactor: 0.9,
+          child: NewEditTripStopForm(
+            isSaving: isSaving.stream,
+            hourDuration: hourDuration.stream,
+            minuteDuration: minuteDuration.stream,
+            onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+            onNameChanged: (String value) {}, //cubit.nameChanged(value),
+            onHourDurationChanged: (int value) {}, //cubit.hourDurationChanged(value),
+            onMinuteDurationChanged: (int value) {}, //cubit.minuteDurationChanged(value),
+            marker: marker.stream,
+            initialTripStopDescription: cubit.state.tripStop.description,
+            initialTripStopName: cubit.state.tripStop.name,
+            saveSection: Placeholder(), //_AddDayTripButton(isSaving: isSaving.stream),
+          ),
+        );
+      },
+    ).then((_) => cubit.modalBottomEditingDismissed());
+
+    //Update hour and minute duration 
+    final tripStopDuration = cubit.state.tripStop.duration;
+    await Future.delayed(const Duration(milliseconds: 100));
+    hourDuration.add(tripStopDuration ~/ 60);
+    minuteDuration.add(tripStopDuration % 60);
   }
 }

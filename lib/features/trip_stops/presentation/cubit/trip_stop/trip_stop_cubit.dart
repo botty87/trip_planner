@@ -64,7 +64,13 @@ class TripStopCubit extends Cubit<TripStopState> {
     );
   }
 
-  void edit() {}
+  void edit() {
+    emit(TripStopState.editing(
+      trip: state.trip,
+      dayTrip: state.dayTrip,
+      tripStop: state.tripStop,
+    ));
+  }
 
   void onUIError(Exception e) {
     emit(TripStopState.error(
@@ -177,6 +183,18 @@ class TripStopCubit extends Cubit<TripStopState> {
       )),
     );
   }
+
+  modalBottomEditingDismissed() {
+    if(state is TripStopStateEditing) {
+      emit(TripStopState.normal(
+        trip: state.trip,
+        dayTrip: state.dayTrip,
+        tripStop: state.tripStop,
+      ));
+    }
+  }
+
+  descriptionChanged(String value) {}
 }
 
 final class TripStopCubitParams {
