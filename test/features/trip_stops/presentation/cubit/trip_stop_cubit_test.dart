@@ -267,4 +267,176 @@ void main() {
       ],
     );
   });
+
+  group('editing tests', () {
+    blocTest(
+      'on descriptionChanged emit TripStopStateEditing with updated description',
+      seed: () => TripStopState.editing(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+      ),
+      build: () => getStandardTripStopCubit(),
+      act: (cubit) => cubit.descriptionChanged('description'),
+      expect: () => [
+        TripStopState.editing(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+          description: 'description',
+        ),
+      ],
+    );
+
+    blocTest(
+      'on nameChanged emit TripStopStateEditing with updated description',
+      seed: () => TripStopState.editing(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+      ),
+      build: () => getStandardTripStopCubit(),
+      act: (cubit) => cubit.nameChanged('name'),
+      expect: () => [
+        TripStopState.editing(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+          name: 'name',
+        ),
+      ],
+    );
+
+    blocTest(
+      'on hourDurationChanged emit TripStopStateEditing with updated description',
+      seed: () => TripStopState.editing(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+      ),
+      build: () => getStandardTripStopCubit(),
+      act: (cubit) => cubit.hourDurationChanged(1),
+      expect: () => [
+        TripStopState.editing(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+          hourDuration: 1,
+        ),
+      ],
+    );
+
+    blocTest(
+      'on minuteDurationChanged emit TripStopStateEditing with updated description',
+      seed: () => TripStopState.editing(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+      ),
+      build: () => getStandardTripStopCubit(),
+      act: (cubit) => cubit.minuteDurationChanged(1),
+      expect: () => [
+        TripStopState.editing(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+          minuteDuration: 1,
+        ),
+      ],
+    );
+
+    blocTest(
+      'on locationChanged emit TripStopStateEditing with updated description',
+      seed: () => TripStopState.editing(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+      ),
+      build: () => getStandardTripStopCubit(),
+      act: (cubit) => cubit.locationChanged(const LatLng(1.0, 1.0)),
+      expect: () => [
+        TripStopState.editing(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+          location: const LatLng(1.0, 1.0),
+        ),
+      ],
+    );
+
+    blocTest(
+      'on cancelEditing emit TripStopState.normal',
+      seed: () => TripStopState.editing(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStop: tTripStop,
+      ),
+      build: () => getStandardTripStopCubit(),
+      act: (cubit) => cubit.cancelEditing(),
+      expect: () => [
+        TripStopState.normal(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+        ),
+      ],
+    );
+
+    group('on saveChanges', () {
+      blocTest(
+        'On success, emits [TripStopState.saving, TripStopState.normal]',
+        setUp: () => when(mockUpdateTripStop(any)).thenAnswer((_) async => const Right(null)),
+        seed: () => TripStopState.editing(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+        ),
+        build: () => getStandardTripStopCubit(),
+        act: (cubit) => cubit.saveChanges(),
+        expect: () => [
+          TripStopState.saving(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStop: tTripStop,
+          ),
+          TripStopState.normal(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStop: tTripStop,
+          ),
+        ],
+      );
+
+      blocTest(
+        'On failure, emits [TripStopState.saving, TripStopState.error, TripStopState.editing]',
+        setUp: () =>
+            when(mockUpdateTripStop(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
+        seed: () => TripStopState.editing(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop,
+        ),
+        build: () => getStandardTripStopCubit(),
+        act: (cubit) => cubit.saveChanges(),
+        expect: () => [
+          TripStopState.saving(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStop: tTripStop,
+          ),
+          TripStopState.error(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStop: tTripStop,
+            message: LocaleKeys.unknownError,
+          ),
+          TripStopState.editing(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStop: tTripStop,
+          ),
+        ],
+      );
+    });
+  });
 }
