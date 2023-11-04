@@ -7,11 +7,23 @@ class _MapWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tripStop = context.read<TripStopCubit>().state.tripStop;
+    final location = context.select((TripStopCubit cubit) => cubit.state.tripStop.location);
     final marker = Marker(
-      markerId: MarkerId(tripStop.id),
-      position: tripStop.location,
+      markerId: const MarkerId('tripStop'),
+      position: location,
     );
+
+    if (_controller.isCompleted) {
+      _controller.future.then(
+        (controller) => controller.animateCamera(
+          CameraUpdate.newLatLngZoom(
+            location,
+            15,
+          ),
+        ),
+      );
+    }
+
     return Column(
       children: [
         SizedBox(
@@ -21,7 +33,7 @@ class _MapWidget extends HookWidget {
               GoogleMap(
                 mapType: MapType.hybrid,
                 initialCameraPosition: CameraPosition(
-                  target: tripStop.location,
+                  target: location,
                   zoom: 15,
                 ),
                 onMapCreated: _controller.complete,
@@ -38,7 +50,7 @@ class _MapWidget extends HookWidget {
               ),
               Align(
                 alignment: Alignment.topRight,
-                child: _markerFinder(tripStop.location),
+                child: _markerFinder(location),
               )
             ],
           ),

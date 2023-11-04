@@ -16,24 +16,24 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../../core/widgets/snackbars.dart';
+import '../../../../core/widgets/trip/delete_trip_button.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/trip_stop.dart';
 import '../cubit/trip_stop/trip_stop_cubit.dart';
-import '../../../../core/widgets/trip/delete_trip_button.dart';
 import '../widgets/new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
 
-part '../widgets/trip_stop_page/trip_stop_page_body.dart';
+part '../widgets/trip_stop_page/delete_trip_stop_button.dart';
+part '../widgets/trip_stop_page/map_widget.dart';
+part '../widgets/trip_stop_page/save_cancel_edit_buttons.dart';
 part '../widgets/trip_stop_page/trip_stop_description.dart';
 part '../widgets/trip_stop_page/trip_stop_done_widget.dart';
-part '../widgets/trip_stop_page/map_widget.dart';
 part '../widgets/trip_stop_page/trip_stop_duration_widget.dart';
 part '../widgets/trip_stop_page/trip_stop_navigate_to_button.dart';
 part '../widgets/trip_stop_page/trip_stop_note_widget.dart';
-part '../widgets/trip_stop_page/delete_trip_stop_button.dart';
-part '../widgets/trip_stop_page/save_cancel_edit_buttons.dart';
+part '../widgets/trip_stop_page/trip_stop_page_body.dart';
 
 @RoutePage()
 class TripStopPage extends StatelessWidget {
@@ -82,8 +82,9 @@ class _TripStopPageAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final name = context.select((TripStopCubit cubit) => cubit.state.tripStop.name);
     return AppBar(
-      title: Text(context.read<TripStopCubit>().state.tripStop.name),
+      title: Text(name),
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),

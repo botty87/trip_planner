@@ -2,7 +2,7 @@ part of '../../pages/trip_stop_page.dart';
 
 //A button that opens the navigation app to navigate to the trip stop
 class _TripStopNavigateToButton extends StatelessWidget {
-  const _TripStopNavigateToButton({super.key});
+  const _TripStopNavigateToButton();
 
   @override
   Widget build(BuildContext context) {
