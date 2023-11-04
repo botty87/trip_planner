@@ -12,6 +12,8 @@ class _TripStopPageBody extends HookWidget {
     final marker = useStreamController<Marker?>();
     final isSaving = useStreamController<bool>();
 
+    final isModalBottomEditing = useRef<bool>(false);
+
     return MultiBlocListener(
       listeners: [
         //Show error snackbar if error and update errorMessage stream when error
@@ -44,6 +46,7 @@ class _TripStopPageBody extends HookWidget {
             minuteDuration,
             marker,
             errorMessage,
+            isModalBottomEditing,
           ),
           listenWhen: (previous, current) =>
               previous is TripStopStateNormal && current is TripStopStateEditing,
@@ -102,7 +105,11 @@ class _TripStopPageBody extends HookWidget {
         ),
         //Close modal bottom sheet if editing dismissed
         BlocListener<TripStopCubit, TripStopState>(
-          listener: (context, state) => Navigator.of(context).pop(),
+          listener: (context, state) {
+            if (isModalBottomEditing.value) {
+              Navigator.of(context).pop();
+            }
+          },
           listenWhen: (previous, current) =>
               previous is TripStopStateEditing && current is TripStopStateNormal ||
               previous is TripStopStateSaving && current is TripStopStateNormal,
@@ -161,8 +168,11 @@ class _TripStopPageBody extends HookWidget {
     StreamController<int> minuteDuration,
     StreamController<Marker?> marker,
     StreamController<String?> errorMessage,
+    ObjectRef isModalBottomEditing,
   ) async {
     final cubit = context.read<TripStopCubit>();
+    isModalBottomEditing.value = true;
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -197,7 +207,10 @@ class _TripStopPageBody extends HookWidget {
           ),
         );
       },
-    ).then((_) => cubit.modalBottomEditingDismissed());
+    ).then((_) {
+      isModalBottomEditing.value = false;
+      cubit.modalBottomEditingDismissed();
+    });
 
     //Update hour and minute duration
     final tripStopDuration = cubit.state.tripStop.duration;

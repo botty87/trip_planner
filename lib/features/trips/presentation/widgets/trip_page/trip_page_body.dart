@@ -7,6 +7,8 @@ class _TripPageBody extends HookWidget {
     final isDeleting = useStreamController<bool>();
     final errorMessage = useStreamController<String?>();
 
+    final isModalBottomEditing = useRef<bool>(false);
+
     return MultiBlocListener(
       listeners: [
         //Show error snackbar if error and update errorMessage stream when error
@@ -41,12 +43,16 @@ class _TripPageBody extends HookWidget {
         ),
         //Show modal bottom sheet if editing
         BlocListener<TripCubit, TripState>(
-            listener: (context, state) => _showModalBottomEditing(context, isSaving, errorMessage),
+            listener: (context, state) => _showModalBottomEditing(context, isSaving, isModalBottomEditing, errorMessage),
             listenWhen: (previous, current) =>
                 previous is! TripStateEditing && current is TripStateEditing),
         //Close modal bottom sheet if editing dismissed
         BlocListener<TripCubit, TripState>(
-            listener: (context, state) => Navigator.of(context).pop(),
+            listener: (context, state) {
+              if(isModalBottomEditing.value) {
+                Navigator.of(context).pop();
+              }
+            },
             listenWhen: (previous, current) =>
                 previous is TripStateEditing && current is TripStateNormal),
       ],
@@ -72,9 +78,11 @@ class _TripPageBody extends HookWidget {
     );
   }
 
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
       StreamController<String?> errorMessage) {
     final cubit = context.read<TripCubit>();
+    isModalBottomEditing.value = true;
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -101,6 +109,9 @@ class _TripPageBody extends HookWidget {
           ),
         );
       },
-    ).then((_) => cubit.modalBottomEditingDismissed());
+    ).then((_) {
+      isModalBottomEditing.value = false;
+      cubit.modalBottomEditingDismissed();
+    });
   }
 }

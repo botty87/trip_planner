@@ -9,6 +9,8 @@ class _DayTripPageBody extends HookWidget {
     final errorMessage = useStreamController<String?>();
     final isDeleting = useStreamController<bool>();
 
+    final isModalBottomEditing = useRef<bool>(false);
+
     return MultiBlocListener(
       listeners: [
         //Show error snackbar if error and update errorMessage stream when error
@@ -43,12 +45,16 @@ class _DayTripPageBody extends HookWidget {
         ),
         //Show modal bottom sheet if editing
         BlocListener<DayTripCubit, DayTripState>(
-            listener: (context, state) => _showModalBottomEditing(context, isSaving, errorMessage),
+            listener: (context, state) => _showModalBottomEditing(context, isSaving, isModalBottomEditing, errorMessage),
             listenWhen: (previous, current) =>
                 previous is DayTripStateNormal && current is DayTripStateEditing),
         //Close modal bottom sheet if editing dismissed
         BlocListener<DayTripCubit, DayTripState>(
-            listener: (context, state) => Navigator.of(context).pop(),
+            listener: (context, state) {
+              if(isModalBottomEditing.value) {
+                Navigator.of(context).pop();
+              }
+            },
             listenWhen: (previous, current) =>
                 previous is DayTripStateEditing && current is DayTripStateNormal),
       ],
@@ -89,9 +95,11 @@ class _DayTripPageBody extends HookWidget {
     );
   }
 
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
       StreamController<String?> errorMessage) {
     final cubit = context.read<DayTripCubit>();
+    isModalBottomEditing.value = true;
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -113,6 +121,9 @@ class _DayTripPageBody extends HookWidget {
               ),
             ));
       },
-    ).then((_) => cubit.modalBottomEditingDismissed());
+    ).then((_) {
+      isModalBottomEditing.value = false;
+      cubit.modalBottomEditingDismissed();
+    });
   }
 }
