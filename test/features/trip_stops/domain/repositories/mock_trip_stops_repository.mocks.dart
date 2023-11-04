@@ -350,4 +350,64 @@ class MockTripStopsRepository extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.TripStopsFailure, void>> updateTripStop({
+    required String? tripId,
+    required String? dayTripId,
+    required String? tripStopId,
+    required String? name,
+    required String? description,
+    required int? duration,
+    required _i6.LatLng? location,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateTripStop,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #tripStopId: tripStopId,
+            #name: name,
+            #description: description,
+            #duration: duration,
+            #location: location,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #updateTripStop,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #tripStopId: tripStopId,
+              #name: name,
+              #description: description,
+              #duration: duration,
+              #location: location,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+                _FakeEither_0<_i5.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #updateTripStop,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #tripStopId: tripStopId,
+              #name: name,
+              #description: description,
+              #duration: duration,
+              #location: location,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>);
 }

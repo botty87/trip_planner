@@ -160,12 +160,12 @@ void main() {
 
     blocTest<DayTripCubit, DayTripState>(
       'On save forced DayTripStartTime emit DayTripStateNormal explictitStartTimeSave true, and return true if updateDayTripStartTime succeeds',
-      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
+      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, hasStartTimeToSave: true),
       setUp: () =>
           when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(forced: true), true),
       expect: () => [
-        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: true),
+        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: true, hasStartTimeToSave: true),
         DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: false),
       ],
       build: () => getStandardDayTripCubit(),
@@ -173,7 +173,7 @@ void main() {
 
     blocTest<DayTripCubit, DayTripState>(
       'On save DayTripStartTime emit DayTripStateError and then DayTripStateNormal if updateDayTrip fails, and return false',
-      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip),
+      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, hasStartTimeToSave: true),
       setUp: () => when(mockUpdateDayTripStartTime.call(any))
           .thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
       act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(), false),

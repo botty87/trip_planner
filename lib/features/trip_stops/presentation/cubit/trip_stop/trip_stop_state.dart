@@ -14,6 +14,11 @@ sealed class TripStopState with _$TripStopState {
     required DayTrip dayTrip,
     required TripStop tripStop,
     @Default(false) bool hasTripNoteToSave,
+    String? name,
+    String? description,
+    int? hourDuration,
+    int? minuteDuration,
+    LatLng? location,
   }) = TripStopStateEditing;
 
   const factory TripStopState.saving({

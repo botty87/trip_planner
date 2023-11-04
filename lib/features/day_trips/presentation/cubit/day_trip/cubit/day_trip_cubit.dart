@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../../../core/utilities/debouncer.dart';
-import '../../../../../trip_stops/domain/usecases/listen_trip_stops.dart';
 
 import '../../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../../core/utilities/debouncer.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
+import '../../../../../trip_stops/domain/usecases/listen_trip_stops.dart';
 import '../../../../../trip_stops/domain/usecases/update_travel_time.dart';
 import '../../../../../trip_stops/domain/usecases/update_trip_stops_indexes.dart';
 import '../../../../../trip_stops/errors/trip_stops_failure.dart';
@@ -138,7 +138,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   Future<bool> saveDayTripStopStartTime({bool forced = false}) async {
-    if(!state.hasStartTimeToSave) {
+    if (!state.hasStartTimeToSave) {
       _startTimeDebouncer.cancel();
       return true;
     }

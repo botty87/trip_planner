@@ -108,7 +108,13 @@ class _NewTripStopPageBody extends HookWidget {
         onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
         onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
         marker: marker.stream,
+        onLocationChanged: (LatLng? value) {
+          if (value != null) {
+            context.read<NewTripStopCubit>().locationChanged(value);
+          }
+        },
         saveSection: _AddDayTripButton(isSaving: isSaving.stream),
+        
       ),
     );
   }

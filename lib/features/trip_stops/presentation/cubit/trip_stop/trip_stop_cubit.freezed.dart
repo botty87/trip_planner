@@ -25,8 +25,16 @@ mixin _$TripStopState {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
         normal,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
@@ -50,8 +58,16 @@ mixin _$TripStopState {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -75,8 +91,16 @@ mixin _$TripStopState {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -323,8 +347,16 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
         normal,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
@@ -351,8 +383,16 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -379,8 +419,16 @@ class _$TripStopStateNormal implements TripStopStateNormal {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -482,7 +530,15 @@ abstract class _$$TripStopStateEditingCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
+      {Trip trip,
+      DayTrip dayTrip,
+      TripStop tripStop,
+      bool hasTripNoteToSave,
+      String? name,
+      String? description,
+      int? hourDuration,
+      int? minuteDuration,
+      LatLng? location});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -507,6 +563,11 @@ class __$$TripStopStateEditingCopyWithImpl<$Res>
     Object? dayTrip = null,
     Object? tripStop = null,
     Object? hasTripNoteToSave = null,
+    Object? name = freezed,
+    Object? description = freezed,
+    Object? hourDuration = freezed,
+    Object? minuteDuration = freezed,
+    Object? location = freezed,
   }) {
     return _then(_$TripStopStateEditing(
       trip: null == trip
@@ -525,6 +586,26 @@ class __$$TripStopStateEditingCopyWithImpl<$Res>
           ? _value.hasTripNoteToSave
           : hasTripNoteToSave // ignore: cast_nullable_to_non_nullable
               as bool,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hourDuration: freezed == hourDuration
+          ? _value.hourDuration
+          : hourDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      minuteDuration: freezed == minuteDuration
+          ? _value.minuteDuration
+          : minuteDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
     ));
   }
 }
@@ -536,7 +617,12 @@ class _$TripStopStateEditing implements TripStopStateEditing {
       {required this.trip,
       required this.dayTrip,
       required this.tripStop,
-      this.hasTripNoteToSave = false});
+      this.hasTripNoteToSave = false,
+      this.name,
+      this.description,
+      this.hourDuration,
+      this.minuteDuration,
+      this.location});
 
   @override
   final Trip trip;
@@ -547,10 +633,20 @@ class _$TripStopStateEditing implements TripStopStateEditing {
   @override
   @JsonKey()
   final bool hasTripNoteToSave;
+  @override
+  final String? name;
+  @override
+  final String? description;
+  @override
+  final int? hourDuration;
+  @override
+  final int? minuteDuration;
+  @override
+  final LatLng? location;
 
   @override
   String toString() {
-    return 'TripStopState.editing(trip: $trip, dayTrip: $dayTrip, tripStop: $tripStop, hasTripNoteToSave: $hasTripNoteToSave)';
+    return 'TripStopState.editing(trip: $trip, dayTrip: $dayTrip, tripStop: $tripStop, hasTripNoteToSave: $hasTripNoteToSave, name: $name, description: $description, hourDuration: $hourDuration, minuteDuration: $minuteDuration, location: $location)';
   }
 
   @override
@@ -563,12 +659,30 @@ class _$TripStopStateEditing implements TripStopStateEditing {
             (identical(other.tripStop, tripStop) ||
                 other.tripStop == tripStop) &&
             (identical(other.hasTripNoteToSave, hasTripNoteToSave) ||
-                other.hasTripNoteToSave == hasTripNoteToSave));
+                other.hasTripNoteToSave == hasTripNoteToSave) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.hourDuration, hourDuration) ||
+                other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) ||
+                other.minuteDuration == minuteDuration) &&
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
+  int get hashCode => Object.hash(
+      runtimeType,
+      trip,
+      dayTrip,
+      tripStop,
+      hasTripNoteToSave,
+      name,
+      description,
+      hourDuration,
+      minuteDuration,
+      location);
 
   @JsonKey(ignore: true)
   @override
@@ -583,8 +697,16 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
         normal,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
@@ -602,7 +724,8 @@ class _$TripStopStateEditing implements TripStopStateEditing {
             String message, bool hasTripNoteToSave)
         error,
   }) {
-    return editing(trip, dayTrip, tripStop, hasTripNoteToSave);
+    return editing(trip, dayTrip, tripStop, hasTripNoteToSave, name,
+        description, hourDuration, minuteDuration, location);
   }
 
   @override
@@ -611,8 +734,16 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -630,7 +761,8 @@ class _$TripStopStateEditing implements TripStopStateEditing {
             String message, bool hasTripNoteToSave)?
         error,
   }) {
-    return editing?.call(trip, dayTrip, tripStop, hasTripNoteToSave);
+    return editing?.call(trip, dayTrip, tripStop, hasTripNoteToSave, name,
+        description, hourDuration, minuteDuration, location);
   }
 
   @override
@@ -639,8 +771,16 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -660,7 +800,8 @@ class _$TripStopStateEditing implements TripStopStateEditing {
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(trip, dayTrip, tripStop, hasTripNoteToSave);
+      return editing(trip, dayTrip, tripStop, hasTripNoteToSave, name,
+          description, hourDuration, minuteDuration, location);
     }
     return orElse();
   }
@@ -717,7 +858,12 @@ abstract class TripStopStateEditing implements TripStopState {
       {required final Trip trip,
       required final DayTrip dayTrip,
       required final TripStop tripStop,
-      final bool hasTripNoteToSave}) = _$TripStopStateEditing;
+      final bool hasTripNoteToSave,
+      final String? name,
+      final String? description,
+      final int? hourDuration,
+      final int? minuteDuration,
+      final LatLng? location}) = _$TripStopStateEditing;
 
   @override
   Trip get trip;
@@ -727,6 +873,11 @@ abstract class TripStopStateEditing implements TripStopState {
   TripStop get tripStop;
   @override
   bool get hasTripNoteToSave;
+  String? get name;
+  String? get description;
+  int? get hourDuration;
+  int? get minuteDuration;
+  LatLng? get location;
   @override
   @JsonKey(ignore: true)
   _$$TripStopStateEditingCopyWith<_$TripStopStateEditing> get copyWith =>
@@ -843,8 +994,16 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
         normal,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
@@ -871,8 +1030,16 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -899,8 +1066,16 @@ class _$TripStopStateSaving implements TripStopStateSaving {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -1103,8 +1278,16 @@ class _$TripStopStateNoteSaving implements TripStopStateNoteSaving {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
         normal,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
@@ -1131,8 +1314,16 @@ class _$TripStopStateNoteSaving implements TripStopStateNoteSaving {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -1159,8 +1350,16 @@ class _$TripStopStateNoteSaving implements TripStopStateNoteSaving {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -1363,8 +1562,16 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
         normal,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
@@ -1391,8 +1598,16 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -1419,8 +1634,16 @@ class _$TripStopStateDeleting implements TripStopStateDeleting {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -1623,8 +1846,16 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
         normal,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
@@ -1651,8 +1882,16 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -1679,8 +1918,16 @@ class _$TripStopStateDeleted implements TripStopStateDeleted {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -1896,8 +2143,16 @@ class _$TripStopStateError implements TripStopStateError {
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
         normal,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)
@@ -1924,8 +2179,16 @@ class _$TripStopStateError implements TripStopStateError {
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
@@ -1952,8 +2215,16 @@ class _$TripStopStateError implements TripStopStateError {
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?
         normal,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            TripStop tripStop,
+            bool hasTripNoteToSave,
+            String? name,
+            String? description,
+            int? hourDuration,
+            int? minuteDuration,
+            LatLng? location)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
             bool hasTripNoteToSave)?

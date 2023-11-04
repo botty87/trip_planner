@@ -36,6 +36,10 @@ class _MapWidget extends HookWidget {
                 alignment: Alignment.bottomRight,
                 child: _zoomControls(),
               ),
+              Align(
+                alignment: Alignment.topRight,
+                child: _markerFinder(tripStop.location),
+              )
             ],
           ),
         ),
@@ -63,6 +67,23 @@ class _MapWidget extends HookWidget {
                 )),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _markerFinder(LatLng location) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: IconButton.filled(
+        icon: const Icon(Icons.place),
+        onPressed: () => _controller.future.then(
+          (controller) => controller.animateCamera(
+            CameraUpdate.newLatLngZoom(
+              location,
+              15,
+            ),
+          ),
+        ),
       ),
     );
   }

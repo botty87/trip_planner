@@ -10,6 +10,7 @@ class _TripStopPageBody extends HookWidget {
     final hourDuration = useStreamController<int>();
     final minuteDuration = useStreamController<int>();
     final marker = useStreamController<Marker?>();
+    final isSaving = useStreamController<bool>();
 
     return MultiBlocListener(
       listeners: [
@@ -36,16 +37,83 @@ class _TripStopPageBody extends HookWidget {
         ),
         //Show modal bottom sheet if editing
         BlocListener<TripStopCubit, TripStopState>(
-            listener: (context, state) => _showModalBottomEditing(
-                  context,
-                  isDeleting,
-                  hourDuration,
-                  minuteDuration,
-                  marker,
-                  errorMessage,
-                ),
-            listenWhen: (previous, current) =>
-                previous is TripStopStateNormal && current is TripStopStateEditing),
+          listener: (context, state) => _showModalBottomEditing(
+            context,
+            isSaving,
+            hourDuration,
+            minuteDuration,
+            marker,
+            errorMessage,
+          ),
+          listenWhen: (previous, current) =>
+              previous is TripStopStateNormal && current is TripStopStateEditing,
+        ),
+        //Update hour duration when editing
+        BlocListener<TripStopCubit, TripStopState>(
+          listener: (context, state) {
+            assert(state is TripStopStateEditing);
+            final editingState = state as TripStopStateEditing;
+            hourDuration.add(editingState.hourDuration!);
+          },
+          listenWhen: (previous, current) {
+            if (previous is TripStopStateEditing && current is TripStopStateEditing) {
+              return previous.hourDuration != current.hourDuration;
+            }
+            return false;
+          },
+        ),
+        //Update minute duration when editing
+        BlocListener<TripStopCubit, TripStopState>(
+          listener: (context, state) {
+            assert(state is TripStopStateEditing);
+            final editingState = state as TripStopStateEditing;
+            minuteDuration.add(editingState.minuteDuration!);
+          },
+          listenWhen: (previous, current) {
+            if (previous is TripStopStateEditing && current is TripStopStateEditing) {
+              return previous.minuteDuration != current.minuteDuration;
+            }
+            return false;
+          },
+        ),
+        //Update marker when editing
+        BlocListener<TripStopCubit, TripStopState>(
+          listener: (context, state) {
+            assert(state is TripStopStateEditing);
+            final editingState = state as TripStopStateEditing;
+            marker.add(Marker(
+              markerId: const MarkerId('tripStop'),
+              position: LatLng(
+                editingState.location!.latitude,
+                editingState.location!.longitude,
+              ),
+              draggable: true,
+              onDragEnd: (value) => context
+                  .read<TripStopCubit>()
+                  .locationChanged(LatLng(value.latitude, value.longitude)),
+            ));
+          },
+          listenWhen: (previous, current) {
+            if (previous is TripStopStateEditing && current is TripStopStateEditing) {
+              return previous.location != current.location;
+            }
+            return false;
+          },
+        ),
+        //Close modal bottom sheet if editing dismissed
+        BlocListener<TripStopCubit, TripStopState>(
+          listener: (context, state) => Navigator.of(context).pop(),
+          listenWhen: (previous, current) =>
+              previous is TripStopStateEditing && current is TripStopStateNormal ||
+              previous is TripStopStateSaving && current is TripStopStateNormal,
+        ),
+        //Update isSaving stream when saving
+        BlocListener<TripStopCubit, TripStopState>(
+          listener: (context, state) => isSaving.add(state is TripStopStateSaving),
+          listenWhen: (previous, current) =>
+              (previous is! TripStopStateSaving && current is TripStopStateSaving) ||
+              (previous is TripStopStateSaving && current is! TripStopStateSaving),
+        ),
       ],
       child: SafeArea(
         child: SingleChildScrollView(
@@ -109,22 +177,41 @@ class _TripStopPageBody extends HookWidget {
             hourDuration: hourDuration.stream,
             minuteDuration: minuteDuration.stream,
             onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-            onNameChanged: (String value) {}, //cubit.nameChanged(value),
-            onHourDurationChanged: (int value) {}, //cubit.hourDurationChanged(value),
-            onMinuteDurationChanged: (int value) {}, //cubit.minuteDurationChanged(value),
+            onNameChanged: (String value) => cubit.nameChanged(value),
+            onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
+            onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
             marker: marker.stream,
             initialTripStopDescription: cubit.state.tripStop.description,
             initialTripStopName: cubit.state.tripStop.name,
-            saveSection: Placeholder(), //_AddDayTripButton(isSaving: isSaving.stream),
+            onLocationChanged: (LatLng? value) {
+              if (value != null) {
+                context.read<TripStopCubit>().locationChanged(value);
+              }
+            },
+            saveSection: _SaveCancelEditButtons(
+              isSaving: isSaving.stream,
+              onCancel: () => cubit.cancelEditing(),
+              onSave: () => cubit.saveChanges(),
+              errorMessage: errorMessage.stream,
+            ),
           ),
         );
       },
     ).then((_) => cubit.modalBottomEditingDismissed());
 
-    //Update hour and minute duration 
+    //Update hour and minute duration
     final tripStopDuration = cubit.state.tripStop.duration;
     await Future.delayed(const Duration(milliseconds: 100));
     hourDuration.add(tripStopDuration ~/ 60);
     minuteDuration.add(tripStopDuration % 60);
+
+    //Update marker
+    final tripStopLocation = cubit.state.tripStop.location;
+    marker.add(Marker(
+      markerId: const MarkerId('tripStop'),
+      position: LatLng(tripStopLocation.latitude, tripStopLocation.longitude),
+      draggable: true,
+      onDragEnd: (value) => cubit.locationChanged(LatLng(value.latitude, value.longitude)),
+    ));
   }
 }

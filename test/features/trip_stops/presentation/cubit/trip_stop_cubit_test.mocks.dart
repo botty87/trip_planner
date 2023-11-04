@@ -13,6 +13,8 @@ import 'package:trip_planner/features/trip_stops/domain/usecases/delete_trip_sto
     as _i8;
 import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart'
     as _i4;
+import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stop.dart'
+    as _i9;
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stop_note.dart'
     as _i7;
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
@@ -134,6 +136,50 @@ class MockDeleteTripStop extends _i1.Mock implements _i8.DeleteTripStop {
   @override
   _i5.Future<_i2.Either<_i6.TripStopsFailure, void>> call(
           _i8.DeleteTripStopParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i6.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>.value(
+                _FakeEither_0<_i6.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i5.Future<_i2.Either<_i6.TripStopsFailure, void>>);
+}
+
+/// A class which mocks [UpdateTripStop].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUpdateTripStop extends _i1.Mock implements _i9.UpdateTripStop {
+  @override
+  _i3.TripStopsRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTripStopsRepository_1(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeTripStopsRepository_1(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i3.TripStopsRepository);
+  @override
+  _i5.Future<_i2.Either<_i6.TripStopsFailure, void>> call(
+          _i9.UpdateTripStopParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,

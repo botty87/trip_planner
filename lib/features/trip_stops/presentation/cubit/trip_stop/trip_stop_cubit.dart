@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
@@ -10,6 +11,7 @@ import '../../../../trips/domain/entities/trip.dart';
 import '../../../domain/entities/trip_stop.dart';
 import '../../../domain/usecases/delete_trip_stop.dart';
 import '../../../domain/usecases/trip_stop_done.dart';
+import '../../../domain/usecases/update_trip_stop.dart';
 import '../../../domain/usecases/update_trip_stop_note.dart';
 
 part 'trip_stop_cubit.freezed.dart';
@@ -20,6 +22,7 @@ class TripStopCubit extends Cubit<TripStopState> {
   final TripStopDone _tripStopDone;
   final UpdateTripStopNote _updateTripStopNote;
   final DeleteTripStop _deleteTripStop;
+  final UpdateTripStop _updateTripStop;
 
   final Debouncer _tripStopNoteDebouncer = Debouncer(milliseconds: 5000);
   TripStopCubit({
@@ -27,9 +30,11 @@ class TripStopCubit extends Cubit<TripStopState> {
     required TripStopDone tripStopDone,
     required UpdateTripStopNote updateTripStopNote,
     required DeleteTripStop deleteTripStop,
+    required UpdateTripStop updateTripStop,
   })  : _tripStopDone = tripStopDone,
         _updateTripStopNote = updateTripStopNote,
         _deleteTripStop = deleteTripStop,
+        _updateTripStop = updateTripStop,
         super(TripStopState.normal(
             trip: params.trip, dayTrip: params.dayTrip, tripStop: params.tripStop));
 
@@ -69,6 +74,7 @@ class TripStopCubit extends Cubit<TripStopState> {
       trip: state.trip,
       dayTrip: state.dayTrip,
       tripStop: state.tripStop,
+      name: state.tripStop.name,
     ));
   }
 
@@ -185,7 +191,7 @@ class TripStopCubit extends Cubit<TripStopState> {
   }
 
   modalBottomEditingDismissed() {
-    if(state is TripStopStateEditing) {
+    if (state is TripStopStateEditing) {
       emit(TripStopState.normal(
         trip: state.trip,
         dayTrip: state.dayTrip,
@@ -194,7 +200,95 @@ class TripStopCubit extends Cubit<TripStopState> {
     }
   }
 
-  descriptionChanged(String value) {}
+  descriptionChanged(String value) {
+    assert(state is TripStopStateEditing);
+    emit((state as TripStopStateEditing).copyWith(description: value));
+  }
+
+  nameChanged(String value) {
+    assert(state is TripStopStateEditing);
+    emit((state as TripStopStateEditing).copyWith(name: value));
+  }
+
+  hourDurationChanged(int value) {
+    assert(state is TripStopStateEditing);
+    emit((state as TripStopStateEditing).copyWith(hourDuration: value));
+  }
+
+  minuteDurationChanged(int value) {
+    assert(state is TripStopStateEditing);
+    emit((state as TripStopStateEditing).copyWith(minuteDuration: value));
+  }
+
+  void locationChanged(LatLng value) {
+    assert(state is TripStopStateEditing);
+    emit((state as TripStopStateEditing).copyWith(location: value));
+  }
+
+  cancelEditing() {
+    assert(state is TripStopStateEditing);
+    emit(TripStopState.normal(
+      trip: state.trip,
+      dayTrip: state.dayTrip,
+      tripStop: state.tripStop,
+    ));
+  }
+
+  saveChanges() async {
+    assert(state is TripStopStateEditing);
+    final editingState = state as TripStopStateEditing;
+    emit(TripStopState.saving(
+      trip: state.trip,
+      dayTrip: state.dayTrip,
+      tripStop: state.tripStop,
+    ));
+
+    int getDuration() {
+      int hourDuration = editingState.hourDuration ?? state.tripStop.duration ~/ 60;
+      int minuteDuration = editingState.minuteDuration ?? state.tripStop.duration % 60;
+
+      return hourDuration * 60 + minuteDuration;
+    }
+
+    final name = editingState.name ?? state.tripStop.name;
+    final description = editingState.description ?? state.tripStop.description;
+    final duration = getDuration();
+    final location = editingState.location ?? state.tripStop.location;
+
+    final result = await _updateTripStop(UpdateTripStopParams(
+      id: state.tripStop.id,
+      tripId: state.trip.id,
+      dayTripId: state.dayTrip.id,
+      tripStopId: state.tripStop.id,
+      name: name,
+      description: description,
+      duration: duration,
+      location: location,
+    ));
+
+    result.fold(
+      (failure) {
+        emit(TripStopState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+          message: failure.message ?? LocaleKeys.unknownError.tr(),
+        ));
+
+        emit(editingState);
+      },
+      (_) => emit(TripStopState.normal(
+        trip: state.trip,
+        dayTrip: state.dayTrip,
+        tripStop: state.tripStop.copyWith(
+          name: name,
+          description: description,
+          duration: duration,
+          location: location,
+        ),
+      )),
+    );
+  }
 }
 
 final class TripStopCubitParams {

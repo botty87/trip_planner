@@ -9,6 +9,7 @@ import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/delete_trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart';
+import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stop_note.dart';
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart';
 import 'package:trip_planner/features/trip_stops/presentation/cubit/trip_stop/trip_stop_cubit.dart';
@@ -20,11 +21,13 @@ import 'trip_stop_cubit_test.mocks.dart';
   MockSpec<TripStopDone>(),
   MockSpec<UpdateTripStopNote>(),
   MockSpec<DeleteTripStop>(),
+  MockSpec<UpdateTripStop>(),
 ])
 void main() {
   late MockTripStopDone mockTripStopDone;
   late MockUpdateTripStopNote mockUpdateTripStopNote;
   late MockDeleteTripStop mockDeleteTripStop;
+  late MockUpdateTripStop mockUpdateTripStop;
 
   final tTrip = Trip(
     id: '1',
@@ -54,6 +57,7 @@ void main() {
     mockTripStopDone = MockTripStopDone();
     mockUpdateTripStopNote = MockUpdateTripStopNote();
     mockDeleteTripStop = MockDeleteTripStop();
+    mockUpdateTripStop = MockUpdateTripStop();
   });
 
   TripStopCubit getStandardTripStopCubit() {
@@ -66,6 +70,7 @@ void main() {
       tripStopDone: mockTripStopDone,
       updateTripStopNote: mockUpdateTripStopNote,
       deleteTripStop: mockDeleteTripStop,
+      updateTripStop: mockUpdateTripStop,
     );
   }
 

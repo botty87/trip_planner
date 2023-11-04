@@ -47,6 +47,16 @@ abstract class TripStopsDataSource {
     required String dayTripId,
     required String tripStopId,
   });
+
+  Future<void> updateTripStop({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required String name,
+    required String? description,
+    required int duration,
+    required LatLng location,
+  });
 }
 
 @LazySingleton(as: TripStopsDataSource)
@@ -140,10 +150,29 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
     await tripStopDoc.update({'note': note});
   }
-  
+
   @override
-  Future<void> deleteTripStop({required String tripId, required String dayTripId, required String tripStopId}) async {
+  Future<void> deleteTripStop(
+      {required String tripId, required String dayTripId, required String tripStopId}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
     await tripStopDoc.delete();
+  }
+
+  @override
+  Future<void> updateTripStop(
+      {required String tripId,
+      required String dayTripId,
+      required String tripStopId,
+      required String name,
+      required String? description,
+      required int duration,
+      required LatLng location}) async {
+    final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
+    tripStopDoc.update({
+      'name': name,
+      'description': description?.isEmpty ?? true ? null : description,
+      'duration': duration,
+      'location': GeoPoint(location.latitude, location.longitude),
+    });
   }
 }

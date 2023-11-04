@@ -49,4 +49,14 @@ abstract class TripStopsRepository {
     required String dayTripId,
     required String tripStopId,
   });
+
+  Future<Either<TripStopsFailure, void>> updateTripStop({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required String name,
+    required String? description,
+    required int duration,
+    required LatLng location,
+  });
 }

@@ -305,4 +305,57 @@ void main() {
       expect(result, completion(left(const TripStopsFailure())));
     });
   });
+
+  group('update trip stop', () {
+    test('should return void right(null) when updateTripStop success', () {
+      when(mockTripStopsDataSource.updateTripStop(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStopId: anyNamed('tripStopId'),
+        name: anyNamed('name'),
+        description: anyNamed('description'),
+        location: anyNamed('location'),
+        duration: anyNamed('duration'),
+      )).thenAnswer((_) async {});
+
+      // act
+      final result = repository.updateTripStop(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStopId: 'tripStopId',
+        name: 'name',
+        description: 'description',
+        location: const LatLng(0.0, 0.0),
+        duration: 0,
+      );
+      // assert
+      expect(result, completion(right(null)));
+    
+    });
+
+    test('should return void left(TripStopsFailure) when updateTripStop fails', () {
+      when(mockTripStopsDataSource.updateTripStop(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStopId: anyNamed('tripStopId'),
+        name: anyNamed('name'),
+        description: anyNamed('description'),
+        location: anyNamed('location'),
+        duration: anyNamed('duration'),
+      )).thenThrow(Exception());
+
+      // act
+      final result = repository.updateTripStop(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStopId: 'tripStopId',
+        name: 'name',
+        description: 'description',
+        location: const LatLng(0.0, 0.0),
+        duration: 0,
+      );
+      // assert
+      expect(result, completion(left(const TripStopsFailure())));
+    });
+  });
 }
