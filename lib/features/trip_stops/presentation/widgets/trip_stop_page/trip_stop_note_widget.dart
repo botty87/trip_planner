@@ -15,17 +15,14 @@ class _TripStopNoteWidget extends HookWidget {
             style: Theme.of(context).textTheme.titleLarge,
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 12),
+            padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
             child: TextField(
               key: const Key('noteTextField'),
               controller: textController,
               maxLines: null,
               textAlign: TextAlign.justify,
-              decoration: InputDecoration(
+              decoration: InputDecoration.collapsed(
                 hintText: LocaleKeys.noteHint.tr(),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                fillColor: Colors.white.withOpacity(0.75),
-                filled: true,
               ),
               keyboardType: TextInputType.multiline,
               onChanged: (value) => context.read<TripStopCubit>().noteChanged(value),
