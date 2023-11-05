@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
+
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repository.dart';
-
-import '../../errors/user_failure.dart';
+import '../../errors/user_failures.dart';
 import '../datasources/user_data_source.dart';
 
 @LazySingleton(as: UserRepository)
@@ -14,22 +14,22 @@ final class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.userDataSource);
 
   @override
-  Stream<Either<UserFailure, User?>> listenUser() async* {
+  Stream<Either<UserFailures, User?>> listenUser() async* {
     try {
       yield* userDataSource.listenUser().map((user) => right(user));
     } catch (e) {
-      yield left(UserFailure());
+      yield left(UserFailures());
     }
   }
 
   @override
-  Future<Either<UserFailure, void>> saveUser(User user) {
+  Future<Either<UserFailures, void>> saveUser(User user) {
     // TODO: implement saveUser
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<UserFailure, void>> registerUser(
+  Future<Either<UserFailures, void>> registerUser(
       {required String email, required String password, required String name}) async {
     try {
       await userDataSource.registerUser(email: email, password: password, name: name);
@@ -37,56 +37,74 @@ final class UserRepositoryImpl implements UserRepository {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'email-already-in-use':
-          return left(UserFailure(code: UserFailureCode.emailAlreadyInUse));
+          return left(UserFailures(code: UserFailuresCode.emailAlreadyInUse));
         case 'weak-password':
-          return left(UserFailure(code: UserFailureCode.weakPassword));
+          return left(UserFailures(code: UserFailuresCode.weakPassword));
         case 'network-request-failed':
-          return left(UserFailure(code: UserFailureCode.networkRequestFailed));
+          return left(UserFailures(code: UserFailuresCode.networkRequestFailed));
         default:
-          return left(UserFailure());
+          return left(UserFailures());
       }
     } catch (e) {
-      return left(UserFailure());
+      return left(UserFailures());
     }
   }
-  
+
   @override
-  Future<Either<UserFailure, void>> loginUser({required String email, required String password}) async {
+  Future<Either<UserFailures, void>> loginUser(
+      {required String email, required String password}) async {
     try {
       await userDataSource.loginUser(email: email, password: password);
       return right(null);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'user-not-found':
-          return left(UserFailure(code: UserFailureCode.userNotFound));
+          return left(UserFailures(code: UserFailuresCode.userNotFound));
         case 'wrong-password':
-          return left(UserFailure(code: UserFailureCode.wrongPassword));
+          return left(UserFailures(code: UserFailuresCode.wrongPassword));
         case 'network-request-failed':
-          return left(UserFailure(code: UserFailureCode.networkRequestFailed));
+          return left(UserFailures(code: UserFailuresCode.networkRequestFailed));
         default:
-          return left(UserFailure());
+          return left(UserFailures());
       }
     } catch (e) {
-      return left(UserFailure());
+      return left(UserFailures());
     }
   }
-  
+
   @override
-  Future<Either<UserFailure, void>> recoverPassword(String email) async {
+  Future<Either<UserFailures, void>> recoverPassword(String email) async {
     try {
       await userDataSource.recoverPassword(email);
       return right(null);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'user-not-found':
-          return left(UserFailure(code: UserFailureCode.userNotFound));
+          return left(UserFailures(code: UserFailuresCode.userNotFound));
         case 'network-request-failed':
-          return left(UserFailure(code: UserFailureCode.networkRequestFailed));
+          return left(UserFailures(code: UserFailuresCode.networkRequestFailed));
         default:
-          return left(UserFailure());
+          return left(UserFailures());
       }
     } catch (e) {
-      return left(UserFailure());
+      return left(UserFailures());
+    }
+  }
+
+  @override
+  Future<Either<UserFailures, void>> logoutUser() async {
+    try {
+      await userDataSource.logoutUser();
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'network-request-failed':
+          return left(UserFailures(code: UserFailuresCode.networkRequestFailed));
+        default:
+          return left(UserFailures());
+      }
+    } catch (e) {
+      return left(UserFailures());
     }
   }
 }

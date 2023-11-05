@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -8,9 +9,8 @@ import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/login_user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart';
-import 'package:trip_planner/features/user_account/errors/user_failure.dart';
+import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart';
-import 'package:easy_logger/easy_logger.dart';
 
 import 'login_signup_cubit_test.mocks.dart';
 
@@ -83,9 +83,9 @@ void main() {
       'should emit email error when email is invalid, password empty error when password is empty and name empty error when name is empty',
       seed: () => LoginSignupState(email: 'email'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.signUp(),
       expect: () => [
         LoginSignupState(email: 'email', emailError: LocaleKeys.invalidEmail),
@@ -106,9 +106,9 @@ void main() {
       seed: () => LoginSignupState(
           email: 'email', password: 'password', confirmPassword: 'confirmPassword'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.signUp(),
       expect: () => [
         LoginSignupState(
@@ -140,9 +140,9 @@ void main() {
       seed: () => LoginSignupState(
           email: 'email@email.it', password: 'password', confirmPassword: 'password', name: 'name'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.signUp(),
       expect: () => [
         LoginSignupState(
@@ -163,14 +163,14 @@ void main() {
     blocTest<LoginSignupCubit, LoginSignupState>(
       'should emit authentication error when registerUser returns an error',
       setUp: () {
-        when(mockRegisterUser(any)).thenAnswer((_) async => left(UserFailure()));
+        when(mockRegisterUser(any)).thenAnswer((_) async => left(UserFailures()));
       },
       seed: () => LoginSignupState(
           email: 'email@email.it', password: 'password', confirmPassword: 'password', name: 'name'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.signUp(),
       expect: () => [
         LoginSignupState(
@@ -195,13 +195,13 @@ void main() {
       'should emit user not found when email is invalid',
       setUp: () {
         when(mockLoginUser(any))
-            .thenAnswer((_) async => left(UserFailure(code: UserFailureCode.userNotFound)));
+            .thenAnswer((_) async => left(UserFailures(code: UserFailuresCode.userNotFound)));
       },
       seed: () => LoginSignupState(email: 'email'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.login(),
       expect: () => [
         LoginSignupState(isLoading: true, email: 'email'),
@@ -217,9 +217,9 @@ void main() {
       },
       seed: () => LoginSignupState(email: 'email', password: 'password'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.login(),
       expect: () => [
         LoginSignupState(email: 'email', password: 'password', isLoading: true),
@@ -230,13 +230,13 @@ void main() {
     blocTest<LoginSignupCubit, LoginSignupState>(
       'should emit authentication error when loginUser returns an error',
       setUp: () {
-        when(mockLoginUser(any)).thenAnswer((_) async => left(UserFailure()));
+        when(mockLoginUser(any)).thenAnswer((_) async => left(UserFailures()));
       },
       seed: () => LoginSignupState(email: 'email', password: 'password'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.login(),
       expect: () => [
         LoginSignupState(email: 'email', password: 'password', isLoading: true),
@@ -254,13 +254,13 @@ void main() {
       'should user not found error when email is invalid',
       setUp: () {
         when(mockRecoverPassword(any))
-            .thenAnswer((_) async => left(UserFailure(code: UserFailureCode.userNotFound)));
+            .thenAnswer((_) async => left(UserFailures(code: UserFailuresCode.userNotFound)));
       },
       seed: () => LoginSignupState(email: 'email'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.recoverUserPassword(),
       expect: () => [
         LoginSignupState(isLoading: true, email: 'email'),
@@ -276,9 +276,9 @@ void main() {
       },
       seed: () => LoginSignupState(email: 'email'),
       build: () => LoginSignupCubit(
-        loginUser: mockLoginUser,
-        registerUser: mockRegisterUser,
-        recoverPassword: mockRecoverPassword),
+          loginUser: mockLoginUser,
+          registerUser: mockRegisterUser,
+          recoverPassword: mockRecoverPassword),
       act: (cubit) => cubit.recoverUserPassword(),
       expect: () => [
         LoginSignupState(email: 'email', isLoading: true),

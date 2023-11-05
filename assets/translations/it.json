@@ -86,5 +86,11 @@
     "note" : "Note",
     "noteHint" : "Aggiungi una nota, se vuoi 😉",
     "deleteTripStop": "Elimina tappa di viaggio",
-    "deleteTripStopQuestion": "Sei sicuro di voler eliminare la tappa di viaggio?"
+    "deleteTripStopQuestion": "Sei sicuro di voler eliminare la tappa di viaggio?",
+    "account" : "Account",
+    "yourProfile" : "Il tuo profilo",
+    "yourName" : "Il tuo nome",
+    "yourEmail" : "La tua email",
+    "logout" : "Logout",
+    "logoutConfirmation" : "Sei sicuro di voler effettuare il logout?"
 }

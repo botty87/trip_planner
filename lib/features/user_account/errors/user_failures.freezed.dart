@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_failure.dart';
+part of 'user_failures.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,27 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$UserFailure {
-  UserFailureCode? get code => throw _privateConstructorUsedError;
+mixin _$UserFailures {
+  UserFailuresCode? get code => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserFailureCopyWith<UserFailure> get copyWith =>
+  $UserFailuresCopyWith<UserFailures> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserFailureCopyWith<$Res> {
-  factory $UserFailureCopyWith(
-          UserFailure value, $Res Function(UserFailure) then) =
-      _$UserFailureCopyWithImpl<$Res, UserFailure>;
+abstract class $UserFailuresCopyWith<$Res> {
+  factory $UserFailuresCopyWith(
+          UserFailures value, $Res Function(UserFailures) then) =
+      _$UserFailuresCopyWithImpl<$Res, UserFailures>;
   @useResult
-  $Res call({UserFailureCode? code});
+  $Res call({UserFailuresCode? code});
 }
 
 /// @nodoc
-class _$UserFailureCopyWithImpl<$Res, $Val extends UserFailure>
-    implements $UserFailureCopyWith<$Res> {
-  _$UserFailureCopyWithImpl(this._value, this._then);
+class _$UserFailuresCopyWithImpl<$Res, $Val extends UserFailures>
+    implements $UserFailuresCopyWith<$Res> {
+  _$UserFailuresCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -51,28 +51,28 @@ class _$UserFailureCopyWithImpl<$Res, $Val extends UserFailure>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as UserFailureCode?,
+              as UserFailuresCode?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UserFailureCopyWith<$Res>
-    implements $UserFailureCopyWith<$Res> {
-  factory _$$_UserFailureCopyWith(
-          _$_UserFailure value, $Res Function(_$_UserFailure) then) =
-      __$$_UserFailureCopyWithImpl<$Res>;
+abstract class _$$_UserFailuresCopyWith<$Res>
+    implements $UserFailuresCopyWith<$Res> {
+  factory _$$_UserFailuresCopyWith(
+          _$_UserFailures value, $Res Function(_$_UserFailures) then) =
+      __$$_UserFailuresCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserFailureCode? code});
+  $Res call({UserFailuresCode? code});
 }
 
 /// @nodoc
-class __$$_UserFailureCopyWithImpl<$Res>
-    extends _$UserFailureCopyWithImpl<$Res, _$_UserFailure>
-    implements _$$_UserFailureCopyWith<$Res> {
-  __$$_UserFailureCopyWithImpl(
-      _$_UserFailure _value, $Res Function(_$_UserFailure) _then)
+class __$$_UserFailuresCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$_UserFailures>
+    implements _$$_UserFailuresCopyWith<$Res> {
+  __$$_UserFailuresCopyWithImpl(
+      _$_UserFailures _value, $Res Function(_$_UserFailures) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,33 +80,33 @@ class __$$_UserFailureCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
   }) {
-    return _then(_$_UserFailure(
+    return _then(_$_UserFailures(
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as UserFailureCode?,
+              as UserFailuresCode?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_UserFailure implements _UserFailure {
-  _$_UserFailure({this.code});
+class _$_UserFailures extends _UserFailures {
+  _$_UserFailures({this.code}) : super._();
 
   @override
-  final UserFailureCode? code;
+  final UserFailuresCode? code;
 
   @override
   String toString() {
-    return 'UserFailure(code: $code)';
+    return 'UserFailures(code: $code)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserFailure &&
+            other is _$_UserFailures &&
             (identical(other.code, code) || other.code == code));
   }
 
@@ -116,17 +116,18 @@ class _$_UserFailure implements _UserFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserFailureCopyWith<_$_UserFailure> get copyWith =>
-      __$$_UserFailureCopyWithImpl<_$_UserFailure>(this, _$identity);
+  _$$_UserFailuresCopyWith<_$_UserFailures> get copyWith =>
+      __$$_UserFailuresCopyWithImpl<_$_UserFailures>(this, _$identity);
 }
 
-abstract class _UserFailure implements UserFailure {
-  factory _UserFailure({final UserFailureCode? code}) = _$_UserFailure;
+abstract class _UserFailures extends UserFailures {
+  factory _UserFailures({final UserFailuresCode? code}) = _$_UserFailures;
+  _UserFailures._() : super._();
 
   @override
-  UserFailureCode? get code;
+  UserFailuresCode? get code;
   @override
   @JsonKey(ignore: true)
-  _$$_UserFailureCopyWith<_$_UserFailure> get copyWith =>
+  _$$_UserFailuresCopyWith<_$_UserFailures> get copyWith =>
       throw _privateConstructorUsedError;
 }

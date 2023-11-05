@@ -14,9 +14,9 @@ import '../../../../core/widgets/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
 import '../cubit/login_signup/login_signup_cubit.dart';
 
-part '../widgets/login_section.dart';
-part '../widgets/new_user_row.dart';
-part '../widgets/signup_section.dart';
+part '../widgets/login_signup_page/login_section.dart';
+part '../widgets/login_signup_page/new_user_row.dart';
+part '../widgets/login_signup_page/signup_section.dart';
 
 @RoutePage()
 class LoginSignupPage extends StatelessWidget {

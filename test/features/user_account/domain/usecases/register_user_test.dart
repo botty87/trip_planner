@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart';
-import 'package:trip_planner/features/user_account/errors/user_failure.dart';
+import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 
 import '../repositories/mock_user_repository.mocks.dart';
 
@@ -33,16 +33,15 @@ void main() {
   test('should return a failure when there is an error', () async {
     // arrange
     when(mockUserRepository.registerUser(email: '', password: '', name: '')).thenAnswer((_) async {
-      return Left(UserFailure());
+      return Left(UserFailures());
     });
 
     // act
     final result = await usecase(const RegisterUserParams(email: '', password: '', name: ''));
 
     // assert
-    expect(result, left(UserFailure()));
+    expect(result, left(UserFailures()));
     verify(mockUserRepository.registerUser(email: '', password: '', name: ''));
     verifyNoMoreInteractions(mockUserRepository);
   });
-
 }

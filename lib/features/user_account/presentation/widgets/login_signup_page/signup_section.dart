@@ -1,4 +1,4 @@
-part of '../pages/login_signup_page.dart';
+part of '../../pages/login_signup_page.dart';
 
 class _SignUpSection extends StatelessWidget {
   const _SignUpSection();

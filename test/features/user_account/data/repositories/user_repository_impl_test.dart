@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart';
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
-import 'package:trip_planner/features/user_account/errors/user_failure.dart';
+import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 
 import 'user_repository_impl_test.mocks.dart';
 
@@ -48,7 +48,7 @@ void main() {
       final result = userRepositoryImpl.listenUser();
 
       // assert
-      await expectLater(result, emits(left(UserFailure())));
+      await expectLater(result, emits(left(UserFailures())));
       verify(mockUserDataSource.listenUser());
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -73,8 +73,7 @@ void main() {
   group('login user', () {
     test('should login user on data source', () async {
       // arrange
-      when(mockUserDataSource.loginUser(email: '', password: ''))
-          .thenAnswer((_) async => null);
+      when(mockUserDataSource.loginUser(email: '', password: '')).thenAnswer((_) async => null);
 
       // act
       final result = await userRepositoryImpl.loginUser(email: '', password: '');
@@ -94,7 +93,7 @@ void main() {
       final result = await userRepositoryImpl.loginUser(email: '', password: '');
 
       // assert
-      expect(result, left(UserFailure()));
+      expect(result, left(UserFailures()));
       verify(mockUserDataSource.loginUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -103,8 +102,7 @@ void main() {
   group('recover password', () {
     test('should recover password on data source', () async {
       // arrange
-      when(mockUserDataSource.recoverPassword(''))
-          .thenAnswer((_) async => null);
+      when(mockUserDataSource.recoverPassword('')).thenAnswer((_) async => null);
 
       // act
       final result = await userRepositoryImpl.recoverPassword('');
@@ -124,8 +122,36 @@ void main() {
       final result = await userRepositoryImpl.recoverPassword('');
 
       // assert
-      expect(result, left(UserFailure()));
+      expect(result, left(UserFailures()));
       verify(mockUserDataSource.recoverPassword(''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+  });
+
+  group('logout user', () {
+    test('should logout user on data source', () async {
+      // arrange
+      when(mockUserDataSource.logoutUser()).thenAnswer((_) async => null);
+
+      // act
+      final result = await userRepositoryImpl.logoutUser();
+
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.logoutUser());
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when there is an exception on data source', () async {
+      // arrange
+      when(mockUserDataSource.logoutUser()).thenAnswer((realInvocation) => throw Exception());
+
+      // act
+      final result = await userRepositoryImpl.logoutUser();
+
+      // assert
+      expect(result, left(UserFailures()));
+      verify(mockUserDataSource.logoutUser());
       verifyNoMoreInteractions(mockUserDataSource);
     });
   });

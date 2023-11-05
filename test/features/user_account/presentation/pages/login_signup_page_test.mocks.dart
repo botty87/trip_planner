@@ -15,7 +15,7 @@ import 'package:trip_planner/features/user_account/domain/usecases/recover_passw
     as _i8;
 import 'package:trip_planner/features/user_account/domain/usecases/register_user.dart'
     as _i4;
-import 'package:trip_planner/features/user_account/errors/user_failure.dart'
+import 'package:trip_planner/features/user_account/errors/user_failures.dart'
     as _i6;
 
 // ignore_for_file: type=lint
@@ -67,15 +67,15 @@ class MockRegisterUser extends _i1.Mock implements _i4.RegisterUser {
         ),
       ) as _i2.UserRepository);
   @override
-  _i5.Future<_i3.Either<_i6.UserFailure, void>> call(
+  _i5.Future<_i3.Either<_i6.UserFailures, void>> call(
           _i4.RegisterUserParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
-            _FakeEither_1<_i6.UserFailure, void>(
+        returnValue: _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+            _FakeEither_1<_i6.UserFailures, void>(
           this,
           Invocation.method(
             #call,
@@ -83,15 +83,15 @@ class MockRegisterUser extends _i1.Mock implements _i4.RegisterUser {
           ),
         )),
         returnValueForMissingStub:
-            _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
-                _FakeEither_1<_i6.UserFailure, void>(
+            _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+                _FakeEither_1<_i6.UserFailures, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i5.Future<_i3.Either<_i6.UserFailure, void>>);
+      ) as _i5.Future<_i3.Either<_i6.UserFailures, void>>);
 }
 
 /// A class which mocks [LoginUser].
@@ -111,15 +111,15 @@ class MockLoginUser extends _i1.Mock implements _i7.LoginUser {
         ),
       ) as _i2.UserRepository);
   @override
-  _i5.Future<_i3.Either<_i6.UserFailure, void>> call(
+  _i5.Future<_i3.Either<_i6.UserFailures, void>> call(
           _i7.LoginUserParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
-            _FakeEither_1<_i6.UserFailure, void>(
+        returnValue: _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+            _FakeEither_1<_i6.UserFailures, void>(
           this,
           Invocation.method(
             #call,
@@ -127,15 +127,15 @@ class MockLoginUser extends _i1.Mock implements _i7.LoginUser {
           ),
         )),
         returnValueForMissingStub:
-            _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
-                _FakeEither_1<_i6.UserFailure, void>(
+            _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+                _FakeEither_1<_i6.UserFailures, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i5.Future<_i3.Either<_i6.UserFailure, void>>);
+      ) as _i5.Future<_i3.Either<_i6.UserFailures, void>>);
 }
 
 /// A class which mocks [RecoverPassword].
@@ -155,15 +155,15 @@ class MockRecoverPassword extends _i1.Mock implements _i8.RecoverPassword {
         ),
       ) as _i2.UserRepository);
   @override
-  _i5.Future<_i3.Either<_i6.UserFailure, void>> call(
+  _i5.Future<_i3.Either<_i6.UserFailures, void>> call(
           _i8.RecoverPasswordParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
-            _FakeEither_1<_i6.UserFailure, void>(
+        returnValue: _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+            _FakeEither_1<_i6.UserFailures, void>(
           this,
           Invocation.method(
             #call,
@@ -171,13 +171,13 @@ class MockRecoverPassword extends _i1.Mock implements _i8.RecoverPassword {
           ),
         )),
         returnValueForMissingStub:
-            _i5.Future<_i3.Either<_i6.UserFailure, void>>.value(
-                _FakeEither_1<_i6.UserFailure, void>(
+            _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+                _FakeEither_1<_i6.UserFailures, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i5.Future<_i3.Either<_i6.UserFailure, void>>);
+      ) as _i5.Future<_i3.Either<_i6.UserFailures, void>>);
 }

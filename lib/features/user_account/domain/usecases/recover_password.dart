@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import '../../errors/user_failure.dart';
 
 import '../../../../core/usecases/usecase.dart';
+import '../../errors/user_failures.dart';
 import '../repositories/user_repository.dart';
 
 @lazySingleton
@@ -13,7 +13,7 @@ class RecoverPassword implements UseCase<void, RecoverPasswordParams> {
   RecoverPassword(this.repository);
 
   @override
-  Future<Either<UserFailure, void>> call(RecoverPasswordParams params) async {
+  Future<Either<UserFailures, void>> call(RecoverPasswordParams params) async {
     return await repository.recoverPassword(params.email);
   }
 }

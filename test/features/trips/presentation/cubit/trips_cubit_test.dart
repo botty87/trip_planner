@@ -40,8 +40,8 @@ void main() {
       when(mockListenTrips.call(any)).thenAnswer((_) => Stream.value(right(trips)));
       whenListen(
         mockUserCubit,
-        Stream.fromIterable([UserStateLoggedIn(user: User(id: '1', email: ''))]),
-        initialState: UserStateLoggedIn(user: User(id: '1', email: '')),
+        Stream.fromIterable([UserStateLoggedIn(user: User(id: '1', email: '', name: ''))]),
+        initialState: UserStateLoggedIn(user: User(id: '1', email: '', name: '')),
       );
     },
     build: () => TripsCubit(mockListenTrips, mockUserCubit),

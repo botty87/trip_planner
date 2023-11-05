@@ -9,6 +9,8 @@ abstract interface class UserDataSource {
   loginUser({required String email, required String password});
 
   recoverPassword(String email);
+
+  logoutUser();
 }
 
 @LazySingleton(as: UserDataSource)
@@ -20,7 +22,7 @@ final class UserDataSourceImpl implements UserDataSource {
         yield User(
           id: user.uid,
           email: user.email!,
-          name: user.displayName,
+          name: user.displayName!,
         );
       } else {
         yield null;
@@ -42,5 +44,10 @@ final class UserDataSourceImpl implements UserDataSource {
   @override
   recoverPassword(String email) async {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
+  
+  @override
+  logoutUser() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

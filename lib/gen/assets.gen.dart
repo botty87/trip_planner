@@ -110,6 +110,9 @@ class $AssetsGoogleFontsGen {
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/account.svg.vec
+  String get accountSvg => 'assets/svg/account.svg.vec';
+
   /// File path: assets/svg/add_day_trip.svg.vec
   String get addDayTripSvg => 'assets/svg/add_day_trip.svg.vec';
 
@@ -131,23 +134,16 @@ class $AssetsSvgGen {
   /// File path: assets/svg/trip.svg.vec
   String get tripSvg => 'assets/svg/trip.svg.vec';
 
-  /// File path: assets/svg/undraw_navigator_a479.svg
-  String get undrawNavigatorA479 => 'assets/svg/undraw_navigator_a479.svg';
-
-  /// File path: assets/svg/undraw_pointer.svg
-  String get undrawPointer => 'assets/svg/undraw_pointer.svg';
-
   /// List of all assets
   List<String> get values => [
+        accountSvg,
         addDayTripSvg,
         addNewDayTripSvg,
         addTripStopSvg,
         arrowSvg,
         destinationSvg,
         loginSvg,
-        tripSvg,
-        undrawNavigatorA479,
-        undrawPointer
+        tripSvg
       ];
 }
 

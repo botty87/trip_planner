@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/recover_password.dart';
-import 'package:trip_planner/features/user_account/errors/user_failure.dart';
+import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 
 import '../repositories/mock_user_repository.mocks.dart';
 
@@ -33,14 +33,14 @@ void main() {
   test('should return a failure when there is an error', () async {
     // arrange
     when(mockUserRepository.recoverPassword('')).thenAnswer((_) async {
-      return left(UserFailure());
+      return left(UserFailures());
     });
 
     // act
     final result = await usecase(const RecoverPasswordParams(email: ''));
 
     // assert
-    expect(result, left(UserFailure()));
+    expect(result, left(UserFailures()));
     verify(mockUserRepository.recoverPassword(''));
     verifyNoMoreInteractions(mockUserRepository);
   });

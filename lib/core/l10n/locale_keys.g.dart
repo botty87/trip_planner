@@ -86,5 +86,10 @@ abstract class  LocaleKeys {
   static const noteHint = 'noteHint';
   static const deleteTripStop = 'deleteTripStop';
   static const deleteTripStopQuestion = 'deleteTripStopQuestion';
+  static const yourProfile = 'yourProfile';
+  static const yourName = 'yourName';
+  static const yourEmail = 'yourEmail';
+  static const logout = 'logout';
+  static const logoutConfirmation = 'logoutConfirmation';
 
 }

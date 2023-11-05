@@ -11,7 +11,7 @@ import 'package:trip_planner/features/user_account/domain/entities/user.dart'
     as _i6;
 import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
     as _i3;
-import 'package:trip_planner/features/user_account/errors/user_failure.dart'
+import 'package:trip_planner/features/user_account/errors/user_failures.dart'
     as _i5;
 
 // ignore_for_file: type=lint
@@ -40,25 +40,26 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// See the documentation for Mockito's code generation for more information.
 class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
   @override
-  _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User?>> listenUser() =>
+  _i4.Stream<_i2.Either<_i5.UserFailures, _i6.User?>> listenUser() =>
       (super.noSuchMethod(
         Invocation.method(
           #listenUser,
           [],
         ),
-        returnValue: _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User?>>.empty(),
+        returnValue:
+            _i4.Stream<_i2.Either<_i5.UserFailures, _i6.User?>>.empty(),
         returnValueForMissingStub:
-            _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User?>>.empty(),
-      ) as _i4.Stream<_i2.Either<_i5.UserFailure, _i6.User?>>);
+            _i4.Stream<_i2.Either<_i5.UserFailures, _i6.User?>>.empty(),
+      ) as _i4.Stream<_i2.Either<_i5.UserFailures, _i6.User?>>);
   @override
-  _i4.Future<_i2.Either<_i5.UserFailure, void>> saveUser(_i6.User? user) =>
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> saveUser(_i6.User? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveUser,
           [user],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
-            _FakeEither_0<_i5.UserFailure, void>(
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
             #saveUser,
@@ -66,17 +67,17 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
-                _FakeEither_0<_i5.UserFailure, void>(
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
             #saveUser,
             [user],
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
   @override
-  _i4.Future<_i2.Either<_i5.UserFailure, void>> registerUser({
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> registerUser({
     required String? email,
     required String? password,
     required String? name,
@@ -91,8 +92,8 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
             #name: name,
           },
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
-            _FakeEither_0<_i5.UserFailure, void>(
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
             #registerUser,
@@ -105,8 +106,8 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
-                _FakeEither_0<_i5.UserFailure, void>(
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
             #registerUser,
@@ -118,9 +119,9 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
             },
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
   @override
-  _i4.Future<_i2.Either<_i5.UserFailure, void>> loginUser({
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> loginUser({
     required String? email,
     required String? password,
   }) =>
@@ -133,8 +134,8 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
             #password: password,
           },
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
-            _FakeEither_0<_i5.UserFailure, void>(
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
             #loginUser,
@@ -146,8 +147,8 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
-                _FakeEither_0<_i5.UserFailure, void>(
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
             #loginUser,
@@ -158,17 +159,17 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
             },
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
   @override
-  _i4.Future<_i2.Either<_i5.UserFailure, void>> recoverPassword(
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> recoverPassword(
           String? email) =>
       (super.noSuchMethod(
         Invocation.method(
           #recoverPassword,
           [email],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
-            _FakeEither_0<_i5.UserFailure, void>(
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
             #recoverPassword,
@@ -176,13 +177,38 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.UserFailure, void>>.value(
-                _FakeEither_0<_i5.UserFailure, void>(
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
             #recoverPassword,
             [email],
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.UserFailure, void>>);
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> logoutUser() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #logoutUser,
+          [],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #logoutUser,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #logoutUser,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
 }

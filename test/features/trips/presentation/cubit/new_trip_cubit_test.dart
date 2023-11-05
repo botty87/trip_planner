@@ -43,7 +43,7 @@ void main() {
         expect: () => [const NewTripState.normal(tripDescription: 'test')]);
 
     group('Create trip tests', () {
-      final tUser = User(id: '1', email: '');
+      final tUser = User(id: '1', email: '', name: '');
       final tStartDate = DateTime.now();
 
       setUp(() {

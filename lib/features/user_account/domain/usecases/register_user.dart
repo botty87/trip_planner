@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/usecases/usecase.dart';
-import '../../errors/user_failure.dart';
+import '../../errors/user_failures.dart';
 import '../repositories/user_repository.dart';
 
 @lazySingleton
@@ -13,7 +13,7 @@ class RegisterUser implements UseCase<void, RegisterUserParams> {
   RegisterUser(this.repository);
 
   @override
-  Future<Either<UserFailure, void>> call(RegisterUserParams params) {
+  Future<Either<UserFailures, void>> call(RegisterUserParams params) {
     return repository.registerUser(
       email: params.email,
       password: params.password,

@@ -3,16 +3,15 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../../core/l10n/locale_keys.g.dart';
 
+import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../domain/usecases/login_user.dart';
 import '../../../domain/usecases/recover_password.dart';
 import '../../../domain/usecases/register_user.dart';
-import '../../../errors/user_failure.dart';
-
-part 'login_signup_state.dart';
+import '../../../errors/user_failures.dart';
 
 part 'login_signup_cubit.freezed.dart';
+part 'login_signup_state.dart';
 
 @injectable
 class LoginSignupCubit extends Cubit<LoginSignupState> {
@@ -20,7 +19,9 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
   final LoginUser loginUser;
   final RecoverPassword recoverPassword;
 
-  LoginSignupCubit({required this.registerUser, required this.loginUser, required this.recoverPassword}) : super(LoginSignupState());
+  LoginSignupCubit(
+      {required this.registerUser, required this.loginUser, required this.recoverPassword})
+      : super(LoginSignupState());
 
   void emailChanged(String email) {
     emit(state.copyWith(email: email, emailError: null));
@@ -78,7 +79,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
       (failure) {
         emit(state.copyWith(
           isLoading: false,
-          authenticationError: _getAuthenticationErrorMessage(failure.code),
+          authenticationError: failure.getAuthenticationErrorMessage(),
         ));
       },
       (_) {
@@ -101,7 +102,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
       (failure) {
         emit(state.copyWith(
           isLoading: false,
-          authenticationError: _getAuthenticationErrorMessage(failure.code),
+          authenticationError: failure.getAuthenticationErrorMessage(),
         ));
       },
       (_) {
@@ -119,29 +120,15 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
       (failure) {
         emit(state.copyWith(
           isLoading: false,
-          authenticationError: _getAuthenticationErrorMessage(failure.code),
+          authenticationError: failure.getAuthenticationErrorMessage(),
         ));
       },
       (_) {
-        emit(state.copyWith(isLoading: false, successMessage: LocaleKeys.recoverPasswordSuccess.tr()));
+        emit(state.copyWith(
+            isLoading: false, successMessage: LocaleKeys.recoverPasswordSuccess.tr()));
       },
     );
   }
+
   
-  String _getAuthenticationErrorMessage(UserFailureCode? code) {
-    switch (code) {
-      case UserFailureCode.emailAlreadyInUse:
-        return LocaleKeys.emailAlreadyInUse.tr();
-      case UserFailureCode.weakPassword:
-        return LocaleKeys.weakPassword.tr();
-      case UserFailureCode.networkRequestFailed:
-        return LocaleKeys.networkRequestFailed.tr();
-      case UserFailureCode.userNotFound:
-        return LocaleKeys.userNotFound.tr();
-      case UserFailureCode.wrongPassword:
-        return LocaleKeys.wrongPassword.tr();
-      default:
-        return LocaleKeys.unknownError.tr();
-    }
-  }
 }
