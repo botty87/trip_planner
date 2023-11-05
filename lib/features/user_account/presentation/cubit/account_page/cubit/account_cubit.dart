@@ -6,8 +6,8 @@ import '../../../../../../core/usecases/usecase.dart';
 import '../../../../domain/entities/user.dart';
 import '../../../../domain/usecases/logout_user.dart';
 
-part 'account_state.dart';
 part 'account_cubit.freezed.dart';
+part 'account_state.dart';
 
 @injectable
 class AccountCubit extends Cubit<AccountState> {

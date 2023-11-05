@@ -8,7 +8,6 @@ import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../domain/usecases/login_user.dart';
 import '../../../domain/usecases/recover_password.dart';
 import '../../../domain/usecases/register_user.dart';
-import '../../../errors/user_failures.dart';
 
 part 'login_signup_cubit.freezed.dart';
 part 'login_signup_state.dart';
