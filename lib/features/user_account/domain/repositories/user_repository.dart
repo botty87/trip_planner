@@ -15,4 +15,6 @@ abstract interface class UserRepository {
   Future<Either<UserFailures, void>> recoverPassword(String email);
 
   Future<Either<UserFailures, void>> logoutUser();
+
+  Future<Either<UserFailures, void>> reauthenticateUser({required String email, required String password});
 }

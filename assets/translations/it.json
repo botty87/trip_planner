@@ -92,5 +92,10 @@
     "yourName" : "Il tuo nome",
     "yourEmail" : "La tua email",
     "logout" : "Logout",
-    "logoutConfirmation" : "Sei sicuro di voler effettuare il logout?"
+    "logoutConfirmation" : "Sei sicuro di voler effettuare il logout?",
+    "newPassword" : "Nuova password",
+    "editPassword" : "Modifica password",
+    "currentPassword" : "Password attuale",
+    "insertCurrentPassword" : "Inserisci la password attuale",
+    "reauthenticate" : "Effettua nuovamente l'accesso"
 }

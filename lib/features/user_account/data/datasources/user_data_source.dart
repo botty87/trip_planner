@@ -11,10 +11,16 @@ abstract interface class UserDataSource {
   recoverPassword(String email);
 
   logoutUser();
+
+  reauthenticateUser({required String email, required String password});
 }
 
 @LazySingleton(as: UserDataSource)
 final class UserDataSourceImpl implements UserDataSource {
+  final FirebaseAuth firebaseAuth;
+
+  UserDataSourceImpl(this.firebaseAuth);
+
   @override
   Stream<User?> listenUser() async* {
     await for (final user in FirebaseAuth.instance.userChanges()) {
@@ -32,22 +38,29 @@ final class UserDataSourceImpl implements UserDataSource {
 
   @override
   registerUser({required String email, required String password, required String name}) async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-    await FirebaseAuth.instance.currentUser!.updateDisplayName(name);
+    
+    await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+    await firebaseAuth.currentUser!.updateDisplayName(name);
   }
   
   @override
   loginUser({required String email, required String password}) async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+    await firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
   }
   
   @override
   recoverPassword(String email) async {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    await firebaseAuth.sendPasswordResetEmail(email: email);
   }
   
   @override
   logoutUser() async {
-    await FirebaseAuth.instance.signOut();
+    await firebaseAuth.signOut();
+  }
+  
+  @override
+  reauthenticateUser({required String email, required String password}) async {
+    final credential = EmailAuthProvider.credential(email: email, password: password);
+    await firebaseAuth.currentUser!.reauthenticateWithCredential(credential);
   }
 }

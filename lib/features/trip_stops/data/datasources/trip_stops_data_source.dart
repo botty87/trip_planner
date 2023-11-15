@@ -61,8 +61,12 @@ abstract class TripStopsDataSource {
 
 @LazySingleton(as: TripStopsDataSource)
 class TripStopsDataSourceImpl implements TripStopsDataSource {
+  final FirebaseFirestore firebaseFirestore;
+
+  TripStopsDataSourceImpl(this.firebaseFirestore);
+
   CollectionReference<TripStop> _tripStopsCollection(String tripId, String dayTripId) =>
-      FirebaseFirestore.instance
+      firebaseFirestore
           .collection('trips')
           .doc(tripId)
           .collection('dayTrips')

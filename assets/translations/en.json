@@ -91,5 +91,10 @@
     "yourName" : "Your name",
     "yourEmail" : "Your email",
     "logout" : "Logout",
-    "logoutConfirmation" : "Are you sure you want to logout?"
+    "logoutConfirmation" : "Are you sure you want to logout?",
+    "newPassword" : "New password",
+    "editPassword" : "Edit password",
+    "currentPassword" : "Current password",
+    "insertCurrentPassword" : "Please insert your current password",
+    "reauthenticate" : "New login required"
 }

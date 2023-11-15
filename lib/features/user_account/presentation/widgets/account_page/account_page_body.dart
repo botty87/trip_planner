@@ -5,23 +5,40 @@ class _AccountPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AccountCubit, AccountState>(
-      listener: (context, state) {
-        //On error show snackbar
-        state.whenOrNull(
-          error: (user, message) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              Snackbars.error(message),
-            );
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AccountCubit, AccountState>(
+          listener: (context, state) {
+            //On error show snackbar
+            if (state.errorMessage != null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                Snackbars.error(state.errorMessage!),
+              );
+            }
           },
-        );
-      },
-      child: const SliverPadding(
-        padding: EdgeInsets.only(
-            bottom: pageVerticalPadding, left: pageHorizontalPadding, right: pageHorizontalPadding),
-        sliver: SliverToBoxAdapter(
-          child: _UserDetails(),
         ),
+        BlocListener<AccountCubit, AccountState>(
+          listener: (context, state) {
+            if (state is AccountStateReauthenticating) {
+              _showReauthenticationModalBottom(context);
+            }
+          },
+        ),
+      ],
+      child: BlocBuilder<AccountCubit, AccountState>(
+        buildWhen: (previous, current) =>
+            (previous.runtimeType != current.runtimeType) &&
+            current is! AccountStateReauthenticating,
+        builder: (context, state) {
+          return AnimatedSwitcherPlus.flipY(
+            duration: const Duration(milliseconds: 500),
+            child: state.maybeMap(
+              normal: (_) => const _UserDetails(),
+              editing: (_) => const _EditUserDetails(),
+              orElse: () => throw Exception('Invalid state'),
+            ),
+          );
+        },
       ),
     );
   }

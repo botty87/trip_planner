@@ -13,9 +13,11 @@ abstract class TripsDataSource {
 
 @LazySingleton(as: TripsDataSource)
 final class TripsDataSourceImpl implements TripsDataSource {
-  TripsDataSourceImpl();
+  final FirebaseFirestore firebaseFirestore;
 
-  final _tripsCollection = FirebaseFirestore.instance.collection('trips').withConverter<Trip>(
+  TripsDataSourceImpl(this.firebaseFirestore);
+
+  late final _tripsCollection = firebaseFirestore.collection('trips').withConverter<Trip>(
         fromFirestore: (snapshot, _) => Trip.fromJson(snapshot.data()!).copyWith(id: snapshot.id),
         toFirestore: (trip, _) => trip.toJson(),
       );
@@ -47,14 +49,14 @@ final class TripsDataSourceImpl implements TripsDataSource {
 
   @override
   Future<void> deleteTrip(Trip trip) async {
-    final batchs = [FirebaseFirestore.instance.batch()];
+    final batchs = [firebaseFirestore.batch()];
     int currentBatchIndex = 0;
     int currentBatchSize = 1;
 
     final tripReference = _tripsCollection.doc(trip.id);
     batchs[currentBatchIndex].delete(tripReference);
 
-    final dayTrips = await FirebaseFirestore.instance
+    final dayTrips = await firebaseFirestore
         .collection('trips')
         .doc(trip.id)
         .collection('dayTrips')
@@ -63,14 +65,14 @@ final class TripsDataSourceImpl implements TripsDataSource {
     for (final dayTrip in dayTrips.docs) {
       if (currentBatchSize == 500) {
         currentBatchIndex++;
-        batchs.add(FirebaseFirestore.instance.batch());
+        batchs.add(firebaseFirestore.batch());
         currentBatchSize = 0;
       }
 
       batchs[currentBatchIndex].delete(dayTrip.reference);
       currentBatchSize++;
 
-      final tripStops = await FirebaseFirestore.instance
+      final tripStops = await firebaseFirestore
           .collection('trips')
           .doc(trip.id)
           .collection('dayTrips')
@@ -81,7 +83,7 @@ final class TripsDataSourceImpl implements TripsDataSource {
       for (final tripStop in tripStops.docs) {
         if (currentBatchSize == 500) {
           currentBatchIndex++;
-          batchs.add(FirebaseFirestore.instance.batch());
+          batchs.add(firebaseFirestore.batch());
           currentBatchSize = 0;
         }
 

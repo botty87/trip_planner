@@ -11,7 +11,7 @@ part 'user_failures.freezed.dart';
 sealed class UserFailures with _$UserFailures implements Failure {
   const UserFailures._();
 
-  factory UserFailures({
+  const factory UserFailures({
     UserFailuresCode? code,
   }) = _UserFailures;
 

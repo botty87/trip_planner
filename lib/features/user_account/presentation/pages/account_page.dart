@@ -1,9 +1,12 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:animated_switcher_plus/animated_switcher_plus.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:password_text_field/password_text_field.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../core/constants.dart';
@@ -15,7 +18,10 @@ import '../cubit/account_page/cubit/account_cubit.dart';
 import '../cubit/user/user_cubit.dart';
 
 part '../widgets/account_page/account_page_body.dart';
+part '../widgets/account_page/edit_password.dart';
+part '../widgets/account_page/edit_user_details.dart';
 part '../widgets/account_page/user_details.dart';
+part '../widgets/account_page/reauthentication_modal_bottom.dart';
 
 @RoutePage()
 class AccountPage extends StatelessWidget {
@@ -55,14 +61,43 @@ class AccountPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const _AccountPageBody(),
+              const SliverFillRemaining(
+                hasScrollBody: false,
+                child: _AccountPageBody(),
+              ),
             ],
           );
         }),
-        floatingActionButton: FloatingActionButton(
-          key: const Key('editButton'),
-          onPressed: () {},
-          child: const Icon(Icons.edit),
+        floatingActionButton: BlocBuilder<AccountCubit, AccountState>(
+          buildWhen: (previous, current) =>
+              (previous.runtimeType != current.runtimeType) &&
+              current is! AccountStateReauthenticating &&
+              previous is! AccountStateReauthenticating,
+          builder: (context, state) {
+            final isVisible =
+                context.select((AccountCubit cubit) => cubit.state is AccountStateNormal);
+
+            //Animate the fab, fade in and scale up when visible, fade out and scale down when not visible
+            return AnimatedSwitcher(
+              duration: const Duration(milliseconds: 500),
+              transitionBuilder: (child, animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: ScaleTransition(
+                    scale: animation,
+                    child: child,
+                  ),
+                );
+              },
+              child: isVisible
+                  ? FloatingActionButton(
+                      key: const Key('editButton'),
+                      onPressed: () => context.read<AccountCubit>().edit(),
+                      child: const Icon(Icons.edit),
+                    )
+                  : const SizedBox.shrink(),
+            );
+          },
         ),
       ),
     );

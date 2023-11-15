@@ -4,10 +4,33 @@ part of 'account_cubit.dart';
 sealed class AccountState with _$AccountState {
   const factory AccountState.normal({
     required User user,
-  }) = _AccountStateNormal;
+    String? errorMessage,
+  }) = AccountStateNormal;
 
-  const factory AccountState.error({
+  const factory AccountState.editing({
     required User user,
-    required String message,
-  }) = _AccountStateError;
+    String? errorMessage,
+    String? name,
+    String? email,
+    String? password,
+    String? confirmPassword,
+    @Default(false) bool isEditingPasswordVisible,
+  }) = AccountStateEditing;
+
+  const factory AccountState.reauthenticating({
+    required User user,
+    String? errorMessage,
+    String? email,
+    String? password,
+    required EditUserData editUserData,
+  }) = AccountStateReauthenticating;
+}
+
+@freezed
+class EditUserData with _$EditUserData {
+  const factory EditUserData({
+    required String? name,
+    required String? email,
+    required String? password,
+  }) = _EditUserData;
 }

@@ -18,7 +18,7 @@ final class UserRepositoryImpl implements UserRepository {
     try {
       yield* userDataSource.listenUser().map((user) => right(user));
     } catch (e) {
-      yield left(UserFailures());
+      yield left(const UserFailures());
     }
   }
 
@@ -37,16 +37,16 @@ final class UserRepositoryImpl implements UserRepository {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'email-already-in-use':
-          return left(UserFailures(code: UserFailuresCode.emailAlreadyInUse));
+          return left(const UserFailures(code: UserFailuresCode.emailAlreadyInUse));
         case 'weak-password':
-          return left(UserFailures(code: UserFailuresCode.weakPassword));
+          return left(const UserFailures(code: UserFailuresCode.weakPassword));
         case 'network-request-failed':
-          return left(UserFailures(code: UserFailuresCode.networkRequestFailed));
+          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
         default:
-          return left(UserFailures());
+          return left(const UserFailures());
       }
     } catch (e) {
-      return left(UserFailures());
+      return left(const UserFailures());
     }
   }
 
@@ -59,16 +59,16 @@ final class UserRepositoryImpl implements UserRepository {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'user-not-found':
-          return left(UserFailures(code: UserFailuresCode.userNotFound));
+          return left(const UserFailures(code: UserFailuresCode.userNotFound));
         case 'wrong-password':
-          return left(UserFailures(code: UserFailuresCode.wrongPassword));
+          return left(const UserFailures(code: UserFailuresCode.wrongPassword));
         case 'network-request-failed':
-          return left(UserFailures(code: UserFailuresCode.networkRequestFailed));
+          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
         default:
-          return left(UserFailures());
+          return left(const UserFailures());
       }
     } catch (e) {
-      return left(UserFailures());
+      return left(const UserFailures());
     }
   }
 
@@ -80,14 +80,14 @@ final class UserRepositoryImpl implements UserRepository {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'user-not-found':
-          return left(UserFailures(code: UserFailuresCode.userNotFound));
+          return left(const UserFailures(code: UserFailuresCode.userNotFound));
         case 'network-request-failed':
-          return left(UserFailures(code: UserFailuresCode.networkRequestFailed));
+          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
         default:
-          return left(UserFailures());
+          return left(const UserFailures());
       }
     } catch (e) {
-      return left(UserFailures());
+      return left(const UserFailures());
     }
   }
 
@@ -99,12 +99,34 @@ final class UserRepositoryImpl implements UserRepository {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'network-request-failed':
-          return left(UserFailures(code: UserFailuresCode.networkRequestFailed));
+          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
         default:
-          return left(UserFailures());
+          return left(const UserFailures());
       }
     } catch (e) {
-      return left(UserFailures());
+      return left(const UserFailures());
+    }
+  }
+
+  @override
+  Future<Either<UserFailures, void>> reauthenticateUser(
+      {required String email, required String password}) async {
+    try {
+      await userDataSource.reauthenticateUser(email: email, password: password);
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'user-not-found':
+          return left(const UserFailures(code: UserFailuresCode.userNotFound));
+        case 'wrong-password':
+          return left(const UserFailures(code: UserFailuresCode.wrongPassword));
+        case 'network-request-failed':
+          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
+        default:
+          return left(const UserFailures());
+      }
+    } catch (e) {
+      return left(const UserFailures());
     }
   }
 }

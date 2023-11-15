@@ -27,9 +27,11 @@ abstract class DayTripsDataSource {
 
 @LazySingleton(as: DayTripsDataSource)
 class DayTripsDataSourceImpl implements DayTripsDataSource {
-  DayTripsDataSourceImpl();
+  final FirebaseFirestore firebaseFirestore;
 
-  CollectionReference<DayTrip> _dayTripsCollection(String tripId) => FirebaseFirestore.instance
+  DayTripsDataSourceImpl(this.firebaseFirestore);
+
+  CollectionReference<DayTrip> _dayTripsCollection(String tripId) => firebaseFirestore
       .collection('trips')
       .doc(tripId)
       .collection('dayTrips')
@@ -58,7 +60,7 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
   @override
   Future<void> updateDayTripsIndexes(
       {required String tripId, required List<DayTrip> dayTrips}) async {
-    final batch = FirebaseFirestore.instance.batch();
+    final batch = firebaseFirestore.batch();
     final dayTripsCollection = _dayTripsCollection(tripId);
 
     for (var i = 0; i < dayTrips.length; i++) {
@@ -87,14 +89,14 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
 
   @override
   Future<void> deleteDayTrip({required String tripId, required String dayTripId}) async {
-    final batchs = [FirebaseFirestore.instance.batch()];
+    final batchs = [firebaseFirestore.batch()];
     int currentBatchIndex = 0;
     int currentBatchSize = 1;
 
     final dayTripReference = _dayTripsCollection(tripId).doc(dayTripId);
     batchs[currentBatchIndex].delete(dayTripReference);
 
-    final tripStops = await FirebaseFirestore.instance
+    final tripStops = await firebaseFirestore
         .collection('trips')
         .doc(tripId)
         .collection('dayTrips')
@@ -105,7 +107,7 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
     for (final tripStop in tripStops.docs) {
       if (currentBatchSize == 500) {
         currentBatchIndex++;
-        batchs.add(FirebaseFirestore.instance.batch());
+        batchs.add(firebaseFirestore.batch());
         currentBatchSize = 0;
       }
 

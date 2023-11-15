@@ -91,5 +91,10 @@ abstract class  LocaleKeys {
   static const yourEmail = 'yourEmail';
   static const logout = 'logout';
   static const logoutConfirmation = 'logoutConfirmation';
+  static const newPassword = 'newPassword';
+  static const editPassword = 'editPassword';
+  static const currentPassword = 'currentPassword';
+  static const insertCurrentPassword = 'insertCurrentPassword';
+  static const reauthenticate = 'reauthenticate';
 
 }

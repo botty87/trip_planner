@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -48,7 +49,7 @@ void main() {
       final result = userRepositoryImpl.listenUser();
 
       // assert
-      await expectLater(result, emits(left(UserFailures())));
+      await expectLater(result, emits(left(const UserFailures())));
       verify(mockUserDataSource.listenUser());
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -93,7 +94,7 @@ void main() {
       final result = await userRepositoryImpl.loginUser(email: '', password: '');
 
       // assert
-      expect(result, left(UserFailures()));
+      expect(result, left(const UserFailures()));
       verify(mockUserDataSource.loginUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -122,7 +123,7 @@ void main() {
       final result = await userRepositoryImpl.recoverPassword('');
 
       // assert
-      expect(result, left(UserFailures()));
+      expect(result, left(const UserFailures()));
       verify(mockUserDataSource.recoverPassword(''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -150,8 +151,79 @@ void main() {
       final result = await userRepositoryImpl.logoutUser();
 
       // assert
-      expect(result, left(UserFailures()));
+      expect(result, left(const UserFailures()));
       verify(mockUserDataSource.logoutUser());
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+  });
+
+  group('reauthenticate user', () {
+    test('should reauthenticate user on data source', () async {
+      // arrange
+      when(mockUserDataSource.reauthenticateUser(email: '', password: ''))
+          .thenAnswer((_) async => null);
+
+      // act
+      final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
+
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when user is not found', () async {
+      // arrange
+      when(mockUserDataSource.reauthenticateUser(email: '', password: ''))
+          .thenThrow(FirebaseAuthException(code: 'user-not-found'));
+
+      // act
+      final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
+
+      // assert
+      expect(result, left(const UserFailures(code: UserFailuresCode.userNotFound)));
+      verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when password is wrong', () async {
+      // arrange
+      when(mockUserDataSource.reauthenticateUser(email: '', password: ''))
+          .thenThrow(FirebaseAuthException(code: 'wrong-password'));
+
+      // act
+      final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
+
+      // assert
+      expect(result, left(const UserFailures(code: UserFailuresCode.wrongPassword)));
+      verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when network request fails', () async {
+      // arrange
+      when(mockUserDataSource.reauthenticateUser(email: '', password: ''))
+          .thenThrow(FirebaseAuthException(code: 'network-request-failed'));
+
+      // act
+      final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
+
+      // assert
+      expect(result, left(const UserFailures(code: UserFailuresCode.networkRequestFailed)));
+      verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a generic failure when an unknown exception is thrown', () async {
+      // arrange
+      when(mockUserDataSource.reauthenticateUser(email: '', password: '')).thenThrow(Exception());
+
+      // act
+      final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
+
+      // assert
+      expect(result, left(const UserFailures()));
+      verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
   });

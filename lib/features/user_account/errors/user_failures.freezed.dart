@@ -92,7 +92,7 @@ class __$$_UserFailuresCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UserFailures extends _UserFailures {
-  _$_UserFailures({this.code}) : super._();
+  const _$_UserFailures({this.code}) : super._();
 
   @override
   final UserFailuresCode? code;
@@ -121,8 +121,8 @@ class _$_UserFailures extends _UserFailures {
 }
 
 abstract class _UserFailures extends UserFailures {
-  factory _UserFailures({final UserFailuresCode? code}) = _$_UserFailures;
-  _UserFailures._() : super._();
+  const factory _UserFailures({final UserFailuresCode? code}) = _$_UserFailures;
+  const _UserFailures._() : super._();
 
   @override
   UserFailuresCode? get code;
