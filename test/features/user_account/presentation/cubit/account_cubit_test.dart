@@ -10,15 +10,18 @@ import 'package:trip_planner/core/usecases/usecase.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/logout_user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/reauthenticate_user.dart';
+import 'package:trip_planner/features/user_account/domain/usecases/update_user_details.dart';
 import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/account_page/account_cubit.dart';
 
 import 'account_cubit_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<LogoutUser>(), MockSpec<ReauthenticateUser>()])
+@GenerateNiceMocks(
+    [MockSpec<LogoutUser>(), MockSpec<ReauthenticateUser>(), MockSpec<UpdateUserDetails>()])
 void main() {
   late MockLogoutUser mockUserLogout;
   late MockReauthenticateUser mockReauthenticateUser;
+  late MockUpdateUserDetails mockUpdateUserDetails;
 
   final tUser = User(
     id: '1',
@@ -33,10 +36,15 @@ void main() {
   setUp(() {
     mockUserLogout = MockLogoutUser();
     mockReauthenticateUser = MockReauthenticateUser();
+    mockUpdateUserDetails = MockUpdateUserDetails();
   });
 
   AccountCubit cubit() => AccountCubit(
-      user: tUser, logoutUser: mockUserLogout, reauthenticateUser: mockReauthenticateUser,);
+        user: tUser,
+        logoutUser: mockUserLogout,
+        reauthenticateUser: mockReauthenticateUser,
+        updateUserDetails: mockUpdateUserDetails,
+      );
 
   group('logout', () {
     blocTest<AccountCubit, AccountState>(
@@ -220,7 +228,7 @@ void main() {
       expect: () => [
         AccountState.reauthenticating(
             user: tUser,
-            editUserData: EditUserData(name: tUser.name, email: tUser.email, password: ''))
+            editUserData: EditUserData(name: tUser.name, email: tUser.email, password: null))
       ],
     );
 
@@ -233,7 +241,7 @@ void main() {
       expect: () => [
         AccountState.reauthenticating(
             user: tUser,
-            editUserData: EditUserData(name: tUser.name, email: tUser.email, password: ''))
+            editUserData: EditUserData(name: tUser.name, email: tUser.email, password: null))
       ],
     );
 

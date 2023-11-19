@@ -14,6 +14,8 @@ import 'package:trip_planner/features/user_account/domain/usecases/logout_user.d
     as _i4;
 import 'package:trip_planner/features/user_account/domain/usecases/reauthenticate_user.dart'
     as _i8;
+import 'package:trip_planner/features/user_account/domain/usecases/update_user_details.dart'
+    as _i9;
 import 'package:trip_planner/features/user_account/errors/user_failures.dart'
     as _i6;
 
@@ -112,6 +114,50 @@ class MockReauthenticateUser extends _i1.Mock
   @override
   _i5.Future<_i3.Either<_i6.UserFailures, void>> call(
           _i8.ReauthenticateUserParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+            _FakeEither_1<_i6.UserFailures, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+                _FakeEither_1<_i6.UserFailures, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i5.Future<_i3.Either<_i6.UserFailures, void>>);
+}
+
+/// A class which mocks [UpdateUserDetails].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUpdateUserDetails extends _i1.Mock implements _i9.UpdateUserDetails {
+  @override
+  _i2.UserRepository get userRepository => (super.noSuchMethod(
+        Invocation.getter(#userRepository),
+        returnValue: _FakeUserRepository_0(
+          this,
+          Invocation.getter(#userRepository),
+        ),
+        returnValueForMissingStub: _FakeUserRepository_0(
+          this,
+          Invocation.getter(#userRepository),
+        ),
+      ) as _i2.UserRepository);
+  @override
+  _i5.Future<_i3.Either<_i6.UserFailures, void>> call(
+          _i9.UpdateUserDetailsParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
