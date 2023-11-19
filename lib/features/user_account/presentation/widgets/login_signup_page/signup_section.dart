@@ -14,14 +14,14 @@ class _SignUpSection extends StatelessWidget {
             return state.passwordError;
           },
           builder: (context, passwordError) {
-            return TextField(
+            return PasswordTextField(
               key: const Key('signup_password_text_field'),
               decoration: InputDecoration(
                 labelText: LocaleKeys.confirmPassword.tr(),
                 errorText: passwordError,
               ),
               onChanged: cubit.confirmPasswordChanged,
-              obscureText: true,
+              initialObscurity: true,
               textInputAction: TextInputAction.next,
               autofillHints: const [AutofillHints.newPassword],
             );

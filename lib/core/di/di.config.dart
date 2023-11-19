@@ -153,8 +153,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i18.UpdateTripStopNote(gh<_i10.TripStopsRepository>()));
     gh.lazySingleton<_i19.UpdateTripStopsIndexes>(
         () => _i19.UpdateTripStopsIndexes(gh<_i10.TripStopsRepository>()));
-    gh.lazySingleton<_i20.UserDataSource>(
-        () => _i20.UserDataSourceImpl(gh<_i5.FirebaseAuth>()));
+    gh.lazySingleton<_i20.UserDataSource>(() => _i20.UserDataSourceImpl(
+          gh<_i5.FirebaseAuth>(),
+          gh<_i6.FirebaseFirestore>(),
+        ));
     gh.lazySingleton<_i21.UserRepository>(
         () => _i22.UserRepositoryImpl(gh<_i20.UserDataSource>()));
     gh.lazySingleton<_i23.BlocObserver>(

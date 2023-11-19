@@ -16,7 +16,7 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Stream<Either<UserFailures, User?>> listenUser() async* {
     try {
-      yield* userDataSource.listenUser().map((user) => right(user));
+      yield* userDataSource.user.map((user) => right(user));
     } catch (e) {
       yield left(const UserFailures());
     }

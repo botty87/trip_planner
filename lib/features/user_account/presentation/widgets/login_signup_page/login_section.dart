@@ -33,14 +33,14 @@ class _LoginSection extends StatelessWidget {
             return state.passwordError;
           },
           builder: (context, passwordError) {
-            return TextField(
+            return PasswordTextField(
               key: const Key('login_password_text_field'),
               decoration: InputDecoration(
                 labelText: LocaleKeys.password.tr(),
                 errorText: passwordError,
               ),
               onChanged: cubit.passwordChanged,
-              obscureText: true,
+              initialObscurity: true,
               textInputAction: TextInputAction.done,
               autofillHints: const [AutofillHints.password],
             );

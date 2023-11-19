@@ -1,9 +1,14 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
 import '../../domain/entities/user.dart';
+import '../../domain/entities/user_db.dart';
 
 abstract interface class UserDataSource {
-  Stream<User?> listenUser();
+  Stream<User?> get user;
+
   registerUser({required String email, required String password, required String name});
 
   loginUser({required String email, required String password});
@@ -20,52 +25,62 @@ abstract interface class UserDataSource {
 @LazySingleton(as: UserDataSource)
 final class UserDataSourceImpl implements UserDataSource {
   final FirebaseAuth firebaseAuth;
-
-  UserDataSourceImpl(this.firebaseAuth);
+  final FirebaseFirestore firebaseFirestore;
+  final StreamController<User?> _userStreamController = StreamController<User?>();
 
   @override
-  Stream<User?> listenUser() async* {
-    await for (final user in FirebaseAuth.instance.userChanges()) {
+  late final Stream<User?> user = _userStreamController.stream;
+
+  late final _usersCollection = firebaseFirestore.collection('users').withConverter<UserDB>(
+        fromFirestore: (snapshot, _) => UserDB.fromJson(snapshot.data()!),
+        toFirestore: (user, _) => user.toJson(),
+      );
+
+  UserDataSourceImpl(this.firebaseAuth, this.firebaseFirestore) {
+    firebaseAuth.userChanges().listen((user) async {
       if (user != null) {
-        yield User(
+        _userStreamController.add(User(
           id: user.uid,
           email: user.email!,
           name: user.displayName!,
-        );
+        ));
       } else {
-        yield null;
+        _userStreamController.add(null);
       }
-    }
+    });
   }
 
   @override
   registerUser({required String email, required String password, required String name}) async {
-    
     await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
     await firebaseAuth.currentUser!.updateDisplayName(name);
+    await _usersCollection.doc(firebaseAuth.currentUser!.uid).set(UserDB(
+          email: email,
+          name: name,
+        ));
   }
-  
+
   @override
   loginUser({required String email, required String password}) async {
     await firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
   }
-  
+
   @override
   recoverPassword(String email) async {
     await firebaseAuth.sendPasswordResetEmail(email: email);
   }
-  
+
   @override
   logoutUser() async {
     await firebaseAuth.signOut();
   }
-  
+
   @override
   reauthenticateUser({required String email, required String password}) async {
     final credential = EmailAuthProvider.credential(email: email, password: password);
     await firebaseAuth.currentUser!.reauthenticateWithCredential(credential);
   }
-  
+
   @override
   updateUserDetails({String? name, String? email, String? password}) async {
     if (name != null) {
@@ -77,5 +92,10 @@ final class UserDataSourceImpl implements UserDataSource {
     if (password != null) {
       await firebaseAuth.currentUser!.updatePassword(password);
     }
+
+    await _usersCollection.doc(firebaseAuth.currentUser!.uid).update({
+      'email': email,
+      'name': name,
+    });
   }
 }

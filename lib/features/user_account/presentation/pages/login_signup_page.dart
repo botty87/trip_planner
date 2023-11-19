@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:password_text_field/password_text_field.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../core/constants.dart';
@@ -75,7 +76,7 @@ class LoginSignupPage extends StatelessWidget {
                     children: [
                       SvgPicture(
                         AssetBytesLoader(Assets.svg.loginSvg),
-                        height: 200, //TODO: responsive
+                        height: 200,
                       ),
                       const SizedBox(height: verticalSpace),
                       const _LoginSection(),
