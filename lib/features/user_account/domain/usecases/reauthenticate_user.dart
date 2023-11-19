@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../../errors/user_failures.dart';
 import '../repositories/user_repository.dart';
 
+@lazySingleton
 class ReauthenticateUser implements UseCase<void, ReauthenticateUserParams> {
   final UserRepository repository;
 

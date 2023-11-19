@@ -39,13 +39,13 @@ void main() {
 
   test('should return a failure when there is no user', () async {
     // arrange
-    when(mockUserRepository.listenUser()).thenAnswer((_) => Stream.value(Left(UserFailures())));
+    when(mockUserRepository.listenUser()).thenAnswer((_) => Stream.value(const Left(UserFailures())));
 
     // act
     final result = usecase(const NoParams());
 
     // assert
-    expect(result, emits(Left(UserFailures())));
+    expect(result, emits(const Left(UserFailures())));
     verify(mockUserRepository.listenUser());
     verifyNoMoreInteractions(mockUserRepository);
   });

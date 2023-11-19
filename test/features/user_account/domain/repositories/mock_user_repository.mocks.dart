@@ -52,31 +52,6 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
             _i4.Stream<_i2.Either<_i5.UserFailures, _i6.User?>>.empty(),
       ) as _i4.Stream<_i2.Either<_i5.UserFailures, _i6.User?>>);
   @override
-  _i4.Future<_i2.Either<_i5.UserFailures, void>> saveUser(_i6.User? user) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #saveUser,
-          [user],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
-            _FakeEither_0<_i5.UserFailures, void>(
-          this,
-          Invocation.method(
-            #saveUser,
-            [user],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
-                _FakeEither_0<_i5.UserFailures, void>(
-          this,
-          Invocation.method(
-            #saveUser,
-            [user],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
-  @override
   _i4.Future<_i2.Either<_i5.UserFailures, void>> registerUser({
     required String? email,
     required String? password,
@@ -245,6 +220,50 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
             #reauthenticateUser,
             [],
             {
+              #email: email,
+              #password: password,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> updateUserDetails({
+    required String? name,
+    required String? email,
+    required String? password,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateUserDetails,
+          [],
+          {
+            #name: name,
+            #email: email,
+            #password: password,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #updateUserDetails,
+            [],
+            {
+              #name: name,
+              #email: email,
+              #password: password,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #updateUserDetails,
+            [],
+            {
+              #name: name,
               #email: email,
               #password: password,
             },

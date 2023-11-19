@@ -227,4 +227,34 @@ void main() {
       verifyNoMoreInteractions(mockUserDataSource);
     });
   });
+
+  group('update user details', () {
+    test('should update user details on data source', () async {
+      // arrange
+      when(mockUserDataSource.updateUserDetails(name: '', email: '', password: ''))
+          .thenAnswer((_) async => null);
+
+      // act
+      final result = await userRepositoryImpl.updateUserDetails(name: '', email: '', password: '');
+
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.updateUserDetails(name: '', email: '', password: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when there is an exception on data source', () async {
+      // arrange
+      when(mockUserDataSource.updateUserDetails(name: '', email: '', password: ''))
+          .thenAnswer((realInvocation) => throw Exception());
+
+      // act
+      final result = await userRepositoryImpl.updateUserDetails(name: '', email: '', password: '');
+
+      // assert
+      expect(result, left(const UserFailures()));
+      verify(mockUserDataSource.updateUserDetails(name: '', email: '', password: ''));
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+  });
 }

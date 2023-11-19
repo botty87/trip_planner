@@ -18,3 +18,7 @@ extension TimeOfDayExtension on TimeOfDay {
 extension LatLngExtension on LatLng {
   Coords toCoords() => Coords(latitude, longitude);
 }
+
+extension StringExtension on String {
+  String? nullIfEmpty() => isEmpty ? null : this;
+}

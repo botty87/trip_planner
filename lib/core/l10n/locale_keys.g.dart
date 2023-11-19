@@ -96,5 +96,6 @@ abstract class  LocaleKeys {
   static const currentPassword = 'currentPassword';
   static const insertCurrentPassword = 'insertCurrentPassword';
   static const reauthenticate = 'reauthenticate';
+  static const fillAllFields = 'fillAllFields';
 
 }

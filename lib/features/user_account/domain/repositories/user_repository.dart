@@ -5,7 +5,6 @@ import '../entities/user.dart';
 
 abstract interface class UserRepository {
   Stream<Either<UserFailures, User?>> listenUser();
-  Future<Either<UserFailures, void>> saveUser(User user);
 
   Future<Either<UserFailures, void>> registerUser(
       {required String email, required String password, required String name});
@@ -17,4 +16,6 @@ abstract interface class UserRepository {
   Future<Either<UserFailures, void>> logoutUser();
 
   Future<Either<UserFailures, void>> reauthenticateUser({required String email, required String password});
+
+  Future<Either<UserFailures, void>> updateUserDetails({required String? name, required String? email, required String? password});
 }

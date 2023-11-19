@@ -96,5 +96,6 @@
     "editPassword" : "Edit password",
     "currentPassword" : "Current password",
     "insertCurrentPassword" : "Please insert your current password",
-    "reauthenticate" : "New login required"
+    "reauthenticate" : "New login required",
+    "fillAllFields" : "Please fill all fields"
 }

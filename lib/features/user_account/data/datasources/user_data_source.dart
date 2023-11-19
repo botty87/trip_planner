@@ -13,6 +13,8 @@ abstract interface class UserDataSource {
   logoutUser();
 
   reauthenticateUser({required String email, required String password});
+
+  updateUserDetails({String? name, String? email, String? password});
 }
 
 @LazySingleton(as: UserDataSource)
@@ -62,5 +64,18 @@ final class UserDataSourceImpl implements UserDataSource {
   reauthenticateUser({required String email, required String password}) async {
     final credential = EmailAuthProvider.credential(email: email, password: password);
     await firebaseAuth.currentUser!.reauthenticateWithCredential(credential);
+  }
+  
+  @override
+  updateUserDetails({String? name, String? email, String? password}) async {
+    if (name != null) {
+      await firebaseAuth.currentUser!.updateDisplayName(name);
+    }
+    if (email != null) {
+      await firebaseAuth.currentUser!.updateEmail(email);
+    }
+    if (password != null) {
+      await firebaseAuth.currentUser!.updatePassword(password);
+    }
   }
 }

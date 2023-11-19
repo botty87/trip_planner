@@ -34,14 +34,14 @@ void main() {
   test('should return a failure when there is an error', () async {
     // arrange
     when(mockUserRepository.logoutUser()).thenAnswer((_) async {
-      return left(UserFailures());
+      return left(const UserFailures());
     });
 
     // act
     final result = await usecase(const NoParams());
 
     // assert
-    expect(result, left(UserFailures()));
+    expect(result, left(const UserFailures()));
     verify(mockUserRepository.logoutUser());
     verifyNoMoreInteractions(mockUserRepository);
   });

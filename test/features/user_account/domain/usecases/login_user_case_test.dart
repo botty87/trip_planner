@@ -33,14 +33,14 @@ void main() {
   test('should return a failure when there is an error', () async {
     // arrange
     when(mockUserRepository.loginUser(email: '', password: '')).thenAnswer((_) async {
-      return left(UserFailures());
+      return left(const UserFailures());
     });
 
     // act
     final result = await usecase(const LoginUserParams(email: '', password: ''));
 
     // assert
-    expect(result, left(UserFailures()));
+    expect(result, left(const UserFailures()));
     verify(mockUserRepository.loginUser(email: '', password: ''));
     verifyNoMoreInteractions(mockUserRepository);
   });

@@ -97,5 +97,6 @@
     "editPassword" : "Modifica password",
     "currentPassword" : "Password attuale",
     "insertCurrentPassword" : "Inserisci la password attuale",
-    "reauthenticate" : "Effettua nuovamente l'accesso"
+    "reauthenticate" : "Effettua nuovamente l'accesso",
+    "fillAllFields" : "Compila tutti i campi"
 }

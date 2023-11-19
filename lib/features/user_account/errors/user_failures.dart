@@ -27,6 +27,8 @@ sealed class UserFailures with _$UserFailures implements Failure {
         return LocaleKeys.userNotFound.tr();
       case UserFailuresCode.wrongPassword:
         return LocaleKeys.wrongPassword.tr();
+      case UserFailuresCode.invalidEmail:
+        return LocaleKeys.invalidEmail.tr();
       default:
         return LocaleKeys.unknownError.tr();
     }
@@ -41,4 +43,5 @@ enum UserFailuresCode {
   tooManyRequests,
   userDisabled,
   networkRequestFailed,
+  invalidEmail,
 }

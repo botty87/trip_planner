@@ -23,12 +23,6 @@ final class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Either<UserFailures, void>> saveUser(User user) {
-    // TODO: implement saveUser
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<UserFailures, void>> registerUser(
       {required String email, required String password, required String name}) async {
     try {
@@ -120,6 +114,25 @@ final class UserRepositoryImpl implements UserRepository {
           return left(const UserFailures(code: UserFailuresCode.userNotFound));
         case 'wrong-password':
           return left(const UserFailures(code: UserFailuresCode.wrongPassword));
+        case 'network-request-failed':
+          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
+        case 'invalid-email':
+          return left(const UserFailures(code: UserFailuresCode.invalidEmail));
+        default:
+          return left(const UserFailures());
+      }
+    } catch (e) {
+      return left(const UserFailures());
+    }
+  }
+  
+  @override
+  Future<Either<UserFailures, void>> updateUserDetails({required String? name, required String? email, required String? password}) async {
+    try {
+      await userDataSource.updateUserDetails(name: name, email: email, password: password);
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
         case 'network-request-failed':
           return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
         default:

@@ -31,7 +31,7 @@ mixin _$AccountState {
             bool isEditingPasswordVisible)
         editing,
     required TResult Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)
+            String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
   }) =>
       throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ mixin _$AccountState {
             bool isEditingPasswordVisible)?
         editing,
     TResult? Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)?
+            String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
   }) =>
       throw _privateConstructorUsedError;
@@ -65,7 +65,7 @@ mixin _$AccountState {
             bool isEditingPasswordVisible)?
         editing,
     TResult Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)?
+            String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     required TResult orElse(),
   }) =>
@@ -237,7 +237,7 @@ class _$AccountStateNormal implements AccountStateNormal {
             bool isEditingPasswordVisible)
         editing,
     required TResult Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)
+            String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
   }) {
     return normal(user, errorMessage);
@@ -257,7 +257,7 @@ class _$AccountStateNormal implements AccountStateNormal {
             bool isEditingPasswordVisible)?
         editing,
     TResult? Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)?
+            String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
   }) {
     return normal?.call(user, errorMessage);
@@ -277,7 +277,7 @@ class _$AccountStateNormal implements AccountStateNormal {
             bool isEditingPasswordVisible)?
         editing,
     TResult Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)?
+            String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     required TResult orElse(),
   }) {
@@ -488,7 +488,7 @@ class _$AccountStateEditing implements AccountStateEditing {
             bool isEditingPasswordVisible)
         editing,
     required TResult Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)
+            String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
   }) {
     return editing(user, errorMessage, name, email, password, confirmPassword,
@@ -509,7 +509,7 @@ class _$AccountStateEditing implements AccountStateEditing {
             bool isEditingPasswordVisible)?
         editing,
     TResult? Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)?
+            String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
   }) {
     return editing?.call(user, errorMessage, name, email, password,
@@ -530,7 +530,7 @@ class _$AccountStateEditing implements AccountStateEditing {
             bool isEditingPasswordVisible)?
         editing,
     TResult Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)?
+            String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     required TResult orElse(),
   }) {
@@ -616,6 +616,7 @@ abstract class _$$AccountStateReauthenticatingCopyWith<$Res>
       String? errorMessage,
       String? email,
       String? password,
+      bool isSaving,
       EditUserData editUserData});
 
   @override
@@ -639,6 +640,7 @@ class __$$AccountStateReauthenticatingCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? email = freezed,
     Object? password = freezed,
+    Object? isSaving = null,
     Object? editUserData = null,
   }) {
     return _then(_$AccountStateReauthenticating(
@@ -658,6 +660,10 @@ class __$$AccountStateReauthenticatingCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSaving: null == isSaving
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
       editUserData: null == editUserData
           ? _value.editUserData
           : editUserData // ignore: cast_nullable_to_non_nullable
@@ -682,6 +688,7 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
       this.errorMessage,
       this.email,
       this.password,
+      this.isSaving = false,
       required this.editUserData});
 
   @override
@@ -693,11 +700,14 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
   @override
   final String? password;
   @override
+  @JsonKey()
+  final bool isSaving;
+  @override
   final EditUserData editUserData;
 
   @override
   String toString() {
-    return 'AccountState.reauthenticating(user: $user, errorMessage: $errorMessage, email: $email, password: $password, editUserData: $editUserData)';
+    return 'AccountState.reauthenticating(user: $user, errorMessage: $errorMessage, email: $email, password: $password, isSaving: $isSaving, editUserData: $editUserData)';
   }
 
   @override
@@ -711,13 +721,15 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.isSaving, isSaving) ||
+                other.isSaving == isSaving) &&
             (identical(other.editUserData, editUserData) ||
                 other.editUserData == editUserData));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, user, errorMessage, email, password, editUserData);
+      runtimeType, user, errorMessage, email, password, isSaving, editUserData);
 
   @JsonKey(ignore: true)
   @override
@@ -740,10 +752,11 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
             bool isEditingPasswordVisible)
         editing,
     required TResult Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)
+            String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
   }) {
-    return reauthenticating(user, errorMessage, email, password, editUserData);
+    return reauthenticating(
+        user, errorMessage, email, password, isSaving, editUserData);
   }
 
   @override
@@ -760,11 +773,11 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
             bool isEditingPasswordVisible)?
         editing,
     TResult? Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)?
+            String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
   }) {
     return reauthenticating?.call(
-        user, errorMessage, email, password, editUserData);
+        user, errorMessage, email, password, isSaving, editUserData);
   }
 
   @override
@@ -781,13 +794,13 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
             bool isEditingPasswordVisible)?
         editing,
     TResult Function(User user, String? errorMessage, String? email,
-            String? password, EditUserData editUserData)?
+            String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     required TResult orElse(),
   }) {
     if (reauthenticating != null) {
       return reauthenticating(
-          user, errorMessage, email, password, editUserData);
+          user, errorMessage, email, password, isSaving, editUserData);
     }
     return orElse();
   }
@@ -834,6 +847,7 @@ abstract class AccountStateReauthenticating implements AccountState {
           final String? errorMessage,
           final String? email,
           final String? password,
+          final bool isSaving,
           required final EditUserData editUserData}) =
       _$AccountStateReauthenticating;
 
@@ -843,6 +857,7 @@ abstract class AccountStateReauthenticating implements AccountState {
   String? get errorMessage;
   String? get email;
   String? get password;
+  bool get isSaving;
   EditUserData get editUserData;
   @override
   @JsonKey(ignore: true)

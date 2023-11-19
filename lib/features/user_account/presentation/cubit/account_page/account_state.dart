@@ -22,6 +22,7 @@ sealed class AccountState with _$AccountState {
     String? errorMessage,
     String? email,
     String? password,
+    @Default(false) bool isSaving,
     required EditUserData editUserData,
   }) = AccountStateReauthenticating;
 }

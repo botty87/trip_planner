@@ -7,7 +7,10 @@ class _AccountPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
+        //On error show snackbar, but only if the error is not caused by reauthentication
         BlocListener<AccountCubit, AccountState>(
+          listenWhen: (previous, current) =>
+              current is! AccountStateReauthenticating,
           listener: (context, state) {
             //On error show snackbar
             if (state.errorMessage != null) {
@@ -17,11 +20,29 @@ class _AccountPageBody extends StatelessWidget {
             }
           },
         ),
+        //On reauthentication show modal bottom sheet
         BlocListener<AccountCubit, AccountState>(
+          listenWhen: (previous, current) =>
+              previous is AccountStateEditing && current is AccountStateReauthenticating,
           listener: (context, state) {
             if (state is AccountStateReauthenticating) {
               _showReauthenticationModalBottom(context);
             }
+          },
+        ),
+        //On reauthentication to normal state, hide modal bottom sheet
+        BlocListener<AccountCubit, AccountState>(
+          listenWhen: (previous, current) =>
+              previous is AccountStateReauthenticating && current is AccountStateNormal,
+          listener: (context, state) {
+            Navigator.of(context).pop();
+          },
+        ),
+        //On user change update the user
+        BlocListener<UserCubit, UserState>(
+          listenWhen: (previous, current) => current is UserStateLoggedIn,
+          listener: (context, state) {
+            context.read<AccountCubit>().updateUser((state as UserStateLoggedIn).user);
           },
         ),
       ],

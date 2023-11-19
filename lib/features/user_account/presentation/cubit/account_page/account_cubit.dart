@@ -6,8 +6,11 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/usecases/usecase.dart';
-import '../../../../domain/entities/user.dart';
-import '../../../../domain/usecases/logout_user.dart';
+import '../../../../../core/utilities/extensions.dart';
+import '../../../domain/entities/user.dart';
+import '../../../domain/usecases/logout_user.dart';
+import '../../../domain/usecases/reauthenticate_user.dart';
+import '../../../domain/usecases/update_user_details.dart';
 
 part 'account_cubit.freezed.dart';
 part 'account_state.dart';
@@ -15,9 +18,17 @@ part 'account_state.dart';
 @injectable
 class AccountCubit extends Cubit<AccountState> {
   final LogoutUser _logoutUser;
+  final ReauthenticateUser _reauthenticateUser;
+  final UpdateUserDetails _updateUserDetails;
 
-  AccountCubit({@factoryParam required user, required LogoutUser logoutUser})
+  AccountCubit(
+      {@factoryParam required user,
+      required LogoutUser logoutUser,
+      required ReauthenticateUser reauthenticateUser,
+      required UpdateUserDetails updateUserDetails})
       : _logoutUser = logoutUser,
+        _reauthenticateUser = reauthenticateUser,
+        _updateUserDetails = updateUserDetails,
         super(AccountState.normal(user: user));
 
   logOut() async {
@@ -88,9 +99,9 @@ class AccountCubit extends Cubit<AccountState> {
     emit(AccountState.reauthenticating(
       user: editingState.user,
       editUserData: EditUserData(
-        name: editingState.name,
-        email: editingState.email,
-        password: editingState.password,
+        name: editingState.name?.nullIfEmpty(),
+        email: editingState.email?.nullIfEmpty(),
+        password: editingState.password?.nullIfEmpty(),
       ),
     ));
   }
@@ -106,10 +117,67 @@ class AccountCubit extends Cubit<AccountState> {
     emit(editState.copyWith(isEditingPasswordVisible: true));
   }
 
+  void onReauthEmailChanged(String value) {
+    assert(state is AccountStateReauthenticating);
+    emit((state as AccountStateReauthenticating).copyWith(email: value, errorMessage: null));
+  }
+
+  void onReauthPasswordChanged(String value) {
+    assert(state is AccountStateReauthenticating);
+    emit((state as AccountStateReauthenticating).copyWith(password: value, errorMessage: null));
+  }
+
   void cancelReauthentication() {
     assert(state is AccountStateReauthenticating);
     emit(AccountState.normal(user: state.user));
   }
 
-  reauthenticate() {}
+  reauthenticate() async {
+    assert(state is AccountStateReauthenticating);
+    final reauthState = state as AccountStateReauthenticating;
+
+    updateUserDetail() async {
+      final result = await _updateUserDetails(UpdateUserDetailsParams(
+        name: reauthState.editUserData.name,
+        email: reauthState.editUserData.email,
+        password: reauthState.editUserData.password,
+      ));
+
+      result.fold(
+        (failure) {
+          emit(reauthState.copyWith(
+              errorMessage: failure.getAuthenticationErrorMessage(), isSaving: false));
+        },
+        (_) {
+          emit(AccountState.normal(user: state.user));
+        },
+      );
+    }
+
+    if ((reauthState.email?.isEmpty ?? true) || (reauthState.password?.isEmpty ?? true)) {
+      emit(reauthState.copyWith(errorMessage: LocaleKeys.fillAllFields.tr()));
+      return;
+    }
+
+    emit(reauthState.copyWith(isSaving: true));
+
+    final result = await _reauthenticateUser(ReauthenticateUserParams(
+      email: reauthState.email!,
+      password: reauthState.password!,
+    ));
+
+    result.fold(
+      (failure) {
+        emit(reauthState.copyWith(
+            errorMessage: failure.getAuthenticationErrorMessage(), isSaving: false));
+      },
+      (_) {
+        updateUserDetail();
+      },
+    );
+  }
+
+  void updateUser(User user) {
+    emit(state.copyWith(user: user));
+  }
 }

@@ -9,16 +9,16 @@ import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/core/usecases/usecase.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/logout_user.dart';
+import 'package:trip_planner/features/user_account/domain/usecases/reauthenticate_user.dart';
 import 'package:trip_planner/features/user_account/errors/user_failures.dart';
-import 'package:trip_planner/features/user_account/presentation/cubit/account_page/cubit/account_cubit.dart';
+import 'package:trip_planner/features/user_account/presentation/cubit/account_page/account_cubit.dart';
 
 import 'account_cubit_test.mocks.dart';
 
-@GenerateNiceMocks([
-  MockSpec<LogoutUser>(),
-])
+@GenerateNiceMocks([MockSpec<LogoutUser>(), MockSpec<ReauthenticateUser>()])
 void main() {
   late MockLogoutUser mockUserLogout;
+  late MockReauthenticateUser mockReauthenticateUser;
 
   final tUser = User(
     id: '1',
@@ -32,9 +32,11 @@ void main() {
 
   setUp(() {
     mockUserLogout = MockLogoutUser();
+    mockReauthenticateUser = MockReauthenticateUser();
   });
 
-  AccountCubit cubit() => AccountCubit(user: tUser, logoutUser: mockUserLogout);
+  AccountCubit cubit() => AccountCubit(
+      user: tUser, logoutUser: mockUserLogout, reauthenticateUser: mockReauthenticateUser,);
 
   group('logout', () {
     blocTest<AccountCubit, AccountState>(
@@ -56,13 +58,13 @@ void main() {
     blocTest<AccountCubit, AccountState>(
       'should emit AccountState.error when logout fails',
       setUp: () {
-        when(mockUserLogout(any)).thenAnswer((_) async => Left(UserFailures()));
+        when(mockUserLogout(any)).thenAnswer((_) async => const Left(UserFailures()));
       },
       build: () => cubit(),
       act: (cubit) => cubit.logOut(),
       expect: () => [
         AccountState.normal(
-            user: tUser, errorMessage: UserFailures().getAuthenticationErrorMessage()),
+            user: tUser, errorMessage: const UserFailures().getAuthenticationErrorMessage()),
         AccountState.normal(user: tUser),
       ],
       verify: (_) {
@@ -131,6 +133,40 @@ void main() {
     expect: () => [
       AccountState.editing(
           user: tUser, name: tUser.name, email: tUser.email, isEditingPasswordVisible: true),
+    ],
+  );
+
+  blocTest<AccountCubit, AccountState>(
+    'onReauthEmailChanged emit AccountStateReauthenticating with email',
+    seed: () => AccountState.reauthenticating(
+      user: tUser,
+      editUserData: EditUserData(name: tUser.name, email: tUser.email, password: ''),
+    ),
+    build: () => cubit(),
+    act: (cubit) => cubit.onReauthEmailChanged('new email'),
+    expect: () => [
+      AccountState.reauthenticating(
+        user: tUser,
+        editUserData: EditUserData(name: tUser.name, email: tUser.email, password: ''),
+        email: 'new email',
+      ),
+    ],
+  );
+
+  blocTest<AccountCubit, AccountState>(
+    'onReauthPasswordChanged emit AccountStateReauthenticating with password',
+    seed: () => AccountState.reauthenticating(
+      user: tUser,
+      editUserData: EditUserData(name: tUser.name, email: tUser.email, password: ''),
+    ),
+    build: () => cubit(),
+    act: (cubit) => cubit.onReauthPasswordChanged('new password'),
+    expect: () => [
+      AccountState.reauthenticating(
+        user: tUser,
+        editUserData: EditUserData(name: tUser.name, email: tUser.email, password: ''),
+        password: 'new password',
+      ),
     ],
   );
 
