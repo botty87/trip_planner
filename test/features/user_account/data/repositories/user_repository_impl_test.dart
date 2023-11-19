@@ -29,28 +29,28 @@ void main() {
 
   test('should listen user from the data source', () async {
     // arrange
-    when(mockUserDataSource.listenUser()).thenAnswer((_) => Stream.value(tUser));
+    when(mockUserDataSource.user).thenAnswer((_) => Stream.value(tUser));
 
     // act
     final result = userRepositoryImpl.listenUser();
 
     // assert
     await expectLater(result, emits(right(tUser)));
-    verify(mockUserDataSource.listenUser());
+    verify(mockUserDataSource.user);
     verifyNoMoreInteractions(mockUserDataSource);
   });
 
   group('listen user', () {
     test('should return a failure when there is an exception on data source', () async {
       // arrange
-      when(mockUserDataSource.listenUser()).thenAnswer((realInvocation) => throw Exception());
+      when(mockUserDataSource.user).thenAnswer((realInvocation) => throw Exception());
 
       // act
       final result = userRepositoryImpl.listenUser();
 
       // assert
       await expectLater(result, emits(left(const UserFailures())));
-      verify(mockUserDataSource.listenUser());
+      verify(mockUserDataSource.user);
       verifyNoMoreInteractions(mockUserDataSource);
     });
   });
