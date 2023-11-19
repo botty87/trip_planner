@@ -259,5 +259,115 @@ void main() {
         AccountState.editing(user: tUser, name: tUser.name, email: 'invalid email'),
       ],
     );
+
+    blocTest<AccountCubit, AccountState>(
+      'when email is valid adn different and password is null emit reauthenticating state',
+      seed: () => AccountState.editing(
+          user: tUser,
+          name: 'name',
+          email: 'email@test.com',
+          password: null,
+          confirmPassword: null),
+      build: () => cubit(),
+      act: (cubit) => cubit.save(),
+      expect: () => [
+        AccountState.reauthenticating(
+            user: tUser,
+            editUserData: const EditUserData(name: 'name', email: 'email@test.com', password: null))
+      ],
+    );
   });
+
+  group('update user details', () {
+    blocTest<AccountCubit, AccountState>(
+      'On correct reauthentication emit normal state after successful update',
+      seed: () => AccountState.reauthenticating(
+        user: tUser,
+        editUserData: const EditUserData(name: 'name', email: 'email@email.com', password: null),
+        email: 'test@test.com',
+        password: 'password',
+      ),
+      setUp: () {
+        when(mockReauthenticateUser(any)).thenAnswer((_) async => const Right(null));
+        when(mockUpdateUserDetails(any)).thenAnswer((_) async => const Right(null));
+      },
+      build: () => cubit(),
+      act: (cubit) => cubit.reauthenticate(),
+      expect: () => [
+        AccountState.reauthenticating(
+          user: tUser,
+          editUserData: const EditUserData(name: 'name', email: 'email@email.com', password: null),
+          isSaving: true,
+          email: 'test@test.com',
+          password: 'password',
+        ),
+        AccountState.normal(user: tUser),
+      ],
+    );
+  });
+
+  blocTest<AccountCubit, AccountState>(
+    'On wrong reauthentication emit reauthenticating state with error message',
+    seed: () => AccountState.reauthenticating(
+      user: tUser,
+      editUserData: const EditUserData(name: 'name', email: 'email', password: null),
+      email: 'email',
+      password: 'password',
+    ),
+    setUp: () {
+      when(mockReauthenticateUser(any)).thenAnswer((_) async => const Left(UserFailures()));
+    },
+    build: () => cubit(),
+    act: (cubit) => cubit.reauthenticate(),
+    expect: () => [
+      AccountState.reauthenticating(
+        user: tUser,
+        editUserData: const EditUserData(name: 'name', email: 'email', password: null),
+        isSaving: true,
+        email: 'email',
+        password: 'password',
+      ),
+      AccountState.reauthenticating(
+        user: tUser,
+        editUserData: const EditUserData(name: 'name', email: 'email', password: null),
+        isSaving: false,
+        email: 'email',
+        password: 'password',
+        errorMessage: const UserFailures().getAuthenticationErrorMessage(),
+      ),
+    ],
+  );
+
+  blocTest<AccountCubit, AccountState>(
+    'On wrong update user details emit reauthenticating state with error message',
+    seed: () => AccountState.reauthenticating(
+      user: tUser,
+      editUserData: const EditUserData(name: 'name', email: 'email', password: null),
+      email: 'email',
+      password: 'password',
+    ),
+    setUp: () {
+      when(mockReauthenticateUser(any)).thenAnswer((_) async => const Right(null));
+      when(mockUpdateUserDetails(any)).thenAnswer((_) async => const Left(UserFailures()));
+    },
+    build: () => cubit(),
+    act: (cubit) => cubit.reauthenticate(),
+    expect: () => [
+      AccountState.reauthenticating(
+        user: tUser,
+        editUserData: const EditUserData(name: 'name', email: 'email', password: null),
+        isSaving: true,
+        email: 'email',
+        password: 'password',
+      ),
+      AccountState.reauthenticating(
+        user: tUser,
+        editUserData: const EditUserData(name: 'name', email: 'email', password: null),
+        isSaving: false,
+        email: 'email',
+        password: 'password',
+        errorMessage: const UserFailures().getAuthenticationErrorMessage(),
+      ),
+    ],
+  );
 }
