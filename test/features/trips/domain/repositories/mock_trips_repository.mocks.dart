@@ -145,4 +145,30 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.TripsFailure, void>> deleteAllTrips(
+          String? userId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteAllTrips,
+          [userId],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+            _FakeEither_0<_i5.TripsFailure, void>(
+          this,
+          Invocation.method(
+            #deleteAllTrips,
+            [userId],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+                _FakeEither_0<_i5.TripsFailure, void>(
+          this,
+          Invocation.method(
+            #deleteAllTrips,
+            [userId],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
 }

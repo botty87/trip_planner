@@ -88,7 +88,8 @@ void main() {
           .thenAnswer((_) async {});
 
       // act
-      final result = await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate);
+      final result =
+          await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate);
       // assert
       expect(result, equals(right(null)));
     });
@@ -98,7 +99,8 @@ void main() {
           .thenThrow(Exception());
 
       // act
-      final result = await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate);
+      final result =
+          await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate);
       // assert
       expect(result, equals(left(const TripsFailure())));
     });
@@ -119,6 +121,28 @@ void main() {
 
       // act
       final result = await tripsRepositoryImpl.deleteTrip(tTrip);
+      // assert
+      expect(result, equals(left(const TripsFailure())));
+    });
+  });
+
+  group('delete all trips', () {
+    test('should return right(null) when TripsDataSource.deleteAllTrips completes', () async {
+      const userId = 'userId';
+      when(mockTripsDataSource.deleteAllTrips(userId)).thenAnswer((_) async {});
+
+      // act
+      final result = await tripsRepositoryImpl.deleteAllTrips(userId);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(TripsFailure()) when TripsDataSource.deleteAllTrips throws', () async {
+      const userId = 'userId';
+      when(mockTripsDataSource.deleteAllTrips(userId)).thenThrow(Exception());
+
+      // act
+      final result = await tripsRepositoryImpl.deleteAllTrips(userId);
       // assert
       expect(result, equals(left(const TripsFailure())));
     });

@@ -59,4 +59,16 @@ class TripsRepositoryImpl implements TripsRepository {
       return left(const TripsFailure());
     }
   }
+  
+  @override
+  Future<Either<TripsFailure, void>> deleteAllTrips(String userId) async {
+    try {
+      await tripsDataSource.deleteAllTrips(userId);
+      return right(null);
+    } on FirebaseException {
+      return left(const TripsFailure());
+    } on Exception {
+      return left(const TripsFailure());
+    }
+  }
 }

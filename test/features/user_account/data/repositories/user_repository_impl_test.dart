@@ -257,4 +257,32 @@ void main() {
       verifyNoMoreInteractions(mockUserDataSource);
     });
   });
+
+  group('delete user', () {
+    test('should delete user on data source', () async {
+      // arrange
+      when(mockUserDataSource.deleteUser()).thenAnswer((_) async => null);
+
+      // act
+      final result = await userRepositoryImpl.deleteUser();
+
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.deleteUser());
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when there is an exception on data source', () async {
+      // arrange
+      when(mockUserDataSource.deleteUser()).thenAnswer((realInvocation) => throw Exception());
+
+      // act
+      final result = await userRepositoryImpl.deleteUser();
+
+      // assert
+      expect(result, left(const UserFailures()));
+      verify(mockUserDataSource.deleteUser());
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+  });
 }

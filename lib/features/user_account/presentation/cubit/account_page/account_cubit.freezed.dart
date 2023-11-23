@@ -30,9 +30,10 @@ mixin _$AccountState {
             String? confirmPassword,
             bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)
+    required TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)
         reauthenticating,
+    required TResult Function(User user, String? errorMessage) deleting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +48,10 @@ mixin _$AccountState {
             String? confirmPassword,
             bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
         reauthenticating,
+    TResult? Function(User user, String? errorMessage)? deleting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,9 +66,10 @@ mixin _$AccountState {
             String? confirmPassword,
             bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
         reauthenticating,
+    TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -76,6 +79,7 @@ mixin _$AccountState {
     required TResult Function(AccountStateEditing value) editing,
     required TResult Function(AccountStateReauthenticating value)
         reauthenticating,
+    required TResult Function(AccountStateDeleting value) deleting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +87,7 @@ mixin _$AccountState {
     TResult? Function(AccountStateNormal value)? normal,
     TResult? Function(AccountStateEditing value)? editing,
     TResult? Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult? Function(AccountStateDeleting value)? deleting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +95,7 @@ mixin _$AccountState {
     TResult Function(AccountStateNormal value)? normal,
     TResult Function(AccountStateEditing value)? editing,
     TResult Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult Function(AccountStateDeleting value)? deleting,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -236,9 +242,10 @@ class _$AccountStateNormal implements AccountStateNormal {
             String? confirmPassword,
             bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)
+    required TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)
         reauthenticating,
+    required TResult Function(User user, String? errorMessage) deleting,
   }) {
     return normal(user, errorMessage);
   }
@@ -256,9 +263,10 @@ class _$AccountStateNormal implements AccountStateNormal {
             String? confirmPassword,
             bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
         reauthenticating,
+    TResult? Function(User user, String? errorMessage)? deleting,
   }) {
     return normal?.call(user, errorMessage);
   }
@@ -276,9 +284,10 @@ class _$AccountStateNormal implements AccountStateNormal {
             String? confirmPassword,
             bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
         reauthenticating,
+    TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
   }) {
     if (normal != null) {
@@ -294,6 +303,7 @@ class _$AccountStateNormal implements AccountStateNormal {
     required TResult Function(AccountStateEditing value) editing,
     required TResult Function(AccountStateReauthenticating value)
         reauthenticating,
+    required TResult Function(AccountStateDeleting value) deleting,
   }) {
     return normal(this);
   }
@@ -304,6 +314,7 @@ class _$AccountStateNormal implements AccountStateNormal {
     TResult? Function(AccountStateNormal value)? normal,
     TResult? Function(AccountStateEditing value)? editing,
     TResult? Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult? Function(AccountStateDeleting value)? deleting,
   }) {
     return normal?.call(this);
   }
@@ -314,6 +325,7 @@ class _$AccountStateNormal implements AccountStateNormal {
     TResult Function(AccountStateNormal value)? normal,
     TResult Function(AccountStateEditing value)? editing,
     TResult Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult Function(AccountStateDeleting value)? deleting,
     required TResult orElse(),
   }) {
     if (normal != null) {
@@ -487,9 +499,10 @@ class _$AccountStateEditing implements AccountStateEditing {
             String? confirmPassword,
             bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)
+    required TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)
         reauthenticating,
+    required TResult Function(User user, String? errorMessage) deleting,
   }) {
     return editing(user, errorMessage, name, email, password, confirmPassword,
         isEditingPasswordVisible);
@@ -508,9 +521,10 @@ class _$AccountStateEditing implements AccountStateEditing {
             String? confirmPassword,
             bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
         reauthenticating,
+    TResult? Function(User user, String? errorMessage)? deleting,
   }) {
     return editing?.call(user, errorMessage, name, email, password,
         confirmPassword, isEditingPasswordVisible);
@@ -529,9 +543,10 @@ class _$AccountStateEditing implements AccountStateEditing {
             String? confirmPassword,
             bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
         reauthenticating,
+    TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
   }) {
     if (editing != null) {
@@ -548,6 +563,7 @@ class _$AccountStateEditing implements AccountStateEditing {
     required TResult Function(AccountStateEditing value) editing,
     required TResult Function(AccountStateReauthenticating value)
         reauthenticating,
+    required TResult Function(AccountStateDeleting value) deleting,
   }) {
     return editing(this);
   }
@@ -558,6 +574,7 @@ class _$AccountStateEditing implements AccountStateEditing {
     TResult? Function(AccountStateNormal value)? normal,
     TResult? Function(AccountStateEditing value)? editing,
     TResult? Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult? Function(AccountStateDeleting value)? deleting,
   }) {
     return editing?.call(this);
   }
@@ -568,6 +585,7 @@ class _$AccountStateEditing implements AccountStateEditing {
     TResult Function(AccountStateNormal value)? normal,
     TResult Function(AccountStateEditing value)? editing,
     TResult Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult Function(AccountStateDeleting value)? deleting,
     required TResult orElse(),
   }) {
     if (editing != null) {
@@ -614,7 +632,6 @@ abstract class _$$AccountStateReauthenticatingCopyWith<$Res>
   $Res call(
       {User user,
       String? errorMessage,
-      String? email,
       String? password,
       bool isSaving,
       EditUserData editUserData});
@@ -638,7 +655,6 @@ class __$$AccountStateReauthenticatingCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
     Object? errorMessage = freezed,
-    Object? email = freezed,
     Object? password = freezed,
     Object? isSaving = null,
     Object? editUserData = null,
@@ -651,10 +667,6 @@ class __$$AccountStateReauthenticatingCopyWithImpl<$Res>
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       password: freezed == password
           ? _value.password
@@ -686,7 +698,6 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
   const _$AccountStateReauthenticating(
       {required this.user,
       this.errorMessage,
-      this.email,
       this.password,
       this.isSaving = false,
       required this.editUserData});
@@ -695,8 +706,6 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
   final User user;
   @override
   final String? errorMessage;
-  @override
-  final String? email;
   @override
   final String? password;
   @override
@@ -707,7 +716,7 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
 
   @override
   String toString() {
-    return 'AccountState.reauthenticating(user: $user, errorMessage: $errorMessage, email: $email, password: $password, isSaving: $isSaving, editUserData: $editUserData)';
+    return 'AccountState.reauthenticating(user: $user, errorMessage: $errorMessage, password: $password, isSaving: $isSaving, editUserData: $editUserData)';
   }
 
   @override
@@ -718,7 +727,6 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.isSaving, isSaving) ||
@@ -729,7 +737,7 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, user, errorMessage, email, password, isSaving, editUserData);
+      runtimeType, user, errorMessage, password, isSaving, editUserData);
 
   @JsonKey(ignore: true)
   @override
@@ -751,12 +759,13 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
             String? confirmPassword,
             bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)
+    required TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)
         reauthenticating,
+    required TResult Function(User user, String? errorMessage) deleting,
   }) {
     return reauthenticating(
-        user, errorMessage, email, password, isSaving, editUserData);
+        user, errorMessage, password, isSaving, editUserData);
   }
 
   @override
@@ -772,12 +781,13 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
             String? confirmPassword,
             bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
         reauthenticating,
+    TResult? Function(User user, String? errorMessage)? deleting,
   }) {
     return reauthenticating?.call(
-        user, errorMessage, email, password, isSaving, editUserData);
+        user, errorMessage, password, isSaving, editUserData);
   }
 
   @override
@@ -793,14 +803,15 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
             String? confirmPassword,
             bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? email,
-            String? password, bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
         reauthenticating,
+    TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
   }) {
     if (reauthenticating != null) {
       return reauthenticating(
-          user, errorMessage, email, password, isSaving, editUserData);
+          user, errorMessage, password, isSaving, editUserData);
     }
     return orElse();
   }
@@ -812,6 +823,7 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
     required TResult Function(AccountStateEditing value) editing,
     required TResult Function(AccountStateReauthenticating value)
         reauthenticating,
+    required TResult Function(AccountStateDeleting value) deleting,
   }) {
     return reauthenticating(this);
   }
@@ -822,6 +834,7 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
     TResult? Function(AccountStateNormal value)? normal,
     TResult? Function(AccountStateEditing value)? editing,
     TResult? Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult? Function(AccountStateDeleting value)? deleting,
   }) {
     return reauthenticating?.call(this);
   }
@@ -832,6 +845,7 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
     TResult Function(AccountStateNormal value)? normal,
     TResult Function(AccountStateEditing value)? editing,
     TResult Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult Function(AccountStateDeleting value)? deleting,
     required TResult orElse(),
   }) {
     if (reauthenticating != null) {
@@ -845,7 +859,6 @@ abstract class AccountStateReauthenticating implements AccountState {
   const factory AccountStateReauthenticating(
           {required final User user,
           final String? errorMessage,
-          final String? email,
           final String? password,
           final bool isSaving,
           required final EditUserData editUserData}) =
@@ -855,7 +868,6 @@ abstract class AccountStateReauthenticating implements AccountState {
   User get user;
   @override
   String? get errorMessage;
-  String? get email;
   String? get password;
   bool get isSaving;
   EditUserData get editUserData;
@@ -863,6 +875,203 @@ abstract class AccountStateReauthenticating implements AccountState {
   @JsonKey(ignore: true)
   _$$AccountStateReauthenticatingCopyWith<_$AccountStateReauthenticating>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AccountStateDeletingCopyWith<$Res>
+    implements $AccountStateCopyWith<$Res> {
+  factory _$$AccountStateDeletingCopyWith(_$AccountStateDeleting value,
+          $Res Function(_$AccountStateDeleting) then) =
+      __$$AccountStateDeletingCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({User user, String? errorMessage});
+
+  @override
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$AccountStateDeletingCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateDeleting>
+    implements _$$AccountStateDeletingCopyWith<$Res> {
+  __$$AccountStateDeletingCopyWithImpl(_$AccountStateDeleting _value,
+      $Res Function(_$AccountStateDeleting) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$AccountStateDeleting(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AccountStateDeleting implements AccountStateDeleting {
+  const _$AccountStateDeleting({required this.user, this.errorMessage});
+
+  @override
+  final User user;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'AccountState.deleting(user: $user, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AccountStateDeleting &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AccountStateDeletingCopyWith<_$AccountStateDeleting> get copyWith =>
+      __$$AccountStateDeletingCopyWithImpl<_$AccountStateDeleting>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(User user, String? errorMessage) normal,
+    required TResult Function(
+            User user,
+            String? errorMessage,
+            String? name,
+            String? email,
+            String? password,
+            String? confirmPassword,
+            bool isEditingPasswordVisible)
+        editing,
+    required TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)
+        reauthenticating,
+    required TResult Function(User user, String? errorMessage) deleting,
+  }) {
+    return deleting(user, errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(User user, String? errorMessage)? normal,
+    TResult? Function(
+            User user,
+            String? errorMessage,
+            String? name,
+            String? email,
+            String? password,
+            String? confirmPassword,
+            bool isEditingPasswordVisible)?
+        editing,
+    TResult? Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
+        reauthenticating,
+    TResult? Function(User user, String? errorMessage)? deleting,
+  }) {
+    return deleting?.call(user, errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User user, String? errorMessage)? normal,
+    TResult Function(
+            User user,
+            String? errorMessage,
+            String? name,
+            String? email,
+            String? password,
+            String? confirmPassword,
+            bool isEditingPasswordVisible)?
+        editing,
+    TResult Function(User user, String? errorMessage, String? password,
+            bool isSaving, EditUserData editUserData)?
+        reauthenticating,
+    TResult Function(User user, String? errorMessage)? deleting,
+    required TResult orElse(),
+  }) {
+    if (deleting != null) {
+      return deleting(user, errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountStateNormal value) normal,
+    required TResult Function(AccountStateEditing value) editing,
+    required TResult Function(AccountStateReauthenticating value)
+        reauthenticating,
+    required TResult Function(AccountStateDeleting value) deleting,
+  }) {
+    return deleting(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountStateNormal value)? normal,
+    TResult? Function(AccountStateEditing value)? editing,
+    TResult? Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult? Function(AccountStateDeleting value)? deleting,
+  }) {
+    return deleting?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountStateNormal value)? normal,
+    TResult Function(AccountStateEditing value)? editing,
+    TResult Function(AccountStateReauthenticating value)? reauthenticating,
+    TResult Function(AccountStateDeleting value)? deleting,
+    required TResult orElse(),
+  }) {
+    if (deleting != null) {
+      return deleting(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AccountStateDeleting implements AccountState {
+  const factory AccountStateDeleting(
+      {required final User user,
+      final String? errorMessage}) = _$AccountStateDeleting;
+
+  @override
+  User get user;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$AccountStateDeletingCopyWith<_$AccountStateDeleting> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

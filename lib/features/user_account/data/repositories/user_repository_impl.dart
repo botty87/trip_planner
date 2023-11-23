@@ -142,4 +142,21 @@ final class UserRepositoryImpl implements UserRepository {
       return left(const UserFailures());
     }
   }
+  
+  @override
+  Future<Either<UserFailures, void>> deleteUser() async {
+    try {
+      await userDataSource.deleteUser();
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'network-request-failed':
+          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
+        default:
+          return left(const UserFailures());
+      }
+    } catch (e) {
+      return left(const UserFailures());
+    }
+  }
 }

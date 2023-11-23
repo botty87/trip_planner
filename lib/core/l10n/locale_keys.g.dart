@@ -97,5 +97,8 @@ abstract class  LocaleKeys {
   static const insertCurrentPassword = 'insertCurrentPassword';
   static const reauthenticate = 'reauthenticate';
   static const fillAllFields = 'fillAllFields';
+  static const deleteAccount = 'deleteAccount';
+  static const deleteAccountConfirmation = 'deleteAccountConfirmation';
+  static const emailEmpty = 'emailEmpty';
 
 }

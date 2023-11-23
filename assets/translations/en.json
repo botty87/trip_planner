@@ -97,5 +97,8 @@
     "currentPassword" : "Current password",
     "insertCurrentPassword" : "Please insert your current password",
     "reauthenticate" : "New login required",
-    "fillAllFields" : "Please fill all fields"
+    "fillAllFields" : "Please fill all fields",
+    "deleteAccount" : "Delete account",
+    "deleteAccountConfirmation" : "Are you sure you want to delete your account? The action is irreversible and all your data will be lost!",
+    "emailEmpty" : "Email can't be empty"
 }

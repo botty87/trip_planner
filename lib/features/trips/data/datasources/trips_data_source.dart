@@ -9,6 +9,8 @@ abstract class TripsDataSource {
   Future<void> updateTrip(String id, String name, String? description, DateTime startDate);
 
   Future<void> deleteTrip(Trip trip);
+
+  deleteAllTrips(String userId);
 }
 
 @LazySingleton(as: TripsDataSource)
@@ -89,6 +91,67 @@ final class TripsDataSourceImpl implements TripsDataSource {
 
         batchs[currentBatchIndex].delete(tripStop.reference);
         currentBatchSize++;
+      }
+    }
+
+    await Future.wait(batchs.map((batch) => batch.commit()));
+  }
+  
+  @override
+  deleteAllTrips(String userId) async {
+    final batchs = [firebaseFirestore.batch()];
+    int currentBatchIndex = 0;
+    int currentBatchSize = 1;
+
+    final trips = await firebaseFirestore
+        .collection('trips')
+        .where('userId', isEqualTo: userId)
+        .get();
+
+    for (final trip in trips.docs) {
+      if (currentBatchSize == 500) {
+        currentBatchIndex++;
+        batchs.add(firebaseFirestore.batch());
+        currentBatchSize = 0;
+      }
+
+      batchs[currentBatchIndex].delete(trip.reference);
+      currentBatchSize++;
+
+      final dayTrips = await firebaseFirestore
+          .collection('trips')
+          .doc(trip.id)
+          .collection('dayTrips')
+          .get();
+
+      for (final dayTrip in dayTrips.docs) {
+        if (currentBatchSize == 500) {
+          currentBatchIndex++;
+          batchs.add(firebaseFirestore.batch());
+          currentBatchSize = 0;
+        }
+
+        batchs[currentBatchIndex].delete(dayTrip.reference);
+        currentBatchSize++;
+
+        final tripStops = await firebaseFirestore
+            .collection('trips')
+            .doc(trip.id)
+            .collection('dayTrips')
+            .doc(dayTrip.id)
+            .collection('tripStops')
+            .get();
+
+        for (final tripStop in tripStops.docs) {
+          if (currentBatchSize == 500) {
+            currentBatchIndex++;
+            batchs.add(firebaseFirestore.batch());
+            currentBatchSize = 0;
+          }
+
+          batchs[currentBatchIndex].delete(tripStop.reference);
+          currentBatchSize++;
+        }
       }
     }
 

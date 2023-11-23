@@ -72,4 +72,12 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
         returnValue: _i3.Future<void>.value(),
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
+  @override
+  dynamic deleteAllTrips(String? userId) => super.noSuchMethod(
+        Invocation.method(
+          #deleteAllTrips,
+          [userId],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

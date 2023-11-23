@@ -24,15 +24,6 @@ _showReauthenticationModalBottom(BuildContext context) {
             ),
             const SizedBox(height: verticalSpaceL),
             _SavingProgressBar(cubit: cubit),
-            TextFormField(
-              key: const Key('reauth_email_text_field'),
-              decoration: InputDecoration(
-                labelText: LocaleKeys.email.tr(),
-              ),
-              textInputAction: TextInputAction.next,
-              onChanged: (value) => cubit.onReauthEmailChanged(value),
-              autofillHints: const [AutofillHints.email],
-            ),
             const SizedBox(height: verticalSpace),
             PasswordTextFormField(
               key: const Key('reauth_password_text_field'),

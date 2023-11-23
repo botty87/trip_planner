@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/error/failures.dart';
 import '../../errors/user_failures.dart';
 import '../entities/user.dart';
 
@@ -18,4 +19,6 @@ abstract interface class UserRepository {
   Future<Either<UserFailures, void>> reauthenticateUser({required String email, required String password});
 
   Future<Either<UserFailures, void>> updateUserDetails({required String? name, required String? email, required String? password});
+
+  Future<Either<UserFailures, void>> deleteUser();
 }

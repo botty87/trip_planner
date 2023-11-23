@@ -9,8 +9,7 @@ class _AccountPageBody extends StatelessWidget {
       listeners: [
         //On error show snackbar, but only if the error is not caused by reauthentication
         BlocListener<AccountCubit, AccountState>(
-          listenWhen: (previous, current) =>
-              current is! AccountStateReauthenticating,
+          listenWhen: (previous, current) => current is! AccountStateReauthenticating,
           listener: (context, state) {
             //On error show snackbar
             if (state.errorMessage != null) {
@@ -49,7 +48,8 @@ class _AccountPageBody extends StatelessWidget {
       child: BlocBuilder<AccountCubit, AccountState>(
         buildWhen: (previous, current) =>
             (previous.runtimeType != current.runtimeType) &&
-            current is! AccountStateReauthenticating,
+            current is! AccountStateReauthenticating &&
+            current is! AccountStateDeleting,
         builder: (context, state) {
           return AnimatedSwitcherPlus.flipY(
             duration: const Duration(milliseconds: 500),

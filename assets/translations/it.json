@@ -98,5 +98,8 @@
     "currentPassword" : "Password attuale",
     "insertCurrentPassword" : "Inserisci la password attuale",
     "reauthenticate" : "Effettua nuovamente l'accesso",
-    "fillAllFields" : "Compila tutti i campi"
+    "fillAllFields" : "Compila tutti i campi",
+    "deleteAccount" : "Elimina account",
+    "deleteAccountConfirmation" : "Sei sicuro di voler eliminare l'account? L'operazione è irreversibile e tutti i tuoi dati verranno persi!",
+    "emailEmpty" : "L'email non può essere vuota"
 }

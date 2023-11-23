@@ -20,11 +20,15 @@ sealed class AccountState with _$AccountState {
   const factory AccountState.reauthenticating({
     required User user,
     String? errorMessage,
-    String? email,
     String? password,
     @Default(false) bool isSaving,
     required EditUserData editUserData,
   }) = AccountStateReauthenticating;
+
+  const factory AccountState.deleting({
+    required User user,
+    String? errorMessage,
+  }) = AccountStateDeleting;
 }
 
 @freezed

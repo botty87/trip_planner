@@ -8,6 +8,7 @@ import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/usecases/usecase.dart';
 import '../../../../../core/utilities/extensions.dart';
 import '../../../domain/entities/user.dart';
+import '../../../domain/usecases/delete_user.dart';
 import '../../../domain/usecases/logout_user.dart';
 import '../../../domain/usecases/reauthenticate_user.dart';
 import '../../../domain/usecases/update_user_details.dart';
@@ -20,15 +21,18 @@ class AccountCubit extends Cubit<AccountState> {
   final LogoutUser _logoutUser;
   final ReauthenticateUser _reauthenticateUser;
   final UpdateUserDetails _updateUserDetails;
+  final DeleteUser _deleteUser;
 
-  AccountCubit(
-      {@factoryParam required user,
-      required LogoutUser logoutUser,
-      required ReauthenticateUser reauthenticateUser,
-      required UpdateUserDetails updateUserDetails})
-      : _logoutUser = logoutUser,
+  AccountCubit({
+    @factoryParam required user,
+    required LogoutUser logoutUser,
+    required ReauthenticateUser reauthenticateUser,
+    required UpdateUserDetails updateUserDetails,
+    required DeleteUser deleteUser,
+  })  : _logoutUser = logoutUser,
         _reauthenticateUser = reauthenticateUser,
         _updateUserDetails = updateUserDetails,
+        _deleteUser = deleteUser,
         super(AccountState.normal(user: user));
 
   logOut() async {
@@ -117,11 +121,6 @@ class AccountCubit extends Cubit<AccountState> {
     emit(editState.copyWith(isEditingPasswordVisible: true));
   }
 
-  void onReauthEmailChanged(String value) {
-    assert(state is AccountStateReauthenticating);
-    emit((state as AccountStateReauthenticating).copyWith(email: value, errorMessage: null));
-  }
-
   void onReauthPasswordChanged(String value) {
     assert(state is AccountStateReauthenticating);
     emit((state as AccountStateReauthenticating).copyWith(password: value, errorMessage: null));
@@ -154,15 +153,15 @@ class AccountCubit extends Cubit<AccountState> {
       );
     }
 
-    if ((reauthState.email?.isEmpty ?? true) || (reauthState.password?.isEmpty ?? true)) {
-      emit(reauthState.copyWith(errorMessage: LocaleKeys.fillAllFields.tr()));
+    if (reauthState.password?.isEmpty ?? true) {
+      emit(reauthState.copyWith(errorMessage: LocaleKeys.emailEmpty.tr()));
       return;
     }
 
     emit(reauthState.copyWith(isSaving: true));
 
     final result = await _reauthenticateUser(ReauthenticateUserParams(
-      email: reauthState.email!,
+      email: reauthState.user.email,
       password: reauthState.password!,
     ));
 
@@ -179,5 +178,38 @@ class AccountCubit extends Cubit<AccountState> {
 
   void updateUser(User user) {
     emit(state.copyWith(user: user));
+  }
+
+  void deleteAccount({required String password}) async {
+    emit(AccountState.deleting(
+      user: state.user,
+    ));
+
+    final result = await _reauthenticateUser(ReauthenticateUserParams(
+      email: state.user.email,
+      password: password,
+    ));
+
+    result.fold(
+      (failure) {
+        emit(AccountState.normal(
+            user: state.user, errorMessage: failure.getAuthenticationErrorMessage()));
+        emit(state.copyWith(errorMessage: null));
+      },
+      (_) async {
+        final result = await _deleteUser(DeleteUserParams(userId: state.user.id));
+
+        result.fold(
+          (failure) {
+            emit(AccountState.normal(
+                user: state.user, errorMessage: failure.getAuthenticationErrorMessage()));
+            emit(state.copyWith(errorMessage: null));
+          },
+          (_) {
+            //Emit nothing, the user will be logged out automatically
+          },
+        );
+      },
+    );
   }
 }

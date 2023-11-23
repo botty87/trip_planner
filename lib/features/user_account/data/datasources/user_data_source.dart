@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import '../../../../core/l10n/locale_keys.g.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/user_db.dart';
 
@@ -20,12 +23,15 @@ abstract interface class UserDataSource {
   reauthenticateUser({required String email, required String password});
 
   updateUserDetails({String? name, String? email, String? password});
+
+  deleteUser();
 }
 
 @LazySingleton(as: UserDataSource)
 final class UserDataSourceImpl implements UserDataSource {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
+  
   final StreamController<User?> _userStreamController = StreamController<User?>();
 
   @override
@@ -97,5 +103,11 @@ final class UserDataSourceImpl implements UserDataSource {
       'email': email,
       'name': name,
     });
+  }
+
+  @override
+  deleteUser() async {
+    await _usersCollection.doc(firebaseAuth.currentUser!.uid).delete(); 
+    await firebaseAuth.currentUser!.delete();
   }
 }
