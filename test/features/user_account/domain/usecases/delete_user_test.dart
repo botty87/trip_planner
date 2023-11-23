@@ -5,7 +5,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/delete_user.dart';
-import 'package:trip_planner/features/user_account/domain/usecases/reauthenticate_user.dart';
 import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 
 import '../../../trips/domain/repositories/mock_trips_repository.mocks.dart';

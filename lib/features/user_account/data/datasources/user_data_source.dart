@@ -1,11 +1,8 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import '../../../../core/l10n/locale_keys.g.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/user_db.dart';
 
