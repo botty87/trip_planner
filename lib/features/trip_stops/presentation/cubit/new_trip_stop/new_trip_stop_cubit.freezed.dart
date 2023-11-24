@@ -165,11 +165,12 @@ class _$NewTripStopStateCopyWithImpl<$Res, $Val extends NewTripStopState>
 }
 
 /// @nodoc
-abstract class _$$NewTripStopStateNormalCopyWith<$Res>
+abstract class _$$NewTripStopStateNormalImplCopyWith<$Res>
     implements $NewTripStopStateCopyWith<$Res> {
-  factory _$$NewTripStopStateNormalCopyWith(_$NewTripStopStateNormal value,
-          $Res Function(_$NewTripStopStateNormal) then) =
-      __$$NewTripStopStateNormalCopyWithImpl<$Res>;
+  factory _$$NewTripStopStateNormalImplCopyWith(
+          _$NewTripStopStateNormalImpl value,
+          $Res Function(_$NewTripStopStateNormalImpl) then) =
+      __$$NewTripStopStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -181,11 +182,12 @@ abstract class _$$NewTripStopStateNormalCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTripStopStateNormalCopyWithImpl<$Res>
-    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateNormal>
-    implements _$$NewTripStopStateNormalCopyWith<$Res> {
-  __$$NewTripStopStateNormalCopyWithImpl(_$NewTripStopStateNormal _value,
-      $Res Function(_$NewTripStopStateNormal) _then)
+class __$$NewTripStopStateNormalImplCopyWithImpl<$Res>
+    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateNormalImpl>
+    implements _$$NewTripStopStateNormalImplCopyWith<$Res> {
+  __$$NewTripStopStateNormalImplCopyWithImpl(
+      _$NewTripStopStateNormalImpl _value,
+      $Res Function(_$NewTripStopStateNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -197,7 +199,7 @@ class __$$NewTripStopStateNormalCopyWithImpl<$Res>
     Object? minuteDuration = null,
     Object? location = freezed,
   }) {
-    return _then(_$NewTripStopStateNormal(
+    return _then(_$NewTripStopStateNormalImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -224,8 +226,8 @@ class __$$NewTripStopStateNormalCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTripStopStateNormal implements NewTripStopStateNormal {
-  const _$NewTripStopStateNormal(
+class _$NewTripStopStateNormalImpl implements NewTripStopStateNormal {
+  const _$NewTripStopStateNormalImpl(
       {this.name,
       this.description,
       this.hourDuration = 0,
@@ -254,7 +256,7 @@ class _$NewTripStopStateNormal implements NewTripStopStateNormal {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTripStopStateNormal &&
+            other is _$NewTripStopStateNormalImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -273,9 +275,9 @@ class _$NewTripStopStateNormal implements NewTripStopStateNormal {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStopStateNormalCopyWith<_$NewTripStopStateNormal> get copyWith =>
-      __$$NewTripStopStateNormalCopyWithImpl<_$NewTripStopStateNormal>(
-          this, _$identity);
+  _$$NewTripStopStateNormalImplCopyWith<_$NewTripStopStateNormalImpl>
+      get copyWith => __$$NewTripStopStateNormalImplCopyWithImpl<
+          _$NewTripStopStateNormalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -388,7 +390,7 @@ abstract class NewTripStopStateNormal implements NewTripStopState {
       final String? description,
       final int hourDuration,
       final int minuteDuration,
-      final LatLng? location}) = _$NewTripStopStateNormal;
+      final LatLng? location}) = _$NewTripStopStateNormalImpl;
 
   @override
   String? get name;
@@ -402,16 +404,17 @@ abstract class NewTripStopStateNormal implements NewTripStopState {
   LatLng? get location;
   @override
   @JsonKey(ignore: true)
-  _$$NewTripStopStateNormalCopyWith<_$NewTripStopStateNormal> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NewTripStopStateNormalImplCopyWith<_$NewTripStopStateNormalImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStopStateSavingCopyWith<$Res>
+abstract class _$$NewTripStopStateSavingImplCopyWith<$Res>
     implements $NewTripStopStateCopyWith<$Res> {
-  factory _$$NewTripStopStateSavingCopyWith(_$NewTripStopStateSaving value,
-          $Res Function(_$NewTripStopStateSaving) then) =
-      __$$NewTripStopStateSavingCopyWithImpl<$Res>;
+  factory _$$NewTripStopStateSavingImplCopyWith(
+          _$NewTripStopStateSavingImpl value,
+          $Res Function(_$NewTripStopStateSavingImpl) then) =
+      __$$NewTripStopStateSavingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -423,11 +426,12 @@ abstract class _$$NewTripStopStateSavingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTripStopStateSavingCopyWithImpl<$Res>
-    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateSaving>
-    implements _$$NewTripStopStateSavingCopyWith<$Res> {
-  __$$NewTripStopStateSavingCopyWithImpl(_$NewTripStopStateSaving _value,
-      $Res Function(_$NewTripStopStateSaving) _then)
+class __$$NewTripStopStateSavingImplCopyWithImpl<$Res>
+    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateSavingImpl>
+    implements _$$NewTripStopStateSavingImplCopyWith<$Res> {
+  __$$NewTripStopStateSavingImplCopyWithImpl(
+      _$NewTripStopStateSavingImpl _value,
+      $Res Function(_$NewTripStopStateSavingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -439,7 +443,7 @@ class __$$NewTripStopStateSavingCopyWithImpl<$Res>
     Object? minuteDuration = null,
     Object? location = null,
   }) {
-    return _then(_$NewTripStopStateSaving(
+    return _then(_$NewTripStopStateSavingImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -466,8 +470,8 @@ class __$$NewTripStopStateSavingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTripStopStateSaving implements NewTripStopStateSaving {
-  const _$NewTripStopStateSaving(
+class _$NewTripStopStateSavingImpl implements NewTripStopStateSaving {
+  const _$NewTripStopStateSavingImpl(
       {required this.name,
       required this.description,
       required this.hourDuration,
@@ -494,7 +498,7 @@ class _$NewTripStopStateSaving implements NewTripStopStateSaving {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTripStopStateSaving &&
+            other is _$NewTripStopStateSavingImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -513,9 +517,9 @@ class _$NewTripStopStateSaving implements NewTripStopStateSaving {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStopStateSavingCopyWith<_$NewTripStopStateSaving> get copyWith =>
-      __$$NewTripStopStateSavingCopyWithImpl<_$NewTripStopStateSaving>(
-          this, _$identity);
+  _$$NewTripStopStateSavingImplCopyWith<_$NewTripStopStateSavingImpl>
+      get copyWith => __$$NewTripStopStateSavingImplCopyWithImpl<
+          _$NewTripStopStateSavingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -628,7 +632,7 @@ abstract class NewTripStopStateSaving implements NewTripStopState {
       required final String? description,
       required final int hourDuration,
       required final int minuteDuration,
-      required final LatLng location}) = _$NewTripStopStateSaving;
+      required final LatLng location}) = _$NewTripStopStateSavingImpl;
 
   @override
   String get name;
@@ -642,16 +646,17 @@ abstract class NewTripStopStateSaving implements NewTripStopState {
   LatLng get location;
   @override
   @JsonKey(ignore: true)
-  _$$NewTripStopStateSavingCopyWith<_$NewTripStopStateSaving> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NewTripStopStateSavingImplCopyWith<_$NewTripStopStateSavingImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStopStateCreatedCopyWith<$Res>
+abstract class _$$NewTripStopStateCreatedImplCopyWith<$Res>
     implements $NewTripStopStateCopyWith<$Res> {
-  factory _$$NewTripStopStateCreatedCopyWith(_$NewTripStopStateCreated value,
-          $Res Function(_$NewTripStopStateCreated) then) =
-      __$$NewTripStopStateCreatedCopyWithImpl<$Res>;
+  factory _$$NewTripStopStateCreatedImplCopyWith(
+          _$NewTripStopStateCreatedImpl value,
+          $Res Function(_$NewTripStopStateCreatedImpl) then) =
+      __$$NewTripStopStateCreatedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -663,11 +668,12 @@ abstract class _$$NewTripStopStateCreatedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTripStopStateCreatedCopyWithImpl<$Res>
-    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateCreated>
-    implements _$$NewTripStopStateCreatedCopyWith<$Res> {
-  __$$NewTripStopStateCreatedCopyWithImpl(_$NewTripStopStateCreated _value,
-      $Res Function(_$NewTripStopStateCreated) _then)
+class __$$NewTripStopStateCreatedImplCopyWithImpl<$Res>
+    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateCreatedImpl>
+    implements _$$NewTripStopStateCreatedImplCopyWith<$Res> {
+  __$$NewTripStopStateCreatedImplCopyWithImpl(
+      _$NewTripStopStateCreatedImpl _value,
+      $Res Function(_$NewTripStopStateCreatedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -679,7 +685,7 @@ class __$$NewTripStopStateCreatedCopyWithImpl<$Res>
     Object? minuteDuration = null,
     Object? location = null,
   }) {
-    return _then(_$NewTripStopStateCreated(
+    return _then(_$NewTripStopStateCreatedImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -706,8 +712,8 @@ class __$$NewTripStopStateCreatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTripStopStateCreated implements NewTripStopStateCreated {
-  const _$NewTripStopStateCreated(
+class _$NewTripStopStateCreatedImpl implements NewTripStopStateCreated {
+  const _$NewTripStopStateCreatedImpl(
       {required this.name,
       required this.description,
       required this.hourDuration,
@@ -734,7 +740,7 @@ class _$NewTripStopStateCreated implements NewTripStopStateCreated {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTripStopStateCreated &&
+            other is _$NewTripStopStateCreatedImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -753,9 +759,9 @@ class _$NewTripStopStateCreated implements NewTripStopStateCreated {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStopStateCreatedCopyWith<_$NewTripStopStateCreated> get copyWith =>
-      __$$NewTripStopStateCreatedCopyWithImpl<_$NewTripStopStateCreated>(
-          this, _$identity);
+  _$$NewTripStopStateCreatedImplCopyWith<_$NewTripStopStateCreatedImpl>
+      get copyWith => __$$NewTripStopStateCreatedImplCopyWithImpl<
+          _$NewTripStopStateCreatedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -868,7 +874,7 @@ abstract class NewTripStopStateCreated implements NewTripStopState {
       required final String? description,
       required final int hourDuration,
       required final int minuteDuration,
-      required final LatLng location}) = _$NewTripStopStateCreated;
+      required final LatLng location}) = _$NewTripStopStateCreatedImpl;
 
   @override
   String get name;
@@ -882,16 +888,17 @@ abstract class NewTripStopStateCreated implements NewTripStopState {
   LatLng get location;
   @override
   @JsonKey(ignore: true)
-  _$$NewTripStopStateCreatedCopyWith<_$NewTripStopStateCreated> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NewTripStopStateCreatedImplCopyWith<_$NewTripStopStateCreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStopStateErrorCopyWith<$Res>
+abstract class _$$NewTripStopStateErrorImplCopyWith<$Res>
     implements $NewTripStopStateCopyWith<$Res> {
-  factory _$$NewTripStopStateErrorCopyWith(_$NewTripStopStateError value,
-          $Res Function(_$NewTripStopStateError) then) =
-      __$$NewTripStopStateErrorCopyWithImpl<$Res>;
+  factory _$$NewTripStopStateErrorImplCopyWith(
+          _$NewTripStopStateErrorImpl value,
+          $Res Function(_$NewTripStopStateErrorImpl) then) =
+      __$$NewTripStopStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -904,11 +911,11 @@ abstract class _$$NewTripStopStateErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTripStopStateErrorCopyWithImpl<$Res>
-    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateError>
-    implements _$$NewTripStopStateErrorCopyWith<$Res> {
-  __$$NewTripStopStateErrorCopyWithImpl(_$NewTripStopStateError _value,
-      $Res Function(_$NewTripStopStateError) _then)
+class __$$NewTripStopStateErrorImplCopyWithImpl<$Res>
+    extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateErrorImpl>
+    implements _$$NewTripStopStateErrorImplCopyWith<$Res> {
+  __$$NewTripStopStateErrorImplCopyWithImpl(_$NewTripStopStateErrorImpl _value,
+      $Res Function(_$NewTripStopStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -921,7 +928,7 @@ class __$$NewTripStopStateErrorCopyWithImpl<$Res>
     Object? location = freezed,
     Object? errorMessage = null,
   }) {
-    return _then(_$NewTripStopStateError(
+    return _then(_$NewTripStopStateErrorImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -952,8 +959,8 @@ class __$$NewTripStopStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTripStopStateError implements NewTripStopStateError {
-  const _$NewTripStopStateError(
+class _$NewTripStopStateErrorImpl implements NewTripStopStateError {
+  const _$NewTripStopStateErrorImpl(
       {required this.name,
       required this.description,
       required this.hourDuration,
@@ -983,7 +990,7 @@ class _$NewTripStopStateError implements NewTripStopStateError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTripStopStateError &&
+            other is _$NewTripStopStateErrorImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -1004,9 +1011,9 @@ class _$NewTripStopStateError implements NewTripStopStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStopStateErrorCopyWith<_$NewTripStopStateError> get copyWith =>
-      __$$NewTripStopStateErrorCopyWithImpl<_$NewTripStopStateError>(
-          this, _$identity);
+  _$$NewTripStopStateErrorImplCopyWith<_$NewTripStopStateErrorImpl>
+      get copyWith => __$$NewTripStopStateErrorImplCopyWithImpl<
+          _$NewTripStopStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1122,7 +1129,7 @@ abstract class NewTripStopStateError implements NewTripStopState {
       required final int hourDuration,
       required final int minuteDuration,
       required final LatLng? location,
-      required final String errorMessage}) = _$NewTripStopStateError;
+      required final String errorMessage}) = _$NewTripStopStateErrorImpl;
 
   @override
   String? get name;
@@ -1137,6 +1144,6 @@ abstract class NewTripStopStateError implements NewTripStopState {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$NewTripStopStateErrorCopyWith<_$NewTripStopStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NewTripStopStateErrorImplCopyWith<_$NewTripStopStateErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

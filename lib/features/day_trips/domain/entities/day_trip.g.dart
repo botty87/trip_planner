@@ -6,7 +6,8 @@ part of 'day_trip.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DayTrip _$$_DayTripFromJson(Map<String, dynamic> json) => _$_DayTrip(
+_$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
+    _$DayTripImpl(
       index: json['index'] as int,
       description: json['description'] as String?,
       startTime: json['startTime'] == null
@@ -14,7 +15,7 @@ _$_DayTrip _$$_DayTripFromJson(Map<String, dynamic> json) => _$_DayTrip(
           : timeOfDayFromMap(json['startTime'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_DayTripToJson(_$_DayTrip instance) =>
+Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) =>
     <String, dynamic>{
       'index': instance.index,
       'description': instance.description,

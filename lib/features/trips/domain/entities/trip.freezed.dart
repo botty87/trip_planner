@@ -101,9 +101,10 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
 }
 
 /// @nodoc
-abstract class _$$_TripCopyWith<$Res> implements $TripCopyWith<$Res> {
-  factory _$$_TripCopyWith(_$_Trip value, $Res Function(_$_Trip) then) =
-      __$$_TripCopyWithImpl<$Res>;
+abstract class _$$TripImplCopyWith<$Res> implements $TripCopyWith<$Res> {
+  factory _$$TripImplCopyWith(
+          _$TripImpl value, $Res Function(_$TripImpl) then) =
+      __$$TripImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -118,9 +119,10 @@ abstract class _$$_TripCopyWith<$Res> implements $TripCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
-    implements _$$_TripCopyWith<$Res> {
-  __$$_TripCopyWithImpl(_$_Trip _value, $Res Function(_$_Trip) _then)
+class __$$TripImplCopyWithImpl<$Res>
+    extends _$TripCopyWithImpl<$Res, _$TripImpl>
+    implements _$$TripImplCopyWith<$Res> {
+  __$$TripImplCopyWithImpl(_$TripImpl _value, $Res Function(_$TripImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +135,7 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
     Object? createdAt = null,
     Object? startDate = null,
   }) {
-    return _then(_$_Trip(
+    return _then(_$TripImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -164,8 +166,8 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Trip implements _Trip {
-  _$_Trip(
+class _$TripImpl implements _Trip {
+  _$TripImpl(
       {@JsonKey(includeFromJson: false, includeToJson: false) this.id = '',
       required this.name,
       this.description,
@@ -175,7 +177,8 @@ class _$_Trip implements _Trip {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       required this.startDate});
 
-  factory _$_Trip.fromJson(Map<String, dynamic> json) => _$$_TripFromJson(json);
+  factory _$TripImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TripImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -202,7 +205,7 @@ class _$_Trip implements _Trip {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Trip &&
+            other is _$TripImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -222,12 +225,12 @@ class _$_Trip implements _Trip {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TripCopyWith<_$_Trip> get copyWith =>
-      __$$_TripCopyWithImpl<_$_Trip>(this, _$identity);
+  _$$TripImplCopyWith<_$TripImpl> get copyWith =>
+      __$$TripImplCopyWithImpl<_$TripImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TripToJson(
+    return _$$TripImplToJson(
       this,
     );
   }
@@ -242,9 +245,9 @@ abstract class _Trip implements Trip {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       required final DateTime createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      required final DateTime startDate}) = _$_Trip;
+      required final DateTime startDate}) = _$TripImpl;
 
-  factory _Trip.fromJson(Map<String, dynamic> json) = _$_Trip.fromJson;
+  factory _Trip.fromJson(Map<String, dynamic> json) = _$TripImpl.fromJson;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -263,5 +266,6 @@ abstract class _Trip implements Trip {
   DateTime get startDate;
   @override
   @JsonKey(ignore: true)
-  _$$_TripCopyWith<_$_Trip> get copyWith => throw _privateConstructorUsedError;
+  _$$TripImplCopyWith<_$TripImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

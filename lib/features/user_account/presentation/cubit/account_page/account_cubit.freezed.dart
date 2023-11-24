@@ -154,11 +154,11 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
 }
 
 /// @nodoc
-abstract class _$$AccountStateNormalCopyWith<$Res>
+abstract class _$$AccountStateNormalImplCopyWith<$Res>
     implements $AccountStateCopyWith<$Res> {
-  factory _$$AccountStateNormalCopyWith(_$AccountStateNormal value,
-          $Res Function(_$AccountStateNormal) then) =
-      __$$AccountStateNormalCopyWithImpl<$Res>;
+  factory _$$AccountStateNormalImplCopyWith(_$AccountStateNormalImpl value,
+          $Res Function(_$AccountStateNormalImpl) then) =
+      __$$AccountStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({User user, String? errorMessage});
@@ -168,11 +168,11 @@ abstract class _$$AccountStateNormalCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AccountStateNormalCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateNormal>
-    implements _$$AccountStateNormalCopyWith<$Res> {
-  __$$AccountStateNormalCopyWithImpl(
-      _$AccountStateNormal _value, $Res Function(_$AccountStateNormal) _then)
+class __$$AccountStateNormalImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateNormalImpl>
+    implements _$$AccountStateNormalImplCopyWith<$Res> {
+  __$$AccountStateNormalImplCopyWithImpl(_$AccountStateNormalImpl _value,
+      $Res Function(_$AccountStateNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -181,7 +181,7 @@ class __$$AccountStateNormalCopyWithImpl<$Res>
     Object? user = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$AccountStateNormal(
+    return _then(_$AccountStateNormalImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -196,8 +196,8 @@ class __$$AccountStateNormalCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountStateNormal implements AccountStateNormal {
-  const _$AccountStateNormal({required this.user, this.errorMessage});
+class _$AccountStateNormalImpl implements AccountStateNormal {
+  const _$AccountStateNormalImpl({required this.user, this.errorMessage});
 
   @override
   final User user;
@@ -213,7 +213,7 @@ class _$AccountStateNormal implements AccountStateNormal {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AccountStateNormal &&
+            other is _$AccountStateNormalImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
@@ -225,8 +225,8 @@ class _$AccountStateNormal implements AccountStateNormal {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AccountStateNormalCopyWith<_$AccountStateNormal> get copyWith =>
-      __$$AccountStateNormalCopyWithImpl<_$AccountStateNormal>(
+  _$$AccountStateNormalImplCopyWith<_$AccountStateNormalImpl> get copyWith =>
+      __$$AccountStateNormalImplCopyWithImpl<_$AccountStateNormalImpl>(
           this, _$identity);
 
   @override
@@ -338,7 +338,7 @@ class _$AccountStateNormal implements AccountStateNormal {
 abstract class AccountStateNormal implements AccountState {
   const factory AccountStateNormal(
       {required final User user,
-      final String? errorMessage}) = _$AccountStateNormal;
+      final String? errorMessage}) = _$AccountStateNormalImpl;
 
   @override
   User get user;
@@ -346,16 +346,16 @@ abstract class AccountStateNormal implements AccountState {
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$AccountStateNormalCopyWith<_$AccountStateNormal> get copyWith =>
+  _$$AccountStateNormalImplCopyWith<_$AccountStateNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AccountStateEditingCopyWith<$Res>
+abstract class _$$AccountStateEditingImplCopyWith<$Res>
     implements $AccountStateCopyWith<$Res> {
-  factory _$$AccountStateEditingCopyWith(_$AccountStateEditing value,
-          $Res Function(_$AccountStateEditing) then) =
-      __$$AccountStateEditingCopyWithImpl<$Res>;
+  factory _$$AccountStateEditingImplCopyWith(_$AccountStateEditingImpl value,
+          $Res Function(_$AccountStateEditingImpl) then) =
+      __$$AccountStateEditingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -372,11 +372,11 @@ abstract class _$$AccountStateEditingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AccountStateEditingCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateEditing>
-    implements _$$AccountStateEditingCopyWith<$Res> {
-  __$$AccountStateEditingCopyWithImpl(
-      _$AccountStateEditing _value, $Res Function(_$AccountStateEditing) _then)
+class __$$AccountStateEditingImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateEditingImpl>
+    implements _$$AccountStateEditingImplCopyWith<$Res> {
+  __$$AccountStateEditingImplCopyWithImpl(_$AccountStateEditingImpl _value,
+      $Res Function(_$AccountStateEditingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -390,7 +390,7 @@ class __$$AccountStateEditingCopyWithImpl<$Res>
     Object? confirmPassword = freezed,
     Object? isEditingPasswordVisible = null,
   }) {
-    return _then(_$AccountStateEditing(
+    return _then(_$AccountStateEditingImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -425,8 +425,8 @@ class __$$AccountStateEditingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountStateEditing implements AccountStateEditing {
-  const _$AccountStateEditing(
+class _$AccountStateEditingImpl implements AccountStateEditing {
+  const _$AccountStateEditingImpl(
       {required this.user,
       this.errorMessage,
       this.name,
@@ -460,7 +460,7 @@ class _$AccountStateEditing implements AccountStateEditing {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AccountStateEditing &&
+            other is _$AccountStateEditingImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
@@ -482,8 +482,8 @@ class _$AccountStateEditing implements AccountStateEditing {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AccountStateEditingCopyWith<_$AccountStateEditing> get copyWith =>
-      __$$AccountStateEditingCopyWithImpl<_$AccountStateEditing>(
+  _$$AccountStateEditingImplCopyWith<_$AccountStateEditingImpl> get copyWith =>
+      __$$AccountStateEditingImplCopyWithImpl<_$AccountStateEditingImpl>(
           this, _$identity);
 
   @override
@@ -603,7 +603,7 @@ abstract class AccountStateEditing implements AccountState {
       final String? email,
       final String? password,
       final String? confirmPassword,
-      final bool isEditingPasswordVisible}) = _$AccountStateEditing;
+      final bool isEditingPasswordVisible}) = _$AccountStateEditingImpl;
 
   @override
   User get user;
@@ -616,17 +616,17 @@ abstract class AccountStateEditing implements AccountState {
   bool get isEditingPasswordVisible;
   @override
   @JsonKey(ignore: true)
-  _$$AccountStateEditingCopyWith<_$AccountStateEditing> get copyWith =>
+  _$$AccountStateEditingImplCopyWith<_$AccountStateEditingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AccountStateReauthenticatingCopyWith<$Res>
+abstract class _$$AccountStateReauthenticatingImplCopyWith<$Res>
     implements $AccountStateCopyWith<$Res> {
-  factory _$$AccountStateReauthenticatingCopyWith(
-          _$AccountStateReauthenticating value,
-          $Res Function(_$AccountStateReauthenticating) then) =
-      __$$AccountStateReauthenticatingCopyWithImpl<$Res>;
+  factory _$$AccountStateReauthenticatingImplCopyWith(
+          _$AccountStateReauthenticatingImpl value,
+          $Res Function(_$AccountStateReauthenticatingImpl) then) =
+      __$$AccountStateReauthenticatingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -642,12 +642,12 @@ abstract class _$$AccountStateReauthenticatingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AccountStateReauthenticatingCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateReauthenticating>
-    implements _$$AccountStateReauthenticatingCopyWith<$Res> {
-  __$$AccountStateReauthenticatingCopyWithImpl(
-      _$AccountStateReauthenticating _value,
-      $Res Function(_$AccountStateReauthenticating) _then)
+class __$$AccountStateReauthenticatingImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateReauthenticatingImpl>
+    implements _$$AccountStateReauthenticatingImplCopyWith<$Res> {
+  __$$AccountStateReauthenticatingImplCopyWithImpl(
+      _$AccountStateReauthenticatingImpl _value,
+      $Res Function(_$AccountStateReauthenticatingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -659,7 +659,7 @@ class __$$AccountStateReauthenticatingCopyWithImpl<$Res>
     Object? isSaving = null,
     Object? editUserData = null,
   }) {
-    return _then(_$AccountStateReauthenticating(
+    return _then(_$AccountStateReauthenticatingImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -694,8 +694,9 @@ class __$$AccountStateReauthenticatingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountStateReauthenticating implements AccountStateReauthenticating {
-  const _$AccountStateReauthenticating(
+class _$AccountStateReauthenticatingImpl
+    implements AccountStateReauthenticating {
+  const _$AccountStateReauthenticatingImpl(
       {required this.user,
       this.errorMessage,
       this.password,
@@ -723,7 +724,7 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AccountStateReauthenticating &&
+            other is _$AccountStateReauthenticatingImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
@@ -742,9 +743,10 @@ class _$AccountStateReauthenticating implements AccountStateReauthenticating {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AccountStateReauthenticatingCopyWith<_$AccountStateReauthenticating>
-      get copyWith => __$$AccountStateReauthenticatingCopyWithImpl<
-          _$AccountStateReauthenticating>(this, _$identity);
+  _$$AccountStateReauthenticatingImplCopyWith<
+          _$AccountStateReauthenticatingImpl>
+      get copyWith => __$$AccountStateReauthenticatingImplCopyWithImpl<
+          _$AccountStateReauthenticatingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -862,7 +864,7 @@ abstract class AccountStateReauthenticating implements AccountState {
           final String? password,
           final bool isSaving,
           required final EditUserData editUserData}) =
-      _$AccountStateReauthenticating;
+      _$AccountStateReauthenticatingImpl;
 
   @override
   User get user;
@@ -873,16 +875,17 @@ abstract class AccountStateReauthenticating implements AccountState {
   EditUserData get editUserData;
   @override
   @JsonKey(ignore: true)
-  _$$AccountStateReauthenticatingCopyWith<_$AccountStateReauthenticating>
+  _$$AccountStateReauthenticatingImplCopyWith<
+          _$AccountStateReauthenticatingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AccountStateDeletingCopyWith<$Res>
+abstract class _$$AccountStateDeletingImplCopyWith<$Res>
     implements $AccountStateCopyWith<$Res> {
-  factory _$$AccountStateDeletingCopyWith(_$AccountStateDeleting value,
-          $Res Function(_$AccountStateDeleting) then) =
-      __$$AccountStateDeletingCopyWithImpl<$Res>;
+  factory _$$AccountStateDeletingImplCopyWith(_$AccountStateDeletingImpl value,
+          $Res Function(_$AccountStateDeletingImpl) then) =
+      __$$AccountStateDeletingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({User user, String? errorMessage});
@@ -892,11 +895,11 @@ abstract class _$$AccountStateDeletingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AccountStateDeletingCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateDeleting>
-    implements _$$AccountStateDeletingCopyWith<$Res> {
-  __$$AccountStateDeletingCopyWithImpl(_$AccountStateDeleting _value,
-      $Res Function(_$AccountStateDeleting) _then)
+class __$$AccountStateDeletingImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateDeletingImpl>
+    implements _$$AccountStateDeletingImplCopyWith<$Res> {
+  __$$AccountStateDeletingImplCopyWithImpl(_$AccountStateDeletingImpl _value,
+      $Res Function(_$AccountStateDeletingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -905,7 +908,7 @@ class __$$AccountStateDeletingCopyWithImpl<$Res>
     Object? user = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$AccountStateDeleting(
+    return _then(_$AccountStateDeletingImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -920,8 +923,8 @@ class __$$AccountStateDeletingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountStateDeleting implements AccountStateDeleting {
-  const _$AccountStateDeleting({required this.user, this.errorMessage});
+class _$AccountStateDeletingImpl implements AccountStateDeleting {
+  const _$AccountStateDeletingImpl({required this.user, this.errorMessage});
 
   @override
   final User user;
@@ -937,7 +940,7 @@ class _$AccountStateDeleting implements AccountStateDeleting {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AccountStateDeleting &&
+            other is _$AccountStateDeletingImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
@@ -949,9 +952,10 @@ class _$AccountStateDeleting implements AccountStateDeleting {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AccountStateDeletingCopyWith<_$AccountStateDeleting> get copyWith =>
-      __$$AccountStateDeletingCopyWithImpl<_$AccountStateDeleting>(
-          this, _$identity);
+  _$$AccountStateDeletingImplCopyWith<_$AccountStateDeletingImpl>
+      get copyWith =>
+          __$$AccountStateDeletingImplCopyWithImpl<_$AccountStateDeletingImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1062,7 +1066,7 @@ class _$AccountStateDeleting implements AccountStateDeleting {
 abstract class AccountStateDeleting implements AccountState {
   const factory AccountStateDeleting(
       {required final User user,
-      final String? errorMessage}) = _$AccountStateDeleting;
+      final String? errorMessage}) = _$AccountStateDeletingImpl;
 
   @override
   User get user;
@@ -1070,8 +1074,8 @@ abstract class AccountStateDeleting implements AccountState {
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$AccountStateDeletingCopyWith<_$AccountStateDeleting> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AccountStateDeletingImplCopyWith<_$AccountStateDeletingImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1129,22 +1133,22 @@ class _$EditUserDataCopyWithImpl<$Res, $Val extends EditUserData>
 }
 
 /// @nodoc
-abstract class _$$_EditUserDataCopyWith<$Res>
+abstract class _$$EditUserDataImplCopyWith<$Res>
     implements $EditUserDataCopyWith<$Res> {
-  factory _$$_EditUserDataCopyWith(
-          _$_EditUserData value, $Res Function(_$_EditUserData) then) =
-      __$$_EditUserDataCopyWithImpl<$Res>;
+  factory _$$EditUserDataImplCopyWith(
+          _$EditUserDataImpl value, $Res Function(_$EditUserDataImpl) then) =
+      __$$EditUserDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, String? email, String? password});
 }
 
 /// @nodoc
-class __$$_EditUserDataCopyWithImpl<$Res>
-    extends _$EditUserDataCopyWithImpl<$Res, _$_EditUserData>
-    implements _$$_EditUserDataCopyWith<$Res> {
-  __$$_EditUserDataCopyWithImpl(
-      _$_EditUserData _value, $Res Function(_$_EditUserData) _then)
+class __$$EditUserDataImplCopyWithImpl<$Res>
+    extends _$EditUserDataCopyWithImpl<$Res, _$EditUserDataImpl>
+    implements _$$EditUserDataImplCopyWith<$Res> {
+  __$$EditUserDataImplCopyWithImpl(
+      _$EditUserDataImpl _value, $Res Function(_$EditUserDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1154,7 +1158,7 @@ class __$$_EditUserDataCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_$_EditUserData(
+    return _then(_$EditUserDataImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1173,8 +1177,8 @@ class __$$_EditUserDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EditUserData implements _EditUserData {
-  const _$_EditUserData(
+class _$EditUserDataImpl implements _EditUserData {
+  const _$EditUserDataImpl(
       {required this.name, required this.email, required this.password});
 
   @override
@@ -1193,7 +1197,7 @@ class _$_EditUserData implements _EditUserData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EditUserData &&
+            other is _$EditUserDataImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
@@ -1206,15 +1210,15 @@ class _$_EditUserData implements _EditUserData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EditUserDataCopyWith<_$_EditUserData> get copyWith =>
-      __$$_EditUserDataCopyWithImpl<_$_EditUserData>(this, _$identity);
+  _$$EditUserDataImplCopyWith<_$EditUserDataImpl> get copyWith =>
+      __$$EditUserDataImplCopyWithImpl<_$EditUserDataImpl>(this, _$identity);
 }
 
 abstract class _EditUserData implements EditUserData {
   const factory _EditUserData(
       {required final String? name,
       required final String? email,
-      required final String? password}) = _$_EditUserData;
+      required final String? password}) = _$EditUserDataImpl;
 
   @override
   String? get name;
@@ -1224,6 +1228,6 @@ abstract class _EditUserData implements EditUserData {
   String? get password;
   @override
   @JsonKey(ignore: true)
-  _$$_EditUserDataCopyWith<_$_EditUserData> get copyWith =>
+  _$$EditUserDataImplCopyWith<_$EditUserDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

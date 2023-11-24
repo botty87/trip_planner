@@ -30,14 +30,18 @@ class TripsRepositoryImpl implements TripsRepository {
   @override
   Stream<Either<TripsFailure, List<Trip>>> listenTrips(String userId) async* {
     try {
-      yield* tripsDataSource.listenTrips(userId).map((trips) => right(trips));
+      yield* tripsDataSource
+          .listenTrips(userId)
+          .map<Either<TripsFailure, List<Trip>>>((trips) => right(trips))
+          .handleError((e) => left(const TripsFailure()));
     } catch (e) {
       yield left(const TripsFailure());
     }
   }
 
   @override
-  Future<Either<TripsFailure, void>> updateTrip(String id, String name, String? description, DateTime startDate) async {
+  Future<Either<TripsFailure, void>> updateTrip(
+      String id, String name, String? description, DateTime startDate) async {
     try {
       await tripsDataSource.updateTrip(id, name, description, startDate);
       return right(null);
@@ -59,7 +63,7 @@ class TripsRepositoryImpl implements TripsRepository {
       return left(const TripsFailure());
     }
   }
-  
+
   @override
   Future<Either<TripsFailure, void>> deleteAllTrips(String userId) async {
     try {

@@ -165,11 +165,11 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
 }
 
 /// @nodoc
-abstract class _$$NewTripStateNormalCopyWith<$Res>
+abstract class _$$NewTripStateNormalImplCopyWith<$Res>
     implements $NewTripStateCopyWith<$Res> {
-  factory _$$NewTripStateNormalCopyWith(_$NewTripStateNormal value,
-          $Res Function(_$NewTripStateNormal) then) =
-      __$$NewTripStateNormalCopyWithImpl<$Res>;
+  factory _$$NewTripStateNormalImplCopyWith(_$NewTripStateNormalImpl value,
+          $Res Function(_$NewTripStateNormalImpl) then) =
+      __$$NewTripStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -180,11 +180,11 @@ abstract class _$$NewTripStateNormalCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTripStateNormalCopyWithImpl<$Res>
-    extends _$NewTripStateCopyWithImpl<$Res, _$NewTripStateNormal>
-    implements _$$NewTripStateNormalCopyWith<$Res> {
-  __$$NewTripStateNormalCopyWithImpl(
-      _$NewTripStateNormal _value, $Res Function(_$NewTripStateNormal) _then)
+class __$$NewTripStateNormalImplCopyWithImpl<$Res>
+    extends _$NewTripStateCopyWithImpl<$Res, _$NewTripStateNormalImpl>
+    implements _$$NewTripStateNormalImplCopyWith<$Res> {
+  __$$NewTripStateNormalImplCopyWithImpl(_$NewTripStateNormalImpl _value,
+      $Res Function(_$NewTripStateNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -195,7 +195,7 @@ class __$$NewTripStateNormalCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
   }) {
-    return _then(_$NewTripStateNormal(
+    return _then(_$NewTripStateNormalImpl(
       tripName: freezed == tripName
           ? _value.tripName
           : tripName // ignore: cast_nullable_to_non_nullable
@@ -218,8 +218,8 @@ class __$$NewTripStateNormalCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTripStateNormal implements NewTripStateNormal {
-  const _$NewTripStateNormal(
+class _$NewTripStateNormalImpl implements NewTripStateNormal {
+  const _$NewTripStateNormalImpl(
       {this.tripName,
       this.tripDescription,
       this.startDate,
@@ -244,7 +244,7 @@ class _$NewTripStateNormal implements NewTripStateNormal {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTripStateNormal &&
+            other is _$NewTripStateNormalImpl &&
             (identical(other.tripName, tripName) ||
                 other.tripName == tripName) &&
             (identical(other.tripDescription, tripDescription) ||
@@ -262,8 +262,8 @@ class _$NewTripStateNormal implements NewTripStateNormal {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStateNormalCopyWith<_$NewTripStateNormal> get copyWith =>
-      __$$NewTripStateNormalCopyWithImpl<_$NewTripStateNormal>(
+  _$$NewTripStateNormalImplCopyWith<_$NewTripStateNormalImpl> get copyWith =>
+      __$$NewTripStateNormalImplCopyWithImpl<_$NewTripStateNormalImpl>(
           this, _$identity);
 
   @override
@@ -384,7 +384,7 @@ abstract class NewTripStateNormal implements NewTripState {
       {final String? tripName,
       final String? tripDescription,
       final DateTime? startDate,
-      final bool isStartDateBeforeToday}) = _$NewTripStateNormal;
+      final bool isStartDateBeforeToday}) = _$NewTripStateNormalImpl;
 
   @override
   String? get tripName;
@@ -396,16 +396,16 @@ abstract class NewTripStateNormal implements NewTripState {
   bool get isStartDateBeforeToday;
   @override
   @JsonKey(ignore: true)
-  _$$NewTripStateNormalCopyWith<_$NewTripStateNormal> get copyWith =>
+  _$$NewTripStateNormalImplCopyWith<_$NewTripStateNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStateSavingCopyWith<$Res>
+abstract class _$$NewTripStateSavingImplCopyWith<$Res>
     implements $NewTripStateCopyWith<$Res> {
-  factory _$$NewTripStateSavingCopyWith(_$NewTripStateSaving value,
-          $Res Function(_$NewTripStateSaving) then) =
-      __$$NewTripStateSavingCopyWithImpl<$Res>;
+  factory _$$NewTripStateSavingImplCopyWith(_$NewTripStateSavingImpl value,
+          $Res Function(_$NewTripStateSavingImpl) then) =
+      __$$NewTripStateSavingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -416,11 +416,11 @@ abstract class _$$NewTripStateSavingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTripStateSavingCopyWithImpl<$Res>
-    extends _$NewTripStateCopyWithImpl<$Res, _$NewTripStateSaving>
-    implements _$$NewTripStateSavingCopyWith<$Res> {
-  __$$NewTripStateSavingCopyWithImpl(
-      _$NewTripStateSaving _value, $Res Function(_$NewTripStateSaving) _then)
+class __$$NewTripStateSavingImplCopyWithImpl<$Res>
+    extends _$NewTripStateCopyWithImpl<$Res, _$NewTripStateSavingImpl>
+    implements _$$NewTripStateSavingImplCopyWith<$Res> {
+  __$$NewTripStateSavingImplCopyWithImpl(_$NewTripStateSavingImpl _value,
+      $Res Function(_$NewTripStateSavingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -431,7 +431,7 @@ class __$$NewTripStateSavingCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
   }) {
-    return _then(_$NewTripStateSaving(
+    return _then(_$NewTripStateSavingImpl(
       tripName: freezed == tripName
           ? _value.tripName
           : tripName // ignore: cast_nullable_to_non_nullable
@@ -454,8 +454,8 @@ class __$$NewTripStateSavingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTripStateSaving implements NewTripStateSaving {
-  const _$NewTripStateSaving(
+class _$NewTripStateSavingImpl implements NewTripStateSaving {
+  const _$NewTripStateSavingImpl(
       {required this.tripName,
       required this.tripDescription,
       required this.startDate,
@@ -480,7 +480,7 @@ class _$NewTripStateSaving implements NewTripStateSaving {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTripStateSaving &&
+            other is _$NewTripStateSavingImpl &&
             (identical(other.tripName, tripName) ||
                 other.tripName == tripName) &&
             (identical(other.tripDescription, tripDescription) ||
@@ -498,8 +498,8 @@ class _$NewTripStateSaving implements NewTripStateSaving {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStateSavingCopyWith<_$NewTripStateSaving> get copyWith =>
-      __$$NewTripStateSavingCopyWithImpl<_$NewTripStateSaving>(
+  _$$NewTripStateSavingImplCopyWith<_$NewTripStateSavingImpl> get copyWith =>
+      __$$NewTripStateSavingImplCopyWithImpl<_$NewTripStateSavingImpl>(
           this, _$identity);
 
   @override
@@ -620,7 +620,7 @@ abstract class NewTripStateSaving implements NewTripState {
       {required final String? tripName,
       required final String? tripDescription,
       required final DateTime? startDate,
-      final bool isStartDateBeforeToday}) = _$NewTripStateSaving;
+      final bool isStartDateBeforeToday}) = _$NewTripStateSavingImpl;
 
   @override
   String? get tripName;
@@ -632,16 +632,16 @@ abstract class NewTripStateSaving implements NewTripState {
   bool get isStartDateBeforeToday;
   @override
   @JsonKey(ignore: true)
-  _$$NewTripStateSavingCopyWith<_$NewTripStateSaving> get copyWith =>
+  _$$NewTripStateSavingImplCopyWith<_$NewTripStateSavingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStateCreatedCopyWith<$Res>
+abstract class _$$NewTripStateCreatedImplCopyWith<$Res>
     implements $NewTripStateCopyWith<$Res> {
-  factory _$$NewTripStateCreatedCopyWith(_$NewTripStateCreated value,
-          $Res Function(_$NewTripStateCreated) then) =
-      __$$NewTripStateCreatedCopyWithImpl<$Res>;
+  factory _$$NewTripStateCreatedImplCopyWith(_$NewTripStateCreatedImpl value,
+          $Res Function(_$NewTripStateCreatedImpl) then) =
+      __$$NewTripStateCreatedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -652,11 +652,11 @@ abstract class _$$NewTripStateCreatedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTripStateCreatedCopyWithImpl<$Res>
-    extends _$NewTripStateCopyWithImpl<$Res, _$NewTripStateCreated>
-    implements _$$NewTripStateCreatedCopyWith<$Res> {
-  __$$NewTripStateCreatedCopyWithImpl(
-      _$NewTripStateCreated _value, $Res Function(_$NewTripStateCreated) _then)
+class __$$NewTripStateCreatedImplCopyWithImpl<$Res>
+    extends _$NewTripStateCopyWithImpl<$Res, _$NewTripStateCreatedImpl>
+    implements _$$NewTripStateCreatedImplCopyWith<$Res> {
+  __$$NewTripStateCreatedImplCopyWithImpl(_$NewTripStateCreatedImpl _value,
+      $Res Function(_$NewTripStateCreatedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -667,7 +667,7 @@ class __$$NewTripStateCreatedCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
   }) {
-    return _then(_$NewTripStateCreated(
+    return _then(_$NewTripStateCreatedImpl(
       tripName: freezed == tripName
           ? _value.tripName
           : tripName // ignore: cast_nullable_to_non_nullable
@@ -690,8 +690,8 @@ class __$$NewTripStateCreatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTripStateCreated implements NewTripStateCreated {
-  const _$NewTripStateCreated(
+class _$NewTripStateCreatedImpl implements NewTripStateCreated {
+  const _$NewTripStateCreatedImpl(
       {this.tripName,
       this.tripDescription,
       this.startDate,
@@ -716,7 +716,7 @@ class _$NewTripStateCreated implements NewTripStateCreated {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTripStateCreated &&
+            other is _$NewTripStateCreatedImpl &&
             (identical(other.tripName, tripName) ||
                 other.tripName == tripName) &&
             (identical(other.tripDescription, tripDescription) ||
@@ -734,8 +734,8 @@ class _$NewTripStateCreated implements NewTripStateCreated {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStateCreatedCopyWith<_$NewTripStateCreated> get copyWith =>
-      __$$NewTripStateCreatedCopyWithImpl<_$NewTripStateCreated>(
+  _$$NewTripStateCreatedImplCopyWith<_$NewTripStateCreatedImpl> get copyWith =>
+      __$$NewTripStateCreatedImplCopyWithImpl<_$NewTripStateCreatedImpl>(
           this, _$identity);
 
   @override
@@ -857,7 +857,7 @@ abstract class NewTripStateCreated implements NewTripState {
       {final String? tripName,
       final String? tripDescription,
       final DateTime? startDate,
-      final bool isStartDateBeforeToday}) = _$NewTripStateCreated;
+      final bool isStartDateBeforeToday}) = _$NewTripStateCreatedImpl;
 
   @override
   String? get tripName;
@@ -869,16 +869,16 @@ abstract class NewTripStateCreated implements NewTripState {
   bool get isStartDateBeforeToday;
   @override
   @JsonKey(ignore: true)
-  _$$NewTripStateCreatedCopyWith<_$NewTripStateCreated> get copyWith =>
+  _$$NewTripStateCreatedImplCopyWith<_$NewTripStateCreatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStateErrorCopyWith<$Res>
+abstract class _$$NewTripStateErrorImplCopyWith<$Res>
     implements $NewTripStateCopyWith<$Res> {
-  factory _$$NewTripStateErrorCopyWith(
-          _$NewTripStateError value, $Res Function(_$NewTripStateError) then) =
-      __$$NewTripStateErrorCopyWithImpl<$Res>;
+  factory _$$NewTripStateErrorImplCopyWith(_$NewTripStateErrorImpl value,
+          $Res Function(_$NewTripStateErrorImpl) then) =
+      __$$NewTripStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -890,11 +890,11 @@ abstract class _$$NewTripStateErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewTripStateErrorCopyWithImpl<$Res>
-    extends _$NewTripStateCopyWithImpl<$Res, _$NewTripStateError>
-    implements _$$NewTripStateErrorCopyWith<$Res> {
-  __$$NewTripStateErrorCopyWithImpl(
-      _$NewTripStateError _value, $Res Function(_$NewTripStateError) _then)
+class __$$NewTripStateErrorImplCopyWithImpl<$Res>
+    extends _$NewTripStateCopyWithImpl<$Res, _$NewTripStateErrorImpl>
+    implements _$$NewTripStateErrorImplCopyWith<$Res> {
+  __$$NewTripStateErrorImplCopyWithImpl(_$NewTripStateErrorImpl _value,
+      $Res Function(_$NewTripStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -906,7 +906,7 @@ class __$$NewTripStateErrorCopyWithImpl<$Res>
     Object? isStartDateBeforeToday = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$NewTripStateError(
+    return _then(_$NewTripStateErrorImpl(
       tripName: freezed == tripName
           ? _value.tripName
           : tripName // ignore: cast_nullable_to_non_nullable
@@ -933,8 +933,8 @@ class __$$NewTripStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewTripStateError implements NewTripStateError {
-  const _$NewTripStateError(
+class _$NewTripStateErrorImpl implements NewTripStateError {
+  const _$NewTripStateErrorImpl(
       {required this.tripName,
       required this.tripDescription,
       required this.startDate,
@@ -962,7 +962,7 @@ class _$NewTripStateError implements NewTripStateError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewTripStateError &&
+            other is _$NewTripStateErrorImpl &&
             (identical(other.tripName, tripName) ||
                 other.tripName == tripName) &&
             (identical(other.tripDescription, tripDescription) ||
@@ -982,8 +982,9 @@ class _$NewTripStateError implements NewTripStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStateErrorCopyWith<_$NewTripStateError> get copyWith =>
-      __$$NewTripStateErrorCopyWithImpl<_$NewTripStateError>(this, _$identity);
+  _$$NewTripStateErrorImplCopyWith<_$NewTripStateErrorImpl> get copyWith =>
+      __$$NewTripStateErrorImplCopyWithImpl<_$NewTripStateErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1105,7 +1106,7 @@ abstract class NewTripStateError implements NewTripState {
       required final String? tripDescription,
       required final DateTime? startDate,
       final bool isStartDateBeforeToday,
-      required final String errorMessage}) = _$NewTripStateError;
+      required final String errorMessage}) = _$NewTripStateErrorImpl;
 
   @override
   String? get tripName;
@@ -1118,6 +1119,6 @@ abstract class NewTripStateError implements NewTripState {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$NewTripStateErrorCopyWith<_$NewTripStateError> get copyWith =>
+  _$$NewTripStateErrorImplCopyWith<_$NewTripStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

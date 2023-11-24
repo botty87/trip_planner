@@ -63,22 +63,22 @@ class _$TimePickerStateCopyWithImpl<$Res, $Val extends TimePickerState>
 }
 
 /// @nodoc
-abstract class _$$_TimePickerStateCopyWith<$Res>
+abstract class _$$TimePickerStateImplCopyWith<$Res>
     implements $TimePickerStateCopyWith<$Res> {
-  factory _$$_TimePickerStateCopyWith(
-          _$_TimePickerState value, $Res Function(_$_TimePickerState) then) =
-      __$$_TimePickerStateCopyWithImpl<$Res>;
+  factory _$$TimePickerStateImplCopyWith(_$TimePickerStateImpl value,
+          $Res Function(_$TimePickerStateImpl) then) =
+      __$$TimePickerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({TimeOfDay time, SelectedInput selectedInput});
 }
 
 /// @nodoc
-class __$$_TimePickerStateCopyWithImpl<$Res>
-    extends _$TimePickerStateCopyWithImpl<$Res, _$_TimePickerState>
-    implements _$$_TimePickerStateCopyWith<$Res> {
-  __$$_TimePickerStateCopyWithImpl(
-      _$_TimePickerState _value, $Res Function(_$_TimePickerState) _then)
+class __$$TimePickerStateImplCopyWithImpl<$Res>
+    extends _$TimePickerStateCopyWithImpl<$Res, _$TimePickerStateImpl>
+    implements _$$TimePickerStateImplCopyWith<$Res> {
+  __$$TimePickerStateImplCopyWithImpl(
+      _$TimePickerStateImpl _value, $Res Function(_$TimePickerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_TimePickerStateCopyWithImpl<$Res>
     Object? time = null,
     Object? selectedInput = null,
   }) {
-    return _then(_$_TimePickerState(
+    return _then(_$TimePickerStateImpl(
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_TimePickerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TimePickerState implements _TimePickerState {
-  const _$_TimePickerState(
+class _$TimePickerStateImpl implements _TimePickerState {
+  const _$TimePickerStateImpl(
       {required this.time, this.selectedInput = SelectedInput.HOUR});
 
   @override
@@ -121,7 +121,7 @@ class _$_TimePickerState implements _TimePickerState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TimePickerState &&
+            other is _$TimePickerStateImpl &&
             (identical(other.time, time) || other.time == time) &&
             (identical(other.selectedInput, selectedInput) ||
                 other.selectedInput == selectedInput));
@@ -133,14 +133,15 @@ class _$_TimePickerState implements _TimePickerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TimePickerStateCopyWith<_$_TimePickerState> get copyWith =>
-      __$$_TimePickerStateCopyWithImpl<_$_TimePickerState>(this, _$identity);
+  _$$TimePickerStateImplCopyWith<_$TimePickerStateImpl> get copyWith =>
+      __$$TimePickerStateImplCopyWithImpl<_$TimePickerStateImpl>(
+          this, _$identity);
 }
 
 abstract class _TimePickerState implements TimePickerState {
   const factory _TimePickerState(
       {required final TimeOfDay time,
-      final SelectedInput selectedInput}) = _$_TimePickerState;
+      final SelectedInput selectedInput}) = _$TimePickerStateImpl;
 
   @override
   TimeOfDay get time;
@@ -148,6 +149,6 @@ abstract class _TimePickerState implements TimePickerState {
   SelectedInput get selectedInput;
   @override
   @JsonKey(ignore: true)
-  _$$_TimePickerStateCopyWith<_$_TimePickerState> get copyWith =>
+  _$$TimePickerStateImplCopyWith<_$TimePickerStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

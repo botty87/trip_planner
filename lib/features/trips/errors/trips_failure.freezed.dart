@@ -57,22 +57,22 @@ class _$TripsFailureCopyWithImpl<$Res, $Val extends TripsFailure>
 }
 
 /// @nodoc
-abstract class _$$_TripsFailureCopyWith<$Res>
+abstract class _$$TripsFailureImplCopyWith<$Res>
     implements $TripsFailureCopyWith<$Res> {
-  factory _$$_TripsFailureCopyWith(
-          _$_TripsFailure value, $Res Function(_$_TripsFailure) then) =
-      __$$_TripsFailureCopyWithImpl<$Res>;
+  factory _$$TripsFailureImplCopyWith(
+          _$TripsFailureImpl value, $Res Function(_$TripsFailureImpl) then) =
+      __$$TripsFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_TripsFailureCopyWithImpl<$Res>
-    extends _$TripsFailureCopyWithImpl<$Res, _$_TripsFailure>
-    implements _$$_TripsFailureCopyWith<$Res> {
-  __$$_TripsFailureCopyWithImpl(
-      _$_TripsFailure _value, $Res Function(_$_TripsFailure) _then)
+class __$$TripsFailureImplCopyWithImpl<$Res>
+    extends _$TripsFailureCopyWithImpl<$Res, _$TripsFailureImpl>
+    implements _$$TripsFailureImplCopyWith<$Res> {
+  __$$TripsFailureImplCopyWithImpl(
+      _$TripsFailureImpl _value, $Res Function(_$TripsFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_TripsFailureCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_TripsFailure(
+    return _then(_$TripsFailureImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_TripsFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TripsFailure implements _TripsFailure {
-  const _$_TripsFailure({this.message});
+class _$TripsFailureImpl implements _TripsFailure {
+  const _$TripsFailureImpl({this.message});
 
   @override
   final String? message;
@@ -106,7 +106,7 @@ class _$_TripsFailure implements _TripsFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TripsFailure &&
+            other is _$TripsFailureImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -116,17 +116,17 @@ class _$_TripsFailure implements _TripsFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TripsFailureCopyWith<_$_TripsFailure> get copyWith =>
-      __$$_TripsFailureCopyWithImpl<_$_TripsFailure>(this, _$identity);
+  _$$TripsFailureImplCopyWith<_$TripsFailureImpl> get copyWith =>
+      __$$TripsFailureImplCopyWithImpl<_$TripsFailureImpl>(this, _$identity);
 }
 
 abstract class _TripsFailure implements TripsFailure {
-  const factory _TripsFailure({final String? message}) = _$_TripsFailure;
+  const factory _TripsFailure({final String? message}) = _$TripsFailureImpl;
 
   @override
   String? get message;
   @override
   @JsonKey(ignore: true)
-  _$$_TripsFailureCopyWith<_$_TripsFailure> get copyWith =>
+  _$$TripsFailureImplCopyWith<_$TripsFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -69,22 +69,22 @@ class _$SuggestionCopyWithImpl<$Res, $Val extends Suggestion>
 }
 
 /// @nodoc
-abstract class _$$_SuggestionCopyWith<$Res>
+abstract class _$$SuggestionImplCopyWith<$Res>
     implements $SuggestionCopyWith<$Res> {
-  factory _$$_SuggestionCopyWith(
-          _$_Suggestion value, $Res Function(_$_Suggestion) then) =
-      __$$_SuggestionCopyWithImpl<$Res>;
+  factory _$$SuggestionImplCopyWith(
+          _$SuggestionImpl value, $Res Function(_$SuggestionImpl) then) =
+      __$$SuggestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String description, @JsonKey(name: 'place_id') String placeId});
 }
 
 /// @nodoc
-class __$$_SuggestionCopyWithImpl<$Res>
-    extends _$SuggestionCopyWithImpl<$Res, _$_Suggestion>
-    implements _$$_SuggestionCopyWith<$Res> {
-  __$$_SuggestionCopyWithImpl(
-      _$_Suggestion _value, $Res Function(_$_Suggestion) _then)
+class __$$SuggestionImplCopyWithImpl<$Res>
+    extends _$SuggestionCopyWithImpl<$Res, _$SuggestionImpl>
+    implements _$$SuggestionImplCopyWith<$Res> {
+  __$$SuggestionImplCopyWithImpl(
+      _$SuggestionImpl _value, $Res Function(_$SuggestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_SuggestionCopyWithImpl<$Res>
     Object? description = null,
     Object? placeId = null,
   }) {
-    return _then(_$_Suggestion(
+    return _then(_$SuggestionImpl(
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -108,13 +108,13 @@ class __$$_SuggestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Suggestion implements _Suggestion {
-  _$_Suggestion(
+class _$SuggestionImpl implements _Suggestion {
+  _$SuggestionImpl(
       {required this.description,
       @JsonKey(name: 'place_id') required this.placeId});
 
-  factory _$_Suggestion.fromJson(Map<String, dynamic> json) =>
-      _$$_SuggestionFromJson(json);
+  factory _$SuggestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SuggestionImplFromJson(json);
 
   @override
   final String description;
@@ -131,7 +131,7 @@ class _$_Suggestion implements _Suggestion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Suggestion &&
+            other is _$SuggestionImpl &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.placeId, placeId) || other.placeId == placeId));
@@ -144,12 +144,12 @@ class _$_Suggestion implements _Suggestion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuggestionCopyWith<_$_Suggestion> get copyWith =>
-      __$$_SuggestionCopyWithImpl<_$_Suggestion>(this, _$identity);
+  _$$SuggestionImplCopyWith<_$SuggestionImpl> get copyWith =>
+      __$$SuggestionImplCopyWithImpl<_$SuggestionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SuggestionToJson(
+    return _$$SuggestionImplToJson(
       this,
     );
   }
@@ -159,10 +159,10 @@ abstract class _Suggestion implements Suggestion {
   factory _Suggestion(
           {required final String description,
           @JsonKey(name: 'place_id') required final String placeId}) =
-      _$_Suggestion;
+      _$SuggestionImpl;
 
   factory _Suggestion.fromJson(Map<String, dynamic> json) =
-      _$_Suggestion.fromJson;
+      _$SuggestionImpl.fromJson;
 
   @override
   String get description;
@@ -171,6 +171,6 @@ abstract class _Suggestion implements Suggestion {
   String get placeId;
   @override
   @JsonKey(ignore: true)
-  _$$_SuggestionCopyWith<_$_Suggestion> get copyWith =>
+  _$$SuggestionImplCopyWith<_$SuggestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

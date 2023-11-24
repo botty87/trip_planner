@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TripsState {
   List<Trip> get trips => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TripsStateCopyWith<TripsState> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $TripsStateCopyWith<$Res> {
           TripsState value, $Res Function(TripsState) then) =
       _$TripsStateCopyWithImpl<$Res, TripsState>;
   @useResult
-  $Res call({List<Trip> trips, bool isLoading});
+  $Res call({List<Trip> trips, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$TripsStateCopyWithImpl<$Res, $Val extends TripsState>
   $Res call({
     Object? trips = null,
     Object? isLoading = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       trips: null == trips
@@ -58,27 +60,31 @@ class _$TripsStateCopyWithImpl<$Res, $Val extends TripsState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_TripsStateCopyWith<$Res>
+abstract class _$$TripsStateImplCopyWith<$Res>
     implements $TripsStateCopyWith<$Res> {
-  factory _$$_TripsStateCopyWith(
-          _$_TripsState value, $Res Function(_$_TripsState) then) =
-      __$$_TripsStateCopyWithImpl<$Res>;
+  factory _$$TripsStateImplCopyWith(
+          _$TripsStateImpl value, $Res Function(_$TripsStateImpl) then) =
+      __$$TripsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Trip> trips, bool isLoading});
+  $Res call({List<Trip> trips, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
-class __$$_TripsStateCopyWithImpl<$Res>
-    extends _$TripsStateCopyWithImpl<$Res, _$_TripsState>
-    implements _$$_TripsStateCopyWith<$Res> {
-  __$$_TripsStateCopyWithImpl(
-      _$_TripsState _value, $Res Function(_$_TripsState) _then)
+class __$$TripsStateImplCopyWithImpl<$Res>
+    extends _$TripsStateCopyWithImpl<$Res, _$TripsStateImpl>
+    implements _$$TripsStateImplCopyWith<$Res> {
+  __$$TripsStateImplCopyWithImpl(
+      _$TripsStateImpl _value, $Res Function(_$TripsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,8 +92,9 @@ class __$$_TripsStateCopyWithImpl<$Res>
   $Res call({
     Object? trips = null,
     Object? isLoading = null,
+    Object? errorMessage = freezed,
   }) {
-    return _then(_$_TripsState(
+    return _then(_$TripsStateImpl(
       trips: null == trips
           ? _value._trips
           : trips // ignore: cast_nullable_to_non_nullable
@@ -96,15 +103,21 @@ class __$$_TripsStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_TripsState implements _TripsState {
-  const _$_TripsState(
-      {final List<Trip> trips = const [], this.isLoading = true})
+class _$TripsStateImpl implements _TripsState {
+  const _$TripsStateImpl(
+      {final List<Trip> trips = const [],
+      this.isLoading = true,
+      this.errorMessage})
       : _trips = trips;
 
   final List<Trip> _trips;
@@ -119,43 +132,51 @@ class _$_TripsState implements _TripsState {
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'TripsState(trips: $trips, isLoading: $isLoading)';
+    return 'TripsState(trips: $trips, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TripsState &&
+            other is _$TripsStateImpl &&
             const DeepCollectionEquality().equals(other._trips, _trips) &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+                other.isLoading == isLoading) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_trips), isLoading);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_trips), isLoading, errorMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TripsStateCopyWith<_$_TripsState> get copyWith =>
-      __$$_TripsStateCopyWithImpl<_$_TripsState>(this, _$identity);
+  _$$TripsStateImplCopyWith<_$TripsStateImpl> get copyWith =>
+      __$$TripsStateImplCopyWithImpl<_$TripsStateImpl>(this, _$identity);
 }
 
 abstract class _TripsState implements TripsState {
-  const factory _TripsState({final List<Trip> trips, final bool isLoading}) =
-      _$_TripsState;
+  const factory _TripsState(
+      {final List<Trip> trips,
+      final bool isLoading,
+      final String? errorMessage}) = _$TripsStateImpl;
 
   @override
   List<Trip> get trips;
   @override
   bool get isLoading;
   @override
+  String? get errorMessage;
+  @override
   @JsonKey(ignore: true)
-  _$$_TripsStateCopyWith<_$_TripsState> get copyWith =>
+  _$$TripsStateImplCopyWith<_$TripsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

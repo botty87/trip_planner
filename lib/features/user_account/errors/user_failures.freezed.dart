@@ -57,22 +57,22 @@ class _$UserFailuresCopyWithImpl<$Res, $Val extends UserFailures>
 }
 
 /// @nodoc
-abstract class _$$_UserFailuresCopyWith<$Res>
+abstract class _$$UserFailuresImplCopyWith<$Res>
     implements $UserFailuresCopyWith<$Res> {
-  factory _$$_UserFailuresCopyWith(
-          _$_UserFailures value, $Res Function(_$_UserFailures) then) =
-      __$$_UserFailuresCopyWithImpl<$Res>;
+  factory _$$UserFailuresImplCopyWith(
+          _$UserFailuresImpl value, $Res Function(_$UserFailuresImpl) then) =
+      __$$UserFailuresImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UserFailuresCode? code});
 }
 
 /// @nodoc
-class __$$_UserFailuresCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$_UserFailures>
-    implements _$$_UserFailuresCopyWith<$Res> {
-  __$$_UserFailuresCopyWithImpl(
-      _$_UserFailures _value, $Res Function(_$_UserFailures) _then)
+class __$$UserFailuresImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$UserFailuresImpl>
+    implements _$$UserFailuresImplCopyWith<$Res> {
+  __$$UserFailuresImplCopyWithImpl(
+      _$UserFailuresImpl _value, $Res Function(_$UserFailuresImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_UserFailuresCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
   }) {
-    return _then(_$_UserFailures(
+    return _then(_$UserFailuresImpl(
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_UserFailuresCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserFailures extends _UserFailures {
-  const _$_UserFailures({this.code}) : super._();
+class _$UserFailuresImpl extends _UserFailures {
+  const _$UserFailuresImpl({this.code}) : super._();
 
   @override
   final UserFailuresCode? code;
@@ -106,7 +106,7 @@ class _$_UserFailures extends _UserFailures {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserFailures &&
+            other is _$UserFailuresImpl &&
             (identical(other.code, code) || other.code == code));
   }
 
@@ -116,18 +116,19 @@ class _$_UserFailures extends _UserFailures {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserFailuresCopyWith<_$_UserFailures> get copyWith =>
-      __$$_UserFailuresCopyWithImpl<_$_UserFailures>(this, _$identity);
+  _$$UserFailuresImplCopyWith<_$UserFailuresImpl> get copyWith =>
+      __$$UserFailuresImplCopyWithImpl<_$UserFailuresImpl>(this, _$identity);
 }
 
 abstract class _UserFailures extends UserFailures {
-  const factory _UserFailures({final UserFailuresCode? code}) = _$_UserFailures;
+  const factory _UserFailures({final UserFailuresCode? code}) =
+      _$UserFailuresImpl;
   const _UserFailures._() : super._();
 
   @override
   UserFailuresCode? get code;
   @override
   @JsonKey(ignore: true)
-  _$$_UserFailuresCopyWith<_$_UserFailures> get copyWith =>
+  _$$UserFailuresImplCopyWith<_$UserFailuresImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

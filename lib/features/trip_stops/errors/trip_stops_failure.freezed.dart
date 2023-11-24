@@ -57,22 +57,22 @@ class _$TripStopsFailureCopyWithImpl<$Res, $Val extends TripStopsFailure>
 }
 
 /// @nodoc
-abstract class _$$_TripStopsFailureCopyWith<$Res>
+abstract class _$$TripStopsFailureImplCopyWith<$Res>
     implements $TripStopsFailureCopyWith<$Res> {
-  factory _$$_TripStopsFailureCopyWith(
-          _$_TripStopsFailure value, $Res Function(_$_TripStopsFailure) then) =
-      __$$_TripStopsFailureCopyWithImpl<$Res>;
+  factory _$$TripStopsFailureImplCopyWith(_$TripStopsFailureImpl value,
+          $Res Function(_$TripStopsFailureImpl) then) =
+      __$$TripStopsFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_TripStopsFailureCopyWithImpl<$Res>
-    extends _$TripStopsFailureCopyWithImpl<$Res, _$_TripStopsFailure>
-    implements _$$_TripStopsFailureCopyWith<$Res> {
-  __$$_TripStopsFailureCopyWithImpl(
-      _$_TripStopsFailure _value, $Res Function(_$_TripStopsFailure) _then)
+class __$$TripStopsFailureImplCopyWithImpl<$Res>
+    extends _$TripStopsFailureCopyWithImpl<$Res, _$TripStopsFailureImpl>
+    implements _$$TripStopsFailureImplCopyWith<$Res> {
+  __$$TripStopsFailureImplCopyWithImpl(_$TripStopsFailureImpl _value,
+      $Res Function(_$TripStopsFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_TripStopsFailureCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_TripStopsFailure(
+    return _then(_$TripStopsFailureImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_TripStopsFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TripStopsFailure implements _TripStopsFailure {
-  const _$_TripStopsFailure({this.message});
+class _$TripStopsFailureImpl implements _TripStopsFailure {
+  const _$TripStopsFailureImpl({this.message});
 
   @override
   final String? message;
@@ -106,7 +106,7 @@ class _$_TripStopsFailure implements _TripStopsFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TripStopsFailure &&
+            other is _$TripStopsFailureImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -116,18 +116,19 @@ class _$_TripStopsFailure implements _TripStopsFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TripStopsFailureCopyWith<_$_TripStopsFailure> get copyWith =>
-      __$$_TripStopsFailureCopyWithImpl<_$_TripStopsFailure>(this, _$identity);
+  _$$TripStopsFailureImplCopyWith<_$TripStopsFailureImpl> get copyWith =>
+      __$$TripStopsFailureImplCopyWithImpl<_$TripStopsFailureImpl>(
+          this, _$identity);
 }
 
 abstract class _TripStopsFailure implements TripStopsFailure {
   const factory _TripStopsFailure({final String? message}) =
-      _$_TripStopsFailure;
+      _$TripStopsFailureImpl;
 
   @override
   String? get message;
   @override
   @JsonKey(ignore: true)
-  _$$_TripStopsFailureCopyWith<_$_TripStopsFailure> get copyWith =>
+  _$$TripStopsFailureImplCopyWith<_$TripStopsFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

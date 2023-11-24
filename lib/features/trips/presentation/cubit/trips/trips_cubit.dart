@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../domain/usecases/listen_trips.dart';
 import '../../../errors/trips_failure.dart';
 import '../../../../user_account/presentation/cubit/user/user_cubit.dart';
@@ -25,7 +27,7 @@ class TripsCubit extends Cubit<TripsState> {
         _listenTrips(ListenTripsParams(userId: userState.user.id)).listen((result) {
       result.fold(
         (failure) {
-          //TODO handle failure
+          emit(TripsState(errorMessage: LocaleKeys.dataLoadError.tr(), isLoading: false));
         },
         (trips) => emit(TripsState(trips: trips, isLoading: false)),
       );

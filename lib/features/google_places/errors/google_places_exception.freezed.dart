@@ -88,25 +88,26 @@ class _$GooglePlacesExceptionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_NoInternetConnectionCopyWith<$Res> {
-  factory _$$_NoInternetConnectionCopyWith(_$_NoInternetConnection value,
-          $Res Function(_$_NoInternetConnection) then) =
-      __$$_NoInternetConnectionCopyWithImpl<$Res>;
+abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
+  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
+          $Res Function(_$NoInternetConnectionImpl) then) =
+      __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NoInternetConnectionCopyWithImpl<$Res>
-    extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$_NoInternetConnection>
-    implements _$$_NoInternetConnectionCopyWith<$Res> {
-  __$$_NoInternetConnectionCopyWithImpl(_$_NoInternetConnection _value,
-      $Res Function(_$_NoInternetConnection) _then)
+class __$$NoInternetConnectionImplCopyWithImpl<$Res>
+    extends _$GooglePlacesExceptionCopyWithImpl<$Res,
+        _$NoInternetConnectionImpl>
+    implements _$$NoInternetConnectionImplCopyWith<$Res> {
+  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
+      $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NoInternetConnection implements _NoInternetConnection {
-  const _$_NoInternetConnection();
+class _$NoInternetConnectionImpl implements _NoInternetConnection {
+  const _$NoInternetConnectionImpl();
 
   @override
   String toString() {
@@ -116,7 +117,8 @@ class _$_NoInternetConnection implements _NoInternetConnection {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NoInternetConnection);
+        (other.runtimeType == runtimeType &&
+            other is _$NoInternetConnectionImpl);
   }
 
   @override
@@ -198,24 +200,24 @@ class _$_NoInternetConnection implements _NoInternetConnection {
 }
 
 abstract class _NoInternetConnection implements GooglePlacesException {
-  const factory _NoInternetConnection() = _$_NoInternetConnection;
+  const factory _NoInternetConnection() = _$NoInternetConnectionImpl;
 }
 
 /// @nodoc
-abstract class _$$_RequestDeniedCopyWith<$Res> {
-  factory _$$_RequestDeniedCopyWith(
-          _$_RequestDenied value, $Res Function(_$_RequestDenied) then) =
-      __$$_RequestDeniedCopyWithImpl<$Res>;
+abstract class _$$RequestDeniedImplCopyWith<$Res> {
+  factory _$$RequestDeniedImplCopyWith(
+          _$RequestDeniedImpl value, $Res Function(_$RequestDeniedImpl) then) =
+      __$$RequestDeniedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_RequestDeniedCopyWithImpl<$Res>
-    extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$_RequestDenied>
-    implements _$$_RequestDeniedCopyWith<$Res> {
-  __$$_RequestDeniedCopyWithImpl(
-      _$_RequestDenied _value, $Res Function(_$_RequestDenied) _then)
+class __$$RequestDeniedImplCopyWithImpl<$Res>
+    extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$RequestDeniedImpl>
+    implements _$$RequestDeniedImplCopyWith<$Res> {
+  __$$RequestDeniedImplCopyWithImpl(
+      _$RequestDeniedImpl _value, $Res Function(_$RequestDeniedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -223,7 +225,7 @@ class __$$_RequestDeniedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_RequestDenied(
+    return _then(_$RequestDeniedImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -234,8 +236,8 @@ class __$$_RequestDeniedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RequestDenied implements _RequestDenied {
-  const _$_RequestDenied({required this.message});
+class _$RequestDeniedImpl implements _RequestDenied {
+  const _$RequestDeniedImpl({required this.message});
 
   @override
   final String message;
@@ -249,7 +251,7 @@ class _$_RequestDenied implements _RequestDenied {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RequestDenied &&
+            other is _$RequestDeniedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -259,8 +261,8 @@ class _$_RequestDenied implements _RequestDenied {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RequestDeniedCopyWith<_$_RequestDenied> get copyWith =>
-      __$$_RequestDeniedCopyWithImpl<_$_RequestDenied>(this, _$identity);
+  _$$RequestDeniedImplCopyWith<_$RequestDeniedImpl> get copyWith =>
+      __$$RequestDeniedImplCopyWithImpl<_$RequestDeniedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -339,34 +341,34 @@ class _$_RequestDenied implements _RequestDenied {
 
 abstract class _RequestDenied implements GooglePlacesException {
   const factory _RequestDenied({required final String message}) =
-      _$_RequestDenied;
+      _$RequestDeniedImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_RequestDeniedCopyWith<_$_RequestDenied> get copyWith =>
+  _$$RequestDeniedImplCopyWith<_$RequestDeniedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RequestCancelledCopyWith<$Res> {
-  factory _$$_RequestCancelledCopyWith(
-          _$_RequestCancelled value, $Res Function(_$_RequestCancelled) then) =
-      __$$_RequestCancelledCopyWithImpl<$Res>;
+abstract class _$$RequestCancelledImplCopyWith<$Res> {
+  factory _$$RequestCancelledImplCopyWith(_$RequestCancelledImpl value,
+          $Res Function(_$RequestCancelledImpl) then) =
+      __$$RequestCancelledImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RequestCancelledCopyWithImpl<$Res>
-    extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$_RequestCancelled>
-    implements _$$_RequestCancelledCopyWith<$Res> {
-  __$$_RequestCancelledCopyWithImpl(
-      _$_RequestCancelled _value, $Res Function(_$_RequestCancelled) _then)
+class __$$RequestCancelledImplCopyWithImpl<$Res>
+    extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$RequestCancelledImpl>
+    implements _$$RequestCancelledImplCopyWith<$Res> {
+  __$$RequestCancelledImplCopyWithImpl(_$RequestCancelledImpl _value,
+      $Res Function(_$RequestCancelledImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_RequestCancelled implements _RequestCancelled {
-  const _$_RequestCancelled();
+class _$RequestCancelledImpl implements _RequestCancelled {
+  const _$RequestCancelledImpl();
 
   @override
   String toString() {
@@ -376,7 +378,7 @@ class _$_RequestCancelled implements _RequestCancelled {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RequestCancelled);
+        (other.runtimeType == runtimeType && other is _$RequestCancelledImpl);
   }
 
   @override
@@ -458,24 +460,24 @@ class _$_RequestCancelled implements _RequestCancelled {
 }
 
 abstract class _RequestCancelled implements GooglePlacesException {
-  const factory _RequestCancelled() = _$_RequestCancelled;
+  const factory _RequestCancelled() = _$RequestCancelledImpl;
 }
 
 /// @nodoc
-abstract class _$$_UnknownErrorCopyWith<$Res> {
-  factory _$$_UnknownErrorCopyWith(
-          _$_UnknownError value, $Res Function(_$_UnknownError) then) =
-      __$$_UnknownErrorCopyWithImpl<$Res>;
+abstract class _$$UnknownErrorImplCopyWith<$Res> {
+  factory _$$UnknownErrorImplCopyWith(
+          _$UnknownErrorImpl value, $Res Function(_$UnknownErrorImpl) then) =
+      __$$UnknownErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_UnknownErrorCopyWithImpl<$Res>
-    extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$_UnknownError>
-    implements _$$_UnknownErrorCopyWith<$Res> {
-  __$$_UnknownErrorCopyWithImpl(
-      _$_UnknownError _value, $Res Function(_$_UnknownError) _then)
+class __$$UnknownErrorImplCopyWithImpl<$Res>
+    extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$UnknownErrorImpl>
+    implements _$$UnknownErrorImplCopyWith<$Res> {
+  __$$UnknownErrorImplCopyWithImpl(
+      _$UnknownErrorImpl _value, $Res Function(_$UnknownErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -483,7 +485,7 @@ class __$$_UnknownErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_UnknownError(
+    return _then(_$UnknownErrorImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -494,8 +496,8 @@ class __$$_UnknownErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UnknownError implements _UnknownError {
-  const _$_UnknownError({this.message});
+class _$UnknownErrorImpl implements _UnknownError {
+  const _$UnknownErrorImpl({this.message});
 
   @override
   final String? message;
@@ -509,7 +511,7 @@ class _$_UnknownError implements _UnknownError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnknownError &&
+            other is _$UnknownErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -519,8 +521,8 @@ class _$_UnknownError implements _UnknownError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnknownErrorCopyWith<_$_UnknownError> get copyWith =>
-      __$$_UnknownErrorCopyWithImpl<_$_UnknownError>(this, _$identity);
+  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
+      __$$UnknownErrorImplCopyWithImpl<_$UnknownErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -598,10 +600,10 @@ class _$_UnknownError implements _UnknownError {
 }
 
 abstract class _UnknownError implements GooglePlacesException {
-  const factory _UnknownError({final String? message}) = _$_UnknownError;
+  const factory _UnknownError({final String? message}) = _$UnknownErrorImpl;
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$_UnknownErrorCopyWith<_$_UnknownError> get copyWith =>
+  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

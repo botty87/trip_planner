@@ -58,11 +58,8 @@ final class TripsDataSourceImpl implements TripsDataSource {
     final tripReference = _tripsCollection.doc(trip.id);
     batchs[currentBatchIndex].delete(tripReference);
 
-    final dayTrips = await firebaseFirestore
-        .collection('trips')
-        .doc(trip.id)
-        .collection('dayTrips')
-        .get();
+    final dayTrips =
+        await firebaseFirestore.collection('trips').doc(trip.id).collection('dayTrips').get();
 
     for (final dayTrip in dayTrips.docs) {
       if (currentBatchSize == 500) {
@@ -96,17 +93,15 @@ final class TripsDataSourceImpl implements TripsDataSource {
 
     await Future.wait(batchs.map((batch) => batch.commit()));
   }
-  
+
   @override
   deleteAllTrips(String userId) async {
     final batchs = [firebaseFirestore.batch()];
     int currentBatchIndex = 0;
     int currentBatchSize = 1;
 
-    final trips = await firebaseFirestore
-        .collection('trips')
-        .where('userId', isEqualTo: userId)
-        .get();
+    final trips =
+        await firebaseFirestore.collection('trips').where('userId', isEqualTo: userId).get();
 
     for (final trip in trips.docs) {
       if (currentBatchSize == 500) {
@@ -118,11 +113,8 @@ final class TripsDataSourceImpl implements TripsDataSource {
       batchs[currentBatchIndex].delete(trip.reference);
       currentBatchSize++;
 
-      final dayTrips = await firebaseFirestore
-          .collection('trips')
-          .doc(trip.id)
-          .collection('dayTrips')
-          .get();
+      final dayTrips =
+          await firebaseFirestore.collection('trips').doc(trip.id).collection('dayTrips').get();
 
       for (final dayTrip in dayTrips.docs) {
         if (currentBatchSize == 500) {

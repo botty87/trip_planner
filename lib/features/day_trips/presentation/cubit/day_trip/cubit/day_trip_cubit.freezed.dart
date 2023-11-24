@@ -208,11 +208,11 @@ class _$DayTripStateCopyWithImpl<$Res, $Val extends DayTripState>
 }
 
 /// @nodoc
-abstract class _$$DayTripStateNormalCopyWith<$Res>
+abstract class _$$DayTripStateNormalImplCopyWith<$Res>
     implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateNormalCopyWith(_$DayTripStateNormal value,
-          $Res Function(_$DayTripStateNormal) then) =
-      __$$DayTripStateNormalCopyWithImpl<$Res>;
+  factory _$$DayTripStateNormalImplCopyWith(_$DayTripStateNormalImpl value,
+          $Res Function(_$DayTripStateNormalImpl) then) =
+      __$$DayTripStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -230,11 +230,11 @@ abstract class _$$DayTripStateNormalCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DayTripStateNormalCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateNormal>
-    implements _$$DayTripStateNormalCopyWith<$Res> {
-  __$$DayTripStateNormalCopyWithImpl(
-      _$DayTripStateNormal _value, $Res Function(_$DayTripStateNormal) _then)
+class __$$DayTripStateNormalImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateNormalImpl>
+    implements _$$DayTripStateNormalImplCopyWith<$Res> {
+  __$$DayTripStateNormalImplCopyWithImpl(_$DayTripStateNormalImpl _value,
+      $Res Function(_$DayTripStateNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -247,7 +247,7 @@ class __$$DayTripStateNormalCopyWithImpl<$Res>
     Object? explictitStartTimeSave = null,
     Object? isSaving = null,
   }) {
-    return _then(_$DayTripStateNormal(
+    return _then(_$DayTripStateNormalImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -278,8 +278,8 @@ class __$$DayTripStateNormalCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DayTripStateNormal implements DayTripStateNormal {
-  const _$DayTripStateNormal(
+class _$DayTripStateNormalImpl implements DayTripStateNormal {
+  const _$DayTripStateNormalImpl(
       {required this.trip,
       required this.dayTrip,
       final List<TripStop> tripStops = const [],
@@ -320,7 +320,7 @@ class _$DayTripStateNormal implements DayTripStateNormal {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayTripStateNormal &&
+            other is _$DayTripStateNormalImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             const DeepCollectionEquality()
@@ -346,8 +346,8 @@ class _$DayTripStateNormal implements DayTripStateNormal {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayTripStateNormalCopyWith<_$DayTripStateNormal> get copyWith =>
-      __$$DayTripStateNormalCopyWithImpl<_$DayTripStateNormal>(
+  _$$DayTripStateNormalImplCopyWith<_$DayTripStateNormalImpl> get copyWith =>
+      __$$DayTripStateNormalImplCopyWithImpl<_$DayTripStateNormalImpl>(
           this, _$identity);
 
   @override
@@ -495,7 +495,7 @@ abstract class DayTripStateNormal implements DayTripState {
       final List<TripStop> tripStops,
       final bool hasStartTimeToSave,
       final bool explictitStartTimeSave,
-      final bool isSaving}) = _$DayTripStateNormal;
+      final bool isSaving}) = _$DayTripStateNormalImpl;
 
   @override
   Trip get trip;
@@ -509,16 +509,16 @@ abstract class DayTripStateNormal implements DayTripState {
   bool get isSaving;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripStateNormalCopyWith<_$DayTripStateNormal> get copyWith =>
+  _$$DayTripStateNormalImplCopyWith<_$DayTripStateNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DayTripStateErrorCopyWith<$Res>
+abstract class _$$DayTripStateErrorImplCopyWith<$Res>
     implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateErrorCopyWith(
-          _$DayTripStateError value, $Res Function(_$DayTripStateError) then) =
-      __$$DayTripStateErrorCopyWithImpl<$Res>;
+  factory _$$DayTripStateErrorImplCopyWith(_$DayTripStateErrorImpl value,
+          $Res Function(_$DayTripStateErrorImpl) then) =
+      __$$DayTripStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -535,11 +535,11 @@ abstract class _$$DayTripStateErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DayTripStateErrorCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateError>
-    implements _$$DayTripStateErrorCopyWith<$Res> {
-  __$$DayTripStateErrorCopyWithImpl(
-      _$DayTripStateError _value, $Res Function(_$DayTripStateError) _then)
+class __$$DayTripStateErrorImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateErrorImpl>
+    implements _$$DayTripStateErrorImplCopyWith<$Res> {
+  __$$DayTripStateErrorImplCopyWithImpl(_$DayTripStateErrorImpl _value,
+      $Res Function(_$DayTripStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -551,7 +551,7 @@ class __$$DayTripStateErrorCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? hasStartTimeToSave = null,
   }) {
-    return _then(_$DayTripStateError(
+    return _then(_$DayTripStateErrorImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -578,8 +578,8 @@ class __$$DayTripStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DayTripStateError implements DayTripStateError {
-  const _$DayTripStateError(
+class _$DayTripStateErrorImpl implements DayTripStateError {
+  const _$DayTripStateErrorImpl(
       {required this.trip,
       required this.dayTrip,
       final List<TripStop> tripStops = const [],
@@ -615,7 +615,7 @@ class _$DayTripStateError implements DayTripStateError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayTripStateError &&
+            other is _$DayTripStateErrorImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             const DeepCollectionEquality()
@@ -638,8 +638,9 @@ class _$DayTripStateError implements DayTripStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayTripStateErrorCopyWith<_$DayTripStateError> get copyWith =>
-      __$$DayTripStateErrorCopyWithImpl<_$DayTripStateError>(this, _$identity);
+  _$$DayTripStateErrorImplCopyWith<_$DayTripStateErrorImpl> get copyWith =>
+      __$$DayTripStateErrorImplCopyWithImpl<_$DayTripStateErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -783,7 +784,7 @@ abstract class DayTripStateError implements DayTripState {
       required final DayTrip dayTrip,
       final List<TripStop> tripStops,
       final String? errorMessage,
-      final bool hasStartTimeToSave}) = _$DayTripStateError;
+      final bool hasStartTimeToSave}) = _$DayTripStateErrorImpl;
 
   @override
   Trip get trip;
@@ -796,16 +797,16 @@ abstract class DayTripStateError implements DayTripState {
   bool get hasStartTimeToSave;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripStateErrorCopyWith<_$DayTripStateError> get copyWith =>
+  _$$DayTripStateErrorImplCopyWith<_$DayTripStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DayTripStateEditingCopyWith<$Res>
+abstract class _$$DayTripStateEditingImplCopyWith<$Res>
     implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateEditingCopyWith(_$DayTripStateEditing value,
-          $Res Function(_$DayTripStateEditing) then) =
-      __$$DayTripStateEditingCopyWithImpl<$Res>;
+  factory _$$DayTripStateEditingImplCopyWith(_$DayTripStateEditingImpl value,
+          $Res Function(_$DayTripStateEditingImpl) then) =
+      __$$DayTripStateEditingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -823,11 +824,11 @@ abstract class _$$DayTripStateEditingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DayTripStateEditingCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateEditing>
-    implements _$$DayTripStateEditingCopyWith<$Res> {
-  __$$DayTripStateEditingCopyWithImpl(
-      _$DayTripStateEditing _value, $Res Function(_$DayTripStateEditing) _then)
+class __$$DayTripStateEditingImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateEditingImpl>
+    implements _$$DayTripStateEditingImplCopyWith<$Res> {
+  __$$DayTripStateEditingImplCopyWithImpl(_$DayTripStateEditingImpl _value,
+      $Res Function(_$DayTripStateEditingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -840,7 +841,7 @@ class __$$DayTripStateEditingCopyWithImpl<$Res>
     Object? isSaving = null,
     Object? hasStartTimeToSave = null,
   }) {
-    return _then(_$DayTripStateEditing(
+    return _then(_$DayTripStateEditingImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -871,8 +872,8 @@ class __$$DayTripStateEditingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DayTripStateEditing implements DayTripStateEditing {
-  const _$DayTripStateEditing(
+class _$DayTripStateEditingImpl implements DayTripStateEditing {
+  const _$DayTripStateEditingImpl(
       {required this.trip,
       required this.dayTrip,
       final List<TripStop> tripStops = const [],
@@ -912,7 +913,7 @@ class _$DayTripStateEditing implements DayTripStateEditing {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayTripStateEditing &&
+            other is _$DayTripStateEditingImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             const DeepCollectionEquality()
@@ -938,8 +939,8 @@ class _$DayTripStateEditing implements DayTripStateEditing {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayTripStateEditingCopyWith<_$DayTripStateEditing> get copyWith =>
-      __$$DayTripStateEditingCopyWithImpl<_$DayTripStateEditing>(
+  _$$DayTripStateEditingImplCopyWith<_$DayTripStateEditingImpl> get copyWith =>
+      __$$DayTripStateEditingImplCopyWithImpl<_$DayTripStateEditingImpl>(
           this, _$identity);
 
   @override
@@ -1087,7 +1088,7 @@ abstract class DayTripStateEditing implements DayTripState {
       final List<TripStop> tripStops,
       required final String? description,
       final bool isSaving,
-      final bool hasStartTimeToSave}) = _$DayTripStateEditing;
+      final bool hasStartTimeToSave}) = _$DayTripStateEditingImpl;
 
   @override
   Trip get trip;
@@ -1101,16 +1102,16 @@ abstract class DayTripStateEditing implements DayTripState {
   bool get hasStartTimeToSave;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripStateEditingCopyWith<_$DayTripStateEditing> get copyWith =>
+  _$$DayTripStateEditingImplCopyWith<_$DayTripStateEditingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DayTripStateDeletingCopyWith<$Res>
+abstract class _$$DayTripStateDeletingImplCopyWith<$Res>
     implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateDeletingCopyWith(_$DayTripStateDeleting value,
-          $Res Function(_$DayTripStateDeleting) then) =
-      __$$DayTripStateDeletingCopyWithImpl<$Res>;
+  factory _$$DayTripStateDeletingImplCopyWith(_$DayTripStateDeletingImpl value,
+          $Res Function(_$DayTripStateDeletingImpl) then) =
+      __$$DayTripStateDeletingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1126,11 +1127,11 @@ abstract class _$$DayTripStateDeletingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DayTripStateDeletingCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateDeleting>
-    implements _$$DayTripStateDeletingCopyWith<$Res> {
-  __$$DayTripStateDeletingCopyWithImpl(_$DayTripStateDeleting _value,
-      $Res Function(_$DayTripStateDeleting) _then)
+class __$$DayTripStateDeletingImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateDeletingImpl>
+    implements _$$DayTripStateDeletingImplCopyWith<$Res> {
+  __$$DayTripStateDeletingImplCopyWithImpl(_$DayTripStateDeletingImpl _value,
+      $Res Function(_$DayTripStateDeletingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1141,7 +1142,7 @@ class __$$DayTripStateDeletingCopyWithImpl<$Res>
     Object? tripStops = null,
     Object? hasStartTimeToSave = null,
   }) {
-    return _then(_$DayTripStateDeleting(
+    return _then(_$DayTripStateDeletingImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -1164,8 +1165,8 @@ class __$$DayTripStateDeletingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DayTripStateDeleting implements DayTripStateDeleting {
-  const _$DayTripStateDeleting(
+class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
+  const _$DayTripStateDeletingImpl(
       {required this.trip,
       required this.dayTrip,
       final List<TripStop> tripStops = const [],
@@ -1198,7 +1199,7 @@ class _$DayTripStateDeleting implements DayTripStateDeleting {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayTripStateDeleting &&
+            other is _$DayTripStateDeletingImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             const DeepCollectionEquality()
@@ -1214,9 +1215,10 @@ class _$DayTripStateDeleting implements DayTripStateDeleting {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayTripStateDeletingCopyWith<_$DayTripStateDeleting> get copyWith =>
-      __$$DayTripStateDeletingCopyWithImpl<_$DayTripStateDeleting>(
-          this, _$identity);
+  _$$DayTripStateDeletingImplCopyWith<_$DayTripStateDeletingImpl>
+      get copyWith =>
+          __$$DayTripStateDeletingImplCopyWithImpl<_$DayTripStateDeletingImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1358,7 +1360,7 @@ abstract class DayTripStateDeleting implements DayTripState {
       {required final Trip trip,
       required final DayTrip dayTrip,
       final List<TripStop> tripStops,
-      final bool hasStartTimeToSave}) = _$DayTripStateDeleting;
+      final bool hasStartTimeToSave}) = _$DayTripStateDeletingImpl;
 
   @override
   Trip get trip;
@@ -1370,16 +1372,16 @@ abstract class DayTripStateDeleting implements DayTripState {
   bool get hasStartTimeToSave;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripStateDeletingCopyWith<_$DayTripStateDeleting> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DayTripStateDeletingImplCopyWith<_$DayTripStateDeletingImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DayTripStateDeletedCopyWith<$Res>
+abstract class _$$DayTripStateDeletedImplCopyWith<$Res>
     implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateDeletedCopyWith(_$DayTripStateDeleted value,
-          $Res Function(_$DayTripStateDeleted) then) =
-      __$$DayTripStateDeletedCopyWithImpl<$Res>;
+  factory _$$DayTripStateDeletedImplCopyWith(_$DayTripStateDeletedImpl value,
+          $Res Function(_$DayTripStateDeletedImpl) then) =
+      __$$DayTripStateDeletedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1395,11 +1397,11 @@ abstract class _$$DayTripStateDeletedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DayTripStateDeletedCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateDeleted>
-    implements _$$DayTripStateDeletedCopyWith<$Res> {
-  __$$DayTripStateDeletedCopyWithImpl(
-      _$DayTripStateDeleted _value, $Res Function(_$DayTripStateDeleted) _then)
+class __$$DayTripStateDeletedImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateDeletedImpl>
+    implements _$$DayTripStateDeletedImplCopyWith<$Res> {
+  __$$DayTripStateDeletedImplCopyWithImpl(_$DayTripStateDeletedImpl _value,
+      $Res Function(_$DayTripStateDeletedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1410,7 +1412,7 @@ class __$$DayTripStateDeletedCopyWithImpl<$Res>
     Object? tripStops = null,
     Object? hasStartTimeToSave = null,
   }) {
-    return _then(_$DayTripStateDeleted(
+    return _then(_$DayTripStateDeletedImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -1433,8 +1435,8 @@ class __$$DayTripStateDeletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DayTripStateDeleted implements DayTripStateDeleted {
-  const _$DayTripStateDeleted(
+class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
+  const _$DayTripStateDeletedImpl(
       {required this.trip,
       required this.dayTrip,
       final List<TripStop> tripStops = const [],
@@ -1467,7 +1469,7 @@ class _$DayTripStateDeleted implements DayTripStateDeleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayTripStateDeleted &&
+            other is _$DayTripStateDeletedImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             const DeepCollectionEquality()
@@ -1483,8 +1485,8 @@ class _$DayTripStateDeleted implements DayTripStateDeleted {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayTripStateDeletedCopyWith<_$DayTripStateDeleted> get copyWith =>
-      __$$DayTripStateDeletedCopyWithImpl<_$DayTripStateDeleted>(
+  _$$DayTripStateDeletedImplCopyWith<_$DayTripStateDeletedImpl> get copyWith =>
+      __$$DayTripStateDeletedImplCopyWithImpl<_$DayTripStateDeletedImpl>(
           this, _$identity);
 
   @override
@@ -1627,7 +1629,7 @@ abstract class DayTripStateDeleted implements DayTripState {
       {required final Trip trip,
       required final DayTrip dayTrip,
       final List<TripStop> tripStops,
-      final bool hasStartTimeToSave}) = _$DayTripStateDeleted;
+      final bool hasStartTimeToSave}) = _$DayTripStateDeletedImpl;
 
   @override
   Trip get trip;
@@ -1639,6 +1641,6 @@ abstract class DayTripStateDeleted implements DayTripState {
   bool get hasStartTimeToSave;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripStateDeletedCopyWith<_$DayTripStateDeleted> get copyWith =>
+  _$$DayTripStateDeletedImplCopyWith<_$DayTripStateDeletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

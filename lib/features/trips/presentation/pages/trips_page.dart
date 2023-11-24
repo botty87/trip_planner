@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,21 @@ class TripsPage extends StatelessWidget {
           preferredSize: Size.fromHeight(kToolbarHeight),
           child: _TripsPageAppBar(),
         ),
-        body: const Center(child: _BodyWidget()),
+        body: BlocListener<TripsCubit, TripsState>(
+          listener: (context, state) {
+            showOkAlertDialog(
+              context: context,
+              title: LocaleKeys.error.tr(),
+              message: state.errorMessage!,
+              canPop: false,
+              barrierDismissible: false,
+            );
+          },
+          listenWhen: (previous, current) {
+            return previous.errorMessage != current.errorMessage && current.errorMessage != null;
+          },
+          child: const Center(child: _BodyWidget()),
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             context.pushRoute(const NewTripRoute());
@@ -36,7 +51,7 @@ class TripsPage extends StatelessWidget {
 }
 
 class _BodyWidget extends StatelessWidget {
-  const _BodyWidget({Key? key}) : super(key: key);
+  const _BodyWidget();
 
   @override
   Widget build(BuildContext context) {

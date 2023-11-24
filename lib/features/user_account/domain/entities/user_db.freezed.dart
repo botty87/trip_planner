@@ -66,19 +66,21 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
 }
 
 /// @nodoc
-abstract class _$$_UserDBCopyWith<$Res> implements $UserDBCopyWith<$Res> {
-  factory _$$_UserDBCopyWith(_$_UserDB value, $Res Function(_$_UserDB) then) =
-      __$$_UserDBCopyWithImpl<$Res>;
+abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
+  factory _$$UserDBImplCopyWith(
+          _$UserDBImpl value, $Res Function(_$UserDBImpl) then) =
+      __$$UserDBImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String name});
 }
 
 /// @nodoc
-class __$$_UserDBCopyWithImpl<$Res>
-    extends _$UserDBCopyWithImpl<$Res, _$_UserDB>
-    implements _$$_UserDBCopyWith<$Res> {
-  __$$_UserDBCopyWithImpl(_$_UserDB _value, $Res Function(_$_UserDB) _then)
+class __$$UserDBImplCopyWithImpl<$Res>
+    extends _$UserDBCopyWithImpl<$Res, _$UserDBImpl>
+    implements _$$UserDBImplCopyWith<$Res> {
+  __$$UserDBImplCopyWithImpl(
+      _$UserDBImpl _value, $Res Function(_$UserDBImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +89,7 @@ class __$$_UserDBCopyWithImpl<$Res>
     Object? email = null,
     Object? name = null,
   }) {
-    return _then(_$_UserDB(
+    return _then(_$UserDBImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -102,11 +104,11 @@ class __$$_UserDBCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserDB implements _UserDB {
-  _$_UserDB({required this.email, required this.name});
+class _$UserDBImpl implements _UserDB {
+  _$UserDBImpl({required this.email, required this.name});
 
-  factory _$_UserDB.fromJson(Map<String, dynamic> json) =>
-      _$$_UserDBFromJson(json);
+  factory _$UserDBImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserDBImplFromJson(json);
 
   @override
   final String email;
@@ -122,7 +124,7 @@ class _$_UserDB implements _UserDB {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserDB &&
+            other is _$UserDBImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -134,12 +136,12 @@ class _$_UserDB implements _UserDB {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserDBCopyWith<_$_UserDB> get copyWith =>
-      __$$_UserDBCopyWithImpl<_$_UserDB>(this, _$identity);
+  _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>
+      __$$UserDBImplCopyWithImpl<_$UserDBImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDBToJson(
+    return _$$UserDBImplToJson(
       this,
     );
   }
@@ -147,9 +149,9 @@ class _$_UserDB implements _UserDB {
 
 abstract class _UserDB implements UserDB {
   factory _UserDB({required final String email, required final String name}) =
-      _$_UserDB;
+      _$UserDBImpl;
 
-  factory _UserDB.fromJson(Map<String, dynamic> json) = _$_UserDB.fromJson;
+  factory _UserDB.fromJson(Map<String, dynamic> json) = _$UserDBImpl.fromJson;
 
   @override
   String get email;
@@ -157,6 +159,6 @@ abstract class _UserDB implements UserDB {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_UserDBCopyWith<_$_UserDB> get copyWith =>
+  _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

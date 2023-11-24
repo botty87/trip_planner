@@ -6,12 +6,13 @@ part of 'user_db.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserDB _$$_UserDBFromJson(Map<String, dynamic> json) => _$_UserDB(
+_$UserDBImpl _$$UserDBImplFromJson(Map<String, dynamic> json) => _$UserDBImpl(
       email: json['email'] as String,
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$_UserDBToJson(_$_UserDB instance) => <String, dynamic>{
+Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
+    <String, dynamic>{
       'email': instance.email,
       'name': instance.name,
     };

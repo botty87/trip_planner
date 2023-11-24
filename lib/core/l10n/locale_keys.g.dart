@@ -100,5 +100,7 @@ abstract class  LocaleKeys {
   static const deleteAccount = 'deleteAccount';
   static const deleteAccountConfirmation = 'deleteAccountConfirmation';
   static const emailEmpty = 'emailEmpty';
+  static const dataLoadError = 'dataLoadError';
+  static const error = 'error';
 
 }

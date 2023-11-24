@@ -101,5 +101,7 @@
     "fillAllFields" : "Compila tutti i campi",
     "deleteAccount" : "Elimina account",
     "deleteAccountConfirmation" : "Sei sicuro di voler eliminare l'account? L'operazione è irreversibile e tutti i tuoi dati verranno persi!",
-    "emailEmpty" : "L'email non può essere vuota"
+    "emailEmpty" : "L'email non può essere vuota",
+    "dataLoadError" : "Errore nel caricamento dei dati. Se il problema persiste, riavvia l'applicazione.",
+    "error" : "Errore"
 }

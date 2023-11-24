@@ -6,7 +6,7 @@ part of 'trip.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Trip _$$_TripFromJson(Map<String, dynamic> json) => _$_Trip(
+_$TripImpl _$$TripImplFromJson(Map<String, dynamic> json) => _$TripImpl(
       name: json['name'] as String,
       description: json['description'] as String?,
       userId: json['userId'] as String,
@@ -14,7 +14,8 @@ _$_Trip _$$_TripFromJson(Map<String, dynamic> json) => _$_Trip(
       startDate: dateTimeFromTimestamp(json['startDate'] as Timestamp),
     );
 
-Map<String, dynamic> _$$_TripToJson(_$_Trip instance) => <String, dynamic>{
+Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'userId': instance.userId,

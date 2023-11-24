@@ -107,11 +107,12 @@ class _$GooglePlacesStateCopyWithImpl<$Res, $Val extends GooglePlacesState>
 }
 
 /// @nodoc
-abstract class _$$_GooglePlacesStateNormalCopyWith<$Res>
+abstract class _$$GooglePlacesStateNormalImplCopyWith<$Res>
     implements $GooglePlacesStateCopyWith<$Res> {
-  factory _$$_GooglePlacesStateNormalCopyWith(_$_GooglePlacesStateNormal value,
-          $Res Function(_$_GooglePlacesStateNormal) then) =
-      __$$_GooglePlacesStateNormalCopyWithImpl<$Res>;
+  factory _$$GooglePlacesStateNormalImplCopyWith(
+          _$GooglePlacesStateNormalImpl value,
+          $Res Function(_$GooglePlacesStateNormalImpl) then) =
+      __$$GooglePlacesStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -123,11 +124,12 @@ abstract class _$$_GooglePlacesStateNormalCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_GooglePlacesStateNormalCopyWithImpl<$Res>
-    extends _$GooglePlacesStateCopyWithImpl<$Res, _$_GooglePlacesStateNormal>
-    implements _$$_GooglePlacesStateNormalCopyWith<$Res> {
-  __$$_GooglePlacesStateNormalCopyWithImpl(_$_GooglePlacesStateNormal _value,
-      $Res Function(_$_GooglePlacesStateNormal) _then)
+class __$$GooglePlacesStateNormalImplCopyWithImpl<$Res>
+    extends _$GooglePlacesStateCopyWithImpl<$Res, _$GooglePlacesStateNormalImpl>
+    implements _$$GooglePlacesStateNormalImplCopyWith<$Res> {
+  __$$GooglePlacesStateNormalImplCopyWithImpl(
+      _$GooglePlacesStateNormalImpl _value,
+      $Res Function(_$GooglePlacesStateNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -137,7 +139,7 @@ class __$$_GooglePlacesStateNormalCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? placeDetails = freezed,
   }) {
-    return _then(_$_GooglePlacesStateNormal(
+    return _then(_$GooglePlacesStateNormalImpl(
       suggestions: null == suggestions
           ? _value._suggestions
           : suggestions // ignore: cast_nullable_to_non_nullable
@@ -168,8 +170,8 @@ class __$$_GooglePlacesStateNormalCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
-  const _$_GooglePlacesStateNormal(
+class _$GooglePlacesStateNormalImpl implements _GooglePlacesStateNormal {
+  const _$GooglePlacesStateNormalImpl(
       {final List<Suggestion> suggestions = const [],
       this.isLoading = false,
       this.placeDetails})
@@ -199,7 +201,7 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GooglePlacesStateNormal &&
+            other is _$GooglePlacesStateNormalImpl &&
             const DeepCollectionEquality()
                 .equals(other._suggestions, _suggestions) &&
             (identical(other.isLoading, isLoading) ||
@@ -218,10 +220,9 @@ class _$_GooglePlacesStateNormal implements _GooglePlacesStateNormal {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GooglePlacesStateNormalCopyWith<_$_GooglePlacesStateNormal>
-      get copyWith =>
-          __$$_GooglePlacesStateNormalCopyWithImpl<_$_GooglePlacesStateNormal>(
-              this, _$identity);
+  _$$GooglePlacesStateNormalImplCopyWith<_$GooglePlacesStateNormalImpl>
+      get copyWith => __$$GooglePlacesStateNormalImplCopyWithImpl<
+          _$GooglePlacesStateNormalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -302,7 +303,7 @@ abstract class _GooglePlacesStateNormal implements GooglePlacesState {
   const factory _GooglePlacesStateNormal(
       {final List<Suggestion> suggestions,
       final bool isLoading,
-      final PlaceDetails? placeDetails}) = _$_GooglePlacesStateNormal;
+      final PlaceDetails? placeDetails}) = _$GooglePlacesStateNormalImpl;
 
   @override
   List<Suggestion> get suggestions;
@@ -310,16 +311,17 @@ abstract class _GooglePlacesStateNormal implements GooglePlacesState {
   PlaceDetails? get placeDetails;
   @override
   @JsonKey(ignore: true)
-  _$$_GooglePlacesStateNormalCopyWith<_$_GooglePlacesStateNormal>
+  _$$GooglePlacesStateNormalImplCopyWith<_$GooglePlacesStateNormalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GooglePlacesStateErrorCopyWith<$Res>
+abstract class _$$GooglePlacesStateErrorImplCopyWith<$Res>
     implements $GooglePlacesStateCopyWith<$Res> {
-  factory _$$_GooglePlacesStateErrorCopyWith(_$_GooglePlacesStateError value,
-          $Res Function(_$_GooglePlacesStateError) then) =
-      __$$_GooglePlacesStateErrorCopyWithImpl<$Res>;
+  factory _$$GooglePlacesStateErrorImplCopyWith(
+          _$GooglePlacesStateErrorImpl value,
+          $Res Function(_$GooglePlacesStateErrorImpl) then) =
+      __$$GooglePlacesStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -331,11 +333,12 @@ abstract class _$$_GooglePlacesStateErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
-    extends _$GooglePlacesStateCopyWithImpl<$Res, _$_GooglePlacesStateError>
-    implements _$$_GooglePlacesStateErrorCopyWith<$Res> {
-  __$$_GooglePlacesStateErrorCopyWithImpl(_$_GooglePlacesStateError _value,
-      $Res Function(_$_GooglePlacesStateError) _then)
+class __$$GooglePlacesStateErrorImplCopyWithImpl<$Res>
+    extends _$GooglePlacesStateCopyWithImpl<$Res, _$GooglePlacesStateErrorImpl>
+    implements _$$GooglePlacesStateErrorImplCopyWith<$Res> {
+  __$$GooglePlacesStateErrorImplCopyWithImpl(
+      _$GooglePlacesStateErrorImpl _value,
+      $Res Function(_$GooglePlacesStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -345,7 +348,7 @@ class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
     Object? suggestions = null,
     Object? showRetryButton = null,
   }) {
-    return _then(_$_GooglePlacesStateError(
+    return _then(_$GooglePlacesStateErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -372,8 +375,8 @@ class __$$_GooglePlacesStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GooglePlacesStateError implements _GooglePlacesStateError {
-  const _$_GooglePlacesStateError(
+class _$GooglePlacesStateErrorImpl implements _GooglePlacesStateError {
+  const _$GooglePlacesStateErrorImpl(
       {required this.error,
       final List<Suggestion> suggestions = const [],
       required this.showRetryButton})
@@ -402,7 +405,7 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GooglePlacesStateError &&
+            other is _$GooglePlacesStateErrorImpl &&
             (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality()
                 .equals(other._suggestions, _suggestions) &&
@@ -417,9 +420,9 @@ class _$_GooglePlacesStateError implements _GooglePlacesStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GooglePlacesStateErrorCopyWith<_$_GooglePlacesStateError> get copyWith =>
-      __$$_GooglePlacesStateErrorCopyWithImpl<_$_GooglePlacesStateError>(
-          this, _$identity);
+  _$$GooglePlacesStateErrorImplCopyWith<_$GooglePlacesStateErrorImpl>
+      get copyWith => __$$GooglePlacesStateErrorImplCopyWithImpl<
+          _$GooglePlacesStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -500,7 +503,7 @@ abstract class _GooglePlacesStateError implements GooglePlacesState {
   const factory _GooglePlacesStateError(
       {required final GooglePlacesError error,
       final List<Suggestion> suggestions,
-      required final bool showRetryButton}) = _$_GooglePlacesStateError;
+      required final bool showRetryButton}) = _$GooglePlacesStateErrorImpl;
 
   GooglePlacesError get error;
   @override
@@ -508,8 +511,8 @@ abstract class _GooglePlacesStateError implements GooglePlacesState {
   bool get showRetryButton;
   @override
   @JsonKey(ignore: true)
-  _$$_GooglePlacesStateErrorCopyWith<_$_GooglePlacesStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GooglePlacesStateErrorImplCopyWith<_$GooglePlacesStateErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -593,29 +596,29 @@ class _$GooglePlacesErrorCopyWithImpl<$Res, $Val extends GooglePlacesError>
 }
 
 /// @nodoc
-abstract class _$$_GooglePlacesErrorNoInternetConnectionCopyWith<$Res> {
-  factory _$$_GooglePlacesErrorNoInternetConnectionCopyWith(
-          _$_GooglePlacesErrorNoInternetConnection value,
-          $Res Function(_$_GooglePlacesErrorNoInternetConnection) then) =
-      __$$_GooglePlacesErrorNoInternetConnectionCopyWithImpl<$Res>;
+abstract class _$$GooglePlacesErrorNoInternetConnectionImplCopyWith<$Res> {
+  factory _$$GooglePlacesErrorNoInternetConnectionImplCopyWith(
+          _$GooglePlacesErrorNoInternetConnectionImpl value,
+          $Res Function(_$GooglePlacesErrorNoInternetConnectionImpl) then) =
+      __$$GooglePlacesErrorNoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GooglePlacesErrorNoInternetConnectionCopyWithImpl<$Res>
+class __$$GooglePlacesErrorNoInternetConnectionImplCopyWithImpl<$Res>
     extends _$GooglePlacesErrorCopyWithImpl<$Res,
-        _$_GooglePlacesErrorNoInternetConnection>
-    implements _$$_GooglePlacesErrorNoInternetConnectionCopyWith<$Res> {
-  __$$_GooglePlacesErrorNoInternetConnectionCopyWithImpl(
-      _$_GooglePlacesErrorNoInternetConnection _value,
-      $Res Function(_$_GooglePlacesErrorNoInternetConnection) _then)
+        _$GooglePlacesErrorNoInternetConnectionImpl>
+    implements _$$GooglePlacesErrorNoInternetConnectionImplCopyWith<$Res> {
+  __$$GooglePlacesErrorNoInternetConnectionImplCopyWithImpl(
+      _$GooglePlacesErrorNoInternetConnectionImpl _value,
+      $Res Function(_$GooglePlacesErrorNoInternetConnectionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GooglePlacesErrorNoInternetConnection
+class _$GooglePlacesErrorNoInternetConnectionImpl
     implements _GooglePlacesErrorNoInternetConnection {
-  const _$_GooglePlacesErrorNoInternetConnection();
+  const _$GooglePlacesErrorNoInternetConnectionImpl();
 
   @override
   String toString() {
@@ -626,7 +629,7 @@ class _$_GooglePlacesErrorNoInternetConnection
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GooglePlacesErrorNoInternetConnection);
+            other is _$GooglePlacesErrorNoInternetConnectionImpl);
   }
 
   @override
@@ -718,27 +721,27 @@ class _$_GooglePlacesErrorNoInternetConnection
 abstract class _GooglePlacesErrorNoInternetConnection
     implements GooglePlacesError {
   const factory _GooglePlacesErrorNoInternetConnection() =
-      _$_GooglePlacesErrorNoInternetConnection;
+      _$GooglePlacesErrorNoInternetConnectionImpl;
 }
 
 /// @nodoc
-abstract class _$$_GooglePlacesErrorRequestDeniedCopyWith<$Res> {
-  factory _$$_GooglePlacesErrorRequestDeniedCopyWith(
-          _$_GooglePlacesErrorRequestDenied value,
-          $Res Function(_$_GooglePlacesErrorRequestDenied) then) =
-      __$$_GooglePlacesErrorRequestDeniedCopyWithImpl<$Res>;
+abstract class _$$GooglePlacesErrorRequestDeniedImplCopyWith<$Res> {
+  factory _$$GooglePlacesErrorRequestDeniedImplCopyWith(
+          _$GooglePlacesErrorRequestDeniedImpl value,
+          $Res Function(_$GooglePlacesErrorRequestDeniedImpl) then) =
+      __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_GooglePlacesErrorRequestDeniedCopyWithImpl<$Res>
+class __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<$Res>
     extends _$GooglePlacesErrorCopyWithImpl<$Res,
-        _$_GooglePlacesErrorRequestDenied>
-    implements _$$_GooglePlacesErrorRequestDeniedCopyWith<$Res> {
-  __$$_GooglePlacesErrorRequestDeniedCopyWithImpl(
-      _$_GooglePlacesErrorRequestDenied _value,
-      $Res Function(_$_GooglePlacesErrorRequestDenied) _then)
+        _$GooglePlacesErrorRequestDeniedImpl>
+    implements _$$GooglePlacesErrorRequestDeniedImplCopyWith<$Res> {
+  __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl(
+      _$GooglePlacesErrorRequestDeniedImpl _value,
+      $Res Function(_$GooglePlacesErrorRequestDeniedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -746,7 +749,7 @@ class __$$_GooglePlacesErrorRequestDeniedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_GooglePlacesErrorRequestDenied(
+    return _then(_$GooglePlacesErrorRequestDeniedImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -757,9 +760,9 @@ class __$$_GooglePlacesErrorRequestDeniedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GooglePlacesErrorRequestDenied
+class _$GooglePlacesErrorRequestDeniedImpl
     implements _GooglePlacesErrorRequestDenied {
-  const _$_GooglePlacesErrorRequestDenied({required this.message});
+  const _$GooglePlacesErrorRequestDeniedImpl({required this.message});
 
   @override
   final String message;
@@ -773,7 +776,7 @@ class _$_GooglePlacesErrorRequestDenied
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GooglePlacesErrorRequestDenied &&
+            other is _$GooglePlacesErrorRequestDeniedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -783,9 +786,10 @@ class _$_GooglePlacesErrorRequestDenied
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GooglePlacesErrorRequestDeniedCopyWith<_$_GooglePlacesErrorRequestDenied>
-      get copyWith => __$$_GooglePlacesErrorRequestDeniedCopyWithImpl<
-          _$_GooglePlacesErrorRequestDenied>(this, _$identity);
+  _$$GooglePlacesErrorRequestDeniedImplCopyWith<
+          _$GooglePlacesErrorRequestDeniedImpl>
+      get copyWith => __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<
+          _$GooglePlacesErrorRequestDeniedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -872,38 +876,39 @@ class _$_GooglePlacesErrorRequestDenied
 
 abstract class _GooglePlacesErrorRequestDenied implements GooglePlacesError {
   const factory _GooglePlacesErrorRequestDenied(
-      {required final String message}) = _$_GooglePlacesErrorRequestDenied;
+      {required final String message}) = _$GooglePlacesErrorRequestDeniedImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_GooglePlacesErrorRequestDeniedCopyWith<_$_GooglePlacesErrorRequestDenied>
+  _$$GooglePlacesErrorRequestDeniedImplCopyWith<
+          _$GooglePlacesErrorRequestDeniedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GooglePlacesErrorRequestCancelledCopyWith<$Res> {
-  factory _$$_GooglePlacesErrorRequestCancelledCopyWith(
-          _$_GooglePlacesErrorRequestCancelled value,
-          $Res Function(_$_GooglePlacesErrorRequestCancelled) then) =
-      __$$_GooglePlacesErrorRequestCancelledCopyWithImpl<$Res>;
+abstract class _$$GooglePlacesErrorRequestCancelledImplCopyWith<$Res> {
+  factory _$$GooglePlacesErrorRequestCancelledImplCopyWith(
+          _$GooglePlacesErrorRequestCancelledImpl value,
+          $Res Function(_$GooglePlacesErrorRequestCancelledImpl) then) =
+      __$$GooglePlacesErrorRequestCancelledImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GooglePlacesErrorRequestCancelledCopyWithImpl<$Res>
+class __$$GooglePlacesErrorRequestCancelledImplCopyWithImpl<$Res>
     extends _$GooglePlacesErrorCopyWithImpl<$Res,
-        _$_GooglePlacesErrorRequestCancelled>
-    implements _$$_GooglePlacesErrorRequestCancelledCopyWith<$Res> {
-  __$$_GooglePlacesErrorRequestCancelledCopyWithImpl(
-      _$_GooglePlacesErrorRequestCancelled _value,
-      $Res Function(_$_GooglePlacesErrorRequestCancelled) _then)
+        _$GooglePlacesErrorRequestCancelledImpl>
+    implements _$$GooglePlacesErrorRequestCancelledImplCopyWith<$Res> {
+  __$$GooglePlacesErrorRequestCancelledImplCopyWithImpl(
+      _$GooglePlacesErrorRequestCancelledImpl _value,
+      $Res Function(_$GooglePlacesErrorRequestCancelledImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GooglePlacesErrorRequestCancelled
+class _$GooglePlacesErrorRequestCancelledImpl
     implements _GooglePlacesErrorRequestCancelled {
-  const _$_GooglePlacesErrorRequestCancelled();
+  const _$GooglePlacesErrorRequestCancelledImpl();
 
   @override
   String toString() {
@@ -914,7 +919,7 @@ class _$_GooglePlacesErrorRequestCancelled
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GooglePlacesErrorRequestCancelled);
+            other is _$GooglePlacesErrorRequestCancelledImpl);
   }
 
   @override
@@ -1005,27 +1010,27 @@ class _$_GooglePlacesErrorRequestCancelled
 
 abstract class _GooglePlacesErrorRequestCancelled implements GooglePlacesError {
   const factory _GooglePlacesErrorRequestCancelled() =
-      _$_GooglePlacesErrorRequestCancelled;
+      _$GooglePlacesErrorRequestCancelledImpl;
 }
 
 /// @nodoc
-abstract class _$$_GooglePlacesErrorUnknownErrorCopyWith<$Res> {
-  factory _$$_GooglePlacesErrorUnknownErrorCopyWith(
-          _$_GooglePlacesErrorUnknownError value,
-          $Res Function(_$_GooglePlacesErrorUnknownError) then) =
-      __$$_GooglePlacesErrorUnknownErrorCopyWithImpl<$Res>;
+abstract class _$$GooglePlacesErrorUnknownErrorImplCopyWith<$Res> {
+  factory _$$GooglePlacesErrorUnknownErrorImplCopyWith(
+          _$GooglePlacesErrorUnknownErrorImpl value,
+          $Res Function(_$GooglePlacesErrorUnknownErrorImpl) then) =
+      __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_GooglePlacesErrorUnknownErrorCopyWithImpl<$Res>
+class __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<$Res>
     extends _$GooglePlacesErrorCopyWithImpl<$Res,
-        _$_GooglePlacesErrorUnknownError>
-    implements _$$_GooglePlacesErrorUnknownErrorCopyWith<$Res> {
-  __$$_GooglePlacesErrorUnknownErrorCopyWithImpl(
-      _$_GooglePlacesErrorUnknownError _value,
-      $Res Function(_$_GooglePlacesErrorUnknownError) _then)
+        _$GooglePlacesErrorUnknownErrorImpl>
+    implements _$$GooglePlacesErrorUnknownErrorImplCopyWith<$Res> {
+  __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl(
+      _$GooglePlacesErrorUnknownErrorImpl _value,
+      $Res Function(_$GooglePlacesErrorUnknownErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1033,7 +1038,7 @@ class __$$_GooglePlacesErrorUnknownErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_GooglePlacesErrorUnknownError(
+    return _then(_$GooglePlacesErrorUnknownErrorImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1044,9 +1049,9 @@ class __$$_GooglePlacesErrorUnknownErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GooglePlacesErrorUnknownError
+class _$GooglePlacesErrorUnknownErrorImpl
     implements _GooglePlacesErrorUnknownError {
-  const _$_GooglePlacesErrorUnknownError({this.message});
+  const _$GooglePlacesErrorUnknownErrorImpl({this.message});
 
   @override
   final String? message;
@@ -1060,7 +1065,7 @@ class _$_GooglePlacesErrorUnknownError
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GooglePlacesErrorUnknownError &&
+            other is _$GooglePlacesErrorUnknownErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -1070,9 +1075,10 @@ class _$_GooglePlacesErrorUnknownError
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GooglePlacesErrorUnknownErrorCopyWith<_$_GooglePlacesErrorUnknownError>
-      get copyWith => __$$_GooglePlacesErrorUnknownErrorCopyWithImpl<
-          _$_GooglePlacesErrorUnknownError>(this, _$identity);
+  _$$GooglePlacesErrorUnknownErrorImplCopyWith<
+          _$GooglePlacesErrorUnknownErrorImpl>
+      get copyWith => __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<
+          _$GooglePlacesErrorUnknownErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1159,10 +1165,11 @@ class _$_GooglePlacesErrorUnknownError
 
 abstract class _GooglePlacesErrorUnknownError implements GooglePlacesError {
   const factory _GooglePlacesErrorUnknownError({final String? message}) =
-      _$_GooglePlacesErrorUnknownError;
+      _$GooglePlacesErrorUnknownErrorImpl;
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$_GooglePlacesErrorUnknownErrorCopyWith<_$_GooglePlacesErrorUnknownError>
+  _$$GooglePlacesErrorUnknownErrorImplCopyWith<
+          _$GooglePlacesErrorUnknownErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -123,10 +123,11 @@ class _$TripStopCopyWithImpl<$Res, $Val extends TripStop>
 }
 
 /// @nodoc
-abstract class _$$_TripStopCopyWith<$Res> implements $TripStopCopyWith<$Res> {
-  factory _$$_TripStopCopyWith(
-          _$_TripStop value, $Res Function(_$_TripStop) then) =
-      __$$_TripStopCopyWithImpl<$Res>;
+abstract class _$$TripStopImplCopyWith<$Res>
+    implements $TripStopCopyWith<$Res> {
+  factory _$$TripStopImplCopyWith(
+          _$TripStopImpl value, $Res Function(_$TripStopImpl) then) =
+      __$$TripStopImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -143,11 +144,11 @@ abstract class _$$_TripStopCopyWith<$Res> implements $TripStopCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TripStopCopyWithImpl<$Res>
-    extends _$TripStopCopyWithImpl<$Res, _$_TripStop>
-    implements _$$_TripStopCopyWith<$Res> {
-  __$$_TripStopCopyWithImpl(
-      _$_TripStop _value, $Res Function(_$_TripStop) _then)
+class __$$TripStopImplCopyWithImpl<$Res>
+    extends _$TripStopCopyWithImpl<$Res, _$TripStopImpl>
+    implements _$$TripStopImplCopyWith<$Res> {
+  __$$TripStopImplCopyWithImpl(
+      _$TripStopImpl _value, $Res Function(_$TripStopImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -163,7 +164,7 @@ class __$$_TripStopCopyWithImpl<$Res>
     Object? travelTimeToNextStop = null,
     Object? note = freezed,
   }) {
-    return _then(_$_TripStop(
+    return _then(_$TripStopImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -206,8 +207,8 @@ class __$$_TripStopCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TripStop implements _TripStop {
-  const _$_TripStop(
+class _$TripStopImpl implements _TripStop {
+  const _$TripStopImpl(
       {@JsonKey(includeFromJson: false, includeToJson: false) this.id = '',
       required this.index,
       required this.name,
@@ -219,8 +220,8 @@ class _$_TripStop implements _TripStop {
       this.travelTimeToNextStop = 0,
       this.note});
 
-  factory _$_TripStop.fromJson(Map<String, dynamic> json) =>
-      _$$_TripStopFromJson(json);
+  factory _$TripStopImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TripStopImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -256,7 +257,7 @@ class _$_TripStop implements _TripStop {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TripStop &&
+            other is _$TripStopImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.name, name) || other.name == name) &&
@@ -280,12 +281,12 @@ class _$_TripStop implements _TripStop {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TripStopCopyWith<_$_TripStop> get copyWith =>
-      __$$_TripStopCopyWithImpl<_$_TripStop>(this, _$identity);
+  _$$TripStopImplCopyWith<_$TripStopImpl> get copyWith =>
+      __$$TripStopImplCopyWithImpl<_$TripStopImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TripStopToJson(
+    return _$$TripStopImplToJson(
       this,
     );
   }
@@ -302,9 +303,10 @@ abstract class _TripStop implements TripStop {
       required final LatLng location,
       final bool isDone,
       final int travelTimeToNextStop,
-      final String? note}) = _$_TripStop;
+      final String? note}) = _$TripStopImpl;
 
-  factory _TripStop.fromJson(Map<String, dynamic> json) = _$_TripStop.fromJson;
+  factory _TripStop.fromJson(Map<String, dynamic> json) =
+      _$TripStopImpl.fromJson;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -328,6 +330,6 @@ abstract class _TripStop implements TripStop {
   String? get note;
   @override
   @JsonKey(ignore: true)
-  _$$_TripStopCopyWith<_$_TripStop> get copyWith =>
+  _$$TripStopImplCopyWith<_$TripStopImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

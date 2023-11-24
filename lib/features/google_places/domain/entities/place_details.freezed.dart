@@ -63,22 +63,22 @@ class _$PlaceDetailsCopyWithImpl<$Res, $Val extends PlaceDetails>
 }
 
 /// @nodoc
-abstract class _$$_PlaceDetailsCopyWith<$Res>
+abstract class _$$PlaceDetailsImplCopyWith<$Res>
     implements $PlaceDetailsCopyWith<$Res> {
-  factory _$$_PlaceDetailsCopyWith(
-          _$_PlaceDetails value, $Res Function(_$_PlaceDetails) then) =
-      __$$_PlaceDetailsCopyWithImpl<$Res>;
+  factory _$$PlaceDetailsImplCopyWith(
+          _$PlaceDetailsImpl value, $Res Function(_$PlaceDetailsImpl) then) =
+      __$$PlaceDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String placeId, LatLng location});
 }
 
 /// @nodoc
-class __$$_PlaceDetailsCopyWithImpl<$Res>
-    extends _$PlaceDetailsCopyWithImpl<$Res, _$_PlaceDetails>
-    implements _$$_PlaceDetailsCopyWith<$Res> {
-  __$$_PlaceDetailsCopyWithImpl(
-      _$_PlaceDetails _value, $Res Function(_$_PlaceDetails) _then)
+class __$$PlaceDetailsImplCopyWithImpl<$Res>
+    extends _$PlaceDetailsCopyWithImpl<$Res, _$PlaceDetailsImpl>
+    implements _$$PlaceDetailsImplCopyWith<$Res> {
+  __$$PlaceDetailsImplCopyWithImpl(
+      _$PlaceDetailsImpl _value, $Res Function(_$PlaceDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_PlaceDetailsCopyWithImpl<$Res>
     Object? placeId = null,
     Object? location = null,
   }) {
-    return _then(_$_PlaceDetails(
+    return _then(_$PlaceDetailsImpl(
       placeId: null == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_PlaceDetailsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlaceDetails implements _PlaceDetails {
-  const _$_PlaceDetails({required this.placeId, required this.location});
+class _$PlaceDetailsImpl implements _PlaceDetails {
+  const _$PlaceDetailsImpl({required this.placeId, required this.location});
 
   @override
   final String placeId;
@@ -119,7 +119,7 @@ class _$_PlaceDetails implements _PlaceDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlaceDetails &&
+            other is _$PlaceDetailsImpl &&
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
             (identical(other.location, location) ||
                 other.location == location));
@@ -131,14 +131,14 @@ class _$_PlaceDetails implements _PlaceDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlaceDetailsCopyWith<_$_PlaceDetails> get copyWith =>
-      __$$_PlaceDetailsCopyWithImpl<_$_PlaceDetails>(this, _$identity);
+  _$$PlaceDetailsImplCopyWith<_$PlaceDetailsImpl> get copyWith =>
+      __$$PlaceDetailsImplCopyWithImpl<_$PlaceDetailsImpl>(this, _$identity);
 }
 
 abstract class _PlaceDetails implements PlaceDetails {
   const factory _PlaceDetails(
       {required final String placeId,
-      required final LatLng location}) = _$_PlaceDetails;
+      required final LatLng location}) = _$PlaceDetailsImpl;
 
   @override
   String get placeId;
@@ -146,6 +146,6 @@ abstract class _PlaceDetails implements PlaceDetails {
   LatLng get location;
   @override
   @JsonKey(ignore: true)
-  _$$_PlaceDetailsCopyWith<_$_PlaceDetails> get copyWith =>
+  _$$PlaceDetailsImplCopyWith<_$PlaceDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
