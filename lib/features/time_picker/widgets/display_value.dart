@@ -12,9 +12,9 @@ class DisplayValue extends StatelessWidget {
 
   /// Constructor for the [Widget]
   const DisplayValue({
-    Key? key,
+    super.key,
     required this.selectedInput,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

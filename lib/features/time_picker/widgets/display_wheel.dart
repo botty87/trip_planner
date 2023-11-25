@@ -23,14 +23,14 @@ class DisplayWheel extends StatelessWidget {
 
   /// Constructor for the [Widget]
   const DisplayWheel({
-    Key? key,
+    super.key,
     required this.controller,
     required this.items,
     required this.onChange,
     this.isSelected = false,
     this.disabled = false,
     this.getModifiedLabel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

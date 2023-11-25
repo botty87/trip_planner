@@ -1,4 +1,5 @@
 /// Default Border radius value in [double]
+library;
 // ignore_for_file: constant_identifier_names
 
 const BORDER_RADIUS = 10.0;

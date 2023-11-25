@@ -6,7 +6,7 @@ import '../../cubit/trips/trips_cubit.dart';
 import 'trip_card.dart';
 
 class TripsListWidget extends StatelessWidget {
-  const TripsListWidget({Key? key}) : super(key: key);
+  const TripsListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
