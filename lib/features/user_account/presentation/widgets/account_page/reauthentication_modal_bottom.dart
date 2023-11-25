@@ -15,48 +15,51 @@ _showReauthenticationModalBottom(BuildContext context) {
       return SafeArea(
         minimum: const EdgeInsets.symmetric(
             horizontal: pageHorizontalPadding, vertical: pageVerticalPadding),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              LocaleKeys.reauthenticate.tr(),
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: verticalSpaceL),
-            _SavingProgressBar(cubit: cubit),
-            const SizedBox(height: verticalSpace),
-            PasswordTextFormField(
-              key: const Key('reauth_password_text_field'),
-              decoration: InputDecoration(
-                labelText: LocaleKeys.password.tr(),
+        child: Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                LocaleKeys.reauthenticate.tr(),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
-              onChanged: (value) => cubit.onReauthPasswordChanged(value),
-              initialObscurity: true,
-              textInputAction: TextInputAction.done,
-              autofillHints: const [AutofillHints.password],
-              onFieldSubmitted: (_) => cubit.reauthenticate(),
-            ),
-            const SizedBox(height: verticalSpaceL),
-            _ErrorBox(cubit: cubit),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  key: const Key('reauth_cancel_button'),
-                  onPressed: () {
-                    cubit.cancelReauthentication();
-                  },
-                  child: Text(LocaleKeys.cancel.tr()),
+              const SizedBox(height: verticalSpaceL),
+              _SavingProgressBar(cubit: cubit),
+              const SizedBox(height: verticalSpace),
+              PasswordTextFormField(
+                key: const Key('reauth_password_text_field'),
+                decoration: InputDecoration(
+                  labelText: LocaleKeys.password.tr(),
                 ),
-                const SizedBox(width: horizontalSpaceL),
-                TextButton(
-                  key: const Key('reauth_save_button'),
-                  onPressed: () => cubit.reauthenticate(),
-                  child: Text(LocaleKeys.login.tr()),
-                ),
-              ],
-            ),
-          ],
+                onChanged: (value) => cubit.onReauthPasswordChanged(value),
+                initialObscurity: true,
+                textInputAction: TextInputAction.done,
+                autofillHints: const [AutofillHints.password],
+                onFieldSubmitted: (_) => cubit.reauthenticate(),
+              ),
+              const SizedBox(height: verticalSpaceL),
+              _ErrorBox(cubit: cubit),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                    key: const Key('reauth_cancel_button'),
+                    onPressed: () {
+                      cubit.cancelReauthentication();
+                    },
+                    child: Text(LocaleKeys.cancel.tr()),
+                  ),
+                  const SizedBox(width: horizontalSpaceL),
+                  TextButton(
+                    key: const Key('reauth_save_button'),
+                    onPressed: () => cubit.reauthenticate(),
+                    child: Text(LocaleKeys.login.tr()),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       );
     },

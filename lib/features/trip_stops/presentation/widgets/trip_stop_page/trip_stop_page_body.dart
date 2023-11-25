@@ -179,30 +179,33 @@ class _TripStopPageBody extends HookWidget {
       showDragHandle: true,
       useRootNavigator: true,
       isDismissible: false,
-      builder: (_) {
+      builder: (context) {
         return FractionallySizedBox(
           heightFactor: 0.9,
-          child: NewEditTripStopForm(
-            isSaving: isSaving.stream,
-            hourDuration: hourDuration.stream,
-            minuteDuration: minuteDuration.stream,
-            onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-            onNameChanged: (String value) => cubit.nameChanged(value),
-            onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
-            onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
-            marker: marker.stream,
-            initialTripStopDescription: cubit.state.tripStop.description,
-            initialTripStopName: cubit.state.tripStop.name,
-            onLocationChanged: (LatLng? value) {
-              if (value != null) {
-                context.read<TripStopCubit>().locationChanged(value);
-              }
-            },
-            saveSection: _SaveCancelEditButtons(
+          child: Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: NewEditTripStopForm(
               isSaving: isSaving.stream,
-              onCancel: () => cubit.cancelEditing(),
-              onSave: () => cubit.saveChanges(),
-              errorMessage: errorMessage.stream,
+              hourDuration: hourDuration.stream,
+              minuteDuration: minuteDuration.stream,
+              onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+              onNameChanged: (String value) => cubit.nameChanged(value),
+              onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
+              onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
+              marker: marker.stream,
+              initialTripStopDescription: cubit.state.tripStop.description,
+              initialTripStopName: cubit.state.tripStop.name,
+              onLocationChanged: (LatLng? value) {
+                if (value != null) {
+                  cubit.locationChanged(value);
+                }
+              },
+              saveSection: _SaveCancelEditButtons(
+                isSaving: isSaving.stream,
+                onCancel: () => cubit.cancelEditing(),
+                onSave: () => cubit.saveChanges(),
+                errorMessage: errorMessage.stream,
+              ),
             ),
           ),
         );

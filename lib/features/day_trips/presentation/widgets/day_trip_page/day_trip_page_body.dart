@@ -45,13 +45,14 @@ class _DayTripPageBody extends HookWidget {
         ),
         //Show modal bottom sheet if editing
         BlocListener<DayTripCubit, DayTripState>(
-            listener: (context, state) => _showModalBottomEditing(context, isSaving, isModalBottomEditing, errorMessage),
+            listener: (context, state) =>
+                _showModalBottomEditing(context, isSaving, isModalBottomEditing, errorMessage),
             listenWhen: (previous, current) =>
                 previous is DayTripStateNormal && current is DayTripStateEditing),
         //Close modal bottom sheet if editing dismissed
         BlocListener<DayTripCubit, DayTripState>(
             listener: (context, state) {
-              if(isModalBottomEditing.value) {
+              if (isModalBottomEditing.value) {
                 Navigator.of(context).pop();
               }
             },
@@ -95,8 +96,8 @@ class _DayTripPageBody extends HookWidget {
     );
   }
 
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
-      StreamController<String?> errorMessage) {
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+      ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
     final cubit = context.read<DayTripCubit>();
     isModalBottomEditing.value = true;
 
@@ -106,20 +107,27 @@ class _DayTripPageBody extends HookWidget {
       showDragHandle: true,
       useRootNavigator: true,
       isDismissible: false,
-      builder: (_) {
+      builder: (context) {
         return FractionallySizedBox(
-            heightFactor: 0.9,
-            child: NewEditDayTripForm(
-              isSaving: isSaving.stream,
-              onDescriptionChanged: (description) => cubit.descriptionChanged(description),
-              initialDayTripDescription: cubit.state.dayTrip.description,
-              saveSection: _SaveCancelEditButtons(
+          heightFactor: 0.9,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: NewEditDayTripForm(
                 isSaving: isSaving.stream,
-                onCancel: () => cubit.cancelEditing(),
-                onSave: () => cubit.saveChanges(),
-                errorMessage: errorMessage.stream,
+                onDescriptionChanged: (description) => cubit.descriptionChanged(description),
+                initialDayTripDescription: cubit.state.dayTrip.description,
+                saveSection: _SaveCancelEditButtons(
+                  isSaving: isSaving.stream,
+                  onCancel: () => cubit.cancelEditing(),
+                  onSave: () => cubit.saveChanges(),
+                  errorMessage: errorMessage.stream,
+                ),
               ),
-            ));
+            ),
+          ),
+        );
       },
     ).then((_) {
       isModalBottomEditing.value = false;
@@ -127,3 +135,25 @@ class _DayTripPageBody extends HookWidget {
     });
   }
 }
+
+/* 
+return FractionallySizedBox(
+            heightFactor: 0.9,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: NewEditDayTripForm(
+                  isSaving: isSaving.stream,
+                  onDescriptionChanged: (description) => cubit.descriptionChanged(description),
+                  initialDayTripDescription: cubit.state.dayTrip.description,
+                  saveSection: _SaveCancelEditButtons(
+                    isSaving: isSaving.stream,
+                    onCancel: () => cubit.cancelEditing(),
+                    onSave: () => cubit.saveChanges(),
+                    errorMessage: errorMessage.stream,
+                  ),
+                ),
+              ),
+            )); 
+            
+            */

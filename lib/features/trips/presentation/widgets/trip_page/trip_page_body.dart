@@ -43,13 +43,14 @@ class _TripPageBody extends HookWidget {
         ),
         //Show modal bottom sheet if editing
         BlocListener<TripCubit, TripState>(
-            listener: (context, state) => _showModalBottomEditing(context, isSaving, isModalBottomEditing, errorMessage),
+            listener: (context, state) =>
+                _showModalBottomEditing(context, isSaving, isModalBottomEditing, errorMessage),
             listenWhen: (previous, current) =>
                 previous is! TripStateEditing && current is TripStateEditing),
         //Close modal bottom sheet if editing dismissed
         BlocListener<TripCubit, TripState>(
             listener: (context, state) {
-              if(isModalBottomEditing.value) {
+              if (isModalBottomEditing.value) {
                 Navigator.of(context).pop();
               }
             },
@@ -78,8 +79,8 @@ class _TripPageBody extends HookWidget {
     );
   }
 
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
-      StreamController<String?> errorMessage) {
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+      ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
     final cubit = context.read<TripCubit>();
     isModalBottomEditing.value = true;
 
@@ -89,23 +90,26 @@ class _TripPageBody extends HookWidget {
       showDragHandle: true,
       useRootNavigator: true,
       isDismissible: false,
-      builder: (_) {
+      builder: (context) {
         return FractionallySizedBox(
           heightFactor: 0.9,
-          child: NewEditTripForm(
-            onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-            onNameChanged: (String value) => cubit.nameChanged(value),
-            onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
-            saveSection: _SaveCancelEditButtons(
+          child: Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: NewEditTripForm(
+              onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+              onNameChanged: (String value) => cubit.nameChanged(value),
+              onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
+              saveSection: _SaveCancelEditButtons(
+                isSaving: isSaving.stream,
+                onCancel: () => cubit.modalBottomEditingDismissed(),
+                onSave: () => cubit.saveChanges(),
+                errorMessage: errorMessage.stream,
+              ),
               isSaving: isSaving.stream,
-              onCancel: () => cubit.modalBottomEditingDismissed(),
-              onSave: () => cubit.saveChanges(),
-              errorMessage: errorMessage.stream,
+              initialTripName: cubit.state.trip.name,
+              initialTripDescription: cubit.state.trip.description,
+              initialStartDate: cubit.state.trip.startDate,
             ),
-            isSaving: isSaving.stream,
-            initialTripName: cubit.state.trip.name,
-            initialTripDescription: cubit.state.trip.description,
-            initialStartDate: cubit.state.trip.startDate,
           ),
         );
       },
