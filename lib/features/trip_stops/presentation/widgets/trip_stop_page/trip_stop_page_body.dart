@@ -116,7 +116,7 @@ class _TripStopPageBody extends HookWidget {
                 builder: (context, description) => _TripStopDescription(headerText: description),
               ),
               const SizedBox(height: verticalSpace),
-              _MapWidget(),
+              const _MapWidget(),
               const SizedBox(height: verticalSpace),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

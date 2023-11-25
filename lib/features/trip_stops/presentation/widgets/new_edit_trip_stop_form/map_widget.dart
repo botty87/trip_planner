@@ -10,7 +10,8 @@ class _MapWidget extends HookWidget {
 
   final Stream<Marker?> marker;
 
-  const _MapWidget({required this.marker, this.initialMarker}) : super(key: const Key('map_widget'));
+  const _MapWidget({required this.marker, this.initialMarker})
+      : super(key: const Key('map_widget'));
 
   @override
   Widget build(BuildContext context) {
@@ -80,16 +81,12 @@ class _MapWidget extends HookWidget {
         children: [
           IconButton.filled(
             icon: const Icon(Icons.remove),
-            onPressed: () => controller.value?.animateCamera(
-              CameraUpdate.zoomOut(),
-            ),
+            onPressed: () => controller.value?.animateCamera(CameraUpdate.zoomOut()),
           ),
           const SizedBox(width: horizontalSpaceS),
           IconButton.filled(
             icon: const Icon(Icons.add),
-            onPressed: () => controller.value?.animateCamera(
-              CameraUpdate.zoomIn(),
-            ),
+            onPressed: () => controller.value?.animateCamera(CameraUpdate.zoomIn()),
           ),
         ],
       ),
@@ -101,12 +98,7 @@ class _MapWidget extends HookWidget {
       padding: const EdgeInsets.all(16.0),
       child: IconButton.filled(
         icon: const Icon(Icons.place),
-        onPressed: () => controller.value?.animateCamera(
-          CameraUpdate.newLatLngZoom(
-            location,
-            15,
-          ),
-        ),
+        onPressed: () => controller.value?.animateCamera(CameraUpdate.newLatLngZoom(location, 15)),
       ),
     );
   }

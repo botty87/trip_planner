@@ -1,28 +1,17 @@
 part of '../../pages/trip_stop_page.dart';
 
 class _MapWidget extends HookWidget {
-  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
-
-  _MapWidget();
+  const _MapWidget();
 
   @override
   Widget build(BuildContext context) {
+    final googleMapController = useRef<GoogleMapController?>(null);
+
     final location = context.select((TripStopCubit cubit) => cubit.state.tripStop.location);
     final marker = Marker(
       markerId: const MarkerId('tripStop'),
       position: location,
     );
-
-    if (_controller.isCompleted) {
-      _controller.future.then(
-        (controller) => controller.animateCamera(
-          CameraUpdate.newLatLngZoom(
-            location,
-            15,
-          ),
-        ),
-      );
-    }
 
     return Column(
       children: [
@@ -36,7 +25,10 @@ class _MapWidget extends HookWidget {
                   target: location,
                   zoom: 15,
                 ),
-                onMapCreated: _controller.complete,
+                onMapCreated: (controller) {
+                  googleMapController.value = controller;
+                  controller.animateCamera(CameraUpdate.newLatLngZoom(location, 15));
+                },
                 gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
                   Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
                 },
@@ -46,11 +38,11 @@ class _MapWidget extends HookWidget {
               ),
               Align(
                 alignment: Alignment.bottomRight,
-                child: _zoomControls(),
+                child: _zoomControls(googleMapController),
               ),
               Align(
                 alignment: Alignment.topRight,
-                child: _markerFinder(location),
+                child: _markerFinder(location, googleMapController),
               )
             ],
           ),
@@ -59,7 +51,7 @@ class _MapWidget extends HookWidget {
     );
   }
 
-  Widget _zoomControls() {
+  Widget _zoomControls(ObjectRef<GoogleMapController?> controller) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -67,35 +59,24 @@ class _MapWidget extends HookWidget {
         children: [
           IconButton.filled(
             icon: const Icon(Icons.remove),
-            onPressed: () => _controller.future.then((controller) => controller.animateCamera(
-                  CameraUpdate.zoomOut(),
-                )),
+            onPressed: () => controller.value?.animateCamera(CameraUpdate.zoomOut()),
           ),
           const SizedBox(width: horizontalSpaceS),
           IconButton.filled(
             icon: const Icon(Icons.add),
-            onPressed: () => _controller.future.then((controller) => controller.animateCamera(
-                  CameraUpdate.zoomIn(),
-                )),
+            onPressed: () => controller.value?.animateCamera(CameraUpdate.zoomIn()),
           ),
         ],
       ),
     );
   }
 
-  Widget _markerFinder(LatLng location) {
+  Widget _markerFinder(LatLng location, ObjectRef<GoogleMapController?> controller) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: IconButton.filled(
         icon: const Icon(Icons.place),
-        onPressed: () => _controller.future.then(
-          (controller) => controller.animateCamera(
-            CameraUpdate.newLatLngZoom(
-              location,
-              15,
-            ),
-          ),
-        ),
+        onPressed: () => controller.value?.animateCamera(CameraUpdate.newLatLngZoom(location, 15)),
       ),
     );
   }
