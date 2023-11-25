@@ -9,13 +9,11 @@ class _TextInputWidget extends HookWidget {
   final String unknownErrorMessage;
 
   const _TextInputWidget(
-      {Key? key,
-      required this.labelText,
+      {required this.labelText,
       required this.hintText,
       required this.noInternetConnectionMessage,
       required this.requestDeniedMessage,
-      required this.unknownErrorMessage})
-      : super(key: key);
+      required this.unknownErrorMessage});
 
   @override
   Widget build(BuildContext context) {

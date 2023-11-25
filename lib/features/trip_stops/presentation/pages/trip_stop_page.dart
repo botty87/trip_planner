@@ -58,8 +58,18 @@ class TripStopPage extends StatelessWidget {
         ),
       ),
       child: Builder(builder: (context) {
-        return WillPopScope(
-          onWillPop: () => _onWillPop(context),
+        return PopScope(
+          canPop: false,
+          onPopInvoked: (bool didPop) async {
+            if (didPop) {
+              return;
+            }
+
+            final success = await _onWillPop(context);
+            if (success && context.mounted) {
+              Navigator.of(context).pop();
+            }
+          },
           child: const Scaffold(
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(kToolbarHeight),

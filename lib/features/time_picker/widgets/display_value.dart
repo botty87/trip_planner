@@ -6,7 +6,6 @@ import '../cubit/time_picker_cubit.dart';
 
 /// Render the [Hour] or [Minute] value for `Android` picker
 class DisplayValue extends StatelessWidget {
-
   /// [selectedInput] is the [SelectedInput] enum that is used to determine which value is selected
   final SelectedInput selectedInput;
 
@@ -68,7 +67,7 @@ class _ValueWidget extends StatelessWidget {
 
     return Text(
       value,
-      textScaleFactor: 0.85,
+      textScaler: const TextScaler.linear(0.85),
       style: commonTimeStyles.copyWith(
         color: isSelected ? selectedColor : unselectedColor,
       ),

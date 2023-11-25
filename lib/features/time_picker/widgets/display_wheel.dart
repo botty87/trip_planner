@@ -62,7 +62,7 @@ class DisplayWheel extends StatelessWidget {
               return Center(
                 child: Text(
                   val,
-                  textScaleFactor: 0.85,
+                  textScaler: const TextScaler.linear(0.85),
                   style: commonTimeStyles.copyWith(
                     color: isSelected ? color : unselectedColor,
                   ),

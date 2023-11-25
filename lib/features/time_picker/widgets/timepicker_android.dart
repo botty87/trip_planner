@@ -41,7 +41,7 @@ class TimePickerAndroid extends StatelessWidget {
             ),
             Text(
               ":",
-              textScaleFactor: 0.85,
+              textScaler: const TextScaler.linear(0.85),
               style: commonTimeStyles.copyWith(color: Colors.grey),
             ),
             const DisplayValue(
