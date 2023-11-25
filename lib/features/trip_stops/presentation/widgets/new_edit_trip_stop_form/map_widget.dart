@@ -1,7 +1,7 @@
 part of 'new_edit_trip_stop_form.dart';
 
 class _MapWidget extends HookWidget {
-  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
+  final Marker? initialMarker;
 
   static const CameraPosition _world = CameraPosition(
     target: LatLng(0, 0),
@@ -10,10 +10,12 @@ class _MapWidget extends HookWidget {
 
   final Stream<Marker?> marker;
 
-  _MapWidget({required this.marker});
+  const _MapWidget({required this.marker, this.initialMarker}) : super(key: const Key('map_widget'));
 
   @override
   Widget build(BuildContext context) {
+    final googleMapController = useRef<GoogleMapController?>(null);
+
     return Column(
       children: [
         SizedBox(
@@ -22,16 +24,22 @@ class _MapWidget extends HookWidget {
             children: [
               StreamBuilder<Marker?>(
                   stream: marker,
+                  initialData: initialMarker,
                   builder: (context, snapshot) {
                     if (snapshot.data != null) {
-                      _controller.future.then((controller) => controller
-                          .animateCamera(CameraUpdate.newLatLngZoom(snapshot.data!.position, 15)));
+                      googleMapController.value?.animateCamera(
+                        CameraUpdate.newLatLngZoom(snapshot.data!.position, 15),
+                      );
                     }
 
                     return GoogleMap(
                       mapType: MapType.hybrid,
                       initialCameraPosition: _world,
-                      onMapCreated: _controller.complete,
+                      onMapCreated: (GoogleMapController controller) {
+                        googleMapController.value = controller;
+                        controller
+                            .animateCamera(CameraUpdate.newLatLngZoom(snapshot.data!.position, 15));
+                      },
                       gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
                         Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
                       },
@@ -42,7 +50,7 @@ class _MapWidget extends HookWidget {
                   }),
               Align(
                 alignment: Alignment.bottomRight,
-                child: _zoomControls(),
+                child: _zoomControls(googleMapController),
               ),
               StreamBuilder<Marker?>(
                 stream: marker,
@@ -50,7 +58,7 @@ class _MapWidget extends HookWidget {
                   if (snapshot.data != null) {
                     return Align(
                       alignment: Alignment.topRight,
-                      child: _markerFinder(snapshot.data!.position),
+                      child: _markerFinder(snapshot.data!.position, googleMapController),
                     );
                   } else {
                     return const SizedBox.shrink();
@@ -64,7 +72,7 @@ class _MapWidget extends HookWidget {
     );
   }
 
-  Widget _zoomControls() {
+  Widget _zoomControls(ObjectRef<GoogleMapController?> controller) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -72,33 +80,31 @@ class _MapWidget extends HookWidget {
         children: [
           IconButton.filled(
             icon: const Icon(Icons.remove),
-            onPressed: () => _controller.future.then((controller) => controller.animateCamera(
-                  CameraUpdate.zoomOut(),
-                )),
+            onPressed: () => controller.value?.animateCamera(
+              CameraUpdate.zoomOut(),
+            ),
           ),
           const SizedBox(width: horizontalSpaceS),
           IconButton.filled(
             icon: const Icon(Icons.add),
-            onPressed: () => _controller.future.then((controller) => controller.animateCamera(
-                  CameraUpdate.zoomIn(),
-                )),
+            onPressed: () => controller.value?.animateCamera(
+              CameraUpdate.zoomIn(),
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _markerFinder(LatLng location) {
+  Widget _markerFinder(LatLng location, ObjectRef<GoogleMapController?> controller) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: IconButton.filled(
         icon: const Icon(Icons.place),
-        onPressed: () => _controller.future.then(
-          (controller) => controller.animateCamera(
-            CameraUpdate.newLatLngZoom(
-              location,
-              15,
-            ),
+        onPressed: () => controller.value?.animateCamera(
+          CameraUpdate.newLatLngZoom(
+            location,
+            15,
           ),
         ),
       ),

@@ -33,24 +33,42 @@ class _TextInputWidget extends HookWidget {
         },
         orElse: () => false,
       ),
-      child: TextField(
-        controller: textController,
-        decoration: InputDecoration(
-          labelText: labelText,
-          hintText: hintText,
-          error: _ErrorWidget(
-            onRetry: () => context
-                .read<GooglePlacesCubit>()
-                .fetchSuggestions(textController.text, noDebounce: true),
-            noInternetConnectionMessage: noInternetConnectionMessage,
-            requestDeniedMessage: requestDeniedMessage,
-            unknownErrorMessage: unknownErrorMessage,
-          ),
-        ),
-        maxLines: 1,
-        keyboardType: TextInputType.streetAddress,
-        onChanged: (value) => context.read<GooglePlacesCubit>().fetchSuggestions(value),
+      child: BlocSelector<GooglePlacesCubit, GooglePlacesState, String?>(
+        selector: (state) {
+          return state.maybeWhen(
+            error: (error, _, __) => _getErrorMessage(error),
+            orElse: () => null,
+          );
+        },
+        builder: (context, errorMessage) {
+          return TextField(
+            controller: textController,
+            decoration: InputDecoration(
+              labelText: labelText,
+              hintText: hintText,
+              error: errorMessage != null
+                  ? _ErrorWidget(
+                      onRetry: () => context
+                          .read<GooglePlacesCubit>()
+                          .fetchSuggestions(textController.text, noDebounce: true),
+                      message: errorMessage,
+                    )
+                  : null,
+            ),
+            maxLines: 1,
+            keyboardType: TextInputType.streetAddress,
+            onChanged: (value) => context.read<GooglePlacesCubit>().fetchSuggestions(value),
+          );
+        },
       ),
     );
+  }
+
+  String _getErrorMessage(GooglePlacesError error) {
+    return error.whenOrNull(
+      noInternetConnection: () => noInternetConnectionMessage,
+      requestDenied: (message) => "$requestDeniedMessage: $message",
+      unknownError: (message) => message ?? unknownErrorMessage,
+    )!;
   }
 }

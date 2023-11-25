@@ -20,7 +20,7 @@ part 'duration_widget.dart';
 part 'field_widget.dart';
 part 'map_widget.dart';
 
-class NewEditTripStopForm extends StatelessWidget {
+class NewEditTripStopForm extends HookWidget {
   final Stream<bool> isSaving;
   final Stream<int> hourDuration;
   final Stream<int> minuteDuration;
@@ -31,30 +31,66 @@ class NewEditTripStopForm extends StatelessWidget {
   final ValueChanged<int> onMinuteDurationChanged;
   final ValueChanged<LatLng?> onLocationChanged;
 
-  final Stream<Marker?> marker;
-
   final String? initialTripStopName;
 
   final Widget saveSection;
 
   final String? initialTripStopDescription;
 
-  const NewEditTripStopForm(
-      {super.key,
-      required this.isSaving,
-      required this.hourDuration,
-      required this.minuteDuration,
-      required this.onNameChanged,
-      required this.onDescriptionChanged,
-      required this.saveSection,
-      required this.onHourDurationChanged,
-      required this.onMinuteDurationChanged,
-      this.initialTripStopDescription,
-      this.initialTripStopName,
-      required this.marker, required this.onLocationChanged});
+  final LatLng? initialLocation;
+
+  const NewEditTripStopForm({
+    super.key,
+    required this.isSaving,
+    required this.hourDuration,
+    required this.minuteDuration,
+    required this.onNameChanged,
+    required this.onDescriptionChanged,
+    required this.saveSection,
+    required this.onHourDurationChanged,
+    required this.onMinuteDurationChanged,
+    this.initialTripStopDescription,
+    this.initialTripStopName,
+    required this.onLocationChanged,
+    this.initialLocation,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final locationToSet = useRef<LatLng?>(initialLocation);
+    final marker = useStreamController<Marker?>();
+
+    updateMarker(LatLng? location) {
+      marker.add(location != null
+          ? Marker(
+              markerId: const MarkerId('location'),
+              position: location,
+              draggable: true,
+              onDragEnd: (value) {
+                onLocationChanged(LatLng(value.latitude, value.longitude));
+                updateMarker(LatLng(value.latitude, value.longitude));
+              },
+            )
+          : null);
+    }
+
+    final Marker? initialMarker;
+
+    if (locationToSet.value != null) {
+      initialMarker = Marker(
+        markerId: const MarkerId('location'),
+        position: locationToSet.value!,
+        draggable: true,
+        onDragEnd: (value) {
+          onLocationChanged(LatLng(value.latitude, value.longitude));
+          updateMarker(LatLng(value.latitude, value.longitude));
+        },
+      );
+      locationToSet.value = null;
+    } else {
+      initialMarker = null;
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -112,12 +148,15 @@ class NewEditTripStopForm extends StatelessWidget {
                         minuteDuration: minuteDuration,
                       ),
                       const SizedBox(height: verticalSpaceL),
-                      _MapWidget(marker: marker),
+                      _MapWidget(marker: marker.stream, initialMarker: initialMarker),
                       const SizedBox(height: verticalSpaceL),
                       GooglePlacesSuggestionsWidget(
                         labelText: LocaleKeys.searchTripStopLocation.tr(),
                         hintText: LocaleKeys.tripStopLocationHint.tr(),
-                        onSuggestionSelected: (placeDetails) => onLocationChanged(placeDetails?.location),
+                        onSuggestionSelected: (placeDetails) {
+                          onLocationChanged(placeDetails?.location);
+                          updateMarker(placeDetails?.location);
+                        },
                         noInternetConnectionMessage: LocaleKeys.noInternetConnectionMessage.tr(),
                         requestDeniedMessage: LocaleKeys.requestDenied.tr(),
                         unknownErrorMessage: LocaleKeys.unknownError.tr(),

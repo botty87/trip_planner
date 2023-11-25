@@ -107,7 +107,6 @@ class _NewTripStopPageBody extends HookWidget {
         onNameChanged: (String value) => cubit.nameChanged(value),
         onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
         onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
-        marker: marker.stream,
         onLocationChanged: (LatLng? value) {
           if (value != null) {
             context.read<NewTripStopCubit>().locationChanged(value);

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:uuid/uuid.dart';
 
@@ -110,4 +111,7 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
       },
     );
   }
+
+  updatePlaceDetailsLocation(LatLng location) =>
+      state.mapOrNull(normal: (state) => emit(state.copyWith.placeDetails!(location: location)));
 }

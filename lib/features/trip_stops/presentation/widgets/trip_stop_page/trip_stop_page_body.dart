@@ -9,7 +9,6 @@ class _TripStopPageBody extends HookWidget {
     final isDeleting = useStreamController<bool>();
     final hourDuration = useStreamController<int>();
     final minuteDuration = useStreamController<int>();
-    final marker = useStreamController<Marker?>();
     final isSaving = useStreamController<bool>();
 
     final isModalBottomEditing = useRef<bool>(false);
@@ -44,7 +43,6 @@ class _TripStopPageBody extends HookWidget {
             isSaving,
             hourDuration,
             minuteDuration,
-            marker,
             errorMessage,
             isModalBottomEditing,
           ),
@@ -75,30 +73,6 @@ class _TripStopPageBody extends HookWidget {
           listenWhen: (previous, current) {
             if (previous is TripStopStateEditing && current is TripStopStateEditing) {
               return previous.minuteDuration != current.minuteDuration;
-            }
-            return false;
-          },
-        ),
-        //Update marker when editing
-        BlocListener<TripStopCubit, TripStopState>(
-          listener: (context, state) {
-            assert(state is TripStopStateEditing);
-            final editingState = state as TripStopStateEditing;
-            marker.add(Marker(
-              markerId: const MarkerId('tripStop'),
-              position: LatLng(
-                editingState.location!.latitude,
-                editingState.location!.longitude,
-              ),
-              draggable: true,
-              onDragEnd: (value) => context
-                  .read<TripStopCubit>()
-                  .locationChanged(LatLng(value.latitude, value.longitude)),
-            ));
-          },
-          listenWhen: (previous, current) {
-            if (previous is TripStopStateEditing && current is TripStopStateEditing) {
-              return previous.location != current.location;
             }
             return false;
           },
@@ -166,7 +140,6 @@ class _TripStopPageBody extends HookWidget {
     StreamController<bool> isSaving,
     StreamController<int> hourDuration,
     StreamController<int> minuteDuration,
-    StreamController<Marker?> marker,
     StreamController<String?> errorMessage,
     ObjectRef isModalBottomEditing,
   ) async {
@@ -185,6 +158,7 @@ class _TripStopPageBody extends HookWidget {
           child: Padding(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
             child: NewEditTripStopForm(
+              key: const Key('new_edit_trip_stop_form'),
               isSaving: isSaving.stream,
               hourDuration: hourDuration.stream,
               minuteDuration: minuteDuration.stream,
@@ -192,9 +166,9 @@ class _TripStopPageBody extends HookWidget {
               onNameChanged: (String value) => cubit.nameChanged(value),
               onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
               onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
-              marker: marker.stream,
               initialTripStopDescription: cubit.state.tripStop.description,
               initialTripStopName: cubit.state.tripStop.name,
+              initialLocation: cubit.state.tripStop.location,
               onLocationChanged: (LatLng? value) {
                 if (value != null) {
                   cubit.locationChanged(value);
@@ -220,14 +194,5 @@ class _TripStopPageBody extends HookWidget {
     await Future.delayed(const Duration(milliseconds: 100));
     hourDuration.add(tripStopDuration ~/ 60);
     minuteDuration.add(tripStopDuration % 60);
-
-    //Update marker
-    final tripStopLocation = cubit.state.tripStop.location;
-    marker.add(Marker(
-      markerId: const MarkerId('tripStop'),
-      position: LatLng(tripStopLocation.latitude, tripStopLocation.longitude),
-      draggable: true,
-      onDragEnd: (value) => cubit.locationChanged(LatLng(value.latitude, value.longitude)),
-    ));
   }
 }
