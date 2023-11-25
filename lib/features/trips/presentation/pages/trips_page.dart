@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import '../../../../core/widgets/snackbars.dart';
 import '../cubit/trips/trips_cubit.dart';
 import '../widgets/trips_page/no_trips_widget.dart';
 import '../widgets/trips_page/trips_list_widget.dart';
@@ -25,18 +26,10 @@ class TripsPage extends StatelessWidget {
           child: _TripsPageAppBar(),
         ),
         body: BlocListener<TripsCubit, TripsState>(
-          listener: (context, state) {
-            showOkAlertDialog(
-              context: context,
-              title: LocaleKeys.error.tr(),
-              message: state.errorMessage!,
-              canPop: false,
-              barrierDismissible: false,
-            );
-          },
-          listenWhen: (previous, current) {
-            return previous.errorMessage != current.errorMessage && current.errorMessage != null;
-          },
+          listener: (context, state) =>
+              ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(state.errorMessage!)),
+          listenWhen: (previous, current) =>
+              previous.errorMessage != current.errorMessage && current.errorMessage != null,
           child: const Center(child: _BodyWidget()),
         ),
         floatingActionButton: FloatingActionButton(

@@ -40,7 +40,11 @@ class TripCubit extends Cubit<TripState> {
     _dayTripsSubscription = _listenDayTrips(ListenDayTripsParams(tripId: trip.id)).listen((result) {
       result.fold(
         (failure) {
-          //TODO: handle failure
+          emit(TripState.error(
+            trip: state.trip,
+            dayTrips: state.dayTrips,
+            errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
+          ));
         },
         (dayTrips) {
           emit(TripState.normal(trip: state.trip, dayTrips: dayTrips));

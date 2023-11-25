@@ -58,9 +58,15 @@ class DayTripCubit extends Cubit<DayTripState> {
     _tripStopsSubscription =
         _listenTripStops(ListenTripStopsParams(dayTripId: dayTrip.id, tripId: trip.id))
             .listen((result) {
-      result.fold((failure) {
-        //TODO: handle failure
-      }, (tripStops) => emit(state.copyWith(tripStops: tripStops)));
+      result.fold(
+        (failure) => emit(DayTripState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+          errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
+        )),
+        (tripStops) => emit(state.copyWith(tripStops: tripStops)),
+      );
     });
   }
 
