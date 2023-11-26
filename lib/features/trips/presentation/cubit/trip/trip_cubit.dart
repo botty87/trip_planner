@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -24,18 +25,22 @@ class TripCubit extends Cubit<TripState> {
   final DeleteTrip _deleteTrip;
   final ListenDayTrips _listenDayTrips;
   final UpdateDayTripsIndexes _updateDayTripsIndexes;
+  final FirebaseCrashlytics _crashlytics;
+
   late final StreamSubscription<Either<DayTripsFailure, List<DayTrip>>> _dayTripsSubscription;
 
-  TripCubit(
-      {@factoryParam required Trip trip,
-      required UpdateTrip saveTrip,
-      required DeleteTrip deleteTrip,
-      required ListenDayTrips listenDayTrips,
-      required UpdateDayTripsIndexes updateDayTripsIndexes})
-      : _saveTrip = saveTrip,
+  TripCubit({
+    @factoryParam required Trip trip,
+    required UpdateTrip saveTrip,
+    required DeleteTrip deleteTrip,
+    required ListenDayTrips listenDayTrips,
+    required UpdateDayTripsIndexes updateDayTripsIndexes,
+    required FirebaseCrashlytics crashlytics,
+  })  : _saveTrip = saveTrip,
         _deleteTrip = deleteTrip,
         _listenDayTrips = listenDayTrips,
         _updateDayTripsIndexes = updateDayTripsIndexes,
+        _crashlytics = crashlytics,
         super(TripState.normal(trip: trip, dayTrips: [])) {
     _dayTripsSubscription = _listenDayTrips(ListenDayTripsParams(tripId: trip.id)).listen((result) {
       result.fold(
@@ -45,6 +50,7 @@ class TripCubit extends Cubit<TripState> {
             dayTrips: state.dayTrips,
             errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
           ));
+          _crashlytics.recordError(failure, StackTrace.current);
         },
         (dayTrips) {
           emit(TripState.normal(trip: state.trip, dayTrips: dayTrips));
@@ -155,7 +161,7 @@ class TripCubit extends Cubit<TripState> {
   void reorderDayTrips(int oldIndex, int newIndex) {
     //fix for a bug when newIndex > oldIndex
     if (newIndex > oldIndex) newIndex--;
-    
+
     final List<DayTrip> dayTripsToUpdate = [];
 
     dayTripsToUpdate.add(state.dayTrips[oldIndex].copyWith(index: newIndex));

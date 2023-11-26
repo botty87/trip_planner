@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,9 +23,21 @@ void main() async {
 
   //Firebase config
   await Firebase.initializeApp();
+
+  //Init Crashlytics
+  FlutterError.onError = (errorDetails) {
+    getIt<FirebaseCrashlytics>().recordFlutterFatalError(errorDetails);
+  };
+
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    getIt<FirebaseCrashlytics>().recordError(error, stack, fatal: true);
+    return true;
+  };
+
   if (kDebugMode) {
-    await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+    await getIt<FirebaseAuth>().useAuthEmulator('localhost', 9099);
+    getIt<FirebaseFirestore>().useFirestoreEmulator('localhost', 8080);
   }
 
   //Theme
@@ -43,4 +56,3 @@ void main() async {
     child: MyApp(theme: theme),
   ));
 }
-

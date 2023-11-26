@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,6 +32,8 @@ class DayTripCubit extends Cubit<DayTripState> {
   final UpdateDayTripStartTime _updateDayTripStartTime;
   final UpdateTripStopsIndexes _updateDayTripsIndexes;
   final UpdateTravelTime _updateTravelTime;
+  final FirebaseCrashlytics _crashlytics;
+
   late final StreamSubscription<Either<TripStopsFailure, List<TripStop>>> _tripStopsSubscription;
 
   final _startTimeDebouncer = Debouncer(milliseconds: 5000);
@@ -45,12 +48,14 @@ class DayTripCubit extends Cubit<DayTripState> {
     required UpdateDayTripStartTime updateDayTripStartTime,
     required UpdateTripStopsIndexes updateDayTripsIndexes,
     required UpdateTravelTime updateTravelTime,
+    required FirebaseCrashlytics crashlytics,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
         _listenTripStops = listenTripStops,
         _updateDayTripStartTime = updateDayTripStartTime,
         _updateDayTripsIndexes = updateDayTripsIndexes,
         _updateTravelTime = updateTravelTime,
+        _crashlytics = crashlytics,
         super(DayTripState.normal(
           trip: trip,
           dayTrip: dayTrip,
@@ -59,12 +64,15 @@ class DayTripCubit extends Cubit<DayTripState> {
         _listenTripStops(ListenTripStopsParams(dayTripId: dayTrip.id, tripId: trip.id))
             .listen((result) {
       result.fold(
-        (failure) => emit(DayTripState.error(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-          errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
-        )),
+        (failure) {
+          emit(DayTripState.error(
+            trip: state.trip,
+            dayTrip: state.dayTrip,
+            tripStops: state.tripStops,
+            errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
+          ));
+          _crashlytics.recordError(failure, StackTrace.current);
+        },
         (tripStops) => emit(state.copyWith(tripStops: tripStops)),
       );
     });
