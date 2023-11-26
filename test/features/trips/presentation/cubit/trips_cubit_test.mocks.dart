@@ -3,14 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:dartz/dartz.dart' as _i4;
+import 'package:dartz/dartz.dart' as _i5;
+import 'package:firebase_core/firebase_core.dart' as _i2;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i8;
+import 'package:flutter/foundation.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i6;
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i7;
 import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart'
-    as _i2;
-import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i5;
+    as _i3;
+import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -25,21 +28,224 @@ import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i5;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeFirebaseApp_0 extends _i1.SmartFake implements _i2.FirebaseApp {
+  _FakeFirebaseApp_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ListenTrips].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockListenTrips extends _i1.Mock implements _i2.ListenTrips {
+class MockListenTrips extends _i1.Mock implements _i3.ListenTrips {
   @override
-  _i3.Stream<_i4.Either<_i5.TripsFailure, List<_i6.Trip>>> call(
-          _i2.ListenTripsParams? params) =>
+  _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>> call(
+          _i3.ListenTripsParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
         returnValue:
-            _i3.Stream<_i4.Either<_i5.TripsFailure, List<_i6.Trip>>>.empty(),
+            _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>.empty(),
         returnValueForMissingStub:
-            _i3.Stream<_i4.Either<_i5.TripsFailure, List<_i6.Trip>>>.empty(),
-      ) as _i3.Stream<_i4.Either<_i5.TripsFailure, List<_i6.Trip>>>);
+            _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>.empty(),
+      ) as _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>);
+}
+
+/// A class which mocks [FirebaseCrashlytics].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirebaseCrashlytics extends _i1.Mock
+    implements _i8.FirebaseCrashlytics {
+  @override
+  _i2.FirebaseApp get app => (super.noSuchMethod(
+        Invocation.getter(#app),
+        returnValue: _FakeFirebaseApp_0(
+          this,
+          Invocation.getter(#app),
+        ),
+        returnValueForMissingStub: _FakeFirebaseApp_0(
+          this,
+          Invocation.getter(#app),
+        ),
+      ) as _i2.FirebaseApp);
+
+  @override
+  set app(_i2.FirebaseApp? _app) => super.noSuchMethod(
+        Invocation.setter(
+          #app,
+          _app,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  bool get isCrashlyticsCollectionEnabled => (super.noSuchMethod(
+        Invocation.getter(#isCrashlyticsCollectionEnabled),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  Map<dynamic, dynamic> get pluginConstants => (super.noSuchMethod(
+        Invocation.getter(#pluginConstants),
+        returnValue: <dynamic, dynamic>{},
+        returnValueForMissingStub: <dynamic, dynamic>{},
+      ) as Map<dynamic, dynamic>);
+
+  @override
+  _i4.Future<bool> checkForUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #checkForUnsentReports,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  void crash() => super.noSuchMethod(
+        Invocation.method(
+          #crash,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i4.Future<void> deleteUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUnsentReports,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<bool> didCrashOnPreviousExecution() => (super.noSuchMethod(
+        Invocation.method(
+          #didCrashOnPreviousExecution,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<void> recordError(
+    dynamic exception,
+    StackTrace? stack, {
+    dynamic reason,
+    Iterable<Object>? information = const [],
+    bool? printDetails,
+    bool? fatal = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordError,
+          [
+            exception,
+            stack,
+          ],
+          {
+            #reason: reason,
+            #information: information,
+            #printDetails: printDetails,
+            #fatal: fatal,
+          },
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> recordFlutterError(
+    _i9.FlutterErrorDetails? flutterErrorDetails, {
+    bool? fatal = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordFlutterError,
+          [flutterErrorDetails],
+          {#fatal: fatal},
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> recordFlutterFatalError(
+          _i9.FlutterErrorDetails? flutterErrorDetails) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordFlutterFatalError,
+          [flutterErrorDetails],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> log(String? message) => (super.noSuchMethod(
+        Invocation.method(
+          #log,
+          [message],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> sendUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #sendUnsentReports,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> setCrashlyticsCollectionEnabled(bool? enabled) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setCrashlyticsCollectionEnabled,
+          [enabled],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> setUserIdentifier(String? identifier) => (super.noSuchMethod(
+        Invocation.method(
+          #setUserIdentifier,
+          [identifier],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> setCustomKey(
+    String? key,
+    Object? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setCustomKey,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }

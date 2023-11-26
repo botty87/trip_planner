@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/annotations.dart';
@@ -26,6 +27,7 @@ import 'day_trip_cubit_test.mocks.dart';
   MockSpec<UpdateDayTripStartTime>(),
   MockSpec<UpdateTripStopsIndexes>(),
   MockSpec<UpdateTravelTime>(),
+  MockSpec<FirebaseCrashlytics>(),
 ])
 void main() {
   late MockUpdateDayTrip mockUpdateDayTrip;
@@ -34,6 +36,7 @@ void main() {
   late MockUpdateDayTripStartTime mockUpdateDayTripStartTime;
   late MockUpdateTripStopsIndexes mockUpdateTripStopsIndexes;
   late MockUpdateTravelTime mockUpdateTravelTime;
+  late MockFirebaseCrashlytics mockFirebaseCrashlytics;
 
   final tTrip = Trip(
     id: '1',
@@ -68,6 +71,7 @@ void main() {
     mockUpdateDayTripStartTime = MockUpdateDayTripStartTime();
     mockUpdateTripStopsIndexes = MockUpdateTripStopsIndexes();
     mockUpdateTravelTime = MockUpdateTravelTime();
+    mockFirebaseCrashlytics = MockFirebaseCrashlytics();
   });
 
   DayTripCubit getStandardDayTripCubit() {
@@ -80,6 +84,7 @@ void main() {
       updateDayTripStartTime: mockUpdateDayTripStartTime,
       updateDayTripsIndexes: mockUpdateTripStopsIndexes,
       updateTravelTime: mockUpdateTravelTime,
+      crashlytics: mockFirebaseCrashlytics,
     );
   }
 

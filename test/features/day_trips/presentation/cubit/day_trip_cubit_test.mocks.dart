@@ -3,32 +3,35 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
+import 'dart:async' as _i7;
 
 import 'package:dartz/dartz.dart' as _i3;
+import 'package:firebase_core/firebase_core.dart' as _i5;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i16;
+import 'package:flutter/material.dart' as _i17;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i2;
 import 'package:trip_planner/features/day_trips/domain/usecases/delete_day_trip.dart'
-    as _i8;
+    as _i9;
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart'
-    as _i5;
+    as _i6;
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart'
-    as _i12;
+    as _i13;
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
-    as _i7;
+    as _i8;
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i11;
+    as _i12;
 import 'package:trip_planner/features/trip_stops/domain/repositories/trip_stops_repository.dart'
     as _i4;
 import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart'
-    as _i9;
-import 'package:trip_planner/features/trip_stops/domain/usecases/update_travel_time.dart'
-    as _i14;
-import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
-    as _i13;
-import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
     as _i10;
+import 'package:trip_planner/features/trip_stops/domain/usecases/update_travel_time.dart'
+    as _i15;
+import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
+    as _i14;
+import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
+    as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -75,10 +78,20 @@ class _FakeTripStopsRepository_2 extends _i1.SmartFake
         );
 }
 
+class _FakeFirebaseApp_3 extends _i1.SmartFake implements _i5.FirebaseApp {
+  _FakeFirebaseApp_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [UpdateDayTrip].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUpdateDayTrip extends _i1.Mock implements _i5.UpdateDayTrip {
+class MockUpdateDayTrip extends _i1.Mock implements _i6.UpdateDayTrip {
   @override
   _i2.DayTripsRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -93,15 +106,15 @@ class MockUpdateDayTrip extends _i1.Mock implements _i5.UpdateDayTrip {
       ) as _i2.DayTripsRepository);
 
   @override
-  _i6.Future<_i3.Either<_i7.DayTripsFailure, void>> call(
-          _i5.UpdateDayTripParams? params) =>
+  _i7.Future<_i3.Either<_i8.DayTripsFailure, void>> call(
+          _i6.UpdateDayTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>.value(
-            _FakeEither_1<_i7.DayTripsFailure, void>(
+        returnValue: _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>.value(
+            _FakeEither_1<_i8.DayTripsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -109,21 +122,21 @@ class MockUpdateDayTrip extends _i1.Mock implements _i5.UpdateDayTrip {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>.value(
-                _FakeEither_1<_i7.DayTripsFailure, void>(
+            _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>.value(
+                _FakeEither_1<_i8.DayTripsFailure, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>);
+      ) as _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>);
 }
 
 /// A class which mocks [DeleteDayTrip].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockDeleteDayTrip extends _i1.Mock implements _i8.DeleteDayTrip {
+class MockDeleteDayTrip extends _i1.Mock implements _i9.DeleteDayTrip {
   @override
   _i2.DayTripsRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -138,15 +151,15 @@ class MockDeleteDayTrip extends _i1.Mock implements _i8.DeleteDayTrip {
       ) as _i2.DayTripsRepository);
 
   @override
-  _i6.Future<_i3.Either<_i7.DayTripsFailure, void>> call(
-          _i8.DeleteDayTripParams? params) =>
+  _i7.Future<_i3.Either<_i8.DayTripsFailure, void>> call(
+          _i9.DeleteDayTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>.value(
-            _FakeEither_1<_i7.DayTripsFailure, void>(
+        returnValue: _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>.value(
+            _FakeEither_1<_i8.DayTripsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -154,21 +167,21 @@ class MockDeleteDayTrip extends _i1.Mock implements _i8.DeleteDayTrip {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>.value(
-                _FakeEither_1<_i7.DayTripsFailure, void>(
+            _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>.value(
+                _FakeEither_1<_i8.DayTripsFailure, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>);
+      ) as _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>);
 }
 
 /// A class which mocks [ListenTripStops].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockListenTripStops extends _i1.Mock implements _i9.ListenTripStops {
+class MockListenTripStops extends _i1.Mock implements _i10.ListenTripStops {
   @override
   _i4.TripStopsRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -183,25 +196,25 @@ class MockListenTripStops extends _i1.Mock implements _i9.ListenTripStops {
       ) as _i4.TripStopsRepository);
 
   @override
-  _i6.Stream<_i3.Either<_i10.TripStopsFailure, List<_i11.TripStop>>> call(
-          _i9.ListenTripStopsParams? params) =>
+  _i7.Stream<_i3.Either<_i11.TripStopsFailure, List<_i12.TripStop>>> call(
+          _i10.ListenTripStopsParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i6.Stream<
-            _i3.Either<_i10.TripStopsFailure, List<_i11.TripStop>>>.empty(),
-        returnValueForMissingStub: _i6.Stream<
-            _i3.Either<_i10.TripStopsFailure, List<_i11.TripStop>>>.empty(),
-      ) as _i6.Stream<_i3.Either<_i10.TripStopsFailure, List<_i11.TripStop>>>);
+        returnValue: _i7.Stream<
+            _i3.Either<_i11.TripStopsFailure, List<_i12.TripStop>>>.empty(),
+        returnValueForMissingStub: _i7.Stream<
+            _i3.Either<_i11.TripStopsFailure, List<_i12.TripStop>>>.empty(),
+      ) as _i7.Stream<_i3.Either<_i11.TripStopsFailure, List<_i12.TripStop>>>);
 }
 
 /// A class which mocks [UpdateDayTripStartTime].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUpdateDayTripStartTime extends _i1.Mock
-    implements _i12.UpdateDayTripStartTime {
+    implements _i13.UpdateDayTripStartTime {
   @override
   _i2.DayTripsRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -216,15 +229,15 @@ class MockUpdateDayTripStartTime extends _i1.Mock
       ) as _i2.DayTripsRepository);
 
   @override
-  _i6.Future<_i3.Either<_i7.DayTripsFailure, void>> call(
-          _i12.UpdateDayTripStartTimeParams? params) =>
+  _i7.Future<_i3.Either<_i8.DayTripsFailure, void>> call(
+          _i13.UpdateDayTripStartTimeParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>.value(
-            _FakeEither_1<_i7.DayTripsFailure, void>(
+        returnValue: _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>.value(
+            _FakeEither_1<_i8.DayTripsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -232,32 +245,32 @@ class MockUpdateDayTripStartTime extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>.value(
-                _FakeEither_1<_i7.DayTripsFailure, void>(
+            _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>.value(
+                _FakeEither_1<_i8.DayTripsFailure, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i6.Future<_i3.Either<_i7.DayTripsFailure, void>>);
+      ) as _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>);
 }
 
 /// A class which mocks [UpdateTripStopsIndexes].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUpdateTripStopsIndexes extends _i1.Mock
-    implements _i13.UpdateTripStopsIndexes {
+    implements _i14.UpdateTripStopsIndexes {
   @override
-  _i6.Future<_i3.Either<_i10.TripStopsFailure, void>> call(
-          _i13.UpdateTripStopsIndexesParams? params) =>
+  _i7.Future<_i3.Either<_i11.TripStopsFailure, void>> call(
+          _i14.UpdateTripStopsIndexesParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>.value(
-            _FakeEither_1<_i10.TripStopsFailure, void>(
+        returnValue: _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>.value(
+            _FakeEither_1<_i11.TripStopsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -265,31 +278,31 @@ class MockUpdateTripStopsIndexes extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>.value(
-                _FakeEither_1<_i10.TripStopsFailure, void>(
+            _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>.value(
+                _FakeEither_1<_i11.TripStopsFailure, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>);
+      ) as _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>);
 }
 
 /// A class which mocks [UpdateTravelTime].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUpdateTravelTime extends _i1.Mock implements _i14.UpdateTravelTime {
+class MockUpdateTravelTime extends _i1.Mock implements _i15.UpdateTravelTime {
   @override
-  _i6.Future<_i3.Either<_i10.TripStopsFailure, void>> call(
-          _i14.UpdateTravelTimeParams? params) =>
+  _i7.Future<_i3.Either<_i11.TripStopsFailure, void>> call(
+          _i15.UpdateTravelTimeParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>.value(
-            _FakeEither_1<_i10.TripStopsFailure, void>(
+        returnValue: _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>.value(
+            _FakeEither_1<_i11.TripStopsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -297,13 +310,206 @@ class MockUpdateTravelTime extends _i1.Mock implements _i14.UpdateTravelTime {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>.value(
-                _FakeEither_1<_i10.TripStopsFailure, void>(
+            _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>.value(
+                _FakeEither_1<_i11.TripStopsFailure, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i6.Future<_i3.Either<_i10.TripStopsFailure, void>>);
+      ) as _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>);
+}
+
+/// A class which mocks [FirebaseCrashlytics].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirebaseCrashlytics extends _i1.Mock
+    implements _i16.FirebaseCrashlytics {
+  @override
+  _i5.FirebaseApp get app => (super.noSuchMethod(
+        Invocation.getter(#app),
+        returnValue: _FakeFirebaseApp_3(
+          this,
+          Invocation.getter(#app),
+        ),
+        returnValueForMissingStub: _FakeFirebaseApp_3(
+          this,
+          Invocation.getter(#app),
+        ),
+      ) as _i5.FirebaseApp);
+
+  @override
+  set app(_i5.FirebaseApp? _app) => super.noSuchMethod(
+        Invocation.setter(
+          #app,
+          _app,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  bool get isCrashlyticsCollectionEnabled => (super.noSuchMethod(
+        Invocation.getter(#isCrashlyticsCollectionEnabled),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  Map<dynamic, dynamic> get pluginConstants => (super.noSuchMethod(
+        Invocation.getter(#pluginConstants),
+        returnValue: <dynamic, dynamic>{},
+        returnValueForMissingStub: <dynamic, dynamic>{},
+      ) as Map<dynamic, dynamic>);
+
+  @override
+  _i7.Future<bool> checkForUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #checkForUnsentReports,
+          [],
+        ),
+        returnValue: _i7.Future<bool>.value(false),
+        returnValueForMissingStub: _i7.Future<bool>.value(false),
+      ) as _i7.Future<bool>);
+
+  @override
+  void crash() => super.noSuchMethod(
+        Invocation.method(
+          #crash,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i7.Future<void> deleteUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUnsentReports,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<bool> didCrashOnPreviousExecution() => (super.noSuchMethod(
+        Invocation.method(
+          #didCrashOnPreviousExecution,
+          [],
+        ),
+        returnValue: _i7.Future<bool>.value(false),
+        returnValueForMissingStub: _i7.Future<bool>.value(false),
+      ) as _i7.Future<bool>);
+
+  @override
+  _i7.Future<void> recordError(
+    dynamic exception,
+    StackTrace? stack, {
+    dynamic reason,
+    Iterable<Object>? information = const [],
+    bool? printDetails,
+    bool? fatal = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordError,
+          [
+            exception,
+            stack,
+          ],
+          {
+            #reason: reason,
+            #information: information,
+            #printDetails: printDetails,
+            #fatal: fatal,
+          },
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> recordFlutterError(
+    _i17.FlutterErrorDetails? flutterErrorDetails, {
+    bool? fatal = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordFlutterError,
+          [flutterErrorDetails],
+          {#fatal: fatal},
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> recordFlutterFatalError(
+          _i17.FlutterErrorDetails? flutterErrorDetails) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordFlutterFatalError,
+          [flutterErrorDetails],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> log(String? message) => (super.noSuchMethod(
+        Invocation.method(
+          #log,
+          [message],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> sendUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #sendUnsentReports,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> setCrashlyticsCollectionEnabled(bool? enabled) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setCrashlyticsCollectionEnabled,
+          [enabled],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> setUserIdentifier(String? identifier) => (super.noSuchMethod(
+        Invocation.method(
+          #setUserIdentifier,
+          [identifier],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> setCustomKey(
+    String? key,
+    Object? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setCustomKey,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
 }

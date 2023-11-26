@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -13,10 +14,11 @@ import 'trips_cubit_test.mocks.dart';
 
 class MockUserCubit extends MockCubit<UserState> implements UserCubit {}
 
-@GenerateNiceMocks([MockSpec<ListenTrips>()])
+@GenerateNiceMocks([MockSpec<ListenTrips>(), MockSpec<FirebaseCrashlytics>()])
 void main() {
   late MockUserCubit mockUserCubit;
   late MockListenTrips mockListenTrips;
+  late MockFirebaseCrashlytics mockFirebaseCrashlytics;
 
   final trips = [
     Trip(
@@ -32,6 +34,7 @@ void main() {
   setUp(() {
     mockUserCubit = MockUserCubit();
     mockListenTrips = MockListenTrips();
+    mockFirebaseCrashlytics = MockFirebaseCrashlytics();
   });
 
   blocTest<TripsCubit, TripsState>(
@@ -44,7 +47,7 @@ void main() {
         initialState: UserStateLoggedIn(user: User(id: '1', email: '', name: '')),
       );
     },
-    build: () => TripsCubit(mockListenTrips, mockUserCubit),
+    build: () => TripsCubit(mockListenTrips, mockUserCubit, mockFirebaseCrashlytics),
     act: (cubit) => cubit,
     expect: () => [TripsState(trips: trips, isLoading: false)],
   );
