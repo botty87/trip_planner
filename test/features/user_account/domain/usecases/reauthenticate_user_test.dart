@@ -30,11 +30,11 @@ void main() {
 
   test('should return left(UserFailures()) when reauthenticateUser throws', () async {
     when(mockUserRepository.reauthenticateUser(email: anyNamed('email'), password: anyNamed('password')))
-        .thenAnswer((_) async => left(const UserFailures()));
+        .thenAnswer((_) async => left(const UserFailures.unknownError()));
 
     // act
     final result = await usecase(const ReauthenticateUserParams(email: tEmail, password: tPassword));
     // assert
-    expect(result, equals(left(const UserFailures())));
+    expect(result, equals(left(const UserFailures.unknownError())));
   });
 }

@@ -44,11 +44,11 @@ void main() {
       name: anyNamed('name'),
       email: anyNamed('email'),
       password: anyNamed('password'),
-    )).thenAnswer((_) async => left(const UserFailures()));
+    )).thenAnswer((_) async => left(const UserFailures.unknownError()));
 
     final result = await usecase(params);
 
-    expect(result, equals(left(const UserFailures())));
+    expect(result, equals(left(const UserFailures.unknownError())));
     verify(mockUserRepository.updateUserDetails(
       name: params.name,
       email: params.email,

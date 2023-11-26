@@ -13,12 +13,35 @@ final class UserRepositoryImpl implements UserRepository {
 
   UserRepositoryImpl(this.userDataSource);
 
+  UserFailures onFirebaseAuthException(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'email-already-in-use':
+        return const UserFailures.emailAlreadyInUse();
+      case 'weak-password':
+        return const UserFailures.weakPassword();
+      case 'network-request-failed':
+        return const UserFailures.networkRequestFailed();
+      case 'user-not-found':
+        return const UserFailures.userNotFound();
+      case 'wrong-password':
+        return const UserFailures.wrongPassword();
+      case 'too-many-requests':
+        return const UserFailures.tooManyRequests();
+      case 'user-disabled':
+        return const UserFailures.userDisabled();
+      case 'invalid-email':
+        return const UserFailures.invalidEmail();
+      default:
+        return UserFailures.unknownError(message: e.message);
+    }
+  }
+
   @override
   Stream<Either<UserFailures, User?>> listenUser() async* {
     try {
       yield* userDataSource.user.map((user) => right(user));
     } catch (e) {
-      yield left(const UserFailures());
+      yield left(const UserFailures.unknownError());
     }
   }
 
@@ -29,18 +52,9 @@ final class UserRepositoryImpl implements UserRepository {
       await userDataSource.registerUser(email: email, password: password, name: name);
       return right(null);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'email-already-in-use':
-          return left(const UserFailures(code: UserFailuresCode.emailAlreadyInUse));
-        case 'weak-password':
-          return left(const UserFailures(code: UserFailuresCode.weakPassword));
-        case 'network-request-failed':
-          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
-        default:
-          return left(const UserFailures());
-      }
+      return left(onFirebaseAuthException(e));
     } catch (e) {
-      return left(const UserFailures());
+      return left(const UserFailures.unknownError());
     }
   }
 
@@ -51,18 +65,9 @@ final class UserRepositoryImpl implements UserRepository {
       await userDataSource.loginUser(email: email, password: password);
       return right(null);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'user-not-found':
-          return left(const UserFailures(code: UserFailuresCode.userNotFound));
-        case 'wrong-password':
-          return left(const UserFailures(code: UserFailuresCode.wrongPassword));
-        case 'network-request-failed':
-          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
-        default:
-          return left(const UserFailures());
-      }
+      return left(onFirebaseAuthException(e));
     } catch (e) {
-      return left(const UserFailures());
+      return left(const UserFailures.unknownError());
     }
   }
 
@@ -72,16 +77,9 @@ final class UserRepositoryImpl implements UserRepository {
       await userDataSource.recoverPassword(email);
       return right(null);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'user-not-found':
-          return left(const UserFailures(code: UserFailuresCode.userNotFound));
-        case 'network-request-failed':
-          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
-        default:
-          return left(const UserFailures());
-      }
+      return left(onFirebaseAuthException(e));
     } catch (e) {
-      return left(const UserFailures());
+      return left(const UserFailures.unknownError());
     }
   }
 
@@ -91,14 +89,9 @@ final class UserRepositoryImpl implements UserRepository {
       await userDataSource.logoutUser();
       return right(null);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'network-request-failed':
-          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
-        default:
-          return left(const UserFailures());
-      }
+      return left(onFirebaseAuthException(e));
     } catch (e) {
-      return left(const UserFailures());
+      return left(const UserFailures.unknownError());
     }
   }
 
@@ -109,54 +102,34 @@ final class UserRepositoryImpl implements UserRepository {
       await userDataSource.reauthenticateUser(email: email, password: password);
       return right(null);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'user-not-found':
-          return left(const UserFailures(code: UserFailuresCode.userNotFound));
-        case 'wrong-password':
-          return left(const UserFailures(code: UserFailuresCode.wrongPassword));
-        case 'network-request-failed':
-          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
-        case 'invalid-email':
-          return left(const UserFailures(code: UserFailuresCode.invalidEmail));
-        default:
-          return left(const UserFailures());
-      }
+      return left(onFirebaseAuthException(e));
     } catch (e) {
-      return left(const UserFailures());
+      return left(const UserFailures.unknownError());
     }
   }
-  
+
   @override
-  Future<Either<UserFailures, void>> updateUserDetails({required String? name, required String? email, required String? password}) async {
+  Future<Either<UserFailures, void>> updateUserDetails(
+      {required String? name, required String? email, required String? password}) async {
     try {
       await userDataSource.updateUserDetails(name: name, email: email, password: password);
       return right(null);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'network-request-failed':
-          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
-        default:
-          return left(const UserFailures());
-      }
+      return left(onFirebaseAuthException(e));
     } catch (e) {
-      return left(const UserFailures());
+      return left(const UserFailures.unknownError());
     }
   }
-  
+
   @override
   Future<Either<UserFailures, void>> deleteUser() async {
     try {
       await userDataSource.deleteUser();
       return right(null);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'network-request-failed':
-          return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
-        default:
-          return left(const UserFailures());
-      }
+      return left(onFirebaseAuthException(e));
     } catch (e) {
-      return left(const UserFailures());
+      return left(const UserFailures.unknownError());
     }
   }
 }

@@ -49,7 +49,7 @@ void main() {
       // act
       final result = await usecase(const DeleteUserParams(userId: tUserId));
       // assert
-      expect(result, equals(left(const UserFailures(code: UserFailuresCode.networkRequestFailed))));
+      expect(result, equals(left(const UserFailures.networkRequestFailed())));
     },
   );
 
@@ -76,7 +76,7 @@ void main() {
       // act
       final result = await usecase(const DeleteUserParams(userId: tUserId));
       // assert
-      expect(result, equals(left(const UserFailures())));
+      expect(result, equals(left(const UserFailures.unknownError())));
     },
   );
 
@@ -87,11 +87,11 @@ void main() {
       when(mockInternetConnection.hasInternetAccess).thenAnswer((_) async => true);
       when(mockTripsRepository.deleteAllTrips(any))
           .thenAnswer((_) async => right(null));
-      when(mockUserRepository.deleteUser()).thenAnswer((_) async => left(const UserFailures()));
+      when(mockUserRepository.deleteUser()).thenAnswer((_) async => left(const UserFailures.unknownError()));
       // act
       final result = await usecase(const DeleteUserParams(userId: tUserId));
       // assert
-      expect(result, equals(left(const UserFailures())));
+      expect(result, equals(left(const UserFailures.unknownError())));
     },
   );
 }

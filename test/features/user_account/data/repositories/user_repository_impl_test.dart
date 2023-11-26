@@ -49,7 +49,7 @@ void main() {
       final result = userRepositoryImpl.listenUser();
 
       // assert
-      await expectLater(result, emits(left(const UserFailures())));
+      await expectLater(result, emits(left(const UserFailures.unknownError())));
       verify(mockUserDataSource.user);
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -94,7 +94,7 @@ void main() {
       final result = await userRepositoryImpl.loginUser(email: '', password: '');
 
       // assert
-      expect(result, left(const UserFailures()));
+      expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.loginUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -123,7 +123,7 @@ void main() {
       final result = await userRepositoryImpl.recoverPassword('');
 
       // assert
-      expect(result, left(const UserFailures()));
+      expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.recoverPassword(''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -151,7 +151,7 @@ void main() {
       final result = await userRepositoryImpl.logoutUser();
 
       // assert
-      expect(result, left(const UserFailures()));
+      expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.logoutUser());
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -181,7 +181,7 @@ void main() {
       final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
 
       // assert
-      expect(result, left(const UserFailures(code: UserFailuresCode.userNotFound)));
+      expect(result, left(const UserFailures.userNotFound()));
       verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -195,7 +195,7 @@ void main() {
       final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
 
       // assert
-      expect(result, left(const UserFailures(code: UserFailuresCode.wrongPassword)));
+      expect(result, left(const UserFailures.wrongPassword()));
       verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -209,7 +209,7 @@ void main() {
       final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
 
       // assert
-      expect(result, left(const UserFailures(code: UserFailuresCode.networkRequestFailed)));
+      expect(result, left(const UserFailures.networkRequestFailed()));
       verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -222,7 +222,7 @@ void main() {
       final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
 
       // assert
-      expect(result, left(const UserFailures()));
+      expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -252,7 +252,7 @@ void main() {
       final result = await userRepositoryImpl.updateUserDetails(name: '', email: '', password: '');
 
       // assert
-      expect(result, left(const UserFailures()));
+      expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.updateUserDetails(name: '', email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
     });
@@ -280,7 +280,7 @@ void main() {
       final result = await userRepositoryImpl.deleteUser();
 
       // assert
-      expect(result, left(const UserFailures()));
+      expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.deleteUser());
       verifyNoMoreInteractions(mockUserDataSource);
     });

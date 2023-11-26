@@ -16,10 +16,85 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserFailures {
-  UserFailuresCode? get code => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $UserFailuresCopyWith<UserFailures> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -28,8 +103,6 @@ abstract class $UserFailuresCopyWith<$Res> {
   factory $UserFailuresCopyWith(
           UserFailures value, $Res Function(UserFailures) then) =
       _$UserFailuresCopyWithImpl<$Res, UserFailures>;
-  @useResult
-  $Res call({UserFailuresCode? code});
 }
 
 /// @nodoc
@@ -41,94 +114,1341 @@ class _$UserFailuresCopyWithImpl<$Res, $Val extends UserFailures>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? code = freezed,
-  }) {
-    return _then(_value.copyWith(
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as UserFailuresCode?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$UserFailuresImplCopyWith<$Res>
-    implements $UserFailuresCopyWith<$Res> {
-  factory _$$UserFailuresImplCopyWith(
-          _$UserFailuresImpl value, $Res Function(_$UserFailuresImpl) then) =
-      __$$UserFailuresImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({UserFailuresCode? code});
+abstract class _$$EmailAlreadyInUseImplCopyWith<$Res> {
+  factory _$$EmailAlreadyInUseImplCopyWith(_$EmailAlreadyInUseImpl value,
+          $Res Function(_$EmailAlreadyInUseImpl) then) =
+      __$$EmailAlreadyInUseImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserFailuresImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$UserFailuresImpl>
-    implements _$$UserFailuresImplCopyWith<$Res> {
-  __$$UserFailuresImplCopyWithImpl(
-      _$UserFailuresImpl _value, $Res Function(_$UserFailuresImpl) _then)
+class __$$EmailAlreadyInUseImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$EmailAlreadyInUseImpl>
+    implements _$$EmailAlreadyInUseImplCopyWith<$Res> {
+  __$$EmailAlreadyInUseImplCopyWithImpl(_$EmailAlreadyInUseImpl _value,
+      $Res Function(_$EmailAlreadyInUseImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? code = freezed,
-  }) {
-    return _then(_$UserFailuresImpl(
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as UserFailuresCode?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$UserFailuresImpl extends _UserFailures {
-  const _$UserFailuresImpl({this.code}) : super._();
-
-  @override
-  final UserFailuresCode? code;
+class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
+  const _$EmailAlreadyInUseImpl() : super._();
 
   @override
   String toString() {
-    return 'UserFailures(code: $code)';
+    return 'UserFailures.emailAlreadyInUse()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EmailAlreadyInUseImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return emailAlreadyInUse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return emailAlreadyInUse?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (emailAlreadyInUse != null) {
+      return emailAlreadyInUse();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return emailAlreadyInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return emailAlreadyInUse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (emailAlreadyInUse != null) {
+      return emailAlreadyInUse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmailAlreadyInUse extends UserFailures {
+  const factory _EmailAlreadyInUse() = _$EmailAlreadyInUseImpl;
+  const _EmailAlreadyInUse._() : super._();
+}
+
+/// @nodoc
+abstract class _$$NetworkRequestFailedImplCopyWith<$Res> {
+  factory _$$NetworkRequestFailedImplCopyWith(_$NetworkRequestFailedImpl value,
+          $Res Function(_$NetworkRequestFailedImpl) then) =
+      __$$NetworkRequestFailedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NetworkRequestFailedImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$NetworkRequestFailedImpl>
+    implements _$$NetworkRequestFailedImplCopyWith<$Res> {
+  __$$NetworkRequestFailedImplCopyWithImpl(_$NetworkRequestFailedImpl _value,
+      $Res Function(_$NetworkRequestFailedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
+  const _$NetworkRequestFailedImpl() : super._();
+
+  @override
+  String toString() {
+    return 'UserFailures.networkRequestFailed()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserFailuresImpl &&
-            (identical(other.code, code) || other.code == code));
+            other is _$NetworkRequestFailedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code);
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return networkRequestFailed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return networkRequestFailed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (networkRequestFailed != null) {
+      return networkRequestFailed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return networkRequestFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return networkRequestFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (networkRequestFailed != null) {
+      return networkRequestFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NetworkRequestFailed extends UserFailures {
+  const factory _NetworkRequestFailed() = _$NetworkRequestFailedImpl;
+  const _NetworkRequestFailed._() : super._();
+}
+
+/// @nodoc
+abstract class _$$WeakPasswordImplCopyWith<$Res> {
+  factory _$$WeakPasswordImplCopyWith(
+          _$WeakPasswordImpl value, $Res Function(_$WeakPasswordImpl) then) =
+      __$$WeakPasswordImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$WeakPasswordImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$WeakPasswordImpl>
+    implements _$$WeakPasswordImplCopyWith<$Res> {
+  __$$WeakPasswordImplCopyWithImpl(
+      _$WeakPasswordImpl _value, $Res Function(_$WeakPasswordImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$WeakPasswordImpl extends _WeakPassword {
+  const _$WeakPasswordImpl() : super._();
+
+  @override
+  String toString() {
+    return 'UserFailures.weakPassword()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$WeakPasswordImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return weakPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return weakPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (weakPassword != null) {
+      return weakPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return weakPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return weakPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (weakPassword != null) {
+      return weakPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WeakPassword extends UserFailures {
+  const factory _WeakPassword() = _$WeakPasswordImpl;
+  const _WeakPassword._() : super._();
+}
+
+/// @nodoc
+abstract class _$$UserNotFoundImplCopyWith<$Res> {
+  factory _$$UserNotFoundImplCopyWith(
+          _$UserNotFoundImpl value, $Res Function(_$UserNotFoundImpl) then) =
+      __$$UserNotFoundImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserNotFoundImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$UserNotFoundImpl>
+    implements _$$UserNotFoundImplCopyWith<$Res> {
+  __$$UserNotFoundImplCopyWithImpl(
+      _$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UserNotFoundImpl extends _UserNotFound {
+  const _$UserNotFoundImpl() : super._();
+
+  @override
+  String toString() {
+    return 'UserFailures.userNotFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return userNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return userNotFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (userNotFound != null) {
+      return userNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return userNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return userNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (userNotFound != null) {
+      return userNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNotFound extends UserFailures {
+  const factory _UserNotFound() = _$UserNotFoundImpl;
+  const _UserNotFound._() : super._();
+}
+
+/// @nodoc
+abstract class _$$TooManyRequestsImplCopyWith<$Res> {
+  factory _$$TooManyRequestsImplCopyWith(_$TooManyRequestsImpl value,
+          $Res Function(_$TooManyRequestsImpl) then) =
+      __$$TooManyRequestsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TooManyRequestsImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$TooManyRequestsImpl>
+    implements _$$TooManyRequestsImplCopyWith<$Res> {
+  __$$TooManyRequestsImplCopyWithImpl(
+      _$TooManyRequestsImpl _value, $Res Function(_$TooManyRequestsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$TooManyRequestsImpl extends _TooManyRequests {
+  const _$TooManyRequestsImpl() : super._();
+
+  @override
+  String toString() {
+    return 'UserFailures.tooManyRequests()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$TooManyRequestsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return tooManyRequests();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return tooManyRequests?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequests != null) {
+      return tooManyRequests();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return tooManyRequests(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return tooManyRequests?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequests != null) {
+      return tooManyRequests(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TooManyRequests extends UserFailures {
+  const factory _TooManyRequests() = _$TooManyRequestsImpl;
+  const _TooManyRequests._() : super._();
+}
+
+/// @nodoc
+abstract class _$$UserDisabledImplCopyWith<$Res> {
+  factory _$$UserDisabledImplCopyWith(
+          _$UserDisabledImpl value, $Res Function(_$UserDisabledImpl) then) =
+      __$$UserDisabledImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserDisabledImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$UserDisabledImpl>
+    implements _$$UserDisabledImplCopyWith<$Res> {
+  __$$UserDisabledImplCopyWithImpl(
+      _$UserDisabledImpl _value, $Res Function(_$UserDisabledImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UserDisabledImpl extends _UserDisabled {
+  const _$UserDisabledImpl() : super._();
+
+  @override
+  String toString() {
+    return 'UserFailures.userDisabled()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserDisabledImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return userDisabled();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return userDisabled?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (userDisabled != null) {
+      return userDisabled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return userDisabled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return userDisabled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (userDisabled != null) {
+      return userDisabled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserDisabled extends UserFailures {
+  const factory _UserDisabled() = _$UserDisabledImpl;
+  const _UserDisabled._() : super._();
+}
+
+/// @nodoc
+abstract class _$$WrongPasswordImplCopyWith<$Res> {
+  factory _$$WrongPasswordImplCopyWith(
+          _$WrongPasswordImpl value, $Res Function(_$WrongPasswordImpl) then) =
+      __$$WrongPasswordImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$WrongPasswordImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$WrongPasswordImpl>
+    implements _$$WrongPasswordImplCopyWith<$Res> {
+  __$$WrongPasswordImplCopyWithImpl(
+      _$WrongPasswordImpl _value, $Res Function(_$WrongPasswordImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$WrongPasswordImpl extends _WrongPassword {
+  const _$WrongPasswordImpl() : super._();
+
+  @override
+  String toString() {
+    return 'UserFailures.wrongPassword()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$WrongPasswordImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return wrongPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return wrongPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (wrongPassword != null) {
+      return wrongPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return wrongPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return wrongPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (wrongPassword != null) {
+      return wrongPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WrongPassword extends UserFailures {
+  const factory _WrongPassword() = _$WrongPasswordImpl;
+  const _WrongPassword._() : super._();
+}
+
+/// @nodoc
+abstract class _$$InvalidEmailImplCopyWith<$Res> {
+  factory _$$InvalidEmailImplCopyWith(
+          _$InvalidEmailImpl value, $Res Function(_$InvalidEmailImpl) then) =
+      __$$InvalidEmailImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InvalidEmailImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$InvalidEmailImpl>
+    implements _$$InvalidEmailImplCopyWith<$Res> {
+  __$$InvalidEmailImplCopyWithImpl(
+      _$InvalidEmailImpl _value, $Res Function(_$InvalidEmailImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InvalidEmailImpl extends _InvalidEmail {
+  const _$InvalidEmailImpl() : super._();
+
+  @override
+  String toString() {
+    return 'UserFailures.invalidEmail()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InvalidEmailImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return invalidEmail();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return invalidEmail?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (invalidEmail != null) {
+      return invalidEmail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return invalidEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return invalidEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (invalidEmail != null) {
+      return invalidEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidEmail extends UserFailures {
+  const factory _InvalidEmail() = _$InvalidEmailImpl;
+  const _InvalidEmail._() : super._();
+}
+
+/// @nodoc
+abstract class _$$UnknownErrorImplCopyWith<$Res> {
+  factory _$$UnknownErrorImplCopyWith(
+          _$UnknownErrorImpl value, $Res Function(_$UnknownErrorImpl) then) =
+      __$$UnknownErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$UnknownErrorImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$UnknownErrorImpl>
+    implements _$$UnknownErrorImplCopyWith<$Res> {
+  __$$UnknownErrorImplCopyWithImpl(
+      _$UnknownErrorImpl _value, $Res Function(_$UnknownErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$UnknownErrorImpl(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnknownErrorImpl extends _UnknownError {
+  const _$UnknownErrorImpl({this.message}) : super._();
+
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'UserFailures.unknownError(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnknownErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserFailuresImplCopyWith<_$UserFailuresImpl> get copyWith =>
-      __$$UserFailuresImplCopyWithImpl<_$UserFailuresImpl>(this, _$identity);
+  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
+      __$$UnknownErrorImplCopyWithImpl<_$UnknownErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+  }) {
+    return unknownError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+  }) {
+    return unknownError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (unknownError != null) {
+      return unknownError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+  }) {
+    return unknownError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+  }) {
+    return unknownError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (unknownError != null) {
+      return unknownError(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _UserFailures extends UserFailures {
-  const factory _UserFailures({final UserFailuresCode? code}) =
-      _$UserFailuresImpl;
-  const _UserFailures._() : super._();
+abstract class _UnknownError extends UserFailures {
+  const factory _UnknownError({final String? message}) = _$UnknownErrorImpl;
+  const _UnknownError._() : super._();
 
-  @override
-  UserFailuresCode? get code;
-  @override
+  String? get message;
   @JsonKey(ignore: true)
-  _$$UserFailuresImplCopyWith<_$UserFailuresImpl> get copyWith =>
+  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

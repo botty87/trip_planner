@@ -102,5 +102,7 @@
     "deleteAccountConfirmation" : "Are you sure you want to delete your account? The action is irreversible and all your data will be lost!",
     "emailEmpty" : "Email can't be empty",
     "dataLoadError" : "Error loading data. If you continue to have problems, please restart the app.",
-    "error" : "Error"
+    "error" : "Error",
+    "tooManyRequests" : "Too many requests. Please try again later.",
+    "userDisabled" : "User disabled. Please contact support."
 }

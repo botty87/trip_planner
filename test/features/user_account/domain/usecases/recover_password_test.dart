@@ -33,14 +33,14 @@ void main() {
   test('should return a failure when there is an error', () async {
     // arrange
     when(mockUserRepository.recoverPassword('')).thenAnswer((_) async {
-      return left(const UserFailures());
+      return left(const UserFailures.unknownError());
     });
 
     // act
     final result = await usecase(const RecoverPasswordParams(email: ''));
 
     // assert
-    expect(result, left(const UserFailures()));
+    expect(result, left(const UserFailures.unknownError()));
     verify(mockUserRepository.recoverPassword(''));
     verifyNoMoreInteractions(mockUserRepository);
   });

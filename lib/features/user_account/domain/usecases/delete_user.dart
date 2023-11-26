@@ -18,11 +18,11 @@ class DeleteUser implements UseCase<void, DeleteUserParams> {
   @override
   Future<Either<UserFailures, void>> call(DeleteUserParams params) async {
     if (!(await internetConnection.hasInternetAccess)) {
-      return left(const UserFailures(code: UserFailuresCode.networkRequestFailed));
+      return left(const UserFailures.networkRequestFailed());
     }
     final deleteTripsResult = await tripsRepository.deleteAllTrips(params.userId);
     return deleteTripsResult.fold(
-      (failure) => left(const UserFailures()),
+      (failure) => left(UserFailures.unknownError(message: failure.message)),
       (_) => repository.deleteUser(),
     );
   }

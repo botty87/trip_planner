@@ -163,7 +163,7 @@ void main() {
     blocTest<LoginSignupCubit, LoginSignupState>(
       'should emit authentication error when registerUser returns an error',
       setUp: () {
-        when(mockRegisterUser(any)).thenAnswer((_) async => left(const UserFailures()));
+        when(mockRegisterUser(any)).thenAnswer((_) async => left(const UserFailures.unknownError()));
       },
       seed: () => LoginSignupState(
           email: 'email@email.it', password: 'password', confirmPassword: 'password', name: 'name'),
@@ -195,7 +195,7 @@ void main() {
       'should emit user not found when email is invalid',
       setUp: () {
         when(mockLoginUser(any))
-            .thenAnswer((_) async => left(const UserFailures(code: UserFailuresCode.userNotFound)));
+            .thenAnswer((_) async => left(const UserFailures.userNotFound()));
       },
       seed: () => LoginSignupState(email: 'email'),
       build: () => LoginSignupCubit(
@@ -230,7 +230,7 @@ void main() {
     blocTest<LoginSignupCubit, LoginSignupState>(
       'should emit authentication error when loginUser returns an error',
       setUp: () {
-        when(mockLoginUser(any)).thenAnswer((_) async => left(const UserFailures()));
+        when(mockLoginUser(any)).thenAnswer((_) async => left(const UserFailures.unknownError()));
       },
       seed: () => LoginSignupState(email: 'email', password: 'password'),
       build: () => LoginSignupCubit(
@@ -254,7 +254,7 @@ void main() {
       'should user not found error when email is invalid',
       setUp: () {
         when(mockRecoverPassword(any))
-            .thenAnswer((_) async => left(const UserFailures(code: UserFailuresCode.userNotFound)));
+            .thenAnswer((_) async => left(const UserFailures.userNotFound()));
       },
       seed: () => LoginSignupState(email: 'email'),
       build: () => LoginSignupCubit(

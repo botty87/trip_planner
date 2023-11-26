@@ -28,7 +28,7 @@ abstract interface class UserDataSource {
 final class UserDataSourceImpl implements UserDataSource {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
-  
+
   final StreamController<User?> _userStreamController = StreamController<User?>();
 
   @override
@@ -86,25 +86,28 @@ final class UserDataSourceImpl implements UserDataSource {
 
   @override
   updateUserDetails({String? name, String? email, String? password}) async {
+    final batch = firebaseFirestore.batch();
+
+    final userDoc = firebaseFirestore.collection('users').doc(firebaseAuth.currentUser!.uid);
+
     if (name != null) {
       await firebaseAuth.currentUser!.updateDisplayName(name);
+      batch.set(userDoc, {'name': name}, SetOptions(merge: true));
     }
     if (email != null) {
       await firebaseAuth.currentUser!.updateEmail(email);
+      batch.set(userDoc, {'email': email}, SetOptions(merge: true));
     }
     if (password != null) {
       await firebaseAuth.currentUser!.updatePassword(password);
     }
 
-    await _usersCollection.doc(firebaseAuth.currentUser!.uid).update({
-      'email': email,
-      'name': name,
-    });
+    await batch.commit();
   }
 
   @override
   deleteUser() async {
-    await _usersCollection.doc(firebaseAuth.currentUser!.uid).delete(); 
+    await _usersCollection.doc(firebaseAuth.currentUser!.uid).delete();
     await firebaseAuth.currentUser!.delete();
   }
 }

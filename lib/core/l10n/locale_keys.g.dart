@@ -102,5 +102,7 @@ abstract class  LocaleKeys {
   static const emailEmpty = 'emailEmpty';
   static const dataLoadError = 'dataLoadError';
   static const error = 'error';
+  static const tooManyRequests = 'tooManyRequests';
+  static const userDisabled = 'userDisabled';
 
 }

@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAwWfCJktwEdd4nNZGDO7mm6nwgYNVAX5I',
-    appId: '1:178262421662:android:974e0c6c011f0199e10b8f',
+    appId: '1:178262421662:android:4c70dd3491bfbfbb',
     messagingSenderId: '178262421662',
     projectId: 'trip-planner-11ffe',
     databaseURL: 'https://trip-planner-11ffe.firebaseio.com',

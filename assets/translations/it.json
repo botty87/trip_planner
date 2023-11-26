@@ -103,5 +103,7 @@
     "deleteAccountConfirmation" : "Sei sicuro di voler eliminare l'account? L'operazione è irreversibile e tutti i tuoi dati verranno persi!",
     "emailEmpty" : "L'email non può essere vuota",
     "dataLoadError" : "Errore nel caricamento dei dati. Se il problema persiste, riavvia l'applicazione.",
-    "error" : "Errore"
+    "error" : "Errore",
+    "tooManyRequests" : "Troppe richieste. Riprova più tardi.",
+    "userDisabled" : "Utente disabilitato"
 }
