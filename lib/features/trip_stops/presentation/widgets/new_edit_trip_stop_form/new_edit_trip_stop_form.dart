@@ -105,8 +105,8 @@ class NewEditTripStopForm extends HookWidget {
             }),
         Expanded(
           child: SafeArea(
-            minimum: defaultPagePadding,
             child: SingleChildScrollView(
+              padding: defaultPagePadding,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -127,6 +127,8 @@ class NewEditTripStopForm extends HookWidget {
                         key: const Key('nameWidget'),
                         onDescriptionChanged: onNameChanged,
                         initialValue: initialTripStopName,
+                        maxLines: 1,
+                        textInputAction: TextInputAction.next,
                         label: LocaleKeys.tripStopName.tr(),
                         hint: LocaleKeys.tripStopNameHint.tr(),
                       ),

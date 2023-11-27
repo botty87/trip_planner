@@ -40,8 +40,8 @@ class NewEditDayTripForm extends StatelessWidget {
             }),
         Expanded(
           child: SafeArea(
-            minimum: defaultPagePadding,
             child: SingleChildScrollView(
+              padding: defaultPagePadding,
               child: Column(
                 children: [
                   LayoutBuilder(

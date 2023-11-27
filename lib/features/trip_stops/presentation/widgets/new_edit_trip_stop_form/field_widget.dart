@@ -5,6 +5,7 @@ class _FieldWidget extends HookWidget {
   final String label;
   final String hint;
   final int? maxLines;
+  final TextInputAction? textInputAction;
 
   final String? initialValue;
 
@@ -14,6 +15,7 @@ class _FieldWidget extends HookWidget {
       this.initialValue,
       required this.label,
       required this.hint,
+      this.textInputAction,
       this.maxLines});
 
   @override
@@ -28,6 +30,7 @@ class _FieldWidget extends HookWidget {
       onChanged: onDescriptionChanged,
       controller: descriptionController,
       maxLines: maxLines,
+      textInputAction: textInputAction,
       minLines: 1,
     );
   }
