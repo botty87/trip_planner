@@ -41,7 +41,7 @@ class TripCubit extends Cubit<TripState> {
         _listenDayTrips = listenDayTrips,
         _updateDayTripsIndexes = updateDayTripsIndexes,
         _crashlytics = crashlytics,
-        super(TripState.normal(trip: trip, dayTrips: [])) {
+        super(TripState.loading(trip: trip)) {
     _dayTripsSubscription = _listenDayTrips(ListenDayTripsParams(tripId: trip.id)).listen((result) {
       result.fold(
         (failure) {

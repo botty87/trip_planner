@@ -21,6 +21,7 @@ mixin _$TripState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Trip trip, List<DayTrip> dayTrips) normal,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) loading,
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
@@ -34,6 +35,7 @@ mixin _$TripState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -46,6 +48,7 @@ mixin _$TripState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -59,6 +62,7 @@ mixin _$TripState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TripStateNormal value) normal,
+    required TResult Function(TripStateLoading value) loading,
     required TResult Function(TripStateError value) error,
     required TResult Function(TripStateEditing value) editing,
     required TResult Function(TripStateDeleting value) deleting,
@@ -68,6 +72,7 @@ mixin _$TripState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TripStateNormal value)? normal,
+    TResult? Function(TripStateLoading value)? loading,
     TResult? Function(TripStateError value)? error,
     TResult? Function(TripStateEditing value)? editing,
     TResult? Function(TripStateDeleting value)? deleting,
@@ -77,6 +82,7 @@ mixin _$TripState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TripStateNormal value)? normal,
+    TResult Function(TripStateLoading value)? loading,
     TResult Function(TripStateError value)? error,
     TResult Function(TripStateEditing value)? editing,
     TResult Function(TripStateDeleting value)? deleting,
@@ -225,6 +231,7 @@ class _$TripStateNormalImpl implements TripStateNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Trip trip, List<DayTrip> dayTrips) normal,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) loading,
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
@@ -241,6 +248,7 @@ class _$TripStateNormalImpl implements TripStateNormal {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -256,6 +264,7 @@ class _$TripStateNormalImpl implements TripStateNormal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -275,6 +284,7 @@ class _$TripStateNormalImpl implements TripStateNormal {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TripStateNormal value) normal,
+    required TResult Function(TripStateLoading value) loading,
     required TResult Function(TripStateError value) error,
     required TResult Function(TripStateEditing value) editing,
     required TResult Function(TripStateDeleting value) deleting,
@@ -287,6 +297,7 @@ class _$TripStateNormalImpl implements TripStateNormal {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TripStateNormal value)? normal,
+    TResult? Function(TripStateLoading value)? loading,
     TResult? Function(TripStateError value)? error,
     TResult? Function(TripStateEditing value)? editing,
     TResult? Function(TripStateDeleting value)? deleting,
@@ -299,6 +310,7 @@ class _$TripStateNormalImpl implements TripStateNormal {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TripStateNormal value)? normal,
+    TResult Function(TripStateLoading value)? loading,
     TResult Function(TripStateError value)? error,
     TResult Function(TripStateEditing value)? editing,
     TResult Function(TripStateDeleting value)? deleting,
@@ -324,6 +336,202 @@ abstract class TripStateNormal implements TripState {
   @override
   @JsonKey(ignore: true)
   _$$TripStateNormalImplCopyWith<_$TripStateNormalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TripStateLoadingImplCopyWith<$Res>
+    implements $TripStateCopyWith<$Res> {
+  factory _$$TripStateLoadingImplCopyWith(_$TripStateLoadingImpl value,
+          $Res Function(_$TripStateLoadingImpl) then) =
+      __$$TripStateLoadingImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Trip trip, List<DayTrip> dayTrips});
+
+  @override
+  $TripCopyWith<$Res> get trip;
+}
+
+/// @nodoc
+class __$$TripStateLoadingImplCopyWithImpl<$Res>
+    extends _$TripStateCopyWithImpl<$Res, _$TripStateLoadingImpl>
+    implements _$$TripStateLoadingImplCopyWith<$Res> {
+  __$$TripStateLoadingImplCopyWithImpl(_$TripStateLoadingImpl _value,
+      $Res Function(_$TripStateLoadingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trip = null,
+    Object? dayTrips = null,
+  }) {
+    return _then(_$TripStateLoadingImpl(
+      trip: null == trip
+          ? _value.trip
+          : trip // ignore: cast_nullable_to_non_nullable
+              as Trip,
+      dayTrips: null == dayTrips
+          ? _value._dayTrips
+          : dayTrips // ignore: cast_nullable_to_non_nullable
+              as List<DayTrip>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TripStateLoadingImpl implements TripStateLoading {
+  const _$TripStateLoadingImpl(
+      {required this.trip, final List<DayTrip> dayTrips = const []})
+      : _dayTrips = dayTrips;
+
+  @override
+  final Trip trip;
+  final List<DayTrip> _dayTrips;
+  @override
+  @JsonKey()
+  List<DayTrip> get dayTrips {
+    if (_dayTrips is EqualUnmodifiableListView) return _dayTrips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dayTrips);
+  }
+
+  @override
+  String toString() {
+    return 'TripState.loading(trip: $trip, dayTrips: $dayTrips)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TripStateLoadingImpl &&
+            (identical(other.trip, trip) || other.trip == trip) &&
+            const DeepCollectionEquality().equals(other._dayTrips, _dayTrips));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, trip, const DeepCollectionEquality().hash(_dayTrips));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TripStateLoadingImplCopyWith<_$TripStateLoadingImpl> get copyWith =>
+      __$$TripStateLoadingImplCopyWithImpl<_$TripStateLoadingImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) normal,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) loading,
+    required TResult Function(
+            Trip trip, List<DayTrip> dayTrips, String errorMessage)
+        error,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, DateTime startDate, bool isSaving)
+        editing,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) deleting,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) deleted,
+  }) {
+    return loading(trip, dayTrips);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
+        error,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, DateTime startDate, bool isSaving)?
+        editing,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleting,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleted,
+  }) {
+    return loading?.call(trip, dayTrips);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
+        error,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
+            String? description, DateTime startDate, bool isSaving)?
+        editing,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? deleting,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? deleted,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(trip, dayTrips);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TripStateNormal value) normal,
+    required TResult Function(TripStateLoading value) loading,
+    required TResult Function(TripStateError value) error,
+    required TResult Function(TripStateEditing value) editing,
+    required TResult Function(TripStateDeleting value) deleting,
+    required TResult Function(TripStateDeleted value) deleted,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TripStateNormal value)? normal,
+    TResult? Function(TripStateLoading value)? loading,
+    TResult? Function(TripStateError value)? error,
+    TResult? Function(TripStateEditing value)? editing,
+    TResult? Function(TripStateDeleting value)? deleting,
+    TResult? Function(TripStateDeleted value)? deleted,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TripStateNormal value)? normal,
+    TResult Function(TripStateLoading value)? loading,
+    TResult Function(TripStateError value)? error,
+    TResult Function(TripStateEditing value)? editing,
+    TResult Function(TripStateDeleting value)? deleting,
+    TResult Function(TripStateDeleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TripStateLoading implements TripState {
+  const factory TripStateLoading(
+      {required final Trip trip,
+      final List<DayTrip> dayTrips}) = _$TripStateLoadingImpl;
+
+  @override
+  Trip get trip;
+  @override
+  List<DayTrip> get dayTrips;
+  @override
+  @JsonKey(ignore: true)
+  _$$TripStateLoadingImplCopyWith<_$TripStateLoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -427,6 +635,7 @@ class _$TripStateErrorImpl implements TripStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Trip trip, List<DayTrip> dayTrips) normal,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) loading,
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
@@ -443,6 +652,7 @@ class _$TripStateErrorImpl implements TripStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -458,6 +668,7 @@ class _$TripStateErrorImpl implements TripStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -477,6 +688,7 @@ class _$TripStateErrorImpl implements TripStateError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TripStateNormal value) normal,
+    required TResult Function(TripStateLoading value) loading,
     required TResult Function(TripStateError value) error,
     required TResult Function(TripStateEditing value) editing,
     required TResult Function(TripStateDeleting value) deleting,
@@ -489,6 +701,7 @@ class _$TripStateErrorImpl implements TripStateError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TripStateNormal value)? normal,
+    TResult? Function(TripStateLoading value)? loading,
     TResult? Function(TripStateError value)? error,
     TResult? Function(TripStateEditing value)? editing,
     TResult? Function(TripStateDeleting value)? deleting,
@@ -501,6 +714,7 @@ class _$TripStateErrorImpl implements TripStateError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TripStateNormal value)? normal,
+    TResult Function(TripStateLoading value)? loading,
     TResult Function(TripStateError value)? error,
     TResult Function(TripStateEditing value)? editing,
     TResult Function(TripStateDeleting value)? deleting,
@@ -673,6 +887,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Trip trip, List<DayTrip> dayTrips) normal,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) loading,
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
@@ -689,6 +904,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -705,6 +921,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -724,6 +941,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TripStateNormal value) normal,
+    required TResult Function(TripStateLoading value) loading,
     required TResult Function(TripStateError value) error,
     required TResult Function(TripStateEditing value) editing,
     required TResult Function(TripStateDeleting value) deleting,
@@ -736,6 +954,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TripStateNormal value)? normal,
+    TResult? Function(TripStateLoading value)? loading,
     TResult? Function(TripStateError value)? error,
     TResult? Function(TripStateEditing value)? editing,
     TResult? Function(TripStateDeleting value)? deleting,
@@ -748,6 +967,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TripStateNormal value)? normal,
+    TResult Function(TripStateLoading value)? loading,
     TResult Function(TripStateError value)? error,
     TResult Function(TripStateEditing value)? editing,
     TResult Function(TripStateDeleting value)? deleting,
@@ -872,6 +1092,7 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Trip trip, List<DayTrip> dayTrips) normal,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) loading,
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
@@ -888,6 +1109,7 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -903,6 +1125,7 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -922,6 +1145,7 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TripStateNormal value) normal,
+    required TResult Function(TripStateLoading value) loading,
     required TResult Function(TripStateError value) error,
     required TResult Function(TripStateEditing value) editing,
     required TResult Function(TripStateDeleting value) deleting,
@@ -934,6 +1158,7 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TripStateNormal value)? normal,
+    TResult? Function(TripStateLoading value)? loading,
     TResult? Function(TripStateError value)? error,
     TResult? Function(TripStateEditing value)? editing,
     TResult? Function(TripStateDeleting value)? deleting,
@@ -946,6 +1171,7 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TripStateNormal value)? normal,
+    TResult Function(TripStateLoading value)? loading,
     TResult Function(TripStateError value)? error,
     TResult Function(TripStateEditing value)? editing,
     TResult Function(TripStateDeleting value)? deleting,
@@ -1062,6 +1288,7 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Trip trip, List<DayTrip> dayTrips) normal,
+    required TResult Function(Trip trip, List<DayTrip> dayTrips) loading,
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
@@ -1078,6 +1305,7 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -1093,6 +1321,7 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Trip trip, List<DayTrip> dayTrips)? normal,
+    TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
@@ -1112,6 +1341,7 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TripStateNormal value) normal,
+    required TResult Function(TripStateLoading value) loading,
     required TResult Function(TripStateError value) error,
     required TResult Function(TripStateEditing value) editing,
     required TResult Function(TripStateDeleting value) deleting,
@@ -1124,6 +1354,7 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TripStateNormal value)? normal,
+    TResult? Function(TripStateLoading value)? loading,
     TResult? Function(TripStateError value)? error,
     TResult? Function(TripStateEditing value)? editing,
     TResult? Function(TripStateDeleting value)? deleting,
@@ -1136,6 +1367,7 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TripStateNormal value)? normal,
+    TResult Function(TripStateLoading value)? loading,
     TResult Function(TripStateError value)? error,
     TResult Function(TripStateEditing value)? editing,
     TResult Function(TripStateDeleting value)? deleting,
