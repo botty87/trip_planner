@@ -64,6 +64,7 @@ dependencies:
   map_launcher: ^3.0.1
   mockito: ^5.4.1
   password_text_field: ^2.0.0
+  responsive_framework: ^1.1.1
   shared_preferences: ^2.1.2
   uuid: ^4.0.0
   vector_graphics: ^1.1.9
