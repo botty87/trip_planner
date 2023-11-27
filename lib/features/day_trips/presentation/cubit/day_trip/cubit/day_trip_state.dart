@@ -11,6 +11,13 @@ sealed class DayTripState with _$DayTripState {
     @Default(false) bool isSaving,
   }) = DayTripStateNormal;
 
+  const factory DayTripState.loading({
+    required Trip trip,
+    required DayTrip dayTrip,
+    @Default([]) List<TripStop> tripStops,
+    @Default(false) bool hasStartTimeToSave,
+  }) = DayTripStateLoading;
+
   const factory DayTripState.error({
     required Trip trip,
     required DayTrip dayTrip,

@@ -5,6 +5,20 @@ class _TripStopsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLoading = context.select((DayTripCubit cubit) => cubit.state is DayTripStateLoading);
+
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 400),
+      child: isLoading ? const SizedBox.shrink() : const _List(),
+    );
+  }
+}
+
+class _List extends StatelessWidget {
+  const _List();
+
+  @override
+  Widget build(BuildContext context) {
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
     final DateTime dayTripStartDateTime = context.select((DayTripCubit cubit) {
       final startDate = cubit.state.trip.startDate;

@@ -8,7 +8,7 @@ class _DayTripsList extends StatelessWidget {
     final isLoading = context.select((TripCubit cubit) => cubit.state is TripStateLoading);
 
     return AnimatedSize(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 400),
         child: isLoading ? const SizedBox.shrink() : _list(context));
   }
 
