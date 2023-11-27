@@ -35,7 +35,7 @@ void main() async {
     return true;
   };
 
-  if (kDebugMode && false) {
+  if (kDebugMode) {
     await getIt<FirebaseAuth>().useAuthEmulator('localhost', 9099);
     getIt<FirebaseFirestore>().useFirestoreEmulator('localhost', 8080);
   }

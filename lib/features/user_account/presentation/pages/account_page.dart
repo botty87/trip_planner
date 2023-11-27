@@ -21,8 +21,8 @@ import '../cubit/user/user_cubit.dart';
 part '../widgets/account_page/account_page_body.dart';
 part '../widgets/account_page/edit_password.dart';
 part '../widgets/account_page/edit_user_details.dart';
-part '../widgets/account_page/user_details.dart';
 part '../widgets/account_page/reauthentication_modal_bottom.dart';
+part '../widgets/account_page/user_details.dart';
 
 @RoutePage()
 class AccountPage extends StatelessWidget {
@@ -43,13 +43,18 @@ class AccountPage extends StatelessWidget {
       create: (context) => getIt(param1: user),
       child: Scaffold(
         body: LayoutBuilder(builder: (context, constraints) {
+          double height = constraints.maxWidth * 0.6;
+          if (height < 300) {
+            height = 300;
+          }
+
           return CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
               SliverAppBar(
                 pinned: true,
                 stretch: true,
-                expandedHeight: constraints.maxWidth * 0.6,
+                expandedHeight: height,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     LocaleKeys.yourProfile.tr(),
