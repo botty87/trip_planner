@@ -119,6 +119,7 @@ class _DayTripPageBody extends HookWidget {
       showDragHandle: true,
       useRootNavigator: true,
       isDismissible: false,
+      useSafeArea: true,
       builder: (context) {
         return Padding(
           padding: const EdgeInsets.all(16),

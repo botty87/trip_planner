@@ -105,6 +105,7 @@ class _TripPageBody extends HookWidget {
       showDragHandle: true,
       useRootNavigator: true,
       isDismissible: false,
+      useSafeArea: true,
       builder: (context) {
         return Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
