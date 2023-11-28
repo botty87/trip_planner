@@ -113,7 +113,6 @@ class _NewTripStopPageBody extends HookWidget {
           }
         },
         saveSection: _AddDayTripButton(isSaving: isSaving.stream),
-        
       ),
     );
   }

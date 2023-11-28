@@ -15,8 +15,7 @@ class CreateDayTrip implements UseCase<void, CreateDayTripParams> {
   @override
   Future<Either<DayTripsFailure, void>> call(CreateDayTripParams params) async {
     return await repository.addDayTrip(
-        tripId: params.tripId,
-        dayTrip: DayTrip.create(description: params.description));
+        tripId: params.tripId, dayTrip: DayTrip.create(description: params.description));
   }
 }
 

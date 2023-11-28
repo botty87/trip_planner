@@ -34,4 +34,3 @@ class UpdateTravelTimeParams {
     required this.travelTime,
   });
 }
-

@@ -14,8 +14,7 @@ _$TripImpl _$$TripImplFromJson(Map<String, dynamic> json) => _$TripImpl(
       startDate: dateTimeFromTimestamp(json['startDate'] as Timestamp),
     );
 
-Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'userId': instance.userId,

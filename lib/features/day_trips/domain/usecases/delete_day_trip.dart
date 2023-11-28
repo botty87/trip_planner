@@ -18,7 +18,6 @@ class DeleteDayTrip implements UseCase<void, DeleteDayTripParams> {
       dayTripId: params.dayTripId,
     );
   }
-  
 }
 
 class DeleteDayTripParams {

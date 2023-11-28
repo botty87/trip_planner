@@ -15,7 +15,8 @@ sealed class DayTrip with _$DayTrip {
     required int index,
     String? description,
     @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-    @Default(TimeOfDay(hour: 8, minute: 0)) TimeOfDay startTime,
+    @Default(TimeOfDay(hour: 8, minute: 0))
+    TimeOfDay startTime,
   }) = _DayTrip;
 
   factory DayTrip.create({

@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,6 +14,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:json_theme/json_theme.dart';
 import 'core/di/di.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
 import 'core/my_app.dart';
 import 'firebase_options.dart';
@@ -39,6 +43,12 @@ void main() async {
   if (kDebugMode) {
     await getIt<FirebaseAuth>().useAuthEmulator('localhost', 9099);
     getIt<FirebaseFirestore>().useFirestoreEmulator('localhost', 8080);
+  }
+
+  // Require Hybrid Composition mode on Android.
+  final GoogleMapsFlutterPlatform mapsImplementation = GoogleMapsFlutterPlatform.instance;
+  if (mapsImplementation is GoogleMapsFlutterAndroid) {
+    mapsImplementation.useAndroidViewSurface = false;
   }
 
   //Theme

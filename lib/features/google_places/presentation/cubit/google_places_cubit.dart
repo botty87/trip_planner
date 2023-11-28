@@ -36,7 +36,8 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
     }
 
     void fetch() async {
-      final result = await _fetchSuggestions(FetchSuggestionsParams(query: query, lang: lang, token: token));
+      final result =
+          await _fetchSuggestions(FetchSuggestionsParams(query: query, lang: lang, token: token));
       _debounceLoading.cancel();
       result.fold(
         (failure) {

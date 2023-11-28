@@ -60,9 +60,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       return left(const DayTripsFailure());
     }
   }
-  
+
   @override
-  Future<Either<DayTripsFailure, void>> deleteDayTrip({required String tripId, required String dayTripId}) async {
+  Future<Either<DayTripsFailure, void>> deleteDayTrip(
+      {required String tripId, required String dayTripId}) async {
     try {
       await _dayTripsDataSource.deleteDayTrip(tripId: tripId, dayTripId: dayTripId);
       return right(null);
@@ -74,9 +75,11 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
   }
 
   @override
-  Future<Either<DayTripsFailure, void>> updateDayTripStartTime({required String id, required String tripId, required TimeOfDay startTime}) async {
+  Future<Either<DayTripsFailure, void>> updateDayTripStartTime(
+      {required String id, required String tripId, required TimeOfDay startTime}) async {
     try {
-      await _dayTripsDataSource.updateDayTripStartTime(id: id, tripId: tripId, startTime: startTime);
+      await _dayTripsDataSource.updateDayTripStartTime(
+          id: id, tripId: tripId, startTime: startTime);
       return right(null);
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));

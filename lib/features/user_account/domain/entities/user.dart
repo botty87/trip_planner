@@ -7,7 +7,6 @@ part 'user.g.dart';
 
 @freezed
 sealed class User with _$User {
-
   factory User({
     required String id,
     required String email,
@@ -19,7 +18,7 @@ sealed class User with _$User {
 
 extension UserX on User {
   UserDB toUserDB() => UserDB(
-    email: email,
-    name: name,
-  );
+        email: email,
+        name: name,
+      );
 }

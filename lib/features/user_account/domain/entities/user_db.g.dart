@@ -11,8 +11,7 @@ _$UserDBImpl _$$UserDBImplFromJson(Map<String, dynamic> json) => _$UserDBImpl(
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) => <String, dynamic>{
       'email': instance.email,
       'name': instance.name,
     };

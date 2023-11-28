@@ -13,7 +13,7 @@ abstract interface class StreamUseCase<Type, Params> {
 
 final class NoParams extends Equatable {
   const NoParams();
-  
+
   @override
   List<Object> get props => [];
 }

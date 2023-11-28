@@ -4,6 +4,6 @@ import '../../../core/error/failures.dart';
 part 'day_trips_failure.freezed.dart';
 
 @freezed
-class DayTripsFailure with _$DayTripsFailure implements Failure{
+class DayTripsFailure with _$DayTripsFailure implements Failure {
   const factory DayTripsFailure({String? message}) = _DayTripsFailure;
 }

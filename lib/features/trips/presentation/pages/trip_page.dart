@@ -68,6 +68,5 @@ class _TripPageAppBar extends StatelessWidget {
         ),
       ],
     );
-    
   }
 }

@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/error/failures.dart';
 
-
 part 'google_places_failure.freezed.dart';
 
 @freezed

@@ -15,9 +15,11 @@ abstract interface class UserRepository {
 
   Future<Either<UserFailures, void>> logoutUser();
 
-  Future<Either<UserFailures, void>> reauthenticateUser({required String email, required String password});
+  Future<Either<UserFailures, void>> reauthenticateUser(
+      {required String email, required String password});
 
-  Future<Either<UserFailures, void>> updateUserDetails({required String? name, required String? email, required String? password});
+  Future<Either<UserFailures, void>> updateUserDetails(
+      {required String? name, required String? email, required String? password});
 
   Future<Either<UserFailures, void>> deleteUser();
 }

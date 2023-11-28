@@ -20,7 +20,6 @@ class UpdateUserDetails implements UseCase<void, UpdateUserDetailsParams> {
       password: params.password,
     );
   }
-  
 }
 
 class UpdateUserDetailsParams {

@@ -4,7 +4,8 @@ class _TripDescriptionTextField extends HookWidget {
   final ValueChanged<String> onChanged;
   final String? initialTripDescription;
 
-  const _TripDescriptionTextField({super.key, required this.onChanged, this.initialTripDescription});
+  const _TripDescriptionTextField(
+      {super.key, required this.onChanged, this.initialTripDescription});
 
   @override
   Widget build(BuildContext context) {

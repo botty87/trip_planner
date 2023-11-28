@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-
 import '../../../../core/usecases/usecase.dart';
 import '../../errors/trip_stops_failure.dart';
 import '../entities/trip_stop.dart';

@@ -8,7 +8,8 @@ abstract class TripsRepository {
 
   Stream<Either<TripsFailure, List<Trip>>> listenTrips(String userId);
 
-  Future<Either<TripsFailure, void>> updateTrip(String id, String name, String? description, DateTime startDate);
+  Future<Either<TripsFailure, void>> updateTrip(
+      String id, String name, String? description, DateTime startDate);
 
   Future<Either<TripsFailure, void>> deleteTrip(Trip trip);
 

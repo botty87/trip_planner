@@ -22,5 +22,4 @@ class TimePickerCubit extends Cubit<TimePickerState> {
         SelectedInput.HOUR => onHourChange(int),
         SelectedInput.MINUTE => onMinuteChange(int),
       };
-
 }

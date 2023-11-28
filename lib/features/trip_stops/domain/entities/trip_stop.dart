@@ -18,8 +18,7 @@ sealed class TripStop with _$TripStop {
     String? description,
     //Duration of the stop in minutes
     required int duration,
-    @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
-    required LatLng location,
+    @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint) required LatLng location,
     @Default(false) bool isDone,
     @Default(0) int travelTimeToNextStop, // in minutes
     String? note,

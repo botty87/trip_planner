@@ -37,8 +37,7 @@ abstract class $UserDBCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
-    implements $UserDBCopyWith<$Res> {
+class _$UserDBCopyWithImpl<$Res, $Val extends UserDB> implements $UserDBCopyWith<$Res> {
   _$UserDBCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -67,8 +66,7 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
 
 /// @nodoc
 abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
-  factory _$$UserDBImplCopyWith(
-          _$UserDBImpl value, $Res Function(_$UserDBImpl) then) =
+  factory _$$UserDBImplCopyWith(_$UserDBImpl value, $Res Function(_$UserDBImpl) then) =
       __$$UserDBImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -76,11 +74,9 @@ abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$UserDBImplCopyWithImpl<$Res>
-    extends _$UserDBCopyWithImpl<$Res, _$UserDBImpl>
+class __$$UserDBImplCopyWithImpl<$Res> extends _$UserDBCopyWithImpl<$Res, _$UserDBImpl>
     implements _$$UserDBImplCopyWith<$Res> {
-  __$$UserDBImplCopyWithImpl(
-      _$UserDBImpl _value, $Res Function(_$UserDBImpl) _then)
+  __$$UserDBImplCopyWithImpl(_$UserDBImpl _value, $Res Function(_$UserDBImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,8 +103,7 @@ class __$$UserDBImplCopyWithImpl<$Res>
 class _$UserDBImpl implements _UserDB {
   _$UserDBImpl({required this.email, required this.name});
 
-  factory _$UserDBImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserDBImplFromJson(json);
+  factory _$UserDBImpl.fromJson(Map<String, dynamic> json) => _$$UserDBImplFromJson(json);
 
   @override
   final String email;
@@ -148,8 +143,7 @@ class _$UserDBImpl implements _UserDB {
 }
 
 abstract class _UserDB implements UserDB {
-  factory _UserDB({required final String email, required final String name}) =
-      _$UserDBImpl;
+  factory _UserDB({required final String email, required final String name}) = _$UserDBImpl;
 
   factory _UserDB.fromJson(Map<String, dynamic> json) = _$UserDBImpl.fromJson;
 
@@ -159,6 +153,5 @@ abstract class _UserDB implements UserDB {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith => throw _privateConstructorUsedError;
 }

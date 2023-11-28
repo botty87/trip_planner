@@ -128,6 +128,4 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
       },
     );
   }
-
-  
 }

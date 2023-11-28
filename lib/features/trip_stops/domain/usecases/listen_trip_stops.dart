@@ -11,7 +11,7 @@ class ListenTripStops implements StreamUseCase<List<TripStop>, ListenTripStopsPa
   final TripStopsRepository repository;
 
   ListenTripStops(this.repository);
-  
+
   @override
   Stream<Either<TripStopsFailure, List<TripStop>>> call(params) {
     return repository.listenTripStops(

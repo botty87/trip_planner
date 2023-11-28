@@ -6,7 +6,7 @@ import '../../l10n/locale_keys.g.dart';
 
 abstract base class DeleteTripButtonAbstract extends StatelessWidget {
   final Stream<bool> isDeleting;
-  
+
   abstract final Function(BuildContext context) deleteAction;
   abstract final String alertDialogTitle;
   abstract final String alertDialogMessage;

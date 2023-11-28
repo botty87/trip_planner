@@ -10,7 +10,7 @@ sealed class NewDayTripState with _$NewDayTripState {
     required final String? description,
   }) = NewDayTripStateSaving;
 
-const factory NewDayTripState.created({
+  const factory NewDayTripState.created({
     final String? description,
   }) = NewDayTripStateCreated;
 

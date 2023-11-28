@@ -8,16 +8,14 @@ import '../../../../core/utilities/data_converter.dart';
 part 'trip.freezed.dart';
 part 'trip.g.dart';
 
-
 @freezed
 sealed class Trip with _$Trip {
   factory Trip({
-    @JsonKey(includeFromJson: false, includeToJson: false)
-    @Default('') String id,
+    @JsonKey(includeFromJson: false, includeToJson: false) @Default('') String id,
     required String name,
     String? description,
     required String userId,
-    @JsonKey(toJson: dateTimeToTimestamp , fromJson: dateTimeFromTimestamp )
+    @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
     required DateTime createdAt,
     @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
     required DateTime startDate,
@@ -29,13 +27,14 @@ sealed class Trip with _$Trip {
     required String userId,
     required DateTime createdAt,
     required DateTime startDate,
-  }) => Trip(
-    name: name,
-    description: description,
-    userId: userId,
-    createdAt: createdAt,
-    startDate: startDate,
-  );
+  }) =>
+      Trip(
+        name: name,
+        description: description,
+        userId: userId,
+        createdAt: createdAt,
+        startDate: startDate,
+      );
 
   factory Trip.fromJson(Map<String, dynamic> json) => _$TripFromJson(json);
 }

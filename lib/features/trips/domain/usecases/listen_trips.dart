@@ -23,4 +23,3 @@ class ListenTripsParams {
 
   ListenTripsParams({required this.userId});
 }
-  

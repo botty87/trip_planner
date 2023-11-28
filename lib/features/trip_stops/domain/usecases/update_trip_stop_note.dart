@@ -8,7 +8,7 @@ import '../repositories/trip_stops_repository.dart';
 @lazySingleton
 class UpdateTripStopNote implements UseCase<void, UpdateTripStopNoteParams> {
   final TripStopsRepository _tripStopsRepository;
-  
+
   UpdateTripStopNote(this._tripStopsRepository);
 
   @override
@@ -20,7 +20,6 @@ class UpdateTripStopNote implements UseCase<void, UpdateTripStopNoteParams> {
       note: params.note,
     );
   }
-
 }
 
 class UpdateTripStopNoteParams {

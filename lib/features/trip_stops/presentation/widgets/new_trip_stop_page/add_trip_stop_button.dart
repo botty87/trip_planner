@@ -13,7 +13,8 @@ class _AddDayTripButton extends StatelessWidget {
       builder: (context, snapshot) {
         return ElevatedButton(
           key: const Key('addTripStopButton'),
-          onPressed: snapshot.data! ? null : () => context.read<NewTripStopCubit>().createTripStop(),
+          onPressed:
+              snapshot.data! ? null : () => context.read<NewTripStopCubit>().createTripStop(),
           child: Text(LocaleKeys.addTripStop.tr()),
         );
       },

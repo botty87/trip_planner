@@ -35,7 +35,6 @@ class UpdateTripStopParams {
   final String? description;
   final int duration;
   final LatLng location;
-  
 
   UpdateTripStopParams({
     required this.id,

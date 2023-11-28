@@ -21,22 +21,19 @@ mixin _$TripsState {
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TripsStateCopyWith<TripsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TripsStateCopyWith<TripsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TripsStateCopyWith<$Res> {
-  factory $TripsStateCopyWith(
-          TripsState value, $Res Function(TripsState) then) =
+  factory $TripsStateCopyWith(TripsState value, $Res Function(TripsState) then) =
       _$TripsStateCopyWithImpl<$Res, TripsState>;
   @useResult
   $Res call({List<Trip> trips, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
-class _$TripsStateCopyWithImpl<$Res, $Val extends TripsState>
-    implements $TripsStateCopyWith<$Res> {
+class _$TripsStateCopyWithImpl<$Res, $Val extends TripsState> implements $TripsStateCopyWith<$Res> {
   _$TripsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -69,10 +66,8 @@ class _$TripsStateCopyWithImpl<$Res, $Val extends TripsState>
 }
 
 /// @nodoc
-abstract class _$$TripsStateImplCopyWith<$Res>
-    implements $TripsStateCopyWith<$Res> {
-  factory _$$TripsStateImplCopyWith(
-          _$TripsStateImpl value, $Res Function(_$TripsStateImpl) then) =
+abstract class _$$TripsStateImplCopyWith<$Res> implements $TripsStateCopyWith<$Res> {
+  factory _$$TripsStateImplCopyWith(_$TripsStateImpl value, $Res Function(_$TripsStateImpl) then) =
       __$$TripsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -80,11 +75,9 @@ abstract class _$$TripsStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TripsStateImplCopyWithImpl<$Res>
-    extends _$TripsStateCopyWithImpl<$Res, _$TripsStateImpl>
+class __$$TripsStateImplCopyWithImpl<$Res> extends _$TripsStateCopyWithImpl<$Res, _$TripsStateImpl>
     implements _$$TripsStateImplCopyWith<$Res> {
-  __$$TripsStateImplCopyWithImpl(
-      _$TripsStateImpl _value, $Res Function(_$TripsStateImpl) _then)
+  __$$TripsStateImplCopyWithImpl(_$TripsStateImpl _value, $Res Function(_$TripsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,9 +108,7 @@ class __$$TripsStateImplCopyWithImpl<$Res>
 
 class _$TripsStateImpl implements _TripsState {
   const _$TripsStateImpl(
-      {final List<Trip> trips = const [],
-      this.isLoading = true,
-      this.errorMessage})
+      {final List<Trip> trips = const [], this.isLoading = true, this.errorMessage})
       : _trips = trips;
 
   final List<Trip> _trips;
@@ -146,15 +137,13 @@ class _$TripsStateImpl implements _TripsState {
         (other.runtimeType == runtimeType &&
             other is _$TripsStateImpl &&
             const DeepCollectionEquality().equals(other._trips, _trips) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.isLoading, isLoading) || other.isLoading == isLoading) &&
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_trips), isLoading, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_trips), isLoading, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -177,6 +166,5 @@ abstract class _TripsState implements TripsState {
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$TripsStateImplCopyWith<_$TripsStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripsStateImplCopyWith<_$TripsStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
