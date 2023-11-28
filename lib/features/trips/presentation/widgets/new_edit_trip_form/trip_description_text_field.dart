@@ -20,6 +20,7 @@ class _TripDescriptionTextField extends HookWidget {
       onChanged: onChanged,
       maxLines: 4,
       minLines: 1,
+      keyboardType: TextInputType.multiline,
     );
   }
 }

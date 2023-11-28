@@ -16,6 +16,7 @@ class _TripNameTextField extends HookWidget {
       ),
       controller: textEditingController,
       onChanged: onChanged,
+      keyboardType: TextInputType.name,
     );
   }
 }
