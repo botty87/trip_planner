@@ -62,6 +62,14 @@ void main() {
       duration: 0,
       location: LatLng(0.0, 0.0),
     ),
+    const TripStop(
+      id: '2',
+      name: 'name',
+      description: 'description',
+      index: 1,
+      duration: 0,
+      location: LatLng(0.0, 0.0),
+    ),
   ];
 
   setUp(() {
