@@ -60,19 +60,34 @@ class _TripPageBody extends HookWidget {
       child: SafeArea(
         child: SingleChildScrollView(
           padding: defaultPagePadding,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              BlocSelector<TripCubit, TripState, String?>(
-                selector: (state) => state.trip.description,
-                builder: (context, description) => _TripHeader(headerText: description),
-              ),
-              const _DayTripsList(),
-              const SizedBox(height: verticalSpaceS),
-              const _AddDayTripCard(),
-              const SizedBox(height: verticalSpaceL),
-              _DeleteTripButton(isDeleting: isDeleting.stream),
-            ],
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+                    ? constraints.maxWidth * 0.8
+                    : constraints.maxWidth;
+
+                return ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: maxWidth,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      BlocSelector<TripCubit, TripState, String?>(
+                        selector: (state) => state.trip.description,
+                        builder: (context, description) => _TripHeader(headerText: description),
+                      ),
+                      const _DayTripsList(),
+                      const SizedBox(height: verticalSpaceS),
+                      const _AddDayTripCard(),
+                      const SizedBox(height: verticalSpaceL),
+                      _DeleteTripButton(isDeleting: isDeleting.stream),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

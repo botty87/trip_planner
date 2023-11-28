@@ -62,35 +62,47 @@ class _DayTripPageBody extends HookWidget {
       child: SafeArea(
           child: SingleChildScrollView(
         padding: defaultPagePadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            BlocSelector<DayTripCubit, DayTripState, bool>(
-              selector: (DayTripState state) => state.maybeMap(
-                normal: (state) => state.explictitStartTimeSave || state.isSaving,
-                orElse: () => false,
-              ),
-              builder: (BuildContext context, bool explictitStartTimeSave) => explictitStartTimeSave
-                  ? const LinearProgressIndicator(minHeight: 1)
-                  : const SizedBox.shrink(),
-            ),
-            const _StartTimeWidget(),
-            const SizedBox(height: verticalSpaceS),
-            BlocSelector<DayTripCubit, DayTripState, String?>(
-              selector: (state) => state.dayTrip.description,
-              builder: (context, description) => Column(
+        child: Center(
+          child: LayoutBuilder(builder: (context, constraints) {
+            final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+                ? constraints.maxWidth * 0.8
+                : constraints.maxWidth;
+
+            return ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: maxWidth),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _DayTripDescription(headerText: description),
-                  if (description != null) const SizedBox(height: verticalSpaceS),
+                  BlocSelector<DayTripCubit, DayTripState, bool>(
+                    selector: (DayTripState state) => state.maybeMap(
+                      normal: (state) => state.explictitStartTimeSave || state.isSaving,
+                      orElse: () => false,
+                    ),
+                    builder: (BuildContext context, bool explictitStartTimeSave) =>
+                        explictitStartTimeSave
+                            ? const LinearProgressIndicator(minHeight: 1)
+                            : const SizedBox.shrink(),
+                  ),
+                  const _StartTimeWidget(),
+                  const SizedBox(height: verticalSpaceS),
+                  BlocSelector<DayTripCubit, DayTripState, String?>(
+                    selector: (state) => state.dayTrip.description,
+                    builder: (context, description) => Column(
+                      children: [
+                        _DayTripDescription(headerText: description),
+                        if (description != null) const SizedBox(height: verticalSpaceS),
+                      ],
+                    ),
+                  ),
+                  const _TripStopsList(),
+                  const SizedBox(height: verticalSpaceL),
+                  const _AddDayTripStopCard(),
+                  const SizedBox(height: verticalSpaceL),
+                  _DeleteTripButton(isDeleting: isDeleting.stream),
                 ],
               ),
-            ),
-            const _TripStopsList(),
-            const SizedBox(height: verticalSpaceL),
-            const _AddDayTripStopCard(),
-            const SizedBox(height: verticalSpaceL),
-            _DeleteTripButton(isDeleting: isDeleting.stream),
-          ],
+            );
+          }),
         ),
       )),
     );
@@ -135,25 +147,3 @@ class _DayTripPageBody extends HookWidget {
     });
   }
 }
-
-/* 
-return FractionallySizedBox(
-            heightFactor: 0.9,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: NewEditDayTripForm(
-                  isSaving: isSaving.stream,
-                  onDescriptionChanged: (description) => cubit.descriptionChanged(description),
-                  initialDayTripDescription: cubit.state.dayTrip.description,
-                  saveSection: _SaveCancelEditButtons(
-                    isSaving: isSaving.stream,
-                    onCancel: () => cubit.cancelEditing(),
-                    onSave: () => cubit.saveChanges(),
-                    errorMessage: errorMessage.stream,
-                  ),
-                ),
-              ),
-            )); 
-            
-            */
