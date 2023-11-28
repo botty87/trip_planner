@@ -16,6 +16,12 @@ class _MapWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final googleMapController = useRef<GoogleMapController?>(null);
+    
+    // Require Hybrid Composition mode on Android.
+    final GoogleMapsFlutterPlatform mapsImplementation = GoogleMapsFlutterPlatform.instance;
+    if (mapsImplementation is GoogleMapsFlutterAndroid) {
+      mapsImplementation.useAndroidViewSurface = false;
+    }
 
     return Column(
       children: [
