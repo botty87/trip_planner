@@ -87,28 +87,39 @@ class _TimeSlider extends StatelessWidget {
             stream: value,
             initialData: 0,
             builder: (context, snapshot) {
+              if (kIsWeb) {
+                return _androidSlider(snapshot.data!);
+              }
               if (Platform.isIOS) {
-                return CupertinoSlider(
-                  key: const Key('durationSlider'),
-                  value: snapshot.data!.toDouble(),
-                  min: 0,
-                  max: maxValue.toDouble(),
-                  divisions: maxValue,
-                  onChanged: (value) => onValueChanged(value.toInt()),
-                );
+                return _cupertinoSlider(snapshot.data!);
               } else {
-                return Slider(
-                  key: const Key('durationSlider'),
-                  value: snapshot.data!.toDouble(),
-                  min: 0,
-                  max: maxValue.toDouble(),
-                  divisions: maxValue,
-                  label: snapshot.data.toString(),
-                  onChanged: (value) => onValueChanged(value.toInt()),
-                );
+                return _androidSlider(snapshot.data!);
               }
             }),
       ],
+    );
+  }
+
+  CupertinoSlider _cupertinoSlider(int value) {
+    return CupertinoSlider(
+      key: const Key('durationSlider'),
+      value: value.toDouble(),
+      min: 0,
+      max: maxValue.toDouble(),
+      divisions: maxValue,
+      onChanged: (value) => onValueChanged(value.toInt()),
+    );
+  }
+
+  Slider _androidSlider(int value) {
+    return Slider(
+      key: const Key('durationSlider'),
+      value: value.toDouble(),
+      min: 0,
+      max: maxValue.toDouble(),
+      divisions: maxValue,
+      label: value.toString(),
+      onChanged: (value) => onValueChanged(value.toInt()),
     );
   }
 }

@@ -122,8 +122,10 @@ class _TripStopPageBody extends HookWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
               ),
-              const SizedBox(height: verticalSpace),
-              const _TripStopNavigateToButton(),
+              if (!kIsWeb) ...[
+                const SizedBox(height: verticalSpace),
+                const _TripStopNavigateToButton(),
+              ],
               const SizedBox(height: verticalSpaceXL),
               const _TripStopNoteWidget(),
               const SizedBox(height: verticalSpaceL),

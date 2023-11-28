@@ -14,6 +14,7 @@ import 'package:json_theme/json_theme.dart';
 import 'core/di/di.dart';
 
 import 'core/my_app.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ void main() async {
   Bloc.observer = getIt<BlocObserver>();
 
   //Firebase config
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   //Init Crashlytics
   FlutterError.onError = (errorDetails) {

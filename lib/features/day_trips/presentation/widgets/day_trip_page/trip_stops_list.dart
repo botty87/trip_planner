@@ -34,7 +34,7 @@ class _List extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (BuildContext context, int index) =>
-          TravelCard(tripStop: tripStops[(index / 2).truncate()]),
+          Center(child: TravelCard(tripStop: tripStops[(index / 2).truncate()])),
       itemCount: tripStops.length,
       itemBuilder: (context, index) {
         final tripStop = tripStops[index];

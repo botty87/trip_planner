@@ -29,14 +29,14 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
         _fetchPlaceDetails = fetchPlaceDetails,
         super(const GooglePlacesState.normal());
 
-  void fetchSuggestions(String query, {bool noDebounce = false}) async {
+  void fetchSuggestions(String query, String lang, {bool noDebounce = false}) async {
     if (query.length < 2) {
       _clearSuggestions();
       return;
     }
 
     void fetch() async {
-      final result = await _fetchSuggestions(FetchSuggestionsParams(query: query, token: token));
+      final result = await _fetchSuggestions(FetchSuggestionsParams(query: query, lang: lang, token: token));
       _debounceLoading.cancel();
       result.fold(
         (failure) {

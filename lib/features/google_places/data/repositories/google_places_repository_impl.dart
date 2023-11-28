@@ -16,9 +16,9 @@ class GooglePlacesRepositoryImpl implements GooglePlacesRepository {
 
   @override
   Future<Either<GooglePlacesFailure, List<Suggestion>>> fetchSuggestions(
-      {required String query, required String token}) async {
+      {required String query, required String lang, required String token}) async {
     try {
-      final suggestions = await dataSource.fetchSuggestions(query: query, token: token);
+      final suggestions = await dataSource.fetchSuggestions(query: query, lang: lang, token: token);
       return Right(suggestions);
     } on GooglePlacesException catch (e) {
       return Left(_mapExceptionToFailure(e));

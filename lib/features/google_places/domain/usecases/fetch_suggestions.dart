@@ -16,6 +16,7 @@ class FetchSuggestions implements UseCase<void, FetchSuggestionsParams> {
   Future<Either<GooglePlacesFailure, List<Suggestion>>> call(FetchSuggestionsParams params) async {
     return await repository.fetchSuggestions(
       query: params.query,
+      lang: params.lang,
       token: params.token,
     );
   }
@@ -23,10 +24,12 @@ class FetchSuggestions implements UseCase<void, FetchSuggestionsParams> {
 
 class FetchSuggestionsParams {
   final String query;
+  final String lang;
   final String token;
 
   const FetchSuggestionsParams({
     required this.query,
+    required this.lang,
     required this.token,
   });
 }

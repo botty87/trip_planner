@@ -41,6 +41,7 @@ class _TextInputWidget extends HookWidget {
           );
         },
         builder: (context, errorMessage) {
+          final lang = Localizations.localeOf(context).languageCode;
           return TextField(
             controller: textController,
             decoration: InputDecoration(
@@ -50,14 +51,14 @@ class _TextInputWidget extends HookWidget {
                   ? _ErrorWidget(
                       onRetry: () => context
                           .read<GooglePlacesCubit>()
-                          .fetchSuggestions(textController.text, noDebounce: true),
+                          .fetchSuggestions(textController.text, lang, noDebounce: true),
                       message: errorMessage,
                     )
                   : null,
             ),
             maxLines: 1,
             keyboardType: TextInputType.streetAddress,
-            onChanged: (value) => context.read<GooglePlacesCubit>().fetchSuggestions(value),
+            onChanged: (value) => context.read<GooglePlacesCubit>().fetchSuggestions(value, lang),
           );
         },
       ),

@@ -30,48 +30,6 @@
       "api_key": [
         {
           "current_key": "AIzaSyAwWfCJktwEdd4nNZGDO7mm6nwgYNVAX5I"
-        },
-        {
-          "current_key": "AIzaSyAfYIwFaqD6gSA9YMAGbjN-Rs8EAOUVnAc"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "178262421662-5ot4nttmvqc5pcsomvjk0icok6e0810j.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "178262421662-1bmksp68828t9rt2chivai0v9iapj3dv.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "botty.tripPlanner"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:178262421662:android:974e0c6c011f0199e10b8f",
-        "android_client_info": {
-          "package_name": "com.example.trip_planner"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "178262421662-5ot4nttmvqc5pcsomvjk0icok6e0810j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAwWfCJktwEdd4nNZGDO7mm6nwgYNVAX5I"
-        },
-        {
-          "current_key": "AIzaSyAfYIwFaqD6gSA9YMAGbjN-Rs8EAOUVnAc"
         }
       ],
       "services": {
