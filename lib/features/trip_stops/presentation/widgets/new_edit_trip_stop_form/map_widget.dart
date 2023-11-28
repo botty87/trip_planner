@@ -80,12 +80,12 @@ class _MapWidget extends HookWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton.filled(
-            icon: const Icon(Icons.remove),
+            icon: const Icon(Icons.remove, color: Colors.white),
             onPressed: () => controller.value?.animateCamera(CameraUpdate.zoomOut()),
           ),
           const SizedBox(width: horizontalSpaceS),
           IconButton.filled(
-            icon: const Icon(Icons.add),
+            icon: const Icon(Icons.add, color: Colors.white),
             onPressed: () => controller.value?.animateCamera(CameraUpdate.zoomIn()),
           ),
         ],
