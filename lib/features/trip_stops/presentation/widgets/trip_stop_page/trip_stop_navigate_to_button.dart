@@ -18,6 +18,7 @@ class _TripStopNavigateToButton extends StatelessWidget {
   _launchNavigationApp(BuildContext context) async {
     try {
       final availableMaps = await MapLauncher.installedMaps;
+
       if (context.mounted) {
         showModalBottomSheet(
           context: context,
@@ -30,38 +31,36 @@ class _TripStopNavigateToButton extends StatelessWidget {
               width: double.infinity,
               child: SafeArea(
                 minimum: const EdgeInsets.all(12),
-                child: Center(
-                  heightFactor: 1,
-                  child: Wrap(
-                    spacing: 12,
-                    runSpacing: 12,
-                    children: [
-                      for (final map in availableMaps)
-                        InkWell(
-                          onTap: () async {
-                            Navigator.pop(context);
-                            await Future.delayed(const Duration(milliseconds: 300));
-                            if (context.mounted) {
-                              final tripStop = context.read<TripStopCubit>().state.tripStop;
-                              map.showDirections(
-                                destination: tripStop.location.toCoords(),
-                                destinationTitle: tripStop.name,
-                              );
-                            }
-                          },
-                          child: Column(
-                            children: [
-                              SvgPicture.asset(
-                                map.icon,
-                                height: 50,
-                                width: 50,
-                              ),
-                              Text(map.mapName),
-                            ],
-                          ),
+                child: Wrap(
+                  spacing: 16,
+                  runSpacing: 16,
+                  alignment: WrapAlignment.spaceEvenly,
+                  children: [
+                    for (final map in availableMaps)
+                      InkWell(
+                        onTap: () async {
+                          Navigator.pop(context);
+                          await Future.delayed(const Duration(milliseconds: 300));
+                          if (context.mounted) {
+                            final tripStop = context.read<TripStopCubit>().state.tripStop;
+                            map.showDirections(
+                              destination: tripStop.location.toCoords(),
+                              destinationTitle: tripStop.name,
+                            );
+                          }
+                        },
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              map.icon,
+                              height: 50,
+                              width: 50,
+                            ),
+                            Text(map.mapName),
+                          ],
                         ),
-                    ],
-                  ),
+                      ),
+                  ],
                 ),
               ),
             );
