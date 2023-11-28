@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
                   width: ResponsiveValue<double>(
                     context,
                     conditionalValues: [
-                      Condition.equals(name: MOBILE, value: 450),
+                      Condition.equals(name: MOBILE, value: 400),
                       ...kIsWeb
                           ? [
                               Condition.between(start: 800, end: 1000, value: 800),
