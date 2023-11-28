@@ -28,18 +28,20 @@ class NewEditDayTripForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         StreamBuilder<bool>(
-            stream: isSaving,
-            builder: (context, isSaving) {
-              if (isSaving.data ?? false) {
-                return const LinearProgressIndicator(minHeight: 1);
-              } else {
-                return const SizedBox(height: 1);
-              }
-            }),
-        Expanded(
+          stream: isSaving,
+          builder: (context, isSaving) {
+            if (isSaving.data ?? false) {
+              return const LinearProgressIndicator(minHeight: 1);
+            } else {
+              return const SizedBox(height: 1);
+            }
+          },
+        ),
+        Flexible(
           child: SafeArea(
             child: SingleChildScrollView(
               padding: defaultPagePadding,

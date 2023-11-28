@@ -120,22 +120,19 @@ class _DayTripPageBody extends HookWidget {
       useRootNavigator: true,
       isDismissible: false,
       builder: (context) {
-        return FractionallySizedBox(
-          heightFactor: 0.9,
+        return Padding(
+          padding: const EdgeInsets.all(16),
           child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Padding(
-              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: NewEditDayTripForm(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: NewEditDayTripForm(
+              isSaving: isSaving.stream,
+              onDescriptionChanged: (description) => cubit.descriptionChanged(description),
+              initialDayTripDescription: cubit.state.dayTrip.description,
+              saveSection: _SaveCancelEditButtons(
                 isSaving: isSaving.stream,
-                onDescriptionChanged: (description) => cubit.descriptionChanged(description),
-                initialDayTripDescription: cubit.state.dayTrip.description,
-                saveSection: _SaveCancelEditButtons(
-                  isSaving: isSaving.stream,
-                  onCancel: () => cubit.cancelEditing(),
-                  onSave: () => cubit.saveChanges(),
-                  errorMessage: errorMessage.stream,
-                ),
+                onCancel: () => cubit.cancelEditing(),
+                onSave: () => cubit.saveChanges(),
+                errorMessage: errorMessage.stream,
               ),
             ),
           ),

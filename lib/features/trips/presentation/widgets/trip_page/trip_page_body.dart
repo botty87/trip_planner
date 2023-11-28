@@ -106,25 +106,22 @@ class _TripPageBody extends HookWidget {
       useRootNavigator: true,
       isDismissible: false,
       builder: (context) {
-        return FractionallySizedBox(
-          heightFactor: 0.9,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: NewEditTripForm(
-              onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-              onNameChanged: (String value) => cubit.nameChanged(value),
-              onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
-              saveSection: _SaveCancelEditButtons(
-                isSaving: isSaving.stream,
-                onCancel: () => cubit.modalBottomEditingDismissed(),
-                onSave: () => cubit.saveChanges(),
-                errorMessage: errorMessage.stream,
-              ),
+        return Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: NewEditTripForm(
+            onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+            onNameChanged: (String value) => cubit.nameChanged(value),
+            onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
+            saveSection: _SaveCancelEditButtons(
               isSaving: isSaving.stream,
-              initialTripName: cubit.state.trip.name,
-              initialTripDescription: cubit.state.trip.description,
-              initialStartDate: cubit.state.trip.startDate,
+              onCancel: () => cubit.modalBottomEditingDismissed(),
+              onSave: () => cubit.saveChanges(),
+              errorMessage: errorMessage.stream,
             ),
+            isSaving: isSaving.stream,
+            initialTripName: cubit.state.trip.name,
+            initialTripDescription: cubit.state.trip.description,
+            initialStartDate: cubit.state.trip.startDate,
           ),
         );
       },

@@ -93,6 +93,7 @@ class NewEditTripStopForm extends HookWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: [
         StreamBuilder<bool>(
             stream: isSaving,
@@ -103,7 +104,7 @@ class NewEditTripStopForm extends HookWidget {
                 return const SizedBox(height: 1);
               }
             }),
-        Expanded(
+        Flexible(
           child: SafeArea(
             child: SingleChildScrollView(
               padding: defaultPagePadding,
@@ -165,8 +166,7 @@ class NewEditTripStopForm extends HookWidget {
                       ),
                       const SizedBox(height: verticalSpaceL),
                       saveSection,
-                      const SizedBox(height: verticalSpaceL),
-                    ],
+                    ],  
                   ),
                 ],
               ),
