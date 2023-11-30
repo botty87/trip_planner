@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../domain/entities/trip.dart';
 
 abstract class TripsDataSource {
@@ -14,7 +15,7 @@ abstract class TripsDataSource {
 }
 
 @LazySingleton(as: TripsDataSource)
-final class TripsDataSourceImpl implements TripsDataSource {
+final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripsDataSource {
   final FirebaseFirestore firebaseFirestore;
 
   TripsDataSourceImpl(this.firebaseFirestore);
@@ -26,7 +27,7 @@ final class TripsDataSourceImpl implements TripsDataSource {
 
   @override
   Future<void> addTrip(Trip trip) async {
-    await _tripsCollection.add(trip);
+    performSync(() async => await _tripsCollection.add(trip));
   }
 
   @override
@@ -42,11 +43,11 @@ final class TripsDataSourceImpl implements TripsDataSource {
 
   @override
   Future<void> updateTrip(String id, String name, String? description, DateTime startDate) async {
-    await _tripsCollection.doc(id).update({
-      'name': name,
-      'description': description?.isEmpty ?? true ? null : description,
-      'startDate': startDate,
-    });
+    performSync(() async => await _tripsCollection.doc(id).update({
+          'name': name,
+          'description': description?.isEmpty ?? true ? null : description,
+          'startDate': startDate,
+        }));
   }
 
   @override
@@ -91,7 +92,7 @@ final class TripsDataSourceImpl implements TripsDataSource {
       }
     }
 
-    await Future.wait(batchs.map((batch) => batch.commit()));
+    performSync(() async => await Future.wait(batchs.map((batch) => batch.commit())));
   }
 
   @override
@@ -147,6 +148,6 @@ final class TripsDataSourceImpl implements TripsDataSource {
       }
     }
 
-    await Future.wait(batchs.map((batch) => batch.commit()));
+    performSync(() async => await Future.wait(batchs.map((batch) => batch.commit())));
   }
 }

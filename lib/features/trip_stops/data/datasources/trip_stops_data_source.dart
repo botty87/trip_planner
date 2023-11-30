@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../domain/entities/trip_stop.dart';
 
 abstract class TripStopsDataSource {
@@ -60,7 +61,7 @@ abstract class TripStopsDataSource {
 }
 
 @LazySingleton(as: TripStopsDataSource)
-class TripStopsDataSourceImpl implements TripStopsDataSource {
+class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripStopsDataSource {
   final FirebaseFirestore firebaseFirestore;
 
   TripStopsDataSourceImpl(this.firebaseFirestore);
@@ -98,7 +99,7 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       index: tripStopsCount,
     );
 
-    await tripStopsCollection.add(tripStop);
+    performSync(() async => await tripStopsCollection.add(tripStop));
   }
 
   @override
@@ -122,7 +123,7 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       batch.update(tripStopsCollection.doc(tripStop.id), {'index': tripStop.index});
     }
 
-    await batch.commit();
+    performSync(() async => await batch.commit());
   }
 
   @override
@@ -132,7 +133,8 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       required String tripStopId,
       required int travelTime}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
-    await tripStopDoc.update({'travelTimeToNextStop': travelTime});
+
+    performSync(() async => await tripStopDoc.update({'travelTimeToNextStop': travelTime}));
   }
 
   @override
@@ -142,7 +144,8 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       required String tripStopId,
       required bool isDone}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
-    await tripStopDoc.update({'isDone': isDone});
+
+    performSync(() async => await tripStopDoc.update({'isDone': isDone}));
   }
 
   @override
@@ -152,14 +155,16 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       required String tripStopId,
       required String? note}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
-    await tripStopDoc.update({'note': note});
+
+    performSync(() async => await tripStopDoc.update({'note': note}));
   }
 
   @override
   Future<void> deleteTripStop(
       {required String tripId, required String dayTripId, required String tripStopId}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
-    await tripStopDoc.delete();
+
+    performSync(() async => await tripStopDoc.delete());
   }
 
   @override
@@ -172,11 +177,12 @@ class TripStopsDataSourceImpl implements TripStopsDataSource {
       required int duration,
       required LatLng location}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
-    tripStopDoc.update({
-      'name': name,
-      'description': description?.isEmpty ?? true ? null : description,
-      'duration': duration,
-      'location': GeoPoint(location.latitude, location.longitude),
-    });
+
+    performSync(() async => await tripStopDoc.update({
+          'name': name,
+          'description': description?.isEmpty ?? true ? null : description,
+          'duration': duration,
+          'location': GeoPoint(location.latitude, location.longitude),
+        }));
   }
 }

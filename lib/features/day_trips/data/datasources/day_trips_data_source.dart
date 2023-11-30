@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../domain/entities/day_trip.dart';
 
@@ -26,7 +27,7 @@ abstract class DayTripsDataSource {
 }
 
 @LazySingleton(as: DayTripsDataSource)
-class DayTripsDataSourceImpl implements DayTripsDataSource {
+class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTripsDataSource {
   final FirebaseFirestore firebaseFirestore;
 
   DayTripsDataSourceImpl(this.firebaseFirestore);
@@ -68,22 +69,24 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
       batch.update(dayTripsCollection.doc(dayTrip.id), {'index': dayTrip.index});
     }
 
-    await batch.commit();
+    performSync(() async => await batch.commit());
   }
 
   @override
   Future<void> updateDayTrip(
       {required String id, required String tripId, required String? description}) async {
-    await _dayTripsCollection(tripId).doc(id).update({
-      'description': description?.isEmpty ?? true ? null : description,
-    });
+    await performSync(() async => await _dayTripsCollection(tripId).doc(id).update({
+          'description': description,
+        }));
   }
 
   @override
   Future<void> updateDayTripStartTime(
       {required String id, required String tripId, required TimeOfDay startTime}) async {
-    await _dayTripsCollection(tripId).doc(id).update({
-      'startTime': startTime.toJson(),
+    await performSync(() async {
+      await _dayTripsCollection(tripId).doc(id).update({
+          'startTime': startTime.toJson(),
+        });
     });
   }
 
@@ -115,6 +118,6 @@ class DayTripsDataSourceImpl implements DayTripsDataSource {
       currentBatchSize++;
     }
 
-    await Future.wait(batchs.map((batch) => batch.commit()));
+    await performSync(() async => await Future.wait(batchs.map((batch) => batch.commit())));
   }
 }
