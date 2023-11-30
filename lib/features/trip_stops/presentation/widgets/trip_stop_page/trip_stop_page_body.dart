@@ -96,43 +96,53 @@ class _TripStopPageBody extends HookWidget {
               (previous is TripStopStateSaving && current is! TripStopStateSaving),
         ),
       ],
-      child: SafeArea(
-        child: SingleChildScrollView(
-          padding: defaultPagePadding,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              BlocSelector<TripStopCubit, TripStopState, bool>(
-                selector: (state) => state.maybeMap(
-                  noteSaving: (_) => true,
-                  orElse: () => false,
-                ),
-                builder: (context, isSaving) => isSaving
-                    ? const LinearProgressIndicator(minHeight: 1)
-                    : const SizedBox(height: verticalSpace),
-              ),
-              BlocSelector<TripStopCubit, TripStopState, String?>(
-                selector: (state) => state.tripStop.description,
-                builder: (context, description) => _TripStopDescription(headerText: description),
-              ),
-              const SizedBox(height: verticalSpace),
-              const _MapWidget(),
-              const SizedBox(height: verticalSpace),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
-              ),
-              if (!kIsWeb) ...[
-                const SizedBox(height: verticalSpace),
-                const _TripStopNavigateToButton(),
-              ],
-              const SizedBox(height: verticalSpaceXL),
-              const _TripStopNoteWidget(),
-              const SizedBox(height: verticalSpaceL),
-              _DeleteTripStopButton(isDeleting: isDeleting.stream),
-            ],
-          ),
+      child: BlocSelector<TripStopCubit, TripStopState, bool>(
+        selector: (state) => state.maybeMap(
+          noteSaving: (_) => true,
+          orElse: () => false,
         ),
+        builder: (context, isSaving) {
+          return AbsorbPointer(
+            absorbing: isSaving,
+            child: Column(
+              children: [
+                isSaving ? const LinearProgressIndicator() : const SizedBox.shrink(),
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: defaultPagePadding,
+                    child: SafeArea(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          BlocSelector<TripStopCubit, TripStopState, String?>(
+                            selector: (state) => state.tripStop.description,
+                            builder: (context, description) =>
+                                _TripStopDescription(headerText: description),
+                          ),
+                          const SizedBox(height: verticalSpace),
+                          const _MapWidget(),
+                          const SizedBox(height: verticalSpace),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
+                          ),
+                          if (!kIsWeb) ...[
+                            const SizedBox(height: verticalSpace),
+                            const _TripStopNavigateToButton(),
+                          ],
+                          const SizedBox(height: verticalSpaceXL),
+                          const _TripStopNoteWidget(),
+                          const SizedBox(height: verticalSpaceL),
+                          _DeleteTripStopButton(isDeleting: isDeleting.stream),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

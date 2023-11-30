@@ -59,52 +59,62 @@ class _DayTripPageBody extends HookWidget {
             listenWhen: (previous, current) =>
                 previous is DayTripStateEditing && current is DayTripStateNormal),
       ],
-      child: SafeArea(
-          child: SingleChildScrollView(
-        padding: defaultPagePadding,
-        child: Center(
-          child: LayoutBuilder(builder: (context, constraints) {
-            final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
-                ? constraints.maxWidth * 0.8
-                : constraints.maxWidth;
-
-            return ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: maxWidth),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  BlocSelector<DayTripCubit, DayTripState, bool>(
-                    selector: (DayTripState state) => state.maybeMap(
-                      normal: (state) => state.explictitStartTimeSave || state.isSaving,
-                      orElse: () => false,
-                    ),
-                    builder: (BuildContext context, bool explictitStartTimeSave) =>
-                        explictitStartTimeSave
-                            ? const LinearProgressIndicator(minHeight: 1)
-                            : const SizedBox.shrink(),
-                  ),
-                  const _StartTimeWidget(),
-                  const SizedBox(height: verticalSpaceS),
-                  BlocSelector<DayTripCubit, DayTripState, String?>(
-                    selector: (state) => state.dayTrip.description,
-                    builder: (context, description) => Column(
-                      children: [
-                        _DayTripDescription(headerText: description),
-                        if (description != null) const SizedBox(height: verticalSpaceS),
-                      ],
-                    ),
-                  ),
-                  const _TripStopsList(),
-                  const SizedBox(height: verticalSpaceL),
-                  const _AddDayTripStopCard(),
-                  const SizedBox(height: verticalSpaceL),
-                  _DeleteTripButton(isDeleting: isDeleting.stream),
-                ],
-              ),
-            );
-          }),
+      child: BlocSelector<DayTripCubit, DayTripState, bool>(
+        selector: (DayTripState state) => state.maybeMap(
+          normal: (state) => state.explictitStartTimeSave || state.isSaving,
+          orElse: () => false,
         ),
-      )),
+        builder: (context, explictitStartTimeSave) {
+          return AbsorbPointer(
+            absorbing: explictitStartTimeSave,
+            child: Column(
+              children: [
+                explictitStartTimeSave ? const LinearProgressIndicator() : const SizedBox.shrink(),
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: defaultPagePadding,
+                    child: SafeArea(
+                      child: Center(
+                        child: LayoutBuilder(builder: (context, constraints) {
+                          final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+                              ? constraints.maxWidth * 0.8
+                              : constraints.maxWidth;
+
+                          return ConstrainedBox(
+                            constraints: BoxConstraints(maxWidth: maxWidth),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                const _StartTimeWidget(),
+                                const SizedBox(height: verticalSpaceS),
+                                BlocSelector<DayTripCubit, DayTripState, String?>(
+                                  selector: (state) => state.dayTrip.description,
+                                  builder: (context, description) => Column(
+                                    children: [
+                                      _DayTripDescription(headerText: description),
+                                      if (description != null)
+                                        const SizedBox(height: verticalSpaceS),
+                                    ],
+                                  ),
+                                ),
+                                const _TripStopsList(),
+                                const SizedBox(height: verticalSpaceL),
+                                const _AddDayTripStopCard(),
+                                const SizedBox(height: verticalSpaceL),
+                                _DeleteTripButton(isDeleting: isDeleting.stream),
+                              ],
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
