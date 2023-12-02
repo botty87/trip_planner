@@ -46,16 +46,25 @@ class _List extends StatelessWidget {
             currentIndex: index,
           ));
         }
-        final widget = Padding(
+        return Padding(
           key: ValueKey(tripStop.id),
           padding: const EdgeInsets.only(bottom: verticalSpaceXs),
-          child: _TripStopCard(
-            tripStop: tripStop,
-            tripStartEndTimes: tripStopStartEndTimes[index],
-            context: context,
+          child: Slidable(
+            startActionPane: ActionPane(
+              motion: const ScrollMotion(),
+              children: [_getSlidableAction(context, tripStop)],
+            ),
+            child: Builder(builder: (context) {
+              final slidableController = Slidable.of(context);
+              return _TripStopCard(
+                tripStop: tripStop,
+                tripStartEndTimes: tripStopStartEndTimes[index],
+                slidableController: slidableController,
+                context: context,
+              );
+            }),
           ),
         );
-        return widget;
       },
       proxyDecorator: (child, index, animation) {
         return TransparentListDecorator(
@@ -88,5 +97,15 @@ class _List extends StatelessWidget {
           .add(Duration(minutes: previousTripStop.travelTimeToNextStop));
       return Pair(startTime, startTime.add(Duration(minutes: tripStop.duration)));
     }
+  }
+
+  Widget _getSlidableAction(BuildContext context, TripStop tripStop) {
+    return SlidableAction(
+      onPressed: null,
+      backgroundColor: tripStop.isDone ? Colors.grey : Colors.green,
+      foregroundColor: Colors.white,
+      icon: tripStop.isDone ? Icons.close : Icons.check,
+      label: tripStop.isDone ? LocaleKeys.toDo.tr() : LocaleKeys.done.tr(),
+    );
   }
 }

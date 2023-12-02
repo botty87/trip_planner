@@ -104,5 +104,6 @@
     "dataLoadError" : "Error loading data. If you continue to have problems, please restart the app.",
     "error" : "Error",
     "tooManyRequests" : "Too many requests. Please try again later.",
-    "userDisabled" : "User disabled. Please contact support."
+    "userDisabled" : "User disabled. Please contact support.",
+    "toDo" : "To do"
 }

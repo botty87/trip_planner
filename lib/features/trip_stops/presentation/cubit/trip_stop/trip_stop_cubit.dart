@@ -40,6 +40,14 @@ class TripStopCubit extends Cubit<TripStopState> {
             trip: params.trip, dayTrip: params.dayTrip, tripStop: params.tripStop));
 
   isDoneChanged(bool isDone) async {
+    final currentIsDone = state.tripStop.isDone;
+
+    emit(TripStopState.saving(
+      trip: state.trip,
+      dayTrip: state.dayTrip,
+      tripStop: state.tripStop.copyWith(isDone: isDone),
+    ));
+
     final result = await _tripStopDone(TripStopDoneParams(
       tripId: state.trip.id,
       dayTripId: state.dayTrip.id,
@@ -47,12 +55,14 @@ class TripStopCubit extends Cubit<TripStopState> {
       isDone: isDone,
     ));
 
+    if(isClosed) return;
+
     result.fold(
       (failure) {
         emit(TripStopState.error(
           trip: state.trip,
           dayTrip: state.dayTrip,
-          tripStop: state.tripStop,
+          tripStop: state.tripStop.copyWith(isDone: currentIsDone),
           message: failure.message ?? LocaleKeys.unknownError.tr(),
         ));
 

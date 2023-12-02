@@ -9,43 +9,41 @@ class _DayTripsList extends StatelessWidget {
 
     return AnimatedSize(
         duration: const Duration(milliseconds: 400),
-        child: isLoading ? const SizedBox.shrink() : _list(context));
+        child: isLoading ? const SizedBox.shrink() : _List());
   }
+}
 
-  Widget _list(BuildContext context) {
-    return BlocSelector<TripCubit, TripState, List<DayTrip>>(
-      selector: (state) {
-        return state.dayTrips;
-      },
-      builder: (context, dayTrips) {
-        final cubit = context.read<TripCubit>();
-        return ReorderableListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: dayTrips.length,
-          proxyDecorator: (child, index, animation) {
-            return TransparentListDecorator(
-              index: index,
-              animation: animation,
-              child: child,
-            );
-          },
-          itemBuilder: (context, index) {
-            final dayTrip = dayTrips[index];
-            return Padding(
-              key: ValueKey(dayTrip.id),
-              padding: const EdgeInsets.only(bottom: verticalSpaceXs),
-              child: _DayTripCard(
-                dayTrip: dayTrip,
-                tripStartDate: cubit.state.trip.startDate,
-                context: context,
-              ),
-            );
-          },
-          onReorder: (oldIndex, newIndex) {
-            context.read<TripCubit>().reorderDayTrips(oldIndex, newIndex);
-          },
+class _List extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final dayTrips = context.select((TripCubit cubit) => cubit.state.dayTrips);
+    final tripStartDate = context.select((TripCubit cubit) => cubit.state.trip.startDate);
+
+    return ReorderableListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: dayTrips.length,
+      proxyDecorator: (child, index, animation) {
+        return TransparentListDecorator(
+          index: index,
+          animation: animation,
+          child: child,
         );
+      },
+      itemBuilder: (context, index) {
+        final dayTrip = dayTrips[index];
+        return Padding(
+          key: ValueKey(dayTrip.id),
+          padding: const EdgeInsets.only(bottom: verticalSpaceXs),
+          child: _DayTripCard(
+            dayTrip: dayTrip,
+            tripStartDate: tripStartDate,
+            context: context,
+          ),
+        );
+      },
+      onReorder: (oldIndex, newIndex) {
+        context.read<TripCubit>().reorderDayTrips(oldIndex, newIndex);
       },
     );
   }

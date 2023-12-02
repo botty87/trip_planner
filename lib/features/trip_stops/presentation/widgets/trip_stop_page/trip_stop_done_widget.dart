@@ -9,6 +9,7 @@ class _TripStopDoneWidget extends StatelessWidget {
     final isDone = context.select<TripStopCubit, bool>(
       (cubit) => cubit.state.tripStop.isDone,
     );
+    
     return Column(
       children: [
         GestureDetector(

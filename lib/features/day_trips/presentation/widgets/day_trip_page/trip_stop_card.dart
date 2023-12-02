@@ -4,10 +4,12 @@ final class _TripStopCard extends GenericTripCard {
   final TripStop tripStop;
   final Pair<DateTime, DateTime> tripStartEndTimes;
   final BuildContext context;
+  final SlidableController? slidableController;
 
   const _TripStopCard({
     required this.tripStop,
     required this.tripStartEndTimes,
+    required this.slidableController,
     required this.context,
   });
 
@@ -25,6 +27,7 @@ final class _TripStopCard extends GenericTripCard {
 
   @override
   VoidCallback? get onTap => () {
+        slidableController?.close();
         final state = context.read<DayTripCubit>().state;
         context.router
             .push(TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop));

@@ -105,5 +105,6 @@
     "dataLoadError" : "Errore nel caricamento dei dati. Se il problema persiste, riavvia l'applicazione.",
     "error" : "Errore",
     "tooManyRequests" : "Troppe richieste. Riprova più tardi.",
-    "userDisabled" : "Utente disabilitato"
+    "userDisabled" : "Utente disabilitato",
+    "toDo" : "Da fare"
 }
