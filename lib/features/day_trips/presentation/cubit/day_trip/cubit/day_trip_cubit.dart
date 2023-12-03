@@ -12,6 +12,7 @@ import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/debouncer.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../../../trip_stops/domain/usecases/listen_trip_stops.dart';
+import '../../../../../trip_stops/domain/usecases/trip_stop_done.dart';
 import '../../../../../trip_stops/domain/usecases/update_travel_time.dart';
 import '../../../../../trip_stops/domain/usecases/update_trip_stops_indexes.dart';
 import '../../../../../trip_stops/errors/trip_stops_failure.dart';
@@ -32,6 +33,8 @@ class DayTripCubit extends Cubit<DayTripState> {
   final UpdateDayTripStartTime _updateDayTripStartTime;
   final UpdateTripStopsIndexes _updateDayTripsIndexes;
   final UpdateTravelTime _updateTravelTime;
+  final TripStopDone _tripStopDone;
+
   final FirebaseCrashlytics _crashlytics;
 
   late final StreamSubscription<Either<TripStopsFailure, List<TripStop>>> _tripStopsSubscription;
@@ -48,6 +51,7 @@ class DayTripCubit extends Cubit<DayTripState> {
     required UpdateDayTripStartTime updateDayTripStartTime,
     required UpdateTripStopsIndexes updateDayTripsIndexes,
     required UpdateTravelTime updateTravelTime,
+    required TripStopDone tripStopDone,
     required FirebaseCrashlytics crashlytics,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
@@ -55,6 +59,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         _updateDayTripStartTime = updateDayTripStartTime,
         _updateDayTripsIndexes = updateDayTripsIndexes,
         _updateTravelTime = updateTravelTime,
+        _tripStopDone = tripStopDone,
         _crashlytics = crashlytics,
         super(DayTripState.normal(
           trip: trip,
@@ -304,6 +309,57 @@ class DayTripCubit extends Cubit<DayTripState> {
         trip: state.trip,
         dayTrip: state.dayTrip,
         tripStops: state.tripStops,
+      )),
+    );
+  }
+
+  void toggleTripStopDone(bool isDone, int tripStopIndex) async {
+    //Set the trip stop at the index to the new value
+    final tripStop = state.tripStops[tripStopIndex].copyWith(isDone: isDone);
+    final tripStops = List<TripStop>.from(state.tripStops);
+    tripStops[tripStopIndex] = tripStop;
+
+    emit(DayTripState.normal(
+      trip: state.trip,
+      dayTrip: state.dayTrip,
+      tripStops: tripStops,
+    ));
+
+    final result = await _tripStopDone(
+      TripStopDoneParams(
+        tripId: state.trip.id,
+        dayTripId: state.dayTrip.id,
+        tripStopId: tripStop.id,
+        isDone: isDone,
+      ),
+    );
+
+    if (isClosed) return;
+
+    result.fold(
+      (failure) {
+        //Revert the trip stop to the previous value
+        final tripStop = state.tripStops[tripStopIndex].copyWith(isDone: !isDone);
+        final tripStops = List<TripStop>.from(state.tripStops);
+        tripStops[tripStopIndex] = tripStop;
+
+        emit(DayTripState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: tripStops,
+          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+        ));
+
+        emit(DayTripState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: tripStops,
+        ));
+      },
+      (_) => emit(DayTripState.normal(
+        trip: state.trip,
+        dayTrip: state.dayTrip,
+        tripStops: tripStops,
       )),
     );
   }

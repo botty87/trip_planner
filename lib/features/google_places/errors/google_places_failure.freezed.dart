@@ -88,8 +88,8 @@ class _$GooglePlacesFailureCopyWithImpl<$Res, $Val extends GooglePlacesFailure>
 
 /// @nodoc
 abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
-  factory _$$NoInternetConnectionImplCopyWith(
-          _$NoInternetConnectionImpl value, $Res Function(_$NoInternetConnectionImpl) then) =
+  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
+          $Res Function(_$NoInternetConnectionImpl) then) =
       __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
@@ -97,8 +97,8 @@ abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
 class __$$NoInternetConnectionImplCopyWithImpl<$Res>
     extends _$GooglePlacesFailureCopyWithImpl<$Res, _$NoInternetConnectionImpl>
     implements _$$NoInternetConnectionImplCopyWith<$Res> {
-  __$$NoInternetConnectionImplCopyWithImpl(
-      _$NoInternetConnectionImpl _value, $Res Function(_$NoInternetConnectionImpl) _then)
+  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
+      $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 }
 
@@ -115,7 +115,8 @@ class _$NoInternetConnectionImpl implements _NoInternetConnection {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$NoInternetConnectionImpl);
   }
 
   @override
@@ -337,7 +338,8 @@ class _$RequestDeniedImpl implements _RequestDenied {
 }
 
 abstract class _RequestDenied implements GooglePlacesFailure {
-  const factory _RequestDenied({required final String message}) = _$RequestDeniedImpl;
+  const factory _RequestDenied({required final String message}) =
+      _$RequestDeniedImpl;
 
   String get message;
   @JsonKey(ignore: true)
@@ -347,8 +349,8 @@ abstract class _RequestDenied implements GooglePlacesFailure {
 
 /// @nodoc
 abstract class _$$RequestCancelledImplCopyWith<$Res> {
-  factory _$$RequestCancelledImplCopyWith(
-          _$RequestCancelledImpl value, $Res Function(_$RequestCancelledImpl) then) =
+  factory _$$RequestCancelledImplCopyWith(_$RequestCancelledImpl value,
+          $Res Function(_$RequestCancelledImpl) then) =
       __$$RequestCancelledImplCopyWithImpl<$Res>;
 }
 
@@ -356,8 +358,8 @@ abstract class _$$RequestCancelledImplCopyWith<$Res> {
 class __$$RequestCancelledImplCopyWithImpl<$Res>
     extends _$GooglePlacesFailureCopyWithImpl<$Res, _$RequestCancelledImpl>
     implements _$$RequestCancelledImplCopyWith<$Res> {
-  __$$RequestCancelledImplCopyWithImpl(
-      _$RequestCancelledImpl _value, $Res Function(_$RequestCancelledImpl) _then)
+  __$$RequestCancelledImplCopyWithImpl(_$RequestCancelledImpl _value,
+      $Res Function(_$RequestCancelledImpl) _then)
       : super(_value, _then);
 }
 

@@ -37,19 +37,23 @@ mixin _$Trip {
 
 /// @nodoc
 abstract class $TripCopyWith<$Res> {
-  factory $TripCopyWith(Trip value, $Res Function(Trip) then) = _$TripCopyWithImpl<$Res, Trip>;
+  factory $TripCopyWith(Trip value, $Res Function(Trip) then) =
+      _$TripCopyWithImpl<$Res, Trip>;
   @useResult
   $Res call(
       {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       String name,
       String? description,
       String userId,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime createdAt,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime startDate});
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+      DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+      DateTime startDate});
 }
 
 /// @nodoc
-class _$TripCopyWithImpl<$Res, $Val extends Trip> implements $TripCopyWith<$Res> {
+class _$TripCopyWithImpl<$Res, $Val extends Trip>
+    implements $TripCopyWith<$Res> {
   _$TripCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -98,7 +102,8 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip> implements $TripCopyWith<$Res>
 
 /// @nodoc
 abstract class _$$TripImplCopyWith<$Res> implements $TripCopyWith<$Res> {
-  factory _$$TripImplCopyWith(_$TripImpl value, $Res Function(_$TripImpl) then) =
+  factory _$$TripImplCopyWith(
+          _$TripImpl value, $Res Function(_$TripImpl) then) =
       __$$TripImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -107,12 +112,15 @@ abstract class _$$TripImplCopyWith<$Res> implements $TripCopyWith<$Res> {
       String name,
       String? description,
       String userId,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime createdAt,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime startDate});
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+      DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+      DateTime startDate});
 }
 
 /// @nodoc
-class __$$TripImplCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$TripImpl>
+class __$$TripImplCopyWithImpl<$Res>
+    extends _$TripCopyWithImpl<$Res, _$TripImpl>
     implements _$$TripImplCopyWith<$Res> {
   __$$TripImplCopyWithImpl(_$TripImpl _value, $Res Function(_$TripImpl) _then)
       : super(_value, _then);
@@ -169,7 +177,8 @@ class _$TripImpl implements _Trip {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       required this.startDate});
 
-  factory _$TripImpl.fromJson(Map<String, dynamic> json) => _$$TripImplFromJson(json);
+  factory _$TripImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TripImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -199,15 +208,19 @@ class _$TripImpl implements _Trip {
             other is _$TripImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
-            (identical(other.startDate, startDate) || other.startDate == startDate));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, userId, createdAt, startDate);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, description, userId, createdAt, startDate);
 
   @JsonKey(ignore: true)
   @override
@@ -253,5 +266,6 @@ abstract class _Trip implements Trip {
   DateTime get startDate;
   @override
   @JsonKey(ignore: true)
-  _$$TripImplCopyWith<_$TripImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$TripImplCopyWith<_$TripImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

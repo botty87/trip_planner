@@ -52,7 +52,7 @@ class _List extends StatelessWidget {
           child: Slidable(
             startActionPane: ActionPane(
               motion: const ScrollMotion(),
-              children: [_getSlidableAction(context, tripStop)],
+              children: [_getSlidableAction(tripStop, index)],
             ),
             child: Builder(builder: (context) {
               final slidableController = Slidable.of(context);
@@ -99,9 +99,10 @@ class _List extends StatelessWidget {
     }
   }
 
-  Widget _getSlidableAction(BuildContext context, TripStop tripStop) {
+  Widget _getSlidableAction(TripStop tripStop, int index) {
     return SlidableAction(
-      onPressed: null,
+      onPressed: (context) =>
+          context.read<DayTripCubit>().toggleTripStopDone(!tripStop.isDone, index),
       backgroundColor: tripStop.isDone ? Colors.grey : Colors.green,
       foregroundColor: Colors.white,
       icon: tripStop.isDone ? Icons.close : Icons.check,

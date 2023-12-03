@@ -7,8 +7,8 @@ import 'dart:async' as _i7;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:firebase_core/firebase_core.dart' as _i5;
-import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i16;
-import 'package:flutter/material.dart' as _i17;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i17;
+import 'package:flutter/material.dart' as _i18;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i2;
@@ -26,6 +26,8 @@ import 'package:trip_planner/features/trip_stops/domain/repositories/trip_stops_
     as _i4;
 import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart'
     as _i10;
+import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart'
+    as _i16;
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_travel_time.dart'
     as _i15;
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
@@ -321,11 +323,43 @@ class MockUpdateTravelTime extends _i1.Mock implements _i15.UpdateTravelTime {
       ) as _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>);
 }
 
+/// A class which mocks [TripStopDone].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTripStopDone extends _i1.Mock implements _i16.TripStopDone {
+  @override
+  _i7.Future<_i3.Either<_i11.TripStopsFailure, void>> call(
+          _i16.TripStopDoneParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>.value(
+            _FakeEither_1<_i11.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>.value(
+                _FakeEither_1<_i11.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>);
+}
+
 /// A class which mocks [FirebaseCrashlytics].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseCrashlytics extends _i1.Mock
-    implements _i16.FirebaseCrashlytics {
+    implements _i17.FirebaseCrashlytics {
   @override
   _i5.FirebaseApp get app => (super.noSuchMethod(
         Invocation.getter(#app),
@@ -430,7 +464,7 @@ class MockFirebaseCrashlytics extends _i1.Mock
 
   @override
   _i7.Future<void> recordFlutterError(
-    _i17.FlutterErrorDetails? flutterErrorDetails, {
+    _i18.FlutterErrorDetails? flutterErrorDetails, {
     bool? fatal = false,
   }) =>
       (super.noSuchMethod(
@@ -445,7 +479,7 @@ class MockFirebaseCrashlytics extends _i1.Mock
 
   @override
   _i7.Future<void> recordFlutterFatalError(
-          _i17.FlutterErrorDetails? flutterErrorDetails) =>
+          _i18.FlutterErrorDetails? flutterErrorDetails) =>
       (super.noSuchMethod(
         Invocation.method(
           #recordFlutterFatalError,

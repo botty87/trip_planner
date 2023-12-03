@@ -19,12 +19,14 @@ mixin _$DayTripsFailure {
   String? get message => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DayTripsFailureCopyWith<DayTripsFailure> get copyWith => throw _privateConstructorUsedError;
+  $DayTripsFailureCopyWith<DayTripsFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DayTripsFailureCopyWith<$Res> {
-  factory $DayTripsFailureCopyWith(DayTripsFailure value, $Res Function(DayTripsFailure) then) =
+  factory $DayTripsFailureCopyWith(
+          DayTripsFailure value, $Res Function(DayTripsFailure) then) =
       _$DayTripsFailureCopyWithImpl<$Res, DayTripsFailure>;
   @useResult
   $Res call({String? message});
@@ -55,9 +57,10 @@ class _$DayTripsFailureCopyWithImpl<$Res, $Val extends DayTripsFailure>
 }
 
 /// @nodoc
-abstract class _$$DayTripsFailureImplCopyWith<$Res> implements $DayTripsFailureCopyWith<$Res> {
-  factory _$$DayTripsFailureImplCopyWith(
-          _$DayTripsFailureImpl value, $Res Function(_$DayTripsFailureImpl) then) =
+abstract class _$$DayTripsFailureImplCopyWith<$Res>
+    implements $DayTripsFailureCopyWith<$Res> {
+  factory _$$DayTripsFailureImplCopyWith(_$DayTripsFailureImpl value,
+          $Res Function(_$DayTripsFailureImpl) then) =
       __$$DayTripsFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -114,11 +117,13 @@ class _$DayTripsFailureImpl implements _DayTripsFailure {
   @override
   @pragma('vm:prefer-inline')
   _$$DayTripsFailureImplCopyWith<_$DayTripsFailureImpl> get copyWith =>
-      __$$DayTripsFailureImplCopyWithImpl<_$DayTripsFailureImpl>(this, _$identity);
+      __$$DayTripsFailureImplCopyWithImpl<_$DayTripsFailureImpl>(
+          this, _$identity);
 }
 
 abstract class _DayTripsFailure implements DayTripsFailure {
-  const factory _DayTripsFailure({final String? message}) = _$DayTripsFailureImpl;
+  const factory _DayTripsFailure({final String? message}) =
+      _$DayTripsFailureImpl;
 
   @override
   String? get message;

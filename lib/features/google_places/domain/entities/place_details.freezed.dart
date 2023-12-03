@@ -20,12 +20,14 @@ mixin _$PlaceDetails {
   LatLng get location => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PlaceDetailsCopyWith<PlaceDetails> get copyWith => throw _privateConstructorUsedError;
+  $PlaceDetailsCopyWith<PlaceDetails> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PlaceDetailsCopyWith<$Res> {
-  factory $PlaceDetailsCopyWith(PlaceDetails value, $Res Function(PlaceDetails) then) =
+  factory $PlaceDetailsCopyWith(
+          PlaceDetails value, $Res Function(PlaceDetails) then) =
       _$PlaceDetailsCopyWithImpl<$Res, PlaceDetails>;
   @useResult
   $Res call({String placeId, LatLng location});
@@ -61,7 +63,8 @@ class _$PlaceDetailsCopyWithImpl<$Res, $Val extends PlaceDetails>
 }
 
 /// @nodoc
-abstract class _$$PlaceDetailsImplCopyWith<$Res> implements $PlaceDetailsCopyWith<$Res> {
+abstract class _$$PlaceDetailsImplCopyWith<$Res>
+    implements $PlaceDetailsCopyWith<$Res> {
   factory _$$PlaceDetailsImplCopyWith(
           _$PlaceDetailsImpl value, $Res Function(_$PlaceDetailsImpl) then) =
       __$$PlaceDetailsImplCopyWithImpl<$Res>;
@@ -118,7 +121,8 @@ class _$PlaceDetailsImpl implements _PlaceDetails {
         (other.runtimeType == runtimeType &&
             other is _$PlaceDetailsImpl &&
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
-            (identical(other.location, location) || other.location == location));
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
   @override
@@ -132,8 +136,9 @@ class _$PlaceDetailsImpl implements _PlaceDetails {
 }
 
 abstract class _PlaceDetails implements PlaceDetails {
-  const factory _PlaceDetails({required final String placeId, required final LatLng location}) =
-      _$PlaceDetailsImpl;
+  const factory _PlaceDetails(
+      {required final String placeId,
+      required final LatLng location}) = _$PlaceDetailsImpl;
 
   @override
   String get placeId;

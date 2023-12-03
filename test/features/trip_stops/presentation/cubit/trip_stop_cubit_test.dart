@@ -81,6 +81,11 @@ void main() {
       build: () => getStandardTripStopCubit(),
       act: (cubit) => cubit.isDoneChanged(true),
       expect: () => [
+        TripStopState.saving(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop.copyWith(isDone: true),
+        ),
         TripStopState.normal(
           trip: tTrip,
           dayTrip: tDayTrip,
@@ -96,6 +101,11 @@ void main() {
       build: () => getStandardTripStopCubit(),
       act: (cubit) => cubit.isDoneChanged(true),
       expect: () => [
+        TripStopState.saving(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStop: tTripStop.copyWith(isDone: true),
+        ),
         TripStopState.error(
           trip: tTrip,
           dayTrip: tDayTrip,

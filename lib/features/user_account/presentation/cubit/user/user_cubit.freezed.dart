@@ -75,7 +75,8 @@ abstract class $UserStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserStateCopyWithImpl<$Res, $Val extends UserState> implements $UserStateCopyWith<$Res> {
+class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
+    implements $UserStateCopyWith<$Res> {
   _$UserStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -86,8 +87,8 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState> implements $UserStat
 
 /// @nodoc
 abstract class _$$UserStateLoggedOutImplCopyWith<$Res> {
-  factory _$$UserStateLoggedOutImplCopyWith(
-          _$UserStateLoggedOutImpl value, $Res Function(_$UserStateLoggedOutImpl) then) =
+  factory _$$UserStateLoggedOutImplCopyWith(_$UserStateLoggedOutImpl value,
+          $Res Function(_$UserStateLoggedOutImpl) then) =
       __$$UserStateLoggedOutImplCopyWithImpl<$Res>;
 }
 
@@ -95,8 +96,8 @@ abstract class _$$UserStateLoggedOutImplCopyWith<$Res> {
 class __$$UserStateLoggedOutImplCopyWithImpl<$Res>
     extends _$UserStateCopyWithImpl<$Res, _$UserStateLoggedOutImpl>
     implements _$$UserStateLoggedOutImplCopyWith<$Res> {
-  __$$UserStateLoggedOutImplCopyWithImpl(
-      _$UserStateLoggedOutImpl _value, $Res Function(_$UserStateLoggedOutImpl) _then)
+  __$$UserStateLoggedOutImplCopyWithImpl(_$UserStateLoggedOutImpl _value,
+      $Res Function(_$UserStateLoggedOutImpl) _then)
       : super(_value, _then);
 }
 
@@ -200,8 +201,8 @@ abstract class UserStateLoggedOut implements UserState {
 
 /// @nodoc
 abstract class _$$UserStateLoggedInImplCopyWith<$Res> {
-  factory _$$UserStateLoggedInImplCopyWith(
-          _$UserStateLoggedInImpl value, $Res Function(_$UserStateLoggedInImpl) then) =
+  factory _$$UserStateLoggedInImplCopyWith(_$UserStateLoggedInImpl value,
+          $Res Function(_$UserStateLoggedInImpl) then) =
       __$$UserStateLoggedInImplCopyWithImpl<$Res>;
   @useResult
   $Res call({User user});
@@ -213,8 +214,8 @@ abstract class _$$UserStateLoggedInImplCopyWith<$Res> {
 class __$$UserStateLoggedInImplCopyWithImpl<$Res>
     extends _$UserStateCopyWithImpl<$Res, _$UserStateLoggedInImpl>
     implements _$$UserStateLoggedInImplCopyWith<$Res> {
-  __$$UserStateLoggedInImplCopyWithImpl(
-      _$UserStateLoggedInImpl _value, $Res Function(_$UserStateLoggedInImpl) _then)
+  __$$UserStateLoggedInImplCopyWithImpl(_$UserStateLoggedInImpl _value,
+      $Res Function(_$UserStateLoggedInImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -267,7 +268,8 @@ class _$UserStateLoggedInImpl implements UserStateLoggedIn {
   @override
   @pragma('vm:prefer-inline')
   _$$UserStateLoggedInImplCopyWith<_$UserStateLoggedInImpl> get copyWith =>
-      __$$UserStateLoggedInImplCopyWithImpl<_$UserStateLoggedInImpl>(this, _$identity);
+      __$$UserStateLoggedInImplCopyWithImpl<_$UserStateLoggedInImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -345,7 +347,8 @@ class _$UserStateLoggedInImpl implements UserStateLoggedIn {
 }
 
 abstract class UserStateLoggedIn implements UserState {
-  const factory UserStateLoggedIn({required final User user}) = _$UserStateLoggedInImpl;
+  const factory UserStateLoggedIn({required final User user}) =
+      _$UserStateLoggedInImpl;
 
   User get user;
   @JsonKey(ignore: true)
@@ -355,8 +358,8 @@ abstract class UserStateLoggedIn implements UserState {
 
 /// @nodoc
 abstract class _$$UserStateLoadingImplCopyWith<$Res> {
-  factory _$$UserStateLoadingImplCopyWith(
-          _$UserStateLoadingImpl value, $Res Function(_$UserStateLoadingImpl) then) =
+  factory _$$UserStateLoadingImplCopyWith(_$UserStateLoadingImpl value,
+          $Res Function(_$UserStateLoadingImpl) then) =
       __$$UserStateLoadingImplCopyWithImpl<$Res>;
 }
 
@@ -364,8 +367,8 @@ abstract class _$$UserStateLoadingImplCopyWith<$Res> {
 class __$$UserStateLoadingImplCopyWithImpl<$Res>
     extends _$UserStateCopyWithImpl<$Res, _$UserStateLoadingImpl>
     implements _$$UserStateLoadingImplCopyWith<$Res> {
-  __$$UserStateLoadingImplCopyWithImpl(
-      _$UserStateLoadingImpl _value, $Res Function(_$UserStateLoadingImpl) _then)
+  __$$UserStateLoadingImplCopyWithImpl(_$UserStateLoadingImpl _value,
+      $Res Function(_$UserStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
@@ -469,8 +472,8 @@ abstract class UserStateLoading implements UserState {
 
 /// @nodoc
 abstract class _$$UserStateErrorImplCopyWith<$Res> {
-  factory _$$UserStateErrorImplCopyWith(
-          _$UserStateErrorImpl value, $Res Function(_$UserStateErrorImpl) then) =
+  factory _$$UserStateErrorImplCopyWith(_$UserStateErrorImpl value,
+          $Res Function(_$UserStateErrorImpl) then) =
       __$$UserStateErrorImplCopyWithImpl<$Res>;
 }
 

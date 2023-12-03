@@ -19,12 +19,14 @@ mixin _$TripsFailure {
   String? get message => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TripsFailureCopyWith<TripsFailure> get copyWith => throw _privateConstructorUsedError;
+  $TripsFailureCopyWith<TripsFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TripsFailureCopyWith<$Res> {
-  factory $TripsFailureCopyWith(TripsFailure value, $Res Function(TripsFailure) then) =
+  factory $TripsFailureCopyWith(
+          TripsFailure value, $Res Function(TripsFailure) then) =
       _$TripsFailureCopyWithImpl<$Res, TripsFailure>;
   @useResult
   $Res call({String? message});
@@ -55,7 +57,8 @@ class _$TripsFailureCopyWithImpl<$Res, $Val extends TripsFailure>
 }
 
 /// @nodoc
-abstract class _$$TripsFailureImplCopyWith<$Res> implements $TripsFailureCopyWith<$Res> {
+abstract class _$$TripsFailureImplCopyWith<$Res>
+    implements $TripsFailureCopyWith<$Res> {
   factory _$$TripsFailureImplCopyWith(
           _$TripsFailureImpl value, $Res Function(_$TripsFailureImpl) then) =
       __$$TripsFailureImplCopyWithImpl<$Res>;
