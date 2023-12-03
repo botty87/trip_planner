@@ -43,7 +43,7 @@ class AccountPage extends StatelessWidget {
       create: (context) => getIt(param1: user),
       child: Scaffold(
         body: LayoutBuilder(builder: (context, constraints) {
-          double height = constraints.maxWidth * 0.6;
+          double height = constraints.maxHeight * 0.4;
           if (height < 300) {
             height = 300;
           }
