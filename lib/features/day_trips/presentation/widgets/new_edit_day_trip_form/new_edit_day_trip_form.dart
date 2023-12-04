@@ -57,8 +57,12 @@ class NewEditDayTripForm extends StatelessWidget {
                           Condition.largerThan(name: DESKTOP, value: 0.35),
                         ],
                       ).value!;
+                      double height = (constraints.maxWidth * multiplyValue);
+                      if (height > 300) {
+                        height = 300;
+                      }
                       return SvgPicture(
-                        height: constraints.maxWidth * multiplyValue,
+                        height: height,
                         key: const Key('tripImage'),
                         AssetBytesLoader(Assets.svg.addNewDayTripSvg),
                       );

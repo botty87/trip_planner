@@ -23,7 +23,7 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
   CancelToken? _cancelToken;
 
   static const key = googlePlacesKey;
-  static const proxyURL = "https://cors-anywhere.herokuapp.com/";
+  static const proxyURL = "https://corsproxy.io/?";
 
   GooglePlacesDataSourceImpl(this.client, this.internetConnection);
 
