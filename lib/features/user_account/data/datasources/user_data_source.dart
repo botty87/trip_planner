@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth_pack;
 import 'package:injectable/injectable.dart';
+import '../../../../core/db/users_collection_ref.dart';
+import '../../../../core/di/di.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/user_db.dart';
 
@@ -26,7 +28,7 @@ abstract interface class UserDataSource {
 
 @LazySingleton(as: UserDataSource)
 final class UserDataSourceImpl implements UserDataSource {
-  final FirebaseAuth firebaseAuth;
+  final firebase_auth_pack.FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
 
   final StreamController<User?> _userStreamController = StreamController<User?>();
@@ -34,18 +36,31 @@ final class UserDataSourceImpl implements UserDataSource {
   @override
   late final Stream<User?> user = _userStreamController.stream;
 
-  late final _usersCollection = firebaseFirestore.collection('users').withConverter<UserDB>(
-        fromFirestore: (snapshot, _) => UserDB.fromJson(snapshot.data()!),
-        toFirestore: (user, _) => user.toJson(),
-      );
+  late final _usersCollection = getIt<UsersCollectionRef>().withConverter;
 
   UserDataSourceImpl(this.firebaseAuth, this.firebaseFirestore) {
+    Future<UserDB> saveUserIfNotExistsInDB(firebase_auth_pack.User firebaseUser) async {
+      final userDoc = _usersCollection.doc(firebaseUser.uid);
+      var userDocSnapshot = await userDoc.get();
+      if (!userDocSnapshot.exists) {
+        await userDoc.set(UserDB(
+          email: firebaseUser.email!,
+          name: firebaseUser.displayName!,
+        ));
+        userDocSnapshot = await userDoc.get();
+      }
+      return userDocSnapshot.data()!;
+    }
+
     firebaseAuth.userChanges().listen((user) async {
       if (user != null) {
+        final userDB = await saveUserIfNotExistsInDB(user);
+        
         _userStreamController.add(User(
           id: user.uid,
           email: user.email!,
           name: user.displayName!,
+          oldTripsImported: userDB.oldTripsImported,
         ));
       } else {
         _userStreamController.add(null);
@@ -80,7 +95,7 @@ final class UserDataSourceImpl implements UserDataSource {
 
   @override
   reauthenticateUser({required String email, required String password}) async {
-    final credential = EmailAuthProvider.credential(email: email, password: password);
+    final credential = firebase_auth_pack.EmailAuthProvider.credential(email: email, password: password);
     await firebaseAuth.currentUser!.reauthenticateWithCredential(credential);
   }
 

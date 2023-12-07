@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/db/trips_collection_ref.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../domain/entities/trip.dart';
 
@@ -20,10 +22,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
   TripsDataSourceImpl(this.firebaseFirestore);
 
-  late final _tripsCollection = firebaseFirestore.collection('trips').withConverter<Trip>(
-        fromFirestore: (snapshot, _) => Trip.fromJson(snapshot.data()!).copyWith(id: snapshot.id),
-        toFirestore: (trip, _) => trip.toJson(),
-      );
+  late final _tripsCollection = getIt<TripsCollectionRef>().withConverter;
 
   @override
   Future<void> addTrip(Trip trip) async {

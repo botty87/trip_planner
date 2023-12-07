@@ -29,10 +29,16 @@ class MyApp extends StatelessWidget {
         },
         listener: (context, state) {
           final router = getIt<AppRouter>();
-          state.mapOrNull(
-            loggedOut: (_) => router.replaceAll([const LoginSignupRoute()]),
-            loggedIn: (_) => router.replaceAll([const TripsRoute()]),
-            error: (_) => throw UnimplementedError(),
+          state.whenOrNull(
+            loggedOut: () => router.replaceAll([const LoginSignupRoute()]),
+            loggedIn: (user) {
+              if (user.oldTripsImported) {
+                return router.replaceAll([const TripsRoute()]);
+              } else {
+                return router.replaceAll([ImportOldTripsRoute(user: user)]);
+              }
+            },
+            error: () => throw UnimplementedError(),
           );
         },
         child: MaterialApp.router(

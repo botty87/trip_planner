@@ -105,5 +105,12 @@ abstract class  LocaleKeys {
   static const tooManyRequests = 'tooManyRequests';
   static const userDisabled = 'userDisabled';
   static const toDo = 'toDo';
+  static const importOldTrips = 'importOldTrips';
+  static const checkinkExistingTrips = 'checkinkExistingTrips';
+  static const retry = 'retry';
+  static const oldTrips = 'oldTrips';
+  static const oldTripsWelcome = 'oldTripsWelcome';
+  static const import = 'import';
+  static const allNotSelectedTripsWillBeDeleted = 'allNotSelectedTripsWillBeDeleted';
 
 }

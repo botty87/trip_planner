@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/db/trip_stops_collection_ref.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../domain/entities/trip_stop.dart';
 
@@ -67,17 +69,7 @@ class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripS
   TripStopsDataSourceImpl(this.firebaseFirestore);
 
   CollectionReference<TripStop> _tripStopsCollection(String tripId, String dayTripId) =>
-      firebaseFirestore
-          .collection('trips')
-          .doc(tripId)
-          .collection('dayTrips')
-          .doc(dayTripId)
-          .collection('tripStops')
-          .withConverter<TripStop>(
-            fromFirestore: (snapshot, _) =>
-                TripStop.fromJson(snapshot.data()!).copyWith(id: snapshot.id),
-            toFirestore: (dayTrip, _) => dayTrip.toJson(),
-          );
+      getIt<TripStopsCollectionRef>(param1: tripId, param2: dayTripId).withConverter;
 
   @override
   Future<void> addTripStop({

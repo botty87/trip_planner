@@ -19,6 +19,9 @@
     },
     "hosting": {
       "port": 5243
+    },
+    "database": {
+      "port": 9000
     }
   },
   "functions": {

@@ -8,6 +8,7 @@ sealed class UserDB with _$UserDB {
   factory UserDB({
     required String email,
     required String name,
+    @Default(false) bool oldTripsImported,
   }) = _UserDB;
 
   factory UserDB.fromJson(Map<String, dynamic> json) => _$UserDBFromJson(json);

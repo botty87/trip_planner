@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/db/day_trips_collection_ref.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../domain/entities/day_trip.dart';
@@ -32,15 +34,8 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
 
   DayTripsDataSourceImpl(this.firebaseFirestore);
 
-  CollectionReference<DayTrip> _dayTripsCollection(String tripId) => firebaseFirestore
-      .collection('trips')
-      .doc(tripId)
-      .collection('dayTrips')
-      .withConverter<DayTrip>(
-        fromFirestore: (snapshot, _) =>
-            DayTrip.fromJson(snapshot.data()!).copyWith(id: snapshot.id),
-        toFirestore: (dayTrip, _) => dayTrip.toJson(),
-      );
+  CollectionReference<DayTrip> _dayTripsCollection(String tripId) =>
+      getIt<DayTripsCollectionRef>(param1: tripId).withConverter;
 
   @override
   Future<void> addDayTrip({required String tripId, required DayTrip dayTrip}) async {
@@ -85,8 +80,8 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
       {required String id, required String tripId, required TimeOfDay startTime}) async {
     await performSync(() async {
       await _dayTripsCollection(tripId).doc(id).update({
-          'startTime': startTime.toJson(),
-        });
+        'startTime': startTime.toJson(),
+      });
     });
   }
 

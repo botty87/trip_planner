@@ -9,10 +9,12 @@ part of 'user_db.dart';
 _$UserDBImpl _$$UserDBImplFromJson(Map<String, dynamic> json) => _$UserDBImpl(
       email: json['email'] as String,
       name: json['name'] as String,
+      oldTripsImported: json['oldTripsImported'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
     <String, dynamic>{
       'email': instance.email,
       'name': instance.name,
+      'oldTripsImported': instance.oldTripsImported,
     };

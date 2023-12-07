@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 2.0.0+1
+version: 2.0.0+3
 
 environment:
   sdk: '>=3.0.2 <4.0.0'
@@ -30,6 +30,7 @@ environment:
 dependencies:
   adaptive_dialog: ^2.0.0
   animated_switcher_plus: ^1.1.0
+  animated_tree_view: ^2.2.0
   auto_route: ^7.4.0
   calendar_date_picker2: ^0.5.2
   cloud_firestore: ^4.13.2
@@ -44,6 +45,7 @@ dependencies:
   firebase_auth: ^4.7.2
   firebase_core: ^2.15.0
   firebase_crashlytics: ^3.4.5
+  firebase_database: ^10.3.6
   flutter:
     sdk: flutter
   flutter_animate: ^4.2.0+1
@@ -65,8 +67,9 @@ dependencies:
   map_launcher: ^3.0.1
   mockito: ^5.4.1
   password_text_field: ^2.0.0
+  quiver: ^3.2.1
   responsive_framework: ^1.1.1
-  shared_preferences: ^2.1.2
+  shared_preferences: ^2.2.2
   uuid: ^4.0.0
   vector_graphics: ^1.1.9
 
@@ -75,6 +78,7 @@ dev_dependencies:
   bloc_test: ^9.1.5
   build_runner: ^2.4.4
   flutter_gen_runner: ^5.3.1
+  flutter_launcher_icons: ^0.13.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -88,12 +92,9 @@ dev_dependencies:
   injectable_generator: ^2.1.6
   json_serializable: ^6.7.0
   vector_graphics_compiler: ^1.1.9+1
-  flutter_launcher_icons: ^0.13.1
 
-dependency_overrides:
-  analyzer: ^6.0.0
-
-
+#dependency_overrides:
+#  analyzer: ^6.0.0
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true

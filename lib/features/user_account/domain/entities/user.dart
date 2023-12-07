@@ -11,6 +11,7 @@ sealed class User with _$User {
     required String id,
     required String email,
     required String name,
+    @Default(true) bool oldTripsImported,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
