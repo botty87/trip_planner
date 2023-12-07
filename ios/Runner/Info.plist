@@ -69,6 +69,8 @@
 		<string>tomtomgo</string>
 		<string>copilot</string>
 		<string>com.sygic.aura</string>
+		<string>sms</string>
+		<string>tel</string>
 	</array>
 </dict>
 </plist>
