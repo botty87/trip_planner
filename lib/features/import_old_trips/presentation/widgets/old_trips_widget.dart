@@ -6,29 +6,27 @@ class _OldTripsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: horizontalSpace, vertical: verticalSpaceXs),
-            child: Text(LocaleKeys.oldTripsWelcome.tr(), textAlign: TextAlign.center),
+    return Column(
+      children: [
+        Padding(
+          padding:
+              const EdgeInsets.symmetric(horizontal: horizontalSpace, vertical: verticalSpaceXs),
+          child: Text(LocaleKeys.oldTripsWelcome.tr(), textAlign: TextAlign.center),
+        ),
+        Expanded(
+          child: TreeView.simple(
+            tree: _buildTree(),
+            showRootNode: false,
+            builder: (context, node) {
+              return _TreeNodeWidget(treeNode: node);
+            },
           ),
-          Expanded(
-            child: TreeView.simple(
-              tree: _buildTree(),
-              showRootNode: false,
-              builder: (context, node) {
-                return _TreeNodeWidget(treeNode: node);
-              },
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: horizontalSpace, vertical: verticalSpaceXs),
-            child: _ImportButton(),
-          ),
-        ],
-      ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: horizontalSpace, vertical: verticalSpaceXs),
+          child: _ImportButton(),
+        ),
+      ],
     );
   }
 

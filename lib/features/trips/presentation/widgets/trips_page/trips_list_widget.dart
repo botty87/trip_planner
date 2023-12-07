@@ -25,7 +25,7 @@ class TripsListWidget extends StatelessWidget {
             padding: defaultPagePadding,
             itemCount: trips.length,
             itemBuilder: (context, index) => TripCard(trip: trips[index]),
-            separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 8),
+            separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
           ),
         );
       }),

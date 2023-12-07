@@ -34,7 +34,7 @@ class _List extends StatelessWidget {
         final dayTrip = dayTrips[index];
         return Padding(
           key: ValueKey(dayTrip.id),
-          padding: const EdgeInsets.only(bottom: verticalSpaceXs),
+          padding: const EdgeInsets.only(bottom: verticalSpace),
           child: _DayTripCard(
             dayTrip: dayTrip,
             tripStartDate: tripStartDate,

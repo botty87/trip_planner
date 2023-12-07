@@ -60,7 +60,7 @@ class _DayTripDateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       date,
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontStyle: FontStyle.italic),
       textAlign: TextAlign.center,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
@@ -75,13 +75,20 @@ class _DayTripDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: verticalSpaceS),
-      child: Text(
-        description,
-        style: Theme.of(context).textTheme.bodyLarge,
-        maxLines: 4,
-        textAlign: TextAlign.justify,
-        overflow: TextOverflow.ellipsis,
+      padding: const EdgeInsets.only(top: verticalSpaceS),
+      child: ColoredBox(
+        color: Colors.white.withOpacity(0.95),
+        child: Padding(
+          padding:
+              const EdgeInsets.symmetric(vertical: verticalSpaceS, horizontal: horizontalSpaceS),
+          child: Text(
+            description,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontStyle: FontStyle.italic),
+            maxLines: 5,
+            textAlign: TextAlign.justify,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ),
     );
   }

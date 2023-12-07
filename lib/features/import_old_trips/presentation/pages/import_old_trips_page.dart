@@ -36,19 +36,22 @@ class ImportOldTripsPage extends StatelessWidget {
         body: BlocBuilder<ImportOldTripsCubit, ImportOldTripsState>(
           buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
           builder: (context, state) {
-            return state.when(
-              initial: () => const Center(child: CircularProgressIndicator.adaptive()),
-              loaded: (trips, _) => _OldTripsWidget(trips: trips),
-              error: (message) => _ErrorWidget(message: message),
-              noTrips: () {
-                context.replaceRoute(const TripsRoute());
-                return const SizedBox.shrink();
-              },
-              importing: (trips, _) => const Center(child: CircularProgressIndicator.adaptive()),
-              imported: () {
-                context.replaceRoute(const TripsRoute());
-                return const SizedBox.shrink();
-              },
+            return SafeArea(
+              minimum: defaultPagePadding,
+              child: state.when(
+                initial: () => const Center(child: CircularProgressIndicator.adaptive()),
+                loaded: (trips, _) => _OldTripsWidget(trips: trips),
+                error: (message) => _ErrorWidget(message: message),
+                noTrips: () {
+                  context.replaceRoute(const TripsRoute());
+                  return const SizedBox.shrink();
+                },
+                importing: (trips, _) => const Center(child: CircularProgressIndicator.adaptive()),
+                imported: () {
+                  context.replaceRoute(const TripsRoute());
+                  return const SizedBox.shrink();
+                },
+              ),
             );
           },
         ),
