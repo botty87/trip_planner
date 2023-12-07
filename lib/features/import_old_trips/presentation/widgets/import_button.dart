@@ -1,7 +1,7 @@
 part of '../pages/import_old_trips_page.dart';
 
 class _ImportButton extends StatelessWidget {
-  const _ImportButton({super.key});
+  const _ImportButton();
 
   @override
   Widget build(BuildContext context) {

@@ -3,9 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
 import 'package:quiver/src/collection/multimap.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../../day_trips/domain/entities/day_trip.dart';
-import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/old_trip.dart';
 import '../../domain/entities/trip_stops_container.dart';

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../features/day_trips/domain/entities/day_trip.dart';
 import '../../features/trip_stops/domain/entities/trip_stop.dart';
 import '../constants.dart';
 import 'abstract_collection_ref.dart';

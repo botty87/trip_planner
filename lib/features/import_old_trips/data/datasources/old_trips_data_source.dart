@@ -11,7 +11,6 @@ import '../../../../core/di/di.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../trips/domain/entities/trip.dart';
-import '../../../user_account/domain/entities/user_db.dart';
 import '../../domain/entities/old_daily_trip.dart';
 import '../../domain/entities/old_place.dart';
 import '../../domain/entities/old_trip.dart';
