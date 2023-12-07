@@ -9,6 +9,8 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/import_old_trips/domain/entities/old_trip.dart'
     as _i6;
+import 'package:trip_planner/features/import_old_trips/domain/usecases/import_old_trip.dart'
+    as _i7;
 import 'package:trip_planner/features/import_old_trips/domain/usecases/read_old_trips.dart'
     as _i3;
 import 'package:trip_planner/features/import_old_trips/errors/import_old_trips_failure.dart'
@@ -69,4 +71,37 @@ class MockReadOldTrips extends _i1.Mock implements _i3.ReadOldTrips {
         )),
       ) as _i4
           .Future<_i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>>);
+}
+
+/// A class which mocks [ImportOldTrips].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockImportOldTrips extends _i1.Mock implements _i7.ImportOldTrips {
+  @override
+  _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>> call(
+          _i7.ImportOldTripsParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue:
+            _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>>.value(
+                _FakeEither_0<_i5.ImportOldTripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>>.value(
+                _FakeEither_0<_i5.ImportOldTripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>>);
 }

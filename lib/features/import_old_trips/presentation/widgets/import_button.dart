@@ -7,15 +7,14 @@ class _ImportButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        context.read<ImportOldTripsCubit>().import();
-        /* final result = await showOkCancelAlertDialog(
+        final result = await showOkCancelAlertDialog(
           context: context,
           title: LocaleKeys.importOldTrips.tr(),
           message: LocaleKeys.allNotSelectedTripsWillBeDeleted.tr(),
         );
         if (result == OkCancelResult.ok && context.mounted) {
           context.read<ImportOldTripsCubit>().import();
-        } */
+        }
       },
       child: Text(LocaleKeys.import.tr()),
     );

@@ -6,16 +6,14 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:quiver/collection.dart' as _i6;
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
-    as _i7;
+import 'package:quiver/collection.dart' as _i5;
 import 'package:trip_planner/features/import_old_trips/data/datasources/old_trips_data_source.dart'
     as _i2;
 import 'package:trip_planner/features/import_old_trips/domain/entities/old_trip.dart'
     as _i4;
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i8;
-import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i5;
+import 'package:trip_planner/features/import_old_trips/domain/entities/trip_stops_container.dart'
+    as _i7;
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -51,8 +49,7 @@ class MockOldTripsDataSource extends _i1.Mock
   @override
   _i3.Future<void> importOldTrips({
     required String? userId,
-    required Map<_i5.Trip, _i6.ListMultimap<_i7.DayTrip, _i8.TripStop>>?
-        newTrips,
+    required _i5.ListMultimap<_i6.Trip, _i7.TripStopsContainer>? newTrips,
   }) =>
       (super.noSuchMethod(
         Invocation.method(

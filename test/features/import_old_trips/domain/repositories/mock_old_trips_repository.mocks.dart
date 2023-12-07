@@ -7,18 +7,16 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:quiver/src/collection/multimap.dart' as _i8;
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
-    as _i9;
+import 'package:quiver/src/collection/multimap.dart' as _i7;
 import 'package:trip_planner/features/import_old_trips/domain/entities/old_trip.dart'
     as _i6;
+import 'package:trip_planner/features/import_old_trips/domain/entities/trip_stops_container.dart'
+    as _i9;
 import 'package:trip_planner/features/import_old_trips/domain/repositories/old_trips_repository.dart'
     as _i3;
 import 'package:trip_planner/features/import_old_trips/errors/import_old_trips_failure.dart'
     as _i5;
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i10;
-import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i7;
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -84,8 +82,7 @@ class MockOldTripsRepository extends _i1.Mock
   @override
   _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>> importOldTrips({
     required String? userId,
-    required Map<_i7.Trip, _i8.ListMultimap<_i9.DayTrip, _i10.TripStop>>?
-        newTrips,
+    required _i7.ListMultimap<_i8.Trip, _i9.TripStopsContainer>? newTrips,
   }) =>
       (super.noSuchMethod(
         Invocation.method(

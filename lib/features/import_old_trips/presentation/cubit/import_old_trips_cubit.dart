@@ -39,7 +39,7 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
   void reload() => _readOldTripsAction();
 
   _readOldTripsAction() async {
-    _readOldTrips(ReadOldTripsParams('fyI2ceM4GNW50SoeKeWjQv58GNJ3')).then((value) {
+    _readOldTrips(ReadOldTripsParams(_user.id)).then((value) {
       value.fold(
         (failure) => emit(
             ImportOldTripsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
@@ -70,8 +70,8 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
   import() async {
     assert(state is ImportOldTripsStateLoaded);
     final currentState = state as ImportOldTripsStateLoaded;
-    /* emit(ImportOldTripsState.importing(
-        trips: currentState.trips, selectedTripsIds: currentState.selectedTripsIds)); */
+    emit(ImportOldTripsState.importing(
+        trips: currentState.trips, selectedTripsIds: currentState.selectedTripsIds));
 
     final List<OldTrip> selectedTrips = currentState.trips
         .where((element) => currentState.selectedTripsIds.contains(element.id))
