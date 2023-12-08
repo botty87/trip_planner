@@ -15,7 +15,7 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/map_widget.dart';
+import '../widgets/map/map_widget.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/trip/delete_trip_button.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
