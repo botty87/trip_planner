@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
@@ -24,6 +26,8 @@ final class OldTripsRepositoryImpl implements OldTripsRepository {
       return right(oldTrips);
     } on FirebaseException catch (e) {
       return left(ImportOldTripsFailure(message: e.message));
+    } on TimeoutException {
+      return right([]);
     } catch (e) {
       return left(ImportOldTripsFailure(message: e.toString()));
     }

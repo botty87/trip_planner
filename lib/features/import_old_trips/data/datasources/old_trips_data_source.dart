@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart';
@@ -43,9 +45,18 @@ final class OldTripsDataSourceImpl implements OldTripsDataSource {
   @override
   Future<List<OldTrip>> readOldTrips({required String userId}) async {
     final List<OldTrip> oldTrips = [];
+    final userDoc = _usersCollection.doc(userId);
 
     final databaseReference = _firebaseDatabase.ref();
-    final userTripsSnapshot = await databaseReference.child('users').child(userId).get();
+    final userTripsSnapshot = await databaseReference
+        .child('users')
+        .child(userId)
+        .get()
+        .timeout(const Duration(seconds: 2), onTimeout: () async {
+      await userDoc.update({'oldTripsImported': true});
+      throw TimeoutException('Timeout reading user trips');
+    });
+
     if (!userTripsSnapshot.exists) {
       return oldTrips;
     }
@@ -120,13 +131,16 @@ final class OldTripsDataSourceImpl implements OldTripsDataSource {
     //Sort oldTrips by name
     oldTrips.sort((a, b) => a.name.compareTo(b.name));
 
+    if(oldTrips.isEmpty) {
+      await userDoc.update({'oldTripsImported': true});
+    }
+
     return oldTrips;
   }
 
   @override
   Future<void> importOldTrips(
-      {required String userId,
-      required ListMultimap<Trip, TripStopsContainer> newTrips}) async {
+      {required String userId, required ListMultimap<Trip, TripStopsContainer> newTrips}) async {
     final batch = FirebaseFirestore.instance.batch();
 
     for (final trip in newTrips.keys) {

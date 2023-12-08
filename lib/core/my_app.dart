@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp.router(
           title: 'Trip Planner',
           theme: theme,
+          debugShowCheckedModeBanner: false,
           routerConfig: getIt<AppRouter>().config(),
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,

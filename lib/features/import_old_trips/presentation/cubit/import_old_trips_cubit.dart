@@ -39,19 +39,18 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
   void reload() => _readOldTripsAction();
 
   _readOldTripsAction() async {
-    _readOldTrips(ReadOldTripsParams(_user.id)).then((value) {
-      value.fold(
-        (failure) => emit(
-            ImportOldTripsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
-        (trips) {
-          if (trips.isEmpty) {
-            emit(const ImportOldTripsState.noTrips());
-          } else {
-            emit(ImportOldTripsState.loaded(trips: trips));
-          }
-        },
-      );
-    });
+    final result = await _readOldTrips(ReadOldTripsParams(_user.id));
+    result.fold(
+      (failure) =>
+          emit(ImportOldTripsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
+      (trips) {
+        if (trips.isEmpty) {
+          emit(const ImportOldTripsState.noTrips());
+        } else {
+          emit(ImportOldTripsState.loaded(trips: trips));
+        }
+      },
+    );
   }
 
   void toggleTrip(String id) {

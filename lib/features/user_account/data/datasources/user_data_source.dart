@@ -75,6 +75,7 @@ final class UserDataSourceImpl implements UserDataSource {
     await _usersCollection.doc(firebaseAuth.currentUser!.uid).set(UserDB(
           email: email,
           name: name,
+          oldTripsImported: true,
         ));
   }
 
