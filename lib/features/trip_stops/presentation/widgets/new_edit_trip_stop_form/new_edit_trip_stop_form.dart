@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,12 +13,12 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../core/widgets/map_widget.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../google_places/presentation/widgets/google_places_suggestions_widget.dart';
 
 part 'duration_widget.dart';
 part 'field_widget.dart';
-part 'map_widget.dart';
 
 class NewEditTripStopForm extends HookWidget {
   final Stream<bool> isSaving;
@@ -58,39 +57,7 @@ class NewEditTripStopForm extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locationToSet = useRef<LatLng?>(initialLocation);
-    final marker = useStreamController<Marker?>();
-
-    updateMarker(LatLng? location) {
-      marker.add(location != null
-          ? Marker(
-              markerId: const MarkerId('location'),
-              position: location,
-              draggable: true,
-              onDragEnd: (value) {
-                onLocationChanged(LatLng(value.latitude, value.longitude));
-                updateMarker(LatLng(value.latitude, value.longitude));
-              },
-            )
-          : null);
-    }
-
-    final Marker? initialMarker;
-
-    if (locationToSet.value != null) {
-      initialMarker = Marker(
-        markerId: const MarkerId('location'),
-        position: locationToSet.value!,
-        draggable: true,
-        onDragEnd: (value) {
-          onLocationChanged(LatLng(value.latitude, value.longitude));
-          updateMarker(LatLng(value.latitude, value.longitude));
-        },
-      );
-      locationToSet.value = null;
-    } else {
-      initialMarker = null;
-    }
+    final location = useStreamController<LatLng?>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -153,7 +120,7 @@ class NewEditTripStopForm extends HookWidget {
                         initialValue: initialTripStopDescription,
                         label: LocaleKeys.tripStopDescription.tr(),
                         hint: LocaleKeys.tripStopDescriptionHint.tr(),
-                        maxLines: 5,
+                        maxLines: null,
                       ),
                       const SizedBox(height: verticalSpaceL),
                       DurationWidget(
@@ -164,14 +131,22 @@ class NewEditTripStopForm extends HookWidget {
                         minuteDuration: minuteDuration,
                       ),
                       const SizedBox(height: verticalSpaceL),
-                      _MapWidget(marker: marker.stream, initialMarker: initialMarker),
+                      //_MapWidget(marker: marker.stream, initialMarker: initialMarker),
+                      MapWidget(
+                        key: const Key('mapWidget'),
+                        initialLocation: initialLocation,
+                        locationStream: location.stream,
+                        onMarkerDragEnd: (value) {
+                          onLocationChanged(LatLng(value.latitude, value.longitude));
+                        },
+                      ),
                       const SizedBox(height: verticalSpaceL),
                       GooglePlacesSuggestionsWidget(
                         labelText: LocaleKeys.searchTripStopLocation.tr(),
                         hintText: LocaleKeys.tripStopLocationHint.tr(),
                         onSuggestionSelected: (placeDetails) {
                           onLocationChanged(placeDetails?.location);
-                          updateMarker(placeDetails?.location);
+                          location.add(placeDetails?.location);
                         },
                         noInternetConnectionMessage: LocaleKeys.noInternetConnectionMessage.tr(),
                         requestDeniedMessage: LocaleKeys.requestDenied.tr(),
@@ -179,7 +154,7 @@ class NewEditTripStopForm extends HookWidget {
                       ),
                       const SizedBox(height: verticalSpaceL),
                       saveSection,
-                    ],  
+                    ],
                   ),
                 ],
               ),
