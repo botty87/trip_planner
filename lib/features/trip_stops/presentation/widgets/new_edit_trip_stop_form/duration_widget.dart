@@ -5,12 +5,16 @@ class DurationWidget extends StatelessWidget {
   final ValueChanged<int> onMinuteDurationChanged;
   final Stream<int> hourDuration;
   final Stream<int> minuteDuration;
+  final int initialHourDuration;
+  final int initialMinuteDuration;
 
   const DurationWidget(
       {required this.onHourDurationChanged,
       required this.onMinuteDurationChanged,
       required this.hourDuration,
       required this.minuteDuration,
+      required this.initialHourDuration,
+      required this.initialMinuteDuration,
       super.key});
 
   @override
@@ -31,6 +35,7 @@ class DurationWidget extends StatelessWidget {
           label: LocaleKeys.hours.tr(),
           onValueChanged: onHourDurationChanged,
           value: hourDuration,
+          initialValue: initialHourDuration,
         ),
         const SizedBox(height: verticalSpace),
         _TimeSlider(
@@ -38,6 +43,7 @@ class DurationWidget extends StatelessWidget {
           label: LocaleKeys.minutes.tr(),
           onValueChanged: onMinuteDurationChanged,
           value: minuteDuration,
+          initialValue: initialMinuteDuration,
         ),
       ],
     );
@@ -50,12 +56,14 @@ class _TimeSlider extends StatelessWidget {
 
   final ValueChanged<int> onValueChanged;
   final Stream<int> value;
+  final int initialValue;
 
   const _TimeSlider({
     required this.maxValue,
     required this.label,
     required this.onValueChanged,
     required this.value,
+    required this.initialValue,
   });
 
   @override
@@ -72,7 +80,7 @@ class _TimeSlider extends StatelessWidget {
             const SizedBox(width: horizontalSpace),
             StreamBuilder<int>(
                 stream: value,
-                initialData: 0,
+                initialData: initialValue,
                 builder: (context, snapshot) {
                   return Text(
                     snapshot.data.toString(),
@@ -85,7 +93,7 @@ class _TimeSlider extends StatelessWidget {
         ),
         StreamBuilder<int>(
             stream: value,
-            initialData: 0,
+            initialData: initialValue,
             builder: (context, snapshot) {
               if (kIsWeb) {
                 return _androidSlider(snapshot.data!);

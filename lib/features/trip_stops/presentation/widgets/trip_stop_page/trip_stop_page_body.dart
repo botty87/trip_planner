@@ -108,36 +108,21 @@ class _TripStopPageBody extends HookWidget {
               children: [
                 isSaving ? const LinearProgressIndicator() : const SizedBox.shrink(),
                 Expanded(
-                  child: SingleChildScrollView(
-                    padding: defaultPagePadding,
-                    child: SafeArea(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          BlocSelector<TripStopCubit, TripStopState, String?>(
-                            selector: (state) => state.tripStop.description,
-                            builder: (context, description) =>
-                                _TripStopDescription(headerText: description),
-                          ),
-                          const SizedBox(height: verticalSpace),
-                          const _MapWidget(),
-                          const SizedBox(height: verticalSpace),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
-                          ),
-                          if (!kIsWeb) ...[
-                            const SizedBox(height: verticalSpace),
-                            const _TripStopNavigateToButton(),
-                          ],
-                          const SizedBox(height: verticalSpaceXL),
-                          const _TripStopNoteWidget(),
-                          const SizedBox(height: verticalSpaceL),
-                          _DeleteTripStopButton(isDeleting: isDeleting.stream),
-                        ],
-                      ),
-                    ),
-                  ),
+                  child: Builder(builder: (context) {
+                    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
+                      return _VerticalLayout(isDeleting: isDeleting.stream);
+                    } else {
+                      return OrientationBuilder(
+                        builder: (context, orientation) {
+                          if (orientation == Orientation.portrait) {
+                            return _VerticalLayout(isDeleting: isDeleting.stream);
+                          } else {
+                            return _HorizontalLayout(isDeleting: isDeleting.stream);
+                          }
+                        },
+                      );
+                    }
+                  }),
                 ),
               ],
             ),
@@ -204,5 +189,100 @@ class _TripStopPageBody extends HookWidget {
     await Future.delayed(const Duration(milliseconds: 100));
     hourDuration.add(tripStopDuration ~/ 60);
     minuteDuration.add(tripStopDuration % 60);
+  }
+}
+
+class _VerticalLayout extends StatelessWidget {
+  final Stream<bool> isDeleting;
+
+  const _VerticalLayout({required this.isDeleting});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      padding: defaultPagePadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          BlocSelector<TripStopCubit, TripStopState, String?>(
+            selector: (state) => state.tripStop.description,
+            builder: (context, description) => _TripStopDescription(headerText: description),
+          ),
+          const SizedBox(height: verticalSpace),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+            child: const _MapWidget(),
+          ),
+          const SizedBox(height: verticalSpace),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
+          ),
+          if (!kIsWeb) ...[
+            const SizedBox(height: verticalSpace),
+            const _TripStopNavigateToButton(),
+          ],
+          const SizedBox(height: verticalSpaceXL),
+          const _TripStopNoteWidget(),
+          const SizedBox(height: verticalSpaceL),
+          _DeleteTripStopButton(isDeleting: isDeleting),
+        ],
+      ),
+    );
+  }
+}
+
+class _HorizontalLayout extends StatelessWidget {
+  final Stream<bool> isDeleting;
+
+  const _HorizontalLayout({required this.isDeleting});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
+      child: BlocSelector<TripStopCubit, TripStopState, String?>(
+        selector: (state) => state.tripStop.description,
+        builder: (context, description) {
+          return Row(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.75,
+                        child: const _MapWidget(),
+                      ),
+                      if (!kIsWeb) ...[
+                        const SizedBox(height: verticalSpaceXL),
+                        const _TripStopNavigateToButton(),
+                      ],
+                      const SizedBox(height: verticalSpaceL),
+                      _DeleteTripStopButton(isDeleting: isDeleting),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(width: horizontalSpaceL),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.only(bottom: verticalSpaceXL),
+                  child: Column(
+                    children: [
+                      if (description?.isNotEmpty ?? false) ...[
+                        _TripStopDescription(headerText: description),
+                        const SizedBox(height: verticalSpaceXL),
+                      ],
+                      const _TripStopNoteWidget(),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          );
+        },
+      ),
+    );
   }
 }

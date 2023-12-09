@@ -60,11 +60,11 @@ class MyApp extends StatelessWidget {
                       Condition.equals(name: MOBILE, value: 400),
                       ...kIsWeb
                           ? [
-                              Condition.between(start: 800, end: 1000, value: 800),
+                              Condition.between(start: 1000, end: 1000, value: 800),
                             ]
                           : [
-                              Condition.between(start: 800, end: 1100, value: 800),
-                              Condition.between(start: 1000, end: 1200, value: 700),
+                              Condition.between(start: 900, end: 1100, value: 800),
+                              Condition.between(start: 1001, end: 1200, value: 700),
                             ],
                     ],
                   ).value,
@@ -74,8 +74,8 @@ class MyApp extends StatelessWidget {
             ),
             breakpoints: [
               const Breakpoint(start: 0, end: 450, name: MOBILE),
-              const Breakpoint(start: 451, end: 800, name: TABLET),
-              const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+              const Breakpoint(start: 451, end: 1000, name: TABLET),
+              const Breakpoint(start: 1001, end: 1920, name: DESKTOP),
               const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
             ],
           ),

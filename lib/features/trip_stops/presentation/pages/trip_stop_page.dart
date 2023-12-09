@@ -9,6 +9,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:map_launcher/map_launcher.dart' hide MapType;
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';

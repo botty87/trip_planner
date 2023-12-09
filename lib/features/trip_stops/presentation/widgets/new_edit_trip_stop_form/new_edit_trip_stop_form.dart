@@ -13,12 +13,14 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../map/map_widget.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../google_places/presentation/widgets/google_places_suggestions_widget.dart';
+import '../map/map_widget.dart';
 
 part 'duration_widget.dart';
 part 'field_widget.dart';
+part 'horizontal_layout.dart';
+part 'vertical_layout.dart';
 
 class NewEditTripStopForm extends HookWidget {
   final Stream<bool> isSaving;
@@ -57,7 +59,79 @@ class NewEditTripStopForm extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final location = useStreamController<LatLng?>();
+    final currentName = useRef<String?>(initialTripStopName);
+    final currentDescription = useRef<String?>(initialTripStopDescription);
+    final currentHourDuration = useRef<int>(0);
+    final currentMinuteDuration = useRef<int>(0);
+    final currentLocation = useRef<LatLng?>(initialLocation);
+
+    Widget getVerticalLayout() {
+      return _VerticalLayout(
+        isSaving: isSaving,
+        hourDuration: hourDuration,
+        minuteDuration: minuteDuration,
+        onNameChanged: (name) {
+          currentName.value = name;
+          onNameChanged(name);
+        },
+        onDescriptionChanged: (name) {
+          currentDescription.value = name;
+          onDescriptionChanged(name);
+        },
+        saveSection: saveSection,
+        onHourDurationChanged: (hour) {
+          currentHourDuration.value = hour;
+          onHourDurationChanged(hour);
+        },
+        onMinuteDurationChanged: (minute) {
+          currentMinuteDuration.value = minute;
+          onMinuteDurationChanged(minute);
+        },
+        initialTripStopDescription: currentDescription.value,
+        initialTripStopName: currentName.value,
+        initialHourDuration: currentHourDuration.value,
+        initialMinuteDuration: currentMinuteDuration.value,
+        onLocationChanged: (location) {
+          currentLocation.value = location;
+          onLocationChanged(location);
+        },
+        initialLocation: currentLocation.value,
+      );
+    }
+
+    Widget getHorizontalLayout() {
+      return _HorizontalLayout(
+        isSaving: isSaving,
+        hourDuration: hourDuration,
+        minuteDuration: minuteDuration,
+        onNameChanged: (name) {
+          currentName.value = name;
+          onNameChanged(name);
+        },
+        onDescriptionChanged: (name) {
+          currentDescription.value = name;
+          onDescriptionChanged(name);
+        },
+        saveSection: saveSection,
+        onHourDurationChanged: (hour) {
+          currentHourDuration.value = hour;
+          onHourDurationChanged(hour);
+        },
+        onMinuteDurationChanged: (minute) {
+          currentMinuteDuration.value = minute;
+          onMinuteDurationChanged(minute);
+        },
+        initialTripStopDescription: currentDescription.value,
+        initialTripStopName: currentName.value,
+        initialHourDuration: currentHourDuration.value,
+        initialMinuteDuration: currentMinuteDuration.value,
+        onLocationChanged: (location) {
+          currentLocation.value = location;
+          onLocationChanged(location);
+        },
+        initialLocation: currentLocation.value,
+      );
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -74,91 +148,21 @@ class NewEditTripStopForm extends HookWidget {
             }),
         Flexible(
           child: SafeArea(
-            child: SingleChildScrollView(
-              padding: defaultPagePadding,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  LayoutBuilder(
-                    builder: (context, constraints) {
-                      final multiplyValue = ResponsiveValue<double>(
-                        context,
-                        defaultValue: 0.75,
-                        conditionalValues: [
-                          Condition.largerThan(name: TABLET, value: 0.45),
-                          Condition.largerThan(name: DESKTOP, value: 0.35),
-                        ],
-                      ).value!;
-                      double height = (constraints.maxWidth * multiplyValue);
-                      if (height > 300) {
-                        height = 300;
-                      }
-                      return SvgPicture(
-                        height: height,
-                        key: const Key('tripImage'),
-                        AssetBytesLoader(Assets.svg.addTripStopSvg),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: verticalSpaceL),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _FieldWidget(
-                        key: const Key('nameWidget'),
-                        onDescriptionChanged: onNameChanged,
-                        initialValue: initialTripStopName,
-                        maxLines: 1,
-                        textInputAction: TextInputAction.next,
-                        label: LocaleKeys.tripStopName.tr(),
-                        hint: LocaleKeys.tripStopNameHint.tr(),
-                      ),
-                      const SizedBox(height: verticalSpaceL),
-                      _FieldWidget(
-                        key: const Key('descriptionWidget'),
-                        onDescriptionChanged: onDescriptionChanged,
-                        initialValue: initialTripStopDescription,
-                        label: LocaleKeys.tripStopDescription.tr(),
-                        hint: LocaleKeys.tripStopDescriptionHint.tr(),
-                        maxLines: null,
-                      ),
-                      const SizedBox(height: verticalSpaceL),
-                      DurationWidget(
-                        key: const Key('durationWidget'),
-                        onHourDurationChanged: onHourDurationChanged,
-                        onMinuteDurationChanged: onMinuteDurationChanged,
-                        hourDuration: hourDuration,
-                        minuteDuration: minuteDuration,
-                      ),
-                      const SizedBox(height: verticalSpaceL),
-                      //_MapWidget(marker: marker.stream, initialMarker: initialMarker),
-                      MapWidget(
-                        key: const Key('mapWidget'),
-                        initialLocation: initialLocation,
-                        locationStream: location.stream,
-                        onMarkerDragEnd: (value) {
-                          onLocationChanged(LatLng(value.latitude, value.longitude));
-                        },
-                      ),
-                      const SizedBox(height: verticalSpaceL),
-                      GooglePlacesSuggestionsWidget(
-                        labelText: LocaleKeys.searchTripStopLocation.tr(),
-                        hintText: LocaleKeys.tripStopLocationHint.tr(),
-                        onSuggestionSelected: (placeDetails) {
-                          onLocationChanged(placeDetails?.location);
-                          location.add(placeDetails?.location);
-                        },
-                        noInternetConnectionMessage: LocaleKeys.noInternetConnectionMessage.tr(),
-                        requestDeniedMessage: LocaleKeys.requestDenied.tr(),
-                        unknownErrorMessage: LocaleKeys.unknownError.tr(),
-                      ),
-                      const SizedBox(height: verticalSpaceL),
-                      saveSection,
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            child: Builder(builder: (context) {
+              if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
+                return getVerticalLayout();
+              } else {
+                return OrientationBuilder(
+                  builder: (context, orientation) {
+                    if (orientation == Orientation.portrait) {
+                      return getVerticalLayout();
+                    } else {
+                      return getHorizontalLayout();
+                    }
+                  },
+                );
+              }
+            }),
           ),
         ),
       ],
