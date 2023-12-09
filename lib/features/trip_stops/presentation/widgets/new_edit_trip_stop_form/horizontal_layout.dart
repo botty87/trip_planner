@@ -56,6 +56,7 @@ class _HorizontalLayout extends HookWidget {
         const SizedBox(width: horizontalSpaceL),
         Expanded(
           child: SingleChildScrollView(
+            padding: const EdgeInsets.only(bottom: verticalSpaceL),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

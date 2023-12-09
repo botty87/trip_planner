@@ -10,12 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e43dcbd-8f12-413b-81e2-8daca4043e1c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trip_planner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/trip_planner.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.firebase/hosting.cHVibGlj.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.cHVibGlj.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase_emulator/data/auth_export/accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/firebase_emulator/data/auth_export/accounts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase_emulator/data/firestore_export/all_namespaces/all_kinds/all_namespaces_all_kinds.export_metadata" beforeDir="false" afterPath="$PROJECT_DIR$/firebase_emulator/data/firestore_export/all_namespaces/all_kinds/all_namespaces_all_kinds.export_metadata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase_emulator/data/firestore_export/all_namespaces/all_kinds/output-0" beforeDir="false" afterPath="$PROJECT_DIR$/firebase_emulator/data/firestore_export/all_namespaces/all_kinds/output-0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase_emulator/data/firestore_export/firestore_export.overall_export_metadata" beforeDir="false" afterPath="$PROJECT_DIR$/firebase_emulator/data/firestore_export/firestore_export.overall_export_metadata" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
