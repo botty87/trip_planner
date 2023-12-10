@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,7 @@ class InfoContactsPage extends StatelessWidget {
         body: SafeArea(
           minimum: const EdgeInsets.only(
               bottom: verticalSpace, left: horizontalSpace, right: horizontalSpace),
-          child: OrientationBuilder(builder: (context, orientation) {
+          child: kIsWeb ? const _InfoContactsPagePortrait() : OrientationBuilder(builder: (context, orientation) {
             if (orientation == Orientation.portrait) {
               return const _InfoContactsPagePortrait();
             } else {
@@ -44,7 +45,7 @@ class InfoContactsPage extends StatelessWidget {
 }
 
 class _InfoContactsPagePortrait extends StatelessWidget {
-  const _InfoContactsPagePortrait({super.key});
+  const _InfoContactsPagePortrait();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ class _InfoContactsPagePortrait extends StatelessWidget {
 }
 
 class _InfoContactsPageLandscape extends StatelessWidget {
-  const _InfoContactsPageLandscape({super.key});
+  const _InfoContactsPageLandscape();
 
   @override
   Widget build(BuildContext context) {

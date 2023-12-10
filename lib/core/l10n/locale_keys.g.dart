@@ -115,6 +115,7 @@ abstract class  LocaleKeys {
   static const userProfile = 'userProfile';
   static const infoContact = 'infoContact';
   static const privacyPolicy = 'privacyPolicy';
+  static const termsOfUse = 'termsOfUse';
   static const developedBy = 'developedBy';
   static const forInformationAndTroubleshooting = 'forInformationAndTroubleshooting';
 
