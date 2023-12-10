@@ -38,7 +38,7 @@ class TripsPage extends StatelessWidget {
               previous.errorMessage != current.errorMessage && current.errorMessage != null,
           child: const AnimatedSize(
             duration: Duration(milliseconds: 500),
-            child: _BodyWidget(),
+            child: Center(child: _BodyWidget()),
           )
         ),
         floatingActionButton: FloatingActionButton(

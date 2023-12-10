@@ -8,7 +8,7 @@ class _BodyWidget extends StatelessWidget {
     final isLoading = context.select<TripsCubit, bool>((cubit) => cubit.state.isLoading);
 
     if (isLoading) {
-      return const Center(child: CircularProgressIndicator.adaptive());
+      return const CircularProgressIndicator.adaptive();
     }
 
     final areTripsEmpty = context.select<TripsCubit, bool>((cubit) => cubit.state.trips.isEmpty);

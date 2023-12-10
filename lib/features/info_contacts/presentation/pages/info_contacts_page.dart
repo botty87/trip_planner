@@ -27,21 +27,58 @@ class InfoContactsPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(LocaleKeys.infoContact.tr()),
         ),
-        body: const SafeArea(
-          minimum:
-              EdgeInsets.only(bottom: verticalSpace, left: horizontalSpace, right: horizontalSpace),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _PrivacyPolicy(),
-              SizedBox(height: verticalSpace),
-              _Terms(),
-              SizedBox(height: verticalSpace),
-              Center(child: _DevelopedBy()),
-            ],
-          ),
+        body: SafeArea(
+          minimum: const EdgeInsets.only(
+              bottom: verticalSpace, left: horizontalSpace, right: horizontalSpace),
+          child: OrientationBuilder(builder: (context, orientation) {
+            if (orientation == Orientation.portrait) {
+              return const _InfoContactsPagePortrait();
+            } else {
+              return const _InfoContactsPageLandscape();
+            }
+          }),
         ),
       ),
+    );
+  }
+}
+
+class _InfoContactsPagePortrait extends StatelessWidget {
+  const _InfoContactsPagePortrait({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _PrivacyPolicy(),
+        SizedBox(height: verticalSpace),
+        _Terms(),
+        SizedBox(height: verticalSpace),
+        Center(child: _DevelopedBy()),
+      ],
+    );
+  }
+}
+
+class _InfoContactsPageLandscape extends StatelessWidget {
+  const _InfoContactsPageLandscape({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          children: [
+            Expanded(child: _PrivacyPolicy()),
+            SizedBox(width: horizontalSpace),
+            Expanded(child: _Terms()),
+          ],
+        ),
+        SizedBox(height: verticalSpace),
+        Center(child: _DevelopedBy()),
+      ],
     );
   }
 }
