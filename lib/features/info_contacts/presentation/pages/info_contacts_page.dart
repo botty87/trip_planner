@@ -55,7 +55,7 @@ class _InfoContactsPagePortrait extends StatelessWidget {
         SizedBox(height: verticalSpace),
         _Terms(),
         SizedBox(height: verticalSpace),
-        Center(child: _DevelopedBy()),
+        Center(child: _DevelopedBy(orientation: Orientation.portrait)),
       ],
     );
   }
@@ -69,15 +69,17 @@ class _InfoContactsPageLandscape extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          children: [
-            Expanded(child: _PrivacyPolicy()),
-            SizedBox(width: horizontalSpace),
-            Expanded(child: _Terms()),
-          ],
+        Expanded(
+          child: Row(
+            children: [
+              _PrivacyPolicy(),
+              SizedBox(width: horizontalSpace),
+              _Terms(),
+            ],
+          ),
         ),
         SizedBox(height: verticalSpace),
-        Center(child: _DevelopedBy()),
+        Center(child: _DevelopedBy(orientation: Orientation.landscape)),
       ],
     );
   }

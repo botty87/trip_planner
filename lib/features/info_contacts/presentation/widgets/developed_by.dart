@@ -1,59 +1,54 @@
 part of '../pages/info_contacts_page.dart';
 
 class _DevelopedBy extends StatelessWidget {
-  const _DevelopedBy();
+  final Orientation orientation;
+  const _DevelopedBy({required this.orientation});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text.rich(
+    final lineSeparator = orientation == Orientation.portrait ? '\n' : ' ';
+
+    return Text.rich(
+      TextSpan(
+        children: [
           TextSpan(
-            children: [
-              TextSpan(
-                text: LocaleKeys.developedBy.tr(),
-              ),
-              const TextSpan(text: ' '),
-              TextSpan(
-                text: 'Bottichio Marco',
-                style: TextStyle(color: Colors.blue[700]),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    launchUrl(Uri.parse('https://github.com/botty87'));
-                  },
-              ),
-            ],
+            text: LocaleKeys.developedBy.tr(),
           ),
-        ),
-        const SizedBox(height: verticalSpaceS),
-        Text.rich(
+          const TextSpan(text: ' '),
           TextSpan(
-            children: [
-              TextSpan(
-                text: LocaleKeys.forInformationAndTroubleshooting.tr(),
-              ),
-              const TextSpan(text: ' '),
-              TextSpan(
-                text: 'trip.planner@pm.me',
-                style: TextStyle(
-                  color: Colors.blue[700],
-                ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    launchUrl(Uri(
-                        scheme: 'mailto',
-                        path: 'trip.planner@pm.me',
-                        query: _encodeQueryParameters(<String, String>{
-                        'subject': 'Trip Planner',
-                      }),
-                    ));
-                  },
-              ),
-            ],
+            text: 'Bottichio Marco',
+            style: TextStyle(color: Colors.blue[700]),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                launchUrl(Uri.parse('https://github.com/botty87'));
+              },
           ),
-          textAlign: TextAlign.center,
-        ),
-      ],
+          const TextSpan(text: '.'),
+          TextSpan(text: lineSeparator),
+          TextSpan(
+            text: LocaleKeys.forInformationAndTroubleshooting.tr(),
+          ),
+          const TextSpan(text: ' '),
+          TextSpan(
+            text: 'trip.planner@pm.me',
+            style: TextStyle(
+              color: Colors.blue[700],
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                launchUrl(Uri(
+                  scheme: 'mailto',
+                  path: 'trip.planner@pm.me',
+                  query: _encodeQueryParameters(<String, String>{
+                    'subject': 'Trip Planner',
+                  }),
+                ));
+              },
+          ),
+          const TextSpan(text: '.'),
+        ],
+      ),
+      textAlign: TextAlign.center,
     );
   }
 
