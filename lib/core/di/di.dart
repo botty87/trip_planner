@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:logger/logger.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'di.config.dart';
 
 final getIt = GetIt.instance;
@@ -27,6 +28,10 @@ abstract class Network {
 
   @lazySingleton
   InternetConnection get internetConnection => InternetConnection();
+
+  @injectable
+  WebViewController get webViewController =>
+      WebViewController()..setJavaScriptMode(JavaScriptMode.unrestricted);
 }
 
 @module

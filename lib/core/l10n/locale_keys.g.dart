@@ -114,5 +114,8 @@ abstract class  LocaleKeys {
   static const allNotSelectedTripsWillBeDeleted = 'allNotSelectedTripsWillBeDeleted';
   static const userProfile = 'userProfile';
   static const infoContact = 'infoContact';
+  static const privacyPolicy = 'privacyPolicy';
+  static const developedBy = 'developedBy';
+  static const forInformationAndTroubleshooting = 'forInformationAndTroubleshooting';
 
 }

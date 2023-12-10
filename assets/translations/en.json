@@ -114,5 +114,8 @@
     "import" : "Import",
     "allNotSelectedTripsWillBeDeleted" : "All not selected trips will be deleted. Are you sure you want to continue?",
     "userProfile" : "User profile",
-    "infoContact" : "Info & Contact"
+    "infoContact" : "Info & Contact",
+    "privacyPolicy" : "Privacy Policy",
+    "developedBy" : "Trip Planner is developed by",
+    "forInformationAndTroubleshooting" : "For information and troubleshooting write to"
 }

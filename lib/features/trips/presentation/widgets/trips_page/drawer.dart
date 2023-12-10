@@ -7,6 +7,7 @@ class _Drawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: SafeArea(
+        minimum: const EdgeInsets.only(bottom: verticalSpace),
         child: Column(
           children: [
             SizedBox(
@@ -20,34 +21,50 @@ class _Drawer extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(children: [
-                  ListTile(
-                    title: Text(
-                      LocaleKeys.userProfile.tr(),
-                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                    ),
-                    leading: const Icon(Icons.account_circle_rounded),
-                    onTap: () {
-                      //Close drawer
-                      Navigator.pop(context);
-                      context.pushRoute(const AccountRoute());
-                    },
+                  _DrawerTile(
+                    label: LocaleKeys.userProfile.tr(),
+                    icon: Icons.account_circle_rounded,
+                    onTap: () => context.pushRoute(const TripsRoute()),
                   ),
                   const SizedBox(height: verticalSpace),
                 ]),
               ),
             ),
             const Divider(),
-            ListTile(
-              title: Text(
-                LocaleKeys.infoContact.tr(),
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-              ),
-              leading: const Icon(Icons.info),
-              onTap: () {},
+            _DrawerTile(
+              label: LocaleKeys.infoContact.tr(),
+              icon: Icons.info,
+              onTap: () => context.pushRoute(const InfoContactsRoute()),
             ),
           ],
         ),
       ),
     );
+  }
+}
+
+class _DrawerTile extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final VoidCallback onTap;
+
+  const _DrawerTile({super.key, required this.label, required this.icon, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+        title: Padding(
+          padding: const EdgeInsets.only(left: horizontalSpaceS),
+          child: Text(
+            label,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+        ),
+        leading: Icon(icon),
+        onTap: () {
+          //Close drawer
+          Navigator.pop(context);
+          onTap();
+        });
   }
 }
