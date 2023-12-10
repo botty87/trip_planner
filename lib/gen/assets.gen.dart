@@ -131,6 +131,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/login.svg.vec
   String get loginSvg => 'assets/svg/login.svg.vec';
 
+  /// File path: assets/svg/nav_drawer_header.svg.vec
+  String get navDrawerHeaderSvg => 'assets/svg/nav_drawer_header.svg.vec';
+
   /// File path: assets/svg/trip.svg.vec
   String get tripSvg => 'assets/svg/trip.svg.vec';
 
@@ -143,6 +146,7 @@ class $AssetsSvgGen {
         arrowSvg,
         destinationSvg,
         loginSvg,
+        navDrawerHeaderSvg,
         tripSvg
       ];
 }

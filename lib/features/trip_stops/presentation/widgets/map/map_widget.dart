@@ -57,51 +57,72 @@ class MapWidget extends HookWidget {
                   .animateCamera(CameraUpdate.newLatLngZoom(mapLocation.value!, 15));
             }
 
-            return Stack(
-              children: [
-                BlocSelector<MapCubit, MapState, MapType>(
-                  selector: (state) {
-                    return state.mapType;
-                  },
-                  builder: (context, mapType) {
-                    return GoogleMap(
-                      mapType: mapType,
-                      initialCameraPosition: mapLocation.value != null
-                          ? CameraPosition(
-                              target: mapLocation.value!,
-                              zoom: 15,
-                            )
-                          : _worldPosition,
-                      onMapCreated: (controller) {
-                        googleMapController.value = controller;
-                        if (mapLocation.value != null) {
-                          controller
-                              .animateCamera(CameraUpdate.newLatLngZoom(mapLocation.value!, 15));
-                        }
-                      },
-                      gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-                        Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
-                      },
-                      myLocationButtonEnabled: false,
-                      zoomControlsEnabled: false,
-                      markers: marker != null ? {marker} : {},
-                    );
-                  },
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: _zoomControls(googleMapController),
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: _mapTypeChanger(),
-                ),
-                if (mapLocation.value != null)
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: _markerFinder(mapLocation, googleMapController),
-                  ),
-              ],
+            return BlocSelector<MapCubit, MapState, bool>(
+              selector: (state) {
+                return state.isMapReady;
+              },
+              builder: (context, isMapReady) {
+                return Stack(
+                  children: [
+                    Visibility(
+                      visible: !isMapReady,
+                      child: const Center(child: CircularProgressIndicator.adaptive()),
+                    ),
+                    AnimatedOpacity(
+                      duration: const Duration(milliseconds: 500),
+                      opacity: isMapReady ? 1 : 0,
+                      child: Stack(
+                        children: [
+                          BlocSelector<MapCubit, MapState, MapType>(
+                            selector: (state) {
+                              return state.mapType;
+                            },
+                            builder: (context, mapType) {
+                              return GoogleMap(
+                                mapType: mapType,
+                                initialCameraPosition: mapLocation.value != null
+                                    ? CameraPosition(
+                                        target: mapLocation.value!,
+                                        zoom: 15,
+                                      )
+                                    : _worldPosition,
+                                onMapCreated: (controller) {
+                                  googleMapController.value = controller;
+                                  context.read<MapCubit>().mapCreated();
+                                  if (mapLocation.value != null) {
+                                    controller.animateCamera(
+                                        CameraUpdate.newLatLngZoom(mapLocation.value!, 15));
+                                  }
+                                },
+                                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                                  Factory<OneSequenceGestureRecognizer>(
+                                      () => EagerGestureRecognizer()),
+                                },
+                                myLocationButtonEnabled: false,
+                                zoomControlsEnabled: false,
+                                markers: marker != null ? {marker} : {},
+                              );
+                            },
+                          ),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: _zoomControls(googleMapController),
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: _mapTypeChanger(),
+                          ),
+                          if (mapLocation.value != null)
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: _markerFinder(mapLocation, googleMapController),
+                            ),
+                        ],
+                      ),
+                    )
+                  ],
+                );
+              },
             );
           })
       /* SizedBox(

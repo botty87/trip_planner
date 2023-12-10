@@ -112,5 +112,7 @@ abstract class  LocaleKeys {
   static const oldTripsWelcome = 'oldTripsWelcome';
   static const import = 'import';
   static const allNotSelectedTripsWillBeDeleted = 'allNotSelectedTripsWillBeDeleted';
+  static const userProfile = 'userProfile';
+  static const infoContact = 'infoContact';
 
 }

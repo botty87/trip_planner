@@ -113,5 +113,7 @@
     "oldTrips" : "Vecchi viaggi",
     "oldTripsWelcome" : "Benvenuto nella nuova versione di Trip Planner! Abbiamo apportato delle modifiche alla app e abbiamo bisogno di importare i tuoi vecchi viaggi. Selezione quelli che vuoi importare e premi il pulsante importa. I viaggi non selezionati verranno eliminati!",
     "import" : "Importa",
-    "allNotSelectedTripsWillBeDeleted" : "I viaggi non selezionati verranno eliminati! Sei sicuro di voler continuare?"
+    "allNotSelectedTripsWillBeDeleted" : "I viaggi non selezionati verranno eliminati! Sei sicuro di voler continuare?",
+    "userProfile" : "Profilo utente",
+    "infoContact" : "Info e contatti"
 }

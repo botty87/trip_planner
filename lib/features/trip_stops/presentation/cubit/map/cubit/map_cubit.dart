@@ -15,4 +15,8 @@ class MapCubit extends Cubit<MapState> {
       mapType: state.mapType == MapType.hybrid ? MapType.normal : MapType.hybrid,
     ));
   }
+
+  void mapCreated() {
+    emit(state.copyWith(isMapReady: true));
+  }
 }
