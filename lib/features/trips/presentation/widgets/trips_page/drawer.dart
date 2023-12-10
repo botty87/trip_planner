@@ -48,7 +48,7 @@ class _DrawerTile extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
 
-  const _DrawerTile({super.key, required this.label, required this.icon, required this.onTap});
+  const _DrawerTile({required this.label, required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

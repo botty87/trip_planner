@@ -7,5 +7,5 @@ part 'info_contacts_cubit.freezed.dart';
 
 @injectable
 class InfoContactsCubit extends Cubit<InfoContactsState> {
-  InfoContactsCubit() : super(InfoContactsState());
+  InfoContactsCubit() : super(const InfoContactsState());
 }

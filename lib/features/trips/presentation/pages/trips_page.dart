@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -6,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
-import 'package:vector_graphics_codec/vector_graphics_codec.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
