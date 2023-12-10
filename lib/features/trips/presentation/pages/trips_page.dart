@@ -38,7 +38,10 @@ class TripsPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(state.errorMessage!)),
           listenWhen: (previous, current) =>
               previous.errorMessage != current.errorMessage && current.errorMessage != null,
-          child: const Center(child: _BodyWidget()),
+          child: const AnimatedSize(
+            duration: Duration(milliseconds: 500),
+            child: _BodyWidget(),
+          )
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {

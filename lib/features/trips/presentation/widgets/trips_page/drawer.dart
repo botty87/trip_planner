@@ -26,7 +26,11 @@ class _Drawer extends StatelessWidget {
                       style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     leading: const Icon(Icons.account_circle_rounded),
-                    onTap: () => context.pushRoute(const AccountRoute()),
+                    onTap: () {
+                      //Close drawer
+                      Navigator.pop(context);
+                      context.pushRoute(const AccountRoute());
+                    },
                   ),
                   const SizedBox(height: verticalSpace),
                 ]),
