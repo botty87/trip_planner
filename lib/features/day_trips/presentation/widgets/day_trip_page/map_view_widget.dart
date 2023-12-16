@@ -16,8 +16,6 @@ class _MapViewWidget extends HookWidget {
     final isMapReady = useState<bool>(false);
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
 
-    final state = context.read<TripStopsMapCubit>().state;
-
     final markers = tripStops
         .map(
           (stop) => Marker(
@@ -32,6 +30,9 @@ class _MapViewWidget extends HookWidget {
                     .push(TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: stop));
               },
             ),
+            icon: stop.isDone
+                ? BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)
+                : BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
           ),
         )
         .toSet();
