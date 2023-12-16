@@ -13,4 +13,8 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   changeMapType() {
     emit(state.copyWith(mapType: state.mapType == MapType.hybrid ? MapType.normal : MapType.hybrid));
   }
+
+  void cameraPositionChanged(cameraPosition) {
+    emit(state.copyWith(currentCameraPosition: cameraPosition));
+  }
 }

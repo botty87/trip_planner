@@ -14,6 +14,8 @@ class _MapViewWidget extends HookWidget {
     final isMapReady = useState<bool>(false);
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
 
+    final state = context.read<TripStopsMapCubit>().state;
+
     final markers = tripStops
         .map(
           (stop) => Marker(
@@ -36,6 +38,8 @@ class _MapViewWidget extends HookWidget {
         ? LatLngBoundsExtension.fromLatLngList(markers.map((e) => e.position).toList())
         : null;
 
+    final initialCameraPosition = state.currentCameraPosition ?? _worldPosition;
+
     return Stack(
       children: [
         Visibility(
@@ -54,18 +58,19 @@ class _MapViewWidget extends HookWidget {
                 builder: (context, mapType) {
                   return GoogleMap(
                     mapType: mapType,
-                    initialCameraPosition: _worldPosition,
+                    initialCameraPosition: initialCameraPosition,
                     onMapCreated: (controller) {
                       googleMapController.value = controller;
                       isMapReady.value = true;
-                      if (markerLatLngBounds != null) {
-                        controller
-                            .animateCamera(CameraUpdate.newLatLngBounds(markerLatLngBounds, 50));
+                      if (markerLatLngBounds != null && state.currentCameraPosition == null) {
+                        controller.moveCamera(CameraUpdate.newLatLngBounds(markerLatLngBounds, 50));
                       }
                     },
                     myLocationButtonEnabled: false,
                     zoomControlsEnabled: false,
                     markers: markers,
+                    onCameraMove: (position) =>
+                        context.read<TripStopsMapCubit>().cameraPositionChanged(position),
                   );
                 },
               ),
