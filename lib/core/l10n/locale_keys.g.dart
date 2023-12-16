@@ -118,5 +118,7 @@ abstract class  LocaleKeys {
   static const termsOfUse = 'termsOfUse';
   static const developedBy = 'developedBy';
   static const forInformationAndTroubleshooting = 'forInformationAndTroubleshooting';
+  static const list = 'list';
+  static const map = 'map';
 
 }

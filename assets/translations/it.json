@@ -119,5 +119,7 @@
     "privacyPolicy" : "Privacy policy",
     "termsOfUse": "Termini di utilizzo",
     "developedBy" : "Trip Planner è sviluppato da",
-    "forInformationAndTroubleshooting" : "Per informazioni e segnalazioni scrivi a"
+    "forInformationAndTroubleshooting" : "Per informazioni e segnalazioni scrivi a",
+    "list" : "Lista",
+    "map" : "Mappa"
 }

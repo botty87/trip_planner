@@ -10,7 +10,7 @@ import 'package:trip_planner/features/day_trips/domain/usecases/delete_day_trip.
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
-import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/cubit/day_trip_cubit.dart';
+import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart';

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../trip_stops/domain/entities/trip_stop.dart';
-import '../../cubit/day_trip/cubit/day_trip_cubit.dart';
+import '../../cubit/day_trip/day_trip_cubit.dart';
 
 class TravelCard extends StatelessWidget {
   final TripStop tripStop;

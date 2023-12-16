@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import '../../../../core/utilities/extensions.dart';
 import '../../../../core/utilities/pair.dart';
 import '../../../../core/widgets/custom_reorderable_list_view.dart';
 import '../../../../core/widgets/snackbars.dart';
@@ -26,7 +28,8 @@ import '../../../time_picker/widgets/timepicker.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/day_trip.dart';
-import '../cubit/day_trip/cubit/day_trip_cubit.dart';
+import '../cubit/day_trip/day_trip_cubit.dart';
+import '../cubit/trip_stops_map/trip_stops_map_cubit.dart';
 import '../widgets/day_trip_page/travel_card.dart';
 import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
@@ -34,6 +37,8 @@ part '../widgets/day_trip_page/add_day_trip_stop_card.dart';
 part '../widgets/day_trip_page/day_trip_description.dart';
 part '../widgets/day_trip_page/day_trip_page_body.dart';
 part '../widgets/day_trip_page/delete_trip_button.dart';
+part '../widgets/day_trip_page/list_view_widget.dart';
+part '../widgets/day_trip_page/map_view_widget.dart';
 part '../widgets/day_trip_page/save_cancel_edit_buttons.dart';
 part '../widgets/day_trip_page/start_time_widget.dart';
 part '../widgets/day_trip_page/trip_stop_card.dart';
@@ -50,8 +55,15 @@ class DayTripPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<DayTripCubit>(
-      create: (context) => getIt(param1: _trip, param2: _dayTrip),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<DayTripCubit>(
+          create: (context) => getIt(param1: _trip, param2: _dayTrip),
+        ),
+        BlocProvider<TripStopsMapCubit>(
+          create: (context) => getIt(),
+        ),
+      ],
       child: Builder(
         builder: (BuildContext context) {
           return PopScope(
@@ -68,12 +80,27 @@ class DayTripPage extends StatelessWidget {
               }
             },
             //onWillPop: () => _onWillPop(context),
-            child: const Scaffold(
-              appBar: PreferredSize(
-                preferredSize: Size.fromHeight(kToolbarHeight),
-                child: _DayTripPageAppBar(),
+            child: DefaultTabController(
+              length: 2,
+              child: Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                      "${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
+                  actions: [
+                    IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () => context.read<DayTripCubit>().edit(),
+                    ),
+                  ],
+                  bottom: TabBar(
+                    tabs: [
+                      Tab(text: LocaleKeys.list.tr()),
+                      Tab(text: LocaleKeys.map.tr()),
+                    ],
+                  ),
+                ),
+                body: const _DayTripPageBody(),
               ),
-              body: _DayTripPageBody(),
             ),
           );
         },
@@ -83,22 +110,5 @@ class DayTripPage extends StatelessWidget {
 
   Future<bool> _onWillPop(BuildContext context) async {
     return context.read<DayTripCubit>().saveDayTripStopStartTime(forced: true);
-  }
-}
-
-class _DayTripPageAppBar extends StatelessWidget {
-  const _DayTripPageAppBar();
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: Text("${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.edit),
-          onPressed: () => context.read<DayTripCubit>().edit(),
-        ),
-      ],
-    );
   }
 }
