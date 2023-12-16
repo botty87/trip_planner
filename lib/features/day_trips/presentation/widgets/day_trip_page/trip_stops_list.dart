@@ -14,11 +14,13 @@ class _TripStopsList extends StatelessWidget {
   }
 }
 
-class _List extends StatelessWidget {
+class _List extends HookWidget {
   const _List();
 
   @override
   Widget build(BuildContext context) {
+    useAutomaticKeepAlive();
+
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
     final DateTime dayTripStartDateTime = context.select((DayTripCubit cubit) {
       final startDate = cubit.state.trip.startDate;

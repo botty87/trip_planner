@@ -17,8 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TripStopsMapState {
   MapType get mapType => throw _privateConstructorUsedError;
-  CameraPosition? get currentCameraPosition =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TripStopsMapStateCopyWith<TripStopsMapState> get copyWith =>
@@ -31,7 +29,7 @@ abstract class $TripStopsMapStateCopyWith<$Res> {
           TripStopsMapState value, $Res Function(TripStopsMapState) then) =
       _$TripStopsMapStateCopyWithImpl<$Res, TripStopsMapState>;
   @useResult
-  $Res call({MapType mapType, CameraPosition? currentCameraPosition});
+  $Res call({MapType mapType});
 }
 
 /// @nodoc
@@ -48,17 +46,12 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
   @override
   $Res call({
     Object? mapType = null,
-    Object? currentCameraPosition = freezed,
   }) {
     return _then(_value.copyWith(
       mapType: null == mapType
           ? _value.mapType
           : mapType // ignore: cast_nullable_to_non_nullable
               as MapType,
-      currentCameraPosition: freezed == currentCameraPosition
-          ? _value.currentCameraPosition
-          : currentCameraPosition // ignore: cast_nullable_to_non_nullable
-              as CameraPosition?,
     ) as $Val);
   }
 }
@@ -71,7 +64,7 @@ abstract class _$$TripStopsMapStateImplCopyWith<$Res>
       __$$TripStopsMapStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MapType mapType, CameraPosition? currentCameraPosition});
+  $Res call({MapType mapType});
 }
 
 /// @nodoc
@@ -86,17 +79,12 @@ class __$$TripStopsMapStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? mapType = null,
-    Object? currentCameraPosition = freezed,
   }) {
     return _then(_$TripStopsMapStateImpl(
       mapType: null == mapType
           ? _value.mapType
           : mapType // ignore: cast_nullable_to_non_nullable
               as MapType,
-      currentCameraPosition: freezed == currentCameraPosition
-          ? _value.currentCameraPosition
-          : currentCameraPosition // ignore: cast_nullable_to_non_nullable
-              as CameraPosition?,
     ));
   }
 }
@@ -104,18 +92,15 @@ class __$$TripStopsMapStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TripStopsMapStateImpl implements _TripStopsMapState {
-  const _$TripStopsMapStateImpl(
-      {this.mapType = MapType.hybrid, this.currentCameraPosition});
+  const _$TripStopsMapStateImpl({this.mapType = MapType.hybrid});
 
   @override
   @JsonKey()
   final MapType mapType;
-  @override
-  final CameraPosition? currentCameraPosition;
 
   @override
   String toString() {
-    return 'TripStopsMapState(mapType: $mapType, currentCameraPosition: $currentCameraPosition)';
+    return 'TripStopsMapState(mapType: $mapType)';
   }
 
   @override
@@ -123,13 +108,11 @@ class _$TripStopsMapStateImpl implements _TripStopsMapState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopsMapStateImpl &&
-            (identical(other.mapType, mapType) || other.mapType == mapType) &&
-            (identical(other.currentCameraPosition, currentCameraPosition) ||
-                other.currentCameraPosition == currentCameraPosition));
+            (identical(other.mapType, mapType) || other.mapType == mapType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mapType, currentCameraPosition);
+  int get hashCode => Object.hash(runtimeType, mapType);
 
   @JsonKey(ignore: true)
   @override
@@ -140,14 +123,11 @@ class _$TripStopsMapStateImpl implements _TripStopsMapState {
 }
 
 abstract class _TripStopsMapState implements TripStopsMapState {
-  const factory _TripStopsMapState(
-      {final MapType mapType,
-      final CameraPosition? currentCameraPosition}) = _$TripStopsMapStateImpl;
+  const factory _TripStopsMapState({final MapType mapType}) =
+      _$TripStopsMapStateImpl;
 
   @override
   MapType get mapType;
-  @override
-  CameraPosition? get currentCameraPosition;
   @override
   @JsonKey(ignore: true)
   _$$TripStopsMapStateImplCopyWith<_$TripStopsMapStateImpl> get copyWith =>
