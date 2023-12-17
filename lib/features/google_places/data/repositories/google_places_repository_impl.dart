@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../day_trips/domain/entities/trip_stops_directions.dart';
