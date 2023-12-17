@@ -22,6 +22,15 @@ class _DayTripPageBody extends HookWidget {
           },
           listenWhen: (previous, current) => current is DayTripStateError,
         ),
+        //Show error snackbar if error and update errorMessage stream when error
+        BlocListener<TripStopsMapCubit, TripStopsMapState>(
+          listener: (context, state) {
+            final errorState = state as TripStopsMapStateError;
+            ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorState.errorMessage));
+            errorMessage.add(errorState.errorMessage);
+          },
+          listenWhen: (previous, current) => current is TripStopsMapStateError,
+        ),
         //Pop page if deleted
         BlocListener<DayTripCubit, DayTripState>(
           listener: (context, state) => context.router.pop(),
@@ -58,6 +67,18 @@ class _DayTripPageBody extends HookWidget {
             },
             listenWhen: (previous, current) =>
                 previous is DayTripStateEditing && current is DayTripStateNormal),
+        //Show snackbar if loading directions
+        BlocListener<TripStopsMapCubit, TripStopsMapState>(
+          listener: (context, state) {
+            if (state.isLoading) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(Snackbars.loading(LocaleKeys.loadingDirections.tr()));
+            } else {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            }
+          },
+          listenWhen: (previous, current) => previous.isLoading != current.isLoading,
+        ),
       ],
       child: BlocSelector<DayTripCubit, DayTripState, bool>(
         selector: (DayTripState state) => state.maybeMap(

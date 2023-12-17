@@ -13,8 +13,35 @@ class _MapViewWidget extends HookWidget {
     useAutomaticKeepAlive();
 
     final googleMapController = useRef<GoogleMapController?>(null);
+
     final isMapReady = useState<bool>(false);
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
+    final List<TripStopsDirections>? tripStopsDirections =
+        context.select((TripStopsMapCubit cubit) => cubit.state.tripStopsDirections);
+
+    final polylinePointsTripStopsLoaded =
+        useRef<bool>(tripStopsDirections?.isNotEmpty ?? false);
+
+    if (!polylinePointsTripStopsLoaded.value) {
+      context.read<TripStopsMapCubit>().loadDirections(tripStops);
+      polylinePointsTripStopsLoaded.value = true;
+    }
+
+    final Set<Polyline> polylines = {};
+    if (tripStopsDirections != null) {
+      for (final directions in tripStopsDirections) {
+        if (directions.points?.isNotEmpty ?? false) {
+          polylines.add(
+            Polyline(
+              polylineId: PolylineId(directions.originId + directions.destinationId),
+              points: directions.points!,
+              color: Colors.blue,
+              width: 5,
+            ),
+          );
+        }
+      }
+    }
 
     final markers = tripStops
         .map(
@@ -70,6 +97,7 @@ class _MapViewWidget extends HookWidget {
                     myLocationButtonEnabled: false,
                     zoomControlsEnabled: false,
                     markers: markers,
+                    polylines: polylines,
                   );
                 },
               ),

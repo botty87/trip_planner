@@ -18,9 +18,6 @@ const defaultPagePadding =
 
 const cardPadding = EdgeInsets.all(8.0);
 
-const String googleMapKey = "AIzaSyAwWfCJktwEdd4nNZGDO7mm6nwgYNVAX5I";
-const String googlePlacesKey = 'AIzaSyB7DZvf2tol6F_ZvhPSa25ykTr_OWmbVLs';
-
 const tripsRef = 'trips';
 const usersRef = 'users';
 const dayTripsRef = 'dayTrips';

@@ -121,5 +121,6 @@
     "developedBy" : "Trip Planner è sviluppato da",
     "forInformationAndTroubleshooting" : "Per informazioni e segnalazioni scrivi a",
     "list" : "Lista",
-    "map" : "Mappa"
+    "map" : "Mappa",
+    "loadingDirections" : "Caricamento indicazioni stradali..."
 }

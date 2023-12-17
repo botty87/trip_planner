@@ -1,10 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
-import '../../../../core/constants.dart';
+import '../../../../core/utilities/extensions.dart';
+import '../../../day_trips/domain/entities/trip_stops_directions.dart';
+import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../domain/entities/place_details.dart';
 import '../../domain/entities/suggestion.dart';
 import '../../errors/google_places_exception.dart';
@@ -14,6 +17,8 @@ abstract class GooglePlacesDataSource {
       {required String query, required String lang, required String token});
 
   Future<PlaceDetails> fetchPlaceDetails({required String placeId, required String token});
+
+  Future<List<TripStopsDirections>> fetchTripStopsDirections(List<TripStop> tripStops);
 }
 
 @LazySingleton(as: GooglePlacesDataSource)
@@ -22,10 +27,18 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
   final InternetConnection internetConnection;
   CancelToken? _cancelToken;
 
-  static const key = googlePlacesKey;
-  static const proxyURL = "https://corsproxy.io/?";
+  final PolylinePoints polylinePoints;
 
-  GooglePlacesDataSourceImpl(this.client, this.internetConnection);
+  final String key;
+  final String proxyURL;
+
+  GooglePlacesDataSourceImpl(
+    this.client,
+    this.internetConnection,
+    this.polylinePoints,
+    @Named('googlePlacesKey') this.key,
+    @Named('proxyUrl') this.proxyURL,
+  );
 
   @override
   Future<List<Suggestion>> fetchSuggestions(
@@ -116,5 +129,58 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
       default:
         throw GooglePlacesException.unknownError(message: data['error_message']);
     }
+  }
+
+  @override
+  Future<List<TripStopsDirections>> fetchTripStopsDirections(List<TripStop> tripStops) async {
+    assert(tripStops.length >= 2);
+
+    final hasConnection = await internetConnection.hasInternetAccess;
+    if (!hasConnection) {
+      throw const GooglePlacesException.noInternetConnection();
+    }
+
+    final List<TripStopsDirections> directions = [];
+
+    for (int i = 0; i < tripStops.length - 1; i++) {
+      final PolylineResult result;
+      try {
+        result = await polylinePoints.getRouteBetweenCoordinates(
+          key,
+          PointLatLng(tripStops[i].location.latitude, tripStops[i].location.longitude),
+          PointLatLng(tripStops[i + 1].location.latitude, tripStops[i + 1].location.longitude),
+        );
+      } catch (e) {
+        String errorMessage = e.toString();
+        if(errorMessage.contains('ZERO_RESULTS')) {
+          errorMessage = 'ZERO_RESULTS';
+          directions.add(TripStopsDirections(
+            originId: tripStops[i].id,
+            destinationId: tripStops[i + 1].id,
+            errorMessage: errorMessage,
+          ));
+          continue;
+        }
+        else {
+          throw GooglePlacesException.unknownError(message: errorMessage);
+        }
+      }
+
+      if (result.status == 'OK') {
+        directions.add(TripStopsDirections(
+          originId: tripStops[i].id,
+          destinationId: tripStops[i + 1].id,
+          points: result.points.map((point) => point.toLatLng()).toList(),
+        ));
+      } else {
+        directions.add(TripStopsDirections(
+          originId: tripStops[i].id,
+          destinationId: tripStops[i + 1].id,
+          errorMessage: result.errorMessage,
+        ));
+      }
+    }
+
+    return directions;
   }
 }

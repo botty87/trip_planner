@@ -1,7 +1,9 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../core/utilities/data_converter.dart';
 
@@ -17,6 +19,7 @@ sealed class DayTrip with _$DayTrip {
     @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
     @Default(TimeOfDay(hour: 8, minute: 0))
     TimeOfDay startTime,
+    
   }) = _DayTrip;
 
   factory DayTrip.create({

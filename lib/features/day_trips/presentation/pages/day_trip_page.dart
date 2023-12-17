@@ -28,6 +28,7 @@ import '../../../time_picker/widgets/timepicker.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/day_trip.dart';
+import '../../domain/entities/trip_stops_directions.dart';
 import '../cubit/day_trip/day_trip_cubit.dart';
 import '../cubit/trip_stops_map/trip_stops_map_cubit.dart';
 import '../widgets/day_trip_page/travel_card.dart';
@@ -61,7 +62,7 @@ class DayTripPage extends StatelessWidget {
           create: (context) => getIt(param1: _trip, param2: _dayTrip),
         ),
         BlocProvider<TripStopsMapCubit>(
-          create: (context) => getIt(),
+          create: (context) => getIt(param1: _trip.id, param2: _dayTrip.id),
         ),
       ],
       child: Builder(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:map_launcher/map_launcher.dart';
 
@@ -40,4 +41,8 @@ extension LatLngBoundsExtension on LatLngBounds {
     }
     return LatLngBounds(northeast: LatLng(x1!, y1!), southwest: LatLng(x0!, y0!));
   }
+}
+
+extension PointLatLngExtension on PointLatLng {
+  LatLng toLatLng() => LatLng(latitude, longitude);
 }

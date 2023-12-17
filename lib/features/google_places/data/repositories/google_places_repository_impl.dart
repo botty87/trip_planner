@@ -1,6 +1,9 @@
 import 'package:dartz/dartz.dart';
+import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../day_trips/domain/entities/trip_stops_directions.dart';
+import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../domain/entities/place_details.dart';
 import '../../domain/entities/suggestion.dart';
 import '../../domain/repositories/google_places_repository.dart';
@@ -42,6 +45,19 @@ class GooglePlacesRepositoryImpl implements GooglePlacesRepository {
       return Right(placeDetails);
     } on GooglePlacesException catch (e) {
       return Left(_mapExceptionToFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<GooglePlacesFailure, List<TripStopsDirections>>> fetchTripStopsDirections(
+      List<TripStop> tripStops) async {
+    try {
+      final result = await dataSource.fetchTripStopsDirections(tripStops);
+      return Right(result);
+    } on GooglePlacesException catch (e) {
+      return Left(_mapExceptionToFailure(e));
+    } catch (e) {
+      return Left(GooglePlacesFailure.unknownError(message: e.toString()));
     }
   }
 }
