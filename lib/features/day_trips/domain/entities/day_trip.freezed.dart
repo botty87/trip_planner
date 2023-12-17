@@ -26,6 +26,10 @@ mixin _$DayTrip {
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
   TimeOfDay get startTime => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  List<TripStopsDirections>? get tripStopsDirections =>
+      throw _privateConstructorUsedError;
+  bool get tripStopsDirectionsUpToDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +46,10 @@ abstract class $DayTripCopyWith<$Res> {
       int index,
       String? description,
       @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      TimeOfDay startTime});
+      TimeOfDay startTime,
+      @JsonKey(includeIfNull: false)
+      List<TripStopsDirections>? tripStopsDirections,
+      bool tripStopsDirectionsUpToDate});
 }
 
 /// @nodoc
@@ -62,6 +69,8 @@ class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
     Object? index = null,
     Object? description = freezed,
     Object? startTime = null,
+    Object? tripStopsDirections = freezed,
+    Object? tripStopsDirectionsUpToDate = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -80,6 +89,14 @@ class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
+      tripStopsDirections: freezed == tripStopsDirections
+          ? _value.tripStopsDirections
+          : tripStopsDirections // ignore: cast_nullable_to_non_nullable
+              as List<TripStopsDirections>?,
+      tripStopsDirectionsUpToDate: null == tripStopsDirectionsUpToDate
+          ? _value.tripStopsDirectionsUpToDate
+          : tripStopsDirectionsUpToDate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -96,7 +113,10 @@ abstract class _$$DayTripImplCopyWith<$Res> implements $DayTripCopyWith<$Res> {
       int index,
       String? description,
       @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      TimeOfDay startTime});
+      TimeOfDay startTime,
+      @JsonKey(includeIfNull: false)
+      List<TripStopsDirections>? tripStopsDirections,
+      bool tripStopsDirectionsUpToDate});
 }
 
 /// @nodoc
@@ -114,6 +134,8 @@ class __$$DayTripImplCopyWithImpl<$Res>
     Object? index = null,
     Object? description = freezed,
     Object? startTime = null,
+    Object? tripStopsDirections = freezed,
+    Object? tripStopsDirectionsUpToDate = null,
   }) {
     return _then(_$DayTripImpl(
       id: null == id
@@ -132,6 +154,14 @@ class __$$DayTripImplCopyWithImpl<$Res>
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
+      tripStopsDirections: freezed == tripStopsDirections
+          ? _value._tripStopsDirections
+          : tripStopsDirections // ignore: cast_nullable_to_non_nullable
+              as List<TripStopsDirections>?,
+      tripStopsDirectionsUpToDate: null == tripStopsDirectionsUpToDate
+          ? _value.tripStopsDirectionsUpToDate
+          : tripStopsDirectionsUpToDate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -144,7 +174,11 @@ class _$DayTripImpl implements _DayTrip {
       required this.index,
       this.description,
       @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      this.startTime = const TimeOfDay(hour: 8, minute: 0)});
+      this.startTime = const TimeOfDay(hour: 8, minute: 0),
+      @JsonKey(includeIfNull: false)
+      final List<TripStopsDirections>? tripStopsDirections,
+      this.tripStopsDirectionsUpToDate = false})
+      : _tripStopsDirections = tripStopsDirections;
 
   factory _$DayTripImpl.fromJson(Map<String, dynamic> json) =>
       _$$DayTripImplFromJson(json);
@@ -159,10 +193,25 @@ class _$DayTripImpl implements _DayTrip {
   @override
   @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
   final TimeOfDay startTime;
+  final List<TripStopsDirections>? _tripStopsDirections;
+  @override
+  @JsonKey(includeIfNull: false)
+  List<TripStopsDirections>? get tripStopsDirections {
+    final value = _tripStopsDirections;
+    if (value == null) return null;
+    if (_tripStopsDirections is EqualUnmodifiableListView)
+      return _tripStopsDirections;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey()
+  final bool tripStopsDirectionsUpToDate;
 
   @override
   String toString() {
-    return 'DayTrip(id: $id, index: $index, description: $description, startTime: $startTime)';
+    return 'DayTrip(id: $id, index: $index, description: $description, startTime: $startTime, tripStopsDirections: $tripStopsDirections, tripStopsDirectionsUpToDate: $tripStopsDirectionsUpToDate)';
   }
 
   @override
@@ -175,13 +224,25 @@ class _$DayTripImpl implements _DayTrip {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.startTime, startTime) ||
-                other.startTime == startTime));
+                other.startTime == startTime) &&
+            const DeepCollectionEquality()
+                .equals(other._tripStopsDirections, _tripStopsDirections) &&
+            (identical(other.tripStopsDirectionsUpToDate,
+                    tripStopsDirectionsUpToDate) ||
+                other.tripStopsDirectionsUpToDate ==
+                    tripStopsDirectionsUpToDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, index, description, startTime);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      index,
+      description,
+      startTime,
+      const DeepCollectionEquality().hash(_tripStopsDirections),
+      tripStopsDirectionsUpToDate);
 
   @JsonKey(ignore: true)
   @override
@@ -203,7 +264,10 @@ abstract class _DayTrip implements DayTrip {
       required final int index,
       final String? description,
       @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      final TimeOfDay startTime}) = _$DayTripImpl;
+      final TimeOfDay startTime,
+      @JsonKey(includeIfNull: false)
+      final List<TripStopsDirections>? tripStopsDirections,
+      final bool tripStopsDirectionsUpToDate}) = _$DayTripImpl;
 
   factory _DayTrip.fromJson(Map<String, dynamic> json) = _$DayTripImpl.fromJson;
 
@@ -217,6 +281,11 @@ abstract class _DayTrip implements DayTrip {
   @override
   @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
   TimeOfDay get startTime;
+  @override
+  @JsonKey(includeIfNull: false)
+  List<TripStopsDirections>? get tripStopsDirections;
+  @override
+  bool get tripStopsDirectionsUpToDate;
   @override
   @JsonKey(ignore: true)
   _$$DayTripImplCopyWith<_$DayTripImpl> get copyWith =>

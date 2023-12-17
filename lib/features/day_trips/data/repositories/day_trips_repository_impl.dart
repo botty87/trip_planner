@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import '../../domain/entities/trip_stops_directions.dart';
 import '../datasources/day_trips_data_source.dart';
 import '../../domain/entities/day_trip.dart';
 import '../../domain/repositories/day_trips_repository.dart';
@@ -80,6 +81,22 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     try {
       await _dayTripsDataSource.updateDayTripStartTime(
           id: id, tripId: tripId, startTime: startTime);
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(DayTripsFailure(message: e.message));
+    } on Exception {
+      return left(const DayTripsFailure());
+    }
+  }
+
+  @override
+  Future<Either<DayTripsFailure, void>> saveTripStopsDirections(
+      {required String tripId,
+      required String dayTripId,
+      required List<TripStopsDirections> tripStopsDirections}) async {
+    try {
+      await _dayTripsDataSource.saveTripStopsDirections(
+          tripId: tripId, dayTripId: dayTripId, tripStopsDirections: tripStopsDirections);
       return right(null);
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));

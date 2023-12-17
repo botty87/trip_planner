@@ -24,6 +24,7 @@ mixin _$TripStopsDirections {
   String get destinationId => throw _privateConstructorUsedError;
   @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
   List<LatLng>? get points => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
   String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +44,7 @@ abstract class $TripStopsDirectionsCopyWith<$Res> {
       String destinationId,
       @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
       List<LatLng>? points,
-      String? errorMessage});
+      @JsonKey(includeIfNull: false) String? errorMessage});
 }
 
 /// @nodoc
@@ -98,7 +99,7 @@ abstract class _$$TripStopsDirectionsImplCopyWith<$Res>
       String destinationId,
       @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
       List<LatLng>? points,
-      String? errorMessage});
+      @JsonKey(includeIfNull: false) String? errorMessage});
 }
 
 /// @nodoc
@@ -146,7 +147,7 @@ class _$TripStopsDirectionsImpl implements _TripStopsDirections {
       required this.destinationId,
       @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
       final List<LatLng>? points,
-      this.errorMessage})
+      @JsonKey(includeIfNull: false) this.errorMessage})
       : _points = points;
 
   factory _$TripStopsDirectionsImpl.fromJson(Map<String, dynamic> json) =>
@@ -168,6 +169,7 @@ class _$TripStopsDirectionsImpl implements _TripStopsDirections {
   }
 
   @override
+  @JsonKey(includeIfNull: false)
   final String? errorMessage;
 
   @override
@@ -211,11 +213,12 @@ class _$TripStopsDirectionsImpl implements _TripStopsDirections {
 
 abstract class _TripStopsDirections implements TripStopsDirections {
   factory _TripStopsDirections(
-      {required final String originId,
-      required final String destinationId,
-      @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
-      final List<LatLng>? points,
-      final String? errorMessage}) = _$TripStopsDirectionsImpl;
+          {required final String originId,
+          required final String destinationId,
+          @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
+          final List<LatLng>? points,
+          @JsonKey(includeIfNull: false) final String? errorMessage}) =
+      _$TripStopsDirectionsImpl;
 
   factory _TripStopsDirections.fromJson(Map<String, dynamic> json) =
       _$TripStopsDirectionsImpl.fromJson;
@@ -228,6 +231,7 @@ abstract class _TripStopsDirections implements TripStopsDirections {
   @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
   List<LatLng>? get points;
   @override
+  @JsonKey(includeIfNull: false)
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)

@@ -11,15 +11,24 @@ _$TripStopsDirectionsImpl _$$TripStopsDirectionsImplFromJson(
     _$TripStopsDirectionsImpl(
       originId: json['originId'] as String,
       destinationId: json['destinationId'] as String,
-      points: geoPointsToLatLngs(json['points'] as List<GeoPoint>?),
+      points: geoPointsToLatLngs(json['points'] as List?),
       errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$TripStopsDirectionsImplToJson(
-        _$TripStopsDirectionsImpl instance) =>
-    <String, dynamic>{
-      'originId': instance.originId,
-      'destinationId': instance.destinationId,
-      'points': latLngsToGeoPoints(instance.points),
-      'errorMessage': instance.errorMessage,
-    };
+    _$TripStopsDirectionsImpl instance) {
+  final val = <String, dynamic>{
+    'originId': instance.originId,
+    'destinationId': instance.destinationId,
+    'points': latLngsToGeoPoints(instance.points),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errorMessage', instance.errorMessage);
+  return val;
+}

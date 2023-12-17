@@ -13,11 +13,27 @@ _$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
       startTime: json['startTime'] == null
           ? const TimeOfDay(hour: 8, minute: 0)
           : timeOfDayFromMap(json['startTime'] as Map<String, dynamic>),
+      tripStopsDirections: (json['tripStopsDirections'] as List<dynamic>?)
+          ?.map((e) => TripStopsDirections.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      tripStopsDirectionsUpToDate:
+          json['tripStopsDirectionsUpToDate'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) =>
-    <String, dynamic>{
-      'index': instance.index,
-      'description': instance.description,
-      'startTime': timeOfDayToMap(instance.startTime),
-    };
+Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) {
+  final val = <String, dynamic>{
+    'index': instance.index,
+    'description': instance.description,
+    'startTime': timeOfDayToMap(instance.startTime),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('tripStopsDirections', instance.tripStopsDirections);
+  val['tripStopsDirectionsUpToDate'] = instance.tripStopsDirectionsUpToDate;
+  return val;
+}

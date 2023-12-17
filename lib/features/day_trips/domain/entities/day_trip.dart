@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/utilities/data_converter.dart';
+import 'trip_stops_directions.dart';
 
 part 'day_trip.freezed.dart';
 part 'day_trip.g.dart';
@@ -17,7 +18,9 @@ sealed class DayTrip with _$DayTrip {
     @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
     @Default(TimeOfDay(hour: 8, minute: 0))
     TimeOfDay startTime,
-    
+    @JsonKey(includeIfNull: false)
+    List<TripStopsDirections>? tripStopsDirections,
+    @Default(false) bool tripStopsDirectionsUpToDate,
   }) = _DayTrip;
 
   factory DayTrip.create({

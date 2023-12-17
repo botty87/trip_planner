@@ -11,6 +11,8 @@ import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_
     as _i2;
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
     as _i4;
+import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -129,6 +131,26 @@ class MockDayTripsDataSource extends _i1.Mock
           {
             #tripId: tripId,
             #dayTripId: dayTripId,
+          },
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+
+  @override
+  _i3.Future<void> saveTripStopsDirections({
+    required String? tripId,
+    required String? dayTripId,
+    required List<_i6.TripStopsDirections>? tripStopsDirections,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveTripStopsDirections,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #tripStopsDirections: tripStopsDirections,
           },
         ),
         returnValue: _i3.Future<void>.value(),

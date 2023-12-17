@@ -15,32 +15,53 @@ class _MapViewWidget extends HookWidget {
     final googleMapController = useRef<GoogleMapController?>(null);
 
     final isMapReady = useState<bool>(false);
+    
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
     final List<TripStopsDirections>? tripStopsDirections =
         context.select((TripStopsMapCubit cubit) => cubit.state.tripStopsDirections);
 
-    final polylinePointsTripStopsLoaded =
-        useRef<bool>(tripStopsDirections?.isNotEmpty ?? false);
+    final polylinePointsTripStopsLoaded = useRef<bool>(tripStopsDirections?.isNotEmpty ?? false);
 
     if (!polylinePointsTripStopsLoaded.value) {
       context.read<TripStopsMapCubit>().loadDirections(tripStops);
       polylinePointsTripStopsLoaded.value = true;
     }
 
-    final Set<Polyline> polylines = {};
-    if (tripStopsDirections != null) {
-      for (final directions in tripStopsDirections) {
-        if (directions.points?.isNotEmpty ?? false) {
-          polylines.add(
-            Polyline(
-              polylineId: PolylineId(directions.originId + directions.destinationId),
-              points: directions.points!,
-              color: Colors.blue,
-              width: 5,
-            ),
-          );
+    Set<Polyline> createPolyline() {
+      final Set<Polyline> polylines = {};
+
+      if (tripStopsDirections != null && isMapReady.value) {
+        const colors = [
+          Colors.red,
+          Colors.green,
+          Colors.blue,
+          Colors.yellow,
+          Colors.purple,
+          Colors.orange,
+          Colors.brown,
+        ];
+        int colorIndex = Random().nextInt(colors.length);
+
+        for (final directions in tripStopsDirections) {
+          if (directions.points?.isNotEmpty ?? false) {
+            polylines.add(
+              Polyline(
+                polylineId: PolylineId(directions.originId + directions.destinationId),
+                points: directions.points!,
+                color: colors[colorIndex],
+                width: 5,
+              ),
+            );
+
+            if (colorIndex >= colors.length - 1) {
+              colorIndex = 0;
+            } else {
+              colorIndex++;
+            }
+          }
         }
       }
+      return polylines;
     }
 
     final markers = tripStops
@@ -97,7 +118,7 @@ class _MapViewWidget extends HookWidget {
                     myLocationButtonEnabled: false,
                     zoomControlsEnabled: false,
                     markers: markers,
-                    polylines: polylines,
+                    polylines: createPolyline(),
                   );
                 },
               ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../entities/day_trip.dart';
 
 import '../../errors/day_trips_failure.dart';
+import '../entities/trip_stops_directions.dart';
 
 abstract class DayTripsRepository {
   Future<Either<DayTripsFailure, void>> addDayTrip(
@@ -27,4 +28,9 @@ abstract class DayTripsRepository {
 
   Future<Either<DayTripsFailure, void>> deleteDayTrip(
       {required String tripId, required String dayTripId});
+
+  Future<Either<DayTripsFailure, void>> saveTripStopsDirections(
+      {required String tripId,
+      required String dayTripId,
+      required List<TripStopsDirections> tripStopsDirections});
 }

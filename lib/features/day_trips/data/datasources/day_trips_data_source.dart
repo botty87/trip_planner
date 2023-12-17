@@ -7,6 +7,7 @@ import '../../../../core/di/di.dart';
 import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../domain/entities/day_trip.dart';
+import '../../domain/entities/trip_stops_directions.dart';
 
 abstract class DayTripsDataSource {
   Future<void> addDayTrip({required String tripId, required DayTrip dayTrip});
@@ -26,6 +27,11 @@ abstract class DayTripsDataSource {
   });
 
   Future<void> deleteDayTrip({required String tripId, required String dayTripId});
+
+  Future<void> saveTripStopsDirections(
+      {required String tripId,
+      required String dayTripId,
+      required List<TripStopsDirections> tripStopsDirections});
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -114,5 +120,17 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
     }
 
     await performSync(() async => await Future.wait(batchs.map((batch) => batch.commit())));
+  }
+
+  @override
+  Future<void> saveTripStopsDirections(
+      {required String tripId,
+      required String dayTripId,
+      required List<TripStopsDirections> tripStopsDirections}) async {
+    
+    _dayTripsCollection(tripId).doc(dayTripId).update({
+      'tripStopsDirections': tripStopsDirections.map((e) => e.toJson()).toList(),
+      'tripStopsDirectionsUpToDate': true,
+    });
   }
 }

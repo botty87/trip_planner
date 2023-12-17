@@ -10,6 +10,8 @@ import 'package:flutter/material.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
     as _i6;
+import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart'
+    as _i8;
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i3;
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
@@ -265,6 +267,51 @@ class MockDayTripsRepository extends _i1.Mock
             {
               #tripId: tripId,
               #dayTripId: dayTripId,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> saveTripStopsDirections({
+    required String? tripId,
+    required String? dayTripId,
+    required List<_i8.TripStopsDirections>? tripStopsDirections,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveTripStopsDirections,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #tripStopsDirections: tripStopsDirections,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #saveTripStopsDirections,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #tripStopsDirections: tripStopsDirections,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #saveTripStopsDirections,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #tripStopsDirections: tripStopsDirections,
             },
           ),
         )),

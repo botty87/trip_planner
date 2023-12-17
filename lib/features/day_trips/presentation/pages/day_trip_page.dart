@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -62,7 +63,7 @@ class DayTripPage extends StatelessWidget {
           create: (context) => getIt(param1: _trip, param2: _dayTrip),
         ),
         BlocProvider<TripStopsMapCubit>(
-          create: (context) => getIt(param1: _trip.id, param2: _dayTrip.id),
+          create: (context) => getIt(param1: _trip, param2: _dayTrip),
         ),
       ],
       child: Builder(

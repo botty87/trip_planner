@@ -15,7 +15,7 @@ class TripStopsDirections with _$TripStopsDirections {
     required String originId,
     required String destinationId,
     @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs) List<LatLng>? points,
-    String? errorMessage,
+    @JsonKey(includeIfNull: false) String? errorMessage,
   }) = _TripStopsDirections;
 
   factory TripStopsDirections.fromJson(Map<String, dynamic> json) =>

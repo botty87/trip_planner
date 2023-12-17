@@ -165,5 +165,31 @@ void main() {
       expect(result, equals(left(const DayTripsFailure())));
     });
   });
-  
+
+  group('saveTripStopsDirections', () {
+    test('should return right(null) when saveTripStopsDirections', () async {
+      when(mockDayTripsDataSource.saveTripStopsDirections(
+          tripId: tTripId,
+          dayTripId: tDayTrip.id,
+          tripStopsDirections: [])).thenAnswer((_) async {});
+
+      // act
+      final result = await repository.saveTripStopsDirections(
+          tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(DayTripsFailure()) when saveTripStopsDirections throws', () async {
+      when(mockDayTripsDataSource.saveTripStopsDirections(
+              tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []))
+          .thenThrow(Exception());
+
+      // act
+      final result = await repository.saveTripStopsDirections(
+          tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []);
+      // assert
+      expect(result, equals(left(const DayTripsFailure())));
+    });
+  });
 }

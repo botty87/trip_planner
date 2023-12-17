@@ -10,12 +10,10 @@ LatLng latLngFromGeoPoint(GeoPoint geoPoint) => LatLng(geoPoint.latitude, geoPoi
 
 GeoPoint geoPointFromLatLng(LatLng latLng) => GeoPoint(latLng.latitude, latLng.longitude);
 
-List<LatLng>? geoPointsToLatLngs(List<GeoPoint>? geoPoints) =>
-    geoPoints?.map((geoPoint) => latLngFromGeoPoint(geoPoint)).toList();
+List<LatLng>? geoPointsToLatLngs(List<dynamic>? geoPoints) => geoPoints?.map((geoPoint) => latLngFromGeoPoint(geoPoint)).toList();
 
-List<GeoPoint>? latLngsToGeoPoints(List<LatLng>? latLngs) => latLngs
-    ?.map((latLng) => GeoPoint(latLng.latitude, latLng.longitude))
-    .toList();
+List<GeoPoint>? latLngsToGeoPoints(List<LatLng>? latLngs) =>
+    latLngs?.map((latLng) => GeoPoint(latLng.latitude, latLng.longitude)).toList();
 
 TimeOfDay timeOfDayFromMap(Map<String, dynamic> map) =>
     TimeOfDay(hour: map['hour'], minute: map['minute']);
