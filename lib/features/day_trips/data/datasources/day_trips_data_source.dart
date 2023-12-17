@@ -32,6 +32,8 @@ abstract class DayTripsDataSource {
       {required String tripId,
       required String dayTripId,
       required List<TripStopsDirections> tripStopsDirections});
+
+  Stream<DayTrip> listenDayTrip(String tripId, String dayTripId);
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -56,6 +58,13 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
   Stream<List<DayTrip>> listenDayTrips(String tripId) async* {
     yield* _dayTripsCollection(tripId).orderBy('index').snapshots().map((snapshot) {
       return snapshot.docs.map((doc) => doc.data()).toList();
+    });
+  }
+
+  @override
+  Stream<DayTrip> listenDayTrip(String tripId, String dayTripId) async* {
+    yield* _dayTripsCollection(tripId).doc(dayTripId).snapshots().map((snapshot) {
+      return snapshot.data()!;
     });
   }
 
@@ -133,4 +142,6 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
       'tripStopsDirectionsUpToDate': true,
     });
   }
+  
+  
 }

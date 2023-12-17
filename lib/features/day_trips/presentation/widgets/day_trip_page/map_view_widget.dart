@@ -10,21 +10,21 @@ class _MapViewWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    useAutomaticKeepAlive();
+      useAutomaticKeepAlive();
 
     final googleMapController = useRef<GoogleMapController?>(null);
 
     final isMapReady = useState<bool>(false);
-    
+
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
     final List<TripStopsDirections>? tripStopsDirections =
-        context.select((TripStopsMapCubit cubit) => cubit.state.tripStopsDirections);
+        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirections);
 
-    final polylinePointsTripStopsLoaded = useRef<bool>(tripStopsDirections?.isNotEmpty ?? false);
+    final tripStopsDirectionsToLoad = context
+        .select((TripStopsMapCubit cubit) => !cubit.state.dayTrip.tripStopsDirectionsUpToDate);
 
-    if (!polylinePointsTripStopsLoaded.value) {
+    if (tripStopsDirectionsToLoad) {
       context.read<TripStopsMapCubit>().loadDirections(tripStops);
-      polylinePointsTripStopsLoaded.value = true;
     }
 
     Set<Polyline> createPolyline() {

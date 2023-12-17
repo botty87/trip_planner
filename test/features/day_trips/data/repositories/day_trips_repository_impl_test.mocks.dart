@@ -156,4 +156,21 @@ class MockDayTripsDataSource extends _i1.Mock
         returnValue: _i3.Future<void>.value(),
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
+
+  @override
+  _i3.Stream<_i4.DayTrip> listenDayTrip(
+    String? tripId,
+    String? dayTripId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenDayTrip,
+          [
+            tripId,
+            dayTripId,
+          ],
+        ),
+        returnValue: _i3.Stream<_i4.DayTrip>.empty(),
+        returnValueForMissingStub: _i3.Stream<_i4.DayTrip>.empty(),
+      ) as _i3.Stream<_i4.DayTrip>);
 }

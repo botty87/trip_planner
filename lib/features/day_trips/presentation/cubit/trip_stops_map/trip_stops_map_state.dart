@@ -6,13 +6,13 @@ class TripStopsMapState with _$TripStopsMapState {
   const factory TripStopsMapState.normal({
     @Default(MapType.hybrid) MapType mapType,
     @Default(false) bool isLoading,
-    List<TripStopsDirections>? tripStopsDirections,
+    required DayTrip dayTrip,
   }) = TripStopsMapStateNormal;
 
   const factory TripStopsMapState.error({
     @Default(MapType.hybrid) MapType mapType,
     @Default(false) bool isLoading,
-    List<TripStopsDirections>? tripStopsDirections,
+    required DayTrip dayTrip,
     required String errorMessage,
   }) = TripStopsMapStateError;
 }

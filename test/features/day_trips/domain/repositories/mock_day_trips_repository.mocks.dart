@@ -316,4 +316,23 @@ class MockDayTripsRepository extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+
+  @override
+  _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>> listenDayTrip(
+    String? tripId,
+    String? dayTripId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenDayTrip,
+          [
+            tripId,
+            dayTripId,
+          ],
+        ),
+        returnValue:
+            _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>.empty(),
+        returnValueForMissingStub:
+            _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>.empty(),
+      ) as _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>);
 }

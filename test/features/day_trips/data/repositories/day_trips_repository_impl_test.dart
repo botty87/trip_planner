@@ -192,4 +192,25 @@ void main() {
       expect(result, equals(left(const DayTripsFailure())));
     });
   });
+
+  group('listenDayTrip', () {
+    test('should return right(DayTrip) when listenDayTrip', () async {
+      when(mockDayTripsDataSource.listenDayTrip(tTripId, tDayTrip.id))
+          .thenAnswer((_) => Stream.value(tDayTrip));
+
+      // act
+      final result = repository.listenDayTrip(tTripId, tDayTrip.id);
+      // assert
+      expect(result, emitsInOrder([right(tDayTrip)]));
+    });
+
+    test('should return left(DayTripsFailure()) when listenDayTrip throws', () async {
+      when(mockDayTripsDataSource.listenDayTrip(any, any)).thenThrow(Exception());
+
+      // act
+      final result = repository.listenDayTrip(tTripId, tDayTrip.id);
+      // assert
+      expect(result, emitsInOrder([left(const DayTripsFailure())]));
+    });
+  });
 }

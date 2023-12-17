@@ -33,4 +33,6 @@ abstract class DayTripsRepository {
       {required String tripId,
       required String dayTripId,
       required List<TripStopsDirections> tripStopsDirections});
+
+  Stream<Either<DayTripsFailure, DayTrip>> listenDayTrip(String tripId, String dayTripId);
 }

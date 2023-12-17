@@ -18,40 +18,28 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TripStopsMapState {
   MapType get mapType => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  List<TripStopsDirections>? get tripStopsDirections =>
-      throw _privateConstructorUsedError;
+  DayTrip get dayTrip => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)
+    required TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip)
         normal,
-    required TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections, String errorMessage)
+    required TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip,
+            String errorMessage)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)?
-        normal,
-    TResult? Function(
-            MapType mapType,
-            bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections,
+    TResult? Function(MapType mapType, bool isLoading, DayTrip dayTrip)? normal,
+    TResult? Function(MapType mapType, bool isLoading, DayTrip dayTrip,
             String errorMessage)?
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)?
-        normal,
-    TResult Function(
-            MapType mapType,
-            bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections,
+    TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip)? normal,
+    TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip,
             String errorMessage)?
         error,
     required TResult orElse(),
@@ -88,10 +76,9 @@ abstract class $TripStopsMapStateCopyWith<$Res> {
           TripStopsMapState value, $Res Function(TripStopsMapState) then) =
       _$TripStopsMapStateCopyWithImpl<$Res, TripStopsMapState>;
   @useResult
-  $Res call(
-      {MapType mapType,
-      bool isLoading,
-      List<TripStopsDirections>? tripStopsDirections});
+  $Res call({MapType mapType, bool isLoading, DayTrip dayTrip});
+
+  $DayTripCopyWith<$Res> get dayTrip;
 }
 
 /// @nodoc
@@ -109,7 +96,7 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
   $Res call({
     Object? mapType = null,
     Object? isLoading = null,
-    Object? tripStopsDirections = freezed,
+    Object? dayTrip = null,
   }) {
     return _then(_value.copyWith(
       mapType: null == mapType
@@ -120,11 +107,19 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      tripStopsDirections: freezed == tripStopsDirections
-          ? _value.tripStopsDirections
-          : tripStopsDirections // ignore: cast_nullable_to_non_nullable
-              as List<TripStopsDirections>?,
+      dayTrip: null == dayTrip
+          ? _value.dayTrip
+          : dayTrip // ignore: cast_nullable_to_non_nullable
+              as DayTrip,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DayTripCopyWith<$Res> get dayTrip {
+    return $DayTripCopyWith<$Res>(_value.dayTrip, (value) {
+      return _then(_value.copyWith(dayTrip: value) as $Val);
+    });
   }
 }
 
@@ -137,10 +132,10 @@ abstract class _$$TripStopsMapStateNormalImplCopyWith<$Res>
       __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {MapType mapType,
-      bool isLoading,
-      List<TripStopsDirections>? tripStopsDirections});
+  $Res call({MapType mapType, bool isLoading, DayTrip dayTrip});
+
+  @override
+  $DayTripCopyWith<$Res> get dayTrip;
 }
 
 /// @nodoc
@@ -157,7 +152,7 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
   $Res call({
     Object? mapType = null,
     Object? isLoading = null,
-    Object? tripStopsDirections = freezed,
+    Object? dayTrip = null,
   }) {
     return _then(_$TripStopsMapStateNormalImpl(
       mapType: null == mapType
@@ -168,10 +163,10 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      tripStopsDirections: freezed == tripStopsDirections
-          ? _value._tripStopsDirections
-          : tripStopsDirections // ignore: cast_nullable_to_non_nullable
-              as List<TripStopsDirections>?,
+      dayTrip: null == dayTrip
+          ? _value.dayTrip
+          : dayTrip // ignore: cast_nullable_to_non_nullable
+              as DayTrip,
     ));
   }
 }
@@ -182,8 +177,7 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   const _$TripStopsMapStateNormalImpl(
       {this.mapType = MapType.hybrid,
       this.isLoading = false,
-      final List<TripStopsDirections>? tripStopsDirections})
-      : _tripStopsDirections = tripStopsDirections;
+      required this.dayTrip});
 
   @override
   @JsonKey()
@@ -191,20 +185,12 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   @override
   @JsonKey()
   final bool isLoading;
-  final List<TripStopsDirections>? _tripStopsDirections;
   @override
-  List<TripStopsDirections>? get tripStopsDirections {
-    final value = _tripStopsDirections;
-    if (value == null) return null;
-    if (_tripStopsDirections is EqualUnmodifiableListView)
-      return _tripStopsDirections;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final DayTrip dayTrip;
 
   @override
   String toString() {
-    return 'TripStopsMapState.normal(mapType: $mapType, isLoading: $isLoading, tripStopsDirections: $tripStopsDirections)';
+    return 'TripStopsMapState.normal(mapType: $mapType, isLoading: $isLoading, dayTrip: $dayTrip)';
   }
 
   @override
@@ -215,13 +201,11 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
             (identical(other.mapType, mapType) || other.mapType == mapType) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality()
-                .equals(other._tripStopsDirections, _tripStopsDirections));
+            (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mapType, isLoading,
-      const DeepCollectionEquality().hash(_tripStopsDirections));
+  int get hashCode => Object.hash(runtimeType, mapType, isLoading, dayTrip);
 
   @JsonKey(ignore: true)
   @override
@@ -233,48 +217,37 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)
+    required TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip)
         normal,
-    required TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections, String errorMessage)
+    required TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip,
+            String errorMessage)
         error,
   }) {
-    return normal(mapType, isLoading, tripStopsDirections);
+    return normal(mapType, isLoading, dayTrip);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)?
-        normal,
-    TResult? Function(
-            MapType mapType,
-            bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections,
+    TResult? Function(MapType mapType, bool isLoading, DayTrip dayTrip)? normal,
+    TResult? Function(MapType mapType, bool isLoading, DayTrip dayTrip,
             String errorMessage)?
         error,
   }) {
-    return normal?.call(mapType, isLoading, tripStopsDirections);
+    return normal?.call(mapType, isLoading, dayTrip);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)?
-        normal,
-    TResult Function(
-            MapType mapType,
-            bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections,
+    TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip)? normal,
+    TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip,
             String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(mapType, isLoading, tripStopsDirections);
+      return normal(mapType, isLoading, dayTrip);
     }
     return orElse();
   }
@@ -313,17 +286,16 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
 
 abstract class TripStopsMapStateNormal implements TripStopsMapState {
   const factory TripStopsMapStateNormal(
-          {final MapType mapType,
-          final bool isLoading,
-          final List<TripStopsDirections>? tripStopsDirections}) =
-      _$TripStopsMapStateNormalImpl;
+      {final MapType mapType,
+      final bool isLoading,
+      required final DayTrip dayTrip}) = _$TripStopsMapStateNormalImpl;
 
   @override
   MapType get mapType;
   @override
   bool get isLoading;
   @override
-  List<TripStopsDirections>? get tripStopsDirections;
+  DayTrip get dayTrip;
   @override
   @JsonKey(ignore: true)
   _$$TripStopsMapStateNormalImplCopyWith<_$TripStopsMapStateNormalImpl>
@@ -340,10 +312,10 @@ abstract class _$$TripStopsMapStateErrorImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {MapType mapType,
-      bool isLoading,
-      List<TripStopsDirections>? tripStopsDirections,
-      String errorMessage});
+      {MapType mapType, bool isLoading, DayTrip dayTrip, String errorMessage});
+
+  @override
+  $DayTripCopyWith<$Res> get dayTrip;
 }
 
 /// @nodoc
@@ -360,7 +332,7 @@ class __$$TripStopsMapStateErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? mapType = null,
     Object? isLoading = null,
-    Object? tripStopsDirections = freezed,
+    Object? dayTrip = null,
     Object? errorMessage = null,
   }) {
     return _then(_$TripStopsMapStateErrorImpl(
@@ -372,10 +344,10 @@ class __$$TripStopsMapStateErrorImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      tripStopsDirections: freezed == tripStopsDirections
-          ? _value._tripStopsDirections
-          : tripStopsDirections // ignore: cast_nullable_to_non_nullable
-              as List<TripStopsDirections>?,
+      dayTrip: null == dayTrip
+          ? _value.dayTrip
+          : dayTrip // ignore: cast_nullable_to_non_nullable
+              as DayTrip,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -390,9 +362,8 @@ class _$TripStopsMapStateErrorImpl implements TripStopsMapStateError {
   const _$TripStopsMapStateErrorImpl(
       {this.mapType = MapType.hybrid,
       this.isLoading = false,
-      final List<TripStopsDirections>? tripStopsDirections,
-      required this.errorMessage})
-      : _tripStopsDirections = tripStopsDirections;
+      required this.dayTrip,
+      required this.errorMessage});
 
   @override
   @JsonKey()
@@ -400,23 +371,14 @@ class _$TripStopsMapStateErrorImpl implements TripStopsMapStateError {
   @override
   @JsonKey()
   final bool isLoading;
-  final List<TripStopsDirections>? _tripStopsDirections;
   @override
-  List<TripStopsDirections>? get tripStopsDirections {
-    final value = _tripStopsDirections;
-    if (value == null) return null;
-    if (_tripStopsDirections is EqualUnmodifiableListView)
-      return _tripStopsDirections;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final DayTrip dayTrip;
   @override
   final String errorMessage;
 
   @override
   String toString() {
-    return 'TripStopsMapState.error(mapType: $mapType, isLoading: $isLoading, tripStopsDirections: $tripStopsDirections, errorMessage: $errorMessage)';
+    return 'TripStopsMapState.error(mapType: $mapType, isLoading: $isLoading, dayTrip: $dayTrip, errorMessage: $errorMessage)';
   }
 
   @override
@@ -427,15 +389,14 @@ class _$TripStopsMapStateErrorImpl implements TripStopsMapStateError {
             (identical(other.mapType, mapType) || other.mapType == mapType) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality()
-                .equals(other._tripStopsDirections, _tripStopsDirections) &&
+            (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mapType, isLoading,
-      const DeepCollectionEquality().hash(_tripStopsDirections), errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, mapType, isLoading, dayTrip, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -447,48 +408,37 @@ class _$TripStopsMapStateErrorImpl implements TripStopsMapStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)
+    required TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip)
         normal,
-    required TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections, String errorMessage)
+    required TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip,
+            String errorMessage)
         error,
   }) {
-    return error(mapType, isLoading, tripStopsDirections, errorMessage);
+    return error(mapType, isLoading, dayTrip, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)?
-        normal,
-    TResult? Function(
-            MapType mapType,
-            bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections,
+    TResult? Function(MapType mapType, bool isLoading, DayTrip dayTrip)? normal,
+    TResult? Function(MapType mapType, bool isLoading, DayTrip dayTrip,
             String errorMessage)?
         error,
   }) {
-    return error?.call(mapType, isLoading, tripStopsDirections, errorMessage);
+    return error?.call(mapType, isLoading, dayTrip, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MapType mapType, bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections)?
-        normal,
-    TResult Function(
-            MapType mapType,
-            bool isLoading,
-            List<TripStopsDirections>? tripStopsDirections,
+    TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip)? normal,
+    TResult Function(MapType mapType, bool isLoading, DayTrip dayTrip,
             String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(mapType, isLoading, tripStopsDirections, errorMessage);
+      return error(mapType, isLoading, dayTrip, errorMessage);
     }
     return orElse();
   }
@@ -529,7 +479,7 @@ abstract class TripStopsMapStateError implements TripStopsMapState {
   const factory TripStopsMapStateError(
       {final MapType mapType,
       final bool isLoading,
-      final List<TripStopsDirections>? tripStopsDirections,
+      required final DayTrip dayTrip,
       required final String errorMessage}) = _$TripStopsMapStateErrorImpl;
 
   @override
@@ -537,7 +487,7 @@ abstract class TripStopsMapStateError implements TripStopsMapState {
   @override
   bool get isLoading;
   @override
-  List<TripStopsDirections>? get tripStopsDirections;
+  DayTrip get dayTrip;
   String get errorMessage;
   @override
   @JsonKey(ignore: true)

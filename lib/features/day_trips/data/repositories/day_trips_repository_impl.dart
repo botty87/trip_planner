@@ -37,6 +37,15 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
   }
 
   @override
+  Stream<Either<DayTripsFailure, DayTrip>> listenDayTrip(String tripId, String dayTripId) async* {
+    try {
+      yield* _dayTripsDataSource.listenDayTrip(tripId, dayTripId).map((dayTrip) => right(dayTrip));
+    } catch (e) {
+      yield left(const DayTripsFailure());
+    }
+  }
+
+  @override
   Future<Either<DayTripsFailure, void>> updateDayTripsIndexes(
       {required String tripId, required List<DayTrip> dayTrips}) async {
     try {
@@ -104,4 +113,6 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       return left(const DayTripsFailure());
     }
   }
+  
+  
 }
