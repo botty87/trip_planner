@@ -121,5 +121,10 @@
     "forInformationAndTroubleshooting" : "For information and troubleshooting write to",
     "list" : "List",
     "map" : "Map",
-    "loadingDirections" : "Loading directions..."
+    "showDirections" : "Show directions",
+    "useDifferentColors" : "Use different colors",
+    "car" : "Car",
+    "walk" : "Walk",
+    "bike" : "Bike",
+    "publicTransport" : "Public transport"
 }

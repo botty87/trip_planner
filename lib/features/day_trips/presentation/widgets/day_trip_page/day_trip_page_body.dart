@@ -25,11 +25,11 @@ class _DayTripPageBody extends HookWidget {
         //Show error snackbar if error and update errorMessage stream when error
         BlocListener<TripStopsMapCubit, TripStopsMapState>(
           listener: (context, state) {
-            final errorState = state as TripStopsMapStateError;
-            ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorState.errorMessage));
-            errorMessage.add(errorState.errorMessage);
+            ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(state.errorMessage!));
+            errorMessage.add(state.errorMessage);
           },
-          listenWhen: (previous, current) => current is TripStopsMapStateError,
+          listenWhen: (previous, current) =>
+              current.errorMessage != previous.errorMessage && current.errorMessage != null,
         ),
         //Pop page if deleted
         BlocListener<DayTripCubit, DayTripState>(
@@ -67,18 +67,6 @@ class _DayTripPageBody extends HookWidget {
             },
             listenWhen: (previous, current) =>
                 previous is DayTripStateEditing && current is DayTripStateNormal),
-        //Show snackbar if loading directions
-        BlocListener<TripStopsMapCubit, TripStopsMapState>(
-          listener: (context, state) {
-            if (state.isLoading) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(Snackbars.loading(LocaleKeys.loadingDirections.tr()));
-            } else {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            }
-          },
-          listenWhen: (previous, current) => previous.isLoading != current.isLoading,
-        ),
       ],
       child: BlocSelector<DayTripCubit, DayTripState, bool>(
         selector: (DayTripState state) => state.maybeMap(

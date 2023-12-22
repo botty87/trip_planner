@@ -1,4 +1,4 @@
-part of '../../pages/day_trip_page.dart';
+part of '../../../pages/day_trip_page.dart';
 
 final class _TripStopCard extends GenericTripCard {
   final TripStop tripStop;

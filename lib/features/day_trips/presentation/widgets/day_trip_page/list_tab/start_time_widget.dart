@@ -1,4 +1,4 @@
-part of '../../pages/day_trip_page.dart';
+part of '../../../pages/day_trip_page.dart';
 
 class _StartTimeWidget extends StatelessWidget {
   const _StartTimeWidget();

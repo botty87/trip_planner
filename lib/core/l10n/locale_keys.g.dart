@@ -120,6 +120,11 @@ abstract class  LocaleKeys {
   static const forInformationAndTroubleshooting = 'forInformationAndTroubleshooting';
   static const list = 'list';
   static const map = 'map';
-  static const loadingDirections = 'loadingDirections';
+  static const showDirections = 'showDirections';
+  static const useDifferentColors = 'useDifferentColors';
+  static const car = 'car';
+  static const walk = 'walk';
+  static const bike = 'bike';
+  static const publicTransport = 'publicTransport';
 
 }

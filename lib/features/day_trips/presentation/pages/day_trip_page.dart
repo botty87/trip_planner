@@ -32,19 +32,24 @@ import '../../domain/entities/day_trip.dart';
 import '../../domain/entities/trip_stops_directions.dart';
 import '../cubit/day_trip/day_trip_cubit.dart';
 import '../cubit/trip_stops_map/trip_stops_map_cubit.dart';
-import '../widgets/day_trip_page/travel_card.dart';
+import '../widgets/day_trip_page/list_tab/travel_card.dart';
 import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
-part '../widgets/day_trip_page/add_day_trip_stop_card.dart';
-part '../widgets/day_trip_page/day_trip_description.dart';
+part '../widgets/day_trip_page/list_tab/add_day_trip_stop_card.dart';
+part '../widgets/day_trip_page/list_tab/day_trip_description.dart';
 part '../widgets/day_trip_page/day_trip_page_body.dart';
-part '../widgets/day_trip_page/delete_trip_button.dart';
-part '../widgets/day_trip_page/list_view_widget.dart';
-part '../widgets/day_trip_page/map_view_widget.dart';
-part '../widgets/day_trip_page/save_cancel_edit_buttons.dart';
-part '../widgets/day_trip_page/start_time_widget.dart';
-part '../widgets/day_trip_page/trip_stop_card.dart';
-part '../widgets/day_trip_page/trip_stops_list.dart';
+part '../widgets/day_trip_page/list_tab/delete_trip_button.dart';
+part '../widgets/day_trip_page/list_tab/list_view_widget.dart';
+part '../widgets/day_trip_page/map_tab/map_view_widget.dart';
+part '../widgets/day_trip_page/list_tab/save_cancel_edit_buttons.dart';
+part '../widgets/day_trip_page/list_tab/start_time_widget.dart';
+part '../widgets/day_trip_page/list_tab/trip_stop_card.dart';
+part '../widgets/day_trip_page/list_tab/trip_stops_list.dart';
+part '../widgets/day_trip_page/map_tab/map_markers_finder.dart';
+part '../widgets/day_trip_page/map_tab/map_zoom_buttons.dart';
+part '../widgets/day_trip_page/map_tab/map_type_changer.dart';
+part '../widgets/day_trip_page/map_tab/map_widget.dart';
+part '../widgets/day_trip_page/map_tab/map_directions_switcher.dart';
 
 @RoutePage()
 class DayTripPage extends StatelessWidget {

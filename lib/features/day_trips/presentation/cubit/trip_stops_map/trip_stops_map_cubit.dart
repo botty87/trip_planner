@@ -30,6 +30,8 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
 
   final FirebaseCrashlytics _crashlytics;
 
+  GoogleMapController? mapController;
+
   late final StreamSubscription<Either<DayTripsFailure, DayTrip>> _dayTripSubscription;
 
   final String _tripId;
@@ -52,11 +54,8 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
             .listen((dayTripOrFailure) {
       dayTripOrFailure.fold(
         (failure) {
-          emit(TripStopsMapState.error(
-            errorMessage: failure.message ?? LocaleKeys.unknownError.tr(),
-            dayTrip: state.dayTrip,
-          ));
-          emit(TripStopsMapState.normal(dayTrip: state.dayTrip));
+          emit(state.copyWith(errorMessage: failure.message ?? LocaleKeys.unknownError.tr()));
+          emit(state.copyWith(errorMessage: null));
           _crashlytics.recordError(failure, StackTrace.current);
         },
         (dayTrip) {
@@ -83,11 +82,8 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
 
     directionsOrFailure.fold(
       (failure) {
-        emit(TripStopsMapState.error(
-          errorMessage: _getErrorMessage(failure),
-          dayTrip: state.dayTrip,
-        ));
-        emit(TripStopsMapState.normal(dayTrip: state.dayTrip));
+        emit(state.copyWith(errorMessage: _getErrorMessage(failure)));
+        emit(state.copyWith(errorMessage: null));
       },
       (directions) {
         emit(state.copyWith(
@@ -109,12 +105,11 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
 
     result.fold(
       (failure) {
-        emit(TripStopsMapState.error(
+        emit(state.copyWith(
           errorMessage: failure.message ?? LocaleKeys.unknownError.tr(),
-          dayTrip: state.dayTrip,
           isLoading: false,
         ));
-        emit(TripStopsMapState.normal(dayTrip: state.dayTrip));
+        emit(state.copyWith(errorMessage: null));
       },
       //Do nothing
       (_) {},
@@ -129,9 +124,25 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     )!;
   }
 
+  void setMapReady() {
+    emit(state.copyWith(isMapReady: true));
+  }
+
+  void updateMarkerLatLngBounds(LatLngBounds? markerLatLngBounds) {
+    emit(state.copyWith(markerLatLngBounds: markerLatLngBounds));
+  }
+
   @override
   Future<void> close() {
     _dayTripSubscription.cancel();
     return super.close();
+  }
+
+  showDirectionsChanged(bool value) {
+    emit(state.copyWith(showDirections: value));
+  }
+
+  useDifferentColorsChanged(bool value) {
+    emit(state.copyWith(useDifferentColors: value));
   }
 }

@@ -122,5 +122,10 @@
     "forInformationAndTroubleshooting" : "Per informazioni e segnalazioni scrivi a",
     "list" : "Lista",
     "map" : "Mappa",
-    "loadingDirections" : "Caricamento indicazioni stradali..."
+    "showDirections" : "Mostra indicazioni",
+    "useDifferentColors" : "Usa colori diversi",
+    "car" : "Auto",
+    "walk" : "A piedi",
+    "bike" : "Bici",
+    "publicTransport" : "Mezzi pubblici"
 }

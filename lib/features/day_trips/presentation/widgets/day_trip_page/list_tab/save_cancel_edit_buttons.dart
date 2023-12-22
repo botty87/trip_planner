@@ -1,4 +1,4 @@
-part of '../../pages/day_trip_page.dart';
+part of '../../../pages/day_trip_page.dart';
 
 final class _SaveCancelEditButtons extends SaveCancelEditButtonsAbstract {
   const _SaveCancelEditButtons(
