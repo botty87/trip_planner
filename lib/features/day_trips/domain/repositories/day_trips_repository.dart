@@ -35,4 +35,7 @@ abstract class DayTripsRepository {
       required List<TripStopsDirections> tripStopsDirections});
 
   Stream<Either<DayTripsFailure, DayTrip>> listenDayTrip(String tripId, String dayTripId);
+
+  Future<Either<DayTripsFailure, void>> updateTripStopsDirectionsUpToDate(
+      {required String tripId, required String dayTripId, required bool isUpToDate});
 }

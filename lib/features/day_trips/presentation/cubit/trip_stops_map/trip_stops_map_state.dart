@@ -13,5 +13,6 @@ class TripStopsMapState with _$TripStopsMapState {
     LatLngBounds? markerLatLngBounds,
     @Default(true) bool showDirections,
     @Default(true) bool useDifferentColors,
+    @Default(true) bool isSelectedTab,
   }) = TripStopsMapStateNormal;
 }

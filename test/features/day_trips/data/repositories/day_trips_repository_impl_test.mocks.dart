@@ -173,4 +173,23 @@ class MockDayTripsDataSource extends _i1.Mock
         returnValue: _i3.Stream<_i4.DayTrip>.empty(),
         returnValueForMissingStub: _i3.Stream<_i4.DayTrip>.empty(),
       ) as _i3.Stream<_i4.DayTrip>);
+
+  @override
+  dynamic updateTripStopsDirectionsUpToDate({
+    required String? tripId,
+    required String? dayTripId,
+    required bool? isUpToDate,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #updateTripStopsDirectionsUpToDate,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #isUpToDate: isUpToDate,
+          },
+        ),
+        returnValueForMissingStub: null,
+      );
 }

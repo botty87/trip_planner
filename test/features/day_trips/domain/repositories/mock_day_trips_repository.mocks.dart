@@ -335,4 +335,51 @@ class MockDayTripsRepository extends _i1.Mock
         returnValueForMissingStub:
             _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>.empty(),
       ) as _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>
+      updateTripStopsDirectionsUpToDate({
+    required String? tripId,
+    required String? dayTripId,
+    required bool? isUpToDate,
+  }) =>
+          (super.noSuchMethod(
+            Invocation.method(
+              #updateTripStopsDirectionsUpToDate,
+              [],
+              {
+                #tripId: tripId,
+                #dayTripId: dayTripId,
+                #isUpToDate: isUpToDate,
+              },
+            ),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                    _FakeEither_0<_i5.DayTripsFailure, void>(
+              this,
+              Invocation.method(
+                #updateTripStopsDirectionsUpToDate,
+                [],
+                {
+                  #tripId: tripId,
+                  #dayTripId: dayTripId,
+                  #isUpToDate: isUpToDate,
+                },
+              ),
+            )),
+            returnValueForMissingStub:
+                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                    _FakeEither_0<_i5.DayTripsFailure, void>(
+              this,
+              Invocation.method(
+                #updateTripStopsDirectionsUpToDate,
+                [],
+                {
+                  #tripId: tripId,
+                  #dayTripId: dayTripId,
+                  #isUpToDate: isUpToDate,
+                },
+              ),
+            )),
+          ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
 }

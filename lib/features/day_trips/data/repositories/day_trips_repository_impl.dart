@@ -113,6 +113,18 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       return left(const DayTripsFailure());
     }
   }
-  
-  
+
+  @override
+  Future<Either<DayTripsFailure, void>> updateTripStopsDirectionsUpToDate(
+      {required String tripId, required String dayTripId, required bool isUpToDate}) async {
+    try {
+      await _dayTripsDataSource.updateTripStopsDirectionsUpToDate(
+          tripId: tripId, dayTripId: dayTripId, isUpToDate: isUpToDate);
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(DayTripsFailure(message: e.message));
+    } on Exception {
+      return left(const DayTripsFailure());
+    }
+  }
 }

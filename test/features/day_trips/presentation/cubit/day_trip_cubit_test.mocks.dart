@@ -7,13 +7,17 @@ import 'dart:async' as _i7;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:firebase_core/firebase_core.dart' as _i5;
-import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i17;
-import 'package:flutter/material.dart' as _i18;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i19;
+import 'package:flutter/material.dart' as _i20;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
+    as _i18;
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i2;
 import 'package:trip_planner/features/day_trips/domain/usecases/delete_day_trip.dart'
     as _i9;
+import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trip.dart'
+    as _i17;
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart'
     as _i6;
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart'
@@ -355,11 +359,43 @@ class MockTripStopDone extends _i1.Mock implements _i16.TripStopDone {
       ) as _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>);
 }
 
+/// A class which mocks [ListenDayTrip].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockListenDayTrip extends _i1.Mock implements _i17.ListenDayTrip {
+  @override
+  _i2.DayTripsRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeDayTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeDayTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.DayTripsRepository);
+
+  @override
+  _i7.Stream<_i3.Either<_i8.DayTripsFailure, _i18.DayTrip>> call(
+          _i17.ListenDayTripParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue:
+            _i7.Stream<_i3.Either<_i8.DayTripsFailure, _i18.DayTrip>>.empty(),
+        returnValueForMissingStub:
+            _i7.Stream<_i3.Either<_i8.DayTripsFailure, _i18.DayTrip>>.empty(),
+      ) as _i7.Stream<_i3.Either<_i8.DayTripsFailure, _i18.DayTrip>>);
+}
+
 /// A class which mocks [FirebaseCrashlytics].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseCrashlytics extends _i1.Mock
-    implements _i17.FirebaseCrashlytics {
+    implements _i19.FirebaseCrashlytics {
   @override
   _i5.FirebaseApp get app => (super.noSuchMethod(
         Invocation.getter(#app),
@@ -464,7 +500,7 @@ class MockFirebaseCrashlytics extends _i1.Mock
 
   @override
   _i7.Future<void> recordFlutterError(
-    _i18.FlutterErrorDetails? flutterErrorDetails, {
+    _i20.FlutterErrorDetails? flutterErrorDetails, {
     bool? fatal = false,
   }) =>
       (super.noSuchMethod(
@@ -479,7 +515,7 @@ class MockFirebaseCrashlytics extends _i1.Mock
 
   @override
   _i7.Future<void> recordFlutterFatalError(
-          _i18.FlutterErrorDetails? flutterErrorDetails) =>
+          _i20.FlutterErrorDetails? flutterErrorDetails) =>
       (super.noSuchMethod(
         Invocation.method(
           #recordFlutterFatalError,

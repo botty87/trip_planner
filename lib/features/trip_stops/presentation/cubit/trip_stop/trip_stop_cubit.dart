@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/debouncer.dart';
 import '../../../../day_trips/domain/entities/day_trip.dart';
+import '../../../../day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import '../../../../trips/domain/entities/trip.dart';
 import '../../../domain/entities/trip_stop.dart';
 import '../../../domain/usecases/delete_trip_stop.dart';
@@ -24,6 +25,7 @@ class TripStopCubit extends Cubit<TripStopState> {
   final UpdateTripStopNote _updateTripStopNote;
   final DeleteTripStop _deleteTripStop;
   final UpdateTripStop _updateTripStop;
+  final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
 
   final Debouncer _tripStopNoteDebouncer = Debouncer(milliseconds: 5000);
   TripStopCubit({
@@ -32,10 +34,12 @@ class TripStopCubit extends Cubit<TripStopState> {
     required UpdateTripStopNote updateTripStopNote,
     required DeleteTripStop deleteTripStop,
     required UpdateTripStop updateTripStop,
+    required UpdateTripStopsDirectionsUpToDate updateTripStopsDirectionsUpToDate,
   })  : _tripStopDone = tripStopDone,
         _updateTripStopNote = updateTripStopNote,
         _deleteTripStop = deleteTripStop,
         _updateTripStop = updateTripStop,
+        _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
         super(TripStopState.normal(
             trip: params.trip, dayTrip: params.dayTrip, tripStop: params.tripStop));
 
@@ -55,7 +59,7 @@ class TripStopCubit extends Cubit<TripStopState> {
       isDone: isDone,
     ));
 
-    if(isClosed) return;
+    if (isClosed) return;
 
     result.fold(
       (failure) {
@@ -193,11 +197,19 @@ class TripStopCubit extends Cubit<TripStopState> {
           tripStop: state.tripStop,
         ));
       },
-      (_) => emit(TripStopState.deleted(
-        trip: state.trip,
-        dayTrip: state.dayTrip,
-        tripStop: state.tripStop,
-      )),
+      (_) {
+        _updateTripStopsDirectionsUpToDate(UpdateTripStopsDirectionsUpToDateParams(
+          tripId: state.trip.id,
+          dayTripId: state.dayTrip.id,
+          isUpToDate: false,
+        ));
+
+        emit(TripStopState.deleted(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop,
+        ));
+      },
     );
   }
 
@@ -288,16 +300,27 @@ class TripStopCubit extends Cubit<TripStopState> {
 
         emit(editingState);
       },
-      (_) => emit(TripStopState.normal(
-        trip: state.trip,
-        dayTrip: state.dayTrip,
-        tripStop: state.tripStop.copyWith(
-          name: name,
-          description: description,
-          duration: duration,
-          location: location,
-        ),
-      )),
+      (_) {
+        //If the location has changed, we need to update the directions
+        if (location != state.tripStop.location) {
+          _updateTripStopsDirectionsUpToDate(UpdateTripStopsDirectionsUpToDateParams(
+            tripId: state.trip.id,
+            dayTripId: state.dayTrip.id,
+            isUpToDate: false,
+          ));
+        }
+
+        emit(TripStopState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStop: state.tripStop.copyWith(
+            name: name,
+            description: description,
+            duration: duration,
+            location: location,
+          ),
+        ));
+      },
     );
   }
 }

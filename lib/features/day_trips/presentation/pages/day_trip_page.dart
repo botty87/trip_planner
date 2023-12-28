@@ -50,6 +50,7 @@ part '../widgets/day_trip_page/map_tab/map_zoom_buttons.dart';
 part '../widgets/day_trip_page/map_tab/map_type_changer.dart';
 part '../widgets/day_trip_page/map_tab/map_widget.dart';
 part '../widgets/day_trip_page/map_tab/map_directions_switcher.dart';
+part '../widgets/day_trip_page/map_tab/map_directions_loader.dart';
 
 @RoutePage()
 class DayTripPage extends StatelessWidget {
@@ -106,7 +107,18 @@ class DayTripPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                body: const _DayTripPageBody(),
+                body: Builder(builder: (context) {
+                  return NotificationListener(
+                    onNotification: (notification) {
+                      if (notification is ScrollEndNotification) {
+                        final tabIndex = DefaultTabController.of(context).index;
+                        context.read<TripStopsMapCubit>().selectTab(tabIndex == 1);
+                      }
+                      return true;
+                    },
+                    child: const _DayTripPageBody(),
+                  );
+                }),
               ),
             ),
           );

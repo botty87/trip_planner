@@ -71,7 +71,7 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   }
 
   loadDirections(List<TripStop> tripStops) async {
-    if (tripStops.length < 2 || state.isLoading) {
+    if (tripStops.length < 2 || state.isLoading || state.dayTrip.tripStopsDirectionsUpToDate) {
       return;
     }
 
@@ -88,7 +88,6 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
       (directions) {
         emit(state.copyWith(
           dayTrip: state.dayTrip.copyWith(tripStopsDirections: directions),
-          isLoading: false,
         ));
         saveDirections(directions);
       },
@@ -111,8 +110,12 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
         ));
         emit(state.copyWith(errorMessage: null));
       },
-      //Do nothing
-      (_) {},
+      (_) {
+        emit(state.copyWith(
+          dayTrip: state.dayTrip.copyWith(tripStopsDirectionsUpToDate: true),
+          isLoading: false,
+        ));
+      },
     );
   }
 
@@ -130,6 +133,10 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
 
   void updateMarkerLatLngBounds(LatLngBounds? markerLatLngBounds) {
     emit(state.copyWith(markerLatLngBounds: markerLatLngBounds));
+  }
+
+  void selectTab(bool isSelectedTab) {
+    emit(state.copyWith(isSelectedTab: isSelectedTab));
   }
 
   @override

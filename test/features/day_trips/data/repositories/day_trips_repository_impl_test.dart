@@ -213,4 +213,31 @@ void main() {
       expect(result, emitsInOrder([left(const DayTripsFailure())]));
     });
   });
+
+  group('updateTripStopsDirectionsUpToDate', () {
+    test('should return right(null) when updateTripStopsDirectionsUpToDate', () async {
+      when(mockDayTripsDataSource.updateTripStopsDirectionsUpToDate(
+              tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true))
+          .thenAnswer((_) async {});
+
+      // act
+      final result = await repository.updateTripStopsDirectionsUpToDate(
+          tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(DayTripsFailure()) when updateTripStopsDirectionsUpToDate throws',
+        () async {
+      when(mockDayTripsDataSource.updateTripStopsDirectionsUpToDate(
+              tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true))
+          .thenThrow(Exception());
+
+      // act
+      final result = await repository.updateTripStopsDirectionsUpToDate(
+          tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true);
+      // assert
+      expect(result, equals(left(const DayTripsFailure())));
+    });
+  });
 }

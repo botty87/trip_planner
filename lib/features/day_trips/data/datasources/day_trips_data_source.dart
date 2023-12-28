@@ -34,6 +34,9 @@ abstract class DayTripsDataSource {
       required List<TripStopsDirections> tripStopsDirections});
 
   Stream<DayTrip> listenDayTrip(String tripId, String dayTripId);
+
+  updateTripStopsDirectionsUpToDate(
+      {required String tripId, required String dayTripId, required bool isUpToDate});
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -136,12 +139,21 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
       {required String tripId,
       required String dayTripId,
       required List<TripStopsDirections> tripStopsDirections}) async {
-    
-    _dayTripsCollection(tripId).doc(dayTripId).update({
-      'tripStopsDirections': tripStopsDirections.map((e) => e.toJson()).toList(),
-      'tripStopsDirectionsUpToDate': true,
+    performSync(() async {
+      _dayTripsCollection(tripId).doc(dayTripId).update({
+        'tripStopsDirections': tripStopsDirections.map((e) => e.toJson()).toList(),
+        'tripStopsDirectionsUpToDate': true,
+      });
     });
   }
-  
-  
+
+  @override
+  updateTripStopsDirectionsUpToDate(
+      {required String tripId, required String dayTripId, required bool isUpToDate}) async {
+    performSync(() async {
+      await _dayTripsCollection(tripId).doc(dayTripId).update({
+        'tripStopsDirectionsUpToDate': isUpToDate,
+      });
+    });
+  }
 }

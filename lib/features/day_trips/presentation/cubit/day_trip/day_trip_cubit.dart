@@ -19,8 +19,10 @@ import '../../../../trip_stops/errors/trip_stops_failure.dart';
 import '../../../../trips/domain/entities/trip.dart';
 import '../../../domain/entities/day_trip.dart';
 import '../../../domain/usecases/delete_day_trip.dart';
+import '../../../domain/usecases/listen_day_trip.dart';
 import '../../../domain/usecases/update_day_trip.dart';
 import '../../../domain/usecases/update_day_trip_start_time.dart';
+import '../../../errors/day_trips_failure.dart';
 
 part 'day_trip_cubit.freezed.dart';
 part 'day_trip_state.dart';
@@ -34,10 +36,13 @@ class DayTripCubit extends Cubit<DayTripState> {
   final UpdateTripStopsIndexes _updateDayTripsIndexes;
   final UpdateTravelTime _updateTravelTime;
   final TripStopDone _tripStopDone;
+  final ListenDayTrip _listenDayTrip;
 
   final FirebaseCrashlytics _crashlytics;
 
   late final StreamSubscription<Either<TripStopsFailure, List<TripStop>>> _tripStopsSubscription;
+
+  late final StreamSubscription<Either<DayTripsFailure, DayTrip>> _dayTripSubscription;
 
   final _startTimeDebouncer = Debouncer(milliseconds: 5000);
   final _travelTimeDebouncer = Debouncer(milliseconds: 500);
@@ -52,6 +57,7 @@ class DayTripCubit extends Cubit<DayTripState> {
     required UpdateTripStopsIndexes updateDayTripsIndexes,
     required UpdateTravelTime updateTravelTime,
     required TripStopDone tripStopDone,
+    required ListenDayTrip listenDayTrip,
     required FirebaseCrashlytics crashlytics,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
@@ -60,6 +66,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         _updateDayTripsIndexes = updateDayTripsIndexes,
         _updateTravelTime = updateTravelTime,
         _tripStopDone = tripStopDone,
+        _listenDayTrip = listenDayTrip,
         _crashlytics = crashlytics,
         super(DayTripState.normal(
           trip: trip,
@@ -79,6 +86,25 @@ class DayTripCubit extends Cubit<DayTripState> {
           _crashlytics.recordError(failure, StackTrace.current);
         },
         (tripStops) => emit(state.copyWith(tripStops: tripStops)),
+      );
+    });
+
+    _dayTripSubscription =
+        _listenDayTrip(ListenDayTripParams(tripId: trip.id, dayTripId: dayTrip.id))
+            .listen((dayTripOrFailure) {
+      dayTripOrFailure.fold(
+        (failure) {
+          emit(DayTripState.error(
+            trip: state.trip,
+            dayTrip: state.dayTrip,
+            tripStops: state.tripStops,
+            errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
+          ));
+          _crashlytics.recordError(failure, StackTrace.current);
+        },
+        (dayTrip) {
+          emit(state.copyWith(dayTrip: dayTrip));
+        },
       );
     });
   }
@@ -268,12 +294,6 @@ class DayTripCubit extends Cubit<DayTripState> {
     );
   }
 
-  @override
-  Future<void> close() {
-    _tripStopsSubscription.cancel();
-    return super.close();
-  }
-
   void updateTravelTimeToNextStop(String id, int inMinutes) async {
     _travelTimeDebouncer.run(() {
       assert(state is DayTripStateNormal);
@@ -362,5 +382,12 @@ class DayTripCubit extends Cubit<DayTripState> {
         tripStops: tripStops,
       )),
     );
+  }
+
+  @override
+  Future<void> close() {
+    _tripStopsSubscription.cancel();
+    _dayTripSubscription.cancel();
+    return super.close();
   }
 }

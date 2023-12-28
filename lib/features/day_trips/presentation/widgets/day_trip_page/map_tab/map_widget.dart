@@ -13,11 +13,15 @@ class _MapWidget extends StatelessWidget {
     final mapType = context.select((TripStopsMapCubit cubit) => cubit.state.mapType);
     final cubit = context.read<TripStopsMapCubit>();
 
-    final markers = _getMarkers(context);
     final polylines = _getPolylines(context);
+    final markers = _getMarkers(context);
 
     final LatLngBounds? markerLatLngBounds = _getLatLngBounds(markers);
     cubit.updateMarkerLatLngBounds(markerLatLngBounds);
+
+    if (markerLatLngBounds != null) {
+      cubit.mapController?.moveCamera(CameraUpdate.newLatLngBounds(markerLatLngBounds, 50));
+    }
 
     return GoogleMap(
       mapType: mapType,
@@ -71,7 +75,10 @@ class _MapWidget extends StatelessWidget {
     final Set<Polyline> polylines = {};
 
     final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.showDirections);
-    if (!showDirections) {
+    final tripStopsDirectionsUpToDate =
+        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirectionsUpToDate);
+    
+    if (!showDirections || !tripStopsDirectionsUpToDate) {
       return polylines;
     }
 

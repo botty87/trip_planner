@@ -1,5 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/annotations.dart';
@@ -58,6 +60,10 @@ void main() {
     mockUpdateTripStopNote = MockUpdateTripStopNote();
     mockDeleteTripStop = MockDeleteTripStop();
     mockUpdateTripStop = MockUpdateTripStop();
+  });
+
+  setUpAll(() {
+    EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
 
   TripStopCubit getStandardTripStopCubit() {

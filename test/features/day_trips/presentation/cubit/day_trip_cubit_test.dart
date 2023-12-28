@@ -7,6 +7,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/delete_day_trip.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
@@ -29,6 +30,7 @@ import 'day_trip_cubit_test.mocks.dart';
   MockSpec<UpdateTripStopsIndexes>(),
   MockSpec<UpdateTravelTime>(),
   MockSpec<TripStopDone>(),
+  MockSpec<ListenDayTrip>(),
   MockSpec<FirebaseCrashlytics>(),
 ])
 void main() {
@@ -39,6 +41,7 @@ void main() {
   late MockUpdateTripStopsIndexes mockUpdateTripStopsIndexes;
   late MockUpdateTravelTime mockUpdateTravelTime;
   late MockTripStopDone mockTripStopDone;
+  late MockListenDayTrip mockListenDayTrip;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
 
   final tTrip = Trip(
@@ -83,6 +86,7 @@ void main() {
     mockUpdateTripStopsIndexes = MockUpdateTripStopsIndexes();
     mockUpdateTravelTime = MockUpdateTravelTime();
     mockTripStopDone = MockTripStopDone();
+    mockListenDayTrip = MockListenDayTrip();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
   });
 
@@ -97,6 +101,7 @@ void main() {
       updateDayTripsIndexes: mockUpdateTripStopsIndexes,
       updateTravelTime: mockUpdateTravelTime,
       tripStopDone: mockTripStopDone,
+      listenDayTrip: mockListenDayTrip,
       crashlytics: mockFirebaseCrashlytics,
     );
   }

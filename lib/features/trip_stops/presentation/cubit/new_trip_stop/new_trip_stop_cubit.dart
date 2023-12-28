@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import '../../../domain/usecases/create_trip_stop.dart';
 
 part 'new_trip_stop_cubit.freezed.dart';
@@ -15,14 +16,17 @@ class NewTripStopCubit extends Cubit<NewTripStopState> {
   final String _dayTripId;
 
   final CreateTripStop _createTripStop;
+  final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
 
   NewTripStopCubit({
     @factoryParam required String tripId,
     @factoryParam required String dayTripId,
     required CreateTripStop createTripStop,
+    required UpdateTripStopsDirectionsUpToDate updateTripStopsDirectionsUpToDate,
   })  : _tripId = tripId,
         _dayTripId = dayTripId,
         _createTripStop = createTripStop,
+        _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
         super(const NewTripStopState.normal());
 
   void nameChanged(String value) => emit(state.copyWith(name: value));
@@ -73,13 +77,21 @@ class NewTripStopCubit extends Cubit<NewTripStopState> {
 
     result.fold(
       (failure) => _emitErrorState(failure.message ?? LocaleKeys.unknownError.tr()),
-      (_) => emit(NewTripStopState.created(
-        name: state.name!,
-        description: state.description,
-        hourDuration: state.hourDuration,
-        minuteDuration: state.minuteDuration,
-        location: state.location!,
-      )),
+      (_) {
+        _updateTripStopsDirectionsUpToDate(UpdateTripStopsDirectionsUpToDateParams(
+          tripId: _tripId,
+          dayTripId: _dayTripId,
+          isUpToDate: false,
+        ));
+        
+        emit(NewTripStopState.created(
+          name: state.name!,
+          description: state.description,
+          hourDuration: state.hourDuration,
+          minuteDuration: state.minuteDuration,
+          location: state.location!,
+        ));
+      },
     );
   }
 

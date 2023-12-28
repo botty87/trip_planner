@@ -24,6 +24,7 @@ mixin _$TripStopsMapState {
   LatLngBounds? get markerLatLngBounds => throw _privateConstructorUsedError;
   bool get showDirections => throw _privateConstructorUsedError;
   bool get useDifferentColors => throw _privateConstructorUsedError;
+  bool get isSelectedTab => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -34,7 +35,8 @@ mixin _$TripStopsMapState {
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
             bool showDirections,
-            bool useDifferentColors)
+            bool useDifferentColors,
+            bool isSelectedTab)
         normal,
   }) =>
       throw _privateConstructorUsedError;
@@ -48,7 +50,8 @@ mixin _$TripStopsMapState {
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
             bool showDirections,
-            bool useDifferentColors)?
+            bool useDifferentColors,
+            bool isSelectedTab)?
         normal,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +65,8 @@ mixin _$TripStopsMapState {
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
             bool showDirections,
-            bool useDifferentColors)?
+            bool useDifferentColors,
+            bool isSelectedTab)?
         normal,
     required TResult orElse(),
   }) =>
@@ -103,7 +107,8 @@ abstract class $TripStopsMapStateCopyWith<$Res> {
       bool isMapReady,
       LatLngBounds? markerLatLngBounds,
       bool showDirections,
-      bool useDifferentColors});
+      bool useDifferentColors,
+      bool isSelectedTab});
 
   $DayTripCopyWith<$Res> get dayTrip;
 }
@@ -129,6 +134,7 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
     Object? markerLatLngBounds = freezed,
     Object? showDirections = null,
     Object? useDifferentColors = null,
+    Object? isSelectedTab = null,
   }) {
     return _then(_value.copyWith(
       mapType: null == mapType
@@ -163,6 +169,10 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
           ? _value.useDifferentColors
           : useDifferentColors // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSelectedTab: null == isSelectedTab
+          ? _value.isSelectedTab
+          : isSelectedTab // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -192,7 +202,8 @@ abstract class _$$TripStopsMapStateNormalImplCopyWith<$Res>
       bool isMapReady,
       LatLngBounds? markerLatLngBounds,
       bool showDirections,
-      bool useDifferentColors});
+      bool useDifferentColors,
+      bool isSelectedTab});
 
   @override
   $DayTripCopyWith<$Res> get dayTrip;
@@ -218,6 +229,7 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
     Object? markerLatLngBounds = freezed,
     Object? showDirections = null,
     Object? useDifferentColors = null,
+    Object? isSelectedTab = null,
   }) {
     return _then(_$TripStopsMapStateNormalImpl(
       mapType: null == mapType
@@ -252,6 +264,10 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
           ? _value.useDifferentColors
           : useDifferentColors // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSelectedTab: null == isSelectedTab
+          ? _value.isSelectedTab
+          : isSelectedTab // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -267,7 +283,8 @@ class _$TripStopsMapStateNormalImpl extends TripStopsMapStateNormal {
       this.isMapReady = false,
       this.markerLatLngBounds,
       this.showDirections = true,
-      this.useDifferentColors = true})
+      this.useDifferentColors = true,
+      this.isSelectedTab = true})
       : super._();
 
   @override
@@ -291,10 +308,13 @@ class _$TripStopsMapStateNormalImpl extends TripStopsMapStateNormal {
   @override
   @JsonKey()
   final bool useDifferentColors;
+  @override
+  @JsonKey()
+  final bool isSelectedTab;
 
   @override
   String toString() {
-    return 'TripStopsMapState.normal(mapType: $mapType, isLoading: $isLoading, dayTrip: $dayTrip, errorMessage: $errorMessage, isMapReady: $isMapReady, markerLatLngBounds: $markerLatLngBounds, showDirections: $showDirections, useDifferentColors: $useDifferentColors)';
+    return 'TripStopsMapState.normal(mapType: $mapType, isLoading: $isLoading, dayTrip: $dayTrip, errorMessage: $errorMessage, isMapReady: $isMapReady, markerLatLngBounds: $markerLatLngBounds, showDirections: $showDirections, useDifferentColors: $useDifferentColors, isSelectedTab: $isSelectedTab)';
   }
 
   @override
@@ -315,7 +335,9 @@ class _$TripStopsMapStateNormalImpl extends TripStopsMapStateNormal {
             (identical(other.showDirections, showDirections) ||
                 other.showDirections == showDirections) &&
             (identical(other.useDifferentColors, useDifferentColors) ||
-                other.useDifferentColors == useDifferentColors));
+                other.useDifferentColors == useDifferentColors) &&
+            (identical(other.isSelectedTab, isSelectedTab) ||
+                other.isSelectedTab == isSelectedTab));
   }
 
   @override
@@ -328,7 +350,8 @@ class _$TripStopsMapStateNormalImpl extends TripStopsMapStateNormal {
       isMapReady,
       markerLatLngBounds,
       showDirections,
-      useDifferentColors);
+      useDifferentColors,
+      isSelectedTab);
 
   @JsonKey(ignore: true)
   @override
@@ -348,11 +371,12 @@ class _$TripStopsMapStateNormalImpl extends TripStopsMapStateNormal {
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
             bool showDirections,
-            bool useDifferentColors)
+            bool useDifferentColors,
+            bool isSelectedTab)
         normal,
   }) {
     return normal(mapType, isLoading, dayTrip, errorMessage, isMapReady,
-        markerLatLngBounds, showDirections, useDifferentColors);
+        markerLatLngBounds, showDirections, useDifferentColors, isSelectedTab);
   }
 
   @override
@@ -366,11 +390,12 @@ class _$TripStopsMapStateNormalImpl extends TripStopsMapStateNormal {
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
             bool showDirections,
-            bool useDifferentColors)?
+            bool useDifferentColors,
+            bool isSelectedTab)?
         normal,
   }) {
     return normal?.call(mapType, isLoading, dayTrip, errorMessage, isMapReady,
-        markerLatLngBounds, showDirections, useDifferentColors);
+        markerLatLngBounds, showDirections, useDifferentColors, isSelectedTab);
   }
 
   @override
@@ -384,13 +409,22 @@ class _$TripStopsMapStateNormalImpl extends TripStopsMapStateNormal {
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
             bool showDirections,
-            bool useDifferentColors)?
+            bool useDifferentColors,
+            bool isSelectedTab)?
         normal,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(mapType, isLoading, dayTrip, errorMessage, isMapReady,
-          markerLatLngBounds, showDirections, useDifferentColors);
+      return normal(
+          mapType,
+          isLoading,
+          dayTrip,
+          errorMessage,
+          isMapReady,
+          markerLatLngBounds,
+          showDirections,
+          useDifferentColors,
+          isSelectedTab);
     }
     return orElse();
   }
@@ -433,7 +467,8 @@ abstract class TripStopsMapStateNormal extends TripStopsMapState {
       final bool isMapReady,
       final LatLngBounds? markerLatLngBounds,
       final bool showDirections,
-      final bool useDifferentColors}) = _$TripStopsMapStateNormalImpl;
+      final bool useDifferentColors,
+      final bool isSelectedTab}) = _$TripStopsMapStateNormalImpl;
   const TripStopsMapStateNormal._() : super._();
 
   @override
@@ -452,6 +487,8 @@ abstract class TripStopsMapStateNormal extends TripStopsMapState {
   bool get showDirections;
   @override
   bool get useDifferentColors;
+  @override
+  bool get isSelectedTab;
   @override
   @JsonKey(ignore: true)
   _$$TripStopsMapStateNormalImplCopyWith<_$TripStopsMapStateNormalImpl>
