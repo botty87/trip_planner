@@ -8,6 +8,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/delete_trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart';
@@ -24,12 +25,14 @@ import 'trip_stop_cubit_test.mocks.dart';
   MockSpec<UpdateTripStopNote>(),
   MockSpec<DeleteTripStop>(),
   MockSpec<UpdateTripStop>(),
+  MockSpec<UpdateTripStopsDirectionsUpToDate>(),
 ])
 void main() {
   late MockTripStopDone mockTripStopDone;
   late MockUpdateTripStopNote mockUpdateTripStopNote;
   late MockDeleteTripStop mockDeleteTripStop;
   late MockUpdateTripStop mockUpdateTripStop;
+  late MockUpdateTripStopsDirectionsUpToDate mockUpdateTripStopsDirectionsUpToDate;
 
   final tTrip = Trip(
     id: '1',
@@ -60,6 +63,7 @@ void main() {
     mockUpdateTripStopNote = MockUpdateTripStopNote();
     mockDeleteTripStop = MockDeleteTripStop();
     mockUpdateTripStop = MockUpdateTripStop();
+    mockUpdateTripStopsDirectionsUpToDate = MockUpdateTripStopsDirectionsUpToDate();
   });
 
   setUpAll(() {
@@ -77,6 +81,7 @@ void main() {
       updateTripStopNote: mockUpdateTripStopNote,
       deleteTripStop: mockDeleteTripStop,
       updateTripStop: mockUpdateTripStop,
+      updateTripStopsDirectionsUpToDate: mockUpdateTripStopsDirectionsUpToDate,
     );
   }
 
@@ -255,6 +260,13 @@ void main() {
           tripStop: tTripStop,
         ),
       ],
+      verify: (_) {
+        verify(mockUpdateTripStopsDirectionsUpToDate(UpdateTripStopsDirectionsUpToDateParams(
+          tripId: tTrip.id,
+          dayTripId: tDayTrip.id,
+          isUpToDate: false,
+        ))).called(1);
+      },
     );
 
     blocTest<TripStopCubit, TripStopState>(
@@ -452,6 +464,13 @@ void main() {
             tripStop: tTripStop,
           ),
         ],
+        verify: (_) {
+          verifyNever(mockUpdateTripStopsDirectionsUpToDate(UpdateTripStopsDirectionsUpToDateParams(
+            tripId: tTrip.id,
+            dayTripId: tDayTrip.id,
+            isUpToDate: false,
+          )));
+        },
       );
     });
   });

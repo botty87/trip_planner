@@ -47,12 +47,12 @@ void main() {
 
   test('should return a failure when updating trip stops directions up to date fails', () async {
     // Arrange
-    final failure = DayTripsFailure(message: 'Failed to update trip stops directions');
+    const failure = DayTripsFailure(message: 'Failed to update trip stops directions');
     when(mockRepository.updateTripStopsDirectionsUpToDate(
       tripId: anyNamed('tripId'),
       dayTripId: anyNamed('dayTripId'),
       isUpToDate: anyNamed('isUpToDate'),
-    )).thenAnswer((_) async => Left(failure));
+    )).thenAnswer((_) async => const Left(failure));
 
     // Act
     final result = await useCase.call(UpdateTripStopsDirectionsUpToDateParams(
@@ -62,7 +62,7 @@ void main() {
     ));
 
     // Assert
-    expect(result, Left(failure));
+    expect(result, const Left(failure));
     verify(mockRepository.updateTripStopsDirectionsUpToDate(
       tripId: tripId,
       dayTripId: dayTripId,

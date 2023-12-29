@@ -1,5 +1,6 @@
 
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/usecases/usecase.dart';
@@ -22,14 +23,17 @@ class UpdateTripStopsDirectionsUpToDate implements UseCase<void, UpdateTripStops
   }
 }
 
-class UpdateTripStopsDirectionsUpToDateParams {
+class UpdateTripStopsDirectionsUpToDateParams extends Equatable {
   final String tripId;
   final String dayTripId;
   final bool isUpToDate;
 
-  UpdateTripStopsDirectionsUpToDateParams({
+  const UpdateTripStopsDirectionsUpToDateParams({
     required this.tripId,
     required this.dayTripId,
     required this.isUpToDate,
   });
+  
+  @override
+  List<Object?> get props => [tripId, dayTripId, isUpToDate];
 }
