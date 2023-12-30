@@ -127,5 +127,6 @@
     "car" : "Auto",
     "walk" : "A piedi",
     "bike" : "Bici",
-    "publicTransport" : "Mezzi pubblici"
+    "publicTransport" : "Mezzi pubblici",
+    "tripStopsDirectionsError" : "Per alcune tappe di viaggio non è stato possibile calcolare le indicazioni stradali."
 }

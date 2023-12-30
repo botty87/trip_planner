@@ -75,9 +75,9 @@ class _MapWidget extends StatelessWidget {
     final Set<Polyline> polylines = {};
 
     final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.showDirections);
-    final tripStopsDirectionsUpToDate =
-        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirectionsUpToDate);
-    
+    final tripStopsDirectionsUpToDate = context
+        .select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirectionsUpToDate);
+
     if (!showDirections || !tripStopsDirectionsUpToDate) {
       return polylines;
     }
@@ -100,7 +100,6 @@ class _MapWidget extends StatelessWidget {
           Colors.yellow,
           Colors.purple,
           Colors.orange,
-          Colors.brown,
         ];
         colorIndex = Random().nextInt(colors.length);
       } else {

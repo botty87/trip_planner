@@ -86,12 +86,18 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
         emit(state.copyWith(errorMessage: null));
       },
       (directions) {
+        final hasErrors = directions.any((element) => element.errorMessage != null);
         emit(state.copyWith(
           dayTrip: state.dayTrip.copyWith(tripStopsDirections: directions),
+          hasTripStopsDirectionsErrors: hasErrors,
         ));
         saveDirections(directions);
       },
     );
+  }
+
+  void clearTripStopsDirectionsErrors() {
+    emit(state.copyWith(hasTripStopsDirectionsErrors: false));
   }
 
   @visibleForTesting

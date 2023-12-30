@@ -126,5 +126,6 @@
     "car" : "Car",
     "walk" : "Walk",
     "bike" : "Bike",
-    "publicTransport" : "Public transport"
+    "publicTransport" : "Public transport",
+    "tripStopsDirectionsError" : "For some travel stages it was not possible to calculate driving directions."
 }

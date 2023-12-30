@@ -22,6 +22,7 @@ import '../../../domain/usecases/delete_day_trip.dart';
 import '../../../domain/usecases/listen_day_trip.dart';
 import '../../../domain/usecases/update_day_trip.dart';
 import '../../../domain/usecases/update_day_trip_start_time.dart';
+import '../../../domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import '../../../errors/day_trips_failure.dart';
 
 part 'day_trip_cubit.freezed.dart';
@@ -37,6 +38,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   final UpdateTravelTime _updateTravelTime;
   final TripStopDone _tripStopDone;
   final ListenDayTrip _listenDayTrip;
+  final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
 
   final FirebaseCrashlytics _crashlytics;
 
@@ -58,6 +60,7 @@ class DayTripCubit extends Cubit<DayTripState> {
     required UpdateTravelTime updateTravelTime,
     required TripStopDone tripStopDone,
     required ListenDayTrip listenDayTrip,
+    required UpdateTripStopsDirectionsUpToDate updateTripStopsDirectionsUpToDate,
     required FirebaseCrashlytics crashlytics,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
@@ -67,6 +70,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         _updateTravelTime = updateTravelTime,
         _tripStopDone = tripStopDone,
         _listenDayTrip = listenDayTrip,
+        _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
         _crashlytics = crashlytics,
         super(DayTripState.normal(
           trip: trip,
@@ -271,7 +275,7 @@ class DayTripCubit extends Cubit<DayTripState> {
     );
   }
 
-  void reorderTripStops(int oldIndex, int newIndex) {
+  void reorderTripStops(int oldIndex, int newIndex) async {
     final List<TripStop> tripStopsToUpdate = [];
 
     tripStopsToUpdate.add(state.tripStops[oldIndex].copyWith(index: newIndex));
@@ -285,12 +289,37 @@ class DayTripCubit extends Cubit<DayTripState> {
       }
     }
 
-    _updateDayTripsIndexes(
+    final result = await _updateDayTripsIndexes(
       UpdateTripStopsIndexesParams(
         tripId: state.trip.id,
         dayTripId: state.dayTrip.id,
         tripStops: tripStopsToUpdate,
       ),
+    );
+
+    result.fold(
+      (failure) {
+        emit(DayTripState.error(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+        ));
+        emit(DayTripState.normal(
+          trip: state.trip,
+          dayTrip: state.dayTrip,
+          tripStops: state.tripStops,
+        ));
+      },
+      (_) {
+        _updateTripStopsDirectionsUpToDate(
+          UpdateTripStopsDirectionsUpToDateParams(
+            tripId: state.trip.id,
+            dayTripId: state.dayTrip.id,
+            isUpToDate: false,
+          ),
+        );
+      },
     );
   }
 

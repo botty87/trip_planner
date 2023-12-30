@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/usecases/usecase.dart';
@@ -20,8 +21,11 @@ class FetchTripStopsDirections implements UseCase<void, FetchTripStopsDirections
   }
 }
 
-class FetchTripStopsDirectionsParams {
+class FetchTripStopsDirectionsParams extends Equatable {
   final List<TripStop> tripStops;
 
-  FetchTripStopsDirectionsParams({required this.tripStops});
+  const FetchTripStopsDirectionsParams({required this.tripStops});
+
+  @override
+  List<Object?> get props => [tripStops];
 }

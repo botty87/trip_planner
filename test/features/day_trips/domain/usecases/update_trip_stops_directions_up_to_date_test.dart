@@ -29,7 +29,7 @@ void main() {
     )).thenAnswer((_) async => const Right(null));
 
     // Act
-    final result = await useCase.call(UpdateTripStopsDirectionsUpToDateParams(
+    final result = await useCase.call(const UpdateTripStopsDirectionsUpToDateParams(
       tripId: tripId,
       dayTripId: dayTripId,
       isUpToDate: isUpToDate,
@@ -55,7 +55,7 @@ void main() {
     )).thenAnswer((_) async => const Left(failure));
 
     // Act
-    final result = await useCase.call(UpdateTripStopsDirectionsUpToDateParams(
+    final result = await useCase.call(const UpdateTripStopsDirectionsUpToDateParams(
       tripId: tripId,
       dayTripId: dayTripId,
       isUpToDate: isUpToDate,

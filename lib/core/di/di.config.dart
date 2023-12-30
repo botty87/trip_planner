@@ -185,16 +185,16 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i17.ReadOldTrips>(
         () => _i17.ReadOldTrips(gh<_i14.OldTripsRepository>()));
     gh.lazySingleton<String>(
-      () => googlePlacesModule.proxyUrl,
-      instanceName: 'proxyUrl',
-    );
-    gh.lazySingleton<String>(
       () => googlePlacesModule.googlePlacesKey,
       instanceName: 'googlePlacesKey',
     );
     gh.lazySingleton<String>(
       () => googlePlacesModule.googleMapKey,
       instanceName: 'googleMapKey',
+    );
+    gh.lazySingleton<String>(
+      () => googlePlacesModule.proxyUrl,
+      instanceName: 'proxyUrl',
     );
     gh.factoryParam<_i18.TripStopsCollectionRef, String, String>((
       tripId,
@@ -348,6 +348,8 @@ extension GetItInjectableX on _i1.GetIt {
           updateTravelTime: gh<_i26.UpdateTravelTime>(),
           tripStopDone: gh<_i65.TripStopDone>(),
           listenDayTrip: gh<_i54.ListenDayTrip>(),
+          updateTripStopsDirectionsUpToDate:
+              gh<_i69.UpdateTripStopsDirectionsUpToDate>(),
           crashlytics: gh<_i6.FirebaseCrashlytics>(),
         ));
     gh.lazySingleton<_i77.FetchPlaceDetails>(
