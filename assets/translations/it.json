@@ -128,5 +128,9 @@
     "walk" : "A piedi",
     "bike" : "Bici",
     "publicTransport" : "Mezzi pubblici",
-    "tripStopsDirectionsError" : "Per alcune tappe di viaggio non è stato possibile calcolare le indicazioni stradali."
+    "tripStopsDirectionsError" : "Per alcune tappe di viaggio non è stato possibile calcolare le indicazioni stradali.",
+    "walking": "Piedi",
+    "bicycling": "Bici",
+    "driving": "Auto",
+    "transit": "Mezzi"
 }

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import '../entities/day_trip.dart';
 
 import '../../errors/day_trips_failure.dart';
@@ -29,13 +30,17 @@ abstract class DayTripsRepository {
   Future<Either<DayTripsFailure, void>> deleteDayTrip(
       {required String tripId, required String dayTripId});
 
-  Future<Either<DayTripsFailure, void>> saveTripStopsDirections(
-      {required String tripId,
-      required String dayTripId,
-      required List<TripStopsDirections> tripStopsDirections});
+  Future<Either<DayTripsFailure, void>> saveTripStopsDirections({
+    required String tripId,
+    required String dayTripId,
+    required List<TripStopsDirections> tripStopsDirections,
+  });
 
   Stream<Either<DayTripsFailure, DayTrip>> listenDayTrip(String tripId, String dayTripId);
 
   Future<Either<DayTripsFailure, void>> updateTripStopsDirectionsUpToDate(
-      {required String tripId, required String dayTripId, required bool isUpToDate});
+      {required String tripId,
+      required String dayTripId,
+      required bool isUpToDate,
+      TravelMode? travelMode});
 }

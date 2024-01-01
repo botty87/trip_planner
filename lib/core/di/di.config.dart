@@ -423,6 +423,8 @@ extension GetItInjectableX on _i1.GetIt {
           fetchPolylinePoints: gh<_i79.FetchTripStopsDirections>(),
           saveTripStopsDirections: gh<_i64.SaveTripStopsDirections>(),
           listenDayTrip: gh<_i54.ListenDayTrip>(),
+          updateTripStopsDirectionsUpToDate:
+              gh<_i69.UpdateTripStopsDirectionsUpToDate>(),
           crashlytics: gh<_i6.FirebaseCrashlytics>(),
           trip: trip,
           dayTrip: dayTrip,

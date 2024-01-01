@@ -2,6 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/annotations.dart';
@@ -224,7 +225,14 @@ void main() {
           location: LatLng(1, 1),
         ),
       ],
-      verify: (_) => verify(mockUpdateTripStopsDirectionsUpToDate(any)).called(1),
+      verify: (_) => verify(mockUpdateTripStopsDirectionsUpToDate(
+        const UpdateTripStopsDirectionsUpToDateParams(
+          tripId: 'tripId',
+          dayTripId: 'dayTripId',
+          isUpToDate: false,
+          travelMode: TravelMode.driving,
+        ),
+      )).called(1),
     );
   });
 }

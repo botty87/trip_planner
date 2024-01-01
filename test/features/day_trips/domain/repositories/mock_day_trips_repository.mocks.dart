@@ -7,6 +7,7 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:flutter/material.dart' as _i7;
+import 'package:flutter_polyline_points/flutter_polyline_points.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
     as _i6;
@@ -342,6 +343,7 @@ class MockDayTripsRepository extends _i1.Mock
     required String? tripId,
     required String? dayTripId,
     required bool? isUpToDate,
+    _i9.TravelMode? travelMode,
   }) =>
           (super.noSuchMethod(
             Invocation.method(
@@ -351,6 +353,7 @@ class MockDayTripsRepository extends _i1.Mock
                 #tripId: tripId,
                 #dayTripId: dayTripId,
                 #isUpToDate: isUpToDate,
+                #travelMode: travelMode,
               },
             ),
             returnValue:
@@ -364,6 +367,7 @@ class MockDayTripsRepository extends _i1.Mock
                   #tripId: tripId,
                   #dayTripId: dayTripId,
                   #isUpToDate: isUpToDate,
+                  #travelMode: travelMode,
                 },
               ),
             )),
@@ -378,6 +382,7 @@ class MockDayTripsRepository extends _i1.Mock
                   #tripId: tripId,
                   #dayTripId: dayTripId,
                   #isUpToDate: isUpToDate,
+                  #travelMode: travelMode,
                 },
               ),
             )),

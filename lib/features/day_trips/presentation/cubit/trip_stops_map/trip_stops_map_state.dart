@@ -13,5 +13,6 @@ class TripStopsMapState with _$TripStopsMapState {
     @Default(true) bool useDifferentColors,
     @Default(true) bool isSelectedTab,
     @Default(false) bool hasTripStopsDirectionsErrors,
+    
   }) = TripStopsMapStateNormal;
 }

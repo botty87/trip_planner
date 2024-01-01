@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
@@ -17,6 +18,7 @@ import '../../../domain/entities/day_trip.dart';
 import '../../../domain/entities/trip_stops_directions.dart';
 import '../../../domain/usecases/listen_day_trip.dart';
 import '../../../domain/usecases/save_trip_stops_directions.dart';
+import '../../../domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import '../../../errors/day_trips_failure.dart';
 
 part 'trip_stops_map_cubit.freezed.dart';
@@ -27,6 +29,7 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   final FetchTripStopsDirections _fetchTripStopsDirections;
   final SaveTripStopsDirections _saveTripStopsDirections;
   final ListenDayTrip _listenDayTrip;
+  final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
 
   final FirebaseCrashlytics _crashlytics;
 
@@ -40,6 +43,7 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     required FetchTripStopsDirections fetchPolylinePoints,
     required SaveTripStopsDirections saveTripStopsDirections,
     required ListenDayTrip listenDayTrip,
+    required UpdateTripStopsDirectionsUpToDate updateTripStopsDirectionsUpToDate,
     required FirebaseCrashlytics crashlytics,
     @factoryParam required Trip trip,
     @factoryParam required DayTrip dayTrip,
@@ -48,6 +52,7 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
         _crashlytics = crashlytics,
         _listenDayTrip = listenDayTrip,
         _tripId = trip.id,
+        _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
         super(TripStopsMapState.normal(dayTrip: dayTrip)) {
     _dayTripSubscription =
         _listenDayTrip(ListenDayTripParams(tripId: _tripId, dayTripId: dayTrip.id))
@@ -78,7 +83,7 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     emit(state.copyWith(isLoading: true));
 
     final directionsOrFailure =
-        await _fetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tripStops));
+        await _fetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tripStops, travelMode: state.dayTrip.travelMode));
 
     directionsOrFailure.fold(
       (failure) {
@@ -145,11 +150,11 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     emit(state.copyWith(isSelectedTab: isSelectedTab));
   }
 
-  showDirectionsChanged(bool value) {
+  void showDirectionsChanged(bool value) {
     emit(state.copyWith(showDirections: value));
   }
 
-  useDifferentColorsChanged(bool value) {
+  void useDifferentColorsChanged(bool value) {
     emit(state.copyWith(useDifferentColors: value));
   }
 
@@ -157,5 +162,17 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   Future<void> close() {
     _dayTripSubscription.cancel();
     return super.close();
+  }
+
+  void travelModeChanged(TravelMode travelMode) {
+    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(travelMode: travelMode, tripStopsDirectionsUpToDate: false)));
+    _updateTripStopsDirectionsUpToDate(
+      UpdateTripStopsDirectionsUpToDateParams(
+        tripId: _tripId,
+        dayTripId: state.dayTrip.id,
+        isUpToDate: false,
+        travelMode: travelMode,
+      ),
+    );
   }
 }

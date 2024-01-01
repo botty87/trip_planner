@@ -127,5 +127,9 @@
     "walk" : "Walk",
     "bike" : "Bike",
     "publicTransport" : "Public transport",
-    "tripStopsDirectionsError" : "For some travel stages it was not possible to calculate driving directions."
+    "tripStopsDirectionsError" : "For some travel stages it was not possible to calculate driving directions.",
+    "walking" : "Walk",
+    "bicycling" : "Bike",
+    "driving" : "Car",
+    "transit" : "Transit"
 }

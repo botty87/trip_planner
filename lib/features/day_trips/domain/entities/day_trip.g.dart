@@ -18,6 +18,9 @@ _$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       tripStopsDirectionsUpToDate:
           json['tripStopsDirectionsUpToDate'] as bool? ?? false,
+      travelMode: json['travelMode'] == null
+          ? TravelMode.driving
+          : travelModeFromInt(json['travelMode'] as int),
     );
 
 Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) {
@@ -35,5 +38,6 @@ Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) {
 
   writeNotNull('tripStopsDirections', instance.tripStopsDirections);
   val['tripStopsDirectionsUpToDate'] = instance.tripStopsDirectionsUpToDate;
+  val['travelMode'] = travelModeToInt(instance.travelMode);
   return val;
 }

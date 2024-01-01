@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/annotations.dart';
@@ -11,6 +12,7 @@ import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/save_trip_stops_directions.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/trip_stops_map/trip_stops_map_cubit.dart';
 import 'package:trip_planner/features/google_places/domain/usecases/fetch_polyline_points.dart';
@@ -25,12 +27,14 @@ import 'trip_stops_map_cubit_test.mocks.dart';
   MockSpec<SaveTripStopsDirections>(),
   MockSpec<ListenDayTrip>(),
   MockSpec<FirebaseCrashlytics>(),
+  MockSpec<UpdateTripStopsDirectionsUpToDate>(),
 ])
 void main() {
   late MockFetchTripStopsDirections mockFetchTripStopsDirections;
   late MockSaveTripStopsDirections mockSaveTripStopsDirections;
   late MockListenDayTrip mockListenDayTrip;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
+  late MockUpdateTripStopsDirectionsUpToDate mockUpdateTripStopsDirectionsUpToDate;
 
   final tTrip = Trip(
     id: '1',
@@ -71,6 +75,7 @@ void main() {
     mockSaveTripStopsDirections = MockSaveTripStopsDirections();
     mockListenDayTrip = MockListenDayTrip();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
+    mockUpdateTripStopsDirectionsUpToDate = MockUpdateTripStopsDirectionsUpToDate();
   });
 
   setUpAll(() {
@@ -83,6 +88,7 @@ void main() {
       saveTripStopsDirections: mockSaveTripStopsDirections,
       listenDayTrip: mockListenDayTrip,
       crashlytics: mockFirebaseCrashlytics,
+      updateTripStopsDirectionsUpToDate: mockUpdateTripStopsDirectionsUpToDate,
       trip: tTrip,
       dayTrip: tDayTrip,
     );
@@ -210,7 +216,7 @@ void main() {
       build: () => getTripStopsMapCubit(),
       act: (cubit) => cubit.loadDirections(tTripStops),
       verify: (_) => verify(
-          mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tTripStops))),
+          mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tTripStops, travelMode: TravelMode.driving))),
       expect: () => [
         const TripStopsMapState.normal(isLoading: true, dayTrip: tDayTrip),
         TripStopsMapState.normal(
@@ -246,7 +252,7 @@ void main() {
         ),
       ],
       verify: (_) {
-        verify(mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tTripStops)))
+        verify(mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tTripStops, travelMode: TravelMode.driving)))
             .called(1);
         verifyNever(mockSaveTripStopsDirections(any));
       },
@@ -289,4 +295,12 @@ void main() {
       expect: () => [],
     );
   });
+
+  blocTest(
+    'On travelModeChanged, should emit travelMode',
+    build: () => getTripStopsMapCubit(),
+    act: (cubit) => cubit.travelModeChanged(TravelMode.bicycling),
+    expect: () =>
+        [TripStopsMapState.normal(dayTrip: tDayTrip.copyWith(travelMode: TravelMode.bicycling))],
+  );
 }

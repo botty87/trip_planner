@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../day_trips/domain/entities/trip_stops_directions.dart';
@@ -49,9 +50,9 @@ class GooglePlacesRepositoryImpl implements GooglePlacesRepository {
 
   @override
   Future<Either<GooglePlacesFailure, List<TripStopsDirections>>> fetchTripStopsDirections(
-      List<TripStop> tripStops) async {
+      List<TripStop> tripStops, TravelMode travelMode) async {
     try {
-      final result = await dataSource.fetchTripStopsDirections(tripStops);
+      final result = await dataSource.fetchTripStopsDirections(tripStops, travelMode);
       return Right(result);
     } on GooglePlacesException catch (e) {
       return Left(_mapExceptionToFailure(e));

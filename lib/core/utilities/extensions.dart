@@ -3,6 +3,8 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:map_launcher/map_launcher.dart';
 
+import 'data_converter.dart';
+
 extension TimeOfDayExtension on TimeOfDay {
   String toFormattedString() {
     final hour = this.hour.toString().padLeft(2, '0');
@@ -45,4 +47,8 @@ extension LatLngBoundsExtension on LatLngBounds {
 
 extension PointLatLngExtension on PointLatLng {
   LatLng toLatLng() => LatLng(latitude, longitude);
+}
+
+extension TravelModeExtension on TravelMode {
+  int toJson() => travelModeToInt(this);
 }

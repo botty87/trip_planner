@@ -127,5 +127,9 @@ abstract class  LocaleKeys {
   static const bike = 'bike';
   static const publicTransport = 'publicTransport';
   static const tripStopsDirectionsError = 'tripStopsDirectionsError';
+  static const walking = 'walking';
+  static const bicycling = 'bicycling';
+  static const driving = 'driving';
+  static const transit = 'transit';
 
 }

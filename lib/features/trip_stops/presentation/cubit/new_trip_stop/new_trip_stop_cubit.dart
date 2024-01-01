@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
@@ -82,6 +83,7 @@ class NewTripStopCubit extends Cubit<NewTripStopState> {
           tripId: _tripId,
           dayTripId: _dayTripId,
           isUpToDate: false,
+          travelMode: TravelMode.driving,
         ));
         
         emit(NewTripStopState.created(

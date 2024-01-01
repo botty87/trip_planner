@@ -6,6 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:flutter/material.dart' as _i5;
+import 'package:flutter_polyline_points/flutter_polyline_points.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart'
     as _i2;
@@ -179,6 +180,7 @@ class MockDayTripsDataSource extends _i1.Mock
     required String? tripId,
     required String? dayTripId,
     required bool? isUpToDate,
+    _i7.TravelMode? travelMode,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -188,6 +190,7 @@ class MockDayTripsDataSource extends _i1.Mock
             #tripId: tripId,
             #dayTripId: dayTripId,
             #isUpToDate: isUpToDate,
+            #travelMode: travelMode,
           },
         ),
         returnValueForMissingStub: null,

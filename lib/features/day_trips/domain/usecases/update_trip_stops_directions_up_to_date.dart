@@ -1,6 +1,7 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/usecases/usecase.dart';
@@ -19,6 +20,7 @@ class UpdateTripStopsDirectionsUpToDate implements UseCase<void, UpdateTripStops
       tripId: params.tripId,
       dayTripId: params.dayTripId,
       isUpToDate: params.isUpToDate,
+      travelMode: params.travelMode,
     );
   }
 }
@@ -27,13 +29,15 @@ class UpdateTripStopsDirectionsUpToDateParams extends Equatable {
   final String tripId;
   final String dayTripId;
   final bool isUpToDate;
+  final TravelMode? travelMode;
 
   const UpdateTripStopsDirectionsUpToDateParams({
     required this.tripId,
     required this.dayTripId,
     required this.isUpToDate,
+    this.travelMode,
   });
   
   @override
-  List<Object?> get props => [tripId, dayTripId, isUpToDate];
+  List<Object?> get props => [tripId, dayTripId, isUpToDate, travelMode];
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/utilities/data_converter.dart';
@@ -21,6 +22,8 @@ sealed class DayTrip with _$DayTrip {
     @JsonKey(includeIfNull: false)
     List<TripStopsDirections>? tripStopsDirections,
     @Default(false) bool tripStopsDirectionsUpToDate,
+    @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
+    @Default(TravelMode.driving) TravelMode travelMode,
   }) = _DayTrip;
 
   factory DayTrip.create({

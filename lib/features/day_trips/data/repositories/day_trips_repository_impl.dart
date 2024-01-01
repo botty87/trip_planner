@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:injectable/injectable.dart';
 import '../../domain/entities/trip_stops_directions.dart';
 import '../datasources/day_trips_data_source.dart';
@@ -99,10 +100,11 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
   }
 
   @override
-  Future<Either<DayTripsFailure, void>> saveTripStopsDirections(
-      {required String tripId,
-      required String dayTripId,
-      required List<TripStopsDirections> tripStopsDirections}) async {
+  Future<Either<DayTripsFailure, void>> saveTripStopsDirections({
+    required String tripId,
+    required String dayTripId,
+    required List<TripStopsDirections> tripStopsDirections,
+  }) async {
     try {
       await _dayTripsDataSource.saveTripStopsDirections(
           tripId: tripId, dayTripId: dayTripId, tripStopsDirections: tripStopsDirections);
@@ -116,10 +118,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
 
   @override
   Future<Either<DayTripsFailure, void>> updateTripStopsDirectionsUpToDate(
-      {required String tripId, required String dayTripId, required bool isUpToDate}) async {
+      {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode}) async {
     try {
       await _dayTripsDataSource.updateTripStopsDirectionsUpToDate(
-          tripId: tripId, dayTripId: dayTripId, isUpToDate: isUpToDate);
+          tripId: tripId, dayTripId: dayTripId, isUpToDate: isUpToDate, travelMode: travelMode);
       return right(null);
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));

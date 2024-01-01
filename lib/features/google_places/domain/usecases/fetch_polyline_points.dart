@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/usecases/usecase.dart';
@@ -17,15 +18,16 @@ class FetchTripStopsDirections implements UseCase<void, FetchTripStopsDirections
   @override
   Future<Either<GooglePlacesFailure, List<TripStopsDirections>>> call(
       FetchTripStopsDirectionsParams params) async {
-    return await repository.fetchTripStopsDirections(params.tripStops);
+    return await repository.fetchTripStopsDirections(params.tripStops, params.travelMode);
   }
 }
 
 class FetchTripStopsDirectionsParams extends Equatable {
   final List<TripStop> tripStops;
+  final TravelMode travelMode;
 
-  const FetchTripStopsDirectionsParams({required this.tripStops});
+  const FetchTripStopsDirectionsParams({required this.tripStops, required this.travelMode});
 
   @override
-  List<Object?> get props => [tripStops];
+  List<Object?> get props => [tripStops, travelMode];
 }

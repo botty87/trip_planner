@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/db/day_trips_collection_ref.dart';
@@ -36,7 +37,7 @@ abstract class DayTripsDataSource {
   Stream<DayTrip> listenDayTrip(String tripId, String dayTripId);
 
   updateTripStopsDirectionsUpToDate(
-      {required String tripId, required String dayTripId, required bool isUpToDate});
+      {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode});
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -149,10 +150,11 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
 
   @override
   updateTripStopsDirectionsUpToDate(
-      {required String tripId, required String dayTripId, required bool isUpToDate}) async {
+      {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode}) async {
     performSync(() async {
       await _dayTripsCollection(tripId).doc(dayTripId).update({
         'tripStopsDirectionsUpToDate': isUpToDate,
+        if (travelMode != null) 'travelMode': travelMode.toJson(),
       });
     });
   }

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
 import '../../../day_trips/domain/entities/trip_stops_directions.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
@@ -13,5 +14,5 @@ abstract class GooglePlacesRepository {
       {required String placeId, required String token});
 
   Future<Either<GooglePlacesFailure, List<TripStopsDirections>>> fetchTripStopsDirections(
-      List<TripStop> tripStops);
+      List<TripStop> tripStops, TravelMode travelMode);
 }
