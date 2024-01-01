@@ -10,6 +10,7 @@ import 'package:trip_planner/features/day_trips/domain/usecases/delete_day_trip.
 import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
@@ -32,6 +33,7 @@ import 'day_trip_cubit_test.mocks.dart';
   MockSpec<TripStopDone>(),
   MockSpec<ListenDayTrip>(),
   MockSpec<FirebaseCrashlytics>(),
+  MockSpec<UpdateTripStopsDirectionsUpToDate>()
 ])
 void main() {
   late MockUpdateDayTrip mockUpdateDayTrip;
@@ -43,6 +45,7 @@ void main() {
   late MockTripStopDone mockTripStopDone;
   late MockListenDayTrip mockListenDayTrip;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
+  late MockUpdateTripStopsDirectionsUpToDate mockUpdateTripStopsDirectionsUpToDate;
 
   final tTrip = Trip(
     id: '1',
@@ -88,6 +91,7 @@ void main() {
     mockTripStopDone = MockTripStopDone();
     mockListenDayTrip = MockListenDayTrip();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
+    mockUpdateTripStopsDirectionsUpToDate = MockUpdateTripStopsDirectionsUpToDate();
   });
 
   DayTripCubit getStandardDayTripCubit() {
@@ -103,6 +107,7 @@ void main() {
       tripStopDone: mockTripStopDone,
       listenDayTrip: mockListenDayTrip,
       crashlytics: mockFirebaseCrashlytics,
+      updateTripStopsDirectionsUpToDate: mockUpdateTripStopsDirectionsUpToDate,
     );
   }
 
@@ -188,7 +193,8 @@ void main() {
           when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(forced: true), true),
       expect: () => [
-        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: true, hasStartTimeToSave: true),
+        DayTripState.normal(
+            trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: true, hasStartTimeToSave: true),
         DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, explictitStartTimeSave: false),
       ],
       build: () => getStandardDayTripCubit(),
@@ -312,14 +318,50 @@ void main() {
     );
   });
 
-  blocTest<DayTripCubit, DayTripState>(
-    'On reorderTripStops call updateTripStopsIndexes with new tripStops order',
-    seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
-    act: (cubit) => cubit.reorderTripStops(0, 1),
-    expect: () => [],
-    verify: (_) => verify(mockUpdateTripStopsIndexes.call(any)).called(1),
-    build: () => getStandardDayTripCubit(),
-  );
+  group('reorderTripStops', () {
+    blocTest<DayTripCubit, DayTripState>(
+      'On reorderTripStops call updateTripStopsIndexes with new tripStops order',
+      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      setUp: () {
+        when(mockUpdateTripStopsIndexes.call(any)).thenAnswer((_) async => const Right(null));
+        when(mockUpdateTripStopsDirectionsUpToDate.call(any))
+            .thenAnswer((_) async => const Right(null));
+      },
+      act: (cubit) => cubit.reorderTripStops(0, 1),
+      expect: () => [],
+      verify: (_) {
+        verify(mockUpdateTripStopsIndexes.call(any)).called(1);
+        verify(mockUpdateTripStopsDirectionsUpToDate.call(any)).called(1);
+      },
+      build: () => getStandardDayTripCubit(),
+    );
+
+    blocTest<DayTripCubit, DayTripState>(
+      'On reorderTripStops emit DayTripStateError and then DayTripStateNormal if updateTripStopsIndexes fails',
+      seed: () => DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      setUp: () {
+        when(mockUpdateTripStopsIndexes.call(any))
+            .thenAnswer((_) async => const Left(TripStopsFailure(message: 'error')));
+        when(mockUpdateTripStopsDirectionsUpToDate.call(any))
+            .thenAnswer((_) async => const Right(null));
+      },
+      act: (cubit) => cubit.reorderTripStops(0, 1),
+      expect: () => [
+        DayTripState.error(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          errorMessage: 'error',
+        ),
+        DayTripState.normal(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      ],
+      verify: (_) {
+        verify(mockUpdateTripStopsIndexes.call(any)).called(1);
+        verifyNever(mockUpdateTripStopsDirectionsUpToDate.call(any));
+      },
+      build: () => getStandardDayTripCubit(),
+    );
+  });
 
   group('listen tripStops', () {
     blocTest<DayTripCubit, DayTripState>(

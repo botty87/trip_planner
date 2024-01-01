@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/usecases/usecase.dart';
@@ -22,14 +23,17 @@ class SaveTripStopsDirections implements UseCase<void, SaveTripStopsDirectionsPa
   }
 }
 
-class SaveTripStopsDirectionsParams {
+class SaveTripStopsDirectionsParams extends Equatable{
   final String tripId;
   final String dayTripId;
   final List<TripStopsDirections> tripStopsDirections;
 
-  SaveTripStopsDirectionsParams({
+  const SaveTripStopsDirectionsParams({
     required this.tripId,
     required this.dayTripId,
     required this.tripStopsDirections,
   });
+
+  @override
+  List<Object?> get props => [tripId, dayTripId, tripStopsDirections];
 }

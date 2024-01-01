@@ -22,6 +22,8 @@ import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip.
     as _i6;
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_start_time.dart'
     as _i13;
+import 'package:trip_planner/features/day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart'
+    as _i21;
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
     as _i8;
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
@@ -582,4 +584,50 @@ class MockFirebaseCrashlytics extends _i1.Mock
         returnValue: _i7.Future<void>.value(),
         returnValueForMissingStub: _i7.Future<void>.value(),
       ) as _i7.Future<void>);
+}
+
+/// A class which mocks [UpdateTripStopsDirectionsUpToDate].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUpdateTripStopsDirectionsUpToDate extends _i1.Mock
+    implements _i21.UpdateTripStopsDirectionsUpToDate {
+  @override
+  _i2.DayTripsRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeDayTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeDayTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.DayTripsRepository);
+
+  @override
+  _i7.Future<_i3.Either<_i8.DayTripsFailure, void>> call(
+          _i21.UpdateTripStopsDirectionsUpToDateParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>.value(
+            _FakeEither_1<_i8.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>.value(
+                _FakeEither_1<_i8.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>);
 }

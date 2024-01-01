@@ -24,7 +24,7 @@ part 'trip_stops_map_state.dart';
 
 @injectable
 class TripStopsMapCubit extends Cubit<TripStopsMapState> {
-  final FetchTripStopsDirections _fetchPolylinePoints;
+  final FetchTripStopsDirections _fetchTripStopsDirections;
   final SaveTripStopsDirections _saveTripStopsDirections;
   final ListenDayTrip _listenDayTrip;
 
@@ -43,7 +43,7 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     required FirebaseCrashlytics crashlytics,
     @factoryParam required Trip trip,
     @factoryParam required DayTrip dayTrip,
-  })  : _fetchPolylinePoints = fetchPolylinePoints,
+  })  : _fetchTripStopsDirections = fetchPolylinePoints,
         _saveTripStopsDirections = saveTripStopsDirections,
         _crashlytics = crashlytics,
         _listenDayTrip = listenDayTrip,
@@ -78,11 +78,11 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     emit(state.copyWith(isLoading: true));
 
     final directionsOrFailure =
-        await _fetchPolylinePoints(FetchTripStopsDirectionsParams(tripStops: tripStops));
+        await _fetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tripStops));
 
     directionsOrFailure.fold(
       (failure) {
-        emit(state.copyWith(errorMessage: _getErrorMessage(failure)));
+        emit(state.copyWith(errorMessage: _getErrorMessage(failure), isLoading: false));
         emit(state.copyWith(errorMessage: null));
       },
       (directions) {
@@ -145,17 +145,17 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     emit(state.copyWith(isSelectedTab: isSelectedTab));
   }
 
-  @override
-  Future<void> close() {
-    _dayTripSubscription.cancel();
-    return super.close();
-  }
-
   showDirectionsChanged(bool value) {
     emit(state.copyWith(showDirections: value));
   }
 
   useDifferentColorsChanged(bool value) {
     emit(state.copyWith(useDifferentColors: value));
+  }
+
+  @override
+  Future<void> close() {
+    _dayTripSubscription.cancel();
+    return super.close();
   }
 }

@@ -1,0 +1,292 @@
+import 'package:bloc_test/bloc_test.dart';
+import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_logger/easy_logger.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
+import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trip.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/save_trip_stops_directions.dart';
+import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
+import 'package:trip_planner/features/day_trips/presentation/cubit/trip_stops_map/trip_stops_map_cubit.dart';
+import 'package:trip_planner/features/google_places/domain/usecases/fetch_polyline_points.dart';
+import 'package:trip_planner/features/google_places/errors/google_places_failure.dart';
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
+import 'package:trip_planner/features/trips/domain/entities/trip.dart';
+
+import 'trip_stops_map_cubit_test.mocks.dart';
+
+@GenerateNiceMocks([
+  MockSpec<FetchTripStopsDirections>(),
+  MockSpec<SaveTripStopsDirections>(),
+  MockSpec<ListenDayTrip>(),
+  MockSpec<FirebaseCrashlytics>(),
+])
+void main() {
+  late MockFetchTripStopsDirections mockFetchTripStopsDirections;
+  late MockSaveTripStopsDirections mockSaveTripStopsDirections;
+  late MockListenDayTrip mockListenDayTrip;
+  late MockFirebaseCrashlytics mockFirebaseCrashlytics;
+
+  final tTrip = Trip(
+    id: '1',
+    name: 'name',
+    description: 'description',
+    createdAt: DateTime.now(),
+    userId: '1',
+    startDate: DateTime.now(),
+  );
+
+  const tDayTrip = DayTrip(
+    id: '1',
+    description: 'description',
+    index: 0,
+  );
+
+  final tTripStops = [
+    const TripStop(
+      id: '1',
+      name: 'name',
+      description: 'description',
+      index: 0,
+      duration: 0,
+      location: LatLng(0.0, 0.0),
+    ),
+    const TripStop(
+      id: '2',
+      name: 'name',
+      description: 'description',
+      index: 1,
+      duration: 0,
+      location: LatLng(0.0, 0.0),
+    ),
+  ];
+
+  setUp(() {
+    mockFetchTripStopsDirections = MockFetchTripStopsDirections();
+    mockSaveTripStopsDirections = MockSaveTripStopsDirections();
+    mockListenDayTrip = MockListenDayTrip();
+    mockFirebaseCrashlytics = MockFirebaseCrashlytics();
+  });
+
+  setUpAll(() {
+    EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
+  });
+
+  TripStopsMapCubit getTripStopsMapCubit() {
+    return TripStopsMapCubit(
+      fetchPolylinePoints: mockFetchTripStopsDirections,
+      saveTripStopsDirections: mockSaveTripStopsDirections,
+      listenDayTrip: mockListenDayTrip,
+      crashlytics: mockFirebaseCrashlytics,
+      trip: tTrip,
+      dayTrip: tDayTrip,
+    );
+  }
+
+  blocTest(
+    'on init, should listen to day trip',
+    build: () => getTripStopsMapCubit(),
+    verify: (_) {
+      verify(mockListenDayTrip(ListenDayTripParams(tripId: tTrip.id, dayTripId: tDayTrip.id)));
+    },
+  );
+
+  blocTest(
+    'on changeMapType, should emit mapType',
+    seed: () => const TripStopsMapState.normal(dayTrip: tDayTrip, mapType: MapType.hybrid),
+    build: () => getTripStopsMapCubit(),
+    act: (cubit) => cubit.changeMapType(),
+    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, mapType: MapType.normal)],
+  );
+
+  blocTest(
+    'on clearTripStopsDirectionsErrors, should emit hasTripStopsDirectionsErrors = false',
+    seed: () =>
+        const TripStopsMapState.normal(dayTrip: tDayTrip, hasTripStopsDirectionsErrors: true),
+    build: () => getTripStopsMapCubit(),
+    act: (cubit) => cubit.clearTripStopsDirectionsErrors(),
+    expect: () => [
+      const TripStopsMapState.normal(dayTrip: tDayTrip, hasTripStopsDirectionsErrors: false),
+    ],
+  );
+
+  group('saveDirections', () {
+    blocTest(
+      'on success, should call saveTripStopsDirections and emit dayTrip with tripStopsDirectionsUpToDate = true',
+      setUp: () =>
+          when(mockSaveTripStopsDirections(any)).thenAnswer((_) async => const Right(null)),
+      build: () => getTripStopsMapCubit(),
+      act: (cubit) => cubit.saveDirections([]),
+      verify: (_) {
+        verify(mockSaveTripStopsDirections(SaveTripStopsDirectionsParams(
+          tripId: tTrip.id,
+          dayTripId: tDayTrip.id,
+          tripStopsDirections: const [],
+        )));
+      },
+      expect: () => [
+        TripStopsMapState.normal(
+          dayTrip: tDayTrip.copyWith(tripStopsDirectionsUpToDate: true),
+          isLoading: false,
+        ),
+      ],
+    );
+
+    blocTest(
+      'on failure, should emit errorMessage',
+      setUp: () => when(mockSaveTripStopsDirections(any))
+          .thenAnswer((_) async => const Left(DayTripsFailure(message: 'Server error'))),
+      build: () => getTripStopsMapCubit(),
+      act: (cubit) => cubit.saveDirections([]),
+      expect: () => const [
+        TripStopsMapState.normal(
+          dayTrip: tDayTrip,
+          isLoading: false,
+          errorMessage: 'Server error',
+        ),
+        TripStopsMapState.normal(
+          dayTrip: tDayTrip,
+          isLoading: false,
+          errorMessage: null,
+        ),
+      ],
+    );
+  });
+
+  blocTest(
+    'on setMapReady, should emit isMapReady = true',
+    build: () => getTripStopsMapCubit(),
+    act: (cubit) => cubit.setMapReady(),
+    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, isMapReady: true)],
+  );
+
+  blocTest(
+    'on updateMarkerLatLngBounds, should emit markerLatLngBounds',
+    build: () => getTripStopsMapCubit(),
+    act: (cubit) => cubit.updateMarkerLatLngBounds(
+        LatLngBounds(northeast: const LatLng(1, 1), southwest: const LatLng(0, 0))),
+    expect: () => [
+      TripStopsMapState.normal(
+        dayTrip: tDayTrip,
+        markerLatLngBounds:
+            LatLngBounds(northeast: const LatLng(1, 1), southwest: const LatLng(0, 0)),
+      ),
+    ],
+  );
+
+  blocTest(
+    'on selectTab, should emit isSelectedTab',
+    build: () => getTripStopsMapCubit(),
+    act: (cubit) => cubit.selectTab(true),
+    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, isSelectedTab: true)],
+  );
+  blocTest(
+    'on showDirectionsChanged, should emit showDirections',
+    build: () => getTripStopsMapCubit(),
+    act: (cubit) => cubit.showDirectionsChanged(true),
+    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, showDirections: true)],
+  );
+
+  blocTest(
+    'on useDifferentColorsChanged, should emit useDifferentColors',
+    build: () => getTripStopsMapCubit(),
+    act: (cubit) => cubit.useDifferentColorsChanged(true),
+    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, useDifferentColors: true)],
+  );
+
+  group('loadDirections', () {
+    blocTest(
+      'on success, should emit tripStopsDirections',
+      setUp: () {
+        when(mockFetchTripStopsDirections(any))
+            .thenAnswer((_) async => const Right(<TripStopsDirections>[]));
+        when(mockSaveTripStopsDirections(any)).thenAnswer((_) async => const Right(null));
+      },
+      build: () => getTripStopsMapCubit(),
+      act: (cubit) => cubit.loadDirections(tTripStops),
+      verify: (_) => verify(
+          mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tTripStops))),
+      expect: () => [
+        const TripStopsMapState.normal(isLoading: true, dayTrip: tDayTrip),
+        TripStopsMapState.normal(
+          dayTrip: tDayTrip.copyWith(tripStopsDirections: []),
+          isLoading: true,
+        ),
+        TripStopsMapState.normal(
+          dayTrip: tDayTrip.copyWith(tripStopsDirectionsUpToDate: true, tripStopsDirections: []),
+          isLoading: false,
+        ),
+      ],
+    );
+
+    blocTest(
+      'on failure, should emit errorMessage',
+      setUp: () {
+        when(mockFetchTripStopsDirections(any)).thenAnswer(
+            (_) async => const Left(GooglePlacesFailure.unknownError(message: 'error')));
+      },
+      build: () => getTripStopsMapCubit(),
+      act: (cubit) => cubit.loadDirections(tTripStops),
+      expect: () => const [
+        TripStopsMapState.normal(isLoading: true, dayTrip: tDayTrip),
+        TripStopsMapState.normal(
+          dayTrip: tDayTrip,
+          isLoading: false,
+          errorMessage: 'unknownError error',
+        ),
+        TripStopsMapState.normal(
+          dayTrip: tDayTrip,
+          isLoading: false,
+          errorMessage: null,
+        ),
+      ],
+      verify: (_) {
+        verify(mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tTripStops)))
+            .called(1);
+        verifyNever(mockSaveTripStopsDirections(any));
+      },
+    );
+
+    blocTest(
+      'if tripStops length < 2, should not call fetchTripStopsDirections',
+      build: () => getTripStopsMapCubit(),
+      act: (cubit) => cubit.loadDirections([]),
+      verify: (_) {
+        verifyNever(mockFetchTripStopsDirections(any));
+        verifyNever(mockSaveTripStopsDirections(any));
+      },
+      expect: () => [],
+    );
+
+    blocTest(
+      'if isLoading, should not call fetchTripStopsDirections',
+      build: () => getTripStopsMapCubit(),
+      seed: () => const TripStopsMapState.normal(isLoading: true, dayTrip: tDayTrip),
+      act: (cubit) => cubit.loadDirections(tTripStops),
+      verify: (_) {
+        verifyNever(mockFetchTripStopsDirections(any));
+        verifyNever(mockSaveTripStopsDirections(any));
+      },
+      expect: () => [],
+    );
+
+    blocTest(
+      'if tripStopsDirectionsUpToDate, should not call fetchTripStopsDirections',
+      build: () => getTripStopsMapCubit(),
+      seed: () => TripStopsMapState.normal(
+        dayTrip: tDayTrip.copyWith(tripStopsDirectionsUpToDate: true),
+      ),
+      act: (cubit) => cubit.loadDirections(tTripStops),
+      verify: (_) {
+        verifyNever(mockFetchTripStopsDirections(any));
+        verifyNever(mockSaveTripStopsDirections(any));
+      },
+      expect: () => [],
+    );
+  });
+}

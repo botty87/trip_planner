@@ -27,7 +27,7 @@ void main() {
         .thenAnswer((_) => Stream.value(const Right(dayTrip)));
 
     // Act
-    final result = usecase.call(ListenDayTripParams(tripId: tripId, dayTripId: dayTripId));
+    final result = usecase.call(const ListenDayTripParams(tripId: tripId, dayTripId: dayTripId));
 
     // Assert
     expect(result, emits(const Right(dayTrip)));
@@ -39,7 +39,7 @@ void main() {
         .thenAnswer((_) => Stream.value(const Left(DayTripsFailure())));
 
     // Act
-    final result = usecase.call(ListenDayTripParams(tripId: tripId, dayTripId: dayTripId));
+    final result = usecase.call(const ListenDayTripParams(tripId: tripId, dayTripId: dayTripId));
 
     // Assert
     expect(result, emits(const Left(DayTripsFailure())));
