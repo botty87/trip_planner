@@ -34,102 +34,98 @@ class MapWidget extends HookWidget {
     return BlocProvider<MapCubit>(
       create: (context) => getIt(),
       child: StreamBuilder<LatLng?>(
-          stream: locationStream,
-          initialData: initialLocation,
-          builder: (context, snapshot) {
-            mapLocation.value = snapshot.data;
+        stream: locationStream,
+        initialData: initialLocation,
+        builder: (context, snapshot) {
+          mapLocation.value = snapshot.data;
 
-            final Marker? marker = mapLocation.value != null
-                ? Marker(
-                    markerId: const MarkerId('tripStop'),
-                    position: mapLocation.value!,
-                    draggable: onMarkerDragEnd != null,
-                    onDragEnd: (markerLocation) {
-                      onMarkerDragEnd?.call(markerLocation);
-                      googleMapController.value
-                          ?.animateCamera(CameraUpdate.newLatLngZoom(markerLocation, 15));
-                      mapLocation.value = markerLocation;
-                    })
-                : null;
+          final Marker? marker = mapLocation.value != null
+              ? Marker(
+                  markerId: const MarkerId('tripStop'),
+                  position: mapLocation.value!,
+                  draggable: onMarkerDragEnd != null,
+                  onDragEnd: (markerLocation) {
+                    onMarkerDragEnd?.call(markerLocation);
+                    googleMapController.value
+                        ?.animateCamera(CameraUpdate.newLatLngZoom(markerLocation, 15));
+                    mapLocation.value = markerLocation;
+                  })
+              : null;
 
-            if (mapLocation.value != null && googleMapController.value != null) {
-              googleMapController.value!
-                  .animateCamera(CameraUpdate.newLatLngZoom(mapLocation.value!, 15));
-            }
+          if (mapLocation.value != null && googleMapController.value != null) {
+            googleMapController.value!
+                .animateCamera(CameraUpdate.newLatLngZoom(mapLocation.value!, 15));
+          }
 
-            return BlocSelector<MapCubit, MapState, bool>(
-              selector: (state) {
-                return state.isMapReady;
-              },
-              builder: (context, isMapReady) {
-                return Stack(
-                  children: [
-                    Visibility(
-                      visible: !isMapReady,
-                      child: const Center(child: CircularProgressIndicator.adaptive()),
+          return BlocSelector<MapCubit, MapState, bool>(
+            selector: (state) {
+              return state.isMapReady || kIsWeb;
+            },
+            builder: (context, isMapReady) {
+              return Stack(
+                children: [
+                  Visibility(
+                    visible: !isMapReady,
+                    child: const Center(child: CircularProgressIndicator.adaptive()),
+                  ),
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isMapReady ? 1 : 0,
+                    child: Stack(
+                      children: [
+                        BlocSelector<MapCubit, MapState, MapType>(
+                          selector: (state) {
+                            return state.mapType;
+                          },
+                          builder: (context, mapType) {
+                            return GoogleMap(
+                              mapType: mapType,
+                              initialCameraPosition: mapLocation.value != null
+                                  ? CameraPosition(
+                                      target: mapLocation.value!,
+                                      zoom: 15,
+                                    )
+                                  : _worldPosition,
+                              onMapCreated: (controller) {
+                                googleMapController.value = controller;
+                                context.read<MapCubit>().mapCreated();
+                                if (mapLocation.value != null) {
+                                  controller.animateCamera(
+                                      CameraUpdate.newLatLngZoom(mapLocation.value!, 15));
+                                }
+                              },
+                              gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                                Factory<OneSequenceGestureRecognizer>(
+                                    () => EagerGestureRecognizer()),
+                              },
+                              myLocationButtonEnabled: false,
+                              zoomControlsEnabled: false,
+                              markers: marker != null ? {marker} : {},
+                            );
+                          },
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: _zoomControls(googleMapController),
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: _mapTypeChanger(),
+                        ),
+                        if (mapLocation.value != null)
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: _markerFinder(mapLocation, googleMapController),
+                          ),
+                      ],
                     ),
-                    AnimatedOpacity(
-                      duration: const Duration(milliseconds: 500),
-                      opacity: isMapReady ? 1 : 0,
-                      child: Stack(
-                        children: [
-                          BlocSelector<MapCubit, MapState, MapType>(
-                            selector: (state) {
-                              return state.mapType;
-                            },
-                            builder: (context, mapType) {
-                              return GoogleMap(
-                                mapType: mapType,
-                                initialCameraPosition: mapLocation.value != null
-                                    ? CameraPosition(
-                                        target: mapLocation.value!,
-                                        zoom: 15,
-                                      )
-                                    : _worldPosition,
-                                onMapCreated: (controller) {
-                                  googleMapController.value = controller;
-                                  context.read<MapCubit>().mapCreated();
-                                  if (mapLocation.value != null) {
-                                    controller.animateCamera(
-                                        CameraUpdate.newLatLngZoom(mapLocation.value!, 15));
-                                  }
-                                },
-                                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-                                  Factory<OneSequenceGestureRecognizer>(
-                                      () => EagerGestureRecognizer()),
-                                },
-                                myLocationButtonEnabled: false,
-                                zoomControlsEnabled: false,
-                                markers: marker != null ? {marker} : {},
-                              );
-                            },
-                          ),
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: _zoomControls(googleMapController),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: _mapTypeChanger(),
-                          ),
-                          if (mapLocation.value != null)
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: _markerFinder(mapLocation, googleMapController),
-                            ),
-                        ],
-                      ),
-                    )
-                  ],
-                );
-              },
-            );
-          })
-      /* SizedBox(
-        height: MediaQuery.of(context).size.height * 0.4,
-        child: ,
-      ) */
-      ,
+                  )
+                ],
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
