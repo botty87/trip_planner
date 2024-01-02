@@ -119,5 +119,18 @@
     "privacyPolicy" : "Privacy policy",
     "termsOfUse": "Termini di utilizzo",
     "developedBy" : "Trip Planner è sviluppato da",
-    "forInformationAndTroubleshooting" : "Per informazioni e segnalazioni scrivi a"
+    "forInformationAndTroubleshooting" : "Per informazioni e segnalazioni scrivi a",
+    "list" : "Lista",
+    "map" : "Mappa",
+    "showDirections" : "Mostra indicazioni",
+    "useDifferentColors" : "Usa colori diversi",
+    "car" : "Auto",
+    "walk" : "A piedi",
+    "bike" : "Bici",
+    "publicTransport" : "Mezzi pubblici",
+    "tripStopsDirectionsError" : "Per alcune tappe di viaggio non è stato possibile calcolare le indicazioni stradali.",
+    "walking": "Piedi",
+    "bicycling": "Bici",
+    "driving": "Auto",
+    "transit": "Mezzi"
 }

@@ -44,7 +44,7 @@ class _MapViewWidget extends HookWidget {
         ),
       ],
       child: BlocSelector<TripStopsMapCubit, TripStopsMapState, bool>(
-        selector: (state) => state.isMapReady,
+        selector: (state) => state.isMapReady || kIsWeb,
         builder: (context, isMapReady) {
           return Stack(
             children: [

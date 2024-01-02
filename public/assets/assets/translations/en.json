@@ -118,5 +118,18 @@
     "privacyPolicy" : "Privacy Policy",
     "termsOfUse" : "Terms of Use",
     "developedBy" : "Trip Planner is developed by",
-    "forInformationAndTroubleshooting" : "For information and troubleshooting write to"
+    "forInformationAndTroubleshooting" : "For information and troubleshooting write to",
+    "list" : "List",
+    "map" : "Map",
+    "showDirections" : "Show directions",
+    "useDifferentColors" : "Use different colors",
+    "car" : "Car",
+    "walk" : "Walk",
+    "bike" : "Bike",
+    "publicTransport" : "Public transport",
+    "tripStopsDirectionsError" : "For some travel stages it was not possible to calculate driving directions.",
+    "walking" : "Walk",
+    "bicycling" : "Bike",
+    "driving" : "Car",
+    "transit" : "Transit"
 }
