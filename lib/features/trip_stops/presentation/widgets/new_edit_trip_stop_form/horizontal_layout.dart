@@ -20,7 +20,6 @@ class _HorizontalLayout extends HookWidget {
   final Widget saveSection;
 
   const _HorizontalLayout({
-    super.key,
     required this.isSaving,
     required this.hourDuration,
     required this.minuteDuration,

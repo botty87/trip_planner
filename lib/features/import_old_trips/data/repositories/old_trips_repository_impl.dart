@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
-import 'package:quiver/src/collection/multimap.dart';
+import 'package:quiver/collection.dart';
 
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/old_trip.dart';

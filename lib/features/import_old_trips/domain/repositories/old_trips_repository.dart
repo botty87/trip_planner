@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:quiver/src/collection/multimap.dart';
+import 'package:quiver/collection.dart';
 
 import '../../../trips/domain/entities/trip.dart';
 import '../../errors/import_old_trips_failure.dart';

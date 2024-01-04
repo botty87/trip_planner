@@ -1,7 +1,7 @@
 part of '../pages/settings_page.dart';
 
 class _SettingsBody extends StatelessWidget {
-  const _SettingsBody({super.key});
+  const _SettingsBody();
 
   @override
   Widget build(BuildContext context) {
