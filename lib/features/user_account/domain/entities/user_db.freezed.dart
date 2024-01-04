@@ -23,6 +23,7 @@ mixin _$UserDB {
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get oldTripsImported => throw _privateConstructorUsedError;
+  Settings get settings => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,10 @@ abstract class $UserDBCopyWith<$Res> {
   factory $UserDBCopyWith(UserDB value, $Res Function(UserDB) then) =
       _$UserDBCopyWithImpl<$Res, UserDB>;
   @useResult
-  $Res call({String email, String name, bool oldTripsImported});
+  $Res call(
+      {String email, String name, bool oldTripsImported, Settings settings});
+
+  $SettingsCopyWith<$Res> get settings;
 }
 
 /// @nodoc
@@ -53,6 +57,7 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
     Object? email = null,
     Object? name = null,
     Object? oldTripsImported = null,
+    Object? settings = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -67,7 +72,19 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
           ? _value.oldTripsImported
           : oldTripsImported // ignore: cast_nullable_to_non_nullable
               as bool,
+      settings: null == settings
+          ? _value.settings
+          : settings // ignore: cast_nullable_to_non_nullable
+              as Settings,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SettingsCopyWith<$Res> get settings {
+    return $SettingsCopyWith<$Res>(_value.settings, (value) {
+      return _then(_value.copyWith(settings: value) as $Val);
+    });
   }
 }
 
@@ -78,7 +95,11 @@ abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
       __$$UserDBImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String name, bool oldTripsImported});
+  $Res call(
+      {String email, String name, bool oldTripsImported, Settings settings});
+
+  @override
+  $SettingsCopyWith<$Res> get settings;
 }
 
 /// @nodoc
@@ -95,6 +116,7 @@ class __$$UserDBImplCopyWithImpl<$Res>
     Object? email = null,
     Object? name = null,
     Object? oldTripsImported = null,
+    Object? settings = null,
   }) {
     return _then(_$UserDBImpl(
       email: null == email
@@ -109,6 +131,10 @@ class __$$UserDBImplCopyWithImpl<$Res>
           ? _value.oldTripsImported
           : oldTripsImported // ignore: cast_nullable_to_non_nullable
               as bool,
+      settings: null == settings
+          ? _value.settings
+          : settings // ignore: cast_nullable_to_non_nullable
+              as Settings,
     ));
   }
 }
@@ -117,7 +143,10 @@ class __$$UserDBImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserDBImpl implements _UserDB {
   _$UserDBImpl(
-      {required this.email, required this.name, this.oldTripsImported = false});
+      {required this.email,
+      required this.name,
+      this.oldTripsImported = false,
+      this.settings = const Settings()});
 
   factory _$UserDBImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDBImplFromJson(json);
@@ -129,10 +158,13 @@ class _$UserDBImpl implements _UserDB {
   @override
   @JsonKey()
   final bool oldTripsImported;
+  @override
+  @JsonKey()
+  final Settings settings;
 
   @override
   String toString() {
-    return 'UserDB(email: $email, name: $name, oldTripsImported: $oldTripsImported)';
+    return 'UserDB(email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings)';
   }
 
   @override
@@ -143,12 +175,15 @@ class _$UserDBImpl implements _UserDB {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.oldTripsImported, oldTripsImported) ||
-                other.oldTripsImported == oldTripsImported));
+                other.oldTripsImported == oldTripsImported) &&
+            (identical(other.settings, settings) ||
+                other.settings == settings));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email, name, oldTripsImported);
+  int get hashCode =>
+      Object.hash(runtimeType, email, name, oldTripsImported, settings);
 
   @JsonKey(ignore: true)
   @override
@@ -168,7 +203,8 @@ abstract class _UserDB implements UserDB {
   factory _UserDB(
       {required final String email,
       required final String name,
-      final bool oldTripsImported}) = _$UserDBImpl;
+      final bool oldTripsImported,
+      final Settings settings}) = _$UserDBImpl;
 
   factory _UserDB.fromJson(Map<String, dynamic> json) = _$UserDBImpl.fromJson;
 
@@ -178,6 +214,8 @@ abstract class _UserDB implements UserDB {
   String get name;
   @override
   bool get oldTripsImported;
+  @override
+  Settings get settings;
   @override
   @JsonKey(ignore: true)
   _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>

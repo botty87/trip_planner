@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:trip_planner/features/settings/domain/entities/settings.dart';
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart';
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
@@ -21,6 +22,9 @@ void main() {
     email: '',
     name: '',
   );
+
+  //Settings for the test
+  const Settings tSettings = Settings();
 
   setUp(() {
     mockUserDataSource = MockUserDataSource();
@@ -282,6 +286,34 @@ void main() {
       // assert
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.deleteUser());
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+  });
+
+  group('saveSettings', () {
+    test('should save settings on data source', () async {
+      // arrange
+      when(mockUserDataSource.saveSettings(tSettings)).thenAnswer((_) async => null);
+
+      // act
+      final result = await userRepositoryImpl.saveSettings(tSettings);
+
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.saveSettings(tSettings)).called(1);
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when there is an exception on data source', () async {
+      // arrange
+      when(mockUserDataSource.saveSettings(tSettings)).thenAnswer((realInvocation) => throw Exception());
+
+      // act
+      final result = await userRepositoryImpl.saveSettings(tSettings);
+
+      // assert
+      expect(result, left(const UserFailures.unknownError()));
+      verify(mockUserDataSource.saveSettings(tSettings)).called(1);
       verifyNoMoreInteractions(mockUserDataSource);
     });
   });

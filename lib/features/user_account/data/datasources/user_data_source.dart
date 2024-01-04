@@ -1,10 +1,12 @@
 import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' hide Settings;
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth_pack;
 import 'package:injectable/injectable.dart';
+
 import '../../../../core/db/users_collection_ref.dart';
 import '../../../../core/di/di.dart';
+import '../../../settings/domain/entities/settings.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/user_db.dart';
 
@@ -23,6 +25,8 @@ abstract interface class UserDataSource {
 
   updateUserDetails({String? name, String? email, String? password});
 
+  saveSettings(Settings settings);
+
   deleteUser();
 }
 
@@ -38,8 +42,10 @@ final class UserDataSourceImpl implements UserDataSource {
 
   late final _usersCollection = getIt<UsersCollectionRef>().withConverter;
 
+  StreamSubscription? _userStreamSubscription;
+
   UserDataSourceImpl(this.firebaseAuth, this.firebaseFirestore) {
-    Future<UserDB> saveUserIfNotExistsInDB(firebase_auth_pack.User firebaseUser) async {
+    saveUserIfNotExistsInDB(firebase_auth_pack.User firebaseUser) async {
       final userDoc = _usersCollection.doc(firebaseUser.uid);
       var userDocSnapshot = await userDoc.get();
       if (!userDocSnapshot.exists) {
@@ -49,19 +55,25 @@ final class UserDataSourceImpl implements UserDataSource {
         ));
         userDocSnapshot = await userDoc.get();
       }
-      return userDocSnapshot.data()!;
     }
 
     firebaseAuth.userChanges().listen((user) async {
+      await _userStreamSubscription?.cancel();
+      _userStreamSubscription = null;
       if (user != null) {
-        final userDB = await saveUserIfNotExistsInDB(user);
-        
-        _userStreamController.add(User(
-          id: user.uid,
-          email: user.email!,
-          name: user.displayName!,
-          oldTripsImported: userDB.oldTripsImported,
-        ));
+        await saveUserIfNotExistsInDB(user);
+
+        _userStreamSubscription =
+            _usersCollection.doc(user.uid).snapshots().listen((userDocSnapshot) {
+          final userDB = userDocSnapshot.data()!;
+          _userStreamController.add(User(
+            id: user.uid,
+            email: user.email!,
+            name: user.displayName!,
+            oldTripsImported: userDB.oldTripsImported,
+            settings: userDB.settings,
+          ));
+        });
       } else {
         _userStreamController.add(null);
       }
@@ -96,7 +108,8 @@ final class UserDataSourceImpl implements UserDataSource {
 
   @override
   reauthenticateUser({required String email, required String password}) async {
-    final credential = firebase_auth_pack.EmailAuthProvider.credential(email: email, password: password);
+    final credential =
+        firebase_auth_pack.EmailAuthProvider.credential(email: email, password: password);
     await firebaseAuth.currentUser!.reauthenticateWithCredential(credential);
   }
 
@@ -125,5 +138,12 @@ final class UserDataSourceImpl implements UserDataSource {
   deleteUser() async {
     await _usersCollection.doc(firebaseAuth.currentUser!.uid).delete();
     await firebaseAuth.currentUser!.delete();
+  }
+
+  @override
+  saveSettings(Settings settings) async {
+    await _usersCollection
+        .doc(firebaseAuth.currentUser!.uid)
+        .update({'settings': settings.toJson()});
   }
 }

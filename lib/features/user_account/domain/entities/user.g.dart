@@ -11,6 +11,9 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       email: json['email'] as String,
       name: json['name'] as String,
       oldTripsImported: json['oldTripsImported'] as bool? ?? true,
+      settings: json['settings'] == null
+          ? const Settings()
+          : Settings.fromJson(json['settings'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -19,4 +22,5 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'email': instance.email,
       'name': instance.name,
       'oldTripsImported': instance.oldTripsImported,
+      'settings': instance.settings,
     };

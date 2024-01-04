@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const double pageHorizontalPadding = 16.0;
+const double pageHorizontalPadding = 12.0;
 const double pageVerticalPadding = 20.0;
 const double verticalSpaceXs = 4.0;
 const double verticalSpaceS = 8.0;
@@ -22,3 +22,4 @@ const tripsRef = 'trips';
 const usersRef = 'users';
 const dayTripsRef = 'dayTrips';
 const tripStopsRef = 'tripStops';
+const settingsRef = 'settings';

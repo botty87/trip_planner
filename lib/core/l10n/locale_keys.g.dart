@@ -131,5 +131,11 @@ abstract class  LocaleKeys {
   static const bicycling = 'bicycling';
   static const driving = 'driving';
   static const transit = 'transit';
+  static const settings = 'settings';
+  static const dayTrip = 'dayTrip';
+  static const tripStopsList = 'tripStopsList';
+  static const tripStopsMap = 'tripStopsMap';
+  static const defaultDayTripStartTimeHHMM = 'defaultDayTripStartTimeHHMM';
+  static const useDifferentDirectionsColors = 'useDifferentDirectionsColors';
 
 }

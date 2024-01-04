@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../settings/domain/entities/settings.dart';
 import '../../errors/user_failures.dart';
 import '../entities/user.dart';
 
@@ -22,4 +23,6 @@ abstract interface class UserRepository {
       {required String? name, required String? email, required String? password});
 
   Future<Either<UserFailures, void>> deleteUser();
+
+  Future<Either<UserFailures, void>> saveSettings(Settings settings);
 }

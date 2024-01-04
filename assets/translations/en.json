@@ -131,5 +131,12 @@
     "walking" : "Walk",
     "bicycling" : "Bike",
     "driving" : "Car",
-    "transit" : "Transit"
+    "transit" : "Transit",
+    "settings" : "Settings",
+    "dayTrip" : "Day of trip",
+    "tripStopsList" : "Trip stops list",
+    "tripStopsMap" : "Trip stops map",
+    "defaultDayTripStartTimeHHMM" : "Default day of trip start time (HH:MM)",
+    "useDifferentDirectionsColors" : "Use different colors for directions"
+    
 }

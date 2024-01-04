@@ -132,5 +132,11 @@
     "walking": "Piedi",
     "bicycling": "Bici",
     "driving": "Auto",
-    "transit": "Mezzi"
+    "transit": "Mezzi",
+    "settings": "Impostazioni",
+    "dayTrip": "Giornata di viaggio",
+    "tripStopsList": "Lista tappe di viaggio",
+    "tripStopsMap": "Mappa tappe di viaggio",
+    "defaultDayTripStartTimeHHMM": "Ora di inizio predefinita (HH:MM)",
+    "useDifferentDirectionsColors" : "Usa colori diversi per le indicazioni"
 }

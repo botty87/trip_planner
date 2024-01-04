@@ -8,12 +8,12 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i13;
-import 'package:flutter/foundation.dart' as _i18;
-import 'package:flutter/material.dart' as _i14;
+import 'package:auto_route/auto_route.dart' as _i14;
+import 'package:flutter/foundation.dart' as _i15;
+import 'package:flutter/material.dart' as _i18;
 import 'package:trip_planner/core/home_page.dart' as _i3;
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
-    as _i16;
+    as _i17;
 import 'package:trip_planner/features/day_trips/presentation/pages/day_trip_page.dart'
     as _i2;
 import 'package:trip_planner/features/day_trips/presentation/pages/new_day_trip_page.dart'
@@ -22,40 +22,42 @@ import 'package:trip_planner/features/import_old_trips/presentation/pages/import
     as _i4;
 import 'package:trip_planner/features/info_contacts/presentation/pages/info_contacts_page.dart'
     as _i5;
+import 'package:trip_planner/features/settings/presentation/pages/settings_page.dart'
+    as _i10;
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i19;
+    as _i20;
 import 'package:trip_planner/features/trip_stops/presentation/pages/new_trip_stop_page.dart'
     as _i9;
 import 'package:trip_planner/features/trip_stops/presentation/pages/trip_stop_page.dart'
-    as _i11;
-import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i15;
+    as _i12;
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i16;
 import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart'
     as _i8;
 import 'package:trip_planner/features/trips/presentation/pages/trip_page.dart'
-    as _i10;
+    as _i11;
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
-    as _i12;
+    as _i13;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
-    as _i17;
+    as _i19;
 import 'package:trip_planner/features/user_account/presentation/pages/account_page.dart'
     as _i1;
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart'
     as _i6;
 
-abstract class $AppRouter extends _i13.RootStackRouter {
+abstract class $AppRouter extends _i14.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i13.PageFactory> pagesMap = {
+  final Map<String, _i14.PageFactory> pagesMap = {
     AccountRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AccountPage(),
       );
     },
     DayTripRoute.name: (routeData) {
       final args = routeData.argsAs<DayTripRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i2.DayTripPage(
           key: args.key,
@@ -65,14 +67,14 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     HomeRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.HomePage(),
       );
     },
     ImportOldTripsRoute.name: (routeData) {
       final args = routeData.argsAs<ImportOldTripsRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i4.ImportOldTripsPage(
           key: args.key,
@@ -81,13 +83,13 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     InfoContactsRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.InfoContactsPage(),
       );
     },
     LoginSignupRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i6.LoginSignupPage(),
       );
@@ -97,7 +99,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       final args = routeData.argsAs<NewDayTripRouteArgs>(
           orElse: () =>
               NewDayTripRouteArgs(tripId: pathParams.getString('tripId')));
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i7.NewDayTripPage(
           key: args.key,
@@ -106,14 +108,14 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     NewTripRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i8.NewTripPage(),
       );
     },
     NewTripStopRoute.name: (routeData) {
       final args = routeData.argsAs<NewTripStopRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i9.NewTripStopPage(
           key: args.key,
@@ -122,11 +124,17 @@ abstract class $AppRouter extends _i13.RootStackRouter {
         ),
       );
     },
+    SettingsRoute.name: (routeData) {
+      return _i14.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i10.SettingsPage(),
+      );
+    },
     TripRoute.name: (routeData) {
       final args = routeData.argsAs<TripRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.TripPage(
+        child: _i11.TripPage(
           args.trip,
           key: args.key,
         ),
@@ -134,9 +142,9 @@ abstract class $AppRouter extends _i13.RootStackRouter {
     },
     TripStopRoute.name: (routeData) {
       final args = routeData.argsAs<TripStopRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i11.TripStopPage(
+        child: _i12.TripStopPage(
           key: args.key,
           trip: args.trip,
           dayTrip: args.dayTrip,
@@ -145,9 +153,9 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     TripsRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i12.TripsPage(),
+        child: const _i13.TripsPage(),
       );
     },
   };
@@ -155,8 +163,8 @@ abstract class $AppRouter extends _i13.RootStackRouter {
 
 /// generated route for
 /// [_i1.AccountPage]
-class AccountRoute extends _i13.PageRouteInfo<void> {
-  const AccountRoute({List<_i13.PageRouteInfo>? children})
+class AccountRoute extends _i14.PageRouteInfo<void> {
+  const AccountRoute({List<_i14.PageRouteInfo>? children})
       : super(
           AccountRoute.name,
           initialChildren: children,
@@ -164,17 +172,17 @@ class AccountRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'AccountRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.DayTripPage]
-class DayTripRoute extends _i13.PageRouteInfo<DayTripRouteArgs> {
+class DayTripRoute extends _i14.PageRouteInfo<DayTripRouteArgs> {
   DayTripRoute({
-    _i14.Key? key,
-    required _i15.Trip trip,
-    required _i16.DayTrip dayTrip,
-    List<_i13.PageRouteInfo>? children,
+    _i15.Key? key,
+    required _i16.Trip trip,
+    required _i17.DayTrip dayTrip,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           DayTripRoute.name,
           args: DayTripRouteArgs(
@@ -187,8 +195,8 @@ class DayTripRoute extends _i13.PageRouteInfo<DayTripRouteArgs> {
 
   static const String name = 'DayTripRoute';
 
-  static const _i13.PageInfo<DayTripRouteArgs> page =
-      _i13.PageInfo<DayTripRouteArgs>(name);
+  static const _i14.PageInfo<DayTripRouteArgs> page =
+      _i14.PageInfo<DayTripRouteArgs>(name);
 }
 
 class DayTripRouteArgs {
@@ -198,11 +206,11 @@ class DayTripRouteArgs {
     required this.dayTrip,
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
-  final _i15.Trip trip;
+  final _i16.Trip trip;
 
-  final _i16.DayTrip dayTrip;
+  final _i17.DayTrip dayTrip;
 
   @override
   String toString() {
@@ -212,8 +220,8 @@ class DayTripRouteArgs {
 
 /// generated route for
 /// [_i3.HomePage]
-class HomeRoute extends _i13.PageRouteInfo<void> {
-  const HomeRoute({List<_i13.PageRouteInfo>? children})
+class HomeRoute extends _i14.PageRouteInfo<void> {
+  const HomeRoute({List<_i14.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -221,16 +229,16 @@ class HomeRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.ImportOldTripsPage]
-class ImportOldTripsRoute extends _i13.PageRouteInfo<ImportOldTripsRouteArgs> {
+class ImportOldTripsRoute extends _i14.PageRouteInfo<ImportOldTripsRouteArgs> {
   ImportOldTripsRoute({
-    _i14.Key? key,
-    required _i17.User user,
-    List<_i13.PageRouteInfo>? children,
+    _i18.Key? key,
+    required _i19.User user,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           ImportOldTripsRoute.name,
           args: ImportOldTripsRouteArgs(
@@ -242,8 +250,8 @@ class ImportOldTripsRoute extends _i13.PageRouteInfo<ImportOldTripsRouteArgs> {
 
   static const String name = 'ImportOldTripsRoute';
 
-  static const _i13.PageInfo<ImportOldTripsRouteArgs> page =
-      _i13.PageInfo<ImportOldTripsRouteArgs>(name);
+  static const _i14.PageInfo<ImportOldTripsRouteArgs> page =
+      _i14.PageInfo<ImportOldTripsRouteArgs>(name);
 }
 
 class ImportOldTripsRouteArgs {
@@ -252,9 +260,9 @@ class ImportOldTripsRouteArgs {
     required this.user,
   });
 
-  final _i14.Key? key;
+  final _i18.Key? key;
 
-  final _i17.User user;
+  final _i19.User user;
 
   @override
   String toString() {
@@ -264,8 +272,8 @@ class ImportOldTripsRouteArgs {
 
 /// generated route for
 /// [_i5.InfoContactsPage]
-class InfoContactsRoute extends _i13.PageRouteInfo<void> {
-  const InfoContactsRoute({List<_i13.PageRouteInfo>? children})
+class InfoContactsRoute extends _i14.PageRouteInfo<void> {
+  const InfoContactsRoute({List<_i14.PageRouteInfo>? children})
       : super(
           InfoContactsRoute.name,
           initialChildren: children,
@@ -273,13 +281,13 @@ class InfoContactsRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'InfoContactsRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i6.LoginSignupPage]
-class LoginSignupRoute extends _i13.PageRouteInfo<void> {
-  const LoginSignupRoute({List<_i13.PageRouteInfo>? children})
+class LoginSignupRoute extends _i14.PageRouteInfo<void> {
+  const LoginSignupRoute({List<_i14.PageRouteInfo>? children})
       : super(
           LoginSignupRoute.name,
           initialChildren: children,
@@ -287,16 +295,16 @@ class LoginSignupRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'LoginSignupRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i7.NewDayTripPage]
-class NewDayTripRoute extends _i13.PageRouteInfo<NewDayTripRouteArgs> {
+class NewDayTripRoute extends _i14.PageRouteInfo<NewDayTripRouteArgs> {
   NewDayTripRoute({
-    _i14.Key? key,
+    _i18.Key? key,
     required String tripId,
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           NewDayTripRoute.name,
           args: NewDayTripRouteArgs(
@@ -309,8 +317,8 @@ class NewDayTripRoute extends _i13.PageRouteInfo<NewDayTripRouteArgs> {
 
   static const String name = 'NewDayTripRoute';
 
-  static const _i13.PageInfo<NewDayTripRouteArgs> page =
-      _i13.PageInfo<NewDayTripRouteArgs>(name);
+  static const _i14.PageInfo<NewDayTripRouteArgs> page =
+      _i14.PageInfo<NewDayTripRouteArgs>(name);
 }
 
 class NewDayTripRouteArgs {
@@ -319,7 +327,7 @@ class NewDayTripRouteArgs {
     required this.tripId,
   });
 
-  final _i14.Key? key;
+  final _i18.Key? key;
 
   final String tripId;
 
@@ -331,8 +339,8 @@ class NewDayTripRouteArgs {
 
 /// generated route for
 /// [_i8.NewTripPage]
-class NewTripRoute extends _i13.PageRouteInfo<void> {
-  const NewTripRoute({List<_i13.PageRouteInfo>? children})
+class NewTripRoute extends _i14.PageRouteInfo<void> {
+  const NewTripRoute({List<_i14.PageRouteInfo>? children})
       : super(
           NewTripRoute.name,
           initialChildren: children,
@@ -340,17 +348,17 @@ class NewTripRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'NewTripRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i9.NewTripStopPage]
-class NewTripStopRoute extends _i13.PageRouteInfo<NewTripStopRouteArgs> {
+class NewTripStopRoute extends _i14.PageRouteInfo<NewTripStopRouteArgs> {
   NewTripStopRoute({
-    _i14.Key? key,
+    _i18.Key? key,
     required String trip,
     required String dayTrip,
-    List<_i13.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           NewTripStopRoute.name,
           args: NewTripStopRouteArgs(
@@ -363,8 +371,8 @@ class NewTripStopRoute extends _i13.PageRouteInfo<NewTripStopRouteArgs> {
 
   static const String name = 'NewTripStopRoute';
 
-  static const _i13.PageInfo<NewTripStopRouteArgs> page =
-      _i13.PageInfo<NewTripStopRouteArgs>(name);
+  static const _i14.PageInfo<NewTripStopRouteArgs> page =
+      _i14.PageInfo<NewTripStopRouteArgs>(name);
 }
 
 class NewTripStopRouteArgs {
@@ -374,7 +382,7 @@ class NewTripStopRouteArgs {
     required this.dayTrip,
   });
 
-  final _i14.Key? key;
+  final _i18.Key? key;
 
   final String trip;
 
@@ -387,12 +395,26 @@ class NewTripStopRouteArgs {
 }
 
 /// generated route for
-/// [_i10.TripPage]
-class TripRoute extends _i13.PageRouteInfo<TripRouteArgs> {
+/// [_i10.SettingsPage]
+class SettingsRoute extends _i14.PageRouteInfo<void> {
+  const SettingsRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsRoute';
+
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i11.TripPage]
+class TripRoute extends _i14.PageRouteInfo<TripRouteArgs> {
   TripRoute({
-    required _i15.Trip trip,
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
+    required _i16.Trip trip,
+    _i18.Key? key,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           TripRoute.name,
           args: TripRouteArgs(
@@ -404,8 +426,8 @@ class TripRoute extends _i13.PageRouteInfo<TripRouteArgs> {
 
   static const String name = 'TripRoute';
 
-  static const _i13.PageInfo<TripRouteArgs> page =
-      _i13.PageInfo<TripRouteArgs>(name);
+  static const _i14.PageInfo<TripRouteArgs> page =
+      _i14.PageInfo<TripRouteArgs>(name);
 }
 
 class TripRouteArgs {
@@ -414,9 +436,9 @@ class TripRouteArgs {
     this.key,
   });
 
-  final _i15.Trip trip;
+  final _i16.Trip trip;
 
-  final _i14.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -425,14 +447,14 @@ class TripRouteArgs {
 }
 
 /// generated route for
-/// [_i11.TripStopPage]
-class TripStopRoute extends _i13.PageRouteInfo<TripStopRouteArgs> {
+/// [_i12.TripStopPage]
+class TripStopRoute extends _i14.PageRouteInfo<TripStopRouteArgs> {
   TripStopRoute({
-    _i18.Key? key,
-    required _i15.Trip trip,
-    required _i16.DayTrip dayTrip,
-    required _i19.TripStop tripStop,
-    List<_i13.PageRouteInfo>? children,
+    _i15.Key? key,
+    required _i16.Trip trip,
+    required _i17.DayTrip dayTrip,
+    required _i20.TripStop tripStop,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           TripStopRoute.name,
           args: TripStopRouteArgs(
@@ -446,8 +468,8 @@ class TripStopRoute extends _i13.PageRouteInfo<TripStopRouteArgs> {
 
   static const String name = 'TripStopRoute';
 
-  static const _i13.PageInfo<TripStopRouteArgs> page =
-      _i13.PageInfo<TripStopRouteArgs>(name);
+  static const _i14.PageInfo<TripStopRouteArgs> page =
+      _i14.PageInfo<TripStopRouteArgs>(name);
 }
 
 class TripStopRouteArgs {
@@ -458,13 +480,13 @@ class TripStopRouteArgs {
     required this.tripStop,
   });
 
-  final _i18.Key? key;
+  final _i15.Key? key;
 
-  final _i15.Trip trip;
+  final _i16.Trip trip;
 
-  final _i16.DayTrip dayTrip;
+  final _i17.DayTrip dayTrip;
 
-  final _i19.TripStop tripStop;
+  final _i20.TripStop tripStop;
 
   @override
   String toString() {
@@ -473,9 +495,9 @@ class TripStopRouteArgs {
 }
 
 /// generated route for
-/// [_i12.TripsPage]
-class TripsRoute extends _i13.PageRouteInfo<void> {
-  const TripsRoute({List<_i13.PageRouteInfo>? children})
+/// [_i13.TripsPage]
+class TripsRoute extends _i14.PageRouteInfo<void> {
+  const TripsRoute({List<_i14.PageRouteInfo>? children})
       : super(
           TripsRoute.name,
           initialChildren: children,
@@ -483,5 +505,5 @@ class TripsRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'TripsRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }

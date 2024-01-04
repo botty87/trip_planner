@@ -7,6 +7,8 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:trip_planner/features/settings/domain/entities/settings.dart'
+    as _i7;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
     as _i6;
 import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
@@ -301,6 +303,33 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           Invocation.method(
             #deleteUser,
             [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> saveSettings(
+          _i7.Settings? settings) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveSettings,
+          [settings],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #saveSettings,
+            [settings],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #saveSettings,
+            [settings],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);

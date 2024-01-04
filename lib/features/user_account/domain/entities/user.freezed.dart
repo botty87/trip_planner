@@ -24,6 +24,7 @@ mixin _$User {
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get oldTripsImported => throw _privateConstructorUsedError;
+  Settings get settings => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,14 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String id, String email, String name, bool oldTripsImported});
+  $Res call(
+      {String id,
+      String email,
+      String name,
+      bool oldTripsImported,
+      Settings settings});
+
+  $SettingsCopyWith<$Res> get settings;
 }
 
 /// @nodoc
@@ -55,6 +63,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? email = null,
     Object? name = null,
     Object? oldTripsImported = null,
+    Object? settings = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,7 +82,19 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.oldTripsImported
           : oldTripsImported // ignore: cast_nullable_to_non_nullable
               as bool,
+      settings: null == settings
+          ? _value.settings
+          : settings // ignore: cast_nullable_to_non_nullable
+              as Settings,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SettingsCopyWith<$Res> get settings {
+    return $SettingsCopyWith<$Res>(_value.settings, (value) {
+      return _then(_value.copyWith(settings: value) as $Val);
+    });
   }
 }
 
@@ -84,7 +105,15 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String email, String name, bool oldTripsImported});
+  $Res call(
+      {String id,
+      String email,
+      String name,
+      bool oldTripsImported,
+      Settings settings});
+
+  @override
+  $SettingsCopyWith<$Res> get settings;
 }
 
 /// @nodoc
@@ -101,6 +130,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? email = null,
     Object? name = null,
     Object? oldTripsImported = null,
+    Object? settings = null,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -119,6 +149,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.oldTripsImported
           : oldTripsImported // ignore: cast_nullable_to_non_nullable
               as bool,
+      settings: null == settings
+          ? _value.settings
+          : settings // ignore: cast_nullable_to_non_nullable
+              as Settings,
     ));
   }
 }
@@ -130,7 +164,8 @@ class _$UserImpl implements _User {
       {required this.id,
       required this.email,
       required this.name,
-      this.oldTripsImported = true});
+      this.oldTripsImported = true,
+      this.settings = const Settings()});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -144,10 +179,13 @@ class _$UserImpl implements _User {
   @override
   @JsonKey()
   final bool oldTripsImported;
+  @override
+  @JsonKey()
+  final Settings settings;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported)';
+    return 'User(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings)';
   }
 
   @override
@@ -159,13 +197,15 @@ class _$UserImpl implements _User {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.oldTripsImported, oldTripsImported) ||
-                other.oldTripsImported == oldTripsImported));
+                other.oldTripsImported == oldTripsImported) &&
+            (identical(other.settings, settings) ||
+                other.settings == settings));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, email, name, oldTripsImported);
+      Object.hash(runtimeType, id, email, name, oldTripsImported, settings);
 
   @JsonKey(ignore: true)
   @override
@@ -186,7 +226,8 @@ abstract class _User implements User {
       {required final String id,
       required final String email,
       required final String name,
-      final bool oldTripsImported}) = _$UserImpl;
+      final bool oldTripsImported,
+      final Settings settings}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -198,6 +239,8 @@ abstract class _User implements User {
   String get name;
   @override
   bool get oldTripsImported;
+  @override
+  Settings get settings;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

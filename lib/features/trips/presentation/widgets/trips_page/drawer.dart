@@ -26,7 +26,12 @@ class _Drawer extends StatelessWidget {
                     icon: Icons.account_circle_rounded,
                     onTap: () => context.pushRoute(const AccountRoute()),
                   ),
-                  const SizedBox(height: verticalSpace),
+                  const SizedBox(height: verticalSpaceS),
+                  _DrawerTile(
+                    label: LocaleKeys.settings.tr(),
+                    icon: Icons.settings,
+                    onTap: () => context.pushRoute(const SettingsRoute()),
+                  ),
                 ]),
               ),
             ),

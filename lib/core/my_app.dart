@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../features/settings/presentation/cubit/settings_cubit.dart';
 import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';
 import 'routes/app_router.dart';
@@ -17,8 +18,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<UserCubit>.value(
-      value: getIt(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<UserCubit>.value(
+          value: getIt(),
+        ),
+        BlocProvider<SettingsCubit>.value(
+          value: getIt(),
+        ),
+      ],
       child: BlocListener<UserCubit, UserState>(
         listenWhen: (previous, current) {
           //Avoid to change route if user is already logged in
