@@ -6,7 +6,7 @@ class _DayTripSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         _SettingsSectionHeader(title: LocaleKeys.dayTrip.tr()),
         const SizedBox(height: verticalSpaceS),
