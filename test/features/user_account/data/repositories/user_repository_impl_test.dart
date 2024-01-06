@@ -17,7 +17,7 @@ void main() {
   late UserRepositoryImpl userRepositoryImpl;
 
   //User for the test
-  final User tUser = User(
+  const User tUser = User(
     id: '123',
     email: '',
     name: '',

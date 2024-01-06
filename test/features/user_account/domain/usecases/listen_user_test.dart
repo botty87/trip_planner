@@ -13,7 +13,7 @@ void main() {
   late MockUserRepository mockUserRepository;
 
   //User for the test
-  final User tUser = User(
+  const User tUser = User(
     id: '123',
     email: '',
     name: '',
@@ -26,13 +26,13 @@ void main() {
 
   test('should listen user from the repository', () async {
     // arrange
-    when(mockUserRepository.listenUser()).thenAnswer((_) => Stream.value(Right(tUser)));
+    when(mockUserRepository.listenUser()).thenAnswer((_) => Stream.value(const Right(tUser)));
 
     // act
     final result = usecase(const NoParams());
 
     // assert
-    expect(result, emits(Right(tUser)));
+    expect(result, emits(const Right(tUser)));
     verify(mockUserRepository.listenUser());
     verifyNoMoreInteractions(mockUserRepository);
   });

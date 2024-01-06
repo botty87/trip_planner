@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../../core/di/di.dart';
 import '../../../../../core/usecases/usecase.dart';
 
 import '../../../domain/entities/user.dart';
@@ -29,4 +30,13 @@ class UserCubit extends Cubit<UserState> {
       );
     });
   }
+}
+
+@module
+abstract class UserModule {
+  @injectable
+  User get user => getIt<UserCubit>().state.maybeMap(
+        loggedIn: (value) => value.user,
+        orElse: () => throw Exception('User is not logged in'),
+      );
 }

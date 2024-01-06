@@ -7,9 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../user_account/domain/entities/user.dart';
 import '../../../domain/usecases/listen_trips.dart';
 import '../../../errors/trips_failure.dart';
-import '../../../../user_account/presentation/cubit/user/user_cubit.dart';
 
 import '../../../domain/entities/trip.dart';
 
@@ -19,15 +19,19 @@ part 'trips_state.dart';
 @injectable
 class TripsCubit extends Cubit<TripsState> {
   final ListenTrips _listenTrips;
-  final UserCubit _userCubit;
   final FirebaseCrashlytics _crashlytics;
 
   late final StreamSubscription<Either<TripsFailure, List<Trip>>> _tripsSubscription;
 
-  TripsCubit(this._listenTrips, this._userCubit, this._crashlytics) : super(const TripsState()) {
-    final userState = _userCubit.state as UserStateLoggedIn;
-    _tripsSubscription =
-        _listenTrips(ListenTripsParams(userId: userState.user.id)).listen((result) {
+  TripsCubit({
+    required ListenTrips listenTrips,
+    required FirebaseCrashlytics crashlytics,
+    required User user,
+  })  : _listenTrips = listenTrips,
+        _crashlytics = crashlytics,
+        super(const TripsState()) {
+    
+    _tripsSubscription = _listenTrips(ListenTripsParams(userId: user.id)).listen((result) {
       result.fold(
         (failure) {
           emit(TripsState(errorMessage: LocaleKeys.dataLoadError.tr(), isLoading: false));

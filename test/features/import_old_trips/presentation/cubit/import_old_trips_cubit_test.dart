@@ -27,7 +27,7 @@ void main() {
 
   setUpAll(() => EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug]);
 
-  final tUser = User(
+  const tUser = User(
     id: '1',
     email: 'email',
     name: 'name',

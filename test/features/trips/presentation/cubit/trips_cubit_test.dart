@@ -43,11 +43,15 @@ void main() {
       when(mockListenTrips.call(any)).thenAnswer((_) => Stream.value(right(trips)));
       whenListen(
         mockUserCubit,
-        Stream.fromIterable([UserStateLoggedIn(user: User(id: '1', email: '', name: ''))]),
-        initialState: UserStateLoggedIn(user: User(id: '1', email: '', name: '')),
+        Stream.fromIterable([const UserStateLoggedIn(user: User(id: '1', email: '', name: ''))]),
+        initialState: const UserStateLoggedIn(user: User(id: '1', email: '', name: '')),
       );
     },
-    build: () => TripsCubit(mockListenTrips, mockUserCubit, mockFirebaseCrashlytics),
+    build: () => TripsCubit(
+      listenTrips: mockListenTrips,
+      crashlytics: mockFirebaseCrashlytics,
+      user: const User(id: '1', email: '', name: ''),
+    ),
     act: (cubit) => cubit,
     expect: () => [TripsState(trips: trips, isLoading: false)],
   );

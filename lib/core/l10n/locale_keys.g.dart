@@ -140,5 +140,8 @@ abstract class  LocaleKeys {
   static const tripPrivacy = 'tripPrivacy';
   static const public = 'public';
   static const private = 'private';
+  static const discoverNewTrips = 'discoverNewTrips';
+  static const searchTrip = 'searchTrip';
+  static const searchIntoDescription = 'searchIntoDescription';
 
 }

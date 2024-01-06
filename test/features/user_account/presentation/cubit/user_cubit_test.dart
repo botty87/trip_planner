@@ -14,7 +14,7 @@ void main() {
   late MockListenUser mockListenUser;
 
   //User for the test
-  final User tUser = User(
+  const User tUser = User(
     id: '123',
     email: '',
     name: '',
@@ -39,6 +39,6 @@ void main() {
       when(mockListenUser(any)).thenAnswer((_) => Stream.value(right(tUser)));
     },
     build: () => UserCubit(listenUserState: mockListenUser),
-    expect: () => <UserState>[UserState.loggedIn(user: tUser)],
+    expect: () => <UserState>[const UserState.loggedIn(user: tUser)],
   );
 }

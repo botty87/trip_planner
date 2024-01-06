@@ -141,5 +141,8 @@
     "useDifferentDirectionsColors" : "Usa colori diversi per le indicazioni",
     "tripPrivacy": "Questo viaggio è:",
     "public": "Pubblico",
-    "private": "Privato"
+    "private": "Privato",
+    "discoverNewTrips" : "Scopri nuovi viaggi",
+    "searchTrip" : "Cerca viaggio",
+    "searchIntoDescription" : "Cerca nella descrizione"
 }

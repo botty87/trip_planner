@@ -43,14 +43,14 @@ void main() {
         expect: () => [const NewTripState.normal(tripDescription: 'test')]);
 
     group('Create trip tests', () {
-      final tUser = User(id: '1', email: '', name: '');
+      const tUser = User(id: '1', email: '', name: '');
       final tStartDate = DateTime.now();
 
       setUp(() {
         whenListen(
           mockUserTrip,
-          Stream.fromIterable([UserStateLoggedIn(user: tUser)]),
-          initialState: UserStateLoggedIn(user: tUser),
+          Stream.fromIterable([const UserStateLoggedIn(user: tUser)]),
+          initialState: const UserStateLoggedIn(user: tUser),
         );
       });
 

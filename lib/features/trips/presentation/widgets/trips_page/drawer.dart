@@ -32,6 +32,12 @@ class _Drawer extends StatelessWidget {
                     icon: Icons.settings,
                     onTap: () => context.pushRoute(const SettingsRoute()),
                   ),
+                  const Divider(),
+                  _DrawerTile(
+                    label: LocaleKeys.discoverNewTrips.tr(),
+                    icon: Icons.explore,
+                    onTap: () => context.pushRoute(const DiscoverNewTripsRoute()),
+                  ),
                 ]),
               ),
             ),

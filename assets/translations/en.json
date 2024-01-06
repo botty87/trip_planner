@@ -140,6 +140,9 @@
     "useDifferentDirectionsColors" : "Use different colors for directions",
     "tripPrivacy" : "This trip is:",
     "public" : "Public",
-    "private" : "Private"
+    "private" : "Private",
+    "discoverNewTrips" : "Discover new trips",
+    "searchTrip" : "Search trip",
+    "searchIntoDescription" : "Search into description"
     
 }
