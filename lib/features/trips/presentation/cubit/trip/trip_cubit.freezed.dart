@@ -25,8 +25,14 @@ mixin _$TripState {
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleting,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleted,
@@ -38,8 +44,14 @@ mixin _$TripState {
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -51,8 +63,14 @@ mixin _$TripState {
     TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -235,8 +253,14 @@ class _$TripStateNormalImpl implements TripStateNormal {
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleting,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleted,
@@ -251,8 +275,14 @@ class _$TripStateNormalImpl implements TripStateNormal {
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -267,8 +297,14 @@ class _$TripStateNormalImpl implements TripStateNormal {
     TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -431,8 +467,14 @@ class _$TripStateLoadingImpl implements TripStateLoading {
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleting,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleted,
@@ -447,8 +489,14 @@ class _$TripStateLoadingImpl implements TripStateLoading {
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -463,8 +511,14 @@ class _$TripStateLoadingImpl implements TripStateLoading {
     TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -639,8 +693,14 @@ class _$TripStateErrorImpl implements TripStateError {
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleting,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleted,
@@ -655,8 +715,14 @@ class _$TripStateErrorImpl implements TripStateError {
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -671,8 +737,14 @@ class _$TripStateErrorImpl implements TripStateError {
     TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -759,6 +831,7 @@ abstract class _$$TripStateEditingImplCopyWith<$Res>
       String name,
       String? description,
       DateTime startDate,
+      bool isPublic,
       bool isSaving});
 
   @override
@@ -781,6 +854,7 @@ class __$$TripStateEditingImplCopyWithImpl<$Res>
     Object? name = null,
     Object? description = freezed,
     Object? startDate = null,
+    Object? isPublic = null,
     Object? isSaving = null,
   }) {
     return _then(_$TripStateEditingImpl(
@@ -804,6 +878,10 @@ class __$$TripStateEditingImplCopyWithImpl<$Res>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
@@ -821,6 +899,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
       required this.name,
       required this.description,
       required this.startDate,
+      required this.isPublic,
       this.isSaving = false})
       : _dayTrips = dayTrips;
 
@@ -842,12 +921,14 @@ class _$TripStateEditingImpl implements TripStateEditing {
   @override
   final DateTime startDate;
   @override
+  final bool isPublic;
+  @override
   @JsonKey()
   final bool isSaving;
 
   @override
   String toString() {
-    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isSaving: $isSaving)';
+    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isPublic: $isPublic, isSaving: $isSaving)';
   }
 
   @override
@@ -862,6 +943,8 @@ class _$TripStateEditingImpl implements TripStateEditing {
                 other.description == description) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic) &&
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving));
   }
@@ -874,6 +957,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
       name,
       description,
       startDate,
+      isPublic,
       isSaving);
 
   @JsonKey(ignore: true)
@@ -891,13 +975,20 @@ class _$TripStateEditingImpl implements TripStateEditing {
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleting,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleted,
   }) {
-    return editing(trip, dayTrips, name, description, startDate, isSaving);
+    return editing(
+        trip, dayTrips, name, description, startDate, isPublic, isSaving);
   }
 
   @override
@@ -907,14 +998,20 @@ class _$TripStateEditingImpl implements TripStateEditing {
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleted,
   }) {
     return editing?.call(
-        trip, dayTrips, name, description, startDate, isSaving);
+        trip, dayTrips, name, description, startDate, isPublic, isSaving);
   }
 
   @override
@@ -924,15 +1021,22 @@ class _$TripStateEditingImpl implements TripStateEditing {
     TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleted,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(trip, dayTrips, name, description, startDate, isSaving);
+      return editing(
+          trip, dayTrips, name, description, startDate, isPublic, isSaving);
     }
     return orElse();
   }
@@ -988,6 +1092,7 @@ abstract class TripStateEditing implements TripState {
       required final String name,
       required final String? description,
       required final DateTime startDate,
+      required final bool isPublic,
       final bool isSaving}) = _$TripStateEditingImpl;
 
   @override
@@ -997,6 +1102,7 @@ abstract class TripStateEditing implements TripState {
   String get name;
   String? get description;
   DateTime get startDate;
+  bool get isPublic;
   bool get isSaving;
   @override
   @JsonKey(ignore: true)
@@ -1096,8 +1202,14 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleting,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleted,
@@ -1112,8 +1224,14 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -1128,8 +1246,14 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
     TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -1292,8 +1416,14 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
     required TResult Function(
             Trip trip, List<DayTrip> dayTrips, String errorMessage)
         error,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)
+    required TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)
         editing,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleting,
     required TResult Function(Trip trip, List<DayTrip> dayTrips) deleted,
@@ -1308,8 +1438,14 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult? Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult? Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult? Function(Trip trip, List<DayTrip> dayTrips)? deleted,
@@ -1324,8 +1460,14 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
     TResult Function(Trip trip, List<DayTrip> dayTrips)? loading,
     TResult Function(Trip trip, List<DayTrip> dayTrips, String errorMessage)?
         error,
-    TResult Function(Trip trip, List<DayTrip> dayTrips, String name,
-            String? description, DateTime startDate, bool isSaving)?
+    TResult Function(
+            Trip trip,
+            List<DayTrip> dayTrips,
+            String name,
+            String? description,
+            DateTime startDate,
+            bool isPublic,
+            bool isSaving)?
         editing,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleting,
     TResult Function(Trip trip, List<DayTrip> dayTrips)? deleted,

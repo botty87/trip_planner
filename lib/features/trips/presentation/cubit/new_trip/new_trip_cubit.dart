@@ -2,9 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../../domain/usecases/create_trip.dart';
 import '../../../../user_account/presentation/cubit/user/user_cubit.dart';
+import '../../../domain/usecases/create_trip.dart';
 
 part 'new_trip_cubit.freezed.dart';
 part 'new_trip_state.dart';
@@ -45,7 +46,8 @@ class NewTripCubit extends Cubit<NewTripState> {
         tripName: state.tripName,
         tripDescription: state.tripDescription,
         startDate: state.startDate,
-        isStartDateBeforeToday: state.isStartDateBeforeToday));
+        isStartDateBeforeToday: state.isStartDateBeforeToday,
+        isPublic: state.isPublic));
 
     assert(_userCubit.state is UserStateLoggedIn);
     final userId = (_userCubit.state as UserStateLoggedIn).user.id;
@@ -54,6 +56,7 @@ class NewTripCubit extends Cubit<NewTripState> {
       tripName: state.tripName!,
       tripDescription: state.tripDescription,
       startDate: state.startDate!,
+      isPublic: state.isPublic,
     ));
 
     result.fold(
@@ -76,11 +79,17 @@ class NewTripCubit extends Cubit<NewTripState> {
         tripDescription: state.tripDescription,
         startDate: state.startDate,
         isStartDateBeforeToday: state.isStartDateBeforeToday,
+        isPublic: state.isPublic,
         errorMessage: errorMessage));
     emit(NewTripState.normal(
         tripName: state.tripName,
         tripDescription: state.tripDescription,
         isStartDateBeforeToday: state.isStartDateBeforeToday,
+        isPublic: state.isPublic,
         startDate: state.startDate));
+  }
+
+  void isPublicChanged(bool selected) {
+    emit(state.copyWith(isPublic: selected));
   }
 }

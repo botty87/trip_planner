@@ -29,6 +29,7 @@ mixin _$Trip {
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   DateTime get startDate => throw _privateConstructorUsedError;
+  bool get isPublic => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +49,8 @@ abstract class $TripCopyWith<$Res> {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       DateTime createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      DateTime startDate});
+      DateTime startDate,
+      bool isPublic});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
     Object? userId = null,
     Object? createdAt = null,
     Object? startDate = null,
+    Object? isPublic = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -96,6 +99,10 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -115,7 +122,8 @@ abstract class _$$TripImplCopyWith<$Res> implements $TripCopyWith<$Res> {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       DateTime createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      DateTime startDate});
+      DateTime startDate,
+      bool isPublic});
 }
 
 /// @nodoc
@@ -134,6 +142,7 @@ class __$$TripImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? createdAt = null,
     Object? startDate = null,
+    Object? isPublic = null,
   }) {
     return _then(_$TripImpl(
       id: null == id
@@ -160,6 +169,10 @@ class __$$TripImplCopyWithImpl<$Res>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -175,7 +188,8 @@ class _$TripImpl implements _Trip {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       required this.createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      required this.startDate});
+      required this.startDate,
+      this.isPublic = false});
 
   factory _$TripImpl.fromJson(Map<String, dynamic> json) =>
       _$$TripImplFromJson(json);
@@ -195,10 +209,13 @@ class _$TripImpl implements _Trip {
   @override
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   final DateTime startDate;
+  @override
+  @JsonKey()
+  final bool isPublic;
 
   @override
   String toString() {
-    return 'Trip(id: $id, name: $name, description: $description, userId: $userId, createdAt: $createdAt, startDate: $startDate)';
+    return 'Trip(id: $id, name: $name, description: $description, userId: $userId, createdAt: $createdAt, startDate: $startDate, isPublic: $isPublic)';
   }
 
   @override
@@ -214,13 +231,15 @@ class _$TripImpl implements _Trip {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.startDate, startDate) ||
-                other.startDate == startDate));
+                other.startDate == startDate) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, description, userId, createdAt, startDate);
+  int get hashCode => Object.hash(runtimeType, id, name, description, userId,
+      createdAt, startDate, isPublic);
 
   @JsonKey(ignore: true)
   @override
@@ -245,7 +264,8 @@ abstract class _Trip implements Trip {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       required final DateTime createdAt,
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      required final DateTime startDate}) = _$TripImpl;
+      required final DateTime startDate,
+      final bool isPublic}) = _$TripImpl;
 
   factory _Trip.fromJson(Map<String, dynamic> json) = _$TripImpl.fromJson;
 
@@ -264,6 +284,8 @@ abstract class _Trip implements Trip {
   @override
   @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
   DateTime get startDate;
+  @override
+  bool get isPublic;
   @override
   @JsonKey(ignore: true)
   _$$TripImplCopyWith<_$TripImpl> get copyWith =>

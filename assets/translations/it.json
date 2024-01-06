@@ -138,5 +138,8 @@
     "tripStopsList": "Lista tappe di viaggio",
     "tripStopsMap": "Mappa tappe di viaggio",
     "defaultDayTripStartTimeHHMM": "Ora di inizio predefinita (HH:MM)",
-    "useDifferentDirectionsColors" : "Usa colori diversi per le indicazioni"
+    "useDifferentDirectionsColors" : "Usa colori diversi per le indicazioni",
+    "tripPrivacy": "Questo viaggio è:",
+    "public": "Pubblico",
+    "private": "Privato"
 }

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/usecases/usecase.dart';
@@ -21,22 +22,28 @@ class CreateTrip implements UseCase<void, CreateTripParams> {
         userId: params.userId,
         createdAt: params.createdAt,
         startDate: params.startDate,
+        isPublic: params.isPublic,
       ),
     );
   }
 }
 
-class CreateTripParams {
+class CreateTripParams extends Equatable {
   final String tripName;
   final String? tripDescription;
   final String userId;
   final DateTime createdAt = DateTime.now();
   final DateTime startDate;
+  final bool isPublic;
 
   CreateTripParams({
     required this.tripName,
     this.tripDescription,
     required this.userId,
     required this.startDate,
+    required this.isPublic,
   });
+
+  @override
+  List<Object?> get props => [tripName, tripDescription, userId, createdAt, startDate, isPublic];
 }

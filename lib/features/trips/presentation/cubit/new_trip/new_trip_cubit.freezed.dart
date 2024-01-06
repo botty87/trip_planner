@@ -20,22 +20,24 @@ mixin _$NewTripState {
   String? get tripDescription => throw _privateConstructorUsedError;
   DateTime? get startDate => throw _privateConstructorUsedError;
   bool get isStartDateBeforeToday => throw _privateConstructorUsedError;
+  bool get isPublic => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         normal,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         saving,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         created,
     required TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)
         error,
   }) =>
@@ -43,19 +45,20 @@ mixin _$NewTripState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult? Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
   }) =>
@@ -63,19 +66,20 @@ mixin _$NewTripState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
     required TResult orElse(),
@@ -122,7 +126,8 @@ abstract class $NewTripStateCopyWith<$Res> {
       {String? tripName,
       String? tripDescription,
       DateTime? startDate,
-      bool isStartDateBeforeToday});
+      bool isStartDateBeforeToday,
+      bool isPublic});
 }
 
 /// @nodoc
@@ -142,6 +147,7 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
     Object? tripDescription = freezed,
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
+    Object? isPublic = null,
   }) {
     return _then(_value.copyWith(
       tripName: freezed == tripName
@@ -160,6 +166,10 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
           ? _value.isStartDateBeforeToday
           : isStartDateBeforeToday // ignore: cast_nullable_to_non_nullable
               as bool,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -176,7 +186,8 @@ abstract class _$$NewTripStateNormalImplCopyWith<$Res>
       {String? tripName,
       String? tripDescription,
       DateTime? startDate,
-      bool isStartDateBeforeToday});
+      bool isStartDateBeforeToday,
+      bool isPublic});
 }
 
 /// @nodoc
@@ -194,6 +205,7 @@ class __$$NewTripStateNormalImplCopyWithImpl<$Res>
     Object? tripDescription = freezed,
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
+    Object? isPublic = null,
   }) {
     return _then(_$NewTripStateNormalImpl(
       tripName: freezed == tripName
@@ -212,6 +224,10 @@ class __$$NewTripStateNormalImplCopyWithImpl<$Res>
           ? _value.isStartDateBeforeToday
           : isStartDateBeforeToday // ignore: cast_nullable_to_non_nullable
               as bool,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -223,7 +239,8 @@ class _$NewTripStateNormalImpl implements NewTripStateNormal {
       {this.tripName,
       this.tripDescription,
       this.startDate,
-      this.isStartDateBeforeToday = false});
+      this.isStartDateBeforeToday = false,
+      this.isPublic = false});
 
   @override
   final String? tripName;
@@ -234,10 +251,13 @@ class _$NewTripStateNormalImpl implements NewTripStateNormal {
   @override
   @JsonKey()
   final bool isStartDateBeforeToday;
+  @override
+  @JsonKey()
+  final bool isPublic;
 
   @override
   String toString() {
-    return 'NewTripState.normal(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday)';
+    return 'NewTripState.normal(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday, isPublic: $isPublic)';
   }
 
   @override
@@ -252,12 +272,14 @@ class _$NewTripStateNormalImpl implements NewTripStateNormal {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.isStartDateBeforeToday, isStartDateBeforeToday) ||
-                other.isStartDateBeforeToday == isStartDateBeforeToday));
+                other.isStartDateBeforeToday == isStartDateBeforeToday) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, tripName, tripDescription,
-      startDate, isStartDateBeforeToday);
+      startDate, isStartDateBeforeToday, isPublic);
 
   @JsonKey(ignore: true)
   @override
@@ -270,73 +292,77 @@ class _$NewTripStateNormalImpl implements NewTripStateNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         normal,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         saving,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         created,
     required TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)
         error,
   }) {
-    return normal(tripName, tripDescription, startDate, isStartDateBeforeToday);
+    return normal(
+        tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult? Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
   }) {
     return normal?.call(
-        tripName, tripDescription, startDate, isStartDateBeforeToday);
+        tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(
-          tripName, tripDescription, startDate, isStartDateBeforeToday);
+      return normal(tripName, tripDescription, startDate,
+          isStartDateBeforeToday, isPublic);
     }
     return orElse();
   }
@@ -384,7 +410,8 @@ abstract class NewTripStateNormal implements NewTripState {
       {final String? tripName,
       final String? tripDescription,
       final DateTime? startDate,
-      final bool isStartDateBeforeToday}) = _$NewTripStateNormalImpl;
+      final bool isStartDateBeforeToday,
+      final bool isPublic}) = _$NewTripStateNormalImpl;
 
   @override
   String? get tripName;
@@ -394,6 +421,8 @@ abstract class NewTripStateNormal implements NewTripState {
   DateTime? get startDate;
   @override
   bool get isStartDateBeforeToday;
+  @override
+  bool get isPublic;
   @override
   @JsonKey(ignore: true)
   _$$NewTripStateNormalImplCopyWith<_$NewTripStateNormalImpl> get copyWith =>
@@ -412,7 +441,8 @@ abstract class _$$NewTripStateSavingImplCopyWith<$Res>
       {String? tripName,
       String? tripDescription,
       DateTime? startDate,
-      bool isStartDateBeforeToday});
+      bool isStartDateBeforeToday,
+      bool isPublic});
 }
 
 /// @nodoc
@@ -430,6 +460,7 @@ class __$$NewTripStateSavingImplCopyWithImpl<$Res>
     Object? tripDescription = freezed,
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
+    Object? isPublic = null,
   }) {
     return _then(_$NewTripStateSavingImpl(
       tripName: freezed == tripName
@@ -448,6 +479,10 @@ class __$$NewTripStateSavingImplCopyWithImpl<$Res>
           ? _value.isStartDateBeforeToday
           : isStartDateBeforeToday // ignore: cast_nullable_to_non_nullable
               as bool,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -459,7 +494,8 @@ class _$NewTripStateSavingImpl implements NewTripStateSaving {
       {required this.tripName,
       required this.tripDescription,
       required this.startDate,
-      this.isStartDateBeforeToday = false});
+      this.isStartDateBeforeToday = false,
+      this.isPublic = false});
 
   @override
   final String? tripName;
@@ -470,10 +506,13 @@ class _$NewTripStateSavingImpl implements NewTripStateSaving {
   @override
   @JsonKey()
   final bool isStartDateBeforeToday;
+  @override
+  @JsonKey()
+  final bool isPublic;
 
   @override
   String toString() {
-    return 'NewTripState.saving(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday)';
+    return 'NewTripState.saving(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday, isPublic: $isPublic)';
   }
 
   @override
@@ -488,12 +527,14 @@ class _$NewTripStateSavingImpl implements NewTripStateSaving {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.isStartDateBeforeToday, isStartDateBeforeToday) ||
-                other.isStartDateBeforeToday == isStartDateBeforeToday));
+                other.isStartDateBeforeToday == isStartDateBeforeToday) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, tripName, tripDescription,
-      startDate, isStartDateBeforeToday);
+      startDate, isStartDateBeforeToday, isPublic);
 
   @JsonKey(ignore: true)
   @override
@@ -506,73 +547,77 @@ class _$NewTripStateSavingImpl implements NewTripStateSaving {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         normal,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         saving,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         created,
     required TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)
         error,
   }) {
-    return saving(tripName, tripDescription, startDate, isStartDateBeforeToday);
+    return saving(
+        tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult? Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
   }) {
     return saving?.call(
-        tripName, tripDescription, startDate, isStartDateBeforeToday);
+        tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (saving != null) {
-      return saving(
-          tripName, tripDescription, startDate, isStartDateBeforeToday);
+      return saving(tripName, tripDescription, startDate,
+          isStartDateBeforeToday, isPublic);
     }
     return orElse();
   }
@@ -620,7 +665,8 @@ abstract class NewTripStateSaving implements NewTripState {
       {required final String? tripName,
       required final String? tripDescription,
       required final DateTime? startDate,
-      final bool isStartDateBeforeToday}) = _$NewTripStateSavingImpl;
+      final bool isStartDateBeforeToday,
+      final bool isPublic}) = _$NewTripStateSavingImpl;
 
   @override
   String? get tripName;
@@ -630,6 +676,8 @@ abstract class NewTripStateSaving implements NewTripState {
   DateTime? get startDate;
   @override
   bool get isStartDateBeforeToday;
+  @override
+  bool get isPublic;
   @override
   @JsonKey(ignore: true)
   _$$NewTripStateSavingImplCopyWith<_$NewTripStateSavingImpl> get copyWith =>
@@ -648,7 +696,8 @@ abstract class _$$NewTripStateCreatedImplCopyWith<$Res>
       {String? tripName,
       String? tripDescription,
       DateTime? startDate,
-      bool isStartDateBeforeToday});
+      bool isStartDateBeforeToday,
+      bool isPublic});
 }
 
 /// @nodoc
@@ -666,6 +715,7 @@ class __$$NewTripStateCreatedImplCopyWithImpl<$Res>
     Object? tripDescription = freezed,
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
+    Object? isPublic = null,
   }) {
     return _then(_$NewTripStateCreatedImpl(
       tripName: freezed == tripName
@@ -684,6 +734,10 @@ class __$$NewTripStateCreatedImplCopyWithImpl<$Res>
           ? _value.isStartDateBeforeToday
           : isStartDateBeforeToday // ignore: cast_nullable_to_non_nullable
               as bool,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -695,7 +749,8 @@ class _$NewTripStateCreatedImpl implements NewTripStateCreated {
       {this.tripName,
       this.tripDescription,
       this.startDate,
-      this.isStartDateBeforeToday = false});
+      this.isStartDateBeforeToday = false,
+      this.isPublic = false});
 
   @override
   final String? tripName;
@@ -706,10 +761,13 @@ class _$NewTripStateCreatedImpl implements NewTripStateCreated {
   @override
   @JsonKey()
   final bool isStartDateBeforeToday;
+  @override
+  @JsonKey()
+  final bool isPublic;
 
   @override
   String toString() {
-    return 'NewTripState.created(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday)';
+    return 'NewTripState.created(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday, isPublic: $isPublic)';
   }
 
   @override
@@ -724,12 +782,14 @@ class _$NewTripStateCreatedImpl implements NewTripStateCreated {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.isStartDateBeforeToday, isStartDateBeforeToday) ||
-                other.isStartDateBeforeToday == isStartDateBeforeToday));
+                other.isStartDateBeforeToday == isStartDateBeforeToday) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, tripName, tripDescription,
-      startDate, isStartDateBeforeToday);
+      startDate, isStartDateBeforeToday, isPublic);
 
   @JsonKey(ignore: true)
   @override
@@ -742,74 +802,77 @@ class _$NewTripStateCreatedImpl implements NewTripStateCreated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         normal,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         saving,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         created,
     required TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)
         error,
   }) {
     return created(
-        tripName, tripDescription, startDate, isStartDateBeforeToday);
+        tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult? Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
   }) {
     return created?.call(
-        tripName, tripDescription, startDate, isStartDateBeforeToday);
+        tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (created != null) {
-      return created(
-          tripName, tripDescription, startDate, isStartDateBeforeToday);
+      return created(tripName, tripDescription, startDate,
+          isStartDateBeforeToday, isPublic);
     }
     return orElse();
   }
@@ -857,7 +920,8 @@ abstract class NewTripStateCreated implements NewTripState {
       {final String? tripName,
       final String? tripDescription,
       final DateTime? startDate,
-      final bool isStartDateBeforeToday}) = _$NewTripStateCreatedImpl;
+      final bool isStartDateBeforeToday,
+      final bool isPublic}) = _$NewTripStateCreatedImpl;
 
   @override
   String? get tripName;
@@ -867,6 +931,8 @@ abstract class NewTripStateCreated implements NewTripState {
   DateTime? get startDate;
   @override
   bool get isStartDateBeforeToday;
+  @override
+  bool get isPublic;
   @override
   @JsonKey(ignore: true)
   _$$NewTripStateCreatedImplCopyWith<_$NewTripStateCreatedImpl> get copyWith =>
@@ -886,6 +952,7 @@ abstract class _$$NewTripStateErrorImplCopyWith<$Res>
       String? tripDescription,
       DateTime? startDate,
       bool isStartDateBeforeToday,
+      bool isPublic,
       String errorMessage});
 }
 
@@ -904,6 +971,7 @@ class __$$NewTripStateErrorImplCopyWithImpl<$Res>
     Object? tripDescription = freezed,
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
+    Object? isPublic = null,
     Object? errorMessage = null,
   }) {
     return _then(_$NewTripStateErrorImpl(
@@ -923,6 +991,10 @@ class __$$NewTripStateErrorImplCopyWithImpl<$Res>
           ? _value.isStartDateBeforeToday
           : isStartDateBeforeToday // ignore: cast_nullable_to_non_nullable
               as bool,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -939,6 +1011,7 @@ class _$NewTripStateErrorImpl implements NewTripStateError {
       required this.tripDescription,
       required this.startDate,
       this.isStartDateBeforeToday = false,
+      this.isPublic = false,
       required this.errorMessage});
 
   @override
@@ -951,11 +1024,14 @@ class _$NewTripStateErrorImpl implements NewTripStateError {
   @JsonKey()
   final bool isStartDateBeforeToday;
   @override
+  @JsonKey()
+  final bool isPublic;
+  @override
   final String errorMessage;
 
   @override
   String toString() {
-    return 'NewTripState.error(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday, errorMessage: $errorMessage)';
+    return 'NewTripState.error(tripName: $tripName, tripDescription: $tripDescription, startDate: $startDate, isStartDateBeforeToday: $isStartDateBeforeToday, isPublic: $isPublic, errorMessage: $errorMessage)';
   }
 
   @override
@@ -971,13 +1047,15 @@ class _$NewTripStateErrorImpl implements NewTripStateError {
                 other.startDate == startDate) &&
             (identical(other.isStartDateBeforeToday, isStartDateBeforeToday) ||
                 other.isStartDateBeforeToday == isStartDateBeforeToday) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, tripName, tripDescription,
-      startDate, isStartDateBeforeToday, errorMessage);
+      startDate, isStartDateBeforeToday, isPublic, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -990,74 +1068,77 @@ class _$NewTripStateErrorImpl implements NewTripStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         normal,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         saving,
     required TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)
         created,
     required TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)
         error,
   }) {
     return error(tripName, tripDescription, startDate, isStartDateBeforeToday,
-        errorMessage);
+        isPublic, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult? Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult? Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
   }) {
     return error?.call(tripName, tripDescription, startDate,
-        isStartDateBeforeToday, errorMessage);
+        isStartDateBeforeToday, isPublic, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         normal,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         saving,
     TResult Function(String? tripName, String? tripDescription,
-            DateTime? startDate, bool isStartDateBeforeToday)?
+            DateTime? startDate, bool isStartDateBeforeToday, bool isPublic)?
         created,
     TResult Function(
             String? tripName,
             String? tripDescription,
             DateTime? startDate,
             bool isStartDateBeforeToday,
+            bool isPublic,
             String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
       return error(tripName, tripDescription, startDate, isStartDateBeforeToday,
-          errorMessage);
+          isPublic, errorMessage);
     }
     return orElse();
   }
@@ -1106,6 +1187,7 @@ abstract class NewTripStateError implements NewTripState {
       required final String? tripDescription,
       required final DateTime? startDate,
       final bool isStartDateBeforeToday,
+      final bool isPublic,
       required final String errorMessage}) = _$NewTripStateErrorImpl;
 
   @override
@@ -1116,6 +1198,8 @@ abstract class NewTripStateError implements NewTripState {
   DateTime? get startDate;
   @override
   bool get isStartDateBeforeToday;
+  @override
+  bool get isPublic;
   String get errorMessage;
   @override
   @JsonKey(ignore: true)

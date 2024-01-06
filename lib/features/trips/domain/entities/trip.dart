@@ -19,6 +19,7 @@ sealed class Trip with _$Trip {
     required DateTime createdAt,
     @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
     required DateTime startDate,
+    @Default(false) bool isPublic,
   }) = _Trip;
 
   factory Trip.create({
@@ -27,6 +28,7 @@ sealed class Trip with _$Trip {
     required String userId,
     required DateTime createdAt,
     required DateTime startDate,
+    bool isPublic = false,
   }) =>
       Trip(
         name: name,
@@ -34,6 +36,7 @@ sealed class Trip with _$Trip {
         userId: userId,
         createdAt: createdAt,
         startDate: startDate,
+        isPublic: isPublic,
       );
 
   factory Trip.fromJson(Map<String, dynamic> json) => _$TripFromJson(json);

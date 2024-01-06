@@ -12,6 +12,7 @@ _$TripImpl _$$TripImplFromJson(Map<String, dynamic> json) => _$TripImpl(
       userId: json['userId'] as String,
       createdAt: dateTimeFromTimestamp(json['createdAt'] as Timestamp),
       startDate: dateTimeFromTimestamp(json['startDate'] as Timestamp),
+      isPublic: json['isPublic'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) =>
@@ -21,4 +22,5 @@ Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) =>
       'userId': instance.userId,
       'createdAt': dateTimeToTimestamp(instance.createdAt),
       'startDate': dateTimeToTimestamp(instance.startDate),
+      'isPublic': instance.isPublic,
     };

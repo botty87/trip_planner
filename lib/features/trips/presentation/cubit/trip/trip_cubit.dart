@@ -66,6 +66,7 @@ class TripCubit extends Cubit<TripState> {
       name: state.trip.name,
       description: state.trip.description,
       startDate: state.trip.startDate,
+      isPublic: state.trip.isPublic,
     ));
   }
 
@@ -82,6 +83,11 @@ class TripCubit extends Cubit<TripState> {
   void startDateChanged(DateTime value) {
     assert(state is TripStateEditing);
     emit((state as TripStateEditing).copyWith(startDate: value));
+  }
+
+  void isPublicChanged(bool value) {
+    assert(state is TripStateEditing);
+    emit((state as TripStateEditing).copyWith(isPublic: value));
   }
 
   void cancelEditing() {
@@ -103,6 +109,7 @@ class TripCubit extends Cubit<TripState> {
     final tripDescription = getTripDescription();
     final tripName = (state as TripStateEditing).name;
     final tripStartDate = (state as TripStateEditing).startDate;
+    final tripIsPublic = (state as TripStateEditing).isPublic;
 
     emit(editingState.copyWith(isSaving: true));
 
@@ -111,6 +118,7 @@ class TripCubit extends Cubit<TripState> {
       name: tripName,
       description: tripDescription,
       startDate: tripStartDate,
+      isPublic: tripIsPublic,
     ));
 
     return result.fold(
@@ -190,4 +198,6 @@ class TripCubit extends Cubit<TripState> {
       emit(TripState.normal(trip: state.trip, dayTrips: state.dayTrips));
     }
   }
+
+  
 }

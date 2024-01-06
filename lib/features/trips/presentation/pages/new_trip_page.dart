@@ -67,6 +67,7 @@ class _NewTripPageBody extends HookWidget {
         onNameChanged: (String value) => cubit.nameChanged(value),
         onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
         saveSection: _CreateTripButton(isSaving: isSaving.stream),
+        onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
         isSaving: isSaving.stream,
       ),
     );

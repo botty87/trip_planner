@@ -23,7 +23,12 @@ class TripCard extends StatelessWidget {
             children: [
               _TripNameWidget(name: trip.name),
               if (trip.description != null) _TripDescriptionWidget(description: trip.description!),
-              _TripCreatedOnWidget(createdAt: trip.createdAt),
+              Row(
+                children: [
+                  _TripPrivacyWidget(isPublic: trip.isPublic),
+                  Expanded(child: _TripCreatedAtWidget(createdAt: trip.createdAt)),
+                ],
+              ),
             ],
           ),
         ),
@@ -70,9 +75,9 @@ class _TripDescriptionWidget extends StatelessWidget {
   }
 }
 
-class _TripCreatedOnWidget extends StatelessWidget {
+class _TripCreatedAtWidget extends StatelessWidget {
   final DateTime createdAt;
-  const _TripCreatedOnWidget({required this.createdAt});
+  const _TripCreatedAtWidget({required this.createdAt});
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +88,20 @@ class _TripCreatedOnWidget extends StatelessWidget {
         style: Theme.of(context).textTheme.bodySmall,
         textAlign: TextAlign.right,
       ),
+    );
+  }
+}
+
+class _TripPrivacyWidget extends StatelessWidget {
+  final bool isPublic;
+  const _TripPrivacyWidget({required this.isPublic});
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      size: 20,
+      isPublic ? Icons.public : Icons.lock,
+      color: isPublic ? Colors.green : Colors.red,
     );
   }
 }

@@ -7,6 +7,7 @@ sealed class NewTripState with _$NewTripState {
     String? tripDescription,
     DateTime? startDate,
     @Default(false) bool isStartDateBeforeToday,
+    @Default(false) bool isPublic,
   }) = NewTripStateNormal;
 
   const factory NewTripState.saving({
@@ -14,6 +15,7 @@ sealed class NewTripState with _$NewTripState {
     required String? tripDescription,
     required DateTime? startDate,
     @Default(false) bool isStartDateBeforeToday,
+    @Default(false) bool isPublic,
   }) = NewTripStateSaving;
 
   const factory NewTripState.created({
@@ -21,6 +23,7 @@ sealed class NewTripState with _$NewTripState {
     String? tripDescription,
     DateTime? startDate,
     @Default(false) bool isStartDateBeforeToday,
+    @Default(false) bool isPublic,
   }) = NewTripStateCreated;
 
   const factory NewTripState.error({
@@ -28,6 +31,7 @@ sealed class NewTripState with _$NewTripState {
     required String? tripDescription,
     required DateTime? startDate,
     @Default(false) bool isStartDateBeforeToday,
+    @Default(false) bool isPublic,
     required String errorMessage,
   }) = NewTripStateError;
 }

@@ -137,6 +137,9 @@
     "tripStopsList" : "Trip stops list",
     "tripStopsMap" : "Trip stops map",
     "defaultDayTripStartTimeHHMM" : "Default day of trip start time (HH:MM)",
-    "useDifferentDirectionsColors" : "Use different colors for directions"
+    "useDifferentDirectionsColors" : "Use different colors for directions",
+    "tripPrivacy" : "This trip is:",
+    "public" : "Public",
+    "private" : "Private"
     
 }

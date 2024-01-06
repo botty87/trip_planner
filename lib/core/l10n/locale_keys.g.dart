@@ -137,5 +137,8 @@ abstract class  LocaleKeys {
   static const tripStopsMap = 'tripStopsMap';
   static const defaultDayTripStartTimeHHMM = 'defaultDayTripStartTimeHHMM';
   static const useDifferentDirectionsColors = 'useDifferentDirectionsColors';
+  static const tripPrivacy = 'tripPrivacy';
+  static const public = 'public';
+  static const private = 'private';
 
 }

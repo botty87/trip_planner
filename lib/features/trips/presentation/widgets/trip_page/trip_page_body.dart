@@ -106,6 +106,8 @@ class _TripPageBody extends HookWidget {
             initialTripName: cubit.state.trip.name,
             initialTripDescription: cubit.state.trip.description,
             initialStartDate: cubit.state.trip.startDate,
+            onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
+            initialIsPublic: cubit.state.trip.isPublic,
           ),
         );
       },

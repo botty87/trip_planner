@@ -1,36 +1,44 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../cubit/new_trip/new_trip_cubit.dart';
 
 part 'start_date_picker.dart';
 part 'trip_description_text_field.dart';
 part 'trip_name_text_field.dart';
+part 'trip_privacy_selector.dart';
 
 class NewEditTripForm extends StatelessWidget {
   final Widget saveSection;
   final ValueChanged<String> onNameChanged;
   final ValueChanged<String> onDescriptionChanged;
   final ValueChanged<DateTime> onStartDateChanged;
+  final ValueChanged<bool> onIsPublicChanged;
   final Stream<bool> isSaving;
 
   final String? initialTripName;
   final String? initialTripDescription;
   final DateTime? initialStartDate;
+  final bool? initialIsPublic;
 
-  const NewEditTripForm(
-      {super.key,
-      required this.saveSection,
-      required this.onNameChanged,
-      required this.onDescriptionChanged,
-      required this.onStartDateChanged,
-      required this.isSaving,
-      this.initialTripName,
-      this.initialTripDescription,
-      this.initialStartDate});
+  const NewEditTripForm({
+    super.key,
+    required this.saveSection,
+    required this.onNameChanged,
+    required this.onDescriptionChanged,
+    required this.onStartDateChanged,
+    required this.isSaving,
+    required this.onIsPublicChanged,
+    this.initialTripName,
+    this.initialTripDescription,
+    this.initialStartDate,
+    this.initialIsPublic,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +71,12 @@ class NewEditTripForm extends StatelessWidget {
                       key: const Key('tripDescriptionTextField'),
                       onChanged: onDescriptionChanged,
                       initialTripDescription: initialTripDescription),
+                  const SizedBox(height: verticalSpaceL),
+                  _TripPrivacySelector(
+                    key: const Key('tripPrivacySelector'),
+                    initialIsPublic: initialIsPublic ?? false,
+                    onIsPublicChanged: onIsPublicChanged,
+                  ),
                   const SizedBox(height: verticalSpaceL),
                   _StartDatePicker(
                     key: const Key('startDatePicker'),
