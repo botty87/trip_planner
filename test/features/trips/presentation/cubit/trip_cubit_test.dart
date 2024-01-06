@@ -61,7 +61,12 @@ void main() {
     act: (cubit) => cubit.edit(),
     expect: () => [
       TripState.editing(
-          trip: tTrip, name: tTrip.name, description: tTrip.description, startDate: tTrip.startDate)
+        trip: tTrip,
+        name: tTrip.name,
+        description: tTrip.description,
+        startDate: tTrip.startDate,
+        isPublic: false,
+      ),
     ],
     build: () => getStandardCubit(),
   );
@@ -69,11 +74,19 @@ void main() {
   blocTest<TripCubit, TripState>(
     'On nameChanged emit TripStateEditing with name changed',
     seed: () => TripState.editing(
-        trip: tTrip, name: tTrip.name, description: tTrip.description, startDate: tTrip.startDate),
+        trip: tTrip,
+        name: tTrip.name,
+        description: tTrip.description,
+        startDate: tTrip.startDate,
+        isPublic: true),
     act: (cubit) => cubit.nameChanged('new name'),
     expect: () => [
       TripState.editing(
-          trip: tTrip, name: 'new name', description: tTrip.description, startDate: tTrip.startDate)
+          trip: tTrip,
+          name: 'new name',
+          description: tTrip.description,
+          startDate: tTrip.startDate,
+          isPublic: true)
     ],
     build: () => getStandardCubit(),
   );
@@ -81,14 +94,19 @@ void main() {
   blocTest<TripCubit, TripState>(
     'On descriptionChanged emit TripStateEditing with description changed',
     seed: () => TripState.editing(
-        trip: tTrip, name: tTrip.name, description: tTrip.description, startDate: tTrip.startDate),
+        trip: tTrip,
+        name: tTrip.name,
+        description: tTrip.description,
+        startDate: tTrip.startDate,
+        isPublic: true),
     act: (cubit) => cubit.descriptionChanged('new description'),
     expect: () => [
       TripState.editing(
           trip: tTrip,
           name: tTrip.name,
           description: 'new description',
-          startDate: tTrip.startDate),
+          startDate: tTrip.startDate,
+          isPublic: true),
     ],
     build: () => getStandardCubit(),
   );
@@ -96,11 +114,19 @@ void main() {
   blocTest<TripCubit, TripState>(
     'On startDateChanged emit TripStateEditing with startDate changed',
     seed: () => TripState.editing(
-        trip: tTrip, name: tTrip.name, description: tTrip.description, startDate: DateTime.now()),
+        trip: tTrip,
+        name: tTrip.name,
+        description: tTrip.description,
+        startDate: DateTime.now(),
+        isPublic: true),
     act: (cubit) => cubit.startDateChanged(tStartDate),
     expect: () => [
       TripState.editing(
-          trip: tTrip, name: tTrip.name, description: tTrip.description, startDate: tStartDate),
+          trip: tTrip,
+          name: tTrip.name,
+          description: tTrip.description,
+          startDate: tStartDate,
+          isPublic: true),
     ],
     build: () => getStandardCubit(),
   );
@@ -108,7 +134,11 @@ void main() {
   blocTest<TripCubit, TripState>(
     'On editCancel emit TripState with original trip',
     seed: () => TripState.editing(
-        trip: tTrip, name: tTrip.name, description: tTrip.description, startDate: tTrip.startDate),
+        trip: tTrip,
+        name: tTrip.name,
+        description: tTrip.description,
+        startDate: tTrip.startDate,
+        isPublic: true),
     act: (cubit) => cubit.cancelEditing(),
     expect: () => [TripState.normal(trip: tTrip)],
     build: () => getStandardCubit(),
@@ -121,7 +151,8 @@ void main() {
           trip: tTrip,
           name: 'new name',
           description: tTrip.description,
-          startDate: tTrip.startDate),
+          startDate: tTrip.startDate,
+          isPublic: true),
       setUp: () => when(mockUpdateTrip.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
@@ -130,7 +161,8 @@ void main() {
             name: 'new name',
             description: tTrip.description,
             isSaving: true,
-            startDate: tTrip.startDate),
+            startDate: tTrip.startDate,
+            isPublic: true),
         TripState.normal(trip: tTrip.copyWith(name: 'new name'))
       ],
       build: () => getStandardCubit(),
@@ -142,7 +174,8 @@ void main() {
           trip: tTrip,
           name: 'new name',
           description: tTrip.description,
-          startDate: tTrip.startDate),
+          startDate: tTrip.startDate,
+          isPublic: true),
       setUp: () => when(mockUpdateTrip.call(any))
           .thenAnswer((_) async => const Left(TripsFailure(message: 'error'))),
       act: (cubit) => cubit.saveChanges(),
@@ -152,13 +185,15 @@ void main() {
             name: 'new name',
             description: tTrip.description,
             isSaving: true,
-            startDate: tTrip.startDate),
+            startDate: tTrip.startDate,
+            isPublic: true),
         TripState.error(trip: tTrip, errorMessage: 'error'),
         TripState.editing(
             trip: tTrip,
             name: 'new name',
             description: tTrip.description,
-            startDate: tTrip.startDate),
+            startDate: tTrip.startDate,
+            isPublic: true),
       ],
       build: () => getStandardCubit(),
     );
@@ -186,7 +221,8 @@ void main() {
           trip: tTrip,
           name: tTrip.name,
           description: tTrip.description,
-          startDate: tTrip.startDate),
+          startDate: tTrip.startDate,
+          isPublic: true),
       act: (cubit) => cubit.modalBottomEditingDismissed(),
       expect: () => [TripState.normal(trip: tTrip)],
       build: () => getStandardCubit(),

@@ -82,25 +82,26 @@ void main() {
     const tTripName = 'tripName';
     const tTripDescription = 'tripDescription';
     final tStartDate = DateTime.now();
+    const tIsPublic = true;
 
     test('should return right(null) when TripsDataSource.updateTrip completes', () async {
-      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate))
+      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic))
           .thenAnswer((_) async {});
 
       // act
       final result =
-          await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate);
+          await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic);
       // assert
       expect(result, equals(right(null)));
     });
 
     test('should return left(TripsFailure()) when TripsDataSource.updateTrip throws', () async {
-      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate))
+      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic))
           .thenThrow(Exception());
 
       // act
       final result =
-          await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate);
+          await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic);
       // assert
       expect(result, equals(left(const TripsFailure())));
     });
