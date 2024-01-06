@@ -9,10 +9,7 @@ class TripStopsMapState with _$TripStopsMapState {
     String? errorMessage,
     @Default(false) bool isMapReady,
     LatLngBounds? markerLatLngBounds,
-    @Default(true) bool showDirections,
-    @Default(true) bool useDifferentColors,
     @Default(true) bool isSelectedTab,
     @Default(false) bool hasTripStopsDirectionsErrors,
-    
   }) = TripStopsMapStateNormal;
 }

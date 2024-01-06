@@ -240,4 +240,60 @@ void main() {
       expect(result, equals(left(const DayTripsFailure())));
     });
   });
+
+  group('updateDayTripUseDifferentDirectionsColors', () {
+    test('should return right(null) when updateDayTripUseDifferentDirectionsColors', () async {
+      when(mockDayTripsDataSource.updateDayTripUseDifferentDirectionsColors(
+              tripId: tTripId, dayTripId: tDayTrip.id, useDifferentDirectionsColors: true))
+          .thenAnswer((_) async {});
+
+      // act
+      final result = await repository.updateDayTripUseDifferentDirectionsColors(
+          tripId: tTripId, dayTripId: tDayTrip.id, useDifferentDirectionsColors: true);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test(
+        'should return left(DayTripsFailure()) when updateDayTripUseDifferentDirectionsColors throws',
+        () async {
+      when(mockDayTripsDataSource.updateDayTripUseDifferentDirectionsColors(
+              tripId: tTripId, dayTripId: tDayTrip.id, useDifferentDirectionsColors: true))
+          .thenThrow(Exception());
+
+      // act
+      final result = await repository.updateDayTripUseDifferentDirectionsColors(
+          tripId: tTripId, dayTripId: tDayTrip.id, useDifferentDirectionsColors: true);
+      // assert
+      expect(result, equals(left(const DayTripsFailure())));
+    });
+  });
+
+  group('updateDayTripShowDirections', () {
+    test('should return right(null) when updateDayTripShowDirections', () async {
+      when(mockDayTripsDataSource.updateDayTripShowDirections(
+              tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true))
+          .thenAnswer((_) async {});
+
+      // act
+      final result = await repository.updateDayTripShowDirections(
+          tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(DayTripsFailure()) when updateDayTripShowDirections throws',
+        () async {
+      when(mockDayTripsDataSource.updateDayTripShowDirections(
+              tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true))
+          .thenThrow(Exception());
+
+      // act
+      final result = await repository.updateDayTripShowDirections(
+          tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true);
+      // assert
+      expect(result, equals(left(const DayTripsFailure())));
+    });
+  });
+
 }

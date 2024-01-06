@@ -21,6 +21,9 @@ _$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
       travelMode: json['travelMode'] == null
           ? TravelMode.driving
           : travelModeFromInt(json['travelMode'] as int),
+      showDirections: json['showDirections'] as bool? ?? true,
+      useDifferentDirectionsColors:
+          json['useDifferentDirectionsColors'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) {
@@ -39,5 +42,7 @@ Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) {
   writeNotNull('tripStopsDirections', instance.tripStopsDirections);
   val['tripStopsDirectionsUpToDate'] = instance.tripStopsDirectionsUpToDate;
   val['travelMode'] = travelModeToInt(instance.travelMode);
+  val['showDirections'] = instance.showDirections;
+  val['useDifferentDirectionsColors'] = instance.useDifferentDirectionsColors;
   return val;
 }

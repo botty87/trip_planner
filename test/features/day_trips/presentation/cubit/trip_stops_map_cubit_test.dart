@@ -12,6 +12,8 @@ import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/save_trip_stops_directions.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_show_directions.dart';
+import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trip_use_different_directions_colors.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/trip_stops_map/trip_stops_map_cubit.dart';
@@ -28,6 +30,8 @@ import 'trip_stops_map_cubit_test.mocks.dart';
   MockSpec<ListenDayTrip>(),
   MockSpec<FirebaseCrashlytics>(),
   MockSpec<UpdateTripStopsDirectionsUpToDate>(),
+  MockSpec<UpdateDayTripShowDirections>(),
+  MockSpec<UpdateDayTripUseDifferentDirectionsColors>(),
 ])
 void main() {
   late MockFetchTripStopsDirections mockFetchTripStopsDirections;
@@ -35,6 +39,8 @@ void main() {
   late MockListenDayTrip mockListenDayTrip;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
   late MockUpdateTripStopsDirectionsUpToDate mockUpdateTripStopsDirectionsUpToDate;
+  late MockUpdateDayTripShowDirections mockUpdateDayTripShowDirections;
+  late MockUpdateDayTripUseDifferentDirectionsColors mockUpdateDayTripUseDifferentDirectionsColors;
 
   final tTrip = Trip(
     id: '1',
@@ -76,6 +82,8 @@ void main() {
     mockListenDayTrip = MockListenDayTrip();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
     mockUpdateTripStopsDirectionsUpToDate = MockUpdateTripStopsDirectionsUpToDate();
+    mockUpdateDayTripShowDirections = MockUpdateDayTripShowDirections();
+    mockUpdateDayTripUseDifferentDirectionsColors = MockUpdateDayTripUseDifferentDirectionsColors();
   });
 
   setUpAll(() {
@@ -89,6 +97,8 @@ void main() {
       listenDayTrip: mockListenDayTrip,
       crashlytics: mockFirebaseCrashlytics,
       updateTripStopsDirectionsUpToDate: mockUpdateTripStopsDirectionsUpToDate,
+      updateDayTripShowDirections: mockUpdateDayTripShowDirections,
+      updateDayTripUseDifferentDirectionsColors: mockUpdateDayTripUseDifferentDirectionsColors,
       trip: tTrip,
       dayTrip: tDayTrip,
     );
@@ -192,17 +202,35 @@ void main() {
     expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, isSelectedTab: true)],
   );
   blocTest(
-    'on showDirectionsChanged, should emit showDirections',
+    'on showDirectionsChanged, should emit showDirections and call updateDayTripShowDirections',
     build: () => getTripStopsMapCubit(),
+    setUp: () => when(mockUpdateDayTripShowDirections(any))
+        .thenAnswer((_) async => const Right(null)),
     act: (cubit) => cubit.showDirectionsChanged(true),
-    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, showDirections: true)],
+    expect: () => [TripStopsMapState.normal(dayTrip: tDayTrip.copyWith(showDirections: true))],
+    verify: (_) {
+      verify(mockUpdateDayTripShowDirections(UpdateDayTripShowDirectionsParams(
+        tripId: tTrip.id,
+        dayTripId: tDayTrip.id,
+        showDirections: true,
+      )));
+    },
   );
 
   blocTest(
-    'on useDifferentColorsChanged, should emit useDifferentColors',
+    'on useDifferentColorsChanged, should emit useDifferentColors and call updateDayTripUseDifferentDirectionsColors',
     build: () => getTripStopsMapCubit(),
+    setUp: () => when(mockUpdateDayTripUseDifferentDirectionsColors(any))
+        .thenAnswer((_) async => const Right(null)),
     act: (cubit) => cubit.useDifferentColorsChanged(true),
-    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, useDifferentColors: true)],
+    expect: () => [TripStopsMapState.normal(dayTrip: tDayTrip.copyWith(useDifferentDirectionsColors: true))],
+    verify: (_) {
+      verify(mockUpdateDayTripUseDifferentDirectionsColors(UpdateDayTripUseDifferentDirectionsColorsParams(
+        tripId: tTrip.id,
+        dayTripId: tDayTrip.id,
+        useDifferentDirectionsColors: true,
+      )));
+    },
   );
 
   group('loadDirections', () {
@@ -297,10 +325,20 @@ void main() {
   });
 
   blocTest(
-    'On travelModeChanged, should emit travelMode',
+    'On travelModeChanged, should emit travelMode and call updateTripStopsDirectionsUpToDate',
     build: () => getTripStopsMapCubit(),
+    setUp: () => when(mockUpdateTripStopsDirectionsUpToDate(any))
+        .thenAnswer((_) async => const Right(null)),
     act: (cubit) => cubit.travelModeChanged(TravelMode.bicycling),
     expect: () =>
         [TripStopsMapState.normal(dayTrip: tDayTrip.copyWith(travelMode: TravelMode.bicycling))],
+    verify: (_) {
+      verify(mockUpdateTripStopsDirectionsUpToDate(UpdateTripStopsDirectionsUpToDateParams(
+        tripId: tTrip.id,
+        dayTripId: tDayTrip.id,
+        travelMode: TravelMode.bicycling,
+        isUpToDate: false,
+      )));
+    },
   );
 }

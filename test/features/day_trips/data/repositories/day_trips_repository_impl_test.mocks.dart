@@ -195,4 +195,42 @@ class MockDayTripsDataSource extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
+  @override
+  dynamic updateDayTripShowDirections({
+    required String? tripId,
+    required String? dayTripId,
+    required bool? showDirections,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #updateDayTripShowDirections,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #showDirections: showDirections,
+          },
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  dynamic updateDayTripUseDifferentDirectionsColors({
+    required String? tripId,
+    required String? dayTripId,
+    required bool? useDifferentDirectionsColors,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #updateDayTripUseDifferentDirectionsColors,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #useDifferentDirectionsColors: useDifferentDirectionsColors,
+          },
+        ),
+        returnValueForMissingStub: null,
+      );
 }

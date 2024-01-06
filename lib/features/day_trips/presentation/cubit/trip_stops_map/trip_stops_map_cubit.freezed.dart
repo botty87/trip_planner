@@ -22,8 +22,6 @@ mixin _$TripStopsMapState {
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get isMapReady => throw _privateConstructorUsedError;
   LatLngBounds? get markerLatLngBounds => throw _privateConstructorUsedError;
-  bool get showDirections => throw _privateConstructorUsedError;
-  bool get useDifferentColors => throw _privateConstructorUsedError;
   bool get isSelectedTab => throw _privateConstructorUsedError;
   bool get hasTripStopsDirectionsErrors => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,8 +33,6 @@ mixin _$TripStopsMapState {
             String? errorMessage,
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
-            bool showDirections,
-            bool useDifferentColors,
             bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)
         normal,
@@ -51,8 +47,6 @@ mixin _$TripStopsMapState {
             String? errorMessage,
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
-            bool showDirections,
-            bool useDifferentColors,
             bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)?
         normal,
@@ -67,8 +61,6 @@ mixin _$TripStopsMapState {
             String? errorMessage,
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
-            bool showDirections,
-            bool useDifferentColors,
             bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)?
         normal,
@@ -110,8 +102,6 @@ abstract class $TripStopsMapStateCopyWith<$Res> {
       String? errorMessage,
       bool isMapReady,
       LatLngBounds? markerLatLngBounds,
-      bool showDirections,
-      bool useDifferentColors,
       bool isSelectedTab,
       bool hasTripStopsDirectionsErrors});
 
@@ -137,8 +127,6 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
     Object? errorMessage = freezed,
     Object? isMapReady = null,
     Object? markerLatLngBounds = freezed,
-    Object? showDirections = null,
-    Object? useDifferentColors = null,
     Object? isSelectedTab = null,
     Object? hasTripStopsDirectionsErrors = null,
   }) {
@@ -167,14 +155,6 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
           ? _value.markerLatLngBounds
           : markerLatLngBounds // ignore: cast_nullable_to_non_nullable
               as LatLngBounds?,
-      showDirections: null == showDirections
-          ? _value.showDirections
-          : showDirections // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useDifferentColors: null == useDifferentColors
-          ? _value.useDifferentColors
-          : useDifferentColors // ignore: cast_nullable_to_non_nullable
-              as bool,
       isSelectedTab: null == isSelectedTab
           ? _value.isSelectedTab
           : isSelectedTab // ignore: cast_nullable_to_non_nullable
@@ -211,8 +191,6 @@ abstract class _$$TripStopsMapStateNormalImplCopyWith<$Res>
       String? errorMessage,
       bool isMapReady,
       LatLngBounds? markerLatLngBounds,
-      bool showDirections,
-      bool useDifferentColors,
       bool isSelectedTab,
       bool hasTripStopsDirectionsErrors});
 
@@ -238,8 +216,6 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? isMapReady = null,
     Object? markerLatLngBounds = freezed,
-    Object? showDirections = null,
-    Object? useDifferentColors = null,
     Object? isSelectedTab = null,
     Object? hasTripStopsDirectionsErrors = null,
   }) {
@@ -268,14 +244,6 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
           ? _value.markerLatLngBounds
           : markerLatLngBounds // ignore: cast_nullable_to_non_nullable
               as LatLngBounds?,
-      showDirections: null == showDirections
-          ? _value.showDirections
-          : showDirections // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useDifferentColors: null == useDifferentColors
-          ? _value.useDifferentColors
-          : useDifferentColors // ignore: cast_nullable_to_non_nullable
-              as bool,
       isSelectedTab: null == isSelectedTab
           ? _value.isSelectedTab
           : isSelectedTab // ignore: cast_nullable_to_non_nullable
@@ -298,8 +266,6 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
       this.errorMessage,
       this.isMapReady = false,
       this.markerLatLngBounds,
-      this.showDirections = true,
-      this.useDifferentColors = true,
       this.isSelectedTab = true,
       this.hasTripStopsDirectionsErrors = false});
 
@@ -320,12 +286,6 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   final LatLngBounds? markerLatLngBounds;
   @override
   @JsonKey()
-  final bool showDirections;
-  @override
-  @JsonKey()
-  final bool useDifferentColors;
-  @override
-  @JsonKey()
   final bool isSelectedTab;
   @override
   @JsonKey()
@@ -333,7 +293,7 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
 
   @override
   String toString() {
-    return 'TripStopsMapState.normal(mapType: $mapType, isLoading: $isLoading, dayTrip: $dayTrip, errorMessage: $errorMessage, isMapReady: $isMapReady, markerLatLngBounds: $markerLatLngBounds, showDirections: $showDirections, useDifferentColors: $useDifferentColors, isSelectedTab: $isSelectedTab, hasTripStopsDirectionsErrors: $hasTripStopsDirectionsErrors)';
+    return 'TripStopsMapState.normal(mapType: $mapType, isLoading: $isLoading, dayTrip: $dayTrip, errorMessage: $errorMessage, isMapReady: $isMapReady, markerLatLngBounds: $markerLatLngBounds, isSelectedTab: $isSelectedTab, hasTripStopsDirectionsErrors: $hasTripStopsDirectionsErrors)';
   }
 
   @override
@@ -351,10 +311,6 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
                 other.isMapReady == isMapReady) &&
             (identical(other.markerLatLngBounds, markerLatLngBounds) ||
                 other.markerLatLngBounds == markerLatLngBounds) &&
-            (identical(other.showDirections, showDirections) ||
-                other.showDirections == showDirections) &&
-            (identical(other.useDifferentColors, useDifferentColors) ||
-                other.useDifferentColors == useDifferentColors) &&
             (identical(other.isSelectedTab, isSelectedTab) ||
                 other.isSelectedTab == isSelectedTab) &&
             (identical(other.hasTripStopsDirectionsErrors,
@@ -372,8 +328,6 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
       errorMessage,
       isMapReady,
       markerLatLngBounds,
-      showDirections,
-      useDifferentColors,
       isSelectedTab,
       hasTripStopsDirectionsErrors);
 
@@ -394,23 +348,12 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
             String? errorMessage,
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
-            bool showDirections,
-            bool useDifferentColors,
             bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)
         normal,
   }) {
-    return normal(
-        mapType,
-        isLoading,
-        dayTrip,
-        errorMessage,
-        isMapReady,
-        markerLatLngBounds,
-        showDirections,
-        useDifferentColors,
-        isSelectedTab,
-        hasTripStopsDirectionsErrors);
+    return normal(mapType, isLoading, dayTrip, errorMessage, isMapReady,
+        markerLatLngBounds, isSelectedTab, hasTripStopsDirectionsErrors);
   }
 
   @override
@@ -423,23 +366,12 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
             String? errorMessage,
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
-            bool showDirections,
-            bool useDifferentColors,
             bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)?
         normal,
   }) {
-    return normal?.call(
-        mapType,
-        isLoading,
-        dayTrip,
-        errorMessage,
-        isMapReady,
-        markerLatLngBounds,
-        showDirections,
-        useDifferentColors,
-        isSelectedTab,
-        hasTripStopsDirectionsErrors);
+    return normal?.call(mapType, isLoading, dayTrip, errorMessage, isMapReady,
+        markerLatLngBounds, isSelectedTab, hasTripStopsDirectionsErrors);
   }
 
   @override
@@ -452,25 +384,14 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
             String? errorMessage,
             bool isMapReady,
             LatLngBounds? markerLatLngBounds,
-            bool showDirections,
-            bool useDifferentColors,
             bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)?
         normal,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(
-          mapType,
-          isLoading,
-          dayTrip,
-          errorMessage,
-          isMapReady,
-          markerLatLngBounds,
-          showDirections,
-          useDifferentColors,
-          isSelectedTab,
-          hasTripStopsDirectionsErrors);
+      return normal(mapType, isLoading, dayTrip, errorMessage, isMapReady,
+          markerLatLngBounds, isSelectedTab, hasTripStopsDirectionsErrors);
     }
     return orElse();
   }
@@ -512,8 +433,6 @@ abstract class TripStopsMapStateNormal implements TripStopsMapState {
       final String? errorMessage,
       final bool isMapReady,
       final LatLngBounds? markerLatLngBounds,
-      final bool showDirections,
-      final bool useDifferentColors,
       final bool isSelectedTab,
       final bool hasTripStopsDirectionsErrors}) = _$TripStopsMapStateNormalImpl;
 
@@ -529,10 +448,6 @@ abstract class TripStopsMapStateNormal implements TripStopsMapState {
   bool get isMapReady;
   @override
   LatLngBounds? get markerLatLngBounds;
-  @override
-  bool get showDirections;
-  @override
-  bool get useDifferentColors;
   @override
   bool get isSelectedTab;
   @override

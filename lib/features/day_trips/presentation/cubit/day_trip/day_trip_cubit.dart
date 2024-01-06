@@ -39,6 +39,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   final TripStopDone _tripStopDone;
   final ListenDayTrip _listenDayTrip;
   final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
+  
 
   final FirebaseCrashlytics _crashlytics;
 

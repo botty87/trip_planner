@@ -6,6 +6,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/di/di.dart';
 import '../../../user_account/errors/user_failures.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../domain/entities/settings.dart';
@@ -76,4 +77,10 @@ class SettingsCubit extends Cubit<SettingsState> {
     _settingsSubscription.cancel();
     return super.close();
   }
+}
+
+@module
+abstract class SettingsModule {
+  @injectable
+  Settings get settings => getIt<SettingsCubit>().state.settings;
 }

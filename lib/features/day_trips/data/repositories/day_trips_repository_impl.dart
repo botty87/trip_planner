@@ -118,10 +118,45 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
 
   @override
   Future<Either<DayTripsFailure, void>> updateTripStopsDirectionsUpToDate(
-      {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode}) async {
+      {required String tripId,
+      required String dayTripId,
+      required bool isUpToDate,
+      TravelMode? travelMode}) async {
     try {
       await _dayTripsDataSource.updateTripStopsDirectionsUpToDate(
           tripId: tripId, dayTripId: dayTripId, isUpToDate: isUpToDate, travelMode: travelMode);
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(DayTripsFailure(message: e.message));
+    } on Exception {
+      return left(const DayTripsFailure());
+    }
+  }
+
+  @override
+  Future<Either<DayTripsFailure, void>> updateDayTripShowDirections(
+      {required String tripId, required String dayTripId, required bool showDirections}) async {
+    try {
+      await _dayTripsDataSource.updateDayTripShowDirections(
+          tripId: tripId, dayTripId: dayTripId, showDirections: showDirections);
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(DayTripsFailure(message: e.message));
+    } on Exception {
+      return left(const DayTripsFailure());
+    }
+  }
+
+  @override
+  Future<Either<DayTripsFailure, void>> updateDayTripUseDifferentDirectionsColors(
+      {required String tripId,
+      required String dayTripId,
+      required bool useDifferentDirectionsColors}) async {
+    try {
+      await _dayTripsDataSource.updateDayTripUseDifferentDirectionsColors(
+          tripId: tripId,
+          dayTripId: dayTripId,
+          useDifferentDirectionsColors: useDifferentDirectionsColors);
       return right(null);
     } on FirebaseException catch (e) {
       return left(DayTripsFailure(message: e.message));

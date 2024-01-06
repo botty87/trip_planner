@@ -33,7 +33,8 @@ import 'day_trip_cubit_test.mocks.dart';
   MockSpec<TripStopDone>(),
   MockSpec<ListenDayTrip>(),
   MockSpec<FirebaseCrashlytics>(),
-  MockSpec<UpdateTripStopsDirectionsUpToDate>()
+  MockSpec<UpdateTripStopsDirectionsUpToDate>(),
+  
 ])
 void main() {
   late MockUpdateDayTrip mockUpdateDayTrip;

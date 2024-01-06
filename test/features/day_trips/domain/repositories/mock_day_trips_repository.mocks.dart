@@ -387,4 +387,98 @@ class MockDayTripsRepository extends _i1.Mock
               ),
             )),
           ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>
+      updateDayTripShowDirections({
+    required String? tripId,
+    required String? dayTripId,
+    required bool? showDirections,
+  }) =>
+          (super.noSuchMethod(
+            Invocation.method(
+              #updateDayTripShowDirections,
+              [],
+              {
+                #tripId: tripId,
+                #dayTripId: dayTripId,
+                #showDirections: showDirections,
+              },
+            ),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                    _FakeEither_0<_i5.DayTripsFailure, void>(
+              this,
+              Invocation.method(
+                #updateDayTripShowDirections,
+                [],
+                {
+                  #tripId: tripId,
+                  #dayTripId: dayTripId,
+                  #showDirections: showDirections,
+                },
+              ),
+            )),
+            returnValueForMissingStub:
+                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                    _FakeEither_0<_i5.DayTripsFailure, void>(
+              this,
+              Invocation.method(
+                #updateDayTripShowDirections,
+                [],
+                {
+                  #tripId: tripId,
+                  #dayTripId: dayTripId,
+                  #showDirections: showDirections,
+                },
+              ),
+            )),
+          ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>
+      updateDayTripUseDifferentDirectionsColors({
+    required String? tripId,
+    required String? dayTripId,
+    required bool? useDifferentDirectionsColors,
+  }) =>
+          (super.noSuchMethod(
+            Invocation.method(
+              #updateDayTripUseDifferentDirectionsColors,
+              [],
+              {
+                #tripId: tripId,
+                #dayTripId: dayTripId,
+                #useDifferentDirectionsColors: useDifferentDirectionsColors,
+              },
+            ),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                    _FakeEither_0<_i5.DayTripsFailure, void>(
+              this,
+              Invocation.method(
+                #updateDayTripUseDifferentDirectionsColors,
+                [],
+                {
+                  #tripId: tripId,
+                  #dayTripId: dayTripId,
+                  #useDifferentDirectionsColors: useDifferentDirectionsColors,
+                },
+              ),
+            )),
+            returnValueForMissingStub:
+                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+                    _FakeEither_0<_i5.DayTripsFailure, void>(
+              this,
+              Invocation.method(
+                #updateDayTripUseDifferentDirectionsColors,
+                [],
+                {
+                  #tripId: tripId,
+                  #dayTripId: dayTripId,
+                  #useDifferentDirectionsColors: useDifferentDirectionsColors,
+                },
+              ),
+            )),
+          ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
 }

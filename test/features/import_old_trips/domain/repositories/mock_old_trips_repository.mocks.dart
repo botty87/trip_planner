@@ -7,7 +7,7 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:quiver/src/collection/multimap.dart' as _i7;
+import 'package:quiver/collection.dart' as _i7;
 import 'package:trip_planner/features/import_old_trips/domain/entities/old_trip.dart'
     as _i6;
 import 'package:trip_planner/features/import_old_trips/domain/entities/trip_stops_container.dart'

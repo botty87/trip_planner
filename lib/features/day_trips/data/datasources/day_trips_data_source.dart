@@ -38,6 +38,10 @@ abstract class DayTripsDataSource {
 
   updateTripStopsDirectionsUpToDate(
       {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode});
+
+  updateDayTripShowDirections({required String tripId, required String dayTripId, required bool showDirections});
+
+  updateDayTripUseDifferentDirectionsColors({required String tripId, required String dayTripId, required bool useDifferentDirectionsColors});
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -156,6 +160,20 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
         'tripStopsDirectionsUpToDate': isUpToDate,
         if (travelMode != null) 'travelMode': travelMode.toJson(),
       });
+    });
+  }
+  
+  @override
+  updateDayTripShowDirections({required String tripId, required String dayTripId, required bool showDirections}) async {
+    await _dayTripsCollection(tripId).doc(dayTripId).update({
+      'showDirections': showDirections,
+    });
+  }
+  
+  @override
+  updateDayTripUseDifferentDirectionsColors({required String tripId, required String dayTripId, required bool useDifferentDirectionsColors}) async {
+    await _dayTripsCollection(tripId).doc(dayTripId).update({
+      'useDifferentDirectionsColors': useDifferentDirectionsColors,
     });
   }
 }

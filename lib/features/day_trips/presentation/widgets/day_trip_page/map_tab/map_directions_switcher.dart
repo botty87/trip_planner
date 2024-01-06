@@ -5,7 +5,7 @@ class _MapDirectionsSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.showDirections);
+    final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
 
     return Column(
       children: [
@@ -19,7 +19,7 @@ class _MapDirectionsSwitcher extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               BlocSelector<TripStopsMapCubit, TripStopsMapState, bool>(
-                selector: (state) => state.useDifferentColors,
+                selector: (state) => state.dayTrip.useDifferentDirectionsColors,
                 builder: (context, useDifferentColors) {
                   return SwitchListTile.adaptive(
                     title: Text(LocaleKeys.useDifferentColors.tr()),

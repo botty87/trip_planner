@@ -18,6 +18,8 @@ import '../../../domain/entities/day_trip.dart';
 import '../../../domain/entities/trip_stops_directions.dart';
 import '../../../domain/usecases/listen_day_trip.dart';
 import '../../../domain/usecases/save_trip_stops_directions.dart';
+import '../../../domain/usecases/update_day_trip_show_directions.dart';
+import '../../../domain/usecases/update_day_trip_use_different_directions_colors.dart';
 import '../../../domain/usecases/update_trip_stops_directions_up_to_date.dart';
 import '../../../errors/day_trips_failure.dart';
 
@@ -30,6 +32,8 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   final SaveTripStopsDirections _saveTripStopsDirections;
   final ListenDayTrip _listenDayTrip;
   final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
+  final UpdateDayTripShowDirections _updateDayTripShowDirections;
+  final UpdateDayTripUseDifferentDirectionsColors _updateDayTripUseDifferentDirectionsColors;
 
   final FirebaseCrashlytics _crashlytics;
 
@@ -44,6 +48,8 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     required SaveTripStopsDirections saveTripStopsDirections,
     required ListenDayTrip listenDayTrip,
     required UpdateTripStopsDirectionsUpToDate updateTripStopsDirectionsUpToDate,
+    required UpdateDayTripShowDirections updateDayTripShowDirections,
+    required UpdateDayTripUseDifferentDirectionsColors updateDayTripUseDifferentDirectionsColors,
     required FirebaseCrashlytics crashlytics,
     @factoryParam required Trip trip,
     @factoryParam required DayTrip dayTrip,
@@ -53,6 +59,8 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
         _listenDayTrip = listenDayTrip,
         _tripId = trip.id,
         _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
+        _updateDayTripShowDirections = updateDayTripShowDirections,
+        _updateDayTripUseDifferentDirectionsColors = updateDayTripUseDifferentDirectionsColors,
         super(TripStopsMapState.normal(dayTrip: dayTrip)) {
     _dayTripSubscription =
         _listenDayTrip(ListenDayTripParams(tripId: _tripId, dayTripId: dayTrip.id))
@@ -151,11 +159,21 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   }
 
   void showDirectionsChanged(bool value) {
-    emit(state.copyWith(showDirections: value));
+    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(showDirections: value)));
+    _updateDayTripShowDirections(UpdateDayTripShowDirectionsParams(
+      tripId: _tripId,
+      dayTripId: state.dayTrip.id,
+      showDirections: value,
+    ));
   }
 
   void useDifferentColorsChanged(bool value) {
-    emit(state.copyWith(useDifferentColors: value));
+    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(useDifferentDirectionsColors: value)));
+    _updateDayTripUseDifferentDirectionsColors(UpdateDayTripUseDifferentDirectionsColorsParams(
+      tripId: _tripId,
+      dayTripId: state.dayTrip.id,
+      useDifferentDirectionsColors: value,
+    ));
   }
 
   @override

@@ -86,9 +86,14 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
 
 
       for (OldDailyTrip oldDailyTrip in oldTrip.dailyTrips) {
+        
         final dayTrip = DayTrip(
           index: oldDailyTrip.position,
           description: oldDailyTrip.note,
+          startTime: _user.settings.defaultDayTripStartTime,
+          travelMode: _user.settings.travelMode,
+          showDirections: _user.settings.showDirections,
+          useDifferentDirectionsColors: _user.settings.useDifferentDirectionsColors,
         );
 
         final TripStopsContainer dayTrips = TripStopsContainer(dayTrip);

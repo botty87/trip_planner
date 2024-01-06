@@ -74,7 +74,7 @@ class _MapWidget extends StatelessWidget {
   Set<Polyline> _getPolylines(BuildContext context) {
     final Set<Polyline> polylines = {};
 
-    final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.showDirections);
+    final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
     final tripStopsDirectionsUpToDate = context
         .select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirectionsUpToDate);
 
@@ -87,7 +87,7 @@ class _MapWidget extends StatelessWidget {
         context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirections);
 
     final useDifferentColors =
-        context.select((TripStopsMapCubit cubit) => cubit.state.useDifferentColors);
+        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.useDifferentDirectionsColors);
 
     if (tripStopsDirections != null && isMapReady) {
       final List<MaterialColor> colors;

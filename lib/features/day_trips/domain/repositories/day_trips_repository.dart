@@ -43,4 +43,12 @@ abstract class DayTripsRepository {
       required String dayTripId,
       required bool isUpToDate,
       TravelMode? travelMode});
+
+  Future<Either<DayTripsFailure, void>> updateDayTripShowDirections(
+      {required String tripId, required String dayTripId, required bool showDirections});
+
+  Future<Either<DayTripsFailure, void>> updateDayTripUseDifferentDirectionsColors(
+      {required String tripId,
+      required String dayTripId,
+      required bool useDifferentDirectionsColors});
 }

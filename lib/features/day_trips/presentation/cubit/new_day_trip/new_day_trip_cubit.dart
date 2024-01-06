@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../settings/domain/entities/settings.dart';
 import '../../../domain/usecases/create_day_trip.dart';
 
 part 'new_day_trip_state.dart';
@@ -13,9 +14,11 @@ part 'new_day_trip_cubit.freezed.dart';
 class NewDayTripCubit extends Cubit<NewDayTripState> {
   final String _tripId;
   final CreateDayTrip _createDayTrip;
+  final Settings _settings;
 
-  NewDayTripCubit({required CreateDayTrip createDayTrip, @factoryParam required String tripId})
+  NewDayTripCubit({required CreateDayTrip createDayTrip, required Settings settings, @factoryParam required String tripId})
       : _createDayTrip = createDayTrip,
+        _settings = settings,
         _tripId = tripId,
         super(const NewDayTripState.normal());
 
@@ -29,6 +32,10 @@ class NewDayTripCubit extends Cubit<NewDayTripState> {
     final result = await _createDayTrip(CreateDayTripParams(
       description: state.description,
       tripId: _tripId,
+      startTime: _settings.defaultDayTripStartTime,
+      travelMode: _settings.travelMode,
+      showDirections: _settings.showDirections,
+      useDifferentDirectionsColors: _settings.useDifferentDirectionsColors,
     ));
 
     result.fold(
