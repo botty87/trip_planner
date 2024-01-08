@@ -143,5 +143,8 @@ abstract class  LocaleKeys {
   static const discoverNewTrips = 'discoverNewTrips';
   static const searchTrip = 'searchTrip';
   static const searchIntoDescription = 'searchIntoDescription';
+  static const dailyTrips = 'dailyTrips';
+  static const noDayTripsFound = 'noDayTripsFound';
+  static const addThisTrip = 'addThisTrip';
 
 }

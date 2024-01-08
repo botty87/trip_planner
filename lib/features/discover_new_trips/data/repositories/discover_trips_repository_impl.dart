@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/repositories/discover_trips_repository.dart';
 import '../../errors/discover_trips_failure.dart';
@@ -18,6 +19,18 @@ class DiscoverTripsRepositoryImpl implements DiscoverTripsRepository {
     try {
       final trips = await dataSource.getPublicTrips(userId);
       return Right(trips);
+    } on FirebaseException catch (e) {
+      return Left(DiscoverTripsFailure(message: e.message));
+    } on Exception {
+      return const Left(DiscoverTripsFailure());
+    }
+  }
+
+  @override
+  Future<Either<DiscoverTripsFailure, List<DayTrip>>> getPublicDayTrips(String tripId) async {
+    try {
+      final dayTrips = await dataSource.getPublicDayTrips(tripId);
+      return Right(dayTrips);
     } on FirebaseException catch (e) {
       return Left(DiscoverTripsFailure(message: e.message));
     } on Exception {

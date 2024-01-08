@@ -143,6 +143,8 @@
     "private" : "Private",
     "discoverNewTrips" : "Discover new trips",
     "searchTrip" : "Search trip",
-    "searchIntoDescription" : "Search into description"
-    
+    "searchIntoDescription" : "Search into description",
+    "dailyTrips" : "Day of trip",
+    "noDayTripsFound" : "No day of trip found",
+    "addThisTrip" : "Add this trip"
 }

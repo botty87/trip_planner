@@ -4,7 +4,7 @@ import '../../constants.dart';
 
 abstract base class GenericTripCard extends StatelessWidget {
   abstract final String name;
-  abstract final String date;
+  abstract final String? date;
   abstract final String? description;
   abstract final VoidCallback? onTap;
   abstract final Color? color;
@@ -23,7 +23,7 @@ abstract base class GenericTripCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _DayTripNameWidget(name: name),
-              _DayTripDateWidget(date: date),
+              if(date != null) _DayTripDateWidget(date: date!),
               if (description != null) _DayTripDescriptionWidget(description: description!),
             ],
           ),

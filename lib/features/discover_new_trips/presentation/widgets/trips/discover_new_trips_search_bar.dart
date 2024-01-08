@@ -1,4 +1,4 @@
-part of '../pages/discover_new_trips_page.dart';
+part of '../../pages/discover_new_trips_page.dart';
 
 class _DiscoverNewTripsSearchBar extends StatelessWidget {
   final TextEditingController _textEditingController = TextEditingController();
@@ -15,11 +15,11 @@ class _DiscoverNewTripsSearchBar extends StatelessWidget {
           onChanged: (value) => context.read<DiscoverNewTripsCubit>().tripsQueryChanged(value),
           decoration: InputDecoration(
             hintText: LocaleKeys.searchTrip.tr(),
-            suffixIcon:
-                BlocSelector<DiscoverNewTripsCubit, DiscoverNewTripsState, bool>(
-              selector: (state) {
-                return state.query.isNotEmpty;
-              },
+            suffixIcon: BlocSelector<DiscoverNewTripsCubit, DiscoverNewTripsState, bool>(
+              selector: (state) => state.maybeWhen(
+                normal: (query, _, __, ___) => query.isNotEmpty,
+                orElse: () => false,
+              ),
               builder: (context, queryIsNotEmpty) {
                 return queryIsNotEmpty
                     ? IconButton(
@@ -36,7 +36,10 @@ class _DiscoverNewTripsSearchBar extends StatelessWidget {
         ),
         const SizedBox(height: verticalSpaceS),
         BlocSelector<DiscoverNewTripsCubit, DiscoverNewTripsState, bool>(
-          selector: (state) => state.searchDescription,
+          selector: (state) => state.maybeWhen(
+            normal: (_, __, ___, searchDescription) => searchDescription,
+            orElse: () => false,
+          ),
           builder: (context, searchDescription) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,4 @@
-part of '../pages/discover_new_trips_page.dart';
+part of '../../pages/discover_new_trips_page.dart';
 
 class _TripCard extends StatelessWidget {
   final Trip trip;
@@ -7,7 +7,7 @@ class _TripCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      //onTap: () => context.router.push(TripRoute(trip: trip)),
+      onTap: () => context.router.push(DiscoverNewDailyTripsRoute(trip: trip)),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(verticalSpace),

@@ -7,6 +7,8 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
+    as _i7;
 import 'package:trip_planner/features/discover_new_trips/domain/repositories/discover_trips_repository.dart'
     as _i3;
 import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart'
@@ -69,4 +71,34 @@ class MockDiscoverTripsRepository extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.DiscoverTripsFailure, List<_i6.Trip>>>);
+
+  @override
+  _i4.Future<
+      _i2
+      .Either<_i5.DiscoverTripsFailure, List<_i7.DayTrip>>> getPublicDayTrips(
+          String? tripId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getPublicDayTrips,
+          [tripId],
+        ),
+        returnValue: _i4.Future<
+                _i2.Either<_i5.DiscoverTripsFailure, List<_i7.DayTrip>>>.value(
+            _FakeEither_0<_i5.DiscoverTripsFailure, List<_i7.DayTrip>>(
+          this,
+          Invocation.method(
+            #getPublicDayTrips,
+            [tripId],
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<
+                _i2.Either<_i5.DiscoverTripsFailure, List<_i7.DayTrip>>>.value(
+            _FakeEither_0<_i5.DiscoverTripsFailure, List<_i7.DayTrip>>(
+          this,
+          Invocation.method(
+            #getPublicDayTrips,
+            [tripId],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.DiscoverTripsFailure, List<_i7.DayTrip>>>);
 }

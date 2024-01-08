@@ -1,4 +1,4 @@
-part of '../pages/discover_new_trips_page.dart';
+part of '../../pages/discover_new_trips_page.dart';
 
 class _DiscoverNewTripList extends StatelessWidget {
   const _DiscoverNewTripList();
@@ -18,7 +18,7 @@ class _DiscoverNewTripList extends StatelessWidget {
       return ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
         child: ListView.separated(
-          padding: defaultPagePadding,
+          padding: const EdgeInsets.symmetric(vertical: pageVerticalPadding),
           itemCount: filteredTrips.length,
           itemBuilder: (context, index) => _TripCard(trip: filteredTrips[index]),
           separatorBuilder: (BuildContext context, int index) =>

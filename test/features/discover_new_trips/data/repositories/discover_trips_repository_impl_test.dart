@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/discover_new_trips/data/datasources/discover_trips_data_source.dart';
 import 'package:trip_planner/features/discover_new_trips/data/repositories/discover_trips_repository_impl.dart';
 import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart';
@@ -16,6 +17,9 @@ void main() {
 
   const tTrips = <Trip>[];
   const tUserId = 'userId';
+
+  const tDayTrips = <DayTrip>[];
+  const tTripId = 'tripId';
 
   setUp(() {
     mockDataSource = MockDiscoverTripsDataSource();
@@ -39,4 +43,23 @@ void main() {
       verifyNoMoreInteractions(mockDataSource);
     });
   });
+
+  group('getPublicDayTrips', () {
+    test('should return list of day trips on success', () async {
+      when(mockDataSource.getPublicDayTrips(tTripId)).thenAnswer((_) async => tDayTrips);
+      final result = await repository.getPublicDayTrips(tTripId);
+      expect(result, const Right(tDayTrips));
+      verify(mockDataSource.getPublicDayTrips(tTripId));
+      verifyNoMoreInteractions(mockDataSource);
+    });
+
+    test('should return failure on failure', () async {
+      when(mockDataSource.getPublicDayTrips(tTripId)).thenThrow(Exception());
+      final result = await repository.getPublicDayTrips(tTripId);
+      expect(result, const Left(DiscoverTripsFailure()));
+      verify(mockDataSource.getPublicDayTrips(tTripId));
+      verifyNoMoreInteractions(mockDataSource);
+    });
+  });
+  
 }
