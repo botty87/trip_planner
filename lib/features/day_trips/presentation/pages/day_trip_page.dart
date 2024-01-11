@@ -16,9 +16,13 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
-import '../../../../core/utilities/extensions.dart';
 import '../../../../core/utilities/pair.dart';
 import '../../../../core/widgets/custom_reorderable_list_view.dart';
+import '../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
+import '../../../../core/widgets/map/default_map_markers_finder.dart';
+import '../../../../core/widgets/map/default_map_type_changer.dart';
+import '../../../../core/widgets/map/default_map_zoom_buttons.dart';
+import '../../../../core/widgets/map/map_view_mixin.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../core/widgets/trip/add_destination_card.dart';
@@ -89,7 +93,6 @@ class DayTripPage extends StatelessWidget {
                 Navigator.of(context).pop();
               }
             },
-            //onWillPop: () => _onWillPop(context),
             child: DefaultTabController(
               length: 2,
               child: Scaffold(

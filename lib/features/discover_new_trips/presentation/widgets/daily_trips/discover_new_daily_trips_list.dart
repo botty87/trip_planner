@@ -1,7 +1,11 @@
 part of '../../pages/discover_new_daily_trips_page.dart';
 
 class _DiscoverNewDailyTripList extends StatelessWidget {
-  const _DiscoverNewDailyTripList();
+  final Trip _trip;
+  
+  const _DiscoverNewDailyTripList({
+    required Trip trip,
+  }) : _trip = trip;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,7 @@ class _DiscoverNewDailyTripList extends StatelessWidget {
               horizontalSpace, verticalSpace, horizontalSpace, verticalSpace),
           itemCount: dayTrips.length,
           itemBuilder: (context, index) => _DayTripCard(
+            trip: _trip,
             dayTrip: dayTrips[index],
             context: context,
           ),

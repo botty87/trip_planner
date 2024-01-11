@@ -5,23 +5,11 @@ class _MapZoomButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<TripStopsMapCubit>();
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          IconButton.filled(
-            icon: const Icon(Icons.remove, color: Colors.white),
-            onPressed: () => cubit.mapController?.animateCamera(CameraUpdate.zoomOut()),
-          ),
-          const SizedBox(width: horizontalSpaceS),
-          IconButton.filled(
-            icon: const Icon(Icons.add, color: Colors.white),
-            onPressed: () => cubit.mapController?.animateCamera(CameraUpdate.zoomIn()),
-          ),
-        ],
-      ),
+    return DefaultMapZoomButtons(
+      onZoomInPressed: () =>
+          context.read<TripStopsMapCubit>().mapController?.animateCamera(CameraUpdate.zoomIn()),
+      onZoomOutPressed: () =>
+          context.read<TripStopsMapCubit>().mapController?.animateCamera(CameraUpdate.zoomOut()),
     );
   }
 }

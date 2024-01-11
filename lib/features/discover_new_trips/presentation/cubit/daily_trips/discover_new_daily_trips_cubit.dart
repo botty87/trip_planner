@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../day_trips/domain/entities/day_trip.dart';
-import '../../../../domain/usecases/get_public_day_trips.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../day_trips/domain/entities/day_trip.dart';
+import '../../../domain/usecases/get_public_day_trips.dart';
 
 part 'discover_new_daily_trips_cubit.freezed.dart';
 part 'discover_new_daily_trips_state.dart';

@@ -10,6 +10,8 @@ import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
     as _i5;
 import 'package:trip_planner/features/discover_new_trips/data/datasources/discover_trips_data_source.dart'
     as _i2;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
+    as _i6;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i4;
 
 // ignore_for_file: type=lint
@@ -53,4 +55,22 @@ class MockDiscoverTripsDataSource extends _i1.Mock
         returnValueForMissingStub:
             _i3.Future<List<_i5.DayTrip>>.value(<_i5.DayTrip>[]),
       ) as _i3.Future<List<_i5.DayTrip>>);
+
+  @override
+  _i3.Future<List<_i6.TripStop>> getPublicTripStops(
+    String? tripId,
+    String? dayTripId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getPublicTripStops,
+          [
+            tripId,
+            dayTripId,
+          ],
+        ),
+        returnValue: _i3.Future<List<_i6.TripStop>>.value(<_i6.TripStop>[]),
+        returnValueForMissingStub:
+            _i3.Future<List<_i6.TripStop>>.value(<_i6.TripStop>[]),
+      ) as _i3.Future<List<_i6.TripStop>>);
 }

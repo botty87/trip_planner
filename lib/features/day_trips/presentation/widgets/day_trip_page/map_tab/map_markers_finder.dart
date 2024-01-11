@@ -1,25 +1,27 @@
 part of '../../../pages/day_trip_page.dart';
 
-class _MapMarkersFinder extends StatelessWidget {
+class _MapMarkersFinder extends HookWidget {
   const _MapMarkersFinder();
 
   @override
   Widget build(BuildContext context) {
-    final isMarkerLatLngBoundsEmpty =
-        context.select((TripStopsMapCubit cubit) => cubit.state.markerLatLngBounds == null);
+    final isMarkerLatLngBoundsEmptyStreamController = useStreamController<bool>();
 
-    if (isMarkerLatLngBoundsEmpty) {
-      return const SizedBox.shrink();
-    }
-
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: IconButton.filled(
-        icon: const Icon(Icons.place, color: Colors.white),
-        onPressed: () {
-          final cubit = context.read<TripStopsMapCubit>();
-          cubit.mapController
-              ?.animateCamera(CameraUpdate.newLatLngBounds(cubit.state.markerLatLngBounds!, 50));
+    return BlocListener<TripStopsMapCubit, TripStopsMapState>(
+      listener: (context, state) =>
+          isMarkerLatLngBoundsEmptyStreamController.add(state.markerLatLngBounds == null),
+      listenWhen: (previous, current) => previous.isMapReady != current.isMapReady,
+      child: BlocBuilder<TripStopsMapCubit, TripStopsMapState>(
+        builder: (context, state) {
+          return DefaultMapMarkersFinder(
+            isMarkerLatLngBoundsEmpty: isMarkerLatLngBoundsEmptyStreamController.stream,
+            initialIsMarkerLatLngBoundsEmpty: state.markerLatLngBounds == null,
+            onTap: () {
+              final cubit = context.read<TripStopsMapCubit>();
+              cubit.mapController?.animateCamera(
+                  CameraUpdate.newLatLngBounds(cubit.state.markerLatLngBounds!, 50));
+            },
+          );
         },
       ),
     );

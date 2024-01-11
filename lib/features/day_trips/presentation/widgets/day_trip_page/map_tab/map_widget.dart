@@ -1,6 +1,6 @@
 part of '../../../pages/day_trip_page.dart';
 
-class _MapWidget extends StatelessWidget {
+class _MapWidget extends StatelessWidget with MapViewMixin {
   const _MapWidget();
 
   static const CameraPosition _worldPosition = CameraPosition(
@@ -14,9 +14,20 @@ class _MapWidget extends StatelessWidget {
     final cubit = context.read<TripStopsMapCubit>();
 
     final polylines = _getPolylines(context);
-    final markers = _getMarkers(context);
 
-    final LatLngBounds? markerLatLngBounds = _getLatLngBounds(markers);
+    final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
+    final markers = getMarkers(
+      context: context,
+      tripStops: tripStops,
+      onMarkerTap: (tripStop) {
+        final state = context.read<DayTripCubit>().state;
+        context.router
+            .push(TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop));
+      },
+      useDifferentColorsForDone: true,
+    );
+
+    final LatLngBounds? markerLatLngBounds = getLatLngBounds(markers: markers);
     cubit.updateMarkerLatLngBounds(markerLatLngBounds);
 
     if (markerLatLngBounds != null) {
@@ -40,41 +51,11 @@ class _MapWidget extends StatelessWidget {
     );
   }
 
-  LatLngBounds? _getLatLngBounds(Set<Marker> markers) {
-    return markers.isNotEmpty
-        ? LatLngBoundsExtension.fromLatLngList(markers.map((e) => e.position).toList())
-        : null;
-  }
-
-  Set<Marker> _getMarkers(BuildContext context) {
-    final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
-
-    return tripStops
-        .map(
-          (stop) => Marker(
-            markerId: MarkerId(stop.id),
-            position: stop.location,
-            infoWindow: InfoWindow(
-              title: stop.name,
-              snippet: stop.description,
-              onTap: () {
-                final state = context.read<DayTripCubit>().state;
-                context.router
-                    .push(TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: stop));
-              },
-            ),
-            icon: stop.isDone
-                ? BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)
-                : BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-          ),
-        )
-        .toSet();
-  }
-
   Set<Polyline> _getPolylines(BuildContext context) {
     final Set<Polyline> polylines = {};
 
-    final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
+    final showDirections =
+        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
     final tripStopsDirectionsUpToDate = context
         .select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirectionsUpToDate);
 
@@ -86,8 +67,8 @@ class _MapWidget extends StatelessWidget {
     final List<TripStopsDirections>? tripStopsDirections =
         context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirections);
 
-    final useDifferentColors =
-        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.useDifferentDirectionsColors);
+    final useDifferentColors = context
+        .select((TripStopsMapCubit cubit) => cubit.state.dayTrip.useDifferentDirectionsColors);
 
     if (tripStopsDirections != null && isMapReady) {
       final List<MaterialColor> colors;

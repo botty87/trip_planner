@@ -13,6 +13,8 @@ import 'package:trip_planner/features/discover_new_trips/domain/repositories/dis
     as _i3;
 import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart'
     as _i5;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
+    as _i8;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i6;
 
 // ignore_for_file: type=lint
@@ -101,4 +103,46 @@ class MockDiscoverTripsRepository extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.DiscoverTripsFailure, List<_i7.DayTrip>>>);
+
+  @override
+  _i4.Future<
+      _i2
+      .Either<_i5.DiscoverTripsFailure, List<_i8.TripStop>>> getPublicTripStops(
+    String? tripId,
+    String? dayTripId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getPublicTripStops,
+          [
+            tripId,
+            dayTripId,
+          ],
+        ),
+        returnValue: _i4.Future<
+                _i2.Either<_i5.DiscoverTripsFailure, List<_i8.TripStop>>>.value(
+            _FakeEither_0<_i5.DiscoverTripsFailure, List<_i8.TripStop>>(
+          this,
+          Invocation.method(
+            #getPublicTripStops,
+            [
+              tripId,
+              dayTripId,
+            ],
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<
+                _i2.Either<_i5.DiscoverTripsFailure, List<_i8.TripStop>>>.value(
+            _FakeEither_0<_i5.DiscoverTripsFailure, List<_i8.TripStop>>(
+          this,
+          Invocation.method(
+            #getPublicTripStops,
+            [
+              tripId,
+              dayTripId,
+            ],
+          ),
+        )),
+      ) as _i4
+          .Future<_i2.Either<_i5.DiscoverTripsFailure, List<_i8.TripStop>>>);
 }

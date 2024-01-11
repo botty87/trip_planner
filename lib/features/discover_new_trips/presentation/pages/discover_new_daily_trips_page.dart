@@ -7,10 +7,11 @@ import 'package:responsive_framework/responsive_breakpoints.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
+import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
-import '../cubit/daily_trips/cubit/discover_new_daily_trips_cubit.dart';
+import '../cubit/daily_trips/discover_new_daily_trips_cubit.dart';
 
 part '../widgets/daily_trips/add_trip_bottom_button.dart';
 part '../widgets/daily_trips/day_trip_card.dart';
@@ -34,7 +35,7 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(_trip.name),
         ),
-        body: const _DiscoverNewDailyTripsBody(),
+        body: _DiscoverNewDailyTripsBody(trip: _trip,),
       ),
     );
   }

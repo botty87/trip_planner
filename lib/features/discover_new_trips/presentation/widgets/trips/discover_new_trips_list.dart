@@ -7,8 +7,12 @@ class _DiscoverNewTripList extends StatelessWidget {
   Widget build(BuildContext context) {
     final filteredTrips = context.select((DiscoverNewTripsCubit cubit) => cubit.state.maybeMap(
           normal: (state) => state.filteredTrips,
-          orElse: () => [],
+          orElse: () => throw Exception('Unexpected state'),
         ));
+
+    if (filteredTrips.isEmpty) {
+      return const _NoTripsWidget();
+    }
 
     return LayoutBuilder(builder: (context, constraints) {
       final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)

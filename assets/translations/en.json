@@ -146,5 +146,6 @@
     "searchIntoDescription" : "Search into description",
     "dailyTrips" : "Day of trip",
     "noDayTripsFound" : "No day of trip found",
-    "addThisTrip" : "Add this trip"
+    "addThisTrip" : "Add this trip",
+    "noPubblicTripsFound" : "No public trips found. Be the first to share your trip!"
 }

@@ -1,20 +1,19 @@
 part of '../../../pages/day_trip_page.dart';
 
-class _MapTypeChanger extends StatelessWidget {
+class _MapTypeChanger extends HookWidget {
   const _MapTypeChanger();
 
   @override
   Widget build(BuildContext context) {
-    final mapType = context.select((TripStopsMapCubit cubit) => cubit.state.mapType);
+    final mapTypeStreamController = useStreamController<MapType>();
     
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: IconButton.filled(
-        icon: Icon(
-          mapType != MapType.hybrid ? Icons.map : Icons.map_outlined,
-          color: Colors.white,
-        ),
-        onPressed: () => context.read<TripStopsMapCubit>().changeMapType(),
+    return BlocListener<TripStopsMapCubit, TripStopsMapState>(
+      listener: (context, state) => mapTypeStreamController.add(state.mapType),
+      listenWhen: (previous, current) => previous.mapType != current.mapType,
+      child: DefaultMapTypeChanger(
+        mapTypeStream: mapTypeStreamController.stream,
+        initialMapType: context.read<TripStopsMapCubit>().state.mapType,
+        onTap: () => context.read<TripStopsMapCubit>().changeMapType(),
       ),
     );
   }

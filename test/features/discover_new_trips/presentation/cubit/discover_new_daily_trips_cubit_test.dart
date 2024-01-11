@@ -9,7 +9,7 @@ import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/discover_new_trips/domain/usecases/get_public_day_trips.dart';
 import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart';
-import 'package:trip_planner/features/discover_new_trips/presentation/cubit/daily_trips/cubit/discover_new_daily_trips_cubit.dart';
+import 'package:trip_planner/features/discover_new_trips/presentation/cubit/daily_trips/discover_new_daily_trips_cubit.dart';
 
 import 'discover_new_daily_trips_cubit_test.mocks.dart';
 

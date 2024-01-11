@@ -1,7 +1,11 @@
 part of '../../pages/discover_new_daily_trips_page.dart';
 
 class _DiscoverNewDailyTripsBody extends StatelessWidget {
-  const _DiscoverNewDailyTripsBody({super.key});
+  final Trip _trip;
+  
+  const _DiscoverNewDailyTripsBody({
+    required Trip trip,
+  }) : _trip = trip;
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +15,10 @@ class _DiscoverNewDailyTripsBody extends StatelessWidget {
         return state.map(
           initial: (_) => const SizedBox.shrink(),
           loading: (_) => const Center(child: CircularProgressIndicator.adaptive()),
-          loaded: (state) => const Column(
+          loaded: (state) =>  Column(
             children: [
-              Expanded(child: _DiscoverNewDailyTripList()),
-              SafeArea(child: _AddTripBottomButton()),
+              Expanded(child: _DiscoverNewDailyTripList(trip: _trip)),
+              const SafeArea(child: _AddTripBottomButton()),
             ],
           ),
           error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),

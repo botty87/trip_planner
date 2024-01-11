@@ -14,7 +14,7 @@ class _TripStopsList extends StatelessWidget {
   }
 }
 
-class _List extends HookWidget {
+class _List extends HookWidget with TripStopStartEndTimeMixin {
   const _List();
 
   @override
@@ -41,7 +41,7 @@ class _List extends HookWidget {
       itemBuilder: (context, index) {
         final tripStop = tripStops[index];
         if (tripStopStartEndTimes.length <= index) {
-          tripStopStartEndTimes.add(_getTripStartEndTimes(
+          tripStopStartEndTimes.add(getTripStartEndTimes(
             tripStops: tripStops,
             tripStopStartEndTimes: tripStopStartEndTimes,
             dayTripStartDateTime: dayTripStartDateTime,
@@ -80,25 +80,6 @@ class _List extends HookWidget {
         context.read<DayTripCubit>().reorderTripStops(oldIndex, newIndex);
       },
     );
-  }
-
-  Pair<DateTime, DateTime> _getTripStartEndTimes({
-    required List<TripStop> tripStops,
-    required List<Pair<DateTime, DateTime>> tripStopStartEndTimes,
-    required DateTime dayTripStartDateTime,
-    required int currentIndex,
-  }) {
-    final tripStop = tripStops[currentIndex];
-    if (currentIndex == 0) {
-      return Pair(
-          dayTripStartDateTime, dayTripStartDateTime.add(Duration(minutes: tripStop.duration)));
-    } else {
-      final previousTripStop = tripStops[currentIndex - 1];
-      final previousTripStopStartEndTime = tripStopStartEndTimes[currentIndex - 1];
-      final startTime = previousTripStopStartEndTime.second
-          .add(Duration(minutes: previousTripStop.travelTimeToNextStop));
-      return Pair(startTime, startTime.add(Duration(minutes: tripStop.duration)));
-    }
   }
 
   Widget _getSlidableAction(TripStop tripStop, int index) {
