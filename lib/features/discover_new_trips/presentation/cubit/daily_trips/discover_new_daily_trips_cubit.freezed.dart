@@ -20,7 +20,7 @@ mixin _$DiscoverNewDailyTripsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DayTrip> dayTrips) loaded,
+    required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$DiscoverNewDailyTripsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DayTrip> dayTrips)? loaded,
+    TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$DiscoverNewDailyTripsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DayTrip> dayTrips)? loaded,
+    TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -128,7 +128,7 @@ class _$StateInitialImpl implements StateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DayTrip> dayTrips) loaded,
+    required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -139,7 +139,7 @@ class _$StateInitialImpl implements StateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DayTrip> dayTrips)? loaded,
+    TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -150,7 +150,7 @@ class _$StateInitialImpl implements StateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DayTrip> dayTrips)? loaded,
+    TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -242,7 +242,7 @@ class _$StateLoadingImpl implements StateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DayTrip> dayTrips) loaded,
+    required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -253,7 +253,7 @@ class _$StateLoadingImpl implements StateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DayTrip> dayTrips)? loaded,
+    TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -264,7 +264,7 @@ class _$StateLoadingImpl implements StateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DayTrip> dayTrips)? loaded,
+    TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -322,7 +322,7 @@ abstract class _$$StateLoadedImplCopyWith<$Res> {
           _$StateLoadedImpl value, $Res Function(_$StateLoadedImpl) then) =
       __$$StateLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<DayTrip> dayTrips});
+  $Res call({List<DayTrip> dayTrips, bool isFabVisible});
 }
 
 /// @nodoc
@@ -337,12 +337,17 @@ class __$$StateLoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? dayTrips = null,
+    Object? isFabVisible = null,
   }) {
     return _then(_$StateLoadedImpl(
       dayTrips: null == dayTrips
           ? _value._dayTrips
           : dayTrips // ignore: cast_nullable_to_non_nullable
               as List<DayTrip>,
+      isFabVisible: null == isFabVisible
+          ? _value.isFabVisible
+          : isFabVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -350,7 +355,8 @@ class __$$StateLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StateLoadedImpl implements StateLoaded {
-  const _$StateLoadedImpl({required final List<DayTrip> dayTrips})
+  const _$StateLoadedImpl(
+      {required final List<DayTrip> dayTrips, this.isFabVisible = true})
       : _dayTrips = dayTrips;
 
   final List<DayTrip> _dayTrips;
@@ -362,8 +368,12 @@ class _$StateLoadedImpl implements StateLoaded {
   }
 
   @override
+  @JsonKey()
+  final bool isFabVisible;
+
+  @override
   String toString() {
-    return 'DiscoverNewDailyTripsState.loaded(dayTrips: $dayTrips)';
+    return 'DiscoverNewDailyTripsState.loaded(dayTrips: $dayTrips, isFabVisible: $isFabVisible)';
   }
 
   @override
@@ -371,12 +381,14 @@ class _$StateLoadedImpl implements StateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateLoadedImpl &&
-            const DeepCollectionEquality().equals(other._dayTrips, _dayTrips));
+            const DeepCollectionEquality().equals(other._dayTrips, _dayTrips) &&
+            (identical(other.isFabVisible, isFabVisible) ||
+                other.isFabVisible == isFabVisible));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_dayTrips));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_dayTrips), isFabVisible);
 
   @JsonKey(ignore: true)
   @override
@@ -389,10 +401,10 @@ class _$StateLoadedImpl implements StateLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DayTrip> dayTrips) loaded,
+    required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(dayTrips);
+    return loaded(dayTrips, isFabVisible);
   }
 
   @override
@@ -400,10 +412,10 @@ class _$StateLoadedImpl implements StateLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DayTrip> dayTrips)? loaded,
+    TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(dayTrips);
+    return loaded?.call(dayTrips, isFabVisible);
   }
 
   @override
@@ -411,12 +423,12 @@ class _$StateLoadedImpl implements StateLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DayTrip> dayTrips)? loaded,
+    TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(dayTrips);
+      return loaded(dayTrips, isFabVisible);
     }
     return orElse();
   }
@@ -460,10 +472,12 @@ class _$StateLoadedImpl implements StateLoaded {
 }
 
 abstract class StateLoaded implements DiscoverNewDailyTripsState {
-  const factory StateLoaded({required final List<DayTrip> dayTrips}) =
-      _$StateLoadedImpl;
+  const factory StateLoaded(
+      {required final List<DayTrip> dayTrips,
+      final bool isFabVisible}) = _$StateLoadedImpl;
 
   List<DayTrip> get dayTrips;
+  bool get isFabVisible;
   @JsonKey(ignore: true)
   _$$StateLoadedImplCopyWith<_$StateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -535,7 +549,7 @@ class _$StateErrorImpl implements StateError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<DayTrip> dayTrips) loaded,
+    required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -546,7 +560,7 @@ class _$StateErrorImpl implements StateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<DayTrip> dayTrips)? loaded,
+    TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -557,7 +571,7 @@ class _$StateErrorImpl implements StateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<DayTrip> dayTrips)? loaded,
+    TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

@@ -6,7 +6,10 @@ sealed class DiscoverNewDailyTripsState with _$DiscoverNewDailyTripsState {
 
   const factory DiscoverNewDailyTripsState.loading() = StateLoading;
 
-  const factory DiscoverNewDailyTripsState.loaded({required List<DayTrip> dayTrips}) = StateLoaded;
+  const factory DiscoverNewDailyTripsState.loaded({
+    required List<DayTrip> dayTrips,
+    @Default(true) bool isFabVisible,
+  }) = StateLoaded;
 
   const factory DiscoverNewDailyTripsState.error({required String message}) = StateError;
 }

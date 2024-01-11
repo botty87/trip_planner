@@ -9,7 +9,6 @@ class DiscoverNewTripStopPage extends StatelessWidget {
   const DiscoverNewTripStopPage({super.key, required TripStop tripStop})
       : _tripStop = tripStop;
         
-
   @override
   Widget build(BuildContext context) {
     return Container();

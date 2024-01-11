@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
@@ -31,17 +32,49 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<DiscoverNewDailyTripsCubit>(
       create: (context) => getIt<DiscoverNewDailyTripsCubit>(param1: _trip.id)..fetchDayTrips(),
-      child: Scaffold(
+      child: Builder(builder: (context) {
+        return Scaffold(
           appBar: AppBar(
             title: Text(_trip.name),
           ),
-          body: _DiscoverNewDailyTripsBody(
-            trip: _trip,
+          body: NotificationListener<UserScrollNotification>(
+            onNotification: (notification) {
+              if (notification.direction == ScrollDirection.reverse) {
+                context.read<DiscoverNewDailyTripsCubit>().hideFab();
+              } else if (notification.direction == ScrollDirection.forward) {
+                context.read<DiscoverNewDailyTripsCubit>().showFab();
+              }
+              return true;
+            },
+            child: _DiscoverNewDailyTripsBody(
+              trip: _trip,
+            ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => context.read<DiscoverNewDailyTripsCubit>().addTrip(),
-            child: Icon(MdiIcons.earthPlus),
-          )),
+          floatingActionButton:
+              BlocSelector<DiscoverNewDailyTripsCubit, DiscoverNewDailyTripsState, bool>(
+            selector: (state) {
+              return state.maybeMap(
+                loaded: (state) => state.isFabVisible,
+                orElse: () => false,
+              );
+            },
+            builder: (context, showFab) {
+              return AnimatedSlide(
+                duration: const Duration(milliseconds: 300),
+                offset: showFab ? Offset.zero : const Offset(0, 2),
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 300),
+                  opacity: showFab ? 1 : 0,
+                  child: FloatingActionButton(
+                    child: Icon(MdiIcons.earthPlus),
+                    onPressed: () {},
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      }),
     );
   }
 }

@@ -34,4 +34,12 @@ class DiscoverNewDailyTripsCubit extends Cubit<DiscoverNewDailyTripsState> {
   }
 
   addTrip() {}
+
+  void hideFab() {
+    state.mapOrNull(loaded: (state) => emit(state.copyWith(isFabVisible: false)));
+  }
+
+  void showFab() {
+    state.mapOrNull(loaded: (state) => emit(state.copyWith(isFabVisible: true)));
+  }
 }
