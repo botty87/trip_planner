@@ -2,7 +2,7 @@ part of '../../pages/discover_new_daily_trips_page.dart';
 
 class _DiscoverNewDailyTripsBody extends StatelessWidget {
   final Trip _trip;
-  
+
   const _DiscoverNewDailyTripsBody({
     required Trip trip,
   }) : _trip = trip;
@@ -15,12 +15,7 @@ class _DiscoverNewDailyTripsBody extends StatelessWidget {
         return state.map(
           initial: (_) => const SizedBox.shrink(),
           loading: (_) => const Center(child: CircularProgressIndicator.adaptive()),
-          loaded: (state) =>  Column(
-            children: [
-              Expanded(child: _DiscoverNewDailyTripList(trip: _trip)),
-              const SafeArea(child: _AddTripBottomButton()),
-            ],
-          ),
+          loaded: (state) => _DiscoverNewDailyTripList(trip: _trip),
           error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),
         );
       },
