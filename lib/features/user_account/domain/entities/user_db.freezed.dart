@@ -23,6 +23,7 @@ mixin _$UserDB {
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get oldTripsImported => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: settingsFromMap, toJson: settingsToMap)
   Settings get settings => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,11 @@ abstract class $UserDBCopyWith<$Res> {
       _$UserDBCopyWithImpl<$Res, UserDB>;
   @useResult
   $Res call(
-      {String email, String name, bool oldTripsImported, Settings settings});
+      {String email,
+      String name,
+      bool oldTripsImported,
+      @JsonKey(fromJson: settingsFromMap, toJson: settingsToMap)
+      Settings settings});
 
   $SettingsCopyWith<$Res> get settings;
 }
@@ -96,7 +101,11 @@ abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String email, String name, bool oldTripsImported, Settings settings});
+      {String email,
+      String name,
+      bool oldTripsImported,
+      @JsonKey(fromJson: settingsFromMap, toJson: settingsToMap)
+      Settings settings});
 
   @override
   $SettingsCopyWith<$Res> get settings;
@@ -142,10 +151,11 @@ class __$$UserDBImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserDBImpl implements _UserDB {
-  _$UserDBImpl(
+  const _$UserDBImpl(
       {required this.email,
       required this.name,
       this.oldTripsImported = false,
+      @JsonKey(fromJson: settingsFromMap, toJson: settingsToMap)
       this.settings = const Settings()});
 
   factory _$UserDBImpl.fromJson(Map<String, dynamic> json) =>
@@ -159,7 +169,7 @@ class _$UserDBImpl implements _UserDB {
   @JsonKey()
   final bool oldTripsImported;
   @override
-  @JsonKey()
+  @JsonKey(fromJson: settingsFromMap, toJson: settingsToMap)
   final Settings settings;
 
   @override
@@ -200,10 +210,11 @@ class _$UserDBImpl implements _UserDB {
 }
 
 abstract class _UserDB implements UserDB {
-  factory _UserDB(
+  const factory _UserDB(
       {required final String email,
       required final String name,
       final bool oldTripsImported,
+      @JsonKey(fromJson: settingsFromMap, toJson: settingsToMap)
       final Settings settings}) = _$UserDBImpl;
 
   factory _UserDB.fromJson(Map<String, dynamic> json) = _$UserDBImpl.fromJson;
@@ -215,6 +226,7 @@ abstract class _UserDB implements UserDB {
   @override
   bool get oldTripsImported;
   @override
+  @JsonKey(fromJson: settingsFromMap, toJson: settingsToMap)
   Settings get settings;
   @override
   @JsonKey(ignore: true)

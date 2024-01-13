@@ -49,10 +49,12 @@ final class UserDataSourceImpl implements UserDataSource {
       final userDoc = _usersCollection.doc(firebaseUser.uid);
       var userDocSnapshot = await userDoc.get();
       if (!userDocSnapshot.exists) {
-        await userDoc.set(UserDB(
+        final userDB = UserDB(
           email: firebaseUser.email!,
           name: firebaseUser.displayName!,
-        ));
+          oldTripsImported: true,
+        );
+        await userDoc.set(userDB);
         userDocSnapshot = await userDoc.get();
       }
     }

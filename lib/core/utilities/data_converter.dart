@@ -1,7 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' hide Settings;
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../../features/settings/domain/entities/settings.dart';
 
 Timestamp dateTimeToTimestamp(DateTime dateTime) => Timestamp.fromDate(dateTime);
 
@@ -51,3 +53,7 @@ int travelModeToInt(TravelMode travelMode) {
       return 3;
   }
 }
+
+Map<String, dynamic> settingsToMap(Settings settings) => settings.toJson();
+
+Settings settingsFromMap(Map<String, dynamic> map) => Settings.fromJson(map);

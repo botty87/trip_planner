@@ -231,12 +231,12 @@ extension GetItInjectableX on _i1.GetIt {
       instanceName: 'googlePlacesKey',
     );
     gh.lazySingleton<String>(
-      () => googlePlacesModule.proxyUrl,
-      instanceName: 'proxyUrl',
-    );
-    gh.lazySingleton<String>(
       () => googlePlacesModule.googleMapKey,
       instanceName: 'googleMapKey',
+    );
+    gh.lazySingleton<String>(
+      () => googlePlacesModule.proxyUrl,
+      instanceName: 'proxyUrl',
     );
     gh.factoryParam<_i26.TripStopsCollectionRef, String, String>((
       tripId,
