@@ -346,7 +346,7 @@ class DiscoverNewTripStopRouteArgs {
 class DiscoverNewTripStopsRoute
     extends _i18.PageRouteInfo<DiscoverNewTripStopsRouteArgs> {
   DiscoverNewTripStopsRoute({
-    _i19.Key? key,
+    _i22.Key? key,
     required _i20.Trip trip,
     required _i21.DayTrip dayTrip,
     List<_i18.PageRouteInfo>? children,
@@ -373,7 +373,7 @@ class DiscoverNewTripStopsRouteArgs {
     required this.dayTrip,
   });
 
-  final _i19.Key? key;
+  final _i22.Key? key;
 
   final _i20.Trip trip;
 

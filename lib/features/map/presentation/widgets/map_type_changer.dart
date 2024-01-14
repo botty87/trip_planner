@@ -1,0 +1,21 @@
+part of 'map_widget.dart';
+
+class _MapTypeChanger extends StatelessWidget {
+  const _MapTypeChanger();
+
+  @override
+  Widget build(BuildContext context) {
+    final mapType = context.select((MapCubit cubit) => cubit.state.mapType);
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: IconButton.filled(
+        icon: Icon(
+          mapType == MapType.normal ? Icons.satellite : Icons.map,
+          color: Colors.white,
+        ),
+        onPressed: () => context.read<MapCubit>().changeMapType(),
+      ),
+    );
+  }
+}

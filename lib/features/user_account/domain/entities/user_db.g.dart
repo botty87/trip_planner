@@ -12,7 +12,7 @@ _$UserDBImpl _$$UserDBImplFromJson(Map<String, dynamic> json) => _$UserDBImpl(
       oldTripsImported: json['oldTripsImported'] as bool? ?? false,
       settings: json['settings'] == null
           ? const Settings()
-          : settingsFromMap(json['settings'] as Map<String, dynamic>),
+          : Settings.fromJson(json['settings'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
@@ -20,5 +20,5 @@ Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
       'email': instance.email,
       'name': instance.name,
       'oldTripsImported': instance.oldTripsImported,
-      'settings': settingsToMap(instance.settings),
+      'settings': instance.settings.toJson(),
     };

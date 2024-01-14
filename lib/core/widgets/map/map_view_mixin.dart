@@ -30,8 +30,6 @@ mixin MapViewMixin {
   }
 
   LatLngBounds? getLatLngBounds({required Set<Marker> markers}) {
-    return markers.isNotEmpty
-        ? LatLngBoundsExtension.fromLatLngList(markers.map((e) => e.position).toList())
-        : null;
+    return markers.isNotEmpty ? markers.map((e) => e.position).toList().getLatLngBounds() : null;
   }
 }

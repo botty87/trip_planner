@@ -7,7 +7,10 @@ class _MapMarkersFinder extends HookWidget {
   Widget build(BuildContext context) {
     final isMarkerLatLngBoundsEmptyStreamController = useStreamController<bool>();
 
-    return BlocListener<TripStopsMapCubit, TripStopsMapState>(
+    //TODO refactor
+    return Placeholder();
+
+    /* return BlocListener<TripStopsMapCubit, TripStopsMapState>(
       listener: (context, state) =>
           isMarkerLatLngBoundsEmptyStreamController.add(state.markerLatLngBounds == null),
       listenWhen: (previous, current) => previous.isMapReady != current.isMapReady,
@@ -24,6 +27,6 @@ class _MapMarkersFinder extends HookWidget {
           );
         },
       ),
-    );
+    ); */
   }
 }

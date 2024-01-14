@@ -26,11 +26,11 @@ extension StringExtension on String {
   String? nullIfEmpty() => isEmpty ? null : this;
 }
 
-extension LatLngBoundsExtension on LatLngBounds {
-  static fromLatLngList(List<LatLng> latLngList) {
-    assert(latLngList.isNotEmpty);
+extension LatLngBoundsExtension on List<LatLng> {
+  getLatLngBounds() {
+    assert(isNotEmpty);
     double? x0, x1, y0, y1;
-    for (LatLng latLng in latLngList) {
+    for (LatLng latLng in this) {
       if (x0 == null) {
         x0 = x1 = latLng.latitude;
         y0 = y1 = latLng.longitude;
@@ -51,4 +51,8 @@ extension PointLatLngExtension on PointLatLng {
 
 extension TravelModeExtension on TravelMode {
   int toJson() => travelModeToInt(this);
+}
+
+extension Let<T> on T {
+  R let<R>(R Function(T) block) => block(this);
 }

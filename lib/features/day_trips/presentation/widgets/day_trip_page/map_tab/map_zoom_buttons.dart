@@ -5,11 +5,14 @@ class _MapZoomButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultMapZoomButtons(
+    //TODO refactor
+    return Placeholder();
+
+    /* return DefaultMapZoomButtons(
       onZoomInPressed: () =>
           context.read<TripStopsMapCubit>().mapController?.animateCamera(CameraUpdate.zoomIn()),
       onZoomOutPressed: () =>
           context.read<TripStopsMapCubit>().mapController?.animateCamera(CameraUpdate.zoomOut()),
-    );
+    ); */
   }
 }

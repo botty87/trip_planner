@@ -22,5 +22,5 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'email': instance.email,
       'name': instance.name,
       'oldTripsImported': instance.oldTripsImported,
-      'settings': instance.settings,
+      'settings': instance.settings.toJson(),
     };

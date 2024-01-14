@@ -1,36 +1,21 @@
 part of '../../../pages/discover_new_trip_stops_page.dart';
 
 class _DiscoverNewTripStopsMapTab extends HookWidget {
+  const _DiscoverNewTripStopsMapTab();
+
   @override
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
 
-    final isMapReady = context.select(
-      (DiscoverNewTripStopsCubit cubit) => cubit.state.maybeMap(
-        loaded: (state) => state.isMapReady || kIsWeb,
-        orElse: () => throw ('Unexpected state'),
-      ),
-    );
+    final tripStops = context.read<DiscoverNewTripStopsCubit>().state.maybeMap(
+          loaded: (state) => state.tripStops,
+          orElse: () => throw Exception('Unexpected state'),
+        );
 
-    return Stack(
-      children: [
-        Visibility(
-          visible: !isMapReady,
-          child: const Center(child: CircularProgressIndicator.adaptive()),
-        ),
-        AnimatedOpacity(
-          duration: const Duration(milliseconds: 500),
-          opacity: isMapReady ? 1 : 0,
-          child: const Stack(
-            children: [
-              _DiscoverNewTripStopsMap(),
-              Align(alignment: Alignment.topLeft, child: _MapTypeChanger()),
-              Align(alignment: Alignment.bottomRight, child: _MapZoomButtons()),
-              Align(alignment: Alignment.topRight, child: _MapMarkersFinder()),
-            ],
-          ),
-        ),
-      ],
+    return MapWidget.multiple(
+      tripStops: tripStops,
+      onMarkerTap: (tripStop) => context.router.push(DiscoverNewTripStopRoute(tripStop: tripStop)),
+      useDifferentColorsForDone: false,
     );
   }
 }

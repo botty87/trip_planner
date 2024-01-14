@@ -19,7 +19,7 @@ class _DiscoverNewTripStopsBody extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             children: [
               _DiscoverNewTripStopsList(dayTrip: _dayTrip),
-              _DiscoverNewTripStopsMapTab(),
+              const _DiscoverNewTripStopsMapTab(),
             ],
           ),
           error: (state) => const Center(child: _DiscoverNewTripStopsErrorWidget()),

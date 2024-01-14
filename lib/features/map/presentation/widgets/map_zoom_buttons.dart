@@ -1,16 +1,7 @@
-import 'package:flutter/material.dart';
+part of 'map_widget.dart';
 
-import '../../constants.dart';
-
-class DefaultMapZoomButtons extends StatelessWidget {
-  final VoidCallback onZoomInPressed;
-  final VoidCallback onZoomOutPressed;
-
-  const DefaultMapZoomButtons({
-    super.key,
-    required this.onZoomInPressed,
-    required this.onZoomOutPressed,
-  });
+class _MapZoomButtons extends StatelessWidget {
+  const _MapZoomButtons();
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +12,12 @@ class DefaultMapZoomButtons extends StatelessWidget {
         children: [
           IconButton.filled(
             icon: const Icon(Icons.remove, color: Colors.white),
-            onPressed: onZoomOutPressed,
+            onPressed: () => context.read<MapCubit>().zoomOut(),
           ),
           const SizedBox(width: horizontalSpaceS),
           IconButton.filled(
             icon: const Icon(Icons.add, color: Colors.white),
-            onPressed: onZoomInPressed,
+            onPressed: () => context.read<MapCubit>().zoomIn(),
           ),
         ],
       ),
