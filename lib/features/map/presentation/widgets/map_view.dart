@@ -4,14 +4,17 @@ class _MapView extends StatelessWidget {
   final List<TripStop> _tripStops;
   final Function(TripStop tripStop)? _onMarkerTap;
   final bool _useDifferentColorsForDone;
+  final Set<Polyline> _polylines;
 
   const _MapView({
     required List<TripStop> tripStops,
     Function(TripStop tripStop)? onMarkerTap,
     required bool useDifferentColorsForDone,
+    Set<Polyline> polylines = const {},
   })  : _tripStops = tripStops,
         _onMarkerTap = onMarkerTap,
-        _useDifferentColorsForDone = useDifferentColorsForDone;
+        _useDifferentColorsForDone = useDifferentColorsForDone,
+        _polylines = polylines;
 
   @override
   Widget build(BuildContext context) {
@@ -21,23 +24,25 @@ class _MapView extends StatelessWidget {
 
     assert(_tripStops.isNotEmpty, 'Trip stops cannot be empty');
 
+    final CameraPosition initialCameraPosition;
+
     if (_tripStops.length > 1) {
       final LatLngBounds? markerLatLngBounds = _getLatLngBounds(markers: markers);
       context.read<MapCubit>().updateMarkerLatLngBounds(markerLatLngBounds);
+      initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
     } else {
       context.read<MapCubit>().updateMarkerPosition(_tripStops.first.location);
+      initialCameraPosition = CameraPosition(target: _tripStops.first.location, zoom: 15);
     }
 
     return GoogleMap(
       mapType: mapType,
-      initialCameraPosition: const CameraPosition(
-        target: LatLng(0, 0),
-        zoom: 0,
-      ),
+      initialCameraPosition: initialCameraPosition,
       onMapCreated: (controller) => context.read<MapCubit>().mapCreated(controller),
       myLocationButtonEnabled: false,
       zoomControlsEnabled: false,
       markers: markers,
+      polylines: _polylines,
     );
   }
 

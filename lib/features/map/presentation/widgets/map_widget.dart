@@ -18,15 +18,18 @@ class MapWidget extends StatelessWidget {
   final List<TripStop> _tripStops;
   final Function(TripStop tripStop)? _onMarkerTap;
   final bool _useDifferentColorsForDone;
+  final Set<Polyline> _polylines;
 
   const MapWidget.multiple({
     super.key,
     required List<TripStop> tripStops,
     Function(TripStop tripStop)? onMarkerTap,
     bool useDifferentColorsForDone = true,
+    Set<Polyline> polylines = const {},
   })  : _tripStops = tripStops,
         _onMarkerTap = onMarkerTap,
-        _useDifferentColorsForDone = useDifferentColorsForDone;
+        _useDifferentColorsForDone = useDifferentColorsForDone,
+        _polylines = polylines;
 
   MapWidget.single({
     super.key,
@@ -35,7 +38,8 @@ class MapWidget extends StatelessWidget {
     bool useDifferentColorsForDone = true,
   })  : _tripStops = [tripStop],
         _onMarkerTap = onMarkerTap,
-        _useDifferentColorsForDone = useDifferentColorsForDone;
+        _useDifferentColorsForDone = useDifferentColorsForDone,
+        _polylines = const {};
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +65,7 @@ class MapWidget extends StatelessWidget {
                       tripStops: _tripStops,
                       onMarkerTap: _onMarkerTap,
                       useDifferentColorsForDone: _useDifferentColorsForDone,
+                      polylines: _polylines,
                     ),
                     const Align(alignment: Alignment.topLeft, child: _MapTypeChanger()),
                     const Align(alignment: Alignment.bottomRight, child: _MapZoomButtons()),

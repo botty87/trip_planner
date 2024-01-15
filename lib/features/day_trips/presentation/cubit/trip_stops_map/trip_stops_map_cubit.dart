@@ -78,11 +78,6 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     });
   }
 
-  changeMapType() {
-    emit(
-        state.copyWith(mapType: state.mapType == MapType.hybrid ? MapType.normal : MapType.hybrid));
-  }
-
   loadDirections(List<TripStop> tripStops) async {
     if (tripStops.length < 2 || state.isLoading || state.dayTrip.tripStopsDirectionsUpToDate) {
       return;
@@ -90,8 +85,8 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
 
     emit(state.copyWith(isLoading: true));
 
-    final directionsOrFailure =
-        await _fetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tripStops, travelMode: state.dayTrip.travelMode));
+    final directionsOrFailure = await _fetchTripStopsDirections(
+        FetchTripStopsDirectionsParams(tripStops: tripStops, travelMode: state.dayTrip.travelMode));
 
     directionsOrFailure.fold(
       (failure) {
@@ -146,14 +141,6 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
     )!;
   }
 
-  void setMapReady() {
-    emit(state.copyWith(isMapReady: true));
-  }
-
-  void updateMarkerLatLngBounds(LatLngBounds? markerLatLngBounds) {
-    emit(state.copyWith(markerLatLngBounds: markerLatLngBounds));
-  }
-
   void selectTab(bool isSelectedTab) {
     emit(state.copyWith(isSelectedTab: isSelectedTab));
   }
@@ -183,7 +170,9 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   }
 
   void travelModeChanged(TravelMode travelMode) {
-    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(travelMode: travelMode, tripStopsDirectionsUpToDate: false)));
+    emit(state.copyWith(
+        dayTrip:
+            state.dayTrip.copyWith(travelMode: travelMode, tripStopsDirectionsUpToDate: false)));
     _updateTripStopsDirectionsUpToDate(
       UpdateTripStopsDirectionsUpToDateParams(
         tripId: _tripId,

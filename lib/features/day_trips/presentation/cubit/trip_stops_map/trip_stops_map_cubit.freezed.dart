@@ -16,23 +16,17 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TripStopsMapState {
-  MapType get mapType => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   DayTrip get dayTrip => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
-  bool get isMapReady => throw _privateConstructorUsedError;
-  LatLngBounds? get markerLatLngBounds => throw _privateConstructorUsedError;
   bool get isSelectedTab => throw _privateConstructorUsedError;
   bool get hasTripStopsDirectionsErrors => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            MapType mapType,
             bool isLoading,
             DayTrip dayTrip,
             String? errorMessage,
-            bool isMapReady,
-            LatLngBounds? markerLatLngBounds,
             bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)
         normal,
@@ -40,46 +34,32 @@ mixin _$TripStopsMapState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            MapType mapType,
-            bool isLoading,
-            DayTrip dayTrip,
-            String? errorMessage,
-            bool isMapReady,
-            LatLngBounds? markerLatLngBounds,
-            bool isSelectedTab,
-            bool hasTripStopsDirectionsErrors)?
+    TResult? Function(bool isLoading, DayTrip dayTrip, String? errorMessage,
+            bool isSelectedTab, bool hasTripStopsDirectionsErrors)?
         normal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            MapType mapType,
-            bool isLoading,
-            DayTrip dayTrip,
-            String? errorMessage,
-            bool isMapReady,
-            LatLngBounds? markerLatLngBounds,
-            bool isSelectedTab,
-            bool hasTripStopsDirectionsErrors)?
+    TResult Function(bool isLoading, DayTrip dayTrip, String? errorMessage,
+            bool isSelectedTab, bool hasTripStopsDirectionsErrors)?
         normal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(TripStopsMapStateNormal value) normal,
+    required TResult Function(_TripStopsMapStateNormal value) normal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TripStopsMapStateNormal value)? normal,
+    TResult? Function(_TripStopsMapStateNormal value)? normal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(TripStopsMapStateNormal value)? normal,
+    TResult Function(_TripStopsMapStateNormal value)? normal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -96,12 +76,9 @@ abstract class $TripStopsMapStateCopyWith<$Res> {
       _$TripStopsMapStateCopyWithImpl<$Res, TripStopsMapState>;
   @useResult
   $Res call(
-      {MapType mapType,
-      bool isLoading,
+      {bool isLoading,
       DayTrip dayTrip,
       String? errorMessage,
-      bool isMapReady,
-      LatLngBounds? markerLatLngBounds,
       bool isSelectedTab,
       bool hasTripStopsDirectionsErrors});
 
@@ -121,20 +98,13 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mapType = null,
     Object? isLoading = null,
     Object? dayTrip = null,
     Object? errorMessage = freezed,
-    Object? isMapReady = null,
-    Object? markerLatLngBounds = freezed,
     Object? isSelectedTab = null,
     Object? hasTripStopsDirectionsErrors = null,
   }) {
     return _then(_value.copyWith(
-      mapType: null == mapType
-          ? _value.mapType
-          : mapType // ignore: cast_nullable_to_non_nullable
-              as MapType,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -147,14 +117,6 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      isMapReady: null == isMapReady
-          ? _value.isMapReady
-          : isMapReady // ignore: cast_nullable_to_non_nullable
-              as bool,
-      markerLatLngBounds: freezed == markerLatLngBounds
-          ? _value.markerLatLngBounds
-          : markerLatLngBounds // ignore: cast_nullable_to_non_nullable
-              as LatLngBounds?,
       isSelectedTab: null == isSelectedTab
           ? _value.isSelectedTab
           : isSelectedTab // ignore: cast_nullable_to_non_nullable
@@ -185,12 +147,9 @@ abstract class _$$TripStopsMapStateNormalImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {MapType mapType,
-      bool isLoading,
+      {bool isLoading,
       DayTrip dayTrip,
       String? errorMessage,
-      bool isMapReady,
-      LatLngBounds? markerLatLngBounds,
       bool isSelectedTab,
       bool hasTripStopsDirectionsErrors});
 
@@ -210,20 +169,13 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mapType = null,
     Object? isLoading = null,
     Object? dayTrip = null,
     Object? errorMessage = freezed,
-    Object? isMapReady = null,
-    Object? markerLatLngBounds = freezed,
     Object? isSelectedTab = null,
     Object? hasTripStopsDirectionsErrors = null,
   }) {
     return _then(_$TripStopsMapStateNormalImpl(
-      mapType: null == mapType
-          ? _value.mapType
-          : mapType // ignore: cast_nullable_to_non_nullable
-              as MapType,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -236,14 +188,6 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      isMapReady: null == isMapReady
-          ? _value.isMapReady
-          : isMapReady // ignore: cast_nullable_to_non_nullable
-              as bool,
-      markerLatLngBounds: freezed == markerLatLngBounds
-          ? _value.markerLatLngBounds
-          : markerLatLngBounds // ignore: cast_nullable_to_non_nullable
-              as LatLngBounds?,
       isSelectedTab: null == isSelectedTab
           ? _value.isSelectedTab
           : isSelectedTab // ignore: cast_nullable_to_non_nullable
@@ -258,20 +202,15 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
+class _$TripStopsMapStateNormalImpl extends _TripStopsMapStateNormal {
   const _$TripStopsMapStateNormalImpl(
-      {this.mapType = MapType.hybrid,
-      this.isLoading = false,
+      {this.isLoading = false,
       required this.dayTrip,
       this.errorMessage,
-      this.isMapReady = false,
-      this.markerLatLngBounds,
       this.isSelectedTab = true,
-      this.hasTripStopsDirectionsErrors = false});
+      this.hasTripStopsDirectionsErrors = false})
+      : super._();
 
-  @override
-  @JsonKey()
-  final MapType mapType;
   @override
   @JsonKey()
   final bool isLoading;
@@ -281,11 +220,6 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   final String? errorMessage;
   @override
   @JsonKey()
-  final bool isMapReady;
-  @override
-  final LatLngBounds? markerLatLngBounds;
-  @override
-  @JsonKey()
   final bool isSelectedTab;
   @override
   @JsonKey()
@@ -293,7 +227,7 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
 
   @override
   String toString() {
-    return 'TripStopsMapState.normal(mapType: $mapType, isLoading: $isLoading, dayTrip: $dayTrip, errorMessage: $errorMessage, isMapReady: $isMapReady, markerLatLngBounds: $markerLatLngBounds, isSelectedTab: $isSelectedTab, hasTripStopsDirectionsErrors: $hasTripStopsDirectionsErrors)';
+    return 'TripStopsMapState.normal(isLoading: $isLoading, dayTrip: $dayTrip, errorMessage: $errorMessage, isSelectedTab: $isSelectedTab, hasTripStopsDirectionsErrors: $hasTripStopsDirectionsErrors)';
   }
 
   @override
@@ -301,16 +235,11 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopsMapStateNormalImpl &&
-            (identical(other.mapType, mapType) || other.mapType == mapType) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.isMapReady, isMapReady) ||
-                other.isMapReady == isMapReady) &&
-            (identical(other.markerLatLngBounds, markerLatLngBounds) ||
-                other.markerLatLngBounds == markerLatLngBounds) &&
             (identical(other.isSelectedTab, isSelectedTab) ||
                 other.isSelectedTab == isSelectedTab) &&
             (identical(other.hasTripStopsDirectionsErrors,
@@ -320,16 +249,8 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      mapType,
-      isLoading,
-      dayTrip,
-      errorMessage,
-      isMapReady,
-      markerLatLngBounds,
-      isSelectedTab,
-      hasTripStopsDirectionsErrors);
+  int get hashCode => Object.hash(runtimeType, isLoading, dayTrip, errorMessage,
+      isSelectedTab, hasTripStopsDirectionsErrors);
 
   @JsonKey(ignore: true)
   @override
@@ -342,56 +263,39 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            MapType mapType,
             bool isLoading,
             DayTrip dayTrip,
             String? errorMessage,
-            bool isMapReady,
-            LatLngBounds? markerLatLngBounds,
             bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)
         normal,
   }) {
-    return normal(mapType, isLoading, dayTrip, errorMessage, isMapReady,
-        markerLatLngBounds, isSelectedTab, hasTripStopsDirectionsErrors);
+    return normal(isLoading, dayTrip, errorMessage, isSelectedTab,
+        hasTripStopsDirectionsErrors);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            MapType mapType,
-            bool isLoading,
-            DayTrip dayTrip,
-            String? errorMessage,
-            bool isMapReady,
-            LatLngBounds? markerLatLngBounds,
-            bool isSelectedTab,
-            bool hasTripStopsDirectionsErrors)?
+    TResult? Function(bool isLoading, DayTrip dayTrip, String? errorMessage,
+            bool isSelectedTab, bool hasTripStopsDirectionsErrors)?
         normal,
   }) {
-    return normal?.call(mapType, isLoading, dayTrip, errorMessage, isMapReady,
-        markerLatLngBounds, isSelectedTab, hasTripStopsDirectionsErrors);
+    return normal?.call(isLoading, dayTrip, errorMessage, isSelectedTab,
+        hasTripStopsDirectionsErrors);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            MapType mapType,
-            bool isLoading,
-            DayTrip dayTrip,
-            String? errorMessage,
-            bool isMapReady,
-            LatLngBounds? markerLatLngBounds,
-            bool isSelectedTab,
-            bool hasTripStopsDirectionsErrors)?
+    TResult Function(bool isLoading, DayTrip dayTrip, String? errorMessage,
+            bool isSelectedTab, bool hasTripStopsDirectionsErrors)?
         normal,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(mapType, isLoading, dayTrip, errorMessage, isMapReady,
-          markerLatLngBounds, isSelectedTab, hasTripStopsDirectionsErrors);
+      return normal(isLoading, dayTrip, errorMessage, isSelectedTab,
+          hasTripStopsDirectionsErrors);
     }
     return orElse();
   }
@@ -399,7 +303,7 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(TripStopsMapStateNormal value) normal,
+    required TResult Function(_TripStopsMapStateNormal value) normal,
   }) {
     return normal(this);
   }
@@ -407,7 +311,7 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TripStopsMapStateNormal value)? normal,
+    TResult? Function(_TripStopsMapStateNormal value)? normal,
   }) {
     return normal?.call(this);
   }
@@ -415,7 +319,7 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(TripStopsMapStateNormal value)? normal,
+    TResult Function(_TripStopsMapStateNormal value)? normal,
     required TResult orElse(),
   }) {
     if (normal != null) {
@@ -425,29 +329,21 @@ class _$TripStopsMapStateNormalImpl implements TripStopsMapStateNormal {
   }
 }
 
-abstract class TripStopsMapStateNormal implements TripStopsMapState {
-  const factory TripStopsMapStateNormal(
-      {final MapType mapType,
-      final bool isLoading,
+abstract class _TripStopsMapStateNormal extends TripStopsMapState {
+  const factory _TripStopsMapStateNormal(
+      {final bool isLoading,
       required final DayTrip dayTrip,
       final String? errorMessage,
-      final bool isMapReady,
-      final LatLngBounds? markerLatLngBounds,
       final bool isSelectedTab,
       final bool hasTripStopsDirectionsErrors}) = _$TripStopsMapStateNormalImpl;
+  const _TripStopsMapStateNormal._() : super._();
 
-  @override
-  MapType get mapType;
   @override
   bool get isLoading;
   @override
   DayTrip get dayTrip;
   @override
   String? get errorMessage;
-  @override
-  bool get isMapReady;
-  @override
-  LatLngBounds? get markerLatLngBounds;
   @override
   bool get isSelectedTab;
   @override
