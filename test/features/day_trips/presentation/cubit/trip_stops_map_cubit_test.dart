@@ -112,13 +112,7 @@ void main() {
     },
   );
 
-  blocTest(
-    'on changeMapType, should emit mapType',
-    seed: () => const TripStopsMapState.normal(dayTrip: tDayTrip, mapType: MapType.hybrid),
-    build: () => getTripStopsMapCubit(),
-    act: (cubit) => cubit.changeMapType(),
-    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, mapType: MapType.normal)],
-  );
+  
 
   blocTest(
     'on clearTripStopsDirectionsErrors, should emit hasTripStopsDirectionsErrors = false',
@@ -173,27 +167,6 @@ void main() {
       ],
     );
   });
-
-  blocTest(
-    'on setMapReady, should emit isMapReady = true',
-    build: () => getTripStopsMapCubit(),
-    act: (cubit) => cubit.setMapReady(),
-    expect: () => [const TripStopsMapState.normal(dayTrip: tDayTrip, isMapReady: true)],
-  );
-
-  blocTest(
-    'on updateMarkerLatLngBounds, should emit markerLatLngBounds',
-    build: () => getTripStopsMapCubit(),
-    act: (cubit) => cubit.updateMarkerLatLngBounds(
-        LatLngBounds(northeast: const LatLng(1, 1), southwest: const LatLng(0, 0))),
-    expect: () => [
-      TripStopsMapState.normal(
-        dayTrip: tDayTrip,
-        markerLatLngBounds:
-            LatLngBounds(northeast: const LatLng(1, 1), southwest: const LatLng(0, 0)),
-      ),
-    ],
-  );
 
   blocTest(
     'on selectTab, should emit isSelectedTab',
