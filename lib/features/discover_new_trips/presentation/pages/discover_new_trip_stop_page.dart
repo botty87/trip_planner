@@ -6,6 +6,7 @@ import 'package:responsive_framework/responsive_breakpoints.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
+import '../../../map/domain/entities/map_place.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../cubit/trip_stop/discover_new_trip_stop_cubit.dart';

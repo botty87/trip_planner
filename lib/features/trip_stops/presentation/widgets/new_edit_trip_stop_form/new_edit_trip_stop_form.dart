@@ -15,7 +15,8 @@ import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../google_places/presentation/widgets/google_places_suggestions_widget.dart';
-import '../map/map_widget.dart';
+import '../../../../map/presentation/widgets/map_widget.dart';
+import '../../../domain/entities/trip_stop.dart';
 
 part 'duration_widget.dart';
 part 'field_widget.dart';

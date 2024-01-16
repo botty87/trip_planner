@@ -43,14 +43,15 @@ class _HorizontalLayout extends HookWidget {
     return Row(
       children: [
         Expanded(
-          child: MapWidget(
+          child: Placeholder(),
+          /* MapWidget(
             key: const Key('mapWidget'),
             initialLocation: initialLocation,
             locationStream: location.stream,
             onMarkerDragEnd: (value) {
               onLocationChanged(LatLng(value.latitude, value.longitude));
             },
-          ),
+          ), */
         ),
         const SizedBox(width: horizontalSpaceL),
         Expanded(

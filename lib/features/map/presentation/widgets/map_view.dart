@@ -1,21 +1,27 @@
 part of 'map_widget.dart';
 
 class _MapView extends StatelessWidget {
-  final List<TripStop> _tripStops;
-  final Function(TripStop tripStop)? _onMarkerTap;
+  final List<MapPlace> _mapPlaces;
+  final Function(MapPlace mapPlace)? _onMarkerTap;
   final bool _useDifferentColorsForDone;
   final Set<Polyline> _polylines;
+  final bool _showInfoWindow;
+  final bool _isInsideScrollView;
 
   const _MapView({
-    required List<TripStop> tripStops,
-    Function(TripStop tripStop)? onMarkerTap,
+    required List<MapPlace> mapPlaces,
+    Function(MapPlace mapPlace)? onMarkerTap,
     required bool useDifferentColorsForDone,
     Set<Polyline> polylines = const {},
+    required bool showInfoWindow,
+    required bool isInsideScrollView,
     super.key,
-  })  : _tripStops = tripStops,
+  })  : _mapPlaces = mapPlaces,
         _onMarkerTap = onMarkerTap,
         _useDifferentColorsForDone = useDifferentColorsForDone,
-        _polylines = polylines;
+        _polylines = polylines,
+        _showInfoWindow = showInfoWindow,
+        _isInsideScrollView = isInsideScrollView;
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +29,17 @@ class _MapView extends StatelessWidget {
 
     final markers = _getMarkers();
 
-    assert(_tripStops.isNotEmpty, 'Trip stops cannot be empty');
+    assert(_mapPlaces.isNotEmpty, 'Trip stops cannot be empty');
 
     final CameraPosition initialCameraPosition;
 
-    if (_tripStops.length > 1) {
+    if (_mapPlaces.length > 1) {
       final LatLngBounds? markerLatLngBounds = _getLatLngBounds(markers: markers);
       context.read<MapCubit>().updateMarkerLatLngBounds(markerLatLngBounds);
       initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
     } else {
-      context.read<MapCubit>().updateMarkerPosition(_tripStops.first.location);
-      initialCameraPosition = CameraPosition(target: _tripStops.first.location, zoom: 15);
+      context.read<MapCubit>().updateMarkerPosition(_mapPlaces.first.location);
+      initialCameraPosition = CameraPosition(target: _mapPlaces.first.location, zoom: 15);
     }
 
     return GoogleMap(
@@ -44,26 +50,39 @@ class _MapView extends StatelessWidget {
       zoomControlsEnabled: false,
       markers: markers,
       polylines: _polylines,
+      gestureRecognizers: _isInsideScrollView
+          ? <Factory<OneSequenceGestureRecognizer>>{
+              Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+            }
+          : {},
     );
   }
 
   Set<Marker> _getMarkers() {
-    return _tripStops
-        .map(
-          (stop) => Marker(
-            markerId: MarkerId(stop.id),
-            position: stop.location,
-            infoWindow: InfoWindow(
-              title: stop.name,
-              snippet: stop.description,
-              onTap: _onMarkerTap != null ? () => _onMarkerTap!(stop) : null,
-            ),
-            icon: (stop.isDone && _useDifferentColorsForDone)
-                ? BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)
-                : BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-          ),
-        )
-        .toSet();
+    return _mapPlaces.map(
+      (mapPlace) {
+        return mapPlace.when(
+          existing: (id, name, description, location, isDone) {
+            return Marker(
+              markerId: MarkerId(id),
+              position: mapPlace.location,
+              infoWindow: _showInfoWindow
+                  ? InfoWindow(
+                      title: name,
+                      snippet: description,
+                      onTap: _onMarkerTap != null ? () => _onMarkerTap!(mapPlace) : null,
+                    )
+                  : InfoWindow.noText,
+              icon: (isDone && _useDifferentColorsForDone)
+                  ? BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)
+                  : BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+            );
+          },
+          newPlace: (location) { throw UnimplementedError();},
+        );
+        
+      },
+    ).toSet();
   }
 
   LatLngBounds? _getLatLngBounds({required Set<Marker> markers}) {

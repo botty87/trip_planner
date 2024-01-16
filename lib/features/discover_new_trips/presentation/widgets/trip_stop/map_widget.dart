@@ -8,8 +8,9 @@ class _MapWidget extends StatelessWidget {
     final tripStop = context.read<DiscoverNewTripStopCubit>().state.tripStop;
 
     return MapWidget.single(
-      tripStop: tripStop,
+      mapPlace: tripStop.toMapPlace(),
       useDifferentColorsForDone: false,
+      showInfoWindow: false,
     );
   }
 }

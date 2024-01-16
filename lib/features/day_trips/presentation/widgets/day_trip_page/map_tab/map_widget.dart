@@ -6,12 +6,25 @@ class _MapWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
+    final isTripStopsDirectionsToLoad =
+        context.select((TripStopsMapCubit cubit) => cubit.state.isTripStopsDirectionsToLoad);
+
+    if (isTripStopsDirectionsToLoad) {
+      context.read<TripStopsMapCubit>().loadDirections(tripStops);
+    }
 
     return MapWidget.multiple(
-      tripStops: tripStops,
+      mapPlaces: tripStops.map((tripStop) => tripStop.toMapPlace()).toList(),
       polylines: _getPolylines(context),
-      onMarkerTap: (tripStop) {
+      onMarkerTap: (mapPlace) {
         final state = context.read<DayTripCubit>().state;
+        final tripStop = mapPlace.maybeMap(
+          existing: (mapPlace) => state.tripStops.firstWhere(
+            (tripStop) => tripStop.id == mapPlace.tripStopId,
+            orElse: () => throw Exception('Unexpected state'),
+          ),
+          orElse: () => throw Exception('Unexpected state'),
+        );
         context.router.push(
           TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop),
         );

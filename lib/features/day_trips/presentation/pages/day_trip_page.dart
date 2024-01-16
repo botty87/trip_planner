@@ -27,6 +27,7 @@ import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../map/domain/entities/map_place.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
 import '../../../time_picker/widgets/timepicker.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';

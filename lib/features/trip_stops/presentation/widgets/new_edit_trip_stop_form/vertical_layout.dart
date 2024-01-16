@@ -102,14 +102,16 @@ class _VerticalLayout extends HookWidget {
               //_MapWidget(marker: marker.stream, initialMarker: initialMarker),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.4,
-                child: MapWidget(
+                child: Placeholder(),
+                //MapWidget.single(tripStop: tripStop),
+                /* MapWidget(
                   key: const Key('mapWidget'),
                   initialLocation: initialLocation,
                   locationStream: location.stream,
                   onMarkerDragEnd: (value) {
                     onLocationChanged(LatLng(value.latitude, value.longitude));
                   },
-                ),
+                ), */
               ),
               const SizedBox(height: verticalSpaceL),
               GooglePlacesSuggestionsWidget(

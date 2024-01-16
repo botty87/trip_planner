@@ -13,8 +13,18 @@ class _DiscoverNewTripStopsMapTab extends HookWidget {
         );
 
     return MapWidget.multiple(
-      tripStops: tripStops,
-      onMarkerTap: (tripStop) => context.router.push(DiscoverNewTripStopRoute(tripStop: tripStop)),
+      mapPlaces: tripStops.map((tripStop) => tripStop.toMapPlace()).toList(),
+      onMarkerTap: (mapPlace) {
+        final tripStop = mapPlace.maybeMap(
+          existing: (mapPlace) => tripStops.firstWhere(
+            (tripStop) => tripStop.id == mapPlace.tripStopId,
+            orElse: () => throw Exception('Unexpected state'),
+          ),
+          orElse: () => throw Exception('Unexpected state'),
+        );
+
+        return context.router.push(DiscoverNewTripStopRoute(tripStop: tripStop));
+      },
       useDifferentColorsForDone: false,
     );
   }

@@ -100,7 +100,7 @@ import '../../features/import_old_trips/presentation/cubit/import_old_trips_cubi
     as _i67;
 import '../../features/info_contacts/presentation/cubit/info_contacts_cubit.dart'
     as _i17;
-import '../../features/map/presentation/cubit/map_cubit.dart' as _i20;
+import '../../features/map/presentation/cubit/map_cubit.dart' as _i21;
 import '../../features/settings/domain/entities/settings.dart' as _i27;
 import '../../features/settings/domain/usecases/update_settings.dart' as _i86;
 import '../../features/settings/presentation/cubit/settings_cubit.dart'
@@ -128,7 +128,7 @@ import '../../features/trip_stops/domain/usecases/update_trip_stop_note.dart'
 import '../../features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
     as _i41;
 import '../../features/trip_stops/presentation/cubit/map/cubit/map_cubit.dart'
-    as _i21;
+    as _i20;
 import '../../features/trip_stops/presentation/cubit/new_trip_stop/new_trip_stop_cubit.dart'
     as _i102;
 import '../../features/trip_stops/presentation/cubit/trip_stop/trip_stop_cubit.dart'
@@ -223,12 +223,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i17.InfoContactsCubit>(() => _i17.InfoContactsCubit());
     gh.lazySingleton<_i18.InternetConnection>(() => network.internetConnection);
     gh.lazySingleton<_i19.Logger>(() => registerModule.logger);
-    gh.factoryParam<_i20.MapCubit, bool, dynamic>((
+    gh.factory<_i20.MapCubit>(() => _i20.MapCubit());
+    gh.factoryParam<_i21.MapCubit, bool, dynamic>((
       isMultiple,
       _,
     ) =>
-        _i20.MapCubit(isMultiple: isMultiple));
-    gh.factory<_i21.MapCubit>(() => _i21.MapCubit());
+        _i21.MapCubit(isMultiple: isMultiple));
     gh.lazySingleton<_i22.OldTripsDataSource>(
         () => _i22.OldTripsDataSourceImpl(gh<_i12.FirebaseDatabase>()));
     gh.lazySingleton<_i23.OldTripsRepository>(
@@ -245,12 +245,12 @@ extension GetItInjectableX on _i1.GetIt {
       instanceName: 'proxyUrl',
     );
     gh.lazySingleton<String>(
-      () => googlePlacesModule.googlePlacesKey,
-      instanceName: 'googlePlacesKey',
-    );
-    gh.lazySingleton<String>(
       () => googlePlacesModule.googleMapKey,
       instanceName: 'googleMapKey',
+    );
+    gh.lazySingleton<String>(
+      () => googlePlacesModule.googlePlacesKey,
+      instanceName: 'googlePlacesKey',
     );
     gh.factoryParam<_i29.TripStopsCollectionRef, String, String>((
       tripId,

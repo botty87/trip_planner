@@ -13,6 +13,7 @@ import '../../../../core/widgets/day_trip/travel_card_abstract.dart';
 import '../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
+import '../../../map/domain/entities/map_place.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../trips/domain/entities/trip.dart';

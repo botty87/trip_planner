@@ -1,19 +1,20 @@
 part of '../../pages/trip_stop_page.dart';
 
-class _MapWidget extends HookWidget {
+class _MapWidget extends StatelessWidget {
   const _MapWidget();
 
   @override
   Widget build(BuildContext context) {
-    final locationStream = useStreamController<LatLng>();
-
-    return BlocListener<TripStopCubit, TripStopState>(
-      listenWhen: (previous, current) => previous.tripStop.location != current.tripStop.location,
-      listener: (context, state) => locationStream.add(state.tripStop.location),
-      child: MapWidget(
-        locationStream: locationStream.stream,
-        initialLocation: context.read<TripStopCubit>().state.tripStop.location,
-      ),
+    return BlocBuilder<TripStopCubit, TripStopState>(
+      buildWhen: (previous, current) => previous.tripStop.location != current.tripStop.location,
+      builder: (context, state) {
+        return MapWidget.single(
+          mapPlace: context.read<TripStopCubit>().state.tripStop.toMapPlace(),
+          showInfoWindow: false,
+          useDifferentColorsForDone: false,
+          isInsideScrollView: true,
+        );
+      },
     );
   }
 }
