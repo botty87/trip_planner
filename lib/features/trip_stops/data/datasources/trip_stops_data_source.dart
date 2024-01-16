@@ -81,7 +81,7 @@ class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripS
     required int duration,
   }) async {
     final tripStopsCollection = _tripStopsCollection(tripId, dayTripId);
-    final tripStopsCount = (await tripStopsCollection.count().get()).count;
+    final tripStopsCount = (await tripStopsCollection.count().get()).count!;
 
     final tripStop = TripStop.create(
       name: name,

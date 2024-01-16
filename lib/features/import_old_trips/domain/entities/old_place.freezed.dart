@@ -169,7 +169,7 @@ class _$OldPlaceImpl implements _OldPlace {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OldPlaceImpl &&

@@ -11,6 +11,7 @@ class _MapView extends StatelessWidget {
     Function(TripStop tripStop)? onMarkerTap,
     required bool useDifferentColorsForDone,
     Set<Polyline> polylines = const {},
+    super.key,
   })  : _tripStops = tripStops,
         _onMarkerTap = onMarkerTap,
         _useDifferentColorsForDone = useDifferentColorsForDone,

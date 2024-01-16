@@ -12,6 +12,8 @@ part 'map_state.dart';
 class MapCubit extends Cubit<MapState> {
   GoogleMapController? _mapController;
 
+  bool isFirstMove = true;
+
   MapCubit({
     @factoryParam required bool isMultiple,
   }) : super(isMultiple ? const MapState.multiple() : const MapState.single());
@@ -24,6 +26,7 @@ class MapCubit extends Cubit<MapState> {
       single: (state) async => await state.markerPosition?.let(
           (value) async => await _mapController?.moveCamera(CameraUpdate.newLatLngZoom(value, 15))),
     );
+    isFirstMove = false;
     emit(state.copyWith(isMapReady: true));
   }
 
@@ -38,10 +41,22 @@ class MapCubit extends Cubit<MapState> {
 
   void findMarkers() {
     state.map(
-      multiple: (state) => state.markerLatLngBounds
-          ?.let((value) => _mapController?.animateCamera(CameraUpdate.newLatLngBounds(value, 50))),
-      single: (state) => state.markerPosition
-          ?.let((value) => _mapController?.animateCamera(CameraUpdate.newLatLngZoom(value, 15))),
+      multiple: (state) => state.markerLatLngBounds?.let((value) {
+        if (isFirstMove) {
+          _mapController?.moveCamera(CameraUpdate.newLatLngBounds(value, 50));
+          isFirstMove = false;
+        } else {
+          _mapController?.animateCamera(CameraUpdate.newLatLngBounds(value, 50));
+        }
+      }),
+      single: (state) => state.markerPosition?.let((value) {
+        if (isFirstMove) {
+          _mapController?.moveCamera(CameraUpdate.newLatLngZoom(value, 15));
+          isFirstMove = false;
+        } else {
+          _mapController?.animateCamera(CameraUpdate.newLatLngZoom(value, 15));
+        }
+      }),
     );
   }
 

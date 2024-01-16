@@ -226,7 +226,7 @@ class _$TripStateNormalImpl implements TripStateNormal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateNormalImpl &&
@@ -440,7 +440,7 @@ class _$TripStateLoadingImpl implements TripStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateLoadingImpl &&
@@ -664,7 +664,7 @@ class _$TripStateErrorImpl implements TripStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateErrorImpl &&
@@ -932,7 +932,7 @@ class _$TripStateEditingImpl implements TripStateEditing {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateEditingImpl &&
@@ -1175,7 +1175,7 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateDeletingImpl &&
@@ -1389,7 +1389,7 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateDeletedImpl &&

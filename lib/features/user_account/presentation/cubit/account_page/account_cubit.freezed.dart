@@ -210,7 +210,7 @@ class _$AccountStateNormalImpl implements AccountStateNormal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountStateNormalImpl &&
@@ -457,7 +457,7 @@ class _$AccountStateEditingImpl implements AccountStateEditing {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountStateEditingImpl &&
@@ -721,7 +721,7 @@ class _$AccountStateReauthenticatingImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountStateReauthenticatingImpl &&
@@ -937,7 +937,7 @@ class _$AccountStateDeletingImpl implements AccountStateDeleting {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountStateDeletingImpl &&
@@ -1194,7 +1194,7 @@ class _$EditUserDataImpl implements _EditUserData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditUserDataImpl &&

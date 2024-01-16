@@ -6,12 +6,6 @@ class _MapWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
-    final isTripStopsDirectionsToLoad =
-        context.select((TripStopsMapCubit cubit) => cubit.state.isTripStopsDirectionsToLoad);
-
-    if (isTripStopsDirectionsToLoad) {
-      context.read<TripStopsMapCubit>().loadDirections(tripStops);
-    }
 
     return MapWidget.multiple(
       tripStops: tripStops,

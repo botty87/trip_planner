@@ -103,7 +103,7 @@ class _$TripStopsFailureImpl implements _TripStopsFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopsFailureImpl &&

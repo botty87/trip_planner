@@ -154,7 +154,7 @@ class _$NewDayTripStateNormalImpl implements NewDayTripStateNormal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewDayTripStateNormalImpl &&
@@ -307,7 +307,7 @@ class _$NewDayTripStateSavingImpl implements NewDayTripStateSaving {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewDayTripStateSavingImpl &&
@@ -461,7 +461,7 @@ class _$NewDayTripStateCreatedImpl implements NewDayTripStateCreated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewDayTripStateCreatedImpl &&
@@ -621,7 +621,7 @@ class _$NewDayTripStateErrorImpl implements NewDayTripStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewDayTripStateErrorImpl &&

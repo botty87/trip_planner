@@ -9,8 +9,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i18;
-import 'package:flutter/foundation.dart' as _i19;
-import 'package:flutter/material.dart' as _i22;
+import 'package:flutter/foundation.dart' as _i24;
+import 'package:flutter/material.dart' as _i19;
 import 'package:trip_planner/core/home_page.dart' as _i7;
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
     as _i21;
@@ -33,7 +33,7 @@ import 'package:trip_planner/features/info_contacts/presentation/pages/info_cont
 import 'package:trip_planner/features/settings/presentation/pages/settings_page.dart'
     as _i14;
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i23;
+    as _i22;
 import 'package:trip_planner/features/trip_stops/presentation/pages/new_trip_stop_page.dart'
     as _i13;
 import 'package:trip_planner/features/trip_stops/presentation/pages/trip_stop_page.dart'
@@ -46,7 +46,7 @@ import 'package:trip_planner/features/trips/presentation/pages/trip_page.dart'
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
     as _i17;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
-    as _i24;
+    as _i23;
 import 'package:trip_planner/features/user_account/presentation/pages/account_page.dart'
     as _i1;
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart'
@@ -268,7 +268,7 @@ class DayTripRouteArgs {
 class DiscoverNewDailyTripsRoute
     extends _i18.PageRouteInfo<DiscoverNewDailyTripsRouteArgs> {
   DiscoverNewDailyTripsRoute({
-    _i22.Key? key,
+    _i19.Key? key,
     required _i20.Trip trip,
     List<_i18.PageRouteInfo>? children,
   }) : super(
@@ -292,7 +292,7 @@ class DiscoverNewDailyTripsRouteArgs {
     required this.trip,
   });
 
-  final _i22.Key? key;
+  final _i19.Key? key;
 
   final _i20.Trip trip;
 
@@ -307,8 +307,8 @@ class DiscoverNewDailyTripsRouteArgs {
 class DiscoverNewTripStopRoute
     extends _i18.PageRouteInfo<DiscoverNewTripStopRouteArgs> {
   DiscoverNewTripStopRoute({
-    _i22.Key? key,
-    required _i23.TripStop tripStop,
+    _i19.Key? key,
+    required _i22.TripStop tripStop,
     List<_i18.PageRouteInfo>? children,
   }) : super(
           DiscoverNewTripStopRoute.name,
@@ -331,9 +331,9 @@ class DiscoverNewTripStopRouteArgs {
     required this.tripStop,
   });
 
-  final _i22.Key? key;
+  final _i19.Key? key;
 
-  final _i23.TripStop tripStop;
+  final _i22.TripStop tripStop;
 
   @override
   String toString() {
@@ -346,7 +346,7 @@ class DiscoverNewTripStopRouteArgs {
 class DiscoverNewTripStopsRoute
     extends _i18.PageRouteInfo<DiscoverNewTripStopsRouteArgs> {
   DiscoverNewTripStopsRoute({
-    _i22.Key? key,
+    _i19.Key? key,
     required _i20.Trip trip,
     required _i21.DayTrip dayTrip,
     List<_i18.PageRouteInfo>? children,
@@ -373,7 +373,7 @@ class DiscoverNewTripStopsRouteArgs {
     required this.dayTrip,
   });
 
-  final _i22.Key? key;
+  final _i19.Key? key;
 
   final _i20.Trip trip;
 
@@ -417,8 +417,8 @@ class HomeRoute extends _i18.PageRouteInfo<void> {
 /// [_i8.ImportOldTripsPage]
 class ImportOldTripsRoute extends _i18.PageRouteInfo<ImportOldTripsRouteArgs> {
   ImportOldTripsRoute({
-    _i22.Key? key,
-    required _i24.User user,
+    _i19.Key? key,
+    required _i23.User user,
     List<_i18.PageRouteInfo>? children,
   }) : super(
           ImportOldTripsRoute.name,
@@ -441,9 +441,9 @@ class ImportOldTripsRouteArgs {
     required this.user,
   });
 
-  final _i22.Key? key;
+  final _i19.Key? key;
 
-  final _i24.User user;
+  final _i23.User user;
 
   @override
   String toString() {
@@ -483,7 +483,7 @@ class LoginSignupRoute extends _i18.PageRouteInfo<void> {
 /// [_i11.NewDayTripPage]
 class NewDayTripRoute extends _i18.PageRouteInfo<NewDayTripRouteArgs> {
   NewDayTripRoute({
-    _i22.Key? key,
+    _i19.Key? key,
     required String tripId,
     List<_i18.PageRouteInfo>? children,
   }) : super(
@@ -508,7 +508,7 @@ class NewDayTripRouteArgs {
     required this.tripId,
   });
 
-  final _i22.Key? key;
+  final _i19.Key? key;
 
   final String tripId;
 
@@ -536,7 +536,7 @@ class NewTripRoute extends _i18.PageRouteInfo<void> {
 /// [_i13.NewTripStopPage]
 class NewTripStopRoute extends _i18.PageRouteInfo<NewTripStopRouteArgs> {
   NewTripStopRoute({
-    _i22.Key? key,
+    _i19.Key? key,
     required String trip,
     required String dayTrip,
     List<_i18.PageRouteInfo>? children,
@@ -563,7 +563,7 @@ class NewTripStopRouteArgs {
     required this.dayTrip,
   });
 
-  final _i22.Key? key;
+  final _i19.Key? key;
 
   final String trip;
 
@@ -594,7 +594,7 @@ class SettingsRoute extends _i18.PageRouteInfo<void> {
 class TripRoute extends _i18.PageRouteInfo<TripRouteArgs> {
   TripRoute({
     required _i20.Trip trip,
-    _i22.Key? key,
+    _i19.Key? key,
     List<_i18.PageRouteInfo>? children,
   }) : super(
           TripRoute.name,
@@ -619,7 +619,7 @@ class TripRouteArgs {
 
   final _i20.Trip trip;
 
-  final _i22.Key? key;
+  final _i19.Key? key;
 
   @override
   String toString() {
@@ -631,10 +631,10 @@ class TripRouteArgs {
 /// [_i16.TripStopPage]
 class TripStopRoute extends _i18.PageRouteInfo<TripStopRouteArgs> {
   TripStopRoute({
-    _i19.Key? key,
+    _i24.Key? key,
     required _i20.Trip trip,
     required _i21.DayTrip dayTrip,
-    required _i23.TripStop tripStop,
+    required _i22.TripStop tripStop,
     List<_i18.PageRouteInfo>? children,
   }) : super(
           TripStopRoute.name,
@@ -661,13 +661,13 @@ class TripStopRouteArgs {
     required this.tripStop,
   });
 
-  final _i19.Key? key;
+  final _i24.Key? key;
 
   final _i20.Trip trip;
 
   final _i21.DayTrip dayTrip;
 
-  final _i23.TripStop tripStop;
+  final _i22.TripStop tripStop;
 
   @override
   String toString() {

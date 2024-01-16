@@ -57,7 +57,7 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
   Future<void> addDayTrip({required String tripId, required DayTrip dayTrip}) async {
     final dayTripsCollection = _dayTripsCollection(tripId);
     final dayTripsCount = (await dayTripsCollection.count().get()).count;
-    dayTrip = dayTrip.copyWith(index: dayTripsCount);
+    dayTrip = dayTrip.copyWith(index: dayTripsCount!);
 
     await _dayTripsCollection(tripId).add(dayTrip);
   }

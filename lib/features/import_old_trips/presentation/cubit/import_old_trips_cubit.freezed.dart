@@ -133,7 +133,7 @@ class _$ImportOldTripsStateInitialImpl implements _ImportOldTripsStateInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImportOldTripsStateInitialImpl);
@@ -310,7 +310,7 @@ class _$ImportOldTripsStateLoadedImpl implements ImportOldTripsStateLoaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImportOldTripsStateLoadedImpl &&
@@ -484,7 +484,7 @@ class _$ImportOldTripsStateErrorImpl implements ImportOldTripsStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImportOldTripsStateErrorImpl &&
@@ -633,7 +633,7 @@ class _$ImportOldTripsStateNoTripsImpl implements _ImportOldTripsStateNoTrips {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImportOldTripsStateNoTripsImpl);
@@ -811,7 +811,7 @@ class _$ImportOldTripsStateImportingImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImportOldTripsStateImportingImpl &&
@@ -970,7 +970,7 @@ class _$ImportOldTripsStateImportedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImportOldTripsStateImportedImpl);

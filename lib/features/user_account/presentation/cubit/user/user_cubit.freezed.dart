@@ -112,7 +112,7 @@ class _$UserStateLoggedOutImpl implements UserStateLoggedOut {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UserStateLoggedOutImpl);
   }
@@ -254,7 +254,7 @@ class _$UserStateLoggedInImpl implements UserStateLoggedIn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserStateLoggedInImpl &&
@@ -383,7 +383,7 @@ class _$UserStateLoadingImpl implements UserStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UserStateLoadingImpl);
   }
@@ -497,7 +497,7 @@ class _$UserStateErrorImpl implements UserStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UserStateErrorImpl);
   }

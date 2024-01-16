@@ -198,7 +198,7 @@ class _$GooglePlacesStateNormalImpl implements _GooglePlacesStateNormal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePlacesStateNormalImpl &&
@@ -402,7 +402,7 @@ class _$GooglePlacesStateErrorImpl implements _GooglePlacesStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePlacesStateErrorImpl &&
@@ -626,7 +626,7 @@ class _$GooglePlacesErrorNoInternetConnectionImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePlacesErrorNoInternetConnectionImpl);
@@ -773,7 +773,7 @@ class _$GooglePlacesErrorRequestDeniedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePlacesErrorRequestDeniedImpl &&
@@ -916,7 +916,7 @@ class _$GooglePlacesErrorRequestCancelledImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePlacesErrorRequestCancelledImpl);
@@ -1062,7 +1062,7 @@ class _$GooglePlacesErrorUnknownErrorImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePlacesErrorUnknownErrorImpl &&

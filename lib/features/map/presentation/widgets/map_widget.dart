@@ -62,6 +62,7 @@ class MapWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     _MapView(
+                      key: const ValueKey('map_view'),
                       tripStops: _tripStops,
                       onMarkerTap: _onMarkerTap,
                       useDifferentColorsForDone: _useDifferentColorsForDone,

@@ -113,7 +113,7 @@ class _$NoInternetConnectionImpl implements _NoInternetConnection {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoInternetConnectionImpl);
@@ -246,7 +246,7 @@ class _$RequestDeniedImpl implements _RequestDenied {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RequestDeniedImpl &&
@@ -374,7 +374,7 @@ class _$RequestCancelledImpl implements _RequestCancelled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$RequestCancelledImpl);
   }
@@ -506,7 +506,7 @@ class _$UnknownErrorImpl implements _UnknownError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnknownErrorImpl &&

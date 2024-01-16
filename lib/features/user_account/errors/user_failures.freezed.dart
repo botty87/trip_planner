@@ -143,7 +143,7 @@ class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$EmailAlreadyInUseImpl);
   }
@@ -288,7 +288,7 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NetworkRequestFailedImpl);
@@ -434,7 +434,7 @@ class _$WeakPasswordImpl extends _WeakPassword {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$WeakPasswordImpl);
   }
@@ -579,7 +579,7 @@ class _$UserNotFoundImpl extends _UserNotFound {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
   }
@@ -724,7 +724,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$TooManyRequestsImpl);
   }
@@ -869,7 +869,7 @@ class _$UserDisabledImpl extends _UserDisabled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UserDisabledImpl);
   }
@@ -1014,7 +1014,7 @@ class _$WrongPasswordImpl extends _WrongPassword {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$WrongPasswordImpl);
   }
@@ -1159,7 +1159,7 @@ class _$InvalidEmailImpl extends _InvalidEmail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InvalidEmailImpl);
   }
@@ -1322,7 +1322,7 @@ class _$UnknownErrorImpl extends _UnknownError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnknownErrorImpl &&

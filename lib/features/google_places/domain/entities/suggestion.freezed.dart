@@ -128,7 +128,7 @@ class _$SuggestionImpl implements _Suggestion {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuggestionImpl &&

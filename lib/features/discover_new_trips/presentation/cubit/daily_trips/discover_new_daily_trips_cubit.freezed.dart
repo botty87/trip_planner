@@ -115,7 +115,7 @@ class _$StateInitialImpl implements StateInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StateInitialImpl);
   }
@@ -229,7 +229,7 @@ class _$StateLoadingImpl implements StateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StateLoadingImpl);
   }
@@ -377,7 +377,7 @@ class _$StateLoadedImpl implements StateLoaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateLoadedImpl &&
@@ -528,7 +528,7 @@ class _$StateErrorImpl implements StateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateErrorImpl &&

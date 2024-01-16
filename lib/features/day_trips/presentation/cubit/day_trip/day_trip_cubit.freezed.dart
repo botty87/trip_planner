@@ -329,7 +329,7 @@ class _$DayTripStateNormalImpl implements DayTripStateNormal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DayTripStateNormalImpl &&
@@ -627,7 +627,7 @@ class _$DayTripStateLoadingImpl implements DayTripStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DayTripStateLoadingImpl &&
@@ -917,7 +917,7 @@ class _$DayTripStateErrorImpl implements DayTripStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DayTripStateErrorImpl &&
@@ -1227,7 +1227,7 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DayTripStateEditingImpl &&
@@ -1525,7 +1525,7 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DayTripStateDeletingImpl &&
@@ -1807,7 +1807,7 @@ class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DayTripStateDeletedImpl &&

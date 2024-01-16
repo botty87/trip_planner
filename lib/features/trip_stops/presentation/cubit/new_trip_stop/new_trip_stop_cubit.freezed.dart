@@ -253,7 +253,7 @@ class _$NewTripStopStateNormalImpl implements NewTripStopStateNormal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewTripStopStateNormalImpl &&
@@ -495,7 +495,7 @@ class _$NewTripStopStateSavingImpl implements NewTripStopStateSaving {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewTripStopStateSavingImpl &&
@@ -737,7 +737,7 @@ class _$NewTripStopStateCreatedImpl implements NewTripStopStateCreated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewTripStopStateCreatedImpl &&
@@ -987,7 +987,7 @@ class _$NewTripStopStateErrorImpl implements NewTripStopStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewTripStopStateErrorImpl &&

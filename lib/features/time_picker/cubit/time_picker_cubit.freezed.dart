@@ -118,7 +118,7 @@ class _$TimePickerStateImpl implements _TimePickerState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TimePickerStateImpl &&

@@ -241,16 +241,16 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i28.SettingsCollectionRef>(
         () => _i28.SettingsCollectionRef(gh<_i13.FirebaseFirestore>()));
     gh.lazySingleton<String>(
-      () => googlePlacesModule.googleMapKey,
-      instanceName: 'googleMapKey',
+      () => googlePlacesModule.proxyUrl,
+      instanceName: 'proxyUrl',
     );
     gh.lazySingleton<String>(
       () => googlePlacesModule.googlePlacesKey,
       instanceName: 'googlePlacesKey',
     );
     gh.lazySingleton<String>(
-      () => googlePlacesModule.proxyUrl,
-      instanceName: 'proxyUrl',
+      () => googlePlacesModule.googleMapKey,
+      instanceName: 'googleMapKey',
     );
     gh.factoryParam<_i29.TripStopsCollectionRef, String, String>((
       tripId,

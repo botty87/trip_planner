@@ -318,7 +318,7 @@ class _$TripStopStateNormalImpl implements TripStopStateNormal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopStateNormalImpl &&
@@ -650,7 +650,7 @@ class _$TripStopStateEditingImpl implements TripStopStateEditing {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopStateEditingImpl &&
@@ -966,7 +966,7 @@ class _$TripStopStateSavingImpl implements TripStopStateSaving {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopStateSavingImpl &&
@@ -1252,7 +1252,7 @@ class _$TripStopStateNoteSavingImpl implements TripStopStateNoteSaving {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopStateNoteSavingImpl &&
@@ -1537,7 +1537,7 @@ class _$TripStopStateDeletingImpl implements TripStopStateDeleting {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopStateDeletingImpl &&
@@ -1821,7 +1821,7 @@ class _$TripStopStateDeletedImpl implements TripStopStateDeleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopStateDeletedImpl &&
@@ -2118,7 +2118,7 @@ class _$TripStopStateErrorImpl implements TripStopStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopStateErrorImpl &&
