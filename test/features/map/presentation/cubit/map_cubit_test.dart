@@ -26,8 +26,8 @@ void main() {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
 
-  MapCubit cubit({required bool isMultiple}) {
-    return MapCubit(isMultiple: isMultiple);
+  MapCubit cubit({required MapStateType mapStateType}) {
+    return MapCubit(mapStateType: mapStateType);
   }
 
   blocTest(
@@ -36,7 +36,7 @@ void main() {
       isMapReady: false,
       markerLatLngBounds: tLatLngBounds,
     ),
-    build: () => cubit(isMultiple: true),
+    build: () => cubit(mapStateType: const MapStateType.multiple()),
     act: (MapCubit cubit) => cubit.mapCreated(mockGoogleMapController),
     expect: () => [
       MapState.multiple(
@@ -55,7 +55,7 @@ void main() {
       isMapReady: false,
       markerPosition: LatLng(0, 0),
     ),
-    build: () => cubit(isMultiple: false),
+    build: () => cubit(mapStateType: const MapStateType.single()),
     act: (MapCubit cubit) => cubit.mapCreated(mockGoogleMapController),
     expect: () => [
       const MapState.single(
@@ -71,7 +71,7 @@ void main() {
   blocTest(
     'on changeMapType, should emit [MapState.single(mapType: MapType.hybrid)] when mapType is MapType.normal',
     seed: () => const MapState.single(mapType: MapType.normal),
-    build: () => cubit(isMultiple: false),
+    build: () => cubit(mapStateType: const MapStateType.single()),
     act: (MapCubit cubit) => cubit.changeMapType(),
     expect: () => [const MapState.single(mapType: MapType.hybrid)],
   );
@@ -79,7 +79,7 @@ void main() {
   blocTest(
     'on changeMapType, should emit [MapState.single(mapType: MapType.normal)] when mapType is MapType.hybrid',
     seed: () => const MapState.single(mapType: MapType.hybrid),
-    build: () => cubit(isMultiple: false),
+    build: () => cubit(mapStateType: const MapStateType.single()),
     act: (MapCubit cubit) => cubit.changeMapType(),
     expect: () => [const MapState.single(mapType: MapType.normal)],
   );
@@ -87,7 +87,7 @@ void main() {
   blocTest(
     'on zoomOut, should call animateCamera(CameraUpdate.zoomOut())',
     seed: () => const MapState.single(),
-    build: () => cubit(isMultiple: false),
+    build: () => cubit(mapStateType: const MapStateType.single()),
     act: (MapCubit cubit) {
       cubit.mapCreated(mockGoogleMapController);
       cubit.zoomOut();
@@ -100,7 +100,7 @@ void main() {
   blocTest(
     'on zoomIn, should call animateCamera(CameraUpdate.zoomIn())',
     seed: () => const MapState.single(),
-    build: () => cubit(isMultiple: false),
+    build: () => cubit(mapStateType: const MapStateType.single()),
     act: (MapCubit cubit) {
       cubit.mapCreated(mockGoogleMapController);
       cubit.zoomIn();
@@ -116,12 +116,13 @@ void main() {
       isMapReady: true,
       markerLatLngBounds: tLatLngBounds,
     ),
-    build: () => cubit(isMultiple: true),
+    build: () => cubit(mapStateType: const MapStateType.multiple()),
     act: (MapCubit cubit) {
       cubit.mapCreated(mockGoogleMapController);
       cubit.findMarkers();
     },
     verify: (_) {
+      verify(mockGoogleMapController.moveCamera(any)).called(1);
       verify(mockGoogleMapController.animateCamera(any)).called(1);
     },
   );
@@ -132,12 +133,13 @@ void main() {
       isMapReady: true,
       markerPosition: LatLng(0, 0),
     ),
-    build: () => cubit(isMultiple: false),
+    build: () => cubit(mapStateType: const MapStateType.single()),
     act: (MapCubit cubit) {
       cubit.mapCreated(mockGoogleMapController);
       cubit.findMarkers();
     },
     verify: (_) {
+      verify(mockGoogleMapController.moveCamera(any)).called(1);
       verify(mockGoogleMapController.animateCamera(any)).called(1);
     },
   );
@@ -145,18 +147,19 @@ void main() {
   blocTest(
     'on updateMarkerLatLngBounds, should emit [MapState.multiple(markerLatLngBounds: tLatLngBounds)]',
     seed: () => const MapState.multiple(),
-    build: () => cubit(isMultiple: true),
+    build: () => cubit(mapStateType: const MapStateType.multiple()),
     act: (MapCubit cubit) => cubit.updateMarkerLatLngBounds(tLatLngBounds),
     expect: () => [MapState.multiple(markerLatLngBounds: tLatLngBounds)],
     verify: (_) {
       verifyNever(mockGoogleMapController.animateCamera(any));
+
     },
   );
 
   blocTest(
     'on updateMarkerPosition, should emit [MapState.single(markerPosition: LatLng(0, 0))]',
     seed: () => const MapState.single(),
-    build: () => cubit(isMultiple: false),
+    build: () => cubit(mapStateType: const MapStateType.single()),
     act: (MapCubit cubit) => cubit.updateMarkerPosition(const LatLng(0, 0)),
     expect: () => [const MapState.single(markerPosition: LatLng(0, 0))],
     verify: (_) {

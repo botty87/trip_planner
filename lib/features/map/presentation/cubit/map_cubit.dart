@@ -24,13 +24,14 @@ class MapCubit extends Cubit<MapState> {
 
   void mapCreated(GoogleMapController controller) async {
     _mapController = controller;
+    isFirstMove = false;
     await state.mapOrNull(
       multiple: (state) async => await state.markerLatLngBounds?.let((value) async =>
           await _mapController?.moveCamera(CameraUpdate.newLatLngBounds(value, 50))),
       single: (state) async => await state.markerPosition?.let(
           (value) async => await _mapController?.moveCamera(CameraUpdate.newLatLngZoom(value, 15))),
     );
-    isFirstMove = false;
+    
     emit(state.copyWith(isMapReady: true));
   }
 

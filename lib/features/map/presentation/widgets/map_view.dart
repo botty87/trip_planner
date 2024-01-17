@@ -43,6 +43,8 @@ class _MapView extends StatelessWidget {
       initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
     }
 
+    
+
     return BlocSelector<MapCubit, MapState, MapType>(
       selector: (state) => state.mapType,
       builder: (context, mapType) {
@@ -55,6 +57,7 @@ class _MapView extends StatelessWidget {
           markers: markers,
           polylines: _polylines,
           mapToolbarEnabled: false,
+          compassEnabled: false,
           gestureRecognizers: _isInsideScrollView
               ? <Factory<OneSequenceGestureRecognizer>>{
                   Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
