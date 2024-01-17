@@ -27,6 +27,19 @@ class _VerticalLayout extends HookWidget {
     required this.onLocationChanged,
   }) : tripStop = null;
 
+  const _VerticalLayout.editTripStop({
+    required this.isSaving,
+    required this.hourDuration,
+    required this.minuteDuration,
+    required this.onNameChanged,
+    required this.onDescriptionChanged,
+    required this.saveSection,
+    required this.onHourDurationChanged,
+    required this.onMinuteDurationChanged,
+    required this.onLocationChanged,
+    required this.tripStop,
+  });
+
   @override
   Widget build(BuildContext context) {
     final location = useStreamController<LatLng?>();
@@ -64,7 +77,7 @@ class _VerticalLayout extends HookWidget {
               _FieldWidget(
                 key: const Key('nameWidget'),
                 onDescriptionChanged: onNameChanged,
-                //initialValue: initialTripStopName,
+                initialValue: tripStop?.name,
                 maxLines: 1,
                 textInputAction: TextInputAction.next,
                 label: LocaleKeys.tripStopName.tr(),
@@ -74,7 +87,7 @@ class _VerticalLayout extends HookWidget {
               _FieldWidget(
                 key: const Key('descriptionWidget'),
                 onDescriptionChanged: onDescriptionChanged,
-                //initialValue: initialTripStopDescription,
+                initialValue: tripStop?.description,
                 label: LocaleKeys.tripStopDescription.tr(),
                 hint: LocaleKeys.tripStopDescriptionHint.tr(),
                 maxLines: null,
@@ -86,14 +99,15 @@ class _VerticalLayout extends HookWidget {
                 onMinuteDurationChanged: onMinuteDurationChanged,
                 hourDuration: hourDuration,
                 minuteDuration: minuteDuration,
-                initialHourDuration: 0, // initialHourDuration,
-                initialMinuteDuration: 0, // initialMinuteDuration,
+                initialHourDuration: tripStop != null ? tripStop!.duration ~/ 60 : 0,
+                initialMinuteDuration: tripStop != null ? tripStop!.duration % 60 : 0,
               ),
               const SizedBox(height: verticalSpaceL),
               //_MapWidget(marker: marker.stream, initialMarker: initialMarker),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.4,
                 child: StreamBuilder<LatLng?>(
+                    initialData: tripStop?.location,
                     stream: location.stream,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {

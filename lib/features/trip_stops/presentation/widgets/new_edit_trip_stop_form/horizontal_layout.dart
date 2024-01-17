@@ -27,6 +27,19 @@ class _HorizontalLayout extends HookWidget {
     required this.onLocationChanged,
   }) : tripStop = null;
 
+  const _HorizontalLayout.editTripStop({
+    required this.isSaving,
+    required this.hourDuration,
+    required this.minuteDuration,
+    required this.onNameChanged,
+    required this.onDescriptionChanged,
+    required this.saveSection,
+    required this.onHourDurationChanged,
+    required this.onMinuteDurationChanged,
+    required this.onLocationChanged,
+    required this.tripStop,
+  });
+
   @override
   Widget build(BuildContext context) {
     final location = useStreamController<LatLng?>();
@@ -35,6 +48,7 @@ class _HorizontalLayout extends HookWidget {
       children: [
         Expanded(
           child: StreamBuilder<LatLng?>(
+              initialData: tripStop?.location,
               stream: location.stream,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -55,14 +69,6 @@ class _HorizontalLayout extends HookWidget {
                   isInsideScrollView: true,
                 );
               }),
-          /* MapWidget(
-            key: const Key('mapWidget'),
-            initialLocation: initialLocation,
-            locationStream: location.stream,
-            onMarkerDragEnd: (value) {
-              onLocationChanged(LatLng(value.latitude, value.longitude));
-            },
-          ), */
         ),
         const SizedBox(width: horizontalSpaceL),
         Expanded(
@@ -96,7 +102,7 @@ class _HorizontalLayout extends HookWidget {
                 _FieldWidget(
                   key: const Key('nameWidget'),
                   onDescriptionChanged: onNameChanged,
-                  //initialValue: initialTripStopName,
+                  initialValue: tripStop?.name,
                   maxLines: 1,
                   textInputAction: TextInputAction.next,
                   label: LocaleKeys.tripStopName.tr(),
@@ -106,7 +112,7 @@ class _HorizontalLayout extends HookWidget {
                 _FieldWidget(
                   key: const Key('descriptionWidget'),
                   onDescriptionChanged: onDescriptionChanged,
-                  //initialValue: initialTripStopDescription,
+                  initialValue: tripStop?.description,
                   label: LocaleKeys.tripStopDescription.tr(),
                   hint: LocaleKeys.tripStopDescriptionHint.tr(),
                   maxLines: null,
@@ -118,8 +124,8 @@ class _HorizontalLayout extends HookWidget {
                   onMinuteDurationChanged: onMinuteDurationChanged,
                   hourDuration: hourDuration,
                   minuteDuration: minuteDuration,
-                  initialHourDuration: 0,
-                  initialMinuteDuration: 0,
+                  initialHourDuration: tripStop != null ? tripStop!.duration ~/ 60 : 0,
+                  initialMinuteDuration: tripStop != null ? tripStop!.duration % 60 : 0,
                 ),
                 const SizedBox(height: verticalSpaceL),
                 GooglePlacesSuggestionsWidget(

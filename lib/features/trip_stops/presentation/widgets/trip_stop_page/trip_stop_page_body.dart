@@ -153,20 +153,16 @@ class _TripStopPageBody extends HookWidget {
       builder: (context) {
         return Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          //TODO: Replace with NewEditTripStopForm
-          child:
-              const Placeholder(), /* NewEditTripStopForm(
+          child: NewEditTripStopForm.editTripStop(
             key: const Key('new_edit_trip_stop_form'),
             isSaving: isSaving.stream,
             hourDuration: hourDuration.stream,
             minuteDuration: minuteDuration.stream,
+            tripStop: cubit.state.tripStop,
             onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
             onNameChanged: (String value) => cubit.nameChanged(value),
             onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
             onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
-            initialTripStopDescription: cubit.state.tripStop.description,
-            initialTripStopName: cubit.state.tripStop.name,
-            initialLocation: cubit.state.tripStop.location,
             onLocationChanged: (LatLng? value) {
               if (value != null) {
                 cubit.locationChanged(value);
@@ -178,7 +174,7 @@ class _TripStopPageBody extends HookWidget {
               onSave: () => cubit.saveChanges(),
               errorMessage: errorMessage.stream,
             ),
-          ), */
+          ),
         );
       },
     ).then((_) {
@@ -262,12 +258,12 @@ class _HorizontalLayout extends StatelessWidget {
                       _DeleteTripStopButton(isDeleting: isDeleting),
                     ],
                   ),
-                ), 
+                ),
               ),
               const SizedBox(width: horizontalSpaceL),
               Expanded(
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.only(bottom: verticalSpaceXL),
+                  padding: const EdgeInsets.only(bottom: pageVerticalPadding),
                   child: Column(
                     children: [
                       if (description?.isNotEmpty ?? false) ...[
@@ -275,6 +271,11 @@ class _HorizontalLayout extends StatelessWidget {
                         const SizedBox(height: verticalSpaceXL),
                       ],
                       const _TripStopNoteWidget(),
+                      const SizedBox(height: verticalSpaceL),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
+                      ),
                     ],
                   ),
                 ),

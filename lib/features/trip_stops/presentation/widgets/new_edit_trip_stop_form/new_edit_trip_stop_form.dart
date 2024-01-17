@@ -35,6 +35,8 @@ class NewEditTripStopForm extends StatelessWidget {
   final ValueChanged<int> onMinuteDurationChanged;
   final ValueChanged<LatLng?> onLocationChanged;
 
+  final TripStop? tripStop;
+
   final Widget saveSection;
 
   const NewEditTripStopForm.newTripStop({
@@ -48,82 +50,80 @@ class NewEditTripStopForm extends StatelessWidget {
     required this.onHourDurationChanged,
     required this.onMinuteDurationChanged,
     required this.onLocationChanged,
+  }) : tripStop = null;
+
+  const NewEditTripStopForm.editTripStop({
+    super.key,
+    required this.isSaving,
+    required this.hourDuration,
+    required this.minuteDuration,
+    required this.onNameChanged,
+    required this.onDescriptionChanged,
+    required this.saveSection,
+    required this.onHourDurationChanged,
+    required this.onMinuteDurationChanged,
+    required this.onLocationChanged,
+    required this.tripStop,
   });
 
   @override
   Widget build(BuildContext context) {
-    /* final currentName = useRef<String?>(initialTripStopName);
-    final currentDescription = useRef<String?>(initialTripStopDescription);
-    final currentHourDuration = useRef<int>(0);
-    final currentMinuteDuration = useRef<int>(0);
-    final currentLocation = useRef<LatLng?>(initialLocation); */
-
     Widget getVerticalLayout() {
-      return _VerticalLayout.newTripStop(
-        isSaving: isSaving,
-        hourDuration: hourDuration,
-        minuteDuration: minuteDuration,
-        onNameChanged: (name) {
-          //currentName.value = name;
-          onNameChanged(name);
-        },
-        onDescriptionChanged: (name) {
-          //currentDescription.value = name;
-          onDescriptionChanged(name);
-        },
-        saveSection: saveSection,
-        onHourDurationChanged: (hour) {
-          //currentHourDuration.value = hour;
-          onHourDurationChanged(hour);
-        },
-        onMinuteDurationChanged: (minute) {
-          //currentMinuteDuration.value = minute;
-          onMinuteDurationChanged(minute);
-        },
-        //initialTripStopDescription: currentDescription.value,
-        //initialTripStopName: currentName.value,
-        //initialHourDuration: currentHourDuration.value,
-        //initialMinuteDuration: currentMinuteDuration.value,
-        onLocationChanged: (location) {
-          //currentLocation.value = location;
-          onLocationChanged(location);
-        },
-        //initialLocation: currentLocation.value,
-      );
+      if (tripStop == null) {
+        return _VerticalLayout.newTripStop(
+          isSaving: isSaving,
+          hourDuration: hourDuration,
+          minuteDuration: minuteDuration,
+          onNameChanged: (name) => onNameChanged(name),
+          onDescriptionChanged: (name) => onDescriptionChanged(name),
+          saveSection: saveSection,
+          onHourDurationChanged: (hour) => onHourDurationChanged(hour),
+          onMinuteDurationChanged: (minute) => onMinuteDurationChanged(minute),
+          onLocationChanged: (location) => onLocationChanged(location),
+        );
+      } else {
+        return _VerticalLayout.editTripStop(
+          isSaving: isSaving,
+          hourDuration: hourDuration,
+          minuteDuration: minuteDuration,
+          onNameChanged: (name) => onNameChanged(name),
+          onDescriptionChanged: (name) => onDescriptionChanged(name),
+          saveSection: saveSection,
+          onHourDurationChanged: (hour) => onHourDurationChanged(hour),
+          onMinuteDurationChanged: (minute) => onMinuteDurationChanged(minute),
+          onLocationChanged: (location) => onLocationChanged(location),
+          tripStop: tripStop,
+        );
+      }
     }
 
     Widget getHorizontalLayout() {
-      return _HorizontalLayout.newTripStop(
-        isSaving: isSaving,
-        hourDuration: hourDuration,
-        minuteDuration: minuteDuration,
-        onNameChanged: (name) {
-          //currentName.value = name;
-          onNameChanged(name);
-        },
-        onDescriptionChanged: (name) {
-          //currentDescription.value = name;
-          onDescriptionChanged(name);
-        },
-        saveSection: saveSection,
-        onHourDurationChanged: (hour) {
-          //currentHourDuration.value = hour;
-          onHourDurationChanged(hour);
-        },
-        onMinuteDurationChanged: (minute) {
-          //currentMinuteDuration.value = minute;
-          onMinuteDurationChanged(minute);
-        },
-        //initialTripStopDescription: currentDescription.value,
-        //initialTripStopName: currentName.value,
-        //initialHourDuration: currentHourDuration.value,
-        //initialMinuteDuration: currentMinuteDuration.value,
-        onLocationChanged: (location) {
-          //currentLocation.value = location;
-          onLocationChanged(location);
-        },
-        //initialLocation: currentLocation.value,
-      );
+      if (tripStop == null) {
+        return _HorizontalLayout.newTripStop(
+          isSaving: isSaving,
+          hourDuration: hourDuration,
+          minuteDuration: minuteDuration,
+          onNameChanged: (name) => onNameChanged(name),
+          onDescriptionChanged: (name) => onDescriptionChanged(name),
+          saveSection: saveSection,
+          onHourDurationChanged: (hour) => onHourDurationChanged(hour),
+          onMinuteDurationChanged: (minute) => onMinuteDurationChanged(minute),
+          onLocationChanged: (location) => onLocationChanged(location),
+        );
+      } else {
+        return _HorizontalLayout.editTripStop(
+          isSaving: isSaving,
+          hourDuration: hourDuration,
+          minuteDuration: minuteDuration,
+          onNameChanged: (name) => onNameChanged(name),
+          onDescriptionChanged: (name) => onDescriptionChanged(name),
+          saveSection: saveSection,
+          onHourDurationChanged: (hour) => onHourDurationChanged(hour),
+          onMinuteDurationChanged: (minute) => onMinuteDurationChanged(minute),
+          onLocationChanged: (location) => onLocationChanged(location),
+          tripStop: tripStop,
+        );
+      }
     }
 
     return Column(

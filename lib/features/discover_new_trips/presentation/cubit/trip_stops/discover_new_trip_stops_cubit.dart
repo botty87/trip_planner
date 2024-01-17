@@ -17,8 +17,6 @@ class DiscoverNewTripStopsCubit extends Cubit<DiscoverNewTripStopsState> {
   final String _tripId;
   final String _dayTripId;
 
-  GoogleMapController? mapController;
-
   DiscoverNewTripStopsCubit({
     required GetPublicTripStops getPublicTripStops,
     @factoryParam required String tripId,

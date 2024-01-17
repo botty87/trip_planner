@@ -6,7 +6,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
@@ -36,8 +35,6 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   final UpdateDayTripUseDifferentDirectionsColors _updateDayTripUseDifferentDirectionsColors;
 
   final FirebaseCrashlytics _crashlytics;
-
-  GoogleMapController? mapController;
 
   late final StreamSubscription<Either<DayTripsFailure, DayTrip>> _dayTripSubscription;
 

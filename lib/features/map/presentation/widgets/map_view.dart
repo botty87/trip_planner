@@ -28,8 +28,6 @@ class _MapView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mapType = context.select((MapCubit cubit) => cubit.state.mapType);
-
     final markers = _getMarkers(context);
 
     final CameraPosition initialCameraPosition;
@@ -45,19 +43,25 @@ class _MapView extends StatelessWidget {
       initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
     }
 
-    return GoogleMap(
-      mapType: mapType,
-      initialCameraPosition: initialCameraPosition,
-      onMapCreated: (controller) => context.read<MapCubit>().mapCreated(controller),
-      myLocationButtonEnabled: false,
-      zoomControlsEnabled: false,
-      markers: markers,
-      polylines: _polylines,
-      gestureRecognizers: _isInsideScrollView
-          ? <Factory<OneSequenceGestureRecognizer>>{
-              Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
-            }
-          : {},
+    return BlocSelector<MapCubit, MapState, MapType>(
+      selector: (state) => state.mapType,
+      builder: (context, mapType) {
+        return GoogleMap(
+          mapType: mapType,
+          initialCameraPosition: initialCameraPosition,
+          onMapCreated: (controller) => context.read<MapCubit>().mapCreated(controller),
+          myLocationButtonEnabled: false,
+          zoomControlsEnabled: false,
+          markers: markers,
+          polylines: _polylines,
+          mapToolbarEnabled: false,
+          gestureRecognizers: _isInsideScrollView
+              ? <Factory<OneSequenceGestureRecognizer>>{
+                  Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                }
+              : {},
+        );
+      },
     );
   }
 
@@ -81,24 +85,6 @@ class _MapView extends StatelessWidget {
                 icon = (isDone && _useDifferentColorsForDone)
                     ? BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)
                     : BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed);
-
-                //TODO: verify and clean this
-                /* return Marker(
-                  markerId: MarkerId(id),
-                  position: mapPlace.location,
-                  infoWindow: _showInfoWindow
-                      ? InfoWindow(
-                          title: name,
-                          snippet: description,
-                          onTap: _onMarkerTap != null ? () => _onMarkerTap!(mapPlace) : null,
-                        )
-                      : InfoWindow.noText,
-                  icon: (isDone && _useDifferentColorsForDone)
-                      ? BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)
-                      : BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-                  draggable: _onMarkerDragEnd != null,
-                  onDragEnd: (value) => _onMarkerDragEnd?.call(value),
-                ); */
               },
               newPlace: (location) {
                 markerId = location.toString();
@@ -114,9 +100,7 @@ class _MapView extends StatelessWidget {
               infoWindow: infoWindow,
               draggable: _onMarkerDragEnd != null,
               onDragEnd: (value) {
-                context
-                    .read<MapCubit>()
-                    .updateMarkerPosition(value);
+                context.read<MapCubit>().updateMarkerPosition(value);
                 _onMarkerDragEnd?.call(value);
               },
             );

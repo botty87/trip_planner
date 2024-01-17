@@ -17,8 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DiscoverNewTripStopState {
   TripStop get tripStop => throw _privateConstructorUsedError;
-  MapType get mapType => throw _privateConstructorUsedError;
-  bool get isMapReady => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DiscoverNewTripStopStateCopyWith<DiscoverNewTripStopState> get copyWith =>
@@ -31,7 +29,7 @@ abstract class $DiscoverNewTripStopStateCopyWith<$Res> {
           $Res Function(DiscoverNewTripStopState) then) =
       _$DiscoverNewTripStopStateCopyWithImpl<$Res, DiscoverNewTripStopState>;
   @useResult
-  $Res call({TripStop tripStop, MapType mapType, bool isMapReady});
+  $Res call({TripStop tripStop});
 
   $TripStopCopyWith<$Res> get tripStop;
 }
@@ -51,22 +49,12 @@ class _$DiscoverNewTripStopStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? tripStop = null,
-    Object? mapType = null,
-    Object? isMapReady = null,
   }) {
     return _then(_value.copyWith(
       tripStop: null == tripStop
           ? _value.tripStop
           : tripStop // ignore: cast_nullable_to_non_nullable
               as TripStop,
-      mapType: null == mapType
-          ? _value.mapType
-          : mapType // ignore: cast_nullable_to_non_nullable
-              as MapType,
-      isMapReady: null == isMapReady
-          ? _value.isMapReady
-          : isMapReady // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 
@@ -87,7 +75,7 @@ abstract class _$$NormalImplCopyWith<$Res>
       __$$NormalImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TripStop tripStop, MapType mapType, bool isMapReady});
+  $Res call({TripStop tripStop});
 
   @override
   $TripStopCopyWith<$Res> get tripStop;
@@ -105,22 +93,12 @@ class __$$NormalImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tripStop = null,
-    Object? mapType = null,
-    Object? isMapReady = null,
   }) {
     return _then(_$NormalImpl(
       tripStop: null == tripStop
           ? _value.tripStop
           : tripStop // ignore: cast_nullable_to_non_nullable
               as TripStop,
-      mapType: null == mapType
-          ? _value.mapType
-          : mapType // ignore: cast_nullable_to_non_nullable
-              as MapType,
-      isMapReady: null == isMapReady
-          ? _value.isMapReady
-          : isMapReady // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -128,23 +106,14 @@ class __$$NormalImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NormalImpl implements _Normal {
-  const _$NormalImpl(
-      {required this.tripStop,
-      this.mapType = MapType.hybrid,
-      this.isMapReady = false});
+  const _$NormalImpl({required this.tripStop});
 
   @override
   final TripStop tripStop;
-  @override
-  @JsonKey()
-  final MapType mapType;
-  @override
-  @JsonKey()
-  final bool isMapReady;
 
   @override
   String toString() {
-    return 'DiscoverNewTripStopState(tripStop: $tripStop, mapType: $mapType, isMapReady: $isMapReady)';
+    return 'DiscoverNewTripStopState(tripStop: $tripStop)';
   }
 
   @override
@@ -153,14 +122,11 @@ class _$NormalImpl implements _Normal {
         (other.runtimeType == runtimeType &&
             other is _$NormalImpl &&
             (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop) &&
-            (identical(other.mapType, mapType) || other.mapType == mapType) &&
-            (identical(other.isMapReady, isMapReady) ||
-                other.isMapReady == isMapReady));
+                other.tripStop == tripStop));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tripStop, mapType, isMapReady);
+  int get hashCode => Object.hash(runtimeType, tripStop);
 
   @JsonKey(ignore: true)
   @override
@@ -170,17 +136,10 @@ class _$NormalImpl implements _Normal {
 }
 
 abstract class _Normal implements DiscoverNewTripStopState {
-  const factory _Normal(
-      {required final TripStop tripStop,
-      final MapType mapType,
-      final bool isMapReady}) = _$NormalImpl;
+  const factory _Normal({required final TripStop tripStop}) = _$NormalImpl;
 
   @override
   TripStop get tripStop;
-  @override
-  MapType get mapType;
-  @override
-  bool get isMapReady;
   @override
   @JsonKey(ignore: true)
   _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
