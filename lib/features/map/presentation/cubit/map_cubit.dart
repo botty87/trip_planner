@@ -15,12 +15,16 @@ class MapCubit extends Cubit<MapState> {
   bool isFirstMove = true;
 
   MapCubit({
-    @factoryParam required bool isMultiple,
-  }) : super(isMultiple ? const MapState.multiple() : const MapState.single());
+    @factoryParam required MapStateType mapStateType,
+  }) : super(mapStateType.map(
+          multiple: (_) => const MapState.multiple(),
+          single: (_) => const MapState.single(),
+          empty: (_) => const MapState.empty(),
+        ));
 
   void mapCreated(GoogleMapController controller) async {
     _mapController = controller;
-    await state.map(
+    await state.mapOrNull(
       multiple: (state) async => await state.markerLatLngBounds?.let((value) async =>
           await _mapController?.moveCamera(CameraUpdate.newLatLngBounds(value, 50))),
       single: (state) async => await state.markerPosition?.let(
@@ -40,7 +44,7 @@ class MapCubit extends Cubit<MapState> {
   void zoomIn() => _mapController?.animateCamera(CameraUpdate.zoomIn());
 
   void findMarkers() {
-    state.map(
+    state.mapOrNull(
       multiple: (state) => state.markerLatLngBounds?.let((value) {
         if (isFirstMove) {
           _mapController?.moveCamera(CameraUpdate.newLatLngBounds(value, 50));
@@ -67,8 +71,11 @@ class MapCubit extends Cubit<MapState> {
   }
 
   void updateMarkerPosition(LatLng? markerPosition) {
-    assert(state is _MapStateSingle);
-    emit((state as _MapStateSingle).copyWith(markerPosition: markerPosition));
+    state.mapOrNull(
+      single: (state) => emit(state.copyWith(markerPosition: markerPosition)),
+      empty: (state) => emit(MapState.single(
+          markerPosition: markerPosition!, isMapReady: state.isMapReady, mapType: state.mapType)),
+    );
     findMarkers();
   }
 }

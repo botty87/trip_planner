@@ -99,7 +99,7 @@ class _NewTripStopPageBody extends HookWidget {
           ),
         ),
       ],
-      child: NewEditTripStopForm(
+      child: NewEditTripStopForm.newTripStop(
         isSaving: isSaving.stream,
         hourDuration: hourDuration.stream,
         minuteDuration: minuteDuration.stream,

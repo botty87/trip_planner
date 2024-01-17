@@ -224,11 +224,11 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i18.InternetConnection>(() => network.internetConnection);
     gh.lazySingleton<_i19.Logger>(() => registerModule.logger);
     gh.factory<_i20.MapCubit>(() => _i20.MapCubit());
-    gh.factoryParam<_i21.MapCubit, bool, dynamic>((
-      isMultiple,
+    gh.factoryParam<_i21.MapCubit, _i21.MapStateType, dynamic>((
+      mapStateType,
       _,
     ) =>
-        _i21.MapCubit(isMultiple: isMultiple));
+        _i21.MapCubit(mapStateType: mapStateType));
     gh.lazySingleton<_i22.OldTripsDataSource>(
         () => _i22.OldTripsDataSourceImpl(gh<_i12.FirebaseDatabase>()));
     gh.lazySingleton<_i23.OldTripsRepository>(

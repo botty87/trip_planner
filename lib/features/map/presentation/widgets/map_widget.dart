@@ -7,7 +7,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../domain/entities/map_place.dart';
 import '../cubit/map_cubit.dart';
 
@@ -17,12 +16,13 @@ part 'map_view.dart';
 part 'map_zoom_buttons.dart';
 
 class MapWidget extends StatelessWidget {
-  final List<MapPlace> _mapPlaces;
+  final List<MapPlace>? _mapPlaces;
   final Function(MapPlace mapPlace)? _onMarkerTap;
   final bool _useDifferentColorsForDone;
   final Set<Polyline> _polylines;
   final bool _showInfoWindow;
   final bool _isInsideScrollView;
+  final ValueChanged<LatLng>? _onMarkerDragEnd;
 
   const MapWidget.multiple({
     super.key,
@@ -37,7 +37,8 @@ class MapWidget extends StatelessWidget {
         _useDifferentColorsForDone = useDifferentColorsForDone,
         _polylines = polylines,
         _showInfoWindow = showInfoWindow,
-        _isInsideScrollView = isInsideScrollView;
+        _isInsideScrollView = isInsideScrollView,
+        _onMarkerDragEnd = null;
 
   MapWidget.single({
     super.key,
@@ -46,19 +47,41 @@ class MapWidget extends StatelessWidget {
     bool useDifferentColorsForDone = true,
     bool showInfoWindow = true,
     bool isInsideScrollView = false,
+    ValueChanged<LatLng>? onMarkerDragEnd,
   })  : _mapPlaces = [mapPlace],
         _onMarkerTap = onMarkerTap,
         _useDifferentColorsForDone = useDifferentColorsForDone,
         _polylines = const {},
         _showInfoWindow = showInfoWindow,
-        _isInsideScrollView = isInsideScrollView;
+        _isInsideScrollView = isInsideScrollView,
+        _onMarkerDragEnd = onMarkerDragEnd;
+
+  const MapWidget.empty({
+    super.key,
+    bool useDifferentColorsForDone = true,
+    bool showInfoWindow = true,
+    bool isInsideScrollView = false,
+  })  : _mapPlaces = null,
+        _onMarkerTap = null,
+        _useDifferentColorsForDone = useDifferentColorsForDone,
+        _polylines = const {},
+        _showInfoWindow = showInfoWindow,
+        _isInsideScrollView = isInsideScrollView,
+        _onMarkerDragEnd = null;
 
   @override
   Widget build(BuildContext context) {
-    final isMultiple = _mapPlaces.length > 1;
+    //final isMultiple = _mapPlaces.length > 1;
+    final mapStateType = _mapPlaces?.length == 1
+        ? const MapStateType.single()
+        : _mapPlaces?.isNotEmpty == true
+            ? const MapStateType.multiple()
+            : const MapStateType.empty();
+
+        
 
     return BlocProvider<MapCubit>(
-      create: (context) => getIt(param1: isMultiple),
+      create: (context) => getIt(param1: mapStateType),
       child: BlocSelector<MapCubit, MapState, bool>(
         selector: (state) => state.isMapReady || kIsWeb,
         builder: (context, isMapReady) {
@@ -81,6 +104,7 @@ class MapWidget extends StatelessWidget {
                       polylines: _polylines,
                       showInfoWindow: _showInfoWindow,
                       isInsideScrollView: _isInsideScrollView,
+                      onMarkerDragEnd: _onMarkerDragEnd,
                     ),
                     const Align(alignment: Alignment.topLeft, child: _MapTypeChanger()),
                     const Align(alignment: Alignment.bottomRight, child: _MapZoomButtons()),

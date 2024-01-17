@@ -153,7 +153,9 @@ class _TripStopPageBody extends HookWidget {
       builder: (context) {
         return Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: NewEditTripStopForm(
+          //TODO: Replace with NewEditTripStopForm
+          child:
+              const Placeholder(), /* NewEditTripStopForm(
             key: const Key('new_edit_trip_stop_form'),
             isSaving: isSaving.stream,
             hourDuration: hourDuration.stream,
@@ -176,7 +178,7 @@ class _TripStopPageBody extends HookWidget {
               onSave: () => cubit.saveChanges(),
               errorMessage: errorMessage.stream,
             ),
-          ),
+          ), */
         );
       },
     ).then((_) {
@@ -247,13 +249,11 @@ class _HorizontalLayout extends StatelessWidget {
           return Row(
             children: [
               Expanded(
-                child: SingleChildScrollView(
+                child: SafeArea(
+                  minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.75,
-                        child: const _MapWidget(),
-                      ),
+                      const Expanded(child: _MapWidget()),
                       if (!kIsWeb) ...[
                         const SizedBox(height: verticalSpaceXL),
                         const _TripStopNavigateToButton(),
@@ -262,7 +262,7 @@ class _HorizontalLayout extends StatelessWidget {
                       _DeleteTripStopButton(isDeleting: isDeleting),
                     ],
                   ),
-                ),
+                ), 
               ),
               const SizedBox(width: horizontalSpaceL),
               Expanded(

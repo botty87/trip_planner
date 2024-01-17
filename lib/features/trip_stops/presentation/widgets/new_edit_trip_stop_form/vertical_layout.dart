@@ -11,15 +11,11 @@ class _VerticalLayout extends HookWidget {
   final ValueChanged<int> onMinuteDurationChanged;
   final ValueChanged<LatLng?> onLocationChanged;
 
-  final String? initialTripStopName;
-  final String? initialTripStopDescription;
-  final int initialHourDuration;
-  final int initialMinuteDuration;
-  final LatLng? initialLocation;
+  final TripStop? tripStop;
 
   final Widget saveSection;
 
-  const _VerticalLayout({
+  const _VerticalLayout.newTripStop({
     required this.isSaving,
     required this.hourDuration,
     required this.minuteDuration,
@@ -28,13 +24,8 @@ class _VerticalLayout extends HookWidget {
     required this.saveSection,
     required this.onHourDurationChanged,
     required this.onMinuteDurationChanged,
-    this.initialTripStopDescription,
-    this.initialTripStopName,
     required this.onLocationChanged,
-    this.initialLocation,
-    required this.initialHourDuration,
-    required this.initialMinuteDuration,
-  });
+  }) : tripStop = null;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +64,7 @@ class _VerticalLayout extends HookWidget {
               _FieldWidget(
                 key: const Key('nameWidget'),
                 onDescriptionChanged: onNameChanged,
-                initialValue: initialTripStopName,
+                //initialValue: initialTripStopName,
                 maxLines: 1,
                 textInputAction: TextInputAction.next,
                 label: LocaleKeys.tripStopName.tr(),
@@ -83,7 +74,7 @@ class _VerticalLayout extends HookWidget {
               _FieldWidget(
                 key: const Key('descriptionWidget'),
                 onDescriptionChanged: onDescriptionChanged,
-                initialValue: initialTripStopDescription,
+                //initialValue: initialTripStopDescription,
                 label: LocaleKeys.tripStopDescription.tr(),
                 hint: LocaleKeys.tripStopDescriptionHint.tr(),
                 maxLines: null,
@@ -95,23 +86,34 @@ class _VerticalLayout extends HookWidget {
                 onMinuteDurationChanged: onMinuteDurationChanged,
                 hourDuration: hourDuration,
                 minuteDuration: minuteDuration,
-                initialHourDuration: initialHourDuration,
-                initialMinuteDuration: initialMinuteDuration,
+                initialHourDuration: 0, // initialHourDuration,
+                initialMinuteDuration: 0, // initialMinuteDuration,
               ),
               const SizedBox(height: verticalSpaceL),
               //_MapWidget(marker: marker.stream, initialMarker: initialMarker),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.4,
-                child: Placeholder(),
-                //MapWidget.single(tripStop: tripStop),
-                /* MapWidget(
-                  key: const Key('mapWidget'),
-                  initialLocation: initialLocation,
-                  locationStream: location.stream,
-                  onMarkerDragEnd: (value) {
-                    onLocationChanged(LatLng(value.latitude, value.longitude));
-                  },
-                ), */
+                child: StreamBuilder<LatLng?>(
+                    stream: location.stream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return MapWidget.single(
+                          mapPlace: MapPlace.newPlace(location: snapshot.data!),
+                          useDifferentColorsForDone: false,
+                          showInfoWindow: false,
+                          isInsideScrollView: true,
+                          onMarkerDragEnd: (value) {
+                            onLocationChanged(LatLng(value.latitude, value.longitude));
+                          },
+                        );
+                      }
+
+                      return const MapWidget.empty(
+                        useDifferentColorsForDone: false,
+                        showInfoWindow: false,
+                        isInsideScrollView: true,
+                      );
+                    }),
               ),
               const SizedBox(height: verticalSpaceL),
               GooglePlacesSuggestionsWidget(

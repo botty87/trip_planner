@@ -15,6 +15,7 @@ import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../google_places/presentation/widgets/google_places_suggestions_widget.dart';
+import '../../../../map/domain/entities/map_place.dart';
 import '../../../../map/presentation/widgets/map_widget.dart';
 import '../../../domain/entities/trip_stop.dart';
 
@@ -23,7 +24,7 @@ part 'field_widget.dart';
 part 'horizontal_layout.dart';
 part 'vertical_layout.dart';
 
-class NewEditTripStopForm extends HookWidget {
+class NewEditTripStopForm extends StatelessWidget {
   final Stream<bool> isSaving;
   final Stream<int> hourDuration;
   final Stream<int> minuteDuration;
@@ -34,15 +35,9 @@ class NewEditTripStopForm extends HookWidget {
   final ValueChanged<int> onMinuteDurationChanged;
   final ValueChanged<LatLng?> onLocationChanged;
 
-  final String? initialTripStopName;
-
   final Widget saveSection;
 
-  final String? initialTripStopDescription;
-
-  final LatLng? initialLocation;
-
-  const NewEditTripStopForm({
+  const NewEditTripStopForm.newTripStop({
     super.key,
     required this.isSaving,
     required this.hourDuration,
@@ -52,85 +47,82 @@ class NewEditTripStopForm extends HookWidget {
     required this.saveSection,
     required this.onHourDurationChanged,
     required this.onMinuteDurationChanged,
-    this.initialTripStopDescription,
-    this.initialTripStopName,
     required this.onLocationChanged,
-    this.initialLocation,
   });
 
   @override
   Widget build(BuildContext context) {
-    final currentName = useRef<String?>(initialTripStopName);
+    /* final currentName = useRef<String?>(initialTripStopName);
     final currentDescription = useRef<String?>(initialTripStopDescription);
     final currentHourDuration = useRef<int>(0);
     final currentMinuteDuration = useRef<int>(0);
-    final currentLocation = useRef<LatLng?>(initialLocation);
+    final currentLocation = useRef<LatLng?>(initialLocation); */
 
     Widget getVerticalLayout() {
-      return _VerticalLayout(
+      return _VerticalLayout.newTripStop(
         isSaving: isSaving,
         hourDuration: hourDuration,
         minuteDuration: minuteDuration,
         onNameChanged: (name) {
-          currentName.value = name;
+          //currentName.value = name;
           onNameChanged(name);
         },
         onDescriptionChanged: (name) {
-          currentDescription.value = name;
+          //currentDescription.value = name;
           onDescriptionChanged(name);
         },
         saveSection: saveSection,
         onHourDurationChanged: (hour) {
-          currentHourDuration.value = hour;
+          //currentHourDuration.value = hour;
           onHourDurationChanged(hour);
         },
         onMinuteDurationChanged: (minute) {
-          currentMinuteDuration.value = minute;
+          //currentMinuteDuration.value = minute;
           onMinuteDurationChanged(minute);
         },
-        initialTripStopDescription: currentDescription.value,
-        initialTripStopName: currentName.value,
-        initialHourDuration: currentHourDuration.value,
-        initialMinuteDuration: currentMinuteDuration.value,
+        //initialTripStopDescription: currentDescription.value,
+        //initialTripStopName: currentName.value,
+        //initialHourDuration: currentHourDuration.value,
+        //initialMinuteDuration: currentMinuteDuration.value,
         onLocationChanged: (location) {
-          currentLocation.value = location;
+          //currentLocation.value = location;
           onLocationChanged(location);
         },
-        initialLocation: currentLocation.value,
+        //initialLocation: currentLocation.value,
       );
     }
 
     Widget getHorizontalLayout() {
-      return _HorizontalLayout(
+      return _HorizontalLayout.newTripStop(
         isSaving: isSaving,
         hourDuration: hourDuration,
         minuteDuration: minuteDuration,
         onNameChanged: (name) {
-          currentName.value = name;
+          //currentName.value = name;
           onNameChanged(name);
         },
         onDescriptionChanged: (name) {
-          currentDescription.value = name;
+          //currentDescription.value = name;
           onDescriptionChanged(name);
         },
         saveSection: saveSection,
         onHourDurationChanged: (hour) {
-          currentHourDuration.value = hour;
+          //currentHourDuration.value = hour;
           onHourDurationChanged(hour);
         },
         onMinuteDurationChanged: (minute) {
-          currentMinuteDuration.value = minute;
+          //currentMinuteDuration.value = minute;
           onMinuteDurationChanged(minute);
         },
-        initialTripStopDescription: currentDescription.value,
-        initialTripStopName: currentName.value,
-        initialHourDuration: currentHourDuration.value,
-        initialMinuteDuration: currentMinuteDuration.value,
+        //initialTripStopDescription: currentDescription.value,
+        //initialTripStopName: currentName.value,
+        //initialHourDuration: currentHourDuration.value,
+        //initialMinuteDuration: currentMinuteDuration.value,
         onLocationChanged: (location) {
-          currentLocation.value = location;
+          //currentLocation.value = location;
           onLocationChanged(location);
         },
-        initialLocation: currentLocation.value,
+        //initialLocation: currentLocation.value,
       );
     }
 
