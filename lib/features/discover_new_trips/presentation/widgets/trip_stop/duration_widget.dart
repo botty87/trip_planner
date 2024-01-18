@@ -1,13 +1,12 @@
-part of '../../pages/trip_stop_page.dart';
+part of '../../pages/discover_new_trip_stop_page.dart';
 
 class _TripStopDurationWidget extends StatelessWidget {
   const _TripStopDurationWidget();
 
   @override
   Widget build(BuildContext context) {
-    final durationInMinutes =
-        context.select((TripStopCubit cubit) => cubit.state.tripStop.duration);
-    
+    final durationInMinutes = context.read<DiscoverNewTripStopCubit>().state.tripStop.duration;
+
     return GenericDurationWidget(durationInMinutes: durationInMinutes);
   }
 }

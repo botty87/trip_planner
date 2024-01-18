@@ -17,6 +17,7 @@ import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/trip/delete_trip_button.dart';
+import '../../../../core/widgets/trip/generic_duration_widget.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';

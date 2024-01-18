@@ -5,6 +5,26 @@ class _HorizontalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final tripStop = context.read<DiscoverNewTripStopCubit>().state.tripStop;
+
+    return Row(
+      children: [
+        const Expanded(child: _MapWidget()),
+        const SizedBox(width: horizontalSpace),
+        Expanded(
+          child: SingleChildScrollView(
+            padding:
+                const EdgeInsets.only(right: pageHorizontalPadding, bottom: pageVerticalPadding),
+            child: Column(
+              children: [
+                _TripStopDescription(headerText: tripStop.description),
+                const SizedBox(height: verticalSpace),
+                const _TripStopDurationWidget(),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

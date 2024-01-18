@@ -6,6 +6,7 @@ class _VerticalLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tripStop = context.read<DiscoverNewTripStopCubit>().state.tripStop;
+    final double heightFactor = tripStop.description == null ? 0.6 : 0.4;
 
     return SingleChildScrollView(
       padding: defaultPagePadding,
@@ -14,9 +15,11 @@ class _VerticalLayout extends StatelessWidget {
           _TripStopDescription(headerText: tripStop.description),
           const SizedBox(height: verticalSpace),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * heightFactor,
             child: const _MapWidget(),
           ),
+          const SizedBox(height: verticalSpace),
+          const _TripStopDurationWidget(),
         ],
       ),
     );

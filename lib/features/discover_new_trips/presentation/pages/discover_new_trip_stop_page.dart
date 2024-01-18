@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_breakpoints.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/widgets/trip/generic_duration_widget.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../map/domain/entities/map_place.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
@@ -16,6 +17,7 @@ part '../widgets/trip_stop/horizontal_layout.dart';
 part '../widgets/trip_stop/vertical_layout.dart';
 part '../widgets/trip_stop/trip_stop_description.dart';
 part '../widgets/trip_stop/map_widget.dart';
+part '../widgets/trip_stop/duration_widget.dart';
 
 @RoutePage()
 class DiscoverNewTripStopPage extends StatelessWidget {
