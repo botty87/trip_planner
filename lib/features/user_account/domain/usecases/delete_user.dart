@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
+import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../../trips/domain/repositories/trips_repository.dart';
 import '../../errors/user_failures.dart';
@@ -22,7 +24,13 @@ class DeleteUser implements UseCase<void, DeleteUserParams> {
     }
     final deleteTripsResult = await tripsRepository.deleteAllTrips(params.userId);
     return deleteTripsResult.fold(
-      (failure) => left(UserFailures.unknownError(message: failure.message)),
+      (failure) {
+        final message = failure.when(
+          (message) => message,
+          noInternetConnection: () => LocaleKeys.noInternetConnectionMessage.tr(),
+        );
+        return left(UserFailures.unknownError(message: message));
+      },
       (_) => repository.deleteUser(),
     );
   }

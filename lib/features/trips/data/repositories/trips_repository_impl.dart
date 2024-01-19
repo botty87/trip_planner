@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import '../../domain/entities/trip.dart';
+import '../../errors/trips_exception.dart';
 import '../../errors/trips_failure.dart';
 
 import '../../domain/repositories/trips_repository.dart';
@@ -71,6 +72,33 @@ class TripsRepositoryImpl implements TripsRepository {
       return right(null);
     } on FirebaseException {
       return left(const TripsFailure());
+    } on Exception {
+      return left(const TripsFailure());
+    }
+  }
+
+  @override
+  Future<Either<TripsFailure, void>> createFromExistingTrip({
+    required Trip newTrip,
+    required Trip existingTrip,
+    required bool showDirections,
+    required bool useDifferentDirectionsColors,
+  }) async {
+    try {
+      await tripsDataSource.createFromExistingTrip(
+        newTrip: newTrip,
+        existingTrip: existingTrip,
+        showDirections: showDirections,
+        useDifferentDirectionsColors: useDifferentDirectionsColors,
+      );
+      return right(null);
+    } on FirebaseException {
+      return left(const TripsFailure());
+    } on TripsException catch (exception) {
+      return exception.map(
+        (_) => left(const TripsFailure()),
+        noInternetConnection: (_) => left(const TripsFailure.noInternetConnection()),
+      );
     } on Exception {
       return left(const TripsFailure());
     }

@@ -6,6 +6,13 @@ import '../entities/trip.dart';
 abstract class TripsRepository {
   Future<Either<TripsFailure, void>> createTrip(Trip trip);
 
+  Future<Either<TripsFailure, void>> createFromExistingTrip({
+    required Trip newTrip,
+    required Trip existingTrip,
+    required bool showDirections,
+    required bool useDifferentDirectionsColors,
+  });
+
   Stream<Either<TripsFailure, List<Trip>>> listenTrips(String userId);
 
   Future<Either<TripsFailure, void>> updateTrip(

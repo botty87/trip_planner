@@ -85,23 +85,25 @@ void main() {
     const tIsPublic = true;
 
     test('should return right(null) when TripsDataSource.updateTrip completes', () async {
-      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic))
+      when(mockTripsDataSource.updateTrip(
+              tTripId, tTripName, tTripDescription, tStartDate, tIsPublic))
           .thenAnswer((_) async {});
 
       // act
-      final result =
-          await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic);
+      final result = await tripsRepositoryImpl.updateTrip(
+          tTripId, tTripName, tTripDescription, tStartDate, tIsPublic);
       // assert
       expect(result, equals(right(null)));
     });
 
     test('should return left(TripsFailure()) when TripsDataSource.updateTrip throws', () async {
-      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic))
+      when(mockTripsDataSource.updateTrip(
+              tTripId, tTripName, tTripDescription, tStartDate, tIsPublic))
           .thenThrow(Exception());
 
       // act
-      final result =
-          await tripsRepositoryImpl.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic);
+      final result = await tripsRepositoryImpl.updateTrip(
+          tTripId, tTripName, tTripDescription, tStartDate, tIsPublic);
       // assert
       expect(result, equals(left(const TripsFailure())));
     });
@@ -144,6 +146,49 @@ void main() {
 
       // act
       final result = await tripsRepositoryImpl.deleteAllTrips(userId);
+      // assert
+      expect(result, equals(left(const TripsFailure())));
+    });
+  });
+
+  group('createFromExistingTrip', () {
+    test('should return right(null) when TripsDataSource.createFromExistingTrip completes',
+        () async {
+      when(mockTripsDataSource.createFromExistingTrip(
+        existingTrip: tTrip,
+        newTrip: tTrip,
+        useDifferentDirectionsColors: true,
+        showDirections: true,
+      )).thenAnswer((_) async {});
+
+      // act
+      final result = await tripsRepositoryImpl.createFromExistingTrip(
+        existingTrip: tTrip,
+        newTrip: tTrip,
+        useDifferentDirectionsColors: true,
+        showDirections: true,
+      );
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test(
+        'should return left(TripsFailure()) when TripsDataSource.createFromExistingTrip throws',
+        () async {
+      when(mockTripsDataSource.createFromExistingTrip(
+        existingTrip: tTrip,
+        newTrip: tTrip,
+        useDifferentDirectionsColors: true,
+        showDirections: true,
+      )).thenThrow(Exception());
+
+      // act
+      final result = await tripsRepositoryImpl.createFromExistingTrip(
+        existingTrip: tTrip,
+        newTrip: tTrip,
+        useDifferentDirectionsColors: true,
+        showDirections: true,
+      );
       // assert
       expect(result, equals(left(const TripsFailure())));
     });

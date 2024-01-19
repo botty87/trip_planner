@@ -66,6 +66,55 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
       ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
 
   @override
+  _i4.Future<_i2.Either<_i5.TripsFailure, void>> createFromExistingTrip({
+    required _i6.Trip? newTrip,
+    required _i6.Trip? existingTrip,
+    required bool? showDirections,
+    required bool? useDifferentDirectionsColors,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #createFromExistingTrip,
+          [],
+          {
+            #newTrip: newTrip,
+            #existingTrip: existingTrip,
+            #showDirections: showDirections,
+            #useDifferentDirectionsColors: useDifferentDirectionsColors,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+            _FakeEither_0<_i5.TripsFailure, void>(
+          this,
+          Invocation.method(
+            #createFromExistingTrip,
+            [],
+            {
+              #newTrip: newTrip,
+              #existingTrip: existingTrip,
+              #showDirections: showDirections,
+              #useDifferentDirectionsColors: useDifferentDirectionsColors,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+                _FakeEither_0<_i5.TripsFailure, void>(
+          this,
+          Invocation.method(
+            #createFromExistingTrip,
+            [],
+            {
+              #newTrip: newTrip,
+              #existingTrip: existingTrip,
+              #showDirections: showDirections,
+              #useDifferentDirectionsColors: useDifferentDirectionsColors,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
+
+  @override
   _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>> listenTrips(
           String? userId) =>
       (super.noSuchMethod(

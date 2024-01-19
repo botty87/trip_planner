@@ -153,9 +153,14 @@ abstract class $AppRouter extends _i18.RootStackRouter {
       );
     },
     NewTripRoute.name: (routeData) {
+      final args = routeData.argsAs<NewTripRouteArgs>(
+          orElse: () => const NewTripRouteArgs());
       return _i18.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i12.NewTripPage(),
+        child: _i12.NewTripPage(
+          key: args.key,
+          existingTrip: args.existingTrip,
+        ),
       );
     },
     NewTripStopRoute.name: (routeData) {
@@ -520,16 +525,40 @@ class NewDayTripRouteArgs {
 
 /// generated route for
 /// [_i12.NewTripPage]
-class NewTripRoute extends _i18.PageRouteInfo<void> {
-  const NewTripRoute({List<_i18.PageRouteInfo>? children})
-      : super(
+class NewTripRoute extends _i18.PageRouteInfo<NewTripRouteArgs> {
+  NewTripRoute({
+    _i19.Key? key,
+    _i20.Trip? existingTrip,
+    List<_i18.PageRouteInfo>? children,
+  }) : super(
           NewTripRoute.name,
+          args: NewTripRouteArgs(
+            key: key,
+            existingTrip: existingTrip,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'NewTripRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i18.PageInfo<NewTripRouteArgs> page =
+      _i18.PageInfo<NewTripRouteArgs>(name);
+}
+
+class NewTripRouteArgs {
+  const NewTripRouteArgs({
+    this.key,
+    this.existingTrip,
+  });
+
+  final _i19.Key? key;
+
+  final _i20.Trip? existingTrip;
+
+  @override
+  String toString() {
+    return 'NewTripRouteArgs{key: $key, existingTrip: $existingTrip}';
+  }
 }
 
 /// generated route for

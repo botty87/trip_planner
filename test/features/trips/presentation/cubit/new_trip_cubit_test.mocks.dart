@@ -9,6 +9,8 @@ import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
     as _i2;
+import 'package:trip_planner/features/trips/domain/usecases/create_from_existing_trip.dart'
+    as _i7;
 import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart'
     as _i4;
 import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i6;
@@ -67,6 +69,52 @@ class MockCreateTrip extends _i1.Mock implements _i4.CreateTrip {
   @override
   _i5.Future<_i3.Either<_i6.TripsFailure, void>> call(
           _i4.CreateTripParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i5.Future<_i3.Either<_i6.TripsFailure, void>>.value(
+            _FakeEither_1<_i6.TripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.TripsFailure, void>>.value(
+                _FakeEither_1<_i6.TripsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i5.Future<_i3.Either<_i6.TripsFailure, void>>);
+}
+
+/// A class which mocks [CreateFromExistingTrip].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockCreateFromExistingTrip extends _i1.Mock
+    implements _i7.CreateFromExistingTrip {
+  @override
+  _i2.TripsRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.TripsRepository);
+
+  @override
+  _i5.Future<_i3.Either<_i6.TripsFailure, void>> call(
+          _i7.CreateFromExistingTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,

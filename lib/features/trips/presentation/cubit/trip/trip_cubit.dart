@@ -123,10 +123,15 @@ class TripCubit extends Cubit<TripState> {
 
     return result.fold(
       (failure) {
+        final errorMessage = failure.when(
+          (message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
+          noInternetConnection: () => LocaleKeys.noInternetConnectionMessage.tr(),
+        );
+
         emit(TripState.error(
           trip: state.trip,
           dayTrips: state.dayTrips,
-          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+          errorMessage: errorMessage,
         ));
         emit(editingState.copyWith(isSaving: false));
       },
@@ -149,10 +154,15 @@ class TripCubit extends Cubit<TripState> {
 
     result.fold(
       (failure) {
+        final errorMessage = failure.when(
+          (message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
+          noInternetConnection: () => LocaleKeys.noInternetConnectionMessage.tr(),
+        );
+
         emit(TripState.error(
           trip: state.trip,
           dayTrips: state.dayTrips,
-          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+          errorMessage: errorMessage,
         ));
         emit(TripState.normal(
           trip: state.trip,
@@ -198,6 +208,4 @@ class TripCubit extends Cubit<TripState> {
       emit(TripState.normal(trip: state.trip, dayTrips: state.dayTrips));
     }
   }
-
-  
 }

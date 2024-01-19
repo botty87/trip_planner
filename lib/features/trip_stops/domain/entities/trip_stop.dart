@@ -39,5 +39,17 @@ sealed class TripStop with _$TripStop {
         location: location,
       );
 
+  factory TripStop.createFromExisting({
+    required TripStop tripStop,
+  }) =>
+      TripStop(
+        name: tripStop.name,
+        description: tripStop.description,
+        index: tripStop.index,
+        duration: tripStop.duration,
+        location: tripStop.location,
+        travelTimeToNextStop: tripStop.travelTimeToNextStop,
+      );
+
   factory TripStop.fromJson(Map<String, dynamic> json) => _$TripStopFromJson(json);
 }

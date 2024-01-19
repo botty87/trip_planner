@@ -17,13 +17,13 @@ sealed class DayTrip with _$DayTrip {
     required int index,
     String? description,
     @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-    
-    @Default(TimeOfDay(hour: 8, minute: 0)) TimeOfDay startTime,
-    @JsonKey(includeIfNull: false)
-    List<TripStopsDirections>? tripStopsDirections,
+    @Default(TimeOfDay(hour: 8, minute: 0))
+    TimeOfDay startTime,
+    @JsonKey(includeIfNull: false) List<TripStopsDirections>? tripStopsDirections,
     @Default(false) bool tripStopsDirectionsUpToDate,
     @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-    @Default(TravelMode.driving) TravelMode travelMode,
+    @Default(TravelMode.driving)
+    TravelMode travelMode,
     @Default(true) bool showDirections,
     @Default(true) bool useDifferentDirectionsColors,
   }) = _DayTrip;
@@ -40,6 +40,22 @@ sealed class DayTrip with _$DayTrip {
         description: description,
         startTime: startTime,
         travelMode: travelMode,
+        showDirections: showDirections,
+        useDifferentDirectionsColors: useDifferentDirectionsColors,
+      );
+
+  factory DayTrip.createFromExisting({
+    required DayTrip dayTrip,
+    required bool showDirections,
+    required bool useDifferentDirectionsColors,
+  }) =>
+      DayTrip(
+        index: dayTrip.index,
+        description: dayTrip.description,
+        startTime: dayTrip.startTime,
+        travelMode: dayTrip.travelMode,
+        tripStopsDirections: dayTrip.tripStopsDirections,
+        tripStopsDirectionsUpToDate: dayTrip.tripStopsDirectionsUpToDate,
         showDirections: showDirections,
         useDifferentDirectionsColors: useDifferentDirectionsColors,
       );

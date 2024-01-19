@@ -67,7 +67,7 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
                   opacity: showFab ? 1 : 0,
                   child: FloatingActionButton(
                     child: Icon(MdiIcons.earthPlus),
-                    onPressed: () {},
+                    onPressed: () => context.router.push(NewTripRoute(existingTrip: _trip)),
                   ),
                 ),
               );

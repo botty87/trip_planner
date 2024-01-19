@@ -88,4 +88,25 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
         ),
         returnValueForMissingStub: null,
       );
+
+  @override
+  dynamic createFromExistingTrip({
+    required _i4.Trip? newTrip,
+    required _i4.Trip? existingTrip,
+    required bool? showDirections,
+    required bool? useDifferentDirectionsColors,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #createFromExistingTrip,
+          [],
+          {
+            #newTrip: newTrip,
+            #existingTrip: existingTrip,
+            #showDirections: showDirections,
+            #useDifferentDirectionsColors: useDifferentDirectionsColors,
+          },
+        ),
+        returnValueForMissingStub: null,
+      );
 }

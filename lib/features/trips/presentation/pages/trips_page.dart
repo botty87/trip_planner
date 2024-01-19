@@ -43,7 +43,7 @@ class TripsPage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            context.pushRoute(const NewTripRoute());
+            context.pushRoute(NewTripRoute());
           },
           child: const Icon(Icons.add),
         ),
