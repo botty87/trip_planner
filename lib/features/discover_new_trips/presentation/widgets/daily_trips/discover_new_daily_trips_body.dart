@@ -15,7 +15,10 @@ class _DiscoverNewDailyTripsBody extends StatelessWidget {
         return state.map(
           initial: (_) => const SizedBox.shrink(),
           loading: (_) => const Center(child: CircularProgressIndicator.adaptive()),
-          loaded: (state) => Center(child: _DiscoverNewDailyTripList(trip: _trip)),
+          loaded: (state) => Align(
+            alignment: Alignment.topCenter,
+            child: _LoadedWidget(trip: _trip),
+          ),
           error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),
         );
       },

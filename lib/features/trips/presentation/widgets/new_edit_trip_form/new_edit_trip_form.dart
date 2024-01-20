@@ -76,6 +76,8 @@ class NewEditTripForm extends StatelessWidget {
                     onIsPublicChanged: onIsPublicChanged,
                   ),
                   const SizedBox(height: verticalSpaceL),
+                  
+                  const SizedBox(height: verticalSpaceL),
                   _StartDatePicker(
                     key: const Key('startDatePicker'),
                     onValueChanged: onStartDateChanged,

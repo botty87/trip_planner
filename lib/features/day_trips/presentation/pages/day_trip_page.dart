@@ -75,6 +75,8 @@ class DayTripPage extends StatelessWidget {
       ],
       child: Builder(
         builder: (BuildContext context) {
+          final hasTripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops.isNotEmpty);
+
           return PopScope(
             canPop: false,
             onPopInvoked: (bool didPop) async {
@@ -100,12 +102,12 @@ class DayTripPage extends StatelessWidget {
                       onPressed: () => context.read<DayTripCubit>().edit(),
                     ),
                   ],
-                  bottom: TabBar(
+                  bottom: hasTripStops ? TabBar(
                     tabs: [
                       Tab(text: LocaleKeys.list.tr()),
                       Tab(text: LocaleKeys.map.tr()),
                     ],
-                  ),
+                  ) : null,
                 ),
                 body: Builder(builder: (context) {
                   return NotificationListener(

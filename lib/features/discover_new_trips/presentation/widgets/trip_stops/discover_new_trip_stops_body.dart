@@ -12,16 +12,22 @@ class _DiscoverNewTripStopsBody extends StatelessWidget {
     return BlocBuilder<DiscoverNewTripStopsCubit, DiscoverNewTripStopsState>(
       buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
       builder: (context, state) {
+        final hasTripStops = state.maybeMap(
+          loaded: (state) => state.tripStops.isNotEmpty,
+          orElse: () => false,
+        );
         return state.map(
           initial: (_) => const SizedBox.shrink(),
           loading: (_) => const Center(child: CircularProgressIndicator.adaptive()),
-          loaded: (state) => TabBarView(
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              _DiscoverNewTripStopsList(dayTrip: _dayTrip),
-              const _DiscoverNewTripStopsMapTab(),
-            ],
-          ),
+          loaded: (state) => hasTripStops
+              ? TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    _ListView(dayTrip: _dayTrip),
+                    const _DiscoverNewTripStopsMapTab(),
+                  ],
+                )
+              : _ListView(dayTrip: _dayTrip,),
           error: (state) => const Center(child: _DiscoverNewTripStopsErrorWidget()),
         );
       },

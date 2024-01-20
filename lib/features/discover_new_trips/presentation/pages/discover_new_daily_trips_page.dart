@@ -11,6 +11,7 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
+import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../cubit/daily_trips/discover_new_daily_trips_cubit.dart';
@@ -19,6 +20,8 @@ part '../widgets/daily_trips/day_trip_card.dart';
 part '../widgets/daily_trips/discover_new_daily_trips_body.dart';
 part '../widgets/daily_trips/discover_new_daily_trips_error_widget.dart';
 part '../widgets/daily_trips/discover_new_daily_trips_list.dart';
+part '../widgets/daily_trips/daily_trips_header.dart';
+part '../widgets/daily_trips/loaded_widget.dart';
 
 @RoutePage()
 class DiscoverNewDailyTripsPage extends StatelessWidget {

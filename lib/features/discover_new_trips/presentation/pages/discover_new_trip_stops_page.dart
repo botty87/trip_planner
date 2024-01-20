@@ -13,6 +13,7 @@ import '../../../../core/utilities/pair.dart';
 import '../../../../core/widgets/day_trip/travel_card_abstract.dart';
 import '../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
+import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../map/domain/entities/map_place.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
@@ -26,6 +27,8 @@ part '../widgets/trip_stops/list/discover_new_trip_stops_list.dart';
 part '../widgets/trip_stops/list/travel_card.dart';
 part '../widgets/trip_stops/list/trip_stop_card.dart';
 part '../widgets/trip_stops/map/discover_new_trip_stops_map_tab.dart';
+part '../widgets/trip_stops/list/list_view.dart';
+part '../widgets/trip_stops/list/trip_stops_header.dart';
 
 @RoutePage()
 class DiscoverNewTripStopsPage extends StatelessWidget {
@@ -51,14 +54,19 @@ class DiscoverNewTripStopsPage extends StatelessWidget {
           );
         },
         builder: (context, isLoaded) {
-          final int tabsLength = isLoaded ? 2 : 0;
+          final cubit = context.read<DiscoverNewTripStopsCubit>();
+          final hasTripStops = cubit.state.maybeMap(
+            loaded: (state) => state.tripStops.isNotEmpty,
+            orElse: () => false,
+          );
+          final int tabsLength = (isLoaded && hasTripStops) ? 2 : 0;
 
           return DefaultTabController(
             length: tabsLength,
             child: Scaffold(
               appBar: AppBar(
                 title: Text("${LocaleKeys.day.tr()} ${_dayTrip.index + 1}"),
-                bottom: isLoaded
+                bottom: tabsLength > 0
                     ? TabBar(
                         tabs: [
                           Tab(text: LocaleKeys.list.tr()),
@@ -69,7 +77,6 @@ class DiscoverNewTripStopsPage extends StatelessWidget {
               ),
               body: _DiscoverNewTripStopsBody(dayTrip: _dayTrip),
             ),
-            
           );
         },
       ),

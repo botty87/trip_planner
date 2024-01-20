@@ -85,12 +85,21 @@ class _DayTripPageBody extends HookWidget {
                       )
                     : const SizedBox.shrink(),
                 Expanded(
-                  child: TabBarView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: [
-                      _ListViewWidget(isDeleting: isDeleting.stream),
-                      const _MapViewWidget(),
-                    ],
+                  child: BlocSelector<DayTripCubit, DayTripState, bool>(
+                    selector: (state) => state.tripStops.isNotEmpty,
+                    builder: (context, hasTripStops) {
+                      if (hasTripStops) {
+                        return TabBarView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: [
+                            _ListViewWidget(isDeleting: isDeleting.stream),
+                            const _MapViewWidget(),
+                          ],
+                        );
+                      } else {
+                        return _ListViewWidget(isDeleting: isDeleting.stream);
+                      }
+                    },
                   ),
                 )
               ],
