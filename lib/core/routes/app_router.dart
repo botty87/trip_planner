@@ -13,7 +13,11 @@ class AppRouter extends $AppRouter {
           page: LoginSignupRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
-        AutoRoute(page: TripsRoute.page, maintainState: true),
+        CustomRoute(
+          page: TripsRoute.page,
+          maintainState: true,
+          transitionsBuilder: TransitionsBuilders.noTransition,
+        ),
         AutoRoute(page: NewTripRoute.page),
         AutoRoute(page: TripRoute.page),
         AutoRoute(page: NewDayTripRoute.page),
