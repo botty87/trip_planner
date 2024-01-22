@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/usecases/usecase.dart';
 
@@ -18,8 +19,11 @@ class ListenTrips implements StreamUseCase<List<Trip>, ListenTripsParams> {
   }
 }
 
-class ListenTripsParams {
+class ListenTripsParams extends Equatable {
   final String userId;
 
-  ListenTripsParams({required this.userId});
+  const ListenTripsParams({required this.userId});
+
+  @override
+  List<Object?> get props => [userId];
 }
