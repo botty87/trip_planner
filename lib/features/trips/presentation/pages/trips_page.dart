@@ -45,10 +45,7 @@ class TripsPage extends StatelessWidget {
               child: state.when(
                 initial: () => const InitialWidget(),
                 loaded: (_) => const LoadedWidget(),
-                error: (message) => Center(
-                    child: TripsErrorWidget(
-                  message: message,
-                )),
+                error: (message) => Center(child: TripsErrorWidget(message: message)),
               ),
             );
           },
