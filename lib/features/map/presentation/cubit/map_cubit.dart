@@ -31,7 +31,7 @@ class MapCubit extends Cubit<MapState> {
       single: (state) async => await state.markerPosition?.let(
           (value) async => await _mapController?.moveCamera(CameraUpdate.newLatLngZoom(value, 15))),
     );
-    
+
     emit(state.copyWith(isMapReady: true));
   }
 

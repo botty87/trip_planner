@@ -16,7 +16,10 @@ class NewDayTripCubit extends Cubit<NewDayTripState> {
   final CreateDayTrip _createDayTrip;
   final Settings _settings;
 
-  NewDayTripCubit({required CreateDayTrip createDayTrip, required Settings settings, @factoryParam required String tripId})
+  NewDayTripCubit(
+      {required CreateDayTrip createDayTrip,
+      required Settings settings,
+      @factoryParam required String tripId})
       : _createDayTrip = createDayTrip,
         _settings = settings,
         _tripId = tripId,

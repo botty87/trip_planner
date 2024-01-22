@@ -19,7 +19,7 @@ class ListenDayTrip implements StreamUseCase<DayTrip, ListenDayTripParams> {
   }
 }
 
-class ListenDayTripParams extends Equatable{
+class ListenDayTripParams extends Equatable {
   final String tripId;
   final String dayTripId;
 

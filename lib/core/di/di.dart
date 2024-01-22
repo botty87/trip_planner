@@ -68,4 +68,3 @@ abstract class GooglePlacesModule {
   @lazySingleton
   String get proxyUrl => Env.proxyUrl;
 }
-

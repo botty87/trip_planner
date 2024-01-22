@@ -16,8 +16,6 @@ part '../widgets/day_trip/mode_selector.dart';
 part '../widgets/settings_body.dart';
 part '../widgets/settings_section_header.dart';
 
-
-
 @RoutePage()
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

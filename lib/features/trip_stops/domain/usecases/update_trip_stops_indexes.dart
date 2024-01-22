@@ -22,7 +22,7 @@ class UpdateTripStopsIndexes implements UseCase<void, UpdateTripStopsIndexesPara
       );
 }
 
-class UpdateTripStopsIndexesParams extends Equatable{
+class UpdateTripStopsIndexesParams extends Equatable {
   final String tripId;
   final String dayTripId;
   final List<TripStop> tripStops;

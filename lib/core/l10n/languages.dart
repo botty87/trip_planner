@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 
 final class Language extends Equatable {
@@ -23,44 +22,35 @@ class Languages {
   static Language get aragonese => const Language('an', 'Aragonese', 'Aragonés');
   static Language get armenian => const Language('hy', 'Armenian', 'Հայերեն');
   static Language get assamese => const Language('as', 'Assamese', 'অসমীয়া');
-  static Language get avaric =>
-      const Language('av', 'Avaric', 'Aвар мацӀ, магӀарул мацӀ');
+  static Language get avaric => const Language('av', 'Avaric', 'Aвар мацӀ, магӀарул мацӀ');
   static Language get avestan => const Language('ae', 'Avestan', 'Avesta');
   static Language get aymara => const Language('ay', 'Aymara', 'Aymar aru');
-  static Language get azerbaijani =>
-      const Language('az', 'Azerbaijani', 'Azərbaycan dili');
+  static Language get azerbaijani => const Language('az', 'Azerbaijani', 'Azərbaycan dili');
   static Language get bambara => const Language('bm', 'Bambara', 'Bamanankan');
   static Language get bashkir => const Language('ba', 'Bashkir', 'башҡорт теле');
   static Language get basque => const Language('eu', 'Basque', 'Euskara, euskera');
   static Language get belarusian => const Language('be', 'Belarusian', 'Беларуская');
   static Language get bengali => const Language('bn', 'Bengali', 'বাংলা');
-  static Language get bihariLanguages =>
-      const Language('bh', 'Bihari Languages', 'भोजपुरी');
+  static Language get bihariLanguages => const Language('bh', 'Bihari Languages', 'भोजपुरी');
   static Language get bislama => const Language('bi', 'Bislama', 'Bislama');
   static Language get bosnian => const Language('bs', 'Bosnian', 'Bosanski jezik');
   static Language get breton => const Language('br', 'Breton', 'Brezhoneg');
-  static Language get bulgarian =>
-      const Language('bg', 'Bulgarian', 'български език');
+  static Language get bulgarian => const Language('bg', 'Bulgarian', 'български език');
   static Language get burmese => const Language('my', 'Burmese', 'ဗမာစာ');
   static Language get catalan => const Language('ca', 'Catalan', 'Català');
-  static Language get centralKhmer =>
-      const Language('km', 'Central Khmer', 'ភាសាខ្មែរ');
+  static Language get centralKhmer => const Language('km', 'Central Khmer', 'ភាសាខ្មែរ');
   static Language get chamorro => const Language('ch', 'Chamorro', 'Chamoru');
   static Language get chechen => const Language('ce', 'Chechen', 'нохчийн мотт');
-  static Language get chewaNyanja =>
-      const Language('ny', 'Chewa (Nyanja)', 'chiCheŵa, chinyanja');
-  static Language get chinese =>
-      const Language('zh', 'Chinese', '中文 (Zhōngwén), 汉语, 漢語');
+  static Language get chewaNyanja => const Language('ny', 'Chewa (Nyanja)', 'chiCheŵa, chinyanja');
+  static Language get chinese => const Language('zh', 'Chinese', '中文 (Zhōngwén), 汉语, 漢語');
   static Language get chineseSimplified =>
       const Language('zh_Hans', 'Chinese (Simplified)', '简体中文');
   static Language get chineseTraditional =>
       const Language('zh_Hant', 'Chinese (Traditional)', '中國傳統');
-  static Language get churchSlavonic =>
-      const Language('cu', 'Church Slavonic', 'ѩзыкъ словѣньскъ');
+  static Language get churchSlavonic => const Language('cu', 'Church Slavonic', 'ѩзыкъ словѣньскъ');
   static Language get chuvash => const Language('cv', 'Chuvash', 'чӑваш чӗлхи');
   static Language get cornish => const Language('kw', 'Cornish', 'Kernewek');
-  static Language get corsican =>
-      const Language('co', 'Corsican', 'Corsu, lingua corsa');
+  static Language get corsican => const Language('co', 'Corsican', 'Corsu, lingua corsa');
   static Language get cree => const Language('cr', 'Cree', 'ᓀᐦᐃᔭᐍᐏᐣ');
   static Language get croatian => const Language('hr', 'Croatian', 'Hrvatski');
   static Language get czech => const Language('cs', 'Czech', 'česky, čeština');
@@ -70,17 +60,13 @@ class Languages {
   static Language get dzongkha => const Language('dz', 'Dzongkha', 'རྫོང་ཁ');
   static Language get english => const Language('en', 'English', 'English');
   static Language get esperanto => const Language('eo', 'Esperanto', 'Esperanto');
-  static Language get estonian =>
-      const Language('et', 'Estonian', 'Eesti, eesti keel');
+  static Language get estonian => const Language('et', 'Estonian', 'Eesti, eesti keel');
   static Language get ewe => const Language('ee', 'Ewe', 'Eʋegbe');
   static Language get faroese => const Language('fo', 'Faroese', 'Føroyskt');
   static Language get fijian => const Language('fj', 'Fijian', 'Vosa Vakaviti');
-  static Language get finnish =>
-      const Language('fi', 'Finnish', 'Suomi, suomen kieli');
-  static Language get french =>
-      const Language('fr', 'French', 'Français, langue française');
-  static Language get fulah =>
-      const Language('ff', 'Fulah', 'Fulfulde, Pulaar, Pular');
+  static Language get finnish => const Language('fi', 'Finnish', 'Suomi, suomen kieli');
+  static Language get french => const Language('fr', 'French', 'Français, langue française');
+  static Language get fulah => const Language('ff', 'Fulah', 'Fulfulde, Pulaar, Pular');
   static Language get gaelic => const Language('gd', 'Gaelic', 'Gàidhlig');
   static Language get galician => const Language('gl', 'Galician', 'Galego');
   static Language get ganda => const Language('lg', 'Ganda', 'Luganda');
@@ -99,35 +85,27 @@ class Languages {
   static Language get icelandic => const Language('is', 'Icelandic', 'Íslenska');
   static Language get ido => const Language('io', 'Ido', 'Ido');
   static Language get igbo => const Language('ig', 'Igbo', 'Asụsụ Igbo');
-  static Language get indonesian =>
-      const Language('id', 'Indonesian', 'Bahasa Indonesia');
-  static Language get interlingua =>
-      const Language('ia', 'Interlingua', 'Interlingua');
-  static Language get interlingue =>
-      const Language('ie', 'Interlingue', 'Interlingue');
+  static Language get indonesian => const Language('id', 'Indonesian', 'Bahasa Indonesia');
+  static Language get interlingua => const Language('ia', 'Interlingua', 'Interlingua');
+  static Language get interlingue => const Language('ie', 'Interlingue', 'Interlingue');
   static Language get inuktitut => const Language('iu', 'Inuktitut', 'ᐃᓄᒃᑎᑐᑦ');
-  static Language get inupiaq =>
-      const Language('ik', 'Inupiaq', 'Iñupiaq, Iñupiatun');
+  static Language get inupiaq => const Language('ik', 'Inupiaq', 'Iñupiaq, Iñupiatun');
   static Language get irish => const Language('ga', 'Irish', 'Gaeilge');
   static Language get italian => const Language('it', 'Italian', 'Italiano');
-  static Language get japanese =>
-      const Language('ja', 'Japanese', '日本語 (にほんご／にっぽんご)');
+  static Language get japanese => const Language('ja', 'Japanese', '日本語 (にほんご／にっぽんご)');
   static Language get javanese => const Language('jv', 'Javanese', 'Basa Jawa');
   static Language get kalaallisut =>
       const Language('kl', 'Kalaallisut', 'kalaallisut, kalaallit oqaasii');
   static Language get kannada => const Language('kn', 'Kannada', 'ಕನ್ನಡ');
   static Language get kanuri => const Language('kr', 'Kanuri', 'Kanuri');
-  static Language get kashmiri =>
-      const Language('ks', 'Kashmiri', 'कश्मीरी, كشميري‎');
+  static Language get kashmiri => const Language('ks', 'Kashmiri', 'कश्मीरी, كشميري‎');
   static Language get kazakh => const Language('kk', 'Kazakh', 'Қазақ тілі');
   static Language get kikuyu => const Language('ki', 'Kikuyu', 'Gĩkũyũ');
-  static Language get kinyarwanda =>
-      const Language('rw', 'Kinyarwanda', 'Ikinyarwanda');
+  static Language get kinyarwanda => const Language('rw', 'Kinyarwanda', 'Ikinyarwanda');
   static Language get kirghiz => const Language('ky', 'Kirghiz', 'кыргыз тили');
   static Language get komi => const Language('kv', 'Komi', 'коми кыв');
   static Language get kongo => const Language('kg', 'Kongo', 'KiKongo');
-  static Language get korean =>
-      const Language('ko', 'Korean', '한국어 (韓國語), 조선말 (朝鮮語)');
+  static Language get korean => const Language('ko', 'Korean', '한국어 (韓國語), 조선말 (朝鮮語)');
   static Language get kuanyama => const Language('kj', 'Kuanyama', 'Kuanyama');
   static Language get kurdish => const Language('ku', 'Kurdish', 'Kurdî, كوردی‎');
   static Language get lao => const Language('lo', 'Lao', 'ພາສາລາວ');
@@ -135,36 +113,26 @@ class Languages {
   static Language get latvian => const Language('lv', 'Latvian', 'Latviešu valoda');
   static Language get limburgan => const Language('li', 'Limburgan', 'Limburgs');
   static Language get lingala => const Language('ln', 'Lingala', 'Lingála');
-  static Language get lithuanian =>
-      const Language('lt', 'Lithuanian', 'lietuvių kalba');
-  static Language get lubaKatanga =>
-      const Language('lu', 'Luba-Katanga', 'Luba-katanga');
-  static Language get luxembourgish =>
-      const Language('lb', 'Luxembourgish', 'Lëtzebuergesch');
-  static Language get macedonian =>
-      const Language('mk', 'Macedonian', '"македонски јазик');
+  static Language get lithuanian => const Language('lt', 'Lithuanian', 'lietuvių kalba');
+  static Language get lubaKatanga => const Language('lu', 'Luba-Katanga', 'Luba-katanga');
+  static Language get luxembourgish => const Language('lb', 'Luxembourgish', 'Lëtzebuergesch');
+  static Language get macedonian => const Language('mk', 'Macedonian', '"македонски јазик');
   static Language get malagasy => const Language('mg', 'Malagasy', 'Malagasy fiteny');
-  static Language get malay =>
-      const Language('ms', 'Malay', 'Bahasa Melayu, بهاس ملايو‎');
+  static Language get malay => const Language('ms', 'Malay', 'Bahasa Melayu, بهاس ملايو‎');
   static Language get malayalam => const Language('ml', 'Malayalam', 'മലയാളം');
   static Language get maltese => const Language('mt', 'Maltese', 'Malti');
   static Language get manx => const Language('gv', 'Manx', 'Gaelg, Gailck');
   static Language get maori => const Language('mi', 'Maori', 'Te reo Māori');
   static Language get marathi => const Language('mr', 'Marathi', 'मराठी');
-  static Language get marshallese =>
-      const Language('mh', 'Marshallese', 'Kajin M̧ajeļ');
+  static Language get marshallese => const Language('mh', 'Marshallese', 'Kajin M̧ajeļ');
   static Language get mongolian => const Language('mn', 'Mongolian', 'монгол');
   static Language get nauru => const Language('na', 'Nauru', 'Ekakairũ Naoero');
-  static Language get navajo =>
-      const Language('nv', 'Navajo', 'Diné bizaad, Dinékʼehǰí');
-  static Language get ndebeleNorth =>
-      const Language('nd', 'Ndebele, North', 'IsiNdebele');
-  static Language get ndebeleSouth =>
-      const Language('nr', 'Ndebele, South', 'IsiNdebele');
+  static Language get navajo => const Language('nv', 'Navajo', 'Diné bizaad, Dinékʼehǰí');
+  static Language get ndebeleNorth => const Language('nd', 'Ndebele, North', 'IsiNdebele');
+  static Language get ndebeleSouth => const Language('nr', 'Ndebele, South', 'IsiNdebele');
   static Language get ndonga => const Language('ng', 'Ndonga', 'Owambo');
   static Language get nepali => const Language('ne', 'Nepali', 'नेपाली');
-  static Language get northernSami =>
-      const Language('se', 'Northern Sami', 'Davvisámegiella');
+  static Language get northernSami => const Language('se', 'Northern Sami', 'Davvisámegiella');
   static Language get norwegian => const Language('no', 'Norwegian', 'Norsk');
   static Language get norwegianNynorsk =>
       const Language('nn', 'Norwegian Nynorsk', 'Norsk nynorsk');
@@ -181,8 +149,7 @@ class Languages {
   static Language get pushto => const Language('ps', 'Pushto', 'پښتو');
   static Language get quechua => const Language('qu', 'Quechua', 'Runa Simi, Kichwa');
   static Language get romanian => const Language('ro', 'Romanian', 'Română');
-  static Language get romansh =>
-      const Language('rm', 'Romansh', 'Rumantsch grischun');
+  static Language get romansh => const Language('rm', 'Romansh', 'Rumantsch grischun');
   static Language get rundi => const Language('rn', 'Rundi', 'KiRundi');
   static Language get russian => const Language('ru', 'Russian', 'русский язык');
   static Language get samoan => const Language('sm', 'Samoan', 'Gagana faa Samoa');
@@ -192,29 +159,22 @@ class Languages {
   static Language get serbian => const Language('sr', 'Serbian', 'Cрпски језик');
   static Language get shona => const Language('sn', 'Shona', 'ChiShona');
   static Language get sichuanYi => const Language('ii', 'Sichuan Yi', 'ꆈꌠꉙ');
-  static Language get sindhi =>
-      const Language('sd', 'Sindhi', 'सिन्धी, سنڌي، سندھی‎');
+  static Language get sindhi => const Language('sd', 'Sindhi', 'सिन्धी, سنڌي، سندھی‎');
   static Language get sinhala => const Language('si', 'Sinhala', 'සිංහල');
   static Language get slovak => const Language('sk', 'Slovak', 'Slovenčina');
   static Language get slovenian => const Language('sl', 'Slovenian', 'Slovenščina');
-  static Language get somali =>
-      const Language('so', 'Somali', 'Soomaaliga, af Soomaali');
-  static Language get sothoSouthern =>
-      const Language('st', 'Sotho, Southern', 'Sesotho');
-  static Language get spanish =>
-      const Language('es', 'Spanish', 'Español, castellano');
+  static Language get somali => const Language('so', 'Somali', 'Soomaaliga, af Soomaali');
+  static Language get sothoSouthern => const Language('st', 'Sotho, Southern', 'Sesotho');
+  static Language get spanish => const Language('es', 'Spanish', 'Español, castellano');
   static Language get sundanese => const Language('su', 'Sundanese', 'Basa Sunda');
   static Language get swahili => const Language('sw', 'Swahili', 'Kiswahili');
   static Language get swati => const Language('ss', 'Swati', 'SiSwati');
   static Language get swedish => const Language('sv', 'Swedish', 'Svenska');
-  static Language get tagalog =>
-      const Language('tl', 'Tagalog', 'Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔');
+  static Language get tagalog => const Language('tl', 'Tagalog', 'Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔');
   static Language get tahitian => const Language('ty', 'Tahitian', 'Reo Tahiti');
-  static Language get tajik =>
-      const Language('tg', 'Tajik', 'тоҷикӣ, toğikī, تاجیکی‎');
+  static Language get tajik => const Language('tg', 'Tajik', 'тоҷикӣ, toğikī, تاجیکی‎');
   static Language get tamil => const Language('ta', 'Tamil', 'தமிழ்');
-  static Language get tatar =>
-      const Language('tt', 'Tatar', 'татарча, tatarça, تاتارچا‎');
+  static Language get tatar => const Language('tt', 'Tatar', 'татарча, tatarça, تاتارچا‎');
   static Language get telugu => const Language('te', 'Telugu', 'తెలుగు');
   static Language get thai => const Language('th', 'Thai', 'ไทย');
   static Language get tibetan => const Language('bo', 'Tibetan', 'བོད་ཡིག');
@@ -235,14 +195,12 @@ class Languages {
   static Language get volapuk => const Language('vo', 'Volapük', 'Volapük');
   static Language get walloon => const Language('wa', 'Walloon', 'Walon');
   static Language get welsh => const Language('cy', 'Welsh', 'Cymraeg');
-  static Language get westernFrisian =>
-      const Language('fy', 'Western Frisian', 'Frysk');
+  static Language get westernFrisian => const Language('fy', 'Western Frisian', 'Frysk');
   static Language get wolof => const Language('wo', 'Wolof', 'Wollof');
   static Language get xhosa => const Language('xh', 'Xhosa', 'IsiXhosa');
   static Language get yiddish => const Language('yi', 'Yiddish', 'ייִדיש');
   static Language get yoruba => const Language('yo', 'Yoruba', 'Yorùbá');
-  static Language get zhuang =>
-      const Language('za', 'Zhuang', 'Saɯ cueŋƅ, Saw cuengh');
+  static Language get zhuang => const Language('za', 'Zhuang', 'Saɯ cueŋƅ, Saw cuengh');
   static Language get zulu => const Language('zu', 'Zulu', 'isiZulu');
 
   static List<Language> defaultLanguages = [

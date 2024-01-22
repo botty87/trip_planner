@@ -1,8 +1,6 @@
 part of '../../pages/settings_page.dart';
 
 class _DayTripStartTimeInput extends StatelessWidget {
-  
-
   const _DayTripStartTimeInput();
 
   @override

@@ -7,7 +7,6 @@ part 'map_place.freezed.dart';
 
 @freezed
 class MapPlace with _$MapPlace {
-
   factory MapPlace.existing({
     required String tripStopId,
     required String name,
@@ -19,7 +18,6 @@ class MapPlace with _$MapPlace {
   factory MapPlace.newPlace({
     required LatLng location,
   }) = _MapPlaceNew;
-
 }
 
 extension TripStopX on TripStop {

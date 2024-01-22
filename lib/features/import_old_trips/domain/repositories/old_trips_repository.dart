@@ -9,5 +9,6 @@ import '../entities/trip_stops_container.dart';
 abstract class OldTripsRepository {
   Future<Either<ImportOldTripsFailure, List<OldTrip>>> readOldTrips({required String userId});
 
-  Future<Either<ImportOldTripsFailure, void>> importOldTrips({required String userId, required ListMultimap<Trip, TripStopsContainer> newTrips});
+  Future<Either<ImportOldTripsFailure, void>> importOldTrips(
+      {required String userId, required ListMultimap<Trip, TripStopsContainer> newTrips});
 }

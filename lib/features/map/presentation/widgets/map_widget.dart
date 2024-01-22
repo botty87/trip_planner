@@ -78,8 +78,6 @@ class MapWidget extends StatelessWidget {
             ? const MapStateType.multiple()
             : const MapStateType.empty();
 
-        
-
     return BlocProvider<MapCubit>(
       create: (context) => getIt(param1: mapStateType),
       child: BlocSelector<MapCubit, MapState, bool>(

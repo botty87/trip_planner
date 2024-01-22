@@ -32,7 +32,6 @@ sealed class MapState with _$MapState {
 
 @freezed
 sealed class MapStateType with _$MapStateType {
-
   const factory MapStateType.multiple() = _MapStateTypeMultiple;
 
   const factory MapStateType.single() = _MapStateTypeSingle;

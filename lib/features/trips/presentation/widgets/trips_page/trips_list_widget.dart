@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../../core/constants.dart';
+import '../../../domain/entities/trip.dart';
 import '../../cubit/trips/trips_cubit.dart';
 import 'trip_card.dart';
 
-class TripsListWidget extends StatelessWidget {
+class TripsListWidget extends HookWidget {
   const TripsListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final trips = context.select((TripsCubit cubit) => cubit.state.trips);
+    //Use this for the animation
+    final previousHasTrips = usePrevious(context.select<TripsCubit, List<Trip>?>(
+        (cubit) => cubit.state.whenOrNull(loaded: (trips) => trips)));
+
+    final trips = context.select<TripsCubit, List<Trip>>((cubit) => cubit.state.maybeWhen(
+          loaded: (trips) => trips,
+          orElse: () => previousHasTrips ?? [],
+        ));
 
     return SafeArea(
       child: LayoutBuilder(builder: (context, constraints) {
@@ -25,7 +34,8 @@ class TripsListWidget extends StatelessWidget {
             padding: defaultPagePadding,
             itemCount: trips.length,
             itemBuilder: (context, index) => TripCard(trip: trips[index]),
-            separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
+            separatorBuilder: (BuildContext context, int index) =>
+                const SizedBox(height: verticalSpace),
           ),
         );
       }),

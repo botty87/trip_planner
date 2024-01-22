@@ -5,8 +5,7 @@ import 'old_place.dart';
 part 'old_daily_trip.freezed.dart';
 
 @freezed
-class OldDailyTrip with _$OldDailyTrip{
-
+class OldDailyTrip with _$OldDailyTrip {
   const factory OldDailyTrip({
     required String name,
     required String? note,
@@ -20,7 +19,7 @@ class OldDailyTrip with _$OldDailyTrip{
 
 extension OldDailyTripX on OldDailyTrip {
   DateTime get date {
-    if(day == null || month == null || year == null) {
+    if (day == null || month == null || year == null) {
       return DateTime.now();
     }
     return DateTime(year!, month!, day!);

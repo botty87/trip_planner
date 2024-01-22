@@ -34,7 +34,8 @@ final class OldTripsRepositoryImpl implements OldTripsRepository {
   }
 
   @override
-  Future<Either<ImportOldTripsFailure, void>> importOldTrips({required String userId, required ListMultimap<Trip, TripStopsContainer> newTrips}) async {
+  Future<Either<ImportOldTripsFailure, void>> importOldTrips(
+      {required String userId, required ListMultimap<Trip, TripStopsContainer> newTrips}) async {
     try {
       await _oldTripsDataSource.importOldTrips(userId: userId, newTrips: newTrips);
       return right(null);

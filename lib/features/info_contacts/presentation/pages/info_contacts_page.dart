@@ -31,13 +31,15 @@ class InfoContactsPage extends StatelessWidget {
         body: SafeArea(
           minimum: const EdgeInsets.only(
               bottom: verticalSpace, left: horizontalSpace, right: horizontalSpace),
-          child: kIsWeb ? const _InfoContactsPagePortrait() : OrientationBuilder(builder: (context, orientation) {
-            if (orientation == Orientation.portrait) {
-              return const _InfoContactsPagePortrait();
-            } else {
-              return const _InfoContactsPageLandscape();
-            }
-          }),
+          child: kIsWeb
+              ? const _InfoContactsPagePortrait()
+              : OrientationBuilder(builder: (context, orientation) {
+                  if (orientation == Orientation.portrait) {
+                    return const _InfoContactsPagePortrait();
+                  } else {
+                    return const _InfoContactsPageLandscape();
+                  }
+                }),
         ),
       ),
     );

@@ -23,7 +23,7 @@ class SaveTripStopsDirections implements UseCase<void, SaveTripStopsDirectionsPa
   }
 }
 
-class SaveTripStopsDirectionsParams extends Equatable{
+class SaveTripStopsDirectionsParams extends Equatable {
   final String tripId;
   final String dayTripId;
   final List<TripStopsDirections> tripStopsDirections;

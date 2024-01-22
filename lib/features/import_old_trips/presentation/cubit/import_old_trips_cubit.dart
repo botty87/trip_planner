@@ -84,9 +84,7 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
       final trip = Trip(
           name: oldTrip.name, userId: _user.id, createdAt: DateTime.now(), startDate: startDate);
 
-
       for (OldDailyTrip oldDailyTrip in oldTrip.dailyTrips) {
-        
         final dayTrip = DayTrip(
           index: oldDailyTrip.position,
           description: oldDailyTrip.note,
@@ -112,7 +110,6 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
 
         newTrips.add(trip, dayTrips);
       }
-
     }
 
     _importOldTrips(ImportOldTripsParams(_user.id, newTrips)).then((value) {

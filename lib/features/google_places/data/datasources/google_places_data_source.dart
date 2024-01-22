@@ -18,7 +18,8 @@ abstract class GooglePlacesDataSource {
 
   Future<PlaceDetails> fetchPlaceDetails({required String placeId, required String token});
 
-  Future<List<TripStopsDirections>> fetchTripStopsDirections(List<TripStop> tripStops, TravelMode travelMode);
+  Future<List<TripStopsDirections>> fetchTripStopsDirections(
+      List<TripStop> tripStops, TravelMode travelMode);
 }
 
 @LazySingleton(as: GooglePlacesDataSource)
@@ -132,7 +133,8 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
   }
 
   @override
-  Future<List<TripStopsDirections>> fetchTripStopsDirections(List<TripStop> tripStops, TravelMode travelMode) async {
+  Future<List<TripStopsDirections>> fetchTripStopsDirections(
+      List<TripStop> tripStops, TravelMode travelMode) async {
     assert(tripStops.length >= 2);
 
     final hasConnection = await internetConnection.hasInternetAccess;
@@ -154,7 +156,7 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
         );
       } catch (e) {
         String errorMessage = e.toString();
-        if(errorMessage.contains('ZERO_RESULTS')) {
+        if (errorMessage.contains('ZERO_RESULTS')) {
           errorMessage = 'ZERO_RESULTS';
           directions.add(TripStopsDirections(
             originId: tripStops[i].id,
@@ -162,8 +164,7 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
             errorMessage: errorMessage,
           ));
           continue;
-        }
-        else {
+        } else {
           throw GooglePlacesException.unknownError(message: errorMessage);
         }
       }

@@ -17,10 +17,9 @@ class GetPublicDayTrips implements UseCase<List<DayTrip>, GetPublicDayTripsParam
   Future<Either<DiscoverTripsFailure, List<DayTrip>>> call(GetPublicDayTripsParams params) {
     return repository.getPublicDayTrips(params.tripId);
   }
-  
 }
 
-class GetPublicDayTripsParams extends Equatable{
+class GetPublicDayTripsParams extends Equatable {
   final String tripId;
 
   const GetPublicDayTripsParams({required this.tripId});

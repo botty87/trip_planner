@@ -42,7 +42,7 @@ class DiscoverTripsDataSourceImpl implements DiscoverTripsDataSource {
 
     return dayTrips.docs.map((dayTrip) => dayTrip.data()).toList();
   }
-  
+
   @override
   Future<List<TripStop>> getPublicTripStops(String tripId, String dayTripId) async {
     final tripStops = await _tripStopsCollection(tripId, dayTripId).orderBy('index').get();

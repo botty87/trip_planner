@@ -25,16 +25,15 @@ mixin _$ImportOldTripsFailure {
 
 /// @nodoc
 abstract class $ImportOldTripsFailureCopyWith<$Res> {
-  factory $ImportOldTripsFailureCopyWith(ImportOldTripsFailure value,
-          $Res Function(ImportOldTripsFailure) then) =
+  factory $ImportOldTripsFailureCopyWith(
+          ImportOldTripsFailure value, $Res Function(ImportOldTripsFailure) then) =
       _$ImportOldTripsFailureCopyWithImpl<$Res, ImportOldTripsFailure>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class _$ImportOldTripsFailureCopyWithImpl<$Res,
-        $Val extends ImportOldTripsFailure>
+class _$ImportOldTripsFailureCopyWithImpl<$Res, $Val extends ImportOldTripsFailure>
     implements $ImportOldTripsFailureCopyWith<$Res> {
   _$ImportOldTripsFailureCopyWithImpl(this._value, this._then);
 
@@ -61,8 +60,7 @@ class _$ImportOldTripsFailureCopyWithImpl<$Res,
 abstract class _$$ImportOldTripsFailureImplCopyWith<$Res>
     implements $ImportOldTripsFailureCopyWith<$Res> {
   factory _$$ImportOldTripsFailureImplCopyWith(
-          _$ImportOldTripsFailureImpl value,
-          $Res Function(_$ImportOldTripsFailureImpl) then) =
+          _$ImportOldTripsFailureImpl value, $Res Function(_$ImportOldTripsFailureImpl) then) =
       __$$ImportOldTripsFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -71,11 +69,10 @@ abstract class _$$ImportOldTripsFailureImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ImportOldTripsFailureImplCopyWithImpl<$Res>
-    extends _$ImportOldTripsFailureCopyWithImpl<$Res,
-        _$ImportOldTripsFailureImpl>
+    extends _$ImportOldTripsFailureCopyWithImpl<$Res, _$ImportOldTripsFailureImpl>
     implements _$$ImportOldTripsFailureImplCopyWith<$Res> {
-  __$$ImportOldTripsFailureImplCopyWithImpl(_$ImportOldTripsFailureImpl _value,
-      $Res Function(_$ImportOldTripsFailureImpl) _then)
+  __$$ImportOldTripsFailureImplCopyWithImpl(
+      _$ImportOldTripsFailureImpl _value, $Res Function(_$ImportOldTripsFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,19 +116,17 @@ class _$ImportOldTripsFailureImpl implements _ImportOldTripsFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImportOldTripsFailureImplCopyWith<_$ImportOldTripsFailureImpl>
-      get copyWith => __$$ImportOldTripsFailureImplCopyWithImpl<
-          _$ImportOldTripsFailureImpl>(this, _$identity);
+  _$$ImportOldTripsFailureImplCopyWith<_$ImportOldTripsFailureImpl> get copyWith =>
+      __$$ImportOldTripsFailureImplCopyWithImpl<_$ImportOldTripsFailureImpl>(this, _$identity);
 }
 
 abstract class _ImportOldTripsFailure implements ImportOldTripsFailure {
-  const factory _ImportOldTripsFailure({final String? message}) =
-      _$ImportOldTripsFailureImpl;
+  const factory _ImportOldTripsFailure({final String? message}) = _$ImportOldTripsFailureImpl;
 
   @override
   String? get message;
   @override
   @JsonKey(ignore: true)
-  _$$ImportOldTripsFailureImplCopyWith<_$ImportOldTripsFailureImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ImportOldTripsFailureImplCopyWith<_$ImportOldTripsFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

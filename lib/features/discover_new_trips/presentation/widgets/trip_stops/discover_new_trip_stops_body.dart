@@ -27,7 +27,9 @@ class _DiscoverNewTripStopsBody extends StatelessWidget {
                     const _DiscoverNewTripStopsMapTab(),
                   ],
                 )
-              : _ListView(dayTrip: _dayTrip,),
+              : _ListView(
+                  dayTrip: _dayTrip,
+                ),
           error: (state) => const Center(child: _DiscoverNewTripStopsErrorWidget()),
         );
       },

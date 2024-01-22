@@ -5,7 +5,8 @@ class _MapDirectionsSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
+    final showDirections =
+        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
 
     return Column(
       children: [

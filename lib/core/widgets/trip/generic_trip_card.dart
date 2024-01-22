@@ -23,7 +23,7 @@ abstract base class GenericTripCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _DayTripNameWidget(name: name),
-              if(date != null) _DayTripDateWidget(date: date!),
+              if (date != null) _DayTripDateWidget(date: date!),
               if (description != null) _DayTripDescriptionWidget(description: description!),
             ],
           ),

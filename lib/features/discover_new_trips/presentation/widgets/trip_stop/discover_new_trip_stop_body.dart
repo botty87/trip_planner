@@ -18,6 +18,5 @@ class _DiscoverNewTripStopBody extends StatelessWidget {
         },
       );
     }
-        
   }
 }

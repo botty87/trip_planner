@@ -85,7 +85,7 @@ class NewTripStopCubit extends Cubit<NewTripStopState> {
           isUpToDate: false,
           travelMode: TravelMode.driving,
         ));
-        
+
         emit(NewTripStopState.created(
           name: state.name!,
           description: state.description,

@@ -12,12 +12,11 @@ class GetPublicTripStops implements UseCase<List<TripStop>, GetPubliTripStopsPar
   final DiscoverTripsRepository repository;
 
   const GetPublicTripStops(this.repository);
-  
+
   @override
   Future<Either<DiscoverTripsFailure, List<TripStop>>> call(GetPubliTripStopsParams params) async {
     return await repository.getPublicTripStops(params.tripId, params.dayTripId);
   }
-
 }
 
 class GetPubliTripStopsParams extends Equatable {

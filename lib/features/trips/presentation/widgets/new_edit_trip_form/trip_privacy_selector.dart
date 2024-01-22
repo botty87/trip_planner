@@ -4,7 +4,8 @@ class _TripPrivacySelector extends HookWidget {
   final ValueChanged<bool> onIsPublicChanged;
   final bool initialIsPublic;
 
-  const _TripPrivacySelector({super.key, required this.onIsPublicChanged, required this.initialIsPublic});
+  const _TripPrivacySelector(
+      {super.key, required this.onIsPublicChanged, required this.initialIsPublic});
 
   @override
   Widget build(BuildContext context) {

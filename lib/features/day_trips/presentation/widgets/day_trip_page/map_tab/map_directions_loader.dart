@@ -6,7 +6,7 @@ class _MapDirectionsLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isLoading = context.select((TripStopsMapCubit cubit) => cubit.state.isLoading);
-    if(isLoading) {
+    if (isLoading) {
       return const LinearProgressIndicator();
     }
     return const SizedBox.shrink();

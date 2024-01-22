@@ -24,7 +24,8 @@ final class _TripStopCard extends GenericTripCard {
   String? get description => tripStop.description;
 
   @override
-  VoidCallback? get onTap => () => context.router.push(DiscoverNewTripStopRoute(tripStop: tripStop));
+  VoidCallback? get onTap =>
+      () => context.router.push(DiscoverNewTripStopRoute(tripStop: tripStop));
 
   @override
   Color? get color => null;

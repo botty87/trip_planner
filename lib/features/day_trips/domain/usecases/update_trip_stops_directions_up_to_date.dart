@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -9,7 +8,8 @@ import '../../errors/day_trips_failure.dart';
 import '../repositories/day_trips_repository.dart';
 
 @lazySingleton
-class UpdateTripStopsDirectionsUpToDate implements UseCase<void, UpdateTripStopsDirectionsUpToDateParams> {
+class UpdateTripStopsDirectionsUpToDate
+    implements UseCase<void, UpdateTripStopsDirectionsUpToDateParams> {
   final DayTripsRepository repository;
 
   UpdateTripStopsDirectionsUpToDate(this.repository);
@@ -37,7 +37,7 @@ class UpdateTripStopsDirectionsUpToDateParams extends Equatable {
     required this.isUpToDate,
     this.travelMode,
   });
-  
+
   @override
   List<Object?> get props => [tripId, dayTripId, isUpToDate, travelMode];
 }

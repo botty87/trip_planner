@@ -7,13 +7,15 @@ import '../../errors/day_trips_failure.dart';
 import '../repositories/day_trips_repository.dart';
 
 @lazySingleton
-class UpdateDayTripUseDifferentDirectionsColors implements UseCase<void, UpdateDayTripUseDifferentDirectionsColorsParams> {
+class UpdateDayTripUseDifferentDirectionsColors
+    implements UseCase<void, UpdateDayTripUseDifferentDirectionsColorsParams> {
   final DayTripsRepository repository;
 
   UpdateDayTripUseDifferentDirectionsColors(this.repository);
 
   @override
-  Future<Either<DayTripsFailure, void>> call(UpdateDayTripUseDifferentDirectionsColorsParams params) {
+  Future<Either<DayTripsFailure, void>> call(
+      UpdateDayTripUseDifferentDirectionsColorsParams params) {
     return repository.updateDayTripUseDifferentDirectionsColors(
       tripId: params.tripId,
       dayTripId: params.dayTripId,

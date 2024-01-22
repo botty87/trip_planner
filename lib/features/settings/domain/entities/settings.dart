@@ -23,6 +23,4 @@ class Settings with _$Settings {
   }) = _Settings;
 
   factory Settings.fromJson(Map<String, dynamic> json) => _$SettingsFromJson(json);
-
-  
 }

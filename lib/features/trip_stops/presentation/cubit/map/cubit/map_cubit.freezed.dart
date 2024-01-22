@@ -20,8 +20,7 @@ mixin _$MapState {
   bool get isMapReady => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MapStateCopyWith<MapState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MapStateCopyWith<MapState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -33,8 +32,7 @@ abstract class $MapStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
-    implements $MapStateCopyWith<$Res> {
+class _$MapStateCopyWithImpl<$Res, $Val extends MapState> implements $MapStateCopyWith<$Res> {
   _$MapStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -63,8 +61,7 @@ class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> implements $MapStateCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+  factory _$$InitialImplCopyWith(_$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -72,11 +69,9 @@ abstract class _$$InitialImplCopyWith<$Res> implements $MapStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res, _$InitialImpl>
+class __$$InitialImplCopyWithImpl<$Res> extends _$MapStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+  __$$InitialImplCopyWithImpl(_$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,8 +116,7 @@ class _$InitialImpl implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
             (identical(other.mapType, mapType) || other.mapType == mapType) &&
-            (identical(other.isMapReady, isMapReady) ||
-                other.isMapReady == isMapReady));
+            (identical(other.isMapReady, isMapReady) || other.isMapReady == isMapReady));
   }
 
   @override
@@ -136,8 +130,7 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements MapState {
-  const factory _Initial({final MapType mapType, final bool isMapReady}) =
-      _$InitialImpl;
+  const factory _Initial({final MapType mapType, final bool isMapReady}) = _$InitialImpl;
 
   @override
   MapType get mapType;
@@ -145,6 +138,5 @@ abstract class _Initial implements MapState {
   bool get isMapReady;
   @override
   @JsonKey(ignore: true)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith => throw _privateConstructorUsedError;
 }

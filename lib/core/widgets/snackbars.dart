@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../constants.dart';
 
 final class Snackbars {
-  static SnackBar error(String message, {Duration duration = const Duration(seconds: 4), bool? showCloseButton}) {
+  static SnackBar error(String message,
+      {Duration duration = const Duration(seconds: 4), bool? showCloseButton}) {
     return SnackBar(
       content: Text(
         message,

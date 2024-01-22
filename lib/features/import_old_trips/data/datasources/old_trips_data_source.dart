@@ -131,7 +131,7 @@ final class OldTripsDataSourceImpl implements OldTripsDataSource {
     //Sort oldTrips by name
     oldTrips.sort((a, b) => a.name.compareTo(b.name));
 
-    if(oldTrips.isEmpty) {
+    if (oldTrips.isEmpty) {
       await userDoc.update({'oldTripsImported': true});
     }
 
