@@ -1,5 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_logger/easy_logger.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -46,6 +48,10 @@ void main() {
   setUp(() {
     mockListenTrips = MockListenTrips();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
+  });
+
+  setUpAll(() async {
+    EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
 
   blocTest<TripsCubit, TripsState>(

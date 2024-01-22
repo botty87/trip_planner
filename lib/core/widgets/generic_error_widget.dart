@@ -18,8 +18,8 @@ class GenericErrorWidget extends StatelessWidget {
       minimum: defaultPagePadding,
       child: Column(
         children: [
-          AspectRatio(
-            aspectRatio: 1,
+          ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.4),
             child: SvgPicture(
               AssetBytesLoader(Assets.svg.errorSvg),
             ),
