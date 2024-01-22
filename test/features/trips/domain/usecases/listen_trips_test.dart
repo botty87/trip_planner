@@ -33,7 +33,7 @@ void main() {
     when(mockTripsRepository.listenTrips(tUserId)).thenAnswer((_) => Stream.value(Right(tTrips)));
 
     // act
-    final result = usecase(ListenTripsParams(userId: tUserId));
+    final result = usecase(const ListenTripsParams(userId: tUserId));
 
     // assert
     expect(result, emits(Right(tTrips)));
@@ -46,7 +46,7 @@ void main() {
     when(mockTripsRepository.listenTrips(tUserId)).thenAnswer((_) => Stream.value(const Left(TripsFailure())));
 
     // act
-    final result = usecase(ListenTripsParams(userId: tUserId));
+    final result = usecase(const ListenTripsParams(userId: tUserId));
 
     // assert
     expect(result, emits(const Left(TripsFailure())));
