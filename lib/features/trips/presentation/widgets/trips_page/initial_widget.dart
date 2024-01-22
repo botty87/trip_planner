@@ -15,7 +15,7 @@ class InitialWidget extends StatelessWidget {
           child = const SizedBox.shrink();
         }
 
-        return AnimatedSwitcher(duration: const Duration(milliseconds: 300), child: child);
+        return AnimatedSwitcher(duration: const Duration(milliseconds: 2300), child: child);
       },
     );
   }
