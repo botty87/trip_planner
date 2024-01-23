@@ -1,12 +1,9 @@
-import 'dart:math';
-
 import 'package:bloc_test/bloc_test.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trips_page/initial_widget.dart';
