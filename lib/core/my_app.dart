@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../features/settings/presentation/cubit/settings_cubit.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         },
         listener: (context, state) {
           final router = getIt<AppRouter>();
+          FlutterNativeSplash.remove();
           state.whenOrNull(
             loggedOut: () => router.replaceAll([const LoginSignupRoute()]),
             loggedIn: (user) {
