@@ -70,13 +70,14 @@ mixin _$GooglePlacesException {
 
 /// @nodoc
 abstract class $GooglePlacesExceptionCopyWith<$Res> {
-  factory $GooglePlacesExceptionCopyWith(
-          GooglePlacesException value, $Res Function(GooglePlacesException) then) =
+  factory $GooglePlacesExceptionCopyWith(GooglePlacesException value,
+          $Res Function(GooglePlacesException) then) =
       _$GooglePlacesExceptionCopyWithImpl<$Res, GooglePlacesException>;
 }
 
 /// @nodoc
-class _$GooglePlacesExceptionCopyWithImpl<$Res, $Val extends GooglePlacesException>
+class _$GooglePlacesExceptionCopyWithImpl<$Res,
+        $Val extends GooglePlacesException>
     implements $GooglePlacesExceptionCopyWith<$Res> {
   _$GooglePlacesExceptionCopyWithImpl(this._value, this._then);
 
@@ -88,17 +89,18 @@ class _$GooglePlacesExceptionCopyWithImpl<$Res, $Val extends GooglePlacesExcepti
 
 /// @nodoc
 abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
-  factory _$$NoInternetConnectionImplCopyWith(
-          _$NoInternetConnectionImpl value, $Res Function(_$NoInternetConnectionImpl) then) =
+  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
+          $Res Function(_$NoInternetConnectionImpl) then) =
       __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$NoInternetConnectionImplCopyWithImpl<$Res>
-    extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$NoInternetConnectionImpl>
+    extends _$GooglePlacesExceptionCopyWithImpl<$Res,
+        _$NoInternetConnectionImpl>
     implements _$$NoInternetConnectionImplCopyWith<$Res> {
-  __$$NoInternetConnectionImplCopyWithImpl(
-      _$NoInternetConnectionImpl _value, $Res Function(_$NoInternetConnectionImpl) _then)
+  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
+      $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 }
 
@@ -115,7 +117,8 @@ class _$NoInternetConnectionImpl implements _NoInternetConnection {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$NoInternetConnectionImpl);
   }
 
   @override
@@ -337,7 +340,8 @@ class _$RequestDeniedImpl implements _RequestDenied {
 }
 
 abstract class _RequestDenied implements GooglePlacesException {
-  const factory _RequestDenied({required final String message}) = _$RequestDeniedImpl;
+  const factory _RequestDenied({required final String message}) =
+      _$RequestDeniedImpl;
 
   String get message;
   @JsonKey(ignore: true)
@@ -347,8 +351,8 @@ abstract class _RequestDenied implements GooglePlacesException {
 
 /// @nodoc
 abstract class _$$RequestCancelledImplCopyWith<$Res> {
-  factory _$$RequestCancelledImplCopyWith(
-          _$RequestCancelledImpl value, $Res Function(_$RequestCancelledImpl) then) =
+  factory _$$RequestCancelledImplCopyWith(_$RequestCancelledImpl value,
+          $Res Function(_$RequestCancelledImpl) then) =
       __$$RequestCancelledImplCopyWithImpl<$Res>;
 }
 
@@ -356,8 +360,8 @@ abstract class _$$RequestCancelledImplCopyWith<$Res> {
 class __$$RequestCancelledImplCopyWithImpl<$Res>
     extends _$GooglePlacesExceptionCopyWithImpl<$Res, _$RequestCancelledImpl>
     implements _$$RequestCancelledImplCopyWith<$Res> {
-  __$$RequestCancelledImplCopyWithImpl(
-      _$RequestCancelledImpl _value, $Res Function(_$RequestCancelledImpl) _then)
+  __$$RequestCancelledImplCopyWithImpl(_$RequestCancelledImpl _value,
+      $Res Function(_$RequestCancelledImpl) _then)
       : super(_value, _then);
 }
 

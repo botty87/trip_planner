@@ -26,19 +26,22 @@ mixin _$Suggestion {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SuggestionCopyWith<Suggestion> get copyWith => throw _privateConstructorUsedError;
+  $SuggestionCopyWith<Suggestion> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SuggestionCopyWith<$Res> {
-  factory $SuggestionCopyWith(Suggestion value, $Res Function(Suggestion) then) =
+  factory $SuggestionCopyWith(
+          Suggestion value, $Res Function(Suggestion) then) =
       _$SuggestionCopyWithImpl<$Res, Suggestion>;
   @useResult
   $Res call({String description, @JsonKey(name: 'place_id') String placeId});
 }
 
 /// @nodoc
-class _$SuggestionCopyWithImpl<$Res, $Val extends Suggestion> implements $SuggestionCopyWith<$Res> {
+class _$SuggestionCopyWithImpl<$Res, $Val extends Suggestion>
+    implements $SuggestionCopyWith<$Res> {
   _$SuggestionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -66,8 +69,10 @@ class _$SuggestionCopyWithImpl<$Res, $Val extends Suggestion> implements $Sugges
 }
 
 /// @nodoc
-abstract class _$$SuggestionImplCopyWith<$Res> implements $SuggestionCopyWith<$Res> {
-  factory _$$SuggestionImplCopyWith(_$SuggestionImpl value, $Res Function(_$SuggestionImpl) then) =
+abstract class _$$SuggestionImplCopyWith<$Res>
+    implements $SuggestionCopyWith<$Res> {
+  factory _$$SuggestionImplCopyWith(
+          _$SuggestionImpl value, $Res Function(_$SuggestionImpl) then) =
       __$$SuggestionImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -75,9 +80,11 @@ abstract class _$$SuggestionImplCopyWith<$Res> implements $SuggestionCopyWith<$R
 }
 
 /// @nodoc
-class __$$SuggestionImplCopyWithImpl<$Res> extends _$SuggestionCopyWithImpl<$Res, _$SuggestionImpl>
+class __$$SuggestionImplCopyWithImpl<$Res>
+    extends _$SuggestionCopyWithImpl<$Res, _$SuggestionImpl>
     implements _$$SuggestionImplCopyWith<$Res> {
-  __$$SuggestionImplCopyWithImpl(_$SuggestionImpl _value, $Res Function(_$SuggestionImpl) _then)
+  __$$SuggestionImplCopyWithImpl(
+      _$SuggestionImpl _value, $Res Function(_$SuggestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,9 +109,12 @@ class __$$SuggestionImplCopyWithImpl<$Res> extends _$SuggestionCopyWithImpl<$Res
 /// @nodoc
 @JsonSerializable()
 class _$SuggestionImpl implements _Suggestion {
-  _$SuggestionImpl({required this.description, @JsonKey(name: 'place_id') required this.placeId});
+  _$SuggestionImpl(
+      {required this.description,
+      @JsonKey(name: 'place_id') required this.placeId});
 
-  factory _$SuggestionImpl.fromJson(Map<String, dynamic> json) => _$$SuggestionImplFromJson(json);
+  factory _$SuggestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SuggestionImplFromJson(json);
 
   @override
   final String description;
@@ -122,7 +132,8 @@ class _$SuggestionImpl implements _Suggestion {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuggestionImpl &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.placeId, placeId) || other.placeId == placeId));
   }
 
@@ -146,10 +157,12 @@ class _$SuggestionImpl implements _Suggestion {
 
 abstract class _Suggestion implements Suggestion {
   factory _Suggestion(
-      {required final String description,
-      @JsonKey(name: 'place_id') required final String placeId}) = _$SuggestionImpl;
+          {required final String description,
+          @JsonKey(name: 'place_id') required final String placeId}) =
+      _$SuggestionImpl;
 
-  factory _Suggestion.fromJson(Map<String, dynamic> json) = _$SuggestionImpl.fromJson;
+  factory _Suggestion.fromJson(Map<String, dynamic> json) =
+      _$SuggestionImpl.fromJson;
 
   @override
   String get description;
@@ -158,5 +171,6 @@ abstract class _Suggestion implements Suggestion {
   String get placeId;
   @override
   @JsonKey(ignore: true)
-  _$$SuggestionImplCopyWith<_$SuggestionImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$SuggestionImplCopyWith<_$SuggestionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

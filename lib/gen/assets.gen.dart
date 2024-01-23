@@ -10,6 +10,9 @@
 class $AssetsGoogleFontsGen {
   const $AssetsGoogleFontsGen();
 
+  /// File path: assets/google_fonts/Caveat-Bold.ttf
+  String get caveatBold => 'assets/google_fonts/Caveat-Bold.ttf';
+
   /// File path: assets/google_fonts/Jost-Black.ttf
   String get jostBlack => 'assets/google_fonts/Jost-Black.ttf';
 
@@ -81,6 +84,7 @@ class $AssetsGoogleFontsGen {
 
   /// List of all assets
   List<String> get values => [
+        caveatBold,
         jostBlack,
         jostBlackItalic,
         jostBold,
