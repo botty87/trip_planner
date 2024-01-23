@@ -8,9 +8,9 @@ import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../cubit/trips/trips_cubit.dart';
 import '../widgets/trips_page/drawer.dart';
-import '../widgets/trips_page/initial_widget.dart';
 import '../widgets/trips_page/loaded_widget.dart';
 import '../widgets/trips_page/trips_error_widget.dart';
+import '../widgets/trips_page/trips_page_initial_widget.dart';
 
 @RoutePage()
 class TripsPage extends StatelessWidget {
@@ -43,7 +43,7 @@ class TripsPage extends StatelessWidget {
                 );
               },
               child: state.when(
-                initial: () => const InitialWidget(),
+                initial: () => const TripsPageInitialWidget(),
                 loaded: (_) => const Center(child: LoadedWidget()),
                 error: (message) => Center(child: TripsErrorWidget(message: message)),
               ),

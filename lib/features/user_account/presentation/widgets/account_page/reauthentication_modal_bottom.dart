@@ -13,8 +13,7 @@ _showReauthenticationModalBottom(BuildContext context) {
       //Reauthentication modal bottom
       //Column with title to request reauthentication and email and password fields
       return SafeArea(
-        minimum: const EdgeInsets.symmetric(
-            horizontal: pageHorizontalPadding, vertical: pageVerticalPadding),
+        minimum: defaultPagePadding,
         child: Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Column(

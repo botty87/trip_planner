@@ -1,5 +1,5 @@
-part of '../../pages/trip_page.dart';
+import '../../../../../core/widgets/trip/generic_trip_header.dart';
 
-final class _TripHeader extends GenericTripDescription {
-  const _TripHeader({super.headerText});
+final class TripHeader extends GenericTripDescription {
+  const TripHeader({super.key, super.headerText});
 }

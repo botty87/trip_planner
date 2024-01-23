@@ -2,39 +2,41 @@ part of 'trip_cubit.dart';
 
 @freezed
 sealed class TripState with _$TripState {
-  const factory TripState.normal({
+  const factory TripState.initial({
     required final Trip trip,
-    @Default([]) final List<DayTrip> dayTrips,
-  }) = TripStateNormal;
+  }) = _Initial;
 
-  const factory TripState.loading({
+  const factory TripState.loaded({
+    required final Trip trip,
+    required List<DayTrip> dayTrips,
+  }) = _Normal;
+
+  /* const factory TripState.loading({
     required final Trip trip,
     @Default([]) final List<DayTrip> dayTrips,
-  }) = TripStateLoading;
+  }) = TripStateLoading; */
 
   const factory TripState.error({
     required final Trip trip,
-    @Default([]) final List<DayTrip> dayTrips,
     required String errorMessage,
-  }) = TripStateError;
+    required bool fatal,
+  }) = _Error;
 
   const factory TripState.editing({
     required final Trip trip,
-    @Default([]) final List<DayTrip> dayTrips,
+    required List<DayTrip> dayTrips,
     required final String name,
     required final String? description,
     required final DateTime startDate,
     required final bool isPublic,
     @Default(false) final bool isSaving,
-  }) = TripStateEditing;
+  }) = _Editing;
 
   const factory TripState.deleting({
     required final Trip trip,
-    @Default([]) final List<DayTrip> dayTrips,
-  }) = TripStateDeleting;
+  }) = _Deleting;
 
   const factory TripState.deleted({
     required final Trip trip,
-    @Default([]) final List<DayTrip> dayTrips,
-  }) = TripStateDeleted;
+  }) = _Deleted;
 }

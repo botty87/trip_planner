@@ -1,19 +1,21 @@
-part of '../../pages/trip_page.dart';
 
-class _DayTripsList extends StatelessWidget {
-  const _DayTripsList();
+import 'package:flutter/material.dart';
+
+class DayTripsList extends StatelessWidget {
+  const DayTripsList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = context.select((TripCubit cubit) => cubit.state is TripStateLoading);
+    return const Placeholder();
+    /* final isLoading = context.select((TripCubit cubit) => cubit.state is TripStateLoading);
 
     return AnimatedSize(
         duration: const Duration(milliseconds: 400),
-        child: isLoading ? const SizedBox.shrink() : _List());
+        child: isLoading ? const SizedBox.shrink() : _List()); */
   }
 }
 
-class _List extends StatelessWidget {
+/* class _List extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dayTrips = context.select((TripCubit cubit) => cubit.state.dayTrips);
@@ -47,4 +49,4 @@ class _List extends StatelessWidget {
       },
     );
   }
-}
+} */

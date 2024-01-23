@@ -14,12 +14,7 @@ class _LoadedWidget extends StatelessWidget {
       return ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(
-            pageHorizontalPadding,
-            pageVerticalPadding,
-            pageHorizontalPadding,
-            pageVerticalPadding,
-          ),
+          padding: defaultPagePadding,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

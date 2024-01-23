@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class InitialWidget extends StatelessWidget {
-  const InitialWidget({super.key});
+class GenericInitialWidget extends StatelessWidget {
+  const GenericInitialWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class InitialWidget extends StatelessWidget {
           child = const SizedBox.shrink();
         }
 
-        return AnimatedSwitcher(duration: const Duration(milliseconds: 2300), child: child);
+        return AnimatedSwitcher(duration: const Duration(milliseconds: 300), child: child);
       },
     );
   }

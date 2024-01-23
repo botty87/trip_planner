@@ -1,19 +1,25 @@
-part of '../../pages/trip_page.dart';
 
-final class _DeleteTripButton extends DeleteTripButtonAbstract {
-  const _DeleteTripButton({required super.isDeleting});
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-  @override
-  String get alertDialogTitle => LocaleKeys.deleteTrip.tr();
+import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../core/widgets/trip/delete_trip_button.dart';
+import '../../cubit/trip/trip_cubit.dart';
 
-  @override
-  String get alertDialogMessage => LocaleKeys.deleteTripQuestion.tr();
+class DeleteTripButton extends StatelessWidget {
 
-  @override
-  Function(BuildContext context) get deleteAction => (BuildContext context) {
-        context.read<TripCubit>().deleteTrip();
-      };
+  const DeleteTripButton({super.key});
 
   @override
-  String get deleteButtonLabel => LocaleKeys.deleteTrip.tr();
+  Widget build(BuildContext context) {
+    return GenericDeleteTripButton(
+      isDeleting: false,
+      alertDialogTitle: LocaleKeys.deleteTrip.tr(),
+      alertDialogMessage: LocaleKeys.deleteTripQuestion.tr(),
+      deleteButtonLabel: LocaleKeys.deleteTrip.tr(),
+      deleteAction: () => context.read<TripCubit>().deleteTrip(),
+    );
+  }
+  
 }

@@ -9,7 +9,9 @@ class _TripPageBody extends HookWidget {
 
     final isModalBottomEditing = useRef<bool>(false);
 
-    return MultiBlocListener(
+    return const Placeholder();
+
+    /* return MultiBlocListener(
       listeners: [
         //Show error snackbar if error and update errorMessage stream when error
         BlocListener<TripCubit, TripState>(
@@ -74,7 +76,7 @@ class _TripPageBody extends HookWidget {
           }
         }),
       ),
-    );
+    ); */
   }
 
   _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
@@ -118,7 +120,7 @@ class _TripPageBody extends HookWidget {
   }
 }
 
-class _VerticalLayout extends StatelessWidget {
+/* class _VerticalLayout extends StatelessWidget {
   final Stream<bool> isDeleting;
 
   const _VerticalLayout({required this.isDeleting});
@@ -145,11 +147,11 @@ class _VerticalLayout extends StatelessWidget {
                     selector: (state) => state.trip.description,
                     builder: (context, description) => _TripHeader(headerText: description),
                   ),
-                  const _DayTripsList(),
+                  const DayTripsList(),
                   const SizedBox(height: verticalSpaceS),
-                  const _AddDayTripCard(),
+                  const AddDayTripCard(),
                   const SizedBox(height: verticalSpaceL),
-                  _DeleteTripButton(isDeleting: isDeleting),
+                  DeleteTripButton(isDeleting: isDeleting),
                 ],
               ),
             );
@@ -173,7 +175,7 @@ class _HorizontalLayout extends StatelessWidget {
         Expanded(
           child: Row(
             children: [
-              const Expanded(child: SingleChildScrollView(child: _DayTripsList())),
+              const Expanded(child: SingleChildScrollView(child: DayTripsList())),
               const SizedBox(width: horizontalSpaceL),
               Expanded(
                 child: Column(
@@ -187,9 +189,9 @@ class _HorizontalLayout extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const _AddDayTripCard(),
+                    const AddDayTripCard(),
                     const SizedBox(height: verticalSpaceXL),
-                    _DeleteTripButton(isDeleting: isDeleting),
+                    DeleteTripButton(isDeleting: isDeleting),
                   ],
                 ),
               ),
@@ -199,4 +201,4 @@ class _HorizontalLayout extends StatelessWidget {
       ]),
     );
   }
-}
+} */

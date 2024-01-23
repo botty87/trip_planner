@@ -6,9 +6,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart';
-import 'package:trip_planner/features/trips/presentation/widgets/trips_page/initial_widget.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trips_page/loaded_widget.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trips_page/trips_error_widget.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/trips_page/trips_page_initial_widget.dart';
 
 import '../../../../utils.dart';
 
@@ -40,7 +40,7 @@ void main() {
       await tester.runAsync(() async {
         await tester.pumpWidget(defaultWidget(const TripsPage()));
 
-        expect(find.byType(InitialWidget), findsOneWidget);
+        expect(find.byType(TripsPageInitialWidget), findsOneWidget);
         expect(find.byType(FloatingActionButton), findsOneWidget);
       });
     });

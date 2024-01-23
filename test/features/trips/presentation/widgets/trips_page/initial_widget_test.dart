@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:trip_planner/features/trips/presentation/widgets/trips_page/initial_widget.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/trips_page/trips_page_initial_widget.dart';
 
 void main() {
   Widget defaultWidget(Widget child) => MaterialApp(
@@ -11,7 +11,7 @@ void main() {
 
   testWidgets('renders InitialWidget', (WidgetTester tester) async {
     await tester.runAsync(() async {
-      await tester.pumpWidget(defaultWidget(const InitialWidget()));
+      await tester.pumpWidget(defaultWidget(const TripsPageInitialWidget()));
 
       expect(find.byType(FutureBuilder), findsOneWidget);
       expect(find.byType(SizedBox), findsOneWidget);
@@ -21,10 +21,10 @@ void main() {
 
   testWidgets('renders CircularProgressIndicator', (WidgetTester tester) async {
     await tester.runAsync(() async {
-      await tester.pumpWidget(defaultWidget(const InitialWidget()));
+      await tester.pumpWidget(defaultWidget(const TripsPageInitialWidget()));
       await Future.delayed(const Duration(milliseconds: 500));
       await tester.pump();
-      
+
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
   });
