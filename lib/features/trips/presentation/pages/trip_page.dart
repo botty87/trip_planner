@@ -18,7 +18,6 @@ import '../widgets/trip_page/trip_page_initial_widget.dart';
 import '../widgets/trip_page/trip_page_loaded_widget.dart';
 
 part '../widgets/trip_page/save_cancel_edit_buttons.dart';
-part '../widgets/trip_page/trip_page_body.dart';
 
 @RoutePage()
 class TripPage extends HookWidget {

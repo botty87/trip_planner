@@ -4,7 +4,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 //import 'package:text_link/text_link.dart';
 
-import '../../constants.dart';
 
 class GenericTripDescription extends StatelessWidget {
   //TODO remove nullable
