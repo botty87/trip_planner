@@ -56,6 +56,10 @@ class TripPage extends StatelessWidget {
                   previous.maybeMap(
                     error: (value) => value.fatal,
                     orElse: () => true,
+                  ) &&
+                  current.maybeMap(
+                    editing: (_) => false,
+                    orElse: () => true,
                   ),
             ),
             builder: (context, state) => TripPagesAnimatedSwitcher(

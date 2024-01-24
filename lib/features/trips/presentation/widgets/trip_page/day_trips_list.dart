@@ -56,12 +56,7 @@ class _List extends HookWidget {
         // Each item must be wrapped in a Reorderable widget.
         return Reorderable(
           // Each item must have an unique key.
-          key: ValueKey(dayTrip),
-          // The animation of the Reorderable builder can be used to
-          // change to appearance of the item between dragged and normal
-          // state. For example to add elevation when the item is being dragged.
-          // This is not to be confused with the animation of the itemBuilder.
-          // Implicit animations (like AnimatedContainer) are sadly not yet supported.
+          key: ValueKey(dayTrip.id),
           builder: (context, dragAnimation, inDrag) {
             return Padding(
               padding: const EdgeInsets.only(bottom: verticalSpace),
@@ -77,9 +72,9 @@ class _List extends HookWidget {
           },
         );
       },
-      areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+      areItemsTheSame: (oldItem, newItem) => oldItem == newItem,
       onReorderFinished: (item, from, to, newItems) {
-        //context.read<TripCubit>().reorderDayTrips(from, to);
+        context.read<TripCubit>().reorderDayTrips(from, to, newItems);
       },
     );
   }

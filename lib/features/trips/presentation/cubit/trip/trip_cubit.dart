@@ -6,8 +6,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../../core/l10n/locale_keys.g.dart';
 
+import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../../../day_trips/domain/usecases/listen_day_trips.dart';
 import '../../../../day_trips/domain/usecases/update_day_trips_indexes.dart';
@@ -56,7 +56,7 @@ class TripCubit extends Cubit<TripState> {
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
-        (dayTrips) async => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
+        (dayTrips) => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
       );
     });
   }
@@ -152,7 +152,7 @@ class TripCubit extends Cubit<TripState> {
 
   void deleteTrip() async {
     emit(TripState.deleting(trip: state.trip));
-    
+
     final result = await _deleteTrip(DeleteTripParams(trip: state.trip));
 
     result.fold(
@@ -172,10 +172,12 @@ class TripCubit extends Cubit<TripState> {
     );
   }
 
-  void reorderDayTrips(int oldIndex, int newIndex) {
+  void reorderDayTrips(int oldIndex, int newIndex, List<DayTrip> dayTripsSorted) {
     state.mapOrNull(loaded: (state) {
-      //fix for a bug when newIndex > oldIndex
-      if (newIndex > oldIndex) newIndex--;
+      for (int i = 0; i < dayTripsSorted.length; i++) {
+        dayTripsSorted[i] = dayTripsSorted[i].copyWith(index: i);
+      }
+      emit(TripState.loaded(trip: state.trip, dayTrips: dayTripsSorted));
 
       final List<DayTrip> dayTripsToUpdate = [];
 
@@ -193,7 +195,6 @@ class TripCubit extends Cubit<TripState> {
       _updateDayTripsIndexes(
           UpdateDayTripsIndexesParams(dayTrips: dayTripsToUpdate, tripId: state.trip.id));
     });
-    
   }
 
   @override
