@@ -44,13 +44,13 @@ class _VerticalLayout extends StatelessWidget {
           constraints: BoxConstraints(
             maxWidth: maxWidth,
           ),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: verticalSpaceXL),
-            child: ListView(
-              padding: defaultPagePadding,
-              children: const [
+          child: const Padding(
+            padding: EdgeInsets.only(bottom: verticalSpaceXL),
+            child: Column(
+              //padding: defaultPagePadding,
+              children: [
                 TripHeader(),
-                DayTripsList(),
+                DayTripsList(orientation: Orientation.portrait),
                 AddDayTripCard(),
                 SizedBox(height: verticalSpaceL),
                 DeleteTripButton(),
@@ -72,7 +72,7 @@ class _HorizontalLayout extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: Row(
         children: [
-          const Expanded(child: DayTripsList()),
+          const Expanded(child: DayTripsList(orientation: Orientation.landscape)),
           const SizedBox(width: horizontalSpaceL),
           Expanded(
             child: ListView(

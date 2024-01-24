@@ -16,7 +16,8 @@ import '../../cubit/trip/trip_cubit.dart';
 import 'day_trip_card.dart';
 
 class DayTripsList extends HookWidget {
-  const DayTripsList({super.key});
+  final Orientation orientation;
+  const DayTripsList({super.key, required this.orientation});
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +36,7 @@ class DayTripsList extends HookWidget {
         child: _List(),
       );
     } else {
-      return OrientationBuilder(
-        builder: (context, orientation) {
-          return orientation == Orientation.landscape
-              ? const SizedBox.shrink()
-              : const _NoDayTrips();
-        },
-      );
+      return orientation == Orientation.portrait ? const SizedBox.shrink() : const _NoDayTrips();
     }
   }
 }
