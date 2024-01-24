@@ -21,12 +21,17 @@ part '../widgets/trip_page/save_cancel_edit_buttons.dart';
 part '../widgets/trip_page/trip_page_body.dart';
 
 @RoutePage()
-class TripPage extends StatelessWidget {
+class TripPage extends HookWidget {
   final Trip _trip;
   const TripPage(this._trip, {super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isSaving = useStreamController<bool>();
+    final errorMessage = useStreamController<String?>();
+
+    final isModalBottomEditing = useRef<bool>(false);
+
     return BlocProvider<TripCubit>(
       create: (context) => getIt<TripCubit>(param1: _trip)..startListenDayTrips(),
       child: Scaffold(
@@ -34,19 +39,48 @@ class TripPage extends StatelessWidget {
           preferredSize: Size.fromHeight(kToolbarHeight),
           child: _TripPageAppBar(),
         ),
-        body: BlocListener<TripCubit, TripState>(
-          //Show snackbar when error is not fatal
-          listenWhen: (previous, current) => current.maybeMap(
-            error: (state) => !state.fatal,
-            orElse: () => false,
-          ),
-          listener: (context, state) {
-            final errorMessage = state.maybeMap(
-              error: (state) => state.errorMessage,
-              orElse: () => throw UnexpectedException(),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
-          },
+        body: MultiBlocListener(
+          listeners: [
+            BlocListener<TripCubit, TripState>(
+              //Show snackbar when error is not fatal and is not editing
+              listenWhen: (previous, current) => current.maybeMap(
+                error: (state) => !state.fatal && isModalBottomEditing.value == false,
+                orElse: () => false,
+              ),
+              listener: (context, state) {
+                final errorMessage = state.maybeMap(
+                  error: (state) => state.errorMessage,
+                  orElse: () => throw UnexpectedException(),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
+              },
+            ),
+            BlocListener<TripCubit, TripState>(
+              //Show modal bottom sheet if editing
+              listenWhen: (previous, current) => current.maybeMap(
+                editing: (_) => current.runtimeType != previous.runtimeType,
+                orElse: () => false,
+              ),
+              listener: (context, state) {
+                _showModalBottomEditing(context, isSaving, isModalBottomEditing, errorMessage);
+              },
+            ),
+            BlocListener<TripCubit, TripState>(
+              //Close modal bottom sheet if editing dismissed
+              listenWhen: (previous, current) => current.maybeMap(
+                loaded: (_) => previous.maybeMap(
+                  editing: (_) => true,
+                  orElse: () => false,
+                ),
+                orElse: () => false,
+              ),
+              listener: (context, state) {
+                if (isModalBottomEditing.value) {
+                  Navigator.of(context).pop();
+                }
+              },
+            ),
+          ],
           child: BlocBuilder<TripCubit, TripState>(
             buildWhen: (previous, current) => current.maybeMap(
               deleting: (_) => false,
@@ -70,9 +104,6 @@ class TripPage extends StatelessWidget {
                   key: const ValueKey('error'),
                   child: TripErrorWidget(message: state.errorMessage),
                 ),
-                /* editing: (value) => null,
-                      loaded: (state) => null,
-                      error: (state) => showSnackbar(context, state.errorMessage), */
                 orElse: () => throw UnimplementedError(),
               ),
             ),
@@ -80,6 +111,46 @@ class TripPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+      ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
+    final cubit = context.read<TripCubit>();
+    isModalBottomEditing.value = true;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      useRootNavigator: true,
+      isDismissible: false,
+      useSafeArea: true,
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: NewEditTripForm(
+            onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+            onNameChanged: (String value) => cubit.nameChanged(value),
+            onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
+            saveSection: _SaveCancelEditButtons(
+              isSaving: isSaving.stream,
+              onCancel: () => cubit.modalBottomEditingDismissed(),
+              onSave: () => cubit.saveChanges(),
+              errorMessage: errorMessage.stream,
+            ),
+            isSaving: isSaving.stream,
+            initialTripName: cubit.state.trip.name,
+            initialTripDescription: cubit.state.trip.description,
+            initialStartDate: cubit.state.trip.startDate,
+            onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
+            initialIsPublic: cubit.state.trip.isPublic,
+          ),
+        );
+      },
+    ).then((_) {
+      isModalBottomEditing.value = false;
+      cubit.modalBottomEditingDismissed();
+    });
   }
 }
 
