@@ -30,6 +30,7 @@ sealed class TripState with _$TripState {
     required final DateTime startDate,
     required final bool isPublic,
     @Default(false) final bool isSaving,
+    String? errorMessage,
   }) = _Editing;
 
   const factory TripState.deleting({

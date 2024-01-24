@@ -28,7 +28,7 @@ class TripPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isSaving = useStreamController<bool>();
-    final errorMessage = useStreamController<String?>();
+    final errorMessageStream = useStreamController<String?>();
 
     final isModalBottomEditing = useRef<bool>(false);
 
@@ -62,7 +62,8 @@ class TripPage extends HookWidget {
                 orElse: () => false,
               ),
               listener: (context, state) {
-                _showModalBottomEditing(context, isSaving, isModalBottomEditing, errorMessage);
+                _showModalBottomEditing(
+                    context, isSaving, isModalBottomEditing, errorMessageStream);
               },
             ),
             BlocListener<TripCubit, TripState>(
@@ -78,6 +79,24 @@ class TripPage extends HookWidget {
                 if (isModalBottomEditing.value) {
                   Navigator.of(context).pop();
                 }
+              },
+            ),
+            //On modal error, update errorMessage stream
+            BlocListener<TripCubit, TripState>(
+              listenWhen: (previous, current) => current.maybeMap(
+                editing: (currentEditingState) => previous.maybeMap(
+                  editing: (previousEditingState) =>
+                      currentEditingState.errorMessage != previousEditingState.errorMessage,
+                  orElse: () => false,
+                ),
+                orElse: () => false,
+              ),
+              listener: (context, state) {
+                final errorMessage = state.maybeMap(
+                  editing: (state) => state.errorMessage,
+                  orElse: () => throw UnexpectedException(),
+                );
+                errorMessageStream.add(errorMessage);
               },
             ),
           ],

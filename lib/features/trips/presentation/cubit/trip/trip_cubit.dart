@@ -75,79 +75,76 @@ class TripCubit extends Cubit<TripState> {
   }
 
   void nameChanged(String value) {
-    state.mapOrNull(editing: (state) => emit(state.copyWith(name: value)));
+    state.mapOrNull(editing: (state) => emit(state.copyWith(name: value, errorMessage: null)));
   }
 
   void descriptionChanged(String value) {
-    state.mapOrNull(editing: (state) => emit(state.copyWith(description: value)));
+    state.mapOrNull(
+        editing: (state) => emit(state.copyWith(description: value, errorMessage: null)));
   }
 
   void startDateChanged(DateTime value) {
-    state.mapOrNull(editing: (state) => emit(state.copyWith(startDate: value)));
+    state.mapOrNull(editing: (state) => emit(state.copyWith(startDate: value, errorMessage: null)));
   }
 
   void isPublicChanged(bool value) {
-    state.mapOrNull(editing: (state) => emit(state.copyWith(isPublic: value)));
-  }
-
-  void cancelEditing() {
-    state.mapOrNull(editing: (state) {
-      emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips));
-    });
+    state.mapOrNull(editing: (state) => emit(state.copyWith(isPublic: value, errorMessage: null)));
   }
 
   void saveChanges() async {
-    //TODO: implement saveChanges
-    /* String? getTripDescription() {
-      if ((state as TripStateEditing).description?.isNotEmpty ?? false) {
-        return (state as TripStateEditing).description!;
-      } else {
-        return null;
-      }
-    }
+    state.mapOrNull(
+      editing: (state) async {
+        String? getTripDescription() {
+          if (state.description?.isNotEmpty ?? false) {
+            return state.description!;
+          } else {
+            return null;
+          }
+        }
 
-    assert(state is TripStateEditing);
-    final editingState = state as TripStateEditing;
-    final tripId = state.trip.id;
-    final tripDescription = getTripDescription();
-    final tripName = (state as TripStateEditing).name;
-    final tripStartDate = (state as TripStateEditing).startDate;
-    final tripIsPublic = (state as TripStateEditing).isPublic;
+        final tripId = state.trip.id;
+        final tripDescription = getTripDescription();
+        final tripName = state.name;
+        final tripStartDate = state.startDate;
+        final tripIsPublic = state.isPublic;
 
-    emit(editingState.copyWith(isSaving: true));
+        emit(state.copyWith(isSaving: true, errorMessage: null));
 
-    final result = await _saveTrip(UpdateTripParams(
-      id: tripId,
-      name: tripName,
-      description: tripDescription,
-      startDate: tripStartDate,
-      isPublic: tripIsPublic,
-    ));
+        if (tripName.isEmpty) {
+          emit(state.copyWith(isSaving: false, errorMessage: LocaleKeys.tripNameEmpty.tr()));
+          return;
+        }
 
-    return result.fold(
-      (failure) {
-        final errorMessage = failure.when(
-          (message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
-          noInternetConnection: () => LocaleKeys.noInternetConnectionMessage.tr(),
-        );
-
-        emit(TripState.error(
-          trip: state.trip,
-          dayTrips: state.dayTrips,
-          errorMessage: errorMessage,
+        final result = await _saveTrip(UpdateTripParams(
+          id: tripId,
+          name: tripName,
+          description: tripDescription,
+          startDate: tripStartDate,
+          isPublic: tripIsPublic,
         ));
-        emit(editingState.copyWith(isSaving: false));
+
+        result.fold(
+          (failure) {
+            final errorMessage = failure.when(
+              (message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
+              noInternetConnection: () => LocaleKeys.noInternetConnectionMessage.tr(),
+            );
+
+            emit(state.copyWith(isSaving: false, errorMessage: errorMessage));
+          },
+          (_) => emit(
+            TripState.loaded(
+                trip: state.trip.copyWith(
+                  name: tripName,
+                  description: tripDescription,
+                  startDate: tripStartDate,
+                  isPublic: tripIsPublic,
+                ),
+                dayTrips: state.dayTrips),
+          ),
+        );
       },
-      (_) {
-        emit(TripState.normal(
-            trip: state.trip.copyWith(
-              name: tripName,
-              description: tripDescription,
-              startDate: tripStartDate,
-            ),
-            dayTrips: state.dayTrips));
-      },
-    ); */
+    );
   }
 
   void deleteTrip() async {

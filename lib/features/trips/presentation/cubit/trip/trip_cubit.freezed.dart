@@ -29,7 +29,8 @@ mixin _$TripState {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip) deleting,
     required TResult Function(Trip trip) deleted,
@@ -47,7 +48,8 @@ mixin _$TripState {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip)? deleting,
     TResult? Function(Trip trip)? deleted,
@@ -65,7 +67,8 @@ mixin _$TripState {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip)? deleting,
     TResult Function(Trip trip)? deleted,
@@ -230,7 +233,8 @@ class _$InitialImpl implements _Initial {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip) deleting,
     required TResult Function(Trip trip) deleted,
@@ -251,7 +255,8 @@ class _$InitialImpl implements _Initial {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip)? deleting,
     TResult? Function(Trip trip)? deleted,
@@ -272,7 +277,8 @@ class _$InitialImpl implements _Initial {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip)? deleting,
     TResult Function(Trip trip)? deleted,
@@ -433,7 +439,8 @@ class _$NormalImpl implements _Normal {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip) deleting,
     required TResult Function(Trip trip) deleted,
@@ -454,7 +461,8 @@ class _$NormalImpl implements _Normal {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip)? deleting,
     TResult? Function(Trip trip)? deleted,
@@ -475,7 +483,8 @@ class _$NormalImpl implements _Normal {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip)? deleting,
     TResult Function(Trip trip)? deleted,
@@ -641,7 +650,8 @@ class _$ErrorImpl implements _Error {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip) deleting,
     required TResult Function(Trip trip) deleted,
@@ -662,7 +672,8 @@ class _$ErrorImpl implements _Error {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip)? deleting,
     TResult? Function(Trip trip)? deleted,
@@ -683,7 +694,8 @@ class _$ErrorImpl implements _Error {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip)? deleting,
     TResult Function(Trip trip)? deleted,
@@ -770,7 +782,8 @@ abstract class _$$EditingImplCopyWith<$Res>
       String? description,
       DateTime startDate,
       bool isPublic,
-      bool isSaving});
+      bool isSaving,
+      String? errorMessage});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -794,6 +807,7 @@ class __$$EditingImplCopyWithImpl<$Res>
     Object? startDate = null,
     Object? isPublic = null,
     Object? isSaving = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$EditingImpl(
       trip: null == trip
@@ -824,6 +838,10 @@ class __$$EditingImplCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -838,7 +856,8 @@ class _$EditingImpl implements _Editing {
       required this.description,
       required this.startDate,
       required this.isPublic,
-      this.isSaving = false})
+      this.isSaving = false,
+      this.errorMessage})
       : _dayTrips = dayTrips;
 
   @override
@@ -862,10 +881,12 @@ class _$EditingImpl implements _Editing {
   @override
   @JsonKey()
   final bool isSaving;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isPublic: $isPublic, isSaving: $isSaving)';
+    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isPublic: $isPublic, isSaving: $isSaving, errorMessage: $errorMessage)';
   }
 
   @override
@@ -883,7 +904,9 @@ class _$EditingImpl implements _Editing {
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic) &&
             (identical(other.isSaving, isSaving) ||
-                other.isSaving == isSaving));
+                other.isSaving == isSaving) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -895,7 +918,8 @@ class _$EditingImpl implements _Editing {
       description,
       startDate,
       isPublic,
-      isSaving);
+      isSaving,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -916,13 +940,14 @@ class _$EditingImpl implements _Editing {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip) deleting,
     required TResult Function(Trip trip) deleted,
   }) {
-    return editing(
-        trip, dayTrips, name, description, startDate, isPublic, isSaving);
+    return editing(trip, dayTrips, name, description, startDate, isPublic,
+        isSaving, errorMessage);
   }
 
   @override
@@ -938,13 +963,14 @@ class _$EditingImpl implements _Editing {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip)? deleting,
     TResult? Function(Trip trip)? deleted,
   }) {
-    return editing?.call(
-        trip, dayTrips, name, description, startDate, isPublic, isSaving);
+    return editing?.call(trip, dayTrips, name, description, startDate, isPublic,
+        isSaving, errorMessage);
   }
 
   @override
@@ -960,15 +986,16 @@ class _$EditingImpl implements _Editing {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip)? deleting,
     TResult Function(Trip trip)? deleted,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(
-          trip, dayTrips, name, description, startDate, isPublic, isSaving);
+      return editing(trip, dayTrips, name, description, startDate, isPublic,
+          isSaving, errorMessage);
     }
     return orElse();
   }
@@ -1025,7 +1052,8 @@ abstract class _Editing implements TripState {
       required final String? description,
       required final DateTime startDate,
       required final bool isPublic,
-      final bool isSaving}) = _$EditingImpl;
+      final bool isSaving,
+      final String? errorMessage}) = _$EditingImpl;
 
   @override
   Trip get trip;
@@ -1035,6 +1063,7 @@ abstract class _Editing implements TripState {
   DateTime get startDate;
   bool get isPublic;
   bool get isSaving;
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$EditingImplCopyWith<_$EditingImpl> get copyWith =>
@@ -1120,7 +1149,8 @@ class _$DeletingImpl implements _Deleting {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip) deleting,
     required TResult Function(Trip trip) deleted,
@@ -1141,7 +1171,8 @@ class _$DeletingImpl implements _Deleting {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip)? deleting,
     TResult? Function(Trip trip)? deleted,
@@ -1162,7 +1193,8 @@ class _$DeletingImpl implements _Deleting {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip)? deleting,
     TResult Function(Trip trip)? deleted,
@@ -1308,7 +1340,8 @@ class _$DeletedImpl implements _Deleted {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)
+            bool isSaving,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip) deleting,
     required TResult Function(Trip trip) deleted,
@@ -1329,7 +1362,8 @@ class _$DeletedImpl implements _Deleted {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip)? deleting,
     TResult? Function(Trip trip)? deleted,
@@ -1350,7 +1384,8 @@ class _$DeletedImpl implements _Deleted {
             String? description,
             DateTime startDate,
             bool isPublic,
-            bool isSaving)?
+            bool isSaving,
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip)? deleting,
     TResult Function(Trip trip)? deleted,
