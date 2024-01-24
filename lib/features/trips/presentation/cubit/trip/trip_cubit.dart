@@ -201,8 +201,7 @@ class TripCubit extends Cubit<TripState> {
   }
 
   void modalBottomEditingDismissed() {
-    state.mapOrNull(editing: (state) {
-      emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips));
-    });
+    state.mapOrNull(
+        editing: (state) => emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips)));
   }
 }

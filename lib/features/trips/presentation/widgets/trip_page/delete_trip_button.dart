@@ -13,6 +13,7 @@ class DeleteTripButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDeleting = context.select((TripCubit cubit) => cubit.state.maybeMap(
           deleting: (_) => true,
+          deleted: (_) => true,
           orElse: () => false,
         ));
 
