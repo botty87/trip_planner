@@ -44,11 +44,11 @@ class _VerticalLayout extends StatelessWidget {
           constraints: BoxConstraints(
             maxWidth: maxWidth,
           ),
-          child: const Padding(
-            padding: EdgeInsets.only(bottom: verticalSpaceXL),
-            child: Column(
-              //padding: defaultPagePadding,
-              children: [
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: verticalSpaceXL),
+            child: ListView(
+              padding: defaultPagePadding,
+              children: const [
                 TripHeader(),
                 DayTripsList(orientation: Orientation.portrait),
                 AddDayTripCard(),

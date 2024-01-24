@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
 
 import '../../constants.dart';
 
@@ -34,10 +35,12 @@ class GenericTripCard extends StatelessWidget {
                 const Positioned(
                   top: 0,
                   right: 0,
-                  child: Icon(
-                    size: 25,
-                    Icons.drag_handle,
-                    color: Colors.grey,
+                  child: Handle(
+                    child: Icon(
+                      size: 25,
+                      Icons.drag_handle,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               Column(
