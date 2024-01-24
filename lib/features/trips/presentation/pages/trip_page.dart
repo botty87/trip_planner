@@ -98,11 +98,22 @@ class TripPage extends HookWidget {
                 errorMessageStream.add(errorMessage);
               },
             ),
+            //On trip deleted, pop page
+            BlocListener<TripCubit, TripState>(
+              listenWhen: (previous, current) => current.maybeMap(
+                deleted: (_) => true,
+                orElse: () => false,
+              ),
+              listener: (context, state) {
+                Navigator.of(context).pop();
+              },
+            ),
           ],
           child: BlocBuilder<TripCubit, TripState>(
             buildWhen: (previous, current) => current.maybeMap(
               deleting: (_) => false,
               error: (state) => state.fatal,
+              deleted: (_) => false,
               orElse: () =>
                   previous.runtimeType != current.runtimeType &&
                   previous.maybeMap(
