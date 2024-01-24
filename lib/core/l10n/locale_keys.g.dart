@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const appName = 'appName';
   static const login = 'login';
   static const email = 'email';
@@ -47,10 +47,8 @@ abstract class LocaleKeys {
   static const deleteTripQuestion = 'deleteTripQuestion';
   static const delete = 'delete';
   static const unknownErrorRetry = 'unknownErrorRetry';
-  static const dayTripCreated = 'dayTripCreated';
   static const tripStartDateEmpty = 'tripStartDateEmpty';
   static const tripStartDate = 'tripStartDate';
-  static const tripCreated = 'tripCreated';
   static const startDateBeforeTodayWarning = 'startDateBeforeTodayWarning';
   static const day = 'day';
   static const tripStop = 'tripStop';
@@ -147,4 +145,5 @@ abstract class LocaleKeys {
   static const noDayTripsFound = 'noDayTripsFound';
   static const addThisTrip = 'addThisTrip';
   static const noPubblicTripsFound = 'noPubblicTripsFound';
+
 }

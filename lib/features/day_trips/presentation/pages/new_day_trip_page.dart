@@ -48,12 +48,9 @@ class _NewDayTripPageBody extends HookWidget {
           ),
           listenWhen: (previous, current) => current is NewDayTripStateError,
         ),
-        //On success show snackbar and pop
+        //On success pop
         BlocListener<NewDayTripCubit, NewDayTripState>(
           listener: (context, state) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              Snackbars.success(LocaleKeys.dayTripCreated.tr()),
-            );
             context.router.pop();
           },
           listenWhen: (previous, current) => current is NewDayTripStateCreated,

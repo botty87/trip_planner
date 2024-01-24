@@ -51,14 +51,9 @@ class _NewTripPageBody extends HookWidget {
           ),
           listenWhen: (current, next) => next is NewTripStateError,
         ),
-        //Show success message on create success
+        //On success navigate to trips page
         BlocListener<NewTripCubit, NewTripState>(
-          listener: (context, state) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              Snackbars.success(LocaleKeys.tripCreated.tr()),
-            );
-            context.router.replaceAll([const TripsRoute()]);
-          },
+          listener: (context, state) => context.router.replaceAll([const TripsRoute()]),
           listenWhen: (current, next) => next is NewTripStateCreated,
         ),
         //Update isSaving stream on state change
