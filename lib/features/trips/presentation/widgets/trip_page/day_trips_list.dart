@@ -1,10 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/widgets/transparent_list_decorator.dart';
+import '../../../../../gen/assets.gen.dart';
 import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../cubit/trip/trip_cubit.dart';
 import 'day_trip_card.dart';
@@ -29,8 +35,38 @@ class DayTripsList extends HookWidget {
         child: _List(),
       );
     } else {
-      return const SizedBox.shrink();
+      return OrientationBuilder(
+        builder: (context, orientation) {
+          return orientation == Orientation.landscape
+              ? const SizedBox.shrink()
+              : const _NoDayTrips();
+        },
+      );
     }
+  }
+}
+
+class _NoDayTrips extends StatelessWidget {
+  const _NoDayTrips();
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        minimum: defaultPagePadding,
+        child: Column(
+          children: [
+            Expanded(child: SvgPicture(AssetBytesLoader(Assets.svg.noTripsSvg))),
+            const SizedBox(height: verticalSpaceL),
+            Text(
+              LocaleKeys.noDayTripsYetAddOne.tr(),
+              style: GoogleFonts.caveat(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ));
   }
 }
 

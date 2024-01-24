@@ -142,6 +142,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/no_public_trips.svg.vec
   String get noPublicTripsSvg => 'assets/svg/no_public_trips.svg.vec';
 
+  /// File path: assets/svg/no_trips.svg.vec
+  String get noTripsSvg => 'assets/svg/no_trips.svg.vec';
+
   /// File path: assets/svg/trip.svg.vec
   String get tripSvg => 'assets/svg/trip.svg.vec';
 
@@ -157,6 +160,7 @@ class $AssetsSvgGen {
         loginSvg,
         navDrawerHeaderSvg,
         noPublicTripsSvg,
+        noTripsSvg,
         tripSvg
       ];
 }

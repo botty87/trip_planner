@@ -146,5 +146,6 @@
     "dailyTrips" : "Giorni di viaggio",
     "noDayTripsFound" : "Nessun giorno di viaggio trovato",
     "addThisTrip" : "Aggiungi questo viaggio",
-    "noPubblicTripsFound" : "Nessun viaggio pubblico trovato. Sii il primo a condividerne uno!"
+    "noPubblicTripsFound" : "Nessun viaggio pubblico trovato. Sii il primo a condividerne uno!",
+    "noDayTripsYetAddOne" : "Nessun giorno di viaggio ancora?\nAggiungine uno!"
 }
