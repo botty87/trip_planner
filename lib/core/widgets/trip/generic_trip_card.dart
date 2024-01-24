@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
 
 import '../../constants.dart';
 
@@ -29,13 +28,27 @@ class GenericTripCard extends StatelessWidget {
         color: color,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: Stack(
             children: [
-              SizedBox(height: 50, child: _DayTripNameWidget(name: name, hasHandle: hasHandle)),
-              if (date != null) _DayTripDateWidget(date: date!),
-              if (description != null) _DayTripDescriptionWidget(description: description!),
+              if (hasHandle)
+                const Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Icon(
+                    size: 25,
+                    Icons.drag_handle,
+                    color: Colors.grey,
+                  ),
+                ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _DayTripNameWidget(name: name, hasHandle: hasHandle),
+                  if (date != null) _DayTripDateWidget(date: date!),
+                  if (description != null) _DayTripDescriptionWidget(description: description!),
+                ],
+              ),
             ],
           ),
         ),
@@ -53,27 +66,13 @@ class _DayTripNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: verticalSpaceS),
-      child: Row(
-        children: [
-          if (hasHandle) const SizedBox(width: 20),
-          Expanded(
-            child: Text(
-              name,
-              style: Theme.of(context).textTheme.titleLarge,
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          if (hasHandle)
-            const Handle(
-              child: Icon(
-                Icons.drag_handle,
-                size: 20,
-              ),
-            ),
-        ],
+      padding: const EdgeInsets.symmetric(vertical: verticalSpace, horizontal: 12),
+      child: Text(
+        name,
+        style: Theme.of(context).textTheme.titleLarge,
+        textAlign: TextAlign.center,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
