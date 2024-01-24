@@ -21,6 +21,7 @@ final class DayTripCard extends StatelessWidget {
       name: "${LocaleKeys.day.tr()} ${dayTrip.index + 1}",
       date: DateFormat.yMMMMd().format(tripStartDate.add(Duration(days: dayTrip.index))),
       description: dayTrip.description,
+      hasHandle: true,
       onTap: () => context.router
           .push(DayTripRoute(trip: context.read<TripCubit>().state.trip, dayTrip: dayTrip)),
     );

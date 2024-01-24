@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/widgets/transparent_list_decorator.dart';
@@ -48,31 +49,37 @@ class _List extends HookWidget {
         ));
     final tripStartDate = context.select((TripCubit cubit) => cubit.state.trip.startDate);
 
-    return ReorderableListView.builder(
+    return ImplicitlyAnimatedReorderableList<DayTrip>(
       shrinkWrap: true,
-      padding: const EdgeInsets.symmetric(horizontal: horizontalSpaceXs),
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: dayTrips.length,
-      proxyDecorator: (child, index, animation) {
-        return TransparentListDecorator(
-          index: index,
-          animation: animation,
-          child: child,
+      items: dayTrips,
+      itemBuilder: (context, itemAnimation, dayTrip, index) {
+        // Each item must be wrapped in a Reorderable widget.
+        return Reorderable(
+          // Each item must have an unique key.
+          key: ValueKey(dayTrip),
+          // The animation of the Reorderable builder can be used to
+          // change to appearance of the item between dragged and normal
+          // state. For example to add elevation when the item is being dragged.
+          // This is not to be confused with the animation of the itemBuilder.
+          // Implicit animations (like AnimatedContainer) are sadly not yet supported.
+          builder: (context, dragAnimation, inDrag) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: verticalSpace),
+              child: TransparentListDecorator(
+                index: index,
+                animation: dragAnimation,
+                child: DayTripCard(
+                  dayTrip: dayTrip,
+                  tripStartDate: tripStartDate,
+                ),
+              ),
+            );
+          },
         );
       },
-      itemBuilder: (context, index) {
-        final dayTrip = dayTrips[index];
-        return Padding(
-          key: ValueKey(dayTrip.id),
-          padding: const EdgeInsets.only(bottom: verticalSpace),
-          child: DayTripCard(
-            dayTrip: dayTrip,
-            tripStartDate: tripStartDate,
-          ),
-        );
-      },
-      onReorder: (oldIndex, newIndex) {
-        context.read<TripCubit>().reorderDayTrips(oldIndex, newIndex);
+      areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+      onReorderFinished: (item, from, to, newItems) {
+        //context.read<TripCubit>().reorderDayTrips(from, to);
       },
     );
   }

@@ -26,24 +26,6 @@ class TripPageLoadedWidget extends HookWidget {
         },
       );
     }
-    return SafeArea(
-      //bottom: false,
-      child: Builder(builder: (context) {
-        if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
-          return const _VerticalLayout();
-        } else {
-          return OrientationBuilder(
-            builder: (context, orientation) {
-              if (orientation == Orientation.portrait) {
-                return const _VerticalLayout();
-              } else {
-                return const _HorizontalLayout();
-              }
-            },
-          );
-        }
-      }),
-    );
   }
 }
 
@@ -86,37 +68,25 @@ class _HorizontalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
-    /* return Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
-      child: Column(children: [
-        Expanded(
-          child: Row(
-            children: [
-              const Expanded(child: SingleChildScrollView(child: _DayTripsList())),
-              const SizedBox(width: horizontalSpaceL),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(
-                      child: SingleChildScrollView(
-                        child: BlocSelector<TripCubit, TripState, String?>(
-                          selector: (state) => state.trip.description,
-                          builder: (context, description) => _TripHeader(headerText: description),
-                        ),
-                      ),
-                    ),
-                    const _AddDayTripCard(),
-                    const SizedBox(height: verticalSpaceXL),
-                    _DeleteTripButton(isDeleting: isDeleting),
-                  ],
-                ),
-              ),
-            ],
+      child: Row(
+        children: [
+          const Expanded(child: DayTripsList()),
+          const SizedBox(width: horizontalSpaceL),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.only(bottom: verticalSpaceXL),
+              children: const [
+                TripHeader(),
+                AddDayTripCard(),
+                SizedBox(height: verticalSpaceXL),
+                DeleteTripButton(),
+              ],
+            ),
           ),
-        )
-      ]),
-    ); */
+        ],
+      ),
+    );
   }
 }

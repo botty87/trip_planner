@@ -61,10 +61,10 @@ class TripPage extends StatelessWidget {
             builder: (context, state) => TripPagesAnimatedSwitcher(
               child: state.maybeMap(
                 initial: (_) => const TripPageInitialWidget(key: ValueKey('initial')),
-                loaded: (_) => const TripPageLoadedWidget(key: ValueKey('loaded')),
-                error: (state) => TripErrorWidget(
+                loaded: (_) => const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
+                error: (state) => Center(
                   key: const ValueKey('error'),
-                  message: state.errorMessage,
+                  child: TripErrorWidget(message: state.errorMessage),
                 ),
                 /* editing: (value) => null,
                       loaded: (state) => null,

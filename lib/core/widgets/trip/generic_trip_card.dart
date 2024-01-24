@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
 
 import '../../constants.dart';
 
@@ -8,10 +9,12 @@ class GenericTripCard extends StatelessWidget {
   final String? description;
   final VoidCallback? onTap;
   final Color? color;
+  final bool hasHandle;
 
   const GenericTripCard({
     super.key,
     required this.name,
+    this.hasHandle = false,
     this.date,
     this.description,
     this.onTap,
@@ -27,9 +30,10 @@ class GenericTripCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _DayTripNameWidget(name: name),
+              SizedBox(height: 50, child: _DayTripNameWidget(name: name, hasHandle: hasHandle)),
               if (date != null) _DayTripDateWidget(date: date!),
               if (description != null) _DayTripDescriptionWidget(description: description!),
             ],
@@ -42,18 +46,34 @@ class GenericTripCard extends StatelessWidget {
 
 class _DayTripNameWidget extends StatelessWidget {
   final String name;
-  const _DayTripNameWidget({required this.name});
+  final bool hasHandle;
+
+  const _DayTripNameWidget({required this.name, required this.hasHandle});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: verticalSpaceS),
-      child: Text(
-        name,
-        style: Theme.of(context).textTheme.titleLarge,
-        textAlign: TextAlign.center,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+      child: Row(
+        children: [
+          if (hasHandle) const SizedBox(width: 20),
+          Expanded(
+            child: Text(
+              name,
+              style: Theme.of(context).textTheme.titleLarge,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          if (hasHandle)
+            const Handle(
+              child: Icon(
+                Icons.drag_handle,
+                size: 20,
+              ),
+            ),
+        ],
       ),
     );
   }
