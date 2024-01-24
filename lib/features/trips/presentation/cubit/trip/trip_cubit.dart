@@ -56,7 +56,7 @@ class TripCubit extends Cubit<TripState> {
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
-        (dayTrips) => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
+        (dayTrips) async => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
       );
     });
   }
@@ -152,7 +152,7 @@ class TripCubit extends Cubit<TripState> {
 
   void deleteTrip() async {
     emit(TripState.deleting(trip: state.trip));
-
+    
     final result = await _deleteTrip(DeleteTripParams(trip: state.trip));
 
     result.fold(

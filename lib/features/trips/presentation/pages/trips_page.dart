@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../cubit/trips/trips_cubit.dart';
 import '../widgets/trips_page/drawer.dart';
 import '../widgets/trips_page/loaded_widget.dart';
@@ -26,29 +27,14 @@ class TripsPage extends StatelessWidget {
         ),
         body: BlocBuilder<TripsCubit, TripsState>(
           buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
-          builder: (context, state) {
-            return AnimatedSwitcher(
-              duration: const Duration(milliseconds: 800),
-              switchInCurve: Curves.elasticOut,
-              transitionBuilder: (child, animation) {
-                return SlideTransition(
-                  position: Tween<Offset>(
-                    begin: const Offset(0, 1),
-                    end: Offset.zero,
-                  ).animate(animation),
-                  child: FadeTransition(
-                    opacity: animation,
-                    child: child,
-                  ),
-                );
-              },
-              child: state.when(
-                initial: () => const TripsPageInitialWidget(),
-                loaded: (_) => const Center(child: LoadedWidget()),
-                error: (message) => Center(child: TripsErrorWidget(message: message)),
-              ),
-            );
-          },
+          builder: (context, state) => TripPagesAnimatedSwitcher(
+            child: state.when(
+              initial: () => const TripsPageInitialWidget(key: ValueKey('initial')),
+              loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
+              error: (message) =>
+                  Center(key: const ValueKey('error'), child: TripsErrorWidget(message: message)),
+            ),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {

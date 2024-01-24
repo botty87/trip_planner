@@ -39,7 +39,6 @@ class _DiscoverNewTripStopsList extends StatelessWidget with TripStopStartEndTim
         return _TripStopCard(
           tripStop: tripStop,
           tripStartEndTimes: tripStopStartEndTimes[index],
-          context: context,
         );
       },
       separatorBuilder: (context, index) => _TravelCard(tripStop: tripStops[index]),

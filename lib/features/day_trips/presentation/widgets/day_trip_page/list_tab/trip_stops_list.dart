@@ -62,7 +62,6 @@ class _List extends HookWidget with TripStopStartEndTimeMixin {
                 tripStop: tripStop,
                 tripStartEndTimes: tripStopStartEndTimes[index],
                 slidableController: slidableController,
-                context: context,
               );
             }),
           ),

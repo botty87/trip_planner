@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
 
 import '../../../../../core/constants.dart';
-import '../../cubit/trip/trip_cubit.dart';
 import 'add_day_trip_card.dart';
 import 'day_trips_list.dart';
 import 'delete_trip_button.dart';
@@ -54,40 +52,31 @@ class _VerticalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: defaultPagePadding,
-      child: Center(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
-                ? constraints.maxWidth * 0.8
-                : constraints.maxWidth;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+            ? constraints.maxWidth * 0.8
+            : constraints.maxWidth;
 
-            return ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: maxWidth,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: verticalSpaceXL),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    BlocSelector<TripCubit, TripState, String?>(
-                      selector: (state) => state.trip.description,
-                      builder: (context, description) => TripHeader(headerText: description),
-                    ),
-                    const DayTripsList(),
-                    const SizedBox(height: verticalSpaceS),
-                    const AddDayTripCard(),
-                    const SizedBox(height: verticalSpaceL),
-                    const DeleteTripButton(),
-                  ],
-                ),
-              ),
-            );
-          },
-        ),
-      ),
+        return ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: maxWidth,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: verticalSpaceXL),
+            child: ListView(
+              padding: defaultPagePadding,
+              children: const [
+                TripHeader(),
+                DayTripsList(),
+                AddDayTripCard(),
+                SizedBox(height: verticalSpaceL),
+                DeleteTripButton(),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

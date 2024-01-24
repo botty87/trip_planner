@@ -24,7 +24,6 @@ class _DiscoverNewDailyTripList extends StatelessWidget {
       itemBuilder: (context, index) => _DayTripCard(
         trip: _trip,
         dayTrip: dayTrips[index],
-        context: context,
       ),
       separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
     );

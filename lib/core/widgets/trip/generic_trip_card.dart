@@ -2,14 +2,21 @@ import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 
-abstract base class GenericTripCard extends StatelessWidget {
-  abstract final String name;
-  abstract final String? date;
-  abstract final String? description;
-  abstract final VoidCallback? onTap;
-  abstract final Color? color;
+class GenericTripCard extends StatelessWidget {
+  final String name;
+  final String? date;
+  final String? description;
+  final VoidCallback? onTap;
+  final Color? color;
 
-  const GenericTripCard({super.key});
+  const GenericTripCard({
+    super.key,
+    required this.name,
+    this.date,
+    this.description,
+    this.onTap,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
