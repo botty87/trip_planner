@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../entities/day_trip.dart';
@@ -21,7 +22,7 @@ class UpdateDayTripsIndexes implements UseCase<void, UpdateDayTripsIndexesParams
       );
 }
 
-class UpdateDayTripsIndexesParams {
+class UpdateDayTripsIndexesParams extends Equatable {
   final String tripId;
   final List<DayTrip> dayTrips;
 
@@ -29,4 +30,7 @@ class UpdateDayTripsIndexesParams {
     required this.tripId,
     required this.dayTrips,
   });
+
+  @override
+  List<Object?> get props => [tripId, dayTrips];
 }
