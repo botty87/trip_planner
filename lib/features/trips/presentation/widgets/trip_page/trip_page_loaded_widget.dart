@@ -4,7 +4,7 @@ import 'package:responsive_framework/responsive_breakpoints.dart';
 
 import '../../../../../core/constants.dart';
 import 'add_day_trip_card.dart';
-import 'day_trips_list.dart';
+import 'day_trips_list_widget.dart';
 import 'delete_trip_button.dart';
 import 'trip_header.dart';
 
@@ -50,7 +50,7 @@ class _VerticalLayout extends StatelessWidget {
               padding: defaultPagePadding,
               children: const [
                 TripHeader(),
-                DayTripsList(orientation: Orientation.portrait),
+                DayTripsListWidget(orientation: Orientation.portrait),
                 AddDayTripCard(),
                 SizedBox(height: verticalSpaceL),
                 DeleteTripButton(),
@@ -72,7 +72,7 @@ class _HorizontalLayout extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: Row(
         children: [
-          const Expanded(child: DayTripsList(orientation: Orientation.landscape)),
+          const Expanded(child: DayTripsListWidget(orientation: Orientation.landscape)),
           const SizedBox(width: horizontalSpaceL),
           Expanded(
             child: ListView(

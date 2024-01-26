@@ -15,9 +15,9 @@ import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../cubit/trip/trip_cubit.dart';
 import 'day_trip_card.dart';
 
-class DayTripsList extends HookWidget {
+class DayTripsListWidget extends HookWidget {
   final Orientation orientation;
-  const DayTripsList({super.key, required this.orientation});
+  const DayTripsListWidget({super.key, required this.orientation});
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +33,16 @@ class DayTripsList extends HookWidget {
     if (hasDayTrips) {
       return const Padding(
         padding: EdgeInsets.only(bottom: verticalSpaceXs),
-        child: _List(),
+        child: DayTripsList(),
       );
     } else {
-      return orientation == Orientation.portrait ? const SizedBox.shrink() : const _NoDayTrips();
+      return orientation == Orientation.portrait ? const SizedBox.shrink() : const NoDayTrips();
     }
   }
 }
 
-class _NoDayTrips extends StatelessWidget {
-  const _NoDayTrips();
+class NoDayTrips extends StatelessWidget {
+  const NoDayTrips({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +65,8 @@ class _NoDayTrips extends StatelessWidget {
   }
 }
 
-class _List extends HookWidget {
-  const _List();
+class DayTripsList extends HookWidget {
+  const DayTripsList({super.key});
 
   @override
   Widget build(BuildContext context) {
