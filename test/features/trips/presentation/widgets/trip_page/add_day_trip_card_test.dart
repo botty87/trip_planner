@@ -12,7 +12,7 @@ void main() {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
 
-  testWidgets('renders AddDayTripCard that conains AddDestinationCard', (tester) async {
+  testWidgets('renders AddDayTripCard that contains AddDestinationCard', (tester) async {
     await tester.pumpWidget(
       TestUtils.defaultWidget(const SingleChildScrollView(child: AddDayTripCard())),
     );
