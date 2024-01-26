@@ -1,4 +1,3 @@
-
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -10,22 +9,17 @@ import '../../../../../core/widgets/trip/add_destination_card.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../cubit/trip/trip_cubit.dart';
 
-final class AddDayTripCard extends AddDestinationCard {
+final class AddDayTripCard extends StatelessWidget {
   const AddDayTripCard({super.key});
 
   @override
-  String get assetName => Assets.svg.addDayTripSvg;
-
-  @override
-  String get title => LocaleKeys.addDayTrip.tr();
-
-  @override
-  void Function(BuildContext context) get onTap {
-    return (BuildContext context) {
-      context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id));
-    };
+  Widget build(BuildContext context) {
+    return AddDestinationCard(
+      assetName: Assets.svg.addDayTripSvg,
+      title: LocaleKeys.addDayTrip.tr(),
+      color: Colors.amberAccent[100]!,
+      onTap: () =>
+          context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id)),
+    );
   }
-
-  @override
-  Color get color => Colors.amberAccent[100]!;
 }

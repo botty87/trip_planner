@@ -1,26 +1,22 @@
 part of '../../../pages/day_trip_page.dart';
 
-final class _AddDayTripStopCard extends AddDestinationCard {
+final class _AddDayTripStopCard extends StatelessWidget {
   const _AddDayTripStopCard();
 
   @override
-  String get assetName => Assets.svg.destinationSvg;
+  Widget build(BuildContext context) {
+    return AddDestinationCard(
+      assetName: Assets.svg.destinationSvg,
+      title: LocaleKeys.addDestination.tr(),
+      color: Colors.amberAccent[100]!,
+      onTap: () {
+        final dayTripState = context.read<DayTripCubit>().state;
 
-  @override
-  String get title => LocaleKeys.addDestination.tr();
-
-  @override
-  void Function(BuildContext context) get onTap {
-    return (BuildContext context) {
-      final dayTripState = context.read<DayTripCubit>().state;
-
-      context.router.push(NewTripStopRoute(
-        trip: dayTripState.trip.id,
-        dayTrip: dayTripState.dayTrip.id,
-      ));
-    };
+        context.router.push(NewTripStopRoute(
+          trip: dayTripState.trip.id,
+          dayTrip: dayTripState.dayTrip.id,
+        ));
+      },
+    );
   }
-
-  @override
-  Color get color => Colors.amberAccent[100]!;
 }

@@ -6,23 +6,24 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../constants.dart';
 
-abstract base class AddDestinationCard extends StatelessWidget {
-  abstract final String assetName;
-  abstract final String title;
-  abstract final Color color;
-  abstract final void Function(BuildContext context) onTap;
+class AddDestinationCard extends StatelessWidget {
+  final String assetName;
+  final String title;
+  final Color color;
+  final VoidCallback onTap;
 
-  const AddDestinationCard({super.key});
+  const AddDestinationCard({super.key, required this.assetName, required this.title, required this.color, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onTap.call(context),
+      onTap: onTap,
       child: Card(
         color: color,
         child: Padding(
           padding: cardPadding,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Builder(builder: (context) {
                 if (ResponsiveBreakpoints.of(context).largerThan(MOBILE)) {

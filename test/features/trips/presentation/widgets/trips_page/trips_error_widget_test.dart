@@ -29,7 +29,7 @@ void main() {
     );
 
     await tester.runAsync(() async {
-      await tester.pumpWidget(defaultWidgetCubit(const TripsErrorWidget(message: 'message'), mockTripsCubit));
+      await tester.pumpWidget(TestUtils.defaultWidgetCubit(const TripsErrorWidget(message: 'message'), mockTripsCubit));
 
       expect(find.byType(GenericErrorWidget), findsOneWidget);
     });

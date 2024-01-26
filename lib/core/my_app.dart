@@ -6,6 +6,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../features/settings/presentation/cubit/settings_cubit.dart';
+import '../features/trips/presentation/widgets/trip_page/add_day_trip_card.dart';
 import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';
 import 'routes/app_router.dart';
@@ -78,7 +79,10 @@ class MyApp extends StatelessWidget {
                             ],
                     ],
                   ).value,
-                  child: child!,
+                  //child: child!,
+                  child: Scaffold(
+                    body: AddDayTripCard(),
+                  ),
                 );
               },
             ),

@@ -38,7 +38,7 @@ void main() {
           initialState: const TripsState.initial());
 
       await tester.runAsync(() async {
-        await tester.pumpWidget(defaultWidget(const TripsPage()));
+        await tester.pumpWidget(TestUtils.defaultWidget(const TripsPage()));
 
         expect(find.byType(TripsPageInitialWidget), findsOneWidget);
         expect(find.byType(FloatingActionButton), findsOneWidget);
@@ -50,7 +50,7 @@ void main() {
           initialState: const TripsState.loaded(trips: []));
 
       await tester.runAsync(() async {
-        await tester.pumpWidget(defaultWidget(const TripsPage()));
+        await tester.pumpWidget(TestUtils.defaultWidget(const TripsPage()));
 
         expect(find.byType(LoadedWidget), findsOneWidget);
         expect(find.byType(FloatingActionButton), findsOneWidget);
@@ -62,7 +62,7 @@ void main() {
           initialState: const TripsState.error(message: 'message'));
 
       await tester.runAsync(() async {
-        await tester.pumpWidget(defaultWidget(const TripsPage()));
+        await tester.pumpWidget(TestUtils.defaultWidget(const TripsPage()));
 
         expect(find.byType(TripsErrorWidget), findsOneWidget);
         expect(find.byType(FloatingActionButton), findsOneWidget);
