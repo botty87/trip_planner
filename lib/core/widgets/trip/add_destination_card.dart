@@ -6,7 +6,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../constants.dart';
 
-class AddDestinationCard extends StatelessWidget {
+final class AddDestinationCard extends StatelessWidget {
   final String assetName;
   final String title;
   final Color color;

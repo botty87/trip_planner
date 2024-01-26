@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 import '../../l10n/locale_keys.g.dart';
 
-abstract base class SaveCancelEditButtonsAbstract extends StatelessWidget {
+class GenericSaveCancelEditButtons extends StatelessWidget {
   final Stream<bool> _isSaving;
   final VoidCallback _onCancel;
   final VoidCallback _onSave;
   final Stream<String?> _errorMessage;
 
-  const SaveCancelEditButtonsAbstract({
+  const GenericSaveCancelEditButtons({
     super.key,
     required Stream<bool> isSaving,
     required VoidCallback onCancel,

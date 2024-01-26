@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/locale_keys.g.dart';
 
-class GenericDurationWidget extends StatelessWidget {
+final class GenericDurationWidget extends StatelessWidget {
   final int durationInMinutes;
 
   const GenericDurationWidget({super.key, required this.durationInMinutes});

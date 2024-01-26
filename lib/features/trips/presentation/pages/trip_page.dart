@@ -8,16 +8,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/widgets/snackbars.dart';
-import '../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/trip_cubit.dart';
 import '../widgets/new_edit_trip_form/new_edit_trip_form.dart';
+import '../widgets/trip_page/save_cancel_edit_buttons.dart';
 import '../widgets/trip_page/trip_error_widget.dart';
 import '../widgets/trip_page/trip_page_initial_widget.dart';
 import '../widgets/trip_page/trip_page_loaded_widget.dart';
 
-part '../widgets/trip_page/save_cancel_edit_buttons.dart';
 
 @RoutePage()
 class TripPage extends HookWidget {
@@ -161,7 +160,7 @@ class TripPage extends HookWidget {
             onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
             onNameChanged: (String value) => cubit.nameChanged(value),
             onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
-            saveSection: _SaveCancelEditButtons(
+            saveSection: SaveCancelEditButtons(
               isSaving: isSaving.stream,
               onCancel: () => cubit.modalBottomEditingDismissed(),
               onSave: () => cubit.saveChanges(),

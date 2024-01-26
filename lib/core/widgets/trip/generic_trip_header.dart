@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 //import 'package:text_link/text_link.dart';
 
 
+//TODO make it final
 class GenericTripDescription extends StatelessWidget {
   //TODO remove nullable
   final String? headerText;

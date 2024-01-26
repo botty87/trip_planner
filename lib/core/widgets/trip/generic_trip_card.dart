@@ -3,7 +3,7 @@ import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reord
 
 import '../../constants.dart';
 
-class GenericTripCard extends StatelessWidget {
+final class GenericTripCard extends StatelessWidget {
   final String name;
   final String? date;
   final String? description;
