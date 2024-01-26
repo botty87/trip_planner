@@ -12,7 +12,13 @@ final class AddDestinationCard extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
 
-  const AddDestinationCard({super.key, required this.assetName, required this.title, required this.color, required this.onTap});
+  const AddDestinationCard({
+    super.key,
+    required this.assetName,
+    required this.title,
+    required this.color,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
