@@ -17,7 +17,6 @@ import '../widgets/trip_page/trip_error_widget.dart';
 import '../widgets/trip_page/trip_page_initial_widget.dart';
 import '../widgets/trip_page/trip_page_loaded_widget.dart';
 
-
 @RoutePage()
 class TripPage extends HookWidget {
   final Trip _trip;
@@ -95,6 +94,24 @@ class TripPage extends HookWidget {
                   orElse: () => throw UnexpectedException(),
                 );
                 errorMessageStream.add(errorMessage);
+              },
+            ),
+            //Update isSaving stream
+            BlocListener<TripCubit, TripState>(
+              listenWhen: (previous, current) => current.maybeMap(
+                editing: (currentEditingState) => previous.maybeMap(
+                  editing: (previousEditingState) =>
+                      currentEditingState.isSaving != previousEditingState.isSaving,
+                  orElse: () => false,
+                ),
+                orElse: () => false,
+              ),
+              listener: (context, state) {
+                final isSavingValue = state.maybeMap(
+                  editing: (state) => state.isSaving,
+                  orElse: () => throw UnexpectedException(),
+                );
+                isSaving.add(isSavingValue);
               },
             ),
             //On trip deleted, pop page
