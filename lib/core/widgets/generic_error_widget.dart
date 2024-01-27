@@ -32,6 +32,7 @@ class GenericErrorWidget extends StatelessWidget {
           if (onRetry != null) ...[
             const SizedBox(height: verticalSpace),
             ElevatedButton(
+              key: const Key('retryButton'),
               onPressed: onRetry,
               child: Text(LocaleKeys.retry.tr()),
             ),

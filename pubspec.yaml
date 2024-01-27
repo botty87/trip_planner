@@ -58,7 +58,6 @@ dependencies:
   flutter_polyline_points:
     path: ../flutter_polyline_points
   flutter_slidable: ^3.0.1
-  implicitly_animated_reorderable_list_2: ^0.5.1
   flutter_svg: ^2.0.7
   font_awesome_flutter: ^10.6.0
   freezed_annotation: ^2.4.1
@@ -66,6 +65,7 @@ dependencies:
   golden_toolkit: ^0.15.0
   google_fonts: ^6.1.0
   google_maps_flutter: ^2.5.3
+  implicitly_animated_reorderable_list_2: ^0.5.1
   injectable: ^2.1.2
   internet_connection_checker_plus: ^2.0.0
   json_annotation: ^4.8.1
@@ -74,6 +74,7 @@ dependencies:
   map_launcher: ^3.0.1
   material_design_icons_flutter: ^7.0.7296
   mockito: ^5.4.1
+  mocktail: ^1.0.3
   password_text_field: ^2.0.0
   quiver: ^3.2.1
   responsive_framework: ^1.1.1
