@@ -16,18 +16,14 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/pair.dart';
-import '../../../../core/widgets/custom_reorderable_list_view.dart';
-import '../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
 import '../../../../core/widgets/snackbars.dart';
-import '../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../core/widgets/trip/add_destination_card.dart';
 import '../../../../core/widgets/trip/delete_trip_button.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
+import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../../../gen/assets.gen.dart';
-import '../../../map/domain/entities/map_place.dart';
-import '../../../map/presentation/widgets/map_widget.dart';
 import '../../../time_picker/widgets/timepicker.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../trips/domain/entities/trip.dart';
@@ -35,10 +31,9 @@ import '../../domain/entities/day_trip.dart';
 import '../../domain/entities/trip_stops_directions.dart';
 import '../cubit/day_trip/day_trip_cubit.dart';
 import '../cubit/trip_stops_map/trip_stops_map_cubit.dart';
-import '../widgets/day_trip_page/list_tab/travel_card.dart';
-import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
+import '../widgets/day_trip_page/day_trip_page_initial_widget.dart';
+import '../widgets/day_trip_page/day_trip_page_loaded.dart';
 
-part '../widgets/day_trip_page/day_trip_page_body.dart';
 part '../widgets/day_trip_page/list_tab/add_day_trip_stop_card.dart';
 part '../widgets/day_trip_page/list_tab/day_trip_description.dart';
 part '../widgets/day_trip_page/list_tab/delete_trip_button.dart';
@@ -66,7 +61,9 @@ class DayTripPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<DayTripCubit>(
-          create: (context) => getIt(param1: _trip, param2: _dayTrip),
+          create: (context) => getIt(param1: _trip, param2: _dayTrip)
+            ..startListenTripStops()
+            ..startListenDayTrip(),
         ),
         BlocProvider<TripStopsMapCubit>(
           create: (context) => getIt(param1: _trip, param2: _dayTrip),
@@ -74,9 +71,6 @@ class DayTripPage extends StatelessWidget {
       ],
       child: Builder(
         builder: (BuildContext context) {
-          final hasTripStops =
-              context.select((DayTripCubit cubit) => cubit.state.tripStops.isNotEmpty);
-
           return PopScope(
             canPop: false,
             onPopInvoked: (bool didPop) async {
@@ -91,9 +85,9 @@ class DayTripPage extends StatelessWidget {
               }
             },
             child: DefaultTabController(
-              length: hasTripStops ? 2 : 0,
+              length: 2,
               child: Scaffold(
-                appBar: _buildAppBar(context, hasTripStops),
+                appBar: _buildAppBar(context),
                 body: Builder(builder: (context) {
                   return NotificationListener(
                     onNotification: (notification) {
@@ -103,7 +97,38 @@ class DayTripPage extends StatelessWidget {
                       }
                       return true;
                     },
-                    child: const _DayTripPageBody(),
+                    child: BlocBuilder<DayTripCubit, DayTripState>(
+                      buildWhen: (previous, current) => current.maybeMap(
+                        deleting: (_) => false,
+                        error: (state) => state.fatal,
+                        deleted: (_) => false,
+                        orElse: () =>
+                            previous.runtimeType != current.runtimeType &&
+                            previous.maybeMap(
+                              error: (value) => value.fatal,
+                              orElse: () => true,
+                            ) &&
+                            current.maybeMap(
+                              editing: (_) => false,
+                              orElse: () => true,
+                            ),
+                      ),
+                      builder: (context, state) {
+                        return TripPagesAnimatedSwitcher(
+                          child: state.maybeMap(
+                            initial: (_) =>
+                                const DayTripPageInitialWidget(key: ValueKey('initial')),
+                            loaded: (_) =>
+                                const Center(key: ValueKey('loaded'), child: DayTripPageLoaded()),
+                            /* error: (state) => Center(
+                              key: const ValueKey('error'),
+                              child: TripErrorWidget(message: state.errorMessage),
+                            ), */
+                            orElse: () => throw UnimplementedError(),
+                          ),
+                        );
+                      },
+                    ),
                   );
                 }),
               ),
@@ -118,7 +143,7 @@ class DayTripPage extends StatelessWidget {
     return context.read<DayTripCubit>().saveDayTripStopStartTime(forced: true);
   }
 
-  PreferredSizeWidget _buildAppBar(BuildContext context, bool hasTripStops) {
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
     return AppBar(
       title: Text("${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
       actions: [
@@ -129,17 +154,11 @@ class DayTripPage extends StatelessWidget {
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(48),
-        child: AnimatedOpacity(
-          opacity: hasTripStops ? 1 : 0,
-          duration: const Duration(milliseconds: 300),
-          child: hasTripStops
-              ? TabBar(
-                  tabs: [
-                    Tab(text: LocaleKeys.list.tr()),
-                    Tab(text: LocaleKeys.map.tr()),
-                  ],
-                )
-              : const SizedBox.shrink(),
+        child: TabBar(
+          tabs: [
+            Tab(icon: Icon(Icons.list, semanticLabel: LocaleKeys.list.tr())),
+            Tab(icon: Icon(Icons.map, semanticLabel: LocaleKeys.map.tr())),
+          ],
         ),
       ),
     );

@@ -56,7 +56,10 @@ class TripCubit extends Cubit<TripState> {
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
-        (dayTrips) => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
+        (dayTrips) => state.maybeMap(
+          editing: (editingState) => emit(editingState.copyWith(dayTrips: dayTrips)),
+          orElse: () => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
+        ),
       );
     });
   }
@@ -194,14 +197,14 @@ class TripCubit extends Cubit<TripState> {
     });
   }
 
+  void modalBottomEditingDismissed() {
+    state.mapOrNull(
+        editing: (state) => emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips)));
+  }
+
   @override
   Future<void> close() {
     _dayTripsSubscription?.cancel();
     return super.close();
-  }
-
-  void modalBottomEditingDismissed() {
-    state.mapOrNull(
-        editing: (state) => emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips)));
   }
 }

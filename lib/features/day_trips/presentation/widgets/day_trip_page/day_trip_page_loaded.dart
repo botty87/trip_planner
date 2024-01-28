@@ -1,11 +1,20 @@
-part of '../../pages/day_trip_page.dart';
 
-class _DayTripPageBody extends HookWidget {
-  const _DayTripPageBody();
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+
+import '../../cubit/day_trip/day_trip_cubit.dart';
+import '../new_edit_day_trip_form/new_edit_day_trip_form.dart';
+
+class DayTripPageLoaded extends StatelessWidget {
+  const DayTripPageLoaded({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isSaving = useStreamController<bool>();
+    return Placeholder();
+    /* final isSaving = useStreamController<bool>();
     final errorMessage = useStreamController<String?>();
     final isDeleting = useStreamController<bool>();
 
@@ -107,10 +116,10 @@ class _DayTripPageBody extends HookWidget {
           );
         },
       ),
-    );
+    ); */
   }
 
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+  /* _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
       ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
     final cubit = context.read<DayTripCubit>();
     isModalBottomEditing.value = true;
@@ -145,5 +154,5 @@ class _DayTripPageBody extends HookWidget {
       isModalBottomEditing.value = false;
       cubit.modalBottomEditingDismissed();
     });
-  }
+  } */
 }

@@ -359,7 +359,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? tripStops = null,
     Object? isMapReady = null,
-    Object? mapType = null,
+    Object? mapType = freezed,
     Object? markerLatLngBounds = freezed,
   }) {
     return _then(_$LoadedImpl(
@@ -371,7 +371,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
           ? _value.isMapReady
           : isMapReady // ignore: cast_nullable_to_non_nullable
               as bool,
-      mapType: null == mapType
+      mapType: freezed == mapType
           ? _value.mapType
           : mapType // ignore: cast_nullable_to_non_nullable
               as MapType,
@@ -424,9 +424,9 @@ class _$LoadedImpl implements _Loaded {
                 .equals(other._tripStops, _tripStops) &&
             (identical(other.isMapReady, isMapReady) ||
                 other.isMapReady == isMapReady) &&
-            (identical(other.mapType, mapType) || other.mapType == mapType) &&
-            (identical(other.markerLatLngBounds, markerLatLngBounds) ||
-                other.markerLatLngBounds == markerLatLngBounds));
+            const DeepCollectionEquality().equals(other.mapType, mapType) &&
+            const DeepCollectionEquality()
+                .equals(other.markerLatLngBounds, markerLatLngBounds));
   }
 
   @override
@@ -434,8 +434,8 @@ class _$LoadedImpl implements _Loaded {
       runtimeType,
       const DeepCollectionEquality().hash(_tripStops),
       isMapReady,
-      mapType,
-      markerLatLngBounds);
+      const DeepCollectionEquality().hash(mapType),
+      const DeepCollectionEquality().hash(markerLatLngBounds));
 
   @JsonKey(ignore: true)
   @override

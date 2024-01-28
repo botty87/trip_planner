@@ -42,9 +42,9 @@ class DayTripCubit extends Cubit<DayTripState> {
 
   final FirebaseCrashlytics _crashlytics;
 
-  late final StreamSubscription<Either<TripStopsFailure, List<TripStop>>> _tripStopsSubscription;
+  StreamSubscription<Either<TripStopsFailure, List<TripStop>>>? _tripStopsSubscription;
 
-  late final StreamSubscription<Either<DayTripsFailure, DayTrip>> _dayTripSubscription;
+  StreamSubscription<Either<DayTripsFailure, DayTrip>>? _dayTripSubscription;
 
   final _startTimeDebouncer = Debouncer(milliseconds: 5000);
   final _travelTimeDebouncer = Debouncer(milliseconds: 500);
@@ -72,69 +72,88 @@ class DayTripCubit extends Cubit<DayTripState> {
         _listenDayTrip = listenDayTrip,
         _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
         _crashlytics = crashlytics,
-        super(DayTripState.normal(
-          trip: trip,
-          dayTrip: dayTrip,
-        )) {
+        super(DayTripState.initial(trip: trip, dayTrip: dayTrip));
+
+  startListenTripStops() {
+    _tripStopsSubscription?.cancel();
     _tripStopsSubscription =
-        _listenTripStops(ListenTripStopsParams(dayTripId: dayTrip.id, tripId: trip.id))
+        _listenTripStops(ListenTripStopsParams(dayTripId: state.dayTrip.id, tripId: state.trip.id))
             .listen((result) {
       result.fold(
         (failure) {
           emit(DayTripState.error(
             trip: state.trip,
             dayTrip: state.dayTrip,
-            tripStops: state.tripStops,
             errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
+            fatal: true,
+            hasStartTimeToSave: state.hasStartTimeToSave,
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
-        (tripStops) => emit(state.copyWith(tripStops: tripStops)),
+        (tripStops) => state.maybeMap(
+          editing: (editingState) => emit(editingState.copyWith(tripStops: tripStops)),
+          orElse: () => emit(DayTripState.loaded(
+            trip: state.trip,
+            dayTrip: state.dayTrip,
+            tripStops: tripStops,
+            hasStartTimeToSave: state.hasStartTimeToSave,
+          )),
+        ),
       );
     });
+  }
 
+  startListenDayTrip() {
+    _dayTripSubscription?.cancel();
     _dayTripSubscription =
-        _listenDayTrip(ListenDayTripParams(tripId: trip.id, dayTripId: dayTrip.id))
+        _listenDayTrip(ListenDayTripParams(tripId: state.trip.id, dayTripId: state.dayTrip.id))
             .listen((dayTripOrFailure) {
       dayTripOrFailure.fold(
         (failure) {
           emit(DayTripState.error(
             trip: state.trip,
             dayTrip: state.dayTrip,
-            tripStops: state.tripStops,
             errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
+            fatal: true,
+            hasStartTimeToSave: state.hasStartTimeToSave,
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
-        (dayTrip) {
-          emit(state.copyWith(dayTrip: dayTrip));
-        },
+        (dayTrip) => state.maybeMap(
+          editing: (editingState) => emit(editingState.copyWith(dayTrip: dayTrip)),
+          orElse: () => emit(state.copyWith(dayTrip: dayTrip)),
+        ),
       );
     });
   }
 
   edit() {
-    emit(DayTripState.editing(
-      trip: state.trip,
-      dayTrip: state.dayTrip,
-      tripStops: state.tripStops,
-      description: state.dayTrip.description,
-    ));
+    state.mapOrNull(
+      loaded: (loadedState) => emit(DayTripState.editing(
+        trip: loadedState.trip,
+        dayTrip: loadedState.dayTrip,
+        tripStops: loadedState.tripStops,
+        description: loadedState.dayTrip.description,
+        hasStartTimeToSave: loadedState.hasStartTimeToSave,
+      )),
+    );
   }
 
   modalBottomEditingDismissed() {
-    if (state is DayTripStateEditing) {
-      emit(DayTripState.normal(
-        trip: state.trip,
-        dayTrip: state.dayTrip,
-        tripStops: state.tripStops,
-      ));
-    }
+    state.mapOrNull(
+      editing: (editingState) => emit(DayTripState.loaded(
+        trip: editingState.trip,
+        dayTrip: editingState.dayTrip,
+        tripStops: editingState.tripStops,
+        hasStartTimeToSave: editingState.hasStartTimeToSave,
+      )),
+    );
   }
 
   descriptionChanged(String description) {
-    assert(state is DayTripStateEditing);
-    emit((state as DayTripStateEditing).copyWith(description: description));
+    state.mapOrNull(
+      editing: (editingState) => emit(editingState.copyWith(description: description)),
+    );
   }
 
   startTimeChanged(TimeOfDay startTime) {
@@ -144,16 +163,19 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   void cancelEditing() {
-    assert(state is DayTripStateEditing);
-    emit(DayTripState.normal(
-      trip: state.trip,
-      dayTrip: state.dayTrip,
-      tripStops: state.tripStops,
-    ));
+    state.mapOrNull(
+      editing: (editingState) => emit(DayTripState.loaded(
+        trip: editingState.trip,
+        dayTrip: editingState.dayTrip,
+        tripStops: editingState.tripStops,
+        hasStartTimeToSave: editingState.hasStartTimeToSave,
+      )),
+    );
   }
 
   void saveChanges() async {
-    assert(state is DayTripStateEditing);
+    //TODO implement
+    /* assert(state is DayTripStateEditing);
     final editingState = state as DayTripStateEditing;
     emit(editingState.copyWith(isSaving: true));
     final result = await _updateDayTrip(
@@ -183,11 +205,13 @@ class DayTripCubit extends Cubit<DayTripState> {
           tripStops: state.tripStops,
         ));
       },
-    );
+    ); */
   }
 
   Future<bool> saveDayTripStopStartTime({bool forced = false}) async {
-    if (!state.hasStartTimeToSave) {
+    return true;
+    //TODO implement
+    /* if (!state.hasStartTimeToSave) {
       _startTimeDebouncer.cancel();
       return true;
     }
@@ -234,11 +258,12 @@ class DayTripCubit extends Cubit<DayTripState> {
         ));
         return true;
       },
-    );
+    ); */
   }
 
   void deleteDayTrip() async {
-    emit(DayTripState.deleting(
+    //TODO implement
+    /* emit(DayTripState.deleting(
       trip: state.trip,
       dayTrip: state.dayTrip,
       tripStops: state.tripStops,
@@ -272,11 +297,12 @@ class DayTripCubit extends Cubit<DayTripState> {
           tripStops: state.tripStops,
         ));
       },
-    );
+    ); */
   }
 
   void reorderTripStops(int oldIndex, int newIndex) async {
-    final List<TripStop> tripStopsToUpdate = [];
+    //TODO implement
+    /* final List<TripStop> tripStopsToUpdate = [];
 
     tripStopsToUpdate.add(state.tripStops[oldIndex].copyWith(index: newIndex));
     if (newIndex > oldIndex) {
@@ -320,11 +346,12 @@ class DayTripCubit extends Cubit<DayTripState> {
           ),
         );
       },
-    );
+    ); */
   }
 
   void updateTravelTimeToNextStop(String id, int inMinutes) async {
-    _travelTimeDebouncer.run(() {
+    //TODO implement
+    /* _travelTimeDebouncer.run(() {
       assert(state is DayTripStateNormal);
       emit((state as DayTripStateNormal).copyWith(isSaving: true));
     });
@@ -359,11 +386,12 @@ class DayTripCubit extends Cubit<DayTripState> {
         dayTrip: state.dayTrip,
         tripStops: state.tripStops,
       )),
-    );
+    ); */
   }
 
   void toggleTripStopDone(bool isDone, int tripStopIndex) async {
-    //Set the trip stop at the index to the new value
+    //TODO implement
+    /* //Set the trip stop at the index to the new value
     final tripStop = state.tripStops[tripStopIndex].copyWith(isDone: isDone);
     final tripStops = List<TripStop>.from(state.tripStops);
     tripStops[tripStopIndex] = tripStop;
@@ -410,13 +438,13 @@ class DayTripCubit extends Cubit<DayTripState> {
         dayTrip: state.dayTrip,
         tripStops: tripStops,
       )),
-    );
+    ); */
   }
 
   @override
   Future<void> close() {
-    _tripStopsSubscription.cancel();
-    _dayTripSubscription.cancel();
+    _tripStopsSubscription?.cancel();
+    _dayTripSubscription?.cancel();
     return super.close();
   }
 }

@@ -18,27 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DayTripState {
   Trip get trip => throw _privateConstructorUsedError;
   DayTrip get dayTrip => throw _privateConstructorUsedError;
-  List<TripStop> get tripStops => throw _privateConstructorUsedError;
   bool get hasStartTimeToSave => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
+        initial,
     required TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)
-        normal,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        loading,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            String? errorMessage,
-            bool hasStartTimeToSave)
+            bool explictitStartTimeSave)
+        loaded,
+    required TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)
         error,
     required TResult Function(
             Trip trip,
@@ -46,97 +40,96 @@ mixin _$DayTripState {
             List<TripStop> tripStops,
             String? description,
             bool isSaving,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip,
             List<TripStop> tripStops, bool hasStartTimeToSave)
         deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
         deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult? Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult? Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DayTripStateNormal value) normal,
-    required TResult Function(DayTripStateLoading value) loading,
-    required TResult Function(DayTripStateError value) error,
-    required TResult Function(DayTripStateEditing value) editing,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Editing value) editing,
     required TResult Function(DayTripStateDeleting value) deleting,
     required TResult Function(DayTripStateDeleted value) deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DayTripStateNormal value)? normal,
-    TResult? Function(DayTripStateLoading value)? loading,
-    TResult? Function(DayTripStateError value)? error,
-    TResult? Function(DayTripStateEditing value)? editing,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Editing value)? editing,
     TResult? Function(DayTripStateDeleting value)? deleting,
     TResult? Function(DayTripStateDeleted value)? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DayTripStateNormal value)? normal,
-    TResult Function(DayTripStateLoading value)? loading,
-    TResult Function(DayTripStateError value)? error,
-    TResult Function(DayTripStateEditing value)? editing,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Editing value)? editing,
     TResult Function(DayTripStateDeleting value)? deleting,
     TResult Function(DayTripStateDeleted value)? deleted,
     required TResult orElse(),
@@ -154,11 +147,7 @@ abstract class $DayTripStateCopyWith<$Res> {
           DayTripState value, $Res Function(DayTripState) then) =
       _$DayTripStateCopyWithImpl<$Res, DayTripState>;
   @useResult
-  $Res call(
-      {Trip trip,
-      DayTrip dayTrip,
-      List<TripStop> tripStops,
-      bool hasStartTimeToSave});
+  $Res call({Trip trip, DayTrip dayTrip, bool hasStartTimeToSave});
 
   $TripCopyWith<$Res> get trip;
   $DayTripCopyWith<$Res> get dayTrip;
@@ -179,7 +168,6 @@ class _$DayTripStateCopyWithImpl<$Res, $Val extends DayTripState>
   $Res call({
     Object? trip = null,
     Object? dayTrip = null,
-    Object? tripStops = null,
     Object? hasStartTimeToSave = null,
   }) {
     return _then(_value.copyWith(
@@ -191,10 +179,6 @@ class _$DayTripStateCopyWithImpl<$Res, $Val extends DayTripState>
           ? _value.dayTrip
           : dayTrip // ignore: cast_nullable_to_non_nullable
               as DayTrip,
-      tripStops: null == tripStops
-          ? _value.tripStops
-          : tripStops // ignore: cast_nullable_to_non_nullable
-              as List<TripStop>,
       hasStartTimeToSave: null == hasStartTimeToSave
           ? _value.hasStartTimeToSave
           : hasStartTimeToSave // ignore: cast_nullable_to_non_nullable
@@ -220,20 +204,14 @@ class _$DayTripStateCopyWithImpl<$Res, $Val extends DayTripState>
 }
 
 /// @nodoc
-abstract class _$$DayTripStateNormalImplCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateNormalImplCopyWith(_$DayTripStateNormalImpl value,
-          $Res Function(_$DayTripStateNormalImpl) then) =
-      __$$DayTripStateNormalImplCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Trip trip,
-      DayTrip dayTrip,
-      List<TripStop> tripStops,
-      bool hasStartTimeToSave,
-      bool explictitStartTimeSave,
-      bool isSaving});
+  $Res call({Trip trip, DayTrip dayTrip, bool hasStartTimeToSave});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -242,11 +220,265 @@ abstract class _$$DayTripStateNormalImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DayTripStateNormalImplCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateNormalImpl>
-    implements _$$DayTripStateNormalImplCopyWith<$Res> {
-  __$$DayTripStateNormalImplCopyWithImpl(_$DayTripStateNormalImpl _value,
-      $Res Function(_$DayTripStateNormalImpl) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trip = null,
+    Object? dayTrip = null,
+    Object? hasStartTimeToSave = null,
+  }) {
+    return _then(_$InitialImpl(
+      trip: null == trip
+          ? _value.trip
+          : trip // ignore: cast_nullable_to_non_nullable
+              as Trip,
+      dayTrip: null == dayTrip
+          ? _value.dayTrip
+          : dayTrip // ignore: cast_nullable_to_non_nullable
+              as DayTrip,
+      hasStartTimeToSave: null == hasStartTimeToSave
+          ? _value.hasStartTimeToSave
+          : hasStartTimeToSave // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(
+      {required this.trip,
+      required this.dayTrip,
+      this.hasStartTimeToSave = false});
+
+  @override
+  final Trip trip;
+  @override
+  final DayTrip dayTrip;
+  @override
+  @JsonKey()
+  final bool hasStartTimeToSave;
+
+  @override
+  String toString() {
+    return 'DayTripState.initial(trip: $trip, dayTrip: $dayTrip, hasStartTimeToSave: $hasStartTimeToSave)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            (identical(other.trip, trip) || other.trip == trip) &&
+            (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
+            (identical(other.hasStartTimeToSave, hasStartTimeToSave) ||
+                other.hasStartTimeToSave == hasStartTimeToSave));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, trip, dayTrip, hasStartTimeToSave);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
+        initial,
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            List<TripStop> tripStops,
+            bool hasStartTimeToSave,
+            bool explictitStartTimeSave)
+        loaded,
+    required TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)
+        error,
+    required TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
+            bool hasStartTimeToSave,
+            String? errorMessage)
+        editing,
+    required TResult Function(Trip trip, DayTrip dayTrip,
+            List<TripStop> tripStops, bool hasStartTimeToSave)
+        deleting,
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
+        deleted,
+  }) {
+    return initial(trip, dayTrip, hasStartTimeToSave);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult? Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
+    TResult? Function(
+            Trip trip,
+            DayTrip dayTrip,
+            List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
+            bool hasStartTimeToSave,
+            String? errorMessage)?
+        editing,
+    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave)?
+        deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        deleted,
+  }) {
+    return initial?.call(trip, dayTrip, hasStartTimeToSave);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
+    TResult Function(
+            Trip trip,
+            DayTrip dayTrip,
+            List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
+            bool hasStartTimeToSave,
+            String? errorMessage)?
+        editing,
+    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave)?
+        deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        deleted,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(trip, dayTrip, hasStartTimeToSave);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Editing value) editing,
+    required TResult Function(DayTripStateDeleting value) deleting,
+    required TResult Function(DayTripStateDeleted value) deleted,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Editing value)? editing,
+    TResult? Function(DayTripStateDeleting value)? deleting,
+    TResult? Function(DayTripStateDeleted value)? deleted,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Editing value)? editing,
+    TResult Function(DayTripStateDeleting value)? deleting,
+    TResult Function(DayTripStateDeleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initial implements DayTripState {
+  const factory _Initial(
+      {required final Trip trip,
+      required final DayTrip dayTrip,
+      final bool hasStartTimeToSave}) = _$InitialImpl;
+
+  @override
+  Trip get trip;
+  @override
+  DayTrip get dayTrip;
+  @override
+  bool get hasStartTimeToSave;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadedImplCopyWith<$Res>
+    implements $DayTripStateCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Trip trip,
+      DayTrip dayTrip,
+      List<TripStop> tripStops,
+      bool hasStartTimeToSave,
+      bool explictitStartTimeSave});
+
+  @override
+  $TripCopyWith<$Res> get trip;
+  @override
+  $DayTripCopyWith<$Res> get dayTrip;
+}
+
+/// @nodoc
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -257,9 +489,8 @@ class __$$DayTripStateNormalImplCopyWithImpl<$Res>
     Object? tripStops = null,
     Object? hasStartTimeToSave = null,
     Object? explictitStartTimeSave = null,
-    Object? isSaving = null,
   }) {
-    return _then(_$DayTripStateNormalImpl(
+    return _then(_$LoadedImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -280,24 +511,19 @@ class __$$DayTripStateNormalImplCopyWithImpl<$Res>
           ? _value.explictitStartTimeSave
           : explictitStartTimeSave // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSaving: null == isSaving
-          ? _value.isSaving
-          : isSaving // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DayTripStateNormalImpl implements DayTripStateNormal {
-  const _$DayTripStateNormalImpl(
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(
       {required this.trip,
       required this.dayTrip,
       final List<TripStop> tripStops = const [],
       this.hasStartTimeToSave = false,
-      this.explictitStartTimeSave = false,
-      this.isSaving = false})
+      this.explictitStartTimeSave = false})
       : _tripStops = tripStops;
 
   @override
@@ -319,20 +545,17 @@ class _$DayTripStateNormalImpl implements DayTripStateNormal {
   @override
   @JsonKey()
   final bool explictitStartTimeSave;
-  @override
-  @JsonKey()
-  final bool isSaving;
 
   @override
   String toString() {
-    return 'DayTripState.normal(trip: $trip, dayTrip: $dayTrip, tripStops: $tripStops, hasStartTimeToSave: $hasStartTimeToSave, explictitStartTimeSave: $explictitStartTimeSave, isSaving: $isSaving)';
+    return 'DayTripState.loaded(trip: $trip, dayTrip: $dayTrip, tripStops: $tripStops, hasStartTimeToSave: $hasStartTimeToSave, explictitStartTimeSave: $explictitStartTimeSave)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayTripStateNormalImpl &&
+            other is _$LoadedImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             const DeepCollectionEquality()
@@ -340,9 +563,7 @@ class _$DayTripStateNormalImpl implements DayTripStateNormal {
             (identical(other.hasStartTimeToSave, hasStartTimeToSave) ||
                 other.hasStartTimeToSave == hasStartTimeToSave) &&
             (identical(other.explictitStartTimeSave, explictitStartTimeSave) ||
-                other.explictitStartTimeSave == explictitStartTimeSave) &&
-            (identical(other.isSaving, isSaving) ||
-                other.isSaving == isSaving));
+                other.explictitStartTimeSave == explictitStartTimeSave));
   }
 
   @override
@@ -352,36 +573,29 @@ class _$DayTripStateNormalImpl implements DayTripStateNormal {
       dayTrip,
       const DeepCollectionEquality().hash(_tripStops),
       hasStartTimeToSave,
-      explictitStartTimeSave,
-      isSaving);
+      explictitStartTimeSave);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayTripStateNormalImplCopyWith<_$DayTripStateNormalImpl> get copyWith =>
-      __$$DayTripStateNormalImplCopyWithImpl<_$DayTripStateNormalImpl>(
-          this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)
-        normal,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        loading,
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
+        initial,
     required TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
-            String? errorMessage,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            bool explictitStartTimeSave)
+        loaded,
+    required TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)
         error,
     required TResult Function(
             Trip trip,
@@ -389,81 +603,80 @@ class _$DayTripStateNormalImpl implements DayTripStateNormal {
             List<TripStop> tripStops,
             String? description,
             bool isSaving,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip,
             List<TripStop> tripStops, bool hasStartTimeToSave)
         deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
         deleted,
   }) {
-    return normal(trip, dayTrip, tripStops, hasStartTimeToSave,
-        explictitStartTimeSave, isSaving);
+    return loaded(
+        trip, dayTrip, tripStops, hasStartTimeToSave, explictitStartTimeSave);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult? Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult? Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
   }) {
-    return normal?.call(trip, dayTrip, tripStops, hasStartTimeToSave,
-        explictitStartTimeSave, isSaving);
+    return loaded?.call(
+        trip, dayTrip, tripStops, hasStartTimeToSave, explictitStartTimeSave);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
     required TResult orElse(),
   }) {
-    if (normal != null) {
-      return normal(trip, dayTrip, tripStops, hasStartTimeToSave,
-          explictitStartTimeSave, isSaving);
+    if (loaded != null) {
+      return loaded(
+          trip, dayTrip, tripStops, hasStartTimeToSave, explictitStartTimeSave);
     }
     return orElse();
   }
@@ -471,84 +684,82 @@ class _$DayTripStateNormalImpl implements DayTripStateNormal {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DayTripStateNormal value) normal,
-    required TResult Function(DayTripStateLoading value) loading,
-    required TResult Function(DayTripStateError value) error,
-    required TResult Function(DayTripStateEditing value) editing,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Editing value) editing,
     required TResult Function(DayTripStateDeleting value) deleting,
     required TResult Function(DayTripStateDeleted value) deleted,
   }) {
-    return normal(this);
+    return loaded(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DayTripStateNormal value)? normal,
-    TResult? Function(DayTripStateLoading value)? loading,
-    TResult? Function(DayTripStateError value)? error,
-    TResult? Function(DayTripStateEditing value)? editing,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Editing value)? editing,
     TResult? Function(DayTripStateDeleting value)? deleting,
     TResult? Function(DayTripStateDeleted value)? deleted,
   }) {
-    return normal?.call(this);
+    return loaded?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DayTripStateNormal value)? normal,
-    TResult Function(DayTripStateLoading value)? loading,
-    TResult Function(DayTripStateError value)? error,
-    TResult Function(DayTripStateEditing value)? editing,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Editing value)? editing,
     TResult Function(DayTripStateDeleting value)? deleting,
     TResult Function(DayTripStateDeleted value)? deleted,
     required TResult orElse(),
   }) {
-    if (normal != null) {
-      return normal(this);
+    if (loaded != null) {
+      return loaded(this);
     }
     return orElse();
   }
 }
 
-abstract class DayTripStateNormal implements DayTripState {
-  const factory DayTripStateNormal(
+abstract class _Loaded implements DayTripState {
+  const factory _Loaded(
       {required final Trip trip,
       required final DayTrip dayTrip,
       final List<TripStop> tripStops,
       final bool hasStartTimeToSave,
-      final bool explictitStartTimeSave,
-      final bool isSaving}) = _$DayTripStateNormalImpl;
+      final bool explictitStartTimeSave}) = _$LoadedImpl;
 
   @override
   Trip get trip;
   @override
   DayTrip get dayTrip;
-  @override
   List<TripStop> get tripStops;
   @override
   bool get hasStartTimeToSave;
   bool get explictitStartTimeSave;
-  bool get isSaving;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripStateNormalImplCopyWith<_$DayTripStateNormalImpl> get copyWith =>
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DayTripStateLoadingImplCopyWith<$Res>
+abstract class _$$ErrorImplCopyWith<$Res>
     implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateLoadingImplCopyWith(_$DayTripStateLoadingImpl value,
-          $Res Function(_$DayTripStateLoadingImpl) then) =
-      __$$DayTripStateLoadingImplCopyWithImpl<$Res>;
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {Trip trip,
       DayTrip dayTrip,
-      List<TripStop> tripStops,
+      String errorMessage,
+      bool fatal,
       bool hasStartTimeToSave});
 
   @override
@@ -558,11 +769,11 @@ abstract class _$$DayTripStateLoadingImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DayTripStateLoadingImplCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateLoadingImpl>
-    implements _$$DayTripStateLoadingImplCopyWith<$Res> {
-  __$$DayTripStateLoadingImplCopyWithImpl(_$DayTripStateLoadingImpl _value,
-      $Res Function(_$DayTripStateLoadingImpl) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -570,10 +781,11 @@ class __$$DayTripStateLoadingImplCopyWithImpl<$Res>
   $Res call({
     Object? trip = null,
     Object? dayTrip = null,
-    Object? tripStops = null,
+    Object? errorMessage = null,
+    Object? fatal = null,
     Object? hasStartTimeToSave = null,
   }) {
-    return _then(_$DayTripStateLoadingImpl(
+    return _then(_$ErrorImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -582,297 +794,14 @@ class __$$DayTripStateLoadingImplCopyWithImpl<$Res>
           ? _value.dayTrip
           : dayTrip // ignore: cast_nullable_to_non_nullable
               as DayTrip,
-      tripStops: null == tripStops
-          ? _value._tripStops
-          : tripStops // ignore: cast_nullable_to_non_nullable
-              as List<TripStop>,
-      hasStartTimeToSave: null == hasStartTimeToSave
-          ? _value.hasStartTimeToSave
-          : hasStartTimeToSave // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DayTripStateLoadingImpl implements DayTripStateLoading {
-  const _$DayTripStateLoadingImpl(
-      {required this.trip,
-      required this.dayTrip,
-      final List<TripStop> tripStops = const [],
-      this.hasStartTimeToSave = false})
-      : _tripStops = tripStops;
-
-  @override
-  final Trip trip;
-  @override
-  final DayTrip dayTrip;
-  final List<TripStop> _tripStops;
-  @override
-  @JsonKey()
-  List<TripStop> get tripStops {
-    if (_tripStops is EqualUnmodifiableListView) return _tripStops;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tripStops);
-  }
-
-  @override
-  @JsonKey()
-  final bool hasStartTimeToSave;
-
-  @override
-  String toString() {
-    return 'DayTripState.loading(trip: $trip, dayTrip: $dayTrip, tripStops: $tripStops, hasStartTimeToSave: $hasStartTimeToSave)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DayTripStateLoadingImpl &&
-            (identical(other.trip, trip) || other.trip == trip) &&
-            (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            const DeepCollectionEquality()
-                .equals(other._tripStops, _tripStops) &&
-            (identical(other.hasStartTimeToSave, hasStartTimeToSave) ||
-                other.hasStartTimeToSave == hasStartTimeToSave));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, trip, dayTrip,
-      const DeepCollectionEquality().hash(_tripStops), hasStartTimeToSave);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DayTripStateLoadingImplCopyWith<_$DayTripStateLoadingImpl> get copyWith =>
-      __$$DayTripStateLoadingImplCopyWithImpl<_$DayTripStateLoadingImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)
-        normal,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        loading,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            String? errorMessage,
-            bool hasStartTimeToSave)
-        error,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            String? description,
-            bool isSaving,
-            bool hasStartTimeToSave)
-        editing,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        deleted,
-  }) {
-    return loading(trip, dayTrip, tripStops, hasStartTimeToSave);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
-        editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        deleted,
-  }) {
-    return loading?.call(trip, dayTrip, tripStops, hasStartTimeToSave);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
-        editing,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        deleted,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(trip, dayTrip, tripStops, hasStartTimeToSave);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DayTripStateNormal value) normal,
-    required TResult Function(DayTripStateLoading value) loading,
-    required TResult Function(DayTripStateError value) error,
-    required TResult Function(DayTripStateEditing value) editing,
-    required TResult Function(DayTripStateDeleting value) deleting,
-    required TResult Function(DayTripStateDeleted value) deleted,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DayTripStateNormal value)? normal,
-    TResult? Function(DayTripStateLoading value)? loading,
-    TResult? Function(DayTripStateError value)? error,
-    TResult? Function(DayTripStateEditing value)? editing,
-    TResult? Function(DayTripStateDeleting value)? deleting,
-    TResult? Function(DayTripStateDeleted value)? deleted,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DayTripStateNormal value)? normal,
-    TResult Function(DayTripStateLoading value)? loading,
-    TResult Function(DayTripStateError value)? error,
-    TResult Function(DayTripStateEditing value)? editing,
-    TResult Function(DayTripStateDeleting value)? deleting,
-    TResult Function(DayTripStateDeleted value)? deleted,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DayTripStateLoading implements DayTripState {
-  const factory DayTripStateLoading(
-      {required final Trip trip,
-      required final DayTrip dayTrip,
-      final List<TripStop> tripStops,
-      final bool hasStartTimeToSave}) = _$DayTripStateLoadingImpl;
-
-  @override
-  Trip get trip;
-  @override
-  DayTrip get dayTrip;
-  @override
-  List<TripStop> get tripStops;
-  @override
-  bool get hasStartTimeToSave;
-  @override
-  @JsonKey(ignore: true)
-  _$$DayTripStateLoadingImplCopyWith<_$DayTripStateLoadingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DayTripStateErrorImplCopyWith<$Res>
-    implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateErrorImplCopyWith(_$DayTripStateErrorImpl value,
-          $Res Function(_$DayTripStateErrorImpl) then) =
-      __$$DayTripStateErrorImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Trip trip,
-      DayTrip dayTrip,
-      List<TripStop> tripStops,
-      String? errorMessage,
-      bool hasStartTimeToSave});
-
-  @override
-  $TripCopyWith<$Res> get trip;
-  @override
-  $DayTripCopyWith<$Res> get dayTrip;
-}
-
-/// @nodoc
-class __$$DayTripStateErrorImplCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateErrorImpl>
-    implements _$$DayTripStateErrorImplCopyWith<$Res> {
-  __$$DayTripStateErrorImplCopyWithImpl(_$DayTripStateErrorImpl _value,
-      $Res Function(_$DayTripStateErrorImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? trip = null,
-    Object? dayTrip = null,
-    Object? tripStops = null,
-    Object? errorMessage = freezed,
-    Object? hasStartTimeToSave = null,
-  }) {
-    return _then(_$DayTripStateErrorImpl(
-      trip: null == trip
-          ? _value.trip
-          : trip // ignore: cast_nullable_to_non_nullable
-              as Trip,
-      dayTrip: null == dayTrip
-          ? _value.dayTrip
-          : dayTrip // ignore: cast_nullable_to_non_nullable
-              as DayTrip,
-      tripStops: null == tripStops
-          ? _value._tripStops
-          : tripStops // ignore: cast_nullable_to_non_nullable
-              as List<TripStop>,
-      errorMessage: freezed == errorMessage
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      fatal: null == fatal
+          ? _value.fatal
+          : fatal // ignore: cast_nullable_to_non_nullable
+              as bool,
       hasStartTimeToSave: null == hasStartTimeToSave
           ? _value.hasStartTimeToSave
           : hasStartTimeToSave // ignore: cast_nullable_to_non_nullable
@@ -883,90 +812,69 @@ class __$$DayTripStateErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DayTripStateErrorImpl implements DayTripStateError {
-  const _$DayTripStateErrorImpl(
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl(
       {required this.trip,
       required this.dayTrip,
-      final List<TripStop> tripStops = const [],
-      this.errorMessage,
-      this.hasStartTimeToSave = false})
-      : _tripStops = tripStops;
+      required this.errorMessage,
+      required this.fatal,
+      required this.hasStartTimeToSave});
 
   @override
   final Trip trip;
   @override
   final DayTrip dayTrip;
-  final List<TripStop> _tripStops;
   @override
-  @JsonKey()
-  List<TripStop> get tripStops {
-    if (_tripStops is EqualUnmodifiableListView) return _tripStops;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tripStops);
-  }
-
+  final String errorMessage;
   @override
-  final String? errorMessage;
+  final bool fatal;
   @override
-  @JsonKey()
   final bool hasStartTimeToSave;
 
   @override
   String toString() {
-    return 'DayTripState.error(trip: $trip, dayTrip: $dayTrip, tripStops: $tripStops, errorMessage: $errorMessage, hasStartTimeToSave: $hasStartTimeToSave)';
+    return 'DayTripState.error(trip: $trip, dayTrip: $dayTrip, errorMessage: $errorMessage, fatal: $fatal, hasStartTimeToSave: $hasStartTimeToSave)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayTripStateErrorImpl &&
+            other is _$ErrorImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            const DeepCollectionEquality()
-                .equals(other._tripStops, _tripStops) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
+            (identical(other.fatal, fatal) || other.fatal == fatal) &&
             (identical(other.hasStartTimeToSave, hasStartTimeToSave) ||
                 other.hasStartTimeToSave == hasStartTimeToSave));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      trip,
-      dayTrip,
-      const DeepCollectionEquality().hash(_tripStops),
-      errorMessage,
-      hasStartTimeToSave);
+      runtimeType, trip, dayTrip, errorMessage, fatal, hasStartTimeToSave);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayTripStateErrorImplCopyWith<_$DayTripStateErrorImpl> get copyWith =>
-      __$$DayTripStateErrorImplCopyWithImpl<_$DayTripStateErrorImpl>(
-          this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)
-        normal,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        loading,
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
+        initial,
     required TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
-            String? errorMessage,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            bool explictitStartTimeSave)
+        loaded,
+    required TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)
         error,
     required TResult Function(
             Trip trip,
@@ -974,79 +882,77 @@ class _$DayTripStateErrorImpl implements DayTripStateError {
             List<TripStop> tripStops,
             String? description,
             bool isSaving,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip,
             List<TripStop> tripStops, bool hasStartTimeToSave)
         deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
         deleted,
   }) {
-    return error(trip, dayTrip, tripStops, errorMessage, hasStartTimeToSave);
+    return error(trip, dayTrip, errorMessage, fatal, hasStartTimeToSave);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult? Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult? Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
   }) {
-    return error?.call(
-        trip, dayTrip, tripStops, errorMessage, hasStartTimeToSave);
+    return error?.call(trip, dayTrip, errorMessage, fatal, hasStartTimeToSave);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(trip, dayTrip, tripStops, errorMessage, hasStartTimeToSave);
+      return error(trip, dayTrip, errorMessage, fatal, hasStartTimeToSave);
     }
     return orElse();
   }
@@ -1054,10 +960,10 @@ class _$DayTripStateErrorImpl implements DayTripStateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DayTripStateNormal value) normal,
-    required TResult Function(DayTripStateLoading value) loading,
-    required TResult Function(DayTripStateError value) error,
-    required TResult Function(DayTripStateEditing value) editing,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Editing value) editing,
     required TResult Function(DayTripStateDeleting value) deleting,
     required TResult Function(DayTripStateDeleted value) deleted,
   }) {
@@ -1067,10 +973,10 @@ class _$DayTripStateErrorImpl implements DayTripStateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DayTripStateNormal value)? normal,
-    TResult? Function(DayTripStateLoading value)? loading,
-    TResult? Function(DayTripStateError value)? error,
-    TResult? Function(DayTripStateEditing value)? editing,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Editing value)? editing,
     TResult? Function(DayTripStateDeleting value)? deleting,
     TResult? Function(DayTripStateDeleted value)? deleted,
   }) {
@@ -1080,10 +986,10 @@ class _$DayTripStateErrorImpl implements DayTripStateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DayTripStateNormal value)? normal,
-    TResult Function(DayTripStateLoading value)? loading,
-    TResult Function(DayTripStateError value)? error,
-    TResult Function(DayTripStateEditing value)? editing,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Editing value)? editing,
     TResult Function(DayTripStateDeleting value)? deleting,
     TResult Function(DayTripStateDeleted value)? deleted,
     required TResult orElse(),
@@ -1095,35 +1001,34 @@ class _$DayTripStateErrorImpl implements DayTripStateError {
   }
 }
 
-abstract class DayTripStateError implements DayTripState {
-  const factory DayTripStateError(
+abstract class _Error implements DayTripState {
+  const factory _Error(
       {required final Trip trip,
       required final DayTrip dayTrip,
-      final List<TripStop> tripStops,
-      final String? errorMessage,
-      final bool hasStartTimeToSave}) = _$DayTripStateErrorImpl;
+      required final String errorMessage,
+      required final bool fatal,
+      required final bool hasStartTimeToSave}) = _$ErrorImpl;
 
   @override
   Trip get trip;
   @override
   DayTrip get dayTrip;
-  @override
-  List<TripStop> get tripStops;
-  String? get errorMessage;
+  String get errorMessage;
+  bool get fatal;
   @override
   bool get hasStartTimeToSave;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripStateErrorImplCopyWith<_$DayTripStateErrorImpl> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DayTripStateEditingImplCopyWith<$Res>
+abstract class _$$EditingImplCopyWith<$Res>
     implements $DayTripStateCopyWith<$Res> {
-  factory _$$DayTripStateEditingImplCopyWith(_$DayTripStateEditingImpl value,
-          $Res Function(_$DayTripStateEditingImpl) then) =
-      __$$DayTripStateEditingImplCopyWithImpl<$Res>;
+  factory _$$EditingImplCopyWith(
+          _$EditingImpl value, $Res Function(_$EditingImpl) then) =
+      __$$EditingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1132,7 +1037,8 @@ abstract class _$$DayTripStateEditingImplCopyWith<$Res>
       List<TripStop> tripStops,
       String? description,
       bool isSaving,
-      bool hasStartTimeToSave});
+      bool hasStartTimeToSave,
+      String? errorMessage});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -1141,11 +1047,11 @@ abstract class _$$DayTripStateEditingImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DayTripStateEditingImplCopyWithImpl<$Res>
-    extends _$DayTripStateCopyWithImpl<$Res, _$DayTripStateEditingImpl>
-    implements _$$DayTripStateEditingImplCopyWith<$Res> {
-  __$$DayTripStateEditingImplCopyWithImpl(_$DayTripStateEditingImpl _value,
-      $Res Function(_$DayTripStateEditingImpl) _then)
+class __$$EditingImplCopyWithImpl<$Res>
+    extends _$DayTripStateCopyWithImpl<$Res, _$EditingImpl>
+    implements _$$EditingImplCopyWith<$Res> {
+  __$$EditingImplCopyWithImpl(
+      _$EditingImpl _value, $Res Function(_$EditingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1157,8 +1063,9 @@ class __$$DayTripStateEditingImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? isSaving = null,
     Object? hasStartTimeToSave = null,
+    Object? errorMessage = freezed,
   }) {
-    return _then(_$DayTripStateEditingImpl(
+    return _then(_$EditingImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -1183,20 +1090,25 @@ class __$$DayTripStateEditingImplCopyWithImpl<$Res>
           ? _value.hasStartTimeToSave
           : hasStartTimeToSave // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DayTripStateEditingImpl implements DayTripStateEditing {
-  const _$DayTripStateEditingImpl(
+class _$EditingImpl implements _Editing {
+  const _$EditingImpl(
       {required this.trip,
       required this.dayTrip,
-      final List<TripStop> tripStops = const [],
+      required final List<TripStop> tripStops,
       required this.description,
       this.isSaving = false,
-      this.hasStartTimeToSave = false})
+      required this.hasStartTimeToSave,
+      this.errorMessage})
       : _tripStops = tripStops;
 
   @override
@@ -1205,7 +1117,6 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
   final DayTrip dayTrip;
   final List<TripStop> _tripStops;
   @override
-  @JsonKey()
   List<TripStop> get tripStops {
     if (_tripStops is EqualUnmodifiableListView) return _tripStops;
     // ignore: implicit_dynamic_type
@@ -1218,19 +1129,20 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
   @JsonKey()
   final bool isSaving;
   @override
-  @JsonKey()
   final bool hasStartTimeToSave;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'DayTripState.editing(trip: $trip, dayTrip: $dayTrip, tripStops: $tripStops, description: $description, isSaving: $isSaving, hasStartTimeToSave: $hasStartTimeToSave)';
+    return 'DayTripState.editing(trip: $trip, dayTrip: $dayTrip, tripStops: $tripStops, description: $description, isSaving: $isSaving, hasStartTimeToSave: $hasStartTimeToSave, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayTripStateEditingImpl &&
+            other is _$EditingImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
             const DeepCollectionEquality()
@@ -1240,7 +1152,9 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
             (identical(other.hasStartTimeToSave, hasStartTimeToSave) ||
-                other.hasStartTimeToSave == hasStartTimeToSave));
+                other.hasStartTimeToSave == hasStartTimeToSave) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -1251,35 +1165,30 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
       const DeepCollectionEquality().hash(_tripStops),
       description,
       isSaving,
-      hasStartTimeToSave);
+      hasStartTimeToSave,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayTripStateEditingImplCopyWith<_$DayTripStateEditingImpl> get copyWith =>
-      __$$DayTripStateEditingImplCopyWithImpl<_$DayTripStateEditingImpl>(
-          this, _$identity);
+  _$$EditingImplCopyWith<_$EditingImpl> get copyWith =>
+      __$$EditingImplCopyWithImpl<_$EditingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)
-        normal,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        loading,
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
+        initial,
     required TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
-            String? errorMessage,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            bool explictitStartTimeSave)
+        loaded,
+    required TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)
         error,
     required TResult Function(
             Trip trip,
@@ -1287,81 +1196,80 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
             List<TripStop> tripStops,
             String? description,
             bool isSaving,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip,
             List<TripStop> tripStops, bool hasStartTimeToSave)
         deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
         deleted,
   }) {
-    return editing(
-        trip, dayTrip, tripStops, description, isSaving, hasStartTimeToSave);
+    return editing(trip, dayTrip, tripStops, description, isSaving,
+        hasStartTimeToSave, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult? Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult? Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
   }) {
-    return editing?.call(
-        trip, dayTrip, tripStops, description, isSaving, hasStartTimeToSave);
+    return editing?.call(trip, dayTrip, tripStops, description, isSaving,
+        hasStartTimeToSave, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(
-          trip, dayTrip, tripStops, description, isSaving, hasStartTimeToSave);
+      return editing(trip, dayTrip, tripStops, description, isSaving,
+          hasStartTimeToSave, errorMessage);
     }
     return orElse();
   }
@@ -1369,10 +1277,10 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DayTripStateNormal value) normal,
-    required TResult Function(DayTripStateLoading value) loading,
-    required TResult Function(DayTripStateError value) error,
-    required TResult Function(DayTripStateEditing value) editing,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Editing value) editing,
     required TResult Function(DayTripStateDeleting value) deleting,
     required TResult Function(DayTripStateDeleted value) deleted,
   }) {
@@ -1382,10 +1290,10 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DayTripStateNormal value)? normal,
-    TResult? Function(DayTripStateLoading value)? loading,
-    TResult? Function(DayTripStateError value)? error,
-    TResult? Function(DayTripStateEditing value)? editing,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Editing value)? editing,
     TResult? Function(DayTripStateDeleting value)? deleting,
     TResult? Function(DayTripStateDeleted value)? deleted,
   }) {
@@ -1395,10 +1303,10 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DayTripStateNormal value)? normal,
-    TResult Function(DayTripStateLoading value)? loading,
-    TResult Function(DayTripStateError value)? error,
-    TResult Function(DayTripStateEditing value)? editing,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Editing value)? editing,
     TResult Function(DayTripStateDeleting value)? deleting,
     TResult Function(DayTripStateDeleted value)? deleted,
     required TResult orElse(),
@@ -1410,28 +1318,29 @@ class _$DayTripStateEditingImpl implements DayTripStateEditing {
   }
 }
 
-abstract class DayTripStateEditing implements DayTripState {
-  const factory DayTripStateEditing(
+abstract class _Editing implements DayTripState {
+  const factory _Editing(
       {required final Trip trip,
       required final DayTrip dayTrip,
-      final List<TripStop> tripStops,
+      required final List<TripStop> tripStops,
       required final String? description,
       final bool isSaving,
-      final bool hasStartTimeToSave}) = _$DayTripStateEditingImpl;
+      required final bool hasStartTimeToSave,
+      final String? errorMessage}) = _$EditingImpl;
 
   @override
   Trip get trip;
   @override
   DayTrip get dayTrip;
-  @override
   List<TripStop> get tripStops;
   String? get description;
   bool get isSaving;
   @override
   bool get hasStartTimeToSave;
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripStateEditingImplCopyWith<_$DayTripStateEditingImpl> get copyWith =>
+  _$$EditingImplCopyWith<_$EditingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1498,8 +1407,8 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   const _$DayTripStateDeletingImpl(
       {required this.trip,
       required this.dayTrip,
-      final List<TripStop> tripStops = const [],
-      this.hasStartTimeToSave = false})
+      required final List<TripStop> tripStops,
+      required this.hasStartTimeToSave})
       : _tripStops = tripStops;
 
   @override
@@ -1508,7 +1417,6 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   final DayTrip dayTrip;
   final List<TripStop> _tripStops;
   @override
-  @JsonKey()
   List<TripStop> get tripStops {
     if (_tripStops is EqualUnmodifiableListView) return _tripStops;
     // ignore: implicit_dynamic_type
@@ -1516,7 +1424,6 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   }
 
   @override
-  @JsonKey()
   final bool hasStartTimeToSave;
 
   @override
@@ -1553,22 +1460,17 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)
-        normal,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        loading,
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
+        initial,
     required TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
-            String? errorMessage,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            bool explictitStartTimeSave)
+        loaded,
+    required TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)
         error,
     required TResult Function(
             Trip trip,
@@ -1576,13 +1478,14 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
             List<TripStop> tripStops,
             String? description,
             bool isSaving,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip,
             List<TripStop> tripStops, bool hasStartTimeToSave)
         deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
         deleted,
   }) {
     return deleting(trip, dayTrip, tripStops, hasStartTimeToSave);
@@ -1591,28 +1494,27 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult? Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult? Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
   }) {
     return deleting?.call(trip, dayTrip, tripStops, hasStartTimeToSave);
@@ -1621,28 +1523,27 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
     required TResult orElse(),
   }) {
@@ -1655,10 +1556,10 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DayTripStateNormal value) normal,
-    required TResult Function(DayTripStateLoading value) loading,
-    required TResult Function(DayTripStateError value) error,
-    required TResult Function(DayTripStateEditing value) editing,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Editing value) editing,
     required TResult Function(DayTripStateDeleting value) deleting,
     required TResult Function(DayTripStateDeleted value) deleted,
   }) {
@@ -1668,10 +1569,10 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DayTripStateNormal value)? normal,
-    TResult? Function(DayTripStateLoading value)? loading,
-    TResult? Function(DayTripStateError value)? error,
-    TResult? Function(DayTripStateEditing value)? editing,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Editing value)? editing,
     TResult? Function(DayTripStateDeleting value)? deleting,
     TResult? Function(DayTripStateDeleted value)? deleted,
   }) {
@@ -1681,10 +1582,10 @@ class _$DayTripStateDeletingImpl implements DayTripStateDeleting {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DayTripStateNormal value)? normal,
-    TResult Function(DayTripStateLoading value)? loading,
-    TResult Function(DayTripStateError value)? error,
-    TResult Function(DayTripStateEditing value)? editing,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Editing value)? editing,
     TResult Function(DayTripStateDeleting value)? deleting,
     TResult Function(DayTripStateDeleted value)? deleted,
     required TResult orElse(),
@@ -1700,14 +1601,13 @@ abstract class DayTripStateDeleting implements DayTripState {
   const factory DayTripStateDeleting(
       {required final Trip trip,
       required final DayTrip dayTrip,
-      final List<TripStop> tripStops,
-      final bool hasStartTimeToSave}) = _$DayTripStateDeletingImpl;
+      required final List<TripStop> tripStops,
+      required final bool hasStartTimeToSave}) = _$DayTripStateDeletingImpl;
 
   @override
   Trip get trip;
   @override
   DayTrip get dayTrip;
-  @override
   List<TripStop> get tripStops;
   @override
   bool get hasStartTimeToSave;
@@ -1725,11 +1625,7 @@ abstract class _$$DayTripStateDeletedImplCopyWith<$Res>
       __$$DayTripStateDeletedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Trip trip,
-      DayTrip dayTrip,
-      List<TripStop> tripStops,
-      bool hasStartTimeToSave});
+  $Res call({Trip trip, DayTrip dayTrip, bool hasStartTimeToSave});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -1750,7 +1646,6 @@ class __$$DayTripStateDeletedImplCopyWithImpl<$Res>
   $Res call({
     Object? trip = null,
     Object? dayTrip = null,
-    Object? tripStops = null,
     Object? hasStartTimeToSave = null,
   }) {
     return _then(_$DayTripStateDeletedImpl(
@@ -1762,10 +1657,6 @@ class __$$DayTripStateDeletedImplCopyWithImpl<$Res>
           ? _value.dayTrip
           : dayTrip // ignore: cast_nullable_to_non_nullable
               as DayTrip,
-      tripStops: null == tripStops
-          ? _value._tripStops
-          : tripStops // ignore: cast_nullable_to_non_nullable
-              as List<TripStop>,
       hasStartTimeToSave: null == hasStartTimeToSave
           ? _value.hasStartTimeToSave
           : hasStartTimeToSave // ignore: cast_nullable_to_non_nullable
@@ -1780,30 +1671,19 @@ class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
   const _$DayTripStateDeletedImpl(
       {required this.trip,
       required this.dayTrip,
-      final List<TripStop> tripStops = const [],
-      this.hasStartTimeToSave = false})
-      : _tripStops = tripStops;
+      this.hasStartTimeToSave = false});
 
   @override
   final Trip trip;
   @override
   final DayTrip dayTrip;
-  final List<TripStop> _tripStops;
-  @override
-  @JsonKey()
-  List<TripStop> get tripStops {
-    if (_tripStops is EqualUnmodifiableListView) return _tripStops;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tripStops);
-  }
-
   @override
   @JsonKey()
   final bool hasStartTimeToSave;
 
   @override
   String toString() {
-    return 'DayTripState.deleted(trip: $trip, dayTrip: $dayTrip, tripStops: $tripStops, hasStartTimeToSave: $hasStartTimeToSave)';
+    return 'DayTripState.deleted(trip: $trip, dayTrip: $dayTrip, hasStartTimeToSave: $hasStartTimeToSave)';
   }
 
   @override
@@ -1813,15 +1693,13 @@ class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
             other is _$DayTripStateDeletedImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            const DeepCollectionEquality()
-                .equals(other._tripStops, _tripStops) &&
             (identical(other.hasStartTimeToSave, hasStartTimeToSave) ||
                 other.hasStartTimeToSave == hasStartTimeToSave));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, trip, dayTrip,
-      const DeepCollectionEquality().hash(_tripStops), hasStartTimeToSave);
+  int get hashCode =>
+      Object.hash(runtimeType, trip, dayTrip, hasStartTimeToSave);
 
   @JsonKey(ignore: true)
   @override
@@ -1834,22 +1712,17 @@ class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            List<TripStop> tripStops,
-            bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)
-        normal,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
-        loading,
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
+        initial,
     required TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
-            String? errorMessage,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            bool explictitStartTimeSave)
+        loaded,
+    required TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)
         error,
     required TResult Function(
             Trip trip,
@@ -1857,78 +1730,77 @@ class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
             List<TripStop> tripStops,
             String? description,
             bool isSaving,
-            bool hasStartTimeToSave)
+            bool hasStartTimeToSave,
+            String? errorMessage)
         editing,
     required TResult Function(Trip trip, DayTrip dayTrip,
             List<TripStop> tripStops, bool hasStartTimeToSave)
         deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip,
-            List<TripStop> tripStops, bool hasStartTimeToSave)
+    required TResult Function(
+            Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)
         deleted,
   }) {
-    return deleted(trip, dayTrip, tripStops, hasStartTimeToSave);
+    return deleted(trip, dayTrip, hasStartTimeToSave);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult? Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult? Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult? Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
   }) {
-    return deleted?.call(trip, dayTrip, tripStops, hasStartTimeToSave);
+    return deleted?.call(trip, dayTrip, hasStartTimeToSave);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
+        initial,
+    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
+            bool hasStartTimeToSave, bool explictitStartTimeSave)?
+        loaded,
+    TResult Function(Trip trip, DayTrip dayTrip, String errorMessage,
+            bool fatal, bool hasStartTimeToSave)?
+        error,
     TResult Function(
             Trip trip,
             DayTrip dayTrip,
             List<TripStop> tripStops,
+            String? description,
+            bool isSaving,
             bool hasStartTimeToSave,
-            bool explictitStartTimeSave,
-            bool isSaving)?
-        normal,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
-        loading,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? errorMessage, bool hasStartTimeToSave)?
-        error,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            String? description, bool isSaving, bool hasStartTimeToSave)?
+            String? errorMessage)?
         editing,
     TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
             bool hasStartTimeToSave)?
         deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, List<TripStop> tripStops,
-            bool hasStartTimeToSave)?
+    TResult Function(Trip trip, DayTrip dayTrip, bool hasStartTimeToSave)?
         deleted,
     required TResult orElse(),
   }) {
     if (deleted != null) {
-      return deleted(trip, dayTrip, tripStops, hasStartTimeToSave);
+      return deleted(trip, dayTrip, hasStartTimeToSave);
     }
     return orElse();
   }
@@ -1936,10 +1808,10 @@ class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DayTripStateNormal value) normal,
-    required TResult Function(DayTripStateLoading value) loading,
-    required TResult Function(DayTripStateError value) error,
-    required TResult Function(DayTripStateEditing value) editing,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Editing value) editing,
     required TResult Function(DayTripStateDeleting value) deleting,
     required TResult Function(DayTripStateDeleted value) deleted,
   }) {
@@ -1949,10 +1821,10 @@ class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DayTripStateNormal value)? normal,
-    TResult? Function(DayTripStateLoading value)? loading,
-    TResult? Function(DayTripStateError value)? error,
-    TResult? Function(DayTripStateEditing value)? editing,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Editing value)? editing,
     TResult? Function(DayTripStateDeleting value)? deleting,
     TResult? Function(DayTripStateDeleted value)? deleted,
   }) {
@@ -1962,10 +1834,10 @@ class _$DayTripStateDeletedImpl implements DayTripStateDeleted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DayTripStateNormal value)? normal,
-    TResult Function(DayTripStateLoading value)? loading,
-    TResult Function(DayTripStateError value)? error,
-    TResult Function(DayTripStateEditing value)? editing,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Editing value)? editing,
     TResult Function(DayTripStateDeleting value)? deleting,
     TResult Function(DayTripStateDeleted value)? deleted,
     required TResult orElse(),
@@ -1981,15 +1853,12 @@ abstract class DayTripStateDeleted implements DayTripState {
   const factory DayTripStateDeleted(
       {required final Trip trip,
       required final DayTrip dayTrip,
-      final List<TripStop> tripStops,
       final bool hasStartTimeToSave}) = _$DayTripStateDeletedImpl;
 
   @override
   Trip get trip;
   @override
   DayTrip get dayTrip;
-  @override
-  List<TripStop> get tripStops;
   @override
   bool get hasStartTimeToSave;
   @override

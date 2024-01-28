@@ -5,16 +5,17 @@ class _TripStopsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = context.select((DayTripCubit cubit) => cubit.state is DayTripStateLoading);
+    return const Placeholder();
+    /* final isLoading = context.select((DayTripCubit cubit) => cubit.state is DayTripStateLoading);
 
     return AnimatedSize(
       duration: const Duration(milliseconds: 400),
       child: isLoading ? const SizedBox.shrink() : const _List(),
-    );
+    );*/
   }
 }
 
-class _List extends HookWidget with TripStopStartEndTimeMixin {
+/* class _List extends HookWidget with TripStopStartEndTimeMixin {
   const _List();
 
   @override
@@ -91,4 +92,4 @@ class _List extends HookWidget with TripStopStartEndTimeMixin {
       label: tripStop.isDone ? LocaleKeys.toDo.tr() : LocaleKeys.done.tr(),
     );
   }
-}
+} */

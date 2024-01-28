@@ -11,11 +11,6 @@ sealed class TripState with _$TripState {
     required List<DayTrip> dayTrips,
   }) = _Normal;
 
-  /* const factory TripState.loading({
-    required final Trip trip,
-    @Default([]) final List<DayTrip> dayTrips,
-  }) = TripStateLoading; */
-
   const factory TripState.error({
     required final Trip trip,
     required String errorMessage,

@@ -5,7 +5,8 @@ class _MapWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
+    return const Placeholder();
+    /* final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
     final isTripStopsDirectionsToLoad =
         context.select((TripStopsMapCubit cubit) => cubit.state.isTripStopsDirectionsToLoad);
 
@@ -29,7 +30,7 @@ class _MapWidget extends StatelessWidget {
           TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop),
         );
       },
-    );
+    ); */
   }
 
   Set<Polyline> _getPolylines(BuildContext context) {
