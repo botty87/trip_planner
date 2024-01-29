@@ -300,53 +300,65 @@ class DayTripCubit extends Cubit<DayTripState> {
     ); */
   }
 
-  void reorderTripStops(int oldIndex, int newIndex) async {
-    //TODO implement
-    /* final List<TripStop> tripStopsToUpdate = [];
+  void reorderTripStops(int oldIndex, int newIndex, List<TripStop> tripStopsSorted) async {
+    state.mapOrNull(
+      loaded: (state) async {
+        final oldTripStops = state.tripStops;
 
-    tripStopsToUpdate.add(state.tripStops[oldIndex].copyWith(index: newIndex));
-    if (newIndex > oldIndex) {
-      for (int i = oldIndex + 1; i <= newIndex; i++) {
-        tripStopsToUpdate.add(state.tripStops[i].copyWith(index: i - 1));
-      }
-    } else {
-      for (int i = oldIndex - 1; i >= newIndex; i--) {
-        tripStopsToUpdate.add(state.tripStops[i].copyWith(index: i + 1));
-      }
-    }
+        for (int i = 0; i < tripStopsSorted.length; i++) {
+          tripStopsSorted[i] = tripStopsSorted[i].copyWith(index: i);
+        }
+        emit(state.copyWith(tripStops: tripStopsSorted));
 
-    final result = await _updateDayTripsIndexes(
-      UpdateTripStopsIndexesParams(
-        tripId: state.trip.id,
-        dayTripId: state.dayTrip.id,
-        tripStops: tripStopsToUpdate,
-      ),
-    );
+        final List<TripStop> tripStopsToUpdate = [];
 
-    result.fold(
-      (failure) {
-        emit(DayTripState.error(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
-        ));
-        emit(DayTripState.normal(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-        ));
-      },
-      (_) {
-        _updateTripStopsDirectionsUpToDate(
-          UpdateTripStopsDirectionsUpToDateParams(
+        tripStopsToUpdate.add(state.tripStops[oldIndex].copyWith(index: newIndex));
+        if (newIndex > oldIndex) {
+          for (int i = oldIndex + 1; i <= newIndex; i++) {
+            tripStopsToUpdate.add(state.tripStops[i].copyWith(index: i - 1));
+          }
+        } else {
+          for (int i = oldIndex - 1; i >= newIndex; i--) {
+            tripStopsToUpdate.add(state.tripStops[i].copyWith(index: i + 1));
+          }
+        }
+
+        final result = await _updateDayTripsIndexes(
+          UpdateTripStopsIndexesParams(
             tripId: state.trip.id,
             dayTripId: state.dayTrip.id,
-            isUpToDate: false,
+            tripStops: tripStopsToUpdate,
           ),
         );
+
+        result.fold(
+          (failure) {
+            emit(DayTripState.error(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+              fatal: false,
+              errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+              hasStartTimeToSave: state.hasStartTimeToSave,
+            ));
+            emit(DayTripState.loaded(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+              tripStops: oldTripStops,
+              hasStartTimeToSave: state.hasStartTimeToSave,
+            ));
+          },
+          (_) {
+            _updateTripStopsDirectionsUpToDate(
+              UpdateTripStopsDirectionsUpToDateParams(
+                tripId: state.trip.id,
+                dayTripId: state.dayTrip.id,
+                isUpToDate: false,
+              ),
+            );
+          },
+        );
       },
-    ); */
+    );
   }
 
   void updateTravelTimeToNextStop(String id, int inMinutes) async {

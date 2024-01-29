@@ -97,7 +97,9 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       areItemsTheSame: (oldItem, newItem) => oldItem == newItem,
       onReorderFinished: (item, from, to, newItems) {
         tripStopStartEndTimes.clear();
-        //context.read<TripCubit>().reorderDayTrips(from, to, newItems);
+        context
+            .read<DayTripCubit>()
+            .reorderTripStops(from, to, newItems.map((e) => e.first).toList());
       },
     );
   }

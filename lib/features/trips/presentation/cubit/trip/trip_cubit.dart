@@ -173,7 +173,9 @@ class TripCubit extends Cubit<TripState> {
   }
 
   void reorderDayTrips(int oldIndex, int newIndex, List<DayTrip> dayTripsSorted) {
-    state.mapOrNull(loaded: (state) {
+    state.mapOrNull(loaded: (state) async {
+      final oldDayTrips = state.dayTrips;
+
       for (int i = 0; i < dayTripsSorted.length; i++) {
         dayTripsSorted[i] = dayTripsSorted[i].copyWith(index: i);
       }
@@ -192,8 +194,19 @@ class TripCubit extends Cubit<TripState> {
         }
       }
 
-      _updateDayTripsIndexes(
+      final result = await _updateDayTripsIndexes(
           UpdateDayTripsIndexesParams(dayTrips: dayTripsToUpdate, tripId: state.trip.id));
+
+      result.leftMap(
+        (failure) {
+          emit(TripState.error(
+            trip: state.trip,
+            errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+            fatal: false,
+          ));
+          emit(TripState.loaded(trip: state.trip, dayTrips: oldDayTrips));
+        },
+      );
     });
   }
 
