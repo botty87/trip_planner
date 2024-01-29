@@ -401,56 +401,53 @@ class DayTripCubit extends Cubit<DayTripState> {
     ); */
   }
 
-  void toggleTripStopDone(bool isDone, int tripStopIndex) async {
-    //TODO implement
-    /* //Set the trip stop at the index to the new value
-    final tripStop = state.tripStops[tripStopIndex].copyWith(isDone: isDone);
-    final tripStops = List<TripStop>.from(state.tripStops);
-    tripStops[tripStopIndex] = tripStop;
-
-    emit(DayTripState.normal(
-      trip: state.trip,
-      dayTrip: state.dayTrip,
-      tripStops: tripStops,
-    ));
-
-    final result = await _tripStopDone(
-      TripStopDoneParams(
-        tripId: state.trip.id,
-        dayTripId: state.dayTrip.id,
-        tripStopId: tripStop.id,
-        isDone: isDone,
-      ),
-    );
-
-    if (isClosed) return;
-
-    result.fold(
-      (failure) {
-        //Revert the trip stop to the previous value
-        final tripStop = state.tripStops[tripStopIndex].copyWith(isDone: !isDone);
+  void toggleTripStopDone(bool isDone, int tripStopIndex) {
+    state.mapOrNull(
+      loaded: (state) async {
+        //Set the trip stop at the index to the new value
+        final tripStop = state.tripStops[tripStopIndex].copyWith(isDone: isDone);
         final tripStops = List<TripStop>.from(state.tripStops);
         tripStops[tripStopIndex] = tripStop;
 
-        emit(DayTripState.error(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: tripStops,
-          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
-        ));
+        emit(state.copyWith(tripStops: tripStops));
 
-        emit(DayTripState.normal(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: tripStops,
-        ));
+        final result = await _tripStopDone(
+          TripStopDoneParams(
+            tripId: state.trip.id,
+            dayTripId: state.dayTrip.id,
+            tripStopId: tripStop.id,
+            isDone: isDone,
+          ),
+        );
+
+        if (isClosed) return;
+
+        result.leftMap(
+          (failure) {
+            final oldTripStops = state.tripStops;
+
+            //Set the trip stop at the index to the old value
+            final tripStop = state.tripStops[tripStopIndex].copyWith(isDone: !isDone);
+            final tripStops = List<TripStop>.from(state.tripStops);
+            tripStops[tripStopIndex] = tripStop;
+
+            emit(DayTripState.error(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+              fatal: false,
+              errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+              hasStartTimeToSave: state.hasStartTimeToSave,
+            ));
+
+            emit(DayTripState.loaded(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+              tripStops: oldTripStops,
+            ));
+          },
+        );
       },
-      (_) => emit(DayTripState.normal(
-        trip: state.trip,
-        dayTrip: state.dayTrip,
-        tripStops: tripStops,
-      )),
-    ); */
+    );
   }
 
   @override
