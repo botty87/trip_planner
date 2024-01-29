@@ -47,7 +47,6 @@ class DayTripCubit extends Cubit<DayTripState> {
   StreamSubscription<Either<DayTripsFailure, DayTrip>>? _dayTripSubscription;
 
   final _startTimeDebouncer = Debouncer(milliseconds: 5000);
-  final _travelTimeDebouncer = Debouncer(milliseconds: 500);
 
   DayTripCubit({
     @factoryParam required Trip trip,
@@ -361,44 +360,44 @@ class DayTripCubit extends Cubit<DayTripState> {
     );
   }
 
-  void updateTravelTimeToNextStop(String id, int inMinutes) async {
-    //TODO implement
-    /* _travelTimeDebouncer.run(() {
-      assert(state is DayTripStateNormal);
-      emit((state as DayTripStateNormal).copyWith(isSaving: true));
-    });
+  void updateTravelTimeToNextStop(String id, int inMinutes) {
+    state.mapOrNull(
+      loaded: (state) async {
+        final oldTripStops = state.tripStops;
 
-    final result = await _updateTravelTime(
-      UpdateTravelTimeParams(
-        tripId: state.trip.id,
-        dayTripId: state.dayTrip.id,
-        tripStopId: id,
-        travelTime: inMinutes,
-      ),
-    );
+        final tripStopToUpdateIndex = state.tripStops.indexWhere((element) => element.id == id);
+        final tripStopToUpdate =
+            state.tripStops[tripStopToUpdateIndex].copyWith(travelTimeToNextStop: inMinutes);
+        final tripStops = List<TripStop>.from(state.tripStops);
+        tripStops[tripStopToUpdateIndex] = tripStopToUpdate;
 
-    _travelTimeDebouncer.cancel();
+        emit(state.copyWith(tripStops: tripStops));
 
-    result.fold(
-      (failure) {
-        emit(DayTripState.error(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
-        ));
-        emit(DayTripState.normal(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-        ));
+        final result = await _updateTravelTime(
+          UpdateTravelTimeParams(
+            tripId: state.trip.id,
+            dayTripId: state.dayTrip.id,
+            tripStopId: id,
+            travelTime: inMinutes,
+          ),
+        );
+
+        result.leftMap((failure) {
+          emit(DayTripState.error(
+            trip: state.trip,
+            dayTrip: state.dayTrip,
+            fatal: false,
+            errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+            hasStartTimeToSave: state.hasStartTimeToSave,
+          ));
+          emit(DayTripState.loaded(
+            trip: state.trip,
+            dayTrip: state.dayTrip,
+            tripStops: oldTripStops,
+          ));
+        });
       },
-      (_) => emit(DayTripState.normal(
-        trip: state.trip,
-        dayTrip: state.dayTrip,
-        tripStops: state.tripStops,
-      )),
-    ); */
+    );
   }
 
   void toggleTripStopDone(bool isDone, int tripStopIndex) {
