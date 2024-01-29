@@ -90,6 +90,14 @@ class DayTripPage extends HookWidget {
                         ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
                       },
                     ),
+                    //On delete, pop page
+                    BlocListener<DayTripCubit, DayTripState>(
+                      listenWhen: (previous, current) => current.maybeMap(
+                        deleted: (_) => true,
+                        orElse: () => false,
+                      ),
+                      listener: (context, state) => context.router.pop(),
+                    ),
                   ],
                   child: Builder(builder: (context) {
                     return NotificationListener(

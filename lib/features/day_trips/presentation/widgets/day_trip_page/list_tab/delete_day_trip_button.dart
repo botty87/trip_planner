@@ -19,9 +19,9 @@ class DeleteDayTripButton extends StatelessWidget {
 
     return GenericDeleteTripButton(
       isDeleting: isDeleting,
-      alertDialogTitle: LocaleKeys.deleteTrip.tr(),
-      alertDialogMessage: LocaleKeys.deleteTripQuestion.tr(),
-      deleteButtonLabel: LocaleKeys.deleteTrip.tr(),
+      alertDialogTitle: LocaleKeys.deleteDayTrip.tr(),
+      alertDialogMessage: LocaleKeys.deleteDayTripQuestion.tr(),
+      deleteButtonLabel: LocaleKeys.deleteDayTrip.tr(),
       deleteAction: () {
         context.read<DayTripCubit>().deleteDayTrip();
       },

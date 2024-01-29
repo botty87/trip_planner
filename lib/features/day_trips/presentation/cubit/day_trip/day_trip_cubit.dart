@@ -262,45 +262,53 @@ class DayTripCubit extends Cubit<DayTripState> {
 
   void deleteDayTrip() async {
     state.mapOrNull(
-      loaded: (loadedState) {
+      loaded: (loadedState) async {
+        //cancel startTimeDebouncer
+        _startTimeDebouncer.cancel();
+
+        final oldTripStops = loadedState.tripStops;
+
         emit(DayTripState.deleting(
           trip: loadedState.trip,
           dayTrip: loadedState.dayTrip,
           tripStops: loadedState.tripStops,
           hasStartTimeToSave: loadedState.hasStartTimeToSave,
         ));
-      },
-    );
-    
-    /* final result = await _deleteDayTrip(
-      DeleteDayTripParams(
-        tripId: state.trip.id,
-        dayTripId: state.dayTrip.id,
-      ),
-    );
 
-    result.fold(
-      (failure) {
-        emit(DayTripState.error(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
-        ));
-        emit(DayTripState.normal(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-        ));
+        final result = await _deleteDayTrip(
+          DeleteDayTripParams(
+            tripId: state.trip.id,
+            dayTripId: state.dayTrip.id,
+          ),
+        );
+
+        result.fold(
+          (failure) {
+            emit(DayTripState.error(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+              fatal: false,
+              errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+              hasStartTimeToSave: state.hasStartTimeToSave,
+            ));
+            emit(DayTripState.loaded(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+              tripStops: oldTripStops,
+            ));
+
+            //Restore startTimeDebouncer
+            _startTimeDebouncer.run(() => saveDayTripStopStartTime());
+          },
+          (_) {
+            emit(DayTripState.deleted(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+            ));
+          },
+        );
       },
-      (_) {
-        emit(DayTripState.deleted(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-        ));
-      },
-    ); */
+    );
   }
 
   void reorderTripStops(int oldIndex, int newIndex, List<TripStop> tripStopsSorted) async {
