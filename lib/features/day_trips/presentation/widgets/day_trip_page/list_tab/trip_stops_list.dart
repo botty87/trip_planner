@@ -1,17 +1,18 @@
 import 'package:animated_list_plus/animated_list_plus.dart';
+import 'package:animated_list_plus/transitions.dart';
+import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:animated_list_plus/transitions.dart';
 
-import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/pair.dart';
 import '../../../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
+import 'travel_card.dart';
 import 'trip_stop_card.dart';
 
 class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
@@ -56,38 +57,63 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       tripStopStartEndTimes.add(Pair(tripStop, startEndTime));
     }
 
-    return ImplicitlyAnimatedReorderableList<Pair<TripStop, StartEndTime>>(
-      shrinkWrap: true,
-      items: tripStopStartEndTimes,
-      itemBuilder: (context, itemAnimation, tripStopStartEndTime, index) {
-        final tripStop = tripStopStartEndTime.first;
-        final startEndTime = tripStopStartEndTime.second;
+    //The firs item is for the TripStopCard, the second is for the TravelCard
+    final List<Either<Pair<TripStop, StartEndTime>, TripStop>> tripStopItems = [];
+    for (int i = 0; i < tripStopStartEndTimes.length; i++) {
+      final tripStopStartEndTime = tripStopStartEndTimes[i];
+      tripStopItems.add(Left(tripStopStartEndTime));
+      if (i < tripStopStartEndTimes.length - 1) {
+        tripStopItems.add(Right(tripStopStartEndTime.first));
+      }
+    }
 
-        // Each item must be wrapped in a Reorderable widget.
-        return Reorderable(
-          // Each item must have an unique key.
-          key: ValueKey(tripStop.id),
-          builder: (context, dragAnimation, inDrag) {
-            return SizeFadeTransition(
-              animation: itemAnimation,
-              child: Padding(
-                key: ValueKey(tripStop.id),
-                padding: const EdgeInsets.only(bottom: verticalSpaceXs),
-                child: Slidable(
-                  startActionPane: ActionPane(
-                    motion: const ScrollMotion(),
-                    children: [_getSlidableAction(tripStop, index)],
+    return ImplicitlyAnimatedReorderableList<Either<Pair<TripStop, StartEndTime>, TripStop>>(
+      shrinkWrap: true,
+      items: tripStopItems,
+      itemBuilder: (context, itemAnimation, tripStopItem, index) {
+        return tripStopItem.fold(
+          (tripStopCardItem) {
+            final tripStop = tripStopCardItem.first;
+            final startEndTime = tripStopCardItem.second;
+
+            // Each item must be wrapped in a Reorderable widget.
+            return Reorderable(
+              // Each item must have an unique key.
+              key: ValueKey(tripStop.id),
+              builder: (context, dragAnimation, inDrag) {
+                return SizeFadeTransition(
+                  animation: itemAnimation,
+                  child: Slidable(
+                    startActionPane: ActionPane(
+                      motion: const ScrollMotion(),
+                      children: [_getSlidableAction(tripStop, index)],
+                    ),
+                    child: Builder(builder: (context) {
+                      final slidableController = Slidable.of(context);
+                      return TripStopCard(
+                        tripStop: tripStop,
+                        tripStartEndTimes: startEndTime,
+                        slidableController: slidableController,
+                      );
+                    }),
                   ),
-                  child: Builder(builder: (context) {
-                    final slidableController = Slidable.of(context);
-                    return TripStopCard(
-                      tripStop: tripStop,
-                      tripStartEndTimes: startEndTime,
-                      slidableController: slidableController,
-                    );
-                  }),
-                ),
-              ),
+                );
+              },
+            );
+          },
+          (travelCardItem) {
+            return Reorderable(
+              key: ValueKey("${travelCardItem.id}_travel"),
+              builder: (context, animation, inDrag) {
+                return SizeFadeTransition(
+                  animation: itemAnimation,
+                  child: Center(
+                    child: TravelCard(
+                      tripStop: travelCardItem,
+                    ),
+                  ),
+                );
+              },
             );
           },
         );
