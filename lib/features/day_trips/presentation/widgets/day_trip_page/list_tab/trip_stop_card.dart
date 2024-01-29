@@ -1,17 +1,27 @@
-part of '../../../pages/day_trip_page.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../../../../../../core/routes/app_router.gr.dart';
+import '../../../../../../core/utilities/pair.dart';
+import '../../../../../../core/widgets/trip/generic_trip_card.dart';
+import '../../../../../trip_stops/domain/entities/trip_stop.dart';
+import '../../../cubit/day_trip/day_trip_cubit.dart';
 
-final class _TripStopCard extends StatelessWidget {
+final class TripStopCard extends StatelessWidget {
   final TripStop tripStop;
-  final Pair<DateTime, DateTime> tripStartEndTimes;
+  final StartEndTime tripStartEndTimes;
   final SlidableController? slidableController;
 
-  const _TripStopCard({
+  const TripStopCard({
+    super.key,
     required this.tripStop,
     required this.tripStartEndTimes,
     required this.slidableController,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return GenericTripCard(
@@ -30,7 +40,6 @@ final class _TripStopCard extends StatelessWidget {
 
   String _getDate() {
     final dateFormat = DateFormat('HH:mm');
-    return '${dateFormat.format(tripStartEndTimes.first)} - ${dateFormat.format(tripStartEndTimes.second)}';
+    return '${dateFormat.format(tripStartEndTimes.startTime)} - ${dateFormat.format(tripStartEndTimes.endTime)}';
   }
-
 }

@@ -1,5 +1,5 @@
+import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
 
 import '../../constants.dart';
 

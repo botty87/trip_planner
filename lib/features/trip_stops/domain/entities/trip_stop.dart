@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -52,4 +53,17 @@ sealed class TripStop with _$TripStop {
       );
 
   factory TripStop.fromJson(Map<String, dynamic> json) => _$TripStopFromJson(json);
+}
+
+class StartEndTime extends Equatable {
+  final DateTime startTime;
+  final DateTime endTime;
+
+  const StartEndTime({
+    required this.startTime,
+    required this.endTime,
+  });
+
+  @override
+  List<Object?> get props => [startTime, endTime];
 }

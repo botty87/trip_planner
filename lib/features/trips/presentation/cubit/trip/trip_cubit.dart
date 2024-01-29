@@ -46,7 +46,7 @@ class TripCubit extends Cubit<TripState> {
   startListenDayTrips() {
     _dayTripsSubscription?.cancel();
     _dayTripsSubscription =
-        _listenDayTrips(ListenDayTripsParams(tripId: state.trip.id)).listen((result) {
+        _listenDayTrips(ListenDayTripsParams(tripId: state.trip.id)).listen((result) async {
       result.fold(
         (failure) {
           emit(TripState.error(

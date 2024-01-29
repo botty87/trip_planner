@@ -29,7 +29,6 @@ import '../widgets/day_trip_page/day_trip_page_initial_widget.dart';
 import '../widgets/day_trip_page/day_trip_page_loaded.dart';
 
 part '../widgets/day_trip_page/list_tab/save_cancel_edit_buttons.dart';
-part '../widgets/day_trip_page/list_tab/trip_stop_card.dart';
 part '../widgets/day_trip_page/map_tab/map_directions_loader.dart';
 part '../widgets/day_trip_page/map_tab/map_directions_switcher.dart';
 part '../widgets/day_trip_page/map_tab/map_view_widget.dart';

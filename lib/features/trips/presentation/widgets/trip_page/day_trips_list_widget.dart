@@ -1,10 +1,11 @@
+import 'package:animated_list_plus/animated_list_plus.dart';
+import 'package:animated_list_plus/transitions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
@@ -71,13 +72,14 @@ class DayTripsList extends HookWidget {
   @override
   Widget build(BuildContext context) {
     //Use this for the animation
-    final previousDayTrips = usePrevious(context.select<TripCubit, List<DayTrip>?>(
-        (cubit) => cubit.state.whenOrNull(loaded: (trip, dayTrips) => dayTrips)));
+    final previousDayTrips = usePrevious(
+        context.read<TripCubit>().state.whenOrNull(loaded: (trip, dayTrips) => dayTrips));
 
     final dayTrips = context.select((TripCubit cubit) => cubit.state.maybeMap(
           loaded: (state) => state.dayTrips,
           orElse: () => previousDayTrips ?? [],
         ));
+
     final tripStartDate = context.select((TripCubit cubit) => cubit.state.trip.startDate);
 
     return ImplicitlyAnimatedReorderableList<DayTrip>(
@@ -89,14 +91,17 @@ class DayTripsList extends HookWidget {
           // Each item must have an unique key.
           key: ValueKey(dayTrip.id),
           builder: (context, dragAnimation, inDrag) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: verticalSpace),
-              child: TransparentListDecorator(
-                index: index,
-                animation: dragAnimation,
-                child: DayTripCard(
-                  dayTrip: dayTrip,
-                  tripStartDate: tripStartDate,
+            return SizeFadeTransition(
+              animation: itemAnimation,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: verticalSpace),
+                child: TransparentListDecorator(
+                  index: index,
+                  animation: dragAnimation,
+                  child: DayTripCard(
+                    dayTrip: dayTrip,
+                    tripStartDate: tripStartDate,
+                  ),
                 ),
               ),
             );

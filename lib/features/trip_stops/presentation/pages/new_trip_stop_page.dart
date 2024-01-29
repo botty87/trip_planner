@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/widgets/snackbars.dart';
@@ -78,17 +79,9 @@ class _NewTripStopPageBody extends HookWidget {
               (current is! NewTripStopStateSaving && previous is NewTripStopStateSaving),
           listener: (context, state) => isSaving.add(state is NewTripStopStateSaving),
         ),
-        //When the state changes to created show a snackbar and pop the page
+        //When the state changes to created pop the page
         BlocListener<NewTripStopCubit, NewTripStopState>(
-          listener: (context, state) => state.mapOrNull(
-            created: (created) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                Snackbars.success(LocaleKeys.tripStopCreated.tr()),
-              );
-              context.router.pop();
-              return;
-            },
-          ),
+          listener: (context, state) => state.mapOrNull(created: (created) => context.router.pop()),
         ),
         //When the state changes to error, show a snackbar
         BlocListener<NewTripStopCubit, NewTripStopState>(
