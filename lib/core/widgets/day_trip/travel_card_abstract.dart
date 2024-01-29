@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../features/trip_stops/domain/entities/trip_stop.dart';
 
-abstract class TravelCardAbstract extends StatelessWidget {
+class GenericTravelCard extends StatelessWidget {
   final TripStop tripStop;
-  Function(BuildContext context) get onTap;
+  final VoidCallback onTap;
 
-  const TravelCardAbstract({super.key, required this.tripStop});
+  const GenericTravelCard({super.key, required this.tripStop, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ abstract class TravelCardAbstract extends StatelessWidget {
           color: Colors.grey,
         ),
         GestureDetector(
-          onTap: () => onTap(context),
+          onTap: onTap,
           child: Container(
             width: 55,
             height: 55,

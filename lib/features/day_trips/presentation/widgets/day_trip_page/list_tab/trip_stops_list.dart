@@ -97,29 +97,6 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
         tripStopStartEndTimes.clear();
         //context.read<TripCubit>().reorderDayTrips(from, to, newItems);
       },
-      /* removeItemBuilder: (context, animation, tripStopStartEndTime) {
-        final tripStop = tripStopStartEndTime.first;
-        final startEndTime = tripStopStartEndTime.second;
-
-        return Reorderable(
-          // Each item must have an unique key.
-          key: ValueKey(tripStop.id),
-          builder: (context, dragAnimation, inDrag) {
-            return SizeTransition(
-              sizeFactor: animation,
-              child: Padding(
-                key: ValueKey(tripStop.id),
-                padding: const EdgeInsets.only(bottom: verticalSpaceXs),
-                child: TripStopCard(
-                  tripStop: tripStop,
-                  tripStartEndTimes: startEndTime,
-                  slidableController: null,
-                ),
-              ),
-            );
-          },
-        );
-      }, */
     );
   }
 }

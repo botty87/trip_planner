@@ -1,9 +1,13 @@
 part of '../../../pages/discover_new_trip_stops_page.dart';
 
-class _TravelCard extends TravelCardAbstract {
-  const _TravelCard({required super.tripStop});
+class _TravelCard extends StatelessWidget {
+  final TripStop tripStop;
+
+  const _TravelCard({required this.tripStop});
 
   @override
-  // TODO: implement onTap
-  Function(BuildContext context) get onTap => (context) {};
+  Widget build(BuildContext context) {
+    //TODO: check onTap
+    return GenericTravelCard(tripStop: tripStop, onTap: () {});
+  }
 }

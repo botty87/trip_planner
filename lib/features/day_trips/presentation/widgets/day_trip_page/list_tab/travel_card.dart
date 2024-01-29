@@ -3,19 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/widgets/day_trip/travel_card_abstract.dart';
+import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 
-class TravelCard extends TravelCardAbstract {
-  const TravelCard({super.key, required super.tripStop});
+class TravelCard extends StatelessWidget {
+  final TripStop tripStop;
+
+  const TravelCard({super.key, required this.tripStop});
 
   @override
-  Function(BuildContext context) get onTap => (context) async {
+  Widget build(BuildContext context) {
+    return GenericTravelCard(
+      tripStop: tripStop,
+      onTap: () async {
         final travelTime = await showDurationPicker(
-            context: context, initialTime: Duration(minutes: super.tripStop.travelTimeToNextStop));
+            context: context, initialTime: Duration(minutes: tripStop.travelTimeToNextStop));
         if (travelTime != null && context.mounted) {
           context
               .read<DayTripCubit>()
-              .updateTravelTimeToNextStop(super.tripStop.id, travelTime.inMinutes);
+              .updateTravelTimeToNextStop(tripStop.id, travelTime.inMinutes);
         }
-      };
+      },
+    );
+  }
 }
