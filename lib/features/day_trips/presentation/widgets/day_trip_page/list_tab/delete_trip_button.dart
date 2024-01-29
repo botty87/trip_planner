@@ -1,7 +1,9 @@
-part of '../../../pages/day_trip_page.dart';
 
-final class _DeleteTripButton extends DeleteTripButtonAbstract {
-  const _DeleteTripButton({required super.isDeleting});
+import 'package:flutter/material.dart';
+
+
+/* final class DeleteTripButton extends DeleteTripButtonAbstract {
+  const DeleteTripButton({required super.isDeleting});
 
   @override
   String get alertDialogTitle => LocaleKeys.deleteDayTrip.tr();
@@ -16,4 +18,14 @@ final class _DeleteTripButton extends DeleteTripButtonAbstract {
 
   @override
   String get deleteButtonLabel => LocaleKeys.deleteDayTrip.tr();
+} */
+
+class DeleteTripButton extends StatelessWidget {
+  final bool isDeleting;
+  const DeleteTripButton({required this.isDeleting, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }

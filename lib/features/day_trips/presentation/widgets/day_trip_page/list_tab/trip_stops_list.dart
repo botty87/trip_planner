@@ -1,7 +1,8 @@
-part of '../../../pages/day_trip_page.dart';
 
-class _TripStopsList extends StatelessWidget {
-  const _TripStopsList();
+import 'package:flutter/material.dart';
+
+class TripStopsList extends StatelessWidget {
+  const TripStopsList({super.key});
 
   @override
   Widget build(BuildContext context) {

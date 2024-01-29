@@ -1,5 +1,14 @@
-part of '../../../pages/day_trip_page.dart';
+import 'package:flutter/material.dart';
 
-final class _DayTripDescription extends GenericTripDescription {
-  const _DayTripDescription({super.headerText});
+import '../../../../../../core/widgets/trip/generic_trip_header.dart';
+
+final class DayTripDescription extends StatelessWidget {
+  final String headerText;
+
+  const DayTripDescription({super.key, required this.headerText});
+
+  @override
+  Widget build(BuildContext context) {
+    return GenericTripDescription(headerText: headerText);
+  }
 }

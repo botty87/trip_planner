@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/locale_keys.g.dart';
 
+//TODO remove this class
 abstract base class DeleteTripButtonAbstract extends StatelessWidget {
   final Stream<bool> isDeleting;
 

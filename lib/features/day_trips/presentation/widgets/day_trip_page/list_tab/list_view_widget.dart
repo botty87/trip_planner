@@ -1,9 +1,19 @@
-part of '../../../pages/day_trip_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_framework/responsive_breakpoints.dart';
 
-class _ListViewWidget extends StatelessWidget {
+import '../../../../../../core/constants.dart';
+import '../../../cubit/day_trip/day_trip_cubit.dart';
+import 'add_day_trip_stop_card.dart';
+import 'day_trip_description.dart';
+import 'delete_trip_button.dart';
+import 'start_time_widget.dart';
+import 'trip_stops_list.dart';
+
+class ListViewWidget extends StatelessWidget {
   final Stream<bool> isDeleting;
 
-  const _ListViewWidget({required this.isDeleting});
+  const ListViewWidget({super.key, required this.isDeleting});
 
   @override
   Widget build(BuildContext context) {
@@ -43,22 +53,26 @@ class _VerticalLayout extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const _StartTimeWidget(),
+                const StartTimeWidget(),
                 const SizedBox(height: verticalSpaceS),
                 BlocSelector<DayTripCubit, DayTripState, String?>(
                   selector: (state) => state.dayTrip.description,
-                  builder: (context, description) => Column(
-                    children: [
-                      _DayTripDescription(headerText: description),
-                      if (description != null) const SizedBox(height: verticalSpaceS),
-                    ],
-                  ),
+                  builder: (context, description) {
+                    if (description == null) return const SizedBox.shrink();
+                    return Column(
+                      children: [
+                        DayTripDescription(headerText: description),
+                        const SizedBox(height: verticalSpaceS),
+                      ],
+                    );
+                  },
                 ),
-                const _TripStopsList(),
+                const TripStopsList(),
                 const SizedBox(height: verticalSpaceL),
-                const _AddDayTripStopCard(),
+                const AddDayTripStopCard(),
                 const SizedBox(height: verticalSpaceL),
-                SafeArea(child: _DeleteTripButton(isDeleting: isDeleting)),
+                //SafeArea(child: DeleteTripButton(isDeleting: isDeleting)),
+                const DeleteTripButton(isDeleting: false),
               ],
             ),
           );
@@ -75,7 +89,8 @@ class _HorizontalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Placeholder( );
+    /* return Padding(
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: Row(
         children: [
@@ -106,6 +121,6 @@ class _HorizontalLayout extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ); */
   }
 }

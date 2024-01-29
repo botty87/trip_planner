@@ -1,7 +1,13 @@
-part of '../../../pages/day_trip_page.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class _StartTimeWidget extends StatelessWidget {
-  const _StartTimeWidget();
+import '../../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../time_picker/widgets/timepicker.dart';
+import '../../../cubit/day_trip/day_trip_cubit.dart';
+
+class StartTimeWidget extends StatelessWidget {
+  const StartTimeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,19 +1,50 @@
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../../../core/constants.dart';
 import '../../cubit/day_trip/day_trip_cubit.dart';
-import '../new_edit_day_trip_form/new_edit_day_trip_form.dart';
+import 'list_tab/list_view_widget.dart';
 
-class DayTripPageLoaded extends StatelessWidget {
+class DayTripPageLoaded extends HookWidget {
   const DayTripPageLoaded({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    final isDeleting = useStreamController<bool>();
+
+    return BlocSelector<DayTripCubit, DayTripState, bool>(
+      selector: (DayTripState state) => state.maybeMap(
+        loaded: (state) => state.explictitStartTimeSave,
+        orElse: () => false,
+      ),
+      builder: (context, explictitStartTimeSave) {
+        return AbsorbPointer(
+          absorbing: explictitStartTimeSave,
+          child: Column(
+            children: [
+              explictitStartTimeSave
+                  ? const Padding(
+                      padding: EdgeInsets.only(top: verticalSpaceXs),
+                      child: LinearProgressIndicator(),
+                    )
+                  : const SizedBox.shrink(),
+              Expanded(
+                child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    ListViewWidget(isDeleting: isDeleting.stream),
+                    const Placeholder(),
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      },
+    );
+
     /* final isSaving = useStreamController<bool>();
     final errorMessage = useStreamController<String?>();
     final isDeleting = useStreamController<bool>();
