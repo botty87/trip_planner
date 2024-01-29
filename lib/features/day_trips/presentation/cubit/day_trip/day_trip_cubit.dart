@@ -261,14 +261,18 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   void deleteDayTrip() async {
-    //TODO implement
-    /* emit(DayTripState.deleting(
-      trip: state.trip,
-      dayTrip: state.dayTrip,
-      tripStops: state.tripStops,
-    ));
-
-    final result = await _deleteDayTrip(
+    state.mapOrNull(
+      loaded: (loadedState) {
+        emit(DayTripState.deleting(
+          trip: loadedState.trip,
+          dayTrip: loadedState.dayTrip,
+          tripStops: loadedState.tripStops,
+          hasStartTimeToSave: loadedState.hasStartTimeToSave,
+        ));
+      },
+    );
+    
+    /* final result = await _deleteDayTrip(
       DeleteDayTripParams(
         tripId: state.trip.id,
         dayTripId: state.dayTrip.id,
