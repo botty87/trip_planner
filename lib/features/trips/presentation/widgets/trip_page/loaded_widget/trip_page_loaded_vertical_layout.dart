@@ -22,18 +22,15 @@ class TripPageLoadedVerticalLayout extends StatelessWidget {
           constraints: BoxConstraints(
             maxWidth: maxWidth,
           ),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: verticalSpaceXL),
-            child: ListView(
-              padding: defaultPagePadding,
-              children: const [
-                TripHeader(),
-                DayTripsListWidget(orientation: Orientation.portrait),
-                AddDayTripCard(),
-                SizedBox(height: verticalSpaceL),
-                DeleteTripButton(),
-              ],
-            ),
+          child: ListView(
+            padding: defaultPagePadding,
+            children: const [
+              TripHeader(),
+              DayTripsListWidget(orientation: Orientation.portrait),
+              AddDayTripCard(),
+              SizedBox(height: verticalSpaceL),
+              SafeArea(child: DeleteTripButton()),
+            ],
           ),
         );
       },
