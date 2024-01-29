@@ -27,6 +27,7 @@ final class TripStopCard extends StatelessWidget {
       name: tripStop.name,
       date: _getDate(),
       description: tripStop.description,
+      hasHandle: true,
       onTap: () {
         slidableController?.close();
         final state = context.read<DayTripCubit>().state;

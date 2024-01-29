@@ -68,7 +68,6 @@ class _VerticalLayout extends StatelessWidget {
                   },
                 ),
                 const TripStopsList(),
-                const SizedBox(height: verticalSpaceL),
                 const AddDayTripStopCard(),
                 const SizedBox(height: verticalSpaceL),
                 //SafeArea(child: DeleteTripButton(isDeleting: isDeleting)),
@@ -89,7 +88,7 @@ class _HorizontalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder( );
+    return const Placeholder();
     /* return Padding(
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: Row(

@@ -1,6 +1,5 @@
 import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:animated_list_plus/transitions.dart';
-import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,33 +56,24 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       tripStopStartEndTimes.add(Pair(tripStop, startEndTime));
     }
 
-    //The firs item is for the TripStopCard, the second is for the TravelCard
-    final List<Either<Pair<TripStop, StartEndTime>, TripStop>> tripStopItems = [];
-    for (int i = 0; i < tripStopStartEndTimes.length; i++) {
-      final tripStopStartEndTime = tripStopStartEndTimes[i];
-      tripStopItems.add(Left(tripStopStartEndTime));
-      if (i < tripStopStartEndTimes.length - 1) {
-        tripStopItems.add(Right(tripStopStartEndTime.first));
-      }
-    }
-
-    return ImplicitlyAnimatedReorderableList<Either<Pair<TripStop, StartEndTime>, TripStop>>(
+    return ImplicitlyAnimatedReorderableList<Pair<TripStop, StartEndTime>>(
       shrinkWrap: true,
-      items: tripStopItems,
+      items: tripStopStartEndTimes,
       itemBuilder: (context, itemAnimation, tripStopItem, index) {
-        return tripStopItem.fold(
-          (tripStopCardItem) {
-            final tripStop = tripStopCardItem.first;
-            final startEndTime = tripStopCardItem.second;
+        final tripStop = tripStopItem.first;
+        final startEndTime = tripStopItem.second;
 
-            // Each item must be wrapped in a Reorderable widget.
-            return Reorderable(
-              // Each item must have an unique key.
-              key: ValueKey(tripStop.id),
-              builder: (context, dragAnimation, inDrag) {
-                return SizeFadeTransition(
-                  animation: itemAnimation,
-                  child: Slidable(
+        // Each item must be wrapped in a Reorderable widget.
+        return Reorderable(
+          // Each item must have an unique key.
+          key: ValueKey(tripStop.id),
+          builder: (context, dragAnimation, inDrag) {
+            return SizeFadeTransition(
+              animation: itemAnimation,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Slidable(
                     startActionPane: ActionPane(
                       motion: const ScrollMotion(),
                       children: [_getSlidableAction(tripStop, index)],
@@ -97,23 +87,9 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
                       );
                     }),
                   ),
-                );
-              },
-            );
-          },
-          (travelCardItem) {
-            return Reorderable(
-              key: ValueKey("${travelCardItem.id}_travel"),
-              builder: (context, animation, inDrag) {
-                return SizeFadeTransition(
-                  animation: itemAnimation,
-                  child: Center(
-                    child: TravelCard(
-                      tripStop: travelCardItem,
-                    ),
-                  ),
-                );
-              },
+                  TravelCard(tripStop: tripStop),
+                ],
+              ),
             );
           },
         );
@@ -137,82 +113,3 @@ Widget _getSlidableAction(TripStop tripStop, int index) {
     label: tripStop.isDone ? LocaleKeys.toDo.tr() : LocaleKeys.done.tr(),
   );
 }
-
-/* class _List extends HookWidget with TripStopStartEndTimeMixin {
-  const _List();
-
-  @override
-  Widget build(BuildContext context) {
-    useAutomaticKeepAlive();
-
-    final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
-    final DateTime dayTripStartDateTime = context.select((DayTripCubit cubit) {
-      final startDate = cubit.state.trip.startDate;
-      final startTime = cubit.state.dayTrip.startTime;
-      return DateTime(
-          startDate.year, startDate.month, startDate.day, startTime.hour, startTime.minute);
-    });
-
-    //this is needed to avoid the recalculation of the trip start and end times on every build, during the reordering
-    final List<Pair<DateTime, DateTime>> tripStopStartEndTimes = [];
-
-    return CustomReorderableListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      separatorBuilder: (BuildContext context, int index) =>
-          Center(child: TravelCard(tripStop: tripStops[(index / 2).truncate()])),
-      itemCount: tripStops.length,
-      itemBuilder: (context, index) {
-        final tripStop = tripStops[index];
-        if (tripStopStartEndTimes.length <= index) {
-          tripStopStartEndTimes.add(getTripStartEndTimes(
-            tripStops: tripStops,
-            tripStopStartEndTimes: tripStopStartEndTimes,
-            dayTripStartDateTime: dayTripStartDateTime,
-            currentIndex: index,
-          ));
-        }
-        return Padding(
-          key: ValueKey(tripStop.id),
-          padding: const EdgeInsets.only(bottom: verticalSpaceXs),
-          child: Slidable(
-            startActionPane: ActionPane(
-              motion: const ScrollMotion(),
-              children: [_getSlidableAction(tripStop, index)],
-            ),
-            child: Builder(builder: (context) {
-              final slidableController = Slidable.of(context);
-              return _TripStopCard(
-                tripStop: tripStop,
-                tripStartEndTimes: tripStopStartEndTimes[index],
-                slidableController: slidableController,
-              );
-            }),
-          ),
-        );
-      },
-      proxyDecorator: (child, index, animation) {
-        return TransparentListDecorator(
-          index: index,
-          animation: animation,
-          child: child,
-        );
-      },
-      onReorder: (int oldIndex, int newIndex) {
-        tripStopStartEndTimes.clear();
-        context.read<DayTripCubit>().reorderTripStops(oldIndex, newIndex);
-      },
-    );
-  }
-
-  Widget _getSlidableAction(TripStop tripStop, int index) {
-    return SlidableAction(
-      onPressed: (context) =>
-          context.read<DayTripCubit>().toggleTripStopDone(!tripStop.isDone, index),
-      backgroundColor: tripStop.isDone ? Colors.grey : Colors.green,
-      foregroundColor: Colors.white,
-      icon: tripStop.isDone ? Icons.close : Icons.check,
-      label: tripStop.isDone ? LocaleKeys.toDo.tr() : LocaleKeys.done.tr(),
-    );
-  }
-} */
