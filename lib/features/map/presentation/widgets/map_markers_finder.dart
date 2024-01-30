@@ -11,8 +11,8 @@ class _MapMarkersFinder extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return SafeArea(
+      minimum: const EdgeInsets.all(16.0),
       child: IconButton.filled(
           icon: const Icon(Icons.place, color: Colors.white),
           onPressed: () {

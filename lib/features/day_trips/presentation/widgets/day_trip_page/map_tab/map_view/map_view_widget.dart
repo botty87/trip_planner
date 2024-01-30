@@ -72,6 +72,13 @@ class _MapView extends HookWidget {
 
     tripStopsNumState ??= previousTripStopsNumState ?? TripStopsNumState.zero;
 
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 500),
+      child: _getMapWidget(tripStopsNumState),
+    );
+  }
+
+  _getMapWidget(TripStopsNumState tripStopsNumState) {
     switch (tripStopsNumState) {
       case TripStopsNumState.zero:
         return const NoTripStopsMapWidget();

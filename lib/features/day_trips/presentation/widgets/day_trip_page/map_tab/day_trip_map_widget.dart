@@ -16,7 +16,9 @@ import '../../../cubit/day_trip/day_trip_cubit.dart';
 import '../../../cubit/trip_stops_map/trip_stops_map_cubit.dart';
 
 class DayTripMapWidget extends HookWidget {
-  const DayTripMapWidget({super.key});
+  final bool isSingleTripStop;
+
+  const DayTripMapWidget({super.key, required this.isSingleTripStop});
 
   List<TripStop> _getTripStops(BuildContext context) {
     //Use this for the animation
@@ -32,6 +34,30 @@ class DayTripMapWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final tripStops = _getTripStops(context);
+
+    if(isSingleTripStop) {
+      return MapWidget.single(
+        mapPlace: tripStops.first.toMapPlace(),
+        onMarkerTap: (mapPlace) {
+          context.read<DayTripCubit>().state.maybeMap(
+                loaded: (state) {
+                  final tripStop = mapPlace.maybeMap(
+                    existing: (mapPlace) => tripStops.firstWhere(
+                      (tripStop) => tripStop.id == mapPlace.tripStopId,
+                      orElse: () => throw const UnexpectedStateException(),
+                    ),
+                    orElse: () => throw const UnexpectedStateException(),
+                  );
+                  context.router.push(
+                    TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop),
+                  );
+                },
+                orElse: () => throw const UnexpectedStateException(),
+              );
+        },
+      );
+    }
+    
     final isTripStopsDirectionsToLoad =
         context.select((TripStopsMapCubit cubit) => cubit.state.isTripStopsDirectionsToLoad);
 

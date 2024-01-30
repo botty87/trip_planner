@@ -7,8 +7,8 @@ class _MapTypeChanger extends StatelessWidget {
   Widget build(BuildContext context) {
     final mapType = context.select((MapCubit cubit) => cubit.state.mapType);
 
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return SafeArea(
+      minimum: const EdgeInsets.all(16.0),
       child: IconButton.filled(
         icon: Icon(
           mapType == MapType.normal ? Icons.satellite : Icons.map,

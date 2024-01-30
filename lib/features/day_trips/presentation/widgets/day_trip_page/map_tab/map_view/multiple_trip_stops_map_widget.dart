@@ -15,7 +15,7 @@ class MultipleTripStopsMapWidget extends StatelessWidget {
         Expanded(
           child: Stack(
             children: [
-              DayTripMapWidget(),
+              DayTripMapWidget(isSingleTripStop: false),
               MapDirectionsLoader(),
             ],
           ),
