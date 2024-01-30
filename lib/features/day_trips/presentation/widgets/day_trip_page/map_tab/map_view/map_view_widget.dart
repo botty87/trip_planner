@@ -42,10 +42,11 @@ class MapViewWidget extends HookWidget {
 class _MapView extends HookWidget {
   const _MapView();
 
-  TripStopsNumState? _getTripStopsNumState(BuildContext context) {
+  TripStopsNumState _getTripStopsNumState(BuildContext context, ObjectRef<TripStopsNumState?> previousTripStopsNumState) {
+    
     TripStopsNumState getStateFromInt(int? length) {
       if (length == null) {
-        return usePrevious<TripStopsNumState?>(null) ?? TripStopsNumState.zero;
+        return previousTripStopsNumState.value ?? TripStopsNumState.zero;
       }
 
       final tripStopsNumState = length == 0
@@ -54,23 +55,24 @@ class _MapView extends HookWidget {
               ? TripStopsNumState.one
               : TripStopsNumState.moreThanOne;
 
+      previousTripStopsNumState.value = tripStopsNumState;
+
       return tripStopsNumState;
     }
 
     return context.select((DayTripCubit cubit) => cubit.state.maybeMap(
           loaded: (state) => getStateFromInt(state.tripStops.length),
+          editing: (state) => getStateFromInt(state.tripStops.length),
+          deleting: (value) => getStateFromInt(value.tripStops.length),
           orElse: () => getStateFromInt(null),
         ));
   }
 
   @override
   Widget build(BuildContext context) {
-    TripStopsNumState? tripStopsNumState = _getTripStopsNumState(context);
+    final previousTripStopsNumState = useRef<TripStopsNumState?>(null);
 
-    //Use this for the animation
-    final previousTripStopsNumState = usePrevious(tripStopsNumState);
-
-    tripStopsNumState ??= previousTripStopsNumState ?? TripStopsNumState.zero;
+    final tripStopsNumState = _getTripStopsNumState(context, previousTripStopsNumState);
 
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 500),

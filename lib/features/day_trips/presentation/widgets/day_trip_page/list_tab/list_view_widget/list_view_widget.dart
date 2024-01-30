@@ -4,11 +4,11 @@ import 'package:responsive_framework/responsive_breakpoints.dart';
 import 'list_view_widget_vertical.dart';
 
 class ListViewWidget extends StatelessWidget {
-
   const ListViewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return const ListViewWidgetVerticalLayout();
     if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
       return const ListViewWidgetVerticalLayout();
     } else {
@@ -25,10 +25,7 @@ class ListViewWidget extends StatelessWidget {
   }
 }
 
-
-
 class _HorizontalLayout extends StatelessWidget {
-
   const _HorizontalLayout();
 
   @override

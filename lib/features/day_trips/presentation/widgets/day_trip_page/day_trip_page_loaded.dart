@@ -7,7 +7,8 @@ import 'list_tab/list_view_widget/list_view_widget.dart';
 import 'map_tab/map_view/map_view_widget.dart';
 
 class DayTripPageLoaded extends HookWidget {
-  const DayTripPageLoaded({super.key});
+  final Orientation orientation;
+  const DayTripPageLoaded({super.key, required this.orientation});
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +23,16 @@ class DayTripPageLoaded extends HookWidget {
       child: Column(
         children: [
           absorbed ? const LinearProgressIndicator() : const SizedBox.shrink(),
-          const Expanded(
-            child: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                ListViewWidget(),
-                MapViewWidget(),
-              ],
-            ),
+          Expanded(
+            child: orientation == Orientation.portrait
+                ? const TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      ListViewWidget(),
+                      MapViewWidget(),
+                    ],
+                  )
+                : const Placeholder(),
           )
         ],
       ),
