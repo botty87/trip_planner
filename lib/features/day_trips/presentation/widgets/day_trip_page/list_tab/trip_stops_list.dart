@@ -1,6 +1,7 @@
 import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:animated_list_plus/transitions.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -100,10 +101,12 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       },
       areItemsTheSame: (oldItem, newItem) => oldItem == newItem,
       onReorderFinished: (item, from, to, newItems) {
-        tripStopStartEndTimes.clear();
-        context
-            .read<DayTripCubit>()
-            .reorderTripStops(from, to, newItems.map((e) => e.first).toList());
+        final newTripStops = newItems.map((e) => e.first).toList();
+        
+        if (!listEquals(newTripStops, tripStops)) {
+          tripStopStartEndTimes.clear();
+          context.read<DayTripCubit>().reorderTripStops(from, to, newTripStops);
+        }
       },
     );
   }
