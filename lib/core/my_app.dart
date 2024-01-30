@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -68,14 +67,17 @@ class MyApp extends StatelessWidget {
                     context,
                     conditionalValues: [
                       Condition.equals(name: MOBILE, value: 400),
-                      ...kIsWeb
+                      Condition.equals(name: TABLET, value: 800),
+                      Condition.equals(name: DESKTOP, value: 1200),
+                      Condition.equals(name: '4K', value: 2000),
+                      /* ...kIsWeb
                           ? [
                               Condition.between(start: 1000, end: 1000, value: 800),
                             ]
                           : [
                               Condition.between(start: 900, end: 1100, value: 800),
                               Condition.between(start: 1001, end: 1200, value: 700),
-                            ],
+                            ], */
                     ],
                   ).value,
                   child: child!,

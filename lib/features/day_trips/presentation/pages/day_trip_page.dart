@@ -148,11 +148,11 @@ class DayTripPage extends HookWidget {
         child: Builder(builder: (context) {
           return NotificationListener(
             onNotification: (notification) {
-              if (notification is ScrollEndNotification) {
+              if (orientation == Orientation.portrait && notification is ScrollEndNotification) {
                 final tabIndex = DefaultTabController.of(context).index;
                 context.read<TripStopsMapCubit>().selectTab(tabIndex == 1);
               }
-              return true;
+              return false;
             },
             child: BlocBuilder<DayTripCubit, DayTripState>(
               buildWhen: (previous, current) => current.maybeMap(

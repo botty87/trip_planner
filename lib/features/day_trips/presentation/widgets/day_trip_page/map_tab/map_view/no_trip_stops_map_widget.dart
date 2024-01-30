@@ -20,7 +20,7 @@ class NoTripStopsMapWidget extends StatelessWidget {
           Expanded(child: SvgPicture(AssetBytesLoader(Assets.svg.emptyMapSvg))),
           const SizedBox(height: verticalSpaceL),
           Padding(
-            padding: const EdgeInsets.only(bottom: verticalSpace),
+            padding: const EdgeInsets.only(bottom: verticalSpaceS),
             child: Text(
               LocaleKeys.whatADesertHere.tr(),
               style: GoogleFonts.caveat(

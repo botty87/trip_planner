@@ -28,11 +28,16 @@ class DayTripPageLoaded extends HookWidget {
                 ? const TabBarView(
                     physics: NeverScrollableScrollPhysics(),
                     children: [
-                      ListViewWidget(),
+                      ListViewWidget(orientation: Orientation.portrait),
                       MapViewWidget(),
                     ],
                   )
-                : const Placeholder(),
+                : const Row(
+                    children: [
+                      Expanded(child: ListViewWidget(orientation: Orientation.landscape)),
+                      Expanded(child: MapViewWidget()),
+                    ],
+                  ),
           )
         ],
       ),

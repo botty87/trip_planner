@@ -9,12 +9,14 @@ import 'start_time_widget.dart';
 import 'trip_stops_list.dart';
 
 class ListViewWidget extends StatelessWidget {
-  const ListViewWidget({super.key});
+  final Orientation orientation;
+  const ListViewWidget({super.key, required this.orientation});
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+      final maxWidth = (ResponsiveBreakpoints.of(context).largerThan(MOBILE) &&
+              orientation == Orientation.portrait)
           ? constraints.maxWidth * 0.8
           : constraints.maxWidth;
 
