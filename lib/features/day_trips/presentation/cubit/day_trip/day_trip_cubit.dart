@@ -250,7 +250,7 @@ class DayTripCubit extends Cubit<DayTripState> {
           },
         );
       },
-      orElse: () => throw UnexpectedStateException(),
+      orElse: () => throw const UnexpectedStateException(),
     );
   }
 

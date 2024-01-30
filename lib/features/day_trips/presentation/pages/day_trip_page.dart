@@ -78,7 +78,7 @@ class DayTripPage extends HookWidget {
                       listener: (context, state) {
                         final errorMessage = state.maybeMap(
                           error: (state) => state.errorMessage,
-                          orElse: () => throw UnexpectedStateException(),
+                          orElse: () => throw const UnexpectedStateException(),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
                       },
