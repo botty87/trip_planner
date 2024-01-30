@@ -63,8 +63,8 @@ class TripPage extends HookWidget {
                     context, isSaving, isModalBottomEditing, errorMessageStream);
               },
             ),
+            //Close modal bottom sheet if editing dismissed
             BlocListener<TripCubit, TripState>(
-              //Close modal bottom sheet if editing dismissed
               listenWhen: (previous, current) => current.maybeMap(
                 loaded: (_) => previous.maybeMap(
                   editing: (_) => true,

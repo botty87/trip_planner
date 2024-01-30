@@ -21,9 +21,10 @@ import '../../domain/entities/day_trip.dart';
 import '../../domain/entities/trip_stops_directions.dart';
 import '../cubit/day_trip/day_trip_cubit.dart';
 import '../cubit/trip_stops_map/trip_stops_map_cubit.dart';
+import '../widgets/day_trip_page/day_trip_error_widget.dart';
 import '../widgets/day_trip_page/day_trip_page_initial_widget.dart';
 import '../widgets/day_trip_page/day_trip_page_loaded.dart';
-import '../widgets/day_trip_page/day_trip_error_widget.dart';
+import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
 part '../widgets/day_trip_page/list_tab/save_cancel_edit_buttons.dart';
 part '../widgets/day_trip_page/map_tab/map_directions_loader.dart';
@@ -43,6 +44,9 @@ class DayTripPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isModalBottomEditing = useRef<bool>(false);
+
+    final isSaving = useStreamController<bool>();
+    final errorMessageStream = useStreamController<String?>();
 
     return MultiBlocProvider(
       providers: [
@@ -97,6 +101,32 @@ class DayTripPage extends HookWidget {
                         orElse: () => false,
                       ),
                       listener: (context, state) => context.router.pop(),
+                    ),
+                    BlocListener<DayTripCubit, DayTripState>(
+                      //Show modal bottom sheet if editing
+                      listenWhen: (previous, current) => current.maybeMap(
+                        editing: (_) => current.runtimeType != previous.runtimeType,
+                        orElse: () => false,
+                      ),
+                      listener: (context, state) {
+                        _showModalBottomEditing(
+                            context, isSaving, isModalBottomEditing, errorMessageStream);
+                      },
+                    ),
+                    //Close modal bottom sheet if editing dismissed
+                    BlocListener<DayTripCubit, DayTripState>(
+                      listenWhen: (previous, current) => current.maybeMap(
+                        loaded: (_) => previous.maybeMap(
+                          editing: (_) => true,
+                          orElse: () => false,
+                        ),
+                        orElse: () => false,
+                      ),
+                      listener: (context, state) {
+                        if (isModalBottomEditing.value) {
+                          Navigator.of(context).pop();
+                        }
+                      },
                     ),
                   ],
                   child: Builder(builder: (context) {
@@ -174,5 +204,42 @@ class DayTripPage extends HookWidget {
         ),
       ),
     );
+  }
+
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
+      ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
+    final cubit = context.read<DayTripCubit>();
+    isModalBottomEditing.value = true;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      useRootNavigator: true,
+      isDismissible: false,
+      useSafeArea: true,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16),
+          child: Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: NewEditDayTripForm(
+              isSaving: isSaving.stream,
+              onDescriptionChanged: (description) => cubit.descriptionChanged(description),
+              initialDayTripDescription: cubit.state.dayTrip.description,
+              saveSection: _SaveCancelEditButtons(
+                isSaving: isSaving.stream,
+                onCancel: () => cubit.cancelEditing(),
+                onSave: () => cubit.saveChanges(),
+                errorMessage: errorMessage.stream,
+              ),
+            ),
+          ),
+        );
+      },
+    ).then((_) {
+      isModalBottomEditing.value = false;
+      cubit.modalBottomEditingDismissed();
+    });
   }
 }

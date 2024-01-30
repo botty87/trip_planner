@@ -174,38 +174,37 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   void saveChanges() async {
-    //TODO implement
-    /* assert(state is DayTripStateEditing);
-    final editingState = state as DayTripStateEditing;
-    emit(editingState.copyWith(isSaving: true));
-    final result = await _updateDayTrip(
-      UpdateDayTripParams(
-        id: state.dayTrip.id,
-        tripId: state.trip.id,
-        description: editingState.description,
-      ),
-    );
+    state.mapOrNull(
+      editing: (editingState) async {
+        emit(editingState.copyWith(isSaving: true));
 
-    result.fold(
-      (failure) {
-        emit(DayTripState.error(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
-        ));
-        emit(editingState.copyWith(
-          isSaving: false,
-        ));
+        final result = await _updateDayTrip(
+          UpdateDayTripParams(
+            id: state.dayTrip.id,
+            tripId: state.trip.id,
+            description: editingState.description,
+          ),
+        );
+
+        result.fold(
+          (failure) {
+            emit(editingState.copyWith(
+              isSaving: false,
+              errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+            ));
+          },
+          (_) {
+            emit(DayTripState.loaded(
+              trip: state.trip,
+              dayTrip: state.dayTrip.copyWith(description: editingState.description),
+              tripStops: editingState.tripStops,
+            ));
+          },
+        );
       },
-      (_) {
-        emit(DayTripState.normal(
-          trip: state.trip,
-          dayTrip: state.dayTrip.copyWith(description: editingState.description),
-          tripStops: state.tripStops,
-        ));
-      },
-    ); */
+    );
+    
+    
   }
 
   Future<bool> saveDayTripStopStartTime({bool forced = false}) async {

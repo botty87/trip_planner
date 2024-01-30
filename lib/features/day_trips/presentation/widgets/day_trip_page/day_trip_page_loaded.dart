@@ -42,36 +42,9 @@ class DayTripPageLoaded extends HookWidget {
 
     return MultiBlocListener(
       listeners: [
-        //Show error snackbar if error and update errorMessage stream when error
-        BlocListener<DayTripCubit, DayTripState>(
-          listener: (context, state) {
-            final errorState = state as DayTripStateError;
-            ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorState.errorMessage!));
-            errorMessage.add(errorState.errorMessage);
-          },
-          listenWhen: (previous, current) => current is DayTripStateError,
-        ),
-        //Show error snackbar if error and update errorMessage stream when error
-        BlocListener<TripStopsMapCubit, TripStopsMapState>(
-          listener: (context, state) {
-            ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(state.errorMessage!));
-            errorMessage.add(state.errorMessage);
-          },
-          listenWhen: (previous, current) =>
-              current.errorMessage != previous.errorMessage && current.errorMessage != null,
-        ),
-        //Pop page if deleted
-        BlocListener<DayTripCubit, DayTripState>(
-          listener: (context, state) => context.router.pop(),
-          listenWhen: (previous, current) => current is DayTripStateDeleted,
-        ),
-        //Update isDeleting stream when deleting
-        BlocListener<DayTripCubit, DayTripState>(
-          listener: (context, state) => isDeleting.add(state is DayTripStateDeleting),
-          listenWhen: (previous, current) =>
-              (previous is! DayTripStateDeleting && current is DayTripStateDeleting) ||
-              (previous is DayTripStateDeleting && current is! DayTripStateDeleting),
-        ),
+       
+        
+        
         //Update isLoading stream when loading
         BlocListener<DayTripCubit, DayTripState>(
           listener: (context, state) => isSaving.add((state as DayTripStateEditing).isSaving),
