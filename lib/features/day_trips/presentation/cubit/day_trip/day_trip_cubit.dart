@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../core/error/exceptions.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/debouncer.dart';
 import '../../../../trip_stops/domain/entities/trip_stop.dart';
@@ -208,56 +209,52 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   Future<bool> saveDayTripStopStartTime({bool forced = false}) async {
-    return true;
-    //TODO implement
-    /* if (!state.hasStartTimeToSave) {
+    if (!state.hasStartTimeToSave) {
       _startTimeDebouncer.cancel();
       return true;
     }
 
-    if (forced) {
-      _startTimeDebouncer.cancel();
-      assert(state is DayTripStateNormal);
-      emit((state as DayTripStateNormal).copyWith(explictitStartTimeSave: true));
-    }
+    return await state.maybeMap(
+      loaded: (loadedState) async {
+        if (forced) {
+          _startTimeDebouncer.cancel();
+          emit(loadedState.copyWith(explictitStartTimeSave: true));
+        }
 
-    final result = await _updateDayTripStartTime(
-      UpdateDayTripStartTimeParams(
-        id: state.dayTrip.id,
-        tripId: state.trip.id,
-        startTime: state.dayTrip.startTime,
-      ),
+        final result = await _updateDayTripStartTime(
+          UpdateDayTripStartTimeParams(
+            id: loadedState.dayTrip.id,
+            tripId: loadedState.trip.id,
+            startTime: loadedState.dayTrip.startTime,
+          ),
+        );
+
+        return result.fold(
+          (failure) {
+            emit(DayTripState.error(
+              trip: loadedState.trip,
+              dayTrip: loadedState.dayTrip,
+              errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+              fatal: false,
+              hasStartTimeToSave: false,
+            ));
+            emit(loadedState.copyWith(
+              hasStartTimeToSave: false,
+              explictitStartTimeSave: false,
+            ));
+            return false;
+          },
+          (_) {
+            emit(loadedState.copyWith(
+              hasStartTimeToSave: false,
+              explictitStartTimeSave: false,
+            ));
+            return true;
+          },
+        );
+      },
+      orElse: () => throw UnexpectedException(),
     );
-
-    return result.fold(
-      (failure) {
-        emit(DayTripState.error(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-          errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
-          hasStartTimeToSave: false,
-        ));
-        emit(DayTripState.normal(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-          hasStartTimeToSave: false,
-          explictitStartTimeSave: false,
-        ));
-        return false;
-      },
-      (_) {
-        emit(DayTripState.normal(
-          trip: state.trip,
-          dayTrip: state.dayTrip,
-          tripStops: state.tripStops,
-          hasStartTimeToSave: false,
-          explictitStartTimeSave: false,
-        ));
-        return true;
-      },
-    ); */
   }
 
   void deleteDayTrip() async {
