@@ -18,20 +18,22 @@ class ListViewWidgetVerticalLayout extends StatelessWidget {
           ? constraints.maxWidth * 0.8
           : constraints.maxWidth;
 
-      return ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: maxWidth),
-        child: ListView(
-          padding: defaultPagePadding,
-          children: const [
-            StartTimeWidget(),
-            SizedBox(height: verticalSpaceS),
-            DayTripDescription(),
-            TripStopsList(),
-            AddDayTripStopCard(),
-            SizedBox(height: verticalSpaceL),
-            SafeArea(child: DeleteDayTripButton()),
-          ],
+      final additionalHorizontalPadding = (constraints.maxWidth - maxWidth) / 2;
+
+      return ListView(
+        padding: EdgeInsets.symmetric(
+          horizontal: pageHorizontalPadding + additionalHorizontalPadding,
+          vertical: pageVerticalPadding,
         ),
+        children: const [
+          StartTimeWidget(),
+          SizedBox(height: verticalSpaceS),
+          DayTripDescription(),
+          TripStopsList(),
+          AddDayTripStopCard(),
+          SizedBox(height: verticalSpaceL),
+          SafeArea(child: DeleteDayTripButton()),
+        ],
       );
     });
   }
