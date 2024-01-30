@@ -1,12 +1,37 @@
-part of '../../../pages/day_trip_page.dart';
+import 'dart:math';
 
-class _MapWidget extends StatelessWidget {
-  const _MapWidget();
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../../../../../../core/error/exceptions.dart';
+import '../../../../../../core/routes/app_router.gr.dart';
+import '../../../../../map/domain/entities/map_place.dart';
+import '../../../../../map/presentation/widgets/map_widget.dart';
+import '../../../../../trip_stops/domain/entities/trip_stop.dart';
+import '../../../../domain/entities/trip_stops_directions.dart';
+import '../../../cubit/day_trip/day_trip_cubit.dart';
+import '../../../cubit/trip_stops_map/trip_stops_map_cubit.dart';
+
+class DayTripMapWidget extends HookWidget {
+  const DayTripMapWidget({super.key});
+
+  List<TripStop> _getTripStops(BuildContext context) {
+    //Use this for the animation
+    final previouTripStops = usePrevious(
+        context.read<DayTripCubit>().state.mapOrNull(loaded: (state) => state.tripStops));
+
+    return context.select((DayTripCubit cubit) => cubit.state.maybeMap(
+          loaded: (state) => state.tripStops,
+          orElse: () => previouTripStops ?? [],
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
-    /* final tripStops = context.select((DayTripCubit cubit) => cubit.state.tripStops);
+    final tripStops = _getTripStops(context);
     final isTripStopsDirectionsToLoad =
         context.select((TripStopsMapCubit cubit) => cubit.state.isTripStopsDirectionsToLoad);
 
@@ -18,19 +43,23 @@ class _MapWidget extends StatelessWidget {
       mapPlaces: tripStops.map((tripStop) => tripStop.toMapPlace()).toList(),
       polylines: _getPolylines(context),
       onMarkerTap: (mapPlace) {
-        final state = context.read<DayTripCubit>().state;
-        final tripStop = mapPlace.maybeMap(
-          existing: (mapPlace) => state.tripStops.firstWhere(
-            (tripStop) => tripStop.id == mapPlace.tripStopId,
-            orElse: () => throw Exception('Unexpected state'),
-          ),
-          orElse: () => throw Exception('Unexpected state'),
-        );
-        context.router.push(
-          TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop),
-        );
+        context.read<DayTripCubit>().state.maybeMap(
+              loaded: (state) {
+                final tripStop = mapPlace.maybeMap(
+                  existing: (mapPlace) => tripStops.firstWhere(
+                    (tripStop) => tripStop.id == mapPlace.tripStopId,
+                    orElse: () => throw const UnexpectedStateException(),
+                  ),
+                  orElse: () => throw const UnexpectedStateException(),
+                );
+                context.router.push(
+                  TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop),
+                );
+              },
+              orElse: () => throw const UnexpectedStateException(),
+            );
       },
-    ); */
+    );
   }
 
   Set<Polyline> _getPolylines(BuildContext context) {

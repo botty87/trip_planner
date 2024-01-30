@@ -203,8 +203,6 @@ class DayTripCubit extends Cubit<DayTripState> {
         );
       },
     );
-    
-    
   }
 
   Future<bool> saveDayTripStopStartTime({bool forced = false}) async {
@@ -252,7 +250,7 @@ class DayTripCubit extends Cubit<DayTripState> {
           },
         );
       },
-      orElse: () => throw UnexpectedException(),
+      orElse: () => throw UnexpectedStateException(),
     );
   }
 

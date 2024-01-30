@@ -1,7 +1,15 @@
-part of '../../../pages/day_trip_page.dart';
 
-class _MapDirectionsSwitcher extends StatelessWidget {
-  const _MapDirectionsSwitcher();
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+
+import '../../../../../../core/constants.dart';
+import '../../../../../../core/l10n/locale_keys.g.dart';
+import '../../../cubit/trip_stops_map/trip_stops_map_cubit.dart';
+
+class MapDirectionsSwitcher extends StatelessWidget {
+  const MapDirectionsSwitcher({super.key});
 
   @override
   Widget build(BuildContext context) {

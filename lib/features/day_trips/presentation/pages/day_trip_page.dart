@@ -1,36 +1,25 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/widgets/snackbars.dart';
-import '../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/day_trip.dart';
-import '../../domain/entities/trip_stops_directions.dart';
 import '../cubit/day_trip/day_trip_cubit.dart';
 import '../cubit/trip_stops_map/trip_stops_map_cubit.dart';
 import '../widgets/day_trip_page/day_trip_error_widget.dart';
 import '../widgets/day_trip_page/day_trip_page_initial_widget.dart';
 import '../widgets/day_trip_page/day_trip_page_loaded.dart';
+import '../widgets/day_trip_page/list_tab/save_cancel_edit_buttons.dart';
 import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
-
-part '../widgets/day_trip_page/list_tab/save_cancel_edit_buttons.dart';
-part '../widgets/day_trip_page/map_tab/map_directions_loader.dart';
-part '../widgets/day_trip_page/map_tab/map_directions_switcher.dart';
-part '../widgets/day_trip_page/map_tab/map_view_widget.dart';
-part '../widgets/day_trip_page/map_tab/map_widget.dart';
 
 @RoutePage()
 class DayTripPage extends HookWidget {
@@ -89,7 +78,7 @@ class DayTripPage extends HookWidget {
                       listener: (context, state) {
                         final errorMessage = state.maybeMap(
                           error: (state) => state.errorMessage,
-                          orElse: () => throw UnexpectedException(),
+                          orElse: () => throw UnexpectedStateException(),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
                       },
@@ -227,7 +216,7 @@ class DayTripPage extends HookWidget {
               isSaving: isSaving.stream,
               onDescriptionChanged: (description) => cubit.descriptionChanged(description),
               initialDayTripDescription: cubit.state.dayTrip.description,
-              saveSection: _SaveCancelEditButtons(
+              saveSection: SaveCancelEditButtons(
                 isSaving: isSaving.stream,
                 onCancel: () => cubit.cancelEditing(),
                 onSave: () => cubit.saveChanges(),

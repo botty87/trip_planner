@@ -1,5 +1,8 @@
-class UnexpectedException implements Exception {
+import 'package:flutter/foundation.dart';
+
+@immutable
+final class UnexpectedStateException implements Exception {
   static const String message = 'Unexpected state';
 
-  UnexpectedException();
+  const UnexpectedStateException();
 }

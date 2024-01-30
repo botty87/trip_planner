@@ -1,8 +1,9 @@
-part of '../../../pages/day_trip_page.dart';
+import '../../../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
 
-final class _SaveCancelEditButtons extends GenericSaveCancelEditButtons {
-  const _SaveCancelEditButtons(
-      {required super.isSaving,
+final class SaveCancelEditButtons extends GenericSaveCancelEditButtons {
+  const SaveCancelEditButtons(
+      {super.key,
+      required super.isSaving,
       required super.onCancel,
       required super.onSave,
       required super.errorMessage});

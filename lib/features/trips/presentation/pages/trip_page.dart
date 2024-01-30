@@ -12,10 +12,10 @@ import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/trip_cubit.dart';
 import '../widgets/new_edit_trip_form/new_edit_trip_form.dart';
+import '../widgets/trip_page/loaded_widget/trip_page_loaded_widget.dart';
 import '../widgets/trip_page/save_cancel_edit_buttons.dart';
 import '../widgets/trip_page/trip_error_widget.dart';
 import '../widgets/trip_page/trip_page_initial_widget.dart';
-import '../widgets/trip_page/loaded_widget/trip_page_loaded_widget.dart';
 
 @RoutePage()
 class TripPage extends HookWidget {
@@ -47,7 +47,7 @@ class TripPage extends HookWidget {
               listener: (context, state) {
                 final errorMessage = state.maybeMap(
                   error: (state) => state.errorMessage,
-                  orElse: () => throw UnexpectedException(),
+                  orElse: () => throw const UnexpectedStateException(),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
               },
@@ -91,7 +91,7 @@ class TripPage extends HookWidget {
               listener: (context, state) {
                 final errorMessage = state.maybeMap(
                   editing: (state) => state.errorMessage,
-                  orElse: () => throw UnexpectedException(),
+                  orElse: () => throw const UnexpectedStateException(),
                 );
                 errorMessageStream.add(errorMessage);
               },
@@ -109,7 +109,7 @@ class TripPage extends HookWidget {
               listener: (context, state) {
                 final isSavingValue = state.maybeMap(
                   editing: (state) => state.isSaving,
-                  orElse: () => throw UnexpectedException(),
+                  orElse: () => throw const UnexpectedStateException(),
                 );
                 isSaving.add(isSavingValue);
               },
