@@ -667,7 +667,8 @@ class _$TripStopStateEditingImpl implements TripStopStateEditing {
                 other.hourDuration == hourDuration) &&
             (identical(other.minuteDuration, minuteDuration) ||
                 other.minuteDuration == minuteDuration) &&
-            const DeepCollectionEquality().equals(other.location, location));
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
   @override
@@ -681,7 +682,7 @@ class _$TripStopStateEditingImpl implements TripStopStateEditing {
       description,
       hourDuration,
       minuteDuration,
-      const DeepCollectionEquality().hash(location));
+      location);
 
   @JsonKey(ignore: true)
   @override

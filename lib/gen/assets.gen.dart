@@ -130,6 +130,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/destination.svg.vec
   String get destinationSvg => 'assets/svg/destination.svg.vec';
 
+  /// File path: assets/svg/empty_map.svg.vec
+  String get emptyMapSvg => 'assets/svg/empty_map.svg.vec';
+
   /// File path: assets/svg/error.svg.vec
   String get errorSvg => 'assets/svg/error.svg.vec';
 
@@ -156,6 +159,7 @@ class $AssetsSvgGen {
         addTripStopSvg,
         arrowSvg,
         destinationSvg,
+        emptyMapSvg,
         errorSvg,
         loginSvg,
         navDrawerHeaderSvg,
