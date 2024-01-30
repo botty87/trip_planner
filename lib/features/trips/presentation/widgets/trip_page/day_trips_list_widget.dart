@@ -96,7 +96,6 @@ class DayTripsList extends HookWidget {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: verticalSpace),
                 child: TransparentListDecorator(
-                  index: index,
                   animation: dragAnimation,
                   child: DayTripCard(
                     dayTrip: dayTrip,

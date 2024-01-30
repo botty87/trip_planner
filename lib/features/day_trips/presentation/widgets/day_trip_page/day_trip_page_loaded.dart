@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../cubit/day_trip/day_trip_cubit.dart';
-import 'list_tab/list_view_widget/list_view_widget.dart';
+import 'list_tab/list_view_widget.dart';
 import 'map_tab/map_view/map_view_widget.dart';
 
 class DayTripPageLoaded extends HookWidget {

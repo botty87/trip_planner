@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 
 class TransparentListDecorator extends StatelessWidget {
   final Widget child;
-  final int index;
   final Animation<double> animation;
 
   const TransparentListDecorator(
-      {super.key, required this.child, required this.index, required this.animation});
+      {super.key, required this.child, required this.animation});
 
   @override
   Widget build(BuildContext context) {

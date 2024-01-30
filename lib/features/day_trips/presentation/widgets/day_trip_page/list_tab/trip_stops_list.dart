@@ -9,6 +9,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/pair.dart';
 import '../../../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
+import '../../../../../../core/widgets/transparent_list_decorator.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 import 'travel_card.dart';
@@ -73,19 +74,22 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Slidable(
-                    startActionPane: ActionPane(
-                      motion: const ScrollMotion(),
-                      children: [_getSlidableAction(tripStop, index)],
+                  TransparentListDecorator(
+                    animation: dragAnimation,
+                    child: Slidable(
+                      startActionPane: ActionPane(
+                        motion: const ScrollMotion(),
+                        children: [_getSlidableAction(tripStop, index)],
+                      ),
+                      child: Builder(builder: (context) {
+                        final slidableController = Slidable.of(context);
+                        return TripStopCard(
+                          tripStop: tripStop,
+                          tripStartEndTimes: startEndTime,
+                          slidableController: slidableController,
+                        );
+                      }),
                     ),
-                    child: Builder(builder: (context) {
-                      final slidableController = Slidable.of(context);
-                      return TripStopCard(
-                        tripStop: tripStop,
-                        tripStartEndTimes: startEndTime,
-                        slidableController: slidableController,
-                      );
-                    }),
                   ),
                   TravelCard(tripStop: tripStop),
                 ],

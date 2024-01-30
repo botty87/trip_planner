@@ -10,7 +10,7 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/pair.dart';
-import '../../../../core/widgets/day_trip/travel_card_abstract.dart';
+import '../../../../core/widgets/day_trip/generic_travel_card.dart';
 import '../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
