@@ -1,8 +1,8 @@
+import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
 import 'package:trip_planner/core/widgets/trip/generic_trip_card.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/day_trip_card.dart';
