@@ -521,7 +521,7 @@ class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl(
       {required this.trip,
       required this.dayTrip,
-      final List<TripStop> tripStops = const [],
+      required final List<TripStop> tripStops,
       this.hasStartTimeToSave = false,
       this.explictitStartTimeSave = false})
       : _tripStops = tripStops;
@@ -532,7 +532,6 @@ class _$LoadedImpl implements _Loaded {
   final DayTrip dayTrip;
   final List<TripStop> _tripStops;
   @override
-  @JsonKey()
   List<TripStop> get tripStops {
     if (_tripStops is EqualUnmodifiableListView) return _tripStops;
     // ignore: implicit_dynamic_type
@@ -729,7 +728,7 @@ abstract class _Loaded implements DayTripState {
   const factory _Loaded(
       {required final Trip trip,
       required final DayTrip dayTrip,
-      final List<TripStop> tripStops,
+      required final List<TripStop> tripStops,
       final bool hasStartTimeToSave,
       final bool explictitStartTimeSave}) = _$LoadedImpl;
 

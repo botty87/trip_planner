@@ -11,7 +11,7 @@ sealed class DayTripState with _$DayTripState {
   const factory DayTripState.loaded({
     required Trip trip,
     required DayTrip dayTrip,
-    @Default([]) List<TripStop> tripStops,
+    required List<TripStop> tripStops,
     @Default(false) bool hasStartTimeToSave,
     @Default(false) bool explictitStartTimeSave,
   }) = _Loaded;

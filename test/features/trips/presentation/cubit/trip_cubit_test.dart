@@ -226,6 +226,8 @@ void main() {
     ];
 
     blocTest<TripCubit, TripState>('On reorderDayTrips call updateDayTripsIndexes',
+        setUp: () =>
+            when(mockUpdateDayTripsIndexes.call(any)).thenAnswer((_) async => const Right(null)),
         seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
         act: (cubit) => cubit.reorderDayTrips(0, 2, tDayTripsSorted),
         build: () => getStandardCubit(),
