@@ -42,7 +42,8 @@ void main() {
     );
 
     await tester.runAsync(() async {
-      await tester.pumpWidget(TestUtils.defaultWidgetCubit(const LoadedWidget(), mockTripsCubit));
+      await tester.pumpWidget(
+          TestUtils.defaultWidgetCubits(child: const LoadedWidget(), cubits: [mockTripsCubit]));
 
       expect(find.byType(NoTripsWidget), findsOneWidget);
     });
@@ -56,7 +57,8 @@ void main() {
     );
 
     await tester.runAsync(() async {
-      await tester.pumpWidget(TestUtils.defaultWidgetCubit(const LoadedWidget(), mockTripsCubit));
+      await tester.pumpWidget(
+          TestUtils.defaultWidgetCubits(child: const LoadedWidget(), cubits: [mockTripsCubit]));
 
       expect(find.byType(TripsListWidget), findsOneWidget);
     });

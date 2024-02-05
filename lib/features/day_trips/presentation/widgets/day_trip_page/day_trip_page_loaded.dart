@@ -19,8 +19,10 @@ class DayTripPageLoaded extends HookWidget {
         ));
 
     return AbsorbPointer(
+      key: const Key('dayTripPageLoadedAbsorbPointer'),
       absorbing: absorbed,
       child: Column(
+        key: const Key('dayTripPageLoadedColumn'),
         children: [
           absorbed ? const LinearProgressIndicator() : const SizedBox.shrink(),
           Expanded(
