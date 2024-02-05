@@ -29,10 +29,9 @@ void main() {
     );
 
     await tester.runAsync(() async {
-      await tester.pumpWidget(TestUtils.defaultWidgetCubits(
-          child: const TripsErrorWidget(message: 'message'), cubits: [mockTripsCubit]));
+      await tester.pumpWidget(TestUtils.defaultWidgetCubit(const TripsErrorWidget(message: 'message'), mockTripsCubit));
 
       expect(find.byType(GenericErrorWidget), findsOneWidget);
     });
-  });
+  });  
 }

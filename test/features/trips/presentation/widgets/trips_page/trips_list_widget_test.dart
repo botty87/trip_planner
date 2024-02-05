@@ -50,8 +50,7 @@ void main() {
     );
 
     await tester.runAsync(() async {
-      await tester.pumpWidget(
-          TestUtils.defaultWidgetCubits(child: const TripsListWidget(), cubits: [mockTripsCubit]));
+      await tester.pumpWidget(TestUtils.defaultWidgetCubit(const TripsListWidget(), mockTripsCubit));
 
       expect(find.byType(ListView), findsOneWidget);
       expect(find.byType(TripCard), findsNWidgets(2));
