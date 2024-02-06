@@ -54,11 +54,11 @@ void main() {
 
     await tester.pumpWidget(
       TestUtils.defaultWidgetCubit(
-        const DefaultTabController(
+        child: const DefaultTabController(
           length: 2,
           child: DayTripPageLoaded(orientation: Orientation.portrait),
         ),
-        mockDayTripCubit,
+        cubit: mockDayTripCubit,
       ),
     );
 
@@ -82,6 +82,7 @@ void main() {
             widget.children[1] is Expanded),
         findsNothing);
   });
+
 
   testWidgets('On landscape should show AbsorbPointer with Column and Row',
       (WidgetTester tester) async {

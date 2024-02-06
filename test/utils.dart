@@ -4,7 +4,7 @@ import 'package:responsive_framework/breakpoint.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
 
 class TestUtils {
-  static Widget defaultWidgetCubit<T extends Cubit>(Widget child, T cubit) => MaterialApp(
+  static Widget defaultWidgetCubit<T extends Cubit>({required Widget child, required T cubit}) => MaterialApp(
         home: ResponsiveBreakpoints(
           breakpoints: const [
             Breakpoint(start: 0, end: 450, name: MOBILE),
