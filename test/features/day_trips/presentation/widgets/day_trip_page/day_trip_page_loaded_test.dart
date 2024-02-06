@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -10,8 +9,6 @@ import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/trip_stops_map/trip_stops_map_cubit.dart';
 import 'package:trip_planner/features/day_trips/presentation/widgets/day_trip_page/day_trip_page_loaded.dart';
-import 'package:trip_planner/features/day_trips/presentation/widgets/day_trip_page/list_tab/list_view_widget.dart';
-import 'package:trip_planner/features/day_trips/presentation/widgets/day_trip_page/map_tab/map_view/map_view_widget.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 
 import '../../../../../utils.dart';
