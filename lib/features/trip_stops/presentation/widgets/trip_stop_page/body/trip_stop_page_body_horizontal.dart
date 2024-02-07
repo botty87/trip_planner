@@ -5,7 +5,7 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return const Placeholder();
     /* return Padding(
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: BlocSelector<TripStopCubit, TripStopState, String?>(
