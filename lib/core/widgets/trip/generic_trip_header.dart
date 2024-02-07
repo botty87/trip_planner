@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 //TODO make it final
 class GenericTripDescription extends StatelessWidget {
-  //TODO remove nullable
+  //TODO make it non-nullable
   final String? headerText;
 
   const GenericTripDescription({super.key, required this.headerText});

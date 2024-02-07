@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../core/widgets/trip/delete_trip_button.dart';
+import '../../../../../core/widgets/trip/generic_delete_trip_button.dart';
 import '../../cubit/trip/trip_cubit.dart';
 
 class DeleteTripButton extends StatelessWidget {

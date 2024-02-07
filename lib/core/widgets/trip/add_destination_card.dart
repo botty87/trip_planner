@@ -35,16 +35,12 @@ final class AddDestinationCard extends StatelessWidget {
                 if (ResponsiveBreakpoints.of(context).largerThan(MOBILE)) {
                   return SizedBox(
                     height: 200,
-                    child: SvgPicture(
-                      AssetBytesLoader(assetName),
-                    ),
+                    child: SvgPicture(AssetBytesLoader(assetName)),
                   );
                 } else {
                   return AspectRatio(
                     aspectRatio: 3 / 2,
-                    child: SvgPicture(
-                      AssetBytesLoader(assetName),
-                    ),
+                    child: SvgPicture(AssetBytesLoader(assetName)),
                   );
                 }
               }),

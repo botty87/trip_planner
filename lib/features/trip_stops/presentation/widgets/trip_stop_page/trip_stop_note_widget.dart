@@ -1,7 +1,14 @@
-part of '../../pages/trip_stop_page.dart';
 
-class _TripStopNoteWidget extends HookWidget {
-  const _TripStopNoteWidget();
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+
+import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../cubit/trip_stop/trip_stop_cubit.dart';
+
+class TripStopNoteWidget extends HookWidget {
+  const TripStopNoteWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

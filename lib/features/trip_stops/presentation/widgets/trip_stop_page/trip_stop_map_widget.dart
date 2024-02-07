@@ -1,7 +1,13 @@
-part of '../../pages/trip_stop_page.dart';
 
-class _MapWidget extends StatelessWidget {
-  const _MapWidget();
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../map/domain/entities/map_place.dart';
+import '../../../../map/presentation/widgets/map_widget.dart';
+import '../../cubit/trip_stop/trip_stop_cubit.dart';
+
+class TripStopMapWidget extends StatelessWidget {
+  const TripStopMapWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

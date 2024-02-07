@@ -53,6 +53,49 @@ class GenericSaveCancelEditButtons extends StatelessWidget {
   }
 }
 
+class GenericSaveCancelEditButtonsNoStream extends StatelessWidget {
+  final bool _isSaving;
+  final VoidCallback _onCancel;
+  final VoidCallback _onSave;
+  final String? _errorMessage;
+
+  const GenericSaveCancelEditButtonsNoStream({
+    super.key,
+    required bool isSaving,
+    required VoidCallback onCancel,
+    required VoidCallback onSave,
+    required String? errorMessage,
+  })  : _isSaving = isSaving,
+        _onCancel = onCancel,
+        _onSave = onSave,
+        _errorMessage = errorMessage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              onPressed: _isSaving ? null : _onCancel,
+              child: Text(
+                LocaleKeys.cancel.tr(),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: _isSaving ? null : _onSave,
+              child: Text(LocaleKeys.save.tr()),
+            ),
+          ],
+        ),
+        const SizedBox(height: verticalSpaceS),
+        _ErrorMessage(errorMessage: _errorMessage),
+      ],
+    );
+  }
+}
+
 class _ErrorMesage extends StatelessWidget {
   final Stream<String?> _errorMessage;
 
@@ -73,5 +116,21 @@ class _ErrorMesage extends StatelessWidget {
               );
       },
     );
+  }
+}
+
+class _ErrorMessage extends StatelessWidget {
+  final String? errorMessage;
+
+  const _ErrorMessage({required this.errorMessage});  
+
+  @override
+  Widget build(BuildContext context) {
+    return errorMessage == null
+        ? const SizedBox.shrink()
+        : Text(
+            errorMessage!,
+            style: const TextStyle(color: Colors.red),
+          );
   }
 }

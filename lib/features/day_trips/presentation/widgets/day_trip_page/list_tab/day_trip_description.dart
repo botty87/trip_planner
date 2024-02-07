@@ -15,7 +15,7 @@ final class DayTripDescription extends StatelessWidget {
     if (description?.isEmpty ?? true) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: verticalSpaceL),
-      child: GenericTripDescription(headerText: description),
+      child: GenericTripDescription(headerText: description!),
     );
   }
 }

@@ -1,12 +1,24 @@
-part of '../../pages/trip_stop_page.dart';
+import 'dart:async';
 
-class _TripStopPageBody extends HookWidget {
-  const _TripStopPageBody();
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:responsive_framework/responsive_breakpoints.dart';
+
+import '../../../../../../core/widgets/snackbars.dart';
+import '../../../cubit/trip_stop/trip_stop_cubit.dart';
+import '../../new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
+import 'trip_stop_page_body_horizontal.dart';
+import 'trip_stop_page_body_vertical.dart';
+
+class TripStopPageBody extends HookWidget {
+  const TripStopPageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     final errorMessage = useStreamController<String>();
-    final isDeleting = useStreamController<bool>();
     final hourDuration = useStreamController<int>();
     final minuteDuration = useStreamController<int>();
     final isSaving = useStreamController<bool>();
@@ -28,13 +40,6 @@ class _TripStopPageBody extends HookWidget {
         BlocListener<TripStopCubit, TripStopState>(
           listener: (context, state) => context.router.pop(),
           listenWhen: (previous, current) => current is TripStopStateDeleted,
-        ),
-        //Update isDeleting stream when deleting
-        BlocListener<TripStopCubit, TripStopState>(
-          listener: (context, state) => isDeleting.add(state is TripStopStateDeleting),
-          listenWhen: (previous, current) =>
-              (previous is! TripStopStateDeleting && current is TripStopStateDeleting) ||
-              (previous is TripStopStateDeleting && current is! TripStopStateDeleting),
         ),
         //Show modal bottom sheet if editing
         BlocListener<TripStopCubit, TripStopState>(
@@ -99,25 +104,26 @@ class _TripStopPageBody extends HookWidget {
       child: BlocSelector<TripStopCubit, TripStopState, bool>(
         selector: (state) => state.maybeMap(
           noteSaving: (_) => true,
+          deleting: (_) => true,
           orElse: () => false,
         ),
-        builder: (context, isSaving) {
+        builder: (context, isSavingOrDeleting) {
           return AbsorbPointer(
-            absorbing: isSaving,
+            absorbing: isSavingOrDeleting,
             child: Column(
               children: [
-                isSaving ? const LinearProgressIndicator() : const SizedBox.shrink(),
+                isSavingOrDeleting ? const LinearProgressIndicator() : const SizedBox.shrink(),
                 Expanded(
                   child: Builder(builder: (context) {
                     if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
-                      return _VerticalLayout(isDeleting: isDeleting.stream);
+                      return const TripStopPageBodyVertical();
                     } else {
                       return OrientationBuilder(
                         builder: (context, orientation) {
                           if (orientation == Orientation.portrait) {
-                            return _VerticalLayout(isDeleting: isDeleting.stream);
+                            return const TripStopPageBodyVertical();
                           } else {
-                            return _HorizontalLayout(isDeleting: isDeleting.stream);
+                            return const TripStopPageBodyHorizontal();
                           }
                         },
                       );
@@ -168,12 +174,13 @@ class _TripStopPageBody extends HookWidget {
                 cubit.locationChanged(value);
               }
             },
-            saveSection: _SaveCancelEditButtons(
+            saveSection:
+                const Placeholder(), /* SaveCancelEditButtons(
               isSaving: isSaving.stream,
               onCancel: () => cubit.cancelEditing(),
               onSave: () => cubit.saveChanges(),
               errorMessage: errorMessage.stream,
-            ),
+            ), */
           ),
         );
       },
@@ -187,103 +194,5 @@ class _TripStopPageBody extends HookWidget {
     await Future.delayed(const Duration(milliseconds: 100));
     hourDuration.add(tripStopDuration ~/ 60);
     minuteDuration.add(tripStopDuration % 60);
-  }
-}
-
-class _VerticalLayout extends StatelessWidget {
-  final Stream<bool> isDeleting;
-
-  const _VerticalLayout({required this.isDeleting});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: defaultPagePadding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          BlocSelector<TripStopCubit, TripStopState, String?>(
-            selector: (state) => state.tripStop.description,
-            builder: (context, description) => _TripStopDescription(headerText: description),
-          ),
-          const SizedBox(height: verticalSpace),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
-            child: const _MapWidget(),
-          ),
-          const SizedBox(height: verticalSpace),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
-          ),
-          if (!kIsWeb) ...[
-            const SizedBox(height: verticalSpace),
-            const _TripStopNavigateToButton(),
-          ],
-          const SizedBox(height: verticalSpaceXL),
-          const _TripStopNoteWidget(),
-          const SizedBox(height: verticalSpaceL),
-          _DeleteTripStopButton(isDeleting: isDeleting),
-        ],
-      ),
-    );
-  }
-}
-
-class _HorizontalLayout extends StatelessWidget {
-  final Stream<bool> isDeleting;
-
-  const _HorizontalLayout({required this.isDeleting});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
-      child: BlocSelector<TripStopCubit, TripStopState, String?>(
-        selector: (state) => state.tripStop.description,
-        builder: (context, description) {
-          return Row(
-            children: [
-              Expanded(
-                child: SafeArea(
-                  minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
-                  child: Column(
-                    children: [
-                      const Expanded(child: _MapWidget()),
-                      if (!kIsWeb) ...[
-                        const SizedBox(height: verticalSpaceXL),
-                        const _TripStopNavigateToButton(),
-                      ],
-                      const SizedBox(height: verticalSpaceL),
-                      _DeleteTripStopButton(isDeleting: isDeleting),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(width: horizontalSpaceL),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.only(bottom: pageVerticalPadding),
-                  child: Column(
-                    children: [
-                      if (description?.isNotEmpty ?? false) ...[
-                        _TripStopDescription(headerText: description),
-                        const SizedBox(height: verticalSpaceXL),
-                      ],
-                      const _TripStopNoteWidget(),
-                      const SizedBox(height: verticalSpaceL),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          );
-        },
-      ),
-    );
   }
 }

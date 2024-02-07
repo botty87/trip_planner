@@ -1,8 +1,17 @@
-part of '../../pages/trip_stop_page.dart';
 
 //A button that opens the navigation app to navigate to the trip stop
-class _TripStopNavigateToButton extends StatelessWidget {
-  const _TripStopNavigateToButton();
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:map_launcher/map_launcher.dart';
+
+import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../core/utilities/extensions.dart';
+import '../../cubit/trip_stop/trip_stop_cubit.dart';
+
+class TripStopNavigateToButton extends StatelessWidget {
+  const TripStopNavigateToButton({super.key});
 
   @override
   Widget build(BuildContext context) {
