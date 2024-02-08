@@ -56,7 +56,9 @@ dependencies:
   flutter_linkify: ^6.0.0
   flutter_native_splash: ^2.3.9
   flutter_polyline_points:
-    path: ../flutter_polyline_points
+    git:
+      url: https://github.com/botty87/flutter_polyline_points.git
+      ref: master # branch name
   flutter_slidable: ^3.0.1
   flutter_svg: ^2.0.7
   font_awesome_flutter: ^10.6.0
