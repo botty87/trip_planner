@@ -18,7 +18,6 @@ class TripStopPageBody extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final errorMessage = useStreamController<String>();
     final hourDuration = useStreamController<int>();
     final minuteDuration = useStreamController<int>();
     final isSaving = useStreamController<bool>();
@@ -27,12 +26,11 @@ class TripStopPageBody extends HookWidget {
 
     return MultiBlocListener(
       listeners: [
-        //Show error snackbar if error and update errorMessage stream when error
+        //Show error snackbar if error
         BlocListener<TripStopCubit, TripStopState>(
           listener: (context, state) {
             final errorState = state as TripStopStateError;
             ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorState.message));
-            errorMessage.add(errorState.message);
           },
           listenWhen: (previous, current) => current is TripStopStateError,
         ),
@@ -48,7 +46,6 @@ class TripStopPageBody extends HookWidget {
             isSaving,
             hourDuration,
             minuteDuration,
-            errorMessage,
             isModalBottomEditing,
           ),
           listenWhen: (previous, current) =>
@@ -143,7 +140,6 @@ class TripStopPageBody extends HookWidget {
     StreamController<bool> isSaving,
     StreamController<int> hourDuration,
     StreamController<int> minuteDuration,
-    StreamController<String?> errorMessage,
     ObjectRef isModalBottomEditing,
   ) async {
     final cubit = context.read<TripStopCubit>();
@@ -157,30 +153,33 @@ class TripStopPageBody extends HookWidget {
       isDismissible: false,
       useSafeArea: true,
       builder: (context) {
-        return Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: NewEditTripStopForm.editTripStop(
-            key: const Key('new_edit_trip_stop_form'),
-            isSaving: isSaving.stream,
-            hourDuration: hourDuration.stream,
-            minuteDuration: minuteDuration.stream,
-            tripStop: cubit.state.tripStop,
-            onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-            onNameChanged: (String value) => cubit.nameChanged(value),
-            onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
-            onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
-            onLocationChanged: (LatLng? value) {
-              if (value != null) {
-                cubit.locationChanged(value);
-              }
-            },
-            saveSection:
-                const Placeholder(), /* SaveCancelEditButtons(
+        return BlocProvider.value(
+          value: cubit,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: NewEditTripStopForm.editTripStop(
+              key: const Key('new_edit_trip_stop_form'),
               isSaving: isSaving.stream,
-              onCancel: () => cubit.cancelEditing(),
-              onSave: () => cubit.saveChanges(),
-              errorMessage: errorMessage.stream,
-            ), */
+              hourDuration: hourDuration.stream,
+              minuteDuration: minuteDuration.stream,
+              tripStop: cubit.state.tripStop,
+              onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+              onNameChanged: (String value) => cubit.nameChanged(value),
+              onHourDurationChanged: (int value) => cubit.hourDurationChanged(value),
+              onMinuteDurationChanged: (int value) => cubit.minuteDurationChanged(value),
+              onLocationChanged: (LatLng? value) {
+                if (value != null) {
+                  cubit.locationChanged(value);
+                }
+              },
+              saveSection:
+                  const Placeholder(), /* SaveCancelEditButtons(
+                      isSaving: isSaving.stream,
+                      onCancel: () => cubit.cancelEditing(),
+                      onSave: () => cubit.saveChanges(),
+                      errorMessage: errorMessage.stream,
+                    ), */
+            ),
           ),
         );
       },

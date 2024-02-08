@@ -19,6 +19,7 @@ sealed class TripStopState with _$TripStopState {
     int? hourDuration,
     int? minuteDuration,
     LatLng? location,
+    String? errorMessage,
   }) = TripStopStateEditing;
 
   const factory TripStopState.saving({

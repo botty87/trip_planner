@@ -4,7 +4,8 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-// ignore_for_file: type=lint
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: lines_longer_than_80_chars
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
@@ -182,7 +183,7 @@ import '../routes/app_router.dart' as _i3;
 import 'di.dart' as _i108;
 
 extension GetItInjectableX on _i1.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
@@ -247,12 +248,12 @@ extension GetItInjectableX on _i1.GetIt {
       instanceName: 'googlePlacesKey',
     );
     gh.lazySingleton<String>(
-      () => googlePlacesModule.proxyUrl,
-      instanceName: 'proxyUrl',
-    );
-    gh.lazySingleton<String>(
       () => googlePlacesModule.googleMapKey,
       instanceName: 'googleMapKey',
+    );
+    gh.lazySingleton<String>(
+      () => googlePlacesModule.proxyUrl,
+      instanceName: 'proxyUrl',
     );
     gh.factoryParam<_i29.TripStopsCollectionRef, String, String>((
       tripId,
@@ -544,11 +545,11 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
+class _$RegisterModule extends _i108.RegisterModule {}
+
 class _$Network extends _i108.Network {}
 
 class _$FirebaseModule extends _i108.FirebaseModule {}
-
-class _$RegisterModule extends _i108.RegisterModule {}
 
 class _$GooglePlacesModule extends _i108.GooglePlacesModule {}
 
