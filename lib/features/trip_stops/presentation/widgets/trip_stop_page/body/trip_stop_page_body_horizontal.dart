@@ -1,12 +1,23 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../core/constants.dart';
+import '../../../cubit/trip_stop/trip_stop_cubit.dart';
+import '../delete_trip_stop_button.dart';
+import '../trip_stop_description.dart';
+import '../trip_stop_done_widget.dart';
+import '../trip_stop_duration_widget.dart';
+import '../trip_stop_map_widget.dart';
+import '../trip_stop_navigate_to_button.dart';
+import '../trip_stop_note_widget.dart';
 
 class TripStopPageBodyHorizontal extends StatelessWidget {
   const TripStopPageBodyHorizontal({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
-    /* return Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: BlocSelector<TripStopCubit, TripStopState, String?>(
         selector: (state) => state.tripStop.description,
@@ -17,43 +28,40 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
                 child: SafeArea(
                   minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
                   child: Column(
-                    children: [
-                      const Expanded(child: _MapWidget()),
+                    children: const [
+                      Expanded(child: TripStopMapWidget()),
                       if (!kIsWeb) ...[
-                        const SizedBox(height: verticalSpaceXL),
-                        const _TripStopNavigateToButton(),
+                        SizedBox(height: verticalSpaceXL),
+                        TripStopNavigateToButton(),
                       ],
-                      const SizedBox(height: verticalSpaceL),
-                      _DeleteTripStopButton(isDeleting: isDeleting),
+                      SizedBox(height: verticalSpaceL),
+                      DeleteTripStopButton(),
                     ],
                   ),
                 ),
               ),
               const SizedBox(width: horizontalSpaceL),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.only(bottom: pageVerticalPadding),
+              const Expanded(
+                child: SafeArea(
+                  minimum: EdgeInsets.only(bottom: pageVerticalPadding),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (description?.isNotEmpty ?? false) ...[
-                        _TripStopDescription(headerText: description),
-                        const SizedBox(height: verticalSpaceXL),
-                      ],
-                      const _TripStopNoteWidget(),
-                      const SizedBox(height: verticalSpaceL),
-                      const Row(
+                      Flexible(child: SingleChildScrollView(child: TripStopDescription())),
+                      TripStopNoteWidget(),
+                      SizedBox(height: verticalSpaceL),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [_TripStopDurationWidget(), _TripStopDoneWidget()],
+                        children: [TripStopDurationWidget(), TripStopDoneWidget()],
                       ),
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           );
         },
       ),
     );
-   */
   }
 }
