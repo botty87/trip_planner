@@ -16,6 +16,7 @@ class TripCard extends StatelessWidget {
     return InkWell(
       onTap: () => context.router.push(TripRoute(trip: trip)),
       child: Card(
+        elevation: 2,
         child: Padding(
           padding: const EdgeInsets.all(verticalSpace),
           child: Column(

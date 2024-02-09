@@ -23,3 +23,5 @@ const usersRef = 'users';
 const dayTripsRef = 'dayTrips';
 const tripStopsRef = 'tripStops';
 const settingsRef = 'settings';
+
+const int availableBackgrounds = 6;

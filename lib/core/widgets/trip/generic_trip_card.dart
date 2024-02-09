@@ -26,6 +26,7 @@ final class GenericTripCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        elevation: 2,
         color: color,
         child: Padding(
           padding: const EdgeInsets.all(8.0),

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -57,4 +58,8 @@ extension TravelModeExtension on TravelMode {
 
 extension Let<T> on T {
   FutureOr<R> let<R>(R Function(T) block) => block(this);
+}
+
+extension FirebaseStorageExtension on FirebaseStorage {
+  Reference get backgroundsRef => ref('backgrounds');
 }

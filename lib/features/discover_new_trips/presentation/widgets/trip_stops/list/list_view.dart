@@ -28,7 +28,7 @@ class _ListView extends HookWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _TripStopsHeader(headerText: _dayTrip.description),
+            _TripStopsHeader(description: _dayTrip.description),
             if (_dayTrip.description?.isNotEmpty ?? false) const SizedBox(height: verticalSpaceL),
             _DiscoverNewTripStopsList(dayTrip: _dayTrip),
           ],

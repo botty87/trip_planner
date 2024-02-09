@@ -12,7 +12,7 @@ class _VerticalLayout extends StatelessWidget {
       padding: defaultPagePadding,
       child: Column(
         children: [
-          _TripStopDescription(headerText: tripStop.description),
+          _TripStopDescription(description: tripStop.description),
           const SizedBox(height: verticalSpace),
           SizedBox(
             height: MediaQuery.of(context).size.height * heightFactor,

@@ -18,7 +18,7 @@ class _LoadedWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _DailyTripsHeader(headerText: _trip.description),
+              _DailyTripsHeader(description: _trip.description),
               if (_trip.description?.isNotEmpty ?? false) const SizedBox(height: verticalSpaceL),
               _DiscoverNewDailyTripList(trip: _trip),
             ],

@@ -25,6 +25,7 @@ final class AddDestinationCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
+        elevation: 2,
         color: color,
         child: Padding(
           padding: cardPadding,

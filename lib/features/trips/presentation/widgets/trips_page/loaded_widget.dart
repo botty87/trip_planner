@@ -20,6 +20,6 @@ class LoadedWidget extends HookWidget {
           orElse: () => previousHasTrips ?? false,
         ));
 
-    return hasTrips ? const TripsListWidget() : const NoTripsWidget();
+    return hasTrips ? TripsListWidget() : const NoTripsWidget();
   }
 }

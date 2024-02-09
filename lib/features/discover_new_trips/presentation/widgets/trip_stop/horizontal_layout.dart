@@ -17,7 +17,7 @@ class _HorizontalLayout extends StatelessWidget {
                 const EdgeInsets.only(right: pageHorizontalPadding, bottom: pageVerticalPadding),
             child: Column(
               children: [
-                _TripStopDescription(headerText: tripStop.description),
+                _TripStopDescription(description: tripStop.description),
                 const SizedBox(height: verticalSpace),
                 const _TripStopDurationWidget(),
               ],

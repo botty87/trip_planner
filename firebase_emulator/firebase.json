@@ -22,6 +22,9 @@
     },
     "database": {
       "port": 9000
+    },
+    "storage": {
+      "port": 9199
     }
   },
   "functions": {
@@ -40,5 +43,11 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }

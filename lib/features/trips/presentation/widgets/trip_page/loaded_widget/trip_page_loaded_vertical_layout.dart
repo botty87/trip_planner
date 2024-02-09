@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
 
 import '../../../../../../core/constants.dart';
+import '../../../../../../gen/assets.gen.dart';
 import '../add_day_trip_card.dart';
 import '../day_trips_list_widget.dart';
 import '../delete_trip_button.dart';
@@ -18,19 +19,27 @@ class TripPageLoadedVerticalLayout extends StatelessWidget {
             ? constraints.maxWidth * 0.8
             : constraints.maxWidth;
 
-        return ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: maxWidth,
-          ),
-          child: ListView(
-            padding: defaultPagePadding,
-            children: const [
-              TripHeader(),
-              DayTripsListWidget(orientation: Orientation.portrait),
-              AddDayTripCard(),
-              SizedBox(height: verticalSpaceL),
-              SafeArea(child: DeleteTripButton()),
-            ],
+        return Container(
+          /* decoration: BoxDecoration(
+            image: DecorationImage(
+              image: Assets.images.backgrounds.back2.image().image,
+              fit: BoxFit.cover,
+            ),
+          ), */
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: maxWidth,
+            ),
+            child: ListView(
+              padding: defaultPagePadding,
+              children: const [
+                TripHeader(),
+                DayTripsListWidget(orientation: Orientation.portrait),
+                AddDayTripCard(),
+                SizedBox(height: verticalSpaceL),
+                SafeArea(child: DeleteTripButton()),
+              ],
+            ),
           ),
         );
       },
