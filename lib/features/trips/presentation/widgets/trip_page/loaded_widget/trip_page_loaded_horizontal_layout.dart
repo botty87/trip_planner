@@ -11,21 +11,24 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: Row(
         children: [
-          const Expanded(child: DayTripsListWidget(orientation: Orientation.landscape)),
-          const SizedBox(width: horizontalSpaceL),
+          Expanded(child: DayTripsListWidget(orientation: Orientation.landscape)),
+          SizedBox(width: horizontalSpaceL),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.only(bottom: verticalSpaceXL),
-              children: const [
-                TripHeader(),
-                AddDayTripCard(),
-                SizedBox(height: verticalSpaceXL),
-                DeleteTripButton(),
-              ],
+            child: SafeArea(
+              minimum: EdgeInsets.only(bottom: pageVerticalPadding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(child: SingleChildScrollView(child: TripHeader())),
+                  AddDayTripCard(),
+                  SizedBox(height: verticalSpaceXL),
+                  DeleteTripButton(), 
+                ],
+              ),
             ),
           ),
         ],
