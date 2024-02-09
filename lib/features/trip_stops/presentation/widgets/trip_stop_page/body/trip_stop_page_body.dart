@@ -10,6 +10,7 @@ import 'package:responsive_framework/responsive_breakpoints.dart';
 import '../../../../../../core/widgets/snackbars.dart';
 import '../../../cubit/trip_stop/trip_stop_cubit.dart';
 import '../../new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
+import '../save_cancel_edit_buttons.dart';
 import 'trip_stop_page_body_horizontal.dart';
 import 'trip_stop_page_body_vertical.dart';
 
@@ -172,13 +173,7 @@ class TripStopPageBody extends HookWidget {
                   cubit.locationChanged(value);
                 }
               },
-              saveSection:
-                  const Placeholder(), /* SaveCancelEditButtons(
-                      isSaving: isSaving.stream,
-                      onCancel: () => cubit.cancelEditing(),
-                      onSave: () => cubit.saveChanges(),
-                      errorMessage: errorMessage.stream,
-                    ), */
+              saveSection: const SaveCancelEditButtons(),
             ),
           ),
         );
