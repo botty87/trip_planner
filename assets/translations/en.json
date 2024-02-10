@@ -146,5 +146,6 @@
     "addThisTrip": "Add this trip",
     "noPubblicTripsFound": "No public trips found. Be the first to share your trip!",
     "noDayTripsYetAddOne": "No day of trip yet?\nAdd one!",
-    "whatADesertHere": "What a desert here!\nAdd your first trip stop!"
+    "whatADesertHere": "What a desert here!\nAdd your first trip stop!",
+    "background" : "Background"
 }

@@ -1,4 +1,4 @@
-part of '../../pages/settings_page.dart';
+part of 'day_trip_section.dart';
 
 class _ShowDirectionsSwitch extends StatelessWidget {
   const _ShowDirectionsSwitch();

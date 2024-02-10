@@ -1,4 +1,4 @@
-part of '../../pages/settings_page.dart';
+part of 'day_trip_section.dart';
 
 class _UseDirectionsColorsSwitch extends StatelessWidget {
   const _UseDirectionsColorsSwitch();

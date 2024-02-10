@@ -1,19 +1,21 @@
-part of '../pages/settings_page.dart';
+import 'package:flutter/material.dart';
 
-class _SettingsBody extends StatelessWidget {
-  const _SettingsBody();
+import '../../../../core/constants.dart';
+import 'background/background_section.dart';
+import 'day_trip/day_trip_section.dart';
+
+class SettingsBody extends StatelessWidget {
+  const SettingsBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return ListView(
       padding: defaultPagePadding,
-      child: SafeArea(
-        child: Column(
-          children: [
-            _DayTripSection(),
-          ],
-        ),
-      ),
+      children: const [
+        DayTripSection(),
+        SizedBox(height: verticalSpaceL),
+        BackgroundSection(),
+      ],
     );
   }
 }

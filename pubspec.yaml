@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 2.3.2+184
+version: 2.3.2+185
 
 environment:
   sdk: '>=3.0.2 <4.0.0'
@@ -33,8 +33,8 @@ dependencies:
   animated_switcher_plus: ^1.1.0
   animated_tree_view: ^2.2.0
   auto_route: ^7.4.0
-  calendar_date_picker2: ^0.5.2
   cached_network_image: ^3.3.1
+  calendar_date_picker2: ^0.5.2
   cloud_firestore: ^4.13.2
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
@@ -60,7 +60,7 @@ dependencies:
   flutter_polyline_points:
     git:
       url: https://github.com/botty87/flutter_polyline_points.git
-      ref: master # branch name
+      ref: master
   flutter_slidable: ^3.0.1
   flutter_svg: ^2.0.7
   font_awesome_flutter: ^10.6.0
@@ -82,6 +82,7 @@ dependencies:
   quiver: ^3.2.1
   responsive_framework: ^1.1.1
   shared_preferences: ^2.2.2
+  shimmer: ^3.0.0
   url_launcher: ^6.2.1
   uuid: ^4.0.0
   vector_graphics: ^1.1.9

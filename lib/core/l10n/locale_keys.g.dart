@@ -146,5 +146,6 @@ abstract class  LocaleKeys {
   static const noPubblicTripsFound = 'noPubblicTripsFound';
   static const noDayTripsYetAddOne = 'noDayTripsYetAddOne';
   static const whatADesertHere = 'whatADesertHere';
+  static const background = 'background';
 
 }
