@@ -10,6 +10,7 @@ import 'package:responsive_framework/responsive_breakpoints.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
+import '../../../../core/widgets/background_container.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../../trips/domain/entities/trip.dart';
@@ -64,17 +65,19 @@ class DayTripPage extends HookWidget {
                 Navigator.of(context).pop();
               }
             },
-            child: ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
-                ? _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream)
-                : OrientationBuilder(builder: (context, orientation) {
-                    if (orientation == Orientation.portrait) {
-                      return _verticalLayout(
-                          context, isSaving, isModalBottomEditing, errorMessageStream);
-                    } else {
-                      return _horizontalLayout(
-                          context, isSaving, isModalBottomEditing, errorMessageStream);
-                    }
-                  }),
+            child: BackgroundContainer(
+              child: ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
+                  ? _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream)
+                  : OrientationBuilder(builder: (context, orientation) {
+                      if (orientation == Orientation.portrait) {
+                        return _verticalLayout(
+                            context, isSaving, isModalBottomEditing, errorMessageStream);
+                      } else {
+                        return _horizontalLayout(
+                            context, isSaving, isModalBottomEditing, errorMessageStream);
+                      }
+                    }),
+            ),
           );
         },
       ),
@@ -95,6 +98,7 @@ class DayTripPage extends HookWidget {
       {Orientation orientation = Orientation.landscape}) {
     return Scaffold(
       appBar: _buildAppBar(context, orientation),
+      backgroundColor: Colors.transparent,
       body: MultiBlocListener(
         listeners: [
           //Show snackbar when error is not fatal and is not editing
@@ -201,6 +205,7 @@ class DayTripPage extends HookWidget {
   PreferredSizeWidget _buildAppBar(BuildContext context, Orientation orientation) {
     return AppBar(
       title: Text("${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
+      backgroundColor: Colors.white.withOpacity(0.3),
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),
@@ -211,11 +216,12 @@ class DayTripPage extends HookWidget {
           ? PreferredSize(
               preferredSize: const Size.fromHeight(48),
               child: TabBar(
-                tabs: [
-                  Tab(icon: Icon(Icons.list, semanticLabel: LocaleKeys.list.tr())),
-                  Tab(icon: Icon(Icons.map, semanticLabel: LocaleKeys.map.tr())),
-                ],
-              ),
+                  tabs: [
+                    Tab(icon: Icon(Icons.list, semanticLabel: LocaleKeys.list.tr())),
+                    Tab(icon: Icon(Icons.map, semanticLabel: LocaleKeys.map.tr())),
+                  ],
+                  indicator: const UnderlineTabIndicator(borderSide: BorderSide.none),
+                  dividerColor: Colors.transparent),
             )
           : null,
     );

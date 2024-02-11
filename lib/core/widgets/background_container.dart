@@ -14,7 +14,6 @@ class BackgroundContainer extends StatelessWidget {
     final backgroundImageUrl =
         context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.url);
 
-
     return Stack(
       children: [
         if (backgroundImageUrl != null)
@@ -39,4 +38,10 @@ class BackgroundContainer extends StatelessWidget {
       ],
     );
   }
+}
+
+mixin BackgroundImageListener {
+  bool hasBackgroundImage(BuildContext context) =>
+      context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.url) !=
+      null;
 }

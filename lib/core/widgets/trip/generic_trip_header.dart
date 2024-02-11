@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../constants.dart';
+import '../background_container.dart';
 
-class GenericTripDescription extends StatelessWidget {
+class GenericTripDescription extends StatelessWidget with BackgroundImageListener {
   final String? description;
 
   const GenericTripDescription({super.key, required this.description});
 
   @override
   Widget build(BuildContext context) {
-    final hasBackgroundImage =
-        context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.url) !=
-            null;
+    final hasBackgroundImage = this.hasBackgroundImage(context);
 
     if (description?.isEmpty ?? true) {
       return const SizedBox.shrink();
@@ -30,23 +27,21 @@ class GenericTripDescription extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               )
             : null,
-        child: Padding(
-          padding: hasBackgroundImage
-              ? const EdgeInsets.symmetric(
-                  horizontal: horizontalSpaceL,
-                  vertical: verticalSpaceL,
-                )
-              : const EdgeInsets.all(0),
-          child: Linkify(
-            onOpen: (link) async {
-              if (!await launchUrl(Uri.parse(link.url))) {
-                throw Exception('Could not launch ${link.url}');
-              }
-            },
-            text: description!,
-            style: Theme.of(context).textTheme.bodyLarge,
-            textAlign: TextAlign.justify,
-          ),
+        padding: hasBackgroundImage
+            ? const EdgeInsets.symmetric(
+                horizontal: horizontalSpaceL,
+                vertical: verticalSpaceL,
+              )
+            : const EdgeInsets.all(0),
+        child: Linkify(
+          onOpen: (link) async {
+            if (!await launchUrl(Uri.parse(link.url))) {
+              throw Exception('Could not launch ${link.url}');
+            }
+          },
+          text: description!,
+          style: Theme.of(context).textTheme.bodyLarge,
+          textAlign: TextAlign.justify,
         ),
       ),
     );

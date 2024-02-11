@@ -1,24 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
-import '../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../gen/assets.gen.dart';
 import '../constants.dart';
 import '../l10n/locale_keys.g.dart';
+import 'background_container.dart';
 
-class GenericErrorWidget extends StatelessWidget {
+class GenericErrorWidget extends StatelessWidget with BackgroundImageListener {
   final String message;
   final VoidCallback? onRetry;
   const GenericErrorWidget({super.key, required this.message, this.onRetry});
 
   @override
   Widget build(BuildContext context) {
-    final hasBackgroundImage =
-        context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.url) !=
-            null;
+    final hasBackgroundImage = this.hasBackgroundImage(context);
 
     if (hasBackgroundImage) {
       return Card(
