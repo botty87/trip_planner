@@ -42,7 +42,7 @@ class TripsCubit extends Cubit<TripsState> {
           emit(TripsState.error(message: LocaleKeys.dataLoadError.tr()));
           _crashlytics.recordError(failure, StackTrace.current);
         },
-        (trips) async => emit(TripsState.loaded(trips: trips)),
+        (trips) => emit(TripsState.loaded(trips: trips)),
       );
     });
   }

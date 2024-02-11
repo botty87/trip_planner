@@ -7,7 +7,7 @@ class _ImagesGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveGridView.builder(
       shrinkWrap: true,
-      itemCount: 6,
+      itemCount: 14,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const ResponsiveGridDelegate(
         crossAxisSpacing: 8,

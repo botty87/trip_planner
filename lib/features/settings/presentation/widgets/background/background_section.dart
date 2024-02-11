@@ -28,6 +28,7 @@ class BackgroundSection extends StatelessWidget {
         SettingsSectionHeader(title: LocaleKeys.background.tr()),
         const SizedBox(height: verticalSpaceS),
         Center(child: _ImagesGrid()),
+        const SizedBox(height: verticalSpaceS),
         const Center(child: _NoImageSwitch()),
       ],
     );
