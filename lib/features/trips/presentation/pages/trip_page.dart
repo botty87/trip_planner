@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/widgets/background_container.dart';
@@ -204,16 +205,17 @@ class TripPage extends HookWidget {
   }
 }
 
-class _TripPageAppBar extends StatelessWidget {
+class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
   const _TripPageAppBar();
 
   @override
   Widget build(BuildContext context) {
     final tripName = context.select<TripCubit, String>((cubit) => cubit.state.trip.name);
+    final isBackgroundLight = isBackgroundImageLight(context) ?? true;
 
     return AppBar(
       title: Text(tripName),
-      backgroundColor: Colors.white.withOpacity(0.3),
+      backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),

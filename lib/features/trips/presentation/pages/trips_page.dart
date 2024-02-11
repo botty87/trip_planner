@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
@@ -15,18 +16,20 @@ import '../widgets/trips_page/trips_error_widget.dart';
 import '../widgets/trips_page/trips_page_initial_widget.dart';
 
 @RoutePage()
-class TripsPage extends StatelessWidget {
+class TripsPage extends StatelessWidget with BackgroundImageMixin {
   const TripsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isBackgroundLight = isBackgroundImageLight(context) ?? true;
+
     return BlocProvider<TripsCubit>(
       create: (context) => getIt()..startListenTrip(),
       child: BackgroundContainer(
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            backgroundColor: Colors.white.withOpacity(0.3),
+            backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
             title: Text(LocaleKeys.tripsPageTitle.tr()),
           ),
           body: BlocBuilder<TripsCubit, TripsState>(

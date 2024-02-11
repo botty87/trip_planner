@@ -107,8 +107,9 @@ class __$$BackgroundContainerImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BackgroundContainerImpl implements _BackgroundContainer {
-  _$BackgroundContainerImpl({required this.url, required this.index});
+class _$BackgroundContainerImpl extends _BackgroundContainer {
+  const _$BackgroundContainerImpl({required this.url, required this.index})
+      : super._();
 
   factory _$BackgroundContainerImpl.fromJson(Map<String, dynamic> json) =>
       _$$BackgroundContainerImplFromJson(json);
@@ -151,10 +152,11 @@ class _$BackgroundContainerImpl implements _BackgroundContainer {
   }
 }
 
-abstract class _BackgroundContainer implements BackgroundContainer {
-  factory _BackgroundContainer(
+abstract class _BackgroundContainer extends BackgroundContainer {
+  const factory _BackgroundContainer(
       {required final String url,
       required final int index}) = _$BackgroundContainerImpl;
+  const _BackgroundContainer._() : super._();
 
   factory _BackgroundContainer.fromJson(Map<String, dynamic> json) =
       _$BackgroundContainerImpl.fromJson;

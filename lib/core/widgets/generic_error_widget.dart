@@ -8,7 +8,7 @@ import '../constants.dart';
 import '../l10n/locale_keys.g.dart';
 import 'background_container.dart';
 
-class GenericErrorWidget extends StatelessWidget with BackgroundImageListener {
+class GenericErrorWidget extends StatelessWidget with BackgroundImageMixin {
   final String message;
   final VoidCallback? onRetry;
   const GenericErrorWidget({super.key, required this.message, this.onRetry});

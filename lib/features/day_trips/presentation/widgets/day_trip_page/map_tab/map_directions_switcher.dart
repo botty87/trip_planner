@@ -8,7 +8,7 @@ import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/widgets/background_container.dart';
 import '../../../cubit/trip_stops_map/trip_stops_map_cubit.dart';
 
-class MapDirectionsSwitcher extends StatelessWidget with BackgroundImageListener {
+class MapDirectionsSwitcher extends StatelessWidget with BackgroundImageMixin {
   const MapDirectionsSwitcher({super.key});
 
   @override

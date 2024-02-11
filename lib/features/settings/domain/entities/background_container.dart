@@ -5,11 +5,16 @@ part 'background_container.g.dart';
 
 @freezed
 class BackgroundContainer with _$BackgroundContainer {
+  const BackgroundContainer._();
 
-  factory BackgroundContainer({
+  const factory BackgroundContainer({
     required String url,
     required int index,
   }) = _BackgroundContainer;
 
-  factory BackgroundContainer.fromJson(Map<String, dynamic> json) => _$BackgroundContainerFromJson(json);
+  //If the index is even the image is light, if the index is odd the image is dark
+  bool get isLight => index.isEven;
+
+  factory BackgroundContainer.fromJson(Map<String, dynamic> json) =>
+      _$BackgroundContainerFromJson(json);
 }

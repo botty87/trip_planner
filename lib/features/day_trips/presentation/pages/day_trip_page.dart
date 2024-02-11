@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
 
+import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
@@ -24,7 +25,7 @@ import '../widgets/day_trip_page/list_tab/save_cancel_edit_buttons.dart';
 import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
 @RoutePage()
-class DayTripPage extends HookWidget {
+class DayTripPage extends HookWidget with BackgroundImageMixin {
   final Trip _trip;
   final DayTrip _dayTrip;
 
@@ -203,9 +204,11 @@ class DayTripPage extends HookWidget {
   }
 
   PreferredSizeWidget _buildAppBar(BuildContext context, Orientation orientation) {
+    final isBackgroundLight = isBackgroundImageLight(context) ?? true;
+
     return AppBar(
       title: Text("${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
-      backgroundColor: Colors.white.withOpacity(0.3),
+      backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),

@@ -8,7 +8,7 @@ import '../../../../../../core/widgets/background_container.dart';
 import '../../../../../time_picker/widgets/timepicker.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 
-class StartTimeWidget extends StatelessWidget with BackgroundImageListener {
+class StartTimeWidget extends StatelessWidget with BackgroundImageMixin {
   const StartTimeWidget({super.key});
 
   @override

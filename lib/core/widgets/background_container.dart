@@ -40,8 +40,11 @@ class BackgroundContainer extends StatelessWidget {
   }
 }
 
-mixin BackgroundImageListener {
+mixin BackgroundImageMixin {
   bool hasBackgroundImage(BuildContext context) =>
       context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.url) !=
       null;
+
+  bool? isBackgroundImageLight(BuildContext context) =>
+      context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.isLight);
 }

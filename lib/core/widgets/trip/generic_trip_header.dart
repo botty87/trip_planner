@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../constants.dart';
 import '../background_container.dart';
 
-class GenericTripDescription extends StatelessWidget with BackgroundImageListener {
+class GenericTripDescription extends StatelessWidget with BackgroundImageMixin {
   final String? description;
 
   const GenericTripDescription({super.key, required this.description});
