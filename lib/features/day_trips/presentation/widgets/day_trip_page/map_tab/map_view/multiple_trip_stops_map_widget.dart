@@ -9,18 +9,21 @@ class MultipleTripStopsMapWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        MapDirectionsSwitcher(),
-        Expanded(
-          child: Stack(
-            children: [
-              DayTripMapWidget(isSingleTripStop: false),
-              MapDirectionsLoader(),
-            ],
-          ),
-        )
-      ],
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: const Column(
+        children: [
+          MapDirectionsSwitcher(),
+          Expanded(
+            child: Stack(
+              children: [
+                DayTripMapWidget(isSingleTripStop: false),
+                MapDirectionsLoader(),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

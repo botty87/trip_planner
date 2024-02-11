@@ -19,7 +19,7 @@ class MapDirectionsSwitcher extends StatelessWidget with BackgroundImageMixin {
     final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return Container(
-      color: hasBackgroundImage ? Colors.white.withOpacity(0.9) : null,
+      color: hasBackgroundImage ? Theme.of(context).scaffoldBackgroundColor : null,
       child: Column(
         children: [
           SwitchListTile.adaptive(
