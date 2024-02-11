@@ -25,7 +25,7 @@ class BackgroundSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SettingsSectionHeader(title: LocaleKeys.background.tr()),
+        SettingsSectionHeader(title: LocaleKeys.tripsBackground.tr()),
         const SizedBox(height: verticalSpaceS),
         Center(child: _ImagesGrid()),
         const SizedBox(height: verticalSpaceS),
