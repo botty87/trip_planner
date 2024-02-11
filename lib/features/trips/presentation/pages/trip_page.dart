@@ -7,6 +7,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
+import '../../../../core/widgets/background_container.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
@@ -31,125 +32,129 @@ class TripPage extends HookWidget {
 
     return BlocProvider<TripCubit>(
       create: (context) => getIt<TripCubit>(param1: _trip)..startListenDayTrips(),
-      child: Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: _TripPageAppBar(),
-        ),
-        body: MultiBlocListener(
-          listeners: [
-            BlocListener<TripCubit, TripState>(
-              //Show snackbar when error is not fatal and is not editing
-              listenWhen: (previous, current) => current.maybeMap(
-                error: (state) => !state.fatal && isModalBottomEditing.value == false,
-                orElse: () => false,
-              ),
-              listener: (context, state) {
-                final errorMessage = state.maybeMap(
-                  error: (state) => state.errorMessage,
-                  orElse: () => throw const UnexpectedStateException(),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
-              },
-            ),
-            BlocListener<TripCubit, TripState>(
-              //Show modal bottom sheet if editing
-              listenWhen: (previous, current) => current.maybeMap(
-                editing: (_) => current.runtimeType != previous.runtimeType,
-                orElse: () => false,
-              ),
-              listener: (context, state) {
-                _showModalBottomEditing(
-                    context, isSaving, isModalBottomEditing, errorMessageStream);
-              },
-            ),
-            //Close modal bottom sheet if editing dismissed
-            BlocListener<TripCubit, TripState>(
-              listenWhen: (previous, current) => current.maybeMap(
-                loaded: (_) => previous.maybeMap(
-                  editing: (_) => true,
+      child: BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: const PreferredSize(
+            preferredSize: Size.fromHeight(kToolbarHeight),
+            child: _TripPageAppBar(),
+          ),
+          body: MultiBlocListener(
+            listeners: [
+              BlocListener<TripCubit, TripState>(
+                //Show snackbar when error is not fatal and is not editing
+                listenWhen: (previous, current) => current.maybeMap(
+                  error: (state) => !state.fatal && isModalBottomEditing.value == false,
                   orElse: () => false,
                 ),
-                orElse: () => false,
+                listener: (context, state) {
+                  final errorMessage = state.maybeMap(
+                    error: (state) => state.errorMessage,
+                    orElse: () => throw const UnexpectedStateException(),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
+                },
               ),
-              listener: (context, state) {
-                if (isModalBottomEditing.value) {
-                  Navigator.of(context).pop();
-                }
-              },
-            ),
-            //On modal error, update errorMessage stream
-            BlocListener<TripCubit, TripState>(
-              listenWhen: (previous, current) => current.maybeMap(
-                editing: (currentEditingState) => previous.maybeMap(
-                  editing: (previousEditingState) =>
-                      currentEditingState.errorMessage != previousEditingState.errorMessage,
+              BlocListener<TripCubit, TripState>(
+                //Show modal bottom sheet if editing
+                listenWhen: (previous, current) => current.maybeMap(
+                  editing: (_) => current.runtimeType != previous.runtimeType,
                   orElse: () => false,
                 ),
-                orElse: () => false,
+                listener: (context, state) {
+                  _showModalBottomEditing(
+                      context, isSaving, isModalBottomEditing, errorMessageStream);
+                },
               ),
-              listener: (context, state) {
-                final errorMessage = state.maybeMap(
-                  editing: (state) => state.errorMessage,
-                  orElse: () => throw const UnexpectedStateException(),
-                );
-                errorMessageStream.add(errorMessage);
-              },
-            ),
-            //Update isSaving stream
-            BlocListener<TripCubit, TripState>(
-              listenWhen: (previous, current) => current.maybeMap(
-                editing: (currentEditingState) => previous.maybeMap(
-                  editing: (previousEditingState) =>
-                      currentEditingState.isSaving != previousEditingState.isSaving,
-                  orElse: () => false,
-                ),
-                orElse: () => false,
-              ),
-              listener: (context, state) {
-                final isSavingValue = state.maybeMap(
-                  editing: (state) => state.isSaving,
-                  orElse: () => throw const UnexpectedStateException(),
-                );
-                isSaving.add(isSavingValue);
-              },
-            ),
-            //On trip deleted, pop page
-            BlocListener<TripCubit, TripState>(
-              listenWhen: (previous, current) => current.maybeMap(
-                deleted: (_) => true,
-                orElse: () => false,
-              ),
-              listener: (context, state) {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-          child: BlocBuilder<TripCubit, TripState>(
-            buildWhen: (previous, current) => current.maybeMap(
-              deleting: (_) => false,
-              error: (state) => state.fatal,
-              deleted: (_) => false,
-              orElse: () =>
-                  previous.runtimeType != current.runtimeType &&
-                  previous.maybeMap(
-                    error: (value) => value.fatal,
-                    orElse: () => true,
-                  ) &&
-                  current.maybeMap(
-                    editing: (_) => false,
-                    orElse: () => true,
+              //Close modal bottom sheet if editing dismissed
+              BlocListener<TripCubit, TripState>(
+                listenWhen: (previous, current) => current.maybeMap(
+                  loaded: (_) => previous.maybeMap(
+                    editing: (_) => true,
+                    orElse: () => false,
                   ),
-            ),
-            builder: (context, state) => TripPagesAnimatedSwitcher(
-              child: state.maybeMap(
-                initial: (_) => const TripPageInitialWidget(key: ValueKey('initial')),
-                loaded: (_) => const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
-                error: (state) => Center(
-                  key: const ValueKey('error'),
-                  child: TripErrorWidget(message: state.errorMessage),
+                  orElse: () => false,
                 ),
-                orElse: () => throw UnimplementedError(),
+                listener: (context, state) {
+                  if (isModalBottomEditing.value) {
+                    Navigator.of(context).pop();
+                  }
+                },
+              ),
+              //On modal error, update errorMessage stream
+              BlocListener<TripCubit, TripState>(
+                listenWhen: (previous, current) => current.maybeMap(
+                  editing: (currentEditingState) => previous.maybeMap(
+                    editing: (previousEditingState) =>
+                        currentEditingState.errorMessage != previousEditingState.errorMessage,
+                    orElse: () => false,
+                  ),
+                  orElse: () => false,
+                ),
+                listener: (context, state) {
+                  final errorMessage = state.maybeMap(
+                    editing: (state) => state.errorMessage,
+                    orElse: () => throw const UnexpectedStateException(),
+                  );
+                  errorMessageStream.add(errorMessage);
+                },
+              ),
+              //Update isSaving stream
+              BlocListener<TripCubit, TripState>(
+                listenWhen: (previous, current) => current.maybeMap(
+                  editing: (currentEditingState) => previous.maybeMap(
+                    editing: (previousEditingState) =>
+                        currentEditingState.isSaving != previousEditingState.isSaving,
+                    orElse: () => false,
+                  ),
+                  orElse: () => false,
+                ),
+                listener: (context, state) {
+                  final isSavingValue = state.maybeMap(
+                    editing: (state) => state.isSaving,
+                    orElse: () => throw const UnexpectedStateException(),
+                  );
+                  isSaving.add(isSavingValue);
+                },
+              ),
+              //On trip deleted, pop page
+              BlocListener<TripCubit, TripState>(
+                listenWhen: (previous, current) => current.maybeMap(
+                  deleted: (_) => true,
+                  orElse: () => false,
+                ),
+                listener: (context, state) {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+            child: BlocBuilder<TripCubit, TripState>(
+              buildWhen: (previous, current) => current.maybeMap(
+                deleting: (_) => false,
+                error: (state) => state.fatal,
+                deleted: (_) => false,
+                orElse: () =>
+                    previous.runtimeType != current.runtimeType &&
+                    previous.maybeMap(
+                      error: (value) => value.fatal,
+                      orElse: () => true,
+                    ) &&
+                    current.maybeMap(
+                      editing: (_) => false,
+                      orElse: () => true,
+                    ),
+              ),
+              builder: (context, state) => TripPagesAnimatedSwitcher(
+                child: state.maybeMap(
+                  initial: (_) => const TripPageInitialWidget(key: ValueKey('initial')),
+                  loaded: (_) =>
+                      const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
+                  error: (state) => Center(
+                    key: const ValueKey('error'),
+                    child: TripErrorWidget(message: state.errorMessage),
+                  ),
+                  orElse: () => throw UnimplementedError(),
+                ),
               ),
             ),
           ),
@@ -208,6 +213,7 @@ class _TripPageAppBar extends StatelessWidget {
 
     return AppBar(
       title: Text(tripName),
+      backgroundColor: Colors.white.withOpacity(0.3),
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../constants.dart';
 
 class GenericTripDescription extends StatelessWidget {
@@ -11,21 +13,41 @@ class GenericTripDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hasBackgroundImage =
+        context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.url) !=
+            null;
+
     if (description?.isEmpty ?? true) {
       return const SizedBox.shrink();
     }
 
     return Padding(
       padding: const EdgeInsets.only(bottom: verticalSpace),
-      child: Linkify(
-        onOpen: (link) async {
-          if (!await launchUrl(Uri.parse(link.url))) {
-            throw Exception('Could not launch ${link.url}');
-          }
-        },
-        text: description!,
-        style: Theme.of(context).textTheme.bodyLarge,
-        textAlign: TextAlign.justify,
+      child: Container(
+        decoration: hasBackgroundImage
+            ? BoxDecoration(
+                color: Colors.white.withOpacity(0.9),
+                borderRadius: BorderRadius.circular(8),
+              )
+            : null,
+        child: Padding(
+          padding: hasBackgroundImage
+              ? const EdgeInsets.symmetric(
+                  horizontal: horizontalSpaceL,
+                  vertical: verticalSpaceL,
+                )
+              : const EdgeInsets.all(0),
+          child: Linkify(
+            onOpen: (link) async {
+              if (!await launchUrl(Uri.parse(link.url))) {
+                throw Exception('Could not launch ${link.url}');
+              }
+            },
+            text: description!,
+            style: Theme.of(context).textTheme.bodyLarge,
+            textAlign: TextAlign.justify,
+          ),
+        ),
       ),
     );
   }

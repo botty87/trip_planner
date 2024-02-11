@@ -13,7 +13,6 @@ class TripPageLoadedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO implement test
     final absorbed = context.select((TripCubit cubit) => cubit.state.maybeMap(
           deleting: (_) => true,
           orElse: () => false,
