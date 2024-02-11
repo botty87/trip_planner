@@ -22,6 +22,7 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
   @override
   Widget build(BuildContext context) {
     final isBackgroundLight = isBackgroundImageLight(context) ?? true;
+    final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return BlocProvider<TripsCubit>(
       create: (context) => getIt()..startListenTrip(),
@@ -29,6 +30,7 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
+            scrolledUnderElevation: hasBackgroundImage ? 0 : null,
             backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
             title: Text(LocaleKeys.tripsPageTitle.tr()),
           ),

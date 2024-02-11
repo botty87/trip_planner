@@ -52,6 +52,7 @@ class TripStopPage extends StatelessWidget {
             child: Scaffold(
               backgroundColor: Colors.transparent,
               appBar: PreferredSize(
+                
                 preferredSize: Size.fromHeight(kToolbarHeight),
                 child: _TripStopPageAppBar(),
               ),
@@ -75,10 +76,12 @@ class _TripStopPageAppBar extends StatelessWidget with BackgroundImageMixin {
   Widget build(BuildContext context) {
     final name = context.select((TripStopCubit cubit) => cubit.state.tripStop.name);
     final hasBackgroundImage = this.hasBackgroundImage(context);
+    final isBackgroundLight = isBackgroundImageLight(context) ?? true;
 
     return AppBar(
       title: Text(name),
-      backgroundColor: hasBackgroundImage ? appBarLightColor : appBarDarkColor,
+      scrolledUnderElevation: hasBackgroundImage ? 0 : null,
+      backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),

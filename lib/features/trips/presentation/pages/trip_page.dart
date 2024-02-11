@@ -212,10 +212,12 @@ class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
   Widget build(BuildContext context) {
     final tripName = context.select<TripCubit, String>((cubit) => cubit.state.trip.name);
     final isBackgroundLight = isBackgroundImageLight(context) ?? true;
+    final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return AppBar(
       title: Text(tripName),
       backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
+      scrolledUnderElevation: hasBackgroundImage ? 0 : null,
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),
