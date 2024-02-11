@@ -26,6 +26,8 @@ mixin _$Settings {
   bool get useDifferentDirectionsColors => throw _privateConstructorUsedError;
   @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
   TravelMode get travelMode => throw _privateConstructorUsedError;
+  BackgroundContainer? get backgroundContainer =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +46,10 @@ abstract class $SettingsCopyWith<$Res> {
       bool showDirections,
       bool useDifferentDirectionsColors,
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      TravelMode travelMode});
+      TravelMode travelMode,
+      BackgroundContainer? backgroundContainer});
+
+  $BackgroundContainerCopyWith<$Res>? get backgroundContainer;
 }
 
 /// @nodoc
@@ -64,6 +69,7 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
     Object? showDirections = null,
     Object? useDifferentDirectionsColors = null,
     Object? travelMode = null,
+    Object? backgroundContainer = freezed,
   }) {
     return _then(_value.copyWith(
       defaultDayTripStartTime: null == defaultDayTripStartTime
@@ -82,7 +88,24 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
           ? _value.travelMode
           : travelMode // ignore: cast_nullable_to_non_nullable
               as TravelMode,
+      backgroundContainer: freezed == backgroundContainer
+          ? _value.backgroundContainer
+          : backgroundContainer // ignore: cast_nullable_to_non_nullable
+              as BackgroundContainer?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BackgroundContainerCopyWith<$Res>? get backgroundContainer {
+    if (_value.backgroundContainer == null) {
+      return null;
+    }
+
+    return $BackgroundContainerCopyWith<$Res>(_value.backgroundContainer!,
+        (value) {
+      return _then(_value.copyWith(backgroundContainer: value) as $Val);
+    });
   }
 }
 
@@ -100,7 +123,11 @@ abstract class _$$SettingsImplCopyWith<$Res>
       bool showDirections,
       bool useDifferentDirectionsColors,
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      TravelMode travelMode});
+      TravelMode travelMode,
+      BackgroundContainer? backgroundContainer});
+
+  @override
+  $BackgroundContainerCopyWith<$Res>? get backgroundContainer;
 }
 
 /// @nodoc
@@ -118,6 +145,7 @@ class __$$SettingsImplCopyWithImpl<$Res>
     Object? showDirections = null,
     Object? useDifferentDirectionsColors = null,
     Object? travelMode = null,
+    Object? backgroundContainer = freezed,
   }) {
     return _then(_$SettingsImpl(
       defaultDayTripStartTime: null == defaultDayTripStartTime
@@ -136,6 +164,10 @@ class __$$SettingsImplCopyWithImpl<$Res>
           ? _value.travelMode
           : travelMode // ignore: cast_nullable_to_non_nullable
               as TravelMode,
+      backgroundContainer: freezed == backgroundContainer
+          ? _value.backgroundContainer
+          : backgroundContainer // ignore: cast_nullable_to_non_nullable
+              as BackgroundContainer?,
     ));
   }
 }
@@ -149,7 +181,8 @@ class _$SettingsImpl implements _Settings {
       this.showDirections = true,
       this.useDifferentDirectionsColors = true,
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      this.travelMode = TravelMode.driving});
+      this.travelMode = TravelMode.driving,
+      this.backgroundContainer});
 
   factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SettingsImplFromJson(json);
@@ -166,10 +199,12 @@ class _$SettingsImpl implements _Settings {
   @override
   @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
   final TravelMode travelMode;
+  @override
+  final BackgroundContainer? backgroundContainer;
 
   @override
   String toString() {
-    return 'Settings(defaultDayTripStartTime: $defaultDayTripStartTime, showDirections: $showDirections, useDifferentDirectionsColors: $useDifferentDirectionsColors, travelMode: $travelMode)';
+    return 'Settings(defaultDayTripStartTime: $defaultDayTripStartTime, showDirections: $showDirections, useDifferentDirectionsColors: $useDifferentDirectionsColors, travelMode: $travelMode, backgroundContainer: $backgroundContainer)';
   }
 
   @override
@@ -187,13 +222,20 @@ class _$SettingsImpl implements _Settings {
                 other.useDifferentDirectionsColors ==
                     useDifferentDirectionsColors) &&
             (identical(other.travelMode, travelMode) ||
-                other.travelMode == travelMode));
+                other.travelMode == travelMode) &&
+            (identical(other.backgroundContainer, backgroundContainer) ||
+                other.backgroundContainer == backgroundContainer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, defaultDayTripStartTime,
-      showDirections, useDifferentDirectionsColors, travelMode);
+  int get hashCode => Object.hash(
+      runtimeType,
+      defaultDayTripStartTime,
+      showDirections,
+      useDifferentDirectionsColors,
+      travelMode,
+      backgroundContainer);
 
   @JsonKey(ignore: true)
   @override
@@ -216,7 +258,8 @@ abstract class _Settings implements Settings {
       final bool showDirections,
       final bool useDifferentDirectionsColors,
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      final TravelMode travelMode}) = _$SettingsImpl;
+      final TravelMode travelMode,
+      final BackgroundContainer? backgroundContainer}) = _$SettingsImpl;
 
   factory _Settings.fromJson(Map<String, dynamic> json) =
       _$SettingsImpl.fromJson;
@@ -231,6 +274,8 @@ abstract class _Settings implements Settings {
   @override
   @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
   TravelMode get travelMode;
+  @override
+  BackgroundContainer? get backgroundContainer;
   @override
   @JsonKey(ignore: true)
   _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>

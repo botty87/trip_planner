@@ -7,45 +7,32 @@ class _ModeSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     final travelMode = context.select((SettingsCubit cubit) => cubit.state.settings.travelMode);
 
-    return Wrap(
-      spacing: horizontalSpaceXs,
-      runSpacing: verticalSpaceS,
-      alignment: WrapAlignment.spaceEvenly,
-      runAlignment: WrapAlignment.spaceBetween,
-      children: [
-        ChoiceChip(
+    return SegmentedButton<TravelMode>(
+      segments: [
+        ButtonSegment(
           label: Text(LocaleKeys.driving.tr()),
-          avatar: const Icon(Icons.directions_car),
-          showCheckmark: false,
-          selected: travelMode == TravelMode.driving,
-          onSelected: (value) =>
-              context.read<SettingsCubit>().travelModeChanged(TravelMode.driving),
+          icon: const Icon(Icons.directions_car),
+          value: TravelMode.driving,
         ),
-        ChoiceChip(
+        ButtonSegment(
           label: Text(LocaleKeys.walking.tr()),
-          avatar: const Icon(Icons.directions_walk),
-          showCheckmark: false,
-          selected: travelMode == TravelMode.walking,
-          onSelected: (value) =>
-              context.read<SettingsCubit>().travelModeChanged(TravelMode.walking),
+          icon: const Icon(Icons.directions_walk),
+          value: TravelMode.walking,
         ),
-        ChoiceChip(
+        ButtonSegment(
           label: Text(LocaleKeys.bicycling.tr()),
-          avatar: const Icon(Icons.directions_bike),
-          showCheckmark: false,
-          selected: travelMode == TravelMode.bicycling,
-          onSelected: (value) =>
-              context.read<SettingsCubit>().travelModeChanged(TravelMode.bicycling),
+          icon: const Icon(Icons.directions_bike),
+          value: TravelMode.bicycling,
         ),
-        ChoiceChip(
+        ButtonSegment(
           label: Text(LocaleKeys.transit.tr()),
-          avatar: const Icon(Icons.directions_transit),
-          showCheckmark: false,
-          selected: travelMode == TravelMode.transit,
-          onSelected: (value) =>
-              context.read<SettingsCubit>().travelModeChanged(TravelMode.transit),
+          icon: const Icon(Icons.directions_transit),
+          value: TravelMode.transit,
         ),
       ],
+      selected: {travelMode},
+      onSelectionChanged: (selected) =>
+          context.read<SettingsCubit>().travelModeChanged(selected.first),
     );
   }
 }

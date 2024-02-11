@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/di/di.dart';
 import '../../../user_account/errors/user_failures.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
+import '../../domain/entities/background_container.dart';
 import '../../domain/entities/settings.dart';
 import '../../domain/usecases/update_settings.dart';
 
@@ -76,6 +77,12 @@ class SettingsCubit extends Cubit<SettingsState> {
   Future<void> close() {
     _settingsSubscription.cancel();
     return super.close();
+  }
+
+  //TODO add tests
+  void setBackgroundContainer(BackgroundContainer backgroundContainer) {
+    emit(state.copyWith(
+        settings: state.settings.copyWith(backgroundContainer: backgroundContainer)));
   }
 }
 
