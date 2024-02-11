@@ -18,12 +18,8 @@ class StartTimeWidget extends StatelessWidget with BackgroundImageMixin {
     final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return Container(
-      padding: hasBackgroundImage
-          ? const EdgeInsets.symmetric(
-              horizontal: horizontalSpaceL,
-              vertical: verticalSpaceL,
-            )
-          : const EdgeInsets.all(0),
+      padding:
+          hasBackgroundImage ? const EdgeInsets.only(top: verticalSpace) : const EdgeInsets.all(0),
       decoration: hasBackgroundImage
           ? BoxDecoration(
               color: Colors.white.withOpacity(0.9),

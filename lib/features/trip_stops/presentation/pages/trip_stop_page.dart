@@ -4,13 +4,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/widgets/background_container.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/trip_stop.dart';
 import '../cubit/trip_stop/trip_stop_cubit.dart';
 import '../widgets/trip_stop_page/body/trip_stop_page_body.dart';
-
 
 @RoutePage()
 class TripStopPage extends StatelessWidget {
@@ -47,12 +48,15 @@ class TripStopPage extends StatelessWidget {
               Navigator.of(context).pop();
             }
           },
-          child: const Scaffold(
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(kToolbarHeight),
-              child: _TripStopPageAppBar(),
+          child: const BackgroundContainer(
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: PreferredSize(
+                preferredSize: Size.fromHeight(kToolbarHeight),
+                child: _TripStopPageAppBar(),
+              ),
+              body: TripStopPageBody(),
             ),
-            body: TripStopPageBody(),
           ),
         );
       }),
@@ -64,14 +68,17 @@ class TripStopPage extends StatelessWidget {
   }
 }
 
-class _TripStopPageAppBar extends StatelessWidget {
+class _TripStopPageAppBar extends StatelessWidget with BackgroundImageMixin {
   const _TripStopPageAppBar();
 
   @override
   Widget build(BuildContext context) {
     final name = context.select((TripStopCubit cubit) => cubit.state.tripStop.name);
+    final hasBackgroundImage = this.hasBackgroundImage(context);
+
     return AppBar(
       title: Text(name),
+      backgroundColor: hasBackgroundImage ? appBarLightColor : appBarDarkColor,
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),

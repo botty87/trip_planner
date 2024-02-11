@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/constants.dart';
 import '../delete_trip_stop_button.dart';
 import '../trip_stop_description.dart';
-import '../trip_stop_done_widget.dart';
-import '../trip_stop_duration_widget.dart';
+import '../trip_stop_done_duration_container.dart';
 import '../trip_stop_map_widget.dart';
 import '../trip_stop_navigate_to_button.dart';
 import '../trip_stop_note_widget.dart';
@@ -24,18 +23,15 @@ class TripStopPageBodyVertical extends StatelessWidget {
           child: const TripStopMapWidget(),
         ),
         const SizedBox(height: verticalSpace),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [TripStopDurationWidget(), TripStopDoneWidget()],
-        ),
+        const TripStopDoneDurationContainer(),
         if (!kIsWeb) ...[
           const SizedBox(height: verticalSpace),
           const TripStopNavigateToButton(),
         ],
-        const SizedBox(height: verticalSpaceXL),
+        const SizedBox(height: verticalSpaceL),
         const TripStopNoteWidget(),
         const SizedBox(height: verticalSpaceL),
-        const DeleteTripStopButton(),
+        const SafeArea(child: DeleteTripStopButton()),
       ],
     );
   }
