@@ -8,25 +8,22 @@ class _ModeSelector extends StatelessWidget {
     final travelMode = context.select((SettingsCubit cubit) => cubit.state.settings.travelMode);
 
     return SegmentedButton<TravelMode>(
-      segments: [
+      showSelectedIcon: false,
+      segments: const [
         ButtonSegment(
-          label: Text(LocaleKeys.driving.tr()),
-          icon: const Icon(Icons.directions_car),
+          icon: Icon(Icons.directions_car),
           value: TravelMode.driving,
         ),
         ButtonSegment(
-          label: Text(LocaleKeys.walking.tr()),
-          icon: const Icon(Icons.directions_walk),
+          icon: Icon(Icons.directions_walk),
           value: TravelMode.walking,
         ),
         ButtonSegment(
-          label: Text(LocaleKeys.bicycling.tr()),
-          icon: const Icon(Icons.directions_bike),
+          icon: Icon(Icons.directions_bike),
           value: TravelMode.bicycling,
         ),
         ButtonSegment(
-          label: Text(LocaleKeys.transit.tr()),
-          icon: const Icon(Icons.directions_transit),
+          icon: Icon(Icons.directions_transit),
           value: TravelMode.transit,
         ),
       ],

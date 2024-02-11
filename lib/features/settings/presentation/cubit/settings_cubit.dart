@@ -80,7 +80,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   //TODO add tests
-  void setBackgroundContainer(BackgroundContainer backgroundContainer) {
+  void setBackgroundContainer(BackgroundContainer? backgroundContainer) {
     emit(state.copyWith(
         settings: state.settings.copyWith(backgroundContainer: backgroundContainer)));
   }

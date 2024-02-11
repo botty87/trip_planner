@@ -15,6 +15,7 @@ import '../../cubit/settings_cubit.dart';
 import '../settings_section_header.dart';
 
 part 'images_grid.dart';
+part 'no_image_switch.dart';
 
 class BackgroundSection extends StatelessWidget {
   const BackgroundSection({super.key});
@@ -26,7 +27,8 @@ class BackgroundSection extends StatelessWidget {
       children: [
         SettingsSectionHeader(title: LocaleKeys.background.tr()),
         const SizedBox(height: verticalSpaceS),
-        Center(child: _ImagesGrid())
+        Center(child: _ImagesGrid()),
+        const Center(child: _NoImageSwitch()),
       ],
     );
   }

@@ -148,5 +148,6 @@
     "noPubblicTripsFound" : "Nessun viaggio pubblico trovato. Sii il primo a condividerne uno!",
     "noDayTripsYetAddOne" : "Nessun giorno di viaggio ancora?\nAggiungine uno!",
     "whatADesertHere" : "Che deserto qui!\nAggiungi la tua prima tappa di viaggio!",
-    "background" : "Sfondo"
+    "background" : "Sfondo",
+    "noBackgroundImage" : "Nessuna immagine di sfondo"
 }
