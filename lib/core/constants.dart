@@ -7,6 +7,7 @@ const double verticalSpaceS = 8.0;
 const double verticalSpace = 12.0;
 const double verticalSpaceL = 16.0;
 const double verticalSpaceXL = 20.0;
+const double verticalSpaceXXL = 24.0;
 
 const double horizontalSpaceXs = 4.0;
 const double horizontalSpaceS = 8.0;
@@ -24,6 +25,7 @@ const dayTripsRef = 'dayTrips';
 const tripStopsRef = 'tripStops';
 const settingsRef = 'settings';
 
-const int availableBackgrounds = 14;
+const int availableLightBackgrounds = 7;
+const int availableDarkBackgrounds = 7;
 final appBarLightColor = Colors.white.withOpacity(0.3);
 final appBarDarkColor = Colors.white.withOpacity(0.6);

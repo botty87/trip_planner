@@ -149,5 +149,7 @@
     "noDayTripsYetAddOne" : "Nessun giorno di viaggio ancora?\nAggiungine uno!",
     "whatADesertHere" : "Che deserto qui!\nAggiungi la tua prima tappa di viaggio!",
     "tripsBackground" : "Sfondo viaggi",
-    "noBackgroundImage" : "Nessuna immagine di sfondo"
+    "light" : "Chiaro",
+    "dark" : "Scuro",
+    "removeBackground" : "Rimuovi sfondo"
 }

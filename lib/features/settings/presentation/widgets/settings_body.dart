@@ -14,7 +14,7 @@ class SettingsBody extends StatelessWidget {
       children: const [
         DayTripSection(),
         SizedBox(height: verticalSpaceL),
-        BackgroundSection(),
+        SafeArea(child: BackgroundSection()),
       ],
     );
   }

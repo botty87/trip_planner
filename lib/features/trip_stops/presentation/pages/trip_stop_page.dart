@@ -6,7 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
-import '../../../../core/widgets/background_container.dart';
+import '../../../../core/utilities/extensions.dart';
+import '../../../../core/widgets/background_wrapper_widget.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/trip_stop.dart';
@@ -48,11 +49,10 @@ class TripStopPage extends StatelessWidget {
               Navigator.of(context).pop();
             }
           },
-          child: const BackgroundContainer(
+          child: const BackgroundWrapperWidget(
             child: Scaffold(
               backgroundColor: Colors.transparent,
               appBar: PreferredSize(
-                
                 preferredSize: Size.fromHeight(kToolbarHeight),
                 child: _TripStopPageAppBar(),
               ),
@@ -76,12 +76,11 @@ class _TripStopPageAppBar extends StatelessWidget with BackgroundImageMixin {
   Widget build(BuildContext context) {
     final name = context.select((TripStopCubit cubit) => cubit.state.tripStop.name);
     final hasBackgroundImage = this.hasBackgroundImage(context);
-    final isBackgroundLight = isBackgroundImageLight(context) ?? true;
 
     return AppBar(
       title: Text(name),
       scrolledUnderElevation: hasBackgroundImage ? 0 : null,
-      backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
+      backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),

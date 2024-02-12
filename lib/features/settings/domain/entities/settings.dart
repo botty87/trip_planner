@@ -5,7 +5,8 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/utilities/data_converter.dart';
-import 'background_container.dart';
+import 'background_remote_image.dart';
+import 'backgrounds_container.dart';
 
 part 'settings.freezed.dart';
 part 'settings.g.dart';
@@ -21,7 +22,7 @@ class Settings with _$Settings {
     @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
     @Default(TravelMode.driving)
     TravelMode travelMode,
-    BackgroundContainer? backgroundContainer,
+    @Default(BackgroundsContainer()) BackgroundsContainer backgroundsContainer,
   }) = _Settings;
 
   factory Settings.fromJson(Map<String, dynamic> json) => _$SettingsFromJson(json);

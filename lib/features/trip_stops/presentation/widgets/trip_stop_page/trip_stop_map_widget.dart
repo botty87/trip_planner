@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../../../../../core/widgets/background_container.dart';
+import '../../../../../core/widgets/background_wrapper_widget.dart';
 import '../../../../map/domain/entities/map_place.dart';
 import '../../../../map/presentation/widgets/map_widget.dart';
 import '../../cubit/trip_stop/trip_stop_cubit.dart';

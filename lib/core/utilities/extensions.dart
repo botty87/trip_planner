@@ -62,4 +62,14 @@ extension Let<T> on T {
 
 extension FirebaseStorageExtension on FirebaseStorage {
   Reference get backgroundsRef => ref('backgrounds');
+  Reference get lightBackgroundsRef => backgroundsRef.child('light');
+  Reference get darkBackgroundsRef => backgroundsRef.child('dark');
+}
+
+extension DarkMode on BuildContext {
+  /// is dark mode currently enabled?
+  bool get isDarkMode {
+    final brightness = MediaQuery.of(this).platformBrightness;
+    return brightness == Brightness.dark;
+  }
 }

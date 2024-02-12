@@ -8,7 +8,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
-import '../../../../core/widgets/background_container.dart';
+import '../../../../core/utilities/extensions.dart';
+import '../../../../core/widgets/background_wrapper_widget.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
@@ -33,7 +34,7 @@ class TripPage extends HookWidget {
 
     return BlocProvider<TripCubit>(
       create: (context) => getIt<TripCubit>(param1: _trip)..startListenDayTrips(),
-      child: BackgroundContainer(
+      child: BackgroundWrapperWidget(
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: const PreferredSize(
@@ -211,12 +212,12 @@ class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
   @override
   Widget build(BuildContext context) {
     final tripName = context.select<TripCubit, String>((cubit) => cubit.state.trip.name);
-    final isBackgroundLight = isBackgroundImageLight(context) ?? true;
+    
     final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return AppBar(
       title: Text(tripName),
-      backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
+      backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
       scrolledUnderElevation: hasBackgroundImage ? 0 : null,
       actions: [
         IconButton(

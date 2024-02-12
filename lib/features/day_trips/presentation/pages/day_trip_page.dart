@@ -11,7 +11,8 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
-import '../../../../core/widgets/background_container.dart';
+import '../../../../core/utilities/extensions.dart';
+import '../../../../core/widgets/background_wrapper_widget.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../../trips/domain/entities/trip.dart';
@@ -66,7 +67,7 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
                 Navigator.of(context).pop();
               }
             },
-            child: BackgroundContainer(
+            child: BackgroundWrapperWidget(
               child: ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
                   ? _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream)
                   : OrientationBuilder(builder: (context, orientation) {
@@ -204,11 +205,10 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
   }
 
   PreferredSizeWidget _buildAppBar(BuildContext context, Orientation orientation) {
-    final isBackgroundLight = isBackgroundImageLight(context) ?? true;
 
     return AppBar(
       title: Text("${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
-      backgroundColor: isBackgroundLight ? appBarLightColor : appBarDarkColor,
+      backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
       actions: [
         IconButton(
           icon: const Icon(Icons.edit),

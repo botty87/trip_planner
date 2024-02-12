@@ -5,7 +5,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../../core/widgets/background_container.dart';
+import '../../../../../../core/widgets/background_wrapper_widget.dart';
 import '../../../cubit/trip_stops_map/trip_stops_map_cubit.dart';
 
 class MapDirectionsSwitcher extends StatelessWidget with BackgroundImageMixin {

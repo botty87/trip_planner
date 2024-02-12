@@ -147,6 +147,8 @@ abstract class  LocaleKeys {
   static const noDayTripsYetAddOne = 'noDayTripsYetAddOne';
   static const whatADesertHere = 'whatADesertHere';
   static const tripsBackground = 'tripsBackground';
-  static const noBackgroundImage = 'noBackgroundImage';
+  static const light = 'light';
+  static const dark = 'dark';
+  static const removeBackground = 'removeBackground';
 
 }

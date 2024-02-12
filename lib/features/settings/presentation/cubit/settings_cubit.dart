@@ -9,7 +9,8 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/di/di.dart';
 import '../../../user_account/errors/user_failures.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
-import '../../domain/entities/background_container.dart';
+import '../../domain/entities/background_remote_image.dart';
+import '../../domain/entities/backgrounds_container.dart';
 import '../../domain/entities/settings.dart';
 import '../../domain/usecases/update_settings.dart';
 
@@ -61,28 +62,41 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(state.copyWith(failure: null));
 
     final result = await _updateSettings(UpdateSettingsParams(settings: state.settings));
-    result.fold(
-      (failure) {
-        emit(state.copyWith(failure: failure));
-      },
-      (_) {},
-    );
+    result.leftMap((failure) => emit(state.copyWith(failure: failure)));
   }
 
   travelModeChanged(TravelMode driving) {
     emit(state.copyWith(settings: state.settings.copyWith(travelMode: driving)));
   }
 
+  //TODO add tests
+  void setBackground({required BackgroundType backgroundType, required BackgroundRemoteImage value}) {
+    switch (backgroundType) {
+      case BackgroundType.light:
+        emit(state.copyWith.settings.backgroundsContainer(ligthBackground: value));
+        break;
+      case BackgroundType.dark:
+        emit(state.copyWith.settings.backgroundsContainer(darkBackground: value));
+        break;
+    }
+  }
+
+  //TODO add tests
+  void removeBackground({required BackgroundType backgroundType}) {
+    switch (backgroundType) {
+      case BackgroundType.light:
+        emit(state.copyWith.settings.backgroundsContainer(ligthBackground: null));
+        break;
+      case BackgroundType.dark:
+        emit(state.copyWith.settings.backgroundsContainer(darkBackground: null));
+        break;
+    }
+  }
+
   @override
   Future<void> close() {
     _settingsSubscription.cancel();
     return super.close();
-  }
-
-  //TODO add tests
-  void setBackgroundContainer(BackgroundContainer? backgroundContainer) {
-    emit(state.copyWith(
-        settings: state.settings.copyWith(backgroundContainer: backgroundContainer)));
   }
 }
 

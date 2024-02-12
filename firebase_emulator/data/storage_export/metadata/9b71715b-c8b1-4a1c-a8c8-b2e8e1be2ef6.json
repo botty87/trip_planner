@@ -2,17 +2,17 @@
   "name": "backgrounds/1.webp",
   "bucket": "trip-planner-11ffe.appspot.com",
   "metageneration": 1,
-  "generation": 1707493439998,
+  "generation": 1707670650606,
   "contentType": "image/webp",
   "storageClass": "STANDARD",
   "contentDisposition": "inline",
   "downloadTokens": [
-    "63ff77da-0a88-4df1-928c-0aeb9f56c0e2"
+    "f62cd8e2-9b99-49b5-9948-b800737d1f44"
   ],
-  "etag": "fi3CWmpaViN3XBSclL6TQKvFbmU",
+  "etag": "XcmWReVRItyqICxUtPu0e+iNzZI",
   "customMetadata": {},
-  "timeCreated": "2024-02-09T15:43:59.998Z",
-  "updated": "2024-02-09T15:43:59.998Z",
+  "timeCreated": "2024-02-11T16:57:30.606Z",
+  "updated": "2024-02-11T16:57:30.606Z",
   "size": 3317208,
   "md5Hash": "DLAe5t53NYf5JNS4LDoVXw==",
   "crc32c": "3744824864"

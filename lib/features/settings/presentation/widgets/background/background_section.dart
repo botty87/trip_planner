@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -10,12 +12,14 @@ import '../../../../../core/constants.dart';
 import '../../../../../core/di/di.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/extensions.dart';
-import '../../../domain/entities/background_container.dart';
+import '../../../../../core/widgets/background_wrapper_widget.dart';
+import '../../../domain/entities/background_remote_image.dart';
+import '../../../domain/entities/backgrounds_container.dart';
 import '../../cubit/settings_cubit.dart';
 import '../settings_section_header.dart';
 
 part 'images_grid.dart';
-part 'no_image_switch.dart';
+part 'image_builder.dart';
 
 class BackgroundSection extends StatelessWidget {
   const BackgroundSection({super.key});
@@ -24,12 +28,10 @@ class BackgroundSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: [
         SettingsSectionHeader(title: LocaleKeys.tripsBackground.tr()),
-        const SizedBox(height: verticalSpaceS),
-        Center(child: _ImagesGrid()),
-        const SizedBox(height: verticalSpaceS),
-        const Center(child: _NoImageSwitch()),
+        _ImagesGrid(),
       ],
     );
   }

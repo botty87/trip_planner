@@ -18,10 +18,10 @@ _$SettingsImpl _$$SettingsImplFromJson(Map<String, dynamic> json) =>
       travelMode: json['travelMode'] == null
           ? TravelMode.driving
           : travelModeFromInt(json['travelMode'] as int),
-      backgroundContainer: json['backgroundContainer'] == null
-          ? null
-          : BackgroundContainer.fromJson(
-              json['backgroundContainer'] as Map<String, dynamic>),
+      backgroundsContainer: json['backgroundsContainer'] == null
+          ? const BackgroundsContainer()
+          : BackgroundsContainer.fromJson(
+              json['backgroundsContainer'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>
@@ -31,5 +31,5 @@ Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>
       'showDirections': instance.showDirections,
       'useDifferentDirectionsColors': instance.useDifferentDirectionsColors,
       'travelMode': travelModeToInt(instance.travelMode),
-      'backgroundContainer': instance.backgroundContainer?.toJson(),
+      'backgroundsContainer': instance.backgroundsContainer.toJson(),
     };

@@ -3,7 +3,7 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
-import '../background_container.dart';
+import '../background_wrapper_widget.dart';
 
 class GenericTripDescription extends StatelessWidget with BackgroundImageMixin {
   final String? description;

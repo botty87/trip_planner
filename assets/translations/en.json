@@ -148,5 +148,7 @@
     "noDayTripsYetAddOne": "No day of trip yet?\nAdd one!",
     "whatADesertHere": "What a desert here!\nAdd your first trip stop!",
     "tripsBackground" : "Trips background",
-    "noBackgroundImage" : "No background image"
+    "light" : "Light",
+    "dark" : "Dark",
+    "removeBackground" : "Remove background"
 }

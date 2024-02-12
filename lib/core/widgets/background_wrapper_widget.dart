@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/settings/presentation/cubit/settings_cubit.dart';
+import '../utilities/extensions.dart';
 
-class BackgroundContainer extends StatelessWidget {
+class BackgroundWrapperWidget extends StatelessWidget {
   final Widget child;
 
-  const BackgroundContainer({super.key, required this.child});
+  const BackgroundWrapperWidget({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    final backgroundImageUrl =
-        context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.url);
+    final backgroundImageUrl = context.select((SettingsCubit cubit) {
+      if (context.isDarkMode) {
+        return cubit.state.settings.backgroundsContainer.darkBackground?.url;
+      } else {
+        return cubit.state.settings.backgroundsContainer.ligthBackground?.url;
+      }
+    });
 
     return Stack(
       children: [
@@ -42,9 +48,11 @@ class BackgroundContainer extends StatelessWidget {
 
 mixin BackgroundImageMixin {
   bool hasBackgroundImage(BuildContext context) =>
-      context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.url) !=
-      null;
-
-  bool? isBackgroundImageLight(BuildContext context) =>
-      context.select((SettingsCubit cubit) => cubit.state.settings.backgroundContainer?.isLight);
+      context.select((SettingsCubit cubit) {
+        if (context.isDarkMode) {
+          return cubit.state.settings.backgroundsContainer.darkBackground?.url.isNotEmpty ?? false;
+        } else {
+          return cubit.state.settings.backgroundsContainer.ligthBackground?.url.isNotEmpty ?? false;
+        }
+      });
 }
