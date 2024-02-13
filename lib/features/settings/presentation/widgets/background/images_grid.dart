@@ -11,10 +11,9 @@ class _ImagesGrid extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(verticalSpace),
-          child: Text(
-            LocaleKeys.light.tr(),
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
+          child: Text(LocaleKeys.light.tr(),
+              style:
+                  Theme.of(context).textTheme.titleMedium?.copyWith(fontStyle: FontStyle.italic)),
         ),
         const _LightBackgroundsGrid(),
         const SizedBox(height: verticalSpaceS),
@@ -22,7 +21,7 @@ class _ImagesGrid extends StatelessWidget {
           padding: const EdgeInsets.all(verticalSpace),
           child: Text(
             LocaleKeys.dark.tr(),
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontStyle: FontStyle.italic),
           ),
         ),
         const _DarkBackgroundsGrid(),

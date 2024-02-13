@@ -6,16 +6,24 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../../../core/constants.dart';
 import '../../../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../../../core/widgets/background_wrapper_widget.dart';
 import '../../../../../../../gen/assets.gen.dart';
 
-class NoTripStopsMapWidget extends StatelessWidget {
+class NoTripStopsMapWidget extends StatelessWidget with BackgroundImageMixin {
   const NoTripStopsMapWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       minimum: defaultPagePadding,
-      child: Column(
+      child: _body(context),
+    );
+  }
+
+  Widget _body(BuildContext context) {
+    Widget content() {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(child: SvgPicture(AssetBytesLoader(Assets.svg.emptyMapSvg))),
           const SizedBox(height: verticalSpaceL),
@@ -31,7 +39,23 @@ class NoTripStopsMapWidget extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      );
+    }
+
+    final hasBackgroundImage = this.hasBackgroundImage(context);
+
+    if (hasBackgroundImage) {
+      return Card(
+        color: Colors.white.withOpacity(0.9),
+        margin: defaultPagePadding,
+        elevation: 8,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: horizontalSpace),
+          child: content(),
+        ),
+      );
+    } else {
+      return content();
+    }
   }
 }
