@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -69,7 +70,28 @@ extension FirebaseStorageExtension on FirebaseStorage {
 extension DarkMode on BuildContext {
   /// is dark mode currently enabled?
   bool get isDarkMode {
-    final brightness = MediaQuery.of(this).platformBrightness;
-    return brightness == Brightness.dark;
+    switch (AdaptiveTheme.of(this).mode) {
+      case AdaptiveThemeMode.light:
+        return false;
+      case AdaptiveThemeMode.dark:
+        return true;
+      case AdaptiveThemeMode.system:
+        final brightness = MediaQuery.of(this).platformBrightness;
+        return brightness == Brightness.dark;
+    }
+  }
+
+  setThemeMode(AdaptiveThemeMode mode) {
+    switch (mode) {
+      case AdaptiveThemeMode.light:
+        AdaptiveTheme.of(this).setLight();
+        break;
+      case AdaptiveThemeMode.dark:
+        AdaptiveTheme.of(this).setDark();
+        break;
+      case AdaptiveThemeMode.system:
+        AdaptiveTheme.of(this).setSystem();
+        break;
+    }
   }
 }

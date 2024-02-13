@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants.dart';
 import 'background/background_section.dart';
 import 'day_trip/day_trip_section.dart';
+import 'theme/theme_section.dart';
 
 class SettingsBody extends StatelessWidget {
   const SettingsBody({super.key});
@@ -14,7 +15,9 @@ class SettingsBody extends StatelessWidget {
       children: const [
         DayTripSection(),
         SizedBox(height: verticalSpaceL),
-        SafeArea(child: BackgroundSection()),
+        BackgroundSection(),
+        SizedBox(height: verticalSpaceL),
+        SafeArea(child: ThemeSection()),
       ],
     );
   }

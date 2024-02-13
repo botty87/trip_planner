@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:adaptive_theme/src/adaptive_theme_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -93,11 +94,18 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
+  //TODO add tests
+  changeThemeMode(AdaptiveThemeMode theme) {
+    emit(state.copyWith.settings(themeMode: theme));
+  }
+
   @override
   Future<void> close() {
     _settingsSubscription.cancel();
     return super.close();
   }
+
+  
 }
 
 @module

@@ -149,7 +149,8 @@ abstract class  LocaleKeys {
   static const tripsBackground = 'tripsBackground';
   static const light = 'light';
   static const dark = 'dark';
-  static const removeBackground = 'removeBackground';
   static const noBackground = 'noBackground';
+  static const theme = 'theme';
+  static const system = 'system';
 
 }

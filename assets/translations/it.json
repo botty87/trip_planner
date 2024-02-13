@@ -151,5 +151,7 @@
     "tripsBackground" : "Sfondo viaggi",
     "light" : "Chiaro",
     "dark" : "Scuro",
-    "noBackground" : "Nessuno"
+    "noBackground" : "Nessuno",
+    "theme" : "Tema",
+    "system" : "Sistema"
 }

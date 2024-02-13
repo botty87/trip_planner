@@ -150,5 +150,7 @@
     "tripsBackground" : "Trips background",
     "light" : "Light",
     "dark" : "Dark",
-    "noBackground" : "No background"
+    "noBackground" : "No background",
+    "theme" : "Theme",
+    "system" : "System"
 }

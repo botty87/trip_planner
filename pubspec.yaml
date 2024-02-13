@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   adaptive_dialog: ^2.0.0
+  adaptive_theme: ^3.6.0
   animated_list_plus: ^0.5.2
   animated_switcher_plus: ^1.1.0
   animated_tree_view: ^2.2.0
@@ -40,6 +41,7 @@ dependencies:
   dartz: ^0.10.1
   dio: ^5.3.3
   duration_picker: ^1.1.1
+  dynamic_color: ^1.6.9
   easy_localization: ^3.0.2
   easy_logger: ^0.0.2
   email_validator: ^2.1.17

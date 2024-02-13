@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -22,6 +23,7 @@ class Settings with _$Settings {
     @Default(TravelMode.driving)
     TravelMode travelMode,
     @Default(BackgroundsContainer()) BackgroundsContainer backgroundsContainer,
+    @Default(AdaptiveThemeMode.light) AdaptiveThemeMode themeMode,
   }) = _Settings;
 
   factory Settings.fromJson(Map<String, dynamic> json) => _$SettingsFromJson(json);

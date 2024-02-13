@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,10 +14,15 @@ class BackgroundWrapperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgroundImageUrl = context.select((SettingsCubit cubit) {
-      if (context.isDarkMode) {
-        return cubit.state.settings.backgroundsContainer.darkBackground?.url;
-      } else {
-        return cubit.state.settings.backgroundsContainer.lightBackground?.url;
+      switch (cubit.state.settings.themeMode) {
+        case AdaptiveThemeMode.light:
+          return cubit.state.settings.backgroundsContainer.lightBackground?.url;
+        case AdaptiveThemeMode.dark:
+          return cubit.state.settings.backgroundsContainer.darkBackground?.url;
+        case AdaptiveThemeMode.system:
+          return context.isDarkMode
+              ? cubit.state.settings.backgroundsContainer.darkBackground?.url
+              : cubit.state.settings.backgroundsContainer.lightBackground?.url;
       }
     });
 
@@ -47,8 +53,7 @@ class BackgroundWrapperWidget extends StatelessWidget {
 }
 
 mixin BackgroundImageMixin {
-  bool hasBackgroundImage(BuildContext context) =>
-      context.select((SettingsCubit cubit) {
+  bool hasBackgroundImage(BuildContext context) => context.select((SettingsCubit cubit) {
         if (context.isDarkMode) {
           return cubit.state.settings.backgroundsContainer.darkBackground?.url.isNotEmpty ?? false;
         } else {

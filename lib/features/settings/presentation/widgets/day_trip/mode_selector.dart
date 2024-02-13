@@ -7,29 +7,31 @@ class _ModeSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     final travelMode = context.select((SettingsCubit cubit) => cubit.state.settings.travelMode);
 
-    return SegmentedButton<TravelMode>(
-      showSelectedIcon: false,
-      segments: const [
-        ButtonSegment(
-          icon: Icon(Icons.directions_car),
-          value: TravelMode.driving,
-        ),
-        ButtonSegment(
-          icon: Icon(Icons.directions_walk),
-          value: TravelMode.walking,
-        ),
-        ButtonSegment(
-          icon: Icon(Icons.directions_bike),
-          value: TravelMode.bicycling,
-        ),
-        ButtonSegment(
-          icon: Icon(Icons.directions_transit),
-          value: TravelMode.transit,
-        ),
-      ],
-      selected: {travelMode},
-      onSelectionChanged: (selected) =>
-          context.read<SettingsCubit>().travelModeChanged(selected.first),
+    return Center(
+      child: SegmentedButton<TravelMode>(
+        showSelectedIcon: false,
+        segments: const [
+          ButtonSegment(
+            icon: Icon(Icons.directions_car),
+            value: TravelMode.driving,
+          ),
+          ButtonSegment(
+            icon: Icon(Icons.directions_walk),
+            value: TravelMode.walking,
+          ),
+          ButtonSegment(
+            icon: Icon(Icons.directions_bike),
+            value: TravelMode.bicycling,
+          ),
+          ButtonSegment(
+            icon: Icon(Icons.directions_transit),
+            value: TravelMode.transit,
+          ),
+        ],
+        selected: {travelMode},
+        onSelectionChanged: (selected) =>
+            context.read<SettingsCubit>().travelModeChanged(selected.first),
+      ),
     );
   }
 }

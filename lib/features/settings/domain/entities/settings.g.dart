@@ -22,6 +22,9 @@ _$SettingsImpl _$$SettingsImplFromJson(Map<String, dynamic> json) =>
           ? const BackgroundsContainer()
           : BackgroundsContainer.fromJson(
               json['backgroundsContainer'] as Map<String, dynamic>),
+      themeMode:
+          $enumDecodeNullable(_$AdaptiveThemeModeEnumMap, json['themeMode']) ??
+              AdaptiveThemeMode.light,
     );
 
 Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>
@@ -32,4 +35,11 @@ Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>
       'useDifferentDirectionsColors': instance.useDifferentDirectionsColors,
       'travelMode': travelModeToInt(instance.travelMode),
       'backgroundsContainer': instance.backgroundsContainer.toJson(),
+      'themeMode': _$AdaptiveThemeModeEnumMap[instance.themeMode]!,
     };
+
+const _$AdaptiveThemeModeEnumMap = {
+  AdaptiveThemeMode.light: 'light',
+  AdaptiveThemeMode.dark: 'dark',
+  AdaptiveThemeMode.system: 'system',
+};
