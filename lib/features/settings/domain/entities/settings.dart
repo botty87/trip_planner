@@ -5,7 +5,6 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/utilities/data_converter.dart';
-import 'background_remote_image.dart';
 import 'backgrounds_container.dart';
 
 part 'settings.freezed.dart';
