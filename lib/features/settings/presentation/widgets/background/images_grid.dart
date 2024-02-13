@@ -15,7 +15,7 @@ class _ImagesGrid extends StatelessWidget {
               style:
                   Theme.of(context).textTheme.titleMedium?.copyWith(fontStyle: FontStyle.italic)),
         ),
-        const _LightBackgroundsGrid(),
+        const _LightBackgroundsRow(),
         const SizedBox(height: verticalSpaceS),
         Padding(
           padding: const EdgeInsets.all(verticalSpace),
@@ -24,51 +24,63 @@ class _ImagesGrid extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium?.copyWith(fontStyle: FontStyle.italic),
           ),
         ),
-        const _DarkBackgroundsGrid(),
+        const _DarkBackgroundsRow(),
       ],
     );
   }
 }
 
-class _LightBackgroundsGrid extends StatelessWidget {
-  const _LightBackgroundsGrid();
+class _LightBackgroundsRow extends StatelessWidget {
+  const _LightBackgroundsRow();
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxHeight: 150),
-      child: SingleChildScrollView(
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(availableLightBackgrounds + 1, (index) {
-            if (index < availableLightBackgrounds) {
-              return _ImageBuilder(imageType: BackgroundType.light, index: index);
-            }
-            return const _NoBackgroundButton(backgroundType: BackgroundType.light);
-          }),
-        ),
+        itemCount: availableLightBackgrounds + 1,
+        itemBuilder: (context, index) {
+          if (index < availableLightBackgrounds) {
+            return _ImageBuilder(
+              key: ValueKey('light_background_$index'),
+              imageType: BackgroundType.light,
+              index: index,
+            );
+          }
+          return const _NoBackgroundButton(
+            key: ValueKey('light_background_no_background'),
+            backgroundType: BackgroundType.light,
+          );
+        },
       ),
     );
   }
 }
 
-class _DarkBackgroundsGrid extends StatelessWidget {
-  const _DarkBackgroundsGrid();
+class _DarkBackgroundsRow extends StatelessWidget {
+  const _DarkBackgroundsRow();
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxHeight: 150),
-      child: SingleChildScrollView(
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(availableDarkBackgrounds + 1, (index) {
-            if (index < availableDarkBackgrounds) {
-              return _ImageBuilder(imageType: BackgroundType.dark, index: index);
-            }
-            return const _NoBackgroundButton(backgroundType: BackgroundType.dark);
-          }),
-        ),
+        itemCount: availableDarkBackgrounds + 1,
+        itemBuilder: (context, index) {
+          if (index < availableDarkBackgrounds) {
+            return _ImageBuilder(
+              key: ValueKey('dark_background_$index'),
+              imageType: BackgroundType.dark,
+              index: index,
+            );
+          }
+          return const _NoBackgroundButton(
+            key: ValueKey('dark_background_no_background'),
+            backgroundType: BackgroundType.dark,
+          );
+        },
       ),
     );
   }

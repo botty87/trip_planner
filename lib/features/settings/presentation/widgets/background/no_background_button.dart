@@ -3,7 +3,7 @@ part of 'background_section.dart';
 class _NoBackgroundButton extends StatelessWidget {
   final BackgroundType backgroundType;
 
-  const _NoBackgroundButton({required this.backgroundType});
+  const _NoBackgroundButton({required this.backgroundType, super.key});
 
   @override
   Widget build(BuildContext context) {

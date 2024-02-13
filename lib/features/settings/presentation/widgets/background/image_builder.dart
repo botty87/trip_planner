@@ -1,13 +1,15 @@
 part of 'background_section.dart';
 
-class _ImageBuilder extends StatelessWidget {
+class _ImageBuilder extends HookWidget {
   final BackgroundType imageType;
   final int index;
 
-  const _ImageBuilder({required this.imageType, required this.index});
+  const _ImageBuilder({required this.imageType, required this.index, super.key});
 
   @override
   Widget build(BuildContext context) {
+    useAutomaticKeepAlive();
+
     final Reference imageRef = imageType == BackgroundType.light
         ? getIt<FirebaseStorage>().lightBackgroundsRef
         : getIt<FirebaseStorage>().darkBackgroundsRef;
@@ -57,9 +59,11 @@ class _ImageBuilder extends StatelessWidget {
                         selector: (state) {
                           switch (imageType) {
                             case BackgroundType.light:
-                              return state.settings.backgroundsContainer.lightBackground?.index == index;
+                              return state.settings.backgroundsContainer.lightBackground?.index ==
+                                  index;
                             case BackgroundType.dark:
-                              return state.settings.backgroundsContainer.darkBackground?.index == index;
+                              return state.settings.backgroundsContainer.darkBackground?.index ==
+                                  index;
                           }
                         },
                         builder: (context, isSelected) {
