@@ -22,7 +22,7 @@ class StartTimeWidget extends StatelessWidget with BackgroundImageMixin {
           hasBackgroundImage ? const EdgeInsets.only(top: verticalSpace) : const EdgeInsets.all(0),
       decoration: hasBackgroundImage
           ? BoxDecoration(
-              color: Colors.white.withOpacity(0.9),
+              color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
               borderRadius: BorderRadius.circular(8),
             )
           : null,

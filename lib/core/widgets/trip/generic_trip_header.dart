@@ -23,7 +23,7 @@ class GenericTripDescription extends StatelessWidget with BackgroundImageMixin {
       child: Container(
         decoration: hasBackgroundImage
             ? BoxDecoration(
-                color: Colors.white.withOpacity(0.9),
+                color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
                 borderRadius: BorderRadius.circular(8),
               )
             : null,

@@ -51,6 +51,7 @@ final class AddDestinationCard extends StatelessWidget {
                 style: GoogleFonts.caveat(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
                 textAlign: TextAlign.center,
               ),

@@ -48,7 +48,7 @@ class _Button extends StatelessWidget {
         width: 55,
         height: 55,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(

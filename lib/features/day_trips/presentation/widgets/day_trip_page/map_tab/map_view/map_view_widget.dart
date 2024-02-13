@@ -42,8 +42,8 @@ class MapViewWidget extends HookWidget {
 class _MapView extends HookWidget {
   const _MapView();
 
-  TripStopsNumState _getTripStopsNumState(BuildContext context, ObjectRef<TripStopsNumState?> previousTripStopsNumState) {
-    
+  TripStopsNumState _getTripStopsNumState(
+      BuildContext context, ObjectRef<TripStopsNumState?> previousTripStopsNumState) {
     TripStopsNumState getStateFromInt(int? length) {
       if (length == null) {
         return previousTripStopsNumState.value ?? TripStopsNumState.zero;
@@ -83,7 +83,9 @@ class _MapView extends HookWidget {
   _getMapWidget(TripStopsNumState tripStopsNumState) {
     switch (tripStopsNumState) {
       case TripStopsNumState.zero:
-        return const NoTripStopsMapWidget();
+        return LayoutBuilder(builder: (context, constraints) {
+          return NoTripStopsMapWidget(imageHeight: constraints.maxHeight * 0.5);
+        });
       case TripStopsNumState.one:
         return const SingleTripStopsMapWidget();
       case TripStopsNumState.moreThanOne:

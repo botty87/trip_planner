@@ -107,7 +107,7 @@ class _DayTripDescriptionWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: verticalSpaceS),
       child: ColoredBox(
-        color: Colors.white.withOpacity(0.95),
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.95),
         child: Padding(
           padding:
               const EdgeInsets.symmetric(vertical: verticalSpaceS, horizontal: horizontalSpaceS),

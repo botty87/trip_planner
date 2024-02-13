@@ -15,13 +15,14 @@ class TripStopDoneDurationContainer extends StatelessWidget with BackgroundImage
     return Container(
       decoration: hasBackgroundImage
           ? BoxDecoration(
-              color: Colors.white.withOpacity(0.9),
+              color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
               borderRadius: BorderRadius.circular(8),
             )
           : null,
       padding: hasBackgroundImage ? const EdgeInsets.only(bottom: verticalSpaceXs) : null,
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
+        
         children: [TripStopDurationWidget(), TripStopDoneWidget()],
       ),
     );

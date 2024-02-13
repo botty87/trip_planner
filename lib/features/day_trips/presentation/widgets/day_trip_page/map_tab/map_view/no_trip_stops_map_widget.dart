@@ -6,11 +6,13 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../../../core/constants.dart';
 import '../../../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../../../core/utilities/extensions.dart';
 import '../../../../../../../core/widgets/background_wrapper_widget.dart';
 import '../../../../../../../gen/assets.gen.dart';
 
 class NoTripStopsMapWidget extends StatelessWidget with BackgroundImageMixin {
-  const NoTripStopsMapWidget({super.key});
+  final double imageHeight;
+  const NoTripStopsMapWidget({super.key, required this.imageHeight});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,22 @@ class NoTripStopsMapWidget extends StatelessWidget with BackgroundImageMixin {
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(child: SvgPicture(AssetBytesLoader(Assets.svg.emptyMapSvg))),
+          Padding(
+            padding: const EdgeInsets.only(top: verticalSpace),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: context.isDarkMode
+                    ? Theme.of(context).colorScheme.inverseSurface.withOpacity(0.8)
+                    : Colors.transparent,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: horizontalSpaceS),
+              child: SvgPicture(
+                height: imageHeight,
+                AssetBytesLoader(Assets.svg.emptyMapSvg),
+              ),
+            ),
+          ),
           const SizedBox(height: verticalSpaceL),
           Padding(
             padding: const EdgeInsets.only(bottom: verticalSpaceS),
@@ -46,7 +63,7 @@ class NoTripStopsMapWidget extends StatelessWidget with BackgroundImageMixin {
 
     if (hasBackgroundImage) {
       return Card(
-        color: Colors.white.withOpacity(0.9),
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
         margin: defaultPagePadding,
         elevation: 8,
         child: Padding(

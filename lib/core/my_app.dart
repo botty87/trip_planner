@@ -62,7 +62,6 @@ class MyApp extends StatelessWidget {
                 colorScheme: darkColorScheme,
               ),
               initial: AdaptiveThemeMode.light,
-              debugShowFloatingThemeButton: true,
               builder: (theme, darkTheme) {
                 return MaterialApp.router(
                   title: 'Trip Planner',

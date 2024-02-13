@@ -38,7 +38,6 @@ class _ImageBuilder extends HookWidget {
               placeholder: (context, url) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  //color: Colors.grey[300],
                 ),
                 child: Shimmer.fromColors(
                   baseColor: Colors.grey[300]!,
@@ -67,14 +66,15 @@ class _ImageBuilder extends HookWidget {
                           }
                         },
                         builder: (context, isSelected) {
+                          final selectedColor = context.isDarkMode
+                              ? Theme.of(context).colorScheme.secondary
+                              : Theme.of(context).primaryColorDark;
                           return AnimatedContainer(
                             duration: const Duration(milliseconds: 200),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: isSelected
-                                    ? Theme.of(context).primaryColor
-                                    : Colors.transparent,
+                                color: isSelected ? selectedColor : Colors.transparent,
                                 width: 2,
                               ),
                               boxShadow: isSelected

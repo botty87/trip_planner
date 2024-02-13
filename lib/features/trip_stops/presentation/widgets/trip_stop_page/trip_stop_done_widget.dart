@@ -1,4 +1,3 @@
-
 //Checkboxes for done trip stops
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../core/utilities/extensions.dart';
 import '../../cubit/trip_stop/trip_stop_cubit.dart';
 
 class TripStopDoneWidget extends StatelessWidget {
@@ -17,31 +17,33 @@ class TripStopDoneWidget extends StatelessWidget {
       (cubit) => cubit.state.tripStop.isDone,
     );
 
-    return Column(
-      children: [
-        GestureDetector(
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            child: Text(
-              LocaleKeys.done.tr(),
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(color: isDone ? Colors.green[700] : Colors.orange[700]),
+    final colorStrength = context.isDarkMode ? 300 : 700;
+
+    return Padding(
+      padding: const EdgeInsets.only(top: verticalSpaceS),
+      child: Column(
+        children: [
+          GestureDetector(
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: Text(
+                LocaleKeys.done.tr(),
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: isDone ? Colors.green[colorStrength] : Colors.orange[colorStrength]),
+              ),
+            ),
+            onTap: () => context.read<TripStopCubit>().isDoneChanged(!isDone),
+          ),
+          Transform.scale(
+            scale: 1.2,
+            child: Checkbox(
+              shape: const CircleBorder(),
+              value: isDone,
+              onChanged: (value) => context.read<TripStopCubit>().isDoneChanged(value ?? false),
             ),
           ),
-          onTap: () => context.read<TripStopCubit>().isDoneChanged(!isDone),
-        ),
-        const SizedBox(height: verticalSpaceXs),
-        Transform.scale(
-          scale: 1.2,
-          child: Checkbox(
-            shape: const CircleBorder(),
-            value: isDone,
-            onChanged: (value) => context.read<TripStopCubit>().isDoneChanged(value ?? false),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

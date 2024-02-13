@@ -29,7 +29,7 @@ final class GenericDurationWidget extends StatelessWidget {
         Text(
           estimatedDurationText,
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: Colors.grey[800],
+                color: Theme.of(context).colorScheme.secondary,
                 fontSize: 20,
               ),
         ),
