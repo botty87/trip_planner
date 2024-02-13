@@ -20,7 +20,13 @@ class _ImageBuilder extends StatelessWidget {
           future: imageRef.child('$index.webp').getDownloadURL(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return const SizedBox.shrink();
+              return Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  color: Colors.grey[300],
+                ),
+              );
             }
 
             return CachedNetworkImage(
