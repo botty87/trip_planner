@@ -150,5 +150,6 @@
     "tripsBackground" : "Trips background",
     "light" : "Light",
     "dark" : "Dark",
-    "removeBackground" : "Remove background"
+    "removeBackground" : "Remove background",
+    "noBackground" : "No background"
 }

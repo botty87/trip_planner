@@ -20,6 +20,7 @@ import '../settings_section_header.dart';
 
 part 'images_grid.dart';
 part 'image_builder.dart';
+part 'no_background_button.dart';
 
 class BackgroundSection extends StatelessWidget {
   const BackgroundSection({super.key});

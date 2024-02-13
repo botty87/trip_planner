@@ -150,5 +150,6 @@ abstract class  LocaleKeys {
   static const light = 'light';
   static const dark = 'dark';
   static const removeBackground = 'removeBackground';
+  static const noBackground = 'noBackground';
 
 }

@@ -9,10 +9,10 @@ part of 'backgrounds_container.dart';
 _$BackgroundsContainerImpl _$$BackgroundsContainerImplFromJson(
         Map<String, dynamic> json) =>
     _$BackgroundsContainerImpl(
-      ligthBackground: json['ligthBackground'] == null
+      lightBackground: json['lightBackground'] == null
           ? null
           : BackgroundRemoteImage.fromJson(
-              json['ligthBackground'] as Map<String, dynamic>),
+              json['lightBackground'] as Map<String, dynamic>),
       darkBackground: json['darkBackground'] == null
           ? null
           : BackgroundRemoteImage.fromJson(
@@ -22,6 +22,6 @@ _$BackgroundsContainerImpl _$$BackgroundsContainerImplFromJson(
 Map<String, dynamic> _$$BackgroundsContainerImplToJson(
         _$BackgroundsContainerImpl instance) =>
     <String, dynamic>{
-      'ligthBackground': instance.ligthBackground?.toJson(),
+      'lightBackground': instance.lightBackground?.toJson(),
       'darkBackground': instance.darkBackground?.toJson(),
     };

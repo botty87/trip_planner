@@ -41,8 +41,12 @@ class _LightBackgroundsGrid extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: List.generate(availableLightBackgrounds,
-              (index) => _ImageBuilder(imageType: BackgroundType.light, index: index)),
+          children: List.generate(availableLightBackgrounds + 1, (index) {
+            if (index < availableLightBackgrounds) {
+              return _ImageBuilder(imageType: BackgroundType.light, index: index);
+            }
+            return const _NoBackgroundButton(backgroundType: BackgroundType.light);
+          }),
         ),
       ),
     );
@@ -59,8 +63,12 @@ class _DarkBackgroundsGrid extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: List.generate(availableDarkBackgrounds,
-              (index) => _ImageBuilder(imageType: BackgroundType.dark, index: index)),
+          children: List.generate(availableDarkBackgrounds + 1, (index) {
+            if (index < availableDarkBackgrounds) {
+              return _ImageBuilder(imageType: BackgroundType.dark, index: index);
+            }
+            return const _NoBackgroundButton(backgroundType: BackgroundType.dark);
+          }),
         ),
       ),
     );

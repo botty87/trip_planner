@@ -9,7 +9,7 @@ part 'backgrounds_container.g.dart';
 class BackgroundsContainer with _$BackgroundsContainer {
 
   const factory BackgroundsContainer({
-    BackgroundRemoteImage? ligthBackground,
+    BackgroundRemoteImage? lightBackground,
     BackgroundRemoteImage? darkBackground,
   }) = _BackgroundsContainer;
 

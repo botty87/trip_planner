@@ -73,7 +73,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   void setBackground({required BackgroundType backgroundType, required BackgroundRemoteImage value}) {
     switch (backgroundType) {
       case BackgroundType.light:
-        emit(state.copyWith.settings.backgroundsContainer(ligthBackground: value));
+        emit(state.copyWith.settings.backgroundsContainer(lightBackground: value));
         break;
       case BackgroundType.dark:
         emit(state.copyWith.settings.backgroundsContainer(darkBackground: value));
@@ -85,7 +85,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   void removeBackground({required BackgroundType backgroundType}) {
     switch (backgroundType) {
       case BackgroundType.light:
-        emit(state.copyWith.settings.backgroundsContainer(ligthBackground: null));
+        emit(state.copyWith.settings.backgroundsContainer(lightBackground: null));
         break;
       case BackgroundType.dark:
         emit(state.copyWith.settings.backgroundsContainer(darkBackground: null));

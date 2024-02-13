@@ -51,7 +51,7 @@ class _ImageBuilder extends StatelessWidget {
                         selector: (state) {
                           switch (imageType) {
                             case BackgroundType.light:
-                              return state.settings.backgroundsContainer.ligthBackground?.index == index;
+                              return state.settings.backgroundsContainer.lightBackground?.index == index;
                             case BackgroundType.dark:
                               return state.settings.backgroundsContainer.darkBackground?.index == index;
                           }

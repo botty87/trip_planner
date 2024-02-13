@@ -16,7 +16,7 @@ class BackgroundWrapperWidget extends StatelessWidget {
       if (context.isDarkMode) {
         return cubit.state.settings.backgroundsContainer.darkBackground?.url;
       } else {
-        return cubit.state.settings.backgroundsContainer.ligthBackground?.url;
+        return cubit.state.settings.backgroundsContainer.lightBackground?.url;
       }
     });
 
@@ -52,7 +52,7 @@ mixin BackgroundImageMixin {
         if (context.isDarkMode) {
           return cubit.state.settings.backgroundsContainer.darkBackground?.url.isNotEmpty ?? false;
         } else {
-          return cubit.state.settings.backgroundsContainer.ligthBackground?.url.isNotEmpty ?? false;
+          return cubit.state.settings.backgroundsContainer.lightBackground?.url.isNotEmpty ?? false;
         }
       });
 }
