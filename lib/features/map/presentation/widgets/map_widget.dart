@@ -87,7 +87,7 @@ class MapWidget extends StatelessWidget {
             children: [
               Visibility(
                 visible: !isMapReady,
-                child: const CircularProgressIndicator.adaptive(),
+                child: const Center(child: CircularProgressIndicator.adaptive()),
               ),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),

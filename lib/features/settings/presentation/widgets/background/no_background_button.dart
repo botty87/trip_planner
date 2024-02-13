@@ -16,12 +16,16 @@ class _NoBackgroundButton extends StatelessWidget {
       }
     });
 
+    final selectedColor = context.isDarkMode
+        ? Theme.of(context).colorScheme.secondary
+        : Theme.of(context).primaryColorDark;
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: isSelected ? Theme.of(context).primaryColor : Colors.transparent,
+          color: isSelected ? selectedColor : Colors.transparent,
           width: 2,
         ),
       ),
