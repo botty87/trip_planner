@@ -10,10 +10,7 @@ class _MapTypeChanger extends StatelessWidget {
     return SafeArea(
       minimum: const EdgeInsets.all(16.0),
       child: IconButton.filled(
-        icon: Icon(
-          mapType == MapType.normal ? Icons.satellite : Icons.map,
-          color: Colors.white,
-        ),
+        icon: Icon(mapType == MapType.normal ? Icons.satellite : Icons.map),
         onPressed: () => context.read<MapCubit>().changeMapType(),
       ),
     );

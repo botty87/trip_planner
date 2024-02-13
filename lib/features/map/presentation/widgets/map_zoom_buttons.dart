@@ -11,12 +11,12 @@ class _MapZoomButtons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton.filled(
-            icon: const Icon(Icons.remove, color: Colors.white),
+            icon: const Icon(Icons.remove),
             onPressed: () => context.read<MapCubit>().zoomOut(),
           ),
           const SizedBox(width: horizontalSpaceS),
           IconButton.filled(
-            icon: const Icon(Icons.add, color: Colors.white),
+            icon: const Icon(Icons.add),
             onPressed: () => context.read<MapCubit>().zoomIn(),
           ),
         ],

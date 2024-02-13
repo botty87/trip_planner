@@ -42,40 +42,42 @@ class MapDirectionsSwitcher extends StatelessWidget with BackgroundImageMixin {
                     );
                   },
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: verticalSpaceXs,
-                      bottom: verticalSpaceS,
-                      left: horizontalSpaceS,
-                      right: horizontalSpaceS),
-                  child: BlocSelector<TripStopsMapCubit, TripStopsMapState, TravelMode>(
-                    selector: (state) => state.dayTrip.travelMode,
-                    builder: (context, travelMode) {
-                      return SegmentedButton<TravelMode>(
-                        showSelectedIcon: false,
-                        segments: const [
-                          ButtonSegment(
-                            icon: Icon(Icons.directions_car),
-                            value: TravelMode.driving,
-                          ),
-                          ButtonSegment(
-                            icon: Icon(Icons.directions_walk),
-                            value: TravelMode.walking,
-                          ),
-                          ButtonSegment(
-                            icon: Icon(Icons.directions_bike),
-                            value: TravelMode.bicycling,
-                          ),
-                          ButtonSegment(
-                            icon: Icon(Icons.directions_transit),
-                            value: TravelMode.transit,
-                          ),
-                        ],
-                        selected: {travelMode},
-                        onSelectionChanged: (selected) =>
-                            context.read<TripStopsMapCubit>().travelModeChanged(selected.first),
-                      );
-                    },
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: verticalSpaceXs,
+                        bottom: verticalSpaceS,
+                        left: horizontalSpaceS,
+                        right: horizontalSpaceS),
+                    child: BlocSelector<TripStopsMapCubit, TripStopsMapState, TravelMode>(
+                      selector: (state) => state.dayTrip.travelMode,
+                      builder: (context, travelMode) {
+                        return SegmentedButton<TravelMode>(
+                          showSelectedIcon: false,
+                          segments: const [
+                            ButtonSegment(
+                              icon: Icon(Icons.directions_car),
+                              value: TravelMode.driving,
+                            ),
+                            ButtonSegment(
+                              icon: Icon(Icons.directions_walk),
+                              value: TravelMode.walking,
+                            ),
+                            ButtonSegment(
+                              icon: Icon(Icons.directions_bike),
+                              value: TravelMode.bicycling,
+                            ),
+                            ButtonSegment(
+                              icon: Icon(Icons.directions_transit),
+                              value: TravelMode.transit,
+                            ),
+                          ],
+                          selected: {travelMode},
+                          onSelectionChanged: (selected) =>
+                              context.read<TripStopsMapCubit>().travelModeChanged(selected.first),
+                        );
+                      },
+                    ),
                   ),
                 )
               ],

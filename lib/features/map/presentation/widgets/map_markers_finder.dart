@@ -14,7 +14,7 @@ class _MapMarkersFinder extends StatelessWidget {
     return SafeArea(
       minimum: const EdgeInsets.all(16.0),
       child: IconButton.filled(
-          icon: const Icon(Icons.place, color: Colors.white),
+          icon: const Icon(Icons.place),
           onPressed: () {
             context.read<MapCubit>().findMarkers();
           }),
