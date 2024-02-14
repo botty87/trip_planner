@@ -11,6 +11,7 @@ import '../../../../core/error/exceptions.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../../core/widgets/theme/background_wrapper_widget.dart';
 import '../../../../core/widgets/snackbars.dart';
+import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/trip_cubit.dart';
@@ -35,8 +36,7 @@ class TripPage extends HookWidget {
     return BlocProvider<TripCubit>(
       create: (context) => getIt<TripCubit>(param1: _trip)..startListenDayTrips(),
       child: BackgroundWrapperWidget(
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
+        child: ScaffoldTransparent(
           appBar: const PreferredSize(
             preferredSize: Size.fromHeight(kToolbarHeight),
             child: _TripPageAppBar(),

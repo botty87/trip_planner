@@ -12,8 +12,9 @@ import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/theme/background_wrapper_widget.dart';
 import '../../../../core/widgets/snackbars.dart';
+import '../../../../core/widgets/theme/background_wrapper_widget.dart';
+import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/day_trip.dart';
@@ -98,9 +99,8 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
   Widget _horizontalLayout(BuildContext context, StreamController<bool> isSaving,
       ObjectRef isModalBottomEditing, StreamController<String?> errorMessageStream,
       {Orientation orientation = Orientation.landscape}) {
-    return Scaffold(
+    return ScaffoldTransparent(
       appBar: _buildAppBar(context, orientation),
-      backgroundColor: Colors.transparent,
       body: MultiBlocListener(
         listeners: [
           //Show snackbar when error is not fatal and is not editing
@@ -205,7 +205,6 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
   }
 
   PreferredSizeWidget _buildAppBar(BuildContext context, Orientation orientation) {
-
     return AppBar(
       title: Text("${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
       backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,

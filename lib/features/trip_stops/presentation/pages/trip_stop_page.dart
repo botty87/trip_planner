@@ -8,6 +8,7 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../../core/widgets/theme/background_wrapper_widget.dart';
+import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../../domain/entities/trip_stop.dart';
@@ -50,8 +51,7 @@ class TripStopPage extends StatelessWidget {
             }
           },
           child: const BackgroundWrapperWidget(
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
+            child: ScaffoldTransparent(
               appBar: PreferredSize(
                 preferredSize: Size.fromHeight(kToolbarHeight),
                 child: _TripStopPageAppBar(),
