@@ -23,7 +23,7 @@ class Settings with _$Settings {
     @Default(TravelMode.driving)
     TravelMode travelMode,
     @Default(BackgroundsContainer()) BackgroundsContainer backgroundsContainer,
-    @Default(AdaptiveThemeMode.light) AdaptiveThemeMode themeMode,
+    @Default(AdaptiveThemeMode.system) AdaptiveThemeMode themeMode,
   }) = _Settings;
 
   factory Settings.fromJson(Map<String, dynamic> json) => _$SettingsFromJson(json);

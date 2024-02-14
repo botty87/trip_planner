@@ -24,7 +24,7 @@ _$SettingsImpl _$$SettingsImplFromJson(Map<String, dynamic> json) =>
               json['backgroundsContainer'] as Map<String, dynamic>),
       themeMode:
           $enumDecodeNullable(_$AdaptiveThemeModeEnumMap, json['themeMode']) ??
-              AdaptiveThemeMode.light,
+              AdaptiveThemeMode.system,
     );
 
 Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>

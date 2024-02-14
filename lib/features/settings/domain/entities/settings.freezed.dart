@@ -192,7 +192,7 @@ class _$SettingsImpl implements _Settings {
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
       this.travelMode = TravelMode.driving,
       this.backgroundsContainer = const BackgroundsContainer(),
-      this.themeMode = AdaptiveThemeMode.light});
+      this.themeMode = AdaptiveThemeMode.system});
 
   factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SettingsImplFromJson(json);
