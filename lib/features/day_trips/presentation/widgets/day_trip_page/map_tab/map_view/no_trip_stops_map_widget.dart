@@ -7,7 +7,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../../../../core/constants.dart';
 import '../../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../../core/utilities/extensions.dart';
-import '../../../../../../../core/widgets/theme/background_wrapper_widget.dart';
+import '../../../../../../../core/widgets/theme/background_image_wrapper.dart';
 import '../../../../../../../gen/assets.gen.dart';
 
 class NoTripStopsMapWidget extends StatelessWidget with BackgroundImageMixin {

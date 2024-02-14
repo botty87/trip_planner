@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/theme/background_wrapper_widget.dart';
+import '../../../../core/widgets/theme/background_image_wrapper.dart';
 import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
@@ -50,7 +50,7 @@ class TripStopPage extends StatelessWidget {
               Navigator.of(context).pop();
             }
           },
-          child: const BackgroundWrapperWidget(
+          child: const BackgroundImageWrapper(
             child: ScaffoldTransparent(
               appBar: PreferredSize(
                 preferredSize: Size.fromHeight(kToolbarHeight),

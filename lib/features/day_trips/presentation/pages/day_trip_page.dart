@@ -13,7 +13,7 @@ import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../../core/widgets/snackbars.dart';
-import '../../../../core/widgets/theme/background_wrapper_widget.dart';
+import '../../../../core/widgets/theme/background_image_wrapper.dart';
 import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../../trips/domain/entities/trip.dart';
@@ -68,7 +68,7 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
                 Navigator.of(context).pop();
               }
             },
-            child: BackgroundWrapperWidget(
+            child: BackgroundImageWrapper(
               child: ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
                   ? _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream)
                   : OrientationBuilder(builder: (context, orientation) {

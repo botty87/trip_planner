@@ -9,8 +9,8 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/theme/background_wrapper_widget.dart';
 import '../../../../core/widgets/snackbars.dart';
+import '../../../../core/widgets/theme/background_image_wrapper.dart';
 import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
@@ -35,7 +35,7 @@ class TripPage extends HookWidget {
 
     return BlocProvider<TripCubit>(
       create: (context) => getIt<TripCubit>(param1: _trip)..startListenDayTrips(),
-      child: BackgroundWrapperWidget(
+      child: BackgroundImageWrapper(
         child: ScaffoldTransparent(
           appBar: const PreferredSize(
             preferredSize: Size.fromHeight(kToolbarHeight),
@@ -212,7 +212,7 @@ class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
   @override
   Widget build(BuildContext context) {
     final tripName = context.select<TripCubit, String>((cubit) => cubit.state.trip.name);
-    
+
     final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return AppBar(

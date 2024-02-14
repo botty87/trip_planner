@@ -8,20 +8,18 @@ class _VerticalLayout extends StatelessWidget {
     final tripStop = context.read<DiscoverNewTripStopCubit>().state.tripStop;
     final double heightFactor = tripStop.description == null ? 0.6 : 0.4;
 
-    return SingleChildScrollView(
+    return ListView(
       padding: defaultPagePadding,
-      child: Column(
-        children: [
-          _TripStopDescription(description: tripStop.description),
-          const SizedBox(height: verticalSpace),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * heightFactor,
-            child: const _MapWidget(),
-          ),
-          const SizedBox(height: verticalSpace),
-          const _TripStopDurationWidget(),
-        ],
-      ),
+      children: [
+        _TripStopDescription(description: tripStop.description),
+        const SizedBox(height: verticalSpace),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * heightFactor,
+          child: const _MapWidget(),
+        ),
+        const SizedBox(height: verticalSpace),
+        const _TripStopDurationWidget(),
+      ],
     );
   }
 }

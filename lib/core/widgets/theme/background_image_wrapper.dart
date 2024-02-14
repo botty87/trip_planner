@@ -6,10 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../utilities/extensions.dart';
 
-class BackgroundWrapperWidget extends StatelessWidget {
+class BackgroundImageWrapper extends StatelessWidget {
   final Widget child;
 
-  const BackgroundWrapperWidget({super.key, required this.child});
+  const BackgroundImageWrapper({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

@@ -3,36 +3,22 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
-import '../theme/background_wrapper_widget.dart';
+import '../theme/background_widget_container.dart';
 
-class GenericTripDescription extends StatelessWidget with BackgroundImageMixin {
+class GenericTripDescription extends StatelessWidget {
   final String? description;
 
   const GenericTripDescription({super.key, required this.description});
 
   @override
   Widget build(BuildContext context) {
-    final hasBackgroundImage = this.hasBackgroundImage(context);
-
     if (description?.isEmpty ?? true) {
       return const SizedBox.shrink();
     }
 
     return Padding(
       padding: const EdgeInsets.only(bottom: verticalSpace),
-      child: Container(
-        decoration: hasBackgroundImage
-            ? BoxDecoration(
-                color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
-                borderRadius: BorderRadius.circular(8),
-              )
-            : null,
-        padding: hasBackgroundImage
-            ? const EdgeInsets.symmetric(
-                horizontal: horizontalSpaceL,
-                vertical: verticalSpaceL,
-              )
-            : const EdgeInsets.all(0),
+      child: BackgroundWidgetContainer(
         child: Linkify(
           onOpen: (link) async {
             if (!await launchUrl(Uri.parse(link.url))) {

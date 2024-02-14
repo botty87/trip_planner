@@ -12,20 +12,23 @@ class _DiscoverNewTripStopsMapTab extends HookWidget {
           orElse: () => throw Exception('Unexpected state'),
         );
 
-    return MapWidget.multiple(
-      mapPlaces: tripStops.map((tripStop) => tripStop.toMapPlace()).toList(),
-      onMarkerTap: (mapPlace) {
-        final tripStop = mapPlace.maybeMap(
-          existing: (mapPlace) => tripStops.firstWhere(
-            (tripStop) => tripStop.id == mapPlace.tripStopId,
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: MapWidget.multiple(
+        mapPlaces: tripStops.map((tripStop) => tripStop.toMapPlace()).toList(),
+        onMarkerTap: (mapPlace) {
+          final tripStop = mapPlace.maybeMap(
+            existing: (mapPlace) => tripStops.firstWhere(
+              (tripStop) => tripStop.id == mapPlace.tripStopId,
+              orElse: () => throw Exception('Unexpected state'),
+            ),
             orElse: () => throw Exception('Unexpected state'),
-          ),
-          orElse: () => throw Exception('Unexpected state'),
-        );
+          );
 
-        return context.router.push(DiscoverNewTripStopRoute(tripStop: tripStop));
-      },
-      useDifferentColorsForDone: false,
+          return context.router.push(DiscoverNewTripStopRoute(tripStop: tripStop));
+        },
+        useDifferentColorsForDone: false,
+      ),
     );
   }
 }

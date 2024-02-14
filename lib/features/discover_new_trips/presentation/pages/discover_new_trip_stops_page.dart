@@ -9,9 +9,12 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import '../../../../core/utilities/extensions.dart';
 import '../../../../core/utilities/pair.dart';
 import '../../../../core/widgets/day_trip/generic_travel_card.dart';
 import '../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
+import '../../../../core/widgets/theme/background_image_wrapper.dart';
+import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
@@ -24,11 +27,11 @@ import '../cubit/trip_stops/discover_new_trip_stops_cubit.dart';
 part '../widgets/trip_stops/discover_new_trip_stops_body.dart';
 part '../widgets/trip_stops/discover_new_trip_stops_error_widget.dart';
 part '../widgets/trip_stops/list/discover_new_trip_stops_list.dart';
+part '../widgets/trip_stops/list/list_view.dart';
 part '../widgets/trip_stops/list/travel_card.dart';
 part '../widgets/trip_stops/list/trip_stop_card.dart';
-part '../widgets/trip_stops/map/discover_new_trip_stops_map_tab.dart';
-part '../widgets/trip_stops/list/list_view.dart';
 part '../widgets/trip_stops/list/trip_stops_header.dart';
+part '../widgets/trip_stops/map/discover_new_trip_stops_map_tab.dart';
 
 @RoutePage()
 class DiscoverNewTripStopsPage extends StatelessWidget {
@@ -63,19 +66,22 @@ class DiscoverNewTripStopsPage extends StatelessWidget {
 
           return DefaultTabController(
             length: tabsLength,
-            child: Scaffold(
-              appBar: AppBar(
-                title: Text("${LocaleKeys.day.tr()} ${_dayTrip.index + 1}"),
-                bottom: tabsLength > 0
-                    ? TabBar(
-                        tabs: [
-                          Tab(text: LocaleKeys.list.tr()),
-                          Tab(text: LocaleKeys.map.tr()),
-                        ],
-                      )
-                    : null,
+            child: BackgroundImageWrapper(
+              child: ScaffoldTransparent(
+                appBar: AppBar(
+                  backgroundColor: context.appBarColor,
+                  title: Text("${LocaleKeys.day.tr()} ${_dayTrip.index + 1}"),
+                  bottom: tabsLength > 0
+                      ? TabBar(
+                          tabs: [
+                            Tab(text: LocaleKeys.list.tr()),
+                            Tab(text: LocaleKeys.map.tr()),
+                          ],
+                        )
+                      : null,
+                ),
+                body: _DiscoverNewTripStopsBody(dayTrip: _dayTrip),
               ),
-              body: _DiscoverNewTripStopsBody(dayTrip: _dayTrip),
             ),
           );
         },
