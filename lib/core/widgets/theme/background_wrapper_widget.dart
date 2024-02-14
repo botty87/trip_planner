@@ -3,8 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/settings/presentation/cubit/settings_cubit.dart';
-import '../utilities/extensions.dart';
+import '../../../features/settings/presentation/cubit/settings_cubit.dart';
+import '../../utilities/extensions.dart';
 
 class BackgroundWrapperWidget extends StatelessWidget {
   final Widget child;

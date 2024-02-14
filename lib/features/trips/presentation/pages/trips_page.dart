@@ -8,7 +8,7 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/background_wrapper_widget.dart';
+import '../../../../core/widgets/theme/background_wrapper_widget.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../cubit/trips/trips_cubit.dart';
 import '../widgets/trips_page/drawer.dart';

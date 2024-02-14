@@ -9,7 +9,7 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/background_wrapper_widget.dart';
+import '../../../../core/widgets/theme/background_wrapper_widget.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
