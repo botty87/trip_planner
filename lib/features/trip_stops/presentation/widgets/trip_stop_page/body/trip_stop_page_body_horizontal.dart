@@ -6,8 +6,7 @@ import '../../../../../../core/constants.dart';
 import '../../../cubit/trip_stop/trip_stop_cubit.dart';
 import '../delete_trip_stop_button.dart';
 import '../trip_stop_description.dart';
-import '../trip_stop_done_widget.dart';
-import '../trip_stop_duration_widget.dart';
+import '../trip_stop_done_duration_container.dart';
 import '../trip_stop_map_widget.dart';
 import '../trip_stop_navigate_to_button.dart';
 import '../trip_stop_note_widget.dart';
@@ -50,10 +49,7 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
                       Flexible(child: SingleChildScrollView(child: TripStopDescription())),
                       TripStopNoteWidget(),
                       SizedBox(height: verticalSpaceL),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [TripStopDurationWidget(), TripStopDoneWidget()],
-                      ),
+                      TripStopDoneDurationContainer(),
                     ],
                   ),
                 ),

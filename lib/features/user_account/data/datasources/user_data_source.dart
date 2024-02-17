@@ -51,7 +51,8 @@ final class UserDataSourceImpl implements UserDataSource {
       if (!userDocSnapshot.exists) {
         final userDB = UserDB(
           email: firebaseUser.email!,
-          name: firebaseUser.displayName!,
+          //This is needed because old users don't have a name
+          name: firebaseUser.displayName ?? firebaseUser.email!.split('@').first,
           oldTripsImported: true,
         );
         await userDoc.set(userDB);
@@ -71,7 +72,8 @@ final class UserDataSourceImpl implements UserDataSource {
           _userStreamController.add(User(
             id: user.uid,
             email: user.email!,
-            name: user.displayName!,
+            //This is needed because old users don't have a name
+            name: user.displayName ?? user.email!.split('@').first,
             oldTripsImported: userDB.oldTripsImported,
             settings: userDB.settings,
           ));

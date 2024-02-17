@@ -12,7 +12,7 @@ part of 'settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Settings _$SettingsFromJson(Map<String, dynamic> json) {
   return _Settings.fromJson(json);
@@ -191,7 +191,15 @@ class _$SettingsImpl implements _Settings {
       this.useDifferentDirectionsColors = true,
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
       this.travelMode = TravelMode.driving,
-      this.backgroundsContainer = const BackgroundsContainer(),
+      this.backgroundsContainer = const BackgroundsContainer(
+          darkBackground: BackgroundRemoteImage(
+              url:
+                  'https://firebasestorage.googleapis.com/v0/b/trip-planner-11ffe.appspot.com/o/backgrounds%2Fdark%2F1.webp?alt=media&token=40c68216-ebf8-48ff-aab9-b74dcc135d13',
+              index: 1),
+          lightBackground: BackgroundRemoteImage(
+              url:
+                  'https://firebasestorage.googleapis.com/v0/b/trip-planner-11ffe.appspot.com/o/backgrounds%2Flight%2F2.webp?alt=media&token=8d063856-b0e7-430b-b866-18f1df4eb7bb',
+              index: 2)),
       this.themeMode = AdaptiveThemeMode.system});
 
   factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>

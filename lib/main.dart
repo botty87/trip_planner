@@ -57,19 +57,11 @@ void main() async {
     mapsImplementation.useAndroidViewSurface = false;
   }
 
-  //Theme
-  final themeStr = await rootBundle.loadString('assets/appainter_theme.json');
-  final themeJson = jsonDecode(themeStr);
-  var theme = ThemeDecoder.decodeThemeData(themeJson)!;
-  theme = theme.copyWith(
-    textTheme: GoogleFonts.jostTextTheme(theme.textTheme),
-  );
-
   runApp(EasyLocalization(
     supportedLocales: const [Locale('it'), Locale('en')],
     path: 'assets/translations',
     fallbackLocale: const Locale('en'),
     useOnlyLangCode: true,
-    child: MyApp(theme: theme),
+    child: const MyApp(),
   ));
 }

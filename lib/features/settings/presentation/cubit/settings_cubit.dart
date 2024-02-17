@@ -70,7 +70,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(state.copyWith(settings: state.settings.copyWith(travelMode: driving)));
   }
 
-  //TODO add tests
   void setBackground({required BackgroundType backgroundType, required BackgroundRemoteImage value}) {
     switch (backgroundType) {
       case BackgroundType.light:
@@ -82,7 +81,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  //TODO add tests
   void removeBackground({required BackgroundType backgroundType}) {
     switch (backgroundType) {
       case BackgroundType.light:
@@ -94,7 +92,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  //TODO add tests
   changeThemeMode(AdaptiveThemeMode theme) {
     emit(state.copyWith.settings(themeMode: theme));
   }

@@ -22,7 +22,6 @@ class _DiscoverNewTripList extends StatelessWidget {
       return ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
         child: ListView.separated(
-          //TODO: verify if this is needed
           padding: const EdgeInsets.symmetric(vertical: pageVerticalPadding),
           itemCount: filteredTrips.length,
           itemBuilder: (context, index) => _TripCard(trip: filteredTrips[index]),

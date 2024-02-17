@@ -13,9 +13,8 @@ import 'routes/app_router.dart';
 import 'routes/app_router.gr.dart';
 
 class MyApp extends StatelessWidget {
-  final ThemeData theme;
 
-  const MyApp({super.key, required this.theme});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override

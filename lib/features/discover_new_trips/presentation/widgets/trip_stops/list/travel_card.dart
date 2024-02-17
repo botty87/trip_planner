@@ -7,7 +7,6 @@ class _TravelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: check onTap
     return GenericTravelCard(tripStop: tripStop, onTap: () {});
   }
 }
