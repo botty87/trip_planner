@@ -152,5 +152,8 @@ abstract class  LocaleKeys {
   static const noBackground = 'noBackground';
   static const theme = 'theme';
   static const system = 'system';
+  static const newBackgrounds = 'newBackgrounds';
+  static const newBackgroundsMessage = 'newBackgroundsMessage';
+  static const close = 'close';
 
 }

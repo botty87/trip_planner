@@ -185,11 +185,7 @@ class $AssetsTranslationsGen {
 class Assets {
   Assets._();
 
-  static const String appainterTheme = 'assets/appainter_theme.json';
   static const $AssetsGoogleFontsGen googleFonts = $AssetsGoogleFontsGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
-
-  /// List of all assets
-  static List<String> get values => [appainterTheme];
 }

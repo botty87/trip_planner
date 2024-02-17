@@ -29,6 +29,7 @@ mixin _$Settings {
   BackgroundsContainer get backgroundsContainer =>
       throw _privateConstructorUsedError;
   AdaptiveThemeMode get themeMode => throw _privateConstructorUsedError;
+  bool get showBackgroundsDialog => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +50,8 @@ abstract class $SettingsCopyWith<$Res> {
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
       TravelMode travelMode,
       BackgroundsContainer backgroundsContainer,
-      AdaptiveThemeMode themeMode});
+      AdaptiveThemeMode themeMode,
+      bool showBackgroundsDialog});
 
   $BackgroundsContainerCopyWith<$Res> get backgroundsContainer;
 }
@@ -73,6 +75,7 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
     Object? travelMode = null,
     Object? backgroundsContainer = null,
     Object? themeMode = null,
+    Object? showBackgroundsDialog = null,
   }) {
     return _then(_value.copyWith(
       defaultDayTripStartTime: null == defaultDayTripStartTime
@@ -99,6 +102,10 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as AdaptiveThemeMode,
+      showBackgroundsDialog: null == showBackgroundsDialog
+          ? _value.showBackgroundsDialog
+          : showBackgroundsDialog // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -128,7 +135,8 @@ abstract class _$$SettingsImplCopyWith<$Res>
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
       TravelMode travelMode,
       BackgroundsContainer backgroundsContainer,
-      AdaptiveThemeMode themeMode});
+      AdaptiveThemeMode themeMode,
+      bool showBackgroundsDialog});
 
   @override
   $BackgroundsContainerCopyWith<$Res> get backgroundsContainer;
@@ -151,6 +159,7 @@ class __$$SettingsImplCopyWithImpl<$Res>
     Object? travelMode = null,
     Object? backgroundsContainer = null,
     Object? themeMode = null,
+    Object? showBackgroundsDialog = null,
   }) {
     return _then(_$SettingsImpl(
       defaultDayTripStartTime: null == defaultDayTripStartTime
@@ -177,6 +186,10 @@ class __$$SettingsImplCopyWithImpl<$Res>
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as AdaptiveThemeMode,
+      showBackgroundsDialog: null == showBackgroundsDialog
+          ? _value.showBackgroundsDialog
+          : showBackgroundsDialog // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -191,16 +204,9 @@ class _$SettingsImpl implements _Settings {
       this.useDifferentDirectionsColors = true,
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
       this.travelMode = TravelMode.driving,
-      this.backgroundsContainer = const BackgroundsContainer(
-          darkBackground: BackgroundRemoteImage(
-              url:
-                  'https://firebasestorage.googleapis.com/v0/b/trip-planner-11ffe.appspot.com/o/backgrounds%2Fdark%2F1.webp?alt=media&token=40c68216-ebf8-48ff-aab9-b74dcc135d13',
-              index: 1),
-          lightBackground: BackgroundRemoteImage(
-              url:
-                  'https://firebasestorage.googleapis.com/v0/b/trip-planner-11ffe.appspot.com/o/backgrounds%2Flight%2F2.webp?alt=media&token=8d063856-b0e7-430b-b866-18f1df4eb7bb',
-              index: 2)),
-      this.themeMode = AdaptiveThemeMode.system});
+      this.backgroundsContainer = const BackgroundsContainer(),
+      this.themeMode = AdaptiveThemeMode.system,
+      this.showBackgroundsDialog = true});
 
   factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SettingsImplFromJson(json);
@@ -223,10 +229,13 @@ class _$SettingsImpl implements _Settings {
   @override
   @JsonKey()
   final AdaptiveThemeMode themeMode;
+  @override
+  @JsonKey()
+  final bool showBackgroundsDialog;
 
   @override
   String toString() {
-    return 'Settings(defaultDayTripStartTime: $defaultDayTripStartTime, showDirections: $showDirections, useDifferentDirectionsColors: $useDifferentDirectionsColors, travelMode: $travelMode, backgroundsContainer: $backgroundsContainer, themeMode: $themeMode)';
+    return 'Settings(defaultDayTripStartTime: $defaultDayTripStartTime, showDirections: $showDirections, useDifferentDirectionsColors: $useDifferentDirectionsColors, travelMode: $travelMode, backgroundsContainer: $backgroundsContainer, themeMode: $themeMode, showBackgroundsDialog: $showBackgroundsDialog)';
   }
 
   @override
@@ -248,7 +257,9 @@ class _$SettingsImpl implements _Settings {
             (identical(other.backgroundsContainer, backgroundsContainer) ||
                 other.backgroundsContainer == backgroundsContainer) &&
             (identical(other.themeMode, themeMode) ||
-                other.themeMode == themeMode));
+                other.themeMode == themeMode) &&
+            (identical(other.showBackgroundsDialog, showBackgroundsDialog) ||
+                other.showBackgroundsDialog == showBackgroundsDialog));
   }
 
   @JsonKey(ignore: true)
@@ -260,7 +271,8 @@ class _$SettingsImpl implements _Settings {
       useDifferentDirectionsColors,
       travelMode,
       backgroundsContainer,
-      themeMode);
+      themeMode,
+      showBackgroundsDialog);
 
   @JsonKey(ignore: true)
   @override
@@ -285,7 +297,8 @@ abstract class _Settings implements Settings {
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
       final TravelMode travelMode,
       final BackgroundsContainer backgroundsContainer,
-      final AdaptiveThemeMode themeMode}) = _$SettingsImpl;
+      final AdaptiveThemeMode themeMode,
+      final bool showBackgroundsDialog}) = _$SettingsImpl;
 
   factory _Settings.fromJson(Map<String, dynamic> json) =
       _$SettingsImpl.fromJson;
@@ -304,6 +317,8 @@ abstract class _Settings implements Settings {
   BackgroundsContainer get backgroundsContainer;
   @override
   AdaptiveThemeMode get themeMode;
+  @override
+  bool get showBackgroundsDialog;
   @override
   @JsonKey(ignore: true)
   _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>

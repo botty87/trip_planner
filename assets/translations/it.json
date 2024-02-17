@@ -153,5 +153,8 @@
     "dark" : "Scuro",
     "noBackground" : "Nessuno",
     "theme" : "Tema",
-    "system" : "Sistema"
+    "system" : "Sistema",
+    "newBackgrounds": "Nuovi sfondi",
+    "newBackgroundsMessage": "Abbiamo aggiunto nuovi sfondi! Dai un'occhiata nelle impostazioni e scegli quello che preferisci!",
+    "close": "Chiudi"
 }

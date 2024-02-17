@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../../core/widgets/theme/background_image_wrapper.dart';
 import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';
+import '../../../settings/presentation/cubit/settings_cubit.dart';
 import '../cubit/trips/trips_cubit.dart';
 import '../widgets/trips_page/drawer.dart';
 import '../widgets/trips_page/loaded_widget.dart';
@@ -23,6 +25,8 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
 
   @override
   Widget build(BuildContext context) {
+    
+
     final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return BlocProvider<TripsCubit>(
@@ -39,7 +43,10 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
             builder: (context, state) => TripPagesAnimatedSwitcher(
               child: state.when(
                 initial: () => const TripsPageInitialWidget(key: ValueKey('initial')),
-                loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
+                loaded: (_) {
+                  Future.delayed(const Duration(seconds: 2), () => checkIfShowNewBackgroundsDialog(context));
+                  return const Center(key: ValueKey('loaded'), child: LoadedWidget());
+                },
                 error: (message) =>
                     Center(key: const ValueKey('error'), child: TripsErrorWidget(message: message)),
               ),
@@ -55,5 +62,22 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
         ),
       ),
     );
+  }
+
+  checkIfShowNewBackgroundsDialog(BuildContext context) {
+    final settingsCubit = context.read<SettingsCubit>();
+    final settings = settingsCubit.state.settings;
+
+    if (settings.showBackgroundsDialog) {
+      settingsCubit.disableDisplayBackgroundsDialog();
+      settingsCubit.updateSettings();
+
+      showOkAlertDialog(
+        context: context,
+        title: LocaleKeys.newBackgrounds.tr(),
+        message: LocaleKeys.newBackgroundsMessage.tr(),
+        okLabel: LocaleKeys.close.tr(),
+      );
+    }
   }
 }

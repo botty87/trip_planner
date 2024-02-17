@@ -59,6 +59,10 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(state.copyWith(settings: state.settings.copyWith(useDifferentDirectionsColors: value)));
   }
 
+  disableDisplayBackgroundsDialog() {
+    emit(state.copyWith(settings: state.settings.copyWith(showBackgroundsDialog: false)));
+  }
+
   updateSettings() async {
     emit(state.copyWith(failure: null));
 
