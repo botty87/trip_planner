@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -8,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/utilities/extensions.dart';
+import '../../../../core/utilities/image_loader.dart';
 import '../../domain/entities/backgrounds_container.dart';
 
 part 'backgrounds_state.dart';
@@ -55,8 +57,12 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
     final imageFile = File('${directory.path}/$backgroundsPrefix-$index.$webpExtension');
 
     if (imageFile.existsSync()) {
-      emitFile(imageFile);
-      return;
+      //TODO remove
+      imageFile.delete();
+
+      //TODO restore
+      //emitFile(imageFile);
+      //return;
     }
 
     final imageRef = type == BackgroundType.light ? lightBackgroundsRef : darkBackgroundsRef;
@@ -64,6 +70,8 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
     if (imageBytes == null) return;
 
     await imageFile.writeAsBytes(imageBytes);
+
+    await loadImage(FileImage(imageFile));
 
     emitFile(imageFile);
   }
