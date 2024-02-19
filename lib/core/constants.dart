@@ -27,5 +27,10 @@ const settingsRef = 'settings';
 
 const int availableLightBackgrounds = 7;
 const int availableDarkBackgrounds = 7;
+
 final appBarLightColor = Colors.white.withOpacity(0.3);
 final appBarDarkColor = Colors.black.withOpacity(0.3);
+
+const String lightBackgroundPrefix = 'lightBackground';
+const String darkBackgroundPrefix = 'darkBackground';
+const String webpExtension = 'webp';

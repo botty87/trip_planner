@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:adaptive_theme/src/adaptive_theme_mode.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -10,7 +10,6 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/di/di.dart';
 import '../../../user_account/errors/user_failures.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
-import '../../domain/entities/background_remote_image.dart';
 import '../../domain/entities/backgrounds_container.dart';
 import '../../domain/entities/settings.dart';
 import '../../domain/usecases/update_settings.dart';
@@ -21,6 +20,7 @@ part 'settings_state.dart';
 @lazySingleton
 class SettingsCubit extends Cubit<SettingsState> {
   final UpdateSettings _updateSettings;
+  
 
   late final StreamSubscription<Settings?> _settingsSubscription;
 
@@ -74,13 +74,13 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(state.copyWith(settings: state.settings.copyWith(travelMode: driving)));
   }
 
-  void setBackground({required BackgroundType backgroundType, required BackgroundRemoteImage value}) {
+  void setBackground({required BackgroundType backgroundType, required int index}) {
     switch (backgroundType) {
       case BackgroundType.light:
-        emit(state.copyWith.settings.backgroundsContainer(lightBackground: value));
+        emit(state.copyWith.settings.backgroundsContainer(lightBackgroundIndex: index));
         break;
       case BackgroundType.dark:
-        emit(state.copyWith.settings.backgroundsContainer(darkBackground: value));
+        emit(state.copyWith.settings.backgroundsContainer(darkBackgroundIndex: index));
         break;
     }
   }
@@ -88,10 +88,10 @@ class SettingsCubit extends Cubit<SettingsState> {
   void removeBackground({required BackgroundType backgroundType}) {
     switch (backgroundType) {
       case BackgroundType.light:
-        emit(state.copyWith.settings.backgroundsContainer(lightBackground: null));
+        emit(state.copyWith.settings.backgroundsContainer(lightBackgroundIndex: null));
         break;
       case BackgroundType.dark:
-        emit(state.copyWith.settings.backgroundsContainer(darkBackground: null));
+        emit(state.copyWith.settings.backgroundsContainer(darkBackgroundIndex: null));
         break;
     }
   }

@@ -1,107 +1,54 @@
 part of 'background_section.dart';
 
-class _ImageBuilder extends HookWidget {
+class _ImageBuilder extends StatelessWidget {
   final BackgroundType imageType;
   final int index;
 
-  const _ImageBuilder({required this.imageType, required this.index, super.key});
+  const _ImageBuilder({required this.imageType, required this.index, required super.key});
 
   @override
   Widget build(BuildContext context) {
-    useAutomaticKeepAlive();
-
-    final Reference imageRef = imageType == BackgroundType.light
-        ? getIt<FirebaseStorage>().lightBackgroundsRef
-        : getIt<FirebaseStorage>().darkBackgroundsRef;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: horizontalSpaceS),
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 150),
-        child: FutureBuilder(
-          future: imageRef.child('$index.webp').getDownloadURL(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return Shimmer.fromColors(
-                baseColor: Colors.grey[300]!,
-                highlightColor: Colors.grey[100]!,
-                child: Container(
-                  color: Colors.grey[300],
-                ),
-              );
-            }
-
-            return CachedNetworkImage(
-              imageUrl: snapshot.data!,
-              fit: BoxFit.cover,
-              fadeInDuration: const Duration(milliseconds: 200),
-              placeholder: (context, url) => Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
-                  child: Container(
-                    color: Colors.grey[300],
-                  ),
-                ),
-              ),
-              imageBuilder: (context, imageProvider) {
-                return GestureDetector(
-                  onTap: () => context.read<SettingsCubit>().setBackground(
-                      backgroundType: imageType,
-                      value: BackgroundRemoteImage(index: index, url: snapshot.data!)),
-                  child: Stack(
-                    children: [
-                      BlocSelector<SettingsCubit, SettingsState, bool>(
-                        selector: (state) {
-                          switch (imageType) {
-                            case BackgroundType.light:
-                              return state.settings.backgroundsContainer.lightBackground?.index ==
-                                  index;
-                            case BackgroundType.dark:
-                              return state.settings.backgroundsContainer.darkBackground?.index ==
-                                  index;
-                          }
-                        },
-                        builder: (context, isSelected) {
-                          final selectedColor = context.isDarkMode
-                              ? Theme.of(context).colorScheme.secondary
-                              : Theme.of(context).primaryColorDark;
-                          return AnimatedContainer(
-                            duration: const Duration(milliseconds: 200),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: isSelected ? selectedColor : Colors.transparent,
-                                width: 2,
-                              ),
-                              boxShadow: isSelected
-                                  ? [
-                                      const BoxShadow(
-                                        color: Colors.grey,
-                                        offset: Offset(0.0, 1.0), //(x,y)
-                                        blurRadius: 6,
-                                      ),
-                                    ]
-                                  : null,
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          },
+        child: _ImageView(
+          imageType: imageType,
+          index: index,
         ),
       ),
+    );
+  }
+}
+
+class _ImageView extends StatelessWidget {
+  final BackgroundType imageType;
+  final int index;
+
+  const _ImageView({required this.imageType, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    final imageFile = context.select((BackgroundsCubit cubit) {
+      return imageType == BackgroundType.light
+          ? cubit.state.lightBackgrounds[index]
+          : cubit.state.darkBackgrounds[index];
+    });
+
+    if (imageFile == null) {
+      return Shimmer.fromColors(
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.grey[100]!,
+        child: Container(
+          color: Colors.grey[300],
+        ),
+      );
+    }
+
+    return Image.file(
+      imageFile,
+      fit: BoxFit.cover,
+      width: double.infinity,
     );
   }
 }

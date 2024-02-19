@@ -20,10 +20,8 @@ BackgroundsContainer _$BackgroundsContainerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BackgroundsContainer {
-  BackgroundRemoteImage? get lightBackground =>
-      throw _privateConstructorUsedError;
-  BackgroundRemoteImage? get darkBackground =>
-      throw _privateConstructorUsedError;
+  int? get lightBackgroundIndex => throw _privateConstructorUsedError;
+  int? get darkBackgroundIndex => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,12 +35,7 @@ abstract class $BackgroundsContainerCopyWith<$Res> {
           $Res Function(BackgroundsContainer) then) =
       _$BackgroundsContainerCopyWithImpl<$Res, BackgroundsContainer>;
   @useResult
-  $Res call(
-      {BackgroundRemoteImage? lightBackground,
-      BackgroundRemoteImage? darkBackground});
-
-  $BackgroundRemoteImageCopyWith<$Res>? get lightBackground;
-  $BackgroundRemoteImageCopyWith<$Res>? get darkBackground;
+  $Res call({int? lightBackgroundIndex, int? darkBackgroundIndex});
 }
 
 /// @nodoc
@@ -59,45 +52,19 @@ class _$BackgroundsContainerCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lightBackground = freezed,
-    Object? darkBackground = freezed,
+    Object? lightBackgroundIndex = freezed,
+    Object? darkBackgroundIndex = freezed,
   }) {
     return _then(_value.copyWith(
-      lightBackground: freezed == lightBackground
-          ? _value.lightBackground
-          : lightBackground // ignore: cast_nullable_to_non_nullable
-              as BackgroundRemoteImage?,
-      darkBackground: freezed == darkBackground
-          ? _value.darkBackground
-          : darkBackground // ignore: cast_nullable_to_non_nullable
-              as BackgroundRemoteImage?,
+      lightBackgroundIndex: freezed == lightBackgroundIndex
+          ? _value.lightBackgroundIndex
+          : lightBackgroundIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+      darkBackgroundIndex: freezed == darkBackgroundIndex
+          ? _value.darkBackgroundIndex
+          : darkBackgroundIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BackgroundRemoteImageCopyWith<$Res>? get lightBackground {
-    if (_value.lightBackground == null) {
-      return null;
-    }
-
-    return $BackgroundRemoteImageCopyWith<$Res>(_value.lightBackground!,
-        (value) {
-      return _then(_value.copyWith(lightBackground: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BackgroundRemoteImageCopyWith<$Res>? get darkBackground {
-    if (_value.darkBackground == null) {
-      return null;
-    }
-
-    return $BackgroundRemoteImageCopyWith<$Res>(_value.darkBackground!,
-        (value) {
-      return _then(_value.copyWith(darkBackground: value) as $Val);
-    });
   }
 }
 
@@ -109,14 +76,7 @@ abstract class _$$BackgroundsContainerImplCopyWith<$Res>
       __$$BackgroundsContainerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {BackgroundRemoteImage? lightBackground,
-      BackgroundRemoteImage? darkBackground});
-
-  @override
-  $BackgroundRemoteImageCopyWith<$Res>? get lightBackground;
-  @override
-  $BackgroundRemoteImageCopyWith<$Res>? get darkBackground;
+  $Res call({int? lightBackgroundIndex, int? darkBackgroundIndex});
 }
 
 /// @nodoc
@@ -130,18 +90,18 @@ class __$$BackgroundsContainerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lightBackground = freezed,
-    Object? darkBackground = freezed,
+    Object? lightBackgroundIndex = freezed,
+    Object? darkBackgroundIndex = freezed,
   }) {
     return _then(_$BackgroundsContainerImpl(
-      lightBackground: freezed == lightBackground
-          ? _value.lightBackground
-          : lightBackground // ignore: cast_nullable_to_non_nullable
-              as BackgroundRemoteImage?,
-      darkBackground: freezed == darkBackground
-          ? _value.darkBackground
-          : darkBackground // ignore: cast_nullable_to_non_nullable
-              as BackgroundRemoteImage?,
+      lightBackgroundIndex: freezed == lightBackgroundIndex
+          ? _value.lightBackgroundIndex
+          : lightBackgroundIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+      darkBackgroundIndex: freezed == darkBackgroundIndex
+          ? _value.darkBackgroundIndex
+          : darkBackgroundIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -149,19 +109,20 @@ class __$$BackgroundsContainerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BackgroundsContainerImpl implements _BackgroundsContainer {
-  const _$BackgroundsContainerImpl({this.lightBackground, this.darkBackground});
+  const _$BackgroundsContainerImpl(
+      {this.lightBackgroundIndex, this.darkBackgroundIndex});
 
   factory _$BackgroundsContainerImpl.fromJson(Map<String, dynamic> json) =>
       _$$BackgroundsContainerImplFromJson(json);
 
   @override
-  final BackgroundRemoteImage? lightBackground;
+  final int? lightBackgroundIndex;
   @override
-  final BackgroundRemoteImage? darkBackground;
+  final int? darkBackgroundIndex;
 
   @override
   String toString() {
-    return 'BackgroundsContainer(lightBackground: $lightBackground, darkBackground: $darkBackground)';
+    return 'BackgroundsContainer(lightBackgroundIndex: $lightBackgroundIndex, darkBackgroundIndex: $darkBackgroundIndex)';
   }
 
   @override
@@ -169,15 +130,16 @@ class _$BackgroundsContainerImpl implements _BackgroundsContainer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BackgroundsContainerImpl &&
-            (identical(other.lightBackground, lightBackground) ||
-                other.lightBackground == lightBackground) &&
-            (identical(other.darkBackground, darkBackground) ||
-                other.darkBackground == darkBackground));
+            (identical(other.lightBackgroundIndex, lightBackgroundIndex) ||
+                other.lightBackgroundIndex == lightBackgroundIndex) &&
+            (identical(other.darkBackgroundIndex, darkBackgroundIndex) ||
+                other.darkBackgroundIndex == darkBackgroundIndex));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, lightBackground, darkBackground);
+  int get hashCode =>
+      Object.hash(runtimeType, lightBackgroundIndex, darkBackgroundIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -197,17 +159,16 @@ class _$BackgroundsContainerImpl implements _BackgroundsContainer {
 
 abstract class _BackgroundsContainer implements BackgroundsContainer {
   const factory _BackgroundsContainer(
-          {final BackgroundRemoteImage? lightBackground,
-          final BackgroundRemoteImage? darkBackground}) =
-      _$BackgroundsContainerImpl;
+      {final int? lightBackgroundIndex,
+      final int? darkBackgroundIndex}) = _$BackgroundsContainerImpl;
 
   factory _BackgroundsContainer.fromJson(Map<String, dynamic> json) =
       _$BackgroundsContainerImpl.fromJson;
 
   @override
-  BackgroundRemoteImage? get lightBackground;
+  int? get lightBackgroundIndex;
   @override
-  BackgroundRemoteImage? get darkBackground;
+  int? get darkBackgroundIndex;
   @override
   @JsonKey(ignore: true)
   _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl>

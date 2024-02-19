@@ -14,7 +14,9 @@ class BackgroundImageWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgroundImageUrl = context.select((SettingsCubit cubit) {
-      switch (cubit.state.settings.themeMode) {
+      return null;
+      //TODO implement this
+      /* switch (cubit.state.settings.themeMode) {
         case AdaptiveThemeMode.light:
           return cubit.state.settings.backgroundsContainer.lightBackground?.url;
         case AdaptiveThemeMode.dark:
@@ -23,7 +25,7 @@ class BackgroundImageWrapper extends StatelessWidget {
           return context.isDarkMode
               ? cubit.state.settings.backgroundsContainer.darkBackground?.url
               : cubit.state.settings.backgroundsContainer.lightBackground?.url;
-      }
+      } */
     });
 
     return Stack(
@@ -54,10 +56,12 @@ class BackgroundImageWrapper extends StatelessWidget {
 
 mixin BackgroundImageMixin {
   bool hasBackgroundImage(BuildContext context) => context.select((SettingsCubit cubit) {
-        if (context.isDarkMode) {
+        return false;
+        //TODO implement this
+        /* if (context.isDarkMode) {
           return cubit.state.settings.backgroundsContainer.darkBackground?.url.isNotEmpty ?? false;
         } else {
           return cubit.state.settings.backgroundsContainer.lightBackground?.url.isNotEmpty ?? false;
-        }
+        } */
       });
 }

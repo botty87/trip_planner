@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -25,7 +27,7 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
 
   @override
   Widget build(BuildContext context) {
-    
+    final test = File('test');
 
     final hasBackgroundImage = this.hasBackgroundImage(context);
 
