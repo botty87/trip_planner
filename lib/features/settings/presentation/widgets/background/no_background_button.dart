@@ -8,14 +8,12 @@ class _NoBackgroundButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSelected = context.select((SettingsCubit cubit) {
-      return false;
-      //TODO implement this
-      /* switch (backgroundType) {
+      switch (backgroundType) {
         case BackgroundType.light:
-          return cubit.state.settings.backgroundsContainer.lightBackground == null;
+          return cubit.state.settings.backgroundsContainer.lightBackgroundIndex == null;
         case BackgroundType.dark:
-          return cubit.state.settings.backgroundsContainer.darkBackground == null;
-      } */
+          return cubit.state.settings.backgroundsContainer.darkBackgroundIndex == null;
+      }
     });
 
     final selectedColor = context.isDarkMode
@@ -43,9 +41,7 @@ class _NoBackgroundButton extends StatelessWidget {
             ),
           ],
         ),
-        onTap: () {
-          context.read<SettingsCubit>().removeBackground(backgroundType: backgroundType);
-        },
+        onTap: () => context.read<SettingsCubit>().removeBackground(backgroundType: backgroundType),
       ),
     );
   }

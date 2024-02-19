@@ -26,7 +26,7 @@ class BackgroundSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<BackgroundsCubit>()..loadBackgroundImages(),
+      create: (context) => getIt<BackgroundsCubit>(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,

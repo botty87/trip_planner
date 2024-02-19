@@ -9,6 +9,12 @@ class _ImageBuilder extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
+    final isImageToLoad = useRef(true);
+
+    if (isImageToLoad.value) {
+      context.read<BackgroundsCubit>().loadBackgroundImage(index: index, type: imageType);
+      isImageToLoad.value = false;
+    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: horizontalSpaceS),
@@ -34,8 +40,6 @@ class _ImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-
     final imageFile = context.select((BackgroundsCubit cubit) {
       return imageType == BackgroundType.light
           ? cubit.state.lightBackgrounds[index]
@@ -43,10 +47,10 @@ class _ImageView extends StatelessWidget {
     });
 
     return AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300), child: _buildImage(imageFile));
+        duration: const Duration(milliseconds: 300), child: _buildImage(imageFile, context));
   }
 
-  Widget _buildImage(File? imageFile) {
+  Widget _buildImage(File? imageFile, BuildContext context) {
     if (imageFile == null) {
       return Shimmer.fromColors(
         key: const ValueKey('shimmer'),
@@ -58,11 +62,49 @@ class _ImageView extends StatelessWidget {
       );
     }
 
-    return Image.file(
-      imageFile,
-      fit: BoxFit.cover,
-      width: double.infinity,
-      height: double.infinity,
+    return GestureDetector(
+      onTap: () =>
+          context.read<SettingsCubit>().setBackground(backgroundType: imageType, index: index),
+      child: Stack(
+        children: [
+          Image.file(
+            key: ValueKey(imageFile.path),
+            imageFile,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          BlocSelector<SettingsCubit, SettingsState, bool>(
+            selector: (state) {
+              switch (imageType) {
+                case BackgroundType.light:
+                  return state.settings.backgroundsContainer.lightBackgroundIndex == index;
+                case BackgroundType.dark:
+                  return state.settings.backgroundsContainer.darkBackgroundIndex == index;
+              }
+            },
+            builder: (context, isSelected) {
+              final selectedColor = context.isDarkMode
+                  ? Theme.of(context).colorScheme.secondary
+                  : Theme.of(context).primaryColorDark;
+
+              return AnimatedOpacity(
+                duration: const Duration(milliseconds: 200),
+                opacity: isSelected ? 1 : 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: selectedColor,
+                      width: 2,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

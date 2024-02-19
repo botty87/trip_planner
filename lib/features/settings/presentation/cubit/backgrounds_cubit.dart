@@ -26,17 +26,7 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
         darkBackgroundsRef = firebaseStorage.darkBackgroundsRef,
         super(const BackgroundsState());
 
-  void loadBackgroundImages() async {
-    for (var i = 0; i < availableLightBackgrounds; i++) {
-      _loadBackgroundImage(i, BackgroundType.light);
-    }
-
-    for (var i = 0; i < availableDarkBackgrounds; i++) {
-      _loadBackgroundImage(i, BackgroundType.dark);
-    }
-  }
-
-  void _loadBackgroundImage(int index, BackgroundType type) async {
+  void loadBackgroundImage({required int index, required BackgroundType type}) async {
     emitFile(File imageFile) {
       switch (type) {
         case BackgroundType.light:
@@ -57,12 +47,9 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
     final imageFile = File('${directory.path}/$backgroundsPrefix-$index.$webpExtension');
 
     if (imageFile.existsSync()) {
-      //TODO remove
-      imageFile.delete();
-
-      //TODO restore
-      //emitFile(imageFile);
-      //return;
+      await loadImage(FileImage(imageFile));
+      emitFile(imageFile);
+      return;
     }
 
     final imageRef = type == BackgroundType.light ? lightBackgroundsRef : darkBackgroundsRef;
