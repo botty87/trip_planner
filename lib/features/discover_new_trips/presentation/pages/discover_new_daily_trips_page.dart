@@ -11,7 +11,6 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/theme/background_image_wrapper.dart';
 import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
@@ -39,48 +38,46 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
     return BlocProvider<DiscoverNewDailyTripsCubit>(
       create: (context) => getIt<DiscoverNewDailyTripsCubit>(param1: _trip.id)..fetchDayTrips(),
       child: Builder(builder: (context) {
-        return BackgroundImageWrapper(
-          child: ScaffoldTransparent(
-            appBar: AppBar(
-              backgroundColor: context.appBarColor,
-              title: Text(_trip.name),
+        return ScaffoldTransparent(
+          appBar: AppBar(
+            backgroundColor: context.appBarColor,
+            title: Text(_trip.name),
+          ),
+          body: NotificationListener<UserScrollNotification>(
+            onNotification: (notification) {
+              if (notification.direction == ScrollDirection.reverse) {
+                context.read<DiscoverNewDailyTripsCubit>().hideFab();
+              } else if (notification.direction == ScrollDirection.forward) {
+                context.read<DiscoverNewDailyTripsCubit>().showFab();
+              }
+              return true;
+            },
+            child: _DiscoverNewDailyTripsBody(
+              trip: _trip,
             ),
-            body: NotificationListener<UserScrollNotification>(
-              onNotification: (notification) {
-                if (notification.direction == ScrollDirection.reverse) {
-                  context.read<DiscoverNewDailyTripsCubit>().hideFab();
-                } else if (notification.direction == ScrollDirection.forward) {
-                  context.read<DiscoverNewDailyTripsCubit>().showFab();
-                }
-                return true;
-              },
-              child: _DiscoverNewDailyTripsBody(
-                trip: _trip,
-              ),
-            ),
-            floatingActionButton:
-                BlocSelector<DiscoverNewDailyTripsCubit, DiscoverNewDailyTripsState, bool>(
-              selector: (state) {
-                return state.maybeMap(
-                  loaded: (state) => state.isFabVisible,
-                  orElse: () => false,
-                );
-              },
-              builder: (context, showFab) {
-                return AnimatedSlide(
+          ),
+          floatingActionButton:
+              BlocSelector<DiscoverNewDailyTripsCubit, DiscoverNewDailyTripsState, bool>(
+            selector: (state) {
+              return state.maybeMap(
+                loaded: (state) => state.isFabVisible,
+                orElse: () => false,
+              );
+            },
+            builder: (context, showFab) {
+              return AnimatedSlide(
+                duration: const Duration(milliseconds: 300),
+                offset: showFab ? Offset.zero : const Offset(0, 2),
+                child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 300),
-                  offset: showFab ? Offset.zero : const Offset(0, 2),
-                  child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 300),
-                    opacity: showFab ? 1 : 0,
-                    child: FloatingActionButton(
-                      child: Icon(MdiIcons.earthPlus),
-                      onPressed: () => context.router.push(NewTripRoute(existingTrip: _trip)),
-                    ),
+                  opacity: showFab ? 1 : 0,
+                  child: FloatingActionButton(
+                    child: Icon(MdiIcons.earthPlus),
+                    onPressed: () => context.router.push(NewTripRoute(existingTrip: _trip)),
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         );
       }),

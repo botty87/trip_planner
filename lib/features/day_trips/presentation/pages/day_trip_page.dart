@@ -68,19 +68,17 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
                 Navigator.of(context).pop();
               }
             },
-            child: BackgroundImageWrapper(
-              child: ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
-                  ? _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream)
-                  : OrientationBuilder(builder: (context, orientation) {
-                      if (orientation == Orientation.portrait) {
-                        return _verticalLayout(
-                            context, isSaving, isModalBottomEditing, errorMessageStream);
-                      } else {
-                        return _horizontalLayout(
-                            context, isSaving, isModalBottomEditing, errorMessageStream);
-                      }
-                    }),
-            ),
+            child: ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
+                ? _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream)
+                : OrientationBuilder(builder: (context, orientation) {
+                    if (orientation == Orientation.portrait) {
+                      return _verticalLayout(
+                          context, isSaving, isModalBottomEditing, errorMessageStream);
+                    } else {
+                      return _horizontalLayout(
+                          context, isSaving, isModalBottomEditing, errorMessageStream);
+                    }
+                  }),
           );
         },
       ),

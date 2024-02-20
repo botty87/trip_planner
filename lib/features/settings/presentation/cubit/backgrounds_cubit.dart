@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/utilities/image_loader.dart';
+import '../../../../core/utilities/image_utils.dart';
 import '../../domain/entities/backgrounds_container.dart';
 
 part 'backgrounds_state.dart';
@@ -19,15 +18,24 @@ part 'backgrounds_cubit.freezed.dart';
 class BackgroundsCubit extends Cubit<BackgroundsState> {
   final Reference lightBackgroundsRef;
   final Reference darkBackgroundsRef;
+  final ImageUtils _imageUtils;
 
   BackgroundsCubit({
     required FirebaseStorage firebaseStorage,
+    required ImageUtils imageUtils,
   })  : lightBackgroundsRef = firebaseStorage.lightBackgroundsRef,
         darkBackgroundsRef = firebaseStorage.darkBackgroundsRef,
+        _imageUtils = imageUtils,
         super(const BackgroundsState());
 
   void loadBackgroundImage({required int index, required BackgroundType type}) async {
-    emitFile(File imageFile) {
+    emitFile(File imageFile) async {
+      if (isClosed) return;
+
+      await _imageUtils.loadImage(FileImage(imageFile));
+      
+      if (isClosed) return;
+
       switch (type) {
         case BackgroundType.light:
           emit(state.copyWith(
@@ -40,14 +48,9 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
       }
     }
 
-    final directory = await getApplicationDocumentsDirectory();
-
-    final String backgroundsPrefix =
-        type == BackgroundType.light ? lightBackgroundPrefix : darkBackgroundPrefix;
-    final imageFile = File('${directory.path}/$backgroundsPrefix-$index.$webpExtension');
+    final imageFile = await _imageUtils.getBackgroundImageFile(index: index, type: type);
 
     if (imageFile.existsSync()) {
-      await loadImage(FileImage(imageFile));
       emitFile(imageFile);
       return;
     }
@@ -57,8 +60,6 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
     if (imageBytes == null) return;
 
     await imageFile.writeAsBytes(imageBytes);
-
-    await loadImage(FileImage(imageFile));
 
     emitFile(imageFile);
   }

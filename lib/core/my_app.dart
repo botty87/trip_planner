@@ -12,9 +12,9 @@ import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';
 import 'routes/app_router.dart';
 import 'routes/app_router.gr.dart';
+import 'widgets/theme/background_image_wrapper.dart';
 
 class MyApp extends StatelessWidget {
-
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         },
         listener: (context, state) {
           final router = getIt<AppRouter>();
-          if(!kIsWeb) {
+          if (!kIsWeb) {
             FlutterNativeSplash.remove();
           }
           state.whenOrNull(
@@ -54,35 +54,34 @@ class MyApp extends StatelessWidget {
             error: () => throw UnimplementedError(),
           );
         },
-        child: Builder(
-          builder: (context) {
-            return DynamicColorBuilder(
-              builder: (lightColorScheme, darkColorScheme) {
-                return AdaptiveTheme(
-                  light: ThemeData.light().copyWith(
-                    colorScheme: lightColorScheme,
-                  ),
-                  dark: ThemeData.dark().copyWith(
-                    colorScheme: darkColorScheme,
-                  ),
-                  initial: context.read<SettingsCubit>().state.settings.themeMode,
-                  debugShowFloatingThemeButton: true,
-                  builder: (theme, darkTheme) {
-                    return MaterialApp.router(
-                      title: 'Trip Planner',
-                      //theme: theme,
-                      theme: theme,
-                      darkTheme: darkTheme,
-                      debugShowCheckedModeBanner: false,
-                      routerConfig: getIt<AppRouter>().config(),
-                      localizationsDelegates: context.localizationDelegates,
-                      supportedLocales: context.supportedLocales,
-                      locale: context.locale,
-                      scrollBehavior: const MaterialScrollBehavior().copyWith(scrollbars: false),
-                      builder: (context, child) => ResponsiveBreakpoints.builder(
-                        child: Builder(
-                          builder: (context) {
-                            return ResponsiveScaledBox(
+        child: Builder(builder: (context) {
+          return DynamicColorBuilder(
+            builder: (lightColorScheme, darkColorScheme) {
+              return AdaptiveTheme(
+                light: ThemeData.light().copyWith(
+                  colorScheme: lightColorScheme,
+                ),
+                dark: ThemeData.dark().copyWith(
+                  colorScheme: darkColorScheme,
+                ),
+                initial: context.read<SettingsCubit>().state.settings.themeMode,
+                debugShowFloatingThemeButton: true,
+                builder: (theme, darkTheme) {
+                  return MaterialApp.router(
+                    title: 'Trip Planner',
+                    //theme: theme,
+                    theme: theme,
+                    darkTheme: darkTheme,
+                    debugShowCheckedModeBanner: false,
+                    routerConfig: getIt<AppRouter>().config(),
+                    localizationsDelegates: context.localizationDelegates,
+                    supportedLocales: context.supportedLocales,
+                    locale: context.locale,
+                    scrollBehavior: const MaterialScrollBehavior().copyWith(scrollbars: false),
+                    builder: (context, child) => ResponsiveBreakpoints.builder(
+                      child: Builder(
+                        builder: (context) {
+                          return ResponsiveScaledBox(
                               width: ResponsiveValue<double>(
                                 context,
                                 conditionalValues: [
@@ -92,24 +91,22 @@ class MyApp extends StatelessWidget {
                                   Condition.equals(name: '4K', value: 2000),
                                 ],
                               ).value,
-                              child: child!,
-                            );
-                          },
-                        ),
-                        breakpoints: const [
-                          Breakpoint(start: 0, end: 450, name: MOBILE),
-                          Breakpoint(start: 451, end: 1000, name: TABLET),
-                          Breakpoint(start: 1001, end: 1920, name: DESKTOP),
-                          Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-                        ],
+                              child: BackgroundImageWrapper(child: child!));
+                        },
                       ),
-                    );
-                  },
-                );
-              },
-            );
-          }
-        ),
+                      breakpoints: const [
+                        Breakpoint(start: 0, end: 450, name: MOBILE),
+                        Breakpoint(start: 451, end: 1000, name: TABLET),
+                        Breakpoint(start: 1001, end: 1920, name: DESKTOP),
+                        Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+          );
+        }),
       ),
     );
   }

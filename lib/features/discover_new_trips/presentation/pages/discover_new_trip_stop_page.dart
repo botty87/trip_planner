@@ -7,7 +7,6 @@ import 'package:responsive_framework/responsive_breakpoints.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/theme/background_image_wrapper.dart';
 import '../../../../core/widgets/theme/background_widget_container.dart';
 import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip/generic_duration_widget.dart';
@@ -33,14 +32,12 @@ class DiscoverNewTripStopPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<DiscoverNewTripStopCubit>(
       create: (context) => getIt<DiscoverNewTripStopCubit>(param1: _tripStop),
-      child: BackgroundImageWrapper(
-        child: ScaffoldTransparent(
-          appBar: AppBar(
-            backgroundColor: context.appBarColor,
-            title: Text(_tripStop.name),
-          ),
-          body: const _DiscoverNewTripStopBody(),
+      child: ScaffoldTransparent(
+        appBar: AppBar(
+          backgroundColor: context.appBarColor,
+          title: Text(_tripStop.name),
         ),
+        body: const _DiscoverNewTripStopBody(),
       ),
     );
   }

@@ -21,13 +21,13 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
       child: BlocSelector<TripStopCubit, TripStopState, String?>(
         selector: (state) => state.tripStop.description,
         builder: (context, description) {
-          return Row(
+          return const Row(
             children: [
               Expanded(
                 child: SafeArea(
-                  minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
+                  minimum: EdgeInsets.only(bottom: pageVerticalPadding),
                   child: Column(
-                    children: const [
+                    children: [
                       Expanded(child: TripStopMapWidget()),
                       if (!kIsWeb) ...[
                         SizedBox(height: verticalSpaceXL),
@@ -39,8 +39,8 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: horizontalSpaceL),
-              const Expanded(
+              SizedBox(width: horizontalSpaceL),
+              Expanded(
                 child: SafeArea(
                   minimum: EdgeInsets.only(bottom: pageVerticalPadding),
                   child: Column(

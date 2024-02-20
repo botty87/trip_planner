@@ -13,7 +13,6 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../../core/utilities/pair.dart';
 import '../../../../core/widgets/day_trip/generic_travel_card.dart';
 import '../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
-import '../../../../core/widgets/theme/background_image_wrapper.dart';
 import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
@@ -66,22 +65,20 @@ class DiscoverNewTripStopsPage extends StatelessWidget {
 
           return DefaultTabController(
             length: tabsLength,
-            child: BackgroundImageWrapper(
-              child: ScaffoldTransparent(
-                appBar: AppBar(
-                  backgroundColor: context.appBarColor,
-                  title: Text("${LocaleKeys.day.tr()} ${_dayTrip.index + 1}"),
-                  bottom: tabsLength > 0
-                      ? TabBar(
-                          tabs: [
-                            Tab(text: LocaleKeys.list.tr()),
-                            Tab(text: LocaleKeys.map.tr()),
-                          ],
-                        )
-                      : null,
-                ),
-                body: _DiscoverNewTripStopsBody(dayTrip: _dayTrip),
+            child: ScaffoldTransparent(
+              appBar: AppBar(
+                backgroundColor: context.appBarColor,
+                title: Text("${LocaleKeys.day.tr()} ${_dayTrip.index + 1}"),
+                bottom: tabsLength > 0
+                    ? TabBar(
+                        tabs: [
+                          Tab(text: LocaleKeys.list.tr()),
+                          Tab(text: LocaleKeys.map.tr()),
+                        ],
+                      )
+                    : null,
               ),
+              body: _DiscoverNewTripStopsBody(dayTrip: _dayTrip),
             ),
           );
         },

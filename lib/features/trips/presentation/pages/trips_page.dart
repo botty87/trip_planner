@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -27,41 +25,38 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
 
   @override
   Widget build(BuildContext context) {
-    final test = File('test');
-
     final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return BlocProvider<TripsCubit>(
       create: (context) => getIt()..startListenTrip(),
-      child: BackgroundImageWrapper(
-        child: ScaffoldTransparent(
-          appBar: AppBar(
-            scrolledUnderElevation: hasBackgroundImage ? 0 : null,
-            backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
-            title: Text(LocaleKeys.tripsPageTitle.tr()),
-          ),
-          body: BlocBuilder<TripsCubit, TripsState>(
-            buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
-            builder: (context, state) => TripPagesAnimatedSwitcher(
-              child: state.when(
-                initial: () => const TripsPageInitialWidget(key: ValueKey('initial')),
-                loaded: (_) {
-                  Future.delayed(const Duration(seconds: 2), () => checkIfShowNewBackgroundsDialog(context));
-                  return const Center(key: ValueKey('loaded'), child: LoadedWidget());
-                },
-                error: (message) =>
-                    Center(key: const ValueKey('error'), child: TripsErrorWidget(message: message)),
-              ),
+      child: ScaffoldTransparent(
+        appBar: AppBar(
+          scrolledUnderElevation: hasBackgroundImage ? 0 : null,
+          backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
+          title: Text(LocaleKeys.tripsPageTitle.tr()),
+        ),
+        body: BlocBuilder<TripsCubit, TripsState>(
+          buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
+          builder: (context, state) => TripPagesAnimatedSwitcher(
+            child: state.when(
+              initial: () => const TripsPageInitialWidget(key: ValueKey('initial')),
+              loaded: (_) {
+                Future.delayed(
+                    const Duration(seconds: 2), () => checkIfShowNewBackgroundsDialog(context));
+                return const Center(key: ValueKey('loaded'), child: LoadedWidget());
+              },
+              error: (message) =>
+                  Center(key: const ValueKey('error'), child: TripsErrorWidget(message: message)),
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              context.pushRoute(NewTripRoute());
-            },
-            child: const Icon(Icons.add),
-          ),
-          drawer: const TripsPageDrawer(),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.pushRoute(NewTripRoute());
+          },
+          child: const Icon(Icons.add),
+        ),
+        drawer: const TripsPageDrawer(),
       ),
     );
   }
