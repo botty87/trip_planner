@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,7 +53,7 @@ class _BackgroundImage extends StatelessWidget {
           break;
       }
 
-      if (index == null) return null;
+      if (index == null || kIsWeb) return null;
 
       return _imageUtils.getBackgroundImageName(index: index, type: backgroundType);
     });

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -14,8 +15,10 @@ class SettingsBody extends StatelessWidget {
       padding: defaultPagePadding,
       children: const [
         DayTripSection(),
-        SizedBox(height: verticalSpaceL),
-        BackgroundSection(),
+        if (!kIsWeb) ...[
+          SizedBox(height: verticalSpaceL),
+          BackgroundSection(),
+        ],
         SizedBox(height: verticalSpaceL),
         SafeArea(child: ThemeSection()),
       ],
