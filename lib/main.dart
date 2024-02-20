@@ -21,7 +21,9 @@ import 'firebase_options.dart';
 
 void main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  if(!kIsWeb) {
+    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  }
   await EasyLocalization.ensureInitialized();
   configureDependencies();
   Bloc.observer = getIt<BlocObserver>();

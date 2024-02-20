@@ -1,6 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -38,7 +39,9 @@ class MyApp extends StatelessWidget {
         },
         listener: (context, state) {
           final router = getIt<AppRouter>();
-          FlutterNativeSplash.remove();
+          if(!kIsWeb) {
+            FlutterNativeSplash.remove();
+          }
           state.whenOrNull(
             loggedOut: () => router.replaceAll([const LoginSignupRoute()]),
             loggedIn: (user) {

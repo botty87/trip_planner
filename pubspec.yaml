@@ -36,7 +36,7 @@ dependencies:
   auto_route: ^7.4.0
   cached_network_image: ^3.3.1
   calendar_date_picker2: ^0.5.2
-  cloud_firestore: ^4.13.2
+  cloud_firestore: ^4.15.5
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.3.3
@@ -47,11 +47,11 @@ dependencies:
   email_validator: ^2.1.17
   envied: ^0.5.2
   equatable: ^2.0.5
-  firebase_auth: ^4.7.2
-  firebase_core: ^2.15.0
+  firebase_auth: ^4.17.5
+  firebase_core: ^2.25.4
   firebase_crashlytics: ^3.4.5
   firebase_database: ^10.3.6
-  firebase_storage: ^11.6.5
+  firebase_storage: ^11.6.6
   flutter:
     sdk: flutter
   flutter_animate: ^4.2.0+1
