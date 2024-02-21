@@ -1,15 +1,21 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+import 'package:collection/collection.dart';
+import 'package:country_icons/country_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/constants.dart';
+import '../../../../../core/l10n/languages.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 
 part 'start_date_picker.dart';
 part 'trip_description_text_field.dart';
 part 'trip_name_text_field.dart';
 part 'trip_privacy_selector.dart';
+part 'language_selector.dart';
 
 class NewEditTripForm extends StatelessWidget {
   final Widget saveSection;
@@ -73,6 +79,8 @@ class NewEditTripForm extends StatelessWidget {
                 initialIsPublic: initialIsPublic ?? false,
                 onIsPublicChanged: onIsPublicChanged,
               ),
+              const SizedBox(height: verticalSpaceL),
+              const _LanguageSelector(),
               const SizedBox(height: verticalSpaceL),
               _StartDatePicker(
                 key: const Key('startDatePicker'),

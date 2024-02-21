@@ -155,5 +155,6 @@
     "system" : "System",
     "newBackgrounds" : "New backgrounds!",
     "newBackgroundsMessage" : "We have added new backgrounds to the app. Go to the settings to choose your favorite!",
-    "close" : "Close"
+    "close" : "Close",
+    "language" : "Language"
 }
