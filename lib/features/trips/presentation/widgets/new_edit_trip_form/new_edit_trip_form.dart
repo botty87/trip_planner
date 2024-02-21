@@ -55,38 +55,33 @@ class NewEditTripForm extends StatelessWidget {
           },
         ),
         Flexible(
-          child: SafeArea(
-            minimum: defaultPagePadding,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _TripNameTextField(
-                      key: const Key('tripNameTextField'),
-                      onChanged: onNameChanged,
-                      initialTripName: initialTripName),
-                  const SizedBox(height: verticalSpace),
-                  _TripDescriptionTextField(
-                      key: const Key('tripDescriptionTextField'),
-                      onChanged: onDescriptionChanged,
-                      initialTripDescription: initialTripDescription),
-                  const SizedBox(height: verticalSpaceL),
-                  _TripPrivacySelector(
-                    key: const Key('tripPrivacySelector'),
-                    initialIsPublic: initialIsPublic ?? false,
-                    onIsPublicChanged: onIsPublicChanged,
-                  ),
-                  const SizedBox(height: verticalSpaceL),
-                  const SizedBox(height: verticalSpaceL),
-                  _StartDatePicker(
-                    key: const Key('startDatePicker'),
-                    onValueChanged: onStartDateChanged,
-                    initialStartDate: initialStartDate,
-                  ),
-                  const SizedBox(height: verticalSpaceL),
-                  saveSection,
-                ],
+          child: ListView(
+            padding: defaultPagePadding,
+            children: [
+              _TripNameTextField(
+                  key: const Key('tripNameTextField'),
+                  onChanged: onNameChanged,
+                  initialTripName: initialTripName),
+              const SizedBox(height: verticalSpace),
+              _TripDescriptionTextField(
+                  key: const Key('tripDescriptionTextField'),
+                  onChanged: onDescriptionChanged,
+                  initialTripDescription: initialTripDescription),
+              const SizedBox(height: verticalSpaceL),
+              _TripPrivacySelector(
+                key: const Key('tripPrivacySelector'),
+                initialIsPublic: initialIsPublic ?? false,
+                onIsPublicChanged: onIsPublicChanged,
               ),
-            ),
+              const SizedBox(height: verticalSpaceL),
+              _StartDatePicker(
+                key: const Key('startDatePicker'),
+                onValueChanged: onStartDateChanged,
+                initialStartDate: initialStartDate,
+              ),
+              const SizedBox(height: verticalSpaceL),
+              SafeArea(child: saveSection),
+            ],
           ),
         )
       ],
