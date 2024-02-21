@@ -12,7 +12,8 @@ class _NewUserRow extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
             LocaleKeys.newHere.tr(),
-            style: GoogleFonts.kaushanScript(fontSize: 18, color: Colors.grey[900]),
+            style: GoogleFonts.kaushanScript(
+                fontSize: 18, color: Theme.of(context).colorScheme.tertiary),
           ),
         ),
         Expanded(child: Divider(color: Theme.of(context).primaryColorDark)),

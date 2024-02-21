@@ -65,11 +65,10 @@ class MyApp extends StatelessWidget {
                   colorScheme: darkColorScheme,
                 ),
                 initial: context.read<SettingsCubit>().state.settings.themeMode,
-                debugShowFloatingThemeButton: true,
+                debugShowFloatingThemeButton: false,
                 builder: (theme, darkTheme) {
                   return MaterialApp.router(
                     title: 'Trip Planner',
-                    //theme: theme,
                     theme: theme,
                     darkTheme: darkTheme,
                     debugShowCheckedModeBanner: false,
