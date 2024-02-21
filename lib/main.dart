@@ -25,7 +25,7 @@ void main() async {
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   }
   await EasyLocalization.ensureInitialized();
-  configureDependencies();
+  await configureDependencies();
   Bloc.observer = getIt<BlocObserver>();
 
   //Firebase config

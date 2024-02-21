@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:devicelocale/devicelocale.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -11,12 +14,13 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:logger/logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../keys/env.dart';
+import '../constants.dart';
 import 'di.config.dart';
 
 final getIt = GetIt.instance;
 
 @InjectableInit(preferRelativeImports: true)
-void configureDependencies() => getIt.init();
+Future<void> configureDependencies() async => await getIt.init();
 
 @module
 abstract class RegisterModule {
@@ -71,4 +75,14 @@ abstract class GooglePlacesModule {
   @Named('proxyUrl')
   @lazySingleton
   String get proxyUrl => Env.proxyUrl;
+}
+
+@module
+abstract class DeviceModule {
+  @preResolve
+  @Named(deviceLocaleKey)
+  Future<Locale> get deviceLocale async {
+    final deviceLocale = await Devicelocale.currentAsLocale;
+    return deviceLocale ?? const Locale('en');
+  }
 }

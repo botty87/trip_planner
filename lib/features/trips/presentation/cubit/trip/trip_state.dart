@@ -24,6 +24,7 @@ sealed class TripState with _$TripState {
     required final String? description,
     required final DateTime startDate,
     required final bool isPublic,
+    required final String languageCode,
     @Default(false) final bool isSaving,
     String? errorMessage,
   }) = _Editing;

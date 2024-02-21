@@ -16,27 +16,20 @@ class _LanguageSelector extends StatelessWidget {
       child: LayoutBuilder(builder: (context, constraints) {
         if (initialLanguageCode != null) {
           return _buildLanguageSelector(context, initialLanguageCode!.toLanguage, constraints);
+        } else {
+          return _buildLanguageSelector(
+            context,
+            getIt<Locale>(instanceName: deviceLocaleKey).languageCode.toLanguage,
+            constraints,
+          );
         }
-
-        return FutureBuilder(
-            future: Devicelocale.currentAsLocale,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                onLanguageCodeChanged(snapshot.data!.languageCode);
-              }
-              return _buildLanguageSelector(
-                context,
-                snapshot.data?.languageCode.toLanguage,
-                constraints,
-              );
-            });
       }),
     );
   }
 
   Widget _buildLanguageSelector(
     BuildContext context,
-    Language? currentLanguage,
+    Language currentLanguage,
     BoxConstraints constraints,
   ) {
     return DropdownMenu<Language>(
@@ -48,21 +41,19 @@ class _LanguageSelector extends StatelessWidget {
       leadingIcon: const Icon(Icons.language),
       initialSelection: currentLanguage,
       onSelected: (language) => onLanguageCodeChanged(language!.isoCode),
-      dropdownMenuEntries: currentLanguage != null
-          ? Languages.defaultLanguages
-              .map(
-                (language) => DropdownMenuEntry<Language>(
-                  value: language,
-                  label: language.nativeName,
-                  leadingIcon: SizedBox(
-                    height: 25,
-                    width: 25,
-                    child: _getCountryIcon(language.isoCode),
-                  ),
-                ),
-              )
-              .toList()
-          : [],
+      dropdownMenuEntries: Languages.defaultLanguages
+          .map(
+            (language) => DropdownMenuEntry<Language>(
+              value: language,
+              label: language.nativeName,
+              leadingIcon: SizedBox(
+                height: 25,
+                width: 25,
+                child: _getCountryIcon(language.isoCode),
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -80,7 +71,7 @@ class _LanguageSelector extends StatelessWidget {
 }
 
 extension _LanguageExtension on String {
-  Language? get toLanguage => Languages.defaultLanguages.firstWhereOrNull(
-        (language) => language.isoCode == this,
-      );
+  Language get toLanguage => Languages.defaultLanguages.firstWhere(
+      (language) => language.isoCode == this,
+      orElse: () => Languages.defaultLanguages.firstWhere((element) => element.isoCode == 'en'));
 }

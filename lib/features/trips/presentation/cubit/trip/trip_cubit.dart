@@ -73,6 +73,7 @@ class TripCubit extends Cubit<TripState> {
         description: state.trip.description,
         startDate: state.trip.startDate,
         isPublic: state.trip.isPublic,
+        languageCode: state.trip.languageCode ?? 'en',
       ));
     });
   }
@@ -92,6 +93,10 @@ class TripCubit extends Cubit<TripState> {
 
   void isPublicChanged(bool value) {
     state.mapOrNull(editing: (state) => emit(state.copyWith(isPublic: value, errorMessage: null)));
+  }
+
+  languageCodeChanged(String value) {
+    //TODO implement
   }
 
   void saveChanges() async {
@@ -219,10 +224,5 @@ class TripCubit extends Cubit<TripState> {
   Future<void> close() {
     _dayTripsSubscription?.cancel();
     return super.close();
-  }
-
-
-  languageCodeChanged(String value) {
-    //TODO implement
   }
 }

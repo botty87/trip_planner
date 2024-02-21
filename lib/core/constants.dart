@@ -34,3 +34,5 @@ final appBarDarkColor = Colors.black.withOpacity(0.3);
 const String lightBackgroundPrefix = 'lightBackground';
 const String darkBackgroundPrefix = 'darkBackground';
 const String webpExtension = 'webp';
+
+const String deviceLocaleKey = 'deviceLocale';

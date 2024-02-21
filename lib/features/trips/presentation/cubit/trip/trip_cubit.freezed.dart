@@ -29,6 +29,7 @@ mixin _$TripState {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)
         editing,
@@ -48,6 +49,7 @@ mixin _$TripState {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -67,6 +69,7 @@ mixin _$TripState {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -233,6 +236,7 @@ class _$InitialImpl implements _Initial {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)
         editing,
@@ -255,6 +259,7 @@ class _$InitialImpl implements _Initial {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -277,6 +282,7 @@ class _$InitialImpl implements _Initial {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -439,6 +445,7 @@ class _$NormalImpl implements _Normal {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)
         editing,
@@ -461,6 +468,7 @@ class _$NormalImpl implements _Normal {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -483,6 +491,7 @@ class _$NormalImpl implements _Normal {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -650,6 +659,7 @@ class _$ErrorImpl implements _Error {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)
         editing,
@@ -672,6 +682,7 @@ class _$ErrorImpl implements _Error {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -694,6 +705,7 @@ class _$ErrorImpl implements _Error {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -782,6 +794,7 @@ abstract class _$$EditingImplCopyWith<$Res>
       String? description,
       DateTime startDate,
       bool isPublic,
+      String languageCode,
       bool isSaving,
       String? errorMessage});
 
@@ -806,6 +819,7 @@ class __$$EditingImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? startDate = null,
     Object? isPublic = null,
+    Object? languageCode = null,
     Object? isSaving = null,
     Object? errorMessage = freezed,
   }) {
@@ -834,6 +848,10 @@ class __$$EditingImplCopyWithImpl<$Res>
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
               as bool,
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
       isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
@@ -856,6 +874,7 @@ class _$EditingImpl implements _Editing {
       required this.description,
       required this.startDate,
       required this.isPublic,
+      required this.languageCode,
       this.isSaving = false,
       this.errorMessage})
       : _dayTrips = dayTrips;
@@ -879,6 +898,8 @@ class _$EditingImpl implements _Editing {
   @override
   final bool isPublic;
   @override
+  final String languageCode;
+  @override
   @JsonKey()
   final bool isSaving;
   @override
@@ -886,7 +907,7 @@ class _$EditingImpl implements _Editing {
 
   @override
   String toString() {
-    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isPublic: $isPublic, isSaving: $isSaving, errorMessage: $errorMessage)';
+    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isPublic: $isPublic, languageCode: $languageCode, isSaving: $isSaving, errorMessage: $errorMessage)';
   }
 
   @override
@@ -903,6 +924,8 @@ class _$EditingImpl implements _Editing {
                 other.startDate == startDate) &&
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic) &&
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode) &&
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -918,6 +941,7 @@ class _$EditingImpl implements _Editing {
       description,
       startDate,
       isPublic,
+      languageCode,
       isSaving,
       errorMessage);
 
@@ -940,6 +964,7 @@ class _$EditingImpl implements _Editing {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)
         editing,
@@ -947,7 +972,7 @@ class _$EditingImpl implements _Editing {
     required TResult Function(Trip trip) deleted,
   }) {
     return editing(trip, dayTrips, name, description, startDate, isPublic,
-        isSaving, errorMessage);
+        languageCode, isSaving, errorMessage);
   }
 
   @override
@@ -963,6 +988,7 @@ class _$EditingImpl implements _Editing {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -970,7 +996,7 @@ class _$EditingImpl implements _Editing {
     TResult? Function(Trip trip)? deleted,
   }) {
     return editing?.call(trip, dayTrips, name, description, startDate, isPublic,
-        isSaving, errorMessage);
+        languageCode, isSaving, errorMessage);
   }
 
   @override
@@ -986,6 +1012,7 @@ class _$EditingImpl implements _Editing {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -995,7 +1022,7 @@ class _$EditingImpl implements _Editing {
   }) {
     if (editing != null) {
       return editing(trip, dayTrips, name, description, startDate, isPublic,
-          isSaving, errorMessage);
+          languageCode, isSaving, errorMessage);
     }
     return orElse();
   }
@@ -1052,6 +1079,7 @@ abstract class _Editing implements TripState {
       required final String? description,
       required final DateTime startDate,
       required final bool isPublic,
+      required final String languageCode,
       final bool isSaving,
       final String? errorMessage}) = _$EditingImpl;
 
@@ -1062,6 +1090,7 @@ abstract class _Editing implements TripState {
   String? get description;
   DateTime get startDate;
   bool get isPublic;
+  String get languageCode;
   bool get isSaving;
   String? get errorMessage;
   @override
@@ -1149,6 +1178,7 @@ class _$DeletingImpl implements _Deleting {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)
         editing,
@@ -1171,6 +1201,7 @@ class _$DeletingImpl implements _Deleting {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -1193,6 +1224,7 @@ class _$DeletingImpl implements _Deleting {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -1340,6 +1372,7 @@ class _$DeletedImpl implements _Deleted {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)
         editing,
@@ -1362,6 +1395,7 @@ class _$DeletedImpl implements _Deleted {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
@@ -1384,6 +1418,7 @@ class _$DeletedImpl implements _Deleted {
             String? description,
             DateTime startDate,
             bool isPublic,
+            String languageCode,
             bool isSaving,
             String? errorMessage)?
         editing,
