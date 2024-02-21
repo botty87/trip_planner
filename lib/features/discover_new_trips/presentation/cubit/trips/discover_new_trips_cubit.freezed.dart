@@ -19,8 +19,12 @@ mixin _$DiscoverNewTripsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<Trip> trips,
-            List<Trip> filteredTrips, bool searchDescription)
+    required TResult Function(
+            String query,
+            List<Trip> trips,
+            List<Trip> filteredTrips,
+            bool searchDescription,
+            bool isMoreSectionOpen)
         normal,
     required TResult Function(String message) error,
   }) =>
@@ -29,7 +33,7 @@ mixin _$DiscoverNewTripsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
+            bool searchDescription, bool isMoreSectionOpen)?
         normal,
     TResult? Function(String message)? error,
   }) =>
@@ -38,7 +42,7 @@ mixin _$DiscoverNewTripsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
+            bool searchDescription, bool isMoreSectionOpen)?
         normal,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -126,8 +130,12 @@ class _$StateInitialImpl implements _StateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<Trip> trips,
-            List<Trip> filteredTrips, bool searchDescription)
+    required TResult Function(
+            String query,
+            List<Trip> trips,
+            List<Trip> filteredTrips,
+            bool searchDescription,
+            bool isMoreSectionOpen)
         normal,
     required TResult Function(String message) error,
   }) {
@@ -139,7 +147,7 @@ class _$StateInitialImpl implements _StateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
+            bool searchDescription, bool isMoreSectionOpen)?
         normal,
     TResult? Function(String message)? error,
   }) {
@@ -151,7 +159,7 @@ class _$StateInitialImpl implements _StateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
+            bool searchDescription, bool isMoreSectionOpen)?
         normal,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -211,7 +219,8 @@ abstract class _$$StateNormalImplCopyWith<$Res> {
       {String query,
       List<Trip> trips,
       List<Trip> filteredTrips,
-      bool searchDescription});
+      bool searchDescription,
+      bool isMoreSectionOpen});
 }
 
 /// @nodoc
@@ -229,6 +238,7 @@ class __$$StateNormalImplCopyWithImpl<$Res>
     Object? trips = null,
     Object? filteredTrips = null,
     Object? searchDescription = null,
+    Object? isMoreSectionOpen = null,
   }) {
     return _then(_$StateNormalImpl(
       query: null == query
@@ -247,6 +257,10 @@ class __$$StateNormalImplCopyWithImpl<$Res>
           ? _value.searchDescription
           : searchDescription // ignore: cast_nullable_to_non_nullable
               as bool,
+      isMoreSectionOpen: null == isMoreSectionOpen
+          ? _value.isMoreSectionOpen
+          : isMoreSectionOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -258,7 +272,8 @@ class _$StateNormalImpl implements _StateNormal {
       {this.query = '',
       required final List<Trip> trips,
       required final List<Trip> filteredTrips,
-      this.searchDescription = false})
+      this.searchDescription = false,
+      this.isMoreSectionOpen = false})
       : _trips = trips,
         _filteredTrips = filteredTrips;
 
@@ -284,10 +299,13 @@ class _$StateNormalImpl implements _StateNormal {
   @override
   @JsonKey()
   final bool searchDescription;
+  @override
+  @JsonKey()
+  final bool isMoreSectionOpen;
 
   @override
   String toString() {
-    return 'DiscoverNewTripsState.normal(query: $query, trips: $trips, filteredTrips: $filteredTrips, searchDescription: $searchDescription)';
+    return 'DiscoverNewTripsState.normal(query: $query, trips: $trips, filteredTrips: $filteredTrips, searchDescription: $searchDescription, isMoreSectionOpen: $isMoreSectionOpen)';
   }
 
   @override
@@ -300,7 +318,9 @@ class _$StateNormalImpl implements _StateNormal {
             const DeepCollectionEquality()
                 .equals(other._filteredTrips, _filteredTrips) &&
             (identical(other.searchDescription, searchDescription) ||
-                other.searchDescription == searchDescription));
+                other.searchDescription == searchDescription) &&
+            (identical(other.isMoreSectionOpen, isMoreSectionOpen) ||
+                other.isMoreSectionOpen == isMoreSectionOpen));
   }
 
   @override
@@ -309,7 +329,8 @@ class _$StateNormalImpl implements _StateNormal {
       query,
       const DeepCollectionEquality().hash(_trips),
       const DeepCollectionEquality().hash(_filteredTrips),
-      searchDescription);
+      searchDescription,
+      isMoreSectionOpen);
 
   @JsonKey(ignore: true)
   @override
@@ -321,12 +342,17 @@ class _$StateNormalImpl implements _StateNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<Trip> trips,
-            List<Trip> filteredTrips, bool searchDescription)
+    required TResult Function(
+            String query,
+            List<Trip> trips,
+            List<Trip> filteredTrips,
+            bool searchDescription,
+            bool isMoreSectionOpen)
         normal,
     required TResult Function(String message) error,
   }) {
-    return normal(query, trips, filteredTrips, searchDescription);
+    return normal(
+        query, trips, filteredTrips, searchDescription, isMoreSectionOpen);
   }
 
   @override
@@ -334,11 +360,12 @@ class _$StateNormalImpl implements _StateNormal {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
+            bool searchDescription, bool isMoreSectionOpen)?
         normal,
     TResult? Function(String message)? error,
   }) {
-    return normal?.call(query, trips, filteredTrips, searchDescription);
+    return normal?.call(
+        query, trips, filteredTrips, searchDescription, isMoreSectionOpen);
   }
 
   @override
@@ -346,13 +373,14 @@ class _$StateNormalImpl implements _StateNormal {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
+            bool searchDescription, bool isMoreSectionOpen)?
         normal,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(query, trips, filteredTrips, searchDescription);
+      return normal(
+          query, trips, filteredTrips, searchDescription, isMoreSectionOpen);
     }
     return orElse();
   }
@@ -397,12 +425,14 @@ abstract class _StateNormal implements DiscoverNewTripsState {
       {final String query,
       required final List<Trip> trips,
       required final List<Trip> filteredTrips,
-      final bool searchDescription}) = _$StateNormalImpl;
+      final bool searchDescription,
+      final bool isMoreSectionOpen}) = _$StateNormalImpl;
 
   String get query;
   List<Trip> get trips;
   List<Trip> get filteredTrips;
   bool get searchDescription;
+  bool get isMoreSectionOpen;
   @JsonKey(ignore: true)
   _$$StateNormalImplCopyWith<_$StateNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -473,8 +503,12 @@ class _$StateErrorImpl implements _StateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<Trip> trips,
-            List<Trip> filteredTrips, bool searchDescription)
+    required TResult Function(
+            String query,
+            List<Trip> trips,
+            List<Trip> filteredTrips,
+            bool searchDescription,
+            bool isMoreSectionOpen)
         normal,
     required TResult Function(String message) error,
   }) {
@@ -486,7 +520,7 @@ class _$StateErrorImpl implements _StateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
+            bool searchDescription, bool isMoreSectionOpen)?
         normal,
     TResult? Function(String message)? error,
   }) {
@@ -498,7 +532,7 @@ class _$StateErrorImpl implements _StateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
+            bool searchDescription, bool isMoreSectionOpen)?
         normal,
     TResult Function(String message)? error,
     required TResult orElse(),

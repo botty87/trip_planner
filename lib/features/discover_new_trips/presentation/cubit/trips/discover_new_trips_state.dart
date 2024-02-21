@@ -11,6 +11,7 @@ sealed class DiscoverNewTripsState with _$DiscoverNewTripsState {
     required List<Trip> trips,
     required List<Trip> filteredTrips,
     @Default(false) bool searchDescription,
+    @Default(false) bool isMoreSectionOpen,
   }) = _StateNormal;
 
   const factory DiscoverNewTripsState.error({

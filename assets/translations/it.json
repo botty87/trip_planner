@@ -158,5 +158,7 @@
     "newBackgroundsMessage": "Abbiamo aggiunto nuovi sfondi! Dai un'occhiata nelle impostazioni e scegli quello che preferisci!",
     "close": "Chiudi",
     "language" : "Lingua",
-    "tripLanguageEmpty" : "Seleziona la lingua per questo viaggio"
+    "tripLanguageEmpty" : "Seleziona la lingua per questo viaggio",
+    "more" : "Altro",
+    "hide" : "Nascondi"
 }

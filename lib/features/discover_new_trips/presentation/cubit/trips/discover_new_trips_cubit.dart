@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../core/error/exceptions.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/debouncer.dart';
 import '../../../../trips/domain/entities/trip.dart';
@@ -27,33 +28,43 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
         super(const DiscoverNewTripsState.initial());
 
   List<Trip> get _filteredTrips {
-    assert(state is _StateNormal);
-    final query = (state as _StateNormal).query;
-    if (query.isEmpty) {
-      return (state as _StateNormal).trips;
-    } else {
-      return (state as _StateNormal).trips.where((trip) {
-        return trip.name.toLowerCase().contains(query.toLowerCase())
-            ? true
-            : (state as _StateNormal).searchDescription
-                ? trip.description?.toLowerCase().contains(query.toLowerCase()) ?? false
-                : false;
-      }).toList();
-    }
+    return state.maybeMap(
+      normal: (state) {
+        final query = state.query;
+        if (query.isEmpty) {
+          return state.trips;
+        } else {
+          return state.trips.where((trip) {
+            return trip.name.toLowerCase().contains(query.toLowerCase())
+                ? true
+                : state.searchDescription
+                    ? trip.description?.toLowerCase().contains(query.toLowerCase()) ?? false
+                    : false;
+          }).toList();
+        }
+      },
+      orElse: () => throw const UnexpectedStateException(),
+    );
   }
 
   tripsQueryChanged(String value) {
-    assert(state is _StateNormal);
-    emit((state as _StateNormal).copyWith(query: value));
-    _queryDebouncer.run(() {
-      emit((state as _StateNormal).copyWith(filteredTrips: _filteredTrips));
-    });
+    state.mapOrNull(
+      normal: (state) {
+        emit(state.copyWith(query: value));
+        _queryDebouncer.run(() {
+          emit(state.copyWith(filteredTrips: _filteredTrips));
+        });
+      },
+    );
   }
 
   searchDescriptionChanged(bool value) {
-    assert(state is _StateNormal);
-    emit((state as _StateNormal).copyWith(searchDescription: value));
-    emit((state as _StateNormal).copyWith(filteredTrips: _filteredTrips));
+    state.mapOrNull(
+      normal: (state) {
+        emit(state.copyWith(searchDescription: value));
+        emit(state.copyWith(filteredTrips: _filteredTrips));
+      },
+    );
   }
 
   fetchTrips() {
@@ -65,6 +76,13 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
           filteredTrips: trips,
         )),
       ),
+    );
+  }
+
+  //TODO test
+  void onMoreSectionTapped() {
+    state.mapOrNull(
+      normal: (state) => emit(state.copyWith(isMoreSectionOpen: !state.isMoreSectionOpen)),
     );
   }
 }

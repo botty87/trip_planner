@@ -157,5 +157,7 @@ abstract class  LocaleKeys {
   static const close = 'close';
   static const language = 'language';
   static const tripLanguageEmpty = 'tripLanguageEmpty';
+  static const more = 'more';
+  static const hide = 'hide';
 
 }

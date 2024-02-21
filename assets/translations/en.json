@@ -157,5 +157,7 @@
     "newBackgroundsMessage" : "We have added new backgrounds to the app. Go to the settings to choose your favorite!",
     "close" : "Close",
     "language" : "Language",
-    "tripLanguageEmpty" : "Please select a language for the trip"
+    "tripLanguageEmpty" : "Please select a language for the trip",
+    "more" : "More",
+    "hide" : "Hide"
 }
