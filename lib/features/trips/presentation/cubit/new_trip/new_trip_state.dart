@@ -8,30 +8,12 @@ sealed class NewTripState with _$NewTripState {
     DateTime? startDate,
     @Default(false) bool isStartDateBeforeToday,
     @Default(false) bool isPublic,
-  }) = NewTripStateNormal;
+    String? languageCode,
+  }) = _Normal;
 
-  const factory NewTripState.saving({
-    required String? tripName,
-    required String? tripDescription,
-    required DateTime? startDate,
-    @Default(false) bool isStartDateBeforeToday,
-    @Default(false) bool isPublic,
-  }) = NewTripStateSaving;
+  const factory NewTripState.saving() = _Saving;
 
-  const factory NewTripState.created({
-    String? tripName,
-    String? tripDescription,
-    DateTime? startDate,
-    @Default(false) bool isStartDateBeforeToday,
-    @Default(false) bool isPublic,
-  }) = NewTripStateCreated;
+  const factory NewTripState.created() = _Created;
 
-  const factory NewTripState.error({
-    required String? tripName,
-    required String? tripDescription,
-    required DateTime? startDate,
-    @Default(false) bool isStartDateBeforeToday,
-    @Default(false) bool isPublic,
-    required String errorMessage,
-  }) = NewTripStateError;
+  const factory NewTripState.error({required String errorMessage}) = _Error;
 }

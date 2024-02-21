@@ -220,4 +220,9 @@ class TripCubit extends Cubit<TripState> {
     _dayTripsSubscription?.cancel();
     return super.close();
   }
+
+
+  languageCodeChanged(String value) {
+    //TODO implement
+  }
 }

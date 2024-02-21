@@ -101,7 +101,7 @@ import '../../features/import_old_trips/presentation/cubit/import_old_trips_cubi
     as _i71;
 import '../../features/info_contacts/presentation/cubit/info_contacts_cubit.dart'
     as _i19;
-import '../../features/map/presentation/cubit/map_cubit.dart' as _i22;
+import '../../features/map/presentation/cubit/map_cubit.dart' as _i23;
 import '../../features/settings/domain/entities/settings.dart' as _i29;
 import '../../features/settings/domain/usecases/update_settings.dart' as _i90;
 import '../../features/settings/presentation/cubit/backgrounds_cubit.dart'
@@ -131,7 +131,7 @@ import '../../features/trip_stops/domain/usecases/update_trip_stop_note.dart'
 import '../../features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
     as _i43;
 import '../../features/trip_stops/presentation/cubit/map/cubit/map_cubit.dart'
-    as _i23;
+    as _i22;
 import '../../features/trip_stops/presentation/cubit/new_trip_stop/new_trip_stop_cubit.dart'
     as _i106;
 import '../../features/trip_stops/presentation/cubit/trip_stop/trip_stop_cubit.dart'
@@ -232,12 +232,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i19.InfoContactsCubit>(() => _i19.InfoContactsCubit());
     gh.lazySingleton<_i20.InternetConnection>(() => network.internetConnection);
     gh.lazySingleton<_i21.Logger>(() => registerModule.logger);
-    gh.factoryParam<_i22.MapCubit, _i22.MapStateType, dynamic>((
+    gh.factory<_i22.MapCubit>(() => _i22.MapCubit());
+    gh.factoryParam<_i23.MapCubit, _i23.MapStateType, dynamic>((
       mapStateType,
       _,
     ) =>
-        _i22.MapCubit(mapStateType: mapStateType));
-    gh.factory<_i23.MapCubit>(() => _i23.MapCubit());
+        _i23.MapCubit(mapStateType: mapStateType));
     gh.lazySingleton<_i24.OldTripsDataSource>(
         () => _i24.OldTripsDataSourceImpl(gh<_i12.FirebaseDatabase>()));
     gh.lazySingleton<_i25.OldTripsRepository>(
@@ -250,16 +250,16 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i30.SettingsCollectionRef>(
         () => _i30.SettingsCollectionRef(gh<_i13.FirebaseFirestore>()));
     gh.lazySingleton<String>(
+      () => googlePlacesModule.proxyUrl,
+      instanceName: 'proxyUrl',
+    );
+    gh.lazySingleton<String>(
       () => googlePlacesModule.googlePlacesKey,
       instanceName: 'googlePlacesKey',
     );
     gh.lazySingleton<String>(
       () => googlePlacesModule.googleMapKey,
       instanceName: 'googleMapKey',
-    );
-    gh.lazySingleton<String>(
-      () => googlePlacesModule.proxyUrl,
-      instanceName: 'proxyUrl',
     );
     gh.factoryParam<_i31.TripStopsCollectionRef, String, String>((
       tripId,

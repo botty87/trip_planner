@@ -36,108 +36,114 @@ class NewTripCubit extends Cubit<NewTripState> {
         _settings = settings,
         super(const NewTripState.normal()) {
     if (_existingTrip != null) {
-      emit(state.copyWith(
-        tripName: _existingTrip!.name,
-        tripDescription: _existingTrip!.description,
-      ));
+      state.mapOrNull(
+        normal: (state) {
+          emit(state.copyWith(
+            tripName: _existingTrip!.name,
+            tripDescription: _existingTrip!.description,
+          ));
+        },
+      );
     }
   }
 
   void nameChanged(String tripName) {
-    emit(state.copyWith(tripName: tripName));
+    state.mapOrNull(normal: (state) => emit(state.copyWith(tripName: tripName)));
   }
 
   void descriptionChanged(String tripDescription) {
-    emit(state.copyWith(tripDescription: tripDescription));
+    state.mapOrNull(normal: (state) => emit(state.copyWith(tripDescription: tripDescription)));
   }
 
   void startDateChanged(DateTime startDate) {
-    emit(state.copyWith(
-        startDate: startDate,
-        isStartDateBeforeToday: startDate.isBefore(DateTime.now().add(const Duration(days: -1)))));
+    state.mapOrNull(
+        normal: (state) => emit(state.copyWith(
+            startDate: startDate,
+            isStartDateBeforeToday:
+                startDate.isBefore(DateTime.now().add(const Duration(days: -1))))));
+  }
+
+  void isPublicChanged(bool selected) {
+    state.mapOrNull(normal: (state) => emit(state.copyWith(isPublic: selected)));
+  }
+
+  //TODO test
+  void languageCodeChanged(String languageCode) {
+    state.mapOrNull(normal: (state) => emit(state.copyWith(languageCode: languageCode)));
   }
 
   createTrip() async {
-    if (state.tripName == null || state.tripName!.isEmpty) {
-      emitError(LocaleKeys.tripNameEmpty.tr());
-      return;
-    }
+    state.mapOrNull(
+      normal: (state) async {
+        if (state.tripName == null || state.tripName!.isEmpty) {
+          emitError(LocaleKeys.tripNameEmpty.tr());
+          return;
+        }
 
-    if (state.startDate == null) {
-      emitError(LocaleKeys.tripStartDateEmpty.tr());
-      return;
-    }
+        if (state.startDate == null) {
+          emitError(LocaleKeys.tripStartDateEmpty.tr());
+          return;
+        }
 
-    emit(NewTripState.saving(
-      tripName: state.tripName,
-      tripDescription: state.tripDescription,
-      startDate: state.startDate,
-      isStartDateBeforeToday: state.isStartDateBeforeToday,
-      isPublic: state.isPublic,
-    ));
+        if (state.languageCode?.isEmpty ?? true) {
+          emitError(LocaleKeys.tripLanguageEmpty.tr());
+          return;
+        }
 
-    assert(_userCubit.state is UserStateLoggedIn);
-    final userId = (_userCubit.state as UserStateLoggedIn).user.id;
+        emit(const NewTripState.saving());
 
-    final Either<TripsFailure, void> result;
-    if (_existingTrip == null) {
-      result = await _createTrip(CreateTripParams(
-        userId: userId,
-        tripName: state.tripName!,
-        tripDescription: state.tripDescription,
-        startDate: state.startDate!,
-        isPublic: state.isPublic,
-      ));
-    } else {
-      result = await _createFromExistingTrip(CreateFromExistingTripParams(
-        userId: userId,
-        tripName: state.tripName!,
-        tripDescription: state.tripDescription,
-        startDate: state.startDate!,
-        isPublic: state.isPublic,
-        existingTrip: _existingTrip!,
-        showDirections: _settings.showDirections,
-        useDifferentDirectionsColors: _settings.useDifferentDirectionsColors,
-      ));
-    }
+        assert(_userCubit.state is UserStateLoggedIn);
+        final userId = (_userCubit.state as UserStateLoggedIn).user.id;
 
-    result.fold(
-      (failure) {
-        String errorMessage = LocaleKeys.tripSaveError.tr();
-        failure.when(
-          (message) {
-            if (message != null) {
-              errorMessage += "\n\n$message";
-            }
+        final Either<TripsFailure, void> result;
+        if (_existingTrip == null) {
+          result = await _createTrip(CreateTripParams(
+            userId: userId,
+            tripName: state.tripName!,
+            tripDescription: state.tripDescription,
+            startDate: state.startDate!,
+            isPublic: state.isPublic,
+            languageCode: state.languageCode!,
+          ));
+        } else {
+          result = await _createFromExistingTrip(CreateFromExistingTripParams(
+            userId: userId,
+            tripName: state.tripName!,
+            tripDescription: state.tripDescription,
+            startDate: state.startDate!,
+            isPublic: state.isPublic,
+            existingTrip: _existingTrip!,
+            showDirections: _settings.showDirections,
+            useDifferentDirectionsColors: _settings.useDifferentDirectionsColors,
+          ));
+        }
+
+        result.fold(
+          (failure) {
+            String errorMessage = LocaleKeys.tripSaveError.tr();
+            failure.when(
+              (message) {
+                if (message != null) {
+                  errorMessage += "\n\n$message";
+                }
+              },
+              noInternetConnection: () =>
+                  errorMessage += "\n\n${LocaleKeys.noInternetConnectionMessage.tr()}",
+            );
+            emitError(errorMessage);
           },
-          noInternetConnection: () =>
-              errorMessage += "\n\n${LocaleKeys.noInternetConnectionMessage.tr()}",
+          (_) {
+            emit(const NewTripState.created());
+          },
         );
-        emitError(errorMessage);
-      },
-      (_) {
-        emit(const NewTripState.created());
       },
     );
   }
 
   emitError(String errorMessage) {
-    emit(NewTripState.error(
-        tripName: state.tripName,
-        tripDescription: state.tripDescription,
-        startDate: state.startDate,
-        isStartDateBeforeToday: state.isStartDateBeforeToday,
-        isPublic: state.isPublic,
-        errorMessage: errorMessage));
-    emit(NewTripState.normal(
-        tripName: state.tripName,
-        tripDescription: state.tripDescription,
-        isStartDateBeforeToday: state.isStartDateBeforeToday,
-        isPublic: state.isPublic,
-        startDate: state.startDate));
-  }
+    final previousState = state;
 
-  void isPublicChanged(bool selected) {
-    emit(state.copyWith(isPublic: selected));
+    emit(NewTripState.error(errorMessage: errorMessage));
+    emit(previousState);
   }
 }

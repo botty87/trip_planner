@@ -181,6 +181,7 @@ class TripPage extends HookWidget {
             onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
             onNameChanged: (String value) => cubit.nameChanged(value),
             onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
+            onLanguageCodeChanged: (String value) => cubit.languageCodeChanged(value),
             saveSection: SaveCancelEditButtons(
               isSaving: isSaving.stream,
               onCancel: () => cubit.modalBottomEditingDismissed(),

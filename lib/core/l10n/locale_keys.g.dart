@@ -156,5 +156,6 @@ abstract class  LocaleKeys {
   static const newBackgroundsMessage = 'newBackgroundsMessage';
   static const close = 'close';
   static const language = 'language';
+  static const tripLanguageEmpty = 'tripLanguageEmpty';
 
 }

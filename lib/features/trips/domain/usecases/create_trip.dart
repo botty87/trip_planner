@@ -23,6 +23,7 @@ class CreateTrip implements UseCase<void, CreateTripParams> {
         createdAt: params.createdAt,
         startDate: params.startDate,
         isPublic: params.isPublic,
+        languageCode: params.languageCode,
       ),
     );
   }
@@ -35,6 +36,7 @@ class CreateTripParams extends Equatable {
   final DateTime createdAt = DateTime.now();
   final DateTime startDate;
   final bool isPublic;
+  final String languageCode;
 
   CreateTripParams({
     required this.tripName,
@@ -42,6 +44,7 @@ class CreateTripParams extends Equatable {
     required this.userId,
     required this.startDate,
     required this.isPublic,
+    required this.languageCode,
   });
 
   @override

@@ -44,24 +44,36 @@ class _NewTripPageBody extends HookWidget {
 
     return MultiBlocListener(
       listeners: [
-        //Show error message on error
+        //Show error message on error+
+
         BlocListener<NewTripCubit, NewTripState>(
-          listener: (context, state) => ScaffoldMessenger.of(context).showSnackBar(
-            Snackbars.error((state as NewTripStateError).errorMessage),
+          listener: (context, state) => state.mapOrNull(
+              error: (state) => ScaffoldMessenger.of(context).showSnackBar(
+                    Snackbars.error(state.errorMessage),
+                  )),
+          listenWhen: (previous, current) => current.maybeMap(
+            error: (_) => true,
+            orElse: () => false,
           ),
-          listenWhen: (current, next) => next is NewTripStateError,
         ),
         //On success navigate to trips page
         BlocListener<NewTripCubit, NewTripState>(
           listener: (context, state) => context.router.replaceAll([const TripsRoute()]),
-          listenWhen: (current, next) => next is NewTripStateCreated,
+          listenWhen: (previous, current) => current.maybeMap(
+            created: (_) => true,
+            orElse: () => false,
+          ),
         ),
         //Update isSaving stream on state change
         BlocListener<NewTripCubit, NewTripState>(
-          listener: (context, state) => isSaving.add(state is NewTripStateSaving),
-          listenWhen: (previous, current) =>
-              (current is NewTripStateSaving && previous is! NewTripStateSaving) ||
-              (current is! NewTripStateSaving && previous is NewTripStateSaving),
+          listener: (context, state) => state.mapOrNull(
+            saving: (_) => isSaving.add(true),
+            created: (_) => isSaving.add(false),
+          ),
+          listenWhen: (previous, current) => current.maybeMap(
+            saving: (_) => true,
+            orElse: () => false,
+          ),
         ),
       ],
       child: StreamBuilder<bool>(
@@ -76,6 +88,7 @@ class _NewTripPageBody extends HookWidget {
                 onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
                 saveSection: _CreateTripButton(isSaving: isSaving.stream),
                 onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
+                onLanguageCodeChanged: (value) => cubit.languageCodeChanged(value),
                 isSaving: isSaving.stream,
                 initialTripName: _existingTrip?.name,
                 initialTripDescription: _existingTrip?.description,

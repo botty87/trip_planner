@@ -5,11 +5,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
+import 'package:google_maps_flutter/google_maps_flutter.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/trip_stops/data/datasources/trip_stops_data_source.dart'
     as _i2;
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i4;
+    as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -35,7 +36,7 @@ class MockTripStopsDataSource extends _i1.Mock
     required String? dayTripId,
     required String? name,
     String? description,
-    required dynamic location,
+    required _i4.LatLng? location,
     required int? duration,
   }) =>
       (super.noSuchMethod(
@@ -56,7 +57,7 @@ class MockTripStopsDataSource extends _i1.Mock
       ) as _i3.Future<void>);
 
   @override
-  _i3.Stream<List<_i4.TripStop>> listenTripStops({
+  _i3.Stream<List<_i5.TripStop>> listenTripStops({
     required String? tripId,
     required String? dayTripId,
   }) =>
@@ -69,15 +70,15 @@ class MockTripStopsDataSource extends _i1.Mock
             #dayTripId: dayTripId,
           },
         ),
-        returnValue: _i3.Stream<List<_i4.TripStop>>.empty(),
-        returnValueForMissingStub: _i3.Stream<List<_i4.TripStop>>.empty(),
-      ) as _i3.Stream<List<_i4.TripStop>>);
+        returnValue: _i3.Stream<List<_i5.TripStop>>.empty(),
+        returnValueForMissingStub: _i3.Stream<List<_i5.TripStop>>.empty(),
+      ) as _i3.Stream<List<_i5.TripStop>>);
 
   @override
   _i3.Future<void> updateTripStopsIndexes({
     required String? tripId,
     required String? dayTripId,
-    required List<_i4.TripStop>? tripStops,
+    required List<_i5.TripStop>? tripStops,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -187,7 +188,7 @@ class MockTripStopsDataSource extends _i1.Mock
     required String? name,
     required String? description,
     required int? duration,
-    required dynamic location,
+    required _i4.LatLng? location,
   }) =>
       (super.noSuchMethod(
         Invocation.method(

@@ -11,6 +11,7 @@ class _StartDatePicker extends HookWidget {
     final isStartDateBeforeToday = useStreamController<bool>();
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(LocaleKeys.tripStartDate.tr(),
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -82,20 +83,26 @@ class _StartDatePicker extends HookWidget {
         StreamBuilder<bool>(
           stream: isStartDateBeforeToday.stream,
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (snapshot.data ?? false) {
-              return Text(
-                LocaleKeys.startDateBeforeTodayWarning.tr(),
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.error,
-                    ),
-                textAlign: TextAlign.center,
-              );
-            } else {
-              return const SizedBox.shrink();
-            }
+            return AnimatedSize(
+                duration: const Duration(milliseconds: 300),
+                child: _buildWarning(context, snapshot));
           },
         ),
       ],
     );
+  }
+
+  _buildWarning(BuildContext context, AsyncSnapshot<bool> snapshot) {
+    if (snapshot.data ?? false) {
+      return Text(
+        LocaleKeys.startDateBeforeTodayWarning.tr(),
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.error,
+            ),
+        textAlign: TextAlign.center,
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
   }
 }
