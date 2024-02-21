@@ -41,6 +41,7 @@ dependencies:
   country_icons: ^3.0.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
+  devicelocale: ^0.7.0
   dio: ^5.3.3
   duration_picker: ^1.1.1
   dynamic_color: ^1.6.9

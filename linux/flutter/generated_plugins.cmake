@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  devicelocale
   dynamic_color
   url_launcher_linux
 )

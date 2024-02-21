@@ -5,34 +5,45 @@ class _LanguageSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentLanguage = Languages.defaultLanguages.firstWhereOrNull(
-      (language) => language.isoCode == context.locale.languageCode,
-    );
-
     return Center(
       child: LayoutBuilder(builder: (context, constraints) {
-        return DropdownMenu<Language>(
-          width: constraints.maxWidth * 0.8,
-          menuHeight: 250,
-          label: Text(LocaleKeys.language.tr()),
-          enableFilter: true,
-          requestFocusOnTap: true,
-          leadingIcon: const Icon(Icons.language),
-          initialSelection: currentLanguage,
-          dropdownMenuEntries: Languages.defaultLanguages
-              .map(
-                (language) => DropdownMenuEntry<Language>(
-                  value: language,
-                  label: language.nativeName,
-                  leadingIcon: SizedBox(
-                    height: 25,
-                    width: 25,
-                    child: _getCountryIcon(language.isoCode),
-                  ),
-                ),
-              )
-              .toList(),
-        );
+        return FutureBuilder(
+            future: Devicelocale.currentAsLocale,
+            builder: (context, snapshot) {
+              final Language? currentLanguage;
+              if (snapshot.hasData) {
+                currentLanguage = Languages.defaultLanguages.firstWhereOrNull(
+                  (language) => language.isoCode == snapshot.data!.languageCode,
+                );
+              } else {
+                currentLanguage = null;
+              }
+
+              return DropdownMenu<Language>(
+                width: constraints.maxWidth * 0.8,
+                menuHeight: 250,
+                label: Text(LocaleKeys.language.tr()),
+                enableFilter: true,
+                requestFocusOnTap: true,
+                leadingIcon: const Icon(Icons.language),
+                initialSelection: currentLanguage,
+                dropdownMenuEntries: snapshot.hasData
+                    ? Languages.defaultLanguages
+                        .map(
+                          (language) => DropdownMenuEntry<Language>(
+                            value: language,
+                            label: language.nativeName,
+                            leadingIcon: SizedBox(
+                              height: 25,
+                              width: 25,
+                              child: _getCountryIcon(language.isoCode),
+                            ),
+                          ),
+                        )
+                        .toList()
+                    : [],
+              );
+            });
       }),
     );
   }
