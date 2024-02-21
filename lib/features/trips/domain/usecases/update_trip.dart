@@ -20,6 +20,7 @@ class UpdateTrip implements UseCase<void, UpdateTripParams> {
       params.description,
       params.startDate,
       params.isPublic,
+      params.languageCode,
     );
   }
 }
@@ -30,6 +31,7 @@ class UpdateTripParams extends Equatable {
   final String? description;
   final DateTime startDate;
   final bool isPublic;
+  final String languageCode;
 
   const UpdateTripParams({
     required this.id,
@@ -37,6 +39,7 @@ class UpdateTripParams extends Equatable {
     required this.description,
     required this.startDate,
     required this.isPublic,
+    required this.languageCode,
   });
 
   @override

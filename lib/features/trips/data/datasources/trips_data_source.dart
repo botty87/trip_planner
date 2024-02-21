@@ -19,7 +19,7 @@ abstract class TripsDataSource {
   Future<void> addTrip(Trip trip);
   Stream<List<Trip>> listenTrips(String userId);
   Future<void> updateTrip(
-      String id, String name, String? description, DateTime startDate, bool isPublic);
+      String id, String name, String? description, DateTime startDate, bool isPublic, String languageCode);
 
   Future<void> deleteTrip(Trip trip);
 
@@ -65,12 +65,13 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
   @override
   Future<void> updateTrip(
-      String id, String name, String? description, DateTime startDate, bool isPublic) async {
+      String id, String name, String? description, DateTime startDate, bool isPublic, String languageCode) async {
     performSync(() async => await _tripsCollection.doc(id).update({
           'name': name,
           'description': description?.isEmpty ?? true ? null : description,
           'startDate': startDate,
           'isPublic': isPublic,
+          'languageCode': languageCode,
         }));
   }
 

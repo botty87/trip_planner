@@ -95,8 +95,9 @@ class TripCubit extends Cubit<TripState> {
     state.mapOrNull(editing: (state) => emit(state.copyWith(isPublic: value, errorMessage: null)));
   }
 
-  languageCodeChanged(String value) {
-    //TODO implement
+  void languageCodeChanged(String value) {
+    state.mapOrNull(
+        editing: (state) => emit(state.copyWith(languageCode: value, errorMessage: null)));
   }
 
   void saveChanges() async {
@@ -115,6 +116,7 @@ class TripCubit extends Cubit<TripState> {
         final tripName = state.name;
         final tripStartDate = state.startDate;
         final tripIsPublic = state.isPublic;
+        final tripLanguageCode = state.languageCode;
 
         emit(state.copyWith(isSaving: true, errorMessage: null));
 
@@ -129,6 +131,7 @@ class TripCubit extends Cubit<TripState> {
           description: tripDescription,
           startDate: tripStartDate,
           isPublic: tripIsPublic,
+          languageCode: tripLanguageCode,
         ));
 
         result.fold(
@@ -147,6 +150,7 @@ class TripCubit extends Cubit<TripState> {
                   description: tripDescription,
                   startDate: tripStartDate,
                   isPublic: tripIsPublic,
+                  languageCode: tripLanguageCode,
                 ),
                 dayTrips: state.dayTrips),
           ),

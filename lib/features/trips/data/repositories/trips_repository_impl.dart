@@ -42,9 +42,9 @@ class TripsRepositoryImpl implements TripsRepository {
 
   @override
   Future<Either<TripsFailure, void>> updateTrip(
-      String id, String name, String? description, DateTime startDate, bool isPublic) async {
+      String id, String name, String? description, DateTime startDate, bool isPublic, String languageCode) async {
     try {
-      await tripsDataSource.updateTrip(id, name, description, startDate, isPublic);
+      await tripsDataSource.updateTrip(id, name, description, startDate, isPublic, languageCode);
       return right(null);
     } on FirebaseException {
       return left(const TripsFailure());
