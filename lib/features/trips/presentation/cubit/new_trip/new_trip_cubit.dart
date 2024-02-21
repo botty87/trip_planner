@@ -67,7 +67,6 @@ class NewTripCubit extends Cubit<NewTripState> {
     state.mapOrNull(normal: (state) => emit(state.copyWith(isPublic: selected)));
   }
 
-  //TODO test
   void languageCodeChanged(String languageCode) {
     state.mapOrNull(normal: (state) => emit(state.copyWith(languageCode: languageCode)));
   }
@@ -76,20 +75,21 @@ class NewTripCubit extends Cubit<NewTripState> {
     state.mapOrNull(
       normal: (state) async {
         if (state.tripName == null || state.tripName!.isEmpty) {
-          emitError(LocaleKeys.tripNameEmpty.tr());
+          emitError(errorMessage: LocaleKeys.tripNameEmpty.tr());
           return;
         }
 
         if (state.startDate == null) {
-          emitError(LocaleKeys.tripStartDateEmpty.tr());
+          emitError(errorMessage: LocaleKeys.tripStartDateEmpty.tr());
           return;
         }
 
         if (state.languageCode?.isEmpty ?? true) {
-          emitError(LocaleKeys.tripLanguageEmpty.tr());
+          emitError(errorMessage: LocaleKeys.tripLanguageEmpty.tr());
           return;
         }
 
+        final normalState = state;
         emit(const NewTripState.saving());
 
         assert(_userCubit.state is UserStateLoggedIn);
@@ -130,7 +130,7 @@ class NewTripCubit extends Cubit<NewTripState> {
               noInternetConnection: () =>
                   errorMessage += "\n\n${LocaleKeys.noInternetConnectionMessage.tr()}",
             );
-            emitError(errorMessage);
+            emitError(errorMessage: errorMessage, previousState: normalState);
           },
           (_) {
             emit(const NewTripState.created());
@@ -140,10 +140,10 @@ class NewTripCubit extends Cubit<NewTripState> {
     );
   }
 
-  emitError(String errorMessage) {
-    final previousState = state;
+  emitError({required String errorMessage, NewTripState? previousState}) {
+    final currentState = previousState ?? state;
 
     emit(NewTripState.error(errorMessage: errorMessage));
-    emit(previousState);
+    emit(currentState);
   }
 }

@@ -24,7 +24,7 @@ void main() {
   test('should save a trip', () async {
     
 
-    when(mockTripsRepository.updateTrip(any, any, any, any, any)).thenAnswer((_) async => right(null));
+    when(mockTripsRepository.updateTrip(any, any, any, any, any, any)).thenAnswer((_) async => right(null));
     // act
     final result = await useCase(UpdateTripParams(
       id: tTripId,
@@ -32,15 +32,16 @@ void main() {
       description: tTripDescription,
       startDate: tStartDate,
       isPublic: tIsPublic,
+      languageCode: 'en'
     ));
     // assert
     expect(result, right(null));
-    verify(mockTripsRepository.updateTrip(any, any, any, any, any));
+    verify(mockTripsRepository.updateTrip(any, any, any, any, any, any));
     verifyNoMoreInteractions(mockTripsRepository);
   });
 
   test('should return a TripsFailure when saving a trip fails', () async {
-    when(mockTripsRepository.updateTrip(any, any, any, any, any))
+    when(mockTripsRepository.updateTrip(any, any, any, any, any, any))
         .thenAnswer((_) async => left(const TripsFailure()));
     // act
     final result = await useCase(UpdateTripParams(
@@ -49,10 +50,11 @@ void main() {
       description: tTripDescription,
       isPublic: tIsPublic,
       startDate: tStartDate,
+      languageCode: 'en'
     ));
     // assert
     expect(result, left(const TripsFailure()));
-    verify(mockTripsRepository.updateTrip(any, any, any, any, any));
+    verify(mockTripsRepository.updateTrip(any, any, any, any, any, any));
     verifyNoMoreInteractions(mockTripsRepository);
   });
 }

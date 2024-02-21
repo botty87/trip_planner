@@ -83,27 +83,28 @@ void main() {
     const tTripDescription = 'tripDescription';
     final tStartDate = DateTime.now();
     const tIsPublic = true;
+    const tLanguageCode = 'en';
 
     test('should return right(null) when TripsDataSource.updateTrip completes', () async {
       when(mockTripsDataSource.updateTrip(
-              tTripId, tTripName, tTripDescription, tStartDate, tIsPublic))
+              tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode))
           .thenAnswer((_) async {});
 
       // act
       final result = await tripsRepositoryImpl.updateTrip(
-          tTripId, tTripName, tTripDescription, tStartDate, tIsPublic);
+          tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode);
       // assert
       expect(result, equals(right(null)));
     });
 
     test('should return left(TripsFailure()) when TripsDataSource.updateTrip throws', () async {
       when(mockTripsDataSource.updateTrip(
-              tTripId, tTripName, tTripDescription, tStartDate, tIsPublic))
+              tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode))
           .thenThrow(Exception());
 
       // act
       final result = await tripsRepositoryImpl.updateTrip(
-          tTripId, tTripName, tTripDescription, tStartDate, tIsPublic);
+          tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode);
       // assert
       expect(result, equals(left(const TripsFailure())));
     });

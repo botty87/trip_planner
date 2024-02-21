@@ -58,9 +58,17 @@ void main() {
       act: (cubit) => cubit.descriptionChanged('test'),
       expect: () => [const NewTripState.normal(tripDescription: 'test')]);
 
+  blocTest<NewTripCubit, NewTripState>(
+    'When languageCode change emit state with languageCode changed',
+    build: () => getNewTripCubit(),
+    act: (cubit) => cubit.languageCodeChanged('en'),
+    expect: () => [const NewTripState.normal(languageCode: 'en')],
+  );
+
   group('Create trip tests', () {
     const tUser = User(id: '1', email: '', name: '');
     final tStartDate = DateTime.now();
+    const tLanguageCode = 'en';
 
     setUp(() {
       whenListen(
@@ -75,12 +83,7 @@ void main() {
       build: () => getNewTripCubit(),
       act: (cubit) => cubit.createTrip(),
       expect: () => [
-        const NewTripState.error(
-          tripName: null,
-          errorMessage: LocaleKeys.tripNameEmpty,
-          tripDescription: null,
-          startDate: null,
-        ),
+        const NewTripState.error(errorMessage: LocaleKeys.tripNameEmpty),
         const NewTripState.normal(),
       ],
     );
@@ -91,24 +94,20 @@ void main() {
       seed: () => const NewTripState.normal(tripName: 'test'),
       act: (cubit) => cubit.createTrip(),
       expect: () => [
-        const NewTripState.error(
-          tripName: 'test',
-          errorMessage: LocaleKeys.tripStartDateEmpty,
-          tripDescription: null,
-          startDate: null,
-        ),
+        const NewTripState.error(errorMessage: LocaleKeys.tripStartDateEmpty),
         const NewTripState.normal(tripName: 'test'),
       ],
     );
 
     blocTest<NewTripCubit, NewTripState>(
-      'When create trip with valid name and startDate emit state with error message null',
+      'When create trip with valid name, languageCode and startDate emit state with error message null',
       setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => const Right(null)),
-      seed: () => NewTripState.normal(tripName: 'test', startDate: tStartDate),
+      seed: () =>
+          NewTripState.normal(tripName: 'test', startDate: tStartDate, languageCode: tLanguageCode),
       build: () => getNewTripCubit(),
       act: (cubit) => cubit.createTrip(),
       expect: () => [
-        NewTripState.saving(tripName: 'test', startDate: tStartDate, tripDescription: null),
+        const NewTripState.saving(),
         const NewTripState.created(),
       ],
       verify: (bloc) {
@@ -118,13 +117,14 @@ void main() {
     );
 
     blocTest<NewTripCubit, NewTripState>(
-      'When create trip with valid name and startDate and existing trip emit state with error message null, call createFromExistingTrip',
+      'When create trip with valid name, languageCode and startDate and existing trip emit state with error message null, call createFromExistingTrip',
       setUp: () => when(mockCreateFromExistingTrip(any)).thenAnswer((_) async => const Right(null)),
-      seed: () => NewTripState.normal(tripName: 'test', startDate: tStartDate),
+      seed: () =>
+          NewTripState.normal(tripName: 'test', startDate: tStartDate, languageCode: tLanguageCode),
       build: () => getNewTripCubit(existingTrip: tTrip),
       act: (cubit) => cubit.createTrip(),
       expect: () => [
-        NewTripState.saving(tripName: 'test', startDate: tStartDate, tripDescription: null),
+        const NewTripState.saving(),
         const NewTripState.created(),
       ],
       verify: (bloc) {
@@ -134,20 +134,16 @@ void main() {
     );
 
     blocTest<NewTripCubit, NewTripState>(
-      'When create trip with valid name and startDate emit state with error message when error occurs',
+      'When create trip with valid name, languageCode and startDate emit state with error message when error occurs',
       setUp: () => when(mockCreateTrip(any)).thenAnswer((_) async => const Left(TripsFailure())),
       build: () => getNewTripCubit(),
-      seed: () => NewTripState.normal(tripName: 'test', startDate: tStartDate),
+      seed: () =>
+          NewTripState.normal(tripName: 'test', startDate: tStartDate, languageCode: tLanguageCode),
       act: (cubit) => cubit.createTrip(),
       expect: () => [
-        NewTripState.saving(tripName: 'test', startDate: tStartDate, tripDescription: null),
-        NewTripState.error(
-          tripName: 'test',
-          errorMessage: LocaleKeys.tripSaveError,
-          startDate: tStartDate,
-          tripDescription: null,
-        ),
-        NewTripState.normal(tripName: 'test', tripDescription: null, startDate: tStartDate),
+        const NewTripState.saving(),
+        const NewTripState.error(errorMessage: LocaleKeys.tripSaveError),
+        NewTripState.normal(tripName: 'test', startDate: tStartDate, languageCode: tLanguageCode),
       ],
       verify: (bloc) => verify(mockCreateTrip(any)).called(1),
     );

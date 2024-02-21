@@ -135,6 +135,7 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
     String? description,
     DateTime? startDate,
     bool? isPublic,
+    String? languageCode,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -145,6 +146,7 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
             description,
             startDate,
             isPublic,
+            languageCode,
           ],
         ),
         returnValue: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
@@ -158,6 +160,7 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
               description,
               startDate,
               isPublic,
+              languageCode,
             ],
           ),
         )),
@@ -173,6 +176,7 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
               description,
               startDate,
               isPublic,
+              languageCode,
             ],
           ),
         )),

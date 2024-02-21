@@ -21,7 +21,12 @@ void main() {
     const userId = 'userId';
     when(mockTripsRepository.createTrip(any)).thenAnswer((_) async => right(null));
     // act
-    final result = await useCase(CreateTripParams(tripName: tripName, userId: userId, startDate: DateTime.now(), isPublic: true));
+    final result = await useCase(CreateTripParams(
+        tripName: tripName,
+        userId: userId,
+        startDate: DateTime.now(),
+        isPublic: true,
+        languageCode: 'en'));
     // assert
     expect(result, right(null));
     verify(mockTripsRepository.createTrip(any));
@@ -34,7 +39,12 @@ void main() {
     const userId = 'userId';
     when(mockTripsRepository.createTrip(any)).thenAnswer((_) async => left(const TripsFailure()));
     // act
-    final result = await useCase(CreateTripParams(tripName: tripName, userId: userId, startDate: DateTime.now(), isPublic: true));
+    final result = await useCase(CreateTripParams(
+        tripName: tripName,
+        userId: userId,
+        startDate: DateTime.now(),
+        isPublic: true,
+        languageCode: 'en'));
     // assert
     expect(result, left(const TripsFailure()));
     verify(mockTripsRepository.createTrip(any));
