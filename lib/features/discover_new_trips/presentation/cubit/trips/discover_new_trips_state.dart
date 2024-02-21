@@ -4,7 +4,7 @@ part of 'discover_new_trips_cubit.dart';
 sealed class DiscoverNewTripsState with _$DiscoverNewTripsState {
   const factory DiscoverNewTripsState.initial() = _StateInitial;
 
-  const factory DiscoverNewTripsState.loading() = _StateLoading;
+  //const factory DiscoverNewTripsState.loading() = _StateLoading;
 
   const factory DiscoverNewTripsState.normal({
     @Default('') String query,

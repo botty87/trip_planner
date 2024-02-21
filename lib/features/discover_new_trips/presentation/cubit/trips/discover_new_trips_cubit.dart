@@ -57,7 +57,6 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
   }
 
   fetchTrips() {
-    emit(const DiscoverNewTripsState.loading());
     _getPublicTrips(GetPublicTripsParams(_userId)).then(
       (value) => value.fold(
         (failure) => emit(DiscoverNewTripsState.error(message: LocaleKeys.unknownError.tr())),

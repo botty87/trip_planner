@@ -10,7 +10,6 @@ class _DiscoverNewTripBody extends StatelessWidget {
       builder: (context, state) {
         return state.map(
           initial: (_) => const SizedBox.shrink(),
-          loading: (_) => const Center(child: CircularProgressIndicator.adaptive()),
           normal: (state) => Padding(
             padding: const EdgeInsets.only(
               top: pageVerticalPadding,

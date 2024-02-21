@@ -19,7 +19,6 @@ mixin _$DiscoverNewTripsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(String query, List<Trip> trips,
             List<Trip> filteredTrips, bool searchDescription)
         normal,
@@ -29,7 +28,6 @@ mixin _$DiscoverNewTripsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
             bool searchDescription)?
         normal,
@@ -39,7 +37,6 @@ mixin _$DiscoverNewTripsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
             bool searchDescription)?
         normal,
@@ -50,7 +47,6 @@ mixin _$DiscoverNewTripsState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StateInitial value) initial,
-    required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateNormal value) normal,
     required TResult Function(_StateError value) error,
   }) =>
@@ -58,7 +54,6 @@ mixin _$DiscoverNewTripsState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateInitial value)? initial,
-    TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateNormal value)? normal,
     TResult? Function(_StateError value)? error,
   }) =>
@@ -66,7 +61,6 @@ mixin _$DiscoverNewTripsState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateInitial value)? initial,
-    TResult Function(_StateLoading value)? loading,
     TResult Function(_StateNormal value)? normal,
     TResult Function(_StateError value)? error,
     required TResult orElse(),
@@ -132,7 +126,6 @@ class _$StateInitialImpl implements _StateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(String query, List<Trip> trips,
             List<Trip> filteredTrips, bool searchDescription)
         normal,
@@ -145,7 +138,6 @@ class _$StateInitialImpl implements _StateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
             bool searchDescription)?
         normal,
@@ -158,7 +150,6 @@ class _$StateInitialImpl implements _StateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
             bool searchDescription)?
         normal,
@@ -175,7 +166,6 @@ class _$StateInitialImpl implements _StateInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StateInitial value) initial,
-    required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateNormal value) normal,
     required TResult Function(_StateError value) error,
   }) {
@@ -186,7 +176,6 @@ class _$StateInitialImpl implements _StateInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateInitial value)? initial,
-    TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateNormal value)? normal,
     TResult? Function(_StateError value)? error,
   }) {
@@ -197,7 +186,6 @@ class _$StateInitialImpl implements _StateInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateInitial value)? initial,
-    TResult Function(_StateLoading value)? loading,
     TResult Function(_StateNormal value)? normal,
     TResult Function(_StateError value)? error,
     required TResult orElse(),
@@ -211,126 +199,6 @@ class _$StateInitialImpl implements _StateInitial {
 
 abstract class _StateInitial implements DiscoverNewTripsState {
   const factory _StateInitial() = _$StateInitialImpl;
-}
-
-/// @nodoc
-abstract class _$$StateLoadingImplCopyWith<$Res> {
-  factory _$$StateLoadingImplCopyWith(
-          _$StateLoadingImpl value, $Res Function(_$StateLoadingImpl) then) =
-      __$$StateLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StateLoadingImplCopyWithImpl<$Res>
-    extends _$DiscoverNewTripsStateCopyWithImpl<$Res, _$StateLoadingImpl>
-    implements _$$StateLoadingImplCopyWith<$Res> {
-  __$$StateLoadingImplCopyWithImpl(
-      _$StateLoadingImpl _value, $Res Function(_$StateLoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StateLoadingImpl implements _StateLoading {
-  const _$StateLoadingImpl();
-
-  @override
-  String toString() {
-    return 'DiscoverNewTripsState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StateLoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String query, List<Trip> trips,
-            List<Trip> filteredTrips, bool searchDescription)
-        normal,
-    required TResult Function(String message) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
-        normal,
-    TResult? Function(String message)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
-            bool searchDescription)?
-        normal,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StateInitial value) initial,
-    required TResult Function(_StateLoading value) loading,
-    required TResult Function(_StateNormal value) normal,
-    required TResult Function(_StateError value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateInitial value)? initial,
-    TResult? Function(_StateLoading value)? loading,
-    TResult? Function(_StateNormal value)? normal,
-    TResult? Function(_StateError value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateInitial value)? initial,
-    TResult Function(_StateLoading value)? loading,
-    TResult Function(_StateNormal value)? normal,
-    TResult Function(_StateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StateLoading implements DiscoverNewTripsState {
-  const factory _StateLoading() = _$StateLoadingImpl;
 }
 
 /// @nodoc
@@ -453,7 +321,6 @@ class _$StateNormalImpl implements _StateNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(String query, List<Trip> trips,
             List<Trip> filteredTrips, bool searchDescription)
         normal,
@@ -466,7 +333,6 @@ class _$StateNormalImpl implements _StateNormal {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
             bool searchDescription)?
         normal,
@@ -479,7 +345,6 @@ class _$StateNormalImpl implements _StateNormal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
             bool searchDescription)?
         normal,
@@ -496,7 +361,6 @@ class _$StateNormalImpl implements _StateNormal {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StateInitial value) initial,
-    required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateNormal value) normal,
     required TResult Function(_StateError value) error,
   }) {
@@ -507,7 +371,6 @@ class _$StateNormalImpl implements _StateNormal {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateInitial value)? initial,
-    TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateNormal value)? normal,
     TResult? Function(_StateError value)? error,
   }) {
@@ -518,7 +381,6 @@ class _$StateNormalImpl implements _StateNormal {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateInitial value)? initial,
-    TResult Function(_StateLoading value)? loading,
     TResult Function(_StateNormal value)? normal,
     TResult Function(_StateError value)? error,
     required TResult orElse(),
@@ -611,7 +473,6 @@ class _$StateErrorImpl implements _StateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(String query, List<Trip> trips,
             List<Trip> filteredTrips, bool searchDescription)
         normal,
@@ -624,7 +485,6 @@ class _$StateErrorImpl implements _StateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(String query, List<Trip> trips, List<Trip> filteredTrips,
             bool searchDescription)?
         normal,
@@ -637,7 +497,6 @@ class _$StateErrorImpl implements _StateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(String query, List<Trip> trips, List<Trip> filteredTrips,
             bool searchDescription)?
         normal,
@@ -654,7 +513,6 @@ class _$StateErrorImpl implements _StateError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StateInitial value) initial,
-    required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateNormal value) normal,
     required TResult Function(_StateError value) error,
   }) {
@@ -665,7 +523,6 @@ class _$StateErrorImpl implements _StateError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateInitial value)? initial,
-    TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateNormal value)? normal,
     TResult? Function(_StateError value)? error,
   }) {
@@ -676,7 +533,6 @@ class _$StateErrorImpl implements _StateError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateInitial value)? initial,
-    TResult Function(_StateLoading value)? loading,
     TResult Function(_StateNormal value)? normal,
     TResult Function(_StateError value)? error,
     required TResult orElse(),

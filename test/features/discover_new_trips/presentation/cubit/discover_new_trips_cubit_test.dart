@@ -60,7 +60,6 @@ void main() {
     setUp: () => when(mockGetPublicTrips(any)).thenAnswer((_) async => Right(tTrips)),
     act: (cubit) => cubit.fetchTrips(),
     expect: () => [
-      const DiscoverNewTripsState.loading(),
       DiscoverNewTripsState.normal(
         query: '',
         trips: tTrips,
@@ -77,7 +76,6 @@ void main() {
     setUp: () =>
         when(mockGetPublicTrips(any)).thenAnswer((_) async => const Left(DiscoverTripsFailure())),
     expect: () => [
-      const DiscoverNewTripsState.loading(),
       DiscoverNewTripsState.error(
         message: LocaleKeys.unknownError.tr(),
       ),
