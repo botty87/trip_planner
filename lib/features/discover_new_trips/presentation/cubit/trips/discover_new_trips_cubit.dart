@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/error/exceptions.dart';
+import '../../../../../core/l10n/languages.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/debouncer.dart';
 import '../../../../trips/domain/entities/trip.dart';
@@ -19,6 +20,7 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
   final String _userId;
 
   final Debouncer _queryDebouncer = Debouncer(milliseconds: 500);
+  final Debouncer _languageQueryDebouncer = Debouncer(milliseconds: 500);
 
   DiscoverNewTripsCubit({
     required GetPublicTrips getPublicTrips,
@@ -52,7 +54,7 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
       normal: (state) {
         emit(state.copyWith(query: value));
         _queryDebouncer.run(() {
-          emit(state.copyWith(filteredTrips: _filteredTrips));
+          emit(state.copyWith(query: value, filteredTrips: _filteredTrips));
         });
       },
     );
@@ -75,6 +77,9 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
         (trips) => emit(DiscoverNewTripsState.normal(
           trips: trips,
           filteredTrips: trips,
+          //TODO implements with a list of favorite languages, for now it's empty
+          selectedLanguages: {},
+          availableLanguages: Languages.defaultLanguages,
         )),
       ),
     );
@@ -84,6 +89,44 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
   void onMoreSectionTapped() {
     state.mapOrNull(
       normal: (state) => emit(state.copyWith(isMoreSectionOpen: !state.isMoreSectionOpen)),
+    );
+  }
+
+  //TODO test
+  void filterByLanguage(Language language) {
+    state.mapOrNull(
+      normal: (state) {
+        if (state.selectedLanguages.contains(language.isoCode)) {
+          emit(state.copyWith(
+              selectedLanguages: Set.from(state.selectedLanguages)..remove(language.isoCode)));
+        } else {
+          emit(state.copyWith(
+              selectedLanguages: Set.from(state.selectedLanguages)..add(language.isoCode)));
+        }
+      },
+    );
+  }
+
+  void languageQueryChanged(String query) {
+    final languageQuery = query.toLowerCase();
+    state.mapOrNull(
+      normal: (state) {
+        emit(state.copyWith(languageQuery: languageQuery));
+        _languageQueryDebouncer.run(() {
+          if (languageQuery.isEmpty) {
+            emit(state.copyWith(
+                languageQuery: languageQuery, availableLanguages: Languages.defaultLanguages));
+          } else {
+            emit(state.copyWith(
+              languageQuery: languageQuery,
+              availableLanguages: Languages.defaultLanguages.where((language) {
+                return language.nativeName.toLowerCase().startsWith(languageQuery) ||
+                    language.name.toLowerCase().startsWith(languageQuery);
+              }).toList(),
+            ));
+          }
+        });
+      },
     );
   }
 }

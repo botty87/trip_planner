@@ -12,6 +12,9 @@ sealed class DiscoverNewTripsState with _$DiscoverNewTripsState {
     required List<Trip> filteredTrips,
     @Default(false) bool searchDescription,
     @Default(false) bool isMoreSectionOpen,
+    required Set<String> selectedLanguages,
+    @Default('') String languageQuery,
+    required List<Language> availableLanguages,
   }) = _StateNormal;
 
   const factory DiscoverNewTripsState.error({

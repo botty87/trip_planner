@@ -27,6 +27,7 @@ class _MoreSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _DescriptionSearch(),
+            _LanguagesFilter(),
           ],
         ));
   }

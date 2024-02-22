@@ -160,5 +160,7 @@
     "language" : "Lingua",
     "tripLanguageEmpty" : "Seleziona la lingua per questo viaggio",
     "more" : "Altro",
-    "hide" : "Nascondi"
+    "hide" : "Nascondi",
+    "searchLanguage" : "Cerca lingua",
+    "noLanguagesAvailable" : "Nessuna lingua disponibile"
 }

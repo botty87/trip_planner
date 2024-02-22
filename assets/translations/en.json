@@ -159,5 +159,7 @@
     "language" : "Language",
     "tripLanguageEmpty" : "Please select a language for the trip",
     "more" : "More",
-    "hide" : "Hide"
+    "hide" : "Hide",
+    "searchLanguage" : "Search language",
+    "noLanguagesAvailable" : "No languages available"
 }
