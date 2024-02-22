@@ -15,7 +15,7 @@ class _MoreBar extends StatelessWidget {
             Container(
               width: 20,
               height: 1,
-              color: Theme.of(context).colorScheme.onSurface,
+              color: Theme.of(context).colorScheme.secondary,
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: horizontalSpaceS),
@@ -23,9 +23,8 @@ class _MoreBar extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                //duration: const Duration(milliseconds: 300),
                 height: 1,
-                color: Theme.of(context).colorScheme.onSurface,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
             const _ArrowWidget(),
@@ -36,18 +35,14 @@ class _MoreBar extends StatelessWidget {
   }
 }
 
-class _TextWidget extends HookWidget {
+class _TextWidget extends StatelessWidget {
   const _TextWidget();
 
   @override
   Widget build(BuildContext context) {
-    final previousIsOpen = usePrevious(context.read<DiscoverNewTripsCubit>().state.mapOrNull(
-          normal: (state) => state.isMoreSectionOpen,
-        ));
-
     final isOpen = context.select((DiscoverNewTripsCubit cubit) => cubit.state.maybeMap(
           normal: (state) => state.isMoreSectionOpen,
-          orElse: () => previousIsOpen ?? false,
+          orElse: () => false,
         ));
 
     final text = isOpen ? LocaleKeys.hide.tr() : LocaleKeys.more.tr();

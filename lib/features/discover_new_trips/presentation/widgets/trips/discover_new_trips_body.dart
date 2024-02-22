@@ -10,8 +10,8 @@ class _DiscoverNewTripBody extends StatelessWidget {
       builder: (context, state) {
         return state.map(
           initial: (_) => const SizedBox.shrink(),
-          normal: (state) => Padding(
-            padding: const EdgeInsets.only(
+          normal: (state) => const Padding(
+            padding: EdgeInsets.only(
               top: pageVerticalPadding,
               left: pageHorizontalPadding,
               right: pageHorizontalPadding,
@@ -19,7 +19,7 @@ class _DiscoverNewTripBody extends StatelessWidget {
             child: Column(
               children: [
                 _DiscoverNewTripsSearchBar(),
-                const Expanded(child: _DiscoverNewTripList()),
+                Expanded(child: _DiscoverNewTripList()),
               ],
             ),
           ),

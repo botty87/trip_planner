@@ -10,6 +10,10 @@ class _DiscoverNewTripList extends StatelessWidget {
           orElse: () => throw Exception('Unexpected state'),
         ));
 
+    return AnimatedSizeAndFade(child: _buildChild(filteredTrips, context));
+  }
+
+  Widget _buildChild(List<Trip> filteredTrips, BuildContext context) {
     if (filteredTrips.isEmpty) {
       return const _NoTripsWidget();
     }

@@ -1,6 +1,7 @@
 import 'package:animated_size_and_fade/animated_size_and_fade.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
@@ -29,7 +31,8 @@ part '../widgets/trips/no_trips_widget.dart';
 part '../widgets/trips/trip_card.dart';
 part '../widgets/trips/search_bar/search_field.dart';
 part '../widgets/trips/search_bar/more_bar.dart';
-part '../widgets/trips/search_bar/more_section.dart';
+part '../widgets/trips/search_bar/more_section/more_section.dart';
+part '../widgets/trips/search_bar/more_section/description_search.dart';
 
 @RoutePage()
 class DiscoverNewTripsPage extends StatelessWidget {

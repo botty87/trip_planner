@@ -1,9 +1,7 @@
 part of '../../../pages/discover_new_trips_page.dart';
 
 class _DiscoverNewTripsSearchBar extends StatelessWidget {
-  final TextEditingController _textEditingController = TextEditingController();
-
-  _DiscoverNewTripsSearchBar();
+  const _DiscoverNewTripsSearchBar();
 
   @override
   Widget build(BuildContext context) {

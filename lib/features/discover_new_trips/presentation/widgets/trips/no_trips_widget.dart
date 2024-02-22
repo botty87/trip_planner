@@ -7,28 +7,31 @@ class _NoTripsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       minimum: const EdgeInsets.all(verticalSpaceL),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: verticalSpaceL),
-              child: Text(
-                LocaleKeys.noPubblicTripsFound.tr(),
-                style: GoogleFonts.caveat(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+      child: BackgroundWidgetContainer(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: verticalSpaceL),
+                child: Text(
+                  LocaleKeys.noPubblicTripsFound.tr(),
+                  style: GoogleFonts.caveat(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-          ),
-          Expanded(
-            child: SvgPicture(
-              AssetBytesLoader(Assets.svg.noPublicTripsSvg),
+            Flexible(
+              child: SvgPicture(
+                AssetBytesLoader(Assets.svg.noPublicTripsSvg),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

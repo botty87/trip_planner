@@ -61,8 +61,9 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
   searchDescriptionChanged(bool value) {
     state.mapOrNull(
       normal: (state) {
+        //First emit to update the switch state, then emit to update the filteredTrips
         emit(state.copyWith(searchDescription: value));
-        emit(state.copyWith(filteredTrips: _filteredTrips));
+        emit(state.copyWith(searchDescription: value, filteredTrips: _filteredTrips));
       },
     );
   }

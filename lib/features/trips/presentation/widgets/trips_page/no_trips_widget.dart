@@ -6,6 +6,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../../core/widgets/theme/background_widget_container.dart';
 import '../../../../../gen/assets.gen.dart';
 
 class NoTripsWidget extends StatelessWidget {
@@ -15,35 +16,37 @@ class NoTripsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       minimum: const EdgeInsets.all(verticalSpaceL),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Center(
-            child: Text(
-              LocaleKeys.noTripAddOne.tr(),
-              style: GoogleFonts.caveat(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+      child: BackgroundWidgetContainer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(
+              child: Text(
+                LocaleKeys.noTripAddOne.tr(),
+                style: GoogleFonts.caveat(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
-          ),
-          Expanded(
-            child: SvgPicture(
-              AssetBytesLoader(Assets.svg.tripSvg),
-            ),
-          ),
-          Transform.rotate(
-            angle: 160,
-            child: Transform.flip(
-              flipX: true,
+            Expanded(
               child: SvgPicture(
-                AssetBytesLoader(Assets.svg.arrowSvg),
-                height: 150,
+                AssetBytesLoader(Assets.svg.tripSvg),
               ),
             ),
-          ),
-        ],
+            Transform.rotate(
+              angle: 160,
+              child: Transform.flip(
+                flipX: true,
+                child: SvgPicture(
+                  AssetBytesLoader(Assets.svg.arrowSvg),
+                  height: 150,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
