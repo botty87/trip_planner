@@ -8,22 +8,24 @@ class _DiscoverNewTripBody extends StatelessWidget {
     return BlocBuilder<DiscoverNewTripsCubit, DiscoverNewTripsState>(
       buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
       builder: (context, state) {
-        return state.map(
-          initial: (_) => const SizedBox.shrink(),
-          normal: (state) => const Padding(
-            padding: EdgeInsets.only(
-              top: pageVerticalPadding,
-              left: pageHorizontalPadding,
-              right: pageHorizontalPadding,
+        return TripPagesAnimatedSwitcher(
+          child: state.map(
+            initial: (_) => const SizedBox.shrink(),
+            normal: (state) => const Padding(
+              padding: EdgeInsets.only(
+                top: pageVerticalPadding,
+                left: pageHorizontalPadding,
+                right: pageHorizontalPadding,
+              ),
+              child: Column(
+                children: [
+                  _DiscoverNewTripsSearchBar(),
+                  Expanded(child: _DiscoverNewTripList()),
+                ],
+              ),
             ),
-            child: Column(
-              children: [
-                _DiscoverNewTripsSearchBar(),
-                Expanded(child: _DiscoverNewTripList()),
-              ],
-            ),
+            error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),
           ),
-          error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),
         );
       },
     );

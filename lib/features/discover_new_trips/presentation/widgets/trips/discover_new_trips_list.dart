@@ -7,10 +7,10 @@ class _DiscoverNewTripList extends StatelessWidget {
   Widget build(BuildContext context) {
     final filteredTrips = context.select((DiscoverNewTripsCubit cubit) => cubit.state.maybeMap(
           normal: (state) => state.filteredTrips,
-          orElse: () => throw Exception('Unexpected state'),
+          orElse: () => <Trip>[],
         ));
 
-    return AnimatedSizeAndFade(child: _buildChild(filteredTrips, context));
+    return TripPagesAnimatedSwitcher(child: _buildChild(filteredTrips, context));
   }
 
   Widget _buildChild(List<Trip> filteredTrips, BuildContext context) {
