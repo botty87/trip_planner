@@ -203,7 +203,7 @@ class Languages {
   static Language get zhuang => const Language('za', 'Zhuang', 'Saɯ cueŋƅ, Saw cuengh');
   static Language get zulu => const Language('zu', 'Zulu', 'isiZulu');
 
-  static List<Language> defaultLanguages = [
+  static Set<Language> defaultLanguages = {
     Languages.abkhazian,
     Languages.afar,
     Languages.afrikaans,
@@ -389,5 +389,5 @@ class Languages {
     Languages.yoruba,
     Languages.zhuang,
     Languages.zulu
-  ];
+  };
 }

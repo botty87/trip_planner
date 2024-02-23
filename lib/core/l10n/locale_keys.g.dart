@@ -161,5 +161,6 @@ abstract class  LocaleKeys {
   static const hide = 'hide';
   static const searchLanguage = 'searchLanguage';
   static const noLanguagesAvailable = 'noLanguagesAvailable';
+  static const showOnlySelectedLanguages = 'showOnlySelectedLanguages';
 
 }

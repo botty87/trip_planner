@@ -161,5 +161,6 @@
     "more" : "More",
     "hide" : "Hide",
     "searchLanguage" : "Search language",
-    "noLanguagesAvailable" : "No languages available"
+    "noLanguagesAvailable" : "No languages available",
+    "showOnlySelectedLanguages" : "Show only selected languages"
 }

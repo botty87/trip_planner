@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -29,38 +30,12 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
         _userId = user.id,
         super(const DiscoverNewTripsState.initial());
 
-  void _filterTrips() {
-    state.maybeMap(
+  void _filterTrips() async {
+    final filteredTrips = await compute(_filtertTripsByQueryAndLanguage, state);
+    state.mapOrNull(
       normal: (state) {
-        final query = state.query;
-        final List<Trip> filteredTripsByQuery;
-        if (query.isEmpty) {
-          filteredTripsByQuery = state.trips;
-        } else {
-          filteredTripsByQuery = state.trips
-              .where((trip) => trip.name.toLowerCase().contains(query.toLowerCase())
-                  ? true
-                  : state.searchDescription
-                      ? trip.description?.toLowerCase().contains(query.toLowerCase()) ?? false
-                      : false)
-              .toList();
-        }
-
-        final selectedLanguages = state.selectedLanguages;
-
-        final List<Trip> filteredTripsByLanguage = [];
-        if (selectedLanguages.isEmpty) {
-          filteredTripsByLanguage.addAll(filteredTripsByQuery);
-        } else {
-          for (final language in selectedLanguages) {
-            filteredTripsByLanguage
-                .addAll(filteredTripsByQuery.where((trip) => trip.languageCode == language));
-          }
-        }
-
-        emit(state.copyWith(filteredTrips: filteredTripsByLanguage));
+        emit(state.copyWith(filteredTrips: filteredTrips));
       },
-      orElse: () => throw const UnexpectedStateException(),
     );
   }
 
@@ -108,14 +83,21 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
   void filterByLanguage(Language language) {
     state.mapOrNull(
       normal: (state) {
-        if (state.selectedLanguages.contains(language.isoCode)) {
-          emit(state.copyWith(
-              selectedLanguages: Set.from(state.selectedLanguages)..remove(language.isoCode)));
+        final Set<Language> selectedLanguages;
+
+        if (state.selectedLanguages.contains(language)) {
+          selectedLanguages = Set.from(state.selectedLanguages)..remove(language);
         } else {
-          emit(state.copyWith(
-              selectedLanguages: Set.from(state.selectedLanguages)..add(language.isoCode)));
+          selectedLanguages = Set.from(state.selectedLanguages)..add(language);
         }
+
+        emit(state.copyWith(selectedLanguages: selectedLanguages));
+
         _filterTrips();
+
+        if (state.showOnlySelectedLanguages) {
+          _updateAvailableLanguages();
+        }
       },
     );
   }
@@ -133,16 +115,63 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
   void _updateAvailableLanguages() {
     state.mapOrNull(normal: (state) {
       final languageQuery = state.languageQuery;
+      final Set<Language> availableLanguages = {};
+
       if (languageQuery.isEmpty) {
-        emit(state.copyWith(availableLanguages: Languages.defaultLanguages));
+        availableLanguages.addAll(Languages.defaultLanguages);
       } else {
-        emit(state.copyWith(
-          availableLanguages: Languages.defaultLanguages.where((language) {
-            return language.nativeName.toLowerCase().startsWith(languageQuery) ||
-                language.name.toLowerCase().startsWith(languageQuery);
-          }).toList(),
-        ));
+        availableLanguages.addAll(Languages.defaultLanguages
+            .where((language) => language.nativeName.toLowerCase().startsWith(languageQuery)));
       }
+
+      if (state.showOnlySelectedLanguages) {
+        availableLanguages.retainAll(state.selectedLanguages);
+      }
+
+      emit(state.copyWith(availableLanguages: availableLanguages));
     });
   }
+
+  //TODO test this method
+  void showOnlySelectedLanguages(bool value) {
+    state.mapOrNull(normal: (state) => emit(state.copyWith(showOnlySelectedLanguages: value)));
+    _updateAvailableLanguages();
+  }
+}
+
+// Helper function to filter trips by query and language
+List<Trip> _filtertTripsByQueryAndLanguage(DiscoverNewTripsState state) {
+  return state.maybeMap(
+    normal: (state) {
+      final query = state.query;
+
+      final List<Trip> filteredTripsByQuery;
+      if (query.isEmpty) {
+        filteredTripsByQuery = state.trips;
+      } else {
+        filteredTripsByQuery = state.trips
+            .where((trip) => trip.name.toLowerCase().contains(query.toLowerCase())
+                ? true
+                : state.searchDescription
+                    ? trip.description?.toLowerCase().contains(query.toLowerCase()) ?? false
+                    : false)
+            .toList();
+      }
+
+      final selectedLanguages = state.selectedLanguages;
+
+      final List<Trip> filteredTripsByLanguage = [];
+      if (selectedLanguages.isEmpty) {
+        filteredTripsByLanguage.addAll(filteredTripsByQuery);
+      } else {
+        for (final language in selectedLanguages) {
+          filteredTripsByLanguage
+              .addAll(filteredTripsByQuery.where((trip) => trip.languageCode == language));
+        }
+      }
+
+      return filteredTripsByLanguage;
+    },
+    orElse: () => throw const UnexpectedStateException(),
+  );
 }

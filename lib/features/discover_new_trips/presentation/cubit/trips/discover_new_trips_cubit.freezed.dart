@@ -25,9 +25,10 @@ mixin _$DiscoverNewTripsState {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)
         normal,
     required TResult Function(String message) error,
   }) =>
@@ -41,9 +42,10 @@ mixin _$DiscoverNewTripsState {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)?
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)?
         normal,
     TResult? Function(String message)? error,
   }) =>
@@ -57,9 +59,10 @@ mixin _$DiscoverNewTripsState {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)?
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)?
         normal,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -126,12 +129,19 @@ class __$$StateInitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StateInitialImpl implements _StateInitial {
+class _$StateInitialImpl with DiagnosticableTreeMixin implements _StateInitial {
   const _$StateInitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DiscoverNewTripsState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'DiscoverNewTripsState.initial'));
   }
 
   @override
@@ -153,9 +163,10 @@ class _$StateInitialImpl implements _StateInitial {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)
         normal,
     required TResult Function(String message) error,
   }) {
@@ -172,9 +183,10 @@ class _$StateInitialImpl implements _StateInitial {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)?
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)?
         normal,
     TResult? Function(String message)? error,
   }) {
@@ -191,9 +203,10 @@ class _$StateInitialImpl implements _StateInitial {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)?
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)?
         normal,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -255,9 +268,10 @@ abstract class _$$StateNormalImplCopyWith<$Res> {
       List<Trip> filteredTrips,
       bool searchDescription,
       bool isMoreSectionOpen,
-      Set<String> selectedLanguages,
+      Set<Language> selectedLanguages,
       String languageQuery,
-      List<Language> availableLanguages});
+      Set<Language> availableLanguages,
+      bool showOnlySelectedLanguages});
 }
 
 /// @nodoc
@@ -279,6 +293,7 @@ class __$$StateNormalImplCopyWithImpl<$Res>
     Object? selectedLanguages = null,
     Object? languageQuery = null,
     Object? availableLanguages = null,
+    Object? showOnlySelectedLanguages = null,
   }) {
     return _then(_$StateNormalImpl(
       query: null == query
@@ -304,7 +319,7 @@ class __$$StateNormalImplCopyWithImpl<$Res>
       selectedLanguages: null == selectedLanguages
           ? _value._selectedLanguages
           : selectedLanguages // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
+              as Set<Language>,
       languageQuery: null == languageQuery
           ? _value.languageQuery
           : languageQuery // ignore: cast_nullable_to_non_nullable
@@ -312,23 +327,28 @@ class __$$StateNormalImplCopyWithImpl<$Res>
       availableLanguages: null == availableLanguages
           ? _value._availableLanguages
           : availableLanguages // ignore: cast_nullable_to_non_nullable
-              as List<Language>,
+              as Set<Language>,
+      showOnlySelectedLanguages: null == showOnlySelectedLanguages
+          ? _value.showOnlySelectedLanguages
+          : showOnlySelectedLanguages // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$StateNormalImpl implements _StateNormal {
+class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
   const _$StateNormalImpl(
       {this.query = '',
       required final List<Trip> trips,
       required final List<Trip> filteredTrips,
       this.searchDescription = false,
       this.isMoreSectionOpen = false,
-      required final Set<String> selectedLanguages,
+      required final Set<Language> selectedLanguages,
       this.languageQuery = '',
-      required final List<Language> availableLanguages})
+      required final Set<Language> availableLanguages,
+      this.showOnlySelectedLanguages = false})
       : _trips = trips,
         _filteredTrips = filteredTrips,
         _selectedLanguages = selectedLanguages,
@@ -359,9 +379,9 @@ class _$StateNormalImpl implements _StateNormal {
   @override
   @JsonKey()
   final bool isMoreSectionOpen;
-  final Set<String> _selectedLanguages;
+  final Set<Language> _selectedLanguages;
   @override
-  Set<String> get selectedLanguages {
+  Set<Language> get selectedLanguages {
     if (_selectedLanguages is EqualUnmodifiableSetView)
       return _selectedLanguages;
     // ignore: implicit_dynamic_type
@@ -371,18 +391,39 @@ class _$StateNormalImpl implements _StateNormal {
   @override
   @JsonKey()
   final String languageQuery;
-  final List<Language> _availableLanguages;
+  final Set<Language> _availableLanguages;
   @override
-  List<Language> get availableLanguages {
-    if (_availableLanguages is EqualUnmodifiableListView)
+  Set<Language> get availableLanguages {
+    if (_availableLanguages is EqualUnmodifiableSetView)
       return _availableLanguages;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_availableLanguages);
+    return EqualUnmodifiableSetView(_availableLanguages);
   }
 
   @override
-  String toString() {
-    return 'DiscoverNewTripsState.normal(query: $query, trips: $trips, filteredTrips: $filteredTrips, searchDescription: $searchDescription, isMoreSectionOpen: $isMoreSectionOpen, selectedLanguages: $selectedLanguages, languageQuery: $languageQuery, availableLanguages: $availableLanguages)';
+  @JsonKey()
+  final bool showOnlySelectedLanguages;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DiscoverNewTripsState.normal(query: $query, trips: $trips, filteredTrips: $filteredTrips, searchDescription: $searchDescription, isMoreSectionOpen: $isMoreSectionOpen, selectedLanguages: $selectedLanguages, languageQuery: $languageQuery, availableLanguages: $availableLanguages, showOnlySelectedLanguages: $showOnlySelectedLanguages)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DiscoverNewTripsState.normal'))
+      ..add(DiagnosticsProperty('query', query))
+      ..add(DiagnosticsProperty('trips', trips))
+      ..add(DiagnosticsProperty('filteredTrips', filteredTrips))
+      ..add(DiagnosticsProperty('searchDescription', searchDescription))
+      ..add(DiagnosticsProperty('isMoreSectionOpen', isMoreSectionOpen))
+      ..add(DiagnosticsProperty('selectedLanguages', selectedLanguages))
+      ..add(DiagnosticsProperty('languageQuery', languageQuery))
+      ..add(DiagnosticsProperty('availableLanguages', availableLanguages))
+      ..add(DiagnosticsProperty(
+          'showOnlySelectedLanguages', showOnlySelectedLanguages));
   }
 
   @override
@@ -403,7 +444,10 @@ class _$StateNormalImpl implements _StateNormal {
             (identical(other.languageQuery, languageQuery) ||
                 other.languageQuery == languageQuery) &&
             const DeepCollectionEquality()
-                .equals(other._availableLanguages, _availableLanguages));
+                .equals(other._availableLanguages, _availableLanguages) &&
+            (identical(other.showOnlySelectedLanguages,
+                    showOnlySelectedLanguages) ||
+                other.showOnlySelectedLanguages == showOnlySelectedLanguages));
   }
 
   @override
@@ -416,7 +460,8 @@ class _$StateNormalImpl implements _StateNormal {
       isMoreSectionOpen,
       const DeepCollectionEquality().hash(_selectedLanguages),
       languageQuery,
-      const DeepCollectionEquality().hash(_availableLanguages));
+      const DeepCollectionEquality().hash(_availableLanguages),
+      showOnlySelectedLanguages);
 
   @JsonKey(ignore: true)
   @override
@@ -434,9 +479,10 @@ class _$StateNormalImpl implements _StateNormal {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)
         normal,
     required TResult Function(String message) error,
   }) {
@@ -448,7 +494,8 @@ class _$StateNormalImpl implements _StateNormal {
         isMoreSectionOpen,
         selectedLanguages,
         languageQuery,
-        availableLanguages);
+        availableLanguages,
+        showOnlySelectedLanguages);
   }
 
   @override
@@ -461,9 +508,10 @@ class _$StateNormalImpl implements _StateNormal {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)?
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)?
         normal,
     TResult? Function(String message)? error,
   }) {
@@ -475,7 +523,8 @@ class _$StateNormalImpl implements _StateNormal {
         isMoreSectionOpen,
         selectedLanguages,
         languageQuery,
-        availableLanguages);
+        availableLanguages,
+        showOnlySelectedLanguages);
   }
 
   @override
@@ -488,9 +537,10 @@ class _$StateNormalImpl implements _StateNormal {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)?
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)?
         normal,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -504,7 +554,8 @@ class _$StateNormalImpl implements _StateNormal {
           isMoreSectionOpen,
           selectedLanguages,
           languageQuery,
-          availableLanguages);
+          availableLanguages,
+          showOnlySelectedLanguages);
     }
     return orElse();
   }
@@ -551,18 +602,20 @@ abstract class _StateNormal implements DiscoverNewTripsState {
       required final List<Trip> filteredTrips,
       final bool searchDescription,
       final bool isMoreSectionOpen,
-      required final Set<String> selectedLanguages,
+      required final Set<Language> selectedLanguages,
       final String languageQuery,
-      required final List<Language> availableLanguages}) = _$StateNormalImpl;
+      required final Set<Language> availableLanguages,
+      final bool showOnlySelectedLanguages}) = _$StateNormalImpl;
 
   String get query;
   List<Trip> get trips;
   List<Trip> get filteredTrips;
   bool get searchDescription;
   bool get isMoreSectionOpen;
-  Set<String> get selectedLanguages;
+  Set<Language> get selectedLanguages;
   String get languageQuery;
-  List<Language> get availableLanguages;
+  Set<Language> get availableLanguages;
+  bool get showOnlySelectedLanguages;
   @JsonKey(ignore: true)
   _$$StateNormalImplCopyWith<_$StateNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -601,15 +654,23 @@ class __$$StateErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StateErrorImpl implements _StateError {
+class _$StateErrorImpl with DiagnosticableTreeMixin implements _StateError {
   const _$StateErrorImpl({required this.message});
 
   @override
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DiscoverNewTripsState.error(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DiscoverNewTripsState.error'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -639,9 +700,10 @@ class _$StateErrorImpl implements _StateError {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)
         normal,
     required TResult Function(String message) error,
   }) {
@@ -658,9 +720,10 @@ class _$StateErrorImpl implements _StateError {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)?
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)?
         normal,
     TResult? Function(String message)? error,
   }) {
@@ -677,9 +740,10 @@ class _$StateErrorImpl implements _StateError {
             List<Trip> filteredTrips,
             bool searchDescription,
             bool isMoreSectionOpen,
-            Set<String> selectedLanguages,
+            Set<Language> selectedLanguages,
             String languageQuery,
-            List<Language> availableLanguages)?
+            Set<Language> availableLanguages,
+            bool showOnlySelectedLanguages)?
         normal,
     TResult Function(String message)? error,
     required TResult orElse(),

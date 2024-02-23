@@ -20,7 +20,7 @@ class _DiscoverNewTripBody extends StatelessWidget {
               child: Column(
                 children: [
                   _DiscoverNewTripsSearchBar(),
-                  Expanded(child: _DiscoverNewTripList()),
+                  Flexible(child: _DiscoverNewTripList()),
                 ],
               ),
             ),

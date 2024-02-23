@@ -10,9 +10,10 @@ class DiscoverNewTripsState with _$DiscoverNewTripsState {
     required List<Trip> filteredTrips,
     @Default(false) bool searchDescription,
     @Default(false) bool isMoreSectionOpen,
-    required Set<String> selectedLanguages,
+    required Set<Language> selectedLanguages,
     @Default('') String languageQuery,
-    required List<Language> availableLanguages,
+    required Set<Language> availableLanguages,
+    @Default(false) bool showOnlySelectedLanguages,
   }) = _StateNormal;
 
   const factory DiscoverNewTripsState.error({

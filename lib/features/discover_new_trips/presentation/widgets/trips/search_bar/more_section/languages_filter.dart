@@ -10,6 +10,8 @@ class _LanguagesFilter extends StatelessWidget {
         _LanguageSearch(),
         SizedBox(height: verticalSpace),
         _LanguagesRow(),
+        SizedBox(height: verticalSpaceXs),
+        _ShowOnlySelectedLanguages(),
       ],
     );
   }
@@ -22,7 +24,7 @@ class _LanguagesRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final availableLanguages = context.select((DiscoverNewTripsCubit cubit) => cubit.state.maybeMap(
           normal: (state) => state.availableLanguages,
-          orElse: () => const <Language>[],
+          orElse: () => const <Language>{},
         ));
 
     return SizedBox(
@@ -33,7 +35,7 @@ class _LanguagesRow extends StatelessWidget {
         ));
   }
 
-  Widget _buildChild(List<Language> availableLanguages, BuildContext context) {
+  Widget _buildChild(Set<Language> availableLanguages, BuildContext context) {
     if (availableLanguages.isEmpty) {
       return Text(
         LocaleKeys.noLanguagesAvailable.tr(),
@@ -46,7 +48,7 @@ class _LanguagesRow extends StatelessWidget {
       itemCount: availableLanguages.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        final language = availableLanguages[index];
+        final language = availableLanguages.elementAt(index);
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: horizontalSpaceXs),
           child: _LanguageFilterItem(
@@ -67,7 +69,7 @@ class _LanguageFilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSelected = context.select((DiscoverNewTripsCubit cubit) => cubit.state.maybeMap(
-          normal: (state) => state.selectedLanguages.contains(language.isoCode),
+          normal: (state) => state.selectedLanguages.contains(language),
           orElse: () => false,
         ));
 
@@ -111,6 +113,34 @@ class _LanguageSearch extends HookWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+class _ShowOnlySelectedLanguages extends StatelessWidget {
+  const _ShowOnlySelectedLanguages();
+
+  @override
+  Widget build(BuildContext context) {
+    final showOnlySelectedLanguages =
+        context.select((DiscoverNewTripsCubit cubit) => cubit.state.maybeMap(
+              normal: (state) => state.showOnlySelectedLanguages,
+              orElse: () => false,
+            ));
+
+    return Row(
+      children: [
+        Flexible(
+          child: Text(LocaleKeys.showOnlySelectedLanguages.tr(),
+              style: Theme.of(context).textTheme.labelLarge),
+        ),
+        const SizedBox(width: horizontalSpaceXs),
+        Switch(
+          value: showOnlySelectedLanguages,
+          onChanged: (value) =>
+              context.read<DiscoverNewTripsCubit>().showOnlySelectedLanguages(value),
+        ),
+      ],
     );
   }
 }
