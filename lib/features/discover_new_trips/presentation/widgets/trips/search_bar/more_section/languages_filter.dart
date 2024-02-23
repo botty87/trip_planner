@@ -38,7 +38,7 @@ class _LanguagesRow extends StatelessWidget {
   Widget _buildChild(Set<Language> availableLanguages, BuildContext context) {
     if (availableLanguages.isEmpty) {
       return Text(
-        LocaleKeys.noLanguagesAvailable.tr(),
+        LocaleKeys.noLanguages.tr(),
         style: Theme.of(context).textTheme.titleMedium,
       );
     }

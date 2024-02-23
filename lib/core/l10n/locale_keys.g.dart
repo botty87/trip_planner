@@ -160,7 +160,7 @@ abstract class  LocaleKeys {
   static const more = 'more';
   static const hide = 'hide';
   static const searchLanguage = 'searchLanguage';
-  static const noLanguagesAvailable = 'noLanguagesAvailable';
+  static const noLanguages = 'noLanguages';
   static const showOnlySelectedLanguages = 'showOnlySelectedLanguages';
 
 }

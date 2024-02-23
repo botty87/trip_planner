@@ -162,6 +162,6 @@
     "more" : "Altro",
     "hide" : "Nascondi",
     "searchLanguage" : "Cerca lingua",
-    "noLanguagesAvailable" : "Nessuna lingua disponibile",
+    "noLanguages" : "Nessuna lingua",
     "showOnlySelectedLanguages" : "Mostra solo le lingue selezionate"
 }
