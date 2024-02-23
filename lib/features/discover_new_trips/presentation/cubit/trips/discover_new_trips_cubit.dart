@@ -29,20 +29,21 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
         _userId = user.id,
         super(const DiscoverNewTripsState.initial());
 
-  List<Trip> get _filteredTrips {
-    return state.maybeMap(
+  void _filterTrips() {
+    state.maybeMap(
       normal: (state) {
         final query = state.query;
         if (query.isEmpty) {
-          return state.trips;
+          emit(state.copyWith(filteredTrips: state.trips));
         } else {
-          return state.trips.where((trip) {
-            return trip.name.toLowerCase().contains(query.toLowerCase())
-                ? true
-                : state.searchDescription
-                    ? trip.description?.toLowerCase().contains(query.toLowerCase()) ?? false
-                    : false;
-          }).toList();
+          final filteredTrips = state.trips
+              .where((trip) => trip.name.toLowerCase().contains(query.toLowerCase())
+                  ? true
+                  : state.searchDescription
+                      ? trip.description?.toLowerCase().contains(query.toLowerCase()) ?? false
+                      : false)
+              .toList();
+          emit(state.copyWith(filteredTrips: filteredTrips));
         }
       },
       orElse: () => throw const UnexpectedStateException(),
@@ -54,7 +55,7 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
       normal: (state) {
         emit(state.copyWith(query: value));
         _queryDebouncer.run(() {
-          emit(state.copyWith(query: value, filteredTrips: _filteredTrips));
+          _filterTrips();
         });
       },
     );
@@ -63,9 +64,8 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
   searchDescriptionChanged(bool value) {
     state.mapOrNull(
       normal: (state) {
-        //First emit to update the switch state, then emit to update the filteredTrips
         emit(state.copyWith(searchDescription: value));
-        emit(state.copyWith(searchDescription: value, filteredTrips: _filteredTrips));
+        _filterTrips();
       },
     );
   }
@@ -85,14 +85,12 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
     );
   }
 
-  //TODO test
   void onMoreSectionTapped() {
     state.mapOrNull(
       normal: (state) => emit(state.copyWith(isMoreSectionOpen: !state.isMoreSectionOpen)),
     );
   }
 
-  //TODO test
   void filterByLanguage(Language language) {
     state.mapOrNull(
       normal: (state) {
@@ -108,25 +106,28 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
   }
 
   void languageQueryChanged(String query) {
-    final languageQuery = query.toLowerCase();
     state.mapOrNull(
       normal: (state) {
+        final languageQuery = query.toLowerCase();
         emit(state.copyWith(languageQuery: languageQuery));
-        _languageQueryDebouncer.run(() {
-          if (languageQuery.isEmpty) {
-            emit(state.copyWith(
-                languageQuery: languageQuery, availableLanguages: Languages.defaultLanguages));
-          } else {
-            emit(state.copyWith(
-              languageQuery: languageQuery,
-              availableLanguages: Languages.defaultLanguages.where((language) {
-                return language.nativeName.toLowerCase().startsWith(languageQuery) ||
-                    language.name.toLowerCase().startsWith(languageQuery);
-              }).toList(),
-            ));
-          }
-        });
+        _languageQueryDebouncer.run(() => _updateAvailableLanguages());
       },
     );
+  }
+
+  void _updateAvailableLanguages() {
+    state.mapOrNull(normal: (state) {
+      final languageQuery = state.languageQuery;
+      if (languageQuery.isEmpty) {
+        emit(state.copyWith(availableLanguages: Languages.defaultLanguages));
+      } else {
+        emit(state.copyWith(
+          availableLanguages: Languages.defaultLanguages.where((language) {
+            return language.nativeName.toLowerCase().startsWith(languageQuery) ||
+                language.name.toLowerCase().startsWith(languageQuery);
+          }).toList(),
+        ));
+      }
+    });
   }
 }
