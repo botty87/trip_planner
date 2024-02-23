@@ -33,18 +33,32 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
     state.maybeMap(
       normal: (state) {
         final query = state.query;
+        final List<Trip> filteredTripsByQuery;
         if (query.isEmpty) {
-          emit(state.copyWith(filteredTrips: state.trips));
+          filteredTripsByQuery = state.trips;
         } else {
-          final filteredTrips = state.trips
+          filteredTripsByQuery = state.trips
               .where((trip) => trip.name.toLowerCase().contains(query.toLowerCase())
                   ? true
                   : state.searchDescription
                       ? trip.description?.toLowerCase().contains(query.toLowerCase()) ?? false
                       : false)
               .toList();
-          emit(state.copyWith(filteredTrips: filteredTrips));
         }
+
+        final selectedLanguages = state.selectedLanguages;
+
+        final List<Trip> filteredTripsByLanguage = [];
+        if (selectedLanguages.isEmpty) {
+          filteredTripsByLanguage.addAll(filteredTripsByQuery);
+        } else {
+          for (final language in selectedLanguages) {
+            filteredTripsByLanguage
+                .addAll(filteredTripsByQuery.where((trip) => trip.languageCode == language));
+          }
+        }
+
+        emit(state.copyWith(filteredTrips: filteredTripsByLanguage));
       },
       orElse: () => throw const UnexpectedStateException(),
     );
@@ -101,6 +115,7 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
           emit(state.copyWith(
               selectedLanguages: Set.from(state.selectedLanguages)..add(language.isoCode)));
         }
+        _filterTrips();
       },
     );
   }
