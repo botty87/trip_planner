@@ -36,6 +36,7 @@ part '../widgets/trips/search_bar/more_section/languages_filter.dart';
 part '../widgets/trips/search_bar/more_section/more_section.dart';
 part '../widgets/trips/search_bar/search_field.dart';
 part '../widgets/trips/trip_card.dart';
+part '../widgets/trips/discover_new_trips_loaded.dart';
 
 @RoutePage()
 class DiscoverNewTripsPage extends StatelessWidget {
