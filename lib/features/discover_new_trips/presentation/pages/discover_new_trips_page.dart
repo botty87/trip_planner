@@ -30,7 +30,7 @@ part '../widgets/trips/discover_new_trips_error_widget.dart';
 part '../widgets/trips/discover_new_trips_list.dart';
 part '../widgets/trips/no_trips_widget.dart';
 part '../widgets/trips/search_bar/discover_new_trips_search_bar.dart';
-part '../widgets/trips/search_bar/more_bar.dart';
+part '../widgets/trips/search_bar/more_section/more_bar.dart';
 part '../widgets/trips/search_bar/more_section/description_search.dart';
 part '../widgets/trips/search_bar/more_section/languages_filter.dart';
 part '../widgets/trips/search_bar/more_section/more_section.dart';
