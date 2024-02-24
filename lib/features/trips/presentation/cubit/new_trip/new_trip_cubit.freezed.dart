@@ -24,7 +24,7 @@ mixin _$NewTripState {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -39,7 +39,7 @@ mixin _$NewTripState {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -54,7 +54,7 @@ mixin _$NewTripState {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -119,7 +119,7 @@ abstract class _$$NormalImplCopyWith<$Res> {
       DateTime? startDate,
       bool isStartDateBeforeToday,
       bool isPublic,
-      String? languageCode});
+      String languageCode});
 }
 
 /// @nodoc
@@ -138,7 +138,7 @@ class __$$NormalImplCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? isStartDateBeforeToday = null,
     Object? isPublic = null,
-    Object? languageCode = freezed,
+    Object? languageCode = null,
   }) {
     return _then(_$NormalImpl(
       tripName: freezed == tripName
@@ -161,10 +161,10 @@ class __$$NormalImplCopyWithImpl<$Res>
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
               as bool,
-      languageCode: freezed == languageCode
+      languageCode: null == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -178,7 +178,7 @@ class _$NormalImpl implements _Normal {
       this.startDate,
       this.isStartDateBeforeToday = false,
       this.isPublic = false,
-      this.languageCode});
+      required this.languageCode});
 
   @override
   final String? tripName;
@@ -193,7 +193,7 @@ class _$NormalImpl implements _Normal {
   @JsonKey()
   final bool isPublic;
   @override
-  final String? languageCode;
+  final String languageCode;
 
   @override
   String toString() {
@@ -238,7 +238,7 @@ class _$NormalImpl implements _Normal {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -257,7 +257,7 @@ class _$NormalImpl implements _Normal {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -276,7 +276,7 @@ class _$NormalImpl implements _Normal {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -335,14 +335,14 @@ abstract class _Normal implements NewTripState {
       final DateTime? startDate,
       final bool isStartDateBeforeToday,
       final bool isPublic,
-      final String? languageCode}) = _$NormalImpl;
+      required final String languageCode}) = _$NormalImpl;
 
   String? get tripName;
   String? get tripDescription;
   DateTime? get startDate;
   bool get isStartDateBeforeToday;
   bool get isPublic;
-  String? get languageCode;
+  String get languageCode;
   @JsonKey(ignore: true)
   _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -392,7 +392,7 @@ class _$SavingImpl implements _Saving {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -410,7 +410,7 @@ class _$SavingImpl implements _Saving {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -428,7 +428,7 @@ class _$SavingImpl implements _Saving {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -527,7 +527,7 @@ class _$CreatedImpl implements _Created {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -545,7 +545,7 @@ class _$CreatedImpl implements _Created {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -563,7 +563,7 @@ class _$CreatedImpl implements _Created {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -689,7 +689,7 @@ class _$ErrorImpl implements _Error {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -707,7 +707,7 @@ class _$ErrorImpl implements _Error {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -725,7 +725,7 @@ class _$ErrorImpl implements _Error {
             DateTime? startDate,
             bool isStartDateBeforeToday,
             bool isPublic,
-            String? languageCode)?
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,

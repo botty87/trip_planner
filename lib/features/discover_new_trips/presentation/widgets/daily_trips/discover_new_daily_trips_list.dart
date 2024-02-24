@@ -14,7 +14,16 @@ class _DiscoverNewDailyTripList extends StatelessWidget {
           orElse: () => throw Exception('Unexpected state'),
         ));
 
-    if (dayTrips.isEmpty) return Center(child: Text(LocaleKeys.noDayTripsFound.tr()));
+    if (dayTrips.isEmpty) {
+      return BackgroundWidgetContainer(
+        child: Center(
+          child: Text(
+            LocaleKeys.noDayTripsFound.tr(),
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        ),
+      );
+    }
 
     return ListView.separated(
       shrinkWrap: true,

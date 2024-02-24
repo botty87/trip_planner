@@ -8,7 +8,7 @@ sealed class NewTripState with _$NewTripState {
     DateTime? startDate,
     @Default(false) bool isStartDateBeforeToday,
     @Default(false) bool isPublic,
-    String? languageCode,
+    required String languageCode,
   }) = _Normal;
 
   const factory NewTripState.saving() = _Saving;

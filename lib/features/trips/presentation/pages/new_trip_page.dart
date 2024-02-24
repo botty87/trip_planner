@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../core/di/di.dart';
+import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/widgets/snackbars.dart';
@@ -76,25 +77,21 @@ class _NewTripPageBody extends HookWidget {
           ),
         ),
       ],
-      child: StreamBuilder<bool>(
-          stream: isSaving.stream.distinct(),
-          initialData: false,
-          builder: (context, snapshot) {
-            return IgnorePointer(
-              ignoring: snapshot.data!,
-              child: NewEditTripForm(
-                onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-                onNameChanged: (String value) => cubit.nameChanged(value),
-                onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
-                saveSection: _CreateTripButton(isSaving: isSaving.stream),
-                onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
-                onLanguageCodeChanged: (value) => cubit.languageCodeChanged(value),
-                isSaving: isSaving.stream,
-                initialTripName: _existingTrip?.name,
-                initialTripDescription: _existingTrip?.description,
-              ),
-            );
-          }),
+      child: NewEditTripForm(
+        onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+        onNameChanged: (String value) => cubit.nameChanged(value),
+        onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
+        saveSection: _CreateTripButton(isSaving: isSaving.stream),
+        onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
+        onLanguageCodeChanged: (value) => cubit.languageCodeChanged(value),
+        isSaving: isSaving.stream,
+        initialTripName: _existingTrip?.name,
+        initialTripDescription: _existingTrip?.description,
+        initialLanguageCode: cubit.state.maybeMap(
+          normal: (state) => state.languageCode,
+          orElse: () => throw const UnexpectedStateException(),
+        ),
+      ),
     );
   }
 }

@@ -1,7 +1,7 @@
 part of 'new_edit_trip_form.dart';
 
 class _LanguageSelector extends StatelessWidget {
-  final String? initialLanguageCode;
+  final String initialLanguageCode;
   final ValueChanged<String> onLanguageCodeChanged;
 
   const _LanguageSelector({
@@ -14,15 +14,7 @@ class _LanguageSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: LayoutBuilder(builder: (context, constraints) {
-        if (initialLanguageCode != null) {
-          return _buildLanguageSelector(context, initialLanguageCode!.toLanguage, constraints);
-        } else {
-          return _buildLanguageSelector(
-            context,
-            getIt<Locale>(instanceName: deviceLocaleKey).languageCode.toLanguage,
-            constraints,
-          );
-        }
+        return _buildLanguageSelector(context, initialLanguageCode.toLanguage, constraints);
       }),
     );
   }
