@@ -1,4 +1,4 @@
-part of '../../../pages/discover_new_trips_page.dart';
+part of '../../../../pages/discover_new_trips_page.dart';
 
 class _MoreBar extends StatelessWidget {
   const _MoreBar();
