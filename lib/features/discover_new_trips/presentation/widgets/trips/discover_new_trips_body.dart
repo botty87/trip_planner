@@ -11,15 +11,7 @@ class _DiscoverNewTripBody extends StatelessWidget {
         return TripPagesAnimatedSwitcher(
           child: state.map(
             initial: (_) => const SizedBox.shrink(),
-            normal: (state) => ListView(
-              padding: defaultPagePadding,
-              shrinkWrap: true,
-              children: const [
-                _DiscoverNewTripsSearchBar(),
-                SizedBox(height: verticalSpace),
-                _DiscoverNewTripList(),
-              ],
-            ),
+            normal: (state) => const _DiscoverNewTripsLoaded(),
             error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),
           ),
         );
