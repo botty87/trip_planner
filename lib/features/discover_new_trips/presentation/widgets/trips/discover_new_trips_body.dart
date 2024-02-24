@@ -13,6 +13,7 @@ class _DiscoverNewTripBody extends StatelessWidget {
             initial: (_) => const SizedBox.shrink(),
             normal: (state) => ListView(
               padding: defaultPagePadding,
+              shrinkWrap: true,
               children: const [
                 _DiscoverNewTripsSearchBar(),
                 SizedBox(height: verticalSpace),
