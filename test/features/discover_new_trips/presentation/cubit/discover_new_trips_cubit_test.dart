@@ -168,7 +168,7 @@ void main() {
     act: (cubit) => cubit.filterByLanguage(Languages.english),
     expect: () => [
       tNormalState.mapOrNull(
-        normal: (state) => state.copyWith(selectedLanguages: {Languages.english.isoCode}),
+        normal: (state) => state.copyWith(selectedLanguages: {Languages.english}),
       ),
     ],
   );
@@ -176,7 +176,7 @@ void main() {
   blocTest<DiscoverNewTripsCubit, DiscoverNewTripsState>(
     'calling filterByLanguage should emit DiscoverNewTripsState.normal() without the language in selectedLanguages if present',
     seed: () => tNormalState.mapOrNull(
-        normal: (state) => state.copyWith(selectedLanguages: {Languages.english.isoCode}))!,
+        normal: (state) => state.copyWith(selectedLanguages: {Languages.english}))!,
     build: () => cubit(),
     act: (cubit) => cubit.filterByLanguage(Languages.english),
     expect: () => [
@@ -197,10 +197,10 @@ void main() {
       tNormalState.mapOrNull(
         normal: (state) => state.copyWith(
           languageQuery: 'english',
-          availableLanguages: [
+          availableLanguages: {
             Languages.defaultLanguages
                 .firstWhere((language) => language.name.toLowerCase().contains('english'))
-          ],
+          },
         ),
       ),
     ],
