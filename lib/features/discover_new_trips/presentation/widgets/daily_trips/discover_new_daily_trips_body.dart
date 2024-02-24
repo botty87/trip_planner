@@ -15,10 +15,7 @@ class _DiscoverNewDailyTripsBody extends StatelessWidget {
         return TripPagesAnimatedSwitcher(
           child: state.map(
             initial: (_) => const SizedBox.shrink(),
-            loaded: (state) => Align(
-              alignment: Alignment.topCenter,
-              child: _LoadedWidget(trip: _trip),
-            ),
+            loaded: (state) => _LoadedWidget(trip: _trip),
             error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),
           ),
         );

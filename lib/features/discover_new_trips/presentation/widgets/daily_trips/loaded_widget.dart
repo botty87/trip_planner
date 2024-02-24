@@ -13,16 +13,13 @@ class _LoadedWidget extends StatelessWidget {
 
       return ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
-        child: SingleChildScrollView(
+        child: ListView(
           padding: defaultPagePadding,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _DailyTripsHeader(description: _trip.description),
-              if (_trip.description?.isNotEmpty ?? false) const SizedBox(height: verticalSpaceL),
-              _DiscoverNewDailyTripList(trip: _trip),
-            ],
-          ),
+          children: [
+            _DailyTripsHeader(description: _trip.description),
+            if (_trip.description?.isNotEmpty ?? false) const SizedBox(height: verticalSpaceL),
+            _DiscoverNewDailyTripList(trip: _trip),
+          ],
         ),
       );
     });

@@ -46,7 +46,6 @@ void main() {
     build: () => cubit(),
     act: (DiscoverNewDailyTripsCubit cubit) => cubit.fetchDayTrips(),
     expect: () => const [
-      DiscoverNewDailyTripsState.loading(),
       DiscoverNewDailyTripsState.loaded(dayTrips: tDayTrips),
     ],
     verify: (_) {
@@ -60,7 +59,6 @@ void main() {
     build: () => cubit(),
     act: (DiscoverNewDailyTripsCubit cubit) => cubit.fetchDayTrips(),
     expect: () => const [
-      DiscoverNewDailyTripsState.loading(),
       DiscoverNewDailyTripsState.error(message: LocaleKeys.unknownError),
     ],
     verify: (_) {

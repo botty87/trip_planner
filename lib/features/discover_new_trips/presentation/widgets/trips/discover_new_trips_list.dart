@@ -10,30 +10,34 @@ class _DiscoverNewTripList extends StatelessWidget {
           orElse: () => <Trip>[],
         ));
 
-    return TripPagesAnimatedSwitcher(child: _buildChild(filteredTrips, context));
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+            ? constraints.maxWidth * 0.8
+            : constraints.maxWidth;
+
+        return ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            child: _buildChild(filteredTrips),
+          ),
+        );
+      },
+    );
   }
 
-  Widget _buildChild(List<Trip> filteredTrips, BuildContext context) {
+  Widget _buildChild(List<Trip> filteredTrips) {
     if (filteredTrips.isEmpty) {
       return const _NoTripsWidget();
     }
 
-    return LayoutBuilder(builder: (context, constraints) {
-      final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
-          ? constraints.maxWidth * 0.8
-          : constraints.maxWidth;
-
-      return ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: maxWidth),
-        child: ListView.separated(
-          shrinkWrap: true,
-          itemCount: filteredTrips.length,
-          itemBuilder: (context, index) => _TripCard(trip: filteredTrips[index]),
-          separatorBuilder: (BuildContext context, int index) =>
-              const SizedBox(height: verticalSpace),
-          physics: const NeverScrollableScrollPhysics(),
-        ),
-      );
-    });
+    return ListView.separated(
+      shrinkWrap: true,
+      itemCount: filteredTrips.length,
+      itemBuilder: (context, index) => _TripCard(trip: filteredTrips[index]),
+      separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
+      physics: const NeverScrollableScrollPhysics(),
+    );
   }
 }

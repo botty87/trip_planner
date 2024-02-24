@@ -1,9 +1,12 @@
+import 'dart:ui';
+
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../settings/domain/entities/settings.dart';
 import '../../../../user_account/presentation/cubit/user/user_cubit.dart';
@@ -28,13 +31,14 @@ class NewTripCubit extends Cubit<NewTripState> {
     required CreateTrip createTrip,
     required CreateFromExistingTrip createFromExistingTrip,
     required Settings settings,
+    @Named(deviceLocaleKey) required Locale deviceLocale,
     @factoryParam Trip? existingTrip,
   })  : _createTrip = createTrip,
         _createFromExistingTrip = createFromExistingTrip,
         _userCubit = userCubit,
         _existingTrip = existingTrip,
         _settings = settings,
-        super(const NewTripState.normal()) {
+        super(NewTripState.normal(languageCode: deviceLocale.languageCode)) {
     if (_existingTrip != null) {
       state.mapOrNull(
         normal: (state) {
@@ -84,11 +88,6 @@ class NewTripCubit extends Cubit<NewTripState> {
           return;
         }
 
-        if (state.languageCode?.isEmpty ?? true) {
-          emitError(errorMessage: LocaleKeys.tripLanguageEmpty.tr());
-          return;
-        }
-
         final normalState = state;
         emit(const NewTripState.saving());
 
@@ -103,7 +102,7 @@ class NewTripCubit extends Cubit<NewTripState> {
             tripDescription: state.tripDescription,
             startDate: state.startDate!,
             isPublic: state.isPublic,
-            languageCode: state.languageCode!,
+            languageCode: state.languageCode,
           ));
         } else {
           result = await _createFromExistingTrip(CreateFromExistingTripParams(

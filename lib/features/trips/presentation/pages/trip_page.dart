@@ -194,7 +194,8 @@ class TripPage extends HookWidget {
             initialStartDate: cubit.state.trip.startDate,
             onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
             initialIsPublic: cubit.state.trip.isPublic,
-            initialLanguageCode: cubit.state.trip.languageCode,
+            initialLanguageCode:
+                cubit.state.trip.languageCode ?? getIt<String>(instanceName: deviceLocaleKey),
           ),
         );
       },

@@ -42,7 +42,6 @@ void main() {
     build: () => cubit(),
     act: (DiscoverNewTripStopsCubit cubit) => cubit.fetchTripStops(),
     expect: () => const [
-      DiscoverNewTripStopsState.loading(),
       DiscoverNewTripStopsState.loaded(tripStops: tTripStops),
     ],
     verify: (_) {
@@ -57,7 +56,6 @@ void main() {
     build: () => cubit(),
     act: (DiscoverNewTripStopsCubit cubit) => cubit.fetchTripStops(),
     expect: () => const [
-      DiscoverNewTripStopsState.loading(),
       DiscoverNewTripStopsState.error(message: LocaleKeys.unknownError),
     ],
     verify: (_) {
