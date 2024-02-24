@@ -26,11 +26,12 @@ class _DiscoverNewTripList extends StatelessWidget {
       return ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
         child: ListView.separated(
-          padding: const EdgeInsets.symmetric(vertical: pageVerticalPadding),
+          shrinkWrap: true,
           itemCount: filteredTrips.length,
           itemBuilder: (context, index) => _TripCard(trip: filteredTrips[index]),
           separatorBuilder: (BuildContext context, int index) =>
               const SizedBox(height: verticalSpace),
+          physics: const NeverScrollableScrollPhysics(),
         ),
       );
     });

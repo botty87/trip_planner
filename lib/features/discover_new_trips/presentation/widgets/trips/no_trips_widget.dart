@@ -28,6 +28,7 @@ class _NoTripsWidget extends StatelessWidget {
             Flexible(
               child: SvgPicture(
                 AssetBytesLoader(Assets.svg.noPublicTripsSvg),
+                height: 250,
               ),
             ),
           ],
