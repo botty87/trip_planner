@@ -19,7 +19,6 @@ mixin _$DiscoverNewDailyTripsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) =>
@@ -27,7 +26,6 @@ mixin _$DiscoverNewDailyTripsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) =>
@@ -35,7 +33,6 @@ mixin _$DiscoverNewDailyTripsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -44,7 +41,6 @@ mixin _$DiscoverNewDailyTripsState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(StateInitial value) initial,
-    required TResult Function(StateLoading value) loading,
     required TResult Function(StateLoaded value) loaded,
     required TResult Function(StateError value) error,
   }) =>
@@ -52,7 +48,6 @@ mixin _$DiscoverNewDailyTripsState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StateInitial value)? initial,
-    TResult? Function(StateLoading value)? loading,
     TResult? Function(StateLoaded value)? loaded,
     TResult? Function(StateError value)? error,
   }) =>
@@ -60,7 +55,6 @@ mixin _$DiscoverNewDailyTripsState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StateInitial value)? initial,
-    TResult Function(StateLoading value)? loading,
     TResult Function(StateLoaded value)? loaded,
     TResult Function(StateError value)? error,
     required TResult orElse(),
@@ -127,7 +121,6 @@ class _$StateInitialImpl implements StateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) {
@@ -138,7 +131,6 @@ class _$StateInitialImpl implements StateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) {
@@ -149,7 +141,6 @@ class _$StateInitialImpl implements StateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -164,7 +155,6 @@ class _$StateInitialImpl implements StateInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(StateInitial value) initial,
-    required TResult Function(StateLoading value) loading,
     required TResult Function(StateLoaded value) loaded,
     required TResult Function(StateError value) error,
   }) {
@@ -175,7 +165,6 @@ class _$StateInitialImpl implements StateInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StateInitial value)? initial,
-    TResult? Function(StateLoading value)? loading,
     TResult? Function(StateLoaded value)? loaded,
     TResult? Function(StateError value)? error,
   }) {
@@ -186,7 +175,6 @@ class _$StateInitialImpl implements StateInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StateInitial value)? initial,
-    TResult Function(StateLoading value)? loading,
     TResult Function(StateLoaded value)? loaded,
     TResult Function(StateError value)? error,
     required TResult orElse(),
@@ -200,120 +188,6 @@ class _$StateInitialImpl implements StateInitial {
 
 abstract class StateInitial implements DiscoverNewDailyTripsState {
   const factory StateInitial() = _$StateInitialImpl;
-}
-
-/// @nodoc
-abstract class _$$StateLoadingImplCopyWith<$Res> {
-  factory _$$StateLoadingImplCopyWith(
-          _$StateLoadingImpl value, $Res Function(_$StateLoadingImpl) then) =
-      __$$StateLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StateLoadingImplCopyWithImpl<$Res>
-    extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateLoadingImpl>
-    implements _$$StateLoadingImplCopyWith<$Res> {
-  __$$StateLoadingImplCopyWithImpl(
-      _$StateLoadingImpl _value, $Res Function(_$StateLoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StateLoadingImpl implements StateLoading {
-  const _$StateLoadingImpl();
-
-  @override
-  String toString() {
-    return 'DiscoverNewDailyTripsState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StateLoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
-    required TResult Function(String message) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
-    TResult? Function(String message)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StateInitial value) initial,
-    required TResult Function(StateLoading value) loading,
-    required TResult Function(StateLoaded value) loaded,
-    required TResult Function(StateError value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StateInitial value)? initial,
-    TResult? Function(StateLoading value)? loading,
-    TResult? Function(StateLoaded value)? loaded,
-    TResult? Function(StateError value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StateInitial value)? initial,
-    TResult Function(StateLoading value)? loading,
-    TResult Function(StateLoaded value)? loaded,
-    TResult Function(StateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StateLoading implements DiscoverNewDailyTripsState {
-  const factory StateLoading() = _$StateLoadingImpl;
 }
 
 /// @nodoc
@@ -400,7 +274,6 @@ class _$StateLoadedImpl implements StateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) {
@@ -411,7 +284,6 @@ class _$StateLoadedImpl implements StateLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) {
@@ -422,7 +294,6 @@ class _$StateLoadedImpl implements StateLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -437,7 +308,6 @@ class _$StateLoadedImpl implements StateLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(StateInitial value) initial,
-    required TResult Function(StateLoading value) loading,
     required TResult Function(StateLoaded value) loaded,
     required TResult Function(StateError value) error,
   }) {
@@ -448,7 +318,6 @@ class _$StateLoadedImpl implements StateLoaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StateInitial value)? initial,
-    TResult? Function(StateLoading value)? loading,
     TResult? Function(StateLoaded value)? loaded,
     TResult? Function(StateError value)? error,
   }) {
@@ -459,7 +328,6 @@ class _$StateLoadedImpl implements StateLoaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StateInitial value)? initial,
-    TResult Function(StateLoading value)? loading,
     TResult Function(StateLoaded value)? loaded,
     TResult Function(StateError value)? error,
     required TResult orElse(),
@@ -548,7 +416,6 @@ class _$StateErrorImpl implements StateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(List<DayTrip> dayTrips, bool isFabVisible) loaded,
     required TResult Function(String message) error,
   }) {
@@ -559,7 +426,6 @@ class _$StateErrorImpl implements StateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult? Function(String message)? error,
   }) {
@@ -570,7 +436,6 @@ class _$StateErrorImpl implements StateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(List<DayTrip> dayTrips, bool isFabVisible)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -585,7 +450,6 @@ class _$StateErrorImpl implements StateError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(StateInitial value) initial,
-    required TResult Function(StateLoading value) loading,
     required TResult Function(StateLoaded value) loaded,
     required TResult Function(StateError value) error,
   }) {
@@ -596,7 +460,6 @@ class _$StateErrorImpl implements StateError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StateInitial value)? initial,
-    TResult? Function(StateLoading value)? loading,
     TResult? Function(StateLoaded value)? loaded,
     TResult? Function(StateError value)? error,
   }) {
@@ -607,7 +470,6 @@ class _$StateErrorImpl implements StateError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StateInitial value)? initial,
-    TResult Function(StateLoading value)? loading,
     TResult Function(StateLoaded value)? loaded,
     TResult Function(StateError value)? error,
     required TResult orElse(),

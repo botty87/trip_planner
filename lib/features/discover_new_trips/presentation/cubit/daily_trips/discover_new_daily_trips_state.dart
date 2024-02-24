@@ -4,8 +4,6 @@ part of 'discover_new_daily_trips_cubit.dart';
 sealed class DiscoverNewDailyTripsState with _$DiscoverNewDailyTripsState {
   const factory DiscoverNewDailyTripsState.initial() = StateInitial;
 
-  const factory DiscoverNewDailyTripsState.loading() = StateLoading;
-
   const factory DiscoverNewDailyTripsState.loaded({
     required List<DayTrip> dayTrips,
     @Default(true) bool isFabVisible,

@@ -12,14 +12,15 @@ class _DiscoverNewDailyTripsBody extends StatelessWidget {
     return BlocBuilder<DiscoverNewDailyTripsCubit, DiscoverNewDailyTripsState>(
       buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
       builder: (context, state) {
-        return state.map(
-          initial: (_) => const SizedBox.shrink(),
-          loading: (_) => const Center(child: CircularProgressIndicator.adaptive()),
-          loaded: (state) => Align(
-            alignment: Alignment.topCenter,
-            child: _LoadedWidget(trip: _trip),
+        return TripPagesAnimatedSwitcher(
+          child: state.map(
+            initial: (_) => const SizedBox.shrink(),
+            loaded: (state) => Align(
+              alignment: Alignment.topCenter,
+              child: _LoadedWidget(trip: _trip),
+            ),
+            error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),
           ),
-          error: (state) => const Center(child: _DiscoverNewTripsErrorWidget()),
         );
       },
     );

@@ -14,6 +14,7 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../../core/widgets/theme/scaffold_transparent.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
+import '../../../../core/widgets/trip_pages_animated_switcher.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
 import '../cubit/daily_trips/discover_new_daily_trips_cubit.dart';

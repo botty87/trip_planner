@@ -23,7 +23,6 @@ class DiscoverNewDailyTripsCubit extends Cubit<DiscoverNewDailyTripsState> {
         super(const DiscoverNewDailyTripsState.initial());
 
   fetchDayTrips() {
-    emit(const DiscoverNewDailyTripsState.loading());
     _getPublicDayTrips(GetPublicDayTripsParams(tripId: _tripId)).then(
       (value) => value.fold(
         (failure) => emit(DiscoverNewDailyTripsState.error(
@@ -32,8 +31,6 @@ class DiscoverNewDailyTripsCubit extends Cubit<DiscoverNewDailyTripsState> {
       ),
     );
   }
-
-  addTrip() {}
 
   void hideFab() {
     state.mapOrNull(loaded: (state) => emit(state.copyWith(isFabVisible: false)));
