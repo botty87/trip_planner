@@ -27,7 +27,6 @@ class DiscoverNewTripStopsCubit extends Cubit<DiscoverNewTripStopsState> {
         super(const DiscoverNewTripStopsState.initial());
 
   fetchTripStops() {
-    emit(const DiscoverNewTripStopsState.loading());
     _getPubliTripStops(GetPubliTripStopsParams(tripId: _tripId, dayTripId: _dayTripId))
         .then((failureOrTripStops) {
       failureOrTripStops.fold(

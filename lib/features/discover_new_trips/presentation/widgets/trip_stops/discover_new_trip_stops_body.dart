@@ -16,21 +16,22 @@ class _DiscoverNewTripStopsBody extends StatelessWidget {
           loaded: (state) => state.tripStops.isNotEmpty,
           orElse: () => false,
         );
-        return state.map(
-          initial: (_) => const SizedBox.shrink(),
-          loading: (_) => const Center(child: CircularProgressIndicator.adaptive()),
-          loaded: (state) => hasTripStops
-              ? TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    _ListView(dayTrip: _dayTrip),
-                    const _DiscoverNewTripStopsMapTab(),
-                  ],
-                )
-              : _ListView(
-                  dayTrip: _dayTrip,
-                ),
-          error: (state) => const Center(child: _DiscoverNewTripStopsErrorWidget()),
+        return TripPagesAnimatedSwitcher(
+          child: state.map(
+            initial: (_) => const SizedBox.shrink(),
+            loaded: (state) => hasTripStops
+                ? TabBarView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      _ListView(dayTrip: _dayTrip),
+                      const _DiscoverNewTripStopsMapTab(),
+                    ],
+                  )
+                : _ListView(
+                    dayTrip: _dayTrip,
+                  ),
+            error: (state) => const Center(child: _DiscoverNewTripStopsErrorWidget()),
+          ),
         );
       },
     );
