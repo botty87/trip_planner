@@ -10,21 +10,12 @@ class _DiscoverNewTripList extends StatelessWidget {
           orElse: () => <Trip>[],
         ));
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
-            ? constraints.maxWidth * 0.8
-            : constraints.maxWidth;
-
-        return ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: maxWidth),
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            child: _buildChild(filteredTrips),
-          ),
-        );
-      },
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: _buildChild(filteredTrips),
     );
+
+    
   }
 
   Widget _buildChild(List<Trip> filteredTrips) {
