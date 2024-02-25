@@ -162,5 +162,8 @@ abstract class  LocaleKeys {
   static const searchLanguage = 'searchLanguage';
   static const noLanguages = 'noLanguages';
   static const showOnlySelectedLanguages = 'showOnlySelectedLanguages';
+  static const skip = 'skip';
+  static const tripsTutorialTitle = 'tripsTutorialTitle';
+  static const tripsTutorialBody = 'tripsTutorialBody';
 
 }

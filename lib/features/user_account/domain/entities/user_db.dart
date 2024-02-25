@@ -12,6 +12,7 @@ sealed class UserDB with _$UserDB {
     required String name,
     @Default(false) bool oldTripsImported,
     @Default(Settings()) Settings settings,
+    @Default(true) bool showWelcome,
   }) = _UserDB;
 
   factory UserDB.fromJson(Map<String, dynamic> json) => _$UserDBFromJson(json);

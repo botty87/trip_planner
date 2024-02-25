@@ -43,12 +43,12 @@ class ImportOldTripsPage extends StatelessWidget {
                 loaded: (trips, _) => _OldTripsWidget(trips: trips),
                 error: (message) => _ErrorWidget(message: message),
                 noTrips: () {
-                  context.replaceRoute(const TripsRoute());
+                  _navigateToTrips(context);
                   return const SizedBox.shrink();
                 },
                 importing: (trips, _) => const Center(child: CircularProgressIndicator.adaptive()),
                 imported: () {
-                  context.replaceRoute(const TripsRoute());
+                  _navigateToTrips(context);
                   return const SizedBox.shrink();
                 },
               ),
@@ -57,6 +57,14 @@ class ImportOldTripsPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _navigateToTrips(BuildContext context) {
+    if(_user.showWelcome){
+      context.replaceRoute(const TutorialRoute());
+    } else {
+      context.replaceRoute(const TripsRoute());
+    }
   }
 }
 

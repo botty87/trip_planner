@@ -76,6 +76,7 @@ final class UserDataSourceImpl implements UserDataSource {
             name: user.displayName ?? user.email!.split('@').first,
             oldTripsImported: userDB.oldTripsImported,
             settings: userDB.settings,
+            showWelcome: userDB.showWelcome,
           ));
         });
       } else {

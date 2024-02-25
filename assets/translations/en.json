@@ -162,5 +162,9 @@
     "hide" : "Hide",
     "searchLanguage" : "Search language",
     "noLanguages" : "No languages",
-    "showOnlySelectedLanguages" : "Show only selected languages"
+    "showOnlySelectedLanguages" : "Show only selected languages",
+    "skip" : "Skip",
+    "tripsTutorialTitle" : "Welcome to Trip Planner!",
+    "tripsTutorialBody" : "We will guide you through the main features of the app. This is the main screen, where you can see all your trips. Click on the + button to create a new trip."
+    
 }

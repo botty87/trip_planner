@@ -163,5 +163,8 @@
     "hide" : "Nascondi",
     "searchLanguage" : "Cerca lingua",
     "noLanguages" : "Nessuna lingua",
-    "showOnlySelectedLanguages" : "Mostra solo le lingue selezionate"
+    "showOnlySelectedLanguages" : "Mostra solo le lingue selezionate",
+    "skip" : "Salta",
+    "tripsTutorialTitle" : "Benvenuto in Trip Planner!",
+    "tripsTutorialBody" : "Ti guideremo attraverso le principali funzionalità dell'app. Questa è la schermata principale, dove puoi vedere tutti i tuoi viaggi. Clicca sul pulsante + per creare un nuovo viaggio."
 }
