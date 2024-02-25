@@ -143,4 +143,14 @@ final class UserRepositoryImpl implements UserRepository {
       return left(const UserFailures.unknownError());
     }
   }
+  
+  @override
+  Future<Either<UserFailures, void>> setShowWelcome(bool showWelcome) async {
+    try {
+      await userDataSource.setShowWelcome(showWelcome);
+      return right(null);
+    } catch (e) {
+      return left(const UserFailures.unknownError());
+    }
+  }
 }

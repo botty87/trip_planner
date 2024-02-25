@@ -165,6 +165,7 @@
     "showOnlySelectedLanguages" : "Show only selected languages",
     "skip" : "Skip",
     "tripsTutorialTitle" : "Welcome to Trip Planner!",
-    "tripsTutorialBody" : "We will guide you through the main features of the app. This is the main screen, where you can see all your trips. Click on the + button to create a new trip."
-    
+    "tripsTutorialBody" : "We will guide you through the main features of the app. This is the main screen, where you can see all your trips. Click on the + button to create a new trip.",
+    "dayTripsTutorialTitle" : "Days of trip",
+    "dayTripsTutorialBody" : "Each trip is divided into days of trip. You can reorder them by dragging and dropping. Click on the \"add day trip\" card to add a new day of trip."
 }

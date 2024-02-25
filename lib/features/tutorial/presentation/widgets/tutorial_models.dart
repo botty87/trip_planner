@@ -15,3 +15,19 @@ final _tripsTutorial = PageViewModel(
     footerFlex: 1,
   ),
 );
+
+final _dayTripsTutorial = PageViewModel(
+  title: LocaleKeys.dayTripsTutorialTitle.tr(),
+  body: LocaleKeys.dayTripsTutorialBody.tr(),
+  image: Assets.tutorial.dayTripsPage.image(),
+  decoration: const PageDecoration(
+    titleTextStyle: TextStyle(
+      fontSize: tutorialTitleFontSize,
+      fontWeight: FontWeight.w700,
+    ),
+    bodyTextStyle: TextStyle(fontSize: tutorialBodyFontSize),
+    imageFlex: 5,
+    bodyFlex: 3,
+    footerFlex: 1,
+  ),
+);

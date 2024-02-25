@@ -25,4 +25,7 @@ abstract interface class UserRepository {
   Future<Either<UserFailures, void>> deleteUser();
 
   Future<Either<UserFailures, void>> saveSettings(Settings settings);
+
+  //TODO implement test
+  Future<Either<UserFailures, void>> setShowWelcome(bool showWelcome);
 }

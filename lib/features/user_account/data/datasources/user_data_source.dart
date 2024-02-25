@@ -28,6 +28,9 @@ abstract interface class UserDataSource {
   saveSettings(Settings settings);
 
   deleteUser();
+
+  //TODO implement test
+  setShowWelcome(bool showWelcome);
 }
 
 @LazySingleton(as: UserDataSource)
@@ -150,5 +153,12 @@ final class UserDataSourceImpl implements UserDataSource {
     await _usersCollection
         .doc(firebaseAuth.currentUser!.uid)
         .update({'settings': settings.toJson()});
+  }
+  
+  @override
+  setShowWelcome(bool showWelcome) async {
+    await _usersCollection
+        .doc(firebaseAuth.currentUser!.uid)
+        .update({'showWelcome': showWelcome});
   }
 }

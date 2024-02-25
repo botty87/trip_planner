@@ -107,4 +107,13 @@ class MockUserDataSource extends _i1.Mock implements _i2.UserDataSource {
         ),
         returnValueForMissingStub: null,
       );
+
+  @override
+  dynamic setShowWelcome(bool? showWelcome) => super.noSuchMethod(
+        Invocation.method(
+          #setShowWelcome,
+          [showWelcome],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

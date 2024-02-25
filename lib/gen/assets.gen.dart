@@ -187,12 +187,16 @@ class $AssetsTranslationsGen {
 class $AssetsTutorialGen {
   const $AssetsTutorialGen();
 
+  /// File path: assets/tutorial/day_trips_page.webp
+  AssetGenImage get dayTripsPage =>
+      const AssetGenImage('assets/tutorial/day_trips_page.webp');
+
   /// File path: assets/tutorial/trips_page.webp
   AssetGenImage get tripsPage =>
       const AssetGenImage('assets/tutorial/trips_page.webp');
 
   /// List of all assets
-  List<AssetGenImage> get values => [tripsPage];
+  List<AssetGenImage> get values => [dayTripsPage, tripsPage];
 }
 
 class Assets {
