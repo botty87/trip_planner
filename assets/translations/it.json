@@ -168,5 +168,7 @@
     "tripsTutorialTitle": "Benvenuto in Trip Planner!",
     "tripsTutorialBody": "Ti guideremo attraverso le principali funzionalità dell'app. Questa è la schermata principale, dove puoi vedere tutti i tuoi viaggi. Clicca sul pulsante + per creare un nuovo viaggio.",
     "dayTripsTutorialTitle": "Giornate di viaggio",
-    "dayTripsTutorialBody": "Ogni viaggio è diviso in giorni di viaggio. Puoi riordinarli trascinandoli. Clicca sulla card \"aggiungi giornata di viaggio\" per creare una nuova giornata di viaggio."
+    "dayTripsTutorialBody": "Ogni viaggio è diviso in giorni di viaggio. Puoi riordinarli trascinandoli. Clicca sulla card \"aggiungi giornata di viaggio\" per creare una nuova giornata di viaggio.",
+    "tripStopsTutorialTitle": "Tappe di viaggio",
+    "tripStopsTutorialBody": "Ogni giornata di viaggio è composta da tappe di viaggio. Puoi riordinarle trascinandole. Clicca sulla card \"aggiungi destinazione\" per creare una nuova tappa di viaggio."
 }

@@ -191,12 +191,16 @@ class $AssetsTutorialGen {
   AssetGenImage get dayTripsPage =>
       const AssetGenImage('assets/tutorial/day_trips_page.webp');
 
+  /// File path: assets/tutorial/trip_stops_page.webp
+  AssetGenImage get tripStopsPage =>
+      const AssetGenImage('assets/tutorial/trip_stops_page.webp');
+
   /// File path: assets/tutorial/trips_page.webp
   AssetGenImage get tripsPage =>
       const AssetGenImage('assets/tutorial/trips_page.webp');
 
   /// List of all assets
-  List<AssetGenImage> get values => [dayTripsPage, tripsPage];
+  List<AssetGenImage> get values => [dayTripsPage, tripStopsPage, tripsPage];
 }
 
 class Assets {

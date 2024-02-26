@@ -167,5 +167,7 @@ abstract class  LocaleKeys {
   static const tripsTutorialBody = 'tripsTutorialBody';
   static const dayTripsTutorialTitle = 'dayTripsTutorialTitle';
   static const dayTripsTutorialBody = 'dayTripsTutorialBody';
+  static const tripStopsTutorialTitle = 'tripStopsTutorialTitle';
+  static const tripStopsTutorialBody = 'tripStopsTutorialBody';
 
 }

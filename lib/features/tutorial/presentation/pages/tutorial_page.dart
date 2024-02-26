@@ -29,6 +29,7 @@ class TutorialPage extends StatelessWidget {
               pages: [
                 _tripsTutorial,
                 _dayTripsTutorial,
+                _tripStopsTutorial,
               ],
               showSkipButton: true,
               showNextButton: false,

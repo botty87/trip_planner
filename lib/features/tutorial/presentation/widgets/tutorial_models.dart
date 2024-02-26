@@ -31,3 +31,19 @@ final _dayTripsTutorial = PageViewModel(
     footerFlex: 1,
   ),
 );
+
+final _tripStopsTutorial = PageViewModel(
+  title: LocaleKeys.tripStopsTutorialTitle.tr(),
+  body: LocaleKeys.tripStopsTutorialBody.tr(),
+  image: Assets.tutorial.tripStopsPage.image(),
+  decoration: const PageDecoration(
+    titleTextStyle: TextStyle(
+      fontSize: tutorialTitleFontSize,
+      fontWeight: FontWeight.w700,
+    ),
+    bodyTextStyle: TextStyle(fontSize: tutorialBodyFontSize),
+    imageFlex: 5,
+    bodyFlex: 3,
+    footerFlex: 1,
+  ),
+);
