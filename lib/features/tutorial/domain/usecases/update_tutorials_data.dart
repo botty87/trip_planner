@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../../user_account/domain/repositories/user_repository.dart';
 import '../../../user_account/errors/user_failures.dart';

@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../presentation/cubit/cubit/tutorial_cubit.dart';
 
 part 'tutorials_data.freezed.dart';
 part 'tutorials_data.g.dart';
