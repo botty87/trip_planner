@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -50,40 +52,39 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
           create: (context) => getIt<TutorialCubit>(),
         ),
       ],
-      child: Builder(
-        builder: (context) {
-          return ShowCaseWidget(
-            builder: Builder(builder: (context) {
-              final showTutorial = context.read<TutorialCubit>().state.showCreateFromPublicTrip;
-          
-              if (showTutorial) {
-                WidgetsBinding.instance.addPostFrameCallback(
-                    (_) => ShowCaseWidget.of(context).startShowCase([_showCaseKeyOne]));
-              }
-          
-              return ScaffoldTransparent(
-                appBar: AppBar(
-                  backgroundColor: context.appBarColor,
-                  title: Text(_trip.name),
-                ),
-                body: NotificationListener<UserScrollNotification>(
-                  onNotification: (notification) {
-                    if (notification.direction == ScrollDirection.reverse) {
-                      context.read<DiscoverNewDailyTripsCubit>().hideFab();
-                    } else if (notification.direction == ScrollDirection.forward) {
-                      context.read<DiscoverNewDailyTripsCubit>().showFab();
-                    }
-                    return true;
-                  },
-                  child: _DiscoverNewDailyTripsBody(trip: _trip),
-                ),
-                floatingActionButton: _Fab(trip: _trip),
-              );
-            }),
-            onFinish: () => context.read<TutorialCubit>().onCreateFromPublicTripDone(),
-          );
-        }
-      ),
+      child: Builder(builder: (context) {
+        return ShowCaseWidget(
+          builder: Builder(builder: (context) {
+            final showTutorial = context.read<TutorialCubit>().state.showCreateFromPublicTrip;
+
+            if (showTutorial) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                ShowCaseWidget.of(context).startShowCase([_showCaseKeyOne]);
+              });
+            }
+
+            return ScaffoldTransparent(
+              appBar: AppBar(
+                backgroundColor: context.appBarColor,
+                title: Text(_trip.name),
+              ),
+              body: NotificationListener<UserScrollNotification>(
+                onNotification: (notification) {
+                  if (notification.direction == ScrollDirection.reverse) {
+                    context.read<DiscoverNewDailyTripsCubit>().hideFab();
+                  } else if (notification.direction == ScrollDirection.forward) {
+                    context.read<DiscoverNewDailyTripsCubit>().showFab();
+                  }
+                  return true;
+                },
+                child: _DiscoverNewDailyTripsBody(trip: _trip),
+              ),
+              floatingActionButton: _Fab(trip: _trip),
+            );
+          }),
+          onFinish: () => context.read<TutorialCubit>().onCreateFromPublicTripDone(),
+        );
+      }),
     );
   }
 }
@@ -102,11 +103,21 @@ class _Fab extends StatelessWidget {
       );
     });
 
+    //This is a workaround to avoid the showcase to be hidden by the FAB due to a library bug
+    final EdgeInsets showCasePadding;
+    if (Platform.isAndroid) {
+      showCasePadding = const EdgeInsets.only(top: 24, left: 16);
+    } else if (Platform.isIOS) {
+      showCasePadding = const EdgeInsets.only(bottom: 24, right: 16);
+    } else {
+      showCasePadding = EdgeInsets.zero;
+    }
+
     return Showcase(
       key: _showCaseKeyOne,
       title: LocaleKeys.addPublicTripFabShowCaseTitle.tr(),
       description: LocaleKeys.addPublicTripFabShowCaseBody.tr(),
-      targetPadding: const EdgeInsets.only(bottom: 24, right: 16),
+      targetPadding: showCasePadding,
       child: AnimatedSlide(
         duration: const Duration(milliseconds: 300),
         offset: showFab ? Offset.zero : const Offset(0, 2),
