@@ -171,5 +171,8 @@
     "tripStopsTutorialTitle" : "Trip stops",
     "tripStopsTutorialBody" : "Each day of trip is divided into trip stops. You can reorder them by dragging and dropping. Click on the \"add destination\" card to add a new trip stop.",
     "tutorialEndTitle" : "Ready to start?!",
-    "tutorialEndBody" : "You are now ready to use Trip Planner. Create you first trip, also taking inspiration from the public trips, and start planning your next adventure!"
+    "tutorialEndBody" : "You are now ready to use Trip Planner. Create you first trip, also taking inspiration from the public trips, and start planning your next adventure!",
+    "tripPrivacyShowCaseTitle" : "Trip privacy",
+    "tripPrivacyShowCaseBody" : "You can choose if your trip is public or private. Public trips can be discovered by other users and added to their trips. Private trips are only visible to you.",
+    "letstart" : "Let's start!"
 }

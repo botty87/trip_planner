@@ -29,32 +29,32 @@ import '../../features/day_trips/data/datasources/day_trips_data_source.dart'
     as _i58;
 import '../../features/day_trips/data/repositories/day_trips_repository_impl.dart'
     as _i60;
-import '../../features/day_trips/domain/entities/day_trip.dart' as _i101;
+import '../../features/day_trips/domain/entities/day_trip.dart' as _i102;
 import '../../features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i59;
-import '../../features/day_trips/domain/usecases/create_day_trip.dart' as _i98;
+import '../../features/day_trips/domain/usecases/create_day_trip.dart' as _i99;
 import '../../features/day_trips/domain/usecases/delete_day_trip.dart' as _i61;
-import '../../features/day_trips/domain/usecases/listen_day_trip.dart' as _i74;
-import '../../features/day_trips/domain/usecases/listen_day_trips.dart' as _i75;
+import '../../features/day_trips/domain/usecases/listen_day_trip.dart' as _i75;
+import '../../features/day_trips/domain/usecases/listen_day_trips.dart' as _i76;
 import '../../features/day_trips/domain/usecases/save_trip_stops_directions.dart'
-    as _i84;
-import '../../features/day_trips/domain/usecases/update_day_trip.dart' as _i88;
+    as _i85;
+import '../../features/day_trips/domain/usecases/update_day_trip.dart' as _i89;
 import '../../features/day_trips/domain/usecases/update_day_trip_show_directions.dart'
-    as _i89;
-import '../../features/day_trips/domain/usecases/update_day_trip_start_time.dart'
     as _i90;
-import '../../features/day_trips/domain/usecases/update_day_trip_use_different_directions_colors.dart'
+import '../../features/day_trips/domain/usecases/update_day_trip_start_time.dart'
     as _i91;
-import '../../features/day_trips/domain/usecases/update_day_trips_indexes.dart'
+import '../../features/day_trips/domain/usecases/update_day_trip_use_different_directions_colors.dart'
     as _i92;
+import '../../features/day_trips/domain/usecases/update_day_trips_indexes.dart'
+    as _i93;
 import '../../features/day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart'
-    as _i94;
+    as _i95;
 import '../../features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart'
-    as _i99;
+    as _i100;
 import '../../features/day_trips/presentation/cubit/new_day_trip/new_day_trip_cubit.dart'
-    as _i107;
+    as _i108;
 import '../../features/day_trips/presentation/cubit/trip_stops_map/trip_stops_map_cubit.dart'
-    as _i113;
+    as _i114;
 import '../../features/discover_new_trips/data/datasources/discover_trips_data_source.dart'
     as _i7;
 import '../../features/discover_new_trips/data/repositories/discover_trips_repository_impl.dart'
@@ -82,13 +82,13 @@ import '../../features/google_places/data/repositories/google_places_repository_
 import '../../features/google_places/domain/repositories/google_places_repository.dart'
     as _i69;
 import '../../features/google_places/domain/usecases/fetch_place_details.dart'
-    as _i102;
-import '../../features/google_places/domain/usecases/fetch_polyline_points.dart'
-    as _i104;
-import '../../features/google_places/domain/usecases/fetch_suggestions.dart'
     as _i103;
-import '../../features/google_places/presentation/cubit/google_places_cubit.dart'
+import '../../features/google_places/domain/usecases/fetch_polyline_points.dart'
     as _i105;
+import '../../features/google_places/domain/usecases/fetch_suggestions.dart'
+    as _i104;
+import '../../features/google_places/presentation/cubit/google_places_cubit.dart'
+    as _i106;
 import '../../features/import_old_trips/data/datasources/old_trips_data_source.dart'
     as _i25;
 import '../../features/import_old_trips/data/repositories/old_trips_repository_impl.dart'
@@ -96,20 +96,20 @@ import '../../features/import_old_trips/data/repositories/old_trips_repository_i
 import '../../features/import_old_trips/domain/repositories/old_trips_repository.dart'
     as _i26;
 import '../../features/import_old_trips/domain/usecases/import_old_trip.dart'
-    as _i72;
+    as _i73;
 import '../../features/import_old_trips/domain/usecases/read_old_trips.dart'
     as _i29;
 import '../../features/import_old_trips/presentation/cubit/import_old_trips_cubit.dart'
-    as _i73;
+    as _i74;
 import '../../features/info_contacts/presentation/cubit/info_contacts_cubit.dart'
     as _i19;
-import '../../features/map/presentation/cubit/map_cubit.dart' as _i24;
+import '../../features/map/presentation/cubit/map_cubit.dart' as _i23;
 import '../../features/settings/domain/entities/settings.dart' as _i30;
-import '../../features/settings/domain/usecases/update_settings.dart' as _i93;
+import '../../features/settings/domain/usecases/update_settings.dart' as _i94;
 import '../../features/settings/presentation/cubit/backgrounds_cubit.dart'
     as _i51;
 import '../../features/settings/presentation/cubit/settings_cubit.dart'
-    as _i110;
+    as _i111;
 import '../../features/trip_stops/data/datasources/trip_stops_data_source.dart'
     as _i33;
 import '../../features/trip_stops/data/repositories/trip_stops_repository_impl.dart'
@@ -122,8 +122,8 @@ import '../../features/trip_stops/domain/usecases/create_trip_stop.dart'
 import '../../features/trip_stops/domain/usecases/delete_trip_stop.dart'
     as _i63;
 import '../../features/trip_stops/domain/usecases/listen_trip_stops.dart'
-    as _i76;
-import '../../features/trip_stops/domain/usecases/trip_stop_done.dart' as _i85;
+    as _i77;
+import '../../features/trip_stops/domain/usecases/trip_stop_done.dart' as _i86;
 import '../../features/trip_stops/domain/usecases/update_travel_time.dart'
     as _i40;
 import '../../features/trip_stops/domain/usecases/update_trip_stop.dart'
@@ -133,28 +133,31 @@ import '../../features/trip_stops/domain/usecases/update_trip_stop_note.dart'
 import '../../features/trip_stops/domain/usecases/update_trip_stops_indexes.dart'
     as _i44;
 import '../../features/trip_stops/presentation/cubit/map/cubit/map_cubit.dart'
-    as _i23;
+    as _i24;
 import '../../features/trip_stops/presentation/cubit/new_trip_stop/new_trip_stop_cubit.dart'
-    as _i109;
+    as _i110;
 import '../../features/trip_stops/presentation/cubit/trip_stop/trip_stop_cubit.dart'
-    as _i112;
+    as _i113;
 import '../../features/trips/data/datasources/trips_data_source.dart' as _i37;
 import '../../features/trips/data/repositories/trips_repository_impl.dart'
     as _i39;
-import '../../features/trips/domain/entities/trip.dart' as _i100;
+import '../../features/trips/domain/entities/trip.dart' as _i101;
 import '../../features/trips/domain/repositories/trips_repository.dart' as _i38;
 import '../../features/trips/domain/usecases/create_from_existing_trip.dart'
     as _i54;
 import '../../features/trips/domain/usecases/create_trip.dart' as _i55;
 import '../../features/trips/domain/usecases/delete_trip.dart' as _i62;
-import '../../features/trips/domain/usecases/listen_trips.dart' as _i77;
+import '../../features/trips/domain/usecases/listen_trips.dart' as _i78;
 import '../../features/trips/domain/usecases/update_trip.dart' as _i41;
 import '../../features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
-    as _i108;
-import '../../features/trips/presentation/cubit/trip/trip_cubit.dart' as _i111;
-import '../../features/trips/presentation/cubit/trips/trips_cubit.dart' as _i86;
+    as _i109;
+import '../../features/trips/presentation/cubit/trip/trip_cubit.dart' as _i112;
+import '../../features/trips/presentation/cubit/trips/trips_cubit.dart' as _i87;
+import '../../features/tutorial/domain/usecases/hide_show_public_trip.dart'
+    as _i71;
+import '../../features/tutorial/domain/usecases/hide_show_welcome.dart' as _i72;
 import '../../features/tutorial/presentation/cubit/cubit/tutorial_cubit.dart'
-    as _i87;
+    as _i88;
 import '../../features/user_account/data/datasources/user_data_source.dart'
     as _i46;
 import '../../features/user_account/data/repositories/user_repository_impl.dart'
@@ -163,24 +166,22 @@ import '../../features/user_account/domain/entities/user.dart' as _i45;
 import '../../features/user_account/domain/repositories/user_repository.dart'
     as _i47;
 import '../../features/user_account/domain/usecases/delete_user.dart' as _i64;
-import '../../features/user_account/domain/usecases/hide_show_welcome.dart'
-    as _i71;
-import '../../features/user_account/domain/usecases/listen_user.dart' as _i78;
-import '../../features/user_account/domain/usecases/login_user.dart' as _i79;
-import '../../features/user_account/domain/usecases/logout_user.dart' as _i80;
+import '../../features/user_account/domain/usecases/listen_user.dart' as _i79;
+import '../../features/user_account/domain/usecases/login_user.dart' as _i80;
+import '../../features/user_account/domain/usecases/logout_user.dart' as _i81;
 import '../../features/user_account/domain/usecases/reauthenticate_user.dart'
-    as _i81;
-import '../../features/user_account/domain/usecases/recover_password.dart'
     as _i82;
-import '../../features/user_account/domain/usecases/register_user.dart' as _i83;
+import '../../features/user_account/domain/usecases/recover_password.dart'
+    as _i83;
+import '../../features/user_account/domain/usecases/register_user.dart' as _i84;
 import '../../features/user_account/domain/usecases/update_user_details.dart'
-    as _i95;
-import '../../features/user_account/presentation/cubit/account_page/account_cubit.dart'
-    as _i97;
-import '../../features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
-    as _i106;
-import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
     as _i96;
+import '../../features/user_account/presentation/cubit/account_page/account_cubit.dart'
+    as _i98;
+import '../../features/user_account/presentation/cubit/login_signup/login_signup_cubit.dart'
+    as _i107;
+import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
+    as _i97;
 import '../bloc_observer.dart' as _i53;
 import '../db/day_trips_collection_ref.dart' as _i57;
 import '../db/settings_collection_ref.dart' as _i31;
@@ -189,7 +190,7 @@ import '../db/trips_collection_ref.dart' as _i36;
 import '../db/users_collection_ref.dart' as _i49;
 import '../routes/app_router.dart' as _i3;
 import '../utilities/image_utils.dart' as _i18;
-import 'di.dart' as _i114;
+import 'di.dart' as _i115;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -244,12 +245,12 @@ extension GetItInjectableX on _i1.GetIt {
       preResolve: true,
     );
     gh.lazySingleton<_i22.Logger>(() => registerModule.logger);
-    gh.factory<_i23.MapCubit>(() => _i23.MapCubit());
-    gh.factoryParam<_i24.MapCubit, _i24.MapStateType, dynamic>((
+    gh.factoryParam<_i23.MapCubit, _i23.MapStateType, dynamic>((
       mapStateType,
       _,
     ) =>
-        _i24.MapCubit(mapStateType: mapStateType));
+        _i23.MapCubit(mapStateType: mapStateType));
+    gh.factory<_i24.MapCubit>(() => _i24.MapCubit());
     gh.lazySingleton<_i25.OldTripsDataSource>(
         () => _i25.OldTripsDataSourceImpl(gh<_i12.FirebaseDatabase>()));
     gh.lazySingleton<_i26.OldTripsRepository>(
@@ -262,16 +263,16 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i31.SettingsCollectionRef>(
         () => _i31.SettingsCollectionRef(gh<_i13.FirebaseFirestore>()));
     gh.lazySingleton<String>(
-      () => googlePlacesModule.googlePlacesKey,
-      instanceName: 'googlePlacesKey',
+      () => googlePlacesModule.proxyUrl,
+      instanceName: 'proxyUrl',
     );
     gh.lazySingleton<String>(
       () => googlePlacesModule.googleMapKey,
       instanceName: 'googleMapKey',
     );
     gh.lazySingleton<String>(
-      () => googlePlacesModule.proxyUrl,
-      instanceName: 'proxyUrl',
+      () => googlePlacesModule.googlePlacesKey,
+      instanceName: 'googlePlacesKey',
     );
     gh.factoryParam<_i32.TripStopsCollectionRef, String, String>((
       tripId,
@@ -380,190 +381,195 @@ extension GetItInjectableX on _i1.GetIt {
             ));
     gh.lazySingleton<_i69.GooglePlacesRepository>(() =>
         _i70.GooglePlacesRepositoryImpl(gh<_i68.GooglePlacesDataSource>()));
-    gh.lazySingleton<_i71.HideShowWelcome>(
-        () => _i71.HideShowWelcome(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i72.ImportOldTrips>(
-        () => _i72.ImportOldTrips(gh<_i26.OldTripsRepository>()));
-    gh.factoryParam<_i73.ImportOldTripsCubit, _i45.User, dynamic>((
+    gh.lazySingleton<_i71.HideShowPublicTrip>(
+        () => _i71.HideShowPublicTrip(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i72.HideShowWelcome>(
+        () => _i72.HideShowWelcome(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i73.ImportOldTrips>(
+        () => _i73.ImportOldTrips(gh<_i26.OldTripsRepository>()));
+    gh.factoryParam<_i74.ImportOldTripsCubit, _i45.User, dynamic>((
       user,
       _,
     ) =>
-        _i73.ImportOldTripsCubit(
+        _i74.ImportOldTripsCubit(
           user: user,
           readOldTrips: gh<_i29.ReadOldTrips>(),
-          importOldTrips: gh<_i72.ImportOldTrips>(),
+          importOldTrips: gh<_i73.ImportOldTrips>(),
         ));
-    gh.lazySingleton<_i74.ListenDayTrip>(
-        () => _i74.ListenDayTrip(gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i75.ListenDayTrips>(
-        () => _i75.ListenDayTrips(gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i76.ListenTripStops>(
-        () => _i76.ListenTripStops(gh<_i34.TripStopsRepository>()));
-    gh.lazySingleton<_i77.ListenTrips>(
-        () => _i77.ListenTrips(gh<_i38.TripsRepository>()));
-    gh.lazySingleton<_i78.ListenUser>(
-        () => _i78.ListenUser(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i79.LoginUser>(
-        () => _i79.LoginUser(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i80.LogoutUser>(
-        () => _i80.LogoutUser(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i81.ReauthenticateUser>(
-        () => _i81.ReauthenticateUser(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i82.RecoverPassword>(
-        () => _i82.RecoverPassword(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i83.RegisterUser>(
-        () => _i83.RegisterUser(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i84.SaveTripStopsDirections>(
-        () => _i84.SaveTripStopsDirections(gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i85.TripStopDone>(
-        () => _i85.TripStopDone(gh<_i34.TripStopsRepository>()));
-    gh.factory<_i86.TripsCubit>(() => _i86.TripsCubit(
-          listenTrips: gh<_i77.ListenTrips>(),
+    gh.lazySingleton<_i75.ListenDayTrip>(
+        () => _i75.ListenDayTrip(gh<_i59.DayTripsRepository>()));
+    gh.lazySingleton<_i76.ListenDayTrips>(
+        () => _i76.ListenDayTrips(gh<_i59.DayTripsRepository>()));
+    gh.lazySingleton<_i77.ListenTripStops>(
+        () => _i77.ListenTripStops(gh<_i34.TripStopsRepository>()));
+    gh.lazySingleton<_i78.ListenTrips>(
+        () => _i78.ListenTrips(gh<_i38.TripsRepository>()));
+    gh.lazySingleton<_i79.ListenUser>(
+        () => _i79.ListenUser(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i80.LoginUser>(
+        () => _i80.LoginUser(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i81.LogoutUser>(
+        () => _i81.LogoutUser(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i82.ReauthenticateUser>(
+        () => _i82.ReauthenticateUser(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i83.RecoverPassword>(
+        () => _i83.RecoverPassword(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i84.RegisterUser>(
+        () => _i84.RegisterUser(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i85.SaveTripStopsDirections>(
+        () => _i85.SaveTripStopsDirections(gh<_i59.DayTripsRepository>()));
+    gh.lazySingleton<_i86.TripStopDone>(
+        () => _i86.TripStopDone(gh<_i34.TripStopsRepository>()));
+    gh.factory<_i87.TripsCubit>(() => _i87.TripsCubit(
+          listenTrips: gh<_i78.ListenTrips>(),
           crashlytics: gh<_i11.FirebaseCrashlytics>(),
           user: gh<_i45.User>(),
         ));
-    gh.factory<_i87.TutorialCubit>(
-        () => _i87.TutorialCubit(gh<_i71.HideShowWelcome>()));
-    gh.lazySingleton<_i88.UpdateDayTrip>(
-        () => _i88.UpdateDayTrip(gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i89.UpdateDayTripShowDirections>(
-        () => _i89.UpdateDayTripShowDirections(gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i90.UpdateDayTripStartTime>(
-        () => _i90.UpdateDayTripStartTime(gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i91.UpdateDayTripUseDifferentDirectionsColors>(() =>
-        _i91.UpdateDayTripUseDifferentDirectionsColors(
+    gh.factory<_i88.TutorialCubit>(() => _i88.TutorialCubit(
+          user: gh<_i45.User>(),
+          hideShowWelcome: gh<_i72.HideShowWelcome>(),
+          hideShowPublicTrip: gh<_i71.HideShowPublicTrip>(),
+        ));
+    gh.lazySingleton<_i89.UpdateDayTrip>(
+        () => _i89.UpdateDayTrip(gh<_i59.DayTripsRepository>()));
+    gh.lazySingleton<_i90.UpdateDayTripShowDirections>(
+        () => _i90.UpdateDayTripShowDirections(gh<_i59.DayTripsRepository>()));
+    gh.lazySingleton<_i91.UpdateDayTripStartTime>(
+        () => _i91.UpdateDayTripStartTime(gh<_i59.DayTripsRepository>()));
+    gh.lazySingleton<_i92.UpdateDayTripUseDifferentDirectionsColors>(() =>
+        _i92.UpdateDayTripUseDifferentDirectionsColors(
             gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i92.UpdateDayTripsIndexes>(
-        () => _i92.UpdateDayTripsIndexes(gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i93.UpdateSettings>(
-        () => _i93.UpdateSettings(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i94.UpdateTripStopsDirectionsUpToDate>(() =>
-        _i94.UpdateTripStopsDirectionsUpToDate(gh<_i59.DayTripsRepository>()));
-    gh.lazySingleton<_i95.UpdateUserDetails>(
-        () => _i95.UpdateUserDetails(gh<_i47.UserRepository>()));
-    gh.lazySingleton<_i96.UserCubit>(
-        () => _i96.UserCubit(listenUserState: gh<_i78.ListenUser>()));
-    gh.factoryParam<_i97.AccountCubit, dynamic, dynamic>((
+    gh.lazySingleton<_i93.UpdateDayTripsIndexes>(
+        () => _i93.UpdateDayTripsIndexes(gh<_i59.DayTripsRepository>()));
+    gh.lazySingleton<_i94.UpdateSettings>(
+        () => _i94.UpdateSettings(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i95.UpdateTripStopsDirectionsUpToDate>(() =>
+        _i95.UpdateTripStopsDirectionsUpToDate(gh<_i59.DayTripsRepository>()));
+    gh.lazySingleton<_i96.UpdateUserDetails>(
+        () => _i96.UpdateUserDetails(gh<_i47.UserRepository>()));
+    gh.lazySingleton<_i97.UserCubit>(
+        () => _i97.UserCubit(listenUserState: gh<_i79.ListenUser>()));
+    gh.factoryParam<_i98.AccountCubit, dynamic, dynamic>((
       user,
       _,
     ) =>
-        _i97.AccountCubit(
+        _i98.AccountCubit(
           user: user,
-          logoutUser: gh<_i80.LogoutUser>(),
-          reauthenticateUser: gh<_i81.ReauthenticateUser>(),
-          updateUserDetails: gh<_i95.UpdateUserDetails>(),
+          logoutUser: gh<_i81.LogoutUser>(),
+          reauthenticateUser: gh<_i82.ReauthenticateUser>(),
+          updateUserDetails: gh<_i96.UpdateUserDetails>(),
           deleteUser: gh<_i64.DeleteUser>(),
         ));
-    gh.lazySingleton<_i98.CreateDayTrip>(
-        () => _i98.CreateDayTrip(gh<_i59.DayTripsRepository>()));
-    gh.factoryParam<_i99.DayTripCubit, _i100.Trip, _i101.DayTrip>((
+    gh.lazySingleton<_i99.CreateDayTrip>(
+        () => _i99.CreateDayTrip(gh<_i59.DayTripsRepository>()));
+    gh.factoryParam<_i100.DayTripCubit, _i101.Trip, _i102.DayTrip>((
       trip,
       dayTrip,
     ) =>
-        _i99.DayTripCubit(
+        _i100.DayTripCubit(
           trip: trip,
           dayTrip: dayTrip,
-          updateDayTrip: gh<_i88.UpdateDayTrip>(),
+          updateDayTrip: gh<_i89.UpdateDayTrip>(),
           deleteDayTrip: gh<_i61.DeleteDayTrip>(),
-          listenTripStops: gh<_i76.ListenTripStops>(),
-          updateDayTripStartTime: gh<_i90.UpdateDayTripStartTime>(),
+          listenTripStops: gh<_i77.ListenTripStops>(),
+          updateDayTripStartTime: gh<_i91.UpdateDayTripStartTime>(),
           updateDayTripsIndexes: gh<_i44.UpdateTripStopsIndexes>(),
           updateTravelTime: gh<_i40.UpdateTravelTime>(),
-          tripStopDone: gh<_i85.TripStopDone>(),
-          listenDayTrip: gh<_i74.ListenDayTrip>(),
+          tripStopDone: gh<_i86.TripStopDone>(),
+          listenDayTrip: gh<_i75.ListenDayTrip>(),
           updateTripStopsDirectionsUpToDate:
-              gh<_i94.UpdateTripStopsDirectionsUpToDate>(),
+              gh<_i95.UpdateTripStopsDirectionsUpToDate>(),
           crashlytics: gh<_i11.FirebaseCrashlytics>(),
         ));
-    gh.lazySingleton<_i102.FetchPlaceDetails>(
-        () => _i102.FetchPlaceDetails(gh<_i69.GooglePlacesRepository>()));
-    gh.lazySingleton<_i103.FetchSuggestions>(
-        () => _i103.FetchSuggestions(gh<_i69.GooglePlacesRepository>()));
-    gh.lazySingleton<_i104.FetchTripStopsDirections>(() =>
-        _i104.FetchTripStopsDirections(gh<_i69.GooglePlacesRepository>()));
-    gh.factory<_i105.GooglePlacesCubit>(() => _i105.GooglePlacesCubit(
-          fetchSuggestions: gh<_i103.FetchSuggestions>(),
-          fetchPlaceDetails: gh<_i102.FetchPlaceDetails>(),
+    gh.lazySingleton<_i103.FetchPlaceDetails>(
+        () => _i103.FetchPlaceDetails(gh<_i69.GooglePlacesRepository>()));
+    gh.lazySingleton<_i104.FetchSuggestions>(
+        () => _i104.FetchSuggestions(gh<_i69.GooglePlacesRepository>()));
+    gh.lazySingleton<_i105.FetchTripStopsDirections>(() =>
+        _i105.FetchTripStopsDirections(gh<_i69.GooglePlacesRepository>()));
+    gh.factory<_i106.GooglePlacesCubit>(() => _i106.GooglePlacesCubit(
+          fetchSuggestions: gh<_i104.FetchSuggestions>(),
+          fetchPlaceDetails: gh<_i103.FetchPlaceDetails>(),
         ));
-    gh.factory<_i106.LoginSignupCubit>(() => _i106.LoginSignupCubit(
-          registerUser: gh<_i83.RegisterUser>(),
-          loginUser: gh<_i79.LoginUser>(),
-          recoverPassword: gh<_i82.RecoverPassword>(),
+    gh.factory<_i107.LoginSignupCubit>(() => _i107.LoginSignupCubit(
+          registerUser: gh<_i84.RegisterUser>(),
+          loginUser: gh<_i80.LoginUser>(),
+          recoverPassword: gh<_i83.RecoverPassword>(),
         ));
-    gh.factoryParam<_i107.NewDayTripCubit, String, dynamic>((
+    gh.factoryParam<_i108.NewDayTripCubit, String, dynamic>((
       tripId,
       _,
     ) =>
-        _i107.NewDayTripCubit(
-          createDayTrip: gh<_i98.CreateDayTrip>(),
+        _i108.NewDayTripCubit(
+          createDayTrip: gh<_i99.CreateDayTrip>(),
           settings: gh<_i30.Settings>(),
           tripId: tripId,
         ));
-    gh.factoryParam<_i108.NewTripCubit, _i100.Trip?, dynamic>((
+    gh.factoryParam<_i109.NewTripCubit, _i101.Trip?, dynamic>((
       existingTrip,
       _,
     ) =>
-        _i108.NewTripCubit(
-          userCubit: gh<_i96.UserCubit>(),
+        _i109.NewTripCubit(
+          userCubit: gh<_i97.UserCubit>(),
           createTrip: gh<_i55.CreateTrip>(),
           createFromExistingTrip: gh<_i54.CreateFromExistingTrip>(),
           settings: gh<_i30.Settings>(),
           deviceLocale: gh<_i21.Locale>(instanceName: 'deviceLocale'),
           existingTrip: existingTrip,
         ));
-    gh.factoryParam<_i109.NewTripStopCubit, String, String>((
+    gh.factoryParam<_i110.NewTripStopCubit, String, String>((
       tripId,
       dayTripId,
     ) =>
-        _i109.NewTripStopCubit(
+        _i110.NewTripStopCubit(
           tripId: tripId,
           dayTripId: dayTripId,
           createTripStop: gh<_i56.CreateTripStop>(),
           updateTripStopsDirectionsUpToDate:
-              gh<_i94.UpdateTripStopsDirectionsUpToDate>(),
+              gh<_i95.UpdateTripStopsDirectionsUpToDate>(),
         ));
-    gh.lazySingleton<_i110.SettingsCubit>(() => _i110.SettingsCubit(
-          updateSettings: gh<_i93.UpdateSettings>(),
-          userCubit: gh<_i96.UserCubit>(),
+    gh.lazySingleton<_i111.SettingsCubit>(() => _i111.SettingsCubit(
+          updateSettings: gh<_i94.UpdateSettings>(),
+          userCubit: gh<_i97.UserCubit>(),
         ));
-    gh.factoryParam<_i111.TripCubit, _i100.Trip, dynamic>((
+    gh.factoryParam<_i112.TripCubit, _i101.Trip, dynamic>((
       trip,
       _,
     ) =>
-        _i111.TripCubit(
+        _i112.TripCubit(
           trip: trip,
           saveTrip: gh<_i41.UpdateTrip>(),
           deleteTrip: gh<_i62.DeleteTrip>(),
-          listenDayTrips: gh<_i75.ListenDayTrips>(),
-          updateDayTripsIndexes: gh<_i92.UpdateDayTripsIndexes>(),
+          listenDayTrips: gh<_i76.ListenDayTrips>(),
+          updateDayTripsIndexes: gh<_i93.UpdateDayTripsIndexes>(),
           crashlytics: gh<_i11.FirebaseCrashlytics>(),
         ));
-    gh.factoryParam<_i112.TripStopCubit, _i112.TripStopCubitParams, dynamic>((
+    gh.factoryParam<_i113.TripStopCubit, _i113.TripStopCubitParams, dynamic>((
       params,
       _,
     ) =>
-        _i112.TripStopCubit(
+        _i113.TripStopCubit(
           params: params,
-          tripStopDone: gh<_i85.TripStopDone>(),
+          tripStopDone: gh<_i86.TripStopDone>(),
           updateTripStopNote: gh<_i43.UpdateTripStopNote>(),
           deleteTripStop: gh<_i63.DeleteTripStop>(),
           updateTripStop: gh<_i42.UpdateTripStop>(),
           updateTripStopsDirectionsUpToDate:
-              gh<_i94.UpdateTripStopsDirectionsUpToDate>(),
+              gh<_i95.UpdateTripStopsDirectionsUpToDate>(),
         ));
-    gh.factoryParam<_i113.TripStopsMapCubit, _i100.Trip, _i101.DayTrip>((
+    gh.factoryParam<_i114.TripStopsMapCubit, _i101.Trip, _i102.DayTrip>((
       trip,
       dayTrip,
     ) =>
-        _i113.TripStopsMapCubit(
-          fetchPolylinePoints: gh<_i104.FetchTripStopsDirections>(),
-          saveTripStopsDirections: gh<_i84.SaveTripStopsDirections>(),
-          listenDayTrip: gh<_i74.ListenDayTrip>(),
+        _i114.TripStopsMapCubit(
+          fetchPolylinePoints: gh<_i105.FetchTripStopsDirections>(),
+          saveTripStopsDirections: gh<_i85.SaveTripStopsDirections>(),
+          listenDayTrip: gh<_i75.ListenDayTrip>(),
           updateTripStopsDirectionsUpToDate:
-              gh<_i94.UpdateTripStopsDirectionsUpToDate>(),
-          updateDayTripShowDirections: gh<_i89.UpdateDayTripShowDirections>(),
+              gh<_i95.UpdateTripStopsDirectionsUpToDate>(),
+          updateDayTripShowDirections: gh<_i90.UpdateDayTripShowDirections>(),
           updateDayTripUseDifferentDirectionsColors:
-              gh<_i91.UpdateDayTripUseDifferentDirectionsColors>(),
+              gh<_i92.UpdateDayTripUseDifferentDirectionsColors>(),
           crashlytics: gh<_i11.FirebaseCrashlytics>(),
           trip: trip,
           dayTrip: dayTrip,
@@ -572,16 +578,16 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$Network extends _i114.Network {}
+class _$Network extends _i115.Network {}
 
-class _$FirebaseModule extends _i114.FirebaseModule {}
+class _$FirebaseModule extends _i115.FirebaseModule {}
 
-class _$DeviceModule extends _i114.DeviceModule {}
+class _$DeviceModule extends _i115.DeviceModule {}
 
-class _$RegisterModule extends _i114.RegisterModule {}
+class _$RegisterModule extends _i115.RegisterModule {}
 
-class _$GooglePlacesModule extends _i114.GooglePlacesModule {}
+class _$GooglePlacesModule extends _i115.GooglePlacesModule {}
 
-class _$SettingsModule extends _i110.SettingsModule {}
+class _$SettingsModule extends _i111.SettingsModule {}
 
-class _$UserModule extends _i96.UserModule {}
+class _$UserModule extends _i97.UserModule {}

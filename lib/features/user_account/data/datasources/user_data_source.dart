@@ -31,6 +31,9 @@ abstract interface class UserDataSource {
 
   //TODO implement test
   setShowWelcome(bool showWelcome);
+
+  //TODO implement test
+  setShowPublicTrip(bool showPublicTrip);
 }
 
 @LazySingleton(as: UserDataSource)
@@ -79,7 +82,7 @@ final class UserDataSourceImpl implements UserDataSource {
             name: user.displayName ?? user.email!.split('@').first,
             oldTripsImported: userDB.oldTripsImported,
             settings: userDB.settings,
-            tutorialState: userDB.tutorialsState,
+            tutorialsState: userDB.tutorialsState,
           ));
         });
       } else {
@@ -160,5 +163,12 @@ final class UserDataSourceImpl implements UserDataSource {
     await _usersCollection
         .doc(firebaseAuth.currentUser!.uid)
         .update({'tutorialsState': {'showWelcome': showWelcome}});
+  }
+  
+  @override
+  setShowPublicTrip(bool showPublicTrip) async {
+    await _usersCollection
+        .doc(firebaseAuth.currentUser!.uid)
+        .update({'tutorialsState': {'showPublicTrip': showPublicTrip}});
   }
 }

@@ -9,6 +9,7 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import '../../../tutorial/presentation/cubit/cubit/tutorial_cubit.dart';
 import '../../../user_account/domain/entities/user.dart';
 import '../../domain/entities/old_daily_trip.dart';
 import '../../domain/entities/old_place.dart';
@@ -26,8 +27,15 @@ class ImportOldTripsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ImportOldTripsCubit>(
-      create: (context) => getIt(param1: _user)..reload(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ImportOldTripsCubit>(
+          create: (context) => getIt(param1: _user)..reload(),
+        ),
+        BlocProvider<TutorialCubit>(
+          create: (context) => getIt(),
+        ),
+      ],
       child: Scaffold(
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight),
@@ -60,7 +68,8 @@ class ImportOldTripsPage extends StatelessWidget {
   }
 
   _navigateToTrips(BuildContext context) {
-    if(_user.tutorialState.showWelcome){
+    final showWelcome = context.read<TutorialCubit>().state.showWelcome;
+    if (showWelcome) {
       context.replaceRoute(const TutorialRoute());
     } else {
       context.replaceRoute(const TripsRoute());

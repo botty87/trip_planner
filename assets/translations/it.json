@@ -172,5 +172,8 @@
     "tripStopsTutorialTitle": "Tappe di viaggio",
     "tripStopsTutorialBody": "Ogni giornata di viaggio è composta da tappe di viaggio. Puoi riordinarle trascinandole. Clicca sulla card \"aggiungi destinazione\" per creare una nuova tappa di viaggio.",
     "tutorialEndTitle": "Pronto per partire?!",
-    "tutorialEndBody": "Ora sei pronto per usare Trip Planner. Crea il tuo primo viaggio, prendendo ispirazione anche dai viaggi pubblici, e inizia a pianificare la tua prossima avventura!"
+    "tutorialEndBody": "Ora sei pronto per usare Trip Planner. Crea il tuo primo viaggio, prendendo ispirazione anche dai viaggi pubblici, e inizia a pianificare la tua prossima avventura!",
+    "tripPrivacyShowCaseTitle": "Privacy del viaggio",
+    "tripPrivacyShowCaseBody": "Puoi scegliere se rendere il tuo viaggio pubblico o privato. I viaggi pubblici saranno visibili a tutti gli utenti di Trip Planner. I viaggi privati saranno visibili solo a te.",
+    "letstart" : "Iniziamo!"
 }

@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/usecases/usecase.dart';
-import '../../errors/user_failures.dart';
-import '../repositories/user_repository.dart';
+import '../../../user_account/errors/user_failures.dart';
+import '../../../user_account/domain/repositories/user_repository.dart';
 
 @lazySingleton
 class HideShowWelcome implements UseCase<void, NoParams> {
@@ -17,3 +17,4 @@ class HideShowWelcome implements UseCase<void, NoParams> {
     return repository.setShowWelcome(false);
   }
 }
+

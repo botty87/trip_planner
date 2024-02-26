@@ -360,4 +360,31 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> setShowPublicTrip(
+          bool? showPublicTrip) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setShowPublicTrip,
+          [showPublicTrip],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #setShowPublicTrip,
+            [showPublicTrip],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #setShowPublicTrip,
+            [showPublicTrip],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
 }

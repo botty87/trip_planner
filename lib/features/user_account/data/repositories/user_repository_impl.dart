@@ -153,4 +153,14 @@ final class UserRepositoryImpl implements UserRepository {
       return left(const UserFailures.unknownError());
     }
   }
+  
+  @override
+  Future<Either<UserFailures, void>> setShowPublicTrip(bool showPublicTrip) async {
+    try {
+      await userDataSource.setShowPublicTrip(showPublicTrip);
+      return right(null);
+    } catch (e) {
+      return left(const UserFailures.unknownError());
+    }
+  }
 }

@@ -14,7 +14,7 @@ sealed class User with _$User {
     required String name,
     @Default(true) bool oldTripsImported,
     @Default(Settings()) Settings settings,
-    required TutorialsState tutorialState,
+    required TutorialsState tutorialsState,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

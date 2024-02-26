@@ -21,6 +21,7 @@ TutorialsState _$TutorialsStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TutorialsState {
   bool get showWelcome => throw _privateConstructorUsedError;
+  bool get showPublicTrip => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $TutorialsStateCopyWith<$Res> {
           TutorialsState value, $Res Function(TutorialsState) then) =
       _$TutorialsStateCopyWithImpl<$Res, TutorialsState>;
   @useResult
-  $Res call({bool showWelcome});
+  $Res call({bool showWelcome, bool showPublicTrip});
 }
 
 /// @nodoc
@@ -51,11 +52,16 @@ class _$TutorialsStateCopyWithImpl<$Res, $Val extends TutorialsState>
   @override
   $Res call({
     Object? showWelcome = null,
+    Object? showPublicTrip = null,
   }) {
     return _then(_value.copyWith(
       showWelcome: null == showWelcome
           ? _value.showWelcome
           : showWelcome // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showPublicTrip: null == showPublicTrip
+          ? _value.showPublicTrip
+          : showPublicTrip // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -69,7 +75,7 @@ abstract class _$$TutorialsStateImplCopyWith<$Res>
       __$$TutorialsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool showWelcome});
+  $Res call({bool showWelcome, bool showPublicTrip});
 }
 
 /// @nodoc
@@ -84,11 +90,16 @@ class __$$TutorialsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? showWelcome = null,
+    Object? showPublicTrip = null,
   }) {
     return _then(_$TutorialsStateImpl(
       showWelcome: null == showWelcome
           ? _value.showWelcome
           : showWelcome // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showPublicTrip: null == showPublicTrip
+          ? _value.showPublicTrip
+          : showPublicTrip // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -97,7 +108,8 @@ class __$$TutorialsStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TutorialsStateImpl implements _TutorialsState {
-  const _$TutorialsStateImpl({this.showWelcome = true});
+  const _$TutorialsStateImpl(
+      {this.showWelcome = true, this.showPublicTrip = true});
 
   factory _$TutorialsStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$TutorialsStateImplFromJson(json);
@@ -105,10 +117,13 @@ class _$TutorialsStateImpl implements _TutorialsState {
   @override
   @JsonKey()
   final bool showWelcome;
+  @override
+  @JsonKey()
+  final bool showPublicTrip;
 
   @override
   String toString() {
-    return 'TutorialsState(showWelcome: $showWelcome)';
+    return 'TutorialsState(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip)';
   }
 
   @override
@@ -117,12 +132,14 @@ class _$TutorialsStateImpl implements _TutorialsState {
         (other.runtimeType == runtimeType &&
             other is _$TutorialsStateImpl &&
             (identical(other.showWelcome, showWelcome) ||
-                other.showWelcome == showWelcome));
+                other.showWelcome == showWelcome) &&
+            (identical(other.showPublicTrip, showPublicTrip) ||
+                other.showPublicTrip == showPublicTrip));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, showWelcome);
+  int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip);
 
   @JsonKey(ignore: true)
   @override
@@ -140,14 +157,17 @@ class _$TutorialsStateImpl implements _TutorialsState {
 }
 
 abstract class _TutorialsState implements TutorialsState {
-  const factory _TutorialsState({final bool showWelcome}) =
-      _$TutorialsStateImpl;
+  const factory _TutorialsState(
+      {final bool showWelcome,
+      final bool showPublicTrip}) = _$TutorialsStateImpl;
 
   factory _TutorialsState.fromJson(Map<String, dynamic> json) =
       _$TutorialsStateImpl.fromJson;
 
   @override
   bool get showWelcome;
+  @override
+  bool get showPublicTrip;
   @override
   @JsonKey(ignore: true)
   _$$TutorialsStateImplCopyWith<_$TutorialsStateImpl> get copyWith =>

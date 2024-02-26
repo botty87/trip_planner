@@ -171,5 +171,8 @@ abstract class  LocaleKeys {
   static const tripStopsTutorialBody = 'tripStopsTutorialBody';
   static const tutorialEndTitle = 'tutorialEndTitle';
   static const tutorialEndBody = 'tutorialEndBody';
+  static const tripPrivacyShowCaseTitle = 'tripPrivacyShowCaseTitle';
+  static const tripPrivacyShowCaseBody = 'tripPrivacyShowCaseBody';
+  static const letstart = 'letstart';
 
 }

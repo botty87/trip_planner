@@ -8,6 +8,7 @@ sealed class TutorialsState with _$TutorialsState {
 
   const factory TutorialsState({
     @Default(true) bool showWelcome,
+    @Default(true) bool showPublicTrip,
   }) = _TutorialsState;
 
   factory TutorialsState.fromJson(Map<String, dynamic> json) => _$TutorialsStateFromJson(json);

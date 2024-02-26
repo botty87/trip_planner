@@ -28,4 +28,7 @@ abstract interface class UserRepository {
 
   //TODO implement test
   Future<Either<UserFailures, void>> setShowWelcome(bool showWelcome);
+
+  //TODO implement test
+  Future<Either<UserFailures, void>> setShowPublicTrip(bool showPublicTrip);
 }

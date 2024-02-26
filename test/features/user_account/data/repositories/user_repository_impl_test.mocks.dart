@@ -116,4 +116,13 @@ class MockUserDataSource extends _i1.Mock implements _i2.UserDataSource {
         ),
         returnValueForMissingStub: null,
       );
+
+  @override
+  dynamic setShowPublicTrip(bool? showPublicTrip) => super.noSuchMethod(
+        Invocation.method(
+          #setShowPublicTrip,
+          [showPublicTrip],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

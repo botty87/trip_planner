@@ -15,13 +15,22 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$TutorialState {}
+mixin _$TutorialState {
+  bool get showWelcome => throw _privateConstructorUsedError;
+  bool get showPublicTrip => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $TutorialStateCopyWith<TutorialState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $TutorialStateCopyWith<$Res> {
   factory $TutorialStateCopyWith(
           TutorialState value, $Res Function(TutorialState) then) =
       _$TutorialStateCopyWithImpl<$Res, TutorialState>;
+  @useResult
+  $Res call({bool showWelcome, bool showPublicTrip});
 }
 
 /// @nodoc
@@ -33,13 +42,35 @@ class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? showWelcome = null,
+    Object? showPublicTrip = null,
+  }) {
+    return _then(_value.copyWith(
+      showWelcome: null == showWelcome
+          ? _value.showWelcome
+          : showWelcome // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showPublicTrip: null == showPublicTrip
+          ? _value.showPublicTrip
+          : showPublicTrip // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$TutorialStateImplCopyWith<$Res> {
+abstract class _$$TutorialStateImplCopyWith<$Res>
+    implements $TutorialStateCopyWith<$Res> {
   factory _$$TutorialStateImplCopyWith(
           _$TutorialStateImpl value, $Res Function(_$TutorialStateImpl) then) =
       __$$TutorialStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool showWelcome, bool showPublicTrip});
 }
 
 /// @nodoc
@@ -49,28 +80,74 @@ class __$$TutorialStateImplCopyWithImpl<$Res>
   __$$TutorialStateImplCopyWithImpl(
       _$TutorialStateImpl _value, $Res Function(_$TutorialStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? showWelcome = null,
+    Object? showPublicTrip = null,
+  }) {
+    return _then(_$TutorialStateImpl(
+      showWelcome: null == showWelcome
+          ? _value.showWelcome
+          : showWelcome // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showPublicTrip: null == showPublicTrip
+          ? _value.showPublicTrip
+          : showPublicTrip // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$TutorialStateImpl implements _TutorialState {
-  const _$TutorialStateImpl();
+  const _$TutorialStateImpl(
+      {required this.showWelcome, required this.showPublicTrip});
+
+  @override
+  final bool showWelcome;
+  @override
+  final bool showPublicTrip;
 
   @override
   String toString() {
-    return 'TutorialState()';
+    return 'TutorialState(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TutorialStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$TutorialStateImpl &&
+            (identical(other.showWelcome, showWelcome) ||
+                other.showWelcome == showWelcome) &&
+            (identical(other.showPublicTrip, showPublicTrip) ||
+                other.showPublicTrip == showPublicTrip));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TutorialStateImplCopyWith<_$TutorialStateImpl> get copyWith =>
+      __$$TutorialStateImplCopyWithImpl<_$TutorialStateImpl>(this, _$identity);
 }
 
 abstract class _TutorialState implements TutorialState {
-  const factory _TutorialState() = _$TutorialStateImpl;
+  const factory _TutorialState(
+      {required final bool showWelcome,
+      required final bool showPublicTrip}) = _$TutorialStateImpl;
+
+  @override
+  bool get showWelcome;
+  @override
+  bool get showPublicTrip;
+  @override
+  @JsonKey(ignore: true)
+  _$$TutorialStateImplCopyWith<_$TutorialStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

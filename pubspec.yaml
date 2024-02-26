@@ -90,6 +90,7 @@ dependencies:
   responsive_framework: ^1.1.1
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
+  showcaseview: ^2.0.3
   url_launcher: ^6.2.1
   uuid: ^4.0.0
   vector_graphics: ^1.1.9

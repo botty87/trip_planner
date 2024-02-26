@@ -21,9 +21,10 @@ class TutorialPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<TutorialCubit>(),
-      child: Builder(
-        builder: (context) {
-          return SafeArea(
+      child: Builder(builder: (context) {
+        return ColoredBox(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          child: SafeArea(
             child: IntroductionScreen(
               pages: [
                 _tripsTutorial,
@@ -34,15 +35,15 @@ class TutorialPage extends StatelessWidget {
               showSkipButton: true,
               showNextButton: false,
               skip: Text(LocaleKeys.skip.tr()),
-              done: Text(LocaleKeys.done.tr()),
+              done: Text(LocaleKeys.letstart.tr()),
               onDone: () {
-                context.read<TutorialCubit>().onDone();
+                context.read<TutorialCubit>().onWelcomeDone();
                 context.router.replaceAll([const TripsRoute()]);
               },
             ),
-          );
-        }
-      ),
+          ),
+        );
+      }),
     );
   }
 }
