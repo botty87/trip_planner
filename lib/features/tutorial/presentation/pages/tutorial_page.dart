@@ -7,7 +7,6 @@ import 'package:introduction_screen/introduction_screen.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
-import '../../../../core/routes/app_router.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../gen/assets.gen.dart';
 import '../cubit/cubit/tutorial_cubit.dart';
