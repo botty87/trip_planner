@@ -30,14 +30,14 @@ class TutorialPage extends StatelessWidget {
                 _tripsTutorial,
                 _dayTripsTutorial,
                 _tripStopsTutorial,
+                _tutorialEnd,
               ],
               showSkipButton: true,
               showNextButton: false,
               skip: Text(LocaleKeys.skip.tr()),
               done: Text(LocaleKeys.done.tr()),
               onDone: () {
-                //TODO restore this line when the tutorial is ready
-                //context.read<TutorialCubit>().onDone();
+                context.read<TutorialCubit>().onDone();
                 context.router.replaceAll([const TripsRoute()]);
               },
             ),

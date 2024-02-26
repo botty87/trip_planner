@@ -24,7 +24,7 @@ mixin _$UserDB {
   String get name => throw _privateConstructorUsedError;
   bool get oldTripsImported => throw _privateConstructorUsedError;
   Settings get settings => throw _privateConstructorUsedError;
-  bool get showWelcome => throw _privateConstructorUsedError;
+  TutorialsState get tutorialsState => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,9 +41,10 @@ abstract class $UserDBCopyWith<$Res> {
       String name,
       bool oldTripsImported,
       Settings settings,
-      bool showWelcome});
+      TutorialsState tutorialsState});
 
   $SettingsCopyWith<$Res> get settings;
+  $TutorialsStateCopyWith<$Res> get tutorialsState;
 }
 
 /// @nodoc
@@ -63,7 +64,7 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
     Object? name = null,
     Object? oldTripsImported = null,
     Object? settings = null,
-    Object? showWelcome = null,
+    Object? tutorialsState = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -82,10 +83,10 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
               as Settings,
-      showWelcome: null == showWelcome
-          ? _value.showWelcome
-          : showWelcome // ignore: cast_nullable_to_non_nullable
-              as bool,
+      tutorialsState: null == tutorialsState
+          ? _value.tutorialsState
+          : tutorialsState // ignore: cast_nullable_to_non_nullable
+              as TutorialsState,
     ) as $Val);
   }
 
@@ -94,6 +95,14 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
   $SettingsCopyWith<$Res> get settings {
     return $SettingsCopyWith<$Res>(_value.settings, (value) {
       return _then(_value.copyWith(settings: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TutorialsStateCopyWith<$Res> get tutorialsState {
+    return $TutorialsStateCopyWith<$Res>(_value.tutorialsState, (value) {
+      return _then(_value.copyWith(tutorialsState: value) as $Val);
     });
   }
 }
@@ -110,10 +119,12 @@ abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
       String name,
       bool oldTripsImported,
       Settings settings,
-      bool showWelcome});
+      TutorialsState tutorialsState});
 
   @override
   $SettingsCopyWith<$Res> get settings;
+  @override
+  $TutorialsStateCopyWith<$Res> get tutorialsState;
 }
 
 /// @nodoc
@@ -131,7 +142,7 @@ class __$$UserDBImplCopyWithImpl<$Res>
     Object? name = null,
     Object? oldTripsImported = null,
     Object? settings = null,
-    Object? showWelcome = null,
+    Object? tutorialsState = null,
   }) {
     return _then(_$UserDBImpl(
       email: null == email
@@ -150,10 +161,10 @@ class __$$UserDBImplCopyWithImpl<$Res>
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
               as Settings,
-      showWelcome: null == showWelcome
-          ? _value.showWelcome
-          : showWelcome // ignore: cast_nullable_to_non_nullable
-              as bool,
+      tutorialsState: null == tutorialsState
+          ? _value.tutorialsState
+          : tutorialsState // ignore: cast_nullable_to_non_nullable
+              as TutorialsState,
     ));
   }
 }
@@ -166,7 +177,7 @@ class _$UserDBImpl implements _UserDB {
       required this.name,
       this.oldTripsImported = false,
       this.settings = const Settings(),
-      this.showWelcome = true});
+      this.tutorialsState = const TutorialsState()});
 
   factory _$UserDBImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDBImplFromJson(json);
@@ -183,11 +194,11 @@ class _$UserDBImpl implements _UserDB {
   final Settings settings;
   @override
   @JsonKey()
-  final bool showWelcome;
+  final TutorialsState tutorialsState;
 
   @override
   String toString() {
-    return 'UserDB(email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, showWelcome: $showWelcome)';
+    return 'UserDB(email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsState: $tutorialsState)';
   }
 
   @override
@@ -201,14 +212,14 @@ class _$UserDBImpl implements _UserDB {
                 other.oldTripsImported == oldTripsImported) &&
             (identical(other.settings, settings) ||
                 other.settings == settings) &&
-            (identical(other.showWelcome, showWelcome) ||
-                other.showWelcome == showWelcome));
+            (identical(other.tutorialsState, tutorialsState) ||
+                other.tutorialsState == tutorialsState));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, email, name, oldTripsImported, settings, showWelcome);
+      runtimeType, email, name, oldTripsImported, settings, tutorialsState);
 
   @JsonKey(ignore: true)
   @override
@@ -230,7 +241,7 @@ abstract class _UserDB implements UserDB {
       required final String name,
       final bool oldTripsImported,
       final Settings settings,
-      final bool showWelcome}) = _$UserDBImpl;
+      final TutorialsState tutorialsState}) = _$UserDBImpl;
 
   factory _UserDB.fromJson(Map<String, dynamic> json) = _$UserDBImpl.fromJson;
 
@@ -243,7 +254,7 @@ abstract class _UserDB implements UserDB {
   @override
   Settings get settings;
   @override
-  bool get showWelcome;
+  TutorialsState get tutorialsState;
   @override
   @JsonKey(ignore: true)
   _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>

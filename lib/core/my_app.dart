@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
             loggedOut: () => router.replaceAll([const LoginSignupRoute()]),
             loggedIn: (user) {
               if (user.oldTripsImported) {
-                if(user.showWelcome){
+                if(user.tutorialState.showWelcome){
                   return router.replaceAll([const TutorialRoute()]);
                 } else {
                   return router.replaceAll([const TripsRoute()]);

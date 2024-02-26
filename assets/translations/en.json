@@ -169,5 +169,7 @@
     "dayTripsTutorialTitle" : "Days of trip",
     "dayTripsTutorialBody" : "Each trip is divided into days of trip. You can reorder them by dragging and dropping. Click on the \"add day trip\" card to add a new day of trip.",
     "tripStopsTutorialTitle" : "Trip stops",
-    "tripStopsTutorialBody" : "Each day of trip is divided into trip stops. You can reorder them by dragging and dropping. Click on the \"add destination\" card to add a new trip stop."
+    "tripStopsTutorialBody" : "Each day of trip is divided into trip stops. You can reorder them by dragging and dropping. Click on the \"add destination\" card to add a new trip stop.",
+    "tutorialEndTitle" : "Ready to start?!",
+    "tutorialEndBody" : "You are now ready to use Trip Planner. Create you first trip, also taking inspiration from the public trips, and start planning your next adventure!"
 }

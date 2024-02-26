@@ -60,7 +60,7 @@ class ImportOldTripsPage extends StatelessWidget {
   }
 
   _navigateToTrips(BuildContext context) {
-    if(_user.showWelcome){
+    if(_user.tutorialState.showWelcome){
       context.replaceRoute(const TutorialRoute());
     } else {
       context.replaceRoute(const TripsRoute());

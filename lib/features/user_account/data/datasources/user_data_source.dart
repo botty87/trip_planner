@@ -79,7 +79,7 @@ final class UserDataSourceImpl implements UserDataSource {
             name: user.displayName ?? user.email!.split('@').first,
             oldTripsImported: userDB.oldTripsImported,
             settings: userDB.settings,
-            showWelcome: userDB.showWelcome,
+            tutorialState: userDB.tutorialsState,
           ));
         });
       } else {
@@ -159,6 +159,6 @@ final class UserDataSourceImpl implements UserDataSource {
   setShowWelcome(bool showWelcome) async {
     await _usersCollection
         .doc(firebaseAuth.currentUser!.uid)
-        .update({'showWelcome': showWelcome});
+        .update({'tutorialsState': {'showWelcome': showWelcome}});
   }
 }
