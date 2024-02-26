@@ -120,6 +120,12 @@ class $AssetsSvgGen {
   /// File path: assets/svg/add_day_trip.svg.vec
   String get addDayTripSvg => 'assets/svg/add_day_trip.svg.vec';
 
+  /// File path: assets/svg/add_day_trip_new.svg
+  String get addDayTripNew => 'assets/svg/add_day_trip_new.svg';
+
+  /// File path: assets/svg/add_day_trip_new.svg.vec
+  String get addDayTripNewSvg => 'assets/svg/add_day_trip_new.svg.vec';
+
   /// File path: assets/svg/add_new_day_trip.svg.vec
   String get addNewDayTripSvg => 'assets/svg/add_new_day_trip.svg.vec';
 
@@ -157,6 +163,8 @@ class $AssetsSvgGen {
   List<String> get values => [
         accountSvg,
         addDayTripSvg,
+        addDayTripNew,
+        addDayTripNewSvg,
         addNewDayTripSvg,
         addTripStopSvg,
         arrowSvg,
