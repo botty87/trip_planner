@@ -9,6 +9,7 @@ sealed class TutorialsData with _$TutorialsData {
   const factory TutorialsData({
     @Default(true) bool showWelcome,
     @Default(true) bool showPublicTrip,
+    @Default(true) bool showCreateFromPublicTrip,
   }) = _TutorialsData;
 
   factory TutorialsData.fromJson(Map<String, dynamic> json) => _$TutorialsDataFromJson(json);

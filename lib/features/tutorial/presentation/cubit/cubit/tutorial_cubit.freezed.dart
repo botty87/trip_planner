@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TutorialState {
   bool get showWelcome => throw _privateConstructorUsedError;
   bool get showPublicTrip => throw _privateConstructorUsedError;
+  bool get showCreateFromPublicTrip => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TutorialStateCopyWith<TutorialState> get copyWith =>
@@ -30,7 +31,8 @@ abstract class $TutorialStateCopyWith<$Res> {
           TutorialState value, $Res Function(TutorialState) then) =
       _$TutorialStateCopyWithImpl<$Res, TutorialState>;
   @useResult
-  $Res call({bool showWelcome, bool showPublicTrip});
+  $Res call(
+      {bool showWelcome, bool showPublicTrip, bool showCreateFromPublicTrip});
 }
 
 /// @nodoc
@@ -48,6 +50,7 @@ class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState>
   $Res call({
     Object? showWelcome = null,
     Object? showPublicTrip = null,
+    Object? showCreateFromPublicTrip = null,
   }) {
     return _then(_value.copyWith(
       showWelcome: null == showWelcome
@@ -57,6 +60,10 @@ class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState>
       showPublicTrip: null == showPublicTrip
           ? _value.showPublicTrip
           : showPublicTrip // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showCreateFromPublicTrip: null == showCreateFromPublicTrip
+          ? _value.showCreateFromPublicTrip
+          : showCreateFromPublicTrip // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -70,7 +77,8 @@ abstract class _$$TutorialStateImplCopyWith<$Res>
       __$$TutorialStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool showWelcome, bool showPublicTrip});
+  $Res call(
+      {bool showWelcome, bool showPublicTrip, bool showCreateFromPublicTrip});
 }
 
 /// @nodoc
@@ -86,6 +94,7 @@ class __$$TutorialStateImplCopyWithImpl<$Res>
   $Res call({
     Object? showWelcome = null,
     Object? showPublicTrip = null,
+    Object? showCreateFromPublicTrip = null,
   }) {
     return _then(_$TutorialStateImpl(
       showWelcome: null == showWelcome
@@ -96,6 +105,10 @@ class __$$TutorialStateImplCopyWithImpl<$Res>
           ? _value.showPublicTrip
           : showPublicTrip // ignore: cast_nullable_to_non_nullable
               as bool,
+      showCreateFromPublicTrip: null == showCreateFromPublicTrip
+          ? _value.showCreateFromPublicTrip
+          : showCreateFromPublicTrip // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -104,16 +117,20 @@ class __$$TutorialStateImplCopyWithImpl<$Res>
 
 class _$TutorialStateImpl implements _TutorialState {
   const _$TutorialStateImpl(
-      {required this.showWelcome, required this.showPublicTrip});
+      {required this.showWelcome,
+      required this.showPublicTrip,
+      required this.showCreateFromPublicTrip});
 
   @override
   final bool showWelcome;
   @override
   final bool showPublicTrip;
+  @override
+  final bool showCreateFromPublicTrip;
 
   @override
   String toString() {
-    return 'TutorialState(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip)';
+    return 'TutorialState(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip, showCreateFromPublicTrip: $showCreateFromPublicTrip)';
   }
 
   @override
@@ -124,11 +141,15 @@ class _$TutorialStateImpl implements _TutorialState {
             (identical(other.showWelcome, showWelcome) ||
                 other.showWelcome == showWelcome) &&
             (identical(other.showPublicTrip, showPublicTrip) ||
-                other.showPublicTrip == showPublicTrip));
+                other.showPublicTrip == showPublicTrip) &&
+            (identical(
+                    other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
+                other.showCreateFromPublicTrip == showCreateFromPublicTrip));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip);
+  int get hashCode => Object.hash(
+      runtimeType, showWelcome, showPublicTrip, showCreateFromPublicTrip);
 
   @JsonKey(ignore: true)
   @override
@@ -140,12 +161,15 @@ class _$TutorialStateImpl implements _TutorialState {
 abstract class _TutorialState implements TutorialState {
   const factory _TutorialState(
       {required final bool showWelcome,
-      required final bool showPublicTrip}) = _$TutorialStateImpl;
+      required final bool showPublicTrip,
+      required final bool showCreateFromPublicTrip}) = _$TutorialStateImpl;
 
   @override
   bool get showWelcome;
   @override
   bool get showPublicTrip;
+  @override
+  bool get showCreateFromPublicTrip;
   @override
   @JsonKey(ignore: true)
   _$$TutorialStateImplCopyWith<_$TutorialStateImpl> get copyWith =>

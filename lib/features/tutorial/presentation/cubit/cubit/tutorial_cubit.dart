@@ -30,4 +30,10 @@ class TutorialCubit extends Cubit<TutorialState> {
     emit(state.copyWith(showPublicTrip: false));
     _updateTutorialsData(UpdateTutorialsDataParams(state.toTutorialsData()));
   }
+
+  //TODO implement test
+  void onCreateFromPublicTripDone() {
+    emit(state.copyWith(showCreateFromPublicTrip: false));
+    _updateTutorialsData(UpdateTutorialsDataParams(state.toTutorialsData()));
+  }
 }

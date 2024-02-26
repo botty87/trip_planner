@@ -174,5 +174,7 @@
     "tutorialEndBody" : "You are now ready to use Trip Planner. Create you first trip, also taking inspiration from the public trips, and start planning your next adventure!",
     "tripPrivacyShowCaseTitle" : "Trip privacy",
     "tripPrivacyShowCaseBody" : "You can choose if your trip is public or private. Public trips can be discovered by other users and added to their trips. Private trips are only visible to you.",
-    "letstart" : "Let's start!"
+    "letstart" : "Let's start!",
+    "addPublicTripFabShowCaseTitle" : "Add trip",
+    "addPublicTripFabShowCaseBody" : "You can create your trip inspired by this public trip. Click on this button to add it to your trips."
 }

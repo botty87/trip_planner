@@ -17,6 +17,7 @@ class _TripPrivacySelector extends HookWidget {
         key: _showCaseKeyOne,
         title: LocaleKeys.tripPrivacyShowCaseTitle.tr(),
         description: LocaleKeys.tripPrivacyShowCaseBody.tr(),
+        targetPadding: const EdgeInsets.only(bottom: 8),
         child: Row(
           children: [
             Text(LocaleKeys.tripPrivacy.tr(), style: Theme.of(context).textTheme.titleMedium),

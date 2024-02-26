@@ -54,77 +54,75 @@ class NewEditTripForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<TutorialCubit>(
       create: (context) => getIt(),
-      child: Builder(
-        builder: (context) {
-          return ShowCaseWidget(
-            builder: Builder(
-              builder: (context) {
-                final showTutorial = context.read<TutorialCubit>().state.showPublicTrip;
-          
-                if (showTutorial) {
-                  WidgetsBinding.instance.addPostFrameCallback(
+      child: Builder(builder: (context) {
+        return ShowCaseWidget(
+          builder: Builder(
+            builder: (context) {
+              final showTutorial = context.read<TutorialCubit>().state.showPublicTrip;
+
+              if (showTutorial) {
+                WidgetsBinding.instance.addPostFrameCallback(
                     (_) => ShowCaseWidget.of(context).startShowCase([_showCaseKeyOne]));
-                }
-          
-                return StreamBuilder<bool>(
-                  stream: isSaving,
-                  initialData: false,
-                  builder: (context, snapshot) {
-                    return IgnorePointer(
-                      ignoring: snapshot.data!,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          (snapshot.data!)
-                              ? const LinearProgressIndicator(minHeight: 1)
-                              : const SizedBox(height: 1),
-                          Flexible(
-                            child: ListView(
-                              padding: defaultPagePadding,
-                              children: [
-                                _TripNameTextField(
-                                    key: const Key('tripNameTextField'),
-                                    onChanged: onNameChanged,
-                                    initialTripName: initialTripName),
-                                const SizedBox(height: verticalSpace),
-                                _TripDescriptionTextField(
-                                    key: const Key('tripDescriptionTextField'),
-                                    onChanged: onDescriptionChanged,
-                                    initialTripDescription: initialTripDescription),
-                                const SizedBox(height: verticalSpaceL),
-                                _TripPrivacySelector(
-                                  key: const Key('tripPrivacySelector'),
-                                  initialIsPublic: initialIsPublic ?? false,
-                                  onIsPublicChanged: onIsPublicChanged,
-                                ),
-                                const SizedBox(height: verticalSpaceL),
-                                _LanguageSelector(
-                                  key: const Key('languageSelector'),
-                                  initialLanguageCode: initialLanguageCode,
-                                  onLanguageCodeChanged: onLanguageCodeChanged,
-                                ),
-                                const SizedBox(height: verticalSpaceL),
-                                _StartDatePicker(
-                                  key: const Key('startDatePicker'),
-                                  onValueChanged: onStartDateChanged,
-                                  initialStartDate: initialStartDate,
-                                ),
-                                SafeArea(child: saveSection),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-            onFinish: () => context.read<TutorialCubit>().onPublicTripDone(),
-          );
-        }
-      ),
+              }
+
+              return StreamBuilder<bool>(
+                stream: isSaving,
+                initialData: false,
+                builder: (context, snapshot) {
+                  return IgnorePointer(
+                    ignoring: snapshot.data!,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        (snapshot.data!)
+                            ? const LinearProgressIndicator(minHeight: 1)
+                            : const SizedBox(height: 1),
+                        Flexible(
+                          child: ListView(
+                            padding: defaultPagePadding,
+                            children: [
+                              _TripNameTextField(
+                                  key: const Key('tripNameTextField'),
+                                  onChanged: onNameChanged,
+                                  initialTripName: initialTripName),
+                              const SizedBox(height: verticalSpace),
+                              _TripDescriptionTextField(
+                                  key: const Key('tripDescriptionTextField'),
+                                  onChanged: onDescriptionChanged,
+                                  initialTripDescription: initialTripDescription),
+                              const SizedBox(height: verticalSpaceL),
+                              _TripPrivacySelector(
+                                key: const Key('tripPrivacySelector'),
+                                initialIsPublic: initialIsPublic ?? false,
+                                onIsPublicChanged: onIsPublicChanged,
+                              ),
+                              const SizedBox(height: verticalSpaceL),
+                              _LanguageSelector(
+                                key: const Key('languageSelector'),
+                                initialLanguageCode: initialLanguageCode,
+                                onLanguageCodeChanged: onLanguageCodeChanged,
+                              ),
+                              const SizedBox(height: verticalSpaceL),
+                              _StartDatePicker(
+                                key: const Key('startDatePicker'),
+                                onValueChanged: onStartDateChanged,
+                                initialStartDate: initialStartDate,
+                              ),
+                              SafeArea(child: saveSection),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+          onFinish: () => context.read<TutorialCubit>().onPublicTripDone(),
+        );
+      }),
     );
   }
 }

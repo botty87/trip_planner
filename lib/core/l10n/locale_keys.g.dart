@@ -174,5 +174,7 @@ abstract class  LocaleKeys {
   static const tripPrivacyShowCaseTitle = 'tripPrivacyShowCaseTitle';
   static const tripPrivacyShowCaseBody = 'tripPrivacyShowCaseBody';
   static const letstart = 'letstart';
+  static const addPublicTripFabShowCaseTitle = 'addPublicTripFabShowCaseTitle';
+  static const addPublicTripFabShowCaseBody = 'addPublicTripFabShowCaseBody';
 
 }
