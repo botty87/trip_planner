@@ -8,7 +8,16 @@ class TutorialState with _$TutorialState {
   }) = _TutorialState;
 }
 
-extension TutorialStateX on TutorialsState {
+extension TutorialStateX on TutorialState {
+  TutorialsData toTutorialsData() {
+    return TutorialsData(
+      showWelcome: showWelcome,
+      showPublicTrip: showPublicTrip,
+    );
+  }
+}
+
+extension TutorialsDataX on TutorialsData {
   TutorialState toTutorialState() {
     return TutorialState(
       showWelcome: showWelcome,

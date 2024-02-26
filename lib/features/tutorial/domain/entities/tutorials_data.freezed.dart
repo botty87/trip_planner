@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'tutorials_state.dart';
+part of 'tutorials_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-TutorialsState _$TutorialsStateFromJson(Map<String, dynamic> json) {
-  return _TutorialsState.fromJson(json);
+TutorialsData _$TutorialsDataFromJson(Map<String, dynamic> json) {
+  return _TutorialsData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TutorialsState {
+mixin _$TutorialsData {
   bool get showWelcome => throw _privateConstructorUsedError;
   bool get showPublicTrip => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TutorialsStateCopyWith<TutorialsState> get copyWith =>
+  $TutorialsDataCopyWith<TutorialsData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TutorialsStateCopyWith<$Res> {
-  factory $TutorialsStateCopyWith(
-          TutorialsState value, $Res Function(TutorialsState) then) =
-      _$TutorialsStateCopyWithImpl<$Res, TutorialsState>;
+abstract class $TutorialsDataCopyWith<$Res> {
+  factory $TutorialsDataCopyWith(
+          TutorialsData value, $Res Function(TutorialsData) then) =
+      _$TutorialsDataCopyWithImpl<$Res, TutorialsData>;
   @useResult
   $Res call({bool showWelcome, bool showPublicTrip});
 }
 
 /// @nodoc
-class _$TutorialsStateCopyWithImpl<$Res, $Val extends TutorialsState>
-    implements $TutorialsStateCopyWith<$Res> {
-  _$TutorialsStateCopyWithImpl(this._value, this._then);
+class _$TutorialsDataCopyWithImpl<$Res, $Val extends TutorialsData>
+    implements $TutorialsDataCopyWith<$Res> {
+  _$TutorialsDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,22 +68,22 @@ class _$TutorialsStateCopyWithImpl<$Res, $Val extends TutorialsState>
 }
 
 /// @nodoc
-abstract class _$$TutorialsStateImplCopyWith<$Res>
-    implements $TutorialsStateCopyWith<$Res> {
-  factory _$$TutorialsStateImplCopyWith(_$TutorialsStateImpl value,
-          $Res Function(_$TutorialsStateImpl) then) =
-      __$$TutorialsStateImplCopyWithImpl<$Res>;
+abstract class _$$TutorialsDataImplCopyWith<$Res>
+    implements $TutorialsDataCopyWith<$Res> {
+  factory _$$TutorialsDataImplCopyWith(
+          _$TutorialsDataImpl value, $Res Function(_$TutorialsDataImpl) then) =
+      __$$TutorialsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool showWelcome, bool showPublicTrip});
 }
 
 /// @nodoc
-class __$$TutorialsStateImplCopyWithImpl<$Res>
-    extends _$TutorialsStateCopyWithImpl<$Res, _$TutorialsStateImpl>
-    implements _$$TutorialsStateImplCopyWith<$Res> {
-  __$$TutorialsStateImplCopyWithImpl(
-      _$TutorialsStateImpl _value, $Res Function(_$TutorialsStateImpl) _then)
+class __$$TutorialsDataImplCopyWithImpl<$Res>
+    extends _$TutorialsDataCopyWithImpl<$Res, _$TutorialsDataImpl>
+    implements _$$TutorialsDataImplCopyWith<$Res> {
+  __$$TutorialsDataImplCopyWithImpl(
+      _$TutorialsDataImpl _value, $Res Function(_$TutorialsDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$TutorialsStateImplCopyWithImpl<$Res>
     Object? showWelcome = null,
     Object? showPublicTrip = null,
   }) {
-    return _then(_$TutorialsStateImpl(
+    return _then(_$TutorialsDataImpl(
       showWelcome: null == showWelcome
           ? _value.showWelcome
           : showWelcome // ignore: cast_nullable_to_non_nullable
@@ -107,12 +107,12 @@ class __$$TutorialsStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TutorialsStateImpl implements _TutorialsState {
-  const _$TutorialsStateImpl(
+class _$TutorialsDataImpl implements _TutorialsData {
+  const _$TutorialsDataImpl(
       {this.showWelcome = true, this.showPublicTrip = true});
 
-  factory _$TutorialsStateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TutorialsStateImplFromJson(json);
+  factory _$TutorialsDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TutorialsDataImplFromJson(json);
 
   @override
   @JsonKey()
@@ -123,14 +123,14 @@ class _$TutorialsStateImpl implements _TutorialsState {
 
   @override
   String toString() {
-    return 'TutorialsState(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip)';
+    return 'TutorialsData(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TutorialsStateImpl &&
+            other is _$TutorialsDataImpl &&
             (identical(other.showWelcome, showWelcome) ||
                 other.showWelcome == showWelcome) &&
             (identical(other.showPublicTrip, showPublicTrip) ||
@@ -144,25 +144,24 @@ class _$TutorialsStateImpl implements _TutorialsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TutorialsStateImplCopyWith<_$TutorialsStateImpl> get copyWith =>
-      __$$TutorialsStateImplCopyWithImpl<_$TutorialsStateImpl>(
-          this, _$identity);
+  _$$TutorialsDataImplCopyWith<_$TutorialsDataImpl> get copyWith =>
+      __$$TutorialsDataImplCopyWithImpl<_$TutorialsDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TutorialsStateImplToJson(
+    return _$$TutorialsDataImplToJson(
       this,
     );
   }
 }
 
-abstract class _TutorialsState implements TutorialsState {
-  const factory _TutorialsState(
+abstract class _TutorialsData implements TutorialsData {
+  const factory _TutorialsData(
       {final bool showWelcome,
-      final bool showPublicTrip}) = _$TutorialsStateImpl;
+      final bool showPublicTrip}) = _$TutorialsDataImpl;
 
-  factory _TutorialsState.fromJson(Map<String, dynamic> json) =
-      _$TutorialsStateImpl.fromJson;
+  factory _TutorialsData.fromJson(Map<String, dynamic> json) =
+      _$TutorialsDataImpl.fromJson;
 
   @override
   bool get showWelcome;
@@ -170,6 +169,6 @@ abstract class _TutorialsState implements TutorialsState {
   bool get showPublicTrip;
   @override
   @JsonKey(ignore: true)
-  _$$TutorialsStateImplCopyWith<_$TutorialsStateImpl> get copyWith =>
+  _$$TutorialsDataImplCopyWith<_$TutorialsDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -9,6 +9,8 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/settings/domain/entities/settings.dart'
     as _i7;
+import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart'
+    as _i8;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
     as _i6;
 import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
@@ -335,19 +337,19 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
       ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.UserFailures, void>> setShowWelcome(
-          bool? showWelcome) =>
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> saveTutorialsData(
+          _i8.TutorialsData? tutorialsData) =>
       (super.noSuchMethod(
         Invocation.method(
-          #setShowWelcome,
-          [showWelcome],
+          #saveTutorialsData,
+          [tutorialsData],
         ),
         returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
             _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
-            #setShowWelcome,
-            [showWelcome],
+            #saveTutorialsData,
+            [tutorialsData],
           ),
         )),
         returnValueForMissingStub:
@@ -355,35 +357,8 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
                 _FakeEither_0<_i5.UserFailures, void>(
           this,
           Invocation.method(
-            #setShowWelcome,
-            [showWelcome],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
-
-  @override
-  _i4.Future<_i2.Either<_i5.UserFailures, void>> setShowPublicTrip(
-          bool? showPublicTrip) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #setShowPublicTrip,
-          [showPublicTrip],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
-            _FakeEither_0<_i5.UserFailures, void>(
-          this,
-          Invocation.method(
-            #setShowPublicTrip,
-            [showPublicTrip],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
-                _FakeEither_0<_i5.UserFailures, void>(
-          this,
-          Invocation.method(
-            #setShowPublicTrip,
-            [showPublicTrip],
+            #saveTutorialsData,
+            [tutorialsData],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);

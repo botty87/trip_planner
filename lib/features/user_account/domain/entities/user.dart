@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../settings/domain/entities/settings.dart';
-import '../../../tutorial/domain/entities/tutorials_state.dart';
+import '../../../tutorial/domain/entities/tutorials_data.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';
@@ -14,7 +14,7 @@ sealed class User with _$User {
     required String name,
     @Default(true) bool oldTripsImported,
     @Default(Settings()) Settings settings,
-    required TutorialsState tutorialsState,
+    required TutorialsData tutorialsData,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

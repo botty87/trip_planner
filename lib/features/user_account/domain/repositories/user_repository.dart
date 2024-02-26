@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../settings/domain/entities/settings.dart';
+import '../../../tutorial/domain/entities/tutorials_data.dart';
 import '../../errors/user_failures.dart';
 import '../entities/user.dart';
 
@@ -27,8 +28,5 @@ abstract interface class UserRepository {
   Future<Either<UserFailures, void>> saveSettings(Settings settings);
 
   //TODO implement test
-  Future<Either<UserFailures, void>> setShowWelcome(bool showWelcome);
-
-  //TODO implement test
-  Future<Either<UserFailures, void>> setShowPublicTrip(bool showPublicTrip);
+  Future<Either<UserFailures, void>> saveTutorialsData(TutorialsData tutorialsData);
 }
