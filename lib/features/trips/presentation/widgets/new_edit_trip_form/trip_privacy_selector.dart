@@ -11,13 +11,22 @@ class _TripPrivacySelector extends HookWidget {
   Widget build(BuildContext context) {
     final isPublic = useState(initialIsPublic);
 
+    final EdgeInsets showcasePadding;
+    if (Platform.isAndroid) {
+      showcasePadding = const EdgeInsets.only(top: 12);
+    } else if (Platform.isIOS) {
+      showcasePadding = const EdgeInsets.only(bottom: 8);
+    } else {
+      showcasePadding = EdgeInsets.zero;
+    }
+
     return BlocProvider(
       create: (context) => getIt<TutorialCubit>(),
       child: Showcase(
         key: _showCaseKeyOne,
         title: LocaleKeys.tripPrivacyShowCaseTitle.tr(),
         description: LocaleKeys.tripPrivacyShowCaseBody.tr(),
-        targetPadding: const EdgeInsets.only(bottom: 8),
+        targetPadding: showcasePadding,
         child: Row(
           children: [
             Text(LocaleKeys.tripPrivacy.tr(), style: Theme.of(context).textTheme.titleMedium),

@@ -166,7 +166,7 @@
     "showOnlySelectedLanguages": "Mostra solo le lingue selezionate",
     "skip": "Salta",
     "tripsTutorialTitle": "Benvenuto in Trip Planner!",
-    "tripsTutorialBody": "Ti guideremo attraverso le principali funzionalità dell'app. Questa è la schermata principale, dove puoi vedere tutti i tuoi viaggi. Clicca sul pulsante + per creare un nuovo viaggio.",
+    "tripsTutorialBody" : "Questa app è pensata per aiutarti a pianificare i tuoi viaggi. Puoi creare i tuoi viaggi o prendere ispirazione dai viaggi pubblici. Ora ti guideremo attraverso le principali funzionalità dell'app. Questa è la schermata principale, dove puoi vedere tutti i tuoi viaggi. Clicca sul pulsante + per creare un nuovo viaggio.",
     "dayTripsTutorialTitle": "Giornate di viaggio",
     "dayTripsTutorialBody": "Ogni viaggio è diviso in giorni di viaggio. Puoi riordinarli trascinandoli. Clicca sulla card \"aggiungi giornata di viaggio\" per creare una nuova giornata di viaggio.",
     "tripStopsTutorialTitle": "Tappe di viaggio",
