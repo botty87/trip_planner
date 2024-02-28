@@ -12,6 +12,7 @@ import '../../../../../core/error/exceptions.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/debouncer.dart';
 import '../../../../trip_stops/domain/entities/trip_stop.dart';
+import '../../../../trip_stops/domain/usecases/delete_trip_stop.dart';
 import '../../../../trip_stops/domain/usecases/listen_trip_stops.dart';
 import '../../../../trip_stops/domain/usecases/trip_stop_done.dart';
 import '../../../../trip_stops/domain/usecases/update_travel_time.dart';
@@ -40,6 +41,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   final TripStopDone _tripStopDone;
   final ListenDayTrip _listenDayTrip;
   final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
+  final DeleteTripStop _deleteTripStop;
 
   final FirebaseCrashlytics _crashlytics;
 
@@ -61,6 +63,7 @@ class DayTripCubit extends Cubit<DayTripState> {
     required TripStopDone tripStopDone,
     required ListenDayTrip listenDayTrip,
     required UpdateTripStopsDirectionsUpToDate updateTripStopsDirectionsUpToDate,
+    required DeleteTripStop deleteTripStop,
     required FirebaseCrashlytics crashlytics,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
@@ -71,6 +74,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         _tripStopDone = tripStopDone,
         _listenDayTrip = listenDayTrip,
         _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
+        _deleteTripStop = deleteTripStop,
         _crashlytics = crashlytics,
         super(DayTripState.initial(trip: trip, dayTrip: dayTrip));
 
@@ -406,6 +410,48 @@ class DayTripCubit extends Cubit<DayTripState> {
     );
   }
 
+  //TODO: Implement test
+  void toggleTripStopDelete(int index) {
+    state.mapOrNull(
+      loaded: (state) async {
+        final oldTripStops = state.tripStops;
+
+        final tripStops = List<TripStop>.from(state.tripStops);
+        tripStops.removeAt(index);
+
+        emit(state.copyWith(tripStops: tripStops));
+
+        final result = await _deleteTripStop(
+          DeleteTripStopParams(
+            tripId: state.trip.id,
+            dayTripId: state.dayTrip.id,
+            tripStopId: state.tripStops[index].id,
+          ),
+        );
+
+        if (isClosed) return;
+
+        result.leftMap(
+          (failure) {
+            emit(DayTripState.error(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+              fatal: false,
+              errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+              hasStartTimeToSave: state.hasStartTimeToSave,
+            ));
+
+            emit(DayTripState.loaded(
+              trip: state.trip,
+              dayTrip: state.dayTrip,
+              tripStops: oldTripStops,
+            ));
+          },
+        );
+      },
+    );
+  }
+
   void toggleTripStopDone(bool isDone, int tripStopIndex) {
     state.mapOrNull(
       loaded: (state) async {
@@ -461,4 +507,6 @@ class DayTripCubit extends Cubit<DayTripState> {
     _dayTripSubscription?.cancel();
     return super.close();
   }
+
+  
 }
