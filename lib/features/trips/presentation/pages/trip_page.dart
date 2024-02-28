@@ -166,6 +166,7 @@ class TripPage extends HookWidget {
       ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
     final cubit = context.read<TripCubit>();
     isModalBottomEditing.value = true;
+    final deviceLocale = getIt<Locale>(instanceName: deviceLocaleKey);
 
     showModalBottomSheet(
       context: context,
@@ -195,7 +196,7 @@ class TripPage extends HookWidget {
             onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
             initialIsPublic: cubit.state.trip.isPublic,
             initialLanguageCode:
-                cubit.state.trip.languageCode ?? getIt<String>(instanceName: deviceLocaleKey),
+                cubit.state.trip.languageCode ?? deviceLocale.languageCode,
           ),
         );
       },

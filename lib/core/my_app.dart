@@ -8,6 +8,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../features/settings/presentation/cubit/settings_cubit.dart';
+import '../features/tutorial/presentation/cubit/cubit/tutorial_cubit.dart';
 import '../features/ui/presentation/cubit/backgrounds_cubit.dart';
 import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';
@@ -23,14 +24,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<UserCubit>.value(
-          value: getIt(),
+        BlocProvider<UserCubit>(
+          create: (context) => getIt(),
         ),
-        BlocProvider<SettingsCubit>.value(
-          value: getIt(),
+        BlocProvider<SettingsCubit>(
+          create: (context) => getIt(),
         ),
-        BlocProvider<BackgroundsCubit>.value(
-          value: getIt(),
+        BlocProvider<BackgroundsCubit>(
+          create: (context) => getIt(),
+        ),
+        BlocProvider<TutorialCubit>(
+          create: (context) => getIt(),
         ),
       ],
       child: BlocListener<UserCubit, UserState>(

@@ -10,6 +10,7 @@ sealed class TutorialsData with _$TutorialsData {
     @Default(true) bool showWelcome,
     @Default(true) bool showPublicTrip,
     @Default(true) bool showCreateFromPublicTrip,
+    @Default(true) bool showTripStopSlide,
   }) = _TutorialsData;
 
   factory TutorialsData.fromJson(Map<String, dynamic> json) => _$TutorialsDataFromJson(json);

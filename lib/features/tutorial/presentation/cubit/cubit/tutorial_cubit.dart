@@ -9,7 +9,7 @@ import '../../../domain/usecases/update_tutorials_data.dart';
 part 'tutorial_cubit.freezed.dart';
 part 'tutorial_state.dart';
 
-@injectable
+@lazySingleton
 class TutorialCubit extends Cubit<TutorialState> {
   final UpdateTutorialsData _updateTutorialsData;
 

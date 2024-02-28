@@ -43,15 +43,8 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<DiscoverNewDailyTripsCubit>(
-          create: (context) => getIt<DiscoverNewDailyTripsCubit>(param1: _trip.id)..fetchDayTrips(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<TutorialCubit>(),
-        ),
-      ],
+    return BlocProvider<DiscoverNewDailyTripsCubit>(
+      create: (context) => getIt<DiscoverNewDailyTripsCubit>(param1: _trip.id)..fetchDayTrips(),
       child: Builder(builder: (context) {
         return ShowCaseWidget(
           builder: Builder(builder: (context) {

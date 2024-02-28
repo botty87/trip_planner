@@ -19,31 +19,26 @@ class TutorialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<TutorialCubit>(),
-      child: Builder(builder: (context) {
-        return ColoredBox(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          child: SafeArea(
-            child: IntroductionScreen(
-              pages: [
-                _tripsTutorial,
-                _dayTripsTutorial,
-                _tripStopsTutorial,
-                _tutorialEnd,
-              ],
-              showSkipButton: true,
-              showNextButton: false,
-              skip: Text(LocaleKeys.skip.tr()),
-              done: Text(LocaleKeys.letstart.tr()),
-              onDone: () {
-                context.read<TutorialCubit>().onWelcomeDone();
-                context.router.replaceAll([const TripsRoute()]);
-              },
-            ),
-          ),
-        );
-      }),
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(
+        child: IntroductionScreen(
+          pages: [
+            _tripsTutorial,
+            _dayTripsTutorial,
+            _tripStopsTutorial,
+            _tutorialEnd,
+          ],
+          showSkipButton: true,
+          showNextButton: false,
+          skip: Text(LocaleKeys.skip.tr()),
+          done: Text(LocaleKeys.letstart.tr()),
+          onDone: () {
+            context.read<TutorialCubit>().onWelcomeDone();
+            context.router.replaceAll([const TripsRoute()]);
+          },
+        ),
+      ),
     );
   }
 }
