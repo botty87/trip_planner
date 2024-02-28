@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widgets/generic_error_widget.dart';
+import '../../../../ui/presentation/widgets/generics/generic_error_widget.dart';
 import '../../cubit/trips/trips_cubit.dart';
 
 class TripsErrorWidget extends StatelessWidget {

@@ -11,7 +11,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../core/widgets/transparent_list_decorator.dart';
+import '../../../../ui/presentation/widgets/generics/transparent_list_decorator.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../cubit/trip/trip_cubit.dart';

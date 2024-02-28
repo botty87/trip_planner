@@ -9,8 +9,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/pair.dart';
-import '../../../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
-import '../../../../../../core/widgets/transparent_list_decorator.dart';
+import '../../../../../ui/presentation/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
+import '../../../../../ui/presentation/widgets/generics/transparent_list_decorator.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 import 'travel_card.dart';

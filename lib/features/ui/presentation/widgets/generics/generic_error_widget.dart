@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
-import '../../gen/assets.gen.dart';
-import '../constants.dart';
-import '../l10n/locale_keys.g.dart';
-import '../../features/ui/presentation/widgets/background/background_image_wrapper.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../../core/constants.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
+import '../background/background_image_wrapper.dart';
 
 class GenericErrorWidget extends StatelessWidget with BackgroundImageMixin {
   final String message;

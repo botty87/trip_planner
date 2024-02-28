@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:trip_planner/core/widgets/trip/generic_delete_trip_button.dart';
+import 'package:trip_planner/features/ui/presentation/widgets/trip/generic_delete_trip_button.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/delete_trip_button.dart';

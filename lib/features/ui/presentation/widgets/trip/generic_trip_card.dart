@@ -1,7 +1,7 @@
 import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+import '../../../../../core/constants.dart';
 
 final class GenericTripCard extends StatelessWidget {
   final String name;

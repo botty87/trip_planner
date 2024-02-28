@@ -11,7 +11,7 @@ import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
-import '../../../../core/widgets/trip_pages_animated_switcher.dart';
+import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../settings/presentation/cubit/settings_cubit.dart';
 import '../cubit/trips/trips_cubit.dart';
 import '../widgets/trips_page/drawer.dart';

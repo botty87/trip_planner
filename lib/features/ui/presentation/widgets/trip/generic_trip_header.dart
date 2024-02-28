@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../constants.dart';
-import '../../../features/ui/presentation/widgets/background/background_widget_container.dart';
+import '../../../../../core/constants.dart';
+import '../background/background_widget_container.dart';
 
 class GenericTripDescription extends StatelessWidget {
   final String? description;

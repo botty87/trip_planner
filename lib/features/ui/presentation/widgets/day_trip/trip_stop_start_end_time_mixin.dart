@@ -1,5 +1,5 @@
-import '../../../features/trip_stops/domain/entities/trip_stop.dart';
-import '../../utilities/pair.dart';
+import '../../../../trip_stops/domain/entities/trip_stop.dart';
+import '../../../../../core/utilities/pair.dart';
 
 mixin TripStopStartEndTimeMixin {
   Pair<DateTime, DateTime> getTripStartEndTimes({

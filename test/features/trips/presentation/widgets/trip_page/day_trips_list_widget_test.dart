@@ -8,7 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:trip_planner/core/widgets/transparent_list_decorator.dart';
+import 'package:trip_planner/features/ui/presentation/widgets/generics/transparent_list_decorator.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';

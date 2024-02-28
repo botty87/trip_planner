@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../../features/trip_stops/domain/entities/trip_stop.dart';
-import '../../utilities/extensions.dart';
+import '../../../../trip_stops/domain/entities/trip_stop.dart';
+import '../../../../../core/utilities/extensions.dart';
 
 mixin MapViewMixin {
   Set<Marker> getMarkers({

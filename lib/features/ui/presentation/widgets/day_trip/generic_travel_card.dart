@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/l10n/locale_keys.g.dart';
-import '../../../features/trip_stops/domain/entities/trip_stop.dart';
+import '../../../../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../trip_stops/domain/entities/trip_stop.dart';
 
 class GenericTravelCard extends StatelessWidget {
   final TripStop tripStop;
