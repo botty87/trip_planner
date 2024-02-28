@@ -12,7 +12,7 @@ import '../../../../../core/di/di.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/extensions.dart';
 import '../../../domain/entities/backgrounds_container.dart';
-import '../../cubit/backgrounds_cubit.dart';
+import '../../../../ui/presentation/cubit/backgrounds_cubit.dart';
 import '../../cubit/settings_cubit.dart';
 import '../settings_section_header.dart';
 
@@ -25,16 +25,13 @@ class BackgroundSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<BackgroundsCubit>(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SettingsSectionHeader(title: LocaleKeys.tripsBackground.tr()),
-          _ImagesGrid(),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SettingsSectionHeader(title: LocaleKeys.tripsBackground.tr()),
+        _ImagesGrid(),
+      ],
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
-import '../theme/background_widget_container.dart';
+import '../../../features/ui/presentation/widgets/background/background_widget_container.dart';
 
 class GenericTripDescription extends StatelessWidget {
   final String? description;

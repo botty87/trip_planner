@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BackgroundsState {
   Map<int, File> get lightBackgrounds => throw _privateConstructorUsedError;
   Map<int, File> get darkBackgrounds => throw _privateConstructorUsedError;
+  File? get currentBackgroundImage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BackgroundsStateCopyWith<BackgroundsState> get copyWith =>
@@ -30,7 +31,10 @@ abstract class $BackgroundsStateCopyWith<$Res> {
           BackgroundsState value, $Res Function(BackgroundsState) then) =
       _$BackgroundsStateCopyWithImpl<$Res, BackgroundsState>;
   @useResult
-  $Res call({Map<int, File> lightBackgrounds, Map<int, File> darkBackgrounds});
+  $Res call(
+      {Map<int, File> lightBackgrounds,
+      Map<int, File> darkBackgrounds,
+      File? currentBackgroundImage});
 }
 
 /// @nodoc
@@ -48,6 +52,7 @@ class _$BackgroundsStateCopyWithImpl<$Res, $Val extends BackgroundsState>
   $Res call({
     Object? lightBackgrounds = null,
     Object? darkBackgrounds = null,
+    Object? currentBackgroundImage = freezed,
   }) {
     return _then(_value.copyWith(
       lightBackgrounds: null == lightBackgrounds
@@ -58,6 +63,10 @@ class _$BackgroundsStateCopyWithImpl<$Res, $Val extends BackgroundsState>
           ? _value.darkBackgrounds
           : darkBackgrounds // ignore: cast_nullable_to_non_nullable
               as Map<int, File>,
+      currentBackgroundImage: freezed == currentBackgroundImage
+          ? _value.currentBackgroundImage
+          : currentBackgroundImage // ignore: cast_nullable_to_non_nullable
+              as File?,
     ) as $Val);
   }
 }
@@ -70,7 +79,10 @@ abstract class _$$BackgroundsStateImplCopyWith<$Res>
       __$$BackgroundsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Map<int, File> lightBackgrounds, Map<int, File> darkBackgrounds});
+  $Res call(
+      {Map<int, File> lightBackgrounds,
+      Map<int, File> darkBackgrounds,
+      File? currentBackgroundImage});
 }
 
 /// @nodoc
@@ -86,6 +98,7 @@ class __$$BackgroundsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? lightBackgrounds = null,
     Object? darkBackgrounds = null,
+    Object? currentBackgroundImage = freezed,
   }) {
     return _then(_$BackgroundsStateImpl(
       lightBackgrounds: null == lightBackgrounds
@@ -96,6 +109,10 @@ class __$$BackgroundsStateImplCopyWithImpl<$Res>
           ? _value._darkBackgrounds
           : darkBackgrounds // ignore: cast_nullable_to_non_nullable
               as Map<int, File>,
+      currentBackgroundImage: freezed == currentBackgroundImage
+          ? _value.currentBackgroundImage
+          : currentBackgroundImage // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -105,7 +122,8 @@ class __$$BackgroundsStateImplCopyWithImpl<$Res>
 class _$BackgroundsStateImpl implements _BackgroundsState {
   const _$BackgroundsStateImpl(
       {final Map<int, File> lightBackgrounds = const {},
-      final Map<int, File> darkBackgrounds = const {}})
+      final Map<int, File> darkBackgrounds = const {},
+      this.currentBackgroundImage})
       : _lightBackgrounds = lightBackgrounds,
         _darkBackgrounds = darkBackgrounds;
 
@@ -128,8 +146,11 @@ class _$BackgroundsStateImpl implements _BackgroundsState {
   }
 
   @override
+  final File? currentBackgroundImage;
+
+  @override
   String toString() {
-    return 'BackgroundsState(lightBackgrounds: $lightBackgrounds, darkBackgrounds: $darkBackgrounds)';
+    return 'BackgroundsState(lightBackgrounds: $lightBackgrounds, darkBackgrounds: $darkBackgrounds, currentBackgroundImage: $currentBackgroundImage)';
   }
 
   @override
@@ -140,14 +161,17 @@ class _$BackgroundsStateImpl implements _BackgroundsState {
             const DeepCollectionEquality()
                 .equals(other._lightBackgrounds, _lightBackgrounds) &&
             const DeepCollectionEquality()
-                .equals(other._darkBackgrounds, _darkBackgrounds));
+                .equals(other._darkBackgrounds, _darkBackgrounds) &&
+            (identical(other.currentBackgroundImage, currentBackgroundImage) ||
+                other.currentBackgroundImage == currentBackgroundImage));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_lightBackgrounds),
-      const DeepCollectionEquality().hash(_darkBackgrounds));
+      const DeepCollectionEquality().hash(_darkBackgrounds),
+      currentBackgroundImage);
 
   @JsonKey(ignore: true)
   @override
@@ -160,12 +184,15 @@ class _$BackgroundsStateImpl implements _BackgroundsState {
 abstract class _BackgroundsState implements BackgroundsState {
   const factory _BackgroundsState(
       {final Map<int, File> lightBackgrounds,
-      final Map<int, File> darkBackgrounds}) = _$BackgroundsStateImpl;
+      final Map<int, File> darkBackgrounds,
+      final File? currentBackgroundImage}) = _$BackgroundsStateImpl;
 
   @override
   Map<int, File> get lightBackgrounds;
   @override
   Map<int, File> get darkBackgrounds;
+  @override
+  File? get currentBackgroundImage;
   @override
   @JsonKey(ignore: true)
   _$$BackgroundsStateImplCopyWith<_$BackgroundsStateImpl> get copyWith =>

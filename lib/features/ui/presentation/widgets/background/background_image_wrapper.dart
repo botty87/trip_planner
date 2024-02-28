@@ -4,12 +4,13 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 
-import '../../../features/settings/domain/entities/backgrounds_container.dart';
-import '../../../features/settings/presentation/cubit/settings_cubit.dart';
-import '../../di/di.dart';
-import '../../utilities/extensions.dart';
-import '../../utilities/image_utils.dart';
+import '../../../../../core/utilities/extensions.dart';
+import '../../../../../core/utilities/pair.dart';
+import '../../../../settings/domain/entities/backgrounds_container.dart';
+import '../../../../settings/presentation/cubit/settings_cubit.dart';
+import '../../cubit/backgrounds_cubit.dart';
 
 class BackgroundImageWrapper extends StatelessWidget {
   final Widget child;
@@ -28,11 +29,12 @@ class BackgroundImageWrapper extends StatelessWidget {
 }
 
 class _BackgroundImage extends StatelessWidget {
-  final _imageUtils = getIt<ImageUtils>();
-
   @override
   Widget build(BuildContext context) {
-    final backgroundImageName = context.select((SettingsCubit cubit) {
+    //Listen for changes in the settings cubit
+    final backgroundsCubit = context.read<BackgroundsCubit>();
+
+    final Pair<int, BackgroundType>? backgroundIndexType = context.select((SettingsCubit cubit) {
       final BackgroundType backgroundType;
       final int? index;
 
@@ -55,41 +57,41 @@ class _BackgroundImage extends StatelessWidget {
 
       if (index == null || kIsWeb) return null;
 
-      return _imageUtils.getBackgroundImageName(index: index, type: backgroundType);
+      return Pair(index, backgroundType);
     });
 
-    return Container(
-      color: Theme.of(context).colorScheme.background,
-      width: double.infinity,
-      height: double.infinity,
-      child: FutureBuilder(
-        future: _getBackgroundImageFile(backgroundImageName),
-        builder: (context, snapshot) {
-          return AnimatedSwitcher(
-              duration: const Duration(milliseconds: 500),
-              child: _buildBackgroundImage(snapshot, context));
-        },
-      ),
+    //Load the current background image
+    backgroundsCubit.loadCurrentBackgroundFile(backgroundIndexType: backgroundIndexType);
+
+    //Rebuild the background image when the current background image changes
+    return BlocSelector<BackgroundsCubit, BackgroundsState, File?>(
+      selector: (state) => state.currentBackgroundImage,
+      builder: (context, imageFile) {
+        return Container(
+          color: Theme.of(context).colorScheme.background,
+          width: double.infinity,
+          height: double.infinity,
+          child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 500), child: _buildBackgroundImage(imageFile)),
+        );
+      },
     );
   }
 
-  Future<File?> _getBackgroundImageFile(String? name) async {
-    if (name == null) return null;
-    final imageFile = await _imageUtils.getBackgroundImageNameFile(name: name);
-    await _imageUtils.loadImage(FileImage(imageFile));
-    return imageFile;
-  }
-
-  Widget _buildBackgroundImage(AsyncSnapshot<File?> snapshot, BuildContext context) {
-    if (!snapshot.hasData || snapshot.hasError) {
+  Widget _buildBackgroundImage(File? imageFile) {
+    if (imageFile == null) {
       return const SizedBox.shrink();
     }
 
     return Image.file(
-      snapshot.data!,
+      imageFile,
       fit: BoxFit.cover,
       width: double.infinity,
       height: double.infinity,
+      errorBuilder: (context, error, stackTrace) {
+        Logger().e('Error loading background image', stackTrace: stackTrace);
+        return const SizedBox.shrink();
+      },
     );
   }
 }

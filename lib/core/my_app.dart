@@ -8,11 +8,12 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../features/settings/presentation/cubit/settings_cubit.dart';
+import '../features/ui/presentation/cubit/backgrounds_cubit.dart';
 import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';
 import 'routes/app_router.dart';
 import 'routes/app_router.gr.dart';
-import 'widgets/theme/background_image_wrapper.dart';
+import '../features/ui/presentation/widgets/background/background_image_wrapper.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
           value: getIt(),
         ),
         BlocProvider<SettingsCubit>.value(
+          value: getIt(),
+        ),
+        BlocProvider<BackgroundsCubit>.value(
           value: getIt(),
         ),
       ],

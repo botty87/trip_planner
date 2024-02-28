@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../../core/widgets/theme/background_image_wrapper.dart';
+import '../../../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../../../../../time_picker/widgets/timepicker.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+import '../../../../../core/constants.dart';
 import 'background_image_wrapper.dart';
 
 class BackgroundWidgetContainer extends StatelessWidget with BackgroundImageMixin {

@@ -6,7 +6,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../gen/assets.gen.dart';
 import '../constants.dart';
 import '../l10n/locale_keys.g.dart';
-import 'theme/background_image_wrapper.dart';
+import '../../features/ui/presentation/widgets/background/background_image_wrapper.dart';
 
 class GenericErrorWidget extends StatelessWidget with BackgroundImageMixin {
   final String message;

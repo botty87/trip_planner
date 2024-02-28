@@ -13,7 +13,7 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../../core/utilities/pair.dart';
 import '../../../../core/widgets/day_trip/generic_travel_card.dart';
 import '../../../../core/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
-import '../../../../core/widgets/theme/scaffold_transparent.dart';
+import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../../core/widgets/trip/generic_trip_card.dart';
 import '../../../../core/widgets/trip/generic_trip_header.dart';
 import '../../../../core/widgets/trip_pages_animated_switcher.dart';

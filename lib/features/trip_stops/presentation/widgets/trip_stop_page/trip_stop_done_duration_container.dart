@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/constants.dart';
-import '../../../../../core/widgets/theme/background_image_wrapper.dart';
+import '../../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import 'trip_stop_done_widget.dart';
 import 'trip_stop_duration_widget.dart';
 
