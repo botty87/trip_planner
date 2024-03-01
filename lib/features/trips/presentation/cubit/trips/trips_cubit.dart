@@ -8,7 +8,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../user_account/domain/entities/user.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/listen_trips.dart';
 import '../../../errors/trips_failure.dart';

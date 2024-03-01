@@ -1,15 +1,10 @@
 import 'dart:io';
 
-import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
-import '../../../../../core/di/di.dart';
 import '../../../../../core/utilities/extensions.dart';
-import '../../../../../core/utilities/pair.dart';
-import '../../../../settings/domain/entities/backgrounds_container.dart';
 import '../../../../settings/presentation/cubit/settings_cubit.dart';
 import '../../cubit/backgrounds_cubit.dart';
 

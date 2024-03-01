@@ -9,7 +9,6 @@ import '../../../../../core/l10n/languages.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/debouncer.dart';
 import '../../../../trips/domain/entities/trip.dart';
-import '../../../../user_account/domain/entities/user.dart';
 import '../../../domain/usecases/get_public_trips.dart';
 
 part 'discover_new_trips_cubit.freezed.dart';

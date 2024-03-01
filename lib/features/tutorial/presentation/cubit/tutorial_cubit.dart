@@ -4,8 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../user_account/domain/entities/user.dart';
-import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../domain/entities/tutorials_data.dart';
 import '../../domain/usecases/update_tutorials_data.dart';
 
