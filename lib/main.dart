@@ -1,6 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages
 
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +20,7 @@ import 'firebase_options.dart';
 
 void main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  if(!kIsWeb) {
+  if (!kIsWeb) {
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   }
   await EasyLocalization.ensureInitialized();
@@ -31,22 +30,22 @@ void main() async {
   //Firebase config
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  //Init Crashlytics
-  FlutterError.onError = (errorDetails) {
-    getIt<FirebaseCrashlytics>().recordFlutterFatalError(errorDetails);
-  };
-
-  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-  PlatformDispatcher.instance.onError = (error, stack) {
-    getIt<FirebaseCrashlytics>().recordError(error, stack, fatal: true);
-    return true;
-  };
-
   if (kDebugMode) {
     await getIt<FirebaseAuth>().useAuthEmulator('localhost', 9099);
     getIt<FirebaseFirestore>().useFirestoreEmulator('localhost', 8080);
     getIt<FirebaseDatabase>().useDatabaseEmulator('localhost', 9000);
     getIt<FirebaseStorage>().useStorageEmulator('localhost', 9199);
+  } else {
+    //Init Crashlytics
+    FlutterError.onError = (errorDetails) {
+      getIt<FirebaseCrashlytics>().recordFlutterFatalError(errorDetails);
+    };
+
+    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+    PlatformDispatcher.instance.onError = (error, stack) {
+      getIt<FirebaseCrashlytics>().recordError(error, stack, fatal: true);
+      return true;
+    };
   }
 
   // Require Hybrid Composition mode on Android.

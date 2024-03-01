@@ -13,7 +13,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
-import '../../../../core/widgets/snackbars.dart';
+import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
 import '../cubit/account_page/account_cubit.dart';
 import '../cubit/user/user_cubit.dart';

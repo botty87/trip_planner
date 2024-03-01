@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -15,6 +16,7 @@ import '../cubit/info_contacts_cubit.dart';
 part '../widgets/developed_by.dart';
 part '../widgets/privacy_policy.dart';
 part '../widgets/terms.dart';
+part '../widgets/app_version.dart';
 
 @RoutePage()
 class InfoContactsPage extends StatelessWidget {
@@ -51,14 +53,16 @@ class _InfoContactsPagePortrait extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _PrivacyPolicy(),
-        SizedBox(height: verticalSpace),
-        _Terms(),
-        SizedBox(height: verticalSpace),
-        Center(child: _DevelopedBy(orientation: Orientation.portrait)),
+        const _PrivacyPolicy(),
+        const SizedBox(height: verticalSpace),
+        const _Terms(),
+        const SizedBox(height: verticalSpace),
+        const Center(child: _DevelopedBy(orientation: Orientation.portrait)),
+        const SizedBox(height: verticalSpaceS),
+        Center(child: _AppVersion()),
       ],
     );
   }
@@ -69,10 +73,10 @@ class _InfoContactsPageLandscape extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Expanded(
+        const Expanded(
           child: Row(
             children: [
               _PrivacyPolicy(),
@@ -81,8 +85,10 @@ class _InfoContactsPageLandscape extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: verticalSpace),
-        Center(child: _DevelopedBy(orientation: Orientation.landscape)),
+        const SizedBox(height: verticalSpace),
+        const Center(child: _DevelopedBy(orientation: Orientation.landscape)),
+        const SizedBox(height: verticalSpaceS),
+        Center(child: _AppVersion()),
       ],
     );
   }

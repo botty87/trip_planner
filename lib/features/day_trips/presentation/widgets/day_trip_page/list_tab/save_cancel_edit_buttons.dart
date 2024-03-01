@@ -1,4 +1,4 @@
-import '../../../../../../core/widgets/trip/save_cancel_edit_buttons.dart';
+import '../../../../../ui/presentation/widgets/trip/save_cancel_edit_buttons.dart';
 
 final class SaveCancelEditButtons extends GenericSaveCancelEditButtons {
   const SaveCancelEditButtons(

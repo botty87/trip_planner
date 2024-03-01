@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/db/users_collection_ref.dart';
 import '../../../../core/di/di.dart';
 import '../../../settings/domain/entities/settings.dart';
+import '../../../tutorial/domain/entities/tutorials_data.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/user_db.dart';
 
@@ -28,6 +29,9 @@ abstract interface class UserDataSource {
   saveSettings(Settings settings);
 
   deleteUser();
+
+  //TODO implement test
+  saveTutorialsData(TutorialsData tutorialsData);
 }
 
 @LazySingleton(as: UserDataSource)
@@ -76,6 +80,7 @@ final class UserDataSourceImpl implements UserDataSource {
             name: user.displayName ?? user.email!.split('@').first,
             oldTripsImported: userDB.oldTripsImported,
             settings: userDB.settings,
+            tutorialsData: userDB.tutorialsData,
           ));
         });
       } else {
@@ -149,5 +154,13 @@ final class UserDataSourceImpl implements UserDataSource {
     await _usersCollection
         .doc(firebaseAuth.currentUser!.uid)
         .update({'settings': settings.toJson()});
+  }
+
+  
+  @override
+  saveTutorialsData(TutorialsData tutorialsData) async {
+    await _usersCollection
+        .doc(firebaseAuth.currentUser!.uid)
+        .update({'tutorialsData': tutorialsData.toJson()});
   }
 }

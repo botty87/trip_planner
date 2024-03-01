@@ -9,7 +9,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../user_account/errors/user_failures.dart';
-import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../domain/entities/backgrounds_container.dart';
 import '../../domain/entities/settings.dart';
 import '../../domain/usecases/update_settings.dart';
@@ -17,7 +16,7 @@ import '../../domain/usecases/update_settings.dart';
 part 'settings_cubit.freezed.dart';
 part 'settings_state.dart';
 
-@lazySingleton
+@injectable
 class SettingsCubit extends Cubit<SettingsState> {
   final UpdateSettings _updateSettings;
   
@@ -26,13 +25,12 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   SettingsCubit({
     required UpdateSettings updateSettings,
-    required UserCubit userCubit,
   })  : _updateSettings = updateSettings,
-        super(const SettingsState(settings: Settings())) {
-    _init(userCubit);
-  }
+        super(const SettingsState(settings: Settings()));
 
-  _init(UserCubit userCubit) {
+  //TODO clean up
+  
+  /* _init(UserCubit userCubit) {
     _settingsSubscription = userCubit.stream
         .map((userState) {
           return userState.mapOrNull(
@@ -45,6 +43,10 @@ class SettingsCubit extends Cubit<SettingsState> {
             emit(state.copyWith(settings: settings));
           }
         });
+  } */
+
+  void updateSettingsFromUser(Settings? settings) {
+    emit(state.copyWith(settings: settings ?? const Settings()));
   }
 
   void setDefaultDayTripStartTime(TimeOfDay value) {

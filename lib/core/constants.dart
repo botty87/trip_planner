@@ -14,6 +14,10 @@ const double horizontalSpaceS = 8.0;
 const double horizontalSpace = 12.0;
 const double horizontalSpaceL = 16.0;
 
+const double tutorialTitleFontSize = 28.0;
+const double tutorialBodyFontSize = 20.0;
+const int tutorialImageFlex = 2;
+
 const defaultPagePadding =
     EdgeInsets.symmetric(horizontal: pageHorizontalPadding, vertical: pageVerticalPadding);
 

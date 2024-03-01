@@ -2,7 +2,7 @@ import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/widgets/day_trip/generic_travel_card.dart';
+import '../../../../../ui/presentation/widgets/day_trip/generic_travel_card.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 

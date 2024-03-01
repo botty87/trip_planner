@@ -162,5 +162,21 @@ abstract class  LocaleKeys {
   static const searchLanguage = 'searchLanguage';
   static const noLanguages = 'noLanguages';
   static const showOnlySelectedLanguages = 'showOnlySelectedLanguages';
+  static const skip = 'skip';
+  static const tripsTutorialTitle = 'tripsTutorialTitle';
+  static const tripsTutorialBody = 'tripsTutorialBody';
+  static const dayTripsTutorialTitle = 'dayTripsTutorialTitle';
+  static const dayTripsTutorialBody = 'dayTripsTutorialBody';
+  static const tripStopsTutorialTitle = 'tripStopsTutorialTitle';
+  static const tripStopsTutorialBody = 'tripStopsTutorialBody';
+  static const tutorialEndTitle = 'tutorialEndTitle';
+  static const tutorialEndBody = 'tutorialEndBody';
+  static const tripPrivacyShowCaseTitle = 'tripPrivacyShowCaseTitle';
+  static const tripPrivacyShowCaseBody = 'tripPrivacyShowCaseBody';
+  static const letstart = 'letstart';
+  static const addPublicTripFabShowCaseTitle = 'addPublicTripFabShowCaseTitle';
+  static const addPublicTripFabShowCaseBody = 'addPublicTripFabShowCaseBody';
+  static const tripStopSlideShowCaseTitle = 'tripStopSlideShowCaseTitle';
+  static const tripStopSlideShowCaseBody = 'tripStopSlideShowCaseBody';
 
 }

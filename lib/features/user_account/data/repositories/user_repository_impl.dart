@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
 
 import '../../../settings/domain/entities/settings.dart';
+import '../../../tutorial/domain/entities/tutorials_data.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../../errors/user_failures.dart';
@@ -143,4 +144,16 @@ final class UserRepositoryImpl implements UserRepository {
       return left(const UserFailures.unknownError());
     }
   }
+
+  @override
+  Future<Either<UserFailures, void>> saveTutorialsData(TutorialsData tutorialsData) async {
+    try {
+      await userDataSource.saveTutorialsData(tutorialsData);
+      return right(null);
+    } catch (e) {
+      return left(const UserFailures.unknownError());
+    }
+  }
+  
+  
 }

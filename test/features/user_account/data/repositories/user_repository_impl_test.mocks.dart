@@ -8,6 +8,8 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/settings/domain/entities/settings.dart'
     as _i5;
+import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart'
+    as _i6;
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
     as _i2;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
@@ -104,6 +106,16 @@ class MockUserDataSource extends _i1.Mock implements _i2.UserDataSource {
         Invocation.method(
           #saveSettings,
           [settings],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  dynamic saveTutorialsData(_i6.TutorialsData? tutorialsData) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #saveTutorialsData,
+          [tutorialsData],
         ),
         returnValueForMissingStub: null,
       );

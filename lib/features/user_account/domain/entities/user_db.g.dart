@@ -13,6 +13,10 @@ _$UserDBImpl _$$UserDBImplFromJson(Map<String, dynamic> json) => _$UserDBImpl(
       settings: json['settings'] == null
           ? const Settings()
           : Settings.fromJson(json['settings'] as Map<String, dynamic>),
+      tutorialsData: json['tutorialsData'] == null
+          ? const TutorialsData()
+          : TutorialsData.fromJson(
+              json['tutorialsData'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
@@ -21,4 +25,5 @@ Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
       'name': instance.name,
       'oldTripsImported': instance.oldTripsImported,
       'settings': instance.settings.toJson(),
+      'tutorialsData': instance.tutorialsData.toJson(),
     };

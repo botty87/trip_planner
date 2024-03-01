@@ -53,7 +53,7 @@ class NewEditDayTripForm extends StatelessWidget {
                     SvgPicture(
                       height: pictureHeight,
                       key: const Key('tripImage'),
-                      AssetBytesLoader(Assets.svg.addNewDayTripSvg),
+                      AssetBytesLoader(Assets.svg.addDayTripNewSvg),
                     ),
                     const SizedBox(height: verticalSpaceL),
                     Column(

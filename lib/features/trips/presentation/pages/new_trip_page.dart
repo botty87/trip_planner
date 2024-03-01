@@ -8,7 +8,7 @@ import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
-import '../../../../core/widgets/snackbars.dart';
+import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/new_trip/new_trip_cubit.dart';
 import '../widgets/new_edit_trip_form/new_edit_trip_form.dart';

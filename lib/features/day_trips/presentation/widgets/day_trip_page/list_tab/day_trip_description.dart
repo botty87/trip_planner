@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/widgets/trip/generic_trip_header.dart';
+import '../../../../../ui/presentation/widgets/trip/generic_trip_header.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 
 final class DayTripDescription extends StatelessWidget {

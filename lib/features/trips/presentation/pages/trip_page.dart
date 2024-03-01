@@ -9,10 +9,10 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/widgets/snackbars.dart';
-import '../../../../core/widgets/theme/background_image_wrapper.dart';
-import '../../../../core/widgets/theme/scaffold_transparent.dart';
-import '../../../../core/widgets/trip_pages_animated_switcher.dart';
+import '../../../ui/presentation/widgets/generics/snackbars.dart';
+import '../../../ui/presentation/widgets/background/background_image_wrapper.dart';
+import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
+import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/trip_cubit.dart';
 import '../widgets/new_edit_trip_form/new_edit_trip_form.dart';
@@ -166,6 +166,7 @@ class TripPage extends HookWidget {
       ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
     final cubit = context.read<TripCubit>();
     isModalBottomEditing.value = true;
+    final deviceLocale = getIt<Locale>(instanceName: deviceLocaleKey);
 
     showModalBottomSheet(
       context: context,
@@ -195,7 +196,7 @@ class TripPage extends HookWidget {
             onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
             initialIsPublic: cubit.state.trip.isPublic,
             initialLanguageCode:
-                cubit.state.trip.languageCode ?? getIt<String>(instanceName: deviceLocaleKey),
+                cubit.state.trip.languageCode ?? deviceLocale.languageCode,
           ),
         );
       },

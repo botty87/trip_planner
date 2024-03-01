@@ -162,5 +162,21 @@
     "hide" : "Hide",
     "searchLanguage" : "Search language",
     "noLanguages" : "No languages",
-    "showOnlySelectedLanguages" : "Show only selected languages"
+    "showOnlySelectedLanguages" : "Show only selected languages",
+    "skip" : "Skip",
+    "tripsTutorialTitle" : "Welcome to Trip Planner!",
+    "tripsTutorialBody" : "This app is designed to help you plan your trips. You can create your own trips or take inspiration from the public trips. Now we will guide you through the main features of the app. This is the main screen, where you can see all your trips. Click on the + button to create a new trip.",
+    "dayTripsTutorialTitle" : "Days of trip",
+    "dayTripsTutorialBody" : "Each trip is divided into days of trip. You can reorder them by dragging and dropping. Click on the \"add day trip\" card to add a new day of trip.",
+    "tripStopsTutorialTitle" : "Trip stops",
+    "tripStopsTutorialBody" : "Each day of trip is divided into trip stops. You can reorder them by dragging and dropping. Click on the \"add destination\" card to add a new trip stop.",
+    "tutorialEndTitle" : "Ready to start?!",
+    "tutorialEndBody" : "You are now ready to use Trip Planner. Create you first trip, also taking inspiration from the public trips, and start planning your next adventure!",
+    "tripPrivacyShowCaseTitle" : "Trip privacy",
+    "tripPrivacyShowCaseBody" : "You can choose if your trip is public or private. Public trips can be discovered by other users and added to their trips. Private trips are only visible to you.",
+    "letstart" : "Let's start!",
+    "addPublicTripFabShowCaseTitle" : "Add trip",
+    "addPublicTripFabShowCaseBody" : "You can create your trip inspired by this public trip. Click on this button to add it to your trips.",
+    "tripStopSlideShowCaseTitle" : "Slide it!",
+    "tripStopSlideShowCaseBody" : "You can slide the trip stop card to show the options to mark it as done or delete it."
 }
