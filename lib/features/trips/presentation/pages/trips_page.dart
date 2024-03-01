@@ -30,7 +30,7 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
     final hasBackgroundImage = this.hasBackgroundImage(context);
     final userId = context.read<UserCubit>().state.maybeMap(
           loggedIn: (state) => state.user.id,
-          orElse: () => throw const UnexpectedStateException(),
+          orElse: () => false,
         );
 
     return BlocProvider<TripsCubit>(
