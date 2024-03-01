@@ -16,26 +16,27 @@ import '../../../../core/l10n/languages.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../ui/presentation/widgets/generics/generic_error_widget.dart';
-import '../../../ui/presentation/widgets/background/background_widget_container.dart';
-import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
-import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../trips/domain/entities/trip.dart';
+import '../../../ui/presentation/widgets/background/background_widget_container.dart';
+import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
+import '../../../ui/presentation/widgets/generics/generic_error_widget.dart';
+import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../cubit/trips/discover_new_trips_cubit.dart';
 
 part '../widgets/trips/discover_new_trips_body.dart';
 part '../widgets/trips/discover_new_trips_error_widget.dart';
 part '../widgets/trips/discover_new_trips_list.dart';
+part '../widgets/trips/discover_new_trips_loaded.dart';
 part '../widgets/trips/no_trips_widget.dart';
 part '../widgets/trips/search_bar/discover_new_trips_search_bar.dart';
-part '../widgets/trips/search_bar/more_section/more_bar.dart';
 part '../widgets/trips/search_bar/more_section/description_search.dart';
 part '../widgets/trips/search_bar/more_section/languages_filter.dart';
+part '../widgets/trips/search_bar/more_section/more_bar.dart';
 part '../widgets/trips/search_bar/more_section/more_section.dart';
 part '../widgets/trips/search_bar/search_field.dart';
 part '../widgets/trips/trip_card.dart';
-part '../widgets/trips/discover_new_trips_loaded.dart';
 
 @RoutePage()
 class DiscoverNewTripsPage extends StatelessWidget {
@@ -44,7 +45,12 @@ class DiscoverNewTripsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DiscoverNewTripsCubit>(
-      create: (context) => getIt<DiscoverNewTripsCubit>()..fetchTrips(),
+      create: (context) => getIt<DiscoverNewTripsCubit>(
+          param1: context.read<UserCubit>().state.maybeMap(
+                loggedIn: (state) => state.user.id,
+                orElse: () => throw const UnexpectedStateException(),
+              ))
+        ..fetchTrips(),
       child: ScaffoldTransparent(
         appBar: AppBar(
           backgroundColor: context.appBarColor,
