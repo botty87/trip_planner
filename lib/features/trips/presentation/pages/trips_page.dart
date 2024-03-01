@@ -46,11 +46,7 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
           builder: (context, state) => TripPagesAnimatedSwitcher(
             child: state.when(
               initial: () => const TripsPageInitialWidget(key: ValueKey('initial')),
-              loaded: (_) {
-                Future.delayed(
-                    const Duration(seconds: 2), () => checkIfShowNewBackgroundsDialog(context));
-                return const Center(key: ValueKey('loaded'), child: LoadedWidget());
-              },
+              loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
               error: (message) =>
                   Center(key: const ValueKey('error'), child: TripsErrorWidget(message: message)),
             ),
@@ -65,22 +61,5 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
         drawer: const TripsPageDrawer(),
       ),
     );
-  }
-
-  checkIfShowNewBackgroundsDialog(BuildContext context) {
-    final settingsCubit = context.read<SettingsCubit>();
-    final settings = settingsCubit.state.settings;
-
-    if (settings.showBackgroundsDialog) {
-      settingsCubit.disableDisplayBackgroundsDialog();
-      settingsCubit.updateSettings();
-
-      showOkAlertDialog(
-        context: context,
-        title: LocaleKeys.newBackgrounds.tr(),
-        message: LocaleKeys.newBackgroundsMessage.tr(),
-        okLabel: LocaleKeys.close.tr(),
-      );
-    }
   }
 }

@@ -40,6 +40,85 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt(),
         ),
       ],
+      child: Builder(
+        builder: (context) {
+          return DynamicColorBuilder(
+            builder: (lightColorScheme, darkColorScheme) {
+              return AdaptiveTheme(
+                light: ThemeData.light().copyWith(
+                  colorScheme: lightColorScheme,
+                ),
+                dark: ThemeData.dark().copyWith(
+                  colorScheme: darkColorScheme,
+                ),
+                initial: context.read<SettingsCubit>().state.settings.themeMode,
+                debugShowFloatingThemeButton: false,
+                builder: (theme, darkTheme) {
+                  return MaterialApp.router(
+                    title: 'Trip Planner',
+                    theme: theme,
+                    darkTheme: darkTheme,
+                    debugShowCheckedModeBanner: false,
+                    routerConfig: getIt<AppRouter>().config(),
+                    localizationsDelegates: context.localizationDelegates,
+                    supportedLocales: context.supportedLocales,
+                    locale: context.locale,
+                    scrollBehavior: const MaterialScrollBehavior().copyWith(scrollbars: false),
+                    builder: (context, child) => MultiBlocListener(
+                      listeners: [
+                        _userStatusListener(),
+                        _settingsListener(),
+                        _tutorialsListener(),
+                        _backgroundImageListener(context)
+                      ],
+                      child: ResponsiveBreakpoints.builder(
+                        child: Builder(
+                          builder: (context) {
+                            return ResponsiveScaledBox(
+                                width: ResponsiveValue<double>(
+                                  context,
+                                  conditionalValues: [
+                                    Condition.equals(name: MOBILE, value: 400),
+                                    Condition.equals(name: TABLET, value: 800),
+                                    Condition.equals(name: DESKTOP, value: 1200),
+                                    Condition.equals(name: '4K', value: 2000),
+                                  ],
+                                ).value,
+                                child: BackgroundImageWrapper(child: child!));
+                          },
+                        ),
+                        breakpoints: const [
+                          Breakpoint(start: 0, end: 450, name: MOBILE),
+                          Breakpoint(start: 451, end: 1000, name: TABLET),
+                          Breakpoint(start: 1001, end: 1920, name: DESKTOP),
+                          Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          );
+        }
+      ),
+    );
+
+    /* return MultiBlocProvider(
+      providers: [
+        BlocProvider<UserCubit>(
+          create: (context) => getIt(),
+        ),
+        BlocProvider<TutorialCubit>(
+          create: (context) => getIt(),
+        ),
+        BlocProvider<SettingsCubit>(
+          create: (context) => getIt(),
+        ),
+        BlocProvider<BackgroundsCubit>(
+          create: (context) => getIt(),
+        ),
+      ],
       child: MultiBlocListener(
         listeners: [
           _userStatusListener(),
@@ -102,7 +181,7 @@ class MyApp extends StatelessWidget {
           );
         }),
       ),
-    );
+    ); */
   }
 
   BlocListener _userStatusListener() {
@@ -120,8 +199,14 @@ class MyApp extends StatelessWidget {
           FlutterNativeSplash.remove();
         }
         state.whenOrNull(
-          loggedOut: () => router.replaceAll([const LoginSignupRoute()]),
+          loggedOut: () {
+            AdaptiveTheme.of(context).setSystem();
+            return router.replaceAll([const LoginSignupRoute()]);
+          },
           loggedIn: (user) {
+            //Set the user theme
+            AdaptiveTheme.of(context).setThemeMode(user.settings.themeMode);
+
             if (user.oldTripsImported) {
               if (user.tutorialsData.showWelcome) {
                 return router.replaceAll([const TutorialRoute()]);
@@ -168,7 +253,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  BlocListener _backgroundImageListener({required BuildContext context, required Widget child}) {
+  BlocListener _backgroundImageListener(BuildContext context) {
     Pair<int, BackgroundType>? getBackgroundIndexType(SettingsState state) {
       final BackgroundType backgroundType;
       final int? index;
@@ -206,7 +291,6 @@ class MyApp extends StatelessWidget {
         final backgroundIndexType = getBackgroundIndexType(state);
         backgroundsCubit.loadCurrentBackgroundFile(backgroundIndexType: backgroundIndexType);
       },
-      child: child,
     );
   }
 }
