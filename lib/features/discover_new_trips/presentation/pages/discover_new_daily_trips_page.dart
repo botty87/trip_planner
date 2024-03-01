@@ -21,7 +21,7 @@ import '../../../ui/presentation/widgets/trip/generic_trip_header.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
-import '../../../tutorial/presentation/cubit/cubit/tutorial_cubit.dart';
+import '../../../tutorial/presentation/cubit/tutorial_cubit.dart';
 import '../cubit/daily_trips/discover_new_daily_trips_cubit.dart';
 
 part '../widgets/daily_trips/daily_trips_header.dart';

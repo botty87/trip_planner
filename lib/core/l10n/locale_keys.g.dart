@@ -176,5 +176,7 @@ abstract class  LocaleKeys {
   static const letstart = 'letstart';
   static const addPublicTripFabShowCaseTitle = 'addPublicTripFabShowCaseTitle';
   static const addPublicTripFabShowCaseBody = 'addPublicTripFabShowCaseBody';
+  static const tripStopSlideShowCaseTitle = 'tripStopSlideShowCaseTitle';
+  static const tripStopSlideShowCaseBody = 'tripStopSlideShowCaseBody';
 
 }

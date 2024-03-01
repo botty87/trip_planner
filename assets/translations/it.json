@@ -177,5 +177,7 @@
     "tripPrivacyShowCaseBody": "Puoi scegliere se rendere il tuo viaggio pubblico o privato. I viaggi pubblici saranno visibili a tutti gli utenti di Trip Planner. I viaggi privati saranno visibili solo a te.",
     "letstart" : "Iniziamo!",
     "addPublicTripFabShowCaseTitle": "Aggiungi viaggio",
-    "addPublicTripFabShowCaseBody" : "Puoi creare il tuo viaggio ispirandoti a questo viaggio pubblico. Clicca su questo pulsante per aggiungerlo ai tuoi viaggi."
+    "addPublicTripFabShowCaseBody" : "Puoi creare il tuo viaggio ispirandoti a questo viaggio pubblico. Clicca su questo pulsante per aggiungerlo ai tuoi viaggi.",
+    "tripStopSlideShowCaseTitle" : "Scorri!",
+    "tripStopSlideShowCaseBody" : "Puoi scorrere la card della tappa di viaggio per mostrare le opzioni per segnarla come completata o eliminarla."
 }

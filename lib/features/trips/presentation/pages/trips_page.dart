@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
@@ -13,6 +14,7 @@ import '../../../ui/presentation/widgets/background/background_image_wrapper.dar
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../settings/presentation/cubit/settings_cubit.dart';
+import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../cubit/trips/trips_cubit.dart';
 import '../widgets/trips_page/drawer.dart';
 import '../widgets/trips_page/loaded_widget.dart';
@@ -26,9 +28,13 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
   @override
   Widget build(BuildContext context) {
     final hasBackgroundImage = this.hasBackgroundImage(context);
+    final userId = context.read<UserCubit>().state.maybeMap(
+          loggedIn: (state) => state.user.id,
+          orElse: () => throw const UnexpectedStateException(),
+        );
 
     return BlocProvider<TripsCubit>(
-      create: (context) => getIt()..startListenTrip(),
+      create: (context) => getIt(param1: userId)..startListenTrip(),
       child: ScaffoldTransparent(
         appBar: AppBar(
           scrolledUnderElevation: hasBackgroundImage ? 0 : null,

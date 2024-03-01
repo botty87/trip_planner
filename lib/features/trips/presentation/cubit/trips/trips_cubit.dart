@@ -28,10 +28,10 @@ class TripsCubit extends Cubit<TripsState> {
   TripsCubit({
     required ListenTrips listenTrips,
     required FirebaseCrashlytics crashlytics,
-    required User user,
+    @factoryParam required String userId,
   })  : _listenTrips = listenTrips,
         _crashlytics = crashlytics,
-        _userId = user.id,
+        _userId = userId,
         super(const TripsState.initial());
 
   startListenTrip() {

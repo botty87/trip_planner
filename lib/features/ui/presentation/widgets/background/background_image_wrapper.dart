@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
+import '../../../../../core/di/di.dart';
 import '../../../../../core/utilities/extensions.dart';
 import '../../../../../core/utilities/pair.dart';
 import '../../../../settings/domain/entities/backgrounds_container.dart';
@@ -31,50 +32,15 @@ class BackgroundImageWrapper extends StatelessWidget {
 class _BackgroundImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //Listen for changes in the settings cubit
-    final backgroundsCubit = context.read<BackgroundsCubit>();
+    final imageFile =
+        context.select((BackgroundsCubit cubit) => cubit.state.currentBackgroundImage);
 
-    final Pair<int, BackgroundType>? backgroundIndexType = context.select((SettingsCubit cubit) {
-      final BackgroundType backgroundType;
-      final int? index;
-
-      switch (cubit.state.settings.themeMode) {
-        case AdaptiveThemeMode.light:
-          backgroundType = BackgroundType.light;
-          index = cubit.state.settings.backgroundsContainer.lightBackgroundIndex;
-          break;
-        case AdaptiveThemeMode.dark:
-          backgroundType = BackgroundType.dark;
-          index = cubit.state.settings.backgroundsContainer.darkBackgroundIndex;
-          break;
-        case AdaptiveThemeMode.system:
-          backgroundType = context.isDarkMode ? BackgroundType.dark : BackgroundType.light;
-          index = context.isDarkMode
-              ? cubit.state.settings.backgroundsContainer.darkBackgroundIndex
-              : cubit.state.settings.backgroundsContainer.lightBackgroundIndex;
-          break;
-      }
-
-      if (index == null || kIsWeb) return null;
-
-      return Pair(index, backgroundType);
-    });
-
-    //Load the current background image
-    backgroundsCubit.loadCurrentBackgroundFile(backgroundIndexType: backgroundIndexType);
-
-    //Rebuild the background image when the current background image changes
-    return BlocSelector<BackgroundsCubit, BackgroundsState, File?>(
-      selector: (state) => state.currentBackgroundImage,
-      builder: (context, imageFile) {
-        return Container(
-          color: Theme.of(context).colorScheme.background,
-          width: double.infinity,
-          height: double.infinity,
-          child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 500), child: _buildBackgroundImage(imageFile)),
-        );
-      },
+    return Container(
+      color: Theme.of(context).colorScheme.background,
+      width: double.infinity,
+      height: double.infinity,
+      child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500), child: _buildBackgroundImage(imageFile)),
     );
   }
 

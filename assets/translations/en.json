@@ -176,5 +176,7 @@
     "tripPrivacyShowCaseBody" : "You can choose if your trip is public or private. Public trips can be discovered by other users and added to their trips. Private trips are only visible to you.",
     "letstart" : "Let's start!",
     "addPublicTripFabShowCaseTitle" : "Add trip",
-    "addPublicTripFabShowCaseBody" : "You can create your trip inspired by this public trip. Click on this button to add it to your trips."
+    "addPublicTripFabShowCaseBody" : "You can create your trip inspired by this public trip. Click on this button to add it to your trips.",
+    "tripStopSlideShowCaseTitle" : "Slide it!",
+    "tripStopSlideShowCaseBody" : "You can slide the trip stop card to show the options to mark it as done or delete it."
 }

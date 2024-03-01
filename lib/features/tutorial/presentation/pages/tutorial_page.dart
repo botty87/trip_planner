@@ -9,7 +9,7 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../gen/assets.gen.dart';
-import '../cubit/cubit/tutorial_cubit.dart';
+import '../cubit/tutorial_cubit.dart';
 
 part '../widgets/tutorial_models.dart';
 

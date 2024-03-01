@@ -25,9 +25,9 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
 
   DiscoverNewTripsCubit({
     required GetPublicTrips getPublicTrips,
-    required User user,
+    @factoryParam required String userId,
   })  : _getPublicTrips = getPublicTrips,
-        _userId = user.id,
+        _userId = userId,
         super(const DiscoverNewTripsState.initial());
 
   void _filterTrips() async {

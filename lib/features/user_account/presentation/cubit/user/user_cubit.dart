@@ -31,12 +31,3 @@ class UserCubit extends Cubit<UserState> {
     });
   }
 }
-
-@module
-abstract class UserModule {
-  @injectable
-  User get user => getIt<UserCubit>().state.maybeMap(
-        loggedIn: (value) => value.user,
-        orElse: () => throw Exception('User is not logged in'),
-      );
-}

@@ -1,7 +1,7 @@
 part of 'tutorial_cubit.dart';
 
 @freezed
-class TutorialState with _$TutorialState {
+sealed class TutorialState with _$TutorialState {
   const factory TutorialState({
     required bool showWelcome,
     required bool showPublicTrip,
