@@ -62,7 +62,7 @@ dependencies:
   flutter_bloc: ^8.1.3
   flutter_hooks: ^0.20.0
   flutter_linkify: ^6.0.0
-  flutter_native_splash: ^2.3.9
+  flutter_native_splash: ^2.3.10
   flutter_polyline_points:
     git:
       url: https://github.com/botty87/flutter_polyline_points.git
@@ -116,7 +116,8 @@ dev_dependencies:
   freezed: ^2.4.2
   injectable_generator: ^2.1.6
   json_serializable: ^6.7.0
-  vector_graphics_compiler: ^1.1.9+1
+  patrol: ^3.5.2
+  vector_graphics_compiler: ^1.1.11+1
 
 dependency_overrides:
   flutter_keyboard_visibility: ^6.0.0
