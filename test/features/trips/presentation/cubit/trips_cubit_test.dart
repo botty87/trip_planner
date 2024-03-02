@@ -11,7 +11,6 @@ import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit.dart';
-import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 
 import 'trips_cubit_test.mocks.dart';
 
@@ -31,17 +30,13 @@ void main() {
     ),
   ];
 
-  const tUser = User(
-    id: '1',
-    name: 'test',
-    email: 'test',
-  );
+  const tUserId = '1';
 
   TripsCubit getTestCubit() {
     return TripsCubit(
       listenTrips: mockListenTrips,
       crashlytics: mockFirebaseCrashlytics,
-      user: tUser,
+      userId: tUserId,
     );
   }
 
@@ -63,7 +58,7 @@ void main() {
     act: (cubit) => cubit.startListenTrip(),
     expect: () => [TripsState.loaded(trips: tTrips)],
     verify: (_) {
-      verify(mockListenTrips(ListenTripsParams(userId: tUser.id))).called(1);
+      verify(mockListenTrips(const ListenTripsParams(userId: tUserId))).called(1);
       verifyNoMoreInteractions(mockListenTrips);
     },
   );
@@ -78,7 +73,7 @@ void main() {
     act: (cubit) => cubit.startListenTrip(),
     expect: () => [const TripsState.error(message: LocaleKeys.dataLoadError)],
     verify: (_) {
-      verify(mockListenTrips(ListenTripsParams(userId: tUser.id))).called(1);
+      verify(mockListenTrips(const ListenTripsParams(userId: tUserId))).called(1);
       verifyNoMoreInteractions(mockListenTrips);
     },
   );
