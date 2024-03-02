@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/settings/domain/entities/settings.dart';
+import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart';
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
@@ -21,6 +22,7 @@ void main() {
     id: '123',
     email: '',
     name: '',
+    tutorialsData: TutorialsData()
   );
 
   //Settings for the test
