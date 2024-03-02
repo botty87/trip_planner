@@ -28,23 +28,6 @@ class SettingsCubit extends Cubit<SettingsState> {
   })  : _updateSettings = updateSettings,
         super(const SettingsState(settings: Settings()));
 
-  //TODO clean up
-  
-  /* _init(UserCubit userCubit) {
-    _settingsSubscription = userCubit.stream
-        .map((userState) {
-          return userState.mapOrNull(
-            loggedIn: (value) => value.user.settings,
-          );
-        })
-        .distinct()
-        .listen((settings) {
-          if (settings != null) {
-            emit(state.copyWith(settings: settings));
-          }
-        });
-  } */
-
   void updateSettingsFromUser(Settings? settings) {
     emit(state.copyWith(settings: settings ?? const Settings()));
   }
