@@ -72,7 +72,7 @@ dependencies:
   font_awesome_flutter: ^10.6.0
   freezed_annotation: ^2.4.1
   get_it: ^7.6.0
-  golden_toolkit: ^0.15.0
+  
   google_fonts: ^6.1.0
   google_maps_flutter: ^2.5.3
   injectable: ^2.1.2
@@ -114,6 +114,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.4.2
+  golden_toolkit: ^0.15.0
   injectable_generator: ^2.1.6
   json_serializable: ^6.7.0
   patrol: ^3.5.2
