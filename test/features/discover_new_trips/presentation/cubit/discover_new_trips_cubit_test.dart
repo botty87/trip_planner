@@ -11,7 +11,6 @@ import 'package:trip_planner/features/discover_new_trips/domain/usecases/get_pub
 import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart';
 import 'package:trip_planner/features/discover_new_trips/presentation/cubit/trips/discover_new_trips_cubit.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
-import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 
 import 'discover_new_trips_cubit_test.mocks.dart';
 
@@ -61,7 +60,7 @@ void main() {
   DiscoverNewTripsCubit cubit() {
     return DiscoverNewTripsCubit(
       getPublicTrips: mockGetPublicTrips,
-      user: const User(id: 'id', email: 'email', name: 'name'),
+      userId: 'userId',
     );
   }
 
