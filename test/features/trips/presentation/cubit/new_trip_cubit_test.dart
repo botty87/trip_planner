@@ -14,13 +14,8 @@ import 'package:trip_planner/features/trips/domain/usecases/create_from_existing
 import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart';
-import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
-import 'package:trip_planner/features/user_account/domain/entities/user.dart';
-import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
 
 import 'new_trip_cubit_test.mocks.dart';
-
-class MockUserCubit extends MockCubit<UserState> implements UserCubit {}
 
 @GenerateNiceMocks([MockSpec<CreateTrip>(), MockSpec<CreateFromExistingTrip>()])
 void main() {
@@ -28,27 +23,26 @@ void main() {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
 
-  late MockUserCubit mockUserTrip;
   late MockCreateTrip mockCreateTrip;
   late MockCreateFromExistingTrip mockCreateFromExistingTrip;
 
   const tSettings = Settings();
   final tTrip =
       Trip(name: 'test', startDate: DateTime.now(), userId: '', createdAt: DateTime.now());
+      const tUserId = '1';
 
   setUp(() {
-    mockUserTrip = MockUserCubit();
     mockCreateTrip = MockCreateTrip();
     mockCreateFromExistingTrip = MockCreateFromExistingTrip();
   });
 
   NewTripCubit getNewTripCubit({Trip? existingTrip}) => NewTripCubit(
-        userCubit: mockUserTrip,
         createTrip: mockCreateTrip,
         createFromExistingTrip: mockCreateFromExistingTrip,
         settings: tSettings,
         existingTrip: existingTrip,
         deviceLocale: const Locale('en'),
+        userId: tUserId,
       );
 
   blocTest<NewTripCubit, NewTripState>('When name change emit state with name changed',
@@ -70,17 +64,8 @@ void main() {
   );
 
   group('Create trip tests', () {
-    const tUser = User(id: '1', email: '', name: '', tutorialsData: TutorialsData());
     final tStartDate = DateTime.now();
     const tLanguageCode = 'en';
-
-    setUp(() {
-      whenListen(
-        mockUserTrip,
-        Stream.fromIterable([const UserStateLoggedIn(user: tUser)]),
-        initialState: const UserStateLoggedIn(user: tUser),
-      );
-    });
 
     blocTest<NewTripCubit, NewTripState>(
       'When create trip with empty name emit state with error message',
