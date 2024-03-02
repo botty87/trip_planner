@@ -22,7 +22,7 @@ void main() {
     id: '123',
     email: '',
     name: '',
-    tutorialsData: TutorialsData()
+    tutorialsData: TutorialsData(),
   );
 
   //Settings for the test

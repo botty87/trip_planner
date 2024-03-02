@@ -23,7 +23,7 @@ void main() {
         .thenAnswer((_) async => right(null));
 
     // act
-    final result = await usecase(UpdateDayTripParams(
+    final result = await usecase(const UpdateDayTripParams(
       id: 'id',
       tripId: 'tripId',
       description: 'description',
@@ -40,7 +40,7 @@ void main() {
         .thenAnswer((_) async => left(const DayTripsFailure()));
 
     // act
-    final result = await usecase(UpdateDayTripParams(
+    final result = await usecase(const UpdateDayTripParams(
       id: 'id',
       tripId: 'tripId',
       description: 'description',
