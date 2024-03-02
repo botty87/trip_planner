@@ -9,7 +9,6 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../settings/domain/entities/settings.dart';
-import '../../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/create_from_existing_trip.dart';
 import '../../../domain/usecases/create_trip.dart';
@@ -22,20 +21,20 @@ part 'new_trip_state.dart';
 class NewTripCubit extends Cubit<NewTripState> {
   final CreateTrip _createTrip;
   final CreateFromExistingTrip _createFromExistingTrip;
-  final UserCubit _userCubit;
+  final String _userId;
   final Trip? _existingTrip;
   final Settings _settings;
 
   NewTripCubit({
-    required UserCubit userCubit,
     required CreateTrip createTrip,
     required CreateFromExistingTrip createFromExistingTrip,
     required Settings settings,
     @Named(deviceLocaleKey) required Locale deviceLocale,
     @factoryParam Trip? existingTrip,
+    @factoryParam required String userId,
   })  : _createTrip = createTrip,
         _createFromExistingTrip = createFromExistingTrip,
-        _userCubit = userCubit,
+        _userId = userId,
         _existingTrip = existingTrip,
         _settings = settings,
         super(NewTripState.normal(languageCode: deviceLocale.languageCode)) {
@@ -91,13 +90,10 @@ class NewTripCubit extends Cubit<NewTripState> {
         final normalState = state;
         emit(const NewTripState.saving());
 
-        assert(_userCubit.state is UserStateLoggedIn);
-        final userId = (_userCubit.state as UserStateLoggedIn).user.id;
-
         final Either<TripsFailure, void> result;
         if (_existingTrip == null) {
           result = await _createTrip(CreateTripParams(
-            userId: userId,
+            userId: _userId,
             tripName: state.tripName!,
             tripDescription: state.tripDescription,
             startDate: state.startDate!,
@@ -106,7 +102,7 @@ class NewTripCubit extends Cubit<NewTripState> {
           ));
         } else {
           result = await _createFromExistingTrip(CreateFromExistingTripParams(
-            userId: userId,
+            userId: _userId,
             tripName: state.tripName!,
             tripDescription: state.tripDescription,
             startDate: state.startDate!,

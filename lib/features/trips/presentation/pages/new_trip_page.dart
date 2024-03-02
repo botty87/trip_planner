@@ -9,6 +9,7 @@ import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../ui/presentation/widgets/generics/snackbars.dart';
+import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/new_trip/new_trip_cubit.dart';
 import '../widgets/new_edit_trip_form/new_edit_trip_form.dart';
@@ -23,7 +24,13 @@ class NewTripPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<NewTripCubit>(
-      create: (context) => getIt(param1: _existingTrip),
+      create: (context) {
+        final userId = getIt<UserCubit>().state.maybeMap(
+          loggedIn: (state) => state.user.id,
+          orElse: () => throw const UnexpectedStateException(),
+        );
+        return getIt(param1: _existingTrip, param2: userId);
+      },
       child: Scaffold(
           appBar: AppBar(
             title: Text(LocaleKeys.newTrip.tr()),
