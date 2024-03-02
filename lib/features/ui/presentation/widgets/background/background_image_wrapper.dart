@@ -58,11 +58,6 @@ class _BackgroundImage extends StatelessWidget {
 }
 
 mixin BackgroundImageMixin {
-  bool hasBackgroundImage(BuildContext context) => context.select((SettingsCubit cubit) {
-        if (context.isDarkMode) {
-          return cubit.state.settings.backgroundsContainer.darkBackgroundIndex != null;
-        } else {
-          return cubit.state.settings.backgroundsContainer.lightBackgroundIndex != null;
-        }
-      });
+  bool hasBackgroundImage(BuildContext context) =>
+      context.select((BackgroundsCubit cubit) => cubit.state.currentBackgroundImage != null);
 }
