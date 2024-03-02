@@ -132,7 +132,7 @@ final class UserDataSourceImpl implements UserDataSource {
       batch.set(userDoc, {'name': name}, SetOptions(merge: true));
     }
     if (email != null) {
-      await firebaseAuth.currentUser!.updateEmail(email);
+      await firebaseAuth.currentUser!.verifyBeforeUpdateEmail(email);
       batch.set(userDoc, {'email': email}, SetOptions(merge: true));
     }
     if (password != null) {

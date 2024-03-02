@@ -164,7 +164,7 @@ List<Trip> _filtertTripsByQueryAndLanguage(DiscoverNewTripsState state) {
       } else {
         for (final language in selectedLanguages) {
           filteredTripsByLanguage
-              .addAll(filteredTripsByQuery.where((trip) => trip.languageCode == language));
+              .addAll(filteredTripsByQuery.where((trip) => trip.languageCode == language.isoCode));
         }
       }
 
