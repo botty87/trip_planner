@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart';
+import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/listen_user.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';

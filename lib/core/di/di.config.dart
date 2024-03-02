@@ -152,9 +152,9 @@ import '../../features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
     as _i107;
 import '../../features/trips/presentation/cubit/trip/trip_cubit.dart' as _i110;
 import '../../features/trips/presentation/cubit/trips/trips_cubit.dart' as _i85;
-import '../../features/tutorial/domain/usecases/update_tutorials_data.dart'
+import '../../features/tutorials/domain/usecases/update_tutorials_data.dart'
     as _i93;
-import '../../features/tutorial/presentation/cubit/tutorial_cubit.dart'
+import '../../features/tutorials/presentation/cubit/tutorial_cubit.dart'
     as _i113;
 import '../../features/ui/presentation/cubit/backgrounds_cubit.dart' as _i50;
 import '../../features/user_account/data/datasources/user_data_source.dart'

@@ -7,7 +7,7 @@ import 'package:showcaseview/showcaseview.dart';
 
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../tutorial/presentation/cubit/tutorial_cubit.dart';
+import '../../../../../tutorials/presentation/cubit/tutorial_cubit.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 import 'add_day_trip_stop_card.dart';
 import 'day_trip_description.dart';

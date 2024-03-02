@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../settings/domain/entities/settings.dart';
-import '../../../tutorial/domain/entities/tutorials_data.dart';
+import '../../../tutorials/domain/entities/tutorials_data.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';

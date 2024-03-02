@@ -11,7 +11,7 @@ import 'package:trip_planner/features/import_old_trips/domain/usecases/import_ol
 import 'package:trip_planner/features/import_old_trips/domain/usecases/read_old_trips.dart';
 import 'package:trip_planner/features/import_old_trips/errors/import_old_trips_failure.dart';
 import 'package:trip_planner/features/import_old_trips/presentation/cubit/import_old_trips_cubit.dart';
-import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart';
+import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 
 import 'import_old_trips_cubit_test.mocks.dart';

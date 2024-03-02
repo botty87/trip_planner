@@ -44,7 +44,7 @@ import 'package:trip_planner/features/trips/presentation/pages/trip_page.dart'
     as _i15;
 import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
     as _i17;
-import 'package:trip_planner/features/tutorial/presentation/pages/tutorial_page.dart'
+import 'package:trip_planner/features/tutorials/presentation/pages/tutorial_page.dart'
     as _i18;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
     as _i24;

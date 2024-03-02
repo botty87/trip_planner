@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/db/users_collection_ref.dart';
 import '../../../../core/di/di.dart';
 import '../../../settings/domain/entities/settings.dart';
-import '../../../tutorial/domain/entities/tutorials_data.dart';
+import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/user_db.dart';
 
@@ -30,7 +30,6 @@ abstract interface class UserDataSource {
 
   deleteUser();
 
-  //TODO implement test
   saveTutorialsData(TutorialsData tutorialsData);
 }
 

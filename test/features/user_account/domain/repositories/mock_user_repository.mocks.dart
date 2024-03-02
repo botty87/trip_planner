@@ -9,7 +9,7 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/settings/domain/entities/settings.dart'
     as _i7;
-import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart'
+import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart'
     as _i8;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
     as _i6;

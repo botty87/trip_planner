@@ -14,7 +14,7 @@ import 'package:trip_planner/features/trips/domain/usecases/create_from_existing
 import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart';
-import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart';
+import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
 

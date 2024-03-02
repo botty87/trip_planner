@@ -9,7 +9,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../features/settings/domain/entities/backgrounds_container.dart';
 import '../features/settings/presentation/cubit/settings_cubit.dart';
-import '../features/tutorial/presentation/cubit/tutorial_cubit.dart';
+import '../features/tutorials/presentation/cubit/tutorial_cubit.dart';
 import '../features/ui/presentation/cubit/backgrounds_cubit.dart';
 import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';

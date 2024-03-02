@@ -7,7 +7,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/core/usecases/usecase.dart';
-import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart';
+import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/delete_user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/logout_user.dart';

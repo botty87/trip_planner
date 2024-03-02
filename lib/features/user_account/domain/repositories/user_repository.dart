@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../settings/domain/entities/settings.dart';
-import '../../../tutorial/domain/entities/tutorials_data.dart';
+import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../errors/user_failures.dart';
 import '../entities/user.dart';
 
