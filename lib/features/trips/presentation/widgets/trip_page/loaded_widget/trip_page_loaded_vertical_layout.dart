@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_breakpoints.dart';
-
+import 'package:responsive_framework/responsive_framework.dart';
 import '../../../../../../core/constants.dart';
 import '../add_day_trip_card.dart';
 import '../day_trips_list_widget.dart';

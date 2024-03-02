@@ -8,6 +8,5 @@ class SingleTripStopsMapWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const DayTripMapWidget(isSingleTripStop: true);
-    
   }
 }

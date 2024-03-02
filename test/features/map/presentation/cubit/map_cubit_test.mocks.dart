@@ -34,8 +34,7 @@ class _FakeLatLngBounds_0 extends _i1.SmartFake implements _i2.LatLngBounds {
         );
 }
 
-class _FakeScreenCoordinate_1 extends _i1.SmartFake
-    implements _i2.ScreenCoordinate {
+class _FakeScreenCoordinate_1 extends _i1.SmartFake implements _i2.ScreenCoordinate {
   _FakeScreenCoordinate_1(
     Object parent,
     Invocation parentInvocation,
@@ -58,8 +57,7 @@ class _FakeLatLng_2 extends _i1.SmartFake implements _i2.LatLng {
 /// A class which mocks [GoogleMapController].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGoogleMapController extends _i1.Mock
-    implements _i3.GoogleMapController {
+class MockGoogleMapController extends _i1.Mock implements _i3.GoogleMapController {
   @override
   int get mapId => (super.noSuchMethod(
         Invocation.getter(#mapId),
@@ -68,8 +66,7 @@ class MockGoogleMapController extends _i1.Mock
       ) as int);
 
   @override
-  _i4.Future<void> clearTileCache(_i2.TileOverlayId? tileOverlayId) =>
-      (super.noSuchMethod(
+  _i4.Future<void> clearTileCache(_i2.TileOverlayId? tileOverlayId) => (super.noSuchMethod(
         Invocation.method(
           #clearTileCache,
           [tileOverlayId],
@@ -79,8 +76,7 @@ class MockGoogleMapController extends _i1.Mock
       ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> animateCamera(_i2.CameraUpdate? cameraUpdate) =>
-      (super.noSuchMethod(
+  _i4.Future<void> animateCamera(_i2.CameraUpdate? cameraUpdate) => (super.noSuchMethod(
         Invocation.method(
           #animateCamera,
           [cameraUpdate],
@@ -90,8 +86,7 @@ class MockGoogleMapController extends _i1.Mock
       ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> moveCamera(_i2.CameraUpdate? cameraUpdate) =>
-      (super.noSuchMethod(
+  _i4.Future<void> moveCamera(_i2.CameraUpdate? cameraUpdate) => (super.noSuchMethod(
         Invocation.method(
           #moveCamera,
           [cameraUpdate],
@@ -123,8 +118,7 @@ class MockGoogleMapController extends _i1.Mock
             [],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.LatLngBounds>.value(_FakeLatLngBounds_0(
+        returnValueForMissingStub: _i4.Future<_i2.LatLngBounds>.value(_FakeLatLngBounds_0(
           this,
           Invocation.method(
             #getVisibleRegion,
@@ -134,22 +128,19 @@ class MockGoogleMapController extends _i1.Mock
       ) as _i4.Future<_i2.LatLngBounds>);
 
   @override
-  _i4.Future<_i2.ScreenCoordinate> getScreenCoordinate(_i2.LatLng? latLng) =>
-      (super.noSuchMethod(
+  _i4.Future<_i2.ScreenCoordinate> getScreenCoordinate(_i2.LatLng? latLng) => (super.noSuchMethod(
         Invocation.method(
           #getScreenCoordinate,
           [latLng],
         ),
-        returnValue:
-            _i4.Future<_i2.ScreenCoordinate>.value(_FakeScreenCoordinate_1(
+        returnValue: _i4.Future<_i2.ScreenCoordinate>.value(_FakeScreenCoordinate_1(
           this,
           Invocation.method(
             #getScreenCoordinate,
             [latLng],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.ScreenCoordinate>.value(_FakeScreenCoordinate_1(
+        returnValueForMissingStub: _i4.Future<_i2.ScreenCoordinate>.value(_FakeScreenCoordinate_1(
           this,
           Invocation.method(
             #getScreenCoordinate,
@@ -159,8 +150,7 @@ class MockGoogleMapController extends _i1.Mock
       ) as _i4.Future<_i2.ScreenCoordinate>);
 
   @override
-  _i4.Future<_i2.LatLng> getLatLng(_i2.ScreenCoordinate? screenCoordinate) =>
-      (super.noSuchMethod(
+  _i4.Future<_i2.LatLng> getLatLng(_i2.ScreenCoordinate? screenCoordinate) => (super.noSuchMethod(
         Invocation.method(
           #getLatLng,
           [screenCoordinate],
@@ -182,8 +172,7 @@ class MockGoogleMapController extends _i1.Mock
       ) as _i4.Future<_i2.LatLng>);
 
   @override
-  _i4.Future<void> showMarkerInfoWindow(_i2.MarkerId? markerId) =>
-      (super.noSuchMethod(
+  _i4.Future<void> showMarkerInfoWindow(_i2.MarkerId? markerId) => (super.noSuchMethod(
         Invocation.method(
           #showMarkerInfoWindow,
           [markerId],
@@ -193,8 +182,7 @@ class MockGoogleMapController extends _i1.Mock
       ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> hideMarkerInfoWindow(_i2.MarkerId? markerId) =>
-      (super.noSuchMethod(
+  _i4.Future<void> hideMarkerInfoWindow(_i2.MarkerId? markerId) => (super.noSuchMethod(
         Invocation.method(
           #hideMarkerInfoWindow,
           [markerId],
@@ -204,8 +192,7 @@ class MockGoogleMapController extends _i1.Mock
       ) as _i4.Future<void>);
 
   @override
-  _i4.Future<bool> isMarkerInfoWindowShown(_i2.MarkerId? markerId) =>
-      (super.noSuchMethod(
+  _i4.Future<bool> isMarkerInfoWindowShown(_i2.MarkerId? markerId) => (super.noSuchMethod(
         Invocation.method(
           #isMarkerInfoWindowShown,
           [markerId],

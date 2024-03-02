@@ -3,11 +3,9 @@ import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-
   setUpAll(() async {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
-  
 
   //TODO refactor this test
   /* testWidgets('renders NoTripsWidget', (tester) async {

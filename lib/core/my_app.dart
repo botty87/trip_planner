@@ -77,10 +77,10 @@ class MyApp extends StatelessWidget {
                               width: ResponsiveValue<double>(
                                 context,
                                 conditionalValues: [
-                                  Condition.equals(name: MOBILE, value: 400),
-                                  Condition.equals(name: TABLET, value: 800),
-                                  Condition.equals(name: DESKTOP, value: 1200),
-                                  Condition.equals(name: '4K', value: 2000),
+                                  const Condition.equals(name: MOBILE, value: 400),
+                                  const Condition.equals(name: TABLET, value: 800),
+                                  const Condition.equals(name: DESKTOP, value: 1200),
+                                  const Condition.equals(name: '4K', value: 2000),
                                 ],
                               ).value,
                               child: BackgroundImageWrapper(child: child!));

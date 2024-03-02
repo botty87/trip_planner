@@ -30,16 +30,17 @@ void main() {
 
   blocTest<NewDayTripCubit, NewDayTripState>(
     'When description change emit state with description changed',
-    build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId, settings: tSettings),
+    build: () =>
+        NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId, settings: tSettings),
     act: (cubit) => cubit.descriptionChanged('test'),
     expect: () => [const NewDayTripState.normal(description: 'test')],
   );
 
-  group('Create day trip', () { 
-
+  group('Create day trip', () {
     blocTest<NewDayTripCubit, NewDayTripState>(
       'When create day trip emit NewDayTripStateSaving then NewDayTripStateCreated state',
-      build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId, settings: tSettings),
+      build: () =>
+          NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId, settings: tSettings),
       seed: () => const NewDayTripState.normal(),
       setUp: () => when(mockCreateDayTrip(any)).thenAnswer((_) async => right(null)),
       act: (cubit) => cubit.createDayTrip(),
@@ -52,9 +53,11 @@ void main() {
 
     blocTest<NewDayTripCubit, NewDayTripState>(
       'When create day trip fail emit NewDayTripStateSaving then NewDayTripStateError state',
-      build: () => NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId, settings: tSettings),
+      build: () =>
+          NewDayTripCubit(createDayTrip: mockCreateDayTrip, tripId: tTripId, settings: tSettings),
       seed: () => const NewDayTripState.normal(),
-      setUp: () => when(mockCreateDayTrip(any)).thenAnswer((_) async => left(const DayTripsFailure())),
+      setUp: () =>
+          when(mockCreateDayTrip(any)).thenAnswer((_) async => left(const DayTripsFailure())),
       act: (cubit) => cubit.createDayTrip(),
       verify: (_) => verify(mockCreateDayTrip(any)).called(1),
       expect: () => [

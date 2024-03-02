@@ -26,9 +26,9 @@ class NewTripPage extends HookWidget {
     return BlocProvider<NewTripCubit>(
       create: (context) {
         final userId = getIt<UserCubit>().state.maybeMap(
-          loggedIn: (state) => state.user.id,
-          orElse: () => throw const UnexpectedStateException(),
-        );
+              loggedIn: (state) => state.user.id,
+              orElse: () => throw const UnexpectedStateException(),
+            );
         return getIt(param1: _existingTrip, param2: userId);
       },
       child: Scaffold(

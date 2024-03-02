@@ -20,14 +20,12 @@ mixin _$SettingsState {
   UserFailures? get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SettingsStateCopyWith<SettingsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SettingsStateCopyWith<SettingsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SettingsStateCopyWith<$Res> {
-  factory $SettingsStateCopyWith(
-          SettingsState value, $Res Function(SettingsState) then) =
+  factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
   @useResult
   $Res call({Settings settings, UserFailures? failure});
@@ -86,8 +84,7 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
 }
 
 /// @nodoc
-abstract class _$$SettingsStateImplCopyWith<$Res>
-    implements $SettingsStateCopyWith<$Res> {
+abstract class _$$SettingsStateImplCopyWith<$Res> implements $SettingsStateCopyWith<$Res> {
   factory _$$SettingsStateImplCopyWith(
           _$SettingsStateImpl value, $Res Function(_$SettingsStateImpl) then) =
       __$$SettingsStateImplCopyWithImpl<$Res>;
@@ -148,8 +145,7 @@ class _$SettingsStateImpl implements _SettingsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SettingsStateImpl &&
-            (identical(other.settings, settings) ||
-                other.settings == settings) &&
+            (identical(other.settings, settings) || other.settings == settings) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -164,9 +160,8 @@ class _$SettingsStateImpl implements _SettingsState {
 }
 
 abstract class _SettingsState implements SettingsState {
-  const factory _SettingsState(
-      {required final Settings settings,
-      final UserFailures? failure}) = _$SettingsStateImpl;
+  const factory _SettingsState({required final Settings settings, final UserFailures? failure}) =
+      _$SettingsStateImpl;
 
   @override
   Settings get settings;

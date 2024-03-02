@@ -182,8 +182,7 @@ void main() {
 
     test('should return left(DayTripsFailure()) when saveTripStopsDirections throws', () async {
       when(mockDayTripsDataSource.saveTripStopsDirections(
-              tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []))
-          .thenThrow(Exception());
+          tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: [])).thenThrow(Exception());
 
       // act
       final result = await repository.saveTripStopsDirections(
@@ -282,8 +281,7 @@ void main() {
       expect(result, equals(right(null)));
     });
 
-    test('should return left(DayTripsFailure()) when updateDayTripShowDirections throws',
-        () async {
+    test('should return left(DayTripsFailure()) when updateDayTripShowDirections throws', () async {
       when(mockDayTripsDataSource.updateDayTripShowDirections(
               tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true))
           .thenThrow(Exception());
@@ -295,5 +293,4 @@ void main() {
       expect(result, equals(left(const DayTripsFailure())));
     });
   });
-
 }

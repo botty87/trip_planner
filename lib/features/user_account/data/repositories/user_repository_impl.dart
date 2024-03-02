@@ -154,6 +154,4 @@ final class UserRepositoryImpl implements UserRepository {
       return left(const UserFailures.unknownError());
     }
   }
-  
-  
 }

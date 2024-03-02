@@ -35,7 +35,7 @@ class DayTripMapWidget extends HookWidget {
   Widget build(BuildContext context) {
     final tripStops = _getTripStops(context);
 
-    if(isSingleTripStop) {
+    if (isSingleTripStop) {
       return MapWidget.single(
         mapPlace: tripStops.first.toMapPlace(),
         onMarkerTap: (mapPlace) {
@@ -57,7 +57,7 @@ class DayTripMapWidget extends HookWidget {
         },
       );
     }
-    
+
     final isTripStopsDirectionsToLoad =
         context.select((TripStopsMapCubit cubit) => cubit.state.isTripStopsDirectionsToLoad);
 

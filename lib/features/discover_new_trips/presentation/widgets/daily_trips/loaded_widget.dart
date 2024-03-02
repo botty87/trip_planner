@@ -11,7 +11,7 @@ class _LoadedWidget extends StatelessWidget {
         final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
             ? constraints.maxWidth * 0.8
             : constraints.maxWidth;
-      
+
         return ConstrainedBox(
           constraints: BoxConstraints(maxWidth: maxWidth),
           child: ListView(

@@ -7,7 +7,6 @@ import 'package:trip_planner/features/trips/presentation/widgets/trip_page/save_
 import '../../../../../utils.dart';
 
 void main() {
-
   setUpAll(() async {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });

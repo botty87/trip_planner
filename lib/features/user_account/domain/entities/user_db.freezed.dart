@@ -48,8 +48,7 @@ abstract class $UserDBCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
-    implements $UserDBCopyWith<$Res> {
+class _$UserDBCopyWithImpl<$Res, $Val extends UserDB> implements $UserDBCopyWith<$Res> {
   _$UserDBCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -109,8 +108,7 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
 
 /// @nodoc
 abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
-  factory _$$UserDBImplCopyWith(
-          _$UserDBImpl value, $Res Function(_$UserDBImpl) then) =
+  factory _$$UserDBImplCopyWith(_$UserDBImpl value, $Res Function(_$UserDBImpl) then) =
       __$$UserDBImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -128,11 +126,9 @@ abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$UserDBImplCopyWithImpl<$Res>
-    extends _$UserDBCopyWithImpl<$Res, _$UserDBImpl>
+class __$$UserDBImplCopyWithImpl<$Res> extends _$UserDBCopyWithImpl<$Res, _$UserDBImpl>
     implements _$$UserDBImplCopyWith<$Res> {
-  __$$UserDBImplCopyWithImpl(
-      _$UserDBImpl _value, $Res Function(_$UserDBImpl) _then)
+  __$$UserDBImplCopyWithImpl(_$UserDBImpl _value, $Res Function(_$UserDBImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -179,8 +175,7 @@ class _$UserDBImpl implements _UserDB {
       this.settings = const Settings(),
       this.tutorialsData = const TutorialsData()});
 
-  factory _$UserDBImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserDBImplFromJson(json);
+  factory _$UserDBImpl.fromJson(Map<String, dynamic> json) => _$$UserDBImplFromJson(json);
 
   @override
   final String email;
@@ -210,16 +205,15 @@ class _$UserDBImpl implements _UserDB {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.oldTripsImported, oldTripsImported) ||
                 other.oldTripsImported == oldTripsImported) &&
-            (identical(other.settings, settings) ||
-                other.settings == settings) &&
+            (identical(other.settings, settings) || other.settings == settings) &&
             (identical(other.tutorialsData, tutorialsData) ||
                 other.tutorialsData == tutorialsData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, name, oldTripsImported, settings, tutorialsData);
+  int get hashCode =>
+      Object.hash(runtimeType, email, name, oldTripsImported, settings, tutorialsData);
 
   @JsonKey(ignore: true)
   @override
@@ -257,6 +251,5 @@ abstract class _UserDB implements UserDB {
   TutorialsData get tutorialsData;
   @override
   @JsonKey(ignore: true)
-  _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith => throw _privateConstructorUsedError;
 }

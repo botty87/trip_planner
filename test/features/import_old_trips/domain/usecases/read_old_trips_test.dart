@@ -18,7 +18,7 @@ void main() {
 
   const tUserId = '123';
 
-  const  tOldTrips = [
+  const tOldTrips = [
     OldTrip(id: '1', name: 'Trip 1', dailyTrips: []),
     OldTrip(id: '2', name: 'Trip 2', dailyTrips: []),
   ];

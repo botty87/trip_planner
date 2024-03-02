@@ -110,7 +110,7 @@ class DayTripsList extends HookWidget {
       },
       areItemsTheSame: (oldItem, newItem) => oldItem == newItem,
       onReorderFinished: (item, from, to, newItems) {
-        if(!listEquals(dayTrips, newItems)) {
+        if (!listEquals(dayTrips, newItems)) {
           context.read<TripCubit>().reorderDayTrips(from, to, newItems);
         }
       },

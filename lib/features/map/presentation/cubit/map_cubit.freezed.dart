@@ -20,32 +20,23 @@ mixin _$MapState {
   MapType get mapType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
+    required TResult Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
         multiple,
-    required TResult Function(
-            bool isMapReady, MapType mapType, LatLng? markerPosition)
-        single,
+    required TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition) single,
     required TResult Function(bool isMapReady, MapType mapType) empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
-        multiple,
-    TResult? Function(bool isMapReady, MapType mapType, LatLng? markerPosition)?
-        single,
+    TResult? Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)? multiple,
+    TResult? Function(bool isMapReady, MapType mapType, LatLng? markerPosition)? single,
     TResult? Function(bool isMapReady, MapType mapType)? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
-        multiple,
-    TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition)?
-        single,
+    TResult Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)? multiple,
+    TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition)? single,
     TResult Function(bool isMapReady, MapType mapType)? empty,
     required TResult orElse(),
   }) =>
@@ -74,8 +65,7 @@ mixin _$MapState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MapStateCopyWith<MapState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MapStateCopyWith<MapState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -87,8 +77,7 @@ abstract class $MapStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
-    implements $MapStateCopyWith<$Res> {
+class _$MapStateCopyWithImpl<$Res, $Val extends MapState> implements $MapStateCopyWith<$Res> {
   _$MapStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -116,23 +105,21 @@ class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
 }
 
 /// @nodoc
-abstract class _$$MapStateMultipleImplCopyWith<$Res>
-    implements $MapStateCopyWith<$Res> {
-  factory _$$MapStateMultipleImplCopyWith(_$MapStateMultipleImpl value,
-          $Res Function(_$MapStateMultipleImpl) then) =
+abstract class _$$MapStateMultipleImplCopyWith<$Res> implements $MapStateCopyWith<$Res> {
+  factory _$$MapStateMultipleImplCopyWith(
+          _$MapStateMultipleImpl value, $Res Function(_$MapStateMultipleImpl) then) =
       __$$MapStateMultipleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds});
+  $Res call({bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds});
 }
 
 /// @nodoc
 class __$$MapStateMultipleImplCopyWithImpl<$Res>
     extends _$MapStateCopyWithImpl<$Res, _$MapStateMultipleImpl>
     implements _$$MapStateMultipleImplCopyWith<$Res> {
-  __$$MapStateMultipleImplCopyWithImpl(_$MapStateMultipleImpl _value,
-      $Res Function(_$MapStateMultipleImpl) _then)
+  __$$MapStateMultipleImplCopyWithImpl(
+      _$MapStateMultipleImpl _value, $Res Function(_$MapStateMultipleImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -163,9 +150,7 @@ class __$$MapStateMultipleImplCopyWithImpl<$Res>
 
 class _$MapStateMultipleImpl extends _MapStateMultiple {
   const _$MapStateMultipleImpl(
-      {this.isMapReady = false,
-      this.mapType = MapType.hybrid,
-      this.markerLatLngBounds})
+      {this.isMapReady = false, this.mapType = MapType.hybrid, this.markerLatLngBounds})
       : super._();
 
   @override
@@ -187,33 +172,27 @@ class _$MapStateMultipleImpl extends _MapStateMultiple {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapStateMultipleImpl &&
-            (identical(other.isMapReady, isMapReady) ||
-                other.isMapReady == isMapReady) &&
+            (identical(other.isMapReady, isMapReady) || other.isMapReady == isMapReady) &&
             (identical(other.mapType, mapType) || other.mapType == mapType) &&
             (identical(other.markerLatLngBounds, markerLatLngBounds) ||
                 other.markerLatLngBounds == markerLatLngBounds));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isMapReady, mapType, markerLatLngBounds);
+  int get hashCode => Object.hash(runtimeType, isMapReady, mapType, markerLatLngBounds);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MapStateMultipleImplCopyWith<_$MapStateMultipleImpl> get copyWith =>
-      __$$MapStateMultipleImplCopyWithImpl<_$MapStateMultipleImpl>(
-          this, _$identity);
+      __$$MapStateMultipleImplCopyWithImpl<_$MapStateMultipleImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
+    required TResult Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
         multiple,
-    required TResult Function(
-            bool isMapReady, MapType mapType, LatLng? markerPosition)
-        single,
+    required TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition) single,
     required TResult Function(bool isMapReady, MapType mapType) empty,
   }) {
     return multiple(isMapReady, mapType, markerLatLngBounds);
@@ -222,11 +201,8 @@ class _$MapStateMultipleImpl extends _MapStateMultiple {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
-        multiple,
-    TResult? Function(bool isMapReady, MapType mapType, LatLng? markerPosition)?
-        single,
+    TResult? Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)? multiple,
+    TResult? Function(bool isMapReady, MapType mapType, LatLng? markerPosition)? single,
     TResult? Function(bool isMapReady, MapType mapType)? empty,
   }) {
     return multiple?.call(isMapReady, mapType, markerLatLngBounds);
@@ -235,11 +211,8 @@ class _$MapStateMultipleImpl extends _MapStateMultiple {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
-        multiple,
-    TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition)?
-        single,
+    TResult Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)? multiple,
+    TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition)? single,
     TResult Function(bool isMapReady, MapType mapType)? empty,
     required TResult orElse(),
   }) {
@@ -303,10 +276,9 @@ abstract class _MapStateMultiple extends MapState {
 }
 
 /// @nodoc
-abstract class _$$MapStateSingleImplCopyWith<$Res>
-    implements $MapStateCopyWith<$Res> {
-  factory _$$MapStateSingleImplCopyWith(_$MapStateSingleImpl value,
-          $Res Function(_$MapStateSingleImpl) then) =
+abstract class _$$MapStateSingleImplCopyWith<$Res> implements $MapStateCopyWith<$Res> {
+  factory _$$MapStateSingleImplCopyWith(
+          _$MapStateSingleImpl value, $Res Function(_$MapStateSingleImpl) then) =
       __$$MapStateSingleImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -349,9 +321,7 @@ class __$$MapStateSingleImplCopyWithImpl<$Res>
 
 class _$MapStateSingleImpl extends _MapStateSingle {
   const _$MapStateSingleImpl(
-      {this.isMapReady = false,
-      this.mapType = MapType.hybrid,
-      this.markerPosition})
+      {this.isMapReady = false, this.mapType = MapType.hybrid, this.markerPosition})
       : super._();
 
   @override
@@ -373,33 +343,27 @@ class _$MapStateSingleImpl extends _MapStateSingle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapStateSingleImpl &&
-            (identical(other.isMapReady, isMapReady) ||
-                other.isMapReady == isMapReady) &&
+            (identical(other.isMapReady, isMapReady) || other.isMapReady == isMapReady) &&
             (identical(other.mapType, mapType) || other.mapType == mapType) &&
             (identical(other.markerPosition, markerPosition) ||
                 other.markerPosition == markerPosition));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isMapReady, mapType, markerPosition);
+  int get hashCode => Object.hash(runtimeType, isMapReady, mapType, markerPosition);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MapStateSingleImplCopyWith<_$MapStateSingleImpl> get copyWith =>
-      __$$MapStateSingleImplCopyWithImpl<_$MapStateSingleImpl>(
-          this, _$identity);
+      __$$MapStateSingleImplCopyWithImpl<_$MapStateSingleImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
+    required TResult Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
         multiple,
-    required TResult Function(
-            bool isMapReady, MapType mapType, LatLng? markerPosition)
-        single,
+    required TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition) single,
     required TResult Function(bool isMapReady, MapType mapType) empty,
   }) {
     return single(isMapReady, mapType, markerPosition);
@@ -408,11 +372,8 @@ class _$MapStateSingleImpl extends _MapStateSingle {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
-        multiple,
-    TResult? Function(bool isMapReady, MapType mapType, LatLng? markerPosition)?
-        single,
+    TResult? Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)? multiple,
+    TResult? Function(bool isMapReady, MapType mapType, LatLng? markerPosition)? single,
     TResult? Function(bool isMapReady, MapType mapType)? empty,
   }) {
     return single?.call(isMapReady, mapType, markerPosition);
@@ -421,11 +382,8 @@ class _$MapStateSingleImpl extends _MapStateSingle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
-        multiple,
-    TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition)?
-        single,
+    TResult Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)? multiple,
+    TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition)? single,
     TResult Function(bool isMapReady, MapType mapType)? empty,
     required TResult orElse(),
   }) {
@@ -489,8 +447,7 @@ abstract class _MapStateSingle extends MapState {
 }
 
 /// @nodoc
-abstract class _$$MapStateEmptyImplCopyWith<$Res>
-    implements $MapStateCopyWith<$Res> {
+abstract class _$$MapStateEmptyImplCopyWith<$Res> implements $MapStateCopyWith<$Res> {
   factory _$$MapStateEmptyImplCopyWith(
           _$MapStateEmptyImpl value, $Res Function(_$MapStateEmptyImpl) then) =
       __$$MapStateEmptyImplCopyWithImpl<$Res>;
@@ -529,9 +486,7 @@ class __$$MapStateEmptyImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MapStateEmptyImpl extends _MapStateEmpty {
-  const _$MapStateEmptyImpl(
-      {this.isMapReady = false, this.mapType = MapType.hybrid})
-      : super._();
+  const _$MapStateEmptyImpl({this.isMapReady = false, this.mapType = MapType.hybrid}) : super._();
 
   @override
   @JsonKey()
@@ -550,8 +505,7 @@ class _$MapStateEmptyImpl extends _MapStateEmpty {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapStateEmptyImpl &&
-            (identical(other.isMapReady, isMapReady) ||
-                other.isMapReady == isMapReady) &&
+            (identical(other.isMapReady, isMapReady) || other.isMapReady == isMapReady) &&
             (identical(other.mapType, mapType) || other.mapType == mapType));
   }
 
@@ -567,12 +521,9 @@ class _$MapStateEmptyImpl extends _MapStateEmpty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
+    required TResult Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
         multiple,
-    required TResult Function(
-            bool isMapReady, MapType mapType, LatLng? markerPosition)
-        single,
+    required TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition) single,
     required TResult Function(bool isMapReady, MapType mapType) empty,
   }) {
     return empty(isMapReady, mapType);
@@ -581,11 +532,8 @@ class _$MapStateEmptyImpl extends _MapStateEmpty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
-        multiple,
-    TResult? Function(bool isMapReady, MapType mapType, LatLng? markerPosition)?
-        single,
+    TResult? Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)? multiple,
+    TResult? Function(bool isMapReady, MapType mapType, LatLng? markerPosition)? single,
     TResult? Function(bool isMapReady, MapType mapType)? empty,
   }) {
     return empty?.call(isMapReady, mapType);
@@ -594,11 +542,8 @@ class _$MapStateEmptyImpl extends _MapStateEmpty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
-        multiple,
-    TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition)?
-        single,
+    TResult Function(bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)? multiple,
+    TResult Function(bool isMapReady, MapType mapType, LatLng? markerPosition)? single,
     TResult Function(bool isMapReady, MapType mapType)? empty,
     required TResult orElse(),
   }) {
@@ -708,8 +653,7 @@ mixin _$MapStateType {
 
 /// @nodoc
 abstract class $MapStateTypeCopyWith<$Res> {
-  factory $MapStateTypeCopyWith(
-          MapStateType value, $Res Function(MapStateType) then) =
+  factory $MapStateTypeCopyWith(MapStateType value, $Res Function(MapStateType) then) =
       _$MapStateTypeCopyWithImpl<$Res, MapStateType>;
 }
 
@@ -726,8 +670,8 @@ class _$MapStateTypeCopyWithImpl<$Res, $Val extends MapStateType>
 
 /// @nodoc
 abstract class _$$MapStateTypeMultipleImplCopyWith<$Res> {
-  factory _$$MapStateTypeMultipleImplCopyWith(_$MapStateTypeMultipleImpl value,
-          $Res Function(_$MapStateTypeMultipleImpl) then) =
+  factory _$$MapStateTypeMultipleImplCopyWith(
+          _$MapStateTypeMultipleImpl value, $Res Function(_$MapStateTypeMultipleImpl) then) =
       __$$MapStateTypeMultipleImplCopyWithImpl<$Res>;
 }
 
@@ -735,8 +679,8 @@ abstract class _$$MapStateTypeMultipleImplCopyWith<$Res> {
 class __$$MapStateTypeMultipleImplCopyWithImpl<$Res>
     extends _$MapStateTypeCopyWithImpl<$Res, _$MapStateTypeMultipleImpl>
     implements _$$MapStateTypeMultipleImplCopyWith<$Res> {
-  __$$MapStateTypeMultipleImplCopyWithImpl(_$MapStateTypeMultipleImpl _value,
-      $Res Function(_$MapStateTypeMultipleImpl) _then)
+  __$$MapStateTypeMultipleImplCopyWithImpl(
+      _$MapStateTypeMultipleImpl _value, $Res Function(_$MapStateTypeMultipleImpl) _then)
       : super(_value, _then);
 }
 
@@ -753,8 +697,7 @@ class _$MapStateTypeMultipleImpl implements _MapStateTypeMultiple {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MapStateTypeMultipleImpl);
+        (other.runtimeType == runtimeType && other is _$MapStateTypeMultipleImpl);
   }
 
   @override
@@ -835,8 +778,8 @@ abstract class _MapStateTypeMultiple implements MapStateType {
 
 /// @nodoc
 abstract class _$$MapStateTypeSingleImplCopyWith<$Res> {
-  factory _$$MapStateTypeSingleImplCopyWith(_$MapStateTypeSingleImpl value,
-          $Res Function(_$MapStateTypeSingleImpl) then) =
+  factory _$$MapStateTypeSingleImplCopyWith(
+          _$MapStateTypeSingleImpl value, $Res Function(_$MapStateTypeSingleImpl) then) =
       __$$MapStateTypeSingleImplCopyWithImpl<$Res>;
 }
 
@@ -844,8 +787,8 @@ abstract class _$$MapStateTypeSingleImplCopyWith<$Res> {
 class __$$MapStateTypeSingleImplCopyWithImpl<$Res>
     extends _$MapStateTypeCopyWithImpl<$Res, _$MapStateTypeSingleImpl>
     implements _$$MapStateTypeSingleImplCopyWith<$Res> {
-  __$$MapStateTypeSingleImplCopyWithImpl(_$MapStateTypeSingleImpl _value,
-      $Res Function(_$MapStateTypeSingleImpl) _then)
+  __$$MapStateTypeSingleImplCopyWithImpl(
+      _$MapStateTypeSingleImpl _value, $Res Function(_$MapStateTypeSingleImpl) _then)
       : super(_value, _then);
 }
 
@@ -943,8 +886,8 @@ abstract class _MapStateTypeSingle implements MapStateType {
 
 /// @nodoc
 abstract class _$$MapStateTypeEmptyImplCopyWith<$Res> {
-  factory _$$MapStateTypeEmptyImplCopyWith(_$MapStateTypeEmptyImpl value,
-          $Res Function(_$MapStateTypeEmptyImpl) then) =
+  factory _$$MapStateTypeEmptyImplCopyWith(
+          _$MapStateTypeEmptyImpl value, $Res Function(_$MapStateTypeEmptyImpl) then) =
       __$$MapStateTypeEmptyImplCopyWithImpl<$Res>;
 }
 
@@ -952,8 +895,8 @@ abstract class _$$MapStateTypeEmptyImplCopyWith<$Res> {
 class __$$MapStateTypeEmptyImplCopyWithImpl<$Res>
     extends _$MapStateTypeCopyWithImpl<$Res, _$MapStateTypeEmptyImpl>
     implements _$$MapStateTypeEmptyImplCopyWith<$Res> {
-  __$$MapStateTypeEmptyImplCopyWithImpl(_$MapStateTypeEmptyImpl _value,
-      $Res Function(_$MapStateTypeEmptyImpl) _then)
+  __$$MapStateTypeEmptyImplCopyWithImpl(
+      _$MapStateTypeEmptyImpl _value, $Res Function(_$MapStateTypeEmptyImpl) _then)
       : super(_value, _then);
 }
 

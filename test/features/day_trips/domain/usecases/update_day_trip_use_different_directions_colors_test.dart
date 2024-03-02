@@ -69,5 +69,4 @@ void main() {
     ));
     verifyNoMoreInteractions(mockRepository);
   });
-    
 }

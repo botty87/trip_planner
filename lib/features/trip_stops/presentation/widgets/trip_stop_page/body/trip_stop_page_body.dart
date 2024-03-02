@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:responsive_framework/responsive_breakpoints.dart';
-
+import 'package:responsive_framework/responsive_framework.dart';
 import '../../../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../cubit/trip_stop/trip_stop_cubit.dart';
 import '../../new_edit_trip_stop_form/new_edit_trip_stop_form.dart';

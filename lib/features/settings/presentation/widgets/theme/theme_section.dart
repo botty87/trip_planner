@@ -21,7 +21,6 @@ class ThemeSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SettingsSectionHeader(title: LocaleKeys.theme.tr()),
-        
         const _ModeSelector(),
       ],
     );

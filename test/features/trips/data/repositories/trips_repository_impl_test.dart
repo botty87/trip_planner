@@ -173,8 +173,7 @@ void main() {
       expect(result, equals(right(null)));
     });
 
-    test(
-        'should return left(TripsFailure()) when TripsDataSource.createFromExistingTrip throws',
+    test('should return left(TripsFailure()) when TripsDataSource.createFromExistingTrip throws',
         () async {
       when(mockTripsDataSource.createFromExistingTrip(
         existingTrip: tTrip,

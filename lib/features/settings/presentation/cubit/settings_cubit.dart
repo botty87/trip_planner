@@ -19,7 +19,6 @@ part 'settings_state.dart';
 @injectable
 class SettingsCubit extends Cubit<SettingsState> {
   final UpdateSettings _updateSettings;
-  
 
   late final StreamSubscription<Settings?> _settingsSubscription;
 
@@ -90,8 +89,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     _settingsSubscription.cancel();
     return super.close();
   }
-
-  
 }
 
 @module

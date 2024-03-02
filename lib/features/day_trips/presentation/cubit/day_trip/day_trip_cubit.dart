@@ -506,6 +506,4 @@ class DayTripCubit extends Cubit<DayTripState> {
     _dayTripSubscription?.cancel();
     return super.close();
   }
-
-  
 }

@@ -29,7 +29,7 @@ void main() {
   const tSettings = Settings();
   final tTrip =
       Trip(name: 'test', startDate: DateTime.now(), userId: '', createdAt: DateTime.now());
-      const tUserId = '1';
+  const tUserId = '1';
 
   setUp(() {
     mockCreateTrip = MockCreateTrip();

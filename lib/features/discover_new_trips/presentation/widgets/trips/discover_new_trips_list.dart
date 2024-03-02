@@ -14,8 +14,6 @@ class _DiscoverNewTripList extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       child: _buildChild(filteredTrips),
     );
-
-    
   }
 
   Widget _buildChild(List<Trip> filteredTrips) {

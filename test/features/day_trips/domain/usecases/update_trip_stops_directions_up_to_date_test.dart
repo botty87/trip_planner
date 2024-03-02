@@ -6,7 +6,6 @@ import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 
 import '../repositories/mock_day_trips_repository.mocks.dart';
 
-
 void main() {
   late UpdateTripStopsDirectionsUpToDate useCase;
   late MockDayTripsRepository mockRepository;

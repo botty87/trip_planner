@@ -68,7 +68,8 @@ void main() {
     const tDayTripId = 'dayTripId';
 
     test('should return list of trip stops on success', () async {
-      when(mockDataSource.getPublicTripStops(tTripId, tDayTripId)).thenAnswer((_) async => tTripStops);
+      when(mockDataSource.getPublicTripStops(tTripId, tDayTripId))
+          .thenAnswer((_) async => tTripStops);
       final result = await repository.getPublicTripStops(tTripId, tDayTripId);
       expect(result, const Right(tTripStops));
       verify(mockDataSource.getPublicTripStops(tTripId, tDayTripId));
@@ -83,5 +84,4 @@ void main() {
       verifyNoMoreInteractions(mockDataSource);
     });
   });
-  
 }

@@ -20,8 +20,7 @@ void main() {
   });
 
   test('on success should return list of day trips', () async {
-    when(mockRepository.getPublicDayTrips(tTripId))
-        .thenAnswer((_) async => const Right(tDayTrips));
+    when(mockRepository.getPublicDayTrips(tTripId)).thenAnswer((_) async => const Right(tDayTrips));
 
     // act
     final result = await usecase(const GetPublicDayTripsParams(tripId: tTripId));
@@ -44,5 +43,4 @@ void main() {
     verify(mockRepository.getPublicDayTrips(tTripId));
     verifyNoMoreInteractions(mockRepository);
   });
-  
 }

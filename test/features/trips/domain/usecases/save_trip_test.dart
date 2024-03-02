@@ -22,18 +22,16 @@ void main() {
   });
 
   test('should save a trip', () async {
-    
-
-    when(mockTripsRepository.updateTrip(any, any, any, any, any, any)).thenAnswer((_) async => right(null));
+    when(mockTripsRepository.updateTrip(any, any, any, any, any, any))
+        .thenAnswer((_) async => right(null));
     // act
     final result = await useCase(UpdateTripParams(
-      id: tTripId,
-      name: tTripName,
-      description: tTripDescription,
-      startDate: tStartDate,
-      isPublic: tIsPublic,
-      languageCode: 'en'
-    ));
+        id: tTripId,
+        name: tTripName,
+        description: tTripDescription,
+        startDate: tStartDate,
+        isPublic: tIsPublic,
+        languageCode: 'en'));
     // assert
     expect(result, right(null));
     verify(mockTripsRepository.updateTrip(any, any, any, any, any, any));
@@ -45,13 +43,12 @@ void main() {
         .thenAnswer((_) async => left(const TripsFailure()));
     // act
     final result = await useCase(UpdateTripParams(
-      id: tTripId,
-      name: tTripName,
-      description: tTripDescription,
-      isPublic: tIsPublic,
-      startDate: tStartDate,
-      languageCode: 'en'
-    ));
+        id: tTripId,
+        name: tTripName,
+        description: tTripDescription,
+        isPublic: tIsPublic,
+        startDate: tStartDate,
+        languageCode: 'en'));
     // assert
     expect(result, left(const TripsFailure()));
     verify(mockTripsRepository.updateTrip(any, any, any, any, any, any));

@@ -20,8 +20,7 @@ void main() {
   });
 
   test('on success should return list of trips', () async {
-    when(mockRepository.getPublicTrips(tUserId))
-        .thenAnswer((_) async => const Right(tTrips));
+    when(mockRepository.getPublicTrips(tUserId)).thenAnswer((_) async => const Right(tTrips));
 
     // act
     final result = await usecase(const GetPublicTripsParams(tUserId));

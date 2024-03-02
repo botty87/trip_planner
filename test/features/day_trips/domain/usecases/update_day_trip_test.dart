@@ -17,9 +17,7 @@ void main() {
 
   test('should return right(null) when updateDayTrip', () async {
     when(mockDayTripsRepository.updateDayTrip(
-            id: anyNamed('id'),
-            tripId: anyNamed('tripId'),
-            description: anyNamed('description')))
+            id: anyNamed('id'), tripId: anyNamed('tripId'), description: anyNamed('description')))
         .thenAnswer((_) async => right(null));
 
     // act
@@ -34,9 +32,7 @@ void main() {
 
   test('should return left(DayTripsFailure()) when updateDayTrip throws', () async {
     when(mockDayTripsRepository.updateDayTrip(
-            id: anyNamed('id'),
-            tripId: anyNamed('tripId'),
-            description: anyNamed('description')))
+            id: anyNamed('id'), tripId: anyNamed('tripId'), description: anyNamed('description')))
         .thenAnswer((_) async => left(const DayTripsFailure()));
 
     // act

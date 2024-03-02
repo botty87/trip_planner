@@ -7,7 +7,6 @@ import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 
 import '../../../user_account/domain/repositories/mock_user_repository.mocks.dart';
 
-
 void main() {
   late UpdateSettings updateSettings;
   late MockUserRepository mockUserRepository;
@@ -32,7 +31,8 @@ void main() {
 
   test('should return failure when updating settings fails', () async {
     // arrange
-    when(mockUserRepository.saveSettings(tSettings)).thenAnswer((_) async => const Left(UserFailures.unknownError()));
+    when(mockUserRepository.saveSettings(tSettings))
+        .thenAnswer((_) async => const Left(UserFailures.unknownError()));
     // act
     final result = await updateSettings(const UpdateSettingsParams(settings: tSettings));
     // assert

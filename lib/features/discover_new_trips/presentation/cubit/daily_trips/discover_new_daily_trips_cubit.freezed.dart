@@ -64,15 +64,13 @@ mixin _$DiscoverNewDailyTripsState {
 
 /// @nodoc
 abstract class $DiscoverNewDailyTripsStateCopyWith<$Res> {
-  factory $DiscoverNewDailyTripsStateCopyWith(DiscoverNewDailyTripsState value,
-          $Res Function(DiscoverNewDailyTripsState) then) =
-      _$DiscoverNewDailyTripsStateCopyWithImpl<$Res,
-          DiscoverNewDailyTripsState>;
+  factory $DiscoverNewDailyTripsStateCopyWith(
+          DiscoverNewDailyTripsState value, $Res Function(DiscoverNewDailyTripsState) then) =
+      _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, DiscoverNewDailyTripsState>;
 }
 
 /// @nodoc
-class _$DiscoverNewDailyTripsStateCopyWithImpl<$Res,
-        $Val extends DiscoverNewDailyTripsState>
+class _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, $Val extends DiscoverNewDailyTripsState>
     implements $DiscoverNewDailyTripsStateCopyWith<$Res> {
   _$DiscoverNewDailyTripsStateCopyWithImpl(this._value, this._then);
 
@@ -203,8 +201,7 @@ abstract class _$$StateLoadedImplCopyWith<$Res> {
 class __$$StateLoadedImplCopyWithImpl<$Res>
     extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateLoadedImpl>
     implements _$$StateLoadedImplCopyWith<$Res> {
-  __$$StateLoadedImplCopyWithImpl(
-      _$StateLoadedImpl _value, $Res Function(_$StateLoadedImpl) _then)
+  __$$StateLoadedImplCopyWithImpl(_$StateLoadedImpl _value, $Res Function(_$StateLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -229,8 +226,7 @@ class __$$StateLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StateLoadedImpl implements StateLoaded {
-  const _$StateLoadedImpl(
-      {required final List<DayTrip> dayTrips, this.isFabVisible = true})
+  const _$StateLoadedImpl({required final List<DayTrip> dayTrips, this.isFabVisible = true})
       : _dayTrips = dayTrips;
 
   final List<DayTrip> _dayTrips;
@@ -256,13 +252,12 @@ class _$StateLoadedImpl implements StateLoaded {
         (other.runtimeType == runtimeType &&
             other is _$StateLoadedImpl &&
             const DeepCollectionEquality().equals(other._dayTrips, _dayTrips) &&
-            (identical(other.isFabVisible, isFabVisible) ||
-                other.isFabVisible == isFabVisible));
+            (identical(other.isFabVisible, isFabVisible) || other.isFabVisible == isFabVisible));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_dayTrips), isFabVisible);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_dayTrips), isFabVisible);
 
   @JsonKey(ignore: true)
   @override
@@ -340,21 +335,18 @@ class _$StateLoadedImpl implements StateLoaded {
 }
 
 abstract class StateLoaded implements DiscoverNewDailyTripsState {
-  const factory StateLoaded(
-      {required final List<DayTrip> dayTrips,
-      final bool isFabVisible}) = _$StateLoadedImpl;
+  const factory StateLoaded({required final List<DayTrip> dayTrips, final bool isFabVisible}) =
+      _$StateLoadedImpl;
 
   List<DayTrip> get dayTrips;
   bool get isFabVisible;
   @JsonKey(ignore: true)
-  _$$StateLoadedImplCopyWith<_$StateLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StateLoadedImplCopyWith<_$StateLoadedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$StateErrorImplCopyWith<$Res> {
-  factory _$$StateErrorImplCopyWith(
-          _$StateErrorImpl value, $Res Function(_$StateErrorImpl) then) =
+  factory _$$StateErrorImplCopyWith(_$StateErrorImpl value, $Res Function(_$StateErrorImpl) then) =
       __$$StateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
@@ -364,8 +356,7 @@ abstract class _$$StateErrorImplCopyWith<$Res> {
 class __$$StateErrorImplCopyWithImpl<$Res>
     extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateErrorImpl>
     implements _$$StateErrorImplCopyWith<$Res> {
-  __$$StateErrorImplCopyWithImpl(
-      _$StateErrorImpl _value, $Res Function(_$StateErrorImpl) _then)
+  __$$StateErrorImplCopyWithImpl(_$StateErrorImpl _value, $Res Function(_$StateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -486,6 +477,5 @@ abstract class StateError implements DiscoverNewDailyTripsState {
 
   String get message;
   @JsonKey(ignore: true)
-  _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }

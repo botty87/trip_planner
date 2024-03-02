@@ -8,7 +8,6 @@ import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
 
 import '../repositories/mock_trip_stops_repository.mocks.dart';
 
-
 void main() {
   late ListenTripStops useCase;
   late MockTripStopsRepository mockDayTripsRepository;

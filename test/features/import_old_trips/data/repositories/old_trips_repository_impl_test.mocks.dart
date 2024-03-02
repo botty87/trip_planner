@@ -9,8 +9,7 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:quiver/collection.dart' as _i5;
 import 'package:trip_planner/features/import_old_trips/data/datasources/old_trips_data_source.dart'
     as _i2;
-import 'package:trip_planner/features/import_old_trips/domain/entities/old_trip.dart'
-    as _i4;
+import 'package:trip_planner/features/import_old_trips/domain/entities/old_trip.dart' as _i4;
 import 'package:trip_planner/features/import_old_trips/domain/entities/trip_stops_container.dart'
     as _i7;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i6;
@@ -31,19 +30,16 @@ import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i6;
 /// A class which mocks [OldTripsDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockOldTripsDataSource extends _i1.Mock
-    implements _i2.OldTripsDataSource {
+class MockOldTripsDataSource extends _i1.Mock implements _i2.OldTripsDataSource {
   @override
-  _i3.Future<List<_i4.OldTrip>> readOldTrips({required String? userId}) =>
-      (super.noSuchMethod(
+  _i3.Future<List<_i4.OldTrip>> readOldTrips({required String? userId}) => (super.noSuchMethod(
         Invocation.method(
           #readOldTrips,
           [],
           {#userId: userId},
         ),
         returnValue: _i3.Future<List<_i4.OldTrip>>.value(<_i4.OldTrip>[]),
-        returnValueForMissingStub:
-            _i3.Future<List<_i4.OldTrip>>.value(<_i4.OldTrip>[]),
+        returnValueForMissingStub: _i3.Future<List<_i4.OldTrip>>.value(<_i4.OldTrip>[]),
       ) as _i3.Future<List<_i4.OldTrip>>);
 
   @override

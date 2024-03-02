@@ -41,8 +41,8 @@ class TripsRepositoryImpl implements TripsRepository {
   }
 
   @override
-  Future<Either<TripsFailure, void>> updateTrip(
-      String id, String name, String? description, DateTime startDate, bool isPublic, String languageCode) async {
+  Future<Either<TripsFailure, void>> updateTrip(String id, String name, String? description,
+      DateTime startDate, bool isPublic, String languageCode) async {
     try {
       await tripsDataSource.updateTrip(id, name, description, startDate, isPublic, languageCode);
       return right(null);

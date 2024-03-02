@@ -14,13 +14,12 @@ void main() {
   const tUserId = '123';
   final tTrips = [
     Trip(
-      id: '123',
-      name: 'Trip 1',
-      description: 'Trip 1 description',
-      userId: '123',
-      createdAt: DateTime.now(),
-      startDate: DateTime.now()
-    ),
+        id: '123',
+        name: 'Trip 1',
+        description: 'Trip 1 description',
+        userId: '123',
+        createdAt: DateTime.now(),
+        startDate: DateTime.now()),
   ];
 
   setUp(() {
@@ -43,7 +42,8 @@ void main() {
 
   test('should return a failure when there is no trips', () async {
     // arrange
-    when(mockTripsRepository.listenTrips(tUserId)).thenAnswer((_) => Stream.value(const Left(TripsFailure())));
+    when(mockTripsRepository.listenTrips(tUserId))
+        .thenAnswer((_) => Stream.value(const Left(TripsFailure())));
 
     // act
     final result = usecase(const ListenTripsParams(userId: tUserId));

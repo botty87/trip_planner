@@ -112,8 +112,6 @@ void main() {
     },
   );
 
-  
-
   blocTest(
     'on clearTripStopsDirectionsErrors, should emit hasTripStopsDirectionsErrors = false',
     seed: () =>
@@ -177,8 +175,8 @@ void main() {
   blocTest(
     'on showDirectionsChanged, should emit showDirections and call updateDayTripShowDirections',
     build: () => getTripStopsMapCubit(),
-    setUp: () => when(mockUpdateDayTripShowDirections(any))
-        .thenAnswer((_) async => const Right(null)),
+    setUp: () =>
+        when(mockUpdateDayTripShowDirections(any)).thenAnswer((_) async => const Right(null)),
     act: (cubit) => cubit.showDirectionsChanged(true),
     expect: () => [TripStopsMapState.normal(dayTrip: tDayTrip.copyWith(showDirections: true))],
     verify: (_) {
@@ -196,9 +194,11 @@ void main() {
     setUp: () => when(mockUpdateDayTripUseDifferentDirectionsColors(any))
         .thenAnswer((_) async => const Right(null)),
     act: (cubit) => cubit.useDifferentColorsChanged(true),
-    expect: () => [TripStopsMapState.normal(dayTrip: tDayTrip.copyWith(useDifferentDirectionsColors: true))],
+    expect: () =>
+        [TripStopsMapState.normal(dayTrip: tDayTrip.copyWith(useDifferentDirectionsColors: true))],
     verify: (_) {
-      verify(mockUpdateDayTripUseDifferentDirectionsColors(UpdateDayTripUseDifferentDirectionsColorsParams(
+      verify(mockUpdateDayTripUseDifferentDirectionsColors(
+          UpdateDayTripUseDifferentDirectionsColorsParams(
         tripId: tTrip.id,
         dayTripId: tDayTrip.id,
         useDifferentDirectionsColors: true,
@@ -216,8 +216,8 @@ void main() {
       },
       build: () => getTripStopsMapCubit(),
       act: (cubit) => cubit.loadDirections(tTripStops),
-      verify: (_) => verify(
-          mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tTripStops, travelMode: TravelMode.driving))),
+      verify: (_) => verify(mockFetchTripStopsDirections(
+          FetchTripStopsDirectionsParams(tripStops: tTripStops, travelMode: TravelMode.driving))),
       expect: () => [
         const TripStopsMapState.normal(isLoading: true, dayTrip: tDayTrip),
         TripStopsMapState.normal(
@@ -253,7 +253,8 @@ void main() {
         ),
       ],
       verify: (_) {
-        verify(mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(tripStops: tTripStops, travelMode: TravelMode.driving)))
+        verify(mockFetchTripStopsDirections(FetchTripStopsDirectionsParams(
+                tripStops: tTripStops, travelMode: TravelMode.driving)))
             .called(1);
         verifyNever(mockSaveTripStopsDirections(any));
       },
@@ -300,8 +301,8 @@ void main() {
   blocTest(
     'On travelModeChanged, should emit travelMode and call updateTripStopsDirectionsUpToDate',
     build: () => getTripStopsMapCubit(),
-    setUp: () => when(mockUpdateTripStopsDirectionsUpToDate(any))
-        .thenAnswer((_) async => const Right(null)),
+    setUp: () =>
+        when(mockUpdateTripStopsDirectionsUpToDate(any)).thenAnswer((_) async => const Right(null)),
     act: (cubit) => cubit.travelModeChanged(TravelMode.bicycling),
     expect: () =>
         [TripStopsMapState.normal(dayTrip: tDayTrip.copyWith(travelMode: TravelMode.bicycling))],

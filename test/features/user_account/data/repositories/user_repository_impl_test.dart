@@ -308,7 +308,8 @@ void main() {
 
     test('should return a failure when there is an exception on data source', () async {
       // arrange
-      when(mockUserDataSource.saveSettings(tSettings)).thenAnswer((realInvocation) => throw Exception());
+      when(mockUserDataSource.saveSettings(tSettings))
+          .thenAnswer((realInvocation) => throw Exception());
 
       // act
       final result = await userRepositoryImpl.saveSettings(tSettings);
@@ -323,7 +324,8 @@ void main() {
   group('saveTutorialsData', () {
     test('should save tutorials data on data source', () async {
       // arrange
-      when(mockUserDataSource.saveTutorialsData(const TutorialsData())).thenAnswer((_) async => null);
+      when(mockUserDataSource.saveTutorialsData(const TutorialsData()))
+          .thenAnswer((_) async => null);
 
       // act
       final result = await userRepositoryImpl.saveTutorialsData(const TutorialsData());

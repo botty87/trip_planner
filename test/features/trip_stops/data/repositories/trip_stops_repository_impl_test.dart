@@ -204,7 +204,6 @@ void main() {
       );
       // assert
       expect(result, completion(right(null)));
-    
     });
 
     test('should return void left(TripStopsFailure) when updateTravelTime fails', () {
@@ -285,7 +284,6 @@ void main() {
       );
       // assert
       expect(result, completion(right(null)));
-    
     });
 
     test('should return void left(TripStopsFailure) when deleteTripStop fails', () {
@@ -330,7 +328,6 @@ void main() {
       );
       // assert
       expect(result, completion(right(null)));
-    
     });
 
     test('should return void left(TripStopsFailure) when updateTripStop fails', () {

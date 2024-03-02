@@ -21,7 +21,8 @@ void main() {
 
   test('should update day trips indexes', () async {
     // arrange
-    when(mockDayTripsRepository.updateDayTripsIndexes(tripId: anyNamed('tripId'), dayTrips: anyNamed('dayTrips')))
+    when(mockDayTripsRepository.updateDayTripsIndexes(
+            tripId: anyNamed('tripId'), dayTrips: anyNamed('dayTrips')))
         .thenAnswer((_) async => right(null));
     // act
     final result = await useCase(const UpdateDayTripsIndexesParams(
@@ -36,7 +37,8 @@ void main() {
 
   test('should return failure when updating day trips indexes fails', () async {
     // arrange
-    when(mockDayTripsRepository.updateDayTripsIndexes(tripId: anyNamed('tripId'), dayTrips: anyNamed('dayTrips')))
+    when(mockDayTripsRepository.updateDayTripsIndexes(
+            tripId: anyNamed('tripId'), dayTrips: anyNamed('dayTrips')))
         .thenAnswer((_) async => left(const DayTripsFailure()));
     // act
     final result = await useCase(const UpdateDayTripsIndexesParams(

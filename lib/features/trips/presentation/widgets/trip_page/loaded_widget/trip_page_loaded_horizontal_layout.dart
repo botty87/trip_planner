@@ -26,7 +26,7 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
                   Flexible(child: SingleChildScrollView(child: TripHeader())),
                   AddDayTripCard(),
                   SizedBox(height: verticalSpaceXL),
-                  DeleteTripButton(), 
+                  DeleteTripButton(),
                 ],
               ),
             ),

@@ -7,7 +7,6 @@ import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 
 import '../repositories/mock_day_trips_repository.mocks.dart';
 
-
 void main() {
   late ListenDayTrip usecase;
   late MockDayTripsRepository mockRepository;
@@ -33,7 +32,7 @@ void main() {
     expect(result, emits(const Right(dayTrip)));
   });
 
-  test('should return failure when listening to day trip fails' , () async {
+  test('should return failure when listening to day trip fails', () async {
     // Arrange
     when(mockRepository.listenDayTrip(tripId, dayTripId))
         .thenAnswer((_) => Stream.value(const Left(DayTripsFailure())));

@@ -152,7 +152,6 @@ void main() {
     expect: () => [MapState.multiple(markerLatLngBounds: tLatLngBounds)],
     verify: (_) {
       verifyNever(mockGoogleMapController.animateCamera(any));
-
     },
   );
 

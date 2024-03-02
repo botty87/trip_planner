@@ -155,8 +155,7 @@ void main() {
       );
 
       final cardPaddingPredicate = find.byWidgetPredicate((widget) {
-        return widget is Padding &&
-            widget.padding == const EdgeInsets.only(bottom: verticalSpace);
+        return widget is Padding && widget.padding == const EdgeInsets.only(bottom: verticalSpace);
       });
 
       expect(find.byType(DayTripsList), findsOneWidget);
@@ -165,7 +164,6 @@ void main() {
       expect(find.byType(TransparentListDecorator), findsOneWidget);
       expect(find.byType(DayTripCard), findsOneWidget);
       expect(cardPaddingPredicate, findsOneWidget);
-      
     });
   });
 }

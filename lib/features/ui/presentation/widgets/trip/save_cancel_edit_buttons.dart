@@ -122,7 +122,7 @@ class _ErrorMesage extends StatelessWidget {
 class _ErrorMessage extends StatelessWidget {
   final String? errorMessage;
 
-  const _ErrorMessage({required this.errorMessage});  
+  const _ErrorMessage({required this.errorMessage});
 
   @override
   Widget build(BuildContext context) {

@@ -155,7 +155,6 @@ final class UserDataSourceImpl implements UserDataSource {
         .update({'settings': settings.toJson()});
   }
 
-  
   @override
   saveTutorialsData(TutorialsData tutorialsData) async {
     await _usersCollection

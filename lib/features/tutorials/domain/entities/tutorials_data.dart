@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-
 part 'tutorials_data.freezed.dart';
 part 'tutorials_data.g.dart';
 
@@ -14,5 +13,4 @@ sealed class TutorialsData with _$TutorialsData {
   }) = _TutorialsData;
 
   factory TutorialsData.fromJson(Map<String, dynamic> json) => _$TutorialsDataFromJson(json);
-
 }

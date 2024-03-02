@@ -66,8 +66,7 @@ void main() {
   blocTest<TripsCubit, TripsState>(
     'On startListenTrip emits [TripsState.error(message: message)] when ListenTrips returns Left(failure)',
     setUp: () {
-      when(mockListenTrips(any))
-          .thenAnswer((_) => Stream.value(left(const TripsFailure())));
+      when(mockListenTrips(any)).thenAnswer((_) => Stream.value(left(const TripsFailure())));
     },
     build: () => getTestCubit(),
     act: (cubit) => cubit.startListenTrip(),

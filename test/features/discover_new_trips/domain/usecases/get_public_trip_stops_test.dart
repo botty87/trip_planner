@@ -25,7 +25,8 @@ void main() {
         .thenAnswer((_) async => const Right(tTripStops));
 
     // act
-    final result = await usecase(const GetPubliTripStopsParams(tripId: tTripId, dayTripId: tDayTripId));
+    final result =
+        await usecase(const GetPubliTripStopsParams(tripId: tTripId, dayTripId: tDayTripId));
 
     // assert
     expect(result, const Right(tTripStops));
@@ -38,7 +39,8 @@ void main() {
         .thenAnswer((_) async => const Left(DiscoverTripsFailure()));
 
     // act
-    final result = await usecase(const GetPubliTripStopsParams(tripId: tTripId, dayTripId: tDayTripId));
+    final result =
+        await usecase(const GetPubliTripStopsParams(tripId: tTripId, dayTripId: tDayTripId));
 
     // assert
     expect(result, const Left(DiscoverTripsFailure()));

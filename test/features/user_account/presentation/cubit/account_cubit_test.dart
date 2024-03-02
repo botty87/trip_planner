@@ -82,7 +82,8 @@ void main() {
       act: (cubit) => cubit.logOut(),
       expect: () => [
         AccountState.normal(
-            user: tUser, errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
+            user: tUser,
+            errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {
@@ -305,7 +306,8 @@ void main() {
       password: 'password',
     ),
     setUp: () {
-      when(mockReauthenticateUser(any)).thenAnswer((_) async => const Left(UserFailures.unknownError()));
+      when(mockReauthenticateUser(any))
+          .thenAnswer((_) async => const Left(UserFailures.unknownError()));
     },
     build: () => cubit(),
     act: (cubit) => cubit.reauthenticate(),
@@ -335,7 +337,8 @@ void main() {
     ),
     setUp: () {
       when(mockReauthenticateUser(any)).thenAnswer((_) async => const Right(null));
-      when(mockUpdateUserDetails(any)).thenAnswer((_) async => const Left(UserFailures.unknownError()));
+      when(mockUpdateUserDetails(any))
+          .thenAnswer((_) async => const Left(UserFailures.unknownError()));
     },
     build: () => cubit(),
     act: (cubit) => cubit.reauthenticate(),
@@ -361,14 +364,16 @@ void main() {
       'On fail on reauthentication emit deleting state and then normal state with error message',
       seed: () => const AccountState.normal(user: tUser),
       setUp: () {
-        when(mockReauthenticateUser(any)).thenAnswer((_) async => const Left(UserFailures.unknownError()));
+        when(mockReauthenticateUser(any))
+            .thenAnswer((_) async => const Left(UserFailures.unknownError()));
       },
       build: () => cubit(),
       act: (cubit) => cubit.deleteAccount(password: 'password'),
       expect: () => [
         const AccountState.deleting(user: tUser),
         AccountState.normal(
-            user: tUser, errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
+            user: tUser,
+            errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {
@@ -389,7 +394,8 @@ void main() {
       expect: () => [
         const AccountState.deleting(user: tUser),
         AccountState.normal(
-            user: tUser, errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
+            user: tUser,
+            errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {
@@ -419,6 +425,5 @@ void main() {
         verifyNoMoreInteractions(mockDeleteUser);
       },
     );
-
   });
 }

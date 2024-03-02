@@ -13,18 +13,16 @@ import 'package:trip_planner/features/user_account/presentation/cubit/login_sign
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart';
 import 'package:easy_logger/easy_logger.dart';
 
-
 import 'login_signup_page_test.mocks.dart';
 
 class MockLoginSignupCubit extends MockCubit<LoginSignupState> implements LoginSignupCubit {}
 
 @GenerateNiceMocks([MockSpec<RegisterUser>(), MockSpec<LoginUser>(), MockSpec<RecoverPassword>()])
 void main() {
-  
   setUpAll(() {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
-  
+
   group('LoginSignupPage', () {
     group('Test initial page state', () {
       setUp(() async {
@@ -43,8 +41,7 @@ void main() {
         await tester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: LoginSignupPage(
-              ),
+              body: LoginSignupPage(),
             ),
           ),
         );
@@ -74,8 +71,7 @@ void main() {
         await widgetTester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: LoginSignupPage(
-              ),
+              body: LoginSignupPage(),
             ),
           ),
         );
@@ -98,7 +94,6 @@ void main() {
     });
 
     group('test text events', () {
-
       setUp(() async {
         await GetIt.I.reset();
         GetIt.I.registerSingleton<LoginSignupCubit>(LoginSignupCubit(
@@ -113,8 +108,7 @@ void main() {
         await widgetTester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: LoginSignupPage(
-              ),
+              body: LoginSignupPage(),
             ),
           ),
         );
@@ -134,8 +128,7 @@ void main() {
         await widgetTester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: LoginSignupPage(
-              ),
+              body: LoginSignupPage(),
             ),
           ),
         );
@@ -155,8 +148,7 @@ void main() {
         await widgetTester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: LoginSignupPage(
-              ),
+              body: LoginSignupPage(),
             ),
           ),
         );
@@ -178,8 +170,7 @@ void main() {
         await widgetTester.pumpWidget(
           const MaterialApp(
             home: Scaffold(
-              body: LoginSignupPage(
-              ),
+              body: LoginSignupPage(),
             ),
           ),
         );

@@ -12,13 +12,12 @@ void main() {
   late MockTripsRepository mockTripsRepository;
 
   final tTrip = Trip(
-    id: 'id',
-    name: 'name',
-    description: 'description',
-    userId: 'userId',
-    createdAt: DateTime.now(),
-    startDate: DateTime.now()
-  );
+      id: 'id',
+      name: 'name',
+      description: 'description',
+      userId: 'userId',
+      createdAt: DateTime.now(),
+      startDate: DateTime.now());
 
   setUp(() {
     mockTripsRepository = MockTripsRepository();
