@@ -30,6 +30,8 @@ import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
     as _i12;
 import 'package:trip_planner/features/trip_stops/domain/repositories/trip_stops_repository.dart'
     as _i4;
+import 'package:trip_planner/features/trip_stops/domain/usecases/delete_trip_stop.dart'
+    as _i22;
 import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart'
     as _i10;
 import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart'
@@ -630,4 +632,49 @@ class MockUpdateTripStopsDirectionsUpToDate extends _i1.Mock
           ),
         )),
       ) as _i7.Future<_i3.Either<_i8.DayTripsFailure, void>>);
+}
+
+/// A class which mocks [DeleteTripStop].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDeleteTripStop extends _i1.Mock implements _i22.DeleteTripStop {
+  @override
+  _i4.TripStopsRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTripStopsRepository_2(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeTripStopsRepository_2(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i4.TripStopsRepository);
+
+  @override
+  _i7.Future<_i3.Either<_i11.TripStopsFailure, void>> call(
+          _i22.DeleteTripStopParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>.value(
+            _FakeEither_1<_i11.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>.value(
+                _FakeEither_1<_i11.TripStopsFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i7.Future<_i3.Either<_i11.TripStopsFailure, void>>);
 }

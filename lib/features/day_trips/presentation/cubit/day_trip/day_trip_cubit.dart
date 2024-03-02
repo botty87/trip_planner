@@ -410,7 +410,6 @@ class DayTripCubit extends Cubit<DayTripState> {
     );
   }
 
-  //TODO: Implement test
   void toggleTripStopDelete(int index) {
     state.mapOrNull(
       loaded: (state) async {

@@ -14,6 +14,7 @@ import 'package:trip_planner/features/day_trips/domain/usecases/update_trip_stop
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
+import 'package:trip_planner/features/trip_stops/domain/usecases/delete_trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_travel_time.dart';
@@ -34,6 +35,7 @@ import 'day_trip_cubit_test.mocks.dart';
   MockSpec<ListenDayTrip>(),
   MockSpec<FirebaseCrashlytics>(),
   MockSpec<UpdateTripStopsDirectionsUpToDate>(),
+  MockSpec<DeleteTripStop>(),
 ])
 void main() {
   late MockUpdateDayTrip mockUpdateDayTrip;
@@ -46,6 +48,7 @@ void main() {
   late MockListenDayTrip mockListenDayTrip;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
   late MockUpdateTripStopsDirectionsUpToDate mockUpdateTripStopsDirectionsUpToDate;
+  late MockDeleteTripStop mockDeleteTripStop;
 
   final tTrip = Trip(
     id: '1',
@@ -92,6 +95,7 @@ void main() {
     mockListenDayTrip = MockListenDayTrip();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
     mockUpdateTripStopsDirectionsUpToDate = MockUpdateTripStopsDirectionsUpToDate();
+    mockDeleteTripStop = MockDeleteTripStop();
   });
 
   DayTripCubit getStandardDayTripCubit() {
@@ -108,6 +112,7 @@ void main() {
       listenDayTrip: mockListenDayTrip,
       crashlytics: mockFirebaseCrashlytics,
       updateTripStopsDirectionsUpToDate: mockUpdateTripStopsDirectionsUpToDate,
+      deleteTripStop: mockDeleteTripStop,
     );
   }
 
@@ -490,4 +495,43 @@ void main() {
       verify: (_) => verify(mockTripStopDone.call(any)).called(1),
     );
   });
+
+  blocTest<DayTripCubit, DayTripState>(
+    'On toggleTripStopDelete emit DayTripState with updated tripStops',
+    seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+    setUp: () => when(mockDeleteTripStop.call(any)).thenAnswer((_) async => const Right(null)),
+    act: (cubit) => cubit.toggleTripStopDelete(0),
+    expect: () {
+      final updatedTripStops = [tTripStops[1]];
+      return [
+        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: updatedTripStops),
+      ];
+    },
+    build: () => getStandardDayTripCubit(),
+    verify: (_) => verify(mockDeleteTripStop.call(any)).called(1),
+  );
+
+  blocTest<DayTripCubit, DayTripState>(
+    'On toggleTripStopDelete emit DayTripStateError and then DayTripStateNormal if deleteTripStop fails',
+    seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+    setUp: () => when(mockDeleteTripStop.call(any))
+        .thenAnswer((_) async => const Left(TripStopsFailure(message: 'error'))),
+    act: (cubit) => cubit.toggleTripStopDelete(0),
+    expect: () {
+      final updatedTripStops = [tTripStops[1]];
+      return [
+        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: updatedTripStops),
+        DayTripState.error(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          errorMessage: 'error',
+          fatal: false,
+          hasStartTimeToSave: false,
+        ),
+        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      ];
+    },
+    build: () => getStandardDayTripCubit(),
+    verify: (_) => verify(mockDeleteTripStop.call(any)).called(1),
+  );
 }
