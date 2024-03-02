@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -12,6 +14,7 @@ import 'package:trip_planner/features/trips/domain/usecases/create_from_existing
 import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/new_trip/new_trip_cubit.dart';
+import 'package:trip_planner/features/tutorial/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
 
@@ -45,18 +48,19 @@ void main() {
         createFromExistingTrip: mockCreateFromExistingTrip,
         settings: tSettings,
         existingTrip: existingTrip,
+        deviceLocale: const Locale('en'),
       );
 
   blocTest<NewTripCubit, NewTripState>('When name change emit state with name changed',
       build: () => getNewTripCubit(),
       act: (cubit) => cubit.nameChanged('test'),
-      expect: () => [const NewTripState.normal(tripName: 'test')]);
+      expect: () => [const NewTripState.normal(tripName: 'test', languageCode: 'en')]);
 
   blocTest<NewTripCubit, NewTripState>(
       'When description change emit state with description changed',
       build: () => getNewTripCubit(),
       act: (cubit) => cubit.descriptionChanged('test'),
-      expect: () => [const NewTripState.normal(tripDescription: 'test')]);
+      expect: () => [const NewTripState.normal(tripDescription: 'test', languageCode: 'en')]);
 
   blocTest<NewTripCubit, NewTripState>(
     'When languageCode change emit state with languageCode changed',
@@ -66,7 +70,7 @@ void main() {
   );
 
   group('Create trip tests', () {
-    const tUser = User(id: '1', email: '', name: '');
+    const tUser = User(id: '1', email: '', name: '', tutorialsData: TutorialsData());
     final tStartDate = DateTime.now();
     const tLanguageCode = 'en';
 
@@ -84,18 +88,18 @@ void main() {
       act: (cubit) => cubit.createTrip(),
       expect: () => [
         const NewTripState.error(errorMessage: LocaleKeys.tripNameEmpty),
-        const NewTripState.normal(),
+        const NewTripState.normal(languageCode: 'en'),
       ],
     );
 
     blocTest<NewTripCubit, NewTripState>(
       'When create trip with empty startDate emit state with error message',
       build: () => getNewTripCubit(),
-      seed: () => const NewTripState.normal(tripName: 'test'),
+      seed: () => const NewTripState.normal(tripName: 'test', languageCode: 'en'),
       act: (cubit) => cubit.createTrip(),
       expect: () => [
         const NewTripState.error(errorMessage: LocaleKeys.tripStartDateEmpty),
-        const NewTripState.normal(tripName: 'test'),
+        const NewTripState.normal(tripName: 'test', languageCode: 'en'),
       ],
     );
 
@@ -154,7 +158,7 @@ void main() {
     build: () => getNewTripCubit(),
     act: (cubit) => cubit.isPublicChanged(true),
     expect: () => [
-      const NewTripState.normal(isPublic: true),
+      const NewTripState.normal(isPublic: true, languageCode: 'en'),
     ],
   );
 }
