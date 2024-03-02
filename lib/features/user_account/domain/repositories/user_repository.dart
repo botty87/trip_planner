@@ -27,6 +27,5 @@ abstract interface class UserRepository {
 
   Future<Either<UserFailures, void>> saveSettings(Settings settings);
 
-  //TODO implement test
   Future<Either<UserFailures, void>> saveTutorialsData(TutorialsData tutorialsData);
 }

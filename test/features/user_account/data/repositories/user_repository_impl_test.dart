@@ -319,4 +319,33 @@ void main() {
       verifyNoMoreInteractions(mockUserDataSource);
     });
   });
+
+  group('saveTutorialsData', () {
+    test('should save tutorials data on data source', () async {
+      // arrange
+      when(mockUserDataSource.saveTutorialsData(const TutorialsData())).thenAnswer((_) async => null);
+
+      // act
+      final result = await userRepositoryImpl.saveTutorialsData(const TutorialsData());
+
+      // assert
+      expect(result, right(null));
+      verify(mockUserDataSource.saveTutorialsData(const TutorialsData())).called(1);
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+
+    test('should return a failure when there is an exception on data source', () async {
+      // arrange
+      when(mockUserDataSource.saveTutorialsData(const TutorialsData()))
+          .thenAnswer((realInvocation) => throw Exception());
+
+      // act
+      final result = await userRepositoryImpl.saveTutorialsData(const TutorialsData());
+
+      // assert
+      expect(result, left(const UserFailures.unknownError()));
+      verify(mockUserDataSource.saveTutorialsData(const TutorialsData())).called(1);
+      verifyNoMoreInteractions(mockUserDataSource);
+    });
+  });
 }
