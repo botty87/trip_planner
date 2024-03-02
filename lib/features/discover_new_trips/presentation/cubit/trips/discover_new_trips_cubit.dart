@@ -131,7 +131,6 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
     });
   }
 
-  //TODO test this method
   void showOnlySelectedLanguages(bool value) {
     state.mapOrNull(normal: (state) => emit(state.copyWith(showOnlySelectedLanguages: value)));
     _updateAvailableLanguages();

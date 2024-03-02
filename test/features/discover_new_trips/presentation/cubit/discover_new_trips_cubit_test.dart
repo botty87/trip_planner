@@ -27,6 +27,7 @@ void main() {
       name: 'name 1',
       description: 'description 1',
       isPublic: true,
+      languageCode: 'en',
     ),
     Trip(
       id: 'id',
@@ -36,6 +37,7 @@ void main() {
       name: 'name 2',
       description: 'description 2',
       isPublic: true,
+      languageCode: 'it',
     ),
   ];
 
@@ -201,6 +203,38 @@ void main() {
                 .firstWhere((language) => language.name.toLowerCase().contains('english'))
           },
         ),
+      ),
+    ],
+  );
+
+  blocTest<DiscoverNewTripsCubit, DiscoverNewTripsState>(
+    'Calling showOnlySelectedLanguages should emit DiscoverNewTripsState.normal() with only selected languages in availableLanguages',
+    seed: () => tNormalState,
+    build: () => cubit(),
+    act: (cubit) => cubit.showOnlySelectedLanguages(true),
+    expect: () => [
+      tNormalState.mapOrNull(
+        normal: (state) => state.copyWith(showOnlySelectedLanguages: true),
+      ),
+      tNormalState.mapOrNull(
+        normal: (state) => state.copyWith(
+          showOnlySelectedLanguages: true,
+          availableLanguages: state.availableLanguages
+              .where((language) => state.selectedLanguages.contains(language))
+              .toSet(),
+        ),
+      ),
+    ],
+  );
+
+  blocTest<DiscoverNewTripsCubit, DiscoverNewTripsState>(
+    'Calling filterByLanguage should emit DiscoverNewTripsState.normal() with the new language in selectedLanguages if not present and call _filterTrips',
+    seed: () => tNormalState,
+    build: () => cubit(),
+    act: (cubit) => cubit.filterByLanguage(Languages.english),
+    expect: () => [
+      tNormalState.mapOrNull(
+        normal: (state) => state.copyWith(selectedLanguages: {Languages.english}),
       ),
     ],
   );
