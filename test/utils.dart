@@ -25,6 +25,21 @@ class TestUtils {
     SettingsCubit? settingsCubit,
     BackgroundsCubit? backgroundsCubit,
   }) =>
+      defaultWidgetNoScaffold(
+        child: Scaffold(body: child),
+        userCubit: userCubit,
+        tutorialCubit: tutorialCubit,
+        settingsCubit: settingsCubit,
+        backgroundsCubit: backgroundsCubit,
+      );
+
+  static Widget defaultWidgetNoScaffold({
+    required Widget child,
+    UserCubit? userCubit,
+    TutorialCubit? tutorialCubit,
+    SettingsCubit? settingsCubit,
+    BackgroundsCubit? backgroundsCubit,
+  }) =>
       MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => userCubit ?? MockUserCubit()),
@@ -40,9 +55,7 @@ class TestUtils {
               Breakpoint(start: 1001, end: 1920, name: DESKTOP),
               Breakpoint(start: 1921, end: double.infinity, name: '4K'),
             ],
-            child: Scaffold(
-              body: child,
-            ),
+            child: child,
           ),
         ),
       );
