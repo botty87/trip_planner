@@ -17,7 +17,7 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../ui/presentation/widgets/background/background_widget_container.dart';
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../ui/presentation/widgets/trip/generic_trip_card.dart';
-import '../../../ui/presentation/widgets/trip/generic_trip_header.dart';
+import '../../../ui/presentation/widgets/trip/generic_trip_description.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';

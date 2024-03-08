@@ -14,7 +14,7 @@ import '../../../ui/presentation/widgets/day_trip/generic_travel_card.dart';
 import '../../../ui/presentation/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../ui/presentation/widgets/trip/generic_trip_card.dart';
-import '../../../ui/presentation/widgets/trip/generic_trip_header.dart';
+import '../../../ui/presentation/widgets/trip/generic_trip_description.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../map/domain/entities/map_place.dart';

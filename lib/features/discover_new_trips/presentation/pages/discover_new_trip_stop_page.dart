@@ -9,7 +9,7 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../ui/presentation/widgets/background/background_widget_container.dart';
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../ui/presentation/widgets/trip/generic_duration_widget.dart';
-import '../../../ui/presentation/widgets/trip/generic_trip_header.dart';
+import '../../../ui/presentation/widgets/trip/generic_trip_description.dart';
 import '../../../map/domain/entities/map_place.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
