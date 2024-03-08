@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:trip_planner/features/ui/presentation/widgets/trip/generic_delete_trip_button.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
@@ -39,12 +40,41 @@ void main() {
     );
 
     await tester.pumpWidget(TestUtils.defaultWidget(
-      BlocProvider(
+      child: BlocProvider(
         create: (context) => mockTripCubit,
         child: const DeleteTripButton(),
       ),
     ));
 
     expect(find.byType(GenericDeleteTripButton), findsOneWidget);
+  });
+
+  testGoldens('renders DeleteTripButton that contains GenericDeleteTripButton', (tester) async {
+    whenListen(
+      mockTripCubit,
+      Stream.value(TripState.loaded(trip: tTrip, dayTrips: [])),
+      initialState: TripState.loaded(trip: tTrip, dayTrips: []),
+    );
+
+    final builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: [
+        Device.phone,
+        Device.iphone11,
+        Device.tabletLandscape,
+        Device.tabletPortrait,
+      ])
+      ..addScenario(
+        name: 'delete_trip_button',
+        widget: (TestUtils.defaultWidget(
+          child: BlocProvider(
+            create: (context) => mockTripCubit,
+            child: const DeleteTripButton(),
+          ),
+        )),
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+
+    await screenMatchesGolden(tester, 'delete_trip_button');
   });
 }
