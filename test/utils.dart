@@ -1,10 +1,12 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/tutorials/presentation/cubit/tutorial_cubit.dart';
 import 'package:trip_planner/features/ui/presentation/cubit/backgrounds_cubit.dart';
@@ -36,6 +38,16 @@ final tTrip = Trip(
   userId: 'userId',
   createdAt: DateTime.now(),
   startDate: DateTime.now(),
+);
+
+const tTripStop = TripStop(
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  travelTimeToNextStop: 10,
+  index: 0,
+  duration: 10,
+  location: LatLng(0, 0),
 );
 
 final tDayTripStateLoaded = DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: []);
