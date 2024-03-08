@@ -4,28 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../../../../../time_picker/widgets/timepicker.dart';
+import '../../../../../ui/presentation/widgets/background/background_widget_container.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 
-class StartTimeWidget extends StatelessWidget with BackgroundImageMixin {
+class StartTimeWidget extends StatelessWidget {
   const StartTimeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final startTime = context.read<DayTripCubit>().state.dayTrip.startTime;
 
-    final hasBackgroundImage = this.hasBackgroundImage(context);
-
-    return Container(
-      padding:
-          hasBackgroundImage ? const EdgeInsets.only(top: verticalSpace) : const EdgeInsets.all(0),
-      decoration: hasBackgroundImage
-          ? BoxDecoration(
-              color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
-              borderRadius: BorderRadius.circular(8),
-            )
-          : null,
+    return BackgroundWidgetContainer(
+      padding: const EdgeInsets.only(top: verticalSpace),
       child: Column(
         children: [
           Text(LocaleKeys.startTime.tr(), style: Theme.of(context).textTheme.titleLarge),

@@ -5,7 +5,15 @@ import 'background_image_wrapper.dart';
 
 class BackgroundWidgetContainer extends StatelessWidget with BackgroundImageMixin {
   final Widget child;
-  const BackgroundWidgetContainer({super.key, required this.child});
+  final EdgeInsets padding;
+
+  const BackgroundWidgetContainer(
+      {super.key,
+      required this.child,
+      this.padding = const EdgeInsets.symmetric(
+        horizontal: horizontalSpaceL,
+        vertical: verticalSpaceL,
+      )});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +27,7 @@ class BackgroundWidgetContainer extends StatelessWidget with BackgroundImageMixi
             )
           : null,
       padding: hasBackgroundImage
-          ? const EdgeInsets.symmetric(
-              horizontal: horizontalSpaceL,
-              vertical: verticalSpaceL,
-            )
+          ? padding
           : const EdgeInsets.all(0),
       child: child,
     );
