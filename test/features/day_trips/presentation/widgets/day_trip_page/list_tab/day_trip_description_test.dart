@@ -8,10 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:patrol/patrol.dart';
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/day_trips/presentation/widgets/day_trip_page/list_tab/day_trip_description.dart';
-import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/ui/presentation/widgets/trip/generic_trip_description.dart';
 
 import '../../../../../../utils.dart';
@@ -19,24 +17,6 @@ import '../../../../../../utils.dart';
 void main() {
   late MockDayTripCubit mockDayTripCubit;
   late MockBackgroundsCubit backgroundsCubit;
-
-  const tDayTrip = DayTrip(
-    id: 'id',
-    index: 0,
-    description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis, justo in aliquet.',
-  );
-
-  final tTrip = Trip(
-    id: 'id',
-    name: 'name',
-    description: 'description',
-    userId: 'userId',
-    createdAt: DateTime.now(),
-    startDate: DateTime.now(),
-  );
-
-  final tState = DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: []);
 
   setUp(() {
     mockDayTripCubit = MockDayTripCubit();
@@ -50,8 +30,8 @@ void main() {
   patrolWidgetTest('Should show DayTripDescription', ($) async {
     whenListen(
       mockDayTripCubit,
-      Stream.fromIterable([tState]),
-      initialState: tState,
+      Stream.fromIterable([tDayTripStateLoaded]),
+      initialState: tDayTripStateLoaded,
     );
 
     whenListen(
@@ -76,8 +56,8 @@ void main() {
   testGoldens('DayTripDescription with no background', (tester) async {
     whenListen(
       mockDayTripCubit,
-      Stream.fromIterable([tState]),
-      initialState: tState,
+      Stream.fromIterable([tDayTripStateLoaded]),
+      initialState: tDayTripStateLoaded,
     );
 
     whenListen(
@@ -112,8 +92,8 @@ void main() {
   testGoldens('DayTripDescription with background', (tester) async {
     whenListen(
       mockDayTripCubit,
-      Stream.fromIterable([tState]),
-      initialState: tState,
+      Stream.fromIterable([tDayTripStateLoaded]),
+      initialState: tDayTripStateLoaded,
     );
 
     whenListen(
