@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/ui/presentation/widgets/generics/transparent_list_decorator.dart';
@@ -52,7 +53,7 @@ void main() {
 
       await tester.pumpWidget(
         TestUtils.defaultWidget(
-          BlocProvider(
+          child: BlocProvider(
             create: (context) => mockTripCubit,
             child: const DayTripsListWidget(
               orientation: Orientation.landscape,
@@ -62,6 +63,39 @@ void main() {
       );
 
       expect(find.byType(NoDayTrips), findsOneWidget);
+    });
+
+    testGoldens(
+        'renders DayTripsListWidget that contains NoDayTrips on empty DayTrips and portrait orientation',
+        (tester) async {
+      whenListen(
+        mockTripCubit,
+        Stream.value(TripState.loaded(trip: tTrip, dayTrips: tDayTrips)),
+        initialState: TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      );
+      
+      final builder = DeviceBuilder()
+        ..overrideDevicesForAllScenarios(devices: [
+          Device.phone,
+          Device.iphone11,
+          Device.tabletLandscape,
+          Device.tabletPortrait,
+        ])
+        ..addScenario(
+          widget: TestUtils.defaultWidget(
+            child: BlocProvider(
+              create: (context) => mockTripCubit,
+              child: const DayTripsListWidget(
+                orientation: Orientation.portrait,
+              ),
+            ),
+          ),
+        );
+
+      await tester.pumpDeviceBuilder(builder);
+
+      await screenMatchesGolden(
+          tester, 'day_trips_list_widget_empty_day_trips_portrait_orientation');
     });
 
     testWidgets(
@@ -75,7 +109,7 @@ void main() {
 
       await tester.pumpWidget(
         TestUtils.defaultWidget(
-          BlocProvider(
+          child: BlocProvider(
             create: (context) => mockTripCubit,
             child: const DayTripsListWidget(
               orientation: Orientation.portrait,
@@ -97,7 +131,7 @@ void main() {
 
       await tester.pumpWidget(
         TestUtils.defaultWidget(
-          BlocProvider(
+          child: BlocProvider(
             create: (context) => mockTripCubit,
             child: const DayTripsListWidget(
               orientation: Orientation.portrait,
@@ -114,7 +148,7 @@ void main() {
     testWidgets('renders NoDayTrips with correct text and image', (tester) async {
       await tester.pumpWidget(
         TestUtils.defaultWidget(
-          const NoDayTrips(),
+          child: const NoDayTrips(),
         ),
       );
 
@@ -147,7 +181,7 @@ void main() {
 
       await tester.pumpWidget(
         TestUtils.defaultWidget(
-          BlocProvider(
+          child: BlocProvider(
             create: (context) => mockTripCubit,
             child: const DayTripsList(),
           ),
