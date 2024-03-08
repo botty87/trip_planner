@@ -2,6 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:trip_planner/features/tutorials/presentation/cubit/tutorial_cubit.dart';
 import 'package:trip_planner/features/ui/presentation/cubit/backgrounds_cubit.dart';
@@ -14,6 +15,8 @@ class MockTutorialCubit extends MockCubit<TutorialState> implements TutorialCubi
 class MockSettingsCubit extends MockCubit<SettingsState> implements SettingsCubit {}
 
 class MockBackgroundsCubit extends MockCubit<BackgroundsState> implements BackgroundsCubit {}
+
+class MockDayTripCubit extends MockCubit<DayTripState> implements DayTripCubit {}
 
 const tBackgroundsState = BackgroundsState();
 
