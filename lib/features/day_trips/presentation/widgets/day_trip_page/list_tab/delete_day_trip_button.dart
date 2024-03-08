@@ -22,9 +22,7 @@ class DeleteDayTripButton extends StatelessWidget {
       alertDialogTitle: LocaleKeys.deleteDayTrip.tr(),
       alertDialogMessage: LocaleKeys.deleteDayTripQuestion.tr(),
       deleteButtonLabel: LocaleKeys.deleteDayTrip.tr(),
-      deleteAction: () {
-        context.read<DayTripCubit>().deleteDayTrip();
-      },
+      deleteAction: () => context.read<DayTripCubit>().deleteDayTrip(),
     );
   }
 }

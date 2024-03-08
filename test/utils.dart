@@ -2,8 +2,10 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/tutorials/presentation/cubit/tutorial_cubit.dart';
 import 'package:trip_planner/features/ui/presentation/cubit/backgrounds_cubit.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
@@ -19,6 +21,24 @@ class MockBackgroundsCubit extends MockCubit<BackgroundsState> implements Backgr
 class MockDayTripCubit extends MockCubit<DayTripState> implements DayTripCubit {}
 
 const tBackgroundsState = BackgroundsState();
+
+const tDayTrip = DayTrip(
+  id: 'id',
+  index: 0,
+  description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis, justo in aliquet.',
+);
+
+final tTrip = Trip(
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  userId: 'userId',
+  createdAt: DateTime.now(),
+  startDate: DateTime.now(),
+);
+
+final tDayTripStateLoaded = DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: []);
 
 class TestUtils {
   static Widget defaultWidget({
