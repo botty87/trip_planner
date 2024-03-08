@@ -18,6 +18,7 @@ class StartTimeWidget extends StatelessWidget {
     return BackgroundWidgetContainer(
       padding: const EdgeInsets.only(top: verticalSpace),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(LocaleKeys.startTime.tr(), style: Theme.of(context).textTheme.titleLarge),
           TimePicker(
