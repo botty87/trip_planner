@@ -7,7 +7,7 @@ import '../../../../../utils.dart';
 void main() {
   testWidgets('TripPageInitialWidget has a GenericInitialWidget', (WidgetTester tester) async {
     await tester.runAsync(() {
-      return tester.pumpWidget(TestUtils.defaultWidget(const TripPageInitialWidget()));
+      return tester.pumpWidget(TestUtils.defaultWidget(child: const TripPageInitialWidget()));
     });
 
     expect(find.byType(GenericInitialWidget), findsOneWidget);
