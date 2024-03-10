@@ -21,6 +21,7 @@ class DurationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           LocaleKeys.tripStopEstimatedDuration.tr(),
