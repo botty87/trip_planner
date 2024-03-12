@@ -17,11 +17,12 @@ final class DeleteTripStopButton extends StatelessWidget {
         ));
 
     return GenericDeleteTripButton(
+      key: const Key('deleteTripStopButton'),
       isDeleting: isDeleting,
       deleteAction: () => context.read<TripStopCubit>().deleteTripStop(),
       alertDialogTitle: LocaleKeys.deleteTripStop.tr(),
       alertDialogMessage: LocaleKeys.deleteTripStopQuestion.tr(),
-      deleteButtonLabel: LocaleKeys.deleteDayTrip.tr(),
+      deleteButtonLabel: LocaleKeys.deleteTripStop.tr(),
     );
   }
 }

@@ -8,6 +8,7 @@ import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_
 import 'package:trip_planner/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart';
 import 'package:trip_planner/features/trip_stops/presentation/cubit/new_trip_stop/new_trip_stop_cubit.dart';
+import 'package:trip_planner/features/trip_stops/presentation/cubit/trip_stop/trip_stop_cubit.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/tutorials/presentation/cubit/tutorial_cubit.dart';
 import 'package:trip_planner/features/ui/presentation/cubit/backgrounds_cubit.dart';
@@ -24,6 +25,8 @@ class MockBackgroundsCubit extends MockCubit<BackgroundsState> implements Backgr
 class MockDayTripCubit extends MockCubit<DayTripState> implements DayTripCubit {}
 
 class MockNewTripStopCubit extends MockCubit<NewTripStopState> implements NewTripStopCubit {}
+
+class MockTripStopCubit extends MockCubit<TripStopState> implements TripStopCubit {}
 
 const tBackgroundsState = BackgroundsState();
 
@@ -54,6 +57,8 @@ const tTripStop = TripStop(
 );
 
 final tDayTripStateLoaded = DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: []);
+
+final tTripStopStateNormal = TripStopState.normal(tripStop: tTripStop, trip: tTrip, dayTrip: tDayTrip);
 
 class TestUtils {
   static Widget defaultWidget({
