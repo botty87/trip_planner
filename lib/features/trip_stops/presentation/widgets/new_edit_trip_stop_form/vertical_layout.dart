@@ -74,7 +74,7 @@ class _VerticalLayout extends HookWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _FieldWidget(
+              FieldWidget(
                 key: const Key('nameWidget'),
                 onDescriptionChanged: onNameChanged,
                 initialValue: tripStop?.name,
@@ -84,7 +84,7 @@ class _VerticalLayout extends HookWidget {
                 hint: LocaleKeys.tripStopNameHint.tr(),
               ),
               const SizedBox(height: verticalSpaceL),
-              _FieldWidget(
+              FieldWidget(
                 key: const Key('descriptionWidget'),
                 onDescriptionChanged: onDescriptionChanged,
                 initialValue: tripStop?.description,

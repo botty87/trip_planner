@@ -1,6 +1,6 @@
 part of 'new_edit_trip_stop_form.dart';
 
-class _FieldWidget extends HookWidget {
+class FieldWidget extends HookWidget {
   final ValueChanged<String> onDescriptionChanged;
   final String label;
   final String hint;
@@ -9,7 +9,7 @@ class _FieldWidget extends HookWidget {
 
   final String? initialValue;
 
-  const _FieldWidget(
+  const FieldWidget(
       {super.key,
       required this.onDescriptionChanged,
       this.initialValue,

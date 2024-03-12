@@ -99,7 +99,7 @@ class _HorizontalLayout extends HookWidget {
                   },
                 ),
                 const SizedBox(height: verticalSpaceXL),
-                _FieldWidget(
+                FieldWidget(
                   key: const Key('nameWidget'),
                   onDescriptionChanged: onNameChanged,
                   initialValue: tripStop?.name,
@@ -109,7 +109,7 @@ class _HorizontalLayout extends HookWidget {
                   hint: LocaleKeys.tripStopNameHint.tr(),
                 ),
                 const SizedBox(height: verticalSpaceL),
-                _FieldWidget(
+                FieldWidget(
                   key: const Key('descriptionWidget'),
                   onDescriptionChanged: onDescriptionChanged,
                   initialValue: tripStop?.description,
