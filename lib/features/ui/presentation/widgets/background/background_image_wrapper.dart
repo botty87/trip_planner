@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
-import '../../../../../core/utilities/extensions.dart';
-import '../../../../settings/presentation/cubit/settings_cubit.dart';
 import '../../cubit/backgrounds_cubit.dart';
 
 class BackgroundImageWrapper extends StatelessWidget {

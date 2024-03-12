@@ -83,10 +83,10 @@ class _HorizontalLayout extends HookWidget {
                       context,
                       defaultValue: 0.75,
                       conditionalValues: [
-                        Condition.largerThan(name: TABLET, value: 0.45),
-                        Condition.largerThan(name: DESKTOP, value: 0.35),
+                        const Condition.largerThan(name: TABLET, value: 0.45),
+                        const Condition.largerThan(name: DESKTOP, value: 0.35),
                       ],
-                    ).value!;
+                    ).value;
                     double height = (constraints.maxWidth * multiplyValue);
                     if (height > 300) {
                       height = 300;
