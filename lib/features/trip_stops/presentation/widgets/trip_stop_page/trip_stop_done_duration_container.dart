@@ -20,8 +20,9 @@ class TripStopDoneDurationContainer extends StatelessWidget with BackgroundImage
             )
           : null,
       padding: hasBackgroundImage ? const EdgeInsets.only(bottom: verticalSpaceXs) : null,
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      child: const Wrap(
+        alignment: WrapAlignment.spaceAround,
+        crossAxisAlignment: WrapCrossAlignment.center,
         children: [TripStopDurationWidget(), TripStopDoneWidget()],
       ),
     );
