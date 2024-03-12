@@ -10,8 +10,7 @@ import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../cubit/new_trip_stop/new_trip_stop_cubit.dart';
 import '../widgets/new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
-
-part '../widgets/new_trip_stop_page/add_trip_stop_button.dart';
+import '../widgets/new_trip_stop_page/add_trip_stop_button.dart';
 
 @RoutePage()
 class NewTripStopPage extends StatelessWidget {
@@ -105,7 +104,7 @@ class _NewTripStopPageBody extends HookWidget {
             context.read<NewTripStopCubit>().locationChanged(value);
           }
         },
-        saveSection: _AddDayTripButton(isSaving: isSaving.stream),
+        saveSection: AddTripStopButton(isSaving: isSaving.stream),
       ),
     );
   }

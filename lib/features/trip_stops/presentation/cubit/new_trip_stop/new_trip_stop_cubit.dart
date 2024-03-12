@@ -40,7 +40,7 @@ class NewTripStopCubit extends Cubit<NewTripStopState> {
 
   void locationChanged(LatLng value) => emit(state.copyWith(location: value));
 
-  createTripStop() async {
+  Future<void> createTripStop() async {
     //Check if we have all the required fields
     if (state.name?.isEmpty ?? true) {
       _emitErrorState(LocaleKeys.enterTripStopName.tr());
