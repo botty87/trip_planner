@@ -11,8 +11,9 @@ class TripStopNoteWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final note = context.select((TripStopCubit cubit) => cubit.state.tripStop.note);
+    final note = context.read<TripStopCubit>().state.tripStop.note;
     final textController = useTextEditingController(text: note);
+
     return Card(
       child: Column(
         children: [
