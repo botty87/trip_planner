@@ -5,7 +5,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart' as _i2;
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -34,7 +35,8 @@ class _FakeDuration_0 extends _i1.SmartFake implements Duration {
 /// A class which mocks [InternetConnection].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockInternetConnection extends _i1.Mock implements _i2.InternetConnection {
+class MockInternetConnection extends _i1.Mock
+    implements _i2.InternetConnection {
   @override
   Duration get checkInterval => (super.noSuchMethod(
         Invocation.getter(#checkInterval),
@@ -58,7 +60,8 @@ class MockInternetConnection extends _i1.Mock implements _i2.InternetConnection 
   @override
   _i3.Future<_i2.InternetStatus> get internetStatus => (super.noSuchMethod(
         Invocation.getter(#internetStatus),
-        returnValue: _i3.Future<_i2.InternetStatus>.value(_i2.InternetStatus.connected),
+        returnValue:
+            _i3.Future<_i2.InternetStatus>.value(_i2.InternetStatus.connected),
         returnValueForMissingStub:
             _i3.Future<_i2.InternetStatus>.value(_i2.InternetStatus.connected),
       ) as _i3.Future<_i2.InternetStatus>);

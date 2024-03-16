@@ -11,7 +11,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i8;
 import 'package:flutter/foundation.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i7;
-import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart' as _i3;
+import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart'
+    as _i3;
 import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i6;
 
 // ignore_for_file: type=lint
@@ -42,21 +43,25 @@ class _FakeFirebaseApp_0 extends _i1.SmartFake implements _i2.FirebaseApp {
 /// See the documentation for Mockito's code generation for more information.
 class MockListenTrips extends _i1.Mock implements _i3.ListenTrips {
   @override
-  _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>> call(_i3.ListenTripsParams? params) =>
+  _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>> call(
+          _i3.ListenTripsParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>.empty(),
-        returnValueForMissingStub: _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>.empty(),
+        returnValue:
+            _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>.empty(),
+        returnValueForMissingStub:
+            _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>.empty(),
       ) as _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>);
 }
 
 /// A class which mocks [FirebaseCrashlytics].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockFirebaseCrashlytics extends _i1.Mock implements _i8.FirebaseCrashlytics {
+class MockFirebaseCrashlytics extends _i1.Mock
+    implements _i8.FirebaseCrashlytics {
   @override
   _i2.FirebaseApp get app => (super.noSuchMethod(
         Invocation.getter(#app),
@@ -175,7 +180,8 @@ class MockFirebaseCrashlytics extends _i1.Mock implements _i8.FirebaseCrashlytic
       ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> recordFlutterFatalError(_i9.FlutterErrorDetails? flutterErrorDetails) =>
+  _i4.Future<void> recordFlutterFatalError(
+          _i9.FlutterErrorDetails? flutterErrorDetails) =>
       (super.noSuchMethod(
         Invocation.method(
           #recordFlutterFatalError,
@@ -206,7 +212,8 @@ class MockFirebaseCrashlytics extends _i1.Mock implements _i8.FirebaseCrashlytic
       ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> setCrashlyticsCollectionEnabled(bool? enabled) => (super.noSuchMethod(
+  _i4.Future<void> setCrashlyticsCollectionEnabled(bool? enabled) =>
+      (super.noSuchMethod(
         Invocation.method(
           #setCrashlyticsCollectionEnabled,
           [enabled],

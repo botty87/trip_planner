@@ -6,7 +6,8 @@ part of 'trip_stops_directions.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TripStopsDirectionsImpl _$$TripStopsDirectionsImplFromJson(Map<String, dynamic> json) =>
+_$TripStopsDirectionsImpl _$$TripStopsDirectionsImplFromJson(
+        Map<String, dynamic> json) =>
     _$TripStopsDirectionsImpl(
       originId: json['originId'] as String,
       destinationId: json['destinationId'] as String,
@@ -14,7 +15,8 @@ _$TripStopsDirectionsImpl _$$TripStopsDirectionsImplFromJson(Map<String, dynamic
       errorMessage: json['errorMessage'] as String?,
     );
 
-Map<String, dynamic> _$$TripStopsDirectionsImplToJson(_$TripStopsDirectionsImpl instance) {
+Map<String, dynamic> _$$TripStopsDirectionsImplToJson(
+    _$TripStopsDirectionsImpl instance) {
   final val = <String, dynamic>{
     'originId': instance.originId,
     'destinationId': instance.destinationId,

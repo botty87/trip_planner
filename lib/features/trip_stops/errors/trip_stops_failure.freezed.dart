@@ -19,12 +19,14 @@ mixin _$TripStopsFailure {
   String? get message => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TripStopsFailureCopyWith<TripStopsFailure> get copyWith => throw _privateConstructorUsedError;
+  $TripStopsFailureCopyWith<TripStopsFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TripStopsFailureCopyWith<$Res> {
-  factory $TripStopsFailureCopyWith(TripStopsFailure value, $Res Function(TripStopsFailure) then) =
+  factory $TripStopsFailureCopyWith(
+          TripStopsFailure value, $Res Function(TripStopsFailure) then) =
       _$TripStopsFailureCopyWithImpl<$Res, TripStopsFailure>;
   @useResult
   $Res call({String? message});
@@ -55,9 +57,10 @@ class _$TripStopsFailureCopyWithImpl<$Res, $Val extends TripStopsFailure>
 }
 
 /// @nodoc
-abstract class _$$TripStopsFailureImplCopyWith<$Res> implements $TripStopsFailureCopyWith<$Res> {
-  factory _$$TripStopsFailureImplCopyWith(
-          _$TripStopsFailureImpl value, $Res Function(_$TripStopsFailureImpl) then) =
+abstract class _$$TripStopsFailureImplCopyWith<$Res>
+    implements $TripStopsFailureCopyWith<$Res> {
+  factory _$$TripStopsFailureImplCopyWith(_$TripStopsFailureImpl value,
+          $Res Function(_$TripStopsFailureImpl) then) =
       __$$TripStopsFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -68,8 +71,8 @@ abstract class _$$TripStopsFailureImplCopyWith<$Res> implements $TripStopsFailur
 class __$$TripStopsFailureImplCopyWithImpl<$Res>
     extends _$TripStopsFailureCopyWithImpl<$Res, _$TripStopsFailureImpl>
     implements _$$TripStopsFailureImplCopyWith<$Res> {
-  __$$TripStopsFailureImplCopyWithImpl(
-      _$TripStopsFailureImpl _value, $Res Function(_$TripStopsFailureImpl) _then)
+  __$$TripStopsFailureImplCopyWithImpl(_$TripStopsFailureImpl _value,
+      $Res Function(_$TripStopsFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,11 +117,13 @@ class _$TripStopsFailureImpl implements _TripStopsFailure {
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopsFailureImplCopyWith<_$TripStopsFailureImpl> get copyWith =>
-      __$$TripStopsFailureImplCopyWithImpl<_$TripStopsFailureImpl>(this, _$identity);
+      __$$TripStopsFailureImplCopyWithImpl<_$TripStopsFailureImpl>(
+          this, _$identity);
 }
 
 abstract class _TripStopsFailure implements TripStopsFailure {
-  const factory _TripStopsFailure({final String? message}) = _$TripStopsFailureImpl;
+  const factory _TripStopsFailure({final String? message}) =
+      _$TripStopsFailureImpl;
 
   @override
   String? get message;

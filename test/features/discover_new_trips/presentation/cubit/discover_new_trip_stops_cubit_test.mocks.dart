@@ -11,8 +11,10 @@ import 'package:trip_planner/features/discover_new_trips/domain/repositories/dis
     as _i2;
 import 'package:trip_planner/features/discover_new_trips/domain/usecases/get_public_trip_stops.dart'
     as _i4;
-import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart' as _i6;
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart' as _i7;
+import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart'
+    as _i6;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
+    as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -27,7 +29,8 @@ import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeDiscoverTripsRepository_0 extends _i1.SmartFake implements _i2.DiscoverTripsRepository {
+class _FakeDiscoverTripsRepository_0 extends _i1.SmartFake
+    implements _i2.DiscoverTripsRepository {
   _FakeDiscoverTripsRepository_0(
     Object parent,
     Invocation parentInvocation,
@@ -50,7 +53,8 @@ class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
 /// A class which mocks [GetPublicTripStops].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetPublicTripStops extends _i1.Mock implements _i4.GetPublicTripStops {
+class MockGetPublicTripStops extends _i1.Mock
+    implements _i4.GetPublicTripStops {
   @override
   _i2.DiscoverTripsRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -72,7 +76,8 @@ class MockGetPublicTripStops extends _i1.Mock implements _i4.GetPublicTripStops 
           #call,
           [params],
         ),
-        returnValue: _i5.Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.TripStop>>>.value(
+        returnValue: _i5.Future<
+                _i3.Either<_i6.DiscoverTripsFailure, List<_i7.TripStop>>>.value(
             _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.TripStop>>(
           this,
           Invocation.method(
@@ -80,14 +85,15 @@ class MockGetPublicTripStops extends _i1.Mock implements _i4.GetPublicTripStops 
             [params],
           ),
         )),
-        returnValueForMissingStub:
-            _i5.Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.TripStop>>>.value(
-                _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.TripStop>>(
+        returnValueForMissingStub: _i5.Future<
+                _i3.Either<_i6.DiscoverTripsFailure, List<_i7.TripStop>>>.value(
+            _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.TripStop>>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i5.Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.TripStop>>>);
+      ) as _i5
+          .Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.TripStop>>>);
 }

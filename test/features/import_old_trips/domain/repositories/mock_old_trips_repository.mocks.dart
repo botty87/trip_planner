@@ -8,12 +8,14 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:quiver/collection.dart' as _i7;
-import 'package:trip_planner/features/import_old_trips/domain/entities/old_trip.dart' as _i6;
+import 'package:trip_planner/features/import_old_trips/domain/entities/old_trip.dart'
+    as _i6;
 import 'package:trip_planner/features/import_old_trips/domain/entities/trip_stops_container.dart'
     as _i9;
 import 'package:trip_planner/features/import_old_trips/domain/repositories/old_trips_repository.dart'
     as _i3;
-import 'package:trip_planner/features/import_old_trips/errors/import_old_trips_failure.dart' as _i5;
+import 'package:trip_planner/features/import_old_trips/errors/import_old_trips_failure.dart'
+    as _i5;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i8;
 
 // ignore_for_file: type=lint
@@ -42,9 +44,11 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// A class which mocks [OldTripsRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockOldTripsRepository extends _i1.Mock implements _i3.OldTripsRepository {
+class MockOldTripsRepository extends _i1.Mock
+    implements _i3.OldTripsRepository {
   @override
-  _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>> readOldTrips(
+  _i4.Future<
+      _i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>> readOldTrips(
           {required String? userId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -52,7 +56,8 @@ class MockOldTripsRepository extends _i1.Mock implements _i3.OldTripsRepository 
           [],
           {#userId: userId},
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>>.value(
+        returnValue: _i4.Future<
+                _i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>>.value(
             _FakeEither_0<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>(
           this,
           Invocation.method(
@@ -61,9 +66,9 @@ class MockOldTripsRepository extends _i1.Mock implements _i3.OldTripsRepository 
             {#userId: userId},
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>>.value(
-                _FakeEither_0<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>(
+        returnValueForMissingStub: _i4.Future<
+                _i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>>.value(
+            _FakeEither_0<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>(
           this,
           Invocation.method(
             #readOldTrips,
@@ -71,7 +76,8 @@ class MockOldTripsRepository extends _i1.Mock implements _i3.OldTripsRepository 
             {#userId: userId},
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>>);
+      ) as _i4
+          .Future<_i2.Either<_i5.ImportOldTripsFailure, List<_i6.OldTrip>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>> importOldTrips({
@@ -87,8 +93,9 @@ class MockOldTripsRepository extends _i1.Mock implements _i3.OldTripsRepository 
             #newTrips: newTrips,
           },
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>>.value(
-            _FakeEither_0<_i5.ImportOldTripsFailure, void>(
+        returnValue:
+            _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>>.value(
+                _FakeEither_0<_i5.ImportOldTripsFailure, void>(
           this,
           Invocation.method(
             #importOldTrips,
@@ -99,8 +106,9 @@ class MockOldTripsRepository extends _i1.Mock implements _i3.OldTripsRepository 
             },
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>>.value(
-            _FakeEither_0<_i5.ImportOldTripsFailure, void>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.ImportOldTripsFailure, void>>.value(
+                _FakeEither_0<_i5.ImportOldTripsFailure, void>(
           this,
           Invocation.method(
             #importOldTrips,

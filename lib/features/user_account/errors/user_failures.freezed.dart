@@ -100,7 +100,8 @@ mixin _$UserFailures {
 
 /// @nodoc
 abstract class $UserFailuresCopyWith<$Res> {
-  factory $UserFailuresCopyWith(UserFailures value, $Res Function(UserFailures) then) =
+  factory $UserFailuresCopyWith(
+          UserFailures value, $Res Function(UserFailures) then) =
       _$UserFailuresCopyWithImpl<$Res, UserFailures>;
 }
 
@@ -117,8 +118,8 @@ class _$UserFailuresCopyWithImpl<$Res, $Val extends UserFailures>
 
 /// @nodoc
 abstract class _$$EmailAlreadyInUseImplCopyWith<$Res> {
-  factory _$$EmailAlreadyInUseImplCopyWith(
-          _$EmailAlreadyInUseImpl value, $Res Function(_$EmailAlreadyInUseImpl) then) =
+  factory _$$EmailAlreadyInUseImplCopyWith(_$EmailAlreadyInUseImpl value,
+          $Res Function(_$EmailAlreadyInUseImpl) then) =
       __$$EmailAlreadyInUseImplCopyWithImpl<$Res>;
 }
 
@@ -126,8 +127,8 @@ abstract class _$$EmailAlreadyInUseImplCopyWith<$Res> {
 class __$$EmailAlreadyInUseImplCopyWithImpl<$Res>
     extends _$UserFailuresCopyWithImpl<$Res, _$EmailAlreadyInUseImpl>
     implements _$$EmailAlreadyInUseImplCopyWith<$Res> {
-  __$$EmailAlreadyInUseImplCopyWithImpl(
-      _$EmailAlreadyInUseImpl _value, $Res Function(_$EmailAlreadyInUseImpl) _then)
+  __$$EmailAlreadyInUseImplCopyWithImpl(_$EmailAlreadyInUseImpl _value,
+      $Res Function(_$EmailAlreadyInUseImpl) _then)
       : super(_value, _then);
 }
 
@@ -262,8 +263,8 @@ abstract class _EmailAlreadyInUse extends UserFailures {
 
 /// @nodoc
 abstract class _$$NetworkRequestFailedImplCopyWith<$Res> {
-  factory _$$NetworkRequestFailedImplCopyWith(
-          _$NetworkRequestFailedImpl value, $Res Function(_$NetworkRequestFailedImpl) then) =
+  factory _$$NetworkRequestFailedImplCopyWith(_$NetworkRequestFailedImpl value,
+          $Res Function(_$NetworkRequestFailedImpl) then) =
       __$$NetworkRequestFailedImplCopyWithImpl<$Res>;
 }
 
@@ -271,8 +272,8 @@ abstract class _$$NetworkRequestFailedImplCopyWith<$Res> {
 class __$$NetworkRequestFailedImplCopyWithImpl<$Res>
     extends _$UserFailuresCopyWithImpl<$Res, _$NetworkRequestFailedImpl>
     implements _$$NetworkRequestFailedImplCopyWith<$Res> {
-  __$$NetworkRequestFailedImplCopyWithImpl(
-      _$NetworkRequestFailedImpl _value, $Res Function(_$NetworkRequestFailedImpl) _then)
+  __$$NetworkRequestFailedImplCopyWithImpl(_$NetworkRequestFailedImpl _value,
+      $Res Function(_$NetworkRequestFailedImpl) _then)
       : super(_value, _then);
 }
 
@@ -289,7 +290,8 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NetworkRequestFailedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$NetworkRequestFailedImpl);
   }
 
   @override
@@ -697,8 +699,8 @@ abstract class _UserNotFound extends UserFailures {
 
 /// @nodoc
 abstract class _$$TooManyRequestsImplCopyWith<$Res> {
-  factory _$$TooManyRequestsImplCopyWith(
-          _$TooManyRequestsImpl value, $Res Function(_$TooManyRequestsImpl) then) =
+  factory _$$TooManyRequestsImplCopyWith(_$TooManyRequestsImpl value,
+          $Res Function(_$TooManyRequestsImpl) then) =
       __$$TooManyRequestsImplCopyWithImpl<$Res>;
 }
 

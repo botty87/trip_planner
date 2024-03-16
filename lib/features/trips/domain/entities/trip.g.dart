@@ -16,7 +16,8 @@ _$TripImpl _$$TripImplFromJson(Map<String, dynamic> json) => _$TripImpl(
       languageCode: json['languageCode'] as String?,
     );
 
-Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'userId': instance.userId,

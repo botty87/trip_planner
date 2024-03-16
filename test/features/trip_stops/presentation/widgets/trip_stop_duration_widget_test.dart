@@ -58,6 +58,8 @@ void main() {
       initialState: tTripStopStateNormal,
     );
 
+    
+
     whenListen(
       backgroundsCubit,
       Stream.value(tBackgroundsState),

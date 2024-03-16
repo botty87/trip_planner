@@ -25,12 +25,14 @@ mixin _$OldDailyTrip {
   List<OldPlace> get places => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $OldDailyTripCopyWith<OldDailyTrip> get copyWith => throw _privateConstructorUsedError;
+  $OldDailyTripCopyWith<OldDailyTrip> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OldDailyTripCopyWith<$Res> {
-  factory $OldDailyTripCopyWith(OldDailyTrip value, $Res Function(OldDailyTrip) then) =
+  factory $OldDailyTripCopyWith(
+          OldDailyTrip value, $Res Function(OldDailyTrip) then) =
       _$OldDailyTripCopyWithImpl<$Res, OldDailyTrip>;
   @useResult
   $Res call(
@@ -98,7 +100,8 @@ class _$OldDailyTripCopyWithImpl<$Res, $Val extends OldDailyTrip>
 }
 
 /// @nodoc
-abstract class _$$OldDailyTripImplCopyWith<$Res> implements $OldDailyTripCopyWith<$Res> {
+abstract class _$$OldDailyTripImplCopyWith<$Res>
+    implements $OldDailyTripCopyWith<$Res> {
   factory _$$OldDailyTripImplCopyWith(
           _$OldDailyTripImpl value, $Res Function(_$OldDailyTripImpl) then) =
       __$$OldDailyTripImplCopyWithImpl<$Res>;
@@ -211,7 +214,8 @@ class _$OldDailyTripImpl implements _OldDailyTrip {
             other is _$OldDailyTripImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.note, note) || other.note == note) &&
-            (identical(other.position, position) || other.position == position) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
             (identical(other.day, day) || other.day == day) &&
             (identical(other.month, month) || other.month == month) &&
             (identical(other.year, year) || other.year == year) &&
@@ -219,8 +223,8 @@ class _$OldDailyTripImpl implements _OldDailyTrip {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, note, position, day, month, year,
-      const DeepCollectionEquality().hash(_places));
+  int get hashCode => Object.hash(runtimeType, name, note, position, day, month,
+      year, const DeepCollectionEquality().hash(_places));
 
   @JsonKey(ignore: true)
   @override

@@ -7,9 +7,12 @@ import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart' as _i2;
-import 'package:trip_planner/features/trips/domain/usecases/create_from_existing_trip.dart' as _i7;
-import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart' as _i4;
+import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
+    as _i2;
+import 'package:trip_planner/features/trips/domain/usecases/create_from_existing_trip.dart'
+    as _i7;
+import 'package:trip_planner/features/trips/domain/usecases/create_trip.dart'
+    as _i4;
 import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i6;
 
 // ignore_for_file: type=lint
@@ -25,7 +28,8 @@ import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i6;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeTripsRepository_0 extends _i1.SmartFake implements _i2.TripsRepository {
+class _FakeTripsRepository_0 extends _i1.SmartFake
+    implements _i2.TripsRepository {
   _FakeTripsRepository_0(
     Object parent,
     Invocation parentInvocation,
@@ -63,7 +67,8 @@ class MockCreateTrip extends _i1.Mock implements _i4.CreateTrip {
       ) as _i2.TripsRepository);
 
   @override
-  _i5.Future<_i3.Either<_i6.TripsFailure, void>> call(_i4.CreateTripParams? params) =>
+  _i5.Future<_i3.Either<_i6.TripsFailure, void>> call(
+          _i4.CreateTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -77,8 +82,9 @@ class MockCreateTrip extends _i1.Mock implements _i4.CreateTrip {
             [params],
           ),
         )),
-        returnValueForMissingStub: _i5.Future<_i3.Either<_i6.TripsFailure, void>>.value(
-            _FakeEither_1<_i6.TripsFailure, void>(
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.TripsFailure, void>>.value(
+                _FakeEither_1<_i6.TripsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -91,7 +97,8 @@ class MockCreateTrip extends _i1.Mock implements _i4.CreateTrip {
 /// A class which mocks [CreateFromExistingTrip].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCreateFromExistingTrip extends _i1.Mock implements _i7.CreateFromExistingTrip {
+class MockCreateFromExistingTrip extends _i1.Mock
+    implements _i7.CreateFromExistingTrip {
   @override
   _i2.TripsRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -106,7 +113,8 @@ class MockCreateFromExistingTrip extends _i1.Mock implements _i7.CreateFromExist
       ) as _i2.TripsRepository);
 
   @override
-  _i5.Future<_i3.Either<_i6.TripsFailure, void>> call(_i7.CreateFromExistingTripParams? params) =>
+  _i5.Future<_i3.Either<_i6.TripsFailure, void>> call(
+          _i7.CreateFromExistingTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -120,8 +128,9 @@ class MockCreateFromExistingTrip extends _i1.Mock implements _i7.CreateFromExist
             [params],
           ),
         )),
-        returnValueForMissingStub: _i5.Future<_i3.Either<_i6.TripsFailure, void>>.value(
-            _FakeEither_1<_i6.TripsFailure, void>(
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.TripsFailure, void>>.value(
+                _FakeEither_1<_i6.TripsFailure, void>(
           this,
           Invocation.method(
             #call,

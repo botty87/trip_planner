@@ -9,8 +9,10 @@ import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i2;
-import 'package:trip_planner/features/day_trips/domain/usecases/create_day_trip.dart' as _i4;
-import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart' as _i6;
+import 'package:trip_planner/features/day_trips/domain/usecases/create_day_trip.dart'
+    as _i4;
+import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -25,7 +27,8 @@ import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart' a
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeDayTripsRepository_0 extends _i1.SmartFake implements _i2.DayTripsRepository {
+class _FakeDayTripsRepository_0 extends _i1.SmartFake
+    implements _i2.DayTripsRepository {
   _FakeDayTripsRepository_0(
     Object parent,
     Invocation parentInvocation,
@@ -63,7 +66,8 @@ class MockCreateDayTrip extends _i1.Mock implements _i4.CreateDayTrip {
       ) as _i2.DayTripsRepository);
 
   @override
-  _i5.Future<_i3.Either<_i6.DayTripsFailure, void>> call(_i4.CreateDayTripParams? params) =>
+  _i5.Future<_i3.Either<_i6.DayTripsFailure, void>> call(
+          _i4.CreateDayTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -77,8 +81,9 @@ class MockCreateDayTrip extends _i1.Mock implements _i4.CreateDayTrip {
             [params],
           ),
         )),
-        returnValueForMissingStub: _i5.Future<_i3.Either<_i6.DayTripsFailure, void>>.value(
-            _FakeEither_1<_i6.DayTripsFailure, void>(
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.DayTripsFailure, void>>.value(
+                _FakeEither_1<_i6.DayTripsFailure, void>(
           this,
           Invocation.method(
             #call,

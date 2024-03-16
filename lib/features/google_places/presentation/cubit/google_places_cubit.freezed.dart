@@ -19,27 +19,31 @@ mixin _$GooglePlacesState {
   List<Suggestion> get suggestions => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)
+    required TResult Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)
         normal,
-    required TResult Function(
-            GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)
+    required TResult Function(GooglePlacesError error,
+            List<Suggestion> suggestions, bool showRetryButton)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)?
+    TResult? Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)?
+    TResult? Function(GooglePlacesError error, List<Suggestion> suggestions,
+            bool showRetryButton)?
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)?
+    TResult Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)?
         normal,
-    TResult Function(GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)?
+    TResult Function(GooglePlacesError error, List<Suggestion> suggestions,
+            bool showRetryButton)?
         error,
     required TResult orElse(),
   }) =>
@@ -65,7 +69,8 @@ mixin _$GooglePlacesState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GooglePlacesStateCopyWith<GooglePlacesState> get copyWith => throw _privateConstructorUsedError;
+  $GooglePlacesStateCopyWith<GooglePlacesState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -105,11 +110,15 @@ class _$GooglePlacesStateCopyWithImpl<$Res, $Val extends GooglePlacesState>
 abstract class _$$GooglePlacesStateNormalImplCopyWith<$Res>
     implements $GooglePlacesStateCopyWith<$Res> {
   factory _$$GooglePlacesStateNormalImplCopyWith(
-          _$GooglePlacesStateNormalImpl value, $Res Function(_$GooglePlacesStateNormalImpl) then) =
+          _$GooglePlacesStateNormalImpl value,
+          $Res Function(_$GooglePlacesStateNormalImpl) then) =
       __$$GooglePlacesStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails});
+  $Res call(
+      {List<Suggestion> suggestions,
+      bool isLoading,
+      PlaceDetails? placeDetails});
 
   $PlaceDetailsCopyWith<$Res>? get placeDetails;
 }
@@ -119,7 +128,8 @@ class __$$GooglePlacesStateNormalImplCopyWithImpl<$Res>
     extends _$GooglePlacesStateCopyWithImpl<$Res, _$GooglePlacesStateNormalImpl>
     implements _$$GooglePlacesStateNormalImplCopyWith<$Res> {
   __$$GooglePlacesStateNormalImplCopyWithImpl(
-      _$GooglePlacesStateNormalImpl _value, $Res Function(_$GooglePlacesStateNormalImpl) _then)
+      _$GooglePlacesStateNormalImpl _value,
+      $Res Function(_$GooglePlacesStateNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -162,7 +172,9 @@ class __$$GooglePlacesStateNormalImplCopyWithImpl<$Res>
 
 class _$GooglePlacesStateNormalImpl implements _GooglePlacesStateNormal {
   const _$GooglePlacesStateNormalImpl(
-      {final List<Suggestion> suggestions = const [], this.isLoading = false, this.placeDetails})
+      {final List<Suggestion> suggestions = const [],
+      this.isLoading = false,
+      this.placeDetails})
       : _suggestions = suggestions;
 
   final List<Suggestion> _suggestions;
@@ -190,29 +202,36 @@ class _$GooglePlacesStateNormalImpl implements _GooglePlacesStateNormal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePlacesStateNormalImpl &&
-            const DeepCollectionEquality().equals(other._suggestions, _suggestions) &&
-            (identical(other.isLoading, isLoading) || other.isLoading == isLoading) &&
-            (identical(other.placeDetails, placeDetails) || other.placeDetails == placeDetails));
+            const DeepCollectionEquality()
+                .equals(other._suggestions, _suggestions) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.placeDetails, placeDetails) ||
+                other.placeDetails == placeDetails));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_suggestions), isLoading, placeDetails);
+      runtimeType,
+      const DeepCollectionEquality().hash(_suggestions),
+      isLoading,
+      placeDetails);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GooglePlacesStateNormalImplCopyWith<_$GooglePlacesStateNormalImpl> get copyWith =>
-      __$$GooglePlacesStateNormalImplCopyWithImpl<_$GooglePlacesStateNormalImpl>(this, _$identity);
+  _$$GooglePlacesStateNormalImplCopyWith<_$GooglePlacesStateNormalImpl>
+      get copyWith => __$$GooglePlacesStateNormalImplCopyWithImpl<
+          _$GooglePlacesStateNormalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)
+    required TResult Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)
         normal,
-    required TResult Function(
-            GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)
+    required TResult Function(GooglePlacesError error,
+            List<Suggestion> suggestions, bool showRetryButton)
         error,
   }) {
     return normal(suggestions, isLoading, placeDetails);
@@ -221,9 +240,11 @@ class _$GooglePlacesStateNormalImpl implements _GooglePlacesStateNormal {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)?
+    TResult? Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)?
+    TResult? Function(GooglePlacesError error, List<Suggestion> suggestions,
+            bool showRetryButton)?
         error,
   }) {
     return normal?.call(suggestions, isLoading, placeDetails);
@@ -232,9 +253,11 @@ class _$GooglePlacesStateNormalImpl implements _GooglePlacesStateNormal {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)?
+    TResult Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)?
         normal,
-    TResult Function(GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)?
+    TResult Function(GooglePlacesError error, List<Suggestion> suggestions,
+            bool showRetryButton)?
         error,
     required TResult orElse(),
   }) {
@@ -288,19 +311,23 @@ abstract class _GooglePlacesStateNormal implements GooglePlacesState {
   PlaceDetails? get placeDetails;
   @override
   @JsonKey(ignore: true)
-  _$$GooglePlacesStateNormalImplCopyWith<_$GooglePlacesStateNormalImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GooglePlacesStateNormalImplCopyWith<_$GooglePlacesStateNormalImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$GooglePlacesStateErrorImplCopyWith<$Res>
     implements $GooglePlacesStateCopyWith<$Res> {
   factory _$$GooglePlacesStateErrorImplCopyWith(
-          _$GooglePlacesStateErrorImpl value, $Res Function(_$GooglePlacesStateErrorImpl) then) =
+          _$GooglePlacesStateErrorImpl value,
+          $Res Function(_$GooglePlacesStateErrorImpl) then) =
       __$$GooglePlacesStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton});
+  $Res call(
+      {GooglePlacesError error,
+      List<Suggestion> suggestions,
+      bool showRetryButton});
 
   $GooglePlacesErrorCopyWith<$Res> get error;
 }
@@ -310,7 +337,8 @@ class __$$GooglePlacesStateErrorImplCopyWithImpl<$Res>
     extends _$GooglePlacesStateCopyWithImpl<$Res, _$GooglePlacesStateErrorImpl>
     implements _$$GooglePlacesStateErrorImplCopyWith<$Res> {
   __$$GooglePlacesStateErrorImplCopyWithImpl(
-      _$GooglePlacesStateErrorImpl _value, $Res Function(_$GooglePlacesStateErrorImpl) _then)
+      _$GooglePlacesStateErrorImpl _value,
+      $Res Function(_$GooglePlacesStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -379,29 +407,31 @@ class _$GooglePlacesStateErrorImpl implements _GooglePlacesStateError {
         (other.runtimeType == runtimeType &&
             other is _$GooglePlacesStateErrorImpl &&
             (identical(other.error, error) || other.error == error) &&
-            const DeepCollectionEquality().equals(other._suggestions, _suggestions) &&
+            const DeepCollectionEquality()
+                .equals(other._suggestions, _suggestions) &&
             (identical(other.showRetryButton, showRetryButton) ||
                 other.showRetryButton == showRetryButton));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, error, const DeepCollectionEquality().hash(_suggestions), showRetryButton);
+  int get hashCode => Object.hash(runtimeType, error,
+      const DeepCollectionEquality().hash(_suggestions), showRetryButton);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GooglePlacesStateErrorImplCopyWith<_$GooglePlacesStateErrorImpl> get copyWith =>
-      __$$GooglePlacesStateErrorImplCopyWithImpl<_$GooglePlacesStateErrorImpl>(this, _$identity);
+  _$$GooglePlacesStateErrorImplCopyWith<_$GooglePlacesStateErrorImpl>
+      get copyWith => __$$GooglePlacesStateErrorImplCopyWithImpl<
+          _$GooglePlacesStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)
+    required TResult Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)
         normal,
-    required TResult Function(
-            GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)
+    required TResult Function(GooglePlacesError error,
+            List<Suggestion> suggestions, bool showRetryButton)
         error,
   }) {
     return error(this.error, suggestions, showRetryButton);
@@ -410,9 +440,11 @@ class _$GooglePlacesStateErrorImpl implements _GooglePlacesStateError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)?
+    TResult? Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)?
         normal,
-    TResult? Function(GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)?
+    TResult? Function(GooglePlacesError error, List<Suggestion> suggestions,
+            bool showRetryButton)?
         error,
   }) {
     return error?.call(this.error, suggestions, showRetryButton);
@@ -421,9 +453,11 @@ class _$GooglePlacesStateErrorImpl implements _GooglePlacesStateError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Suggestion> suggestions, bool isLoading, PlaceDetails? placeDetails)?
+    TResult Function(List<Suggestion> suggestions, bool isLoading,
+            PlaceDetails? placeDetails)?
         normal,
-    TResult Function(GooglePlacesError error, List<Suggestion> suggestions, bool showRetryButton)?
+    TResult Function(GooglePlacesError error, List<Suggestion> suggestions,
+            bool showRetryButton)?
         error,
     required TResult orElse(),
   }) {
@@ -477,8 +511,8 @@ abstract class _GooglePlacesStateError implements GooglePlacesState {
   bool get showRetryButton;
   @override
   @JsonKey(ignore: true)
-  _$$GooglePlacesStateErrorImplCopyWith<_$GooglePlacesStateErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GooglePlacesStateErrorImplCopyWith<_$GooglePlacesStateErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -510,25 +544,33 @@ mixin _$GooglePlacesError {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GooglePlacesErrorNoInternetConnection value) noInternetConnection,
-    required TResult Function(_GooglePlacesErrorRequestDenied value) requestDenied,
-    required TResult Function(_GooglePlacesErrorRequestCancelled value) requestCancelled,
-    required TResult Function(_GooglePlacesErrorUnknownError value) unknownError,
+    required TResult Function(_GooglePlacesErrorNoInternetConnection value)
+        noInternetConnection,
+    required TResult Function(_GooglePlacesErrorRequestDenied value)
+        requestDenied,
+    required TResult Function(_GooglePlacesErrorRequestCancelled value)
+        requestCancelled,
+    required TResult Function(_GooglePlacesErrorUnknownError value)
+        unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult? Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult? Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult? Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult? Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult? Function(_GooglePlacesErrorUnknownError value)? unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult Function(_GooglePlacesErrorUnknownError value)? unknownError,
     required TResult orElse(),
   }) =>
@@ -563,7 +605,8 @@ abstract class _$$GooglePlacesErrorNoInternetConnectionImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$GooglePlacesErrorNoInternetConnectionImplCopyWithImpl<$Res>
-    extends _$GooglePlacesErrorCopyWithImpl<$Res, _$GooglePlacesErrorNoInternetConnectionImpl>
+    extends _$GooglePlacesErrorCopyWithImpl<$Res,
+        _$GooglePlacesErrorNoInternetConnectionImpl>
     implements _$$GooglePlacesErrorNoInternetConnectionImplCopyWith<$Res> {
   __$$GooglePlacesErrorNoInternetConnectionImplCopyWithImpl(
       _$GooglePlacesErrorNoInternetConnectionImpl _value,
@@ -585,7 +628,8 @@ class _$GooglePlacesErrorNoInternetConnectionImpl
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GooglePlacesErrorNoInternetConnectionImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GooglePlacesErrorNoInternetConnectionImpl);
   }
 
   @override
@@ -631,10 +675,14 @@ class _$GooglePlacesErrorNoInternetConnectionImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GooglePlacesErrorNoInternetConnection value) noInternetConnection,
-    required TResult Function(_GooglePlacesErrorRequestDenied value) requestDenied,
-    required TResult Function(_GooglePlacesErrorRequestCancelled value) requestCancelled,
-    required TResult Function(_GooglePlacesErrorUnknownError value) unknownError,
+    required TResult Function(_GooglePlacesErrorNoInternetConnection value)
+        noInternetConnection,
+    required TResult Function(_GooglePlacesErrorRequestDenied value)
+        requestDenied,
+    required TResult Function(_GooglePlacesErrorRequestCancelled value)
+        requestCancelled,
+    required TResult Function(_GooglePlacesErrorUnknownError value)
+        unknownError,
   }) {
     return noInternetConnection(this);
   }
@@ -642,9 +690,11 @@ class _$GooglePlacesErrorNoInternetConnectionImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult? Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult? Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult? Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult? Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult? Function(_GooglePlacesErrorUnknownError value)? unknownError,
   }) {
     return noInternetConnection?.call(this);
@@ -653,9 +703,11 @@ class _$GooglePlacesErrorNoInternetConnectionImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult Function(_GooglePlacesErrorUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
@@ -666,14 +718,16 @@ class _$GooglePlacesErrorNoInternetConnectionImpl
   }
 }
 
-abstract class _GooglePlacesErrorNoInternetConnection implements GooglePlacesError {
+abstract class _GooglePlacesErrorNoInternetConnection
+    implements GooglePlacesError {
   const factory _GooglePlacesErrorNoInternetConnection() =
       _$GooglePlacesErrorNoInternetConnectionImpl;
 }
 
 /// @nodoc
 abstract class _$$GooglePlacesErrorRequestDeniedImplCopyWith<$Res> {
-  factory _$$GooglePlacesErrorRequestDeniedImplCopyWith(_$GooglePlacesErrorRequestDeniedImpl value,
+  factory _$$GooglePlacesErrorRequestDeniedImplCopyWith(
+          _$GooglePlacesErrorRequestDeniedImpl value,
           $Res Function(_$GooglePlacesErrorRequestDeniedImpl) then) =
       __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<$Res>;
   @useResult
@@ -682,9 +736,11 @@ abstract class _$$GooglePlacesErrorRequestDeniedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<$Res>
-    extends _$GooglePlacesErrorCopyWithImpl<$Res, _$GooglePlacesErrorRequestDeniedImpl>
+    extends _$GooglePlacesErrorCopyWithImpl<$Res,
+        _$GooglePlacesErrorRequestDeniedImpl>
     implements _$$GooglePlacesErrorRequestDeniedImplCopyWith<$Res> {
-  __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl(_$GooglePlacesErrorRequestDeniedImpl _value,
+  __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl(
+      _$GooglePlacesErrorRequestDeniedImpl _value,
       $Res Function(_$GooglePlacesErrorRequestDeniedImpl) _then)
       : super(_value, _then);
 
@@ -704,7 +760,8 @@ class __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GooglePlacesErrorRequestDeniedImpl implements _GooglePlacesErrorRequestDenied {
+class _$GooglePlacesErrorRequestDeniedImpl
+    implements _GooglePlacesErrorRequestDenied {
   const _$GooglePlacesErrorRequestDeniedImpl({required this.message});
 
   @override
@@ -729,10 +786,10 @@ class _$GooglePlacesErrorRequestDeniedImpl implements _GooglePlacesErrorRequestD
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GooglePlacesErrorRequestDeniedImplCopyWith<_$GooglePlacesErrorRequestDeniedImpl>
-      get copyWith =>
-          __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<_$GooglePlacesErrorRequestDeniedImpl>(
-              this, _$identity);
+  _$$GooglePlacesErrorRequestDeniedImplCopyWith<
+          _$GooglePlacesErrorRequestDeniedImpl>
+      get copyWith => __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<
+          _$GooglePlacesErrorRequestDeniedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -774,10 +831,14 @@ class _$GooglePlacesErrorRequestDeniedImpl implements _GooglePlacesErrorRequestD
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GooglePlacesErrorNoInternetConnection value) noInternetConnection,
-    required TResult Function(_GooglePlacesErrorRequestDenied value) requestDenied,
-    required TResult Function(_GooglePlacesErrorRequestCancelled value) requestCancelled,
-    required TResult Function(_GooglePlacesErrorUnknownError value) unknownError,
+    required TResult Function(_GooglePlacesErrorNoInternetConnection value)
+        noInternetConnection,
+    required TResult Function(_GooglePlacesErrorRequestDenied value)
+        requestDenied,
+    required TResult Function(_GooglePlacesErrorRequestCancelled value)
+        requestCancelled,
+    required TResult Function(_GooglePlacesErrorUnknownError value)
+        unknownError,
   }) {
     return requestDenied(this);
   }
@@ -785,9 +846,11 @@ class _$GooglePlacesErrorRequestDeniedImpl implements _GooglePlacesErrorRequestD
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult? Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult? Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult? Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult? Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult? Function(_GooglePlacesErrorUnknownError value)? unknownError,
   }) {
     return requestDenied?.call(this);
@@ -796,9 +859,11 @@ class _$GooglePlacesErrorRequestDeniedImpl implements _GooglePlacesErrorRequestD
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult Function(_GooglePlacesErrorUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
@@ -810,12 +875,13 @@ class _$GooglePlacesErrorRequestDeniedImpl implements _GooglePlacesErrorRequestD
 }
 
 abstract class _GooglePlacesErrorRequestDenied implements GooglePlacesError {
-  const factory _GooglePlacesErrorRequestDenied({required final String message}) =
-      _$GooglePlacesErrorRequestDeniedImpl;
+  const factory _GooglePlacesErrorRequestDenied(
+      {required final String message}) = _$GooglePlacesErrorRequestDeniedImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$GooglePlacesErrorRequestDeniedImplCopyWith<_$GooglePlacesErrorRequestDeniedImpl>
+  _$$GooglePlacesErrorRequestDeniedImplCopyWith<
+          _$GooglePlacesErrorRequestDeniedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -829,7 +895,8 @@ abstract class _$$GooglePlacesErrorRequestCancelledImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$GooglePlacesErrorRequestCancelledImplCopyWithImpl<$Res>
-    extends _$GooglePlacesErrorCopyWithImpl<$Res, _$GooglePlacesErrorRequestCancelledImpl>
+    extends _$GooglePlacesErrorCopyWithImpl<$Res,
+        _$GooglePlacesErrorRequestCancelledImpl>
     implements _$$GooglePlacesErrorRequestCancelledImplCopyWith<$Res> {
   __$$GooglePlacesErrorRequestCancelledImplCopyWithImpl(
       _$GooglePlacesErrorRequestCancelledImpl _value,
@@ -839,7 +906,8 @@ class __$$GooglePlacesErrorRequestCancelledImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GooglePlacesErrorRequestCancelledImpl implements _GooglePlacesErrorRequestCancelled {
+class _$GooglePlacesErrorRequestCancelledImpl
+    implements _GooglePlacesErrorRequestCancelled {
   const _$GooglePlacesErrorRequestCancelledImpl();
 
   @override
@@ -850,7 +918,8 @@ class _$GooglePlacesErrorRequestCancelledImpl implements _GooglePlacesErrorReque
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GooglePlacesErrorRequestCancelledImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GooglePlacesErrorRequestCancelledImpl);
   }
 
   @override
@@ -896,10 +965,14 @@ class _$GooglePlacesErrorRequestCancelledImpl implements _GooglePlacesErrorReque
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GooglePlacesErrorNoInternetConnection value) noInternetConnection,
-    required TResult Function(_GooglePlacesErrorRequestDenied value) requestDenied,
-    required TResult Function(_GooglePlacesErrorRequestCancelled value) requestCancelled,
-    required TResult Function(_GooglePlacesErrorUnknownError value) unknownError,
+    required TResult Function(_GooglePlacesErrorNoInternetConnection value)
+        noInternetConnection,
+    required TResult Function(_GooglePlacesErrorRequestDenied value)
+        requestDenied,
+    required TResult Function(_GooglePlacesErrorRequestCancelled value)
+        requestCancelled,
+    required TResult Function(_GooglePlacesErrorUnknownError value)
+        unknownError,
   }) {
     return requestCancelled(this);
   }
@@ -907,9 +980,11 @@ class _$GooglePlacesErrorRequestCancelledImpl implements _GooglePlacesErrorReque
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult? Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult? Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult? Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult? Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult? Function(_GooglePlacesErrorUnknownError value)? unknownError,
   }) {
     return requestCancelled?.call(this);
@@ -918,9 +993,11 @@ class _$GooglePlacesErrorRequestCancelledImpl implements _GooglePlacesErrorReque
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult Function(_GooglePlacesErrorUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
@@ -932,12 +1009,14 @@ class _$GooglePlacesErrorRequestCancelledImpl implements _GooglePlacesErrorReque
 }
 
 abstract class _GooglePlacesErrorRequestCancelled implements GooglePlacesError {
-  const factory _GooglePlacesErrorRequestCancelled() = _$GooglePlacesErrorRequestCancelledImpl;
+  const factory _GooglePlacesErrorRequestCancelled() =
+      _$GooglePlacesErrorRequestCancelledImpl;
 }
 
 /// @nodoc
 abstract class _$$GooglePlacesErrorUnknownErrorImplCopyWith<$Res> {
-  factory _$$GooglePlacesErrorUnknownErrorImplCopyWith(_$GooglePlacesErrorUnknownErrorImpl value,
+  factory _$$GooglePlacesErrorUnknownErrorImplCopyWith(
+          _$GooglePlacesErrorUnknownErrorImpl value,
           $Res Function(_$GooglePlacesErrorUnknownErrorImpl) then) =
       __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<$Res>;
   @useResult
@@ -946,9 +1025,11 @@ abstract class _$$GooglePlacesErrorUnknownErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<$Res>
-    extends _$GooglePlacesErrorCopyWithImpl<$Res, _$GooglePlacesErrorUnknownErrorImpl>
+    extends _$GooglePlacesErrorCopyWithImpl<$Res,
+        _$GooglePlacesErrorUnknownErrorImpl>
     implements _$$GooglePlacesErrorUnknownErrorImplCopyWith<$Res> {
-  __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl(_$GooglePlacesErrorUnknownErrorImpl _value,
+  __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl(
+      _$GooglePlacesErrorUnknownErrorImpl _value,
       $Res Function(_$GooglePlacesErrorUnknownErrorImpl) _then)
       : super(_value, _then);
 
@@ -968,7 +1049,8 @@ class __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GooglePlacesErrorUnknownErrorImpl implements _GooglePlacesErrorUnknownError {
+class _$GooglePlacesErrorUnknownErrorImpl
+    implements _GooglePlacesErrorUnknownError {
   const _$GooglePlacesErrorUnknownErrorImpl({this.message});
 
   @override
@@ -993,9 +1075,10 @@ class _$GooglePlacesErrorUnknownErrorImpl implements _GooglePlacesErrorUnknownEr
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GooglePlacesErrorUnknownErrorImplCopyWith<_$GooglePlacesErrorUnknownErrorImpl> get copyWith =>
-      __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<_$GooglePlacesErrorUnknownErrorImpl>(
-          this, _$identity);
+  _$$GooglePlacesErrorUnknownErrorImplCopyWith<
+          _$GooglePlacesErrorUnknownErrorImpl>
+      get copyWith => __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<
+          _$GooglePlacesErrorUnknownErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1037,10 +1120,14 @@ class _$GooglePlacesErrorUnknownErrorImpl implements _GooglePlacesErrorUnknownEr
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GooglePlacesErrorNoInternetConnection value) noInternetConnection,
-    required TResult Function(_GooglePlacesErrorRequestDenied value) requestDenied,
-    required TResult Function(_GooglePlacesErrorRequestCancelled value) requestCancelled,
-    required TResult Function(_GooglePlacesErrorUnknownError value) unknownError,
+    required TResult Function(_GooglePlacesErrorNoInternetConnection value)
+        noInternetConnection,
+    required TResult Function(_GooglePlacesErrorRequestDenied value)
+        requestDenied,
+    required TResult Function(_GooglePlacesErrorRequestCancelled value)
+        requestCancelled,
+    required TResult Function(_GooglePlacesErrorUnknownError value)
+        unknownError,
   }) {
     return unknownError(this);
   }
@@ -1048,9 +1135,11 @@ class _$GooglePlacesErrorUnknownErrorImpl implements _GooglePlacesErrorUnknownEr
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult? Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult? Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult? Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult? Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult? Function(_GooglePlacesErrorUnknownError value)? unknownError,
   }) {
     return unknownError?.call(this);
@@ -1059,9 +1148,11 @@ class _$GooglePlacesErrorUnknownErrorImpl implements _GooglePlacesErrorUnknownEr
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GooglePlacesErrorNoInternetConnection value)? noInternetConnection,
+    TResult Function(_GooglePlacesErrorNoInternetConnection value)?
+        noInternetConnection,
     TResult Function(_GooglePlacesErrorRequestDenied value)? requestDenied,
-    TResult Function(_GooglePlacesErrorRequestCancelled value)? requestCancelled,
+    TResult Function(_GooglePlacesErrorRequestCancelled value)?
+        requestCancelled,
     TResult Function(_GooglePlacesErrorUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
@@ -1078,6 +1169,7 @@ abstract class _GooglePlacesErrorUnknownError implements GooglePlacesError {
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$GooglePlacesErrorUnknownErrorImplCopyWith<_$GooglePlacesErrorUnknownErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GooglePlacesErrorUnknownErrorImplCopyWith<
+          _$GooglePlacesErrorUnknownErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

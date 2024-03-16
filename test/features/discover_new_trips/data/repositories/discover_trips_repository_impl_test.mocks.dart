@@ -6,10 +6,12 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart' as _i5;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
+    as _i5;
 import 'package:trip_planner/features/discover_new_trips/data/datasources/discover_trips_data_source.dart'
     as _i2;
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart' as _i6;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
+    as _i6;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i4;
 
 // ignore_for_file: type=lint
@@ -28,25 +30,30 @@ import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i4;
 /// A class which mocks [DiscoverTripsDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockDiscoverTripsDataSource extends _i1.Mock implements _i2.DiscoverTripsDataSource {
+class MockDiscoverTripsDataSource extends _i1.Mock
+    implements _i2.DiscoverTripsDataSource {
   @override
-  _i3.Future<List<_i4.Trip>> getPublicTrips(String? userId) => (super.noSuchMethod(
+  _i3.Future<List<_i4.Trip>> getPublicTrips(String? userId) =>
+      (super.noSuchMethod(
         Invocation.method(
           #getPublicTrips,
           [userId],
         ),
         returnValue: _i3.Future<List<_i4.Trip>>.value(<_i4.Trip>[]),
-        returnValueForMissingStub: _i3.Future<List<_i4.Trip>>.value(<_i4.Trip>[]),
+        returnValueForMissingStub:
+            _i3.Future<List<_i4.Trip>>.value(<_i4.Trip>[]),
       ) as _i3.Future<List<_i4.Trip>>);
 
   @override
-  _i3.Future<List<_i5.DayTrip>> getPublicDayTrips(String? tripId) => (super.noSuchMethod(
+  _i3.Future<List<_i5.DayTrip>> getPublicDayTrips(String? tripId) =>
+      (super.noSuchMethod(
         Invocation.method(
           #getPublicDayTrips,
           [tripId],
         ),
         returnValue: _i3.Future<List<_i5.DayTrip>>.value(<_i5.DayTrip>[]),
-        returnValueForMissingStub: _i3.Future<List<_i5.DayTrip>>.value(<_i5.DayTrip>[]),
+        returnValueForMissingStub:
+            _i3.Future<List<_i5.DayTrip>>.value(<_i5.DayTrip>[]),
       ) as _i3.Future<List<_i5.DayTrip>>);
 
   @override
@@ -63,6 +70,7 @@ class MockDiscoverTripsDataSource extends _i1.Mock implements _i2.DiscoverTripsD
           ],
         ),
         returnValue: _i3.Future<List<_i6.TripStop>>.value(<_i6.TripStop>[]),
-        returnValueForMissingStub: _i3.Future<List<_i6.TripStop>>.value(<_i6.TripStop>[]),
+        returnValueForMissingStub:
+            _i3.Future<List<_i6.TripStop>>.value(<_i6.TripStop>[]),
       ) as _i3.Future<List<_i6.TripStop>>);
 }
