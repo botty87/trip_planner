@@ -72,6 +72,7 @@ class _Body extends HookWidget {
             const StartTimeWidget(),
             const SizedBox(height: verticalSpaceS),
             const DayTripDescription(),
+            const SizedBox(height: verticalSpaceXs),
             Showcase(
               key: _showCaseKeyOne,
               title: LocaleKeys.tripStopSlideShowCaseTitle.tr(),
