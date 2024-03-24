@@ -8,12 +8,10 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i7;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart' as _i7;
 import 'package:trip_planner/features/trip_stops/domain/repositories/trip_stops_repository.dart'
     as _i3;
-import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
-    as _i5;
+import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart' as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -41,8 +39,7 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// A class which mocks [TripStopsRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTripStopsRepository extends _i1.Mock
-    implements _i3.TripStopsRepository {
+class MockTripStopsRepository extends _i1.Mock implements _i3.TripStopsRepository {
   @override
   _i4.Future<_i2.Either<_i5.TripStopsFailure, void>> addTripStop({
     required String? tripId,
@@ -81,9 +78,8 @@ class MockTripStopsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
           this,
           Invocation.method(
             #addTripStop,
@@ -101,26 +97,23 @@ class MockTripStopsRepository extends _i1.Mock
       ) as _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>);
 
   @override
-  _i4.Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>
-      listenTripStops({
+  _i4.Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>> listenTripStops({
     required String? tripId,
     required String? dayTripId,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #listenTripStops,
-              [],
-              {
-                #tripId: tripId,
-                #dayTripId: dayTripId,
-              },
-            ),
-            returnValue: _i4.Stream<
-                _i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>.empty(),
-            returnValueForMissingStub: _i4.Stream<
-                _i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>.empty(),
-          ) as _i4
-              .Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>);
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenTripStops,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+          },
+        ),
+        returnValue: _i4.Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>.empty(),
+        returnValueForMissingStub:
+            _i4.Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>.empty(),
+      ) as _i4.Stream<_i2.Either<_i5.TripStopsFailure, List<_i7.TripStop>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.TripStopsFailure, void>> updateTripStopsIndexes({
@@ -151,9 +144,8 @@ class MockTripStopsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
           this,
           Invocation.method(
             #updateTripStopsIndexes,
@@ -199,9 +191,8 @@ class MockTripStopsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
           this,
           Invocation.method(
             #updateTravelTime,
@@ -248,9 +239,8 @@ class MockTripStopsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
           this,
           Invocation.method(
             #updateTripStopDone,
@@ -297,9 +287,8 @@ class MockTripStopsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
           this,
           Invocation.method(
             #updateTripStopNote,
@@ -343,9 +332,8 @@ class MockTripStopsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
           this,
           Invocation.method(
             #deleteTripStop,
@@ -400,9 +388,8 @@ class MockTripStopsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
-                _FakeEither_0<_i5.TripStopsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripStopsFailure, void>>.value(
+            _FakeEither_0<_i5.TripStopsFailure, void>(
           this,
           Invocation.method(
             #updateTripStop,

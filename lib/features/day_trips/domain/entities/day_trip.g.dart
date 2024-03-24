@@ -6,8 +6,7 @@ part of 'day_trip.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
-    _$DayTripImpl(
+_$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) => _$DayTripImpl(
       index: json['index'] as int,
       description: json['description'] as String?,
       startTime: json['startTime'] == null
@@ -16,14 +15,12 @@ _$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
       tripStopsDirections: (json['tripStopsDirections'] as List<dynamic>?)
           ?.map((e) => TripStopsDirections.fromJson(e as Map<String, dynamic>))
           .toList(),
-      tripStopsDirectionsUpToDate:
-          json['tripStopsDirectionsUpToDate'] as bool? ?? false,
+      tripStopsDirectionsUpToDate: json['tripStopsDirectionsUpToDate'] as bool? ?? false,
       travelMode: json['travelMode'] == null
           ? TravelMode.driving
           : travelModeFromInt(json['travelMode'] as int),
       showDirections: json['showDirections'] as bool? ?? true,
-      useDifferentDirectionsColors:
-          json['useDifferentDirectionsColors'] as bool? ?? true,
+      useDifferentDirectionsColors: json['useDifferentDirectionsColors'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) {
@@ -39,8 +36,8 @@ Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) {
     }
   }
 
-  writeNotNull('tripStopsDirections',
-      instance.tripStopsDirections?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'tripStopsDirections', instance.tripStopsDirections?.map((e) => e.toJson()).toList());
   val['tripStopsDirectionsUpToDate'] = instance.tripStopsDirectionsUpToDate;
   val['travelMode'] = travelModeToInt(instance.travelMode);
   val['showDirections'] = instance.showDirections;

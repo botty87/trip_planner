@@ -34,8 +34,7 @@ mixin _$User {
 
 /// @nodoc
 abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+  factory $UserCopyWith(User value, $Res Function(User) then) = _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
       {String id,
@@ -50,8 +49,7 @@ abstract class $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
+class _$UserCopyWithImpl<$Res, $Val extends User> implements $UserCopyWith<$Res> {
   _$UserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -116,8 +114,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 
 /// @nodoc
 abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$UserImplCopyWith(
-          _$UserImpl value, $Res Function(_$UserImpl) then) =
+  factory _$$UserImplCopyWith(_$UserImpl value, $Res Function(_$UserImpl) then) =
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -136,8 +133,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$UserImplCopyWithImpl<$Res>
-    extends _$UserCopyWithImpl<$Res, _$UserImpl>
+class __$$UserImplCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$UserImpl>
     implements _$$UserImplCopyWith<$Res> {
   __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
       : super(_value, _then);
@@ -192,8 +188,7 @@ class _$UserImpl implements _User {
       this.settings = const Settings(),
       required this.tutorialsData});
 
-  factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserImplFromJson(json);
+  factory _$UserImpl.fromJson(Map<String, dynamic> json) => _$$UserImplFromJson(json);
 
   @override
   final String id;
@@ -225,16 +220,15 @@ class _$UserImpl implements _User {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.oldTripsImported, oldTripsImported) ||
                 other.oldTripsImported == oldTripsImported) &&
-            (identical(other.settings, settings) ||
-                other.settings == settings) &&
+            (identical(other.settings, settings) || other.settings == settings) &&
             (identical(other.tutorialsData, tutorialsData) ||
                 other.tutorialsData == tutorialsData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, email, name, oldTripsImported, settings, tutorialsData);
+  int get hashCode =>
+      Object.hash(runtimeType, id, email, name, oldTripsImported, settings, tutorialsData);
 
   @JsonKey(ignore: true)
   @override
@@ -275,6 +269,5 @@ abstract class _User implements User {
   TutorialsData get tutorialsData;
   @override
   @JsonKey(ignore: true)
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserImplCopyWith<_$UserImpl> get copyWith => throw _privateConstructorUsedError;
 }

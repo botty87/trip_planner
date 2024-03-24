@@ -27,14 +27,12 @@ mixin _$TutorialsData {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TutorialsDataCopyWith<TutorialsData> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TutorialsDataCopyWith<TutorialsData> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TutorialsDataCopyWith<$Res> {
-  factory $TutorialsDataCopyWith(
-          TutorialsData value, $Res Function(TutorialsData) then) =
+  factory $TutorialsDataCopyWith(TutorialsData value, $Res Function(TutorialsData) then) =
       _$TutorialsDataCopyWithImpl<$Res, TutorialsData>;
   @useResult
   $Res call(
@@ -84,8 +82,7 @@ class _$TutorialsDataCopyWithImpl<$Res, $Val extends TutorialsData>
 }
 
 /// @nodoc
-abstract class _$$TutorialsDataImplCopyWith<$Res>
-    implements $TutorialsDataCopyWith<$Res> {
+abstract class _$$TutorialsDataImplCopyWith<$Res> implements $TutorialsDataCopyWith<$Res> {
   factory _$$TutorialsDataImplCopyWith(
           _$TutorialsDataImpl value, $Res Function(_$TutorialsDataImpl) then) =
       __$$TutorialsDataImplCopyWithImpl<$Res>;
@@ -170,12 +167,10 @@ class _$TutorialsDataImpl implements _TutorialsData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TutorialsDataImpl &&
-            (identical(other.showWelcome, showWelcome) ||
-                other.showWelcome == showWelcome) &&
+            (identical(other.showWelcome, showWelcome) || other.showWelcome == showWelcome) &&
             (identical(other.showPublicTrip, showPublicTrip) ||
                 other.showPublicTrip == showPublicTrip) &&
-            (identical(
-                    other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
+            (identical(other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
                 other.showCreateFromPublicTrip == showCreateFromPublicTrip) &&
             (identical(other.showTripStopSlide, showTripStopSlide) ||
                 other.showTripStopSlide == showTripStopSlide));
@@ -183,8 +178,8 @@ class _$TutorialsDataImpl implements _TutorialsData {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip,
-      showCreateFromPublicTrip, showTripStopSlide);
+  int get hashCode => Object.hash(
+      runtimeType, showWelcome, showPublicTrip, showCreateFromPublicTrip, showTripStopSlide);
 
   @JsonKey(ignore: true)
   @override
@@ -207,8 +202,7 @@ abstract class _TutorialsData implements TutorialsData {
       final bool showCreateFromPublicTrip,
       final bool showTripStopSlide}) = _$TutorialsDataImpl;
 
-  factory _TutorialsData.fromJson(Map<String, dynamic> json) =
-      _$TutorialsDataImpl.fromJson;
+  factory _TutorialsData.fromJson(Map<String, dynamic> json) = _$TutorialsDataImpl.fromJson;
 
   @override
   bool get showWelcome;

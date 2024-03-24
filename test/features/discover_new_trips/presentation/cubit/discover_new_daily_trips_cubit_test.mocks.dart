@@ -7,14 +7,12 @@ import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
-    as _i7;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart' as _i7;
 import 'package:trip_planner/features/discover_new_trips/domain/repositories/discover_trips_repository.dart'
     as _i2;
 import 'package:trip_planner/features/discover_new_trips/domain/usecases/get_public_day_trips.dart'
     as _i4;
-import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart'
-    as _i6;
+import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -29,8 +27,7 @@ import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_f
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeDiscoverTripsRepository_0 extends _i1.SmartFake
-    implements _i2.DiscoverTripsRepository {
+class _FakeDiscoverTripsRepository_0 extends _i1.SmartFake implements _i2.DiscoverTripsRepository {
   _FakeDiscoverTripsRepository_0(
     Object parent,
     Invocation parentInvocation,
@@ -75,8 +72,7 @@ class MockGetPublicDayTrips extends _i1.Mock implements _i4.GetPublicDayTrips {
           #call,
           [params],
         ),
-        returnValue: _i5.Future<
-                _i3.Either<_i6.DiscoverTripsFailure, List<_i7.DayTrip>>>.value(
+        returnValue: _i5.Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.DayTrip>>>.value(
             _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.DayTrip>>(
           this,
           Invocation.method(
@@ -84,9 +80,9 @@ class MockGetPublicDayTrips extends _i1.Mock implements _i4.GetPublicDayTrips {
             [params],
           ),
         )),
-        returnValueForMissingStub: _i5.Future<
-                _i3.Either<_i6.DiscoverTripsFailure, List<_i7.DayTrip>>>.value(
-            _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.DayTrip>>(
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.DayTrip>>>.value(
+                _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.DayTrip>>(
           this,
           Invocation.method(
             #call,

@@ -8,12 +8,9 @@ import 'dart:async' as _i3;
 import 'package:flutter/material.dart' as _i5;
 import 'package:flutter_polyline_points/flutter_polyline_points.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart'
-    as _i2;
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
-    as _i4;
-import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart'
-    as _i6;
+import 'package:trip_planner/features/day_trips/data/datasources/day_trips_data_source.dart' as _i2;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart' as _i4;
+import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -31,8 +28,7 @@ import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_direc
 /// A class which mocks [DayTripsDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockDayTripsDataSource extends _i1.Mock
-    implements _i2.DayTripsDataSource {
+class MockDayTripsDataSource extends _i1.Mock implements _i2.DayTripsDataSource {
   @override
   _i3.Future<void> addDayTrip({
     required String? tripId,
@@ -52,8 +48,7 @@ class MockDayTripsDataSource extends _i1.Mock
       ) as _i3.Future<void>);
 
   @override
-  _i3.Stream<List<_i4.DayTrip>> listenDayTrips(String? tripId) =>
-      (super.noSuchMethod(
+  _i3.Stream<List<_i4.DayTrip>> listenDayTrips(String? tripId) => (super.noSuchMethod(
         Invocation.method(
           #listenDayTrips,
           [tripId],

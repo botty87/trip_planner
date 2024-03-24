@@ -46,7 +46,7 @@ void main() {
       Stream.value(tTripStopStateNormal),
       initialState: tTripStopStateNormal,
     );
-    
+
     final builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: [
         Device.phone,

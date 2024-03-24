@@ -74,7 +74,7 @@ void main() {
       Stream.fromIterable([tBackgroundsState]),
       initialState: tBackgroundsState,
     );
-    
+
     final builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: [
         Device.phone,

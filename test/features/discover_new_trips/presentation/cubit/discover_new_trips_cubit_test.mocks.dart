@@ -11,8 +11,7 @@ import 'package:trip_planner/features/discover_new_trips/domain/repositories/dis
     as _i2;
 import 'package:trip_planner/features/discover_new_trips/domain/usecases/get_public_trips.dart'
     as _i4;
-import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart'
-    as _i6;
+import 'package:trip_planner/features/discover_new_trips/errors/discover_trips_failure.dart' as _i6;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i7;
 
 // ignore_for_file: type=lint
@@ -28,8 +27,7 @@ import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i7;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeDiscoverTripsRepository_0 extends _i1.SmartFake
-    implements _i2.DiscoverTripsRepository {
+class _FakeDiscoverTripsRepository_0 extends _i1.SmartFake implements _i2.DiscoverTripsRepository {
   _FakeDiscoverTripsRepository_0(
     Object parent,
     Invocation parentInvocation,
@@ -74,8 +72,7 @@ class MockGetPublicTrips extends _i1.Mock implements _i4.GetPublicTrips {
           #call,
           [params],
         ),
-        returnValue: _i5
-            .Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.Trip>>>.value(
+        returnValue: _i5.Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.Trip>>>.value(
             _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.Trip>>(
           this,
           Invocation.method(
@@ -83,9 +80,9 @@ class MockGetPublicTrips extends _i1.Mock implements _i4.GetPublicTrips {
             [params],
           ),
         )),
-        returnValueForMissingStub: _i5
-            .Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.Trip>>>.value(
-            _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.Trip>>(
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.DiscoverTripsFailure, List<_i7.Trip>>>.value(
+                _FakeEither_1<_i6.DiscoverTripsFailure, List<_i7.Trip>>(
           this,
           Invocation.method(
             #call,

@@ -8,8 +8,7 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i6;
-import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
-    as _i3;
+import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart' as _i3;
 import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i5;
 
 // ignore_for_file: type=lint
@@ -40,8 +39,7 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// See the documentation for Mockito's code generation for more information.
 class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
   @override
-  _i4.Future<_i2.Either<_i5.TripsFailure, void>> createTrip(_i6.Trip? trip) =>
-      (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.TripsFailure, void>> createTrip(_i6.Trip? trip) => (super.noSuchMethod(
         Invocation.method(
           #createTrip,
           [trip],
@@ -54,9 +52,8 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
             [trip],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
-                _FakeEither_0<_i5.TripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+            _FakeEither_0<_i5.TripsFailure, void>(
           this,
           Invocation.method(
             #createTrip,
@@ -97,9 +94,8 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
-                _FakeEither_0<_i5.TripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+            _FakeEither_0<_i5.TripsFailure, void>(
           this,
           Invocation.method(
             #createFromExistingTrip,
@@ -115,17 +111,14 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
       ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
 
   @override
-  _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>> listenTrips(
-          String? userId) =>
+  _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>> listenTrips(String? userId) =>
       (super.noSuchMethod(
         Invocation.method(
           #listenTrips,
           [userId],
         ),
-        returnValue:
-            _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>.empty(),
-        returnValueForMissingStub:
-            _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>.empty(),
+        returnValue: _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>.empty(),
+        returnValueForMissingStub: _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>.empty(),
       ) as _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>);
 
   @override
@@ -164,9 +157,8 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
             ],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
-                _FakeEither_0<_i5.TripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+            _FakeEither_0<_i5.TripsFailure, void>(
           this,
           Invocation.method(
             #updateTrip,
@@ -183,8 +175,7 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
       ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.TripsFailure, void>> deleteTrip(_i6.Trip? trip) =>
-      (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.TripsFailure, void>> deleteTrip(_i6.Trip? trip) => (super.noSuchMethod(
         Invocation.method(
           #deleteTrip,
           [trip],
@@ -197,9 +188,8 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
             [trip],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
-                _FakeEither_0<_i5.TripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+            _FakeEither_0<_i5.TripsFailure, void>(
           this,
           Invocation.method(
             #deleteTrip,
@@ -209,8 +199,7 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
       ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.TripsFailure, void>> deleteAllTrips(
-          String? userId) =>
+  _i4.Future<_i2.Either<_i5.TripsFailure, void>> deleteAllTrips(String? userId) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteAllTrips,
@@ -224,9 +213,8 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
             [userId],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
-                _FakeEither_0<_i5.TripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.TripsFailure, void>>.value(
+            _FakeEither_0<_i5.TripsFailure, void>(
           this,
           Invocation.method(
             #deleteAllTrips,

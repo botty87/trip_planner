@@ -58,8 +58,7 @@ mixin _$TripsFailure {
 
 /// @nodoc
 abstract class $TripsFailureCopyWith<$Res> {
-  factory $TripsFailureCopyWith(
-          TripsFailure value, $Res Function(TripsFailure) then) =
+  factory $TripsFailureCopyWith(TripsFailure value, $Res Function(TripsFailure) then) =
       _$TripsFailureCopyWithImpl<$Res, TripsFailure>;
 }
 
@@ -209,8 +208,8 @@ abstract class _TripsFailure implements TripsFailure {
 
 /// @nodoc
 abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
-  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
-          $Res Function(_$NoInternetConnectionImpl) then) =
+  factory _$$NoInternetConnectionImplCopyWith(
+          _$NoInternetConnectionImpl value, $Res Function(_$NoInternetConnectionImpl) then) =
       __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
@@ -218,8 +217,8 @@ abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
 class __$$NoInternetConnectionImplCopyWithImpl<$Res>
     extends _$TripsFailureCopyWithImpl<$Res, _$NoInternetConnectionImpl>
     implements _$$NoInternetConnectionImplCopyWith<$Res> {
-  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
-      $Res Function(_$NoInternetConnectionImpl) _then)
+  __$$NoInternetConnectionImplCopyWithImpl(
+      _$NoInternetConnectionImpl _value, $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 }
 
@@ -236,8 +235,7 @@ class _$NoInternetConnectionImpl implements _NoInternetConnection {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NoInternetConnectionImpl);
+        (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
   }
 
   @override

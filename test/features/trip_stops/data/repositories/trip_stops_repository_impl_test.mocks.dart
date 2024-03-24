@@ -9,8 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/trip_stops/data/datasources/trip_stops_data_source.dart'
     as _i2;
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
-    as _i5;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart' as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -28,8 +27,7 @@ import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
 /// A class which mocks [TripStopsDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTripStopsDataSource extends _i1.Mock
-    implements _i2.TripStopsDataSource {
+class MockTripStopsDataSource extends _i1.Mock implements _i2.TripStopsDataSource {
   @override
   _i3.Future<void> addTripStop({
     required String? tripId,

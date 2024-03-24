@@ -27,8 +27,7 @@ mixin _$DayTrip {
   @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
   TimeOfDay get startTime => throw _privateConstructorUsedError;
   @JsonKey(includeIfNull: false)
-  List<TripStopsDirections>? get tripStopsDirections =>
-      throw _privateConstructorUsedError;
+  List<TripStopsDirections>? get tripStopsDirections => throw _privateConstructorUsedError;
   bool get tripStopsDirectionsUpToDate => throw _privateConstructorUsedError;
   @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
   TravelMode get travelMode => throw _privateConstructorUsedError;
@@ -49,20 +48,16 @@ abstract class $DayTripCopyWith<$Res> {
       {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       int index,
       String? description,
-      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      TimeOfDay startTime,
-      @JsonKey(includeIfNull: false)
-      List<TripStopsDirections>? tripStopsDirections,
+      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap) TimeOfDay startTime,
+      @JsonKey(includeIfNull: false) List<TripStopsDirections>? tripStopsDirections,
       bool tripStopsDirectionsUpToDate,
-      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      TravelMode travelMode,
+      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) TravelMode travelMode,
       bool showDirections,
       bool useDifferentDirectionsColors});
 }
 
 /// @nodoc
-class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
-    implements $DayTripCopyWith<$Res> {
+class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip> implements $DayTripCopyWith<$Res> {
   _$DayTripCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -126,8 +121,7 @@ class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
 
 /// @nodoc
 abstract class _$$DayTripImplCopyWith<$Res> implements $DayTripCopyWith<$Res> {
-  factory _$$DayTripImplCopyWith(
-          _$DayTripImpl value, $Res Function(_$DayTripImpl) then) =
+  factory _$$DayTripImplCopyWith(_$DayTripImpl value, $Res Function(_$DayTripImpl) then) =
       __$$DayTripImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -135,23 +129,18 @@ abstract class _$$DayTripImplCopyWith<$Res> implements $DayTripCopyWith<$Res> {
       {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       int index,
       String? description,
-      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      TimeOfDay startTime,
-      @JsonKey(includeIfNull: false)
-      List<TripStopsDirections>? tripStopsDirections,
+      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap) TimeOfDay startTime,
+      @JsonKey(includeIfNull: false) List<TripStopsDirections>? tripStopsDirections,
       bool tripStopsDirectionsUpToDate,
-      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      TravelMode travelMode,
+      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) TravelMode travelMode,
       bool showDirections,
       bool useDifferentDirectionsColors});
 }
 
 /// @nodoc
-class __$$DayTripImplCopyWithImpl<$Res>
-    extends _$DayTripCopyWithImpl<$Res, _$DayTripImpl>
+class __$$DayTripImplCopyWithImpl<$Res> extends _$DayTripCopyWithImpl<$Res, _$DayTripImpl>
     implements _$$DayTripImplCopyWith<$Res> {
-  __$$DayTripImplCopyWithImpl(
-      _$DayTripImpl _value, $Res Function(_$DayTripImpl) _then)
+  __$$DayTripImplCopyWithImpl(_$DayTripImpl _value, $Res Function(_$DayTripImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -217,8 +206,7 @@ class _$DayTripImpl implements _DayTrip {
       this.description,
       @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
       this.startTime = const TimeOfDay(hour: 8, minute: 0),
-      @JsonKey(includeIfNull: false)
-      final List<TripStopsDirections>? tripStopsDirections,
+      @JsonKey(includeIfNull: false) final List<TripStopsDirections>? tripStopsDirections,
       this.tripStopsDirectionsUpToDate = false,
       @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
       this.travelMode = TravelMode.driving,
@@ -226,8 +214,7 @@ class _$DayTripImpl implements _DayTrip {
       this.useDifferentDirectionsColors = true})
       : _tripStopsDirections = tripStopsDirections;
 
-  factory _$DayTripImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DayTripImplFromJson(json);
+  factory _$DayTripImpl.fromJson(Map<String, dynamic> json) => _$$DayTripImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -245,8 +232,7 @@ class _$DayTripImpl implements _DayTrip {
   List<TripStopsDirections>? get tripStopsDirections {
     final value = _tripStopsDirections;
     if (value == null) return null;
-    if (_tripStopsDirections is EqualUnmodifiableListView)
-      return _tripStopsDirections;
+    if (_tripStopsDirections is EqualUnmodifiableListView) return _tripStopsDirections;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -276,24 +262,17 @@ class _$DayTripImpl implements _DayTrip {
             other is _$DayTripImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
+            (identical(other.description, description) || other.description == description) &&
+            (identical(other.startTime, startTime) || other.startTime == startTime) &&
             const DeepCollectionEquality()
                 .equals(other._tripStopsDirections, _tripStopsDirections) &&
-            (identical(other.tripStopsDirectionsUpToDate,
-                    tripStopsDirectionsUpToDate) ||
-                other.tripStopsDirectionsUpToDate ==
-                    tripStopsDirectionsUpToDate) &&
-            (identical(other.travelMode, travelMode) ||
-                other.travelMode == travelMode) &&
+            (identical(other.tripStopsDirectionsUpToDate, tripStopsDirectionsUpToDate) ||
+                other.tripStopsDirectionsUpToDate == tripStopsDirectionsUpToDate) &&
+            (identical(other.travelMode, travelMode) || other.travelMode == travelMode) &&
             (identical(other.showDirections, showDirections) ||
                 other.showDirections == showDirections) &&
-            (identical(other.useDifferentDirectionsColors,
-                    useDifferentDirectionsColors) ||
-                other.useDifferentDirectionsColors ==
-                    useDifferentDirectionsColors));
+            (identical(other.useDifferentDirectionsColors, useDifferentDirectionsColors) ||
+                other.useDifferentDirectionsColors == useDifferentDirectionsColors));
   }
 
   @JsonKey(ignore: true)
@@ -329,13 +308,10 @@ abstract class _DayTrip implements DayTrip {
       {@JsonKey(includeFromJson: false, includeToJson: false) final String id,
       required final int index,
       final String? description,
-      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      final TimeOfDay startTime,
-      @JsonKey(includeIfNull: false)
-      final List<TripStopsDirections>? tripStopsDirections,
+      @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap) final TimeOfDay startTime,
+      @JsonKey(includeIfNull: false) final List<TripStopsDirections>? tripStopsDirections,
       final bool tripStopsDirectionsUpToDate,
-      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      final TravelMode travelMode,
+      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) final TravelMode travelMode,
       final bool showDirections,
       final bool useDifferentDirectionsColors}) = _$DayTripImpl;
 
@@ -365,6 +341,5 @@ abstract class _DayTrip implements DayTrip {
   bool get useDifferentDirectionsColors;
   @override
   @JsonKey(ignore: true)
-  _$$DayTripImplCopyWith<_$DayTripImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DayTripImplCopyWith<_$DayTripImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -82,7 +82,7 @@ void main() {
     );
 
     final builder = DeviceBuilder()
-    ..overrideDevicesForAllScenarios(devices: [
+      ..overrideDevicesForAllScenarios(devices: [
         Device.phone,
         Device.iphone11,
         Device.tabletLandscape,

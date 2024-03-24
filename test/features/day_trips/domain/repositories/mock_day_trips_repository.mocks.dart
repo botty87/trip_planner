@@ -9,14 +9,11 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:flutter/material.dart' as _i7;
 import 'package:flutter_polyline_points/flutter_polyline_points.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
-    as _i6;
-import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart'
-    as _i8;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart' as _i6;
+import 'package:trip_planner/features/day_trips/domain/entities/trip_stops_directions.dart' as _i8;
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i3;
-import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
-    as _i5;
+import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart' as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -44,8 +41,7 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// A class which mocks [DayTripsRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockDayTripsRepository extends _i1.Mock
-    implements _i3.DayTripsRepository {
+class MockDayTripsRepository extends _i1.Mock implements _i3.DayTripsRepository {
   @override
   _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> addDayTrip({
     required String? tripId,
@@ -72,9 +68,8 @@ class MockDayTripsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                _FakeEither_0<_i5.DayTripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
           this,
           Invocation.method(
             #addDayTrip,
@@ -88,17 +83,15 @@ class MockDayTripsRepository extends _i1.Mock
       ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
 
   @override
-  _i4.Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>> listenDayTrips(
-          String? tripId) =>
+  _i4.Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>> listenDayTrips(String? tripId) =>
       (super.noSuchMethod(
         Invocation.method(
           #listenDayTrips,
           [tripId],
         ),
-        returnValue: _i4
-            .Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>.empty(),
-        returnValueForMissingStub: _i4
-            .Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>.empty(),
+        returnValue: _i4.Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>.empty(),
+        returnValueForMissingStub:
+            _i4.Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>.empty(),
       ) as _i4.Stream<_i2.Either<_i5.DayTripsFailure, List<_i6.DayTrip>>>);
 
   @override
@@ -127,9 +120,8 @@ class MockDayTripsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                _FakeEither_0<_i5.DayTripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
           this,
           Invocation.method(
             #updateDayTripsIndexes,
@@ -171,9 +163,8 @@ class MockDayTripsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                _FakeEither_0<_i5.DayTripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
           this,
           Invocation.method(
             #updateDayTrip,
@@ -216,9 +207,8 @@ class MockDayTripsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                _FakeEither_0<_i5.DayTripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
           this,
           Invocation.method(
             #updateDayTripStartTime,
@@ -258,9 +248,8 @@ class MockDayTripsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                _FakeEither_0<_i5.DayTripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
           this,
           Invocation.method(
             #deleteDayTrip,
@@ -302,9 +291,8 @@ class MockDayTripsRepository extends _i1.Mock
             },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                _FakeEither_0<_i5.DayTripsFailure, void>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
           this,
           Invocation.method(
             #saveTripStopsDirections,
@@ -331,154 +319,143 @@ class MockDayTripsRepository extends _i1.Mock
             dayTripId,
           ],
         ),
-        returnValue:
-            _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>.empty(),
-        returnValueForMissingStub:
-            _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>.empty(),
+        returnValue: _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>.empty(),
+        returnValueForMissingStub: _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>.empty(),
       ) as _i4.Stream<_i2.Either<_i5.DayTripsFailure, _i6.DayTrip>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>
-      updateTripStopsDirectionsUpToDate({
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> updateTripStopsDirectionsUpToDate({
     required String? tripId,
     required String? dayTripId,
     required bool? isUpToDate,
     _i9.TravelMode? travelMode,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #updateTripStopsDirectionsUpToDate,
-              [],
-              {
-                #tripId: tripId,
-                #dayTripId: dayTripId,
-                #isUpToDate: isUpToDate,
-                #travelMode: travelMode,
-              },
-            ),
-            returnValue:
-                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                    _FakeEither_0<_i5.DayTripsFailure, void>(
-              this,
-              Invocation.method(
-                #updateTripStopsDirectionsUpToDate,
-                [],
-                {
-                  #tripId: tripId,
-                  #dayTripId: dayTripId,
-                  #isUpToDate: isUpToDate,
-                  #travelMode: travelMode,
-                },
-              ),
-            )),
-            returnValueForMissingStub:
-                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                    _FakeEither_0<_i5.DayTripsFailure, void>(
-              this,
-              Invocation.method(
-                #updateTripStopsDirectionsUpToDate,
-                [],
-                {
-                  #tripId: tripId,
-                  #dayTripId: dayTripId,
-                  #isUpToDate: isUpToDate,
-                  #travelMode: travelMode,
-                },
-              ),
-            )),
-          ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateTripStopsDirectionsUpToDate,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #isUpToDate: isUpToDate,
+            #travelMode: travelMode,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateTripStopsDirectionsUpToDate,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #isUpToDate: isUpToDate,
+              #travelMode: travelMode,
+            },
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateTripStopsDirectionsUpToDate,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #isUpToDate: isUpToDate,
+              #travelMode: travelMode,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>
-      updateDayTripShowDirections({
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> updateDayTripShowDirections({
     required String? tripId,
     required String? dayTripId,
     required bool? showDirections,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #updateDayTripShowDirections,
-              [],
-              {
-                #tripId: tripId,
-                #dayTripId: dayTripId,
-                #showDirections: showDirections,
-              },
-            ),
-            returnValue:
-                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                    _FakeEither_0<_i5.DayTripsFailure, void>(
-              this,
-              Invocation.method(
-                #updateDayTripShowDirections,
-                [],
-                {
-                  #tripId: tripId,
-                  #dayTripId: dayTripId,
-                  #showDirections: showDirections,
-                },
-              ),
-            )),
-            returnValueForMissingStub:
-                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                    _FakeEither_0<_i5.DayTripsFailure, void>(
-              this,
-              Invocation.method(
-                #updateDayTripShowDirections,
-                [],
-                {
-                  #tripId: tripId,
-                  #dayTripId: dayTripId,
-                  #showDirections: showDirections,
-                },
-              ),
-            )),
-          ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDayTripShowDirections,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #showDirections: showDirections,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTripShowDirections,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #showDirections: showDirections,
+            },
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTripShowDirections,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #showDirections: showDirections,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>
-      updateDayTripUseDifferentDirectionsColors({
+  _i4.Future<_i2.Either<_i5.DayTripsFailure, void>> updateDayTripUseDifferentDirectionsColors({
     required String? tripId,
     required String? dayTripId,
     required bool? useDifferentDirectionsColors,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #updateDayTripUseDifferentDirectionsColors,
-              [],
-              {
-                #tripId: tripId,
-                #dayTripId: dayTripId,
-                #useDifferentDirectionsColors: useDifferentDirectionsColors,
-              },
-            ),
-            returnValue:
-                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                    _FakeEither_0<_i5.DayTripsFailure, void>(
-              this,
-              Invocation.method(
-                #updateDayTripUseDifferentDirectionsColors,
-                [],
-                {
-                  #tripId: tripId,
-                  #dayTripId: dayTripId,
-                  #useDifferentDirectionsColors: useDifferentDirectionsColors,
-                },
-              ),
-            )),
-            returnValueForMissingStub:
-                _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
-                    _FakeEither_0<_i5.DayTripsFailure, void>(
-              this,
-              Invocation.method(
-                #updateDayTripUseDifferentDirectionsColors,
-                [],
-                {
-                  #tripId: tripId,
-                  #dayTripId: dayTripId,
-                  #useDifferentDirectionsColors: useDifferentDirectionsColors,
-                },
-              ),
-            )),
-          ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateDayTripUseDifferentDirectionsColors,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #useDifferentDirectionsColors: useDifferentDirectionsColors,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTripUseDifferentDirectionsColors,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #useDifferentDirectionsColors: useDifferentDirectionsColors,
+            },
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>.value(
+            _FakeEither_0<_i5.DayTripsFailure, void>(
+          this,
+          Invocation.method(
+            #updateDayTripUseDifferentDirectionsColors,
+            [],
+            {
+              #tripId: tripId,
+              #dayTripId: dayTripId,
+              #useDifferentDirectionsColors: useDifferentDirectionsColors,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.DayTripsFailure, void>>);
 }

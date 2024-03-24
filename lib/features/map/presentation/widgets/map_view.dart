@@ -1,6 +1,6 @@
 part of 'map_widget.dart';
 
-class _MapView extends StatelessWidget {
+class _MapView extends HookWidget {
   final List<MapPlace>? _mapPlaces;
   final Function(MapPlace mapPlace)? _onMarkerTap;
   final bool _useDifferentColorsForDone;
@@ -28,134 +28,157 @@ class _MapView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final markers = _getMarkers(context);
+    final markers = useStreamController<Set<Marker>>();
 
-    final CameraPosition initialCameraPosition;
+    MarkerGenerator(markerWidgets(context), (bitmaps) {
+      markers.add(mapBitmapsToMarkers(bitmaps, context));
+    }).generate(context);
 
-    if (_mapPlaces == null) {
-      initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
-    } else if (_mapPlaces!.length == 1) {
-      context.read<MapCubit>().updateMarkerPosition(_mapPlaces!.first.location);
-      initialCameraPosition = CameraPosition(target: _mapPlaces!.first.location, zoom: 15);
-    } else {
-      final LatLngBounds? markerLatLngBounds = _getLatLngBounds(markers: markers);
-      context.read<MapCubit>().updateMarkerLatLngBounds(markerLatLngBounds);
-      initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
-    }
+    return StreamBuilder<Set<Marker>>(
+        stream: markers.stream,
+        initialData: const {},
+        builder: (context, snapshot) {
+          final CameraPosition initialCameraPosition;
 
-    return CustomGoogleMapMarkerBuilder(
-      customMarkers: markers,
-      builder: (context, customMarkers) {
-        return BlocSelector<MapCubit, MapState, MapType>(
-          selector: (state) => state.mapType,
-          builder: (context, mapType) {
-            return GoogleMap(
-              mapType: mapType,
-              initialCameraPosition: initialCameraPosition,
-              onMapCreated: (controller) => context.read<MapCubit>().mapCreated(controller),
-              myLocationButtonEnabled: false,
-              zoomControlsEnabled: false,
-              markers: customMarkers ?? {},
-              polylines: _polylines,
-              mapToolbarEnabled: false,
-              compassEnabled: false,
-              gestureRecognizers: _isInsideScrollView
-                  ? <Factory<OneSequenceGestureRecognizer>>{
-                      Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
-                    }
-                  : {},
-            );
-          },
-        );
-      },
-    );
+          if (_mapPlaces == null || snapshot.data!.isEmpty) {
+            initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
+          } else if (_mapPlaces!.length == 1) {
+            context.read<MapCubit>().updateMarkerPosition(_mapPlaces!.first.location);
+            initialCameraPosition = CameraPosition(target: _mapPlaces!.first.location, zoom: 15);
+          } else {
+            final LatLngBounds? markerLatLngBounds = _getLatLngBounds(markers: snapshot.data!);
+            context.read<MapCubit>().updateMarkerLatLngBounds(markerLatLngBounds);
+            initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
+          }
+
+          return BlocSelector<MapCubit, MapState, MapType>(
+            selector: (state) => state.mapType,
+            builder: (context, mapType) {
+              return GoogleMap(
+                mapType: mapType,
+                initialCameraPosition: initialCameraPosition,
+                onMapCreated: (controller) => context.read<MapCubit>().mapCreated(controller),
+                myLocationButtonEnabled: false,
+                zoomControlsEnabled: false,
+                markers: snapshot.data!,
+                polylines: _polylines,
+                mapToolbarEnabled: false,
+                compassEnabled: false,
+                gestureRecognizers: _isInsideScrollView
+                    ? <Factory<OneSequenceGestureRecognizer>>{
+                        Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                      }
+                    : {},
+              );
+            },
+          );
+        });
   }
 
-  List<MarkerData> _getMarkers(BuildContext context) {
-    List<MarkerData> markers = [];
+  Set<Marker> mapBitmapsToMarkers(List<Uint8List> bitmaps, BuildContext context) {
+    final markers = <Marker>{};
 
     if (_mapPlaces != null) {
-      for (int i = 0; i < _mapPlaces!.length; i++) {
-        final mapPlace = _mapPlaces![i];
+      if (_mapPlaces!.length > 1) {
+        for (int i = 0; i < _mapPlaces!.length; i++) {
+          final mapPlace = _mapPlaces![i];
 
-        late final String markerId;
-        late final InfoWindow infoWindow;
-        late final Color color;
-        late final String? label;
+          late final String markerId;
+          late final InfoWindow infoWindow;
+          late final BitmapDescriptor icon;
 
-        mapPlace.when(
-          existing: (id, name, description, location, isDone) {
-            markerId = id;
-            infoWindow = _showInfoWindow
-                ? InfoWindow(
-                    title: name,
-                    snippet: description,
-                    onTap: _onMarkerTap != null ? () => _onMarkerTap!(mapPlace) : null,
-                  )
-                : InfoWindow.noText;
-            color = (isDone && _useDifferentColorsForDone) ? Colors.green : Colors.red;
-            label = (i + 1).toString();
-          },
-          newPlace: (location) {
-            markerId = location.toString();
-            infoWindow = InfoWindow.noText;
-            color = Colors.red;
-            label = null;
-          },
-        );
+          mapPlace.when(
+            existing: (id, name, description, location, isDone) {
+              markerId = id;
+              infoWindow = _showInfoWindow
+                  ? InfoWindow(
+                      title: name,
+                      snippet: description,
+                      onTap: _onMarkerTap != null ? () => _onMarkerTap!(mapPlace) : null,
+                    )
+                  : InfoWindow.noText;
+              icon = BitmapDescriptor.fromBytes(bitmaps[i]);
+            },
+            newPlace: (location) {
+              markerId = location.toString();
+              infoWindow = InfoWindow.noText;
+              icon = BitmapDescriptor.fromBytes(bitmaps[i]);
+            },
+          );
 
-        final marker = Marker(
-          markerId: MarkerId(markerId),
-          position: mapPlace.location,
-          infoWindow: infoWindow,
-          draggable: _onMarkerDragEnd != null,
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-          onDragEnd: (value) {
-            context.read<MapCubit>().updateMarkerPosition(value);
-            _onMarkerDragEnd?.call(value);
-          },
-        );
+          final marker = Marker(
+            markerId: MarkerId(markerId),
+            position: mapPlace.location,
+            infoWindow: infoWindow,
+            draggable: _onMarkerDragEnd != null,
+            icon: icon,
+            onDragEnd: (value) {
+              context.read<MapCubit>().updateMarkerPosition(value);
+              _onMarkerDragEnd?.call(value);
+            },
+          );
 
-        final markerData = MarkerData(
-            marker: marker,
-            //Draw a ruonded icon with the color of the marker and white text and border
-            child: label != null
-                ? Container(
-                    width: 30,
-                    height: 30,
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      color: color,
-                      borderRadius: BorderRadius.circular(30),
-                      border: Border.all(color: Colors.white, width: 2),
-                    ),
-                    child: Center(
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          (i + 1).toString(),
-                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  )
-                : Icon(
-                    Icons.location_on,
-                    color: color,
-                    size: 40,
-                  ));
-
-        markers.add(markerData);
+          markers.add(marker);
+        }
       }
     }
 
     return markers;
   }
 
-  LatLngBounds? _getLatLngBounds({required List<MarkerData> markers}) {
-    return markers.isNotEmpty
-        ? markers.map((e) => e.marker.position).toList().getLatLngBounds()
-        : null;
+  LatLngBounds? _getLatLngBounds({required Set<Marker> markers}) {
+    return markers.isNotEmpty ? markers.map((e) => e.position).toList().getLatLngBounds() : null;
+  }
+
+  List<Widget> markerWidgets(BuildContext context) {
+    List<Widget> markerWidgets = [];
+
+    ResponsiveValue<double> markerSize = ResponsiveValue(
+      context,
+      defaultValue: 50,
+      conditionalValues: [
+        const Condition.largerThan(name: TABLET, value: 25),
+        const Condition.largerThan(name: DESKTOP, value: 18),
+      ],
+    );
+
+    for (int i = 0; i < _mapPlaces!.length; i++) {
+      final color = _mapPlaces![i].when(
+        existing: (_, __, ___, ____, isDone) => _useDifferentColorsForDone
+            ? isDone
+                ? Colors.green
+                : Colors.red
+            : Colors.red,
+        newPlace: (_) => Colors.red,
+      );
+
+      markerWidgets.add(
+        Container(
+          width: markerSize.value,
+          height: markerSize.value,
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(30),
+            border: Border.all(color: Colors.white, width: 2),
+          ),
+          child: Center(
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: Text(
+                (i + 1).toString(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    return markerWidgets;
   }
 }

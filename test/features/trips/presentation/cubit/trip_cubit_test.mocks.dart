@@ -10,22 +10,16 @@ import 'package:firebase_core/firebase_core.dart' as _i5;
 import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i14;
 import 'package:flutter/material.dart' as _i15;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
-    as _i12;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart' as _i12;
 import 'package:trip_planner/features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i4;
-import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trips.dart'
-    as _i10;
+import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trips.dart' as _i10;
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trips_indexes.dart'
     as _i13;
-import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
-    as _i11;
-import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
-    as _i2;
-import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart'
-    as _i9;
-import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart'
-    as _i6;
+import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart' as _i11;
+import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart' as _i2;
+import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart' as _i9;
+import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart' as _i6;
 import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i8;
 
 // ignore_for_file: type=lint
@@ -41,8 +35,7 @@ import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i8;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeTripsRepository_0 extends _i1.SmartFake
-    implements _i2.TripsRepository {
+class _FakeTripsRepository_0 extends _i1.SmartFake implements _i2.TripsRepository {
   _FakeTripsRepository_0(
     Object parent,
     Invocation parentInvocation,
@@ -62,8 +55,7 @@ class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
         );
 }
 
-class _FakeDayTripsRepository_2 extends _i1.SmartFake
-    implements _i4.DayTripsRepository {
+class _FakeDayTripsRepository_2 extends _i1.SmartFake implements _i4.DayTripsRepository {
   _FakeDayTripsRepository_2(
     Object parent,
     Invocation parentInvocation,
@@ -101,8 +93,7 @@ class MockUpdateTrip extends _i1.Mock implements _i6.UpdateTrip {
       ) as _i2.TripsRepository);
 
   @override
-  _i7.Future<_i3.Either<_i8.TripsFailure, void>> call(
-          _i6.UpdateTripParams? params) =>
+  _i7.Future<_i3.Either<_i8.TripsFailure, void>> call(_i6.UpdateTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -116,9 +107,8 @@ class MockUpdateTrip extends _i1.Mock implements _i6.UpdateTrip {
             [params],
           ),
         )),
-        returnValueForMissingStub:
-            _i7.Future<_i3.Either<_i8.TripsFailure, void>>.value(
-                _FakeEither_1<_i8.TripsFailure, void>(
+        returnValueForMissingStub: _i7.Future<_i3.Either<_i8.TripsFailure, void>>.value(
+            _FakeEither_1<_i8.TripsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -146,8 +136,7 @@ class MockDeleteTrip extends _i1.Mock implements _i9.DeleteTrip {
       ) as _i2.TripsRepository);
 
   @override
-  _i7.Future<_i3.Either<_i8.TripsFailure, void>> call(
-          _i9.DeleteTripParams? params) =>
+  _i7.Future<_i3.Either<_i8.TripsFailure, void>> call(_i9.DeleteTripParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -161,9 +150,8 @@ class MockDeleteTrip extends _i1.Mock implements _i9.DeleteTrip {
             [params],
           ),
         )),
-        returnValueForMissingStub:
-            _i7.Future<_i3.Either<_i8.TripsFailure, void>>.value(
-                _FakeEither_1<_i8.TripsFailure, void>(
+        returnValueForMissingStub: _i7.Future<_i3.Either<_i8.TripsFailure, void>>.value(
+            _FakeEither_1<_i8.TripsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -198,18 +186,16 @@ class MockListenDayTrips extends _i1.Mock implements _i10.ListenDayTrips {
           #call,
           [params],
         ),
-        returnValue: _i7.Stream<
-            _i3.Either<_i11.DayTripsFailure, List<_i12.DayTrip>>>.empty(),
-        returnValueForMissingStub: _i7.Stream<
-            _i3.Either<_i11.DayTripsFailure, List<_i12.DayTrip>>>.empty(),
+        returnValue: _i7.Stream<_i3.Either<_i11.DayTripsFailure, List<_i12.DayTrip>>>.empty(),
+        returnValueForMissingStub:
+            _i7.Stream<_i3.Either<_i11.DayTripsFailure, List<_i12.DayTrip>>>.empty(),
       ) as _i7.Stream<_i3.Either<_i11.DayTripsFailure, List<_i12.DayTrip>>>);
 }
 
 /// A class which mocks [UpdateDayTripsIndexes].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUpdateDayTripsIndexes extends _i1.Mock
-    implements _i13.UpdateDayTripsIndexes {
+class MockUpdateDayTripsIndexes extends _i1.Mock implements _i13.UpdateDayTripsIndexes {
   @override
   _i7.Future<_i3.Either<_i11.DayTripsFailure, void>> call(
           _i13.UpdateDayTripsIndexesParams? params) =>
@@ -226,9 +212,8 @@ class MockUpdateDayTripsIndexes extends _i1.Mock
             [params],
           ),
         )),
-        returnValueForMissingStub:
-            _i7.Future<_i3.Either<_i11.DayTripsFailure, void>>.value(
-                _FakeEither_1<_i11.DayTripsFailure, void>(
+        returnValueForMissingStub: _i7.Future<_i3.Either<_i11.DayTripsFailure, void>>.value(
+            _FakeEither_1<_i11.DayTripsFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -241,8 +226,7 @@ class MockUpdateDayTripsIndexes extends _i1.Mock
 /// A class which mocks [FirebaseCrashlytics].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockFirebaseCrashlytics extends _i1.Mock
-    implements _i14.FirebaseCrashlytics {
+class MockFirebaseCrashlytics extends _i1.Mock implements _i14.FirebaseCrashlytics {
   @override
   _i5.FirebaseApp get app => (super.noSuchMethod(
         Invocation.getter(#app),
@@ -361,8 +345,7 @@ class MockFirebaseCrashlytics extends _i1.Mock
       ) as _i7.Future<void>);
 
   @override
-  _i7.Future<void> recordFlutterFatalError(
-          _i15.FlutterErrorDetails? flutterErrorDetails) =>
+  _i7.Future<void> recordFlutterFatalError(_i15.FlutterErrorDetails? flutterErrorDetails) =>
       (super.noSuchMethod(
         Invocation.method(
           #recordFlutterFatalError,
@@ -393,8 +376,7 @@ class MockFirebaseCrashlytics extends _i1.Mock
       ) as _i7.Future<void>);
 
   @override
-  _i7.Future<void> setCrashlyticsCollectionEnabled(bool? enabled) =>
-      (super.noSuchMethod(
+  _i7.Future<void> setCrashlyticsCollectionEnabled(bool? enabled) => (super.noSuchMethod(
         Invocation.method(
           #setCrashlyticsCollectionEnabled,
           [enabled],

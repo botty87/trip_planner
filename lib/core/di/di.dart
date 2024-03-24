@@ -82,11 +82,11 @@ abstract class GooglePlacesModule {
 abstract class DeviceModule {
   @preResolve
   @Named(deviceLocaleKey)
-  Future<Locale> get deviceLocale async {
+  Future<Locale> deviceLocale() async {
     final deviceLocale = await Devicelocale.currentAsLocale;
     return deviceLocale ?? const Locale('en');
   }
 
   @preResolve
-  Future<PackageInfo> get packageInfo => PackageInfo.fromPlatform();
+  Future<PackageInfo> packageInfo() => PackageInfo.fromPlatform();
 }

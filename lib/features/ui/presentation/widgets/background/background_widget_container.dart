@@ -26,9 +26,7 @@ class BackgroundWidgetContainer extends StatelessWidget with BackgroundImageMixi
               borderRadius: BorderRadius.circular(8),
             )
           : null,
-      padding: hasBackgroundImage
-          ? padding
-          : const EdgeInsets.all(0),
+      padding: hasBackgroundImage ? padding : const EdgeInsets.all(0),
       child: child,
     );
   }

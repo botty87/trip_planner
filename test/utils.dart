@@ -58,7 +58,8 @@ const tTripStop = TripStop(
 
 final tDayTripStateLoaded = DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: []);
 
-final tTripStopStateNormal = TripStopState.normal(tripStop: tTripStop, trip: tTrip, dayTrip: tDayTrip);
+final tTripStopStateNormal =
+    TripStopState.normal(tripStop: tTripStop, trip: tTrip, dayTrip: tDayTrip);
 
 class TestUtils {
   static Widget defaultWidget({

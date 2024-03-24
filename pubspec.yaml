@@ -37,7 +37,7 @@ dependencies:
   auto_route: ^7.4.0
   cached_network_image: ^3.3.1
   calendar_date_picker2: ^0.5.2
-  cloud_firestore: ^4.15.6
+  cloud_firestore: ^4.15.9
   collection: ^1.18.0
   country_icons: ^3.0.0
   cupertino_icons: ^1.0.2
@@ -52,11 +52,11 @@ dependencies:
   email_validator: ^2.1.17
   envied: ^0.5.2
   equatable: ^2.0.5
-  firebase_auth: ^4.17.5
-  firebase_core: ^2.25.4
-  firebase_crashlytics: ^3.4.5
-  firebase_database: ^10.3.6
-  firebase_storage: ^11.6.6
+  firebase_auth: ^4.17.9
+  firebase_core: ^2.27.1
+  firebase_crashlytics: ^3.4.19
+  firebase_database: ^10.4.10
+  firebase_storage: ^11.6.10
   flutter:
     sdk: flutter
   flutter_animate: ^4.2.0+1
@@ -74,17 +74,17 @@ dependencies:
   freezed_annotation: ^2.4.1
   get_it: ^7.6.0
   google_fonts: ^6.1.0
-  google_maps_flutter: ^2.5.3
-  injectable: ^2.3.5
+  google_maps_flutter: ^2.6.0
+  injectable: ^2.4.0
   internet_connection_checker_plus: ^2.0.0
-  introduction_screen: ^3.1.12
+  introduction_screen: ^3.1.13
   json_annotation: ^4.8.1
   logger: ^2.0.1
   map_launcher: ^3.0.1
   material_design_icons_flutter: ^7.0.7296
   mockito: ^5.4.1
   mocktail: ^1.0.3
-  package_info_plus: ^5.0.1
+  package_info_plus: ^6.0.0
   password_text_field: ^2.0.0
   path_provider: ^2.1.2
   quiver: ^3.2.1
@@ -115,13 +115,13 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.2
   golden_toolkit: ^0.15.0
-  injectable_generator: ^2.1.6
+  injectable_generator: ^2.6.1
   json_serializable: ^6.7.0
   patrol: ^3.5.2
   vector_graphics_compiler: ^1.1.11+1
 
 dependency_overrides:
-  flutter_keyboard_visibility: ^6.0.0
+  meta: ^1.12.0
 
 flutter_launcher_icons:
   android: "launcher_icon"

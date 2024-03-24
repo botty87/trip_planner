@@ -31,16 +31,15 @@ mixin _$BackgroundsContainer {
 
 /// @nodoc
 abstract class $BackgroundsContainerCopyWith<$Res> {
-  factory $BackgroundsContainerCopyWith(BackgroundsContainer value,
-          $Res Function(BackgroundsContainer) then) =
+  factory $BackgroundsContainerCopyWith(
+          BackgroundsContainer value, $Res Function(BackgroundsContainer) then) =
       _$BackgroundsContainerCopyWithImpl<$Res, BackgroundsContainer>;
   @useResult
   $Res call({int? lightBackgroundIndex, int? darkBackgroundIndex});
 }
 
 /// @nodoc
-class _$BackgroundsContainerCopyWithImpl<$Res,
-        $Val extends BackgroundsContainer>
+class _$BackgroundsContainerCopyWithImpl<$Res, $Val extends BackgroundsContainer>
     implements $BackgroundsContainerCopyWith<$Res> {
   _$BackgroundsContainerCopyWithImpl(this._value, this._then);
 
@@ -71,8 +70,8 @@ class _$BackgroundsContainerCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$BackgroundsContainerImplCopyWith<$Res>
     implements $BackgroundsContainerCopyWith<$Res> {
-  factory _$$BackgroundsContainerImplCopyWith(_$BackgroundsContainerImpl value,
-          $Res Function(_$BackgroundsContainerImpl) then) =
+  factory _$$BackgroundsContainerImplCopyWith(
+          _$BackgroundsContainerImpl value, $Res Function(_$BackgroundsContainerImpl) then) =
       __$$BackgroundsContainerImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -83,8 +82,8 @@ abstract class _$$BackgroundsContainerImplCopyWith<$Res>
 class __$$BackgroundsContainerImplCopyWithImpl<$Res>
     extends _$BackgroundsContainerCopyWithImpl<$Res, _$BackgroundsContainerImpl>
     implements _$$BackgroundsContainerImplCopyWith<$Res> {
-  __$$BackgroundsContainerImplCopyWithImpl(_$BackgroundsContainerImpl _value,
-      $Res Function(_$BackgroundsContainerImpl) _then)
+  __$$BackgroundsContainerImplCopyWithImpl(
+      _$BackgroundsContainerImpl _value, $Res Function(_$BackgroundsContainerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,8 +108,7 @@ class __$$BackgroundsContainerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BackgroundsContainerImpl implements _BackgroundsContainer {
-  const _$BackgroundsContainerImpl(
-      {this.lightBackgroundIndex, this.darkBackgroundIndex});
+  const _$BackgroundsContainerImpl({this.lightBackgroundIndex, this.darkBackgroundIndex});
 
   factory _$BackgroundsContainerImpl.fromJson(Map<String, dynamic> json) =>
       _$$BackgroundsContainerImplFromJson(json);
@@ -138,16 +136,13 @@ class _$BackgroundsContainerImpl implements _BackgroundsContainer {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, lightBackgroundIndex, darkBackgroundIndex);
+  int get hashCode => Object.hash(runtimeType, lightBackgroundIndex, darkBackgroundIndex);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl>
-      get copyWith =>
-          __$$BackgroundsContainerImplCopyWithImpl<_$BackgroundsContainerImpl>(
-              this, _$identity);
+  _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl> get copyWith =>
+      __$$BackgroundsContainerImplCopyWithImpl<_$BackgroundsContainerImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -171,6 +166,6 @@ abstract class _BackgroundsContainer implements BackgroundsContainer {
   int? get darkBackgroundIndex;
   @override
   @JsonKey(ignore: true)
-  _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

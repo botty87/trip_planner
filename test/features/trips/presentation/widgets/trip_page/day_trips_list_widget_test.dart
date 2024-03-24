@@ -73,7 +73,7 @@ void main() {
         Stream.value(TripState.loaded(trip: tTrip, dayTrips: tDayTrips)),
         initialState: TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
       );
-      
+
       final builder = DeviceBuilder()
         ..overrideDevicesForAllScenarios(devices: [
           Device.phone,

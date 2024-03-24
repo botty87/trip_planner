@@ -31,19 +31,16 @@ class $AssetsGoogleFontsGen {
   String get jostExtraBold => 'assets/google_fonts/Jost-ExtraBold.ttf';
 
   /// File path: assets/google_fonts/Jost-ExtraBoldItalic.ttf
-  String get jostExtraBoldItalic =>
-      'assets/google_fonts/Jost-ExtraBoldItalic.ttf';
+  String get jostExtraBoldItalic => 'assets/google_fonts/Jost-ExtraBoldItalic.ttf';
 
   /// File path: assets/google_fonts/Jost-ExtraLight.ttf
   String get jostExtraLight => 'assets/google_fonts/Jost-ExtraLight.ttf';
 
   /// File path: assets/google_fonts/Jost-ExtraLightItalic.ttf
-  String get jostExtraLightItalic =>
-      'assets/google_fonts/Jost-ExtraLightItalic.ttf';
+  String get jostExtraLightItalic => 'assets/google_fonts/Jost-ExtraLightItalic.ttf';
 
   /// File path: assets/google_fonts/Jost-Italic-VariableFont_wght.ttf
-  String get jostItalicVariableFontWght =>
-      'assets/google_fonts/Jost-Italic-VariableFont_wght.ttf';
+  String get jostItalicVariableFontWght => 'assets/google_fonts/Jost-Italic-VariableFont_wght.ttf';
 
   /// File path: assets/google_fonts/Jost-Italic.ttf
   String get jostItalic => 'assets/google_fonts/Jost-Italic.ttf';
@@ -67,8 +64,7 @@ class $AssetsGoogleFontsGen {
   String get jostSemiBold => 'assets/google_fonts/Jost-SemiBold.ttf';
 
   /// File path: assets/google_fonts/Jost-SemiBoldItalic.ttf
-  String get jostSemiBoldItalic =>
-      'assets/google_fonts/Jost-SemiBoldItalic.ttf';
+  String get jostSemiBoldItalic => 'assets/google_fonts/Jost-SemiBoldItalic.ttf';
 
   /// File path: assets/google_fonts/Jost-Thin.ttf
   String get jostThin => 'assets/google_fonts/Jost-Thin.ttf';
@@ -77,12 +73,10 @@ class $AssetsGoogleFontsGen {
   String get jostThinItalic => 'assets/google_fonts/Jost-ThinItalic.ttf';
 
   /// File path: assets/google_fonts/Jost-VariableFont_wght.ttf
-  String get jostVariableFontWght =>
-      'assets/google_fonts/Jost-VariableFont_wght.ttf';
+  String get jostVariableFontWght => 'assets/google_fonts/Jost-VariableFont_wght.ttf';
 
   /// File path: assets/google_fonts/KaushanScript-Regular.ttf
-  String get kaushanScriptRegular =>
-      'assets/google_fonts/KaushanScript-Regular.ttf';
+  String get kaushanScriptRegular => 'assets/google_fonts/KaushanScript-Regular.ttf';
 
   /// List of all assets
   List<String> get values => [
@@ -192,24 +186,20 @@ class $AssetsTutorialGen {
   const $AssetsTutorialGen();
 
   /// File path: assets/tutorial/day_trips_page.webp
-  AssetGenImage get dayTripsPage =>
-      const AssetGenImage('assets/tutorial/day_trips_page.webp');
+  AssetGenImage get dayTripsPage => const AssetGenImage('assets/tutorial/day_trips_page.webp');
 
   /// File path: assets/tutorial/trip_stops_page.webp
-  AssetGenImage get tripStopsPage =>
-      const AssetGenImage('assets/tutorial/trip_stops_page.webp');
+  AssetGenImage get tripStopsPage => const AssetGenImage('assets/tutorial/trip_stops_page.webp');
 
   /// File path: assets/tutorial/trips_page.webp
-  AssetGenImage get tripsPage =>
-      const AssetGenImage('assets/tutorial/trips_page.webp');
+  AssetGenImage get tripsPage => const AssetGenImage('assets/tutorial/trips_page.webp');
 
   /// File path: assets/tutorial/tutorial_end_page.webp
   AssetGenImage get tutorialEndPage =>
       const AssetGenImage('assets/tutorial/tutorial_end_page.webp');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [dayTripsPage, tripStopsPage, tripsPage, tutorialEndPage];
+  List<AssetGenImage> get values => [dayTripsPage, tripStopsPage, tripsPage, tutorialEndPage];
 }
 
 class Assets {
