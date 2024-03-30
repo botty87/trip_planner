@@ -169,14 +169,16 @@ class _MapView extends HookWidget {
   List<Widget> _orderedMarkerWidgets(BuildContext context) {
     List<Widget> markerWidgets = [];
 
-    ResponsiveValue<double> markerSize = ResponsiveValue(
+    ResponsiveValue<double> responsiveMarkerSize = ResponsiveValue(
       context,
       defaultValue: 50,
       conditionalValues: [
-        const Condition.largerThan(name: TABLET, value: 25),
+        const Condition.largerThan(name: TABLET, value: 30),
         const Condition.largerThan(name: DESKTOP, value: 18),
       ],
     );
+
+    final double markerSize = kIsWeb ? 20 : responsiveMarkerSize.value;
 
     for (int i = 0; i < (_mapPlaces?.length ?? 0); i++) {
       final color = _mapPlaces![i].when(
@@ -190,8 +192,8 @@ class _MapView extends HookWidget {
 
       markerWidgets.add(
         Container(
-          width: markerSize.value,
-          height: markerSize.value,
+          width: markerSize,
+          height: markerSize,
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: color,
