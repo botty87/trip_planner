@@ -28,14 +28,21 @@ class _MapView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final markers = useStreamController<Set<Marker>>();
+    final markersStream = useStreamController<Set<Marker>>();
 
-    MarkerGenerator(markerWidgets(context), (bitmaps) {
-      markers.add(mapBitmapsToMarkers(bitmaps, context));
-    }).generate(context);
+    //If we have more than one marker, we need to generate the markers with numbers
+    //If we have only one marker, we don't need to generate the markers with numbers
+    final totalMarkers = _mapPlaces?.length ?? 0;
+    if (totalMarkers > 1) {
+      MarkerGenerator(_orderedMarkerWidgets(context), (bitmaps) {
+        markersStream.add(_createMarkers(bitmaps, context));
+      }).generate(context);
+    } else {
+      markersStream.add(_createMarkers(null, context));
+    }
 
     return StreamBuilder<Set<Marker>>(
-        stream: markers.stream,
+        stream: markersStream.stream,
         initialData: const {},
         builder: (context, snapshot) {
           final CameraPosition initialCameraPosition;
@@ -75,62 +82,91 @@ class _MapView extends HookWidget {
         });
   }
 
-  Set<Marker> mapBitmapsToMarkers(List<Uint8List> bitmaps, BuildContext context) {
+  LatLngBounds? _getLatLngBounds({required Set<Marker> markers}) {
+    return markers.isNotEmpty ? markers.map((e) => e.position).toList().getLatLngBounds() : null;
+  }
+
+  //Create a set of markers with custom bitmaps
+  Set<Marker> _createMarkers(List<Uint8List>? bitmaps, BuildContext context) {
     final markers = <Marker>{};
 
-    if (_mapPlaces != null) {
-      if (_mapPlaces!.length > 1) {
-        for (int i = 0; i < _mapPlaces!.length; i++) {
-          final mapPlace = _mapPlaces![i];
+    for (int i = 0; i < (_mapPlaces?.length ?? 0); i++) {
+      final mapPlace = _mapPlaces![i];
 
-          late final String markerId;
-          late final InfoWindow infoWindow;
-          late final BitmapDescriptor icon;
+      final (markerId, infoWindow, icon) = _mapPlaceToMarker(mapPlace, bitmaps?[i], context);
 
-          mapPlace.when(
-            existing: (id, name, description, location, isDone) {
-              markerId = id;
-              infoWindow = _showInfoWindow
-                  ? InfoWindow(
-                      title: name,
-                      snippet: description,
-                      onTap: _onMarkerTap != null ? () => _onMarkerTap!(mapPlace) : null,
-                    )
-                  : InfoWindow.noText;
-              icon = BitmapDescriptor.fromBytes(bitmaps[i]);
-            },
-            newPlace: (location) {
-              markerId = location.toString();
-              infoWindow = InfoWindow.noText;
-              icon = BitmapDescriptor.fromBytes(bitmaps[i]);
-            },
-          );
+      final marker = _createMarker(
+        position: mapPlace.location,
+        markerId: markerId,
+        infoWindow: infoWindow,
+        icon: icon,
+        draggable: _onMarkerDragEnd != null,
+        onDragEnd: (value) {
+          context.read<MapCubit>().updateMarkerPosition(value);
+          _onMarkerDragEnd?.call(value);
+        },
+      );
 
-          final marker = Marker(
-            markerId: MarkerId(markerId),
-            position: mapPlace.location,
-            infoWindow: infoWindow,
-            draggable: _onMarkerDragEnd != null,
-            icon: icon,
-            onDragEnd: (value) {
-              context.read<MapCubit>().updateMarkerPosition(value);
-              _onMarkerDragEnd?.call(value);
-            },
-          );
-
-          markers.add(marker);
-        }
-      }
+      markers.add(marker);
     }
 
     return markers;
   }
 
-  LatLngBounds? _getLatLngBounds({required Set<Marker> markers}) {
-    return markers.isNotEmpty ? markers.map((e) => e.position).toList().getLatLngBounds() : null;
+  //Get the markerId, infoWindow and icon for a mapPlace
+  (String, InfoWindow, BitmapDescriptor) _mapPlaceToMarker(
+      MapPlace mapPlace, Uint8List? bitmap, BuildContext context) {
+    late final String markerId;
+    late final InfoWindow infoWindow;
+    late final BitmapDescriptor icon;
+
+    mapPlace.when(
+      existing: (id, name, description, location, isDone) {
+        markerId = id;
+        infoWindow = _showInfoWindow
+            ? _createInfoWindow(
+                name, description, _onMarkerTap != null ? () => _onMarkerTap!(mapPlace) : null)
+            : InfoWindow.noText;
+        icon = bitmap != null ? BitmapDescriptor.fromBytes(bitmap) : BitmapDescriptor.defaultMarker;
+      },
+      newPlace: (location) {
+        markerId = location.toString();
+        infoWindow = InfoWindow.noText;
+        icon = bitmap != null ? BitmapDescriptor.fromBytes(bitmap) : BitmapDescriptor.defaultMarker;
+      },
+    );
+
+    return (markerId, infoWindow, icon);
   }
 
-  List<Widget> markerWidgets(BuildContext context) {
+  InfoWindow _createInfoWindow(String title, String? snippet, VoidCallback? onTap) {
+    return InfoWindow(
+      title: title,
+      snippet: snippet,
+      onTap: onTap,
+    );
+  }
+
+  Marker _createMarker({
+    required LatLng position,
+    required String markerId,
+    required InfoWindow infoWindow,
+    required BitmapDescriptor icon,
+    bool draggable = false,
+    ValueChanged<LatLng>? onDragEnd,
+  }) {
+    return Marker(
+      markerId: MarkerId(markerId),
+      position: position,
+      infoWindow: infoWindow,
+      draggable: draggable,
+      icon: icon,
+      onDragEnd: onDragEnd,
+    );
+  }
+
+  //Create a list of custom markers with numbers
+  List<Widget> _orderedMarkerWidgets(BuildContext context) {
     List<Widget> markerWidgets = [];
 
     ResponsiveValue<double> markerSize = ResponsiveValue(
@@ -142,7 +178,7 @@ class _MapView extends HookWidget {
       ],
     );
 
-    for (int i = 0; i < _mapPlaces!.length; i++) {
+    for (int i = 0; i < (_mapPlaces?.length ?? 0); i++) {
       final color = _mapPlaces![i].when(
         existing: (_, __, ___, ____, isDone) => _useDifferentColorsForDone
             ? isDone

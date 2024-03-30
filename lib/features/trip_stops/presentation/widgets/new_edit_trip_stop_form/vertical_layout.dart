@@ -103,7 +103,6 @@ class _VerticalLayout extends HookWidget {
                 initialMinuteDuration: tripStop != null ? tripStop!.duration % 60 : 0,
               ),
               const SizedBox(height: verticalSpaceL),
-              //_MapWidget(marker: marker.stream, initialMarker: initialMarker),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.4,
                 child: StreamBuilder<LatLng?>(

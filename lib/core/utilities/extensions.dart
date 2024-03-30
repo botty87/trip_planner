@@ -98,3 +98,8 @@ extension DarkMode on BuildContext {
 
   Color get appBarColor => isDarkMode ? appBarDarkColor : appBarLightColor;
 }
+
+//Generic nullable let extension function
+extension NullableLet<T> on T? {
+  R? let<R>(R Function(T) block) => this == null ? null : block(this as T);
+}
