@@ -80,7 +80,7 @@ class _NewTripStopPageBody extends HookWidget {
         ),
         //When the state changes to created pop the page
         BlocListener<NewTripStopCubit, NewTripStopState>(
-          listener: (context, state) => state.mapOrNull(created: (created) => context.router.pop()),
+          listener: (context, state) => state.mapOrNull(created: (created) => context.router.maybePop()),
         ),
         //When the state changes to error, show a snackbar
         BlocListener<NewTripStopCubit, NewTripStopState>(

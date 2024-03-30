@@ -51,7 +51,7 @@ class _NewDayTripPageBody extends HookWidget {
         //On success pop
         BlocListener<NewDayTripCubit, NewDayTripState>(
           listener: (context, state) {
-            context.router.pop();
+            context.router.maybePop();
           },
           listenWhen: (previous, current) => current is NewDayTripStateCreated,
         ),

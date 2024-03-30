@@ -121,7 +121,7 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
               deleted: (_) => true,
               orElse: () => false,
             ),
-            listener: (context, state) => context.router.pop(),
+            listener: (context, state) => context.router.maybePop(),
           ),
           BlocListener<DayTripCubit, DayTripState>(
             //Show modal bottom sheet if editing

@@ -53,7 +53,7 @@ class LoginSignupPage extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   Snackbars.success(state.successMessage!),
                 );
-                context.router.pop();
+                context.router.maybePop();
               },
             ),
           ],

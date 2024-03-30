@@ -36,7 +36,7 @@ class TripStopPageBody extends HookWidget {
         ),
         //Pop page if deleted
         BlocListener<TripStopCubit, TripStopState>(
-          listener: (context, state) => context.router.pop(),
+          listener: (context, state) => context.router.maybePop(),
           listenWhen: (previous, current) => current is TripStopStateDeleted,
         ),
         //Show modal bottom sheet if editing
