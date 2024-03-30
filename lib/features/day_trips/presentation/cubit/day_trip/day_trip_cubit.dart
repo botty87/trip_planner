@@ -430,7 +430,7 @@ class DayTripCubit extends Cubit<DayTripState> {
 
         if (isClosed) return;
 
-        result.leftMap(
+        result.fold(
           (failure) {
             emit(DayTripState.error(
               trip: state.trip,
@@ -445,6 +445,15 @@ class DayTripCubit extends Cubit<DayTripState> {
               dayTrip: state.dayTrip,
               tripStops: oldTripStops,
             ));
+          },
+          (_) {
+            _updateTripStopsDirectionsUpToDate(
+              UpdateTripStopsDirectionsUpToDateParams(
+                tripId: state.trip.id,
+                dayTripId: state.dayTrip.id,
+                isUpToDate: false,
+              ),
+            );
           },
         );
       },
