@@ -9,9 +9,9 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
+import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/trip/trip_cubit.dart';
@@ -220,6 +220,10 @@ class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
       backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
       scrolledUnderElevation: hasBackgroundImage ? 0 : null,
       actions: [
+        IconButton(
+          icon: const Icon(Icons.share),
+          onPressed: () {},
+        ),
         IconButton(
           icon: const Icon(Icons.edit),
           onPressed: () => context.read<TripCubit>().edit(),
