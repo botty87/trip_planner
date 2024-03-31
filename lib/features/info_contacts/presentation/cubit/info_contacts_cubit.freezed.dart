@@ -37,8 +37,8 @@ class _$InfoContactsStateCopyWithImpl<$Res, $Val extends InfoContactsState>
 
 /// @nodoc
 abstract class _$$InfoContactsStateImplCopyWith<$Res> {
-  factory _$$InfoContactsStateImplCopyWith(
-          _$InfoContactsStateImpl value, $Res Function(_$InfoContactsStateImpl) then) =
+  factory _$$InfoContactsStateImplCopyWith(_$InfoContactsStateImpl value,
+          $Res Function(_$InfoContactsStateImpl) then) =
       __$$InfoContactsStateImplCopyWithImpl<$Res>;
 }
 
@@ -46,8 +46,8 @@ abstract class _$$InfoContactsStateImplCopyWith<$Res> {
 class __$$InfoContactsStateImplCopyWithImpl<$Res>
     extends _$InfoContactsStateCopyWithImpl<$Res, _$InfoContactsStateImpl>
     implements _$$InfoContactsStateImplCopyWith<$Res> {
-  __$$InfoContactsStateImplCopyWithImpl(
-      _$InfoContactsStateImpl _value, $Res Function(_$InfoContactsStateImpl) _then)
+  __$$InfoContactsStateImplCopyWithImpl(_$InfoContactsStateImpl _value,
+      $Res Function(_$InfoContactsStateImpl) _then)
       : super(_value, _then);
 }
 

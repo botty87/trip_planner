@@ -14,10 +14,12 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       settings: json['settings'] == null
           ? const Settings()
           : Settings.fromJson(json['settings'] as Map<String, dynamic>),
-      tutorialsData: TutorialsData.fromJson(json['tutorialsData'] as Map<String, dynamic>),
+      tutorialsData:
+          TutorialsData.fromJson(json['tutorialsData'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
       'name': instance.name,

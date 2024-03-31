@@ -18,8 +18,13 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$NewTripState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)
+    required TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -28,8 +33,13 @@ mixin _$NewTripState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult? Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -38,8 +48,13 @@ mixin _$NewTripState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -76,7 +91,8 @@ mixin _$NewTripState {
 
 /// @nodoc
 abstract class $NewTripStateCopyWith<$Res> {
-  factory $NewTripStateCopyWith(NewTripState value, $Res Function(NewTripState) then) =
+  factory $NewTripStateCopyWith(
+          NewTripState value, $Res Function(NewTripState) then) =
       _$NewTripStateCopyWithImpl<$Res, NewTripState>;
 }
 
@@ -93,7 +109,8 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
 
 /// @nodoc
 abstract class _$$NormalImplCopyWith<$Res> {
-  factory _$$NormalImplCopyWith(_$NormalImpl value, $Res Function(_$NormalImpl) then) =
+  factory _$$NormalImplCopyWith(
+          _$NormalImpl value, $Res Function(_$NormalImpl) then) =
       __$$NormalImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
@@ -106,9 +123,11 @@ abstract class _$$NormalImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$NormalImplCopyWithImpl<$Res> extends _$NewTripStateCopyWithImpl<$Res, _$NormalImpl>
+class __$$NormalImplCopyWithImpl<$Res>
+    extends _$NewTripStateCopyWithImpl<$Res, _$NormalImpl>
     implements _$$NormalImplCopyWith<$Res> {
-  __$$NormalImplCopyWithImpl(_$NormalImpl _value, $Res Function(_$NormalImpl) _then)
+  __$$NormalImplCopyWithImpl(
+      _$NormalImpl _value, $Res Function(_$NormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -186,19 +205,23 @@ class _$NormalImpl implements _Normal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NormalImpl &&
-            (identical(other.tripName, tripName) || other.tripName == tripName) &&
+            (identical(other.tripName, tripName) ||
+                other.tripName == tripName) &&
             (identical(other.tripDescription, tripDescription) ||
                 other.tripDescription == tripDescription) &&
-            (identical(other.startDate, startDate) || other.startDate == startDate) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
             (identical(other.isStartDateBeforeToday, isStartDateBeforeToday) ||
                 other.isStartDateBeforeToday == isStartDateBeforeToday) &&
-            (identical(other.isPublic, isPublic) || other.isPublic == isPublic) &&
-            (identical(other.languageCode, languageCode) || other.languageCode == languageCode));
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic) &&
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tripName, tripDescription, startDate,
-      isStartDateBeforeToday, isPublic, languageCode);
+  int get hashCode => Object.hash(runtimeType, tripName, tripDescription,
+      startDate, isStartDateBeforeToday, isPublic, languageCode);
 
   @JsonKey(ignore: true)
   @override
@@ -209,36 +232,51 @@ class _$NormalImpl implements _Normal {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)
+    required TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
     required TResult Function(String errorMessage) error,
   }) {
-    return normal(
-        tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic, languageCode);
+    return normal(tripName, tripDescription, startDate, isStartDateBeforeToday,
+        isPublic, languageCode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult? Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
     TResult? Function(String errorMessage)? error,
   }) {
-    return normal?.call(
-        tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic, languageCode);
+    return normal?.call(tripName, tripDescription, startDate,
+        isStartDateBeforeToday, isPublic, languageCode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -246,8 +284,8 @@ class _$NormalImpl implements _Normal {
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(
-          tripName, tripDescription, startDate, isStartDateBeforeToday, isPublic, languageCode);
+      return normal(tripName, tripDescription, startDate,
+          isStartDateBeforeToday, isPublic, languageCode);
     }
     return orElse();
   }
@@ -306,19 +344,23 @@ abstract class _Normal implements NewTripState {
   bool get isPublic;
   String get languageCode;
   @JsonKey(ignore: true)
-  _$$NormalImplCopyWith<_$NormalImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$SavingImplCopyWith<$Res> {
-  factory _$$SavingImplCopyWith(_$SavingImpl value, $Res Function(_$SavingImpl) then) =
+  factory _$$SavingImplCopyWith(
+          _$SavingImpl value, $Res Function(_$SavingImpl) then) =
       __$$SavingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SavingImplCopyWithImpl<$Res> extends _$NewTripStateCopyWithImpl<$Res, _$SavingImpl>
+class __$$SavingImplCopyWithImpl<$Res>
+    extends _$NewTripStateCopyWithImpl<$Res, _$SavingImpl>
     implements _$$SavingImplCopyWith<$Res> {
-  __$$SavingImplCopyWithImpl(_$SavingImpl _value, $Res Function(_$SavingImpl) _then)
+  __$$SavingImplCopyWithImpl(
+      _$SavingImpl _value, $Res Function(_$SavingImpl) _then)
       : super(_value, _then);
 }
 
@@ -334,7 +376,8 @@ class _$SavingImpl implements _Saving {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$SavingImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SavingImpl);
   }
 
   @override
@@ -343,8 +386,13 @@ class _$SavingImpl implements _Saving {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)
+    required TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -356,8 +404,13 @@ class _$SavingImpl implements _Saving {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult? Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -369,8 +422,13 @@ class _$SavingImpl implements _Saving {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -427,14 +485,17 @@ abstract class _Saving implements NewTripState {
 
 /// @nodoc
 abstract class _$$CreatedImplCopyWith<$Res> {
-  factory _$$CreatedImplCopyWith(_$CreatedImpl value, $Res Function(_$CreatedImpl) then) =
+  factory _$$CreatedImplCopyWith(
+          _$CreatedImpl value, $Res Function(_$CreatedImpl) then) =
       __$$CreatedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CreatedImplCopyWithImpl<$Res> extends _$NewTripStateCopyWithImpl<$Res, _$CreatedImpl>
+class __$$CreatedImplCopyWithImpl<$Res>
+    extends _$NewTripStateCopyWithImpl<$Res, _$CreatedImpl>
     implements _$$CreatedImplCopyWith<$Res> {
-  __$$CreatedImplCopyWithImpl(_$CreatedImpl _value, $Res Function(_$CreatedImpl) _then)
+  __$$CreatedImplCopyWithImpl(
+      _$CreatedImpl _value, $Res Function(_$CreatedImpl) _then)
       : super(_value, _then);
 }
 
@@ -450,7 +511,8 @@ class _$CreatedImpl implements _Created {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$CreatedImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CreatedImpl);
   }
 
   @override
@@ -459,8 +521,13 @@ class _$CreatedImpl implements _Created {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)
+    required TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -472,8 +539,13 @@ class _$CreatedImpl implements _Created {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult? Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -485,8 +557,13 @@ class _$CreatedImpl implements _Created {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -543,16 +620,19 @@ abstract class _Created implements NewTripState {
 
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(_$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String errorMessage});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res> extends _$NewTripStateCopyWithImpl<$Res, _$ErrorImpl>
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$NewTripStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(_$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -587,7 +667,8 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -602,8 +683,13 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)
+    required TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)
         normal,
     required TResult Function() saving,
     required TResult Function() created,
@@ -615,8 +701,13 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult? Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult? Function()? saving,
     TResult? Function()? created,
@@ -628,8 +719,13 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? tripName, String? tripDescription, DateTime? startDate,
-            bool isStartDateBeforeToday, bool isPublic, String languageCode)?
+    TResult Function(
+            String? tripName,
+            String? tripDescription,
+            DateTime? startDate,
+            bool isStartDateBeforeToday,
+            bool isPublic,
+            String languageCode)?
         normal,
     TResult Function()? saving,
     TResult Function()? created,
@@ -685,5 +781,6 @@ abstract class _Error implements NewTripState {
 
   String get errorMessage;
   @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

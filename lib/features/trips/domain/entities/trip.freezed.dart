@@ -31,6 +31,7 @@ mixin _$Trip {
   DateTime get startDate => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
   String? get languageCode => throw _privateConstructorUsedError;
+  List<String>? get sharedWith => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,21 +40,26 @@ mixin _$Trip {
 
 /// @nodoc
 abstract class $TripCopyWith<$Res> {
-  factory $TripCopyWith(Trip value, $Res Function(Trip) then) = _$TripCopyWithImpl<$Res, Trip>;
+  factory $TripCopyWith(Trip value, $Res Function(Trip) then) =
+      _$TripCopyWithImpl<$Res, Trip>;
   @useResult
   $Res call(
       {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       String name,
       String? description,
       String userId,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime createdAt,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime startDate,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+      DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+      DateTime startDate,
       bool isPublic,
-      String? languageCode});
+      String? languageCode,
+      List<String>? sharedWith});
 }
 
 /// @nodoc
-class _$TripCopyWithImpl<$Res, $Val extends Trip> implements $TripCopyWith<$Res> {
+class _$TripCopyWithImpl<$Res, $Val extends Trip>
+    implements $TripCopyWith<$Res> {
   _$TripCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -72,6 +78,7 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip> implements $TripCopyWith<$Res>
     Object? startDate = null,
     Object? isPublic = null,
     Object? languageCode = freezed,
+    Object? sharedWith = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -106,13 +113,18 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip> implements $TripCopyWith<$Res>
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
               as String?,
+      sharedWith: freezed == sharedWith
+          ? _value.sharedWith
+          : sharedWith // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$TripImplCopyWith<$Res> implements $TripCopyWith<$Res> {
-  factory _$$TripImplCopyWith(_$TripImpl value, $Res Function(_$TripImpl) then) =
+  factory _$$TripImplCopyWith(
+          _$TripImpl value, $Res Function(_$TripImpl) then) =
       __$$TripImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -121,14 +133,18 @@ abstract class _$$TripImplCopyWith<$Res> implements $TripCopyWith<$Res> {
       String name,
       String? description,
       String userId,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime createdAt,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime startDate,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+      DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
+      DateTime startDate,
       bool isPublic,
-      String? languageCode});
+      String? languageCode,
+      List<String>? sharedWith});
 }
 
 /// @nodoc
-class __$$TripImplCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$TripImpl>
+class __$$TripImplCopyWithImpl<$Res>
+    extends _$TripCopyWithImpl<$Res, _$TripImpl>
     implements _$$TripImplCopyWith<$Res> {
   __$$TripImplCopyWithImpl(_$TripImpl _value, $Res Function(_$TripImpl) _then)
       : super(_value, _then);
@@ -144,6 +160,7 @@ class __$$TripImplCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$TripImpl
     Object? startDate = null,
     Object? isPublic = null,
     Object? languageCode = freezed,
+    Object? sharedWith = freezed,
   }) {
     return _then(_$TripImpl(
       id: null == id
@@ -178,6 +195,10 @@ class __$$TripImplCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$TripImpl
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
               as String?,
+      sharedWith: freezed == sharedWith
+          ? _value._sharedWith
+          : sharedWith // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -195,9 +216,12 @@ class _$TripImpl implements _Trip {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       required this.startDate,
       this.isPublic = false,
-      this.languageCode});
+      this.languageCode,
+      final List<String>? sharedWith})
+      : _sharedWith = sharedWith;
 
-  factory _$TripImpl.fromJson(Map<String, dynamic> json) => _$$TripImplFromJson(json);
+  factory _$TripImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TripImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -219,10 +243,19 @@ class _$TripImpl implements _Trip {
   final bool isPublic;
   @override
   final String? languageCode;
+  final List<String>? _sharedWith;
+  @override
+  List<String>? get sharedWith {
+    final value = _sharedWith;
+    if (value == null) return null;
+    if (_sharedWith is EqualUnmodifiableListView) return _sharedWith;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Trip(id: $id, name: $name, description: $description, userId: $userId, createdAt: $createdAt, startDate: $startDate, isPublic: $isPublic, languageCode: $languageCode)';
+    return 'Trip(id: $id, name: $name, description: $description, userId: $userId, createdAt: $createdAt, startDate: $startDate, isPublic: $isPublic, languageCode: $languageCode, sharedWith: $sharedWith)';
   }
 
   @override
@@ -232,18 +265,34 @@ class _$TripImpl implements _Trip {
             other is _$TripImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
-            (identical(other.startDate, startDate) || other.startDate == startDate) &&
-            (identical(other.isPublic, isPublic) || other.isPublic == isPublic) &&
-            (identical(other.languageCode, languageCode) || other.languageCode == languageCode));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic) &&
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode) &&
+            const DeepCollectionEquality()
+                .equals(other._sharedWith, _sharedWith));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, description, userId, createdAt, startDate, isPublic, languageCode);
+      runtimeType,
+      id,
+      name,
+      description,
+      userId,
+      createdAt,
+      startDate,
+      isPublic,
+      languageCode,
+      const DeepCollectionEquality().hash(_sharedWith));
 
   @JsonKey(ignore: true)
   @override
@@ -270,7 +319,8 @@ abstract class _Trip implements Trip {
       @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
       required final DateTime startDate,
       final bool isPublic,
-      final String? languageCode}) = _$TripImpl;
+      final String? languageCode,
+      final List<String>? sharedWith}) = _$TripImpl;
 
   factory _Trip.fromJson(Map<String, dynamic> json) = _$TripImpl.fromJson;
 
@@ -294,6 +344,9 @@ abstract class _Trip implements Trip {
   @override
   String? get languageCode;
   @override
+  List<String>? get sharedWith;
+  @override
   @JsonKey(ignore: true)
-  _$$TripImplCopyWith<_$TripImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$TripImplCopyWith<_$TripImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

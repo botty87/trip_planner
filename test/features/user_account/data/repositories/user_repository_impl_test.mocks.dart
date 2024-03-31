@@ -6,10 +6,14 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/settings/domain/entities/settings.dart' as _i5;
-import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart' as _i6;
-import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart' as _i2;
-import 'package:trip_planner/features/user_account/domain/entities/user.dart' as _i4;
+import 'package:trip_planner/features/settings/domain/entities/settings.dart'
+    as _i5;
+import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart'
+    as _i6;
+import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
+    as _i2;
+import 'package:trip_planner/features/user_account/domain/entities/user.dart'
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -107,7 +111,8 @@ class MockUserDataSource extends _i1.Mock implements _i2.UserDataSource {
       );
 
   @override
-  dynamic saveTutorialsData(_i6.TutorialsData? tutorialsData) => super.noSuchMethod(
+  dynamic saveTutorialsData(_i6.TutorialsData? tutorialsData) =>
+      super.noSuchMethod(
         Invocation.method(
           #saveTutorialsData,
           [tutorialsData],

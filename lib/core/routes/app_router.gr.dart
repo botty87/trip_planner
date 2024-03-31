@@ -11,9 +11,12 @@
 import 'package:auto_route/auto_route.dart' as _i19;
 import 'package:flutter/material.dart' as _i20;
 import 'package:trip_planner/core/home_page.dart' as _i7;
-import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart' as _i22;
-import 'package:trip_planner/features/day_trips/presentation/pages/day_trip_page.dart' as _i2;
-import 'package:trip_planner/features/day_trips/presentation/pages/new_day_trip_page.dart' as _i11;
+import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart'
+    as _i22;
+import 'package:trip_planner/features/day_trips/presentation/pages/day_trip_page.dart'
+    as _i2;
+import 'package:trip_planner/features/day_trips/presentation/pages/new_day_trip_page.dart'
+    as _i11;
 import 'package:trip_planner/features/discover_new_trips/presentation/pages/discover_new_daily_trips_page.dart'
     as _i3;
 import 'package:trip_planner/features/discover_new_trips/presentation/pages/discover_new_trip_stop_page.dart'
@@ -26,18 +29,27 @@ import 'package:trip_planner/features/import_old_trips/presentation/pages/import
     as _i8;
 import 'package:trip_planner/features/info_contacts/presentation/pages/info_contacts_page.dart'
     as _i9;
-import 'package:trip_planner/features/settings/presentation/pages/settings_page.dart' as _i14;
-import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart' as _i23;
+import 'package:trip_planner/features/settings/presentation/pages/settings_page.dart'
+    as _i14;
+import 'package:trip_planner/features/trip_stops/domain/entities/trip_stop.dart'
+    as _i23;
 import 'package:trip_planner/features/trip_stops/presentation/pages/new_trip_stop_page.dart'
     as _i13;
-import 'package:trip_planner/features/trip_stops/presentation/pages/trip_stop_page.dart' as _i16;
+import 'package:trip_planner/features/trip_stops/presentation/pages/trip_stop_page.dart'
+    as _i16;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i21;
-import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart' as _i12;
-import 'package:trip_planner/features/trips/presentation/pages/trip_page.dart' as _i15;
-import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart' as _i17;
-import 'package:trip_planner/features/tutorials/presentation/pages/tutorial_page.dart' as _i18;
-import 'package:trip_planner/features/user_account/domain/entities/user.dart' as _i24;
-import 'package:trip_planner/features/user_account/presentation/pages/account_page.dart' as _i1;
+import 'package:trip_planner/features/trips/presentation/pages/new_trip_page.dart'
+    as _i12;
+import 'package:trip_planner/features/trips/presentation/pages/trip_page.dart'
+    as _i15;
+import 'package:trip_planner/features/trips/presentation/pages/trips_page.dart'
+    as _i17;
+import 'package:trip_planner/features/tutorials/presentation/pages/tutorial_page.dart'
+    as _i18;
+import 'package:trip_planner/features/user_account/domain/entities/user.dart'
+    as _i24;
+import 'package:trip_planner/features/user_account/presentation/pages/account_page.dart'
+    as _i1;
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart'
     as _i10;
 
@@ -131,7 +143,8 @@ abstract class $AppRouter extends _i19.RootStackRouter {
     NewDayTripRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
       final args = routeData.argsAs<NewDayTripRouteArgs>(
-          orElse: () => NewDayTripRouteArgs(tripId: pathParams.getString('tripId')));
+          orElse: () =>
+              NewDayTripRouteArgs(tripId: pathParams.getString('tripId')));
       return _i19.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i11.NewDayTripPage(
@@ -141,7 +154,8 @@ abstract class $AppRouter extends _i19.RootStackRouter {
       );
     },
     NewTripRoute.name: (routeData) {
-      final args = routeData.argsAs<NewTripRouteArgs>(orElse: () => const NewTripRouteArgs());
+      final args = routeData.argsAs<NewTripRouteArgs>(
+          orElse: () => const NewTripRouteArgs());
       return _i19.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i12.NewTripPage(
@@ -238,7 +252,8 @@ class DayTripRoute extends _i19.PageRouteInfo<DayTripRouteArgs> {
 
   static const String name = 'DayTripRoute';
 
-  static const _i19.PageInfo<DayTripRouteArgs> page = _i19.PageInfo<DayTripRouteArgs>(name);
+  static const _i19.PageInfo<DayTripRouteArgs> page =
+      _i19.PageInfo<DayTripRouteArgs>(name);
 }
 
 class DayTripRouteArgs {
@@ -262,7 +277,8 @@ class DayTripRouteArgs {
 
 /// generated route for
 /// [_i3.DiscoverNewDailyTripsPage]
-class DiscoverNewDailyTripsRoute extends _i19.PageRouteInfo<DiscoverNewDailyTripsRouteArgs> {
+class DiscoverNewDailyTripsRoute
+    extends _i19.PageRouteInfo<DiscoverNewDailyTripsRouteArgs> {
   DiscoverNewDailyTripsRoute({
     _i20.Key? key,
     required _i21.Trip trip,
@@ -300,7 +316,8 @@ class DiscoverNewDailyTripsRouteArgs {
 
 /// generated route for
 /// [_i4.DiscoverNewTripStopPage]
-class DiscoverNewTripStopRoute extends _i19.PageRouteInfo<DiscoverNewTripStopRouteArgs> {
+class DiscoverNewTripStopRoute
+    extends _i19.PageRouteInfo<DiscoverNewTripStopRouteArgs> {
   DiscoverNewTripStopRoute({
     _i20.Key? key,
     required _i23.TripStop tripStop,
@@ -338,7 +355,8 @@ class DiscoverNewTripStopRouteArgs {
 
 /// generated route for
 /// [_i5.DiscoverNewTripStopsPage]
-class DiscoverNewTripStopsRoute extends _i19.PageRouteInfo<DiscoverNewTripStopsRouteArgs> {
+class DiscoverNewTripStopsRoute
+    extends _i19.PageRouteInfo<DiscoverNewTripStopsRouteArgs> {
   DiscoverNewTripStopsRoute({
     _i20.Key? key,
     required _i21.Trip trip,
@@ -492,7 +510,8 @@ class NewDayTripRoute extends _i19.PageRouteInfo<NewDayTripRouteArgs> {
 
   static const String name = 'NewDayTripRoute';
 
-  static const _i19.PageInfo<NewDayTripRouteArgs> page = _i19.PageInfo<NewDayTripRouteArgs>(name);
+  static const _i19.PageInfo<NewDayTripRouteArgs> page =
+      _i19.PageInfo<NewDayTripRouteArgs>(name);
 }
 
 class NewDayTripRouteArgs {
@@ -529,7 +548,8 @@ class NewTripRoute extends _i19.PageRouteInfo<NewTripRouteArgs> {
 
   static const String name = 'NewTripRoute';
 
-  static const _i19.PageInfo<NewTripRouteArgs> page = _i19.PageInfo<NewTripRouteArgs>(name);
+  static const _i19.PageInfo<NewTripRouteArgs> page =
+      _i19.PageInfo<NewTripRouteArgs>(name);
 }
 
 class NewTripRouteArgs {
@@ -568,7 +588,8 @@ class NewTripStopRoute extends _i19.PageRouteInfo<NewTripStopRouteArgs> {
 
   static const String name = 'NewTripStopRoute';
 
-  static const _i19.PageInfo<NewTripStopRouteArgs> page = _i19.PageInfo<NewTripStopRouteArgs>(name);
+  static const _i19.PageInfo<NewTripStopRouteArgs> page =
+      _i19.PageInfo<NewTripStopRouteArgs>(name);
 }
 
 class NewTripStopRouteArgs {
@@ -622,7 +643,8 @@ class TripRoute extends _i19.PageRouteInfo<TripRouteArgs> {
 
   static const String name = 'TripRoute';
 
-  static const _i19.PageInfo<TripRouteArgs> page = _i19.PageInfo<TripRouteArgs>(name);
+  static const _i19.PageInfo<TripRouteArgs> page =
+      _i19.PageInfo<TripRouteArgs>(name);
 }
 
 class TripRouteArgs {
@@ -663,7 +685,8 @@ class TripStopRoute extends _i19.PageRouteInfo<TripStopRouteArgs> {
 
   static const String name = 'TripStopRoute';
 
-  static const _i19.PageInfo<TripStopRouteArgs> page = _i19.PageInfo<TripStopRouteArgs>(name);
+  static const _i19.PageInfo<TripStopRouteArgs> page =
+      _i19.PageInfo<TripStopRouteArgs>(name);
 }
 
 class TripStopRouteArgs {

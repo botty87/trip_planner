@@ -22,12 +22,14 @@ mixin _$TutorialState {
   bool get showTripStopSlide => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TutorialStateCopyWith<TutorialState> get copyWith => throw _privateConstructorUsedError;
+  $TutorialStateCopyWith<TutorialState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TutorialStateCopyWith<$Res> {
-  factory $TutorialStateCopyWith(TutorialState value, $Res Function(TutorialState) then) =
+  factory $TutorialStateCopyWith(
+          TutorialState value, $Res Function(TutorialState) then) =
       _$TutorialStateCopyWithImpl<$Res, TutorialState>;
   @useResult
   $Res call(
@@ -77,7 +79,8 @@ class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState>
 }
 
 /// @nodoc
-abstract class _$$TutorialStateImplCopyWith<$Res> implements $TutorialStateCopyWith<$Res> {
+abstract class _$$TutorialStateImplCopyWith<$Res>
+    implements $TutorialStateCopyWith<$Res> {
   factory _$$TutorialStateImplCopyWith(
           _$TutorialStateImpl value, $Res Function(_$TutorialStateImpl) then) =
       __$$TutorialStateImplCopyWithImpl<$Res>;
@@ -155,18 +158,20 @@ class _$TutorialStateImpl implements _TutorialState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TutorialStateImpl &&
-            (identical(other.showWelcome, showWelcome) || other.showWelcome == showWelcome) &&
+            (identical(other.showWelcome, showWelcome) ||
+                other.showWelcome == showWelcome) &&
             (identical(other.showPublicTrip, showPublicTrip) ||
                 other.showPublicTrip == showPublicTrip) &&
-            (identical(other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
+            (identical(
+                    other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
                 other.showCreateFromPublicTrip == showCreateFromPublicTrip) &&
             (identical(other.showTripStopSlide, showTripStopSlide) ||
                 other.showTripStopSlide == showTripStopSlide));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, showWelcome, showPublicTrip, showCreateFromPublicTrip, showTripStopSlide);
+  int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip,
+      showCreateFromPublicTrip, showTripStopSlide);
 
   @JsonKey(ignore: true)
   @override

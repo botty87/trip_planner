@@ -6,7 +6,8 @@ part of 'trip_stop.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TripStopImpl _$$TripStopImplFromJson(Map<String, dynamic> json) => _$TripStopImpl(
+_$TripStopImpl _$$TripStopImplFromJson(Map<String, dynamic> json) =>
+    _$TripStopImpl(
       index: json['index'] as int,
       name: json['name'] as String,
       description: json['description'] as String?,
@@ -17,7 +18,8 @@ _$TripStopImpl _$$TripStopImplFromJson(Map<String, dynamic> json) => _$TripStopI
       note: json['note'] as String?,
     );
 
-Map<String, dynamic> _$$TripStopImplToJson(_$TripStopImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$TripStopImplToJson(_$TripStopImpl instance) =>
+    <String, dynamic>{
       'index': instance.index,
       'name': instance.name,
       'description': instance.description,

@@ -7,9 +7,12 @@ import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/tutorials/domain/usecases/update_tutorials_data.dart' as _i4;
-import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart' as _i2;
-import 'package:trip_planner/features/user_account/errors/user_failures.dart' as _i6;
+import 'package:trip_planner/features/tutorials/domain/usecases/update_tutorials_data.dart'
+    as _i4;
+import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
+    as _i2;
+import 'package:trip_planner/features/user_account/errors/user_failures.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -24,7 +27,8 @@ import 'package:trip_planner/features/user_account/errors/user_failures.dart' as
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeUserRepository_0 extends _i1.SmartFake implements _i2.UserRepository {
+class _FakeUserRepository_0 extends _i1.SmartFake
+    implements _i2.UserRepository {
   _FakeUserRepository_0(
     Object parent,
     Invocation parentInvocation,
@@ -47,7 +51,8 @@ class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
 /// A class which mocks [UpdateTutorialsData].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUpdateTutorialsData extends _i1.Mock implements _i4.UpdateTutorialsData {
+class MockUpdateTutorialsData extends _i1.Mock
+    implements _i4.UpdateTutorialsData {
   @override
   _i2.UserRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -62,7 +67,8 @@ class MockUpdateTutorialsData extends _i1.Mock implements _i4.UpdateTutorialsDat
       ) as _i2.UserRepository);
 
   @override
-  _i5.Future<_i3.Either<_i6.UserFailures, void>> call(_i4.UpdateTutorialsDataParams? params) =>
+  _i5.Future<_i3.Either<_i6.UserFailures, void>> call(
+          _i4.UpdateTutorialsDataParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -76,8 +82,9 @@ class MockUpdateTutorialsData extends _i1.Mock implements _i4.UpdateTutorialsDat
             [params],
           ),
         )),
-        returnValueForMissingStub: _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
-            _FakeEither_1<_i6.UserFailures, void>(
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.UserFailures, void>>.value(
+                _FakeEither_1<_i6.UserFailures, void>(
           this,
           Invocation.method(
             #call,

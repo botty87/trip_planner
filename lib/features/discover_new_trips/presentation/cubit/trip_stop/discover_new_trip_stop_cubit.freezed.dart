@@ -25,8 +25,8 @@ mixin _$DiscoverNewTripStopState {
 
 /// @nodoc
 abstract class $DiscoverNewTripStopStateCopyWith<$Res> {
-  factory $DiscoverNewTripStopStateCopyWith(
-          DiscoverNewTripStopState value, $Res Function(DiscoverNewTripStopState) then) =
+  factory $DiscoverNewTripStopStateCopyWith(DiscoverNewTripStopState value,
+          $Res Function(DiscoverNewTripStopState) then) =
       _$DiscoverNewTripStopStateCopyWithImpl<$Res, DiscoverNewTripStopState>;
   @useResult
   $Res call({TripStop tripStop});
@@ -35,7 +35,8 @@ abstract class $DiscoverNewTripStopStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DiscoverNewTripStopStateCopyWithImpl<$Res, $Val extends DiscoverNewTripStopState>
+class _$DiscoverNewTripStopStateCopyWithImpl<$Res,
+        $Val extends DiscoverNewTripStopState>
     implements $DiscoverNewTripStopStateCopyWith<$Res> {
   _$DiscoverNewTripStopStateCopyWithImpl(this._value, this._then);
 
@@ -67,8 +68,10 @@ class _$DiscoverNewTripStopStateCopyWithImpl<$Res, $Val extends DiscoverNewTripS
 }
 
 /// @nodoc
-abstract class _$$NormalImplCopyWith<$Res> implements $DiscoverNewTripStopStateCopyWith<$Res> {
-  factory _$$NormalImplCopyWith(_$NormalImpl value, $Res Function(_$NormalImpl) then) =
+abstract class _$$NormalImplCopyWith<$Res>
+    implements $DiscoverNewTripStopStateCopyWith<$Res> {
+  factory _$$NormalImplCopyWith(
+          _$NormalImpl value, $Res Function(_$NormalImpl) then) =
       __$$NormalImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -82,7 +85,8 @@ abstract class _$$NormalImplCopyWith<$Res> implements $DiscoverNewTripStopStateC
 class __$$NormalImplCopyWithImpl<$Res>
     extends _$DiscoverNewTripStopStateCopyWithImpl<$Res, _$NormalImpl>
     implements _$$NormalImplCopyWith<$Res> {
-  __$$NormalImplCopyWithImpl(_$NormalImpl _value, $Res Function(_$NormalImpl) _then)
+  __$$NormalImplCopyWithImpl(
+      _$NormalImpl _value, $Res Function(_$NormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -117,7 +121,8 @@ class _$NormalImpl implements _Normal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NormalImpl &&
-            (identical(other.tripStop, tripStop) || other.tripStop == tripStop));
+            (identical(other.tripStop, tripStop) ||
+                other.tripStop == tripStop));
   }
 
   @override
@@ -137,5 +142,6 @@ abstract class _Normal implements DiscoverNewTripStopState {
   TripStop get tripStop;
   @override
   @JsonKey(ignore: true)
-  _$$NormalImplCopyWith<_$NormalImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

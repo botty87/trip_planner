@@ -6,7 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/trips/data/datasources/trips_data_source.dart' as _i2;
+import 'package:trip_planner/features/trips/data/datasources/trips_data_source.dart'
+    as _i2;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i4;
 
 // ignore_for_file: type=lint

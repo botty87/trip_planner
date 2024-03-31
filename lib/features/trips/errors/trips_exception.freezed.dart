@@ -58,7 +58,8 @@ mixin _$TripsException {
 
 /// @nodoc
 abstract class $TripsExceptionCopyWith<$Res> {
-  factory $TripsExceptionCopyWith(TripsException value, $Res Function(TripsException) then) =
+  factory $TripsExceptionCopyWith(
+          TripsException value, $Res Function(TripsException) then) =
       _$TripsExceptionCopyWithImpl<$Res, TripsException>;
 }
 
@@ -75,8 +76,8 @@ class _$TripsExceptionCopyWithImpl<$Res, $Val extends TripsException>
 
 /// @nodoc
 abstract class _$$TripsExceptionImplCopyWith<$Res> {
-  factory _$$TripsExceptionImplCopyWith(
-          _$TripsExceptionImpl value, $Res Function(_$TripsExceptionImpl) then) =
+  factory _$$TripsExceptionImplCopyWith(_$TripsExceptionImpl value,
+          $Res Function(_$TripsExceptionImpl) then) =
       __$$TripsExceptionImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
@@ -132,7 +133,8 @@ class _$TripsExceptionImpl implements _TripsException {
   @override
   @pragma('vm:prefer-inline')
   _$$TripsExceptionImplCopyWith<_$TripsExceptionImpl> get copyWith =>
-      __$$TripsExceptionImplCopyWithImpl<_$TripsExceptionImpl>(this, _$identity);
+      __$$TripsExceptionImplCopyWithImpl<_$TripsExceptionImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -208,8 +210,8 @@ abstract class _TripsException implements TripsException {
 
 /// @nodoc
 abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
-  factory _$$NoInternetConnectionImplCopyWith(
-          _$NoInternetConnectionImpl value, $Res Function(_$NoInternetConnectionImpl) then) =
+  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
+          $Res Function(_$NoInternetConnectionImpl) then) =
       __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
@@ -217,8 +219,8 @@ abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
 class __$$NoInternetConnectionImplCopyWithImpl<$Res>
     extends _$TripsExceptionCopyWithImpl<$Res, _$NoInternetConnectionImpl>
     implements _$$NoInternetConnectionImplCopyWith<$Res> {
-  __$$NoInternetConnectionImplCopyWithImpl(
-      _$NoInternetConnectionImpl _value, $Res Function(_$NoInternetConnectionImpl) _then)
+  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
+      $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 }
 
@@ -235,7 +237,8 @@ class _$NoInternetConnectionImpl implements _NoInternetConnection {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$NoInternetConnectionImpl);
   }
 
   @override

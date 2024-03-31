@@ -6,18 +6,24 @@
 import 'dart:async' as _i7;
 
 import 'package:dartz/dartz.dart' as _i3;
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart' as _i5;
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
+    as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/core/usecases/usecase.dart' as _i9;
-import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart' as _i4;
-import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart' as _i2;
-import 'package:trip_planner/features/user_account/domain/usecases/delete_user.dart' as _i12;
-import 'package:trip_planner/features/user_account/domain/usecases/logout_user.dart' as _i6;
+import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
+    as _i4;
+import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
+    as _i2;
+import 'package:trip_planner/features/user_account/domain/usecases/delete_user.dart'
+    as _i12;
+import 'package:trip_planner/features/user_account/domain/usecases/logout_user.dart'
+    as _i6;
 import 'package:trip_planner/features/user_account/domain/usecases/reauthenticate_user.dart'
     as _i10;
 import 'package:trip_planner/features/user_account/domain/usecases/update_user_details.dart'
     as _i11;
-import 'package:trip_planner/features/user_account/errors/user_failures.dart' as _i8;
+import 'package:trip_planner/features/user_account/errors/user_failures.dart'
+    as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -32,7 +38,8 @@ import 'package:trip_planner/features/user_account/errors/user_failures.dart' as
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeUserRepository_0 extends _i1.SmartFake implements _i2.UserRepository {
+class _FakeUserRepository_0 extends _i1.SmartFake
+    implements _i2.UserRepository {
   _FakeUserRepository_0(
     Object parent,
     Invocation parentInvocation,
@@ -52,7 +59,8 @@ class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
         );
 }
 
-class _FakeTripsRepository_2 extends _i1.SmartFake implements _i4.TripsRepository {
+class _FakeTripsRepository_2 extends _i1.SmartFake
+    implements _i4.TripsRepository {
   _FakeTripsRepository_2(
     Object parent,
     Invocation parentInvocation,
@@ -62,7 +70,8 @@ class _FakeTripsRepository_2 extends _i1.SmartFake implements _i4.TripsRepositor
         );
 }
 
-class _FakeInternetConnection_3 extends _i1.SmartFake implements _i5.InternetConnection {
+class _FakeInternetConnection_3 extends _i1.SmartFake
+    implements _i5.InternetConnection {
   _FakeInternetConnection_3(
     Object parent,
     Invocation parentInvocation,
@@ -90,7 +99,8 @@ class MockLogoutUser extends _i1.Mock implements _i6.LogoutUser {
       ) as _i2.UserRepository);
 
   @override
-  _i7.Future<_i3.Either<_i8.UserFailures, void>> call(_i9.NoParams? params) => (super.noSuchMethod(
+  _i7.Future<_i3.Either<_i8.UserFailures, void>> call(_i9.NoParams? params) =>
+      (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
@@ -103,8 +113,9 @@ class MockLogoutUser extends _i1.Mock implements _i6.LogoutUser {
             [params],
           ),
         )),
-        returnValueForMissingStub: _i7.Future<_i3.Either<_i8.UserFailures, void>>.value(
-            _FakeEither_1<_i8.UserFailures, void>(
+        returnValueForMissingStub:
+            _i7.Future<_i3.Either<_i8.UserFailures, void>>.value(
+                _FakeEither_1<_i8.UserFailures, void>(
           this,
           Invocation.method(
             #call,
@@ -117,7 +128,8 @@ class MockLogoutUser extends _i1.Mock implements _i6.LogoutUser {
 /// A class which mocks [ReauthenticateUser].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockReauthenticateUser extends _i1.Mock implements _i10.ReauthenticateUser {
+class MockReauthenticateUser extends _i1.Mock
+    implements _i10.ReauthenticateUser {
   @override
   _i2.UserRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -132,7 +144,8 @@ class MockReauthenticateUser extends _i1.Mock implements _i10.ReauthenticateUser
       ) as _i2.UserRepository);
 
   @override
-  _i7.Future<_i3.Either<_i8.UserFailures, void>> call(_i10.ReauthenticateUserParams? params) =>
+  _i7.Future<_i3.Either<_i8.UserFailures, void>> call(
+          _i10.ReauthenticateUserParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -146,8 +159,9 @@ class MockReauthenticateUser extends _i1.Mock implements _i10.ReauthenticateUser
             [params],
           ),
         )),
-        returnValueForMissingStub: _i7.Future<_i3.Either<_i8.UserFailures, void>>.value(
-            _FakeEither_1<_i8.UserFailures, void>(
+        returnValueForMissingStub:
+            _i7.Future<_i3.Either<_i8.UserFailures, void>>.value(
+                _FakeEither_1<_i8.UserFailures, void>(
           this,
           Invocation.method(
             #call,
@@ -175,7 +189,8 @@ class MockUpdateUserDetails extends _i1.Mock implements _i11.UpdateUserDetails {
       ) as _i2.UserRepository);
 
   @override
-  _i7.Future<_i3.Either<_i8.UserFailures, void>> call(_i11.UpdateUserDetailsParams? params) =>
+  _i7.Future<_i3.Either<_i8.UserFailures, void>> call(
+          _i11.UpdateUserDetailsParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -189,8 +204,9 @@ class MockUpdateUserDetails extends _i1.Mock implements _i11.UpdateUserDetails {
             [params],
           ),
         )),
-        returnValueForMissingStub: _i7.Future<_i3.Either<_i8.UserFailures, void>>.value(
-            _FakeEither_1<_i8.UserFailures, void>(
+        returnValueForMissingStub:
+            _i7.Future<_i3.Either<_i8.UserFailures, void>>.value(
+                _FakeEither_1<_i8.UserFailures, void>(
           this,
           Invocation.method(
             #call,
@@ -244,7 +260,8 @@ class MockDeleteUser extends _i1.Mock implements _i12.DeleteUser {
       ) as _i5.InternetConnection);
 
   @override
-  _i7.Future<_i3.Either<_i8.UserFailures, void>> call(_i12.DeleteUserParams? params) =>
+  _i7.Future<_i3.Either<_i8.UserFailures, void>> call(
+          _i12.DeleteUserParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -258,8 +275,9 @@ class MockDeleteUser extends _i1.Mock implements _i12.DeleteUser {
             [params],
           ),
         )),
-        returnValueForMissingStub: _i7.Future<_i3.Either<_i8.UserFailures, void>>.value(
-            _FakeEither_1<_i8.UserFailures, void>(
+        returnValueForMissingStub:
+            _i7.Future<_i3.Either<_i8.UserFailures, void>>.value(
+                _FakeEither_1<_i8.UserFailures, void>(
           this,
           Invocation.method(
             #call,
