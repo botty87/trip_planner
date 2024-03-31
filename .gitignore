@@ -28,5 +28,9 @@ doc/api/
 lib/keys/env.dart
 lib/keys/env.g.dart
 
-# Ignore firebase emulator folder
+# Ignore firebase files
 firebase_emulator/
+firebase.json
+.firebaserc
+firebase-debug.log
+.firebase/
