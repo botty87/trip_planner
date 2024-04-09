@@ -1,16 +1,11 @@
-# trip_planner
+# Trip Planner
 
-A new Flutter project.
+Trip Planner is a Flutter application designed to help you create and organize your travels. With this app, you can plan your trips ahead of time, manage your itinerary, and ensure you don't miss out on any adventure.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Create and manage your trips
+- Organize your itinerary
+- Add places you want to visit
+- Keep track of your travel expenses
+- Share your plans with friends (working on)
