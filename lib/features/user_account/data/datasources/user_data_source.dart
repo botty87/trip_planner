@@ -60,6 +60,11 @@ final class UserDataSourceImpl implements UserDataSource {
         );
         await userDoc.set(userDB);
         userDocSnapshot = await userDoc.get();
+      } else {
+        //Check if the email has changed
+        if (userDocSnapshot.data()!.email != firebaseUser.email) {
+          await userDoc.update({'email': firebaseUser.email});
+        }
       }
     }
 
