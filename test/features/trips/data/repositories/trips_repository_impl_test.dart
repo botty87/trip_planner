@@ -5,6 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/trips/data/datasources/trips_data_source.dart';
 import 'package:trip_planner/features/trips/data/repositories/trips_repository_impl.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
+import 'package:trip_planner/features/trips/errors/trips_exception.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 
 import 'trips_repository_impl_test.mocks.dart';
@@ -193,4 +194,46 @@ void main() {
       expect(result, equals(left(const TripsFailure())));
     });
   });
+
+  group('addUserForShare', () {
+    const tripId = 'tripId';
+    const email = 'test@example.com';
+
+    test('should return right(null) when TripsDataSource.addUserForShare completes', () async {
+      when(mockTripsDataSource.addUserForShare(tripId, email)).thenAnswer((_) async {});
+
+      // act
+      final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(ShareTripFailure) when TripsDataSource.addUserForShare throws', () async {
+      when(mockTripsDataSource.addUserForShare(tripId, email)).thenThrow(Exception());
+
+      // act
+      final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
+      // assert
+      expect(result, equals(left(const ShareTripFailure())));
+    });
+
+    test('should return left(ShareTripFailure.noInternetConnection()) when TripsDataSource.addUserForShare throws TripsException.noInternetConnection', () async {
+      when(mockTripsDataSource.addUserForShare(tripId, email)).thenThrow(const ShareTripException.noInternetConnection());
+
+      // act
+      final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
+      // assert
+      expect(result, equals(left(const ShareTripFailure.noInternetConnection())));
+    });
+
+    test('should return left(ShareTripFailure.userNotFound()) when TripsDataSource.addUserForShare throws TripsException.userNotFound', () async {
+      when(mockTripsDataSource.addUserForShare(tripId, email)).thenThrow(const ShareTripException.userNotFound());
+
+      // act
+      final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
+      // assert
+      expect(result, equals(left(const ShareTripFailure.userNotFound())));
+    });
+  });
+    
 }
