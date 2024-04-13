@@ -6,6 +6,7 @@ import 'package:quiver/collection.dart';
 import '../../../../core/db/day_trips_collection_ref.dart';
 import '../../../../core/db/trip_stops_collection_ref.dart';
 import '../../../../core/db/trips_collection_ref.dart';
+import '../../../../core/db/users_collection_ref.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../../../core/utilities/extensions.dart';
@@ -15,7 +16,7 @@ import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../domain/entities/trip.dart';
 import '../../errors/trips_exception.dart';
 
-abstract class TripsDataSource {
+abstract interface class TripsDataSource {
   Future<void> addTrip(Trip trip);
   Stream<List<Trip>> listenTrips(String userId);
   Future<void> updateTrip(String id, String name, String? description, DateTime startDate,
@@ -31,6 +32,8 @@ abstract class TripsDataSource {
     required bool showDirections,
     required bool useDifferentDirectionsColors,
   });
+
+  Future<void> addUserForShare(String tripId, String email);
 }
 
 @LazySingleton(as: TripsDataSource)
@@ -46,6 +49,8 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
       getIt<DayTripsCollectionRef>(param1: tripId).withConverter;
   CollectionReference<TripStop> _tripStopsCollection(String tripId, String dayTripId) =>
       getIt<TripStopsCollectionRef>(param1: tripId, param2: dayTripId).withConverter;
+
+  late final _usersCollection = getIt<UsersCollectionRef>().withConverter;
 
   @override
   Future<void> addTrip(Trip trip) async {
@@ -246,5 +251,25 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
       currentBatchSize = 0;
     }
     return Pair(currentBatchSize, currentBatchIndex);
+  }
+
+  @override
+  Future<void> addUserForShare(String tripId, String email) async {
+    //Create a transaction to verify if the user exists and add it to the sharedUsers array
+    //We must have internet connection to perform this operation
+    if (!(await internetConnection.hasInternetAccess)) {
+      throw const ShareTripException.noInternetConnection();
+    }
+
+    //Check if the user exists and add it to the sharedUsers array
+    final userDoc = await _usersCollection.where('email', isEqualTo: email).get();
+    if (userDoc.docs.isEmpty) {
+      throw const ShareTripException.userNotFound();
+    }
+
+    //Update the trip with the new shared user
+    await _tripsCollection.doc(tripId).update({
+      'sharedUsers': FieldValue.arrayUnion([email])
+    });
   }
 }

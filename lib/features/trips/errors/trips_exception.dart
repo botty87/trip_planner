@@ -8,3 +8,12 @@ class TripsException with _$TripsException implements Exception {
 
   const factory TripsException.noInternetConnection() = _NoInternetConnection;
 }
+
+@freezed
+class ShareTripException with _$ShareTripException implements Exception  {
+  const factory ShareTripException({String? message}) = _ShareTripException;
+
+  const factory ShareTripException.userNotFound() = _UserNotFound;
+
+  const factory ShareTripException.noInternetConnection() = _SNoInternetConnection;
+}

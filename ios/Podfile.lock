@@ -1,5 +1,5 @@
 PODS:
-  - cloud_firestore (4.15.9):
+  - cloud_firestore (4.15.10):
     - Firebase/Firestore (= 10.22.0)
     - firebase_core
     - Flutter
@@ -28,22 +28,22 @@ PODS:
   - Firebase/Storage (10.22.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 10.22.0)
-  - firebase_auth (4.17.9):
+  - firebase_auth (4.18.0):
     - Firebase/Auth (= 10.22.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.27.1):
+  - firebase_core (2.27.2):
     - Firebase/CoreOnly (= 10.22.0)
     - Flutter
-  - firebase_crashlytics (3.4.19):
+  - firebase_crashlytics (3.4.20):
     - Firebase/Crashlytics (= 10.22.0)
     - firebase_core
     - Flutter
-  - firebase_database (10.4.10):
+  - firebase_database (10.4.11):
     - Firebase/Database (= 10.22.0)
     - firebase_core
     - Flutter
-  - firebase_storage (11.6.10):
+  - firebase_storage (11.6.11):
     - Firebase/Storage (= 10.22.0)
     - firebase_core
     - Flutter
@@ -301,16 +301,16 @@ CHECKOUT OPTIONS:
     :tag: 10.22.0
 
 SPEC CHECKSUMS:
-  cloud_firestore: 9d69182af1d677062f005584ca5470a19e1f68e7
+  cloud_firestore: 5b14c6806eecfc4cbc4314dea133591eb34eb749
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   connectivity_plus: e2dad488011aeb593e219360e804c43cc1af5770
   devicelocale: 35ba84dc7f45f527c3001535d8c8d104edd5d926
   Firebase: 797fd7297b7e1be954432743a0b3f90038e45a71
-  firebase_auth: 610184b4f624545f81e0416bca60642b6818f27f
-  firebase_core: d6dfb4cb86a9ebd92464bb8736075fe967211c97
-  firebase_crashlytics: 0be8c89a6b91fd964a7a8fe574109fd528d310bb
-  firebase_database: a35e59e02a5de034b719c5da7037876c7c46bbdc
-  firebase_storage: 4d91299aefc706729b17bd17c3a1e874a53722df
+  firebase_auth: a5ecfe2441e1802beb8e07a6d5fa3f0cf309a4dd
+  firebase_core: cc49b6648d6dd7570d9273a616cb1205260db91e
+  firebase_crashlytics: a5050259f9e6989a44c131dbf14887a434b4395a
+  firebase_database: 117928739940685b4d27c496ce1492fd15f763b1
+  firebase_storage: 8acf9d33013e2ac77ba3461abade0d13b706dd20
   FirebaseAppCheckInterop: 58db3e9494751399cf3e7b7e3e705cff71099153
   FirebaseAuth: bbe4c68f958504ba9e54aee181adbdf5b664fbc6
   FirebaseAuthInterop: fa6a29d88cf7d5649cf6f4284918a8b7627e98a9

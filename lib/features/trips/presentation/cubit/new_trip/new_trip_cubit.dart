@@ -124,6 +124,7 @@ class NewTripCubit extends Cubit<NewTripState> {
               },
               noInternetConnection: () =>
                   errorMessage += "\n\n${LocaleKeys.noInternetConnectionMessage.tr()}",
+                  
             );
             emitError(errorMessage: errorMessage, previousState: normalState);
           },

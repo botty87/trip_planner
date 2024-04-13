@@ -10,16 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e43dcbd-8f12-413b-81e2-8daca4043e1c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/data/datasources/trips_data_source.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/data/datasources/trips_data_source.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/data/repositories/trips_repository_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/data/repositories/trips_repository_impl.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/domain/repositories/trips_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/domain/repositories/trips_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/domain/usecases/update_trip.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/domain/usecases/update_trip.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trip/trip_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trip/trip_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trip/trip_cubit.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trip/trip_cubit.freezed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trip/trip_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/presentation/cubit/trip/trip_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/trips/presentation/pages/trip_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/trips/presentation/pages/trip_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trip_planner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/trip_planner.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,6 +35,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2Rf2T55icBUDMvBmwUWiEpffhcb" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -46,15 +54,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/marco.bottichio/Dev/Progetti/trip_planner&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "2.9.0",
+    "last_opened_file_path": "/Users/marco.bottichio/Dev/Progetti/trip_planner",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

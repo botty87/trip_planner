@@ -234,4 +234,42 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.ShareTripFailure, void>> addUserForShare(
+    String? tripId,
+    String? email,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addUserForShare,
+          [
+            tripId,
+            email,
+          ],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.ShareTripFailure, void>>.value(
+            _FakeEither_0<_i5.ShareTripFailure, void>(
+          this,
+          Invocation.method(
+            #addUserForShare,
+            [
+              tripId,
+              email,
+            ],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.ShareTripFailure, void>>.value(
+                _FakeEither_0<_i5.ShareTripFailure, void>(
+          this,
+          Invocation.method(
+            #addUserForShare,
+            [
+              tripId,
+              email,
+            ],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.ShareTripFailure, void>>);
 }

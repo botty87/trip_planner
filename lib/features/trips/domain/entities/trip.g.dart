@@ -15,8 +15,9 @@ _$TripImpl _$$TripImplFromJson(Map<String, dynamic> json) => _$TripImpl(
       isPublic: json['isPublic'] as bool? ?? false,
       languageCode: json['languageCode'] as String?,
       sharedWith: (json['sharedWith'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) =>

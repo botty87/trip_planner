@@ -9,3 +9,12 @@ class TripsFailure with _$TripsFailure implements Failure {
 
   const factory TripsFailure.noInternetConnection() = _NoInternetConnection;
 }
+
+@freezed
+class ShareTripFailure with _$ShareTripFailure implements Failure {
+  const factory ShareTripFailure({String? message}) = _ShareTripFailure;
+
+  const factory ShareTripFailure.userNotFound() = _UserNotFound;
+
+  const factory ShareTripFailure.noInternetConnection() = _SNoInternetConnection;
+}

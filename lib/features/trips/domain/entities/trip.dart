@@ -21,7 +21,7 @@ sealed class Trip with _$Trip {
     required DateTime startDate,
     @Default(false) bool isPublic,
     String? languageCode,
-    List<String>? sharedWith,
+    @Default([]) List<String> sharedWith,
   }) = _Trip;
 
   factory Trip.create({

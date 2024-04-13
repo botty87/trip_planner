@@ -14,12 +14,17 @@ import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../domain/entities/trip.dart';
+import '../cubit/share/share_cubit.dart';
 import '../cubit/trip/trip_cubit.dart';
 import '../widgets/new_edit_trip_form/new_edit_trip_form.dart';
 import '../widgets/trip_page/loaded_widget/trip_page_loaded_widget.dart';
 import '../widgets/trip_page/save_cancel_edit_buttons.dart';
+import '../widgets/sharing_section/sharing_trip_section.dart';
 import '../widgets/trip_page/trip_error_widget.dart';
 import '../widgets/trip_page/trip_page_initial_widget.dart';
+
+part '../widgets/trip_page/editing_modal_bottom.dart';
+part '../widgets/trip_page/sharing_modal_bottom.dart';
 
 @RoutePage()
 class TripPage extends HookWidget {
@@ -31,7 +36,7 @@ class TripPage extends HookWidget {
     final isSaving = useStreamController<bool>();
     final errorMessageStream = useStreamController<String?>();
 
-    final isModalBottomEditing = useRef<bool>(false);
+    final isModalBottomOpen = useRef<bool>(false);
 
     return BlocProvider<TripCubit>(
       create: (context) => getIt<TripCubit>(param1: _trip)..startListenDayTrips(),
@@ -45,7 +50,7 @@ class TripPage extends HookWidget {
             BlocListener<TripCubit, TripState>(
               //Show snackbar when error is not fatal and is not editing
               listenWhen: (previous, current) => current.maybeMap(
-                error: (state) => !state.fatal && isModalBottomEditing.value == false,
+                error: (state) => !state.fatal && !isModalBottomOpen.value,
                 orElse: () => false,
               ),
               listener: (context, state) {
@@ -57,17 +62,17 @@ class TripPage extends HookWidget {
               },
             ),
             BlocListener<TripCubit, TripState>(
-              //Show modal bottom sheet if editing
+              //Show editing modal bottom sheet if editing
               listenWhen: (previous, current) => current.maybeMap(
                 editing: (_) => current.runtimeType != previous.runtimeType,
                 orElse: () => false,
               ),
               listener: (context, state) {
-                _showModalBottomEditing(
-                    context, isSaving, isModalBottomEditing, errorMessageStream);
+                _showEditingModalBottom(context, isSaving, isModalBottomOpen, errorMessageStream);
               },
             ),
-            //Close modal bottom sheet if editing dismissed
+            
+            //Close modal bottom sheet if modal bottom dismissed
             BlocListener<TripCubit, TripState>(
               listenWhen: (previous, current) => current.maybeMap(
                 loaded: (_) => previous.maybeMap(
@@ -77,7 +82,7 @@ class TripPage extends HookWidget {
                 orElse: () => false,
               ),
               listener: (context, state) {
-                if (isModalBottomEditing.value) {
+                if (isModalBottomOpen.value) {
                   Navigator.of(context).pop();
                 }
               },
@@ -161,49 +166,6 @@ class TripPage extends HookWidget {
       ),
     );
   }
-
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
-      ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
-    final cubit = context.read<TripCubit>();
-    isModalBottomEditing.value = true;
-    final deviceLocale = getIt<Locale>(instanceName: deviceLocaleKey);
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      showDragHandle: true,
-      useRootNavigator: true,
-      isDismissible: false,
-      useSafeArea: true,
-      builder: (context) {
-        return Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: NewEditTripForm(
-            onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-            onNameChanged: (String value) => cubit.nameChanged(value),
-            onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
-            onLanguageCodeChanged: (String value) => cubit.languageCodeChanged(value),
-            saveSection: SaveCancelEditButtons(
-              isSaving: isSaving.stream,
-              onCancel: () => cubit.modalBottomEditingDismissed(),
-              onSave: () => cubit.saveChanges(),
-              errorMessage: errorMessage.stream,
-            ),
-            isSaving: isSaving.stream,
-            initialTripName: cubit.state.trip.name,
-            initialTripDescription: cubit.state.trip.description,
-            initialStartDate: cubit.state.trip.startDate,
-            onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
-            initialIsPublic: cubit.state.trip.isPublic,
-            initialLanguageCode: cubit.state.trip.languageCode ?? deviceLocale.languageCode,
-          ),
-        );
-      },
-    ).then((_) {
-      isModalBottomEditing.value = false;
-      cubit.modalBottomEditingDismissed();
-    });
-  }
 }
 
 class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
@@ -222,7 +184,7 @@ class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
       actions: [
         IconButton(
           icon: const Icon(Icons.share),
-          onPressed: () {},
+          onPressed: () => _showSharingModalBottom(context),
         ),
         IconButton(
           icon: const Icon(Icons.edit),

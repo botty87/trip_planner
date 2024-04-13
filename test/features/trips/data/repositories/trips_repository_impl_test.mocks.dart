@@ -111,4 +111,21 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
         ),
         returnValueForMissingStub: null,
       );
+
+  @override
+  _i3.Future<void> addUserForShare(
+    String? tripId,
+    String? email,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addUserForShare,
+          [
+            tripId,
+            email,
+          ],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }
