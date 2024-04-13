@@ -30,7 +30,7 @@ import '../../features/day_trips/data/datasources/day_trips_data_source.dart'
     as _i21;
 import '../../features/day_trips/data/repositories/day_trips_repository_impl.dart'
     as _i37;
-import '../../features/day_trips/domain/entities/day_trip.dart' as _i104;
+import '../../features/day_trips/domain/entities/day_trip.dart' as _i105;
 import '../../features/day_trips/domain/repositories/day_trips_repository.dart'
     as _i36;
 import '../../features/day_trips/domain/usecases/create_day_trip.dart' as _i48;
@@ -51,11 +51,11 @@ import '../../features/day_trips/domain/usecases/update_day_trips_indexes.dart'
 import '../../features/day_trips/domain/usecases/update_trip_stops_directions_up_to_date.dart'
     as _i51;
 import '../../features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart'
-    as _i103;
+    as _i104;
 import '../../features/day_trips/presentation/cubit/new_day_trip/new_day_trip_cubit.dart'
     as _i93;
 import '../../features/day_trips/presentation/cubit/trip_stops_map/trip_stops_map_cubit.dart'
-    as _i105;
+    as _i106;
 import '../../features/discover_new_trips/data/datasources/discover_trips_data_source.dart'
     as _i23;
 import '../../features/discover_new_trips/data/repositories/discover_trips_repository_impl.dart'
@@ -101,7 +101,7 @@ import '../../features/import_old_trips/domain/usecases/import_old_trip.dart'
 import '../../features/import_old_trips/domain/usecases/read_old_trips.dart'
     as _i101;
 import '../../features/import_old_trips/presentation/cubit/import_old_trips_cubit.dart'
-    as _i106;
+    as _i107;
 import '../../features/info_contacts/presentation/cubit/info_contacts_cubit.dart'
     as _i6;
 import '../../features/map/presentation/cubit/map_cubit.dart' as _i42;
@@ -152,7 +152,7 @@ import '../../features/trips/domain/usecases/update_trip.dart' as _i77;
 import '../../features/trips/presentation/cubit/new_trip/new_trip_cubit.dart'
     as _i91;
 import '../../features/trips/presentation/cubit/share/share_cubit.dart'
-    as _i108;
+    as _i103;
 import '../../features/trips/presentation/cubit/trip/trip_cubit.dart' as _i100;
 import '../../features/trips/presentation/cubit/trips/trips_cubit.dart' as _i90;
 import '../../features/tutorials/domain/usecases/update_tutorials_data.dart'
@@ -164,7 +164,7 @@ import '../../features/user_account/data/datasources/user_data_source.dart'
     as _i31;
 import '../../features/user_account/data/repositories/user_repository_impl.dart'
     as _i54;
-import '../../features/user_account/domain/entities/user.dart' as _i107;
+import '../../features/user_account/domain/entities/user.dart' as _i108;
 import '../../features/user_account/domain/repositories/user_repository.dart'
     as _i53;
 import '../../features/user_account/domain/usecases/delete_user.dart' as _i67;
@@ -494,11 +494,19 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i101.ReadOldTrips(gh<_i74.OldTripsRepository>()));
     gh.lazySingleton<_i102.ImportOldTrips>(
         () => _i102.ImportOldTrips(gh<_i74.OldTripsRepository>()));
-    gh.factoryParam<_i103.DayTripCubit, _i92.Trip, _i104.DayTrip>((
+    gh.factoryParam<_i103.ShareCubit, _i103.ShareCubitParams, dynamic>((
+      params,
+      _,
+    ) =>
+        _i103.ShareCubit(
+          params: params,
+          addUserForShare: gh<_i80.AddUserForShare>(),
+        ));
+    gh.factoryParam<_i104.DayTripCubit, _i92.Trip, _i105.DayTrip>((
       trip,
       dayTrip,
     ) =>
-        _i103.DayTripCubit(
+        _i104.DayTripCubit(
           trip: trip,
           dayTrip: dayTrip,
           updateDayTrip: gh<_i49.UpdateDayTrip>(),
@@ -514,11 +522,11 @@ extension GetItInjectableX on _i1.GetIt {
           deleteTripStop: gh<_i97.DeleteTripStop>(),
           crashlytics: gh<_i14.FirebaseCrashlytics>(),
         ));
-    gh.factoryParam<_i105.TripStopsMapCubit, _i92.Trip, _i104.DayTrip>((
+    gh.factoryParam<_i106.TripStopsMapCubit, _i92.Trip, _i105.DayTrip>((
       trip,
       dayTrip,
     ) =>
-        _i105.TripStopsMapCubit(
+        _i106.TripStopsMapCubit(
           fetchPolylinePoints: gh<_i69.FetchTripStopsDirections>(),
           saveTripStopsDirections: gh<_i45.SaveTripStopsDirections>(),
           listenDayTrip: gh<_i44.ListenDayTrip>(),
@@ -531,23 +539,14 @@ extension GetItInjectableX on _i1.GetIt {
           trip: trip,
           dayTrip: dayTrip,
         ));
-    gh.factoryParam<_i106.ImportOldTripsCubit, _i107.User, dynamic>((
+    gh.factoryParam<_i107.ImportOldTripsCubit, _i108.User, dynamic>((
       user,
       _,
     ) =>
-        _i106.ImportOldTripsCubit(
+        _i107.ImportOldTripsCubit(
           user: user,
           readOldTrips: gh<_i101.ReadOldTrips>(),
           importOldTrips: gh<_i102.ImportOldTrips>(),
-        ));
-    gh.factoryParam<_i108.ShareCubit, Map<String, String?>?, String>((
-      sharedUsers,
-      tripId,
-    ) =>
-        _i108.ShareCubit(
-          sharedUsers: sharedUsers,
-          tripId: tripId,
-          addUserForShare: gh<_i80.AddUserForShare>(),
         ));
     gh.factoryParam<_i109.AccountCubit, dynamic, dynamic>((
       user,

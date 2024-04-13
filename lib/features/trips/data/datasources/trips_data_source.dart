@@ -263,13 +263,13 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
     //Check if the user exists and add it to the sharedUsers array
     final userDoc = await _usersCollection.where('email', isEqualTo: email).get();
-    if (userDoc.docs.isEmpty) {
+    if (userDoc.size != 1) {
       throw const ShareTripException.userNotFound();
     }
 
-    //Update the trip with the new shared user
+    //Update the trip with the new shared user id
     await _tripsCollection.doc(tripId).update({
-      'sharedUsers': FieldValue.arrayUnion([email])
+      'sharedUsers': FieldValue.arrayUnion([userDoc.docs.first.id])
     });
   }
 }

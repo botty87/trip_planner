@@ -13,6 +13,7 @@ import '../../../ui/presentation/widgets/background/background_image_wrapper.dar
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/share/share_cubit.dart';
 import '../cubit/trip/trip_cubit.dart';

@@ -15,6 +15,11 @@ _showSharingModalBottom(BuildContext context) {
         orElse: () => throw const UnexpectedStateException(),
       );
 
+  final userEmail = context.read<UserCubit>().state.maybeMap(
+        loggedIn: (state) => state.user.email,
+        orElse: () => throw const UnexpectedStateException(),
+      );
+
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -24,7 +29,9 @@ _showSharingModalBottom(BuildContext context) {
     useSafeArea: true,
     builder: (context) {
       return BlocProvider<ShareCubit>(
-        create: (context) => getIt(param1: sharedUsers, param2: tripId),
+        create: (context) => getIt(
+            param1:
+                ShareCubitParams(tripId: tripId, userEmail: userEmail, sharedUsers: sharedUsers)),
         child: Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: const SharingTripSection(),
