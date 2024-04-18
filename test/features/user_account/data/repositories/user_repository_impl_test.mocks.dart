@@ -119,4 +119,16 @@ class MockUserDataSource extends _i1.Mock implements _i2.UserDataSource {
         ),
         returnValueForMissingStub: null,
       );
+
+  @override
+  _i3.Future<Map<String, String>> getUsersNames(List<String>? userIds) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUsersNames,
+          [userIds],
+        ),
+        returnValue: _i3.Future<Map<String, String>>.value(<String, String>{}),
+        returnValueForMissingStub:
+            _i3.Future<Map<String, String>>.value(<String, String>{}),
+      ) as _i3.Future<Map<String, String>>);
 }

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/error/failures.dart';
 import '../../../settings/domain/entities/settings.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../errors/user_failures.dart';
@@ -28,4 +29,6 @@ abstract interface class UserRepository {
   Future<Either<UserFailures, void>> saveSettings(Settings settings);
 
   Future<Either<UserFailures, void>> saveTutorialsData(TutorialsData tutorialsData);
+
+  Future<Either<UserFailures, Map<String, String>>> getUsersNames(List<String> userIds);
 }

@@ -78,7 +78,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
       (failure) {
         emit(state.copyWith(
           isLoading: false,
-          authenticationError: failure.getAuthenticationErrorMessage(),
+          authenticationError: failure.getUserFailureErrorMessage(),
         ));
       },
       (_) {
@@ -101,7 +101,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
       (failure) {
         emit(state.copyWith(
           isLoading: false,
-          authenticationError: failure.getAuthenticationErrorMessage(),
+          authenticationError: failure.getUserFailureErrorMessage(),
         ));
       },
       (_) {
@@ -119,7 +119,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
       (failure) {
         emit(state.copyWith(
           isLoading: false,
-          authenticationError: failure.getAuthenticationErrorMessage(),
+          authenticationError: failure.getUserFailureErrorMessage(),
         ));
       },
       (_) {

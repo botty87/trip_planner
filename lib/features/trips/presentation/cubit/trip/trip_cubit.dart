@@ -14,7 +14,9 @@ import '../../../../day_trips/domain/usecases/update_day_trips_indexes.dart';
 import '../../../../day_trips/errors/day_trips_failure.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/delete_trip.dart';
+import '../../../domain/usecases/listen_trip.dart';
 import '../../../domain/usecases/update_trip.dart';
+import '../../../errors/trips_failure.dart';
 
 part 'trip_cubit.freezed.dart';
 part 'trip_state.dart';
@@ -26,8 +28,10 @@ class TripCubit extends Cubit<TripState> {
   final ListenDayTrips _listenDayTrips;
   final UpdateDayTripsIndexes _updateDayTripsIndexes;
   final FirebaseCrashlytics _crashlytics;
+  final ListenTrip _listenTrip;
 
   StreamSubscription<Either<DayTripsFailure, List<DayTrip>>>? _dayTripsSubscription;
+  StreamSubscription<Either<TripsFailure, Trip?>>? _tripSubscription;
 
   TripCubit({
     @factoryParam required Trip trip,
@@ -35,18 +39,20 @@ class TripCubit extends Cubit<TripState> {
     required DeleteTrip deleteTrip,
     required ListenDayTrips listenDayTrips,
     required UpdateDayTripsIndexes updateDayTripsIndexes,
+    required ListenTrip listenTrip,
     required FirebaseCrashlytics crashlytics,
   })  : _saveTrip = saveTrip,
         _deleteTrip = deleteTrip,
         _listenDayTrips = listenDayTrips,
         _updateDayTripsIndexes = updateDayTripsIndexes,
+        _listenTrip = listenTrip,
         _crashlytics = crashlytics,
         super(TripState.initial(trip: trip));
 
   startListenDayTrips() {
     _dayTripsSubscription?.cancel();
     _dayTripsSubscription =
-        _listenDayTrips(ListenDayTripsParams(tripId: state.trip.id)).listen((result) async {
+        _listenDayTrips(ListenDayTripsParams(tripId: state.trip.id)).listen((result) {
       result.fold(
         (failure) {
           emit(TripState.error(
@@ -60,6 +66,28 @@ class TripCubit extends Cubit<TripState> {
           editing: (editingState) => emit(editingState.copyWith(dayTrips: dayTrips)),
           orElse: () => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
         ),
+      );
+    });
+  }
+
+  startListenTrip() {
+    _tripSubscription?.cancel();
+    _tripSubscription = _listenTrip(ListenTripParams(tripId: state.trip.id)).listen((result) {
+      result.fold(
+        (failure) {
+          emit(TripState.error(
+            trip: state.trip,
+            errorMessage: LocaleKeys.dataLoadError.tr(),
+            fatal: true,
+          ));
+          _crashlytics.recordError(failure, StackTrace.current);
+        },
+        (trip) {
+          //If trip is null it means it was deleted, so we don't update the state
+          if (trip != null) {
+            emit(state.copyWith(trip: trip));
+          }
+        },
       );
     });
   }
@@ -227,6 +255,7 @@ class TripCubit extends Cubit<TripState> {
   @override
   Future<void> close() {
     _dayTripsSubscription?.cancel();
+    _tripSubscription?.cancel();
     return super.close();
   }
 }

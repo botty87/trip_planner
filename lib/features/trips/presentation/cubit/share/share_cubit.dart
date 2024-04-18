@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../../user_account/domain/usecases/get_users_names.dart';
 import '../../../domain/usecases/add_user_for_share.dart';
 import '../../../errors/trips_failure.dart';
 
@@ -14,6 +15,7 @@ part 'share_state.dart';
 @injectable
 class ShareCubit extends Cubit<ShareState> {
   final AddUserForShare _addUserForShare;
+  final GetUsersNames _getUsersNames;
 
   final String _tripId;
   final String _userEmail;
@@ -21,10 +23,12 @@ class ShareCubit extends Cubit<ShareState> {
   ShareCubit({
     @factoryParam required ShareCubitParams params,
     required AddUserForShare addUserForShare,
+    required GetUsersNames getUsersNames,
   })  : _tripId = params.tripId,
         _userEmail = params.userEmail,
         _addUserForShare = addUserForShare,
-        super(ShareState.loaded(sharedUsers: params.sharedUsers));
+        _getUsersNames = getUsersNames,
+        super(const ShareState.initial());
 
   void onUserEmailQueryChanged(String value) {
     emit(state.copyWith(userEmailQuery: value));
@@ -79,10 +83,26 @@ class ShareCubit extends Cubit<ShareState> {
       )),
     );
   }
+
+  void updatedSharedUsers(List<String> sharedUsersIds) async {
+    final sharedUsers = await _getUsersNames(GetUsersNamesParams(userIds: sharedUsersIds));
+
+    sharedUsers.fold(
+      (failure) => emit(ShareState.error(
+        sharedUsers: null,
+        userEmailQuery: state.userEmailQuery,
+        errorMessage: failure.getUserFailureErrorMessage(),
+      )),
+      (sharedUsers) => emit(ShareState.loaded(
+        sharedUsers: sharedUsers,
+        userEmailQuery: state.userEmailQuery,
+      )),
+    );
+  }
 }
 
 class ShareCubitParams extends Equatable {
-  final Map<String, String?> sharedUsers;
+  final List<String> sharedUsers;
   final String tripId;
   final String userEmail;
 

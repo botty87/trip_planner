@@ -27,6 +27,7 @@ mixin _$UserFailures {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$UserFailures {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$UserFailures {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,6 +70,7 @@ mixin _$UserFailures {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +84,7 @@ mixin _$UserFailures {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +98,7 @@ mixin _$UserFailures {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,6 +169,7 @@ class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return emailAlreadyInUse();
   }
@@ -179,6 +186,7 @@ class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -195,6 +203,7 @@ class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -215,6 +224,7 @@ class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -231,6 +241,7 @@ class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -247,6 +258,7 @@ class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -309,6 +321,7 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return networkRequestFailed();
   }
@@ -325,6 +338,7 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return networkRequestFailed?.call();
   }
@@ -341,6 +355,7 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (networkRequestFailed != null) {
@@ -361,6 +376,7 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return networkRequestFailed(this);
   }
@@ -377,6 +393,7 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return networkRequestFailed?.call(this);
   }
@@ -393,6 +410,7 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (networkRequestFailed != null) {
@@ -454,6 +472,7 @@ class _$WeakPasswordImpl extends _WeakPassword {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return weakPassword();
   }
@@ -470,6 +489,7 @@ class _$WeakPasswordImpl extends _WeakPassword {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return weakPassword?.call();
   }
@@ -486,6 +506,7 @@ class _$WeakPasswordImpl extends _WeakPassword {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -506,6 +527,7 @@ class _$WeakPasswordImpl extends _WeakPassword {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return weakPassword(this);
   }
@@ -522,6 +544,7 @@ class _$WeakPasswordImpl extends _WeakPassword {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return weakPassword?.call(this);
   }
@@ -538,6 +561,7 @@ class _$WeakPasswordImpl extends _WeakPassword {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -599,6 +623,7 @@ class _$UserNotFoundImpl extends _UserNotFound {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return userNotFound();
   }
@@ -615,6 +640,7 @@ class _$UserNotFoundImpl extends _UserNotFound {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return userNotFound?.call();
   }
@@ -631,6 +657,7 @@ class _$UserNotFoundImpl extends _UserNotFound {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -651,6 +678,7 @@ class _$UserNotFoundImpl extends _UserNotFound {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return userNotFound(this);
   }
@@ -667,6 +695,7 @@ class _$UserNotFoundImpl extends _UserNotFound {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return userNotFound?.call(this);
   }
@@ -683,6 +712,7 @@ class _$UserNotFoundImpl extends _UserNotFound {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -744,6 +774,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return tooManyRequests();
   }
@@ -760,6 +791,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return tooManyRequests?.call();
   }
@@ -776,6 +808,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (tooManyRequests != null) {
@@ -796,6 +829,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return tooManyRequests(this);
   }
@@ -812,6 +846,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return tooManyRequests?.call(this);
   }
@@ -828,6 +863,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (tooManyRequests != null) {
@@ -889,6 +925,7 @@ class _$UserDisabledImpl extends _UserDisabled {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return userDisabled();
   }
@@ -905,6 +942,7 @@ class _$UserDisabledImpl extends _UserDisabled {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return userDisabled?.call();
   }
@@ -921,6 +959,7 @@ class _$UserDisabledImpl extends _UserDisabled {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -941,6 +980,7 @@ class _$UserDisabledImpl extends _UserDisabled {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return userDisabled(this);
   }
@@ -957,6 +997,7 @@ class _$UserDisabledImpl extends _UserDisabled {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return userDisabled?.call(this);
   }
@@ -973,6 +1014,7 @@ class _$UserDisabledImpl extends _UserDisabled {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -1034,6 +1076,7 @@ class _$WrongPasswordImpl extends _WrongPassword {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return wrongPassword();
   }
@@ -1050,6 +1093,7 @@ class _$WrongPasswordImpl extends _WrongPassword {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return wrongPassword?.call();
   }
@@ -1066,6 +1110,7 @@ class _$WrongPasswordImpl extends _WrongPassword {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (wrongPassword != null) {
@@ -1086,6 +1131,7 @@ class _$WrongPasswordImpl extends _WrongPassword {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return wrongPassword(this);
   }
@@ -1102,6 +1148,7 @@ class _$WrongPasswordImpl extends _WrongPassword {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return wrongPassword?.call(this);
   }
@@ -1118,6 +1165,7 @@ class _$WrongPasswordImpl extends _WrongPassword {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (wrongPassword != null) {
@@ -1179,6 +1227,7 @@ class _$InvalidEmailImpl extends _InvalidEmail {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return invalidEmail();
   }
@@ -1195,6 +1244,7 @@ class _$InvalidEmailImpl extends _InvalidEmail {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return invalidEmail?.call();
   }
@@ -1211,6 +1261,7 @@ class _$InvalidEmailImpl extends _InvalidEmail {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -1231,6 +1282,7 @@ class _$InvalidEmailImpl extends _InvalidEmail {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return invalidEmail(this);
   }
@@ -1247,6 +1299,7 @@ class _$InvalidEmailImpl extends _InvalidEmail {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return invalidEmail?.call(this);
   }
@@ -1263,6 +1316,7 @@ class _$InvalidEmailImpl extends _InvalidEmail {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -1350,6 +1404,7 @@ class _$UnknownErrorImpl extends _UnknownError {
     required TResult Function() wrongPassword,
     required TResult Function() invalidEmail,
     required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
   }) {
     return unknownError(message);
   }
@@ -1366,6 +1421,7 @@ class _$UnknownErrorImpl extends _UnknownError {
     TResult? Function()? wrongPassword,
     TResult? Function()? invalidEmail,
     TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
   }) {
     return unknownError?.call(message);
   }
@@ -1382,6 +1438,7 @@ class _$UnknownErrorImpl extends _UnknownError {
     TResult Function()? wrongPassword,
     TResult Function()? invalidEmail,
     TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
     required TResult orElse(),
   }) {
     if (unknownError != null) {
@@ -1402,6 +1459,7 @@ class _$UnknownErrorImpl extends _UnknownError {
     required TResult Function(_WrongPassword value) wrongPassword,
     required TResult Function(_InvalidEmail value) invalidEmail,
     required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
   }) {
     return unknownError(this);
   }
@@ -1418,6 +1476,7 @@ class _$UnknownErrorImpl extends _UnknownError {
     TResult? Function(_WrongPassword value)? wrongPassword,
     TResult? Function(_InvalidEmail value)? invalidEmail,
     TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
   }) {
     return unknownError?.call(this);
   }
@@ -1434,6 +1493,7 @@ class _$UnknownErrorImpl extends _UnknownError {
     TResult Function(_WrongPassword value)? wrongPassword,
     TResult Function(_InvalidEmail value)? invalidEmail,
     TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (unknownError != null) {
@@ -1451,4 +1511,156 @@ abstract class _UnknownError extends UserFailures {
   @JsonKey(ignore: true)
   _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
+  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
+          $Res Function(_$NoInternetConnectionImpl) then) =
+      __$$NoInternetConnectionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoInternetConnectionImplCopyWithImpl<$Res>
+    extends _$UserFailuresCopyWithImpl<$Res, _$NoInternetConnectionImpl>
+    implements _$$NoInternetConnectionImplCopyWith<$Res> {
+  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
+      $Res Function(_$NoInternetConnectionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NoInternetConnectionImpl extends _NoInternetConnection {
+  const _$NoInternetConnectionImpl() : super._();
+
+  @override
+  String toString() {
+    return 'UserFailures.noInternetConnection()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NoInternetConnectionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() networkRequestFailed,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() tooManyRequests,
+    required TResult Function() userDisabled,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidEmail,
+    required TResult Function(String? message) unknownError,
+    required TResult Function() noInternetConnection,
+  }) {
+    return noInternetConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? networkRequestFailed,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? userDisabled,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidEmail,
+    TResult? Function(String? message)? unknownError,
+    TResult? Function()? noInternetConnection,
+  }) {
+    return noInternetConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? networkRequestFailed,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? tooManyRequests,
+    TResult Function()? userDisabled,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidEmail,
+    TResult Function(String? message)? unknownError,
+    TResult Function()? noInternetConnection,
+    required TResult orElse(),
+  }) {
+    if (noInternetConnection != null) {
+      return noInternetConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_NetworkRequestFailed value) networkRequestFailed,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UnknownError value) unknownError,
+    required TResult Function(_NoInternetConnection value) noInternetConnection,
+  }) {
+    return noInternetConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UnknownError value)? unknownError,
+    TResult? Function(_NoInternetConnection value)? noInternetConnection,
+  }) {
+    return noInternetConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_NetworkRequestFailed value)? networkRequestFailed,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UnknownError value)? unknownError,
+    TResult Function(_NoInternetConnection value)? noInternetConnection,
+    required TResult orElse(),
+  }) {
+    if (noInternetConnection != null) {
+      return noInternetConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoInternetConnection extends UserFailures {
+  const factory _NoInternetConnection() = _$NoInternetConnectionImpl;
+  const _NoInternetConnection._() : super._();
 }

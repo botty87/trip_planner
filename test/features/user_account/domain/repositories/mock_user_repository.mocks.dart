@@ -362,4 +362,32 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.UserFailures, Map<String, String>>> getUsersNames(
+          List<String>? userIds) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUsersNames,
+          [userIds],
+        ),
+        returnValue:
+            _i4.Future<_i2.Either<_i5.UserFailures, Map<String, String>>>.value(
+                _FakeEither_0<_i5.UserFailures, Map<String, String>>(
+          this,
+          Invocation.method(
+            #getUsersNames,
+            [userIds],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.UserFailures, Map<String, String>>>.value(
+                _FakeEither_0<_i5.UserFailures, Map<String, String>>(
+          this,
+          Invocation.method(
+            #getUsersNames,
+            [userIds],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, Map<String, String>>>);
 }

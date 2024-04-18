@@ -83,7 +83,7 @@ void main() {
       expect: () => [
         AccountState.normal(
             user: tUser,
-            errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
+            errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {
@@ -323,7 +323,7 @@ void main() {
         editUserData: const EditUserData(name: 'name', email: 'email', password: null),
         isSaving: false,
         password: 'password',
-        errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage(),
+        errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage(),
       ),
     ],
   );
@@ -354,7 +354,7 @@ void main() {
         editUserData: const EditUserData(name: 'name', email: 'email', password: null),
         isSaving: false,
         password: 'password',
-        errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage(),
+        errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage(),
       ),
     ],
   );
@@ -373,7 +373,7 @@ void main() {
         const AccountState.deleting(user: tUser),
         AccountState.normal(
             user: tUser,
-            errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
+            errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {
@@ -395,7 +395,7 @@ void main() {
         const AccountState.deleting(user: tUser),
         AccountState.normal(
             user: tUser,
-            errorMessage: const UserFailures.unknownError().getAuthenticationErrorMessage()),
+            errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {

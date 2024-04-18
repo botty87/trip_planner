@@ -28,7 +28,9 @@ sealed class UserFailures with _$UserFailures implements Failure {
 
   const factory UserFailures.unknownError({String? message}) = _UnknownError;
 
-  String getAuthenticationErrorMessage() {
+  const factory UserFailures.noInternetConnection() = _NoInternetConnection;
+
+  String getUserFailureErrorMessage() {
     return map(
       emailAlreadyInUse: (_) => LocaleKeys.emailAlreadyInUse.tr(),
       networkRequestFailed: (_) => LocaleKeys.networkRequestFailed.tr(),
@@ -38,6 +40,7 @@ sealed class UserFailures with _$UserFailures implements Failure {
       invalidEmail: (_) => LocaleKeys.invalidEmail.tr(),
       tooManyRequests: (_) => LocaleKeys.tooManyRequests.tr(),
       userDisabled: (_) => LocaleKeys.userDisabled.tr(),
+      noInternetConnection: (_) => LocaleKeys.noInternetConnectionMessage.tr(),
       unknownError: (e) => e.message ?? LocaleKeys.unknownError.tr(),
     );
   }

@@ -40,7 +40,9 @@ class TripPage extends HookWidget {
     final isModalBottomOpen = useRef<bool>(false);
 
     return BlocProvider<TripCubit>(
-      create: (context) => getIt<TripCubit>(param1: _trip)..startListenDayTrips(),
+      create: (context) => getIt<TripCubit>(param1: _trip)
+        ..startListenDayTrips()
+        ..startListenTrip(),
       child: ScaffoldTransparent(
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight),
@@ -72,7 +74,7 @@ class TripPage extends HookWidget {
                 _showEditingModalBottom(context, isSaving, isModalBottomOpen, errorMessageStream);
               },
             ),
-            
+
             //Close modal bottom sheet if modal bottom dismissed
             BlocListener<TripCubit, TripState>(
               listenWhen: (previous, current) => current.maybeMap(

@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
+import '../../errors/trips_failure.dart';
 import '../entities/trip.dart';
 import '../repositories/trips_repository.dart';
 
@@ -14,7 +15,7 @@ class ListenTrip implements StreamUseCase<Trip?, ListenTripParams> {
   ListenTrip(this._repository);
   
   @override
-  Stream<Either<Failure, Trip?>> call(ListenTripParams params) {
+  Stream<Either<TripsFailure, Trip?>> call(ListenTripParams params) {
     return _repository.listenTrip(params.tripId);
   }
 }

@@ -271,7 +271,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
     //Update the trip with the new shared user id
     await _tripsCollection.doc(tripId).update({
-      'sharedUsers': FieldValue.arrayUnion([userDoc.docs.first.id])
+      'sharedWith': FieldValue.arrayUnion([userDoc.docs.first.id])
     });
   }
   

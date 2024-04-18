@@ -124,11 +124,11 @@ class TripsRepositoryImpl implements TripsRepository {
   }
 
   @override
-  Stream<Either<Failure, Trip?>> listenTrip(String tripId) async* {
+  Stream<Either<TripsFailure, Trip?>> listenTrip(String tripId) async* {
     try {
       yield* tripsDataSource
           .listenTrip(tripId)
-          .map<Either<Failure, Trip?>>((trip) => right(trip))
+          .map<Either<TripsFailure, Trip?>>((trip) => right(trip))
           .handleError((e) => left(const TripsFailure()));
     } catch (e) {
       yield left(const TripsFailure());

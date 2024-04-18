@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Settings;
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth_pack;
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 import '../../../../core/db/users_collection_ref.dart';
 import '../../../../core/di/di.dart';
@@ -10,6 +11,7 @@ import '../../../settings/domain/entities/settings.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/entities/user_db.dart';
+import '../../errors/user_exception.dart';
 
 abstract interface class UserDataSource {
   Stream<User?> get user;
@@ -31,12 +33,15 @@ abstract interface class UserDataSource {
   deleteUser();
 
   saveTutorialsData(TutorialsData tutorialsData);
+
+  Future<Map<String, String>> getUsersNames(List<String> userIds);
 }
 
 @LazySingleton(as: UserDataSource)
 final class UserDataSourceImpl implements UserDataSource {
   final firebase_auth_pack.FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
+  final InternetConnection internetConnection;
 
   final StreamController<User?> _userStreamController = StreamController<User?>();
 
@@ -47,7 +52,7 @@ final class UserDataSourceImpl implements UserDataSource {
 
   StreamSubscription? _userStreamSubscription;
 
-  UserDataSourceImpl(this.firebaseAuth, this.firebaseFirestore) {
+  UserDataSourceImpl(this.firebaseAuth, this.firebaseFirestore, this.internetConnection) {
     saveUserIfNotExistsInDB(firebase_auth_pack.User firebaseUser) async {
       final userDoc = _usersCollection.doc(firebaseUser.uid);
       var userDocSnapshot = await userDoc.get();
@@ -165,5 +170,26 @@ final class UserDataSourceImpl implements UserDataSource {
     await _usersCollection
         .doc(firebaseAuth.currentUser!.uid)
         .update({'tutorialsData': tutorialsData.toJson()});
+  }
+
+  @override
+  Future<Map<String, String>> getUsersNames(List<String> userIds) async {
+    //Check internet connection
+    if (!(await internetConnection.hasInternetAccess)) {
+      throw const UserException.noInternetConnection();
+    }
+
+    //Use a transaction to read all the users in a single read
+    return await firebaseFirestore.runTransaction((transaction) async {
+      final usersNames = <String, String>{};
+
+      for (final userId in userIds) {
+        final userDoc = _usersCollection.doc(userId);
+        final userDocSnapshot = await transaction.get(userDoc);
+        usersNames[userId] = userDocSnapshot.data()!.name;
+      }
+
+      return usersNames;
+    });
   }
 }
