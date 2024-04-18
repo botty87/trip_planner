@@ -266,8 +266,8 @@ class TripStopCubit extends Cubit<TripStopState> {
     ));
 
     int getDuration() {
-      int hourDuration = editingState.hourDuration ?? state.tripStop.duration ~/ 60;
-      int minuteDuration = editingState.minuteDuration ?? state.tripStop.duration % 60;
+      final int hourDuration = editingState.hourDuration ?? state.tripStop.duration ~/ 60;
+      final int minuteDuration = editingState.minuteDuration ?? state.tripStop.duration % 60;
 
       return hourDuration * 60 + minuteDuration;
     }

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/error/failures.dart';
 import '../../domain/entities/trip.dart';
 import '../../errors/trips_exception.dart';
 import '../../errors/trips_failure.dart';
@@ -119,6 +120,18 @@ class TripsRepositoryImpl implements TripsRepository {
       );
     } on Exception {
       return left(const ShareTripFailure());
+    }
+  }
+
+  @override
+  Stream<Either<Failure, Trip?>> listenTrip(String tripId) async* {
+    try {
+      yield* tripsDataSource
+          .listenTrip(tripId)
+          .map<Either<Failure, Trip?>>((trip) => right(trip))
+          .handleError((e) => left(const TripsFailure()));
+    } catch (e) {
+      yield left(const TripsFailure());
     }
   }
 }

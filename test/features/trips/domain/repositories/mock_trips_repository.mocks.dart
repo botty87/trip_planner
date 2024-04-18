@@ -7,6 +7,7 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:trip_planner/core/error/failures.dart' as _i7;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i6;
 import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
     as _i3;
@@ -272,4 +273,16 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.ShareTripFailure, void>>);
+
+  @override
+  _i4.Stream<_i2.Either<_i7.Failure, _i6.Trip?>> listenTrip(String? tripId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenTrip,
+          [tripId],
+        ),
+        returnValue: _i4.Stream<_i2.Either<_i7.Failure, _i6.Trip?>>.empty(),
+        returnValueForMissingStub:
+            _i4.Stream<_i2.Either<_i7.Failure, _i6.Trip?>>.empty(),
+      ) as _i4.Stream<_i2.Either<_i7.Failure, _i6.Trip?>>);
 }

@@ -34,6 +34,8 @@ abstract interface class TripsDataSource {
   });
 
   Future<void> addUserForShare(String tripId, String email);
+
+  Stream<Trip?> listenTrip(String tripId);
 }
 
 @LazySingleton(as: TripsDataSource)
@@ -271,5 +273,10 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
     await _tripsCollection.doc(tripId).update({
       'sharedUsers': FieldValue.arrayUnion([userDoc.docs.first.id])
     });
+  }
+  
+  @override
+  Stream<Trip?> listenTrip(String tripId) async* {
+    yield* _tripsCollection.doc(tripId).snapshots().map((snapshot) => snapshot.data());
   }
 }

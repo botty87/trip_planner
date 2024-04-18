@@ -2,10 +2,15 @@ part of 'share_cubit.dart';
 
 @freezed
 class ShareState with _$ShareState {
-  const factory ShareState.normal({
+  const factory ShareState.initial({
     required Map<String, String?>? sharedUsers,
     @Default('') String userEmailQuery,
-  }) = _NormalShareState;
+  }) = _InitialShareState;
+
+  const factory ShareState.loaded({
+    required Map<String, String?>? sharedUsers,
+    @Default('') String userEmailQuery,
+  }) = _LoadedShareState;
 
   const factory ShareState.error({
     required Map<String, String?>? sharedUsers,

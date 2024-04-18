@@ -208,7 +208,8 @@ void main() {
       expect(result, equals(right(null)));
     });
 
-    test('should return left(ShareTripFailure) when TripsDataSource.addUserForShare throws', () async {
+    test('should return left(ShareTripFailure) when TripsDataSource.addUserForShare throws',
+        () async {
       when(mockTripsDataSource.addUserForShare(tripId, email)).thenThrow(Exception());
 
       // act
@@ -217,8 +218,11 @@ void main() {
       expect(result, equals(left(const ShareTripFailure())));
     });
 
-    test('should return left(ShareTripFailure.noInternetConnection()) when TripsDataSource.addUserForShare throws TripsException.noInternetConnection', () async {
-      when(mockTripsDataSource.addUserForShare(tripId, email)).thenThrow(const ShareTripException.noInternetConnection());
+    test(
+        'should return left(ShareTripFailure.noInternetConnection()) when TripsDataSource.addUserForShare throws TripsException.noInternetConnection',
+        () async {
+      when(mockTripsDataSource.addUserForShare(tripId, email))
+          .thenThrow(const ShareTripException.noInternetConnection());
 
       // act
       final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
@@ -226,8 +230,11 @@ void main() {
       expect(result, equals(left(const ShareTripFailure.noInternetConnection())));
     });
 
-    test('should return left(ShareTripFailure.userNotFound()) when TripsDataSource.addUserForShare throws TripsException.userNotFound', () async {
-      when(mockTripsDataSource.addUserForShare(tripId, email)).thenThrow(const ShareTripException.userNotFound());
+    test(
+        'should return left(ShareTripFailure.userNotFound()) when TripsDataSource.addUserForShare throws TripsException.userNotFound',
+        () async {
+      when(mockTripsDataSource.addUserForShare(tripId, email))
+          .thenThrow(const ShareTripException.userNotFound());
 
       // act
       final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
@@ -235,5 +242,33 @@ void main() {
       expect(result, equals(left(const ShareTripFailure.userNotFound())));
     });
   });
-    
+
+  group('listen trip', () {
+    const tripId = 'tripId';
+
+    test('should return right(trip) when TripsDataSource.listenTrip completes', () async {
+      when(mockTripsDataSource.listenTrip(tripId)).thenAnswer((_) => Stream.value(tTrip));
+
+      // act
+      final result = tripsRepositoryImpl.listenTrip(tripId);
+
+      // assert
+      await expectLater(result, emits(right(tTrip)));
+      verify(mockTripsDataSource.listenTrip(tripId));
+      verifyNoMoreInteractions(mockTripsDataSource);
+    });
+
+    test('should return left(TripsFailure()) when TripsDataSource.listenTrip throws', () async {
+      when(mockTripsDataSource.listenTrip(tripId)).thenThrow(Exception());
+
+      // act
+      final result = tripsRepositoryImpl.listenTrip(tripId);
+
+      // assert
+      await expectLater(result, emits(left(const TripsFailure())));
+      verify(mockTripsDataSource.listenTrip(tripId));
+      verifyNoMoreInteractions(mockTripsDataSource);
+    });
+  });
 }
+

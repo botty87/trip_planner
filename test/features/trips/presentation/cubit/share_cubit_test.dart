@@ -40,7 +40,7 @@ void main() {
     'When user email query changed emit state with user email query changed',
     build: () => getShareCubit(),
     act: (cubit) => cubit.onUserEmailQueryChanged('test'),
-    expect: () => [const ShareState.normal(userEmailQuery: 'test', sharedUsers: tSharedUsers)],
+    expect: () => [const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers)],
   );
 
   blocTest<ShareCubit, ShareState>(
@@ -59,7 +59,7 @@ void main() {
   blocTest<ShareCubit, ShareState>(
     'When user email query is the same as user email emit state with error message',
     build: () => getShareCubit(),
-    seed: () => const ShareState.normal(userEmailQuery: tUserEmail, sharedUsers: tSharedUsers),
+    seed: () => const ShareState.loaded(userEmailQuery: tUserEmail, sharedUsers: tSharedUsers),
     act: (cubit) => cubit.addUser(),
     expect: () => [
       ShareState.error(
@@ -76,11 +76,11 @@ void main() {
     setUp: () =>
         when(mockAddUserForShare(const AddUserForShareParams(tripId: tTripId, email: 'test')))
             .thenAnswer((_) async => const Right(null)),
-    seed: () => const ShareState.normal(userEmailQuery: 'test', sharedUsers: tSharedUsers),
+    seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
     act: (cubit) => cubit.addUser(),
     expect: () => [
       const ShareState.userAdded(userEmailQuery: '', sharedUsers: tSharedUsers),
-      const ShareState.normal(userEmailQuery: '', sharedUsers: tSharedUsers),
+      const ShareState.loaded(userEmailQuery: '', sharedUsers: tSharedUsers),
     ],
   );
 }

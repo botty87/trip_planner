@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/error/failures.dart';
 import '../../errors/trips_failure.dart';
 import '../entities/trip.dart';
 
@@ -23,4 +24,6 @@ abstract class TripsRepository {
   Future<Either<TripsFailure, void>> deleteAllTrips(String userId);
 
   Future<Either<ShareTripFailure, void>> addUserForShare(String tripId, String email);
+
+  Stream<Either<Failure, Trip?>> listenTrip(String tripId);
 }

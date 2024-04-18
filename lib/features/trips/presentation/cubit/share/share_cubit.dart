@@ -24,7 +24,7 @@ class ShareCubit extends Cubit<ShareState> {
   })  : _tripId = params.tripId,
         _userEmail = params.userEmail,
         _addUserForShare = addUserForShare,
-        super(ShareState.normal(sharedUsers: params.sharedUsers));
+        super(ShareState.loaded(sharedUsers: params.sharedUsers));
 
   void onUserEmailQueryChanged(String value) {
     emit(state.copyWith(userEmailQuery: value));
@@ -32,7 +32,7 @@ class ShareCubit extends Cubit<ShareState> {
 
   void addUser() {
     final email = state.userEmailQuery.trim();
-    
+
     if (email.isEmpty) {
       emit(ShareState.error(
         sharedUsers: state.sharedUsers,
@@ -54,7 +54,7 @@ class ShareCubit extends Cubit<ShareState> {
         (failure) => _foldFailure(failure),
         (_) {
           emit(ShareState.userAdded(sharedUsers: state.sharedUsers));
-          emit(ShareState.normal(sharedUsers: state.sharedUsers));
+          emit(ShareState.loaded(sharedUsers: state.sharedUsers));
         },
       );
     });
