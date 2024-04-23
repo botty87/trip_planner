@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/error/failures.dart';
 import '../../../settings/domain/entities/settings.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../errors/user_failures.dart';

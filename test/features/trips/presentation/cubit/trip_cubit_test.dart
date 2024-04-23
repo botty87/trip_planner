@@ -9,6 +9,7 @@ import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trips
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trips_indexes.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart';
+import 'package:trip_planner/features/trips/domain/usecases/listen_trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
@@ -21,6 +22,7 @@ import 'trip_cubit_test.mocks.dart';
   MockSpec<ListenDayTrips>(),
   MockSpec<UpdateDayTripsIndexes>(),
   MockSpec<FirebaseCrashlytics>(),
+  MockSpec<ListenTrip>(),
 ])
 void main() {
   late MockUpdateTrip mockUpdateTrip;
@@ -28,6 +30,7 @@ void main() {
   late MockListenDayTrips mockListenDayTrips;
   late MockUpdateDayTripsIndexes mockUpdateDayTripsIndexes;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
+  late MockListenTrip mockListenTrip;
 
   final tStartDate = DateTime.now();
 
@@ -48,12 +51,14 @@ void main() {
   ];
 
   TripCubit getStandardCubit() => TripCubit(
-      trip: tTrip,
-      saveTrip: mockUpdateTrip,
-      deleteTrip: mockDeleteTrip,
-      listenDayTrips: mockListenDayTrips,
-      updateDayTripsIndexes: mockUpdateDayTripsIndexes,
-      crashlytics: mockFirebaseCrashlytics);
+        trip: tTrip,
+        saveTrip: mockUpdateTrip,
+        deleteTrip: mockDeleteTrip,
+        listenDayTrips: mockListenDayTrips,
+        updateDayTripsIndexes: mockUpdateDayTripsIndexes,
+        crashlytics: mockFirebaseCrashlytics,
+        listenTrip: mockListenTrip,
+      );
 
   setUp(() {
     mockUpdateTrip = MockUpdateTrip();
@@ -61,6 +66,7 @@ void main() {
     mockListenDayTrips = MockListenDayTrips();
     mockUpdateDayTripsIndexes = MockUpdateDayTripsIndexes();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
+    mockListenTrip = MockListenTrip();
   });
 
   blocTest<TripCubit, TripState>(

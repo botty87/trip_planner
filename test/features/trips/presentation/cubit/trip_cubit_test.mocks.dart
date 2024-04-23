@@ -20,10 +20,13 @@ import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trips
     as _i13;
 import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart'
     as _i11;
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i17;
 import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
     as _i2;
 import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart'
     as _i9;
+import 'package:trip_planner/features/trips/domain/usecases/listen_trip.dart'
+    as _i16;
 import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart'
     as _i6;
 import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i8;
@@ -429,4 +432,23 @@ class MockFirebaseCrashlytics extends _i1.Mock
         returnValue: _i7.Future<void>.value(),
         returnValueForMissingStub: _i7.Future<void>.value(),
       ) as _i7.Future<void>);
+}
+
+/// A class which mocks [ListenTrip].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockListenTrip extends _i1.Mock implements _i16.ListenTrip {
+  @override
+  _i7.Stream<_i3.Either<_i8.TripsFailure, _i17.Trip?>> call(
+          _i16.ListenTripParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue:
+            _i7.Stream<_i3.Either<_i8.TripsFailure, _i17.Trip?>>.empty(),
+        returnValueForMissingStub:
+            _i7.Stream<_i3.Either<_i8.TripsFailure, _i17.Trip?>>.empty(),
+      ) as _i7.Stream<_i3.Either<_i8.TripsFailure, _i17.Trip?>>);
 }

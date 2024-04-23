@@ -8,36 +8,45 @@ import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/trips/domain/usecases/add_user_for_share.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/share/share_cubit.dart';
+import 'package:trip_planner/features/user_account/domain/usecases/get_users_names.dart';
 
 import 'share_cubit_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<AddUserForShare>()])
+@GenerateNiceMocks([
+  MockSpec<AddUserForShare>(),
+  MockSpec<GetUsersNames>(), //TODO implement test
+])
 void main() {
   setUpAll(() async {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
 
   late MockAddUserForShare mockAddUserForShare;
+  late MockGetUsersNames mockGetUsersNames;
 
   const tTripId = '1';
   const tUserEmail = 'test@example.com';
-  const Map<String, String?> tSharedUsers = {};
+  const Map<String, String> tSharedUsers = {};
+  const List<String> tSharedUserIds = [];
 
   setUp(() {
     mockAddUserForShare = MockAddUserForShare();
+    mockGetUsersNames = MockGetUsersNames();
   });
 
   ShareCubit getShareCubit() => ShareCubit(
         params: const ShareCubitParams(
           tripId: tTripId,
           userEmail: tUserEmail,
-          sharedUsers: tSharedUsers,
+          sharedUsers: tSharedUserIds,
         ),
         addUserForShare: mockAddUserForShare,
+        getUsersNames: mockGetUsersNames,
       );
 
   blocTest<ShareCubit, ShareState>(
     'When user email query changed emit state with user email query changed',
+    seed: () => const ShareState.loaded(sharedUsers: tSharedUsers),
     build: () => getShareCubit(),
     act: (cubit) => cubit.onUserEmailQueryChanged('test'),
     expect: () => [const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers)],
@@ -45,6 +54,7 @@ void main() {
 
   blocTest<ShareCubit, ShareState>(
     'When user email query is empty emit state with error message',
+    seed: () => const ShareState.loaded(sharedUsers: tSharedUsers),
     build: () => getShareCubit(),
     act: (cubit) => cubit.addUser(),
     expect: () => [

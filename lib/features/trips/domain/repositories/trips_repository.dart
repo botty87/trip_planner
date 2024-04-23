@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/error/failures.dart';
 import '../../errors/trips_failure.dart';
 import '../entities/trip.dart';
 

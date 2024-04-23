@@ -3,15 +3,21 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/trips/domain/repositories/trips_repository.dart'
     as _i2;
 import 'package:trip_planner/features/trips/domain/usecases/add_user_for_share.dart'
+    as _i5;
+import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i7;
+import 'package:trip_planner/features/user_account/domain/repositories/user_repository.dart'
     as _i4;
-import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i6;
+import 'package:trip_planner/features/user_account/domain/usecases/get_users_names.dart'
+    as _i8;
+import 'package:trip_planner/features/user_account/errors/user_failures.dart'
+    as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -47,10 +53,21 @@ class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
         );
 }
 
+class _FakeUserRepository_2 extends _i1.SmartFake
+    implements _i4.UserRepository {
+  _FakeUserRepository_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [AddUserForShare].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAddUserForShare extends _i1.Mock implements _i4.AddUserForShare {
+class MockAddUserForShare extends _i1.Mock implements _i5.AddUserForShare {
   @override
   _i2.TripsRepository get repository => (super.noSuchMethod(
         Invocation.getter(#repository),
@@ -65,15 +82,15 @@ class MockAddUserForShare extends _i1.Mock implements _i4.AddUserForShare {
       ) as _i2.TripsRepository);
 
   @override
-  _i5.Future<_i3.Either<_i6.ShareTripFailure, void>> call(
-          _i4.AddUserForShareParams? params) =>
+  _i6.Future<_i3.Either<_i7.ShareTripFailure, void>> call(
+          _i5.AddUserForShareParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [params],
         ),
-        returnValue: _i5.Future<_i3.Either<_i6.ShareTripFailure, void>>.value(
-            _FakeEither_1<_i6.ShareTripFailure, void>(
+        returnValue: _i6.Future<_i3.Either<_i7.ShareTripFailure, void>>.value(
+            _FakeEither_1<_i7.ShareTripFailure, void>(
           this,
           Invocation.method(
             #call,
@@ -81,13 +98,59 @@ class MockAddUserForShare extends _i1.Mock implements _i4.AddUserForShare {
           ),
         )),
         returnValueForMissingStub:
-            _i5.Future<_i3.Either<_i6.ShareTripFailure, void>>.value(
-                _FakeEither_1<_i6.ShareTripFailure, void>(
+            _i6.Future<_i3.Either<_i7.ShareTripFailure, void>>.value(
+                _FakeEither_1<_i7.ShareTripFailure, void>(
           this,
           Invocation.method(
             #call,
             [params],
           ),
         )),
-      ) as _i5.Future<_i3.Either<_i6.ShareTripFailure, void>>);
+      ) as _i6.Future<_i3.Either<_i7.ShareTripFailure, void>>);
+}
+
+/// A class which mocks [GetUsersNames].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetUsersNames extends _i1.Mock implements _i8.GetUsersNames {
+  @override
+  _i4.UserRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeUserRepository_2(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeUserRepository_2(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i4.UserRepository);
+
+  @override
+  _i6.Future<_i3.Either<_i9.UserFailures, Map<String, String>>> call(
+          _i8.GetUsersNamesParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue:
+            _i6.Future<_i3.Either<_i9.UserFailures, Map<String, String>>>.value(
+                _FakeEither_1<_i9.UserFailures, Map<String, String>>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i6.Future<_i3.Either<_i9.UserFailures, Map<String, String>>>.value(
+                _FakeEither_1<_i9.UserFailures, Map<String, String>>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i3.Either<_i9.UserFailures, Map<String, String>>>);
 }

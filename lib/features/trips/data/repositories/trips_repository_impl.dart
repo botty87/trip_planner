@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../core/error/failures.dart';
 import '../../domain/entities/trip.dart';
 import '../../errors/trips_exception.dart';
 import '../../errors/trips_failure.dart';
