@@ -100,10 +100,14 @@ class _TripPrivacyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      size: 20,
-      isPublic ? Icons.public : Icons.lock,
-      color: isPublic ? Colors.green : Colors.red,
-    );
+    if (isPublic) {
+      return const Icon(
+        Icons.public,
+        size: 20,
+        color: Colors.green,
+      );
+    }
+
+    return const SizedBox.shrink();
   }
 }
