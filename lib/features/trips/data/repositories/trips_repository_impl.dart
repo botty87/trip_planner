@@ -133,4 +133,22 @@ class TripsRepositoryImpl implements TripsRepository {
       yield left(const TripsFailure());
     }
   }
+  
+  @override
+  Future<Either<ShareTripFailure, void>> removeUserForShare(String tripId, String userId) async {
+    try {
+      await tripsDataSource.removeUserForShare(tripId, userId);
+      return right(null);
+    } on FirebaseException {
+      return left(const ShareTripFailure());
+    } on ShareTripException catch (exception) {
+      return exception.map(
+        (_) => left(const ShareTripFailure()),
+        userNotFound: (_) => left(const ShareTripFailure.userNotFound()),
+        noInternetConnection: (_) => left(const ShareTripFailure.noInternetConnection()),
+      );
+    } on Exception {
+      return left(const ShareTripFailure());
+    }
+  }
 }

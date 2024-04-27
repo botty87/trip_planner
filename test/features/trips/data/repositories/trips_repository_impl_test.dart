@@ -270,5 +270,53 @@ void main() {
       verifyNoMoreInteractions(mockTripsDataSource);
     });
   });
+
+  group('removeUserForShare', () {
+    const tripId = 'tripId';
+    const userId = 'userId';
+
+    test('should return right(null) when TripsDataSource.removeUserForShare completes', () async {
+      when(mockTripsDataSource.removeUserForShare(tripId, userId)).thenAnswer((_) async {});
+
+      // act
+      final result = await tripsRepositoryImpl.removeUserForShare(tripId, userId);
+      // assert
+      expect(result, equals(right(null)));
+    });
+
+    test('should return left(ShareTripFailure) when TripsDataSource.removeUserForShare throws',
+        () async {
+      when(mockTripsDataSource.removeUserForShare(tripId, userId)).thenThrow(Exception());
+
+      // act
+      final result = await tripsRepositoryImpl.removeUserForShare(tripId, userId);
+      // assert
+      expect(result, equals(left(const ShareTripFailure())));
+    });
+
+    test(
+        'should return left(ShareTripFailure.noInternetConnection()) when TripsDataSource.removeUserForShare throws TripsException.noInternetConnection',
+        () async {
+      when(mockTripsDataSource.removeUserForShare(tripId, userId))
+          .thenThrow(const ShareTripException.noInternetConnection());
+
+      // act
+      final result = await tripsRepositoryImpl.removeUserForShare(tripId, userId);
+      // assert
+      expect(result, equals(left(const ShareTripFailure.noInternetConnection())));
+    });
+
+    test(
+        'should return left(ShareTripFailure.userNotFound()) when TripsDataSource.removeUserForShare throws TripsException.userNotFound',
+        () async {
+      when(mockTripsDataSource.removeUserForShare(tripId, userId))
+          .thenThrow(const ShareTripException.userNotFound());
+
+      // act
+      final result = await tripsRepositoryImpl.removeUserForShare(tripId, userId);
+      // assert
+      expect(result, equals(left(const ShareTripFailure.userNotFound())));
+    });
+  });
 }
 

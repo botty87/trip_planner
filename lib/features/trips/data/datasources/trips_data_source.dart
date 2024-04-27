@@ -36,6 +36,8 @@ abstract interface class TripsDataSource {
   Future<void> addUserForShare(String tripId, String email);
 
   Stream<Trip?> listenTrip(String tripId);
+
+  Future<void> removeUserForShare(String tripId, String userId);
 }
 
 @LazySingleton(as: TripsDataSource)
@@ -257,7 +259,6 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
   @override
   Future<void> addUserForShare(String tripId, String email) async {
-    //Create a transaction to verify if the user exists and add it to the sharedUsers array
     //We must have internet connection to perform this operation
     if (!(await internetConnection.hasInternetAccess)) {
       throw const ShareTripException.noInternetConnection();
@@ -274,9 +275,22 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
       'sharedWith': FieldValue.arrayUnion([userDoc.docs.first.id])
     });
   }
-  
+
   @override
   Stream<Trip?> listenTrip(String tripId) async* {
     yield* _tripsCollection.doc(tripId).snapshots().map((snapshot) => snapshot.data());
+  }
+
+  @override
+  Future<void> removeUserForShare(String tripId, String userId) async {
+    //We must have internet connection to perform this operation
+    if (!(await internetConnection.hasInternetAccess)) {
+      throw const ShareTripException.noInternetConnection();
+    }
+
+    //Update the trip with the new shared user id
+    await _tripsCollection.doc(tripId).update({
+      'sharedWith': FieldValue.arrayRemove([userId])
+    });
   }
 }

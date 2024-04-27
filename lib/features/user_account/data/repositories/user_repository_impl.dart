@@ -154,12 +154,17 @@ final class UserRepositoryImpl implements UserRepository {
       return left(const UserFailures.unknownError());
     }
   }
-  
+
   @override
   Future<Either<UserFailures, Map<String, String>>> getUsersNames(List<String> userIds) async {
     try {
       final usersNames = await userDataSource.getUsersNames(userIds);
-      return right(usersNames);
+
+      //Sort the map by value (name) and return it
+      final sortedUsers =
+          Map.fromEntries(usersNames.entries.toList()..sort((a, b) => a.value.compareTo(b.value)));
+
+      return right(sortedUsers);
     } catch (e) {
       return left(const UserFailures.unknownError());
     }

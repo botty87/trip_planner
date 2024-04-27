@@ -138,4 +138,21 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
         returnValue: _i3.Stream<_i4.Trip?>.empty(),
         returnValueForMissingStub: _i3.Stream<_i4.Trip?>.empty(),
       ) as _i3.Stream<_i4.Trip?>);
+
+  @override
+  _i3.Future<void> removeUserForShare(
+    String? tripId,
+    String? userId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeUserForShare,
+          [
+            tripId,
+            userId,
+          ],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }

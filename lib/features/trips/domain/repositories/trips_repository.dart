@@ -24,5 +24,7 @@ abstract class TripsRepository {
 
   Future<Either<ShareTripFailure, void>> addUserForShare(String tripId, String email);
 
+  Future<Either<ShareTripFailure, void>> removeUserForShare(String tripId, String userId);
+
   Stream<Either<TripsFailure, Trip?>> listenTrip(String tripId);
 }

@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../user_account/domain/usecases/get_users_names.dart';
 import '../../../domain/usecases/add_user_for_share.dart';
+import '../../../domain/usecases/remove_user_for_share.dart';
 import '../../../errors/trips_failure.dart';
 
 part 'share_cubit.freezed.dart';
@@ -15,6 +16,7 @@ part 'share_state.dart';
 @injectable
 class ShareCubit extends Cubit<ShareState> {
   final AddUserForShare _addUserForShare;
+  final RemoveUserForShare _removeUserForShare;
   final GetUsersNames _getUsersNames;
 
   final String _tripId;
@@ -23,10 +25,12 @@ class ShareCubit extends Cubit<ShareState> {
   ShareCubit({
     @factoryParam required ShareCubitParams params,
     required AddUserForShare addUserForShare,
+    required RemoveUserForShare removeUserForShare,
     required GetUsersNames getUsersNames,
   })  : _tripId = params.tripId,
         _userEmail = params.userEmail,
         _addUserForShare = addUserForShare,
+        _removeUserForShare = removeUserForShare,
         _getUsersNames = getUsersNames,
         super(const ShareState.initial());
 
@@ -62,6 +66,30 @@ class ShareCubit extends Cubit<ShareState> {
         },
       );
     });
+  }
+
+  void removeUser(String userId) {
+    state.mapOrNull(
+      loaded: (state) {
+        final previousSharedUsers = Map<String, String>.from(state.sharedUsers!);
+
+        //Emits the state with the user removed
+        emit(ShareState.loaded(
+          sharedUsers: previousSharedUsers..remove(userId),
+          userEmailQuery: state.userEmailQuery,
+        ));
+
+        _removeUserForShare(RemoveUserForShareParams(tripId: _tripId, userId: userId))
+            .then((result) {
+          result.leftMap(
+            (failure) {
+              emit(state.copyWith(sharedUsers: previousSharedUsers));
+              _foldFailure(failure);
+            },
+          );
+        });
+      },
+    );
   }
 
   _foldFailure(ShareTripFailure failure) {

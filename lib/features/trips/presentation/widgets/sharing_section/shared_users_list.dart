@@ -5,10 +5,8 @@ class _SharedUsersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sharedUsers = context.select((ShareCubit cubit) => cubit.state.maybeMap(
-          loaded: (state) => state.sharedUsers?.values.toList()?..sort((a, b) => a.compareTo(b)),
-          orElse: () => null,
-        ));
+    final sharedUsers =
+        context.select((ShareCubit cubit) => cubit.state.sharedUsers?.entries.toList());
 
     //If shared it means that is still loading
     //Show a loading indicator
@@ -33,11 +31,14 @@ class _SharedUsersList extends StatelessWidget {
       itemCount: sharedUsers.length,
       separatorBuilder: (context, index) => const Divider(),
       itemBuilder: (context, index) {
-        final user = sharedUsers[index];
+        final userEntry = sharedUsers[index];
         return ListTile(
-          title: Text(user),
+          title: Text(userEntry.value),
           leading: const Icon(Icons.person),
-          trailing: IconButton(icon: const Icon(Icons.remove), onPressed: () {}),
+          trailing: IconButton(
+            icon: const Icon(Icons.remove),
+            onPressed: () => context.read<ShareCubit>().removeUser(userEntry.key),
+          ),
         );
       },
     );
