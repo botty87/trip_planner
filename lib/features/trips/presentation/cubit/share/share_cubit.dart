@@ -71,11 +71,12 @@ class ShareCubit extends Cubit<ShareState> {
   void removeUser(String userId) {
     state.mapOrNull(
       loaded: (state) {
-        final previousSharedUsers = Map<String, String>.from(state.sharedUsers!);
+        final previousState = state.copyWith();
+        final filteredSharedUsers = Map.of(state.sharedUsers!)..remove(userId);
 
         //Emits the state with the user removed
         emit(ShareState.loaded(
-          sharedUsers: previousSharedUsers..remove(userId),
+          sharedUsers: filteredSharedUsers,
           userEmailQuery: state.userEmailQuery,
         ));
 
@@ -83,7 +84,7 @@ class ShareCubit extends Cubit<ShareState> {
             .then((result) {
           result.leftMap(
             (failure) {
-              emit(state.copyWith(sharedUsers: previousSharedUsers));
+              emit(previousState);
               _foldFailure(failure);
             },
           );
@@ -117,7 +118,7 @@ class ShareCubit extends Cubit<ShareState> {
 
     sharedUsers.fold(
       (failure) => emit(ShareState.error(
-        sharedUsers: null,
+        sharedUsers: state.sharedUsers,
         userEmailQuery: state.userEmailQuery,
         errorMessage: failure.getUserFailureErrorMessage(),
       )),

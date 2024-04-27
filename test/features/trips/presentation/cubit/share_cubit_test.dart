@@ -7,14 +7,18 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/trips/domain/usecases/add_user_for_share.dart';
+import 'package:trip_planner/features/trips/domain/usecases/remove_user_for_share.dart';
+import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/share/share_cubit.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/get_users_names.dart';
+import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 
 import 'share_cubit_test.mocks.dart';
 
 @GenerateNiceMocks([
   MockSpec<AddUserForShare>(),
-  MockSpec<GetUsersNames>(), //TODO implement test
+  MockSpec<RemoveUserForShare>(),
+  MockSpec<GetUsersNames>(),
 ])
 void main() {
   setUpAll(() async {
@@ -22,15 +26,17 @@ void main() {
   });
 
   late MockAddUserForShare mockAddUserForShare;
+  late MockRemoveUserForShare mockRemoveUserForShare;
   late MockGetUsersNames mockGetUsersNames;
 
   const tTripId = '1';
   const tUserEmail = 'test@example.com';
-  const Map<String, String> tSharedUsers = {};
+  const Map<String, String> tSharedUsers = {'1': 'test1'};
   const List<String> tSharedUserIds = [];
 
   setUp(() {
     mockAddUserForShare = MockAddUserForShare();
+    mockRemoveUserForShare = MockRemoveUserForShare();
     mockGetUsersNames = MockGetUsersNames();
   });
 
@@ -41,6 +47,7 @@ void main() {
           sharedUsers: tSharedUserIds,
         ),
         addUserForShare: mockAddUserForShare,
+        removeUserForShare: mockRemoveUserForShare,
         getUsersNames: mockGetUsersNames,
       );
 
@@ -80,17 +87,100 @@ void main() {
     ],
   );
 
-  blocTest<ShareCubit, ShareState>(
-    'When user added emit state with user added and then normal',
-    build: () => getShareCubit(),
-    setUp: () =>
-        when(mockAddUserForShare(const AddUserForShareParams(tripId: tTripId, email: 'test')))
-            .thenAnswer((_) async => const Right(null)),
-    seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
-    act: (cubit) => cubit.addUser(),
-    expect: () => [
-      const ShareState.userAdded(userEmailQuery: '', sharedUsers: tSharedUsers),
-      const ShareState.loaded(userEmailQuery: '', sharedUsers: tSharedUsers),
-    ],
-  );
+  group('add user', () {
+    blocTest<ShareCubit, ShareState>(
+      'When user added emit state with user added and then normal',
+      build: () => getShareCubit(),
+      setUp: () =>
+          when(mockAddUserForShare(const AddUserForShareParams(tripId: tTripId, email: 'test')))
+              .thenAnswer((_) async => const Right(null)),
+      seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
+      act: (cubit) => cubit.addUser(),
+      expect: () => [
+        const ShareState.userAdded(userEmailQuery: '', sharedUsers: tSharedUsers),
+        const ShareState.loaded(userEmailQuery: '', sharedUsers: tSharedUsers),
+      ],
+    );
+
+    blocTest<ShareCubit, ShareState>(
+      'When add user for share fails emit state with error message',
+      build: () => getShareCubit(),
+      setUp: () =>
+          when(mockAddUserForShare(const AddUserForShareParams(tripId: tTripId, email: 'test')))
+              .thenAnswer((_) async => const Left(ShareTripFailure())),
+      seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
+      act: (cubit) => cubit.addUser(),
+      expect: () => [
+        ShareState.error(
+          userEmailQuery: 'test',
+          sharedUsers: tSharedUsers,
+          errorMessage: LocaleKeys.error.tr(),
+        ),
+      ],
+    );
+  });
+
+  group('remove user', () {
+    blocTest<ShareCubit, ShareState>(
+      'When user removed emit state with user removed',
+      build: () => getShareCubit(),
+      setUp: () =>
+          when(mockRemoveUserForShare(const RemoveUserForShareParams(tripId: tTripId, userId: '1')))
+              .thenAnswer((_) async => const Right(null)),
+      seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
+      act: (cubit) => cubit.removeUser('1'),
+      expect: () => [
+        const ShareState.loaded(userEmailQuery: 'test', sharedUsers: {}),
+      ],
+    );
+
+    blocTest<ShareCubit, ShareState>(
+      'When remove user for share fails emit state with error message',
+      build: () => getShareCubit(),
+      setUp: () =>
+          when(mockRemoveUserForShare(const RemoveUserForShareParams(tripId: tTripId, userId: '1')))
+              .thenAnswer((_) async => const Left(ShareTripFailure())),
+      seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
+      act: (cubit) => cubit.removeUser('1'),
+      expect: () => [
+        const ShareState.loaded(userEmailQuery: 'test', sharedUsers: {}),
+        const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
+        ShareState.error(
+          userEmailQuery: 'test',
+          sharedUsers: tSharedUsers,
+          errorMessage: LocaleKeys.error.tr(),
+        ),
+      ],
+    );
+  });
+
+  group('update shared user', () {
+    blocTest<ShareCubit, ShareState>(
+      'When shared user updated emit state with shared user updated',
+      build: () => getShareCubit(),
+      setUp: () => when(mockGetUsersNames(const GetUsersNamesParams(userIds: ['1', '2'])))
+          .thenAnswer((_) async => const Right({'1': 'test1', '2': 'test2'})),
+      seed: () => const ShareState.loaded(sharedUsers: tSharedUsers),
+      act: (cubit) => cubit.updatedSharedUsers(['1', '2']),
+      expect: () => [
+        const ShareState.loaded(sharedUsers: {'1': 'test1', '2': 'test2'}),
+      ],
+    );
+
+    blocTest<ShareCubit, ShareState>(
+      'When get users names fails emit state with error message',
+      build: () => getShareCubit(),
+      setUp: () => when(mockGetUsersNames(const GetUsersNamesParams(userIds: ['1', '2'])))
+          .thenAnswer((_) async => const Left(UserFailures.unknownError())),
+      seed: () => const ShareState.loaded(sharedUsers: tSharedUsers),
+      act: (cubit) => cubit.updatedSharedUsers(['1', '2']),
+      expect: () => [
+        ShareState.error(
+          sharedUsers: tSharedUsers,
+          userEmailQuery: '',
+          errorMessage: LocaleKeys.unknownError.tr(),
+        ),
+      ],
+    );
+  });
 }

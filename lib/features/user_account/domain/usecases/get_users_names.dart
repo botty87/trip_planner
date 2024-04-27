@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:dartz/dartz.dart';
@@ -18,8 +19,11 @@ class GetUsersNames implements UseCase<Map<String, String>, GetUsersNamesParams>
   }
 }
 
-class GetUsersNamesParams {
+class GetUsersNamesParams extends Equatable {
   final List<String> userIds;
 
-  GetUsersNamesParams({required this.userIds});
+  const GetUsersNamesParams({required this.userIds});
+
+  @override
+  List<Object> get props => [userIds];
 }
