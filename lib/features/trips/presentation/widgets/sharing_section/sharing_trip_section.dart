@@ -8,6 +8,7 @@ import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../cubit/share/share_cubit.dart';
 
 part 'user_search_field.dart';
+part 'shared_users_list.dart';
 
 class SharingTripSection extends StatelessWidget {
   const SharingTripSection({super.key});
@@ -25,6 +26,8 @@ class SharingTripSection extends StatelessWidget {
           ),
           const SizedBox(height: verticalSpace),
           const _UserSearchField(),
+          const SizedBox(height: verticalSpace),
+          const _SharedUsersList(),
         ],
       ),
     );

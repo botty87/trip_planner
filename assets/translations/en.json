@@ -182,5 +182,6 @@
     "shareYourTrip" : "Share your trip!",
     "userEmailShareTrip" : "Email of the user with whom you want to share the trip",
     "addUser" : "Add user",
-    "cannotShareWithYourself" : "You cannot share the trip with yourself!"
+    "cannotShareWithYourself" : "You cannot share the trip with yourself!",
+    "tripNotIsNotSharedWithAnyone" : "The trip is not shared with anyone"
 }

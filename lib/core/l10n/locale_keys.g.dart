@@ -182,5 +182,6 @@ abstract class  LocaleKeys {
   static const userEmailShareTrip = 'userEmailShareTrip';
   static const addUser = 'addUser';
   static const cannotShareWithYourself = 'cannotShareWithYourself';
+  static const tripNotIsNotSharedWithAnyone = 'tripNotIsNotSharedWithAnyone';
 
 }
