@@ -12,13 +12,21 @@ class LoadedWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     //Use this for the animation
-    final previousHasTrips = usePrevious(context.select<TripsCubit, bool?>(
-        (cubit) => cubit.state.whenOrNull(loaded: (trips) => trips.isNotEmpty)));
+    final previousHasTrips = usePrevious(context.select<TripsCubit, bool?>((cubit) {
+      return switch (cubit.state) {
+        final TripsStateLoaded loaded =>
+          loaded.userTrips.isNotEmpty || loaded.sharedTrips.isNotEmpty,
+        _ => null
+      };
+    }));
 
-    final hasTrips = context.select<TripsCubit, bool>((cubit) => cubit.state.maybeWhen(
-          loaded: (trips) => trips.isNotEmpty,
-          orElse: () => previousHasTrips ?? false,
-        ));
+    final hasTrips = context.select<TripsCubit, bool>((cubit) {
+      return switch (cubit.state) {
+        final TripsStateLoaded loaded =>
+          loaded.userTrips.isNotEmpty || loaded.sharedTrips.isNotEmpty,
+        _ => previousHasTrips ?? false
+      };
+    });
 
     return hasTrips ? TripsListWidget() : const NoTripsWidget();
   }

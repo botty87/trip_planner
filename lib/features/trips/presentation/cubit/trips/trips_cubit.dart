@@ -17,38 +17,81 @@ part 'trips_state.dart';
 
 @injectable
 class TripsCubit extends Cubit<TripsState> {
-  final ListenTrips _listenTrips;
+  final ListenUserTrips _listenUserTrips;
+  final ListenSharedTrips _listenSharedTrips;
   final FirebaseCrashlytics _crashlytics;
 
   final String _userId;
 
-  StreamSubscription<Either<TripsFailure, List<Trip>>>? _tripsSubscription;
+  StreamSubscription<Either<TripsFailure, List<Trip>>>? _userTripsSubscription;
+  StreamSubscription<Either<TripsFailure, List<Trip>>>? _sharedTripsSubscription;
 
   TripsCubit({
-    required ListenTrips listenTrips,
+    required ListenUserTrips listenUserTrips,
+    required ListenSharedTrips listenSharedTrips,
     required FirebaseCrashlytics crashlytics,
     @factoryParam required String userId,
-  })  : _listenTrips = listenTrips,
+  })  : _listenUserTrips = listenUserTrips,
+        _listenSharedTrips = listenSharedTrips,
         _crashlytics = crashlytics,
         _userId = userId,
         super(const TripsState.initial());
 
-  startListenTrip() {
-    _tripsSubscription?.cancel();
-    _tripsSubscription = _listenTrips(ListenTripsParams(userId: _userId)).listen((result) {
+  startListenTrips() {
+    List<Trip>? userTrips;
+    List<Trip>? sharedTrips;
+
+    _userTripsSubscription?.cancel();
+    _sharedTripsSubscription?.cancel();
+
+    _userTripsSubscription = _listenUserTrips(ListenTripsParams(userId: _userId)).listen((result) {
       result.fold(
         (failure) {
           emit(TripsState.error(message: LocaleKeys.dataLoadError.tr()));
           _crashlytics.recordError(failure, StackTrace.current);
         },
-        (trips) => emit(TripsState.loaded(trips: trips)),
+        (trips) {
+          switch (state) {
+            case final TripsStateLoaded loaded:
+              userTrips = trips;
+              emit(loaded.copyWith(userTrips: userTrips!));
+            default:
+              userTrips = trips;
+              if (sharedTrips != null) {
+                emit(TripsState.loaded(userTrips: userTrips!, sharedTrips: sharedTrips!));
+              }
+          }
+        },
+      );
+    });
+
+    _sharedTripsSubscription =
+        _listenSharedTrips(ListenTripsParams(userId: _userId)).listen((result) {
+      result.fold(
+        (failure) {
+          emit(TripsState.error(message: LocaleKeys.dataLoadError.tr()));
+          _crashlytics.recordError(failure, StackTrace.current);
+        },
+        (trips) {
+          switch (state) {
+            case final TripsStateLoaded loaded:
+              sharedTrips = trips;
+              emit(loaded.copyWith(sharedTrips: sharedTrips!));
+            default:
+              sharedTrips = trips;
+              if (userTrips != null) {
+                emit(TripsState.loaded(userTrips: userTrips!, sharedTrips: sharedTrips!));
+              }
+          }
+        },
       );
     });
   }
 
   @override
   Future<void> close() {
-    _tripsSubscription?.cancel();
+    _userTripsSubscription?.cancel();
+    _sharedTripsSubscription?.cancel();
     return super.close();
   }
 }

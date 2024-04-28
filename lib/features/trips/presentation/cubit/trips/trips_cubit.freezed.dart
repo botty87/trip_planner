@@ -19,44 +19,45 @@ mixin _$TripsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Trip> trips) loaded,
+    required TResult Function(List<Trip> userTrips, List<Trip> sharedTrips)
+        loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function(List<Trip> userTrips, List<Trip> sharedTrips)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Trip> trips)? loaded,
+    TResult Function(List<Trip> userTrips, List<Trip> sharedTrips)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(TripsStateInitial value) initial,
+    required TResult Function(TripsStateLoaded value) loaded,
+    required TResult Function(TripsStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TripsStateInitial value)? initial,
+    TResult? Function(TripsStateLoaded value)? loaded,
+    TResult? Function(TripsStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(TripsStateInitial value)? initial,
+    TResult Function(TripsStateLoaded value)? loaded,
+    TResult Function(TripsStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,25 +82,25 @@ class _$TripsStateCopyWithImpl<$Res, $Val extends TripsState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$TripsStateInitialImplCopyWith<$Res> {
+  factory _$$TripsStateInitialImplCopyWith(_$TripsStateInitialImpl value,
+          $Res Function(_$TripsStateInitialImpl) then) =
+      __$$TripsStateInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TripsStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$TripsStateInitialImplCopyWithImpl<$Res>
+    extends _$TripsStateCopyWithImpl<$Res, _$TripsStateInitialImpl>
+    implements _$$TripsStateInitialImplCopyWith<$Res> {
+  __$$TripsStateInitialImplCopyWithImpl(_$TripsStateInitialImpl _value,
+      $Res Function(_$TripsStateInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$TripsStateInitialImpl implements TripsStateInitial {
+  const _$TripsStateInitialImpl();
 
   @override
   String toString() {
@@ -109,7 +110,7 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$TripsStateInitialImpl);
   }
 
   @override
@@ -119,7 +120,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Trip> trips) loaded,
+    required TResult Function(List<Trip> userTrips, List<Trip> sharedTrips)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -129,7 +131,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function(List<Trip> userTrips, List<Trip> sharedTrips)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -139,7 +141,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Trip> trips)? loaded,
+    TResult Function(List<Trip> userTrips, List<Trip> sharedTrips)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -152,9 +154,9 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(TripsStateInitial value) initial,
+    required TResult Function(TripsStateLoaded value) loaded,
+    required TResult Function(TripsStateError value) error,
   }) {
     return initial(this);
   }
@@ -162,9 +164,9 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TripsStateInitial value)? initial,
+    TResult? Function(TripsStateLoaded value)? loaded,
+    TResult? Function(TripsStateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -172,9 +174,9 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(TripsStateInitial value)? initial,
+    TResult Function(TripsStateLoaded value)? loaded,
+    TResult Function(TripsStateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -184,36 +186,41 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements TripsState {
-  const factory _Initial() = _$InitialImpl;
+abstract class TripsStateInitial implements TripsState {
+  const factory TripsStateInitial() = _$TripsStateInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
+abstract class _$$TripsStateLoadedImplCopyWith<$Res> {
+  factory _$$TripsStateLoadedImplCopyWith(_$TripsStateLoadedImpl value,
+          $Res Function(_$TripsStateLoadedImpl) then) =
+      __$$TripsStateLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Trip> trips});
+  $Res call({List<Trip> userTrips, List<Trip> sharedTrips});
 }
 
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$TripsStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+class __$$TripsStateLoadedImplCopyWithImpl<$Res>
+    extends _$TripsStateCopyWithImpl<$Res, _$TripsStateLoadedImpl>
+    implements _$$TripsStateLoadedImplCopyWith<$Res> {
+  __$$TripsStateLoadedImplCopyWithImpl(_$TripsStateLoadedImpl _value,
+      $Res Function(_$TripsStateLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trips = null,
+    Object? userTrips = null,
+    Object? sharedTrips = null,
   }) {
-    return _then(_$LoadedImpl(
-      trips: null == trips
-          ? _value._trips
-          : trips // ignore: cast_nullable_to_non_nullable
+    return _then(_$TripsStateLoadedImpl(
+      userTrips: null == userTrips
+          ? _value._userTrips
+          : userTrips // ignore: cast_nullable_to_non_nullable
+              as List<Trip>,
+      sharedTrips: null == sharedTrips
+          ? _value._sharedTrips
+          : sharedTrips // ignore: cast_nullable_to_non_nullable
               as List<Trip>,
     ));
   }
@@ -221,70 +228,89 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required final List<Trip> trips}) : _trips = trips;
+class _$TripsStateLoadedImpl implements TripsStateLoaded {
+  const _$TripsStateLoadedImpl(
+      {required final List<Trip> userTrips,
+      required final List<Trip> sharedTrips})
+      : _userTrips = userTrips,
+        _sharedTrips = sharedTrips;
 
-  final List<Trip> _trips;
+  final List<Trip> _userTrips;
   @override
-  List<Trip> get trips {
-    if (_trips is EqualUnmodifiableListView) return _trips;
+  List<Trip> get userTrips {
+    if (_userTrips is EqualUnmodifiableListView) return _userTrips;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_trips);
+    return EqualUnmodifiableListView(_userTrips);
+  }
+
+  final List<Trip> _sharedTrips;
+  @override
+  List<Trip> get sharedTrips {
+    if (_sharedTrips is EqualUnmodifiableListView) return _sharedTrips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sharedTrips);
   }
 
   @override
   String toString() {
-    return 'TripsState.loaded(trips: $trips)';
+    return 'TripsState.loaded(userTrips: $userTrips, sharedTrips: $sharedTrips)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._trips, _trips));
+            other is _$TripsStateLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._userTrips, _userTrips) &&
+            const DeepCollectionEquality()
+                .equals(other._sharedTrips, _sharedTrips));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_trips));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_userTrips),
+      const DeepCollectionEquality().hash(_sharedTrips));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  _$$TripsStateLoadedImplCopyWith<_$TripsStateLoadedImpl> get copyWith =>
+      __$$TripsStateLoadedImplCopyWithImpl<_$TripsStateLoadedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Trip> trips) loaded,
+    required TResult Function(List<Trip> userTrips, List<Trip> sharedTrips)
+        loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(trips);
+    return loaded(userTrips, sharedTrips);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function(List<Trip> userTrips, List<Trip> sharedTrips)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(trips);
+    return loaded?.call(userTrips, sharedTrips);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Trip> trips)? loaded,
+    TResult Function(List<Trip> userTrips, List<Trip> sharedTrips)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(trips);
+      return loaded(userTrips, sharedTrips);
     }
     return orElse();
   }
@@ -292,9 +318,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(TripsStateInitial value) initial,
+    required TResult Function(TripsStateLoaded value) loaded,
+    required TResult Function(TripsStateError value) error,
   }) {
     return loaded(this);
   }
@@ -302,9 +328,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TripsStateInitial value)? initial,
+    TResult? Function(TripsStateLoaded value)? loaded,
+    TResult? Function(TripsStateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -312,9 +338,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(TripsStateInitial value)? initial,
+    TResult Function(TripsStateLoaded value)? loaded,
+    TResult Function(TripsStateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -324,30 +350,33 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements TripsState {
-  const factory _Loaded({required final List<Trip> trips}) = _$LoadedImpl;
+abstract class TripsStateLoaded implements TripsState {
+  const factory TripsStateLoaded(
+      {required final List<Trip> userTrips,
+      required final List<Trip> sharedTrips}) = _$TripsStateLoadedImpl;
 
-  List<Trip> get trips;
+  List<Trip> get userTrips;
+  List<Trip> get sharedTrips;
   @JsonKey(ignore: true)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+  _$$TripsStateLoadedImplCopyWith<_$TripsStateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+abstract class _$$TripsStateErrorImplCopyWith<$Res> {
+  factory _$$TripsStateErrorImplCopyWith(_$TripsStateErrorImpl value,
+          $Res Function(_$TripsStateErrorImpl) then) =
+      __$$TripsStateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$TripsStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$TripsStateErrorImplCopyWithImpl<$Res>
+    extends _$TripsStateCopyWithImpl<$Res, _$TripsStateErrorImpl>
+    implements _$$TripsStateErrorImplCopyWith<$Res> {
+  __$$TripsStateErrorImplCopyWithImpl(
+      _$TripsStateErrorImpl _value, $Res Function(_$TripsStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -355,7 +384,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$ErrorImpl(
+    return _then(_$TripsStateErrorImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -366,8 +395,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl({required this.message});
+class _$TripsStateErrorImpl implements TripsStateError {
+  const _$TripsStateErrorImpl({required this.message});
 
   @override
   final String message;
@@ -381,7 +410,7 @@ class _$ErrorImpl implements _Error {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
+            other is _$TripsStateErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -391,14 +420,16 @@ class _$ErrorImpl implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$TripsStateErrorImplCopyWith<_$TripsStateErrorImpl> get copyWith =>
+      __$$TripsStateErrorImplCopyWithImpl<_$TripsStateErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Trip> trips) loaded,
+    required TResult Function(List<Trip> userTrips, List<Trip> sharedTrips)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -408,7 +439,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function(List<Trip> userTrips, List<Trip> sharedTrips)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -418,7 +449,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Trip> trips)? loaded,
+    TResult Function(List<Trip> userTrips, List<Trip> sharedTrips)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -431,9 +462,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(TripsStateInitial value) initial,
+    required TResult Function(TripsStateLoaded value) loaded,
+    required TResult Function(TripsStateError value) error,
   }) {
     return error(this);
   }
@@ -441,9 +472,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TripsStateInitial value)? initial,
+    TResult? Function(TripsStateLoaded value)? loaded,
+    TResult? Function(TripsStateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -451,9 +482,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(TripsStateInitial value)? initial,
+    TResult Function(TripsStateLoaded value)? loaded,
+    TResult Function(TripsStateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -463,11 +494,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements TripsState {
-  const factory _Error({required final String message}) = _$ErrorImpl;
+abstract class TripsStateError implements TripsState {
+  const factory TripsStateError({required final String message}) =
+      _$TripsStateErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  _$$TripsStateErrorImplCopyWith<_$TripsStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

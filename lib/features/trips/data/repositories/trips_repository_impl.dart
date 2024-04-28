@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../domain/entities/trip.dart';
+import '../../domain/repositories/trips_repository.dart';
 import '../../errors/trips_exception.dart';
 import '../../errors/trips_failure.dart';
-
-import '../../domain/repositories/trips_repository.dart';
 import '../datasources/trips_data_source.dart';
 
 @LazySingleton(as: TripsRepository)
@@ -29,10 +29,10 @@ class TripsRepositoryImpl implements TripsRepository {
   }
 
   @override
-  Stream<Either<TripsFailure, List<Trip>>> listenTrips(String userId) async* {
+  Stream<Either<TripsFailure, List<Trip>>> listenUserTrips(String userId) async* {
     try {
       yield* tripsDataSource
-          .listenTrips(userId)
+          .listenUserTrips(userId)
           .map<Either<TripsFailure, List<Trip>>>((trips) => right(trips))
           .handleError((e) => left(const TripsFailure()));
     } catch (e) {
@@ -103,7 +103,7 @@ class TripsRepositoryImpl implements TripsRepository {
       return left(const TripsFailure());
     }
   }
-  
+
   @override
   Future<Either<ShareTripFailure, void>> addUserForShare(String tripId, String email) async {
     try {
@@ -133,7 +133,7 @@ class TripsRepositoryImpl implements TripsRepository {
       yield left(const TripsFailure());
     }
   }
-  
+
   @override
   Future<Either<ShareTripFailure, void>> removeUserForShare(String tripId, String userId) async {
     try {
@@ -149,6 +149,18 @@ class TripsRepositoryImpl implements TripsRepository {
       );
     } on Exception {
       return left(const ShareTripFailure());
+    }
+  }
+  
+  @override
+  Stream<Either<TripsFailure, List<Trip>>> listenSharedTrips(String userId) async* {
+    try {
+      yield* tripsDataSource
+          .listenSharedTrips(userId)
+          .map<Either<TripsFailure, List<Trip>>>((trips) => right(trips))
+          .handleError((e) => left(const TripsFailure()));
+    } catch (e) {
+      yield left(const TripsFailure());
     }
   }
 }

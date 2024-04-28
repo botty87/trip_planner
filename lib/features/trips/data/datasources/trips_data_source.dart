@@ -18,9 +18,19 @@ import '../../errors/trips_exception.dart';
 
 abstract interface class TripsDataSource {
   Future<void> addTrip(Trip trip);
-  Stream<List<Trip>> listenTrips(String userId);
-  Future<void> updateTrip(String id, String name, String? description, DateTime startDate,
-      bool isPublic, String languageCode);
+
+  Stream<List<Trip>> listenUserTrips(String userId);
+
+  Stream<List<Trip>> listenSharedTrips(String userId);
+
+  Future<void> updateTrip(
+    String id,
+    String name,
+    String? description,
+    DateTime startDate,
+    bool isPublic,
+    String languageCode,
+  );
 
   Future<void> deleteTrip(Trip trip);
 
@@ -62,7 +72,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
   }
 
   @override
-  Stream<List<Trip>> listenTrips(String userId) async* {
+  Stream<List<Trip>> listenUserTrips(String userId) async* {
     yield* _tripsCollection
         .where('userId', isEqualTo: userId)
         .orderBy('name')
@@ -291,6 +301,17 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
     //Update the trip with the new shared user id
     await _tripsCollection.doc(tripId).update({
       'sharedWith': FieldValue.arrayRemove([userId])
+    });
+  }
+  
+  @override
+  Stream<List<Trip>> listenSharedTrips(String userId) async* {
+    yield* _tripsCollection
+        .where('sharedWith', arrayContains: userId)
+        .orderBy('name')
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs.map((doc) => doc.data()).toList();
     });
   }
 }

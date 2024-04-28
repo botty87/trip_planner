@@ -55,25 +55,25 @@ void main() {
     final trips = [tTrip];
 
     test('should return right(trips) when TripsDataSource.listenTrips completes', () async {
-      when(mockTripsDataSource.listenTrips(userId)).thenAnswer((_) => Stream.value(trips));
+      when(mockTripsDataSource.listenUserTrips(userId)).thenAnswer((_) => Stream.value(trips));
 
       // act
-      final result = tripsRepositoryImpl.listenTrips(userId);
+      final result = tripsRepositoryImpl.listenUserTrips(userId);
       // assert
       await expectLater(result, emits(right(trips)));
-      verify(mockTripsDataSource.listenTrips(userId));
+      verify(mockTripsDataSource.listenUserTrips(userId));
       verifyNoMoreInteractions(mockTripsDataSource);
     });
 
     test('should return left(TripsFailure()) when TripsDataSource.listenTrips throws', () async {
-      when(mockTripsDataSource.listenTrips(userId)).thenThrow(Exception());
+      when(mockTripsDataSource.listenUserTrips(userId)).thenThrow(Exception());
 
       // act
-      final result = tripsRepositoryImpl.listenTrips(userId);
+      final result = tripsRepositoryImpl.listenUserTrips(userId);
 
       // assert
       await expectLater(result, emits(left(const TripsFailure())));
-      verify(mockTripsDataSource.listenTrips(userId));
+      verify(mockTripsDataSource.listenUserTrips(userId));
       verifyNoMoreInteractions(mockTripsDataSource);
     });
   });
@@ -319,4 +319,3 @@ void main() {
     });
   });
 }
-

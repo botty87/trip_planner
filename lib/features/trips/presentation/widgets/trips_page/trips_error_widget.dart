@@ -11,6 +11,6 @@ class TripsErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GenericErrorWidget(
-        message: message, onRetry: () => context.read<TripsCubit>().startListenTrip());
+        message: message, onRetry: () => context.read<TripsCubit>().startListenTrips());
   }
 }

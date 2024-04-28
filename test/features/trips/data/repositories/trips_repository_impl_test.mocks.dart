@@ -38,9 +38,21 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
       ) as _i3.Future<void>);
 
   @override
-  _i3.Stream<List<_i4.Trip>> listenTrips(String? userId) => (super.noSuchMethod(
+  _i3.Stream<List<_i4.Trip>> listenUserTrips(String? userId) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #listenTrips,
+          #listenUserTrips,
+          [userId],
+        ),
+        returnValue: _i3.Stream<List<_i4.Trip>>.empty(),
+        returnValueForMissingStub: _i3.Stream<List<_i4.Trip>>.empty(),
+      ) as _i3.Stream<List<_i4.Trip>>);
+
+  @override
+  _i3.Stream<List<_i4.Trip>> listenSharedTrips(String? userId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenSharedTrips,
           [userId],
         ),
         returnValue: _i3.Stream<List<_i4.Trip>>.empty(),

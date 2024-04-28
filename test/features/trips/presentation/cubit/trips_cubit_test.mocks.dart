@@ -38,10 +38,29 @@ class _FakeFirebaseApp_0 extends _i1.SmartFake implements _i2.FirebaseApp {
         );
 }
 
-/// A class which mocks [ListenTrips].
+/// A class which mocks [ListenUserTrips].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockListenTrips extends _i1.Mock implements _i3.ListenTrips {
+class MockListenUserTrips extends _i1.Mock implements _i3.ListenUserTrips {
+  @override
+  _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>> call(
+          _i3.ListenTripsParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue:
+            _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>.empty(),
+        returnValueForMissingStub:
+            _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>.empty(),
+      ) as _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>>);
+}
+
+/// A class which mocks [ListenSharedTrips].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockListenSharedTrips extends _i1.Mock implements _i3.ListenSharedTrips {
   @override
   _i4.Stream<_i5.Either<_i6.TripsFailure, List<_i7.Trip>>> call(
           _i3.ListenTripsParams? params) =>

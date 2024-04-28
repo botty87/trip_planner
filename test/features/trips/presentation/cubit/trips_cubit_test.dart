@@ -14,9 +14,10 @@ import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit
 
 import 'trips_cubit_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<ListenTrips>(), MockSpec<FirebaseCrashlytics>()])
+@GenerateNiceMocks(
+    [MockSpec<ListenUserTrips>(), MockSpec<ListenSharedTrips>(), MockSpec<FirebaseCrashlytics>()])
 void main() {
-  late MockListenTrips mockListenTrips;
+  late MockListenUserTrips mockListenUserTrips;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
 
   final tTrips = [
@@ -34,14 +35,14 @@ void main() {
 
   TripsCubit getTestCubit() {
     return TripsCubit(
-      listenTrips: mockListenTrips,
+      listenUserTrips: mockListenUserTrips,
       crashlytics: mockFirebaseCrashlytics,
       userId: tUserId,
     );
   }
 
   setUp(() {
-    mockListenTrips = MockListenTrips();
+    mockListenUserTrips = MockListenUserTrips();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
   });
 
@@ -52,28 +53,28 @@ void main() {
   blocTest<TripsCubit, TripsState>(
     'On startListenTrip emits [TripsState.loaded(trips: trips)] when ListenTrips returns Right(trips)',
     setUp: () {
-      when(mockListenTrips(any)).thenAnswer((_) => Stream.value(right(tTrips)));
+      when(mockListenUserTrips(any)).thenAnswer((_) => Stream.value(right(tTrips)));
     },
     build: () => getTestCubit(),
-    act: (cubit) => cubit.startListenTrip(),
-    expect: () => [TripsState.loaded(trips: tTrips)],
+    act: (cubit) => cubit.startListenTrips(),
+    expect: () => [TripsState.loaded(userTrips: tTrips)],
     verify: (_) {
-      verify(mockListenTrips(const ListenTripsParams(userId: tUserId))).called(1);
-      verifyNoMoreInteractions(mockListenTrips);
+      verify(mockListenUserTrips(const ListenTripsParams(userId: tUserId))).called(1);
+      verifyNoMoreInteractions(mockListenUserTrips);
     },
   );
 
   blocTest<TripsCubit, TripsState>(
     'On startListenTrip emits [TripsState.error(message: message)] when ListenTrips returns Left(failure)',
     setUp: () {
-      when(mockListenTrips(any)).thenAnswer((_) => Stream.value(left(const TripsFailure())));
+      when(mockListenUserTrips(any)).thenAnswer((_) => Stream.value(left(const TripsFailure())));
     },
     build: () => getTestCubit(),
-    act: (cubit) => cubit.startListenTrip(),
+    act: (cubit) => cubit.startListenTrips(),
     expect: () => [const TripsState.error(message: LocaleKeys.dataLoadError)],
     verify: (_) {
-      verify(mockListenTrips(const ListenTripsParams(userId: tUserId))).called(1);
-      verifyNoMoreInteractions(mockListenTrips);
+      verify(mockListenUserTrips(const ListenTripsParams(userId: tUserId))).called(1);
+      verifyNoMoreInteractions(mockListenUserTrips);
     },
   );
 }

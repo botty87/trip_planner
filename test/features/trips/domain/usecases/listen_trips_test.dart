@@ -8,7 +8,7 @@ import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import '../repositories/mock_trips_repository.mocks.dart';
 
 void main() {
-  late ListenTrips usecase;
+  late ListenUserTrips usecase;
   late MockTripsRepository mockTripsRepository;
 
   const tUserId = '123';
@@ -24,33 +24,68 @@ void main() {
 
   setUp(() {
     mockTripsRepository = MockTripsRepository();
-    usecase = ListenTrips(mockTripsRepository);
+    usecase = ListenUserTrips(mockTripsRepository);
   });
 
-  test('should listen trips from the repository', () async {
-    // arrange
-    when(mockTripsRepository.listenTrips(tUserId)).thenAnswer((_) => Stream.value(Right(tTrips)));
+  group('user trips', () {
+    test('should listen user trips from the repository', () async {
+      // arrange
+      when(mockTripsRepository.listenUserTrips(tUserId))
+          .thenAnswer((_) => Stream.value(Right(tTrips)));
 
-    // act
-    final result = usecase(const ListenTripsParams(userId: tUserId));
+      // act
+      final result = usecase(const ListenTripsParams(userId: tUserId));
 
-    // assert
-    expect(result, emits(Right(tTrips)));
-    verify(mockTripsRepository.listenTrips(tUserId));
-    verifyNoMoreInteractions(mockTripsRepository);
+      // assert
+      expect(result, emits(Right(tTrips)));
+      verify(mockTripsRepository.listenUserTrips(tUserId));
+      verifyNoMoreInteractions(mockTripsRepository);
+    });
+
+    test('should return a failure when there is no user trips', () async {
+      // arrange
+      when(mockTripsRepository.listenUserTrips(tUserId))
+          .thenAnswer((_) => Stream.value(const Left(TripsFailure())));
+
+      // act
+      final result = usecase(const ListenTripsParams(userId: tUserId));
+
+      // assert
+      expect(result, emits(const Left(TripsFailure())));
+      verify(mockTripsRepository.listenUserTrips(tUserId));
+      verifyNoMoreInteractions(mockTripsRepository);
+    });
   });
 
-  test('should return a failure when there is no trips', () async {
-    // arrange
-    when(mockTripsRepository.listenTrips(tUserId))
-        .thenAnswer((_) => Stream.value(const Left(TripsFailure())));
+  group('shared trips', () {
+    test('should listen shared trips from the repository', () async {
+      // arrange
+      when(mockTripsRepository.listenSharedTrips(tUserId))
+          .thenAnswer((_) => Stream.value(Right(tTrips)));
 
-    // act
-    final result = usecase(const ListenTripsParams(userId: tUserId));
+      // act
+      final result =
+          ListenSharedTrips(mockTripsRepository)(const ListenTripsParams(userId: tUserId));
 
-    // assert
-    expect(result, emits(const Left(TripsFailure())));
-    verify(mockTripsRepository.listenTrips(tUserId));
-    verifyNoMoreInteractions(mockTripsRepository);
+      // assert
+      expect(result, emits(Right(tTrips)));
+      verify(mockTripsRepository.listenSharedTrips(tUserId));
+      verifyNoMoreInteractions(mockTripsRepository);
+    });
+
+    test('should return a failure when there is no shared trips', () async {
+      // arrange
+      when(mockTripsRepository.listenSharedTrips(tUserId))
+          .thenAnswer((_) => Stream.value(const Left(TripsFailure())));
+
+      // act
+      final result =
+          ListenSharedTrips(mockTripsRepository)(const ListenTripsParams(userId: tUserId));
+
+      // assert
+      expect(result, emits(const Left(TripsFailure())));
+      verify(mockTripsRepository.listenSharedTrips(tUserId));
+      verifyNoMoreInteractions(mockTripsRepository);
+    });
   });
 }

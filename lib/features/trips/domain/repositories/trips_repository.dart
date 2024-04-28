@@ -13,10 +13,18 @@ abstract class TripsRepository {
     required bool useDifferentDirectionsColors,
   });
 
-  Stream<Either<TripsFailure, List<Trip>>> listenTrips(String userId);
+  Stream<Either<TripsFailure, List<Trip>>> listenUserTrips(String userId);
 
-  Future<Either<TripsFailure, void>> updateTrip(String id, String name, String? description,
-      DateTime startDate, bool isPublic, String languageCode);
+  Stream<Either<TripsFailure, List<Trip>>> listenSharedTrips(String userId);
+
+  Future<Either<TripsFailure, void>> updateTrip(
+    String id,
+    String name,
+    String? description,
+    DateTime startDate,
+    bool isPublic,
+    String languageCode,
+  );
 
   Future<Either<TripsFailure, void>> deleteTrip(Trip trip);
 

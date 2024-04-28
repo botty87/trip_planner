@@ -16,16 +16,23 @@ class TripsListWidget extends HookWidget {
 
   TripsListWidget({super.key});
 
+  //TODO test the error state change
   @override
   Widget build(BuildContext context) {
-    //Use this for the animation
-    final previousHasTrips = usePrevious(context.select<TripsCubit, List<Trip>?>(
-        (cubit) => cubit.state.whenOrNull(loaded: (trips) => trips)));
+    List<Trip> trips = context.select<TripsCubit, List<Trip>>((cubit) {
+      return switch (cubit.state) {
+        final TripsStateLoaded loaded => _getTrips(loaded.userTrips, loaded.sharedTrips),
+        _ => []
+      };
+    });
 
-    final trips = context.select<TripsCubit, List<Trip>>((cubit) => cubit.state.maybeWhen(
-          loaded: (trips) => trips,
-          orElse: () => previousHasTrips ?? [],
-        ));
+    //Use this for the animation
+    final previousTrips = usePrevious(trips);
+
+    //If the trips are empty and the previous trips are not, use the previous trips
+    if (trips.isEmpty && (previousTrips?.isNotEmpty ?? false)) {
+      trips = previousTrips!;
+    }
 
     return SafeArea(
       child: LayoutBuilder(builder: (context, constraints) {
@@ -45,5 +52,12 @@ class TripsListWidget extends HookWidget {
         );
       }),
     );
+  }
+
+  List<Trip> _getTrips(List<Trip> userTrips, List<Trip> sharedTrips) {
+    final List<Trip> trips = [...userTrips, ...sharedTrips];
+
+    trips.sort((a, b) => a.name.compareTo(b.name));
+    return trips;
   }
 }

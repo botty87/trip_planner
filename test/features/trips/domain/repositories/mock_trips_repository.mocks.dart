@@ -115,11 +115,25 @@ class MockTripsRepository extends _i1.Mock implements _i3.TripsRepository {
       ) as _i4.Future<_i2.Either<_i5.TripsFailure, void>>);
 
   @override
-  _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>> listenTrips(
+  _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>> listenUserTrips(
           String? userId) =>
       (super.noSuchMethod(
         Invocation.method(
-          #listenTrips,
+          #listenUserTrips,
+          [userId],
+        ),
+        returnValue:
+            _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>.empty(),
+        returnValueForMissingStub:
+            _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>.empty(),
+      ) as _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>>);
+
+  @override
+  _i4.Stream<_i2.Either<_i5.TripsFailure, List<_i6.Trip>>> listenSharedTrips(
+          String? userId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #listenSharedTrips,
           [userId],
         ),
         returnValue:
