@@ -183,5 +183,8 @@ abstract class  LocaleKeys {
   static const addUser = 'addUser';
   static const cannotShareWithYourself = 'cannotShareWithYourself';
   static const tripNotIsNotSharedWithAnyone = 'tripNotIsNotSharedWithAnyone';
+  static const removeTrip = 'removeTrip';
+  static const removeTripQuestion = 'removeTripQuestion';
+  static const remove = 'remove';
 
 }

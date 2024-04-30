@@ -13,6 +13,7 @@ _$TutorialsDataImpl _$$TutorialsDataImplFromJson(Map<String, dynamic> json) =>
       showCreateFromPublicTrip:
           json['showCreateFromPublicTrip'] as bool? ?? true,
       showTripStopSlide: json['showTripStopSlide'] as bool? ?? true,
+      showShareTrip: json['showShareTrip'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$TutorialsDataImplToJson(_$TutorialsDataImpl instance) =>
@@ -21,4 +22,5 @@ Map<String, dynamic> _$$TutorialsDataImplToJson(_$TutorialsDataImpl instance) =>
       'showPublicTrip': instance.showPublicTrip,
       'showCreateFromPublicTrip': instance.showCreateFromPublicTrip,
       'showTripStopSlide': instance.showTripStopSlide,
+      'showShareTrip': instance.showShareTrip,
     };

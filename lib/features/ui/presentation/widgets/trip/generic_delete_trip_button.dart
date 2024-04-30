@@ -10,6 +10,7 @@ class GenericDeleteTripButton extends StatelessWidget {
   final String alertDialogMessage;
   final String deleteButtonLabel;
   final bool isDeleting;
+  final String? confirmButtonLabel;
 
   const GenericDeleteTripButton({
     super.key,
@@ -18,6 +19,7 @@ class GenericDeleteTripButton extends StatelessWidget {
     required this.alertDialogTitle,
     required this.alertDialogMessage,
     required this.deleteButtonLabel,
+    this.confirmButtonLabel,
   });
 
   @override
@@ -30,7 +32,7 @@ class GenericDeleteTripButton extends StatelessWidget {
                 context: context,
                 title: alertDialogTitle,
                 message: alertDialogMessage,
-                okLabel: LocaleKeys.delete.tr(),
+                okLabel: confirmButtonLabel == null ? LocaleKeys.delete.tr() : confirmButtonLabel!,
                 cancelLabel: LocaleKeys.cancel.tr(),
               );
 

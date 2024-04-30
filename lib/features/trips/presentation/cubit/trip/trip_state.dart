@@ -4,18 +4,18 @@ part of 'trip_cubit.dart';
 sealed class TripState with _$TripState {
   const factory TripState.initial({
     required final Trip trip,
-  }) = _Initial;
+  }) = TripStateInitial;
 
   const factory TripState.loaded({
     required final Trip trip,
     required List<DayTrip> dayTrips,
-  }) = _Normal;
+  }) = TripStateNormal;
 
   const factory TripState.error({
     required final Trip trip,
     required String errorMessage,
     required bool fatal,
-  }) = _Error;
+  }) = TripStateError;
 
   const factory TripState.editing({
     required final Trip trip,
@@ -27,13 +27,13 @@ sealed class TripState with _$TripState {
     required final String languageCode,
     @Default(false) final bool isSaving,
     String? errorMessage,
-  }) = _Editing;
+  }) = TripStateEditing;
 
   const factory TripState.deleting({
     required final Trip trip,
-  }) = _Deleting;
+  }) = TripStateDeleting;
 
   const factory TripState.deleted({
     required final Trip trip,
-  }) = _Deleted;
+  }) = TripStateDeleted;
 }

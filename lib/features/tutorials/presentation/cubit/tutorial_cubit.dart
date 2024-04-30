@@ -40,4 +40,9 @@ class TutorialCubit extends Cubit<TutorialState> {
     emit(state.copyWith(showTripStopSlide: false));
     _updateTutorialsData(UpdateTutorialsDataParams(state.toTutorialsData()));
   }
+
+  void onShareTripDone() {
+    emit(state.copyWith(showShareTrip: false));
+    _updateTutorialsData(UpdateTutorialsDataParams(state.toTutorialsData()));
+  }
 }

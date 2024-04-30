@@ -24,6 +24,7 @@ mixin _$TutorialsData {
   bool get showPublicTrip => throw _privateConstructorUsedError;
   bool get showCreateFromPublicTrip => throw _privateConstructorUsedError;
   bool get showTripStopSlide => throw _privateConstructorUsedError;
+  bool get showShareTrip => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $TutorialsDataCopyWith<$Res> {
       {bool showWelcome,
       bool showPublicTrip,
       bool showCreateFromPublicTrip,
-      bool showTripStopSlide});
+      bool showTripStopSlide,
+      bool showShareTrip});
 }
 
 /// @nodoc
@@ -61,6 +63,7 @@ class _$TutorialsDataCopyWithImpl<$Res, $Val extends TutorialsData>
     Object? showPublicTrip = null,
     Object? showCreateFromPublicTrip = null,
     Object? showTripStopSlide = null,
+    Object? showShareTrip = null,
   }) {
     return _then(_value.copyWith(
       showWelcome: null == showWelcome
@@ -79,6 +82,10 @@ class _$TutorialsDataCopyWithImpl<$Res, $Val extends TutorialsData>
           ? _value.showTripStopSlide
           : showTripStopSlide // ignore: cast_nullable_to_non_nullable
               as bool,
+      showShareTrip: null == showShareTrip
+          ? _value.showShareTrip
+          : showShareTrip // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -95,7 +102,8 @@ abstract class _$$TutorialsDataImplCopyWith<$Res>
       {bool showWelcome,
       bool showPublicTrip,
       bool showCreateFromPublicTrip,
-      bool showTripStopSlide});
+      bool showTripStopSlide,
+      bool showShareTrip});
 }
 
 /// @nodoc
@@ -113,6 +121,7 @@ class __$$TutorialsDataImplCopyWithImpl<$Res>
     Object? showPublicTrip = null,
     Object? showCreateFromPublicTrip = null,
     Object? showTripStopSlide = null,
+    Object? showShareTrip = null,
   }) {
     return _then(_$TutorialsDataImpl(
       showWelcome: null == showWelcome
@@ -131,6 +140,10 @@ class __$$TutorialsDataImplCopyWithImpl<$Res>
           ? _value.showTripStopSlide
           : showTripStopSlide // ignore: cast_nullable_to_non_nullable
               as bool,
+      showShareTrip: null == showShareTrip
+          ? _value.showShareTrip
+          : showShareTrip // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -142,7 +155,8 @@ class _$TutorialsDataImpl implements _TutorialsData {
       {this.showWelcome = true,
       this.showPublicTrip = true,
       this.showCreateFromPublicTrip = true,
-      this.showTripStopSlide = true});
+      this.showTripStopSlide = true,
+      this.showShareTrip = true});
 
   factory _$TutorialsDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$TutorialsDataImplFromJson(json);
@@ -159,10 +173,13 @@ class _$TutorialsDataImpl implements _TutorialsData {
   @override
   @JsonKey()
   final bool showTripStopSlide;
+  @override
+  @JsonKey()
+  final bool showShareTrip;
 
   @override
   String toString() {
-    return 'TutorialsData(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip, showCreateFromPublicTrip: $showCreateFromPublicTrip, showTripStopSlide: $showTripStopSlide)';
+    return 'TutorialsData(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip, showCreateFromPublicTrip: $showCreateFromPublicTrip, showTripStopSlide: $showTripStopSlide, showShareTrip: $showShareTrip)';
   }
 
   @override
@@ -178,13 +195,15 @@ class _$TutorialsDataImpl implements _TutorialsData {
                     other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
                 other.showCreateFromPublicTrip == showCreateFromPublicTrip) &&
             (identical(other.showTripStopSlide, showTripStopSlide) ||
-                other.showTripStopSlide == showTripStopSlide));
+                other.showTripStopSlide == showTripStopSlide) &&
+            (identical(other.showShareTrip, showShareTrip) ||
+                other.showShareTrip == showShareTrip));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip,
-      showCreateFromPublicTrip, showTripStopSlide);
+      showCreateFromPublicTrip, showTripStopSlide, showShareTrip);
 
   @JsonKey(ignore: true)
   @override
@@ -205,7 +224,8 @@ abstract class _TutorialsData implements TutorialsData {
       {final bool showWelcome,
       final bool showPublicTrip,
       final bool showCreateFromPublicTrip,
-      final bool showTripStopSlide}) = _$TutorialsDataImpl;
+      final bool showTripStopSlide,
+      final bool showShareTrip}) = _$TutorialsDataImpl;
 
   factory _TutorialsData.fromJson(Map<String, dynamic> json) =
       _$TutorialsDataImpl.fromJson;
@@ -218,6 +238,8 @@ abstract class _TutorialsData implements TutorialsData {
   bool get showCreateFromPublicTrip;
   @override
   bool get showTripStopSlide;
+  @override
+  bool get showShareTrip;
   @override
   @JsonKey(ignore: true)
   _$$TutorialsDataImplCopyWith<_$TutorialsDataImpl> get copyWith =>

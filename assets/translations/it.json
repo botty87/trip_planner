@@ -184,5 +184,8 @@
     "userEmailShareTrip" : "Email dell'utente con cui condividere il viaggio",
     "addUser" : "Aggiungi utente",
     "cannotShareWithYourself" : "Non puoi condividere il viaggio con te stesso!",
-    "tripNotIsNotSharedWithAnyone" : "Il viaggio non è condiviso con nessuno"
+    "tripNotIsNotSharedWithAnyone" : "Il viaggio non è condiviso con nessuno",
+    "removeTrip": "Rimuovi viaggio",
+    "removeTripQuestion": "Sei sicuro di voler rimuovere il viaggio?",
+    "remove": "Rimuovi"
 }

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 @immutable
 final class UnexpectedStateException implements Exception {
-  static const String message = 'Unexpected state';
+  final String message;
 
-  const UnexpectedStateException();
+  const UnexpectedStateException({this.message = 'An unexpected state was encountered.'});
 }

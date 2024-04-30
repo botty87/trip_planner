@@ -25,10 +25,10 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
   @override
   Widget build(BuildContext context) {
     final hasBackgroundImage = this.hasBackgroundImage(context);
-    final userId = context.read<UserCubit>().state.maybeMap(
-          loggedIn: (state) => state.user.id,
-          orElse: () => false,
-        );
+    final userId = switch (context.read<UserCubit>().state) {
+      final UserStateLoggedIn loggedInState => loggedInState.user.id,
+      _ => throw Exception('User is not logged in'),
+    };
 
     return BlocProvider<TripsCubit>(
       create: (context) => getIt(param1: userId)..startListenTrips(),
@@ -44,8 +44,8 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
             child: state.map(
               initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
               loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
-              error: (state) =>
-                  Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
+              error: (state) => Center(
+                  key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
             ),
           ),
         ),
