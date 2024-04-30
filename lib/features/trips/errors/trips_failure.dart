@@ -14,7 +14,7 @@ class TripsFailure with _$TripsFailure implements Failure {
 class ShareTripFailure with _$ShareTripFailure implements Failure {
   const factory ShareTripFailure({String? message}) = _ShareTripFailure;
 
-  const factory ShareTripFailure.userNotFound() = _UserNotFound;
+  const factory ShareTripFailure.userNotFound() = ShareTripFailureUserNotFound;
 
-  const factory ShareTripFailure.noInternetConnection() = _SNoInternetConnection;
+  const factory ShareTripFailure.noInternetConnection() = ShareTripFailureNoInternetConnection;
 }

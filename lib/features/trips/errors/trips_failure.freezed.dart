@@ -337,23 +337,25 @@ mixin _$ShareTripFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripFailure value) $default, {
-    required TResult Function(_UserNotFound value) userNotFound,
-    required TResult Function(_SNoInternetConnection value)
+    required TResult Function(ShareTripFailureUserNotFound value) userNotFound,
+    required TResult Function(ShareTripFailureNoInternetConnection value)
         noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ShareTripFailure value)? $default, {
-    TResult? Function(_UserNotFound value)? userNotFound,
-    TResult? Function(_SNoInternetConnection value)? noInternetConnection,
+    TResult? Function(ShareTripFailureUserNotFound value)? userNotFound,
+    TResult? Function(ShareTripFailureNoInternetConnection value)?
+        noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ShareTripFailure value)? $default, {
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_SNoInternetConnection value)? noInternetConnection,
+    TResult Function(ShareTripFailureUserNotFound value)? userNotFound,
+    TResult Function(ShareTripFailureNoInternetConnection value)?
+        noInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -477,8 +479,8 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripFailure value) $default, {
-    required TResult Function(_UserNotFound value) userNotFound,
-    required TResult Function(_SNoInternetConnection value)
+    required TResult Function(ShareTripFailureUserNotFound value) userNotFound,
+    required TResult Function(ShareTripFailureNoInternetConnection value)
         noInternetConnection,
   }) {
     return $default(this);
@@ -488,8 +490,9 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ShareTripFailure value)? $default, {
-    TResult? Function(_UserNotFound value)? userNotFound,
-    TResult? Function(_SNoInternetConnection value)? noInternetConnection,
+    TResult? Function(ShareTripFailureUserNotFound value)? userNotFound,
+    TResult? Function(ShareTripFailureNoInternetConnection value)?
+        noInternetConnection,
   }) {
     return $default?.call(this);
   }
@@ -498,8 +501,9 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ShareTripFailure value)? $default, {
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_SNoInternetConnection value)? noInternetConnection,
+    TResult Function(ShareTripFailureUserNotFound value)? userNotFound,
+    TResult Function(ShareTripFailureNoInternetConnection value)?
+        noInternetConnection,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -520,25 +524,29 @@ abstract class _ShareTripFailure implements ShareTripFailure {
 }
 
 /// @nodoc
-abstract class _$$UserNotFoundImplCopyWith<$Res> {
-  factory _$$UserNotFoundImplCopyWith(
-          _$UserNotFoundImpl value, $Res Function(_$UserNotFoundImpl) then) =
-      __$$UserNotFoundImplCopyWithImpl<$Res>;
+abstract class _$$ShareTripFailureUserNotFoundImplCopyWith<$Res> {
+  factory _$$ShareTripFailureUserNotFoundImplCopyWith(
+          _$ShareTripFailureUserNotFoundImpl value,
+          $Res Function(_$ShareTripFailureUserNotFoundImpl) then) =
+      __$$ShareTripFailureUserNotFoundImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserNotFoundImplCopyWithImpl<$Res>
-    extends _$ShareTripFailureCopyWithImpl<$Res, _$UserNotFoundImpl>
-    implements _$$UserNotFoundImplCopyWith<$Res> {
-  __$$UserNotFoundImplCopyWithImpl(
-      _$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
+class __$$ShareTripFailureUserNotFoundImplCopyWithImpl<$Res>
+    extends _$ShareTripFailureCopyWithImpl<$Res,
+        _$ShareTripFailureUserNotFoundImpl>
+    implements _$$ShareTripFailureUserNotFoundImplCopyWith<$Res> {
+  __$$ShareTripFailureUserNotFoundImplCopyWithImpl(
+      _$ShareTripFailureUserNotFoundImpl _value,
+      $Res Function(_$ShareTripFailureUserNotFoundImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$UserNotFoundImpl implements _UserNotFound {
-  const _$UserNotFoundImpl();
+class _$ShareTripFailureUserNotFoundImpl
+    implements ShareTripFailureUserNotFound {
+  const _$ShareTripFailureUserNotFoundImpl();
 
   @override
   String toString() {
@@ -548,7 +556,8 @@ class _$UserNotFoundImpl implements _UserNotFound {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ShareTripFailureUserNotFoundImpl);
   }
 
   @override
@@ -592,8 +601,8 @@ class _$UserNotFoundImpl implements _UserNotFound {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripFailure value) $default, {
-    required TResult Function(_UserNotFound value) userNotFound,
-    required TResult Function(_SNoInternetConnection value)
+    required TResult Function(ShareTripFailureUserNotFound value) userNotFound,
+    required TResult Function(ShareTripFailureNoInternetConnection value)
         noInternetConnection,
   }) {
     return userNotFound(this);
@@ -603,8 +612,9 @@ class _$UserNotFoundImpl implements _UserNotFound {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ShareTripFailure value)? $default, {
-    TResult? Function(_UserNotFound value)? userNotFound,
-    TResult? Function(_SNoInternetConnection value)? noInternetConnection,
+    TResult? Function(ShareTripFailureUserNotFound value)? userNotFound,
+    TResult? Function(ShareTripFailureNoInternetConnection value)?
+        noInternetConnection,
   }) {
     return userNotFound?.call(this);
   }
@@ -613,8 +623,9 @@ class _$UserNotFoundImpl implements _UserNotFound {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ShareTripFailure value)? $default, {
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_SNoInternetConnection value)? noInternetConnection,
+    TResult Function(ShareTripFailureUserNotFound value)? userNotFound,
+    TResult Function(ShareTripFailureNoInternetConnection value)?
+        noInternetConnection,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -624,31 +635,35 @@ class _$UserNotFoundImpl implements _UserNotFound {
   }
 }
 
-abstract class _UserNotFound implements ShareTripFailure {
-  const factory _UserNotFound() = _$UserNotFoundImpl;
+abstract class ShareTripFailureUserNotFound implements ShareTripFailure {
+  const factory ShareTripFailureUserNotFound() =
+      _$ShareTripFailureUserNotFoundImpl;
 }
 
 /// @nodoc
-abstract class _$$SNoInternetConnectionImplCopyWith<$Res> {
-  factory _$$SNoInternetConnectionImplCopyWith(
-          _$SNoInternetConnectionImpl value,
-          $Res Function(_$SNoInternetConnectionImpl) then) =
-      __$$SNoInternetConnectionImplCopyWithImpl<$Res>;
+abstract class _$$ShareTripFailureNoInternetConnectionImplCopyWith<$Res> {
+  factory _$$ShareTripFailureNoInternetConnectionImplCopyWith(
+          _$ShareTripFailureNoInternetConnectionImpl value,
+          $Res Function(_$ShareTripFailureNoInternetConnectionImpl) then) =
+      __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SNoInternetConnectionImplCopyWithImpl<$Res>
-    extends _$ShareTripFailureCopyWithImpl<$Res, _$SNoInternetConnectionImpl>
-    implements _$$SNoInternetConnectionImplCopyWith<$Res> {
-  __$$SNoInternetConnectionImplCopyWithImpl(_$SNoInternetConnectionImpl _value,
-      $Res Function(_$SNoInternetConnectionImpl) _then)
+class __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl<$Res>
+    extends _$ShareTripFailureCopyWithImpl<$Res,
+        _$ShareTripFailureNoInternetConnectionImpl>
+    implements _$$ShareTripFailureNoInternetConnectionImplCopyWith<$Res> {
+  __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl(
+      _$ShareTripFailureNoInternetConnectionImpl _value,
+      $Res Function(_$ShareTripFailureNoInternetConnectionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SNoInternetConnectionImpl implements _SNoInternetConnection {
-  const _$SNoInternetConnectionImpl();
+class _$ShareTripFailureNoInternetConnectionImpl
+    implements ShareTripFailureNoInternetConnection {
+  const _$ShareTripFailureNoInternetConnectionImpl();
 
   @override
   String toString() {
@@ -659,7 +674,7 @@ class _$SNoInternetConnectionImpl implements _SNoInternetConnection {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SNoInternetConnectionImpl);
+            other is _$ShareTripFailureNoInternetConnectionImpl);
   }
 
   @override
@@ -703,8 +718,8 @@ class _$SNoInternetConnectionImpl implements _SNoInternetConnection {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripFailure value) $default, {
-    required TResult Function(_UserNotFound value) userNotFound,
-    required TResult Function(_SNoInternetConnection value)
+    required TResult Function(ShareTripFailureUserNotFound value) userNotFound,
+    required TResult Function(ShareTripFailureNoInternetConnection value)
         noInternetConnection,
   }) {
     return noInternetConnection(this);
@@ -714,8 +729,9 @@ class _$SNoInternetConnectionImpl implements _SNoInternetConnection {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ShareTripFailure value)? $default, {
-    TResult? Function(_UserNotFound value)? userNotFound,
-    TResult? Function(_SNoInternetConnection value)? noInternetConnection,
+    TResult? Function(ShareTripFailureUserNotFound value)? userNotFound,
+    TResult? Function(ShareTripFailureNoInternetConnection value)?
+        noInternetConnection,
   }) {
     return noInternetConnection?.call(this);
   }
@@ -724,8 +740,9 @@ class _$SNoInternetConnectionImpl implements _SNoInternetConnection {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ShareTripFailure value)? $default, {
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_SNoInternetConnection value)? noInternetConnection,
+    TResult Function(ShareTripFailureUserNotFound value)? userNotFound,
+    TResult Function(ShareTripFailureNoInternetConnection value)?
+        noInternetConnection,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -735,6 +752,8 @@ class _$SNoInternetConnectionImpl implements _SNoInternetConnection {
   }
 }
 
-abstract class _SNoInternetConnection implements ShareTripFailure {
-  const factory _SNoInternetConnection() = _$SNoInternetConnectionImpl;
+abstract class ShareTripFailureNoInternetConnection
+    implements ShareTripFailure {
+  const factory ShareTripFailureNoInternetConnection() =
+      _$ShareTripFailureNoInternetConnectionImpl;
 }

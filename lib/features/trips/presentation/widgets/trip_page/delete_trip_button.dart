@@ -21,11 +21,12 @@ class DeleteTripButton extends StatelessWidget {
       };
     });
 
-    final isUserTheOwner = switch (context.read<UserCubit>().state) {
-      final UserStateLoggedIn userState =>
-        userState.user.id == context.read<TripCubit>().state.trip.userId,
+    final userId = switch (context.read<UserCubit>().state) {
+      final UserStateLoggedIn userState => userState.user.id,
       _ => throw const UnexpectedStateException(message: 'User is not logged in'),
     };
+
+    final isUserTheOwner = userId == context.read<TripCubit>().state.trip.userId;
 
     return GenericDeleteTripButton(
       isDeleting: isDeleting,
@@ -33,7 +34,9 @@ class DeleteTripButton extends StatelessWidget {
       alertDialogMessage:
           isUserTheOwner ? LocaleKeys.deleteTripQuestion.tr() : LocaleKeys.removeTripQuestion.tr(),
       deleteButtonLabel: isUserTheOwner ? LocaleKeys.deleteTrip.tr() : LocaleKeys.removeTrip.tr(),
-      deleteAction: isUserTheOwner ? () => context.read<TripCubit>().deleteTrip() : () {},
+      deleteAction: isUserTheOwner
+          ? () => context.read<TripCubit>().deleteTrip()
+          : () => context.read<TripCubit>().removeTrip(userId),
       confirmButtonLabel: isUserTheOwner ? LocaleKeys.delete.tr() : LocaleKeys.remove.tr(),
     );
   }

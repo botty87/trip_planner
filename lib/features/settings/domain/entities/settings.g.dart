@@ -17,7 +17,7 @@ _$SettingsImpl _$$SettingsImplFromJson(Map<String, dynamic> json) =>
           json['useDifferentDirectionsColors'] as bool? ?? true,
       travelMode: json['travelMode'] == null
           ? TravelMode.driving
-          : travelModeFromInt(json['travelMode'] as int),
+          : travelModeFromInt((json['travelMode'] as num).toInt()),
       backgroundsContainer: json['backgroundsContainer'] == null
           ? const BackgroundsContainer()
           : BackgroundsContainer.fromJson(

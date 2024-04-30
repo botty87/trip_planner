@@ -9,8 +9,8 @@ part of 'backgrounds_container.dart';
 _$BackgroundsContainerImpl _$$BackgroundsContainerImplFromJson(
         Map<String, dynamic> json) =>
     _$BackgroundsContainerImpl(
-      lightBackgroundIndex: json['lightBackgroundIndex'] as int?,
-      darkBackgroundIndex: json['darkBackgroundIndex'] as int?,
+      lightBackgroundIndex: (json['lightBackgroundIndex'] as num?)?.toInt(),
+      darkBackgroundIndex: (json['darkBackgroundIndex'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$BackgroundsContainerImplToJson(

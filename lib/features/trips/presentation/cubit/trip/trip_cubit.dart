@@ -15,6 +15,7 @@ import '../../../../day_trips/errors/day_trips_failure.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/delete_trip.dart';
 import '../../../domain/usecases/listen_trip.dart';
+import '../../../domain/usecases/remove_user_for_share.dart';
 import '../../../domain/usecases/update_trip.dart';
 import '../../../errors/trips_failure.dart';
 
@@ -29,6 +30,7 @@ class TripCubit extends Cubit<TripState> {
   final UpdateDayTripsIndexes _updateDayTripsIndexes;
   final FirebaseCrashlytics _crashlytics;
   final ListenTrip _listenTrip;
+  final RemoveUserForShare _removeUserForShare;
 
   StreamSubscription<Either<DayTripsFailure, List<DayTrip>>>? _dayTripsSubscription;
   StreamSubscription<Either<TripsFailure, Trip?>>? _tripSubscription;
@@ -40,12 +42,14 @@ class TripCubit extends Cubit<TripState> {
     required ListenDayTrips listenDayTrips,
     required UpdateDayTripsIndexes updateDayTripsIndexes,
     required ListenTrip listenTrip,
+    required RemoveUserForShare removeUserForShare,
     required FirebaseCrashlytics crashlytics,
   })  : _saveTrip = saveTrip,
         _deleteTrip = deleteTrip,
         _listenDayTrips = listenDayTrips,
         _updateDayTripsIndexes = updateDayTripsIndexes,
         _listenTrip = listenTrip,
+        _removeUserForShare = removeUserForShare,
         _crashlytics = crashlytics,
         super(TripState.initial(trip: trip));
 
@@ -248,8 +252,35 @@ class TripCubit extends Cubit<TripState> {
   }
 
   void modalBottomEditingDismissed() {
-    state.mapOrNull(
-        editing: (state) => emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips)));
+    return switch (state) {
+      final TripStateEditing state =>
+        emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips)),
+      _ => null,
+    };
+  }
+
+  void removeTrip(String userId) async {
+    emit(TripState.deleting(trip: state.trip));
+
+    final result =
+        await _removeUserForShare(RemoveUserForShareParams(tripId: state.trip.id, userId: userId));
+
+    result.fold(
+      (failure) {
+        final errorMessage = switch (failure) {
+          ShareTripFailureNoInternetConnection _ => LocaleKeys.noInternetConnectionMessage.tr(),
+          ShareTripFailureUserNotFound _ => LocaleKeys.userNotFound.tr(),
+          _ => LocaleKeys.unknownErrorRetry.tr(),
+        };
+
+        emit(TripState.error(
+          trip: state.trip,
+          errorMessage: errorMessage,
+          fatal: false,
+        ));
+      },
+      (_) => emit(TripState.deleted(trip: state.trip)),
+    );
   }
 
   @override

@@ -8,7 +8,7 @@ part of 'day_trip.dart';
 
 _$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
     _$DayTripImpl(
-      index: json['index'] as int,
+      index: (json['index'] as num).toInt(),
       description: json['description'] as String?,
       startTime: json['startTime'] == null
           ? const TimeOfDay(hour: 8, minute: 0)
@@ -20,7 +20,7 @@ _$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
           json['tripStopsDirectionsUpToDate'] as bool? ?? false,
       travelMode: json['travelMode'] == null
           ? TravelMode.driving
-          : travelModeFromInt(json['travelMode'] as int),
+          : travelModeFromInt((json['travelMode'] as num).toInt()),
       showDirections: json['showDirections'] as bool? ?? true,
       useDifferentDirectionsColors:
           json['useDifferentDirectionsColors'] as bool? ?? true,

@@ -8,13 +8,14 @@ part of 'trip_stop.dart';
 
 _$TripStopImpl _$$TripStopImplFromJson(Map<String, dynamic> json) =>
     _$TripStopImpl(
-      index: json['index'] as int,
+      index: (json['index'] as num).toInt(),
       name: json['name'] as String,
       description: json['description'] as String?,
-      duration: json['duration'] as int,
+      duration: (json['duration'] as num).toInt(),
       location: latLngFromGeoPoint(json['location'] as GeoPoint),
       isDone: json['isDone'] as bool? ?? false,
-      travelTimeToNextStop: json['travelTimeToNextStop'] as int? ?? 0,
+      travelTimeToNextStop:
+          (json['travelTimeToNextStop'] as num?)?.toInt() ?? 0,
       note: json['note'] as String?,
     );
 

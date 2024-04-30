@@ -303,7 +303,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
       'sharedWith': FieldValue.arrayRemove([userId])
     });
   }
-  
+
   @override
   Stream<List<Trip>> listenSharedTrips(String userId) async* {
     yield* _tripsCollection
