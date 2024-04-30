@@ -50,7 +50,7 @@ class _LanguageSelector extends StatelessWidget {
   }
 
   Widget _getCountryIcon(String countryCode) {
-    String iconPath = 'icons/flags/png100px/$countryCode.png';
+    final iconPath = 'icons/flags/png100px/$countryCode.png';
 
     return Image.asset(
       iconPath,

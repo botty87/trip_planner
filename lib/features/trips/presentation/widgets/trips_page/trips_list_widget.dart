@@ -16,7 +16,6 @@ class TripsListWidget extends HookWidget {
 
   TripsListWidget({super.key});
 
-  //TODO test the error state change
   @override
   Widget build(BuildContext context) {
     List<Trip> trips = context.select<TripsCubit, List<Trip>>((cubit) {

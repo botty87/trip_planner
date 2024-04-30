@@ -167,9 +167,9 @@ class _MapView extends HookWidget {
 
   //Create a list of custom markers with numbers
   List<Widget> _orderedMarkerWidgets(BuildContext context) {
-    List<Widget> markerWidgets = [];
+    final List<Widget> markerWidgets = [];
 
-    ResponsiveValue<double> responsiveMarkerSize = ResponsiveValue(
+    final ResponsiveValue<double> responsiveMarkerSize = ResponsiveValue(
       context,
       defaultValue: 50,
       conditionalValues: [
