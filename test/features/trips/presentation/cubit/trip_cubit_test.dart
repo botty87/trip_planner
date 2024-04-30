@@ -10,6 +10,7 @@ import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trips
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/listen_trip.dart';
+import 'package:trip_planner/features/trips/domain/usecases/remove_user_for_share.dart';
 import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
@@ -23,6 +24,7 @@ import 'trip_cubit_test.mocks.dart';
   MockSpec<UpdateDayTripsIndexes>(),
   MockSpec<FirebaseCrashlytics>(),
   MockSpec<ListenTrip>(),
+  MockSpec<RemoveUserForShare>(),
 ])
 void main() {
   late MockUpdateTrip mockUpdateTrip;
@@ -31,6 +33,7 @@ void main() {
   late MockUpdateDayTripsIndexes mockUpdateDayTripsIndexes;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
   late MockListenTrip mockListenTrip;
+  late MockRemoveUserForShare mockRemoveUserForShare;
 
   final tStartDate = DateTime.now();
 
@@ -58,6 +61,7 @@ void main() {
         updateDayTripsIndexes: mockUpdateDayTripsIndexes,
         crashlytics: mockFirebaseCrashlytics,
         listenTrip: mockListenTrip,
+        removeUserForShare: mockRemoveUserForShare,
       );
 
   setUp(() {
@@ -67,6 +71,7 @@ void main() {
     mockUpdateDayTripsIndexes = MockUpdateDayTripsIndexes();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
     mockListenTrip = MockListenTrip();
+    mockRemoveUserForShare = MockRemoveUserForShare();
   });
 
   blocTest<TripCubit, TripState>(
@@ -280,6 +285,60 @@ void main() {
       seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
       act: (cubit) => cubit.modalBottomEditingDismissed(),
       expect: () => [],
+      build: () => getStandardCubit(),
+    );
+  });
+
+  group('On delete trip', () {
+    blocTest<TripCubit, TripState>(
+      'emit TripStateDeleting and then TripStateDeleted',
+      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      setUp: () => when(mockDeleteTrip.call(any)).thenAnswer((_) async => const Right(null)),
+      act: (cubit) => cubit.deleteTrip(),
+      expect: () => [
+        TripState.deleting(trip: tTrip),
+        TripState.deleted(trip: tTrip),
+      ],
+      build: () => getStandardCubit(),
+    );
+
+    blocTest<TripCubit, TripState>(
+      'emit TripStateError if deleteTrip fails',
+      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      setUp: () => when(mockDeleteTrip.call(any))
+          .thenAnswer((_) async => const Left(TripsFailure(message: 'error'))),
+      act: (cubit) => cubit.deleteTrip(),
+      expect: () => [
+        TripState.deleting(trip: tTrip),
+        TripState.error(trip: tTrip, errorMessage: 'error', fatal: false),
+      ],
+      build: () => getStandardCubit(),
+    );
+  });
+
+  group('On remove trip', () {
+    blocTest<TripCubit, TripState>(
+      'emit TripStateDeleting and then TripStateDeleted',
+      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      setUp: () => when(mockRemoveUserForShare.call(any)).thenAnswer((_) async => const Right(null)),
+      act: (cubit) => cubit.removeTrip('1'),
+      expect: () => [
+        TripState.deleting(trip: tTrip),
+        TripState.deleted(trip: tTrip),
+      ],
+      build: () => getStandardCubit(),
+    );
+
+    blocTest<TripCubit, TripState>(
+      'emit TripStateError if removeUserForShare fails',
+      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      setUp: () => when(mockRemoveUserForShare.call(any))
+          .thenAnswer((_) async => const Left(ShareTripFailure(message: 'error'))),
+      act: (cubit) => cubit.removeTrip('1'),
+      expect: () => [
+        TripState.deleting(trip: tTrip),
+        TripState.error(trip: tTrip, errorMessage: 'error', fatal: false),
+      ],
       build: () => getStandardCubit(),
     );
   });

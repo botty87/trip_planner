@@ -21,7 +21,7 @@ void main() {
     const userId = 'userId';
     const params = RemoveUserForShareParams(tripId: tripId, userId: userId);
 
-    when(mockRepository.addUserForShare(tripId, userId)).thenAnswer((_) async => right(null));
+    when(mockRepository.removeUserForShare(tripId, userId)).thenAnswer((_) async => right(null));
 
     // Act
     final result = await useCase(params);
@@ -38,7 +38,7 @@ void main() {
     const userId = 'userId';
     const params = RemoveUserForShareParams(tripId: tripId, userId: userId);
 
-    when(mockRepository.addUserForShare(tripId, userId))
+    when(mockRepository.removeUserForShare(tripId, userId))
         .thenAnswer((_) async => left(const ShareTripFailure()));
 
     // Act

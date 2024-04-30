@@ -27,6 +27,8 @@ import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart'
     as _i9;
 import 'package:trip_planner/features/trips/domain/usecases/listen_trip.dart'
     as _i16;
+import 'package:trip_planner/features/trips/domain/usecases/remove_user_for_share.dart'
+    as _i18;
 import 'package:trip_planner/features/trips/domain/usecases/update_trip.dart'
     as _i6;
 import 'package:trip_planner/features/trips/errors/trips_failure.dart' as _i8;
@@ -451,4 +453,50 @@ class MockListenTrip extends _i1.Mock implements _i16.ListenTrip {
         returnValueForMissingStub:
             _i7.Stream<_i3.Either<_i8.TripsFailure, _i17.Trip?>>.empty(),
       ) as _i7.Stream<_i3.Either<_i8.TripsFailure, _i17.Trip?>>);
+}
+
+/// A class which mocks [RemoveUserForShare].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockRemoveUserForShare extends _i1.Mock
+    implements _i18.RemoveUserForShare {
+  @override
+  _i2.TripsRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeTripsRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.TripsRepository);
+
+  @override
+  _i7.Future<_i3.Either<_i8.ShareTripFailure, void>> call(
+          _i18.RemoveUserForShareParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [params],
+        ),
+        returnValue: _i7.Future<_i3.Either<_i8.ShareTripFailure, void>>.value(
+            _FakeEither_1<_i8.ShareTripFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i3.Either<_i8.ShareTripFailure, void>>.value(
+                _FakeEither_1<_i8.ShareTripFailure, void>(
+          this,
+          Invocation.method(
+            #call,
+            [params],
+          ),
+        )),
+      ) as _i7.Future<_i3.Either<_i8.ShareTripFailure, void>>);
 }

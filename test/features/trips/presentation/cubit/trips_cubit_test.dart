@@ -14,10 +14,14 @@ import 'package:trip_planner/features/trips/presentation/cubit/trips/trips_cubit
 
 import 'trips_cubit_test.mocks.dart';
 
-@GenerateNiceMocks(
-    [MockSpec<ListenUserTrips>(), MockSpec<ListenSharedTrips>(), MockSpec<FirebaseCrashlytics>()])
+@GenerateNiceMocks([
+  MockSpec<ListenUserTrips>(),
+  MockSpec<ListenSharedTrips>(),
+  MockSpec<FirebaseCrashlytics>(),
+])
 void main() {
   late MockListenUserTrips mockListenUserTrips;
+  late MockListenSharedTrips mockListenSharedTrips;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
 
   final tTrips = [
@@ -31,18 +35,31 @@ void main() {
     ),
   ];
 
+  final sTrips = [
+    Trip(
+      id: '2',
+      name: 'test',
+      description: 'test',
+      userId: '2',
+      createdAt: DateTime.now(),
+      startDate: DateTime.now(),
+    ),
+  ];
+
   const tUserId = '1';
 
   TripsCubit getTestCubit() {
     return TripsCubit(
       listenUserTrips: mockListenUserTrips,
       crashlytics: mockFirebaseCrashlytics,
+      listenSharedTrips: mockListenSharedTrips,
       userId: tUserId,
     );
   }
 
   setUp(() {
     mockListenUserTrips = MockListenUserTrips();
+    mockListenSharedTrips = MockListenSharedTrips();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
   });
 
@@ -54,13 +71,16 @@ void main() {
     'On startListenTrip emits [TripsState.loaded(trips: trips)] when ListenTrips returns Right(trips)',
     setUp: () {
       when(mockListenUserTrips(any)).thenAnswer((_) => Stream.value(right(tTrips)));
+      when(mockListenSharedTrips(any)).thenAnswer((_) => Stream.value(right(sTrips)));
     },
     build: () => getTestCubit(),
     act: (cubit) => cubit.startListenTrips(),
-    expect: () => [TripsState.loaded(userTrips: tTrips)],
+    expect: () => [TripsState.loaded(userTrips: tTrips, sharedTrips: sTrips)],
     verify: (_) {
       verify(mockListenUserTrips(const ListenTripsParams(userId: tUserId))).called(1);
+      verify(mockListenSharedTrips(const ListenTripsParams(userId: tUserId))).called(1);
       verifyNoMoreInteractions(mockListenUserTrips);
+      verifyNoMoreInteractions(mockListenSharedTrips);
     },
   );
 

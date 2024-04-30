@@ -114,7 +114,7 @@ void main() {
         ShareState.error(
           userEmailQuery: 'test',
           sharedUsers: tSharedUsers,
-          errorMessage: LocaleKeys.error.tr(),
+          errorMessage: LocaleKeys.unknownErrorRetry.tr(),
         ),
       ],
     );
@@ -148,7 +148,7 @@ void main() {
         ShareState.error(
           userEmailQuery: 'test',
           sharedUsers: tSharedUsers,
-          errorMessage: LocaleKeys.error.tr(),
+          errorMessage: LocaleKeys.unknownErrorRetry.tr(),
         ),
       ],
     );
