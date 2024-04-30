@@ -116,16 +116,13 @@ class NewTripCubit extends Cubit<NewTripState> {
         result.fold(
           (failure) {
             String errorMessage = LocaleKeys.tripSaveError.tr();
-            failure.when(
-              (message) {
-                if (message != null) {
-                  errorMessage += "\n\n$message";
-                }
-              },
-              noInternetConnection: () =>
-                  errorMessage += "\n\n${LocaleKeys.noInternetConnectionMessage.tr()}",
-                  
-            );
+            switch (failure) {
+              case TripsFailureNoInternetConnection _:
+                errorMessage = LocaleKeys.noInternetConnectionMessage.tr();
+              case TripsFailure(:final message):
+                if (message != null) errorMessage += "\n\n$message";
+            }
+
             emitError(errorMessage: errorMessage, previousState: normalState);
           },
           (_) {

@@ -9,7 +9,7 @@ sealed class TripState with _$TripState {
   const factory TripState.loaded({
     required final Trip trip,
     required List<DayTrip> dayTrips,
-  }) = TripStateNormal;
+  }) = TripStateLoaded;
 
   const factory TripState.error({
     required final Trip trip,

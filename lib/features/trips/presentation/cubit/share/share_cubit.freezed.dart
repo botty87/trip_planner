@@ -63,26 +63,26 @@ mixin _$ShareState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialShareState value) initial,
-    required TResult Function(_LoadedShareState value) loaded,
-    required TResult Function(_ErrorShareState value) error,
-    required TResult Function(_UserAddedShareState value) userAdded,
+    required TResult Function(ShareStateInitial value) initial,
+    required TResult Function(ShareStateLoaded value) loaded,
+    required TResult Function(ShareStateError value) error,
+    required TResult Function(ShareStateUserAdded value) userAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialShareState value)? initial,
-    TResult? Function(_LoadedShareState value)? loaded,
-    TResult? Function(_ErrorShareState value)? error,
-    TResult? Function(_UserAddedShareState value)? userAdded,
+    TResult? Function(ShareStateInitial value)? initial,
+    TResult? Function(ShareStateLoaded value)? loaded,
+    TResult? Function(ShareStateError value)? error,
+    TResult? Function(ShareStateUserAdded value)? userAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialShareState value)? initial,
-    TResult Function(_LoadedShareState value)? loaded,
-    TResult Function(_ErrorShareState value)? error,
-    TResult Function(_UserAddedShareState value)? userAdded,
+    TResult Function(ShareStateInitial value)? initial,
+    TResult Function(ShareStateLoaded value)? loaded,
+    TResult Function(ShareStateError value)? error,
+    TResult Function(ShareStateUserAdded value)? userAdded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,22 +131,22 @@ class _$ShareStateCopyWithImpl<$Res, $Val extends ShareState>
 }
 
 /// @nodoc
-abstract class _$$InitialShareStateImplCopyWith<$Res>
+abstract class _$$ShareStateInitialImplCopyWith<$Res>
     implements $ShareStateCopyWith<$Res> {
-  factory _$$InitialShareStateImplCopyWith(_$InitialShareStateImpl value,
-          $Res Function(_$InitialShareStateImpl) then) =
-      __$$InitialShareStateImplCopyWithImpl<$Res>;
+  factory _$$ShareStateInitialImplCopyWith(_$ShareStateInitialImpl value,
+          $Res Function(_$ShareStateInitialImpl) then) =
+      __$$ShareStateInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, String>? sharedUsers, String userEmailQuery});
 }
 
 /// @nodoc
-class __$$InitialShareStateImplCopyWithImpl<$Res>
-    extends _$ShareStateCopyWithImpl<$Res, _$InitialShareStateImpl>
-    implements _$$InitialShareStateImplCopyWith<$Res> {
-  __$$InitialShareStateImplCopyWithImpl(_$InitialShareStateImpl _value,
-      $Res Function(_$InitialShareStateImpl) _then)
+class __$$ShareStateInitialImplCopyWithImpl<$Res>
+    extends _$ShareStateCopyWithImpl<$Res, _$ShareStateInitialImpl>
+    implements _$$ShareStateInitialImplCopyWith<$Res> {
+  __$$ShareStateInitialImplCopyWithImpl(_$ShareStateInitialImpl _value,
+      $Res Function(_$ShareStateInitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -155,7 +155,7 @@ class __$$InitialShareStateImplCopyWithImpl<$Res>
     Object? sharedUsers = freezed,
     Object? userEmailQuery = null,
   }) {
-    return _then(_$InitialShareStateImpl(
+    return _then(_$ShareStateInitialImpl(
       sharedUsers: freezed == sharedUsers
           ? _value._sharedUsers
           : sharedUsers // ignore: cast_nullable_to_non_nullable
@@ -170,8 +170,8 @@ class __$$InitialShareStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialShareStateImpl implements _InitialShareState {
-  const _$InitialShareStateImpl(
+class _$ShareStateInitialImpl implements ShareStateInitial {
+  const _$ShareStateInitialImpl(
       {final Map<String, String>? sharedUsers, this.userEmailQuery = ''})
       : _sharedUsers = sharedUsers;
 
@@ -198,7 +198,7 @@ class _$InitialShareStateImpl implements _InitialShareState {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitialShareStateImpl &&
+            other is _$ShareStateInitialImpl &&
             const DeepCollectionEquality()
                 .equals(other._sharedUsers, _sharedUsers) &&
             (identical(other.userEmailQuery, userEmailQuery) ||
@@ -212,8 +212,8 @@ class _$InitialShareStateImpl implements _InitialShareState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialShareStateImplCopyWith<_$InitialShareStateImpl> get copyWith =>
-      __$$InitialShareStateImplCopyWithImpl<_$InitialShareStateImpl>(
+  _$$ShareStateInitialImplCopyWith<_$ShareStateInitialImpl> get copyWith =>
+      __$$ShareStateInitialImplCopyWithImpl<_$ShareStateInitialImpl>(
           this, _$identity);
 
   @override
@@ -274,10 +274,10 @@ class _$InitialShareStateImpl implements _InitialShareState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialShareState value) initial,
-    required TResult Function(_LoadedShareState value) loaded,
-    required TResult Function(_ErrorShareState value) error,
-    required TResult Function(_UserAddedShareState value) userAdded,
+    required TResult Function(ShareStateInitial value) initial,
+    required TResult Function(ShareStateLoaded value) loaded,
+    required TResult Function(ShareStateError value) error,
+    required TResult Function(ShareStateUserAdded value) userAdded,
   }) {
     return initial(this);
   }
@@ -285,10 +285,10 @@ class _$InitialShareStateImpl implements _InitialShareState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialShareState value)? initial,
-    TResult? Function(_LoadedShareState value)? loaded,
-    TResult? Function(_ErrorShareState value)? error,
-    TResult? Function(_UserAddedShareState value)? userAdded,
+    TResult? Function(ShareStateInitial value)? initial,
+    TResult? Function(ShareStateLoaded value)? loaded,
+    TResult? Function(ShareStateError value)? error,
+    TResult? Function(ShareStateUserAdded value)? userAdded,
   }) {
     return initial?.call(this);
   }
@@ -296,10 +296,10 @@ class _$InitialShareStateImpl implements _InitialShareState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialShareState value)? initial,
-    TResult Function(_LoadedShareState value)? loaded,
-    TResult Function(_ErrorShareState value)? error,
-    TResult Function(_UserAddedShareState value)? userAdded,
+    TResult Function(ShareStateInitial value)? initial,
+    TResult Function(ShareStateLoaded value)? loaded,
+    TResult Function(ShareStateError value)? error,
+    TResult Function(ShareStateUserAdded value)? userAdded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -309,10 +309,10 @@ class _$InitialShareStateImpl implements _InitialShareState {
   }
 }
 
-abstract class _InitialShareState implements ShareState {
-  const factory _InitialShareState(
+abstract class ShareStateInitial implements ShareState {
+  const factory ShareStateInitial(
       {final Map<String, String>? sharedUsers,
-      final String userEmailQuery}) = _$InitialShareStateImpl;
+      final String userEmailQuery}) = _$ShareStateInitialImpl;
 
   @override
   Map<String, String>? get sharedUsers;
@@ -320,27 +320,27 @@ abstract class _InitialShareState implements ShareState {
   String get userEmailQuery;
   @override
   @JsonKey(ignore: true)
-  _$$InitialShareStateImplCopyWith<_$InitialShareStateImpl> get copyWith =>
+  _$$ShareStateInitialImplCopyWith<_$ShareStateInitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadedShareStateImplCopyWith<$Res>
+abstract class _$$ShareStateLoadedImplCopyWith<$Res>
     implements $ShareStateCopyWith<$Res> {
-  factory _$$LoadedShareStateImplCopyWith(_$LoadedShareStateImpl value,
-          $Res Function(_$LoadedShareStateImpl) then) =
-      __$$LoadedShareStateImplCopyWithImpl<$Res>;
+  factory _$$ShareStateLoadedImplCopyWith(_$ShareStateLoadedImpl value,
+          $Res Function(_$ShareStateLoadedImpl) then) =
+      __$$ShareStateLoadedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, String>? sharedUsers, String userEmailQuery});
 }
 
 /// @nodoc
-class __$$LoadedShareStateImplCopyWithImpl<$Res>
-    extends _$ShareStateCopyWithImpl<$Res, _$LoadedShareStateImpl>
-    implements _$$LoadedShareStateImplCopyWith<$Res> {
-  __$$LoadedShareStateImplCopyWithImpl(_$LoadedShareStateImpl _value,
-      $Res Function(_$LoadedShareStateImpl) _then)
+class __$$ShareStateLoadedImplCopyWithImpl<$Res>
+    extends _$ShareStateCopyWithImpl<$Res, _$ShareStateLoadedImpl>
+    implements _$$ShareStateLoadedImplCopyWith<$Res> {
+  __$$ShareStateLoadedImplCopyWithImpl(_$ShareStateLoadedImpl _value,
+      $Res Function(_$ShareStateLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -349,7 +349,7 @@ class __$$LoadedShareStateImplCopyWithImpl<$Res>
     Object? sharedUsers = freezed,
     Object? userEmailQuery = null,
   }) {
-    return _then(_$LoadedShareStateImpl(
+    return _then(_$ShareStateLoadedImpl(
       sharedUsers: freezed == sharedUsers
           ? _value._sharedUsers
           : sharedUsers // ignore: cast_nullable_to_non_nullable
@@ -364,8 +364,8 @@ class __$$LoadedShareStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedShareStateImpl implements _LoadedShareState {
-  const _$LoadedShareStateImpl(
+class _$ShareStateLoadedImpl implements ShareStateLoaded {
+  const _$ShareStateLoadedImpl(
       {required final Map<String, String>? sharedUsers,
       this.userEmailQuery = ''})
       : _sharedUsers = sharedUsers;
@@ -393,7 +393,7 @@ class _$LoadedShareStateImpl implements _LoadedShareState {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadedShareStateImpl &&
+            other is _$ShareStateLoadedImpl &&
             const DeepCollectionEquality()
                 .equals(other._sharedUsers, _sharedUsers) &&
             (identical(other.userEmailQuery, userEmailQuery) ||
@@ -407,8 +407,8 @@ class _$LoadedShareStateImpl implements _LoadedShareState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedShareStateImplCopyWith<_$LoadedShareStateImpl> get copyWith =>
-      __$$LoadedShareStateImplCopyWithImpl<_$LoadedShareStateImpl>(
+  _$$ShareStateLoadedImplCopyWith<_$ShareStateLoadedImpl> get copyWith =>
+      __$$ShareStateLoadedImplCopyWithImpl<_$ShareStateLoadedImpl>(
           this, _$identity);
 
   @override
@@ -469,10 +469,10 @@ class _$LoadedShareStateImpl implements _LoadedShareState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialShareState value) initial,
-    required TResult Function(_LoadedShareState value) loaded,
-    required TResult Function(_ErrorShareState value) error,
-    required TResult Function(_UserAddedShareState value) userAdded,
+    required TResult Function(ShareStateInitial value) initial,
+    required TResult Function(ShareStateLoaded value) loaded,
+    required TResult Function(ShareStateError value) error,
+    required TResult Function(ShareStateUserAdded value) userAdded,
   }) {
     return loaded(this);
   }
@@ -480,10 +480,10 @@ class _$LoadedShareStateImpl implements _LoadedShareState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialShareState value)? initial,
-    TResult? Function(_LoadedShareState value)? loaded,
-    TResult? Function(_ErrorShareState value)? error,
-    TResult? Function(_UserAddedShareState value)? userAdded,
+    TResult? Function(ShareStateInitial value)? initial,
+    TResult? Function(ShareStateLoaded value)? loaded,
+    TResult? Function(ShareStateError value)? error,
+    TResult? Function(ShareStateUserAdded value)? userAdded,
   }) {
     return loaded?.call(this);
   }
@@ -491,10 +491,10 @@ class _$LoadedShareStateImpl implements _LoadedShareState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialShareState value)? initial,
-    TResult Function(_LoadedShareState value)? loaded,
-    TResult Function(_ErrorShareState value)? error,
-    TResult Function(_UserAddedShareState value)? userAdded,
+    TResult Function(ShareStateInitial value)? initial,
+    TResult Function(ShareStateLoaded value)? loaded,
+    TResult Function(ShareStateError value)? error,
+    TResult Function(ShareStateUserAdded value)? userAdded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -504,10 +504,10 @@ class _$LoadedShareStateImpl implements _LoadedShareState {
   }
 }
 
-abstract class _LoadedShareState implements ShareState {
-  const factory _LoadedShareState(
+abstract class ShareStateLoaded implements ShareState {
+  const factory ShareStateLoaded(
       {required final Map<String, String>? sharedUsers,
-      final String userEmailQuery}) = _$LoadedShareStateImpl;
+      final String userEmailQuery}) = _$ShareStateLoadedImpl;
 
   @override
   Map<String, String>? get sharedUsers;
@@ -515,16 +515,16 @@ abstract class _LoadedShareState implements ShareState {
   String get userEmailQuery;
   @override
   @JsonKey(ignore: true)
-  _$$LoadedShareStateImplCopyWith<_$LoadedShareStateImpl> get copyWith =>
+  _$$ShareStateLoadedImplCopyWith<_$ShareStateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorShareStateImplCopyWith<$Res>
+abstract class _$$ShareStateErrorImplCopyWith<$Res>
     implements $ShareStateCopyWith<$Res> {
-  factory _$$ErrorShareStateImplCopyWith(_$ErrorShareStateImpl value,
-          $Res Function(_$ErrorShareStateImpl) then) =
-      __$$ErrorShareStateImplCopyWithImpl<$Res>;
+  factory _$$ShareStateErrorImplCopyWith(_$ShareStateErrorImpl value,
+          $Res Function(_$ShareStateErrorImpl) then) =
+      __$$ShareStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -534,11 +534,11 @@ abstract class _$$ErrorShareStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ErrorShareStateImplCopyWithImpl<$Res>
-    extends _$ShareStateCopyWithImpl<$Res, _$ErrorShareStateImpl>
-    implements _$$ErrorShareStateImplCopyWith<$Res> {
-  __$$ErrorShareStateImplCopyWithImpl(
-      _$ErrorShareStateImpl _value, $Res Function(_$ErrorShareStateImpl) _then)
+class __$$ShareStateErrorImplCopyWithImpl<$Res>
+    extends _$ShareStateCopyWithImpl<$Res, _$ShareStateErrorImpl>
+    implements _$$ShareStateErrorImplCopyWith<$Res> {
+  __$$ShareStateErrorImplCopyWithImpl(
+      _$ShareStateErrorImpl _value, $Res Function(_$ShareStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -548,7 +548,7 @@ class __$$ErrorShareStateImplCopyWithImpl<$Res>
     Object? userEmailQuery = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$ErrorShareStateImpl(
+    return _then(_$ShareStateErrorImpl(
       sharedUsers: freezed == sharedUsers
           ? _value._sharedUsers
           : sharedUsers // ignore: cast_nullable_to_non_nullable
@@ -567,8 +567,8 @@ class __$$ErrorShareStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorShareStateImpl implements _ErrorShareState {
-  const _$ErrorShareStateImpl(
+class _$ShareStateErrorImpl implements ShareStateError {
+  const _$ShareStateErrorImpl(
       {required final Map<String, String>? sharedUsers,
       required this.userEmailQuery,
       required this.errorMessage})
@@ -598,7 +598,7 @@ class _$ErrorShareStateImpl implements _ErrorShareState {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorShareStateImpl &&
+            other is _$ShareStateErrorImpl &&
             const DeepCollectionEquality()
                 .equals(other._sharedUsers, _sharedUsers) &&
             (identical(other.userEmailQuery, userEmailQuery) ||
@@ -617,8 +617,8 @@ class _$ErrorShareStateImpl implements _ErrorShareState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorShareStateImplCopyWith<_$ErrorShareStateImpl> get copyWith =>
-      __$$ErrorShareStateImplCopyWithImpl<_$ErrorShareStateImpl>(
+  _$$ShareStateErrorImplCopyWith<_$ShareStateErrorImpl> get copyWith =>
+      __$$ShareStateErrorImplCopyWithImpl<_$ShareStateErrorImpl>(
           this, _$identity);
 
   @override
@@ -679,10 +679,10 @@ class _$ErrorShareStateImpl implements _ErrorShareState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialShareState value) initial,
-    required TResult Function(_LoadedShareState value) loaded,
-    required TResult Function(_ErrorShareState value) error,
-    required TResult Function(_UserAddedShareState value) userAdded,
+    required TResult Function(ShareStateInitial value) initial,
+    required TResult Function(ShareStateLoaded value) loaded,
+    required TResult Function(ShareStateError value) error,
+    required TResult Function(ShareStateUserAdded value) userAdded,
   }) {
     return error(this);
   }
@@ -690,10 +690,10 @@ class _$ErrorShareStateImpl implements _ErrorShareState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialShareState value)? initial,
-    TResult? Function(_LoadedShareState value)? loaded,
-    TResult? Function(_ErrorShareState value)? error,
-    TResult? Function(_UserAddedShareState value)? userAdded,
+    TResult? Function(ShareStateInitial value)? initial,
+    TResult? Function(ShareStateLoaded value)? loaded,
+    TResult? Function(ShareStateError value)? error,
+    TResult? Function(ShareStateUserAdded value)? userAdded,
   }) {
     return error?.call(this);
   }
@@ -701,10 +701,10 @@ class _$ErrorShareStateImpl implements _ErrorShareState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialShareState value)? initial,
-    TResult Function(_LoadedShareState value)? loaded,
-    TResult Function(_ErrorShareState value)? error,
-    TResult Function(_UserAddedShareState value)? userAdded,
+    TResult Function(ShareStateInitial value)? initial,
+    TResult Function(ShareStateLoaded value)? loaded,
+    TResult Function(ShareStateError value)? error,
+    TResult Function(ShareStateUserAdded value)? userAdded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -714,11 +714,11 @@ class _$ErrorShareStateImpl implements _ErrorShareState {
   }
 }
 
-abstract class _ErrorShareState implements ShareState {
-  const factory _ErrorShareState(
+abstract class ShareStateError implements ShareState {
+  const factory ShareStateError(
       {required final Map<String, String>? sharedUsers,
       required final String userEmailQuery,
-      required final String errorMessage}) = _$ErrorShareStateImpl;
+      required final String errorMessage}) = _$ShareStateErrorImpl;
 
   @override
   Map<String, String>? get sharedUsers;
@@ -727,27 +727,27 @@ abstract class _ErrorShareState implements ShareState {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$ErrorShareStateImplCopyWith<_$ErrorShareStateImpl> get copyWith =>
+  _$$ShareStateErrorImplCopyWith<_$ShareStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UserAddedShareStateImplCopyWith<$Res>
+abstract class _$$ShareStateUserAddedImplCopyWith<$Res>
     implements $ShareStateCopyWith<$Res> {
-  factory _$$UserAddedShareStateImplCopyWith(_$UserAddedShareStateImpl value,
-          $Res Function(_$UserAddedShareStateImpl) then) =
-      __$$UserAddedShareStateImplCopyWithImpl<$Res>;
+  factory _$$ShareStateUserAddedImplCopyWith(_$ShareStateUserAddedImpl value,
+          $Res Function(_$ShareStateUserAddedImpl) then) =
+      __$$ShareStateUserAddedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, String>? sharedUsers, String userEmailQuery});
 }
 
 /// @nodoc
-class __$$UserAddedShareStateImplCopyWithImpl<$Res>
-    extends _$ShareStateCopyWithImpl<$Res, _$UserAddedShareStateImpl>
-    implements _$$UserAddedShareStateImplCopyWith<$Res> {
-  __$$UserAddedShareStateImplCopyWithImpl(_$UserAddedShareStateImpl _value,
-      $Res Function(_$UserAddedShareStateImpl) _then)
+class __$$ShareStateUserAddedImplCopyWithImpl<$Res>
+    extends _$ShareStateCopyWithImpl<$Res, _$ShareStateUserAddedImpl>
+    implements _$$ShareStateUserAddedImplCopyWith<$Res> {
+  __$$ShareStateUserAddedImplCopyWithImpl(_$ShareStateUserAddedImpl _value,
+      $Res Function(_$ShareStateUserAddedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -756,7 +756,7 @@ class __$$UserAddedShareStateImplCopyWithImpl<$Res>
     Object? sharedUsers = freezed,
     Object? userEmailQuery = null,
   }) {
-    return _then(_$UserAddedShareStateImpl(
+    return _then(_$ShareStateUserAddedImpl(
       sharedUsers: freezed == sharedUsers
           ? _value._sharedUsers
           : sharedUsers // ignore: cast_nullable_to_non_nullable
@@ -771,8 +771,8 @@ class __$$UserAddedShareStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UserAddedShareStateImpl implements _UserAddedShareState {
-  const _$UserAddedShareStateImpl(
+class _$ShareStateUserAddedImpl implements ShareStateUserAdded {
+  const _$ShareStateUserAddedImpl(
       {required final Map<String, String>? sharedUsers,
       this.userEmailQuery = ''})
       : _sharedUsers = sharedUsers;
@@ -800,7 +800,7 @@ class _$UserAddedShareStateImpl implements _UserAddedShareState {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserAddedShareStateImpl &&
+            other is _$ShareStateUserAddedImpl &&
             const DeepCollectionEquality()
                 .equals(other._sharedUsers, _sharedUsers) &&
             (identical(other.userEmailQuery, userEmailQuery) ||
@@ -814,8 +814,8 @@ class _$UserAddedShareStateImpl implements _UserAddedShareState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserAddedShareStateImplCopyWith<_$UserAddedShareStateImpl> get copyWith =>
-      __$$UserAddedShareStateImplCopyWithImpl<_$UserAddedShareStateImpl>(
+  _$$ShareStateUserAddedImplCopyWith<_$ShareStateUserAddedImpl> get copyWith =>
+      __$$ShareStateUserAddedImplCopyWithImpl<_$ShareStateUserAddedImpl>(
           this, _$identity);
 
   @override
@@ -876,10 +876,10 @@ class _$UserAddedShareStateImpl implements _UserAddedShareState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialShareState value) initial,
-    required TResult Function(_LoadedShareState value) loaded,
-    required TResult Function(_ErrorShareState value) error,
-    required TResult Function(_UserAddedShareState value) userAdded,
+    required TResult Function(ShareStateInitial value) initial,
+    required TResult Function(ShareStateLoaded value) loaded,
+    required TResult Function(ShareStateError value) error,
+    required TResult Function(ShareStateUserAdded value) userAdded,
   }) {
     return userAdded(this);
   }
@@ -887,10 +887,10 @@ class _$UserAddedShareStateImpl implements _UserAddedShareState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialShareState value)? initial,
-    TResult? Function(_LoadedShareState value)? loaded,
-    TResult? Function(_ErrorShareState value)? error,
-    TResult? Function(_UserAddedShareState value)? userAdded,
+    TResult? Function(ShareStateInitial value)? initial,
+    TResult? Function(ShareStateLoaded value)? loaded,
+    TResult? Function(ShareStateError value)? error,
+    TResult? Function(ShareStateUserAdded value)? userAdded,
   }) {
     return userAdded?.call(this);
   }
@@ -898,10 +898,10 @@ class _$UserAddedShareStateImpl implements _UserAddedShareState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialShareState value)? initial,
-    TResult Function(_LoadedShareState value)? loaded,
-    TResult Function(_ErrorShareState value)? error,
-    TResult Function(_UserAddedShareState value)? userAdded,
+    TResult Function(ShareStateInitial value)? initial,
+    TResult Function(ShareStateLoaded value)? loaded,
+    TResult Function(ShareStateError value)? error,
+    TResult Function(ShareStateUserAdded value)? userAdded,
     required TResult orElse(),
   }) {
     if (userAdded != null) {
@@ -911,10 +911,10 @@ class _$UserAddedShareStateImpl implements _UserAddedShareState {
   }
 }
 
-abstract class _UserAddedShareState implements ShareState {
-  const factory _UserAddedShareState(
+abstract class ShareStateUserAdded implements ShareState {
+  const factory ShareStateUserAdded(
       {required final Map<String, String>? sharedUsers,
-      final String userEmailQuery}) = _$UserAddedShareStateImpl;
+      final String userEmailQuery}) = _$ShareStateUserAddedImpl;
 
   @override
   Map<String, String>? get sharedUsers;
@@ -922,6 +922,6 @@ abstract class _UserAddedShareState implements ShareState {
   String get userEmailQuery;
   @override
   @JsonKey(ignore: true)
-  _$$UserAddedShareStateImplCopyWith<_$UserAddedShareStateImpl> get copyWith =>
+  _$$ShareStateUserAddedImplCopyWith<_$ShareStateUserAddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

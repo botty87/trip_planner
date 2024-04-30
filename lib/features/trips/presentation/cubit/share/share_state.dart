@@ -5,21 +5,21 @@ class ShareState with _$ShareState {
   const factory ShareState.initial({
     Map<String, String>? sharedUsers,
     @Default('') String userEmailQuery,
-  }) = _InitialShareState;
+  }) = ShareStateInitial;
 
   const factory ShareState.loaded({
     required Map<String, String>? sharedUsers,
     @Default('') String userEmailQuery,
-  }) = _LoadedShareState;
+  }) = ShareStateLoaded;
 
   const factory ShareState.error({
     required Map<String, String>? sharedUsers,
     required String userEmailQuery,
     required String errorMessage,
-  }) = _ErrorShareState;
+  }) = ShareStateError;
 
   const factory ShareState.userAdded({
     required Map<String, String>? sharedUsers,
     @Default('') String userEmailQuery,
-  }) = _UserAddedShareState;
+  }) = ShareStateUserAdded;
 }

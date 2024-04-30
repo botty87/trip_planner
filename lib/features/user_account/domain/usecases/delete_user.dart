@@ -6,6 +6,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../../trips/domain/repositories/trips_repository.dart';
+import '../../../trips/errors/trips_failure.dart';
 import '../../errors/user_failures.dart';
 import '../repositories/user_repository.dart';
 
@@ -25,10 +26,11 @@ class DeleteUser implements UseCase<void, DeleteUserParams> {
     final deleteTripsResult = await tripsRepository.deleteAllTrips(params.userId);
     return deleteTripsResult.fold(
       (failure) {
-        final message = failure.when(
-          (message) => message,
-          noInternetConnection: () => LocaleKeys.noInternetConnectionMessage.tr(),
-        );
+        final message = switch (failure) {
+          final TripsFailureNoInternetConnection _ => LocaleKeys.noInternetConnectionMessage.tr(),
+          TripsFailure(:final message) => message,
+        };
+
         return left(UserFailures.unknownError(message: message));
       },
       (_) => repository.deleteUser(),

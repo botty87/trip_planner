@@ -66,10 +66,10 @@ class TripCubit extends Cubit<TripState> {
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
-        (dayTrips) => state.maybeMap(
-          editing: (editingState) => emit(editingState.copyWith(dayTrips: dayTrips)),
-          orElse: () => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
-        ),
+        (dayTrips) => switch (state) {
+          final TripStateEditing state => emit(state.copyWith(dayTrips: dayTrips)),
+          _ => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
+        },
       );
     });
   }
@@ -168,10 +168,10 @@ class TripCubit extends Cubit<TripState> {
 
         result.fold(
           (failure) {
-            final errorMessage = failure.when(
-              (message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
-              noInternetConnection: () => LocaleKeys.noInternetConnectionMessage.tr(),
-            );
+            final errorMessage = switch (failure) {
+              TripsFailureNoInternetConnection _ => LocaleKeys.noInternetConnectionMessage.tr(),
+              TripsFailure(:final message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
+            };
 
             emit(state.copyWith(isSaving: false, errorMessage: errorMessage));
           },
@@ -198,10 +198,10 @@ class TripCubit extends Cubit<TripState> {
 
     result.fold(
       (failure) {
-        final errorMessage = failure.when(
-          (message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
-          noInternetConnection: () => LocaleKeys.noInternetConnectionMessage.tr(),
-        );
+        final errorMessage = switch (failure) {
+          TripsFailureNoInternetConnection _ => LocaleKeys.noInternetConnectionMessage.tr(),
+          TripsFailure(:final message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
+        };
 
         emit(TripState.error(
           trip: state.trip,
@@ -213,8 +213,8 @@ class TripCubit extends Cubit<TripState> {
     );
   }
 
-  void reorderDayTrips(int oldIndex, int newIndex, List<DayTrip> dayTripsSorted) {
-    state.mapOrNull(loaded: (state) async {
+  void reorderDayTrips(int oldIndex, int newIndex, List<DayTrip> dayTripsSorted) async {
+    if (state case final TripStateLoaded state) {
       final oldDayTrips = state.dayTrips;
 
       for (int i = 0; i < dayTripsSorted.length; i++) {
@@ -248,7 +248,7 @@ class TripCubit extends Cubit<TripState> {
           emit(TripState.loaded(trip: state.trip, dayTrips: oldDayTrips));
         },
       );
-    });
+    }
   }
 
   void modalBottomEditingDismissed() {
@@ -270,7 +270,7 @@ class TripCubit extends Cubit<TripState> {
         final errorMessage = switch (failure) {
           ShareTripFailureNoInternetConnection _ => LocaleKeys.noInternetConnectionMessage.tr(),
           ShareTripFailureUserNotFound _ => LocaleKeys.userNotFound.tr(),
-          _ => LocaleKeys.unknownErrorRetry.tr(),
+          ShareTripFailure(:final message) => message ?? LocaleKeys.unknownErrorRetry.tr(),
         };
 
         emit(TripState.error(

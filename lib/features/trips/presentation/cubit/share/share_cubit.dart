@@ -94,23 +94,19 @@ class ShareCubit extends Cubit<ShareState> {
   }
 
   _foldFailure(ShareTripFailure failure) {
-    failure.when(
-      (message) => emit(ShareState.error(
+    final errorState = ShareState.error(
         sharedUsers: state.sharedUsers,
         userEmailQuery: state.userEmailQuery,
-        errorMessage: message ?? LocaleKeys.error.tr(),
-      )),
-      userNotFound: () => emit(ShareState.error(
-        sharedUsers: state.sharedUsers,
-        userEmailQuery: state.userEmailQuery,
-        errorMessage: LocaleKeys.userNotFound.tr(),
-      )),
-      noInternetConnection: () => emit(ShareState.error(
-        sharedUsers: state.sharedUsers,
-        userEmailQuery: state.userEmailQuery,
-        errorMessage: LocaleKeys.noInternetConnectionMessage.tr(),
-      )),
-    );
+        errorMessage: '') as ShareStateError;
+        
+    return switch (failure) {
+      ShareTripFailureNoInternetConnection _ =>
+        emit(errorState.copyWith(errorMessage: LocaleKeys.noInternetConnectionMessage.tr())),
+      ShareTripFailureUserNotFound _ =>
+        emit(errorState.copyWith(errorMessage: LocaleKeys.userNotFound.tr())),
+      ShareTripFailure(:final message) =>
+        emit(errorState.copyWith(errorMessage: message ?? LocaleKeys.unknownErrorRetry.tr())),
+    };
   }
 
   void updatedSharedUsers(List<String> sharedUsersIds) async {
