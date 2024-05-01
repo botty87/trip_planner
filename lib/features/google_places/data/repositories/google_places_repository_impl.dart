@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,8 +15,9 @@ import '../datasources/google_places_data_source.dart';
 @LazySingleton(as: GooglePlacesRepository)
 class GooglePlacesRepositoryImpl implements GooglePlacesRepository {
   final GooglePlacesDataSource dataSource;
+  final FirebaseCrashlytics _crashlytics;
 
-  GooglePlacesRepositoryImpl(this.dataSource);
+  GooglePlacesRepositoryImpl(this.dataSource, this._crashlytics);
 
   @override
   Future<Either<GooglePlacesFailure, List<Suggestion>>> fetchSuggestions(
@@ -24,7 +26,11 @@ class GooglePlacesRepositoryImpl implements GooglePlacesRepository {
       final suggestions = await dataSource.fetchSuggestions(query: query, lang: lang, token: token);
       return Right(suggestions);
     } on GooglePlacesException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return Left(_mapExceptionToFailure(e));
+    } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
+      return Left(GooglePlacesFailure.unknownError(message: e.toString()));
     }
   }
 
@@ -44,7 +50,11 @@ class GooglePlacesRepositoryImpl implements GooglePlacesRepository {
       final placeDetails = await dataSource.fetchPlaceDetails(placeId: placeId, token: token);
       return Right(placeDetails);
     } on GooglePlacesException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return Left(_mapExceptionToFailure(e));
+    } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
+      return Left(GooglePlacesFailure.unknownError(message: e.toString()));
     }
   }
 
@@ -55,8 +65,10 @@ class GooglePlacesRepositoryImpl implements GooglePlacesRepository {
       final result = await dataSource.fetchTripStopsDirections(tripStops, travelMode);
       return Right(result);
     } on GooglePlacesException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return Left(_mapExceptionToFailure(e));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return Left(GooglePlacesFailure.unknownError(message: e.toString()));
     }
   }
