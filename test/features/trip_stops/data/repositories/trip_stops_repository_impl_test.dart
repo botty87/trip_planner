@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mockito/annotations.dart';
@@ -10,9 +11,13 @@ import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart'
 
 import 'trip_stops_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<TripStopsDataSource>()])
+@GenerateNiceMocks([
+  MockSpec<TripStopsDataSource>(),
+  MockSpec<FirebaseCrashlytics>(),
+])
 void main() {
   late MockTripStopsDataSource mockTripStopsDataSource;
+  late MockFirebaseCrashlytics mockCrashlytics;
   late TripStopsRepositoryImpl repository;
 
   const tTripStop = TripStop(
@@ -26,7 +31,8 @@ void main() {
 
   setUp(() {
     mockTripStopsDataSource = MockTripStopsDataSource();
-    repository = TripStopsRepositoryImpl(mockTripStopsDataSource);
+    mockCrashlytics = MockFirebaseCrashlytics();
+    repository = TripStopsRepositoryImpl(mockTripStopsDataSource, mockCrashlytics);
   });
 
   group('addTripStop', () {
@@ -74,6 +80,9 @@ void main() {
       );
       // assert
       expect(result, equals(left(const TripStopsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -143,6 +152,8 @@ void main() {
       );
       // assert
       expect(result, completion(left(const TripStopsFailure())));
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -183,6 +194,8 @@ void main() {
       );
       // assert
       expect(result, completion(left(const TripStopsFailure())));
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -223,6 +236,8 @@ void main() {
       );
       // assert
       expect(result, completion(left(const TripStopsFailure())));
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -265,6 +280,8 @@ void main() {
 
       // assert
       expect(result, completion(left(const TripStopsFailure())));
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -301,6 +318,8 @@ void main() {
       );
       // assert
       expect(result, completion(left(const TripStopsFailure())));
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -353,6 +372,8 @@ void main() {
       );
       // assert
       expect(result, completion(left(const TripStopsFailure())));
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 }

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import '../../domain/entities/trip_stop.dart';
@@ -11,8 +12,9 @@ import '../datasources/trip_stops_data_source.dart';
 @LazySingleton(as: TripStopsRepository)
 class TripStopsRepositoryImpl implements TripStopsRepository {
   final TripStopsDataSource _tripStopsDataSource;
+  final FirebaseCrashlytics _crashlytics;
 
-  TripStopsRepositoryImpl(this._tripStopsDataSource);
+  TripStopsRepositoryImpl(this._tripStopsDataSource, this._crashlytics);
 
   @override
   Future<Either<TripStopsFailure, void>> addTripStop({
@@ -34,8 +36,10 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       );
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(TripStopsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const TripStopsFailure());
     }
   }
@@ -48,6 +52,7 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
           .listenTripStops(tripId: tripId, dayTripId: dayTripId)
           .map((tripStops) => right(tripStops));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       yield left(const TripStopsFailure());
     }
   }
@@ -65,8 +70,10 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       );
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(TripStopsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const TripStopsFailure());
     }
   }
@@ -86,8 +93,10 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       );
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(TripStopsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const TripStopsFailure());
     }
   }
@@ -107,8 +116,10 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       );
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(TripStopsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const TripStopsFailure());
     }
   }
@@ -128,8 +139,10 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       );
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(TripStopsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const TripStopsFailure());
     }
   }
@@ -145,8 +158,10 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       );
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(TripStopsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const TripStopsFailure());
     }
   }
@@ -172,8 +187,10 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
       );
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(TripStopsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const TripStopsFailure());
     }
   }
