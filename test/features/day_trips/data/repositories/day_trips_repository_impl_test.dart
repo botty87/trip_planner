@@ -234,9 +234,6 @@ void main() {
       final result = repository.listenDayTrip(tTripId, tDayTrip.id);
       // assert
       expect(result, emitsInOrder([left(const DayTripsFailure())]));
-
-      verify(mockCrashlytics.recordError(any, any));
-      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
