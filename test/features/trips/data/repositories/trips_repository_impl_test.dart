@@ -134,7 +134,7 @@ void main() {
   group('delete all trips', () {
     test('should return right(null) when TripsDataSource.deleteAllTrips completes', () async {
       const userId = 'userId';
-      when(mockTripsDataSource.deleteAllTrips(userId)).thenAnswer((_) async {});
+      when(mockTripsDataSource.deleteAllUserTrips(userId)).thenAnswer((_) async {});
 
       // act
       final result = await tripsRepositoryImpl.deleteAllTrips(userId);
@@ -144,7 +144,7 @@ void main() {
 
     test('should return left(TripsFailure()) when TripsDataSource.deleteAllTrips throws', () async {
       const userId = 'userId';
-      when(mockTripsDataSource.deleteAllTrips(userId)).thenThrow(Exception());
+      when(mockTripsDataSource.deleteAllUserTrips(userId)).thenThrow(Exception());
 
       // act
       final result = await tripsRepositoryImpl.deleteAllTrips(userId);

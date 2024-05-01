@@ -10,7 +10,6 @@ import '../../../../core/db/users_collection_ref.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/utilities/data_source_firestore_sync_mixin.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../core/utilities/pair.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../domain/entities/trip.dart';
@@ -34,7 +33,7 @@ abstract interface class TripsDataSource {
 
   Future<void> deleteTrip(Trip trip);
 
-  deleteAllTrips(String userId);
+  deleteAllUserTrips(String userId);
 
   createFromExistingTrip({
     required Trip newTrip,
@@ -108,8 +107,8 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
     for (final dayTrip in dayTrips.docs) {
       _checkAndIncrementBatchSize(currentBatchSize, currentBatchIndex, batchs).let((values) {
-        currentBatchSize = values.first;
-        currentBatchIndex = values.second;
+        currentBatchSize = values.currentBatchSize;
+        currentBatchIndex = values.currentBatchIndex;
       });
 
       batchs[currentBatchIndex].delete(dayTrip.reference);
@@ -124,8 +123,8 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
       for (final tripStop in tripStops.docs) {
         _checkAndIncrementBatchSize(currentBatchSize, currentBatchIndex, batchs).let((values) {
-          currentBatchSize = values.first;
-          currentBatchIndex = values.second;
+          currentBatchSize = values.currentBatchSize;
+          currentBatchIndex = values.currentBatchIndex;
         });
 
         batchs[currentBatchIndex].delete(tripStop.reference);
@@ -136,53 +135,50 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
   }
 
   @override
-  deleteAllTrips(String userId) async {
-    final batchs = [firebaseFirestore.batch()];
-    int currentBatchIndex = 0;
-    int currentBatchSize = 1;
+  deleteAllUserTrips(String userId) async {
+    await firebaseFirestore.runTransaction((transaction) async {
+      //Filter the user trips to delete
+      final trips =
+          await firebaseFirestore.collection('trips').where('userId', isEqualTo: userId).get();
 
-    final trips =
-        await firebaseFirestore.collection('trips').where('userId', isEqualTo: userId).get();
+      //Delete the trips
+      for (final trip in trips.docs) {
+        final dayTrips =
+            await firebaseFirestore.collection('trips').doc(trip.id).collection('dayTrips').get();
 
-    for (final trip in trips.docs) {
-      _checkAndIncrementBatchSize(currentBatchSize, currentBatchIndex, batchs).let((values) {
-        currentBatchSize = values.first;
-        currentBatchIndex = values.second;
-      });
+        //Delete the day trips
+        for (final dayTrip in dayTrips.docs) {
+          final tripStops = await firebaseFirestore
+              .collection('trips')
+              .doc(trip.id)
+              .collection('dayTrips')
+              .doc(dayTrip.id)
+              .collection('tripStops')
+              .get();
 
-      batchs[currentBatchIndex].delete(trip.reference);
+          //Delete the trip stops
+          for (final tripStop in tripStops.docs) {
+            transaction.delete(tripStop.reference);
+          }
 
-      final dayTrips =
-          await firebaseFirestore.collection('trips').doc(trip.id).collection('dayTrips').get();
-
-      for (final dayTrip in dayTrips.docs) {
-        _checkAndIncrementBatchSize(currentBatchSize, currentBatchIndex, batchs).let((values) {
-          currentBatchSize = values.first;
-          currentBatchIndex = values.second;
-        });
-
-        batchs[currentBatchIndex].delete(dayTrip.reference);
-
-        final tripStops = await firebaseFirestore
-            .collection('trips')
-            .doc(trip.id)
-            .collection('dayTrips')
-            .doc(dayTrip.id)
-            .collection('tripStops')
-            .get();
-
-        for (final tripStop in tripStops.docs) {
-          _checkAndIncrementBatchSize(currentBatchSize, currentBatchIndex, batchs).let((values) {
-            currentBatchSize = values.first;
-            currentBatchIndex = values.second;
-          });
-
-          batchs[currentBatchIndex].delete(tripStop.reference);
+          transaction.delete(dayTrip.reference);
         }
-      }
-    }
 
-    performSync(() async => await Future.wait(batchs.map((batch) => batch.commit())));
+        transaction.delete(trip.reference);
+      }
+
+      //Filter the trips shared with the user and remove the user from the sharedWith array
+      final sharedTrips = await firebaseFirestore
+          .collection('trips')
+          .where('sharedWith', arrayContains: userId)
+          .get();
+
+      for (final trip in sharedTrips.docs) {
+        transaction.update(trip.reference, {
+          'sharedWith': FieldValue.arrayRemove([userId])
+        });
+      }
+    });
   }
 
   @override
@@ -233,8 +229,8 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
     for (final dayTrip in newDayTripsStops.keys) {
       _checkAndIncrementBatchSize(currentBatchSize, currentBatchIndex, batchs).let((values) {
-        currentBatchSize = values.first;
-        currentBatchIndex = values.second;
+        currentBatchSize = values.currentBatchSize;
+        currentBatchIndex = values.currentBatchIndex;
       });
 
       final newDayTripReference = _dayTripsCollection(newTripReference.id).doc();
@@ -242,8 +238,8 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
       for (final tripStop in newDayTripsStops[dayTrip]) {
         _checkAndIncrementBatchSize(currentBatchSize, currentBatchIndex, batchs).let((values) {
-          currentBatchSize = values.first;
-          currentBatchIndex = values.second;
+          currentBatchSize = values.currentBatchSize;
+          currentBatchIndex = values.currentBatchIndex;
         });
 
         final newTripStopReference =
@@ -256,7 +252,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
   }
 
   //returns new currentBatchSize and currentBatchIndex
-  Pair<int, int> _checkAndIncrementBatchSize(
+  ({int currentBatchSize, int currentBatchIndex}) _checkAndIncrementBatchSize(
       int currentBatchSize, int currentBatchIndex, List<WriteBatch> batchs) {
     currentBatchSize++;
     if (currentBatchSize > 500) {
@@ -264,7 +260,8 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
       batchs.add(firebaseFirestore.batch());
       currentBatchSize = 0;
     }
-    return Pair(currentBatchSize, currentBatchIndex);
+
+    return (currentBatchSize: currentBatchSize, currentBatchIndex: currentBatchIndex);
   }
 
   @override

@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/di/di.dart';
 import '../../domain/entities/trip.dart';
 import '../../domain/repositories/trips_repository.dart';
 import '../../errors/trips_exception.dart';
@@ -68,9 +70,10 @@ class TripsRepositoryImpl implements TripsRepository {
   @override
   Future<Either<TripsFailure, void>> deleteAllTrips(String userId) async {
     try {
-      await tripsDataSource.deleteAllTrips(userId);
+      await tripsDataSource.deleteAllUserTrips(userId);
       return right(null);
     } on FirebaseException {
+      getIt<FirebaseCrashlytics>().recordError('FirebaseException', StackTrace.current);
       return left(const TripsFailure());
     } on Exception {
       return left(const TripsFailure());
@@ -151,7 +154,7 @@ class TripsRepositoryImpl implements TripsRepository {
       return left(const ShareTripFailure());
     }
   }
-  
+
   @override
   Stream<Either<TripsFailure, List<Trip>>> listenSharedTrips(String userId) async* {
     try {

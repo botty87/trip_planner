@@ -181,9 +181,7 @@ class AccountCubit extends Cubit<AccountState> {
   }
 
   void deleteAccount({required String password}) async {
-    emit(AccountState.deleting(
-      user: state.user,
-    ));
+    emit(AccountState.deleting(user: state.user));
 
     final result = await _reauthenticateUser(ReauthenticateUserParams(
       email: state.user.email,

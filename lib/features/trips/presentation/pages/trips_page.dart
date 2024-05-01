@@ -27,8 +27,13 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
     final hasBackgroundImage = this.hasBackgroundImage(context);
     final userId = switch (context.read<UserCubit>().state) {
       final UserStateLoggedIn loggedInState => loggedInState.user.id,
-      _ => throw Exception('User is not logged in'),
+      _ => null,
     };
+
+    //It can happens during transation between pages, after user logout
+    if (userId == null) {
+      return const SizedBox.shrink();
+    }
 
     return BlocProvider<TripsCubit>(
       create: (context) => getIt(param1: userId)..startListenTrips(),
