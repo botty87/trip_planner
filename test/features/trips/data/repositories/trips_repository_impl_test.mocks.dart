@@ -3,12 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
+import 'package:firebase_core/firebase_core.dart' as _i2;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i6;
+import 'package:flutter/foundation.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/trips/data/datasources/trips_data_source.dart'
-    as _i2;
-import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i4;
+    as _i3;
+import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -23,44 +26,54 @@ import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i4;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeFirebaseApp_0 extends _i1.SmartFake implements _i2.FirebaseApp {
+  _FakeFirebaseApp_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [TripsDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
+class MockTripsDataSource extends _i1.Mock implements _i3.TripsDataSource {
   @override
-  _i3.Future<void> addTrip(_i4.Trip? trip) => (super.noSuchMethod(
+  _i4.Future<void> addTrip(_i5.Trip? trip) => (super.noSuchMethod(
         Invocation.method(
           #addTrip,
           [trip],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i3.Stream<List<_i4.Trip>> listenUserTrips(String? userId) =>
+  _i4.Stream<List<_i5.Trip>> listenUserTrips(String? userId) =>
       (super.noSuchMethod(
         Invocation.method(
           #listenUserTrips,
           [userId],
         ),
-        returnValue: _i3.Stream<List<_i4.Trip>>.empty(),
-        returnValueForMissingStub: _i3.Stream<List<_i4.Trip>>.empty(),
-      ) as _i3.Stream<List<_i4.Trip>>);
+        returnValue: _i4.Stream<List<_i5.Trip>>.empty(),
+        returnValueForMissingStub: _i4.Stream<List<_i5.Trip>>.empty(),
+      ) as _i4.Stream<List<_i5.Trip>>);
 
   @override
-  _i3.Stream<List<_i4.Trip>> listenSharedTrips(String? userId) =>
+  _i4.Stream<List<_i5.Trip>> listenSharedTrips(String? userId) =>
       (super.noSuchMethod(
         Invocation.method(
           #listenSharedTrips,
           [userId],
         ),
-        returnValue: _i3.Stream<List<_i4.Trip>>.empty(),
-        returnValueForMissingStub: _i3.Stream<List<_i4.Trip>>.empty(),
-      ) as _i3.Stream<List<_i4.Trip>>);
+        returnValue: _i4.Stream<List<_i5.Trip>>.empty(),
+        returnValueForMissingStub: _i4.Stream<List<_i5.Trip>>.empty(),
+      ) as _i4.Stream<List<_i5.Trip>>);
 
   @override
-  _i3.Future<void> updateTrip(
+  _i4.Future<void> updateTrip(
     String? id,
     String? name,
     String? description,
@@ -80,19 +93,19 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
             languageCode,
           ],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i3.Future<void> deleteTrip(_i4.Trip? trip) => (super.noSuchMethod(
+  _i4.Future<void> deleteTrip(_i5.Trip? trip) => (super.noSuchMethod(
         Invocation.method(
           #deleteTrip,
           [trip],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
   dynamic deleteAllUserTrips(String? userId) => super.noSuchMethod(
@@ -105,8 +118,8 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
 
   @override
   dynamic createFromExistingTrip({
-    required _i4.Trip? newTrip,
-    required _i4.Trip? existingTrip,
+    required _i5.Trip? newTrip,
+    required _i5.Trip? existingTrip,
     required bool? showDirections,
     required bool? useDifferentDirectionsColors,
   }) =>
@@ -125,7 +138,7 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
       );
 
   @override
-  _i3.Future<void> addUserForShare(
+  _i4.Future<void> addUserForShare(
     String? tripId,
     String? email,
   ) =>
@@ -137,22 +150,22 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
             email,
           ],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i3.Stream<_i4.Trip?> listenTrip(String? tripId) => (super.noSuchMethod(
+  _i4.Stream<_i5.Trip?> listenTrip(String? tripId) => (super.noSuchMethod(
         Invocation.method(
           #listenTrip,
           [tripId],
         ),
-        returnValue: _i3.Stream<_i4.Trip?>.empty(),
-        returnValueForMissingStub: _i3.Stream<_i4.Trip?>.empty(),
-      ) as _i3.Stream<_i4.Trip?>);
+        returnValue: _i4.Stream<_i5.Trip?>.empty(),
+        returnValueForMissingStub: _i4.Stream<_i5.Trip?>.empty(),
+      ) as _i4.Stream<_i5.Trip?>);
 
   @override
-  _i3.Future<void> removeUserForShare(
+  _i4.Future<void> removeUserForShare(
     String? tripId,
     String? userId,
   ) =>
@@ -164,7 +177,200 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
             userId,
           ],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+}
+
+/// A class which mocks [FirebaseCrashlytics].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirebaseCrashlytics extends _i1.Mock
+    implements _i6.FirebaseCrashlytics {
+  @override
+  _i2.FirebaseApp get app => (super.noSuchMethod(
+        Invocation.getter(#app),
+        returnValue: _FakeFirebaseApp_0(
+          this,
+          Invocation.getter(#app),
+        ),
+        returnValueForMissingStub: _FakeFirebaseApp_0(
+          this,
+          Invocation.getter(#app),
+        ),
+      ) as _i2.FirebaseApp);
+
+  @override
+  set app(_i2.FirebaseApp? _app) => super.noSuchMethod(
+        Invocation.setter(
+          #app,
+          _app,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  bool get isCrashlyticsCollectionEnabled => (super.noSuchMethod(
+        Invocation.getter(#isCrashlyticsCollectionEnabled),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  Map<dynamic, dynamic> get pluginConstants => (super.noSuchMethod(
+        Invocation.getter(#pluginConstants),
+        returnValue: <dynamic, dynamic>{},
+        returnValueForMissingStub: <dynamic, dynamic>{},
+      ) as Map<dynamic, dynamic>);
+
+  @override
+  _i4.Future<bool> checkForUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #checkForUnsentReports,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  void crash() => super.noSuchMethod(
+        Invocation.method(
+          #crash,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i4.Future<void> deleteUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUnsentReports,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<bool> didCrashOnPreviousExecution() => (super.noSuchMethod(
+        Invocation.method(
+          #didCrashOnPreviousExecution,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<void> recordError(
+    dynamic exception,
+    StackTrace? stack, {
+    dynamic reason,
+    Iterable<Object>? information = const [],
+    bool? printDetails,
+    bool? fatal = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordError,
+          [
+            exception,
+            stack,
+          ],
+          {
+            #reason: reason,
+            #information: information,
+            #printDetails: printDetails,
+            #fatal: fatal,
+          },
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> recordFlutterError(
+    _i7.FlutterErrorDetails? flutterErrorDetails, {
+    bool? fatal = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordFlutterError,
+          [flutterErrorDetails],
+          {#fatal: fatal},
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> recordFlutterFatalError(
+          _i7.FlutterErrorDetails? flutterErrorDetails) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recordFlutterFatalError,
+          [flutterErrorDetails],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> log(String? message) => (super.noSuchMethod(
+        Invocation.method(
+          #log,
+          [message],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> sendUnsentReports() => (super.noSuchMethod(
+        Invocation.method(
+          #sendUnsentReports,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> setCrashlyticsCollectionEnabled(bool? enabled) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setCrashlyticsCollectionEnabled,
+          [enabled],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> setUserIdentifier(String? identifier) => (super.noSuchMethod(
+        Invocation.method(
+          #setUserIdentifier,
+          [identifier],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> setCustomKey(
+    String? key,
+    Object? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setCustomKey,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }

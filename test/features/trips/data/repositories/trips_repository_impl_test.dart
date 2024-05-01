@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -10,9 +11,13 @@ import 'package:trip_planner/features/trips/errors/trips_failure.dart';
 
 import 'trips_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<TripsDataSource>()])
+@GenerateNiceMocks([
+  MockSpec<TripsDataSource>(),
+  MockSpec<FirebaseCrashlytics>(),
+])
 void main() {
   late MockTripsDataSource mockTripsDataSource;
+  late MockFirebaseCrashlytics mockFirebaseCrashlytics;
   late TripsRepositoryImpl tripsRepositoryImpl;
 
   final tTrip = Trip(
@@ -25,9 +30,8 @@ void main() {
 
   setUp(() {
     mockTripsDataSource = MockTripsDataSource();
-    tripsRepositoryImpl = TripsRepositoryImpl(
-      tripsDataSource: mockTripsDataSource,
-    );
+    mockFirebaseCrashlytics = MockFirebaseCrashlytics();
+    tripsRepositoryImpl = TripsRepositoryImpl(mockTripsDataSource, mockFirebaseCrashlytics);
   });
 
   group('addTrip', () {
@@ -47,6 +51,8 @@ void main() {
       final result = await tripsRepositoryImpl.createTrip(tTrip);
       // assert
       expect(result, equals(left(const TripsFailure())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
   });
 
@@ -75,6 +81,8 @@ void main() {
       await expectLater(result, emits(left(const TripsFailure())));
       verify(mockTripsDataSource.listenUserTrips(userId));
       verifyNoMoreInteractions(mockTripsDataSource);
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
   });
 
@@ -108,6 +116,8 @@ void main() {
           tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode);
       // assert
       expect(result, equals(left(const TripsFailure())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
   });
 
@@ -128,6 +138,8 @@ void main() {
       final result = await tripsRepositoryImpl.deleteTrip(tTrip);
       // assert
       expect(result, equals(left(const TripsFailure())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
   });
 
@@ -150,6 +162,8 @@ void main() {
       final result = await tripsRepositoryImpl.deleteAllTrips(userId);
       // assert
       expect(result, equals(left(const TripsFailure())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
   });
 
@@ -192,6 +206,8 @@ void main() {
       );
       // assert
       expect(result, equals(left(const TripsFailure())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
   });
 
@@ -216,6 +232,8 @@ void main() {
       final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
       // assert
       expect(result, equals(left(const ShareTripFailure())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
 
     test(
@@ -228,6 +246,8 @@ void main() {
       final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
       // assert
       expect(result, equals(left(const ShareTripFailure.noInternetConnection())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
 
     test(
@@ -240,6 +260,8 @@ void main() {
       final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
       // assert
       expect(result, equals(left(const ShareTripFailure.userNotFound())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
   });
 
@@ -268,6 +290,7 @@ void main() {
       await expectLater(result, emits(left(const TripsFailure())));
       verify(mockTripsDataSource.listenTrip(tripId));
       verifyNoMoreInteractions(mockTripsDataSource);
+      
     });
   });
 
@@ -292,6 +315,8 @@ void main() {
       final result = await tripsRepositoryImpl.removeUserForShare(tripId, userId);
       // assert
       expect(result, equals(left(const ShareTripFailure())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
 
     test(
@@ -304,6 +329,8 @@ void main() {
       final result = await tripsRepositoryImpl.removeUserForShare(tripId, userId);
       // assert
       expect(result, equals(left(const ShareTripFailure.noInternetConnection())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
 
     test(
@@ -316,6 +343,8 @@ void main() {
       final result = await tripsRepositoryImpl.removeUserForShare(tripId, userId);
       // assert
       expect(result, equals(left(const ShareTripFailure.userNotFound())));
+      verify(mockFirebaseCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockFirebaseCrashlytics);
     });
   });
 }
