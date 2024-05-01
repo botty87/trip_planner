@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../settings/domain/entities/settings.dart';
@@ -11,9 +12,10 @@ import '../datasources/user_data_source.dart';
 
 @LazySingleton(as: UserRepository)
 final class UserRepositoryImpl implements UserRepository {
-  final UserDataSource userDataSource;
+  final UserDataSource _userDataSource;
+  final FirebaseCrashlytics _crashlytics;
 
-  UserRepositoryImpl(this.userDataSource);
+  UserRepositoryImpl(this._userDataSource, this._crashlytics);
 
   UserFailures onFirebaseAuthException(FirebaseAuthException e) {
     switch (e.code) {
@@ -41,7 +43,7 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Stream<Either<UserFailures, User?>> listenUser() async* {
     try {
-      yield* userDataSource.user.map((user) => right(user));
+      yield* _userDataSource.user.map((user) => right(user));
     } catch (e) {
       yield left(const UserFailures.unknownError());
     }
@@ -51,11 +53,13 @@ final class UserRepositoryImpl implements UserRepository {
   Future<Either<UserFailures, void>> registerUser(
       {required String email, required String password, required String name}) async {
     try {
-      await userDataSource.registerUser(email: email, password: password, name: name);
+      await _userDataSource.registerUser(email: email, password: password, name: name);
       return right(null);
     } on FirebaseAuthException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(onFirebaseAuthException(e));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -64,11 +68,13 @@ final class UserRepositoryImpl implements UserRepository {
   Future<Either<UserFailures, void>> loginUser(
       {required String email, required String password}) async {
     try {
-      await userDataSource.loginUser(email: email, password: password);
+      await _userDataSource.loginUser(email: email, password: password);
       return right(null);
     } on FirebaseAuthException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(onFirebaseAuthException(e));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -76,11 +82,13 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<UserFailures, void>> recoverPassword(String email) async {
     try {
-      await userDataSource.recoverPassword(email);
+      await _userDataSource.recoverPassword(email);
       return right(null);
     } on FirebaseAuthException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(onFirebaseAuthException(e));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -88,11 +96,13 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<UserFailures, void>> logoutUser() async {
     try {
-      await userDataSource.logoutUser();
+      await _userDataSource.logoutUser();
       return right(null);
     } on FirebaseAuthException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(onFirebaseAuthException(e));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -101,11 +111,13 @@ final class UserRepositoryImpl implements UserRepository {
   Future<Either<UserFailures, void>> reauthenticateUser(
       {required String email, required String password}) async {
     try {
-      await userDataSource.reauthenticateUser(email: email, password: password);
+      await _userDataSource.reauthenticateUser(email: email, password: password);
       return right(null);
     } on FirebaseAuthException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(onFirebaseAuthException(e));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -114,11 +126,13 @@ final class UserRepositoryImpl implements UserRepository {
   Future<Either<UserFailures, void>> updateUserDetails(
       {required String? name, required String? email, required String? password}) async {
     try {
-      await userDataSource.updateUserDetails(name: name, email: email, password: password);
+      await _userDataSource.updateUserDetails(name: name, email: email, password: password);
       return right(null);
     } on FirebaseAuthException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(onFirebaseAuthException(e));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -126,11 +140,13 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<UserFailures, void>> deleteUser() async {
     try {
-      await userDataSource.deleteUser();
+      await _userDataSource.deleteUser();
       return right(null);
     } on FirebaseAuthException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(onFirebaseAuthException(e));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -138,9 +154,10 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<UserFailures, void>> saveSettings(Settings settings) async {
     try {
-      await userDataSource.saveSettings(settings);
+      await _userDataSource.saveSettings(settings);
       return right(null);
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -148,9 +165,10 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<UserFailures, void>> saveTutorialsData(TutorialsData tutorialsData) async {
     try {
-      await userDataSource.saveTutorialsData(tutorialsData);
+      await _userDataSource.saveTutorialsData(tutorialsData);
       return right(null);
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }
@@ -158,7 +176,7 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<UserFailures, Map<String, String>>> getUsersNames(List<String> userIds) async {
     try {
-      final usersNames = await userDataSource.getUsersNames(userIds);
+      final usersNames = await _userDataSource.getUsersNames(userIds);
 
       //Sort the map by value (name) and return it
       final sortedUsers =
@@ -166,6 +184,7 @@ final class UserRepositoryImpl implements UserRepository {
 
       return right(sortedUsers);
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
     }
   }

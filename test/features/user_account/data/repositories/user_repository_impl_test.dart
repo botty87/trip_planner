@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -12,9 +13,13 @@ import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 
 import 'user_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<UserDataSource>()])
+@GenerateNiceMocks([
+  MockSpec<UserDataSource>(),
+  MockSpec<FirebaseCrashlytics>(),
+])
 void main() {
   late MockUserDataSource mockUserDataSource;
+  late MockFirebaseCrashlytics mockCrashlytics;
   late UserRepositoryImpl userRepositoryImpl;
 
   //User for the test
@@ -30,7 +35,8 @@ void main() {
 
   setUp(() {
     mockUserDataSource = MockUserDataSource();
-    userRepositoryImpl = UserRepositoryImpl(mockUserDataSource);
+    mockCrashlytics = MockFirebaseCrashlytics();
+    userRepositoryImpl = UserRepositoryImpl(mockUserDataSource, mockCrashlytics);
   });
 
   test('should listen user from the data source', () async {
@@ -103,6 +109,9 @@ void main() {
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.loginUser(email: '', password: ''));
       verifyNoMoreInteractions(mockUserDataSource);
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -131,6 +140,8 @@ void main() {
       // assert
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.recoverPassword(''));
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
       verifyNoMoreInteractions(mockUserDataSource);
     });
   });
@@ -159,7 +170,9 @@ void main() {
       // assert
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.logoutUser());
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -189,7 +202,9 @@ void main() {
       // assert
       expect(result, left(const UserFailures.userNotFound()));
       verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
 
     test('should return a failure when password is wrong', () async {
@@ -203,7 +218,9 @@ void main() {
       // assert
       expect(result, left(const UserFailures.wrongPassword()));
       verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
 
     test('should return a failure when network request fails', () async {
@@ -217,7 +234,9 @@ void main() {
       // assert
       expect(result, left(const UserFailures.networkRequestFailed()));
       verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
 
     test('should return a generic failure when an unknown exception is thrown', () async {
@@ -230,7 +249,9 @@ void main() {
       // assert
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.reauthenticateUser(email: '', password: ''));
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -260,7 +281,9 @@ void main() {
       // assert
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.updateUserDetails(name: '', email: '', password: ''));
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -288,7 +311,9 @@ void main() {
       // assert
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.deleteUser());
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -317,7 +342,9 @@ void main() {
       // assert
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.saveSettings(tSettings)).called(1);
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -347,7 +374,10 @@ void main() {
       // assert
       expect(result, left(const UserFailures.unknownError()));
       verify(mockUserDataSource.saveTutorialsData(const TutorialsData())).called(1);
+      verify(mockCrashlytics.recordError(any, any));
       verifyNoMoreInteractions(mockUserDataSource);
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 }
+
