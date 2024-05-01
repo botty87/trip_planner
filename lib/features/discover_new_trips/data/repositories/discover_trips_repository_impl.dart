@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../day_trips/domain/entities/day_trip.dart';
@@ -12,8 +13,9 @@ import '../datasources/discover_trips_data_source.dart';
 @LazySingleton(as: DiscoverTripsRepository)
 class DiscoverTripsRepositoryImpl implements DiscoverTripsRepository {
   final DiscoverTripsDataSource dataSource;
+  final FirebaseCrashlytics _crashlytics;
 
-  const DiscoverTripsRepositoryImpl(this.dataSource);
+  const DiscoverTripsRepositoryImpl(this.dataSource, this._crashlytics);
 
   @override
   Future<Either<DiscoverTripsFailure, List<Trip>>> getPublicTrips(String userId) async {
@@ -21,8 +23,10 @@ class DiscoverTripsRepositoryImpl implements DiscoverTripsRepository {
       final trips = await dataSource.getPublicTrips(userId);
       return Right(trips);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return Left(DiscoverTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return const Left(DiscoverTripsFailure());
     }
   }
@@ -33,8 +37,10 @@ class DiscoverTripsRepositoryImpl implements DiscoverTripsRepository {
       final dayTrips = await dataSource.getPublicDayTrips(tripId);
       return Right(dayTrips);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return Left(DiscoverTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return const Left(DiscoverTripsFailure());
     }
   }
@@ -46,8 +52,10 @@ class DiscoverTripsRepositoryImpl implements DiscoverTripsRepository {
       final tripStops = await dataSource.getPublicTripStops(tripId, dayTripId);
       return Right(tripStops);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return Left(DiscoverTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return const Left(DiscoverTripsFailure());
     }
   }

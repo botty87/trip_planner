@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -11,9 +12,13 @@ import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 
 import 'discover_trips_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<DiscoverTripsDataSource>()])
+@GenerateNiceMocks([
+  MockSpec<DiscoverTripsDataSource>(),
+  MockSpec<FirebaseCrashlytics>(),
+])
 void main() {
   late MockDiscoverTripsDataSource mockDataSource;
+  late MockFirebaseCrashlytics mockCrashlytics;
   late DiscoverTripsRepositoryImpl repository;
 
   const tTrips = <Trip>[];
@@ -24,7 +29,8 @@ void main() {
 
   setUp(() {
     mockDataSource = MockDiscoverTripsDataSource();
-    repository = DiscoverTripsRepositoryImpl(mockDataSource);
+    mockCrashlytics = MockFirebaseCrashlytics();
+    repository = DiscoverTripsRepositoryImpl(mockDataSource, mockCrashlytics);
   });
 
   group('getPublicTrips', () {
@@ -42,6 +48,9 @@ void main() {
       expect(result, const Left(DiscoverTripsFailure()));
       verify(mockDataSource.getPublicTrips(tUserId));
       verifyNoMoreInteractions(mockDataSource);
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -60,6 +69,9 @@ void main() {
       expect(result, const Left(DiscoverTripsFailure()));
       verify(mockDataSource.getPublicDayTrips(tTripId));
       verifyNoMoreInteractions(mockDataSource);
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -82,6 +94,9 @@ void main() {
       expect(result, const Left(DiscoverTripsFailure()));
       verify(mockDataSource.getPublicTripStops(tTripId, tDayTripId));
       verifyNoMoreInteractions(mockDataSource);
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 }

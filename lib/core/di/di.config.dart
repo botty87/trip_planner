@@ -59,9 +59,9 @@ import '../../features/day_trips/presentation/cubit/trip_stops_map/trip_stops_ma
 import '../../features/discover_new_trips/data/datasources/discover_trips_data_source.dart'
     as _i25;
 import '../../features/discover_new_trips/data/repositories/discover_trips_repository_impl.dart'
-    as _i35;
+    as _i36;
 import '../../features/discover_new_trips/domain/repositories/discover_trips_repository.dart'
-    as _i34;
+    as _i35;
 import '../../features/discover_new_trips/domain/usecases/get_public_day_trips.dart'
     as _i73;
 import '../../features/discover_new_trips/domain/usecases/get_public_trip_stops.dart'
@@ -192,7 +192,7 @@ import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
 import '../bloc_observer.dart' as _i19;
 import '../db/day_trips_collection_ref.dart' as _i29;
 import '../db/settings_collection_ref.dart' as _i30;
-import '../db/trip_stops_collection_ref.dart' as _i36;
+import '../db/trip_stops_collection_ref.dart' as _i34;
 import '../db/trips_collection_ref.dart' as _i32;
 import '../db/users_collection_ref.dart' as _i31;
 import '../routes/app_router.dart' as _i8;
@@ -294,13 +294,11 @@ extension GetItInjectableX on _i1.GetIt {
               gh<String>(instanceName: 'googlePlacesKey'),
               gh<String>(instanceName: 'proxyUrl'),
             ));
-    gh.lazySingleton<_i34.DiscoverTripsRepository>(() =>
-        _i35.DiscoverTripsRepositoryImpl(gh<_i25.DiscoverTripsDataSource>()));
-    gh.factoryParam<_i36.TripStopsCollectionRef, String, String>((
+    gh.factoryParam<_i34.TripStopsCollectionRef, String, String>((
       tripId,
       dayTripId,
     ) =>
-        _i36.TripStopsCollectionRef(
+        _i34.TripStopsCollectionRef(
           gh<_i13.FirebaseFirestore>(),
           tripId,
           dayTripId,
@@ -309,6 +307,11 @@ extension GetItInjectableX on _i1.GetIt {
       () => googlePlacesModule.googleMapKey,
       instanceName: 'googleMapKey',
     );
+    gh.lazySingleton<_i35.DiscoverTripsRepository>(
+        () => _i36.DiscoverTripsRepositoryImpl(
+              gh<_i25.DiscoverTripsDataSource>(),
+              gh<_i14.FirebaseCrashlytics>(),
+            ));
     gh.lazySingleton<_i37.TripStopsRepository>(
         () => _i38.TripStopsRepositoryImpl(gh<_i28.TripStopsDataSource>()));
     gh.factory<_i39.BackgroundsCubit>(() =>
@@ -403,11 +406,11 @@ extension GetItInjectableX on _i1.GetIt {
           userId: userId,
         ));
     gh.lazySingleton<_i73.GetPublicDayTrips>(
-        () => _i73.GetPublicDayTrips(gh<_i34.DiscoverTripsRepository>()));
+        () => _i73.GetPublicDayTrips(gh<_i35.DiscoverTripsRepository>()));
     gh.lazySingleton<_i74.GetPublicTripStops>(
-        () => _i74.GetPublicTripStops(gh<_i34.DiscoverTripsRepository>()));
+        () => _i74.GetPublicTripStops(gh<_i35.DiscoverTripsRepository>()));
     gh.lazySingleton<_i75.GetPublicTrips>(
-        () => _i75.GetPublicTrips(gh<_i34.DiscoverTripsRepository>()));
+        () => _i75.GetPublicTrips(gh<_i35.DiscoverTripsRepository>()));
     gh.lazySingleton<_i76.OldTripsRepository>(
         () => _i77.OldTripsRepositoryImpl(gh<_i61.OldTripsDataSource>()));
     gh.lazySingleton<_i78.CreateTrip>(
