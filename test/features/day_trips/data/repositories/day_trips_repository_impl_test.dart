@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -9,9 +10,13 @@ import 'package:trip_planner/features/day_trips/errors/day_trips_failure.dart';
 
 import 'day_trips_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<DayTripsDataSource>()])
+@GenerateNiceMocks([
+  MockSpec<DayTripsDataSource>(),
+  MockSpec<FirebaseCrashlytics>(),
+])
 void main() {
   late MockDayTripsDataSource mockDayTripsDataSource;
+  late MockFirebaseCrashlytics mockCrashlytics;
   late DayTripsRepositoryImpl repository;
 
   const tDayTrip = DayTrip(
@@ -24,7 +29,8 @@ void main() {
 
   setUp(() {
     mockDayTripsDataSource = MockDayTripsDataSource();
-    repository = DayTripsRepositoryImpl(mockDayTripsDataSource);
+    mockCrashlytics = MockFirebaseCrashlytics();
+    repository = DayTripsRepositoryImpl(mockDayTripsDataSource, mockCrashlytics);
   });
 
   group('createDayTrip', () {
@@ -46,6 +52,9 @@ void main() {
       final result = await repository.addDayTrip(tripId: tTripId, dayTrip: tDayTrip);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -89,6 +98,9 @@ void main() {
       final result = await repository.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -115,6 +127,9 @@ void main() {
           id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -141,6 +156,9 @@ void main() {
           id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -163,6 +181,9 @@ void main() {
       final result = await repository.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -189,6 +210,9 @@ void main() {
           tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -210,6 +234,9 @@ void main() {
       final result = repository.listenDayTrip(tTripId, tDayTrip.id);
       // assert
       expect(result, emitsInOrder([left(const DayTripsFailure())]));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -237,6 +264,9 @@ void main() {
           tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -265,6 +295,9 @@ void main() {
           tripId: tTripId, dayTripId: tDayTrip.id, useDifferentDirectionsColors: true);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 
@@ -291,6 +324,9 @@ void main() {
           tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 }

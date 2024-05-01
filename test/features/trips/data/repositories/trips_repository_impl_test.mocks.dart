@@ -6,7 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:trip_planner/features/trips/data/datasources/trips_data_source.dart' as _i2;
+import 'package:trip_planner/features/trips/data/datasources/trips_data_source.dart'
+    as _i2;
 import 'package:trip_planner/features/trips/domain/entities/trip.dart' as _i4;
 
 // ignore_for_file: type=lint
@@ -37,7 +38,8 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
       ) as _i3.Future<void>);
 
   @override
-  _i3.Stream<List<_i4.Trip>> listenUserTrips(String? userId) => (super.noSuchMethod(
+  _i3.Stream<List<_i4.Trip>> listenUserTrips(String? userId) =>
+      (super.noSuchMethod(
         Invocation.method(
           #listenUserTrips,
           [userId],
@@ -47,7 +49,8 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
       ) as _i3.Stream<List<_i4.Trip>>);
 
   @override
-  _i3.Stream<List<_i4.Trip>> listenSharedTrips(String? userId) => (super.noSuchMethod(
+  _i3.Stream<List<_i4.Trip>> listenSharedTrips(String? userId) =>
+      (super.noSuchMethod(
         Invocation.method(
           #listenSharedTrips,
           [userId],
@@ -94,7 +97,7 @@ class MockTripsDataSource extends _i1.Mock implements _i2.TripsDataSource {
   @override
   dynamic deleteAllUserTrips(String? userId) => super.noSuchMethod(
         Invocation.method(
-          #deleteAllTrips,
+          #deleteAllUserTrips,
           [userId],
         ),
         returnValueForMissingStub: null,

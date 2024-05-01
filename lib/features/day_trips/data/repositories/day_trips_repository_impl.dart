@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:injectable/injectable.dart';
@@ -12,8 +13,9 @@ import '../../errors/day_trips_failure.dart';
 @LazySingleton(as: DayTripsRepository)
 class DayTripsRepositoryImpl implements DayTripsRepository {
   final DayTripsDataSource _dayTripsDataSource;
+  final FirebaseCrashlytics _crashlytics;
 
-  DayTripsRepositoryImpl(this._dayTripsDataSource);
+  DayTripsRepositoryImpl(this._dayTripsDataSource, this._crashlytics);
 
   @override
   Future<Either<DayTripsFailure, void>> addDayTrip(
@@ -22,8 +24,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       await _dayTripsDataSource.addDayTrip(tripId: tripId, dayTrip: dayTrip);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
@@ -33,6 +37,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     try {
       yield* _dayTripsDataSource.listenDayTrips(tripId).map((dayTrips) => right(dayTrips));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       yield left(const DayTripsFailure());
     }
   }
@@ -42,6 +47,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
     try {
       yield* _dayTripsDataSource.listenDayTrip(tripId, dayTripId).map((dayTrip) => right(dayTrip));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       yield left(const DayTripsFailure());
     }
   }
@@ -53,8 +59,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       await _dayTripsDataSource.updateDayTripsIndexes(tripId: tripId, dayTrips: dayTrips);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
@@ -66,8 +74,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       await _dayTripsDataSource.updateDayTrip(id: id, tripId: tripId, description: description);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
@@ -79,8 +89,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
       await _dayTripsDataSource.deleteDayTrip(tripId: tripId, dayTripId: dayTripId);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
@@ -93,8 +105,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
           id: id, tripId: tripId, startTime: startTime);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
@@ -110,8 +124,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
           tripId: tripId, dayTripId: dayTripId, tripStopsDirections: tripStopsDirections);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
@@ -127,8 +143,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
           tripId: tripId, dayTripId: dayTripId, isUpToDate: isUpToDate, travelMode: travelMode);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
@@ -141,8 +159,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
           tripId: tripId, dayTripId: dayTripId, showDirections: showDirections);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
@@ -159,8 +179,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
           useDifferentDirectionsColors: useDifferentDirectionsColors);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(DayTripsFailure(message: e.message));
-    } on Exception {
+    } on Exception catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const DayTripsFailure());
     }
   }
