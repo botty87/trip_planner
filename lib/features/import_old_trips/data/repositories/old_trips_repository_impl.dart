@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:injectable/injectable.dart';
 import 'package:quiver/collection.dart';
 
@@ -15,8 +16,9 @@ import '../datasources/old_trips_data_source.dart';
 @LazySingleton(as: OldTripsRepository)
 final class OldTripsRepositoryImpl implements OldTripsRepository {
   final OldTripsDataSource _oldTripsDataSource;
+  final FirebaseCrashlytics _crashlytics;
 
-  OldTripsRepositoryImpl(this._oldTripsDataSource);
+  OldTripsRepositoryImpl(this._oldTripsDataSource, this._crashlytics);
 
   @override
   Future<Either<ImportOldTripsFailure, List<OldTrip>>> readOldTrips(
@@ -25,10 +27,12 @@ final class OldTripsRepositoryImpl implements OldTripsRepository {
       final oldTrips = await _oldTripsDataSource.readOldTrips(userId: userId);
       return right(oldTrips);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(ImportOldTripsFailure(message: e.message));
     } on TimeoutException {
       return right([]);
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(ImportOldTripsFailure(message: e.toString()));
     }
   }
@@ -40,8 +44,10 @@ final class OldTripsRepositoryImpl implements OldTripsRepository {
       await _oldTripsDataSource.importOldTrips(userId: userId, newTrips: newTrips);
       return right(null);
     } on FirebaseException catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(ImportOldTripsFailure(message: e.message));
     } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
       return left(ImportOldTripsFailure(message: e.toString()));
     }
   }

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -10,14 +11,19 @@ import 'package:trip_planner/features/import_old_trips/errors/import_old_trips_f
 
 import 'old_trips_repository_impl_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<OldTripsDataSource>()])
+@GenerateNiceMocks([
+  MockSpec<OldTripsDataSource>(),
+  MockSpec<FirebaseCrashlytics>(),
+])
 void main() {
   late OldTripsRepositoryImpl repository;
+  late MockFirebaseCrashlytics mockCrashlytics;
   late MockOldTripsDataSource mockDataSource;
 
   setUp(() {
     mockDataSource = MockOldTripsDataSource();
-    repository = OldTripsRepositoryImpl(mockDataSource);
+    mockCrashlytics = MockFirebaseCrashlytics();
+    repository = OldTripsRepositoryImpl(mockDataSource, mockCrashlytics);
   });
 
   group('readOldTrips', () {
@@ -50,6 +56,9 @@ void main() {
       expect(result, left(const ImportOldTripsFailure(message: errorMessage)));
       verify(mockDataSource.readOldTrips(userId: userId));
       verifyNoMoreInteractions(mockDataSource);
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
 
     test(
@@ -64,6 +73,9 @@ void main() {
       expect(result, left(const ImportOldTripsFailure(message: "Exception: $errorMessage")));
       verify(mockDataSource.readOldTrips(userId: userId));
       verifyNoMoreInteractions(mockDataSource);
+
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
     });
   });
 }
