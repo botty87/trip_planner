@@ -186,5 +186,9 @@
     "tripNotIsNotSharedWithAnyone" : "The trip is not shared with anyone",
     "removeTrip": "Remove Trip",
     "removeTripQuestion": "Are you sure you want to remove this trip?",
-    "remove": "Remove"
+    "remove": "Remove",
+    "placeholder" : "Placeholder",
+    "addPlaceholder" : "Add placeholder",
+    "add" : "Add",
+    "nameOptional" : "Name (optional)"
 }

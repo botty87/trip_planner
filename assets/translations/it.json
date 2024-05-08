@@ -187,5 +187,9 @@
     "tripNotIsNotSharedWithAnyone" : "Il viaggio non è condiviso con nessuno",
     "removeTrip": "Rimuovi viaggio",
     "removeTripQuestion": "Sei sicuro di voler rimuovere il viaggio?",
-    "remove": "Rimuovi"
+    "remove": "Rimuovi",
+    "placeholder": "Segnaposto",
+    "addPlaceholder" : "Aggiungi segnaposto",
+    "add" : "Aggiungi",
+    "nameOptional" : "Nome (opzionale)"
 }

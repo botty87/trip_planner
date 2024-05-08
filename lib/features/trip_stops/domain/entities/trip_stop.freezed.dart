@@ -33,6 +33,7 @@ mixin _$TripStop {
   int get travelTimeToNextStop =>
       throw _privateConstructorUsedError; // in minutes
   String? get note => throw _privateConstructorUsedError;
+  TripStopPlaceholder? get placeholder => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +56,10 @@ abstract class $TripStopCopyWith<$Res> {
       LatLng location,
       bool isDone,
       int travelTimeToNextStop,
-      String? note});
+      String? note,
+      TripStopPlaceholder? placeholder});
+
+  $TripStopPlaceholderCopyWith<$Res>? get placeholder;
 }
 
 /// @nodoc
@@ -80,6 +84,7 @@ class _$TripStopCopyWithImpl<$Res, $Val extends TripStop>
     Object? isDone = null,
     Object? travelTimeToNextStop = null,
     Object? note = freezed,
+    Object? placeholder = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -118,7 +123,23 @@ class _$TripStopCopyWithImpl<$Res, $Val extends TripStop>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      placeholder: freezed == placeholder
+          ? _value.placeholder
+          : placeholder // ignore: cast_nullable_to_non_nullable
+              as TripStopPlaceholder?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TripStopPlaceholderCopyWith<$Res>? get placeholder {
+    if (_value.placeholder == null) {
+      return null;
+    }
+
+    return $TripStopPlaceholderCopyWith<$Res>(_value.placeholder!, (value) {
+      return _then(_value.copyWith(placeholder: value) as $Val);
+    });
   }
 }
 
@@ -140,7 +161,11 @@ abstract class _$$TripStopImplCopyWith<$Res>
       LatLng location,
       bool isDone,
       int travelTimeToNextStop,
-      String? note});
+      String? note,
+      TripStopPlaceholder? placeholder});
+
+  @override
+  $TripStopPlaceholderCopyWith<$Res>? get placeholder;
 }
 
 /// @nodoc
@@ -163,6 +188,7 @@ class __$$TripStopImplCopyWithImpl<$Res>
     Object? isDone = null,
     Object? travelTimeToNextStop = null,
     Object? note = freezed,
+    Object? placeholder = freezed,
   }) {
     return _then(_$TripStopImpl(
       id: null == id
@@ -201,6 +227,10 @@ class __$$TripStopImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      placeholder: freezed == placeholder
+          ? _value.placeholder
+          : placeholder // ignore: cast_nullable_to_non_nullable
+              as TripStopPlaceholder?,
     ));
   }
 }
@@ -218,7 +248,8 @@ class _$TripStopImpl implements _TripStop {
       required this.location,
       this.isDone = false,
       this.travelTimeToNextStop = 0,
-      this.note});
+      this.note,
+      this.placeholder});
 
   factory _$TripStopImpl.fromJson(Map<String, dynamic> json) =>
       _$$TripStopImplFromJson(json);
@@ -247,10 +278,12 @@ class _$TripStopImpl implements _TripStop {
 // in minutes
   @override
   final String? note;
+  @override
+  final TripStopPlaceholder? placeholder;
 
   @override
   String toString() {
-    return 'TripStop(id: $id, index: $index, name: $name, description: $description, duration: $duration, location: $location, isDone: $isDone, travelTimeToNextStop: $travelTimeToNextStop, note: $note)';
+    return 'TripStop(id: $id, index: $index, name: $name, description: $description, duration: $duration, location: $location, isDone: $isDone, travelTimeToNextStop: $travelTimeToNextStop, note: $note, placeholder: $placeholder)';
   }
 
   @override
@@ -270,13 +303,15 @@ class _$TripStopImpl implements _TripStop {
             (identical(other.isDone, isDone) || other.isDone == isDone) &&
             (identical(other.travelTimeToNextStop, travelTimeToNextStop) ||
                 other.travelTimeToNextStop == travelTimeToNextStop) &&
-            (identical(other.note, note) || other.note == note));
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.placeholder, placeholder) ||
+                other.placeholder == placeholder));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, index, name, description,
-      duration, location, isDone, travelTimeToNextStop, note);
+      duration, location, isDone, travelTimeToNextStop, note, placeholder);
 
   @JsonKey(ignore: true)
   @override
@@ -303,7 +338,8 @@ abstract class _TripStop implements TripStop {
       required final LatLng location,
       final bool isDone,
       final int travelTimeToNextStop,
-      final String? note}) = _$TripStopImpl;
+      final String? note,
+      final TripStopPlaceholder? placeholder}) = _$TripStopImpl;
 
   factory _TripStop.fromJson(Map<String, dynamic> json) =
       _$TripStopImpl.fromJson;
@@ -329,7 +365,165 @@ abstract class _TripStop implements TripStop {
   @override // in minutes
   String? get note;
   @override
+  TripStopPlaceholder? get placeholder;
+  @override
   @JsonKey(ignore: true)
   _$$TripStopImplCopyWith<_$TripStopImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TripStopPlaceholder _$TripStopPlaceholderFromJson(Map<String, dynamic> json) {
+  return _TripStopPlaceholder.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TripStopPlaceholder {
+  String get name => throw _privateConstructorUsedError;
+  int get duration => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TripStopPlaceholderCopyWith<TripStopPlaceholder> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TripStopPlaceholderCopyWith<$Res> {
+  factory $TripStopPlaceholderCopyWith(
+          TripStopPlaceholder value, $Res Function(TripStopPlaceholder) then) =
+      _$TripStopPlaceholderCopyWithImpl<$Res, TripStopPlaceholder>;
+  @useResult
+  $Res call({String name, int duration});
+}
+
+/// @nodoc
+class _$TripStopPlaceholderCopyWithImpl<$Res, $Val extends TripStopPlaceholder>
+    implements $TripStopPlaceholderCopyWith<$Res> {
+  _$TripStopPlaceholderCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? duration = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$TripStopPlaceholderImplCopyWith<$Res>
+    implements $TripStopPlaceholderCopyWith<$Res> {
+  factory _$$TripStopPlaceholderImplCopyWith(_$TripStopPlaceholderImpl value,
+          $Res Function(_$TripStopPlaceholderImpl) then) =
+      __$$TripStopPlaceholderImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, int duration});
+}
+
+/// @nodoc
+class __$$TripStopPlaceholderImplCopyWithImpl<$Res>
+    extends _$TripStopPlaceholderCopyWithImpl<$Res, _$TripStopPlaceholderImpl>
+    implements _$$TripStopPlaceholderImplCopyWith<$Res> {
+  __$$TripStopPlaceholderImplCopyWithImpl(_$TripStopPlaceholderImpl _value,
+      $Res Function(_$TripStopPlaceholderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? duration = null,
+  }) {
+    return _then(_$TripStopPlaceholderImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$TripStopPlaceholderImpl implements _TripStopPlaceholder {
+  const _$TripStopPlaceholderImpl({required this.name, required this.duration});
+
+  factory _$TripStopPlaceholderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TripStopPlaceholderImplFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final int duration;
+
+  @override
+  String toString() {
+    return 'TripStopPlaceholder(name: $name, duration: $duration)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TripStopPlaceholderImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, duration);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TripStopPlaceholderImplCopyWith<_$TripStopPlaceholderImpl> get copyWith =>
+      __$$TripStopPlaceholderImplCopyWithImpl<_$TripStopPlaceholderImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TripStopPlaceholderImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TripStopPlaceholder implements TripStopPlaceholder {
+  const factory _TripStopPlaceholder(
+      {required final String name,
+      required final int duration}) = _$TripStopPlaceholderImpl;
+
+  factory _TripStopPlaceholder.fromJson(Map<String, dynamic> json) =
+      _$TripStopPlaceholderImpl.fromJson;
+
+  @override
+  String get name;
+  @override
+  int get duration;
+  @override
+  @JsonKey(ignore: true)
+  _$$TripStopPlaceholderImplCopyWith<_$TripStopPlaceholderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

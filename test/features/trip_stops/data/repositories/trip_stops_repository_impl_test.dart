@@ -376,4 +376,53 @@ void main() {
       verifyNoMoreInteractions(mockCrashlytics);
     });
   });
+
+  group('update TripStopPlaceholder', () {
+    test('should return void right(null) when TripStopPlaceholder success', () {
+      when(mockTripStopsDataSource.updateTripStopPlaceholder(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStopId: anyNamed('tripStopId'),
+        placeholder: anyNamed('placeholder'),
+      )).thenAnswer((_) async {});
+
+      // act
+      final result = repository.updateTripStopPlaceholder(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStopId: 'tripStopId',
+        placeholder: const TripStopPlaceholder(
+          name: 'name',
+          duration: 0,
+        ),
+      );
+      // assert
+      expect(result, completion(right(null)));
+    });
+
+    test('should return void left(TripStopsFailure) when TripStopPlaceholder fails', () {
+      when(mockTripStopsDataSource.updateTripStopPlaceholder(
+        tripId: anyNamed('tripId'),
+        dayTripId: anyNamed('dayTripId'),
+        tripStopId: anyNamed('tripStopId'),
+        placeholder: anyNamed('placeholder'),
+      )).thenThrow(Exception());
+
+      // act
+      final result = repository.updateTripStopPlaceholder(
+        tripId: 'tripId',
+        dayTripId: 'dayTripId',
+        tripStopId: 'tripStopId',
+        placeholder: const TripStopPlaceholder(
+          name: 'name',
+          duration: 0,
+        ),
+      );
+      
+      // assert
+      expect(result, completion(left(const TripStopsFailure())));
+      verify(mockCrashlytics.recordError(any, any));
+      verifyNoMoreInteractions(mockCrashlytics);
+    });
+  });
 }

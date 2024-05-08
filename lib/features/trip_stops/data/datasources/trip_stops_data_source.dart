@@ -60,6 +60,13 @@ abstract class TripStopsDataSource {
     required int duration,
     required LatLng location,
   });
+
+  Future<void> updateTripStopPlaceholder({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required TripStopPlaceholder? placeholder,
+  });
 }
 
 @LazySingleton(as: TripStopsDataSource)
@@ -176,5 +183,17 @@ class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripS
           'duration': duration,
           'location': GeoPoint(location.latitude, location.longitude),
         }));
+  }
+
+  @override
+  Future<void> updateTripStopPlaceholder({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required TripStopPlaceholder? placeholder,
+  }) async {
+    final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
+
+    performSync(() async => await tripStopDoc.update({'placeholder': placeholder?.toJson()}));
   }
 }

@@ -18,6 +18,7 @@ import 'package:trip_planner/features/trip_stops/domain/usecases/delete_trip_sto
 import 'package:trip_planner/features/trip_stops/domain/usecases/listen_trip_stops.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/trip_stop_done.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_travel_time.dart';
+import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stop_placeholder.dart';
 import 'package:trip_planner/features/trip_stops/domain/usecases/update_trip_stops_indexes.dart';
 import 'package:trip_planner/features/trip_stops/errors/trip_stops_failure.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
@@ -36,6 +37,7 @@ import 'day_trip_cubit_test.mocks.dart';
   MockSpec<FirebaseCrashlytics>(),
   MockSpec<UpdateTripStopsDirectionsUpToDate>(),
   MockSpec<DeleteTripStop>(),
+  MockSpec<UpdateTripStopPlaceholder>(),
 ])
 void main() {
   late MockUpdateDayTrip mockUpdateDayTrip;
@@ -49,6 +51,7 @@ void main() {
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
   late MockUpdateTripStopsDirectionsUpToDate mockUpdateTripStopsDirectionsUpToDate;
   late MockDeleteTripStop mockDeleteTripStop;
+  late MockUpdateTripStopPlaceholder mockUpdateTripStopPlaceholder;
 
   final tTrip = Trip(
     id: '1',
@@ -84,6 +87,11 @@ void main() {
     ),
   ];
 
+  const tTripStopPlaceHolder = TripStopPlaceholder(
+    name: 'name',
+    duration: 0,
+  );
+
   setUp(() {
     mockUpdateDayTrip = MockUpdateDayTrip();
     mockDeleteDayTrip = MockDeleteDayTrip();
@@ -96,6 +104,7 @@ void main() {
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
     mockUpdateTripStopsDirectionsUpToDate = MockUpdateTripStopsDirectionsUpToDate();
     mockDeleteTripStop = MockDeleteTripStop();
+    mockUpdateTripStopPlaceholder = MockUpdateTripStopPlaceholder();
   });
 
   DayTripCubit getStandardDayTripCubit() {
@@ -113,6 +122,7 @@ void main() {
       crashlytics: mockFirebaseCrashlytics,
       updateTripStopsDirectionsUpToDate: mockUpdateTripStopsDirectionsUpToDate,
       deleteTripStop: mockDeleteTripStop,
+      updateTripStopPlaceholder: mockUpdateTripStopPlaceholder,
     );
   }
 
@@ -534,4 +544,170 @@ void main() {
     build: () => getStandardDayTripCubit(),
     verify: (_) => verify(mockDeleteTripStop.call(any)).called(1),
   );
+
+  group('update tripStopPlaceholder', () {
+    blocTest<DayTripCubit, DayTripState>(
+      'on showEditTripStopPlaceholderDialog emit empty placeholder',
+      seed: () => DayTripState.loaded(
+          trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, tripStopPlaceholderEditing: null),
+      act: (cubit) => cubit.showEditTripStopPlaceholderDialog(tTripStops.first),
+      expect: () => [
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+        ),
+      ],
+      build: () => getStandardDayTripCubit(),
+    );
+
+    blocTest<DayTripCubit, DayTripState>(
+      'on updateTripStopPlaceholderName emit updated name',
+      seed: () => DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: tTripStopPlaceHolder),
+      act: (cubit) => cubit.updateTripStopPlaceholderName('new name'),
+      expect: () => [
+        DayTripState.loaded(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStops: tTripStops,
+            tripStopPlaceholderEditing: tTripStopPlaceHolder.copyWith(name: 'new name')),
+      ],
+      build: () => getStandardDayTripCubit(),
+    );
+
+    blocTest<DayTripCubit, DayTripState>(
+      'on updateTripStopPlaceholderDuration emit updated duration',
+      seed: () => DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: tTripStopPlaceHolder),
+      act: (cubit) => cubit.updateTripStopPlaceholderDuration(10),
+      expect: () => [
+        DayTripState.loaded(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStops: tTripStops,
+            tripStopPlaceholderEditing: tTripStopPlaceHolder.copyWith(duration: 10)),
+      ],
+      build: () => getStandardDayTripCubit(),
+    );
+
+    blocTest<DayTripCubit, DayTripState>(
+      'on cancelEditTripStopPlaceholderDialog emit null placeholder',
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+      ),
+      act: (cubit) => cubit.cancelEditTripStopPlaceholderDialog(),
+      expect: () => [
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: null,
+        ),
+      ],
+      build: () => getStandardDayTripCubit(),
+    );
+
+    group('on addPlaceholderToTripStop', () {
+      blocTest(
+        'on success emit tripStopPlaceholderEditing null',
+        build: () => getStandardDayTripCubit(),
+        seed: () => DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+        ),
+        act: (cubit) => cubit.addPlaceholderToTripStop(tTripStops.first.id),
+        setUp: () => when(mockUpdateTripStopPlaceholder.call(any))
+            .thenAnswer((_) async => const Right(null)),
+        expect: () => [
+          DayTripState.loaded(
+              trip: tTrip,
+              dayTrip: tDayTrip,
+              tripStops: tTripStops,
+              tripStopPlaceholderEditing: null),
+        ],
+        verify: (_) => verify(mockUpdateTripStopPlaceholder.call(any)).called(1),
+      );
+
+      blocTest(
+        'on failure emit error state',
+        build: () => getStandardDayTripCubit(),
+        seed: () => DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+        ),
+        act: (cubit) => cubit.addPlaceholderToTripStop(tTripStops.first.id),
+        setUp: () => when(mockUpdateTripStopPlaceholder.call(any)).thenAnswer(
+          (_) async => const Left(TripStopsFailure(message: 'error')),
+        ),
+        expect: () => [
+          DayTripState.error(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            fatal: false,
+            errorMessage: 'error',
+            hasStartTimeToSave: false,
+          ),
+        ],
+        verify: (_) => verify(mockUpdateTripStopPlaceholder.call(any)).called(1),
+      );
+    });
+
+    group('on removePlaceholderFromTripStop', () {
+      blocTest(
+        'on success emit nothing',
+        build: () => getStandardDayTripCubit(),
+        seed: () => DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+        ),
+        act: (cubit) => cubit.removePlaceholderFromTripStop(tTripStops.first.id),
+        setUp: () => when(mockUpdateTripStopPlaceholder.call(any))
+            .thenAnswer((_) async => const Right(null)),
+        expect: () => [],
+        verify: (_) => verify(mockUpdateTripStopPlaceholder.call(any)).called(1),
+      );
+
+      blocTest(
+        'on failure emit error state',
+        build: () => getStandardDayTripCubit(),
+        seed: () => DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+        ),
+        act: (cubit) => cubit.removePlaceholderFromTripStop(tTripStops.first.id),
+        setUp: () => when(mockUpdateTripStopPlaceholder.call(any)).thenAnswer(
+          (_) async => const Left(TripStopsFailure(message: 'error')),
+        ),
+        expect: () => [
+          DayTripState.error(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            fatal: false,
+            errorMessage: 'error',
+            hasStartTimeToSave: false,
+          ),
+        ],
+        verify: (_) => verify(mockUpdateTripStopPlaceholder.call(any)).called(1),
+      );
+    });
+  });
 }

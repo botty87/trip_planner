@@ -186,5 +186,9 @@ abstract class  LocaleKeys {
   static const removeTrip = 'removeTrip';
   static const removeTripQuestion = 'removeTripQuestion';
   static const remove = 'remove';
+  static const placeholder = 'placeholder';
+  static const addPlaceholder = 'addPlaceholder';
+  static const add = 'add';
+  static const nameOptional = 'nameOptional';
 
 }

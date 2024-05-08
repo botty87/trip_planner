@@ -16,6 +16,7 @@ import '../../../../trip_stops/domain/usecases/delete_trip_stop.dart';
 import '../../../../trip_stops/domain/usecases/listen_trip_stops.dart';
 import '../../../../trip_stops/domain/usecases/trip_stop_done.dart';
 import '../../../../trip_stops/domain/usecases/update_travel_time.dart';
+import '../../../../trip_stops/domain/usecases/update_trip_stop_placeholder.dart';
 import '../../../../trip_stops/domain/usecases/update_trip_stops_indexes.dart';
 import '../../../../trip_stops/errors/trip_stops_failure.dart';
 import '../../../../trips/domain/entities/trip.dart';
@@ -42,6 +43,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   final ListenDayTrip _listenDayTrip;
   final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
   final DeleteTripStop _deleteTripStop;
+  final UpdateTripStopPlaceholder _updateTripStopPlaceholder;
 
   final FirebaseCrashlytics _crashlytics;
 
@@ -64,6 +66,7 @@ class DayTripCubit extends Cubit<DayTripState> {
     required ListenDayTrip listenDayTrip,
     required UpdateTripStopsDirectionsUpToDate updateTripStopsDirectionsUpToDate,
     required DeleteTripStop deleteTripStop,
+    required UpdateTripStopPlaceholder updateTripStopPlaceholder,
     required FirebaseCrashlytics crashlytics,
   })  : _updateDayTrip = updateDayTrip,
         _deleteDayTrip = deleteDayTrip,
@@ -75,6 +78,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         _listenDayTrip = listenDayTrip,
         _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
         _deleteTripStop = deleteTripStop,
+        _updateTripStopPlaceholder = updateTripStopPlaceholder,
         _crashlytics = crashlytics,
         super(DayTripState.initial(trip: trip, dayTrip: dayTrip));
 
@@ -505,6 +509,105 @@ class DayTripCubit extends Cubit<DayTripState> {
             ));
           },
         );
+      },
+    );
+  }
+
+  void showEditTripStopPlaceholderDialog(TripStop tripStop) {
+    return switch (state) {
+      final DayTripStateLoaded loadedState => emit(loadedState.copyWith(
+          tripStopPlaceholderEditing: tripStop.placeholder ?? TripStopPlaceholder.create())),
+      _ => null,
+    };
+  }
+
+  void updateTripStopPlaceholderName(String value) {
+    return switch (state) {
+      final DayTripStateLoaded loadedState => emit(loadedState.copyWith(
+          tripStopPlaceholderEditing:
+              loadedState.tripStopPlaceholderEditing!.copyWith(name: value))),
+      _ => null,
+    };
+  }
+
+  void updateTripStopPlaceholderDuration(int inMinutes) {
+    return switch (state) {
+      final DayTripStateLoaded loadedState => emit(loadedState.copyWith(
+          tripStopPlaceholderEditing:
+              loadedState.tripStopPlaceholderEditing!.copyWith(duration: inMinutes))),
+      _ => null,
+    };
+  }
+
+  void cancelEditTripStopPlaceholderDialog() {
+    return switch (state) {
+      final DayTripStateLoaded loadedState =>
+        emit(loadedState.copyWith(tripStopPlaceholderEditing: null)),
+      _ => null,
+    };
+  }
+
+  void addPlaceholderToTripStop(String id) async {
+    final result = switch (state) {
+      final DayTripStateLoaded loadedState => await _updateTripStopPlaceholder(
+          UpdateTripStopPlaceholderParams(
+            tripId: loadedState.trip.id,
+            dayTripId: loadedState.dayTrip.id,
+            tripStopId: id,
+            placeholder: loadedState.tripStopPlaceholderEditing!,
+          ),
+        ),
+      _ => null,
+    };
+
+    result?.fold(
+      (failure) {
+        return switch (state) {
+          final DayTripStateLoaded loadedState => emit(DayTripState.error(
+              trip: loadedState.trip,
+              dayTrip: loadedState.dayTrip,
+              errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+              fatal: false,
+              hasStartTimeToSave: state.hasStartTimeToSave,
+            )),
+          _ => null,
+        };
+      },
+      (_) {
+        return switch (state) {
+          final DayTripStateLoaded loadedState =>
+            emit(loadedState.copyWith(tripStopPlaceholderEditing: null)),
+          _ => null,
+        };
+      },
+    );
+  }
+
+  void removePlaceholderFromTripStop(String id) async {
+    final result = switch (state) {
+      final DayTripStateLoaded loadedState => await _updateTripStopPlaceholder(
+          UpdateTripStopPlaceholderParams(
+            tripId: loadedState.trip.id,
+            dayTripId: loadedState.dayTrip.id,
+            tripStopId: id,
+            placeholder: null,
+          ),
+        ),
+      _ => null,
+    };
+
+    result?.leftMap(
+      (failure) {
+        return switch (state) {
+          final DayTripStateLoaded loadedState => emit(DayTripState.error(
+              trip: loadedState.trip,
+              dayTrip: loadedState.dayTrip,
+              errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
+              fatal: false,
+              hasStartTimeToSave: state.hasStartTimeToSave,
+            )),
+          _ => null,
+        };
       },
     );
   }

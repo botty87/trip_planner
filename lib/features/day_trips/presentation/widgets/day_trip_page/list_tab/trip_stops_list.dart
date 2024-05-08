@@ -9,12 +9,12 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/pair.dart';
+import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../../../ui/presentation/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
 import '../../../../../ui/presentation/widgets/generics/transparent_list_decorator.dart';
-import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
-import 'travel_card.dart';
 import 'trip_stop_card.dart';
+import 'trip_stop_details_row.dart';
 
 class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
   const TripStopsList({super.key});
@@ -80,11 +80,11 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
                     child: Slidable(
                       startActionPane: ActionPane(
                         motion: const ScrollMotion(),
-                        children: [_getStartSlidableAction(tripStop, index)],
+                        children: [_gettravelStartSlidableAction(tripStop, index)],
                       ),
                       endActionPane: ActionPane(
                         motion: const ScrollMotion(),
-                        children: [_getEndSlidableAction(tripStop, index)],
+                        children: [_getTravelEndSlidableAction(tripStop, index)],
                       ),
                       child: Builder(builder: (context) {
                         final slidableController = Slidable.of(context);
@@ -96,7 +96,7 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
                       }),
                     ),
                   ),
-                  TravelCard(tripStop: tripStop),
+                  TripStopDetailsRow(tripStop),
                 ],
               ),
             );
@@ -115,7 +115,7 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
     );
   }
 
-  Widget _getStartSlidableAction(TripStop tripStop, int index) {
+  Widget _gettravelStartSlidableAction(TripStop tripStop, int index) {
     return SlidableAction(
       onPressed: (context) =>
           context.read<DayTripCubit>().toggleTripStopDone(!tripStop.isDone, index),
@@ -126,7 +126,7 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
     );
   }
 
-  Widget _getEndSlidableAction(TripStop tripStop, int index) {
+  Widget _getTravelEndSlidableAction(TripStop tripStop, int index) {
     return SlidableAction(
       onPressed: (context) => context.read<DayTripCubit>().toggleTripStopDelete(index),
       backgroundColor: Colors.red,
@@ -135,4 +135,6 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       label: LocaleKeys.delete.tr(),
     );
   }
+
+  
 }

@@ -220,6 +220,28 @@ class MockTripStopsDataSource extends _i1.Mock
         returnValue: _i4.Future<void>.value(),
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> updateTripStopPlaceholder({
+    required String? tripId,
+    required String? dayTripId,
+    required String? tripStopId,
+    required _i6.TripStopPlaceholder? placeholder,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateTripStopPlaceholder,
+          [],
+          {
+            #tripId: tripId,
+            #dayTripId: dayTripId,
+            #tripStopId: tripStopId,
+            #placeholder: placeholder,
+          },
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }
 
 /// A class which mocks [FirebaseCrashlytics].

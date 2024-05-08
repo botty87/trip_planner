@@ -17,6 +17,10 @@ _$TripStopImpl _$$TripStopImplFromJson(Map<String, dynamic> json) =>
       travelTimeToNextStop:
           (json['travelTimeToNextStop'] as num?)?.toInt() ?? 0,
       note: json['note'] as String?,
+      placeholder: json['placeholder'] == null
+          ? null
+          : TripStopPlaceholder.fromJson(
+              json['placeholder'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TripStopImplToJson(_$TripStopImpl instance) =>
@@ -29,4 +33,19 @@ Map<String, dynamic> _$$TripStopImplToJson(_$TripStopImpl instance) =>
       'isDone': instance.isDone,
       'travelTimeToNextStop': instance.travelTimeToNextStop,
       'note': instance.note,
+      'placeholder': instance.placeholder?.toJson(),
+    };
+
+_$TripStopPlaceholderImpl _$$TripStopPlaceholderImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TripStopPlaceholderImpl(
+      name: json['name'] as String,
+      duration: (json['duration'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$TripStopPlaceholderImplToJson(
+        _$TripStopPlaceholderImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'duration': instance.duration,
     };

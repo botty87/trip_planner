@@ -23,6 +23,7 @@ sealed class TripStop with _$TripStop {
     @Default(false) bool isDone,
     @Default(0) int travelTimeToNextStop, // in minutes
     String? note,
+    TripStopPlaceholder? placeholder,
   }) = _TripStop;
 
   factory TripStop.create({
@@ -66,4 +67,20 @@ class StartEndTime extends Equatable {
 
   @override
   List<Object?> get props => [startTime, endTime];
+}
+
+@freezed
+class TripStopPlaceholder with _$TripStopPlaceholder {
+  const factory TripStopPlaceholder({
+    required String name,
+    required int duration,
+  }) = _TripStopPlaceholder;
+
+  factory TripStopPlaceholder.fromJson(Map<String, dynamic> json) =>
+      _$TripStopPlaceholderFromJson(json);
+
+  factory TripStopPlaceholder.create() => const TripStopPlaceholder(
+        name: '',
+        duration: 0,
+      );
 }

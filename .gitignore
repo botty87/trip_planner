@@ -34,3 +34,9 @@ firebase.json
 .firebaserc
 firebase-debug.log
 .firebase/
+database.rules.json
+firebase.json
+firestore.indexes.json
+firestore.rules
+firebase.json
+storage.rules

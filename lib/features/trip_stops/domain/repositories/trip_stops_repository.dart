@@ -59,4 +59,11 @@ abstract class TripStopsRepository {
     required int duration,
     required LatLng location,
   });
+
+  Future<Either<TripStopsFailure, void>> updateTripStopPlaceholder({
+    required String tripId,
+    required String dayTripId,
+    required String tripStopId,
+    required TripStopPlaceholder? placeholder,
+  });
 }
