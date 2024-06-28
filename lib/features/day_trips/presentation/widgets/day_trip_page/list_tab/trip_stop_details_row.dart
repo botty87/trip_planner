@@ -114,6 +114,7 @@ class _DialogContent extends HookWidget {
       };
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         CupertinoTextField(
           controller: textEditingControllerName,
