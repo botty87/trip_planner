@@ -45,6 +45,7 @@ void main() {
       existingTrip: tTrip,
       showDirections: true,
       useDifferentDirectionsColors: true,
+      languageCode: 'en',
     ));
     // assert
     expect(result, right(null));
@@ -76,6 +77,7 @@ void main() {
       existingTrip: tTrip,
       showDirections: true,
       useDifferentDirectionsColors: true,
+      languageCode: 'en',
     ));
     // assert
     expect(result, left(const TripsFailure()));
