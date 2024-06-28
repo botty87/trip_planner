@@ -12,7 +12,7 @@ class ListenTrip implements StreamUseCase<Trip?, ListenTripParams> {
   final TripsRepository _repository;
 
   ListenTrip(this._repository);
-  
+
   @override
   Stream<Either<TripsFailure, Trip?>> call(ListenTripParams params) {
     return _repository.listenTrip(params.tripId);

@@ -98,7 +98,7 @@ class ShareCubit extends Cubit<ShareState> {
         sharedUsers: state.sharedUsers,
         userEmailQuery: state.userEmailQuery,
         errorMessage: '') as ShareStateError;
-        
+
     return switch (failure) {
       ShareTripFailureNoInternetConnection _ =>
         emit(errorState.copyWith(errorMessage: LocaleKeys.noInternetConnectionMessage.tr())),

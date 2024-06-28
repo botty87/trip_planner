@@ -10,7 +10,7 @@ class TripsException with _$TripsException implements Exception {
 }
 
 @freezed
-class ShareTripException with _$ShareTripException implements Exception  {
+class ShareTripException with _$ShareTripException implements Exception {
   const factory ShareTripException({String? message}) = _ShareTripException;
 
   const factory ShareTripException.userNotFound() = _UserNotFound;

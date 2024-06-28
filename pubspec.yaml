@@ -88,10 +88,7 @@ dependencies:
   responsive_framework: ^1.1.1
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
-  showcaseview: 
-    git: 
-      url: https://github.com/chandrabezzo/flutter_showcaseview
-      ref: ae8d8a327cdede529d264d1df02892fdc6161688
+  showcaseview: ^3.0.0
   url_launcher: ^6.2.1
   uuid: ^4.0.0
   talker_bloc_logger: ^4.2.4

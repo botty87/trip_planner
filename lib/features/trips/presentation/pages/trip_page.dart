@@ -53,7 +53,7 @@ class TripPage extends HookWidget {
         ..startListenDayTrips()
         ..startListenTrip(),
       child: ShowCaseWidget(
-        builder: Builder(builder: (context) {
+        builder: (context) {
           final showTutorial = context.read<TutorialCubit>().state.showShareTrip && showShareButton;
 
           if (showTutorial) {
@@ -191,7 +191,7 @@ class TripPage extends HookWidget {
               ),
             ),
           );
-        }),
+        },
         onFinish: () => context.read<TutorialCubit>().onShareTripDone(),
       ),
     );

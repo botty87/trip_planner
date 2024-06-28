@@ -135,6 +135,4 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       label: LocaleKeys.delete.tr(),
     );
   }
-
-  
 }

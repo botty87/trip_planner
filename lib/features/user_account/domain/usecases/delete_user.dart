@@ -23,7 +23,7 @@ class DeleteUser implements UseCase<void, DeleteUserParams> {
     if (!(await internetConnection.hasInternetAccess)) {
       return left(const UserFailures.networkRequestFailed());
     }
-    
+
     final deleteTripsResult = await tripsRepository.deleteAllTrips(params.userId);
     return deleteTripsResult.fold(
       (failure) {

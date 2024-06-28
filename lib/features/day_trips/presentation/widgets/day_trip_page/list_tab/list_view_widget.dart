@@ -16,7 +16,6 @@ import 'start_time_widget.dart';
 import 'trip_stops_list.dart';
 
 final _showCaseKeyOne = GlobalKey();
-final _showCaseKeyTwo = GlobalKey();
 
 class ListViewWidget extends StatelessWidget {
   final Orientation orientation;
@@ -48,12 +47,13 @@ class _Body extends HookWidget {
 
     final showTutorial = context.select((DayTripCubit cubit) => switch (cubit.state) {
           final DayTripStateLoaded state => state.tripStops.isNotEmpty &&
-              (tutorialCubit.state.showTripStopSlide || tutorialCubit.state.showTripStopTravelPlaceholder),
+              (tutorialCubit.state.showTripStopSlide ||
+                  tutorialCubit.state.showTripStopTravelPlaceholder),
           _ => false,
         });
 
     return ShowCaseWidget(
-      builder: Builder(builder: (context) {
+      builder: (context) {
         if (showTutorial) {
           WidgetsBinding.instance.addPostFrameCallback((_) async {
             await Future.delayed(const Duration(milliseconds: 700));
@@ -84,7 +84,7 @@ class _Body extends HookWidget {
             const SafeArea(child: DeleteDayTripButton()),
           ],
         );
-      }),
+      },
       onFinish: () {
         tutorialCubit.onShowTripStopSlide();
       },

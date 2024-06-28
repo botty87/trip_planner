@@ -149,7 +149,7 @@ class TripsRepositoryImpl implements TripsRepository {
     try {
       await _tripsDataSource.removeUserForShare(tripId, userId);
       return right(null);
-    } on FirebaseException catch (e, stackTrace){
+    } on FirebaseException catch (e, stackTrace) {
       _firebaseCrashlytics.recordError(e, stackTrace);
       return left(const ShareTripFailure());
     } on ShareTripException catch (e, stackTrace) {
@@ -173,7 +173,7 @@ class TripsRepositoryImpl implements TripsRepository {
           .map<Either<TripsFailure, List<Trip>>>((trips) => right(trips))
           .handleError((e) => left(const TripsFailure()));
     } catch (e, stackTrace) {
-    _firebaseCrashlytics.recordError(e, stackTrace);
+      _firebaseCrashlytics.recordError(e, stackTrace);
       yield left(const TripsFailure());
     }
   }

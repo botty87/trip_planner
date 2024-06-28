@@ -7,7 +7,8 @@ part 'trips_failure.freezed.dart';
 class TripsFailure with _$TripsFailure implements Failure {
   const factory TripsFailure({String? message}) = _TripsFailure;
 
-  const factory TripsFailure.noInternetConnection({String? message}) = TripsFailureNoInternetConnection;
+  const factory TripsFailure.noInternetConnection({String? message}) =
+      TripsFailureNoInternetConnection;
 }
 
 @freezed
@@ -16,5 +17,6 @@ class ShareTripFailure with _$ShareTripFailure implements Failure {
 
   const factory ShareTripFailure.userNotFound({String? message}) = ShareTripFailureUserNotFound;
 
-  const factory ShareTripFailure.noInternetConnection({String? message}) = ShareTripFailureNoInternetConnection;
+  const factory ShareTripFailure.noInternetConnection({String? message}) =
+      ShareTripFailureNoInternetConnection;
 }

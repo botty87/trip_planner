@@ -47,7 +47,7 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
       create: (context) => getIt<DiscoverNewDailyTripsCubit>(param1: _trip.id)..fetchDayTrips(),
       child: Builder(builder: (context) {
         return ShowCaseWidget(
-          builder: Builder(builder: (context) {
+          builder: (context) {
             final showTutorial = context.read<TutorialCubit>().state.showCreateFromPublicTrip;
 
             if (showTutorial) {
@@ -74,7 +74,7 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
               ),
               floatingActionButton: _Fab(trip: _trip),
             );
-          }),
+          },
           onFinish: () => context.read<TutorialCubit>().onCreateFromPublicTripDone(),
         );
       }),
