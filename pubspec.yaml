@@ -36,8 +36,8 @@ dependencies:
   animated_tree_view: ^2.2.0
   auto_route: ^8.0.2
   cached_network_image: ^3.3.1
-  calendar_date_picker2: ^0.5.2
-  cloud_firestore: ^4.15.9
+  calendar_date_picker2: ^1.1.5
+  cloud_firestore: ^5.0.2
   collection: ^1.18.0
   country_icons: ^3.0.0
   cupertino_icons: ^1.0.2
@@ -49,14 +49,14 @@ dependencies:
   dynamic_color: ^1.6.9
   easy_localization: ^3.0.2
   easy_logger: ^0.0.2
-  email_validator: ^2.1.17
+  email_validator: ^3.0.0
   envied: ^0.5.2
   equatable: ^2.0.5
-  firebase_auth: ^4.17.9
-  firebase_core: ^2.27.1
-  firebase_crashlytics: ^3.4.19
-  firebase_database: ^10.4.10
-  firebase_storage: ^11.6.10
+  firebase_auth: ^5.1.1
+  firebase_core: ^3.1.1
+  firebase_crashlytics: ^4.0.2
+  firebase_database: ^11.0.2
+  firebase_storage: ^12.1.0
   flutter:
     sdk: flutter
   flutter_animate: ^4.2.0+1
@@ -64,10 +64,7 @@ dependencies:
   flutter_hooks: ^0.20.0
   flutter_linkify: ^6.0.0
   flutter_native_splash: ^2.3.10
-  flutter_polyline_points:
-    git:
-      url: https://github.com/botty87/flutter_polyline_points.git
-      ref: master
+  flutter_polyline_points: ^2.0.1
   flutter_slidable: ^3.0.1
   flutter_svg: ^2.0.7
   font_awesome_flutter: ^10.6.0

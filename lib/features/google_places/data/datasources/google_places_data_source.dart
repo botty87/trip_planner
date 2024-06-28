@@ -148,11 +148,14 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
       final PolylineResult result;
       try {
         result = await polylinePoints.getRouteBetweenCoordinates(
-          key,
-          PointLatLng(tripStops[i].location.latitude, tripStops[i].location.longitude),
-          PointLatLng(tripStops[i + 1].location.latitude, tripStops[i + 1].location.longitude),
-          travelMode: travelMode,
-          proxyUrl: kIsWeb ? proxyURL : null,
+          request: PolylineRequest(
+            origin: PointLatLng(tripStops[i].location.latitude, tripStops[i].location.longitude),
+            destination: PointLatLng(
+                tripStops[i + 1].location.latitude, tripStops[i + 1].location.longitude),
+            mode: travelMode,
+            proxy: kIsWeb ? Uri.parse(proxyURL) : null,
+          ),
+          googleApiKey: key,
         );
       } catch (e) {
         String errorMessage = e.toString();
