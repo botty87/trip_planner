@@ -1,5 +1,5 @@
-import '../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../../../core/utilities/pair.dart';
+import '../../../../trip_stops/domain/entities/trip_stop.dart';
 
 mixin TripStopStartEndTimeMixin {
   Pair<DateTime, DateTime> getTripStartEndTimes({
@@ -31,7 +31,8 @@ mixin TripStopStartEndTimeMixin {
     if (currentIndex == 0) {
       return StartEndTime(
           startTime: dayTripStartDateTime,
-          endTime: dayTripStartDateTime.add(Duration(minutes: tripStop.duration)));
+          endTime: dayTripStartDateTime
+              .add(Duration(minutes: tripStop.duration + (tripStop.placeholder?.duration ?? 0))));
     } else {
       final previousTripStopStartEndTime = tripStopStartEndTimes[currentIndex - 1];
       final previousTripStop = previousTripStopStartEndTime.first;
