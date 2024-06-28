@@ -59,7 +59,7 @@ void main() {
     ));
 
     expect($(TripStopDoneWidget), findsOneWidget);
-    expect($(LocaleKeys.done.tr()), findsOneWidget);
+    expect($(LocaleKeys.completed.tr()), findsOneWidget);
     expect($(Checkbox), findsOneWidget);
   });
 

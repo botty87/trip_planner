@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../../../core/constants.dart';
 import '../../cubit/day_trip/day_trip_cubit.dart';
 import 'list_tab/list_view_widget.dart';
 import 'map_tab/map_view/map_view_widget.dart';
@@ -38,7 +39,12 @@ class DayTripPageLoaded extends HookWidget {
                     key: Key('dayTripPageLoadedRow'),
                     children: [
                       Expanded(child: ListViewWidget(orientation: Orientation.landscape)),
-                      Expanded(child: MapViewWidget()),
+                      Expanded(
+                          child: Padding(
+                        padding:
+                            EdgeInsets.only(right: pageHorizontalPadding, bottom: verticalSpace),
+                        child: MapViewWidget(),
+                      )),
                     ],
                   ),
           )

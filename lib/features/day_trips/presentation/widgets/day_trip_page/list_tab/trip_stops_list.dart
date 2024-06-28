@@ -122,7 +122,7 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       backgroundColor: tripStop.isDone ? Colors.grey : Colors.green,
       foregroundColor: Colors.white,
       icon: tripStop.isDone ? Icons.close : Icons.check,
-      label: tripStop.isDone ? LocaleKeys.toDo.tr() : LocaleKeys.done.tr(),
+      label: tripStop.isDone ? LocaleKeys.toDo.tr() : LocaleKeys.completed.tr(),
     );
   }
 

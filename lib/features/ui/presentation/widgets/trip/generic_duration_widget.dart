@@ -24,14 +24,11 @@ final class GenericDurationWidget extends StatelessWidget {
       children: [
         Text(
           LocaleKeys.tripStopEstimatedDuration.tr(),
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         Text(
           estimatedDurationText,
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
-                fontSize: 20,
-              ),
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ],
     );

@@ -27,20 +27,17 @@ class TripStopDoneWidget extends StatelessWidget {
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
               child: Text(
-                LocaleKeys.done.tr(),
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                LocaleKeys.completed.tr(),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: isDone ? Colors.green[colorStrength] : Colors.orange[colorStrength]),
               ),
             ),
             onTap: () => context.read<TripStopCubit>().isDoneChanged(!isDone),
           ),
-          Transform.scale(
-            scale: 1.2,
-            child: Checkbox(
-              shape: const CircleBorder(),
-              value: isDone,
-              onChanged: (value) => context.read<TripStopCubit>().isDoneChanged(value ?? false),
-            ),
+          Checkbox(
+            shape: const CircleBorder(),
+            value: isDone,
+            onChanged: (value) => context.read<TripStopCubit>().isDoneChanged(value ?? false),
           ),
         ],
       ),
