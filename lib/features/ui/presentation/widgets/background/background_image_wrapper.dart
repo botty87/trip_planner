@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 
+import '../../../../../core/di/di.dart';
+import '../../../../../core/utilities/logger.dart';
 import '../../cubit/backgrounds_cubit.dart';
 
 class BackgroundImageWrapper extends StatelessWidget {
@@ -29,7 +30,7 @@ class _BackgroundImage extends StatelessWidget {
         context.select((BackgroundsCubit cubit) => cubit.state.currentBackgroundImage);
 
     return Container(
-      color: Theme.of(context).colorScheme.background,
+      color: Theme.of(context).colorScheme.surface,
       width: double.infinity,
       height: double.infinity,
       child: AnimatedSwitcher(
@@ -48,7 +49,8 @@ class _BackgroundImage extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       errorBuilder: (context, error, stackTrace) {
-        Logger().e('Error loading background image', stackTrace: stackTrace);
+        getIt<Logger>()
+            .error('Error loading background image', stackTrace: stackTrace, exception: error);
         return const SizedBox.shrink();
       },
     );

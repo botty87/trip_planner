@@ -19,7 +19,7 @@ class TripStopMapWidget extends HookWidget with BackgroundImageMixin {
       buildWhen: (previous, current) => previous.tripStop.location != current.tripStop.location,
       builder: (context, state) {
         return Container(
-          color: hasBackgroundImage ? Theme.of(context).colorScheme.background : null,
+          color: hasBackgroundImage ? Theme.of(context).colorScheme.surface : null,
           child: MapWidget.single(
             mapPlace: context.read<TripStopCubit>().state.tripStop.toMapPlace(),
             showInfoWindow: false,

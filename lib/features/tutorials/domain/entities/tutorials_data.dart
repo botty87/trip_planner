@@ -11,6 +11,7 @@ sealed class TutorialsData with _$TutorialsData {
     @Default(true) bool showCreateFromPublicTrip,
     @Default(true) bool showTripStopSlide,
     @Default(true) bool showShareTrip,
+    @Default(true) bool showTripStopTravelPlaceholder,
   }) = _TutorialsData;
 
   factory TutorialsData.fromJson(Map<String, dynamic> json) => _$TutorialsDataFromJson(json);

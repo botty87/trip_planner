@@ -11,7 +11,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../core/constants.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/utilities/extensions.dart';
+import '../../../../core/utilities/logger.dart';
 import '../../../../core/utilities/pair.dart';
 import '../../../settings/domain/entities/backgrounds_container.dart';
 
@@ -68,8 +70,13 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
     required int index,
     required BackgroundType type,
   }) async {
-    final imageRef = type == BackgroundType.light ? lightBackgroundsRef : darkBackgroundsRef;
-    return await imageRef.child('$index.$webpExtension').getData();
+    try {
+      final imageRef = type == BackgroundType.light ? lightBackgroundsRef : darkBackgroundsRef;
+      return await imageRef.child('$index.$webpExtension').getData();
+    } catch (e) {
+      getIt<Logger>().error('Error downloading background image: $e', exception: e);
+      return null;
+    }
   }
 
   Future<void> preloadImage(ImageProvider provider) {

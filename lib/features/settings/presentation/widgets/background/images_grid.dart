@@ -1,8 +1,6 @@
 part of 'background_section.dart';
 
 class _ImagesGrid extends StatelessWidget {
-  final darkBackgroundsRef = getIt<FirebaseStorage>().darkBackgroundsRef;
-
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -16,6 +16,7 @@ import 'start_time_widget.dart';
 import 'trip_stops_list.dart';
 
 final _showCaseKeyOne = GlobalKey();
+final _showCaseKeyTwo = GlobalKey();
 
 class ListViewWidget extends StatelessWidget {
   final Orientation orientation;
@@ -44,17 +45,16 @@ class _Body extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final tutorialCubit = context.read<TutorialCubit>();
-    final isTutorialToShow = useRef(tutorialCubit.state.showTripStopSlide);
 
-    final showTutorial = context.select((DayTripCubit cubit) => cubit.state.maybeMap(
-          loaded: (state) => state.tripStops.isNotEmpty && isTutorialToShow.value,
-          orElse: () => false,
-        ));
+    final showTutorial = context.select((DayTripCubit cubit) => switch (cubit.state) {
+          final DayTripStateLoaded state => state.tripStops.isNotEmpty &&
+              (tutorialCubit.state.showTripStopSlide || tutorialCubit.state.showTripStopTravelPlaceholder),
+          _ => false,
+        });
 
     return ShowCaseWidget(
       builder: Builder(builder: (context) {
         if (showTutorial) {
-          isTutorialToShow.value = false;
           WidgetsBinding.instance.addPostFrameCallback((_) async {
             await Future.delayed(const Duration(milliseconds: 700));
             if (context.mounted) {

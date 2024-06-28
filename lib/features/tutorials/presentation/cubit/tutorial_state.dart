@@ -8,6 +8,7 @@ sealed class TutorialState with _$TutorialState {
     required bool showCreateFromPublicTrip,
     required bool showTripStopSlide,
     required bool showShareTrip,
+    required bool showTripStopTravelPlaceholder,
   }) = _TutorialState;
 }
 
@@ -19,6 +20,7 @@ extension TutorialStateX on TutorialState {
       showCreateFromPublicTrip: showCreateFromPublicTrip,
       showTripStopSlide: showTripStopSlide,
       showShareTrip: showShareTrip,
+      showTripStopTravelPlaceholder: showTripStopTravelPlaceholder,
     );
   }
 }
@@ -31,6 +33,7 @@ extension TutorialsDataX on TutorialsData {
       showCreateFromPublicTrip: showCreateFromPublicTrip,
       showTripStopSlide: showTripStopSlide,
       showShareTrip: showShareTrip,
+      showTripStopTravelPlaceholder: showTripStopTravelPlaceholder,
     );
   }
 }

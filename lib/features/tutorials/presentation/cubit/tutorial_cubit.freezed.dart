@@ -21,6 +21,7 @@ mixin _$TutorialState {
   bool get showCreateFromPublicTrip => throw _privateConstructorUsedError;
   bool get showTripStopSlide => throw _privateConstructorUsedError;
   bool get showShareTrip => throw _privateConstructorUsedError;
+  bool get showTripStopTravelPlaceholder => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TutorialStateCopyWith<TutorialState> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $TutorialStateCopyWith<$Res> {
       bool showPublicTrip,
       bool showCreateFromPublicTrip,
       bool showTripStopSlide,
-      bool showShareTrip});
+      bool showShareTrip,
+      bool showTripStopTravelPlaceholder});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState>
     Object? showCreateFromPublicTrip = null,
     Object? showTripStopSlide = null,
     Object? showShareTrip = null,
+    Object? showTripStopTravelPlaceholder = null,
   }) {
     return _then(_value.copyWith(
       showWelcome: null == showWelcome
@@ -81,6 +84,10 @@ class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState>
           ? _value.showShareTrip
           : showShareTrip // ignore: cast_nullable_to_non_nullable
               as bool,
+      showTripStopTravelPlaceholder: null == showTripStopTravelPlaceholder
+          ? _value.showTripStopTravelPlaceholder
+          : showTripStopTravelPlaceholder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -98,7 +105,8 @@ abstract class _$$TutorialStateImplCopyWith<$Res>
       bool showPublicTrip,
       bool showCreateFromPublicTrip,
       bool showTripStopSlide,
-      bool showShareTrip});
+      bool showShareTrip,
+      bool showTripStopTravelPlaceholder});
 }
 
 /// @nodoc
@@ -117,6 +125,7 @@ class __$$TutorialStateImplCopyWithImpl<$Res>
     Object? showCreateFromPublicTrip = null,
     Object? showTripStopSlide = null,
     Object? showShareTrip = null,
+    Object? showTripStopTravelPlaceholder = null,
   }) {
     return _then(_$TutorialStateImpl(
       showWelcome: null == showWelcome
@@ -139,6 +148,10 @@ class __$$TutorialStateImplCopyWithImpl<$Res>
           ? _value.showShareTrip
           : showShareTrip // ignore: cast_nullable_to_non_nullable
               as bool,
+      showTripStopTravelPlaceholder: null == showTripStopTravelPlaceholder
+          ? _value.showTripStopTravelPlaceholder
+          : showTripStopTravelPlaceholder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -151,7 +164,8 @@ class _$TutorialStateImpl implements _TutorialState {
       required this.showPublicTrip,
       required this.showCreateFromPublicTrip,
       required this.showTripStopSlide,
-      required this.showShareTrip});
+      required this.showShareTrip,
+      required this.showTripStopTravelPlaceholder});
 
   @override
   final bool showWelcome;
@@ -163,10 +177,12 @@ class _$TutorialStateImpl implements _TutorialState {
   final bool showTripStopSlide;
   @override
   final bool showShareTrip;
+  @override
+  final bool showTripStopTravelPlaceholder;
 
   @override
   String toString() {
-    return 'TutorialState(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip, showCreateFromPublicTrip: $showCreateFromPublicTrip, showTripStopSlide: $showTripStopSlide, showShareTrip: $showShareTrip)';
+    return 'TutorialState(showWelcome: $showWelcome, showPublicTrip: $showPublicTrip, showCreateFromPublicTrip: $showCreateFromPublicTrip, showTripStopSlide: $showTripStopSlide, showShareTrip: $showShareTrip, showTripStopTravelPlaceholder: $showTripStopTravelPlaceholder)';
   }
 
   @override
@@ -184,12 +200,22 @@ class _$TutorialStateImpl implements _TutorialState {
             (identical(other.showTripStopSlide, showTripStopSlide) ||
                 other.showTripStopSlide == showTripStopSlide) &&
             (identical(other.showShareTrip, showShareTrip) ||
-                other.showShareTrip == showShareTrip));
+                other.showShareTrip == showShareTrip) &&
+            (identical(other.showTripStopTravelPlaceholder,
+                    showTripStopTravelPlaceholder) ||
+                other.showTripStopTravelPlaceholder ==
+                    showTripStopTravelPlaceholder));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip,
-      showCreateFromPublicTrip, showTripStopSlide, showShareTrip);
+  int get hashCode => Object.hash(
+      runtimeType,
+      showWelcome,
+      showPublicTrip,
+      showCreateFromPublicTrip,
+      showTripStopSlide,
+      showShareTrip,
+      showTripStopTravelPlaceholder);
 
   @JsonKey(ignore: true)
   @override
@@ -204,7 +230,8 @@ abstract class _TutorialState implements TutorialState {
       required final bool showPublicTrip,
       required final bool showCreateFromPublicTrip,
       required final bool showTripStopSlide,
-      required final bool showShareTrip}) = _$TutorialStateImpl;
+      required final bool showShareTrip,
+      required final bool showTripStopTravelPlaceholder}) = _$TutorialStateImpl;
 
   @override
   bool get showWelcome;
@@ -216,6 +243,8 @@ abstract class _TutorialState implements TutorialState {
   bool get showTripStopSlide;
   @override
   bool get showShareTrip;
+  @override
+  bool get showTripStopTravelPlaceholder;
   @override
   @JsonKey(ignore: true)
   _$$TutorialStateImplCopyWith<_$TutorialStateImpl> get copyWith =>
