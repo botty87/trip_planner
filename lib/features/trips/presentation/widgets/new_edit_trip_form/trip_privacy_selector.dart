@@ -12,7 +12,9 @@ class _TripPrivacySelector extends HookWidget {
     final isPublic = useState(initialIsPublic);
 
     final EdgeInsets showcasePadding;
-    if (Platform.isAndroid) {
+    if(kIsWeb){
+      showcasePadding = const EdgeInsets.only(top: 12);
+    } else if (Platform.isAndroid) {
       showcasePadding = const EdgeInsets.only(top: 12);
     } else if (Platform.isIOS) {
       showcasePadding = const EdgeInsets.only(bottom: 8);

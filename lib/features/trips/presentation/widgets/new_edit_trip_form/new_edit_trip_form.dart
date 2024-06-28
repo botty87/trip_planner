@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -109,7 +110,7 @@ class NewEditTripForm extends HookWidget {
                           onValueChanged: onStartDateChanged,
                           initialStartDate: initialStartDate,
                         ),
-                        SafeArea(child: saveSection),
+                        SafeArea(child: Center(child: saveSection)),
                       ],
                     ),
                   )
