@@ -110,6 +110,7 @@ class NewTripCubit extends Cubit<NewTripState> {
             existingTrip: _existingTrip!,
             showDirections: _settings.showDirections,
             useDifferentDirectionsColors: _settings.useDifferentDirectionsColors,
+            languageCode: state.languageCode,
           ));
         }
 

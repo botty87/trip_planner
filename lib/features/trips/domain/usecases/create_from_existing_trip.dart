@@ -23,6 +23,7 @@ class CreateFromExistingTrip implements UseCase<void, CreateFromExistingTripPara
         createdAt: params.createdAt,
         startDate: params.startDate,
         isPublic: params.isPublic,
+        languageCode: params.languageCode,
       ),
       existingTrip: params.existingTrip,
       showDirections: params.showDirections,
@@ -41,6 +42,7 @@ class CreateFromExistingTripParams extends Equatable {
   final Trip existingTrip;
   final bool showDirections;
   final bool useDifferentDirectionsColors;
+  final String languageCode;
 
   CreateFromExistingTripParams(
       {required this.tripName,
@@ -50,7 +52,8 @@ class CreateFromExistingTripParams extends Equatable {
       required this.isPublic,
       required this.existingTrip,
       required this.showDirections,
-      required this.useDifferentDirectionsColors});
+      required this.useDifferentDirectionsColors,
+      required this.languageCode});
 
   @override
   List<Object?> get props => [
@@ -62,6 +65,7 @@ class CreateFromExistingTripParams extends Equatable {
         isPublic,
         existingTrip,
         showDirections,
-        useDifferentDirectionsColors
+        useDifferentDirectionsColors,
+        languageCode,
       ];
 }
