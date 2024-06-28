@@ -20,7 +20,7 @@ part 'trip_privacy_selector.dart';
 
 final _showCaseKeyOne = GlobalKey();
 
-class NewEditTripForm extends StatelessWidget {
+class NewEditTripForm extends HookWidget {
   final Widget saveSection;
   final ValueChanged<String> onNameChanged;
   final ValueChanged<String> onDescriptionChanged;
@@ -53,11 +53,14 @@ class NewEditTripForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tutorialShowed = useRef(false);
+
     return ShowCaseWidget(
       builder: (context) {
         final showTutorial = context.read<TutorialCubit>().state.showPublicTrip;
 
-        if (showTutorial) {
+        if (showTutorial && !tutorialShowed.value) {
+          tutorialShowed.value = true;
           WidgetsBinding.instance.addPostFrameCallback(
               (_) => ShowCaseWidget.of(context).startShowCase([_showCaseKeyOne]));
         }

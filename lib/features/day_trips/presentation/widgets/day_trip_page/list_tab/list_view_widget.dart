@@ -43,6 +43,8 @@ class _Body extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tutorialShowed = useRef(false);
+
     final tutorialCubit = context.read<TutorialCubit>();
 
     final showTutorial = context.select((DayTripCubit cubit) => switch (cubit.state) {
@@ -54,7 +56,8 @@ class _Body extends HookWidget {
 
     return ShowCaseWidget(
       builder: (context) {
-        if (showTutorial) {
+        if (showTutorial && !tutorialShowed.value) {
+          tutorialShowed.value = true;
           WidgetsBinding.instance.addPostFrameCallback((_) async {
             await Future.delayed(const Duration(milliseconds: 700));
             if (context.mounted) {

@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:showcaseview/showcaseview.dart';
@@ -34,7 +35,7 @@ part '../widgets/daily_trips/loaded_widget.dart';
 final _showCaseKeyOne = GlobalKey();
 
 @RoutePage()
-class DiscoverNewDailyTripsPage extends StatelessWidget {
+class DiscoverNewDailyTripsPage extends HookWidget {
   final Trip _trip;
   const DiscoverNewDailyTripsPage({
     super.key,
@@ -43,6 +44,8 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tutorialShowed = useRef(false);
+
     return BlocProvider<DiscoverNewDailyTripsCubit>(
       create: (context) => getIt<DiscoverNewDailyTripsCubit>(param1: _trip.id)..fetchDayTrips(),
       child: Builder(builder: (context) {
@@ -50,7 +53,8 @@ class DiscoverNewDailyTripsPage extends StatelessWidget {
           builder: (context) {
             final showTutorial = context.read<TutorialCubit>().state.showCreateFromPublicTrip;
 
-            if (showTutorial) {
+            if (showTutorial && !tutorialShowed.value) {
+              tutorialShowed.value = true;
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 ShowCaseWidget.of(context).startShowCase([_showCaseKeyOne]);
               });

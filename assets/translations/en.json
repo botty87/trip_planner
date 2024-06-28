@@ -178,7 +178,7 @@
     "addPublicTripFabShowCaseTitle" : "Add trip",
     "addPublicTripFabShowCaseBody" : "You can create your trip inspired by this public trip. Click on this button to add it to your trips.",
     "tripStopSlideShowCaseTitle" : "Slide it!",
-    "tripStopSlideShowCaseBody" : "You can slide the trip stop card to show the options to mark it as done or delete it.",
+    "tripStopSlideShowCaseBody" : "You can slide the trip stop card to show the options to mark it as done or delete it.\n\nYou can also slide the travel duration indicator to add a fictitious stop, for example for lunch or something else that will take up your time.",
     "shareYourTrip" : "Share your trip!",
     "userEmailShareTrip" : "Email of the user with whom you want to share the trip",
     "addUser" : "Add user",

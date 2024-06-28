@@ -42,6 +42,7 @@ class TripPage extends HookWidget {
     final errorMessageStream = useStreamController<String?>();
 
     final isModalBottomOpen = useRef<bool>(false);
+    final tutorialShowed = useRef(false);
 
     final showShareButton = switch (context.read<UserCubit>().state) {
       final UserStateLoggedIn userState => userState.user.id == _trip.userId,
@@ -56,7 +57,8 @@ class TripPage extends HookWidget {
         builder: (context) {
           final showTutorial = context.read<TutorialCubit>().state.showShareTrip && showShareButton;
 
-          if (showTutorial) {
+          if (showTutorial && !tutorialShowed.value) {
+            tutorialShowed.value = true;
             WidgetsBinding.instance.addPostFrameCallback((_) async {
               await Future.delayed(const Duration(milliseconds: 500));
               if (context.mounted) {
