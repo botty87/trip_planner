@@ -8,6 +8,12 @@
   "files.watcherExclude": {
     "**/.fvm": true
   },
+  "dart.lineLength": 120,
+	"[dart]": {
+		"editor.rulers": [
+			120
+		]
+	},
   "editor.minimap.autohide": true,
   "editor.minimap.enabled": true,
   "editor.minimap.scale": 1,
