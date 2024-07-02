@@ -14,13 +14,18 @@ class _DiscoverNewTripsLoaded extends StatelessWidget {
 
           return ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
-              child: ListView(
-                padding: defaultPagePadding,
-                children: const [
-                  _DiscoverNewTripsSearchBar(),
-                  SizedBox(height: verticalSpace),
+            child: const AnimatedSwitcher(
+              duration: Duration(milliseconds: 300),
+              child: CustomScrollView(
+                slivers: [
+                  SliverPadding(
+                    padding: EdgeInsets.only(
+                        top: pageVerticalPadding,
+                        left: pageHorizontalPadding,
+                        right: pageHorizontalPadding),
+                    sliver: SliverToBoxAdapter(child: _DiscoverNewTripsSearchBar()),
+                  ),
+                  SliverToBoxAdapter(child: SizedBox(height: verticalSpace)),
                   _DiscoverNewTripList(),
                 ],
               ),
