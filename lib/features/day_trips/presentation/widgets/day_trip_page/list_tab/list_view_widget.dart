@@ -89,7 +89,7 @@ class _Body extends HookWidget {
         );
       },
       onFinish: () {
-        tutorialCubit.onShowTripStopSlide();
+        tutorialCubit.onShowTripStopSlideAndPlaceholder();
       },
     );
   }
