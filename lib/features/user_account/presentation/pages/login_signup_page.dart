@@ -11,8 +11,8 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
-import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../cubit/login_signup/login_signup_cubit.dart';
 
 part '../widgets/login_signup_page/login_section.dart';
@@ -46,8 +46,7 @@ class LoginSignupPage extends StatelessWidget {
             ),
             BlocListener<LoginSignupCubit, LoginSignupState>(
               listenWhen: (previous, current) {
-                return (previous.successMessage != current.successMessage) &&
-                    (current.successMessage != null);
+                return (previous.successMessage != current.successMessage) && (current.successMessage != null);
               },
               listener: (context, state) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -64,27 +63,28 @@ class LoginSignupPage extends StatelessWidget {
                   return state.isLoading;
                 },
                 builder: (context, isLoading) {
-                  return isLoading
-                      ? const LinearProgressIndicator(minHeight: 1)
-                      : const SizedBox(height: 1);
+                  return isLoading ? const LinearProgressIndicator(minHeight: 1) : const SizedBox(height: 1);
                 },
               ),
               Expanded(
-                child: SingleChildScrollView(
-                  padding: defaultPagePadding,
-                  child: Column(
-                    children: [
-                      SvgPicture(
-                        AssetBytesLoader(Assets.svg.loginSvg),
-                        height: 200,
-                      ),
-                      const SizedBox(height: verticalSpace),
-                      const _LoginSection(),
-                      const SizedBox(height: verticalSpaceL),
-                      const _NewUserRow(),
-                      const SizedBox(height: verticalSpaceL),
-                      const _SignUpSection(),
-                    ],
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 650),
+                    child: ListView(
+                      padding: defaultPagePadding,
+                      children: [
+                        SizedBox(
+                          height: 125,
+                          child: SvgPicture(AssetBytesLoader(Assets.svg.loginSvg)),
+                        ),
+                        const SizedBox(height: verticalSpace),
+                        const _LoginSection(),
+                        const SizedBox(height: verticalSpaceL),
+                        const _NewUserRow(),
+                        const SizedBox(height: verticalSpaceL),
+                        const _SignUpSection(),
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -53,7 +53,6 @@ void main() async {
   if (mapsImplementation is GoogleMapsFlutterAndroid) {
     mapsImplementation.useAndroidViewSurface = false;
   }
-
   runApp(EasyLocalization(
     supportedLocales: const [Locale('it'), Locale('en')],
     path: 'assets/translations',

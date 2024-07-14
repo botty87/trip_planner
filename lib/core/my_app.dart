@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import '../features/settings/domain/entities/backgrounds_container.dart';
 import '../features/settings/presentation/cubit/settings_cubit.dart';
@@ -15,7 +14,6 @@ import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';
 import 'routes/app_router.dart';
 import 'routes/app_router.gr.dart';
-import '../features/ui/presentation/widgets/background/background_image_wrapper.dart';
 import 'utilities/extensions.dart';
 import 'utilities/pair.dart';
 
@@ -70,7 +68,9 @@ class MyApp extends StatelessWidget {
                       _tutorialsListener(),
                       _backgroundImageListener(context)
                     ],
-                    child: ResponsiveBreakpoints.builder(
+                    child: child!, 
+                    // TODO:  check if this is needed
+                    /* ResponsiveBreakpoints.builder(
                       child: Builder(
                         builder: (context) {
                           return ResponsiveScaledBox(
@@ -93,7 +93,7 @@ class MyApp extends StatelessWidget {
                         Breakpoint(start: 1201, end: 1920, name: DESKTOP),
                         Breakpoint(start: 1921, end: double.infinity, name: '4K'),
                       ],
-                    ),
+                    ), */
                   ),
                 );
               },
