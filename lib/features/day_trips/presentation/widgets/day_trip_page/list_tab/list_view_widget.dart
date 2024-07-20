@@ -16,32 +16,9 @@ import 'trip_stops_list.dart';
 
 final _showCaseKeyOne = GlobalKey();
 
-class ListViewWidget extends StatelessWidget {
+class ListViewWidget extends HookWidget {
   final Orientation orientation;
   const ListViewWidget({super.key, required this.orientation});
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      //TODO: check this
-      /* final maxWidth = (ResponsiveBreakpoints.of(context).largerThan(MOBILE) &&
-              orientation == Orientation.portrait)
-          ? constraints.maxWidth * 0.8
-          : constraints.maxWidth; */
-
-      final maxWidth = constraints.maxWidth;
-
-      final additionalHorizontalPadding = (constraints.maxWidth - maxWidth) / 2;
-
-      return _Body(additionalHorizontalPadding: additionalHorizontalPadding);
-    });
-  }
-}
-
-class _Body extends HookWidget {
-  final double additionalHorizontalPadding;
-
-  const _Body({required this.additionalHorizontalPadding});
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +28,7 @@ class _Body extends HookWidget {
 
     final showTutorial = context.select((DayTripCubit cubit) => switch (cubit.state) {
           final DayTripStateLoaded state => state.tripStops.isNotEmpty &&
-              (tutorialCubit.state.showTripStopSlide ||
-                  tutorialCubit.state.showTripStopTravelPlaceholder),
+              (tutorialCubit.state.showTripStopSlide || tutorialCubit.state.showTripStopTravelPlaceholder),
           _ => false,
         });
 
@@ -69,8 +45,8 @@ class _Body extends HookWidget {
         }
 
         return ListView(
-          padding: EdgeInsets.symmetric(
-            horizontal: pageHorizontalPadding + additionalHorizontalPadding,
+          padding: const EdgeInsets.symmetric(
+            horizontal: pageHorizontalPadding,
             vertical: pageVerticalPadding,
           ),
           children: [

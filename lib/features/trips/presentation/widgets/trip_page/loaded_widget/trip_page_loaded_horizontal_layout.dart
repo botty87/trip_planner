@@ -16,7 +16,7 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: maxListViewWidth * 2.2),
+        constraints: const BoxConstraints(maxWidth: maxRowWidth),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

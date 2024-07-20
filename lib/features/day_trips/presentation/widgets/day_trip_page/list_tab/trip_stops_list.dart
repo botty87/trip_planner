@@ -59,7 +59,7 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
     }
 
     return ImplicitlyAnimatedReorderableList<Pair<TripStop, StartEndTime>>(
-      shrinkWrap: true,
+      shrinkWrap: true, //TODO: check this
       items: tripStopStartEndTimes,
       itemBuilder: (context, itemAnimation, tripStopItem, index) {
         final tripStop = tripStopItem.first;

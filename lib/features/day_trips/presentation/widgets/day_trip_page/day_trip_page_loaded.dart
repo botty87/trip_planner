@@ -28,24 +28,38 @@ class DayTripPageLoaded extends HookWidget {
           absorbed ? const LinearProgressIndicator() : const SizedBox.shrink(),
           Expanded(
             child: orientation == Orientation.portrait
-                ? const TabBarView(
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      ListViewWidget(orientation: Orientation.portrait),
-                      MapViewWidget(),
-                    ],
+                ? ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                    child: const TabBarView(
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        ListViewWidget(orientation: Orientation.portrait),
+                        MapViewWidget(),
+                      ],
+                    ),
                   )
-                : const Row(
-                    key: Key('dayTripPageLoadedRow'),
-                    children: [
-                      Expanded(child: ListViewWidget(orientation: Orientation.landscape)),
-                      Expanded(
-                          child: Padding(
-                        padding:
-                            EdgeInsets.only(right: pageHorizontalPadding, bottom: verticalSpace),
-                        child: MapViewWidget(),
-                      )),
-                    ],
+                : ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: maxRowWidth),
+                    child: Row(
+                      key: const Key('dayTripPageLoadedRow'),
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Flexible(
+                          child: ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                              child: const ListViewWidget(orientation: Orientation.landscape)),
+                        ),
+                        const SizedBox(width: horizontalSpaceL),
+                        Flexible(
+                            child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                          child: const Padding(
+                            padding: EdgeInsets.only(right: pageHorizontalPadding, bottom: verticalSpace),
+                            child: MapViewWidget(),
+                          ),
+                        )),
+                      ],
+                    ),
                   ),
           )
         ],

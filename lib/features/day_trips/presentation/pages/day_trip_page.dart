@@ -11,11 +11,10 @@ import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../ui/presentation/widgets/generics/snackbars.dart';
-import '../../../ui/presentation/widgets/background/background_image_wrapper.dart';
-import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
-import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../trips/domain/entities/trip.dart';
+import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
+import '../../../ui/presentation/widgets/generics/snackbars.dart';
+import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../domain/entities/day_trip.dart';
 import '../cubit/day_trip/day_trip_cubit.dart';
 import '../cubit/trip_stops_map/trip_stops_map_cubit.dart';
@@ -26,7 +25,7 @@ import '../widgets/day_trip_page/list_tab/save_cancel_edit_buttons.dart';
 import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
 @RoutePage()
-class DayTripPage extends HookWidget with BackgroundImageMixin {
+class DayTripPage extends HookWidget {
   final Trip _trip;
   final DayTrip _dayTrip;
 
@@ -67,20 +66,7 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
                   Navigator.of(context).pop();
                 }
               },
-              child:
-                  //TODO: check this
-                  /* ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
-                ? _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream)
-                : OrientationBuilder(builder: (context, orientation) {
-                    if (orientation == Orientation.portrait) {
-                      return _verticalLayout(
-                          context, isSaving, isModalBottomEditing, errorMessageStream);
-                    } else {
-                      return _horizontalLayout(
-                          context, isSaving, isModalBottomEditing, errorMessageStream);
-                    }
-                  }), */
-                  OrientationBuilder(builder: (context, orientation) {
+              child: OrientationBuilder(builder: (context, orientation) {
                 if (orientation == Orientation.portrait) {
                   return _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream);
                 } else {
@@ -105,6 +91,7 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
       StreamController<String?> errorMessageStream,
       {Orientation orientation = Orientation.landscape}) {
     return ScaffoldTransparent(
+      hasBackgroundImage: context.hasBackgroundImage,
       appBar: _buildAppBar(context, orientation),
       body: MultiBlocListener(
         listeners: [
