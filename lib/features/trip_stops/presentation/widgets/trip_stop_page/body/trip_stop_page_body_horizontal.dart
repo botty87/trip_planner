@@ -49,15 +49,20 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
                 Flexible(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-                    child: const SafeArea(
-                      minimum: EdgeInsets.only(bottom: pageVerticalPadding),
+                    child: SafeArea(
+                      minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Flexible(child: SingleChildScrollView(child: TripStopDescription())),
-                          TripStopNoteWidget(),
-                          SizedBox(height: verticalSpaceL),
-                          TripStopDoneDurationContainer(),
+                          Expanded(
+                            child: ListView(
+                              children: const [
+                                TripStopDescription(),
+                                TripStopNoteWidget(),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: verticalSpaceL),
+                          const TripStopDoneDurationContainer(),
                         ],
                       ),
                     ),
