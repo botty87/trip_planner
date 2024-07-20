@@ -23,7 +23,7 @@ final class GenericTripCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Card(
         elevation: 2,
@@ -109,8 +109,7 @@ class _DayTripDescriptionWidget extends StatelessWidget {
       child: ColoredBox(
         color: Theme.of(context).colorScheme.surface.withOpacity(0.95),
         child: Padding(
-          padding:
-              const EdgeInsets.symmetric(vertical: verticalSpaceS, horizontal: horizontalSpaceS),
+          padding: const EdgeInsets.symmetric(vertical: verticalSpaceS, horizontal: horizontalSpaceS),
           child: Text(
             description,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontStyle: FontStyle.italic),

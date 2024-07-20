@@ -7,25 +7,20 @@ class _LoadedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: LayoutBuilder(builder: (context, constraints) {
-        //TODO: check this
-        /* final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
-            ? constraints.maxWidth * 0.8
-            : constraints.maxWidth; */
-        final maxWidth = constraints.maxWidth;
-
-        return ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: maxWidth),
-          child: ListView(
-            padding: defaultPagePadding,
-            children: [
-              _DailyTripsHeader(description: _trip.description),
-              if (_trip.description?.isNotEmpty ?? false) const SizedBox(height: verticalSpaceL),
-              _DiscoverNewDailyTripList(trip: _trip),
-            ],
-          ),
-        );
-      }),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+        child: CustomScrollView(
+          slivers: [
+            SliverPadding(
+                padding: const EdgeInsets.only(
+                    top: pageVerticalPadding, left: pageHorizontalPadding, right: pageHorizontalPadding),
+                sliver: SliverToBoxAdapter(child: _DailyTripsHeader(description: _trip.description))),
+            if (_trip.description?.isNotEmpty ?? false)
+              const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
+            _DiscoverNewDailyTripList(trip: _trip),
+          ],
+        ),
+      ),
     );
   }
 }

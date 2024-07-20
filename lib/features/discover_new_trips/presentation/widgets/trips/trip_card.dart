@@ -2,7 +2,7 @@ part of '../../pages/discover_new_trips_page.dart';
 
 class _TripCard extends StatelessWidget {
   final Trip trip;
-  const _TripCard({required this.trip});
+  const _TripCard({required this.trip, super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -15,26 +15,29 @@ class _DiscoverNewDailyTripList extends StatelessWidget {
         ));
 
     if (dayTrips.isEmpty) {
-      return BackgroundWidgetContainer(
-        child: Center(
-          child: Text(
-            LocaleKeys.noDayTripsFound.tr(),
-            style: Theme.of(context).textTheme.titleLarge,
+      return SliverToBoxAdapter(
+        child: BackgroundWidgetContainer(
+          child: Center(
+            child: Text(
+              LocaleKeys.noDayTripsFound.tr(),
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
           ),
         ),
       );
     }
 
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+    return SliverPadding(
       padding: const EdgeInsets.only(bottom: pageVerticalPadding),
-      itemCount: dayTrips.length,
-      itemBuilder: (context, index) => _DayTripCard(
-        trip: _trip,
-        dayTrip: dayTrips[index],
+      sliver: SliverList.separated(
+        itemCount: dayTrips.length,
+        itemBuilder: (context, index) => _DayTripCard(
+          key: ValueKey(dayTrips[index].id),
+          trip: _trip,
+          dayTrip: dayTrips[index],
+        ),
+        separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
       ),
-      separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
     );
   }
 }

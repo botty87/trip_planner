@@ -4,7 +4,7 @@ final class _DayTripCard extends StatelessWidget {
   final Trip trip;
   final DayTrip dayTrip;
 
-  const _DayTripCard({required this.dayTrip, required this.trip});
+  const _DayTripCard({required this.dayTrip, required this.trip, super.key});
 
   @override
   Widget build(BuildContext context) {

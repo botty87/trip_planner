@@ -15,11 +15,13 @@ class _DiscoverNewTripList extends StatelessWidget {
     }
 
     return SliverPadding(
-      padding:
-          const EdgeInsets.only(left: pageHorizontalPadding, right: pageHorizontalPadding, bottom: pageVerticalPadding),
+      padding: const EdgeInsets.only(bottom: pageVerticalPadding),
       sliver: SliverList.separated(
         itemCount: filteredTrips.length,
-        itemBuilder: (context, index) => _TripCard(trip: filteredTrips[index]),
+        itemBuilder: (context, index) => _TripCard(
+          key: ValueKey(filteredTrips[index].id),
+          trip: filteredTrips[index],
+        ),
         separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
       ),
     );
