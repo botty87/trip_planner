@@ -140,22 +140,8 @@ class NewEditTripStopForm extends StatelessWidget {
             }),
         Flexible(
           child: SafeArea(
-            child: Builder(builder: (context) {
-              //TODO: check this
-              /* if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
-                return getVerticalLayout();
-              } else {
-                return OrientationBuilder(
-                  builder: (context, orientation) {
-                    if (orientation == Orientation.portrait) {
-                      return getVerticalLayout();
-                    } else {
-                      return getHorizontalLayout();
-                    }
-                  },
-                );
-              } */
-             return OrientationBuilder(
+            child: Center(
+              child: OrientationBuilder(
                 builder: (context, orientation) {
                   if (orientation == Orientation.portrait) {
                     return getVerticalLayout();
@@ -163,8 +149,8 @@ class NewEditTripStopForm extends StatelessWidget {
                     return getHorizontalLayout();
                   }
                 },
-              );
-            }),
+              ),
+            ),
           ),
         ),
       ],

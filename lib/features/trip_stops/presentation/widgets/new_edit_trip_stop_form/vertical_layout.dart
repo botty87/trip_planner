@@ -44,33 +44,17 @@ class _VerticalLayout extends HookWidget {
   Widget build(BuildContext context) {
     final location = useStreamController<LatLng?>();
 
-    return SingleChildScrollView(
-      padding: defaultPagePadding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+      child: ListView(
+        padding: defaultPagePadding,
         children: [
-          LayoutBuilder(
-            builder: (context, constraints) {
-              /* final multiplyValue = ResponsiveValue<double>(
-                context,
-                defaultValue: 0.75,
-                conditionalValues: [
-                  const Condition.largerThan(name: TABLET, value: 0.45),
-                  const Condition.largerThan(name: DESKTOP, value: 0.35),
-                ],
-              ).value;
-              double height = (constraints.maxWidth * multiplyValue);
-              if (height > 300) {
-                height = 300;
-              } */
-              //TODO: check this
-              final height = constraints.maxWidth * 0.75;
-              return SvgPicture(
-                height: height,
-                key: const Key('tripImage'),
-                AssetBytesLoader(Assets.svg.addTripStopSvg),
-              );
-            },
+          AspectRatio(
+            aspectRatio: 3 / 2,
+            child: SvgPicture(
+              key: const Key('tripImage'),
+              AssetBytesLoader(Assets.svg.addTripStopSvg),
+            ),
           ),
           const SizedBox(height: verticalSpaceL),
           Column(

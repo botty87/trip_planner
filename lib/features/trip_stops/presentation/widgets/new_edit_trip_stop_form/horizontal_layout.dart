@@ -44,110 +44,103 @@ class _HorizontalLayout extends HookWidget {
   Widget build(BuildContext context) {
     final location = useStreamController<LatLng?>();
 
-    return Row(
-      children: [
-        Expanded(
-          child: StreamBuilder<LatLng?>(
-              initialData: tripStop?.location,
-              stream: location.stream,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return MapWidget.single(
-                    mapPlace: MapPlace.newPlace(location: snapshot.data!),
-                    useDifferentColorsForDone: false,
-                    showInfoWindow: false,
-                    isInsideScrollView: true,
-                    onMarkerDragEnd: (value) {
-                      onLocationChanged(LatLng(value.latitude, value.longitude));
-                    },
-                  );
-                }
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: maxRowWidth),
+        child: Row(
+          children: [
+            Flexible(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                child: StreamBuilder<LatLng?>(
+                    initialData: tripStop?.location,
+                    stream: location.stream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return MapWidget.single(
+                          mapPlace: MapPlace.newPlace(location: snapshot.data!),
+                          useDifferentColorsForDone: false,
+                          showInfoWindow: false,
+                          isInsideScrollView: true,
+                          onMarkerDragEnd: (value) {
+                            onLocationChanged(LatLng(value.latitude, value.longitude));
+                          },
+                        );
+                      }
 
-                return const MapWidget.empty(
-                  useDifferentColorsForDone: false,
-                  showInfoWindow: false,
-                  isInsideScrollView: true,
-                );
-              }),
-        ),
-        const SizedBox(width: horizontalSpaceL),
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.only(bottom: verticalSpaceL),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    /* final multiplyValue = ResponsiveValue<double>(
-                      context,
-                      defaultValue: 0.75,
-                      conditionalValues: [
-                        const Condition.largerThan(name: TABLET, value: 0.45),
-                        const Condition.largerThan(name: DESKTOP, value: 0.35),
-                      ],
-                    ).value;
-                    double height = (constraints.maxWidth * multiplyValue);
-                    if (height > 300) {
-                      height = 300;
-                    } */
-                   //TODO: check this
-                   final height = constraints.maxWidth * 0.75;
-                    return SvgPicture(
-                      height: height,
-                      key: const Key('tripImage'),
-                      AssetBytesLoader(Assets.svg.addTripStopSvg),
-                    );
-                  },
-                ),
-                const SizedBox(height: verticalSpaceXL),
-                FieldWidget(
-                  key: const Key('nameWidget'),
-                  onDescriptionChanged: onNameChanged,
-                  initialValue: tripStop?.name,
-                  maxLines: 1,
-                  textInputAction: TextInputAction.next,
-                  label: LocaleKeys.tripStopName.tr(),
-                  hint: LocaleKeys.tripStopNameHint.tr(),
-                ),
-                const SizedBox(height: verticalSpaceL),
-                FieldWidget(
-                  key: const Key('descriptionWidget'),
-                  onDescriptionChanged: onDescriptionChanged,
-                  initialValue: tripStop?.description,
-                  label: LocaleKeys.tripStopDescription.tr(),
-                  hint: LocaleKeys.tripStopDescriptionHint.tr(),
-                  maxLines: null,
-                ),
-                const SizedBox(height: verticalSpaceL),
-                DurationWidget(
-                  key: const Key('durationWidget'),
-                  onHourDurationChanged: onHourDurationChanged,
-                  onMinuteDurationChanged: onMinuteDurationChanged,
-                  hourDuration: hourDuration,
-                  minuteDuration: minuteDuration,
-                  initialHourDuration: tripStop != null ? tripStop!.duration ~/ 60 : 0,
-                  initialMinuteDuration: tripStop != null ? tripStop!.duration % 60 : 0,
-                ),
-                const SizedBox(height: verticalSpaceL),
-                GooglePlacesSuggestionsWidget(
-                  labelText: LocaleKeys.searchTripStopLocation.tr(),
-                  hintText: LocaleKeys.tripStopLocationHint.tr(),
-                  onSuggestionSelected: (placeDetails) {
-                    onLocationChanged(placeDetails?.location);
-                    location.add(placeDetails?.location);
-                  },
-                  noInternetConnectionMessage: LocaleKeys.noInternetConnectionMessage.tr(),
-                  requestDeniedMessage: LocaleKeys.requestDenied.tr(),
-                  unknownErrorMessage: LocaleKeys.unknownError.tr(),
-                ),
-                const SizedBox(height: verticalSpaceL),
-                saveSection,
-              ],
+                      return const MapWidget.empty(
+                        useDifferentColorsForDone: false,
+                        showInfoWindow: false,
+                        isInsideScrollView: true,
+                      );
+                    }),
+              ),
             ),
-          ),
+            const SizedBox(width: horizontalSpaceL),
+            Flexible(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                child: ListView(
+                  padding: const EdgeInsets.only(bottom: verticalSpaceL),
+                  children: [
+                    AspectRatio(
+                      aspectRatio: 3 / 2,
+                      child: SvgPicture(
+                        key: const Key('tripImage'),
+                        AssetBytesLoader(Assets.svg.addTripStopSvg),
+                      ),
+                    ),
+                    const SizedBox(height: verticalSpaceXL),
+                    FieldWidget(
+                      key: const Key('nameWidget'),
+                      onDescriptionChanged: onNameChanged,
+                      initialValue: tripStop?.name,
+                      maxLines: 1,
+                      textInputAction: TextInputAction.next,
+                      label: LocaleKeys.tripStopName.tr(),
+                      hint: LocaleKeys.tripStopNameHint.tr(),
+                    ),
+                    const SizedBox(height: verticalSpaceL),
+                    FieldWidget(
+                      key: const Key('descriptionWidget'),
+                      onDescriptionChanged: onDescriptionChanged,
+                      initialValue: tripStop?.description,
+                      label: LocaleKeys.tripStopDescription.tr(),
+                      hint: LocaleKeys.tripStopDescriptionHint.tr(),
+                      maxLines: null,
+                    ),
+                    const SizedBox(height: verticalSpaceL),
+                    DurationWidget(
+                      key: const Key('durationWidget'),
+                      onHourDurationChanged: onHourDurationChanged,
+                      onMinuteDurationChanged: onMinuteDurationChanged,
+                      hourDuration: hourDuration,
+                      minuteDuration: minuteDuration,
+                      initialHourDuration: tripStop != null ? tripStop!.duration ~/ 60 : 0,
+                      initialMinuteDuration: tripStop != null ? tripStop!.duration % 60 : 0,
+                    ),
+                    const SizedBox(height: verticalSpaceL),
+                    GooglePlacesSuggestionsWidget(
+                      labelText: LocaleKeys.searchTripStopLocation.tr(),
+                      hintText: LocaleKeys.tripStopLocationHint.tr(),
+                      onSuggestionSelected: (placeDetails) {
+                        onLocationChanged(placeDetails?.location);
+                        location.add(placeDetails?.location);
+                      },
+                      noInternetConnectionMessage: LocaleKeys.noInternetConnectionMessage.tr(),
+                      requestDeniedMessage: LocaleKeys.requestDenied.tr(),
+                      unknownErrorMessage: LocaleKeys.unknownError.tr(),
+                    ),
+                    const SizedBox(height: verticalSpaceL),
+                    saveSection,
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
