@@ -52,8 +52,7 @@ class _NewTripPageBody extends HookWidget {
 
     return MultiBlocListener(
       listeners: [
-        //Show error message on error+
-
+        //Show error message on error
         BlocListener<NewTripCubit, NewTripState>(
           listener: (context, state) => state.mapOrNull(
               error: (state) => ScaffoldMessenger.of(context).showSnackBar(
@@ -84,19 +83,21 @@ class _NewTripPageBody extends HookWidget {
           ),
         ),
       ],
-      child: NewEditTripForm(
-        onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-        onNameChanged: (String value) => cubit.nameChanged(value),
-        onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
-        saveSection: _CreateTripButton(isSaving: isSaving.stream),
-        onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
-        onLanguageCodeChanged: (value) => cubit.languageCodeChanged(value),
-        isSaving: isSaving.stream,
-        initialTripName: _existingTrip?.name,
-        initialTripDescription: _existingTrip?.description,
-        initialLanguageCode: cubit.state.maybeMap(
-          normal: (state) => state.languageCode,
-          orElse: () => throw const UnexpectedStateException(),
+      child: Center(
+        child: NewEditTripForm(
+          onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+          onNameChanged: (String value) => cubit.nameChanged(value),
+          onStartDateChanged: (DateTime value) => cubit.startDateChanged(value),
+          saveSection: _CreateTripButton(isSaving: isSaving.stream),
+          onIsPublicChanged: (bool value) => cubit.isPublicChanged(value),
+          onLanguageCodeChanged: (value) => cubit.languageCodeChanged(value),
+          isSaving: isSaving.stream,
+          initialTripName: _existingTrip?.name,
+          initialTripDescription: _existingTrip?.description,
+          initialLanguageCode: cubit.state.maybeMap(
+            normal: (state) => state.languageCode,
+            orElse: () => throw const UnexpectedStateException(),
+          ),
         ),
       ),
     );
