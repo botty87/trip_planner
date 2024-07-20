@@ -5,21 +5,18 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../ui/presentation/widgets/background/background_image_wrapper.dart';
+import '../../../../../../core/utilities/extensions.dart';
 import '../../../cubit/trip_stops_map/trip_stops_map_cubit.dart';
 
-class MapDirectionsSwitcher extends StatelessWidget with BackgroundImageMixin {
+class MapDirectionsSwitcher extends StatelessWidget {
   const MapDirectionsSwitcher({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final showDirections =
-        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
-
-    final hasBackgroundImage = this.hasBackgroundImage(context);
+    final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
 
     return Container(
-      color: hasBackgroundImage ? Theme.of(context).scaffoldBackgroundColor : null,
+      color: context.hasBackgroundImage ? Theme.of(context).scaffoldBackgroundColor : null,
       child: Column(
         children: [
           SwitchListTile.adaptive(
@@ -37,18 +34,14 @@ class MapDirectionsSwitcher extends StatelessWidget with BackgroundImageMixin {
                     return SwitchListTile.adaptive(
                       title: Text(LocaleKeys.useDifferentColors.tr()),
                       value: useDifferentColors,
-                      onChanged: (value) =>
-                          context.read<TripStopsMapCubit>().useDifferentColorsChanged(value),
+                      onChanged: (value) => context.read<TripStopsMapCubit>().useDifferentColorsChanged(value),
                     );
                   },
                 ),
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        top: verticalSpaceXs,
-                        bottom: verticalSpaceS,
-                        left: horizontalSpaceS,
-                        right: horizontalSpaceS),
+                        top: verticalSpaceXs, bottom: verticalSpaceS, left: horizontalSpaceS, right: horizontalSpaceS),
                     child: BlocSelector<TripStopsMapCubit, TripStopsMapState, TravelMode>(
                       selector: (state) => state.dayTrip.travelMode,
                       builder: (context, travelMode) {

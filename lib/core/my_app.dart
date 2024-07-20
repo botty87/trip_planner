@@ -65,31 +65,6 @@ class MyApp extends StatelessWidget {
                       _backgroundImageListener(context)
                     ],
                     child: child!,
-                    // TODO:  check if this is needed
-                    /* ResponsiveBreakpoints.builder(
-                      child: Builder(
-                        builder: (context) {
-                          return ResponsiveScaledBox(
-                              width: ResponsiveValue<double>(
-                                context,
-                                defaultValue: 450,
-                                conditionalValues: [
-                                  const Condition.equals(name: MOBILE, value: 400),
-                                  const Condition.equals(name: TABLET, value: 800),
-                                  const Condition.equals(name: DESKTOP, value: 1200),
-                                  const Condition.equals(name: '4K', value: 2000),
-                                ],
-                              ).value,
-                              child: BackgroundImageWrapper(child: child!));
-                        },
-                      ),
-                      breakpoints: const [
-                        Breakpoint(start: 0, end: 450, name: MOBILE),
-                        Breakpoint(start: 451, end: 1200, name: TABLET),
-                        Breakpoint(start: 1201, end: 1920, name: DESKTOP),
-                        Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-                      ],
-                    ), */
                   ),
                 );
               },

@@ -3,21 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
+import '../../../../../core/utilities/extensions.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../background/background_image_wrapper.dart';
 
-class GenericErrorWidget extends StatelessWidget with BackgroundImageMixin {
+class GenericErrorWidget extends StatelessWidget {
   final String message;
   final VoidCallback? onRetry;
   const GenericErrorWidget({super.key, required this.message, this.onRetry});
 
   @override
   Widget build(BuildContext context) {
-    final hasBackgroundImage = this.hasBackgroundImage(context);
-
-    if (hasBackgroundImage) {
+    if (context.hasBackgroundImage) {
       return Card(
         margin: defaultPagePadding,
         elevation: 8,

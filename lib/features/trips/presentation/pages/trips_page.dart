@@ -8,7 +8,6 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
@@ -19,12 +18,11 @@ import '../widgets/trips_page/trips_error_widget.dart';
 import '../widgets/trips_page/trips_page_initial_widget.dart';
 
 @RoutePage()
-class TripsPage extends StatelessWidget with BackgroundImageMixin {
+class TripsPage extends StatelessWidget  {
   const TripsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final hasBackgroundImage = this.hasBackgroundImage(context);
     final userId = switch (context.read<UserCubit>().state) {
       final UserStateLoggedIn loggedInState => loggedInState.user.id,
       _ => null,
@@ -38,9 +36,9 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
     return BlocProvider<TripsCubit>(
       create: (context) => getIt(param1: userId)..startListenTrips(),
       child: ScaffoldTransparent(
-        hasBackgroundImage: hasBackgroundImage,
+        hasBackgroundImage: context.hasBackgroundImage,
         appBar: AppBar(
-          scrolledUnderElevation: hasBackgroundImage ? 0 : null,
+          scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
           backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
           title: Text(LocaleKeys.tripsPageTitle.tr()),
         ),

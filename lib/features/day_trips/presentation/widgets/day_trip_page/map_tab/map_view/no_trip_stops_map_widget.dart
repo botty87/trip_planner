@@ -7,10 +7,9 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../../../../core/constants.dart';
 import '../../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../../core/utilities/extensions.dart';
-import '../../../../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../../../../../../../gen/assets.gen.dart';
 
-class NoTripStopsMapWidget extends StatelessWidget with BackgroundImageMixin {
+class NoTripStopsMapWidget extends StatelessWidget {
   final double imageHeight;
   const NoTripStopsMapWidget({super.key, required this.imageHeight});
 
@@ -59,9 +58,7 @@ class NoTripStopsMapWidget extends StatelessWidget with BackgroundImageMixin {
       );
     }
 
-    final hasBackgroundImage = this.hasBackgroundImage(context);
-
-    if (hasBackgroundImage) {
+    if (context.hasBackgroundImage) {
       return Card(
         color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
         margin: defaultPagePadding,

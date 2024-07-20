@@ -56,9 +56,3 @@ class _BackgroundImage extends StatelessWidget {
     );
   }
 }
-
-@Deprecated('Use context.hasBackgroundImage instead')
-mixin BackgroundImageMixin {
-  bool hasBackgroundImage(BuildContext context) =>
-      context.select((BackgroundsCubit cubit) => cubit.state.currentBackgroundImage != null);
-}
