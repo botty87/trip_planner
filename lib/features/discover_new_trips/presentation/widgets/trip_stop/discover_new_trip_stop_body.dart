@@ -5,21 +5,7 @@ class _DiscoverNewTripStopBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: check this
-    /* if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
-      return const _VerticalLayout();
-    } else {
-      return OrientationBuilder(
-        builder: (context, orientation) {
-          if (orientation == Orientation.portrait) {
-            return const _VerticalLayout();
-          } else {
-            return const _HorizontalLayout();
-          }
-        },
-      );
-    } */
-   return OrientationBuilder(
+    return OrientationBuilder(
       builder: (context, orientation) {
         if (orientation == Orientation.portrait) {
           return const _VerticalLayout();

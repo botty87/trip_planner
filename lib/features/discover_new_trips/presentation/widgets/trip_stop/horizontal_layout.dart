@@ -7,24 +7,33 @@ class _HorizontalLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final tripStop = context.read<DiscoverNewTripStopCubit>().state.tripStop;
 
-    return Row(
-      children: [
-        const Expanded(child: _MapWidget()),
-        const SizedBox(width: horizontalSpace),
-        Expanded(
-          child: SingleChildScrollView(
-            padding:
-                const EdgeInsets.only(right: pageHorizontalPadding, bottom: pageVerticalPadding),
-            child: Column(
-              children: [
-                _TripStopDescription(description: tripStop.description),
-                const SizedBox(height: verticalSpace),
-                const _TripStopDurationWidget(),
-              ],
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: maxRowWidth),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Flexible(
+              child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: maxListViewWidth), child: const _MapWidget()),
             ),
-          ),
+            const SizedBox(width: horizontalSpace),
+            Flexible(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                child: ListView(
+                  padding: const EdgeInsets.only(right: pageHorizontalPadding, bottom: pageVerticalPadding),
+                  children: [
+                    _TripStopDescription(description: tripStop.description),
+                    const SizedBox(height: verticalSpace),
+                    const _TripStopDurationWidget(),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
