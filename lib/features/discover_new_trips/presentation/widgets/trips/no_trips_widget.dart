@@ -25,10 +25,10 @@ class _NoTripsWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible(
+            AspectRatio(
+              aspectRatio: 3 / 2,
               child: SvgPicture(
                 AssetBytesLoader(Assets.svg.noPublicTripsSvg),
-                height: 250,
               ),
             ),
           ],
