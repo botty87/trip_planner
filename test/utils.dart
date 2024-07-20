@@ -2,7 +2,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/settings/presentation/cubit/settings_cubit.dart';
@@ -33,8 +32,7 @@ const tBackgroundsState = BackgroundsState();
 const tDayTrip = DayTrip(
   id: 'id',
   index: 0,
-  description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis, justo in aliquet.',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis, justo in aliquet.',
 );
 
 final tTrip = Trip(
@@ -58,8 +56,7 @@ const tTripStop = TripStop(
 
 final tDayTripStateLoaded = DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: []);
 
-final tTripStopStateNormal =
-    TripStopState.normal(tripStop: tTripStop, trip: tTrip, dayTrip: tDayTrip);
+final tTripStopStateNormal = TripStopState.normal(tripStop: tTripStop, trip: tTrip, dayTrip: tDayTrip);
 
 class TestUtils {
   static Widget defaultWidget({
@@ -91,16 +88,6 @@ class TestUtils {
           BlocProvider(create: (context) => settingsCubit ?? MockSettingsCubit()),
           BlocProvider(create: (context) => backgroundsCubit ?? MockBackgroundsCubit()),
         ],
-        child: MaterialApp(
-          home: ResponsiveBreakpoints(
-            breakpoints: const [
-              Breakpoint(start: 0, end: 450, name: MOBILE),
-              Breakpoint(start: 451, end: 1000, name: TABLET),
-              Breakpoint(start: 1001, end: 1920, name: DESKTOP),
-              Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-            ],
-            child: child,
-          ),
-        ),
+        child: MaterialApp(home: child),
       );
 }
