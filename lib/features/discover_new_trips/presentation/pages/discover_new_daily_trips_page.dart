@@ -7,7 +7,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import '../../../../core/constants.dart';

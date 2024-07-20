@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import '../../../../../../core/constants.dart';
@@ -24,10 +23,13 @@ class ListViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      final maxWidth = (ResponsiveBreakpoints.of(context).largerThan(MOBILE) &&
+      //TODO: check this
+      /* final maxWidth = (ResponsiveBreakpoints.of(context).largerThan(MOBILE) &&
               orientation == Orientation.portrait)
           ? constraints.maxWidth * 0.8
-          : constraints.maxWidth;
+          : constraints.maxWidth; */
+
+      final maxWidth = constraints.maxWidth;
 
       final additionalHorizontalPadding = (constraints.maxWidth - maxWidth) / 2;
 

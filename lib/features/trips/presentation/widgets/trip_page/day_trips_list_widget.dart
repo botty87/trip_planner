@@ -11,9 +11,9 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../ui/presentation/widgets/generics/transparent_list_decorator.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../day_trips/domain/entities/day_trip.dart';
+import '../../../../ui/presentation/widgets/generics/transparent_list_decorator.dart';
 import '../../cubit/trip/trip_cubit.dart';
 import 'day_trip_card.dart';
 
@@ -24,8 +24,8 @@ class DayTripsListWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     //Use this for the animation
-    final previousHasDayTrips = usePrevious(context.select<TripCubit, bool?>(
-        (cubit) => cubit.state.whenOrNull(loaded: (trip, dayTrips) => dayTrips.isNotEmpty)));
+    final previousHasDayTrips = usePrevious(context
+        .select<TripCubit, bool?>((cubit) => cubit.state.whenOrNull(loaded: (trip, dayTrips) => dayTrips.isNotEmpty)));
 
     final hasDayTrips = context.select((TripCubit cubit) => cubit.state.maybeMap(
           loaded: (state) => state.dayTrips.isNotEmpty,
@@ -33,9 +33,9 @@ class DayTripsListWidget extends HookWidget {
         ));
 
     if (hasDayTrips) {
-      return const Padding(
-        padding: EdgeInsets.only(bottom: verticalSpaceXs),
-        child: DayTripsList(),
+      return Padding(
+        padding: const EdgeInsets.only(bottom: verticalSpaceXs),
+        child: DayTripsList(orientation: orientation),
       );
     } else {
       return orientation == Orientation.portrait ? const SizedBox.shrink() : const NoDayTrips();
@@ -68,13 +68,15 @@ class NoDayTrips extends StatelessWidget {
 }
 
 class DayTripsList extends HookWidget {
-  const DayTripsList({super.key});
+  const DayTripsList({super.key, required this.orientation});
+
+  final Orientation orientation;
 
   @override
   Widget build(BuildContext context) {
     //Use this for the animation
-    final previousDayTrips = usePrevious(
-        context.read<TripCubit>().state.whenOrNull(loaded: (trip, dayTrips) => dayTrips));
+    final previousDayTrips =
+        usePrevious(context.read<TripCubit>().state.whenOrNull(loaded: (trip, dayTrips) => dayTrips));
 
     final dayTrips = context.select((TripCubit cubit) => cubit.state.maybeMap(
           loaded: (state) => state.dayTrips,
@@ -84,7 +86,8 @@ class DayTripsList extends HookWidget {
     final tripStartDate = context.select((TripCubit cubit) => cubit.state.trip.startDate);
 
     return ImplicitlyAnimatedReorderableList<DayTrip>(
-      shrinkWrap: true,
+      shrinkWrap:
+          orientation == Orientation.portrait, //TODO: check if this is needed. https://pub.dev/packages/reorderables
       items: dayTrips,
       itemBuilder: (context, itemAnimation, dayTrip, index) {
         // Each item must be wrapped in a Reorderable widget.

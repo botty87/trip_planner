@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import '../../../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../cubit/trip_stop/trip_stop_cubit.dart';
 import '../../new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
@@ -112,7 +111,8 @@ class TripStopPageBody extends HookWidget {
                 isSavingOrDeleting ? const LinearProgressIndicator() : const SizedBox.shrink(),
                 Expanded(
                   child: Builder(builder: (context) {
-                    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
+                    //TODO: check this
+                    /* if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
                       return const TripStopPageBodyVertical();
                     } else {
                       return OrientationBuilder(
@@ -124,7 +124,16 @@ class TripStopPageBody extends HookWidget {
                           }
                         },
                       );
-                    }
+                    } */
+                   return OrientationBuilder(
+                      builder: (context, orientation) {
+                        if (orientation == Orientation.portrait) {
+                          return const TripStopPageBodyVertical();
+                        } else {
+                          return const TripStopPageBodyHorizontal();
+                        }
+                      },
+                    );
                   }),
                 ),
               ],

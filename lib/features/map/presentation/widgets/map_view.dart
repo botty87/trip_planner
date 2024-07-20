@@ -169,16 +169,19 @@ class _MapView extends HookWidget {
   List<Widget> _orderedMarkerWidgets(BuildContext context) {
     final List<Widget> markerWidgets = [];
 
-    final ResponsiveValue<double> responsiveMarkerSize = ResponsiveValue(
+    //TODO: check this
+    /* final ResponsiveValue<double> responsiveMarkerSize = ResponsiveValue(
       context,
       defaultValue: 50,
       conditionalValues: [
         const Condition.largerThan(name: TABLET, value: 30),
         const Condition.largerThan(name: DESKTOP, value: 18),
       ],
-    );
+    ); */
 
-    final double markerSize = kIsWeb ? 20 : responsiveMarkerSize.value;
+    //final double markerSize = kIsWeb ? 20 : responsiveMarkerSize.value; 
+
+    final double markerSize = 50;
 
     for (int i = 0; i < (_mapPlaces?.length ?? 0); i++) {
       final color = _mapPlaces![i].when(

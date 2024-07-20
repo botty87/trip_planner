@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../../../../core/constants.dart';
 import '../add_day_trip_card.dart';
@@ -11,27 +13,41 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
-      child: Row(
-        children: [
-          Expanded(child: DayTripsListWidget(orientation: Orientation.landscape)),
-          SizedBox(width: horizontalSpaceL),
-          Expanded(
-            child: SafeArea(
-              minimum: EdgeInsets.only(bottom: pageVerticalPadding),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(child: SingleChildScrollView(child: TripHeader())),
-                  AddDayTripCard(),
-                  SizedBox(height: verticalSpaceXL),
-                  DeleteTripButton(),
-                ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: maxListViewWidth * 2.2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Flexible(
+              child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                  child: const DayTripsListWidget(orientation: Orientation.landscape)),
+            ),
+            const SizedBox(width: horizontalSpaceL),
+            Flexible(
+              child: SafeArea(
+                minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Flexible(child: SingleChildScrollView(child: TripHeader())),
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: maxListViewWidth * 0.9),
+                        child: const AddDayTripCard(),
+                      ),
+                      const SizedBox(height: verticalSpaceXL),
+                      const DeleteTripButton(),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

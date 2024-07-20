@@ -12,9 +12,11 @@ class _ListView extends HookWidget {
     useAutomaticKeepAlive();
 
     return LayoutBuilder(builder: (context, constraints) {
-      final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+      //TODO: check this
+      /* final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
           ? constraints.maxWidth * 0.8
-          : constraints.maxWidth;
+          : constraints.maxWidth; */
+      final maxWidth = constraints.maxWidth;
 
       final horizantalPadding = (constraints.maxWidth - maxWidth) / 2 + pageHorizontalPadding;
 

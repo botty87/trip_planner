@@ -51,7 +51,7 @@ class _VerticalLayout extends HookWidget {
         children: [
           LayoutBuilder(
             builder: (context, constraints) {
-              final multiplyValue = ResponsiveValue<double>(
+              /* final multiplyValue = ResponsiveValue<double>(
                 context,
                 defaultValue: 0.75,
                 conditionalValues: [
@@ -62,7 +62,9 @@ class _VerticalLayout extends HookWidget {
               double height = (constraints.maxWidth * multiplyValue);
               if (height > 300) {
                 height = 300;
-              }
+              } */
+              //TODO: check this
+              final height = constraints.maxWidth * 0.75;
               return SvgPicture(
                 height: height,
                 key: const Key('tripImage'),

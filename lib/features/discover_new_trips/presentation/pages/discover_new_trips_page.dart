@@ -7,7 +7,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vector_graphics/vector_graphics.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';

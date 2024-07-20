@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+
 import '../../../../../../core/constants.dart';
 import '../add_day_trip_card.dart';
 import '../day_trips_list_widget.dart';
@@ -13,14 +13,8 @@ class TripPageLoadedVerticalLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
-            ? constraints.maxWidth * 0.8
-            : constraints.maxWidth;
-
         return ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: maxWidth,
-          ),
+          constraints: const BoxConstraints(maxWidth: maxListViewWidth),
           child: ListView(
             padding: defaultPagePadding,
             children: const [

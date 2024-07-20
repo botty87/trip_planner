@@ -8,9 +8,11 @@ class _DiscoverNewTripsLoaded extends StatelessWidget {
     return Center(
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+          //TODO: check this
+          /* final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
               ? constraints.maxWidth * 0.8
-              : constraints.maxWidth;
+              : constraints.maxWidth; */
+          final maxWidth = constraints.maxWidth;
 
           return ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),

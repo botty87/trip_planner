@@ -85,7 +85,6 @@ dependencies:
   password_text_field: ^2.0.0
   path_provider: ^2.1.2
   quiver: ^3.2.1
-  responsive_framework: ^1.1.1
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
   showcaseview: ^3.0.0

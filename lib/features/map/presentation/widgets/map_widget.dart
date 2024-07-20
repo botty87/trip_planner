@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';

@@ -5,7 +5,8 @@ class _DiscoverNewTripStopBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
+    //TODO: check this
+    /* if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
       return const _VerticalLayout();
     } else {
       return OrientationBuilder(
@@ -17,6 +18,15 @@ class _DiscoverNewTripStopBody extends StatelessWidget {
           }
         },
       );
-    }
+    } */
+   return OrientationBuilder(
+      builder: (context, orientation) {
+        if (orientation == Orientation.portrait) {
+          return const _VerticalLayout();
+        } else {
+          return const _HorizontalLayout();
+        }
+      },
+    );
   }
 }

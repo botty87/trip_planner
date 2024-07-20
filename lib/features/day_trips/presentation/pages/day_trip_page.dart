@@ -5,7 +5,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
@@ -56,19 +55,21 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
       child: Builder(
         builder: (BuildContext context) {
           return PopScope(
-            canPop: false,
-            onPopInvoked: (bool didPop) async {
-              if (didPop) {
-                return;
-              }
+              canPop: false,
+              onPopInvoked: (bool didPop) async {
+                if (didPop) {
+                  return;
+                }
 
-              final success = await _onWillPop(context);
+                final success = await _onWillPop(context);
 
-              if (success && context.mounted) {
-                Navigator.of(context).pop();
-              }
-            },
-            child: ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
+                if (success && context.mounted) {
+                  Navigator.of(context).pop();
+                }
+              },
+              child:
+                  //TODO: check this
+                  /* ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)
                 ? _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream)
                 : OrientationBuilder(builder: (context, orientation) {
                     if (orientation == Orientation.portrait) {
@@ -78,15 +79,21 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
                       return _horizontalLayout(
                           context, isSaving, isModalBottomEditing, errorMessageStream);
                     }
-                  }),
-          );
+                  }), */
+                  OrientationBuilder(builder: (context, orientation) {
+                if (orientation == Orientation.portrait) {
+                  return _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream);
+                } else {
+                  return _horizontalLayout(context, isSaving, isModalBottomEditing, errorMessageStream);
+                }
+              }));
         },
       ),
     );
   }
 
-  Widget _verticalLayout(BuildContext context, StreamController<bool> isSaving,
-      ObjectRef isModalBottomEditing, StreamController<String?> errorMessageStream) {
+  Widget _verticalLayout(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
+      StreamController<String?> errorMessageStream) {
     return DefaultTabController(
       length: 2,
       child: _horizontalLayout(context, isSaving, isModalBottomEditing, errorMessageStream,
@@ -94,8 +101,8 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
     );
   }
 
-  Widget _horizontalLayout(BuildContext context, StreamController<bool> isSaving,
-      ObjectRef isModalBottomEditing, StreamController<String?> errorMessageStream,
+  Widget _horizontalLayout(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
+      StreamController<String?> errorMessageStream,
       {Orientation orientation = Orientation.landscape}) {
     return ScaffoldTransparent(
       appBar: _buildAppBar(context, orientation),
@@ -215,20 +222,17 @@ class DayTripPage extends HookWidget with BackgroundImageMixin {
       bottom: orientation == Orientation.portrait
           ? PreferredSize(
               preferredSize: const Size.fromHeight(48),
-              child: TabBar(
-                  tabs: [
-                    Tab(icon: Icon(Icons.list, semanticLabel: LocaleKeys.list.tr())),
-                    Tab(icon: Icon(Icons.map, semanticLabel: LocaleKeys.map.tr())),
-                  ],
-                  indicator: const UnderlineTabIndicator(borderSide: BorderSide.none),
-                  dividerColor: Colors.transparent),
+              child: TabBar(tabs: [
+                Tab(icon: Icon(Icons.list, semanticLabel: LocaleKeys.list.tr())),
+                Tab(icon: Icon(Icons.map, semanticLabel: LocaleKeys.map.tr())),
+              ], indicator: const UnderlineTabIndicator(borderSide: BorderSide.none), dividerColor: Colors.transparent),
             )
           : null,
     );
   }
 
-  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving,
-      ObjectRef isModalBottomEditing, StreamController<String?> errorMessage) {
+  _showModalBottomEditing(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
+      StreamController<String?> errorMessage) {
     final cubit = context.read<DayTripCubit>();
     isModalBottomEditing.value = true;
 

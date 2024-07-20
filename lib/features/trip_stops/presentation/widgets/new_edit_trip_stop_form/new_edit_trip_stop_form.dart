@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
@@ -142,7 +141,8 @@ class NewEditTripStopForm extends StatelessWidget {
         Flexible(
           child: SafeArea(
             child: Builder(builder: (context) {
-              if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
+              //TODO: check this
+              /* if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(MOBILE)) {
                 return getVerticalLayout();
               } else {
                 return OrientationBuilder(
@@ -154,7 +154,16 @@ class NewEditTripStopForm extends StatelessWidget {
                     }
                   },
                 );
-              }
+              } */
+             return OrientationBuilder(
+                builder: (context, orientation) {
+                  if (orientation == Orientation.portrait) {
+                    return getVerticalLayout();
+                  } else {
+                    return getHorizontalLayout();
+                  }
+                },
+              );
             }),
           ),
         ),
