@@ -13,8 +13,8 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
-import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../cubit/account_page/account_cubit.dart';
 import '../cubit/user/user_cubit.dart';
 
@@ -66,9 +66,12 @@ class AccountPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SliverFillRemaining(
+              SliverFillRemaining(
                 hasScrollBody: false,
-                child: _AccountPageBody(),
+                child: Center(
+                    child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                        child: const _AccountPageBody())),
               ),
             ],
           );
@@ -79,8 +82,7 @@ class AccountPage extends StatelessWidget {
               current is! AccountStateReauthenticating &&
               previous is! AccountStateReauthenticating,
           builder: (context, state) {
-            final isVisible =
-                context.select((AccountCubit cubit) => cubit.state is AccountStateNormal);
+            final isVisible = context.select((AccountCubit cubit) => cubit.state is AccountStateNormal);
 
             //Animate the fab, fade in and scale up when visible, fade out and scale down when not visible
             return AnimatedSwitcher(
