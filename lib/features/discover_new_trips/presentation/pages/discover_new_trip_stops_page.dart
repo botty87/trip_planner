@@ -3,23 +3,24 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../../core/utilities/pair.dart';
-import '../../../ui/presentation/widgets/day_trip/generic_travel_card.dart';
-import '../../../ui/presentation/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
-import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
-import '../../../ui/presentation/widgets/trip/generic_trip_card.dart';
-import '../../../ui/presentation/widgets/trip/generic_trip_description.dart';
-import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../map/domain/entities/map_place.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../trips/domain/entities/trip.dart';
+import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
+import '../../../ui/presentation/widgets/day_trip/generic_travel_card.dart';
+import '../../../ui/presentation/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
+import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../ui/presentation/widgets/trip/generic_trip_card.dart';
+import '../../../ui/presentation/widgets/trip/generic_trip_description.dart';
 import '../cubit/trip_stops/discover_new_trip_stops_cubit.dart';
 
 part '../widgets/trip_stops/discover_new_trip_stops_body.dart';
@@ -45,8 +46,7 @@ class DiscoverNewTripStopsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DiscoverNewTripStopsCubit>(
-      create: (context) =>
-          getIt<DiscoverNewTripStopsCubit>(param1: _trip.id, param2: _dayTrip.id)..fetchTripStops(),
+      create: (context) => getIt<DiscoverNewTripStopsCubit>(param1: _trip.id, param2: _dayTrip.id)..fetchTripStops(),
       child: BlocSelector<DiscoverNewTripStopsCubit, DiscoverNewTripStopsState, bool>(
         selector: (state) {
           return state.maybeMap(

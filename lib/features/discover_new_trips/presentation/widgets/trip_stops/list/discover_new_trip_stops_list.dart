@@ -21,27 +21,29 @@ class _DiscoverNewTripStopsList extends StatelessWidget with TripStopStartEndTim
 
     //this is needed to avoid the recalculation of the trip start and end times on every build
     final List<Pair<DateTime, DateTime>> tripStopStartEndTimes = [];
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: tripStops.length,
-      itemBuilder: (context, index) {
-        final tripStop = tripStops[index];
-        if (tripStopStartEndTimes.length <= index) {
-          tripStopStartEndTimes.add(getTripStartEndTimes(
-            tripStops: tripStops,
-            tripStopStartEndTimes: tripStopStartEndTimes,
-            dayTripStartDateTime: dayTripStartDateTime,
-            currentIndex: index,
-          ));
-        }
 
-        return _TripStopCard(
-          tripStop: tripStop,
-          tripStartEndTimes: tripStopStartEndTimes[index],
-        );
-      },
-      separatorBuilder: (context, index) => _TravelCard(tripStop: tripStops[index]),
+    return SliverPadding(
+      padding: const EdgeInsets.only(bottom: pageVerticalPadding),
+      sliver: SliverList.separated(
+        itemCount: tripStops.length,
+        itemBuilder: (context, index) {
+          final tripStop = tripStops[index];
+          if (tripStopStartEndTimes.length <= index) {
+            tripStopStartEndTimes.add(getTripStartEndTimes(
+              tripStops: tripStops,
+              tripStopStartEndTimes: tripStopStartEndTimes,
+              dayTripStartDateTime: dayTripStartDateTime,
+              currentIndex: index,
+            ));
+          }
+
+          return _TripStopCard(
+            tripStop: tripStop,
+            tripStartEndTimes: tripStopStartEndTimes[index],
+          );
+        },
+        separatorBuilder: (context, index) => _TravelCard(tripStop: tripStops[index]),
+      ),
     );
   }
 }

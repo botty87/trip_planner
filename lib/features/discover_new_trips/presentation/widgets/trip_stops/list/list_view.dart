@@ -11,31 +11,17 @@ class _ListView extends HookWidget {
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
 
-    return LayoutBuilder(builder: (context, constraints) {
-      //TODO: check this
-      /* final maxWidth = ResponsiveBreakpoints.of(context).largerThan(MOBILE)
-          ? constraints.maxWidth * 0.8
-          : constraints.maxWidth; */
-      final maxWidth = constraints.maxWidth;
-
-      final horizantalPadding = (constraints.maxWidth - maxWidth) / 2 + pageHorizontalPadding;
-
-      return SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(
-          horizantalPadding,
-          pageVerticalPadding,
-          horizantalPadding,
-          pageVerticalPadding,
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.only(
+              top: pageVerticalPadding, left: pageHorizontalPadding, right: pageHorizontalPadding),
+          sliver: SliverToBoxAdapter(child: _TripStopsHeader(description: _dayTrip.description)),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _TripStopsHeader(description: _dayTrip.description),
-            if (_dayTrip.description?.isNotEmpty ?? false) const SizedBox(height: verticalSpaceL),
-            _DiscoverNewTripStopsList(dayTrip: _dayTrip),
-          ],
-        ),
-      );
-    });
+        if (_dayTrip.description?.isNotEmpty ?? false)
+          const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
+        _DiscoverNewTripStopsList(dayTrip: _dayTrip),
+      ],
+    );
   }
 }

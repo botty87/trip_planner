@@ -19,17 +19,21 @@ class _DiscoverNewTripStopsBody extends StatelessWidget {
         return TripPagesAnimatedSwitcher(
           child: state.map(
             initial: (_) => const SizedBox.shrink(),
-            loaded: (state) => hasTripStops
-                ? TabBarView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: [
-                      _ListView(dayTrip: _dayTrip),
-                      const _DiscoverNewTripStopsMapTab(),
-                    ],
-                  )
-                : _ListView(
-                    dayTrip: _dayTrip,
-                  ),
+            loaded: (state) => Align(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                child: hasTripStops
+                    ? TabBarView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          _ListView(dayTrip: _dayTrip),
+                          const _DiscoverNewTripStopsMapTab(),
+                        ],
+                      )
+                    : _ListView(dayTrip: _dayTrip),
+              ),
+            ),
             error: (state) => const Center(child: _DiscoverNewTripStopsErrorWidget()),
           ),
         );
