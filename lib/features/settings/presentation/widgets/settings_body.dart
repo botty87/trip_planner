@@ -21,7 +21,7 @@ class SettingsBody extends StatelessWidget {
               child: Wrap(
                 spacing: horizontalSpaceL * 2,
                 runSpacing: verticalSpaceL,
-                alignment: WrapAlignment.center,
+                alignment: WrapAlignment.start,
                 children: [
                   DayTripSection(),
                   ThemeSection(),

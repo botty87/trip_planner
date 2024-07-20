@@ -10,6 +10,7 @@ import '../features/settings/domain/entities/backgrounds_container.dart';
 import '../features/settings/presentation/cubit/settings_cubit.dart';
 import '../features/tutorials/presentation/cubit/tutorial_cubit.dart';
 import '../features/ui/presentation/cubit/backgrounds_cubit.dart';
+import '../features/ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'di/di.dart';
 import 'routes/app_router.dart';
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
                       _tutorialsListener(),
                       _backgroundImageListener(context)
                     ],
-                    child: child!,
+                    child: BackgroundImageWrapper(child: child!),
                   ),
                 );
               },

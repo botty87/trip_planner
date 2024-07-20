@@ -17,11 +17,11 @@ class ThemeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         SettingsSectionHeader(title: LocaleKeys.theme.tr()),
-        const _ModeSelector(),
+        const Center(child: _ModeSelector()),
       ],
     );
   }
