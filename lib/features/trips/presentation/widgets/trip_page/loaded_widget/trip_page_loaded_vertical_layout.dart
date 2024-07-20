@@ -11,17 +11,27 @@ class TripPageLoadedVerticalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Make sure there is a scroll controller attached to the scroll view that contains ReorderableSliverList.
+    // Otherwise an error will be thrown.
+    final scrollController = PrimaryScrollController.of(context);
+
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-      child: ListView(
-        padding: defaultPagePadding,
-        children: const [
-          TripHeader(),
-          DayTripsListWidget(orientation: Orientation.portrait),
-          AddDayTripCard(),
-          SizedBox(height: verticalSpaceL),
-          SafeArea(child: DeleteTripButton()),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
+        child: CustomScrollView(
+          controller: scrollController,
+          slivers: const [
+            SliverToBoxAdapter(child: TripHeader()),
+            DayTripsListWidget(orientation: Orientation.portrait),
+            SliverToBoxAdapter(child: AddDayTripCard()),
+            SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
+            SliverPadding(
+              padding: EdgeInsets.only(bottom: pageVerticalPadding),
+              sliver: SliverToBoxAdapter(child: SafeArea(child: DeleteTripButton())),
+            ),
+          ],
+        ),
       ),
     );
   }

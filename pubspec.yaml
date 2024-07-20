@@ -94,6 +94,7 @@ dependencies:
   talker_flutter: ^4.2.4
   vector_graphics: ^1.1.9
   webview_flutter: ^4.4.2
+  reorderables: ^0.6.0
 
 dev_dependencies:
   auto_route_generator: ^8.0.0

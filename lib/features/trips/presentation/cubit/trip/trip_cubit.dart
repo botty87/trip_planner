@@ -55,8 +55,7 @@ class TripCubit extends Cubit<TripState> {
 
   startListenDayTrips() {
     _dayTripsSubscription?.cancel();
-    _dayTripsSubscription =
-        _listenDayTrips(ListenDayTripsParams(tripId: state.trip.id)).listen((result) {
+    _dayTripsSubscription = _listenDayTrips(ListenDayTripsParams(tripId: state.trip.id)).listen((result) {
       result.fold(
         (failure) {
           emit(TripState.error(
@@ -115,8 +114,7 @@ class TripCubit extends Cubit<TripState> {
   }
 
   void descriptionChanged(String value) {
-    state.mapOrNull(
-        editing: (state) => emit(state.copyWith(description: value, errorMessage: null)));
+    state.mapOrNull(editing: (state) => emit(state.copyWith(description: value, errorMessage: null)));
   }
 
   void startDateChanged(DateTime value) {
@@ -128,8 +126,7 @@ class TripCubit extends Cubit<TripState> {
   }
 
   void languageCodeChanged(String value) {
-    state.mapOrNull(
-        editing: (state) => emit(state.copyWith(languageCode: value, errorMessage: null)));
+    state.mapOrNull(editing: (state) => emit(state.copyWith(languageCode: value, errorMessage: null)));
   }
 
   void saveChanges() async {
@@ -213,14 +210,14 @@ class TripCubit extends Cubit<TripState> {
     );
   }
 
-  void reorderDayTrips(int oldIndex, int newIndex, List<DayTrip> dayTripsSorted) async {
+  void reorderDayTrips(int oldIndex, int newIndex) async {
     if (state case final TripStateLoaded state) {
       final oldDayTrips = state.dayTrips;
+      final newDayTrips = List<DayTrip>.from(oldDayTrips);
+      newDayTrips.removeAt(oldIndex);
+      newDayTrips.insert(newIndex, oldDayTrips[oldIndex]);
 
-      for (int i = 0; i < dayTripsSorted.length; i++) {
-        dayTripsSorted[i] = dayTripsSorted[i].copyWith(index: i);
-      }
-      emit(TripState.loaded(trip: state.trip, dayTrips: dayTripsSorted));
+      emit(TripState.loaded(trip: state.trip, dayTrips: newDayTrips));
 
       final List<DayTrip> dayTripsToUpdate = [];
 
@@ -235,8 +232,8 @@ class TripCubit extends Cubit<TripState> {
         }
       }
 
-      final result = await _updateDayTripsIndexes(
-          UpdateDayTripsIndexesParams(dayTrips: dayTripsToUpdate, tripId: state.trip.id));
+      final result =
+          await _updateDayTripsIndexes(UpdateDayTripsIndexesParams(dayTrips: dayTripsToUpdate, tripId: state.trip.id));
 
       result.leftMap(
         (failure) {
@@ -253,8 +250,7 @@ class TripCubit extends Cubit<TripState> {
 
   void modalBottomEditingDismissed() {
     return switch (state) {
-      final TripStateEditing state =>
-        emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips)),
+      final TripStateEditing state => emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips)),
       _ => null,
     };
   }
@@ -262,8 +258,7 @@ class TripCubit extends Cubit<TripState> {
   void removeTrip(String userId) async {
     emit(TripState.deleting(trip: state.trip));
 
-    final result =
-        await _removeUserForShare(RemoveUserForShareParams(tripId: state.trip.id, userId: userId));
+    final result = await _removeUserForShare(RemoveUserForShareParams(tripId: state.trip.id, userId: userId));
 
     result.fold(
       (failure) {

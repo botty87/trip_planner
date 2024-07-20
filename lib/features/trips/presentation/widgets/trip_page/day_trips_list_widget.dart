@@ -1,19 +1,15 @@
-import 'package:animated_list_plus/animated_list_plus.dart';
-import 'package:animated_list_plus/transitions.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:reorderables/reorderables.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../../../day_trips/domain/entities/day_trip.dart';
-import '../../../../ui/presentation/widgets/generics/transparent_list_decorator.dart';
 import '../../cubit/trip/trip_cubit.dart';
 import 'day_trip_card.dart';
 
@@ -33,12 +29,13 @@ class DayTripsListWidget extends HookWidget {
         ));
 
     if (hasDayTrips) {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: verticalSpaceXs),
-        child: DayTripsList(orientation: orientation),
+      return const SliverPadding(
+        padding: EdgeInsets.only(bottom: verticalSpaceXs),
+        sliver: DayTripsList(),
       );
     } else {
-      return orientation == Orientation.portrait ? const SizedBox.shrink() : const NoDayTrips();
+      return SliverFillRemaining(
+          child: orientation == Orientation.portrait ? const SizedBox.shrink() : const NoDayTrips());
     }
   }
 }
@@ -68,9 +65,7 @@ class NoDayTrips extends StatelessWidget {
 }
 
 class DayTripsList extends HookWidget {
-  const DayTripsList({super.key, required this.orientation});
-
-  final Orientation orientation;
+  const DayTripsList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -85,37 +80,20 @@ class DayTripsList extends HookWidget {
 
     final tripStartDate = context.select((TripCubit cubit) => cubit.state.trip.startDate);
 
-    return ImplicitlyAnimatedReorderableList<DayTrip>(
-      shrinkWrap:
-          orientation == Orientation.portrait, //TODO: check if this is needed. https://pub.dev/packages/reorderables
-      items: dayTrips,
-      itemBuilder: (context, itemAnimation, dayTrip, index) {
-        // Each item must be wrapped in a Reorderable widget.
-        return Reorderable(
-          // Each item must have an unique key.
-          key: ValueKey(dayTrip.id),
-          builder: (context, dragAnimation, inDrag) {
-            return SizeFadeTransition(
-              animation: itemAnimation,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: verticalSpace),
-                child: TransparentListDecorator(
-                  animation: dragAnimation,
-                  child: DayTripCard(
-                    dayTrip: dayTrip,
-                    tripStartDate: tripStartDate,
-                  ),
-                ),
-              ),
-            );
-          },
-        );
-      },
-      areItemsTheSame: (oldItem, newItem) => oldItem == newItem,
-      onReorderFinished: (item, from, to, newItems) {
-        if (!listEquals(dayTrips, newItems)) {
-          context.read<TripCubit>().reorderDayTrips(from, to, newItems);
-        }
+    return ReorderableSliverList(
+      delegate: ReorderableSliverChildBuilderDelegate(
+        (context, index) {
+          final dayTrip = dayTrips[index];
+          return DayTripCard(
+            key: ValueKey(dayTrip.id),
+            dayTrip: dayTrip,
+            tripStartDate: tripStartDate,
+          );
+        },
+        childCount: dayTrips.length,
+      ),
+      onReorder: (oldIndex, newIndex) {
+        context.read<TripCubit>().reorderDayTrips(oldIndex, newIndex);
       },
     );
   }

@@ -13,6 +13,8 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scrollController = PrimaryScrollController.of(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
       child: ConstrainedBox(
@@ -23,7 +25,10 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
             Flexible(
               child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-                  child: const DayTripsListWidget(orientation: Orientation.landscape)),
+                  child: CustomScrollView(
+                    controller: scrollController,
+                    slivers: const [DayTripsListWidget(orientation: Orientation.landscape)],
+                  )),
             ),
             const SizedBox(width: horizontalSpaceL),
             Flexible(
