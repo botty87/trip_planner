@@ -21,40 +21,50 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
       child: BlocSelector<TripStopCubit, TripStopState, String?>(
         selector: (state) => state.tripStop.description,
         builder: (context, description) {
-          return const Row(
-            children: [
-              Expanded(
-                child: SafeArea(
-                  minimum: EdgeInsets.only(bottom: pageVerticalPadding),
-                  child: Column(
-                    children: [
-                      Expanded(child: TripStopMapWidget()),
-                      if (!kIsWeb) ...[
-                        SizedBox(height: verticalSpaceXL),
-                        TripStopNavigateToButton(),
-                      ],
-                      SizedBox(height: verticalSpaceL),
-                      DeleteTripStopButton(),
-                    ],
+          return ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: maxRowWidth),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Flexible(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                    child: const SafeArea(
+                      minimum: EdgeInsets.only(bottom: pageVerticalPadding),
+                      child: Column(
+                        children: [
+                          Expanded(child: TripStopMapWidget()),
+                          if (!kIsWeb) ...[
+                            SizedBox(height: verticalSpaceXL),
+                            TripStopNavigateToButton(),
+                          ],
+                          SizedBox(height: verticalSpaceL),
+                          DeleteTripStopButton(),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: horizontalSpaceL),
-              Expanded(
-                child: SafeArea(
-                  minimum: EdgeInsets.only(bottom: pageVerticalPadding),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(child: SingleChildScrollView(child: TripStopDescription())),
-                      TripStopNoteWidget(),
-                      SizedBox(height: verticalSpaceL),
-                      TripStopDoneDurationContainer(),
-                    ],
+                const SizedBox(width: horizontalSpaceL),
+                Flexible(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                    child: const SafeArea(
+                      minimum: EdgeInsets.only(bottom: pageVerticalPadding),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(child: SingleChildScrollView(child: TripStopDescription())),
+                          TripStopNoteWidget(),
+                          SizedBox(height: verticalSpaceL),
+                          TripStopDoneDurationContainer(),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),

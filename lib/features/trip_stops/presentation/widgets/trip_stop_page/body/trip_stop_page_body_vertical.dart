@@ -14,25 +14,28 @@ class TripStopPageBodyVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: defaultPagePadding,
-      children: [
-        const TripStopDescription(),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.4,
-          child: const TripStopMapWidget(),
-        ),
-        const SizedBox(height: verticalSpace),
-        const TripStopDoneDurationContainer(),
-        if (!kIsWeb) ...[
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+      child: ListView(
+        padding: defaultPagePadding,
+        children: [
+          const TripStopDescription(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+            child: const TripStopMapWidget(),
+          ),
           const SizedBox(height: verticalSpace),
-          const TripStopNavigateToButton(),
+          const TripStopDoneDurationContainer(),
+          if (!kIsWeb) ...[
+            const SizedBox(height: verticalSpace),
+            const TripStopNavigateToButton(),
+          ],
+          const SizedBox(height: verticalSpaceL),
+          const TripStopNoteWidget(),
+          const SizedBox(height: verticalSpaceL),
+          const SafeArea(child: DeleteTripStopButton()),
         ],
-        const SizedBox(height: verticalSpaceL),
-        const TripStopNoteWidget(),
-        const SizedBox(height: verticalSpaceL),
-        const SafeArea(child: DeleteTripStopButton()),
-      ],
+      ),
     );
   }
 }

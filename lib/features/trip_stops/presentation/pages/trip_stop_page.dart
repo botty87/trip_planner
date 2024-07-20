@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../day_trips/domain/entities/day_trip.dart';
 import '../../../trips/domain/entities/trip.dart';
@@ -67,17 +66,16 @@ class TripStopPage extends StatelessWidget {
   }
 }
 
-class _TripStopPageAppBar extends StatelessWidget with BackgroundImageMixin {
+class _TripStopPageAppBar extends StatelessWidget {
   const _TripStopPageAppBar();
 
   @override
   Widget build(BuildContext context) {
     final name = context.select((TripStopCubit cubit) => cubit.state.tripStop.name);
-    final hasBackgroundImage = this.hasBackgroundImage(context);
 
     return AppBar(
       title: Text(name),
-      scrolledUnderElevation: hasBackgroundImage ? 0 : null,
+      scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
       backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
       actions: [
         IconButton(

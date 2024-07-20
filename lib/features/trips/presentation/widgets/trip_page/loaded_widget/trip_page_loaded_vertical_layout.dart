@@ -11,22 +11,18 @@ class TripPageLoadedVerticalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-          child: ListView(
-            padding: defaultPagePadding,
-            children: const [
-              TripHeader(),
-              DayTripsListWidget(orientation: Orientation.portrait),
-              AddDayTripCard(),
-              SizedBox(height: verticalSpaceL),
-              SafeArea(child: DeleteTripButton()),
-            ],
-          ),
-        );
-      },
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+      child: ListView(
+        padding: defaultPagePadding,
+        children: const [
+          TripHeader(),
+          DayTripsListWidget(orientation: Orientation.portrait),
+          AddDayTripCard(),
+          SizedBox(height: verticalSpaceL),
+          SafeArea(child: DeleteTripButton()),
+        ],
+      ),
     );
   }
 }
