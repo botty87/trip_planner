@@ -31,6 +31,7 @@ class DiscoverNewTripStopPage extends StatelessWidget {
     return BlocProvider<DiscoverNewTripStopCubit>(
       create: (context) => getIt<DiscoverNewTripStopCubit>(param1: _tripStop),
       child: ScaffoldTransparent(
+        hasBackgroundImage: context.hasBackgroundImage,
         appBar: AppBar(
           backgroundColor: context.appBarColor,
           title: Text(_tripStop.name),

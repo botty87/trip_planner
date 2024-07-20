@@ -65,6 +65,7 @@ class DiscoverNewTripStopsPage extends StatelessWidget {
           return DefaultTabController(
             length: tabsLength,
             child: ScaffoldTransparent(
+              hasBackgroundImage: context.hasBackgroundImage,
               appBar: AppBar(
                 backgroundColor: context.appBarColor,
                 title: Text("${LocaleKeys.day.tr()} ${_dayTrip.index + 1}"),

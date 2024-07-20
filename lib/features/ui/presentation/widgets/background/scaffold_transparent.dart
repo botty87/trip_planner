@@ -21,7 +21,7 @@ final class ScaffoldTransparent extends Scaffold {
     super.extendBody,
     super.extendBodyBehindAppBar,
     super.drawerScrimColor,
-    bool hasBackgroundImage = false, //TODO make it required
+    required bool hasBackgroundImage, //TODO make it required
   }) : _hasBackgroundImage = hasBackgroundImage;
 
   final bool _hasBackgroundImage;

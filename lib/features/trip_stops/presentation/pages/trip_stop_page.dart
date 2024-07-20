@@ -49,12 +49,13 @@ class TripStopPage extends StatelessWidget {
               Navigator.of(context).pop();
             }
           },
-          child: const ScaffoldTransparent(
-            appBar: PreferredSize(
+          child: ScaffoldTransparent(
+            hasBackgroundImage: context.hasBackgroundImage,
+            appBar: const PreferredSize(
               preferredSize: Size.fromHeight(kToolbarHeight),
               child: _TripStopPageAppBar(),
             ),
-            body: TripStopPageBody(),
+            body: const TripStopPageBody(),
           ),
         );
       }),

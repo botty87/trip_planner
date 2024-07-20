@@ -51,6 +51,7 @@ class DiscoverNewTripsPage extends StatelessWidget {
               ))
         ..fetchTrips(),
       child: ScaffoldTransparent(
+        hasBackgroundImage: context.hasBackgroundImage,
         appBar: AppBar(
           backgroundColor: context.appBarColor,
           title: Text(LocaleKeys.discoverNewTrips.tr()),

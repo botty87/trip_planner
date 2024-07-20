@@ -60,6 +60,7 @@ class DiscoverNewDailyTripsPage extends HookWidget {
             }
 
             return ScaffoldTransparent(
+              hasBackgroundImage: context.hasBackgroundImage,
               appBar: AppBar(
                 backgroundColor: context.appBarColor,
                 title: Text(_trip.name),
