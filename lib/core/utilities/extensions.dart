@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:map_launcher/map_launcher.dart';
 
+import '../../features/ui/presentation/cubit/backgrounds_cubit.dart';
 import '../constants.dart';
 import 'data_converter.dart';
 
@@ -68,7 +70,7 @@ extension FirebaseStorageExtension on FirebaseStorage {
   Reference get darkBackgroundsRef => backgroundsRef.child('dark');
 }
 
-extension DarkMode on BuildContext {
+extension ThemeExtension on BuildContext {
   /// is dark mode currently enabled?
   bool get isDarkMode {
     switch (AdaptiveTheme.of(this).mode) {
@@ -97,6 +99,8 @@ extension DarkMode on BuildContext {
   }
 
   Color get appBarColor => isDarkMode ? appBarDarkColor : appBarLightColor;
+
+  bool get hasBackgroundImage => select((BackgroundsCubit cubit) => cubit.state.currentBackgroundImage != null);
 }
 
 //Generic nullable let extension function

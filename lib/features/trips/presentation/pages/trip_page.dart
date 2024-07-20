@@ -11,7 +11,6 @@ import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../tutorials/presentation/cubit/tutorial_cubit.dart';
-import '../../../ui/presentation/widgets/background/background_image_wrapper.dart';
 import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
 import '../../../ui/presentation/widgets/generics/snackbars.dart';
 import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
@@ -68,6 +67,7 @@ class TripPage extends HookWidget {
           }
 
           return ScaffoldTransparent(
+            hasBackgroundImage: context.hasBackgroundImage,
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(kToolbarHeight),
               child: _TripPageAppBar(showShareButton),
@@ -95,8 +95,7 @@ class TripPage extends HookWidget {
                     orElse: () => false,
                   ),
                   listener: (context, state) {
-                    _showEditingModalBottom(
-                        context, isSaving, isModalBottomOpen, errorMessageStream);
+                    _showEditingModalBottom(context, isSaving, isModalBottomOpen, errorMessageStream);
                   },
                 ),
 
@@ -137,8 +136,7 @@ class TripPage extends HookWidget {
                 BlocListener<TripCubit, TripState>(
                   listenWhen: (previous, current) => current.maybeMap(
                     editing: (currentEditingState) => previous.maybeMap(
-                      editing: (previousEditingState) =>
-                          currentEditingState.isSaving != previousEditingState.isSaving,
+                      editing: (previousEditingState) => currentEditingState.isSaving != previousEditingState.isSaving,
                       orElse: () => false,
                     ),
                     orElse: () => false,
@@ -181,8 +179,7 @@ class TripPage extends HookWidget {
                 builder: (context, state) => TripPagesAnimatedSwitcher(
                   child: state.maybeMap(
                     initial: (_) => const TripPageInitialWidget(key: ValueKey('initial')),
-                    loaded: (_) =>
-                        const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
+                    loaded: (_) => const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
                     error: (state) => Center(
                       key: const ValueKey('error'),
                       child: TripErrorWidget(message: state.errorMessage),
@@ -200,7 +197,7 @@ class TripPage extends HookWidget {
   }
 }
 
-class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
+class _TripPageAppBar extends StatelessWidget {
   final bool showShareButton;
 
   const _TripPageAppBar(this.showShareButton);
@@ -209,12 +206,10 @@ class _TripPageAppBar extends StatelessWidget with BackgroundImageMixin {
   Widget build(BuildContext context) {
     final tripName = context.select<TripCubit, String>((cubit) => cubit.state.trip.name);
 
-    final hasBackgroundImage = this.hasBackgroundImage(context);
-
     return AppBar(
       title: Text(tripName),
       backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
-      scrolledUnderElevation: hasBackgroundImage ? 0 : null,
+      scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
       actions: [
         if (showShareButton)
           Showcase(

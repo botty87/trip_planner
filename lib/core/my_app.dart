@@ -42,12 +42,8 @@ class MyApp extends StatelessWidget {
         return DynamicColorBuilder(
           builder: (lightColorScheme, darkColorScheme) {
             return AdaptiveTheme(
-              light: ThemeData.light().copyWith(
-                colorScheme: lightColorScheme,
-              ),
-              dark: ThemeData.dark().copyWith(
-                colorScheme: darkColorScheme,
-              ),
+              light: ThemeData.light().copyWith(colorScheme: lightColorScheme),
+              dark: ThemeData.dark().copyWith(colorScheme: darkColorScheme),
               initial: context.read<SettingsCubit>().state.settings.themeMode,
               debugShowFloatingThemeButton: false,
               builder: (theme, darkTheme) {
@@ -68,7 +64,7 @@ class MyApp extends StatelessWidget {
                       _tutorialsListener(),
                       _backgroundImageListener(context)
                     ],
-                    child: child!, 
+                    child: child!,
                     // TODO:  check if this is needed
                     /* ResponsiveBreakpoints.builder(
                       child: Builder(
@@ -160,10 +156,8 @@ class MyApp extends StatelessWidget {
   BlocListener _tutorialsListener() {
     return BlocListener<UserCubit, UserState>(
       listenWhen: (previous, current) {
-        final previousTutorialsData =
-            previous.mapOrNull(loggedIn: (value) => value.user.tutorialsData);
-        final currentTutorialsData =
-            current.mapOrNull(loggedIn: (value) => value.user.tutorialsData);
+        final previousTutorialsData = previous.mapOrNull(loggedIn: (value) => value.user.tutorialsData);
+        final currentTutorialsData = current.mapOrNull(loggedIn: (value) => value.user.tutorialsData);
         return previousTutorialsData != currentTutorialsData;
       },
       listener: (context, state) {

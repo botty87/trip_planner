@@ -20,8 +20,7 @@ const double tutorialTitleFontSize = 28.0;
 const double tutorialBodyFontSize = 20.0;
 const int tutorialImageFlex = 2;
 
-const defaultPagePadding =
-    EdgeInsets.symmetric(horizontal: pageHorizontalPadding, vertical: pageVerticalPadding);
+const defaultPagePadding = EdgeInsets.symmetric(horizontal: pageHorizontalPadding, vertical: pageVerticalPadding);
 
 const cardPadding = EdgeInsets.all(8.0);
 

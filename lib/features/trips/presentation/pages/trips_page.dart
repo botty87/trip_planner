@@ -38,6 +38,7 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
     return BlocProvider<TripsCubit>(
       create: (context) => getIt(param1: userId)..startListenTrips(),
       child: ScaffoldTransparent(
+        hasBackgroundImage: hasBackgroundImage,
         appBar: AppBar(
           scrolledUnderElevation: hasBackgroundImage ? 0 : null,
           backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
@@ -49,8 +50,7 @@ class TripsPage extends StatelessWidget with BackgroundImageMixin {
             child: state.map(
               initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
               loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
-              error: (state) => Center(
-                  key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
+              error: (state) => Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
             ),
           ),
         ),
