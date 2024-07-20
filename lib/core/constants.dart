@@ -31,8 +31,7 @@ const dayTripsRef = 'dayTrips';
 const tripStopsRef = 'tripStops';
 const settingsRef = 'settings';
 
-const int availableLightBackgrounds = 7;
-const int availableDarkBackgrounds = 7;
+const int availableBackgrounds = 7;
 
 final appBarLightColor = Colors.white.withOpacity(0.3);
 final appBarDarkColor = Colors.black.withOpacity(0.3);

@@ -5,13 +5,11 @@ class _ImagesGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
           padding: const EdgeInsets.all(verticalSpace),
           child: Text(LocaleKeys.light.tr(),
-              style:
-                  Theme.of(context).textTheme.titleMedium?.copyWith(fontStyle: FontStyle.italic)),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(fontStyle: FontStyle.italic)),
         ),
         const _LightBackgroundsRow(),
         const SizedBox(height: verticalSpaceS),
@@ -37,9 +35,9 @@ class _LightBackgroundsRow extends StatelessWidget {
       constraints: const BoxConstraints(maxHeight: 150),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: availableLightBackgrounds + 1,
+        itemCount: availableBackgrounds + 1,
         itemBuilder: (context, index) {
-          if (index < availableLightBackgrounds) {
+          if (index < availableBackgrounds) {
             return _ImageBuilder(
               key: ValueKey('light_background_$index'),
               imageType: BackgroundType.light,
@@ -65,9 +63,9 @@ class _DarkBackgroundsRow extends StatelessWidget {
       constraints: const BoxConstraints(maxHeight: 150),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: availableDarkBackgrounds + 1,
+        itemCount: availableBackgrounds + 1,
         itemBuilder: (context, index) {
-          if (index < availableDarkBackgrounds) {
+          if (index < availableBackgrounds) {
             return _ImageBuilder(
               key: ValueKey('dark_background_$index'),
               imageType: BackgroundType.dark,

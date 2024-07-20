@@ -17,7 +17,7 @@ class ThemeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
         SettingsSectionHeader(title: LocaleKeys.theme.tr()),

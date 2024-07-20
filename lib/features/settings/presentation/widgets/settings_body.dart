@@ -11,17 +11,30 @@ class SettingsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: defaultPagePadding,
-      children: const [
-        DayTripSection(),
-        if (!kIsWeb) ...[
-          SizedBox(height: verticalSpaceL),
-          BackgroundSection(),
-        ],
-        SizedBox(height: verticalSpaceL),
-        SafeArea(child: ThemeSection()),
-      ],
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: (availableBackgrounds + 1) * 150 + 100),
+        child: ListView(
+          padding: defaultPagePadding,
+          children: const [
+            Center(
+              child: Wrap(
+                spacing: horizontalSpaceL * 2,
+                runSpacing: verticalSpaceL,
+                alignment: WrapAlignment.center,
+                children: [
+                  DayTripSection(),
+                  ThemeSection(),
+                ],
+              ),
+            ),
+            if (!kIsWeb) ...[
+              SizedBox(height: verticalSpaceL),
+              SafeArea(child: BackgroundSection()),
+            ],
+          ],
+        ),
+      ),
     );
   }
 }

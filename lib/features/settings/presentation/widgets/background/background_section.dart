@@ -9,13 +9,13 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/extensions.dart';
-import '../../../domain/entities/backgrounds_container.dart';
 import '../../../../ui/presentation/cubit/backgrounds_cubit.dart';
+import '../../../domain/entities/backgrounds_container.dart';
 import '../../cubit/settings_cubit.dart';
 import '../settings_section_header.dart';
 
-part 'images_grid.dart';
 part 'image_builder.dart';
+part 'images_grid.dart';
 part 'no_background_button.dart';
 
 class BackgroundSection extends StatelessWidget {
@@ -24,8 +24,8 @@ class BackgroundSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SettingsSectionHeader(title: LocaleKeys.tripsBackground.tr()),
         _ImagesGrid(),
