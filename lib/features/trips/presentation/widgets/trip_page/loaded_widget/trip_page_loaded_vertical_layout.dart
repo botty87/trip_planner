@@ -24,6 +24,7 @@ class TripPageLoadedVerticalLayout extends StatelessWidget {
           slivers: const [
             SliverToBoxAdapter(child: TripHeader()),
             DayTripsListWidget(orientation: Orientation.portrait),
+            SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
             SliverToBoxAdapter(child: AddDayTripCard()),
             SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
             SliverPadding(

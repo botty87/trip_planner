@@ -84,10 +84,15 @@ class DayTripsList extends HookWidget {
       delegate: ReorderableSliverChildBuilderDelegate(
         (context, index) {
           final dayTrip = dayTrips[index];
-          return DayTripCard(
-            key: ValueKey(dayTrip.id),
-            dayTrip: dayTrip,
-            tripStartDate: tripStartDate,
+          //Add padding to the card to make it look better, except for the last one
+          return Padding(
+            padding:
+                index == dayTrips.length - 1 ? EdgeInsets.zero : const EdgeInsets.symmetric(vertical: verticalSpaceS),
+            child: DayTripCard(
+              key: ValueKey(dayTrip.id),
+              dayTrip: dayTrip,
+              tripStartDate: tripStartDate,
+            ),
           );
         },
         childCount: dayTrips.length,
