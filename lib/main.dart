@@ -1,6 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -53,11 +56,15 @@ void main() async {
   if (mapsImplementation is GoogleMapsFlutterAndroid) {
     mapsImplementation.useAndroidViewSurface = false;
   }
-  runApp(EasyLocalization(
-    supportedLocales: const [Locale('it'), Locale('en')],
-    path: 'assets/translations',
-    fallbackLocale: const Locale('en'),
-    useOnlyLangCode: true,
-    child: const MyApp(),
+
+  runApp(DevicePreview(
+    enabled: !kReleaseMode && (Platform.isLinux || Platform.isMacOS || Platform.isWindows),
+    builder: (context) => EasyLocalization(
+            supportedLocales: const [Locale('it'), Locale('en')],
+            path: 'assets/translations',
+            fallbackLocale: const Locale('en'),
+            useOnlyLangCode: true,
+            child: const MyApp(),
+          ),
   ));
 }

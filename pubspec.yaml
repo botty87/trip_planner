@@ -42,6 +42,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   custom_map_markers: ^0.0.2+1
   dartz: ^0.10.1
+  device_preview: ^1.2.0
   devicelocale: ^0.7.0
   dio: ^5.3.3
   duration_picker: ^1.1.1
@@ -84,16 +85,16 @@ dependencies:
   password_text_field: ^2.0.0
   path_provider: ^2.1.2
   quiver: ^3.2.1
+  reorderables: ^0.6.0
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
   showcaseview: ^3.0.0
-  url_launcher: ^6.2.1
-  uuid: ^4.0.0
   talker_bloc_logger: ^4.2.4
   talker_flutter: ^4.2.4
+  url_launcher: ^6.2.1
+  uuid: ^4.0.0
   vector_graphics: ^1.1.9
   webview_flutter: ^4.4.2
-  reorderables: ^0.6.0
 
 dev_dependencies:
   auto_route_generator: ^8.0.0
