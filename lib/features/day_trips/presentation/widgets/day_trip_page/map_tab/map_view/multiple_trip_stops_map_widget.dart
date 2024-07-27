@@ -16,8 +16,9 @@ class MultipleTripStopsMapWidget extends StatelessWidget {
         Align(
           alignment: Alignment.topCenter,
           child: Padding(
+            //The 70 is the width of the map control buttons
             padding: const EdgeInsets.only(
-                top: pageVerticalPadding, left: pageHorizontalPadding, right: pageHorizontalPadding),
+                top: pageVerticalPadding, left: pageHorizontalPadding + 70, right: pageHorizontalPadding + 70),
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: maxListViewWidth),
               child: Card(
