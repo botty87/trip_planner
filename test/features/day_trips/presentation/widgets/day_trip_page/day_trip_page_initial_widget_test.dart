@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:trip_planner/features/ui/presentation/widgets/generics/generic_initial_widget.dart';
+import 'package:trip_planner/ui/widgets/generics/generic_initial_widget.dart';
 import 'package:trip_planner/features/day_trips/presentation/widgets/day_trip_page/day_trip_page_initial_widget.dart';
 
 import '../../../../../utils.dart';

@@ -17,10 +17,10 @@ import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../trips/domain/entities/trip.dart';
-import '../../../ui/presentation/widgets/background/background_widget_container.dart';
-import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
-import '../../../ui/presentation/widgets/generics/generic_error_widget.dart';
-import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../../ui/widgets/background/background_widget_container.dart';
+import '../../../../ui/widgets/background/scaffold_transparent.dart';
+import '../../../../ui/widgets/generics/generic_error_widget.dart';
+import '../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../cubit/trips/discover_new_trips_cubit.dart';
 

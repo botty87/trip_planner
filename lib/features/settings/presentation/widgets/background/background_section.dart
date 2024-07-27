@@ -9,7 +9,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/extensions.dart';
-import '../../../../ui/presentation/cubit/backgrounds_cubit.dart';
+import '../../../../../ui/cubit/backgrounds_cubit.dart';
 import '../../../domain/entities/backgrounds_container.dart';
 import '../../cubit/settings_cubit.dart';
 import '../settings_section_header.dart';

@@ -10,7 +10,7 @@ import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:patrol/patrol.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/day_trips/presentation/widgets/day_trip_page/list_tab/day_trip_description.dart';
-import 'package:trip_planner/features/ui/presentation/widgets/trip/generic_trip_description.dart';
+import 'package:trip_planner/ui/widgets/trip/generic_trip_description.dart';
 
 import '../../../../../../utils.dart';
 

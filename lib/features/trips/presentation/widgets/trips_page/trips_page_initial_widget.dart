@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../ui/presentation/widgets/generics/generic_initial_widget.dart';
+import '../../../../../ui/widgets/generics/generic_initial_widget.dart';
 
 class TripsPageInitialWidget extends StatelessWidget {
   const TripsPageInitialWidget({super.key});

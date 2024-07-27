@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../../../../ui/presentation/widgets/generics/snackbars.dart';
+import '../../../../../../ui/widgets/generics/snackbars.dart';
 import '../../../cubit/trip_stop/trip_stop_cubit.dart';
 import '../../new_edit_trip_stop_form/new_edit_trip_stop_form.dart';
 import '../save_cancel_edit_buttons.dart';

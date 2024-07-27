@@ -10,7 +10,7 @@ import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/pair.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
-import '../../../../../ui/presentation/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
+import '../../../../../../ui/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 import 'trip_stop_card.dart';
 

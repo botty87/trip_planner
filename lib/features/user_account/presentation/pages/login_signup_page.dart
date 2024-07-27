@@ -12,7 +12,7 @@ import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../gen/assets.gen.dart';
-import '../../../ui/presentation/widgets/generics/snackbars.dart';
+import '../../../../ui/widgets/generics/snackbars.dart';
 import '../cubit/login_signup/login_signup_cubit.dart';
 
 part '../widgets/login_signup_page/login_section.dart';

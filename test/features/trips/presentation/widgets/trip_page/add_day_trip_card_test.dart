@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:patrol/patrol.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
-import 'package:trip_planner/features/ui/presentation/widgets/trip/add_destination_card.dart';
+import 'package:trip_planner/ui/widgets/trip/add_destination_card.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/add_day_trip_card.dart';
 
 import '../../../../../utils.dart';

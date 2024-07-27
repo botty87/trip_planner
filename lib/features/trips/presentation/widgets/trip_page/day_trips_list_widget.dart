@@ -10,7 +10,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../../../ui/presentation/widgets/background/background_widget_container.dart';
+import '../../../../../ui/widgets/background/background_widget_container.dart';
 import '../../cubit/trip/trip_cubit.dart';
 import 'day_trip_card.dart';
 

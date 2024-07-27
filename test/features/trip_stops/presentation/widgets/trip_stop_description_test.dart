@@ -9,7 +9,7 @@ import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:patrol/patrol.dart';
 import 'package:trip_planner/features/trip_stops/presentation/cubit/trip_stop/trip_stop_cubit.dart';
 import 'package:trip_planner/features/trip_stops/presentation/widgets/trip_stop_page/trip_stop_description.dart';
-import 'package:trip_planner/features/ui/presentation/widgets/trip/generic_trip_description.dart';
+import 'package:trip_planner/ui/widgets/trip/generic_trip_description.dart';
 
 import '../../../../utils.dart';
 

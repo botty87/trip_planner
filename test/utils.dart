@@ -10,7 +10,7 @@ import 'package:trip_planner/features/trip_stops/presentation/cubit/new_trip_sto
 import 'package:trip_planner/features/trip_stops/presentation/cubit/trip_stop/trip_stop_cubit.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/tutorials/presentation/cubit/tutorial_cubit.dart';
-import 'package:trip_planner/features/ui/presentation/cubit/backgrounds_cubit.dart';
+import 'package:trip_planner/ui/cubit/backgrounds_cubit.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
 
 class MockUserCubit extends MockCubit<UserState> implements UserCubit {}

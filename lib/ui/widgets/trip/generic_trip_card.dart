@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants.dart';
+import '../../../core/constants.dart';
 
 final class GenericTripCard extends StatelessWidget {
   final String name;

@@ -6,7 +6,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../ui/presentation/widgets/background/background_widget_container.dart';
+import '../../../../../ui/widgets/background/background_widget_container.dart';
 import '../../../../../gen/assets.gen.dart';
 
 class NoTripsWidget extends StatelessWidget {

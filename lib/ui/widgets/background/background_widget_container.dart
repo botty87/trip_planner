@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants.dart';
-import '../../../../../core/utilities/extensions.dart';
+import '../../../core/constants.dart';
+import '../../../core/utilities/extensions.dart';
 
 class BackgroundWidgetContainer extends StatelessWidget {
   final Widget child;

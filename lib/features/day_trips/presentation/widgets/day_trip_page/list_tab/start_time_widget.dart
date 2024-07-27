@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../time_picker/widgets/timepicker.dart';
-import '../../../../../ui/presentation/widgets/background/background_widget_container.dart';
+import '../../../../../../ui/widgets/background/background_widget_container.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 
 class StartTimeWidget extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
-import 'package:trip_planner/features/ui/presentation/widgets/trip/generic_delete_trip_button.dart';
+import 'package:trip_planner/ui/widgets/trip/generic_delete_trip_button.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/delete_trip_button.dart';

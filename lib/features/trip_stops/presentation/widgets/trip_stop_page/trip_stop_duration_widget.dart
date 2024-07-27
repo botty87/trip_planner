@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../ui/presentation/widgets/trip/generic_duration_widget.dart';
+import '../../../../../ui/widgets/trip/generic_duration_widget.dart';
 import '../../cubit/trip_stop/trip_stop_cubit.dart';
 
 class TripStopDurationWidget extends StatelessWidget {

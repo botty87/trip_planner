@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/error/exceptions.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../ui/presentation/widgets/trip/generic_delete_trip_button.dart';
+import '../../../../../ui/widgets/trip/generic_delete_trip_button.dart';
 import '../../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../cubit/trip/trip_cubit.dart';
 

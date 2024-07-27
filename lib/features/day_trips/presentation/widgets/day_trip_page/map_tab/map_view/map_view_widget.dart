@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../../ui/presentation/widgets/generics/snackbars.dart';
+import '../../../../../../../ui/widgets/generics/snackbars.dart';
 import '../../../../cubit/day_trip/day_trip_cubit.dart';
 import '../../../../cubit/trip_stops_map/trip_stops_map_cubit.dart';
 import 'multiple_trip_stops_map_widget.dart';

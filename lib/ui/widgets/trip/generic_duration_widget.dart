@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/l10n/locale_keys.g.dart';
+import '../../../core/l10n/locale_keys.g.dart';
 
 final class GenericDurationWidget extends StatelessWidget {
   final int durationInMinutes;

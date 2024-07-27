@@ -9,7 +9,7 @@ import 'package:patrol/patrol.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/day_trips/presentation/widgets/day_trip_page/day_trip_error_widget.dart';
-import 'package:trip_planner/features/ui/presentation/widgets/generics/generic_error_widget.dart';
+import 'package:trip_planner/ui/widgets/generics/generic_error_widget.dart';
 
 import '../../../../../utils.dart';
 

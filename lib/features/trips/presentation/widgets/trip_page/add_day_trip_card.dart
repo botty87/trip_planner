@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/routes/app_router.gr.dart';
-import '../../../../ui/presentation/widgets/trip/add_destination_card.dart';
+import '../../../../../ui/widgets/trip/add_destination_card.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../cubit/trip/trip_cubit.dart';
 

@@ -8,7 +8,7 @@ import 'package:patrol/patrol.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/presentation/cubit/day_trip/day_trip_cubit.dart';
 import 'package:trip_planner/features/day_trips/presentation/widgets/day_trip_page/list_tab/delete_day_trip_button.dart';
-import 'package:trip_planner/features/ui/presentation/widgets/trip/generic_delete_trip_button.dart';
+import 'package:trip_planner/ui/widgets/trip/generic_delete_trip_button.dart';
 
 import '../../../../../../utils.dart';
 

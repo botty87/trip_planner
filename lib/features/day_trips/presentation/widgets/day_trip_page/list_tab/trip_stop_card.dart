@@ -7,7 +7,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../../../../../core/routes/app_router.gr.dart';
 import '../../../../../../core/utilities/extensions.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
-import '../../../../../ui/presentation/widgets/trip/generic_trip_card.dart';
+import '../../../../../../ui/widgets/trip/generic_trip_card.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 
 final class TripStopCard extends StatelessWidget {

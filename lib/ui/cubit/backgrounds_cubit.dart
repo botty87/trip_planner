@@ -10,12 +10,12 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../core/constants.dart';
-import '../../../../core/di/di.dart';
-import '../../../../core/utilities/extensions.dart';
-import '../../../../core/utilities/logger.dart';
-import '../../../../core/utilities/pair.dart';
-import '../../../settings/domain/entities/backgrounds_container.dart';
+import '../../core/constants.dart';
+import '../../core/di/di.dart';
+import '../../core/utilities/extensions.dart';
+import '../../core/utilities/logger.dart';
+import '../../core/utilities/pair.dart';
+import '../../features/settings/domain/entities/backgrounds_container.dart';
 
 part 'backgrounds_cubit.freezed.dart';
 part 'backgrounds_state.dart';

@@ -169,7 +169,7 @@ import '../../features/tutorials/domain/usecases/update_tutorials_data.dart'
     as _i969;
 import '../../features/tutorials/presentation/cubit/tutorial_cubit.dart'
     as _i58;
-import '../../features/ui/presentation/cubit/backgrounds_cubit.dart' as _i719;
+import '../../ui/cubit/backgrounds_cubit.dart' as _i719;
 import '../../features/user_account/data/datasources/user_data_source.dart'
     as _i190;
 import '../../features/user_account/data/repositories/user_repository_impl.dart'

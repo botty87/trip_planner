@@ -15,12 +15,12 @@ import '../../../map/domain/entities/map_place.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
 import '../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../trips/domain/entities/trip.dart';
-import '../../../ui/presentation/widgets/background/scaffold_transparent.dart';
-import '../../../ui/presentation/widgets/day_trip/generic_travel_card.dart';
-import '../../../ui/presentation/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
-import '../../../ui/presentation/widgets/generics/trip_pages_animated_switcher.dart';
-import '../../../ui/presentation/widgets/trip/generic_trip_card.dart';
-import '../../../ui/presentation/widgets/trip/generic_trip_description.dart';
+import '../../../../ui/widgets/background/scaffold_transparent.dart';
+import '../../../../ui/widgets/day_trip/generic_travel_card.dart';
+import '../../../../ui/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
+import '../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../../ui/widgets/trip/generic_trip_card.dart';
+import '../../../../ui/widgets/trip/generic_trip_description.dart';
 import '../cubit/trip_stops/discover_new_trip_stops_cubit.dart';
 
 part '../widgets/trip_stops/discover_new_trip_stops_body.dart';
