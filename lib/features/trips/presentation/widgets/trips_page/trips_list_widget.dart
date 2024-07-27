@@ -38,7 +38,9 @@ class TripsListWidget extends HookWidget {
         child: ListView.separated(
           padding: defaultPagePadding,
           itemCount: trips.length,
-          itemBuilder: (context, index) => TripCard(trip: trips[index]),
+          itemBuilder: (context, index) => TripCard(
+            key: ValueKey(trips[index].id),
+            trip: trips[index]),
           separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
         ),
       ),

@@ -19,7 +19,7 @@ final class TripStopCard extends StatelessWidget {
     super.key,
     required this.tripStop,
     required this.tripStartEndTimes,
-    required this.slidableController,
+    this.slidableController,
   });
 
   @override

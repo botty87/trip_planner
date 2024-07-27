@@ -1,28 +1,28 @@
-import 'package:animated_list_plus/animated_list_plus.dart';
-import 'package:animated_list_plus/transitions.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:reorderables/reorderables.dart';
+import 'package:showcaseview/showcaseview.dart';
 
+import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/pair.dart';
 import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../../../ui/presentation/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
-import '../../../../../ui/presentation/widgets/generics/transparent_list_decorator.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 import 'trip_stop_card.dart';
-import 'trip_stop_details_row.dart';
 
 class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
-  const TripStopsList({super.key});
+  const TripStopsList({super.key, required GlobalKey showCaseTutorial}) : _showCaseTutorial = showCaseTutorial;
+
+  final GlobalKey _showCaseTutorial;
 
   List<TripStop> _getTripStops(BuildContext context) {
     //Use this for the animation
-    final previouTripStops = usePrevious(
-        context.read<DayTripCubit>().state.mapOrNull(loaded: (state) => state.tripStops));
+    final previouTripStops =
+        usePrevious(context.read<DayTripCubit>().state.mapOrNull(loaded: (state) => state.tripStops));
 
     return context.select((DayTripCubit cubit) => cubit.state.maybeMap(
           loaded: (state) => state.tripStops,
@@ -39,8 +39,7 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
     final DateTime dayTripStartDateTime = context.select((DayTripCubit cubit) {
       final startDate = cubit.state.trip.startDate;
       final startTime = cubit.state.dayTrip.startTime;
-      return DateTime(
-          startDate.year, startDate.month, startDate.day, startTime.hour, startTime.minute);
+      return DateTime(startDate.year, startDate.month, startDate.day, startTime.hour, startTime.minute);
     });
 
     //this is needed to avoid the recalculation of the trip start and end times on every build, during the reordering
@@ -58,81 +57,117 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       tripStopStartEndTimes.add(Pair(tripStop, startEndTime));
     }
 
-    return ImplicitlyAnimatedReorderableList<Pair<TripStop, StartEndTime>>(
-      shrinkWrap: true, //TODO: check this
-      items: tripStopStartEndTimes,
-      itemBuilder: (context, itemAnimation, tripStopItem, index) {
-        final tripStop = tripStopItem.first;
-        final startEndTime = tripStopItem.second;
+    return ReorderableSliverList(
+      delegate: ReorderableSliverChildBuilderDelegate(
+        (context, index) {
+          final tripStopItem = tripStopStartEndTimes[index];
+          final tripStop = tripStopItem.first;
+          final startEndTime = tripStopItem.second;
 
-        // Each item must be wrapped in a Reorderable widget.
-        return Reorderable(
-          // Each item must have an unique key.
-          key: ValueKey(tripStop.id),
-          builder: (context, dragAnimation, inDrag) {
-            return SizeFadeTransition(
-              animation: itemAnimation,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TransparentListDecorator(
-                    animation: dragAnimation,
-                    child: Slidable(
-                      startActionPane: ActionPane(
-                        motion: const ScrollMotion(),
-                        children: [_gettravelStartSlidableAction(tripStop, index)],
-                      ),
-                      endActionPane: ActionPane(
-                        motion: const ScrollMotion(),
-                        children: [_getTravelEndSlidableAction(tripStop, index)],
-                      ),
-                      child: Builder(builder: (context) {
-                        final slidableController = Slidable.of(context);
-                        return TripStopCard(
-                          tripStop: tripStop,
-                          tripStartEndTimes: startEndTime,
-                          slidableController: slidableController,
-                        );
-                      }),
-                    ),
-                  ),
-                  TripStopDetailsRow(tripStop),
-                ],
-              ),
+          final rowItem = _TripStopRowItem(
+            key: ValueKey(tripStop.id),
+            isLastItem: index == tripStopStartEndTimes.length - 1,
+            startSlidableAction: _TravelStartSlidableAction(tripStop, index),
+            endSlidableAction: _TravelEndSlidableAction(tripStop, index),
+            tripStop: tripStop,
+            startEndTime: startEndTime,
+          );
+
+          //If it is the first item wrap it in a ShowCase
+          if (index == 0) {
+            return Showcase(
+              key: _showCaseTutorial,
+              tooltipPosition: TooltipPosition.top,
+              title: LocaleKeys.tripStopSlideShowCaseTitle.tr(),
+              description: LocaleKeys.tripStopSlideShowCaseBody.tr(),
+              targetPadding: const EdgeInsets.only(top: verticalSpaceS),
+              child: rowItem,
             );
-          },
-        );
-      },
-      areItemsTheSame: (oldItem, newItem) => oldItem == newItem,
-      onReorderFinished: (item, from, to, newItems) {
-        final newTripStops = newItems.map((e) => e.first).toList();
-
-        if (!listEquals(newTripStops, tripStops)) {
-          tripStopStartEndTimes.clear();
-          context.read<DayTripCubit>().reorderTripStops(from, to, newTripStops);
-        }
-      },
+          } else {
+            return rowItem;
+          }
+        },
+        childCount: tripStopStartEndTimes.length,
+      ),
+      onReorder: (oldIndex, newIndex) {},
     );
   }
+}
 
-  Widget _gettravelStartSlidableAction(TripStop tripStop, int index) {
+class _TravelStartSlidableAction extends StatelessWidget {
+  const _TravelStartSlidableAction(this.tripStop, this.index);
+
+  final TripStop tripStop;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
     return SlidableAction(
-      onPressed: (context) =>
-          context.read<DayTripCubit>().toggleTripStopDone(!tripStop.isDone, index),
+      onPressed: (context) => context.read<DayTripCubit>().toggleTripStopDone(!tripStop.isDone, index),
       backgroundColor: tripStop.isDone ? Colors.grey : Colors.green,
       foregroundColor: Colors.white,
       icon: tripStop.isDone ? Icons.close : Icons.check,
       label: tripStop.isDone ? LocaleKeys.toDo.tr() : LocaleKeys.completed.tr(),
     );
   }
+}
 
-  Widget _getTravelEndSlidableAction(TripStop tripStop, int index) {
+class _TravelEndSlidableAction extends StatelessWidget {
+  const _TravelEndSlidableAction(this.tripStop, this.index);
+
+  final TripStop tripStop;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
     return SlidableAction(
       onPressed: (context) => context.read<DayTripCubit>().toggleTripStopDelete(index),
       backgroundColor: Colors.red,
       foregroundColor: Colors.white,
       icon: Icons.delete,
       label: LocaleKeys.delete.tr(),
+    );
+  }
+}
+
+class _TripStopRowItem extends StatelessWidget {
+  const _TripStopRowItem({
+    super.key,
+    required this.isLastItem,
+    required this.startSlidableAction,
+    required this.endSlidableAction,
+    required this.tripStop,
+    required this.startEndTime,
+  });
+
+  final bool isLastItem;
+  final Widget startSlidableAction;
+  final Widget endSlidableAction;
+  final TripStop tripStop;
+  final StartEndTime startEndTime;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: isLastItem ? EdgeInsets.zero : const EdgeInsets.only(bottom: verticalSpaceS),
+      child: Slidable(
+        startActionPane: ActionPane(
+          motion: const ScrollMotion(),
+          children: [startSlidableAction],
+        ),
+        endActionPane: ActionPane(
+          motion: const ScrollMotion(),
+          children: [endSlidableAction],
+        ),
+        child: Builder(builder: (context) {
+          final slidableController = Slidable.of(context);
+          return TripStopCard(
+            tripStop: tripStop,
+            tripStartEndTimes: startEndTime,
+            slidableController: slidableController,
+          );
+        }),
+      ),
     );
   }
 }
