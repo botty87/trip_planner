@@ -1,8 +1,6 @@
-import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
@@ -41,28 +39,18 @@ void main() {
       initialState: tBackgroundsState,
     );
 
-    await $.pumpWidget(BlocProvider<DayTripCubit>(
-      create: (context) => mockDayTripCubit,
-      child: TestUtils.defaultWidget(
-        child: ImplicitlyAnimatedReorderableList<TripStop>(
-          shrinkWrap: true,
-          items: const [tTripStop],
-          itemBuilder: (context, itemAnimation, tripStopItem, index) {
-            return Reorderable(
-              key: const ValueKey(tTripStop),
-              child: TripStopCard(
-                tripStop: tTripStop,
-                tripStartEndTimes: tStartEndTime,
-                slidableController: null,
-              ),
-            );
-          },
-          areItemsTheSame: (a, b) => a == b,
-          onReorderFinished: (TripStop item, int from, int to, List<TripStop> newItems) {},
+    await $.pumpWidget(
+      BlocProvider<DayTripCubit>(
+        create: (context) => mockDayTripCubit,
+        child: TestUtils.defaultWidget(
+          child: TripStopCard(
+            tripStop: tTripStop,
+            tripStartEndTimes: tStartEndTime,
+            slidableController: null,
+          ),
         ),
-        backgroundsCubit: backgroundsCubit,
       ),
-    ));
+    );
 
     expect($(tTripStop.name), findsOneWidget);
   });
@@ -90,27 +78,10 @@ void main() {
       ])
       ..addScenario(
         name: 'TripStopCard',
-        widget: BlocProvider<DayTripCubit>(
-          create: (context) => mockDayTripCubit,
-          child: TestUtils.defaultWidget(
-            child: ImplicitlyAnimatedReorderableList<TripStop>(
-              shrinkWrap: true,
-              items: const [tTripStop],
-              itemBuilder: (context, itemAnimation, tripStopItem, index) {
-                return Reorderable(
-                  key: const ValueKey(tTripStop),
-                  child: TripStopCard(
-                    tripStop: tTripStop,
-                    tripStartEndTimes: tStartEndTime,
-                    slidableController: null,
-                  ),
-                );
-              },
-              areItemsTheSame: (a, b) => a == b,
-              onReorderFinished: (TripStop item, int from, int to, List<TripStop> newItems) {},
-            ),
-            backgroundsCubit: backgroundsCubit,
-          ),
+        widget: TripStopCard(
+          tripStop: tTripStop,
+          tripStartEndTimes: tStartEndTime,
+          slidableController: null,
         ),
       );
 

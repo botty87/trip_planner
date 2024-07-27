@@ -217,6 +217,12 @@ class TripCubit extends Cubit<TripState> {
       newDayTrips.removeAt(oldIndex);
       newDayTrips.insert(newIndex, oldDayTrips[oldIndex]);
 
+      //Update the day trips indexes
+      for (int i = 0; i < newDayTrips.length; i++) {
+        newDayTrips[i] = newDayTrips[i].copyWith(index: i);
+      }
+
+
       emit(TripState.loaded(trip: state.trip, dayTrips: newDayTrips));
 
       final List<DayTrip> dayTripsToUpdate = [];

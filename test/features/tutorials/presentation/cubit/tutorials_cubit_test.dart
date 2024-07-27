@@ -47,9 +47,9 @@ void main() {
   );
 
   blocTest<TutorialCubit, TutorialState>(
-    'When onShowTripStopSlide is called emit state with showTripStopSlide false',
+    'When onShowTripStopSlide is called emit state with showTripStopSlide false and showTripStopTravelPlaceholder false',
     build: () => getTutorialCubit(),
     act: (cubit) => cubit.onShowTripStopSlideAndPlaceholder(),
-    expect: () => [tTutorialState.copyWith(showTripStopSlide: false)],
+    expect: () => [tTutorialState.copyWith(showTripStopSlide: false, showTripStopTravelPlaceholder: false)],
   );
 }

@@ -257,7 +257,7 @@ void main() {
         setUp: () =>
             when(mockUpdateDayTripsIndexes.call(any)).thenAnswer((_) async => const Right(null)),
         seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
-        act: (cubit) => cubit.reorderDayTrips(0, 2, tDayTripsSorted),
+        act: (cubit) => cubit.reorderDayTrips(0, 2),
         build: () => getStandardCubit(),
         expect: () => [TripState.loaded(trip: tTrip, dayTrips: tDayTripsSorted)],
         verify: (_) => verify(mockUpdateDayTripsIndexes.call(any)));

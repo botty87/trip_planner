@@ -1,4 +1,3 @@
-import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
@@ -23,19 +22,10 @@ void main() {
   patrolWidgetTest('renders DayTripCard that conains GenericTripCard', ($) async {
     await $.pumpWidget(
       TestUtils.defaultWidget(
-        child: ImplicitlyAnimatedReorderableList<DayTrip>(
-          items: const [tDayTrip],
-          areItemsTheSame: (oldItem, newItem) => oldItem == newItem,
-          itemBuilder: (context, animation, item, i) {
-            return Reorderable(
-              key: const Key("reorderable"),
-              child: DayTripCard(
-                dayTrip: tDayTrip,
-                tripStartDate: tTripStartDate,
-              ),
-            );
-          },
-          onReorderFinished: (item, from, to, newItems) {},
+        child: DayTripCard(
+          key: ValueKey(tDayTrip.id),
+          dayTrip: tDayTrip,
+          tripStartDate: tTripStartDate,
         ),
       ),
     );
@@ -43,7 +33,6 @@ void main() {
     expect(find.byType(GenericTripCard), findsOneWidget);
     expect($("${LocaleKeys.day.tr()} 1"), findsOneWidget);
     expect($(DateFormat.yMMMMd().format(tTripStartDate)), findsOneWidget);
-    expect($(Handle), findsOneWidget);
     expect($(tDayTrip.description), findsOneWidget);
   });
 
@@ -57,19 +46,10 @@ void main() {
       ])
       ..addScenario(
         widget: TestUtils.defaultWidget(
-          child: ImplicitlyAnimatedReorderableList<DayTrip>(
-            items: const [tDayTrip],
-            areItemsTheSame: (oldItem, newItem) => oldItem == newItem,
-            itemBuilder: (context, animation, item, i) {
-              return Reorderable(
-                key: const Key("reorderable"),
-                child: DayTripCard(
-                  dayTrip: tDayTrip,
-                  tripStartDate: tTripStartDate,
-                ),
-              );
-            },
-            onReorderFinished: (item, from, to, newItems) {},
+          child: DayTripCard(
+            key: ValueKey(tDayTrip.id),
+            dayTrip: tDayTrip,
+            tripStartDate: tTripStartDate,
           ),
         ),
         name: 'day_trip_card',

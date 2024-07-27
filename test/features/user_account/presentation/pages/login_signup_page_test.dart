@@ -115,8 +115,9 @@ void main() {
         // act
         final signupButton = find.byKey(const Key('signup_button'));
         await widgetTester.ensureVisible(signupButton);
+        await widgetTester.pumpAndSettle();
         await widgetTester.tap(signupButton);
-        await widgetTester.pump();
+        await widgetTester.pumpAndSettle();
 
         // assert
         final emailErrorText = find.text(LocaleKeys.invalidEmail.tr());
@@ -135,8 +136,9 @@ void main() {
         // act
         final signupButton = find.byKey(const Key('signup_button'));
         await widgetTester.ensureVisible(signupButton);
+        await widgetTester.pumpAndSettle();
         await widgetTester.tap(signupButton);
-        await widgetTester.pump();
+        await widgetTester.pumpAndSettle();
 
         // assert
         final emailErrorText = find.text(LocaleKeys.passwordEmpty.tr());
@@ -157,8 +159,9 @@ void main() {
         await widgetTester.enterText(passwordTextField, "123456");
         final signupButton = find.byKey(const Key('signup_button'));
         await widgetTester.ensureVisible(signupButton);
+        await widgetTester.pumpAndSettle();
         await widgetTester.tap(signupButton);
-        await widgetTester.pump();
+        await widgetTester.pumpAndSettle();
 
         // assert
         final emailErrorText = find.text(LocaleKeys.passwordsDontMatch.tr());
@@ -177,8 +180,9 @@ void main() {
         // act
         final signupButton = find.byKey(const Key('signup_button'));
         await widgetTester.ensureVisible(signupButton);
+        await widgetTester.pumpAndSettle();
         await widgetTester.tap(signupButton);
-        await widgetTester.pump();
+        await widgetTester.pumpAndSettle();
 
         // assert
         final emailErrorText = find.text(LocaleKeys.nameEmpty.tr());
