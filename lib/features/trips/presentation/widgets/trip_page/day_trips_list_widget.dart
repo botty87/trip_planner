@@ -10,6 +10,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
+import '../../../../ui/presentation/widgets/background/background_widget_container.dart';
 import '../../cubit/trip/trip_cubit.dart';
 import 'day_trip_card.dart';
 
@@ -34,8 +35,9 @@ class DayTripsListWidget extends HookWidget {
         sliver: DayTripsList(),
       );
     } else {
-      return SliverFillRemaining(
-          child: orientation == Orientation.portrait ? const SizedBox.shrink() : const NoDayTrips());
+      return orientation == Orientation.portrait
+          ? const SliverToBoxAdapter(child: SizedBox.shrink())
+          : const SliverFillRemaining(child: NoDayTrips());
     }
   }
 }
@@ -47,19 +49,21 @@ class NoDayTrips extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         minimum: defaultPagePadding,
-        child: Column(
-          children: [
-            Expanded(child: SvgPicture(AssetBytesLoader(Assets.svg.noTripsSvg))),
-            const SizedBox(height: verticalSpaceL),
-            Text(
-              LocaleKeys.noDayTripsYetAddOne.tr(),
-              style: GoogleFonts.caveat(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
+        child: BackgroundWidgetContainer(
+          child: Column(
+            children: [
+              Expanded(child: SvgPicture(AssetBytesLoader(Assets.svg.noTripsSvg))),
+              const SizedBox(height: verticalSpaceL),
+              Text(
+                LocaleKeys.noDayTripsYetAddOne.tr(),
+                style: GoogleFonts.caveat(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }
