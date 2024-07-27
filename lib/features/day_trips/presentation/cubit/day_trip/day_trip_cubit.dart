@@ -33,26 +33,6 @@ part 'day_trip_state.dart';
 
 @injectable
 class DayTripCubit extends Cubit<DayTripState> {
-  final UpdateDayTrip _updateDayTrip;
-  final DeleteDayTrip _deleteDayTrip;
-  final ListenTripStops _listenTripStops;
-  final UpdateDayTripStartTime _updateDayTripStartTime;
-  final UpdateTripStopsIndexes _updateDayTripsIndexes;
-  final UpdateTravelTime _updateTravelTime;
-  final TripStopDone _tripStopDone;
-  final ListenDayTrip _listenDayTrip;
-  final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
-  final DeleteTripStop _deleteTripStop;
-  final UpdateTripStopPlaceholder _updateTripStopPlaceholder;
-
-  final FirebaseCrashlytics _crashlytics;
-
-  StreamSubscription<Either<TripStopsFailure, List<TripStop>>>? _tripStopsSubscription;
-
-  StreamSubscription<Either<DayTripsFailure, DayTrip>>? _dayTripSubscription;
-
-  final _startTimeDebouncer = Debouncer(milliseconds: 5000);
-
   DayTripCubit({
     @factoryParam required Trip trip,
     @factoryParam required DayTrip dayTrip,
@@ -82,11 +62,37 @@ class DayTripCubit extends Cubit<DayTripState> {
         _crashlytics = crashlytics,
         super(DayTripState.initial(trip: trip, dayTrip: dayTrip));
 
+  final UpdateDayTrip _updateDayTrip;
+  final DeleteDayTrip _deleteDayTrip;
+  final ListenTripStops _listenTripStops;
+  final UpdateDayTripStartTime _updateDayTripStartTime;
+  final UpdateTripStopsIndexes _updateDayTripsIndexes;
+  final UpdateTravelTime _updateTravelTime;
+  final TripStopDone _tripStopDone;
+  final ListenDayTrip _listenDayTrip;
+  final UpdateTripStopsDirectionsUpToDate _updateTripStopsDirectionsUpToDate;
+  final DeleteTripStop _deleteTripStop;
+  final UpdateTripStopPlaceholder _updateTripStopPlaceholder;
+
+  final FirebaseCrashlytics _crashlytics;
+
+  StreamSubscription<Either<TripStopsFailure, List<TripStop>>>? _tripStopsSubscription;
+
+  StreamSubscription<Either<DayTripsFailure, DayTrip>>? _dayTripSubscription;
+
+  final _startTimeDebouncer = Debouncer(milliseconds: 5000);
+
+  @override
+  Future<void> close() {
+    _tripStopsSubscription?.cancel();
+    _dayTripSubscription?.cancel();
+    return super.close();
+  }
+
   startListenTripStops() {
     _tripStopsSubscription?.cancel();
     _tripStopsSubscription =
-        _listenTripStops(ListenTripStopsParams(dayTripId: state.dayTrip.id, tripId: state.trip.id))
-            .listen((result) {
+        _listenTripStops(ListenTripStopsParams(dayTripId: state.dayTrip.id, tripId: state.trip.id)).listen((result) {
       result.fold(
         (failure) {
           emit(DayTripState.error(
@@ -95,6 +101,7 @@ class DayTripCubit extends Cubit<DayTripState> {
             errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
             fatal: true,
             hasStartTimeToSave: state.hasStartTimeToSave,
+            currentSelectedTab: state.currentSelectedTab,
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
@@ -105,6 +112,7 @@ class DayTripCubit extends Cubit<DayTripState> {
             dayTrip: state.dayTrip,
             tripStops: tripStops,
             hasStartTimeToSave: state.hasStartTimeToSave,
+            currentSelectedTab: state.currentSelectedTab,
           )),
         ),
       );
@@ -113,9 +121,8 @@ class DayTripCubit extends Cubit<DayTripState> {
 
   startListenDayTrip() {
     _dayTripSubscription?.cancel();
-    _dayTripSubscription =
-        _listenDayTrip(ListenDayTripParams(tripId: state.trip.id, dayTripId: state.dayTrip.id))
-            .listen((dayTripOrFailure) {
+    _dayTripSubscription = _listenDayTrip(ListenDayTripParams(tripId: state.trip.id, dayTripId: state.dayTrip.id))
+        .listen((dayTripOrFailure) {
       dayTripOrFailure.fold(
         (failure) {
           emit(DayTripState.error(
@@ -124,6 +131,7 @@ class DayTripCubit extends Cubit<DayTripState> {
             errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
             fatal: true,
             hasStartTimeToSave: state.hasStartTimeToSave,
+            currentSelectedTab: state.currentSelectedTab,
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
@@ -143,6 +151,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         tripStops: loadedState.tripStops,
         description: loadedState.dayTrip.description,
         hasStartTimeToSave: loadedState.hasStartTimeToSave,
+        currentSelectedTab: loadedState.currentSelectedTab,
       )),
     );
   }
@@ -154,6 +163,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         dayTrip: editingState.dayTrip,
         tripStops: editingState.tripStops,
         hasStartTimeToSave: editingState.hasStartTimeToSave,
+        currentSelectedTab: editingState.currentSelectedTab,
       )),
     );
   }
@@ -165,8 +175,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   }
 
   startTimeChanged(TimeOfDay startTime) {
-    emit(state.copyWith(
-        dayTrip: state.dayTrip.copyWith(startTime: startTime), hasStartTimeToSave: true));
+    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(startTime: startTime), hasStartTimeToSave: true));
     _startTimeDebouncer.run(() => saveDayTripStopStartTime());
   }
 
@@ -177,6 +186,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         dayTrip: editingState.dayTrip,
         tripStops: editingState.tripStops,
         hasStartTimeToSave: editingState.hasStartTimeToSave,
+        currentSelectedTab: editingState.currentSelectedTab,
       )),
     );
   }
@@ -206,6 +216,7 @@ class DayTripCubit extends Cubit<DayTripState> {
               trip: state.trip,
               dayTrip: state.dayTrip.copyWith(description: editingState.description),
               tripStops: editingState.tripStops,
+              currentSelectedTab: editingState.currentSelectedTab,
             ));
           },
         );
@@ -242,6 +253,7 @@ class DayTripCubit extends Cubit<DayTripState> {
               errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
               fatal: false,
               hasStartTimeToSave: false,
+              currentSelectedTab: loadedState.currentSelectedTab,
             ));
             emit(loadedState.copyWith(
               hasStartTimeToSave: false,
@@ -275,6 +287,7 @@ class DayTripCubit extends Cubit<DayTripState> {
           dayTrip: loadedState.dayTrip,
           tripStops: loadedState.tripStops,
           hasStartTimeToSave: loadedState.hasStartTimeToSave,
+          currentSelectedTab: loadedState.currentSelectedTab,
         ));
 
         final result = await _deleteDayTrip(
@@ -292,11 +305,13 @@ class DayTripCubit extends Cubit<DayTripState> {
               fatal: false,
               errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
               hasStartTimeToSave: state.hasStartTimeToSave,
+              currentSelectedTab: state.currentSelectedTab,
             ));
             emit(DayTripState.loaded(
               trip: state.trip,
               dayTrip: state.dayTrip,
               tripStops: oldTripStops,
+              currentSelectedTab: state.currentSelectedTab,
             ));
 
             //Restore startTimeDebouncer
@@ -306,6 +321,7 @@ class DayTripCubit extends Cubit<DayTripState> {
             emit(DayTripState.deleted(
               trip: state.trip,
               dayTrip: state.dayTrip,
+              currentSelectedTab: state.currentSelectedTab,
             ));
           },
         );
@@ -352,12 +368,14 @@ class DayTripCubit extends Cubit<DayTripState> {
               fatal: false,
               errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
               hasStartTimeToSave: state.hasStartTimeToSave,
+              currentSelectedTab: state.currentSelectedTab,
             ));
             emit(DayTripState.loaded(
               trip: state.trip,
               dayTrip: state.dayTrip,
               tripStops: oldTripStops,
               hasStartTimeToSave: state.hasStartTimeToSave,
+              currentSelectedTab: state.currentSelectedTab,
             ));
           },
           (_) {
@@ -380,8 +398,7 @@ class DayTripCubit extends Cubit<DayTripState> {
         final oldTripStops = state.tripStops;
 
         final tripStopToUpdateIndex = state.tripStops.indexWhere((element) => element.id == id);
-        final tripStopToUpdate =
-            state.tripStops[tripStopToUpdateIndex].copyWith(travelTimeToNextStop: inMinutes);
+        final tripStopToUpdate = state.tripStops[tripStopToUpdateIndex].copyWith(travelTimeToNextStop: inMinutes);
         final tripStops = List<TripStop>.from(state.tripStops);
         tripStops[tripStopToUpdateIndex] = tripStopToUpdate;
 
@@ -403,11 +420,13 @@ class DayTripCubit extends Cubit<DayTripState> {
             fatal: false,
             errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
             hasStartTimeToSave: state.hasStartTimeToSave,
+            currentSelectedTab: state.currentSelectedTab,
           ));
           emit(DayTripState.loaded(
             trip: state.trip,
             dayTrip: state.dayTrip,
             tripStops: oldTripStops,
+            currentSelectedTab: state.currentSelectedTab,
           ));
         });
       },
@@ -442,12 +461,14 @@ class DayTripCubit extends Cubit<DayTripState> {
               fatal: false,
               errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
               hasStartTimeToSave: state.hasStartTimeToSave,
+              currentSelectedTab: state.currentSelectedTab,
             ));
 
             emit(DayTripState.loaded(
               trip: state.trip,
               dayTrip: state.dayTrip,
               tripStops: oldTripStops,
+              currentSelectedTab: state.currentSelectedTab,
             ));
           },
           (_) {
@@ -500,12 +521,14 @@ class DayTripCubit extends Cubit<DayTripState> {
               fatal: false,
               errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
               hasStartTimeToSave: state.hasStartTimeToSave,
+              currentSelectedTab: state.currentSelectedTab,
             ));
 
             emit(DayTripState.loaded(
               trip: state.trip,
               dayTrip: state.dayTrip,
               tripStops: oldTripStops,
+              currentSelectedTab: state.currentSelectedTab,
             ));
           },
         );
@@ -515,8 +538,8 @@ class DayTripCubit extends Cubit<DayTripState> {
 
   void showEditTripStopPlaceholderDialog(TripStop tripStop) {
     return switch (state) {
-      final DayTripStateLoaded loadedState => emit(loadedState.copyWith(
-          tripStopPlaceholderEditing: tripStop.placeholder ?? TripStopPlaceholder.create())),
+      final DayTripStateLoaded loadedState =>
+        emit(loadedState.copyWith(tripStopPlaceholderEditing: tripStop.placeholder ?? TripStopPlaceholder.create())),
       _ => null,
     };
   }
@@ -524,8 +547,7 @@ class DayTripCubit extends Cubit<DayTripState> {
   void updateTripStopPlaceholderName(String value) {
     return switch (state) {
       final DayTripStateLoaded loadedState => emit(loadedState.copyWith(
-          tripStopPlaceholderEditing:
-              loadedState.tripStopPlaceholderEditing!.copyWith(name: value))),
+          tripStopPlaceholderEditing: loadedState.tripStopPlaceholderEditing!.copyWith(name: value))),
       _ => null,
     };
   }
@@ -533,16 +555,14 @@ class DayTripCubit extends Cubit<DayTripState> {
   void updateTripStopPlaceholderDuration(int inMinutes) {
     return switch (state) {
       final DayTripStateLoaded loadedState => emit(loadedState.copyWith(
-          tripStopPlaceholderEditing:
-              loadedState.tripStopPlaceholderEditing!.copyWith(duration: inMinutes))),
+          tripStopPlaceholderEditing: loadedState.tripStopPlaceholderEditing!.copyWith(duration: inMinutes))),
       _ => null,
     };
   }
 
   void cancelEditTripStopPlaceholderDialog() {
     return switch (state) {
-      final DayTripStateLoaded loadedState =>
-        emit(loadedState.copyWith(tripStopPlaceholderEditing: null)),
+      final DayTripStateLoaded loadedState => emit(loadedState.copyWith(tripStopPlaceholderEditing: null)),
       _ => null,
     };
   }
@@ -569,14 +589,14 @@ class DayTripCubit extends Cubit<DayTripState> {
               errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
               fatal: false,
               hasStartTimeToSave: state.hasStartTimeToSave,
+              currentSelectedTab: state.currentSelectedTab,
             )),
           _ => null,
         };
       },
       (_) {
         return switch (state) {
-          final DayTripStateLoaded loadedState =>
-            emit(loadedState.copyWith(tripStopPlaceholderEditing: null)),
+          final DayTripStateLoaded loadedState => emit(loadedState.copyWith(tripStopPlaceholderEditing: null)),
           _ => null,
         };
       },
@@ -605,6 +625,7 @@ class DayTripCubit extends Cubit<DayTripState> {
               errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
               fatal: false,
               hasStartTimeToSave: state.hasStartTimeToSave,
+              currentSelectedTab: state.currentSelectedTab,
             )),
           _ => null,
         };
@@ -612,10 +633,5 @@ class DayTripCubit extends Cubit<DayTripState> {
     );
   }
 
-  @override
-  Future<void> close() {
-    _tripStopsSubscription?.cancel();
-    _dayTripSubscription?.cancel();
-    return super.close();
-  }
+  void setCurrentSelectedTab(int index) => emit(state.copyWith(currentSelectedTab: DayTripTab.values[index]));
 }

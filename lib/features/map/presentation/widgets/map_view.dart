@@ -114,8 +114,7 @@ class _MapView extends HookWidget {
   }
 
   //Get the markerId, infoWindow and icon for a mapPlace
-  (String, InfoWindow, BitmapDescriptor) _mapPlaceToMarker(
-      MapPlace mapPlace, Uint8List? bitmap, BuildContext context) {
+  (String, InfoWindow, BitmapDescriptor) _mapPlaceToMarker(MapPlace mapPlace, Uint8List? bitmap, BuildContext context) {
     late final String markerId;
     late final InfoWindow infoWindow;
     late final BitmapDescriptor icon;
@@ -124,15 +123,14 @@ class _MapView extends HookWidget {
       existing: (id, name, description, location, isDone) {
         markerId = id;
         infoWindow = _showInfoWindow
-            ? _createInfoWindow(
-                name, description, _onMarkerTap != null ? () => _onMarkerTap!(mapPlace) : null)
+            ? _createInfoWindow(name, description, _onMarkerTap != null ? () => _onMarkerTap!(mapPlace) : null)
             : InfoWindow.noText;
-        icon = bitmap != null ? BitmapDescriptor.fromBytes(bitmap) : BitmapDescriptor.defaultMarker;
+        icon = bitmap != null ? BitmapDescriptor.bytes(bitmap) : BitmapDescriptor.defaultMarker;
       },
       newPlace: (location) {
         markerId = location.toString();
         infoWindow = InfoWindow.noText;
-        icon = bitmap != null ? BitmapDescriptor.fromBytes(bitmap) : BitmapDescriptor.defaultMarker;
+        icon = bitmap != null ? BitmapDescriptor.bytes(bitmap) : BitmapDescriptor.defaultMarker;
       },
     );
 
@@ -169,19 +167,7 @@ class _MapView extends HookWidget {
   List<Widget> _orderedMarkerWidgets(BuildContext context) {
     final List<Widget> markerWidgets = [];
 
-    //TODO: check this
-    /* final ResponsiveValue<double> responsiveMarkerSize = ResponsiveValue(
-      context,
-      defaultValue: 50,
-      conditionalValues: [
-        const Condition.largerThan(name: TABLET, value: 30),
-        const Condition.largerThan(name: DESKTOP, value: 18),
-      ],
-    ); */
-
-    //final double markerSize = kIsWeb ? 20 : responsiveMarkerSize.value; 
-
-    final double markerSize = 50;
+    const double markerSize = 20;
 
     for (int i = 0; i < (_mapPlaces?.length ?? 0); i++) {
       final color = _mapPlaces![i].when(
@@ -203,18 +189,16 @@ class _MapView extends HookWidget {
             borderRadius: BorderRadius.circular(30),
             border: Border.all(color: Colors.white, width: 2),
           ),
-          child: Center(
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: Text(
-                (i + 1).toString(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-                textAlign: TextAlign.center,
+          child: FittedBox(
+            fit: BoxFit.cover,
+            child: Text(
+              (i + 1).toString(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 5,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),

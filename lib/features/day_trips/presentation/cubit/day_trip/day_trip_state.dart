@@ -6,6 +6,7 @@ sealed class DayTripState with _$DayTripState {
     required Trip trip,
     required DayTrip dayTrip,
     @Default(false) bool hasStartTimeToSave,
+    @Default(DayTripTab.list) DayTripTab currentSelectedTab,
   }) = DayTripStateInitial;
 
   const factory DayTripState.loaded({
@@ -15,6 +16,7 @@ sealed class DayTripState with _$DayTripState {
     @Default(false) bool hasStartTimeToSave,
     @Default(false) bool explictitStartTimeSave,
     TripStopPlaceholder? tripStopPlaceholderEditing,
+    required DayTripTab currentSelectedTab,
   }) = DayTripStateLoaded;
 
   const factory DayTripState.error({
@@ -23,6 +25,7 @@ sealed class DayTripState with _$DayTripState {
     required String errorMessage,
     required bool fatal,
     required bool hasStartTimeToSave,
+    required DayTripTab currentSelectedTab,
   }) = DayTripStateError;
 
   const factory DayTripState.editing({
@@ -33,6 +36,7 @@ sealed class DayTripState with _$DayTripState {
     @Default(false) final bool isSaving,
     required bool hasStartTimeToSave,
     String? errorMessage,
+    required DayTripTab currentSelectedTab,
   }) = DayTripStateEditing;
 
   const factory DayTripState.deleting({
@@ -40,11 +44,22 @@ sealed class DayTripState with _$DayTripState {
     required DayTrip dayTrip,
     required List<TripStop> tripStops,
     required bool hasStartTimeToSave,
+    required DayTripTab currentSelectedTab,
   }) = DayTripStateDeleting;
 
   const factory DayTripState.deleted({
     required Trip trip,
     required DayTrip dayTrip,
     @Default(false) bool hasStartTimeToSave,
+    required DayTripTab currentSelectedTab,
   }) = DayTripStateDeleted;
+}
+
+enum DayTripTab {
+  list(0),
+  map(1);
+
+  const DayTripTab(this.position);
+
+  final int position;
 }

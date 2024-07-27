@@ -26,24 +26,20 @@ import '../widgets/new_edit_day_trip_form/new_edit_day_trip_form.dart';
 
 @RoutePage()
 class DayTripPage extends HookWidget {
-  final Trip _trip;
-  final DayTrip _dayTrip;
-
   const DayTripPage({super.key, required Trip trip, required DayTrip dayTrip})
       : _trip = trip,
         _dayTrip = dayTrip;
 
+  final Trip _trip;
+  final DayTrip _dayTrip;
+
   @override
   Widget build(BuildContext context) {
-    final isModalBottomEditing = useRef<bool>(false);
-
-    final isSaving = useStreamController<bool>();
-    final errorMessageStream = useStreamController<String?>();
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<DayTripCubit>(
           create: (context) => getIt(param1: _trip, param2: _dayTrip)
+            //TODO replace with injectable init
             ..startListenTripStops()
             ..startListenDayTrip(),
         ),
@@ -51,48 +47,65 @@ class DayTripPage extends HookWidget {
           create: (context) => getIt(param1: _trip, param2: _dayTrip),
         ),
       ],
-      child: Builder(
-        builder: (BuildContext context) {
-          return PopScope(
-              canPop: false,
-              onPopInvoked: (bool didPop) async {
-                if (didPop) {
-                  return;
-                }
-
-                final success = await _onWillPop(context);
-
-                if (success && context.mounted) {
-                  Navigator.of(context).pop();
-                }
-              },
-              child: OrientationBuilder(builder: (context, orientation) {
-                if (orientation == Orientation.portrait) {
-                  return _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream);
-                } else {
-                  return _horizontalLayout(context, isSaving, isModalBottomEditing, errorMessageStream);
-                }
-              }));
-        },
-      ),
+      child: const _Body(),
     );
+  }
+}
+
+class _Body extends HookWidget {
+  const _Body();
+
+  @override
+  Widget build(BuildContext context) {
+    //Instantiate the tab controller and add the listener to it
+    final tabController = useTabController(initialLength: 2, initialIndex: 0);
+    useEffect(() {
+      tabController.addListener(() {
+        final index = tabController.index;
+        context.read<DayTripCubit>().setCurrentSelectedTab(index);
+      });
+      return null;
+    }, [tabController]);
+
+    final isModalBottomEditing = useRef<bool>(false);
+
+    final isSaving = useStreamController<bool>();
+    final errorMessageStream = useStreamController<String?>();
+
+    return PopScope(
+        canPop: false,
+        onPopInvoked: (bool didPop) async {
+          if (didPop) {
+            return;
+          }
+
+          final success = await _onWillPop(context);
+
+          if (success && context.mounted) {
+            Navigator.of(context).pop();
+          }
+        },
+        child: OrientationBuilder(builder: (context, orientation) {
+          if (orientation == Orientation.portrait) {
+            return _verticalLayout(context, isSaving, isModalBottomEditing, errorMessageStream, tabController);
+          } else {
+            return _horizontalLayout(context, isSaving, isModalBottomEditing, errorMessageStream);
+          }
+        }));
   }
 
   Widget _verticalLayout(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
-      StreamController<String?> errorMessageStream) {
-    return DefaultTabController(
-      length: 2,
-      child: _horizontalLayout(context, isSaving, isModalBottomEditing, errorMessageStream,
-          orientation: Orientation.portrait),
-    );
+      StreamController<String?> errorMessageStream, TabController tabController) {
+    return _horizontalLayout(context, isSaving, isModalBottomEditing, errorMessageStream,
+        orientation: Orientation.portrait, tabController: tabController);
   }
 
   Widget _horizontalLayout(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomEditing,
       StreamController<String?> errorMessageStream,
-      {Orientation orientation = Orientation.landscape}) {
+      {Orientation orientation = Orientation.landscape, TabController? tabController}) {
     return ScaffoldTransparent(
       hasBackgroundImage: context.hasBackgroundImage,
-      appBar: _buildAppBar(context, orientation),
+      appBar: _buildAppBar(context, orientation, tabController: tabController),
       body: MultiBlocListener(
         listeners: [
           //Show snackbar when error is not fatal and is not editing
@@ -143,51 +156,37 @@ class DayTripPage extends HookWidget {
             },
           ),
         ],
-        child: Builder(builder: (context) {
-          return NotificationListener(
-            onNotification: (notification) {
-              if (orientation == Orientation.portrait && notification is ScrollEndNotification) {
-                final tabIndex = DefaultTabController.of(context).index;
-                context.read<TripStopsMapCubit>().selectTab(tabIndex == 1);
-              }
-              return false;
-            },
-            child: BlocBuilder<DayTripCubit, DayTripState>(
-              buildWhen: (previous, current) => current.maybeMap(
-                deleting: (_) => false,
-                error: (state) => state.fatal,
-                deleted: (_) => false,
-                orElse: () =>
-                    previous.runtimeType != current.runtimeType &&
-                    previous.maybeMap(
-                      error: (value) => value.fatal,
-                      orElse: () => true,
-                    ) &&
-                    current.maybeMap(
-                      editing: (_) => false,
-                      orElse: () => true,
-                    ),
+        child: BlocBuilder<DayTripCubit, DayTripState>(
+          buildWhen: (previous, current) => current.maybeMap(
+            deleting: (_) => false,
+            error: (state) => state.fatal,
+            deleted: (_) => false,
+            orElse: () =>
+                previous.runtimeType != current.runtimeType &&
+                previous.maybeMap(
+                  error: (value) => value.fatal,
+                  orElse: () => true,
+                ) &&
+                current.maybeMap(
+                  editing: (_) => false,
+                  orElse: () => true,
+                ),
+          ),
+          builder: (context, state) {
+            return TripPagesAnimatedSwitcher(
+              child: state.maybeMap(
+                initial: (_) => const DayTripPageInitialWidget(key: ValueKey('initial')),
+                loaded: (_) =>
+                    Center(key: const ValueKey('loaded'), child: DayTripPageLoaded(orientation: orientation)),
+                error: (state) => Center(
+                  key: const ValueKey('error'),
+                  child: DayTripErrorWidget(message: state.errorMessage),
+                ),
+                orElse: () => throw UnimplementedError(),
               ),
-              builder: (context, state) {
-                return TripPagesAnimatedSwitcher(
-                  child: state.maybeMap(
-                    initial: (_) => const DayTripPageInitialWidget(key: ValueKey('initial')),
-                    loaded: (_) => Center(
-                        key: const ValueKey('loaded'),
-                        child: DayTripPageLoaded(
-                          orientation: orientation,
-                        )),
-                    error: (state) => Center(
-                      key: const ValueKey('error'),
-                      child: DayTripErrorWidget(message: state.errorMessage),
-                    ),
-                    orElse: () => throw UnimplementedError(),
-                  ),
-                );
-              },
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }
@@ -196,7 +195,11 @@ class DayTripPage extends HookWidget {
     return context.read<DayTripCubit>().saveDayTripStopStartTime(forced: true);
   }
 
-  PreferredSizeWidget _buildAppBar(BuildContext context, Orientation orientation) {
+  PreferredSizeWidget _buildAppBar(
+    BuildContext context,
+    Orientation orientation, {
+    TabController? tabController,
+  }) {
     return AppBar(
       title: Text("${LocaleKeys.day.tr()} ${context.read<DayTripCubit>().state.dayTrip.index + 1}"),
       backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
@@ -209,10 +212,15 @@ class DayTripPage extends HookWidget {
       bottom: orientation == Orientation.portrait
           ? PreferredSize(
               preferredSize: const Size.fromHeight(48),
-              child: TabBar(tabs: [
-                Tab(icon: Icon(Icons.list, semanticLabel: LocaleKeys.list.tr())),
-                Tab(icon: Icon(Icons.map, semanticLabel: LocaleKeys.map.tr())),
-              ], indicator: const UnderlineTabIndicator(borderSide: BorderSide.none), dividerColor: Colors.transparent),
+              child: TabBar(
+                controller: tabController,
+                tabs: [
+                  Tab(icon: Icon(Icons.list, semanticLabel: LocaleKeys.list.tr())),
+                  Tab(icon: Icon(Icons.map, semanticLabel: LocaleKeys.map.tr())),
+                ],
+                indicator: const UnderlineTabIndicator(borderSide: BorderSide.none),
+                dividerColor: Colors.transparent,
+              ),
             )
           : null,
     );

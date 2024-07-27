@@ -80,7 +80,7 @@ class _MapView extends HookWidget {
     );
   }
 
-  _getMapWidget(TripStopsNumState tripStopsNumState) {
+  Widget _getMapWidget(TripStopsNumState tripStopsNumState) {
     switch (tripStopsNumState) {
       case TripStopsNumState.zero:
         return LayoutBuilder(builder: (context, constraints) {

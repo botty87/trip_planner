@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 
 import '../../../../../core/constants.dart';
 import '../../cubit/day_trip/day_trip_cubit.dart';
@@ -28,15 +29,25 @@ class DayTripPageLoaded extends HookWidget {
           absorbed ? const LinearProgressIndicator() : const SizedBox.shrink(),
           Expanded(
             child: orientation == Orientation.portrait
-                ? ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-                    child: const TabBarView(
-                      physics: NeverScrollableScrollPhysics(),
-                      children: [
-                        ListViewWidget(orientation: Orientation.portrait),
-                        MapViewWidget(),
-                      ],
-                    ),
+                ? BlocSelector<DayTripCubit, DayTripState, DayTripTab>(
+                    selector: (state) => state.currentSelectedTab,
+                    builder: (context, currentSelectedTab) {
+                      return LazyLoadIndexedStack(
+                        index: currentSelectedTab.position,
+                        children: [
+                          Center(
+                            child: ConstrainedBox(
+                              key: const ValueKey('listViewWidget'),
+                              constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                              child: const ListViewWidget(
+                                orientation: Orientation.portrait,
+                              ),
+                            ),
+                          ),
+                          const MapViewWidget(key: ValueKey('mapViewWidget')),
+                        ],
+                      );
+                    },
                   )
                 : ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: maxRowWidth),
