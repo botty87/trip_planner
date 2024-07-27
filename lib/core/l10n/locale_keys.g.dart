@@ -118,7 +118,7 @@ abstract class  LocaleKeys {
   static const list = 'list';
   static const map = 'map';
   static const showDirections = 'showDirections';
-  static const useDifferentColors = 'useDifferentColors';
+  static const differentColors = 'differentColors';
   static const car = 'car';
   static const walk = 'walk';
   static const bike = 'bike';

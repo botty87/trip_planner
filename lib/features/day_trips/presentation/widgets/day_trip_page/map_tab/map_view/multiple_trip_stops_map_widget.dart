@@ -14,17 +14,14 @@ class MultipleTripStopsMapWidget extends StatelessWidget {
       children: [
         const DayTripMapWidget(isSingleTripStop: false),
         Align(
-          alignment: Alignment.topCenter,
+          alignment: Alignment.bottomLeft,
           child: Padding(
             //The 70 is the width of the map control buttons
             padding: const EdgeInsets.only(
-                top: pageVerticalPadding, left: pageHorizontalPadding + 70, right: pageHorizontalPadding + 70),
+                bottom: pageVerticalPadding, left: pageHorizontalPadding, right: pageHorizontalPadding),
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-              child: Card(
-                color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
-                child: const MapDirectionsSwitcher(),
-              ),
+              constraints: const BoxConstraints(maxWidth: maxListViewWidth / 2),
+              child: const MapDirectionsSwitcher(),
             ),
           ),
         ),
