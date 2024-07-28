@@ -58,7 +58,7 @@ void main() async {
   }
 
   runApp(DevicePreview(
-    enabled: !kReleaseMode && (Platform.isLinux || Platform.isMacOS || Platform.isWindows),
+    enabled: !kIsWeb && !kReleaseMode && (Platform.isLinux || Platform.isMacOS || Platform.isWindows),
     builder: (context) => EasyLocalization(
             supportedLocales: const [Locale('it'), Locale('en')],
             path: 'assets/translations',
@@ -67,4 +67,6 @@ void main() async {
             child: const MyApp(),
           ),
   ));
+
+  
 }
