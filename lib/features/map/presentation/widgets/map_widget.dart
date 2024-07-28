@@ -107,7 +107,7 @@ class MapWidget extends StatelessWidget {
                       onMarkerDragEnd: _onMarkerDragEnd,
                     ),
                     const Align(alignment: Alignment.topLeft, child: _MapTypeChanger()),
-                    const Align(alignment: Alignment.bottomLeft, child: _MapZoomButtons()),
+                    const Align(alignment: Alignment.bottomRight, child: _MapZoomButtons()),
                     const Align(alignment: Alignment.topRight, child: _MapMarkersFinder()),
                   ],
                 ),

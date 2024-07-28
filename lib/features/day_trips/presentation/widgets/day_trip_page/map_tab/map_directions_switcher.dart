@@ -18,14 +18,14 @@ class MapDirectionsSwitcher extends HookWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
             padding: const EdgeInsets.only(bottom: verticalSpaceXs),
             //Slide and fade animation
             child: AnimatedSlide(
               duration: const Duration(milliseconds: 300),
-              offset: showDirections.value ? const Offset(0, 0) : const Offset(1.5, 0),
+              offset: showDirections.value ? const Offset(0, 0) : const Offset(-1.5, 0),
               curve: Curves.easeInOut,
               child: AnimatedOpacity(
                 duration: const Duration(milliseconds: 300),

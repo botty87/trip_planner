@@ -14,10 +14,10 @@ class MultipleTripStopsMapWidget extends StatelessWidget {
       children: [
         const DayTripMapWidget(isSingleTripStop: false),
         Align(
-          alignment: Alignment.bottomRight,
+          alignment: Alignment.bottomLeft,
           child: ClipRRect(
             child: Padding(
-              padding: const EdgeInsets.only(bottom: pageVerticalPadding, right: pageHorizontalPadding),
+              padding: const EdgeInsets.only(bottom: pageVerticalPadding, left: pageHorizontalPadding),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: maxListViewWidth / 2),
                 child: const MapDirectionsSwitcher(),
