@@ -8,7 +8,7 @@ class _MapZoomButtons extends StatelessWidget {
     return SafeArea(
       minimum: const EdgeInsets.all(16.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
         children: [
           IconButton.filled(
             icon: const Icon(Icons.remove),

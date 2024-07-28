@@ -167,7 +167,8 @@ class _MapView extends HookWidget {
   List<Widget> _orderedMarkerWidgets(BuildContext context) {
     final List<Widget> markerWidgets = [];
 
-    const double markerSize = 20;
+    //Due to the various trials this value is the best
+    const double markerSize = 18;
 
     for (int i = 0; i < (_mapPlaces?.length ?? 0); i++) {
       final color = _mapPlaces![i].when(

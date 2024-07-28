@@ -18,16 +18,20 @@ class MapDirectionsSwitcher extends HookWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Padding(
             padding: const EdgeInsets.only(bottom: verticalSpaceXs),
             //Slide and fade animation
             child: AnimatedSlide(
               duration: const Duration(milliseconds: 300),
-              offset: showDirections.value ? const Offset(0, 0) : const Offset(-2, 0),
+              offset: showDirections.value ? const Offset(0, 0) : const Offset(1.5, 0),
               curve: Curves.easeInOut,
-              child: const _OpenWidget(),
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 300),
+                opacity: showDirections.value ? 1 : 0,
+                child: const _BodyCard(),
+              ),
             )),
         FloatingActionButton(
           onPressed: () => showDirections.value = !showDirections.value,
@@ -38,8 +42,8 @@ class MapDirectionsSwitcher extends HookWidget {
   }
 }
 
-class _OpenWidget extends StatelessWidget {
-  const _OpenWidget({super.key});
+class _BodyCard extends StatelessWidget {
+  const _BodyCard();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,7 @@ class _OpenWidget extends StatelessWidget {
     return Card(
       color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 200),
+        constraints: const BoxConstraints(maxWidth: 220),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
