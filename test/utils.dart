@@ -54,7 +54,7 @@ const tTripStop = TripStop(
   location: LatLng(0, 0),
 );
 
-final tDayTripStateLoaded = DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: []);
+final tDayTripStateLoaded = DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: [], currentSelectedTab: DayTripTab.list);
 
 final tTripStopStateNormal = TripStopState.normal(tripStop: tTripStop, trip: tTrip, dayTrip: tDayTrip);
 
