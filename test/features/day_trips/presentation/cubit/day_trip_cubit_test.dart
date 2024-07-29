@@ -128,15 +128,22 @@ void main() {
 
   blocTest<DayTripCubit, DayTripState>(
     'On edit emit DayTripStateEditing',
-    seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+    seed: () => DayTripState.loaded(
+      trip: tTrip,
+      dayTrip: tDayTrip,
+      tripStops: tTripStops,
+      currentSelectedTab: DayTripTab.list,
+    ),
     act: (cubit) => cubit.edit(),
     expect: () => [
       DayTripState.editing(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          description: tDayTrip.description,
-          tripStops: tTripStops,
-          hasStartTimeToSave: false),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        description: tDayTrip.description,
+        tripStops: tTripStops,
+        hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.list,
+      ),
     ],
     build: () => getStandardDayTripCubit(),
   );
@@ -144,32 +151,45 @@ void main() {
   blocTest<DayTripCubit, DayTripState>(
     'On descriptionChanged emit DayTripStateEditing with new description',
     seed: () => DayTripState.editing(
-        trip: tTrip,
-        dayTrip: tDayTrip,
-        description: tDayTrip.description,
-        tripStops: tTripStops,
-        hasStartTimeToSave: false),
+      trip: tTrip,
+      dayTrip: tDayTrip,
+      description: tDayTrip.description,
+      tripStops: tTripStops,
+      hasStartTimeToSave: false,
+      currentSelectedTab: DayTripTab.list,
+    ),
     act: (cubit) => cubit.descriptionChanged('new description'),
     expect: () => [
       DayTripState.editing(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          description: 'new description',
-          tripStops: tTripStops,
-          hasStartTimeToSave: false)
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        description: 'new description',
+        tripStops: tTripStops,
+        hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.list,
+      )
     ],
     build: () => getStandardDayTripCubit(),
   );
   blocTest<DayTripCubit, DayTripState>(
     'On cancelEditing emit DayTripState with original Daytrip',
     seed: () => DayTripState.editing(
+      trip: tTrip,
+      dayTrip: tDayTrip,
+      description: tDayTrip.description,
+      tripStops: tTripStops,
+      hasStartTimeToSave: false,
+      currentSelectedTab: DayTripTab.list,
+    ),
+    act: (cubit) => cubit.cancelEditing(),
+    expect: () => [
+      DayTripState.loaded(
         trip: tTrip,
         dayTrip: tDayTrip,
-        description: tDayTrip.description,
         tripStops: tTripStops,
-        hasStartTimeToSave: false),
-    act: (cubit) => cubit.cancelEditing(),
-    expect: () => [DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops)],
+        currentSelectedTab: DayTripTab.list,
+      )
+    ],
     build: () => getStandardDayTripCubit(),
   );
 
@@ -182,21 +202,26 @@ void main() {
         description: 'new description',
         tripStops: tTripStops,
         hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.list,
       ),
       setUp: () => when(mockUpdateDayTrip.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         DayTripState.editing(
-            trip: tTrip,
-            dayTrip: tDayTrip,
-            isSaving: true,
-            description: 'new description',
-            tripStops: tTripStops,
-            hasStartTimeToSave: false),
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          isSaving: true,
+          description: 'new description',
+          tripStops: tTripStops,
+          hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
+        ),
         DayTripState.loaded(
-            trip: tTrip,
-            dayTrip: tDayTrip.copyWith(description: 'new description'),
-            tripStops: tTripStops),
+          trip: tTrip,
+          dayTrip: tDayTrip.copyWith(description: 'new description'),
+          tripStops: tTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       build: () => getStandardDayTripCubit(),
     );
@@ -204,13 +229,15 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'On save emit DayTripStateError and then DayTripStateEditing if updateDayTrip fails',
       seed: () => DayTripState.editing(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          description: tDayTrip.description,
-          tripStops: tTripStops,
-          hasStartTimeToSave: false),
-      setUp: () => when(mockUpdateDayTrip.call(any))
-          .thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        description: tDayTrip.description,
+        tripStops: tTripStops,
+        hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.list,
+      ),
+      setUp: () =>
+          when(mockUpdateDayTrip.call(any)).thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         DayTripState.editing(
@@ -220,6 +247,7 @@ void main() {
           description: tDayTrip.description,
           tripStops: tTripStops,
           hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
         ),
         DayTripState.editing(
           trip: tTrip,
@@ -229,6 +257,7 @@ void main() {
           hasStartTimeToSave: false,
           errorMessage: 'error',
           isSaving: false,
+          currentSelectedTab: DayTripTab.list,
         ),
       ],
       build: () => getStandardDayTripCubit(),
@@ -238,9 +267,13 @@ void main() {
   group('saveDayTripStartTime', () {
     blocTest<DayTripCubit, DayTripState>(
       'On save DayTripStartTime emit nothing and return true if updateDayTripStartTime succeeds',
-      seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
-      setUp: () =>
-          when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
+      setUp: () => when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(), true),
       expect: () => [],
       build: () => getStandardDayTripCubit(),
@@ -249,9 +282,13 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'On save forced DayTripStartTime emit DayTripStateNormal explictitStartTimeSave true, and return true if updateDayTripStartTime succeeds',
       seed: () => DayTripState.loaded(
-          trip: tTrip, dayTrip: tDayTrip, hasStartTimeToSave: true, tripStops: tTripStops),
-      setUp: () =>
-          when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        hasStartTimeToSave: true,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
+      setUp: () => when(mockUpdateDayTripStartTime.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(forced: true), true),
       expect: () => [
         DayTripState.loaded(
@@ -260,13 +297,16 @@ void main() {
           explictitStartTimeSave: true,
           hasStartTimeToSave: true,
           tripStops: tTripStops,
+          currentSelectedTab: DayTripTab.list,
         ),
         DayTripState.loaded(
-            trip: tTrip,
-            dayTrip: tDayTrip,
-            explictitStartTimeSave: false,
-            hasStartTimeToSave: false,
-            tripStops: tTripStops),
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          explictitStartTimeSave: false,
+          hasStartTimeToSave: false,
+          tripStops: tTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       build: () => getStandardDayTripCubit(),
     );
@@ -274,7 +314,12 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'On save DayTripStartTime emit DayTripStateError and then DayTripStateNormal if updateDayTrip fails, and return false',
       seed: () => DayTripState.loaded(
-          trip: tTrip, dayTrip: tDayTrip, hasStartTimeToSave: true, tripStops: tTripStops),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        hasStartTimeToSave: true,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
       setUp: () => when(mockUpdateDayTripStartTime.call(any))
           .thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
       act: (cubit) async => expect(await cubit.saveDayTripStopStartTime(), false),
@@ -285,9 +330,15 @@ void main() {
           errorMessage: 'error',
           fatal: false,
           hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
         ),
         DayTripState.loaded(
-            trip: tTrip, dayTrip: tDayTrip, hasStartTimeToSave: false, tripStops: tTripStops),
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          hasStartTimeToSave: false,
+          tripStops: tTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       build: () => getStandardDayTripCubit(),
     );
@@ -297,15 +348,22 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'On modalBottomEditingDismissed emit DayTripState if previous state is DayTripStateEditing',
       seed: () => DayTripState.editing(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          description: tDayTrip.description,
-          tripStops: tTripStops,
-          hasStartTimeToSave: false),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        description: tDayTrip.description,
+        tripStops: tTripStops,
+        hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.list,
+      ),
       act: (cubit) => cubit.modalBottomEditingDismissed(),
       expect: () => [
         DayTripState.loaded(
-            trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, hasStartTimeToSave: false)
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
+        )
       ],
       build: () => getStandardDayTripCubit(),
     );
@@ -313,24 +371,65 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'On modalBottomEditingDismissed emit nothing if previous state is not DayTripStateEditing',
       seed: () => DayTripState.loaded(
-          trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, hasStartTimeToSave: false),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.list,
+      ),
       act: (cubit) => cubit.modalBottomEditingDismissed(),
       expect: () => [],
       build: () => getStandardDayTripCubit(),
     );
   });
 
+  blocTest<DayTripCubit, DayTripState>(
+    'On setCurrentSelectedTab emit the right selected tab',
+    seed: () => DayTripState.loaded(
+      trip: tTrip,
+      dayTrip: tDayTrip,
+      tripStops: tTripStops,
+      hasStartTimeToSave: false,
+      currentSelectedTab: DayTripTab.list,
+    ),
+    build: () => getStandardDayTripCubit(),
+    act: (bloc) => bloc.setCurrentSelectedTab(1),
+    expect: () => [
+      DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.map,
+      )
+    ],
+  );
+
   group('delete day trip', () {
     blocTest<DayTripCubit, DayTripState>(
       'On delete emit DayTripStateDeleting and then DayTripStateDeleted if deleteDayTrip succeeds',
       seed: () => DayTripState.loaded(
-          trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, hasStartTimeToSave: false),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.list,
+      ),
       setUp: () => when(mockDeleteDayTrip.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.deleteDayTrip(),
       expect: () => [
         DayTripState.deleting(
-            trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, hasStartTimeToSave: false),
-        DayTripState.deleted(trip: tTrip, dayTrip: tDayTrip),
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
+        ),
+        DayTripState.deleted(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       build: () => getStandardDayTripCubit(),
     );
@@ -338,22 +437,38 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'On delete emit DayTripStateDeleting and then DayTripStateError and DayTripStateNormal if deleteDayTrip fails',
       seed: () => DayTripState.loaded(
-          trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, hasStartTimeToSave: false),
-      setUp: () => when(mockDeleteDayTrip.call(any))
-          .thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        hasStartTimeToSave: false,
+        currentSelectedTab: DayTripTab.list,
+      ),
+      setUp: () =>
+          when(mockDeleteDayTrip.call(any)).thenAnswer((_) async => const Left(DayTripsFailure(message: 'error'))),
       act: (cubit) => cubit.deleteDayTrip(),
       expect: () => [
         DayTripState.deleting(
-            trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, hasStartTimeToSave: false),
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
+        ),
         DayTripState.error(
           trip: tTrip,
           dayTrip: tDayTrip,
           errorMessage: 'error',
           fatal: false,
           hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
         ),
         DayTripState.loaded(
-            trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, hasStartTimeToSave: false),
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       build: () => getStandardDayTripCubit(),
     );
@@ -362,7 +477,12 @@ void main() {
   group('update travel time', () {
     blocTest<DayTripCubit, DayTripState>(
       'On updateTravelTimeToNextStop emit DayTripState with updated tripStops',
-      seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
       setUp: () => when(mockUpdateTravelTime.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.updateTravelTimeToNextStop(tTripStops.first.id, 0),
       expect: () => [],
@@ -372,7 +492,12 @@ void main() {
 
     blocTest<DayTripCubit, DayTripState>(
       'On updateTravelTimeToNextStop emit nothing if updateTravelTime succeeds',
-      seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
       setUp: () => when(mockUpdateTravelTime.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.updateTravelTimeToNextStop(tTripStops.first.id, 0),
       expect: () => [],
@@ -382,9 +507,14 @@ void main() {
 
     blocTest<DayTripCubit, DayTripState>(
       'On updateTravelTimeToNextStop emit DayTripStateError and then DayTripStateNormal if updateTravelTime fails',
-      seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
-      setUp: () => when(mockUpdateTravelTime.call(any))
-          .thenAnswer((_) async => const Left(TripStopsFailure(message: 'error'))),
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
+      setUp: () =>
+          when(mockUpdateTravelTime.call(any)).thenAnswer((_) async => const Left(TripStopsFailure(message: 'error'))),
       act: (cubit) => cubit.updateTravelTimeToNextStop(tTripStops.first.id, 0),
       expect: () => [
         DayTripState.error(
@@ -393,8 +523,14 @@ void main() {
           errorMessage: 'error',
           fatal: false,
           hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
         ),
-        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       build: () => getStandardDayTripCubit(),
       verify: (_) => verify(mockUpdateTravelTime.call(any)).called(1),
@@ -405,15 +541,25 @@ void main() {
     final updatedTripStops = [tTripStops[1], tTripStops[0]];
     blocTest<DayTripCubit, DayTripState>(
       'On reorderTripStops call updateTripStopsIndexes with new tripStops order and emit loaded state with new tripStops order',
-      seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
       setUp: () {
         when(mockUpdateTripStopsIndexes.call(any)).thenAnswer((_) async => const Right(null));
-        when(mockUpdateTripStopsDirectionsUpToDate.call(any))
-            .thenAnswer((_) async => const Right(null));
+        when(mockUpdateTripStopsDirectionsUpToDate.call(any)).thenAnswer((_) async => const Right(null));
       },
       act: (cubit) => cubit.reorderTripStops(0, 1, updatedTripStops),
-      expect: () =>
-          [DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: updatedTripStops)],
+      expect: () => [
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: updatedTripStops,
+          currentSelectedTab: DayTripTab.list,
+        )
+      ],
       verify: (_) {
         verify(mockUpdateTripStopsIndexes.call(any)).called(1);
         verify(mockUpdateTripStopsDirectionsUpToDate.call(any)).called(1);
@@ -423,24 +569,39 @@ void main() {
 
     blocTest<DayTripCubit, DayTripState>(
       'On reorderTripStops emit loaded state with updated tripStops order and then error state if updateTripStopsIndexes fails',
-      seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
       setUp: () {
         when(mockUpdateTripStopsIndexes.call(any))
             .thenAnswer((_) async => const Left(TripStopsFailure(message: 'error')));
-        when(mockUpdateTripStopsDirectionsUpToDate.call(any))
-            .thenAnswer((_) async => const Right(null));
+        when(mockUpdateTripStopsDirectionsUpToDate.call(any)).thenAnswer((_) async => const Right(null));
       },
       act: (cubit) => cubit.reorderTripStops(0, 1, updatedTripStops),
       expect: () => [
-        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: updatedTripStops),
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: updatedTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
         DayTripState.error(
           trip: tTrip,
           dayTrip: tDayTrip,
           errorMessage: 'error',
           fatal: false,
           hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
         ),
-        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       verify: (_) {
         verify(mockUpdateTripStopsIndexes.call(any)).called(1);
@@ -453,10 +614,14 @@ void main() {
   group('listen tripStops', () {
     blocTest<DayTripCubit, DayTripState>(
       'On listenTripStops emit DayTripState with tripStops',
-      setUp: () =>
-          when(mockListenTripStops.call(any)).thenAnswer((_) => Stream.value(right(tTripStops))),
+      setUp: () => when(mockListenTripStops.call(any)).thenAnswer((_) => Stream.value(right(tTripStops))),
       expect: () => [
-        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       act: (cubit) => cubit.startListenTripStops(),
       build: () => getStandardDayTripCubit(),
@@ -466,14 +631,24 @@ void main() {
   group('update trip stop done', () {
     blocTest<DayTripCubit, DayTripState>(
       'On tripStopDone call tripStopDone usecase',
-      seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
       setUp: () => when(mockTripStopDone.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.toggleTripStopDone(true, 0),
       expect: () {
         final updatedTripStop = tTripStops.first.copyWith(isDone: true);
         final updatedTripStops = [updatedTripStop, tTripStops[1]];
         return [
-          DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: updatedTripStops),
+          DayTripState.loaded(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStops: updatedTripStops,
+            currentSelectedTab: DayTripTab.list,
+          ),
         ];
       },
       build: () => getStandardDayTripCubit(),
@@ -482,23 +657,39 @@ void main() {
 
     blocTest<DayTripCubit, DayTripState>(
       'On tripStopDone emit DayTripStateError and then DayTripStateNormal if tripStopDone fails',
-      seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
-      setUp: () => when(mockTripStopDone.call(any))
-          .thenAnswer((_) async => const Left(TripStopsFailure(message: 'error'))),
+      seed: () => DayTripState.loaded(
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        currentSelectedTab: DayTripTab.list,
+      ),
+      setUp: () =>
+          when(mockTripStopDone.call(any)).thenAnswer((_) async => const Left(TripStopsFailure(message: 'error'))),
       act: (cubit) => cubit.toggleTripStopDone(true, 0),
       expect: () {
         final updatedTripStop = tTripStops.first.copyWith(isDone: true);
         final updatedTripStops = [updatedTripStop, tTripStops[1]];
         return [
-          DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: updatedTripStops),
+          DayTripState.loaded(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStops: updatedTripStops,
+            currentSelectedTab: DayTripTab.list,
+          ),
           DayTripState.error(
             trip: tTrip,
             dayTrip: tDayTrip,
             errorMessage: 'error',
             fatal: false,
             hasStartTimeToSave: false,
+            currentSelectedTab: DayTripTab.list,
           ),
-          DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+          DayTripState.loaded(
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStops: tTripStops,
+            currentSelectedTab: DayTripTab.list,
+          ),
         ];
       },
       build: () => getStandardDayTripCubit(),
@@ -508,13 +699,23 @@ void main() {
 
   blocTest<DayTripCubit, DayTripState>(
     'On toggleTripStopDelete emit DayTripState with updated tripStops',
-    seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+    seed: () => DayTripState.loaded(
+      trip: tTrip,
+      dayTrip: tDayTrip,
+      tripStops: tTripStops,
+      currentSelectedTab: DayTripTab.list,
+    ),
     setUp: () => when(mockDeleteTripStop.call(any)).thenAnswer((_) async => const Right(null)),
     act: (cubit) => cubit.toggleTripStopDelete(0),
     expect: () {
       final updatedTripStops = [tTripStops[1]];
       return [
-        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: updatedTripStops),
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: updatedTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ];
     },
     build: () => getStandardDayTripCubit(),
@@ -523,22 +724,38 @@ void main() {
 
   blocTest<DayTripCubit, DayTripState>(
     'On toggleTripStopDelete emit DayTripStateError and then DayTripStateNormal if deleteTripStop fails',
-    seed: () => DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
-    setUp: () => when(mockDeleteTripStop.call(any))
-        .thenAnswer((_) async => const Left(TripStopsFailure(message: 'error'))),
+    seed: () => DayTripState.loaded(
+      trip: tTrip,
+      dayTrip: tDayTrip,
+      tripStops: tTripStops,
+      currentSelectedTab: DayTripTab.list,
+    ),
+    setUp: () =>
+        when(mockDeleteTripStop.call(any)).thenAnswer((_) async => const Left(TripStopsFailure(message: 'error'))),
     act: (cubit) => cubit.toggleTripStopDelete(0),
     expect: () {
       final updatedTripStops = [tTripStops[1]];
       return [
-        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: updatedTripStops),
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: updatedTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
         DayTripState.error(
           trip: tTrip,
           dayTrip: tDayTrip,
           errorMessage: 'error',
           fatal: false,
           hasStartTimeToSave: false,
+          currentSelectedTab: DayTripTab.list,
         ),
-        DayTripState.loaded(trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops),
+        DayTripState.loaded(
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          currentSelectedTab: DayTripTab.list,
+        ),
       ];
     },
     build: () => getStandardDayTripCubit(),
@@ -549,7 +766,12 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'on showEditTripStopPlaceholderDialog emit empty placeholder',
       seed: () => DayTripState.loaded(
-          trip: tTrip, dayTrip: tDayTrip, tripStops: tTripStops, tripStopPlaceholderEditing: null),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        tripStopPlaceholderEditing: null,
+        currentSelectedTab: DayTripTab.list,
+      ),
       act: (cubit) => cubit.showEditTripStopPlaceholderDialog(tTripStops.first),
       expect: () => [
         DayTripState.loaded(
@@ -557,6 +779,7 @@ void main() {
           dayTrip: tDayTrip,
           tripStops: tTripStops,
           tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+          currentSelectedTab: DayTripTab.list,
         ),
       ],
       build: () => getStandardDayTripCubit(),
@@ -565,17 +788,21 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'on updateTripStopPlaceholderName emit updated name',
       seed: () => DayTripState.loaded(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          tripStops: tTripStops,
-          tripStopPlaceholderEditing: tTripStopPlaceHolder),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        tripStopPlaceholderEditing: tTripStopPlaceHolder,
+        currentSelectedTab: DayTripTab.list,
+      ),
       act: (cubit) => cubit.updateTripStopPlaceholderName('new name'),
       expect: () => [
         DayTripState.loaded(
-            trip: tTrip,
-            dayTrip: tDayTrip,
-            tripStops: tTripStops,
-            tripStopPlaceholderEditing: tTripStopPlaceHolder.copyWith(name: 'new name')),
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: tTripStopPlaceHolder.copyWith(name: 'new name'),
+          currentSelectedTab: DayTripTab.list,
+        )
       ],
       build: () => getStandardDayTripCubit(),
     );
@@ -583,17 +810,21 @@ void main() {
     blocTest<DayTripCubit, DayTripState>(
       'on updateTripStopPlaceholderDuration emit updated duration',
       seed: () => DayTripState.loaded(
-          trip: tTrip,
-          dayTrip: tDayTrip,
-          tripStops: tTripStops,
-          tripStopPlaceholderEditing: tTripStopPlaceHolder),
+        trip: tTrip,
+        dayTrip: tDayTrip,
+        tripStops: tTripStops,
+        tripStopPlaceholderEditing: tTripStopPlaceHolder,
+        currentSelectedTab: DayTripTab.list,
+      ),
       act: (cubit) => cubit.updateTripStopPlaceholderDuration(10),
       expect: () => [
         DayTripState.loaded(
-            trip: tTrip,
-            dayTrip: tDayTrip,
-            tripStops: tTripStops,
-            tripStopPlaceholderEditing: tTripStopPlaceHolder.copyWith(duration: 10)),
+          trip: tTrip,
+          dayTrip: tDayTrip,
+          tripStops: tTripStops,
+          tripStopPlaceholderEditing: tTripStopPlaceHolder.copyWith(duration: 10),
+          currentSelectedTab: DayTripTab.list,
+        ),
       ],
       build: () => getStandardDayTripCubit(),
     );
@@ -605,6 +836,7 @@ void main() {
         dayTrip: tDayTrip,
         tripStops: tTripStops,
         tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+        currentSelectedTab: DayTripTab.list,
       ),
       act: (cubit) => cubit.cancelEditTripStopPlaceholderDialog(),
       expect: () => [
@@ -613,6 +845,7 @@ void main() {
           dayTrip: tDayTrip,
           tripStops: tTripStops,
           tripStopPlaceholderEditing: null,
+          currentSelectedTab: DayTripTab.list,
         ),
       ],
       build: () => getStandardDayTripCubit(),
@@ -627,16 +860,18 @@ void main() {
           dayTrip: tDayTrip,
           tripStops: tTripStops,
           tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+          currentSelectedTab: DayTripTab.list,
         ),
         act: (cubit) => cubit.addPlaceholderToTripStop(tTripStops.first.id),
-        setUp: () => when(mockUpdateTripStopPlaceholder.call(any))
-            .thenAnswer((_) async => const Right(null)),
+        setUp: () => when(mockUpdateTripStopPlaceholder.call(any)).thenAnswer((_) async => const Right(null)),
         expect: () => [
           DayTripState.loaded(
-              trip: tTrip,
-              dayTrip: tDayTrip,
-              tripStops: tTripStops,
-              tripStopPlaceholderEditing: null),
+            trip: tTrip,
+            dayTrip: tDayTrip,
+            tripStops: tTripStops,
+            tripStopPlaceholderEditing: null,
+            currentSelectedTab: DayTripTab.list,
+          ),
         ],
         verify: (_) => verify(mockUpdateTripStopPlaceholder.call(any)).called(1),
       );
@@ -649,6 +884,7 @@ void main() {
           dayTrip: tDayTrip,
           tripStops: tTripStops,
           tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+          currentSelectedTab: DayTripTab.list,
         ),
         act: (cubit) => cubit.addPlaceholderToTripStop(tTripStops.first.id),
         setUp: () => when(mockUpdateTripStopPlaceholder.call(any)).thenAnswer(
@@ -661,6 +897,7 @@ void main() {
             fatal: false,
             errorMessage: 'error',
             hasStartTimeToSave: false,
+            currentSelectedTab: DayTripTab.list,
           ),
         ],
         verify: (_) => verify(mockUpdateTripStopPlaceholder.call(any)).called(1),
@@ -676,10 +913,10 @@ void main() {
           dayTrip: tDayTrip,
           tripStops: tTripStops,
           tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+          currentSelectedTab: DayTripTab.list,
         ),
         act: (cubit) => cubit.removePlaceholderFromTripStop(tTripStops.first.id),
-        setUp: () => when(mockUpdateTripStopPlaceholder.call(any))
-            .thenAnswer((_) async => const Right(null)),
+        setUp: () => when(mockUpdateTripStopPlaceholder.call(any)).thenAnswer((_) async => const Right(null)),
         expect: () => [],
         verify: (_) => verify(mockUpdateTripStopPlaceholder.call(any)).called(1),
       );
@@ -692,6 +929,7 @@ void main() {
           dayTrip: tDayTrip,
           tripStops: tTripStops,
           tripStopPlaceholderEditing: TripStopPlaceholder.create(),
+          currentSelectedTab: DayTripTab.list,
         ),
         act: (cubit) => cubit.removePlaceholderFromTripStop(tTripStops.first.id),
         setUp: () => when(mockUpdateTripStopPlaceholder.call(any)).thenAnswer(
@@ -704,6 +942,7 @@ void main() {
             fatal: false,
             errorMessage: 'error',
             hasStartTimeToSave: false,
+            currentSelectedTab: DayTripTab.list,
           ),
         ],
         verify: (_) => verify(mockUpdateTripStopPlaceholder.call(any)).called(1),
