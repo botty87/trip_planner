@@ -34,7 +34,7 @@ class TripsPage extends StatelessWidget  {
     }
 
     return BlocProvider<TripsCubit>(
-      create: (context) => getIt(param1: userId)..startListenTrips(),
+      create: (context) => getIt(param1: userId),
       child: ScaffoldTransparent(
         hasBackgroundImage: context.hasBackgroundImage,
         appBar: AppBar(

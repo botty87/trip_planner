@@ -169,7 +169,6 @@ import '../../features/tutorials/domain/usecases/update_tutorials_data.dart'
     as _i969;
 import '../../features/tutorials/presentation/cubit/tutorial_cubit.dart'
     as _i58;
-import '../../ui/cubit/backgrounds_cubit.dart' as _i719;
 import '../../features/user_account/data/datasources/user_data_source.dart'
     as _i190;
 import '../../features/user_account/data/repositories/user_repository_impl.dart'
@@ -197,6 +196,7 @@ import '../../features/user_account/presentation/cubit/login_signup/login_signup
     as _i724;
 import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
     as _i110;
+import '../../ui/cubit/backgrounds_cubit.dart' as _i436;
 import '../db/day_trips_collection_ref.dart' as _i432;
 import '../db/settings_collection_ref.dart' as _i571;
 import '../db/trip_stops_collection_ref.dart' as _i108;
@@ -337,8 +337,8 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i437.DiscoverTripsDataSource>(),
               gh<_i141.FirebaseCrashlytics>(),
             ));
-    gh.factory<_i719.BackgroundsCubit>(() =>
-        _i719.BackgroundsCubit(firebaseStorage: gh<_i457.FirebaseStorage>()));
+    gh.factory<_i436.BackgroundsCubit>(() =>
+        _i436.BackgroundsCubit(firebaseStorage: gh<_i457.FirebaseStorage>()));
     gh.lazySingleton<_i1041.TripStopDone>(
         () => _i1041.TripStopDone(gh<_i598.TripStopsRepository>()));
     gh.lazySingleton<_i190.UserDataSource>(() => _i190.UserDataSourceImpl(
@@ -428,7 +428,7 @@ extension GetItInjectableX on _i174.GetIt {
           deleteTripStop: gh<_i851.DeleteTripStop>(),
           updateTripStopPlaceholder: gh<_i10.UpdateTripStopPlaceholder>(),
           crashlytics: gh<_i141.FirebaseCrashlytics>(),
-        ));
+        )..init());
     gh.lazySingleton<_i935.GooglePlacesRepository>(
         () => _i1026.GooglePlacesRepositoryImpl(
               gh<_i1071.GooglePlacesDataSource>(),
@@ -449,7 +449,7 @@ extension GetItInjectableX on _i174.GetIt {
           listenSharedTrips: gh<_i193.ListenSharedTrips>(),
           crashlytics: gh<_i141.FirebaseCrashlytics>(),
           userId: userId,
-        ));
+        )..init());
     gh.lazySingleton<_i1049.GetPublicDayTrips>(
         () => _i1049.GetPublicDayTrips(gh<_i398.DiscoverTripsRepository>()));
     gh.lazySingleton<_i893.GetPublicTripStops>(
@@ -481,7 +481,7 @@ extension GetItInjectableX on _i174.GetIt {
           listenTrip: gh<_i228.ListenTrip>(),
           removeUserForShare: gh<_i424.RemoveUserForShare>(),
           crashlytics: gh<_i141.FirebaseCrashlytics>(),
-        ));
+        )..init());
     gh.factoryParam<_i144.NewTripCubit, _i910.Trip?, String>((
       existingTrip,
       userId,
@@ -533,7 +533,7 @@ extension GetItInjectableX on _i174.GetIt {
           getPublicTripStops: gh<_i893.GetPublicTripStops>(),
           tripId: tripId,
           dayTripId: dayTripId,
-        ));
+        )..init());
     gh.lazySingleton<_i244.ReadOldTrips>(
         () => _i244.ReadOldTrips(gh<_i729.OldTripsRepository>()));
     gh.lazySingleton<_i396.ImportOldTrips>(
@@ -567,7 +567,7 @@ extension GetItInjectableX on _i174.GetIt {
           user: user,
           readOldTrips: gh<_i244.ReadOldTrips>(),
           importOldTrips: gh<_i396.ImportOldTrips>(),
-        ));
+        )..reload());
     gh.factoryParam<_i230.DiscoverNewTripsCubit, String, dynamic>((
       userId,
       _,
@@ -575,7 +575,7 @@ extension GetItInjectableX on _i174.GetIt {
         _i230.DiscoverNewTripsCubit(
           getPublicTrips: gh<_i816.GetPublicTrips>(),
           userId: userId,
-        ));
+        )..init());
     gh.lazySingleton<_i274.DeleteUser>(() => _i274.DeleteUser(
           gh<_i290.UserRepository>(),
           gh<_i843.TripsRepository>(),
@@ -588,7 +588,7 @@ extension GetItInjectableX on _i174.GetIt {
         _i338.DiscoverNewDailyTripsCubit(
           tripId: tripId,
           getPublicDayTrips: gh<_i1049.GetPublicDayTrips>(),
-        ));
+        )..init());
     gh.lazySingleton<_i986.UpdateSettings>(
         () => _i986.UpdateSettings(gh<_i290.UserRepository>()));
     gh.lazySingleton<_i636.LogoutUser>(

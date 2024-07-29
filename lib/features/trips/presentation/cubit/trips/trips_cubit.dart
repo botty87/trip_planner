@@ -37,7 +37,12 @@ class TripsCubit extends Cubit<TripsState> {
         _userId = userId,
         super(const TripsState.initial());
 
-  startListenTrips() {
+  @PostConstruct()
+  void init() {
+    startListenTrips();
+  }
+
+  void startListenTrips() {
     List<Trip>? userTrips;
     List<Trip>? sharedTrips;
 
@@ -65,8 +70,7 @@ class TripsCubit extends Cubit<TripsState> {
       );
     });
 
-    _sharedTripsSubscription =
-        _listenSharedTrips(ListenTripsParams(userId: _userId)).listen((result) {
+    _sharedTripsSubscription = _listenSharedTrips(ListenTripsParams(userId: _userId)).listen((result) {
       result.fold(
         (failure) {
           emit(TripsState.error(message: LocaleKeys.dataLoadError.tr()));

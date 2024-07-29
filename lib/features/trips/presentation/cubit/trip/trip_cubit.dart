@@ -53,7 +53,13 @@ class TripCubit extends Cubit<TripState> {
         _crashlytics = crashlytics,
         super(TripState.initial(trip: trip));
 
-  startListenDayTrips() {
+  @PostConstruct()
+  void init() {
+    startListenDayTrips();
+    startListenTrip();
+  }
+
+  void startListenDayTrips() {
     _dayTripsSubscription?.cancel();
     _dayTripsSubscription = _listenDayTrips(ListenDayTripsParams(tripId: state.trip.id)).listen((result) {
       result.fold(
@@ -73,7 +79,7 @@ class TripCubit extends Cubit<TripState> {
     });
   }
 
-  startListenTrip() {
+  void startListenTrip() {
     _tripSubscription?.cancel();
     _tripSubscription = _listenTrip(ListenTripParams(tripId: state.trip.id)).listen((result) {
       result.fold(
@@ -221,7 +227,6 @@ class TripCubit extends Cubit<TripState> {
       for (int i = 0; i < newDayTrips.length; i++) {
         newDayTrips[i] = newDayTrips[i].copyWith(index: i);
       }
-
 
       emit(TripState.loaded(trip: state.trip, dayTrips: newDayTrips));
 

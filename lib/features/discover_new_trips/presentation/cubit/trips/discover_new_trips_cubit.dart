@@ -29,6 +29,26 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
         _userId = userId,
         super(const DiscoverNewTripsState.initial());
 
+  @PostConstruct()
+  void init() {
+    fetchTrips();
+  }
+
+  void fetchTrips() {
+    _getPublicTrips(GetPublicTripsParams(_userId)).then(
+      (value) => value.fold(
+        (failure) => emit(DiscoverNewTripsState.error(message: LocaleKeys.unknownError.tr())),
+        (trips) => emit(DiscoverNewTripsState.normal(
+          trips: trips,
+          filteredTrips: trips,
+          //TODO implements with a list of favorite languages, for now it's empty
+          selectedLanguages: {},
+          availableLanguages: Languages.defaultLanguages,
+        )),
+      ),
+    );
+  }
+
   void _filterTrips() async {
     final filteredTrips = await compute(_filtertTripsByQueryAndLanguage, state);
     state.mapOrNull(
@@ -55,21 +75,6 @@ class DiscoverNewTripsCubit extends Cubit<DiscoverNewTripsState> {
         emit(state.copyWith(searchDescription: value));
         _filterTrips();
       },
-    );
-  }
-
-  fetchTrips() {
-    _getPublicTrips(GetPublicTripsParams(_userId)).then(
-      (value) => value.fold(
-        (failure) => emit(DiscoverNewTripsState.error(message: LocaleKeys.unknownError.tr())),
-        (trips) => emit(DiscoverNewTripsState.normal(
-          trips: trips,
-          filteredTrips: trips,
-          //TODO implements with a list of favorite languages, for now it's empty
-          selectedLanguages: {},
-          availableLanguages: Languages.defaultLanguages,
-        )),
-      ),
     );
   }
 
@@ -163,8 +168,7 @@ List<Trip> _filtertTripsByQueryAndLanguage(DiscoverNewTripsState state) {
         filteredTripsByLanguage.addAll(filteredTripsByQuery);
       } else {
         for (final language in selectedLanguages) {
-          filteredTripsByLanguage
-              .addAll(filteredTripsByQuery.where((trip) => trip.languageCode == language.isoCode));
+          filteredTripsByLanguage.addAll(filteredTripsByQuery.where((trip) => trip.languageCode == language.isoCode));
         }
       }
 

@@ -37,12 +37,7 @@ class DayTripPage extends HookWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<DayTripCubit>(
-          create: (context) => getIt(param1: _trip, param2: _dayTrip)
-            //TODO replace with injectable init
-            ..startListenTripStops()
-            ..startListenDayTrip(),
-        ),
+        BlocProvider<DayTripCubit>(create: (context) => getIt(param1: _trip, param2: _dayTrip)),
         BlocProvider<TripStopsMapCubit>(
           create: (context) => getIt(param1: _trip, param2: _dayTrip),
         ),

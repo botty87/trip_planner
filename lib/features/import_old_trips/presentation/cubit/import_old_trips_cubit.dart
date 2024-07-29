@@ -36,6 +36,7 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
         _importOldTrips = importOldTrips,
         super(const ImportOldTripsState.initial());
 
+  @PostConstruct()
   void reload() => _readOldTripsAction();
 
   _readOldTripsAction() async {

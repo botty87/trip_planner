@@ -89,6 +89,12 @@ class DayTripCubit extends Cubit<DayTripState> {
     return super.close();
   }
 
+  @PostConstruct()
+  void init() {
+    startListenTripStops();
+    startListenDayTrip();
+  }
+
   startListenTripStops() {
     _tripStopsSubscription?.cancel();
     _tripStopsSubscription =

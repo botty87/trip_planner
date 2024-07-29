@@ -22,11 +22,15 @@ class DiscoverNewDailyTripsCubit extends Cubit<DiscoverNewDailyTripsState> {
         _tripId = tripId,
         super(const DiscoverNewDailyTripsState.initial());
 
-  fetchDayTrips() {
+  @PostConstruct()
+  void init() {
+    fetchDayTrips();
+  }
+
+  void fetchDayTrips() {
     _getPublicDayTrips(GetPublicDayTripsParams(tripId: _tripId)).then(
       (value) => value.fold(
-        (failure) => emit(DiscoverNewDailyTripsState.error(
-            message: failure.message ?? LocaleKeys.unknownError.tr())),
+        (failure) => emit(DiscoverNewDailyTripsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
         (dayTrips) => emit(DiscoverNewDailyTripsState.loaded(dayTrips: dayTrips)),
       ),
     );

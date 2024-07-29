@@ -28,7 +28,7 @@ class ImportOldTripsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ImportOldTripsCubit>(
-      create: (context) => getIt(param1: _user)..reload(),
+      create: (context) => getIt(param1: _user),
       child: Scaffold(
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight),

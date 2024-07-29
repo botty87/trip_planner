@@ -46,7 +46,7 @@ class DiscoverNewTripStopsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DiscoverNewTripStopsCubit>(
-      create: (context) => getIt<DiscoverNewTripStopsCubit>(param1: _trip.id, param2: _dayTrip.id)..fetchTripStops(),
+      create: (context) => getIt<DiscoverNewTripStopsCubit>(param1: _trip.id, param2: _dayTrip.id),
       child: BlocSelector<DiscoverNewTripStopsCubit, DiscoverNewTripStopsState, bool>(
         selector: (state) {
           return state.maybeMap(

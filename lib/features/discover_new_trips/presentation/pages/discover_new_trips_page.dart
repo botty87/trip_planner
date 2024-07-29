@@ -48,8 +48,7 @@ class DiscoverNewTripsPage extends StatelessWidget {
           param1: context.read<UserCubit>().state.maybeMap(
                 loggedIn: (state) => state.user.id,
                 orElse: () => throw const UnexpectedStateException(),
-              ))
-        ..fetchTrips(),
+              )),
       child: ScaffoldTransparent(
         hasBackgroundImage: context.hasBackgroundImage,
         appBar: AppBar(

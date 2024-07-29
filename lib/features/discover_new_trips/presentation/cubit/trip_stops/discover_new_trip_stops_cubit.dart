@@ -26,12 +26,15 @@ class DiscoverNewTripStopsCubit extends Cubit<DiscoverNewTripStopsState> {
         _dayTripId = dayTripId,
         super(const DiscoverNewTripStopsState.initial());
 
-  fetchTripStops() {
-    _getPubliTripStops(GetPubliTripStopsParams(tripId: _tripId, dayTripId: _dayTripId))
-        .then((failureOrTripStops) {
+  @PostConstruct()
+  void init() {
+    fetchTripStops();
+  }
+
+  void fetchTripStops() {
+    _getPubliTripStops(GetPubliTripStopsParams(tripId: _tripId, dayTripId: _dayTripId)).then((failureOrTripStops) {
       failureOrTripStops.fold(
-        (failure) => emit(DiscoverNewTripStopsState.error(
-            message: failure.message ?? LocaleKeys.unknownError.tr())),
+        (failure) => emit(DiscoverNewTripStopsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
         (tripStops) => emit(DiscoverNewTripStopsState.loaded(tripStops: tripStops)),
       );
     });

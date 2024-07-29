@@ -46,7 +46,7 @@ class DiscoverNewDailyTripsPage extends HookWidget {
     final tutorialShowed = useRef(false);
 
     return BlocProvider<DiscoverNewDailyTripsCubit>(
-      create: (context) => getIt<DiscoverNewDailyTripsCubit>(param1: _trip.id)..fetchDayTrips(),
+      create: (context) => getIt<DiscoverNewDailyTripsCubit>(param1: _trip.id),
       child: Builder(builder: (context) {
         return ShowCaseWidget(
           builder: (context) {

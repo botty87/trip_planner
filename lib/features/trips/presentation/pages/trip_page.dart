@@ -49,9 +49,7 @@ class TripPage extends HookWidget {
     };
 
     return BlocProvider<TripCubit>(
-      create: (context) => getIt<TripCubit>(param1: _trip)
-        ..startListenDayTrips()
-        ..startListenTrip(),
+      create: (context) => getIt<TripCubit>(param1: _trip),
       child: ShowCaseWidget(
         builder: (context) {
           final showTutorial = context.read<TutorialCubit>().state.showShareTrip && showShareButton;
