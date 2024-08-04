@@ -169,7 +169,6 @@ import '../../features/tutorials/domain/usecases/update_tutorials_data.dart'
     as _i969;
 import '../../features/tutorials/presentation/cubit/tutorial_cubit.dart'
     as _i58;
-import '../../ui/cubit/backgrounds_cubit.dart' as _i719;
 import '../../features/user_account/data/datasources/user_data_source.dart'
     as _i190;
 import '../../features/user_account/data/repositories/user_repository_impl.dart'
@@ -197,6 +196,7 @@ import '../../features/user_account/presentation/cubit/login_signup/login_signup
     as _i724;
 import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
     as _i110;
+import '../../ui/cubit/backgrounds_cubit.dart' as _i436;
 import '../db/day_trips_collection_ref.dart' as _i432;
 import '../db/settings_collection_ref.dart' as _i571;
 import '../db/trip_stops_collection_ref.dart' as _i108;
@@ -337,8 +337,8 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i437.DiscoverTripsDataSource>(),
               gh<_i141.FirebaseCrashlytics>(),
             ));
-    gh.factory<_i719.BackgroundsCubit>(() =>
-        _i719.BackgroundsCubit(firebaseStorage: gh<_i457.FirebaseStorage>()));
+    gh.factory<_i436.BackgroundsCubit>(() =>
+        _i436.BackgroundsCubit(firebaseStorage: gh<_i457.FirebaseStorage>()));
     gh.lazySingleton<_i1041.TripStopDone>(
         () => _i1041.TripStopDone(gh<_i598.TripStopsRepository>()));
     gh.lazySingleton<_i190.UserDataSource>(() => _i190.UserDataSourceImpl(

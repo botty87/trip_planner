@@ -105,13 +105,13 @@ class _VerticalLayout extends HookWidget {
                             onLocationChanged(LatLng(value.latitude, value.longitude));
                           },
                         );
+                      } else {
+                        return const MapWidget.empty(
+                          useDifferentColorsForDone: false,
+                          showInfoWindow: false,
+                          isInsideScrollView: true,
+                        );
                       }
-
-                      return const MapWidget.empty(
-                        useDifferentColorsForDone: false,
-                        showInfoWindow: false,
-                        isInsideScrollView: true,
-                      );
                     }),
               ),
               const SizedBox(height: verticalSpaceL),

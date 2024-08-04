@@ -97,7 +97,7 @@ class MapWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     _MapView(
-                      key: const ValueKey('map_view'),
+                      key: ValueKey(_getMapPlacesId()),
                       mapPlaces: _mapPlaces,
                       onMarkerTap: _onMarkerTap,
                       useDifferentColorsForDone: _useDifferentColorsForDone,
@@ -117,5 +117,9 @@ class MapWidget extends StatelessWidget {
         },
       ),
     );
+  }
+
+  String _getMapPlacesId() {
+    return _mapPlaces?.map((mapPlace) => mapPlace.location.toString()).join(',') ?? '';
   }
 }
