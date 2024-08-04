@@ -7,7 +7,12 @@ class _AppVersion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('V${_packageInfo.version}+${_packageInfo.buildNumber}',
-        style: Theme.of(context).textTheme.labelSmall);
+    return FutureBuilder<int?>(
+      future: ShorebirdCodePush().currentPatchNumber(),
+      builder: (context, snapshot) {
+        final version = 'V${_packageInfo.version}+${_packageInfo.buildNumber} #${snapshot.data ?? '#'}';
+        return Text(version, style: Theme.of(context).textTheme.labelSmall);
+      },
+    );
   }
 }
