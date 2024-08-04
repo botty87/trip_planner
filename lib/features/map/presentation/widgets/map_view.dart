@@ -28,58 +28,54 @@ class _MapView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final markersStream = useStreamController<Set<Marker>>();
+    final totalMarkers = _mapPlaces?.length ?? 0;
+    final Set<Marker> initialMarkers = totalMarkers > 1 ? {} : _createMarkers(null, context);
+    final markers = useState<Set<Marker>>(initialMarkers);
 
     //If we have more than one marker, we need to generate the markers with numbers
-    //If we have only one marker, we don't need to generate the markers with numbers
-    final totalMarkers = _mapPlaces?.length ?? 0;
     if (totalMarkers > 1) {
-      MarkerGenerator(_orderedMarkerWidgets(context), (bitmaps) {
-        markersStream.add(_createMarkers(bitmaps, context));
-      }).generate(context);
-    } else {
-      markersStream.add(_createMarkers(null, context));
+      useEffect(() {
+        MarkerGenerator(_orderedMarkerWidgets(context), (bitmaps) {
+          markers.value = _createMarkers(bitmaps, context);
+        }).generate(context);
+        return null;
+      }, []);
     }
 
-    return StreamBuilder<Set<Marker>>(
-        stream: markersStream.stream,
-        initialData: const {},
-        builder: (context, snapshot) {
-          final CameraPosition initialCameraPosition;
+    final CameraPosition initialCameraPosition;
 
-          if (_mapPlaces == null || snapshot.data!.isEmpty) {
-            initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
-          } else if (_mapPlaces!.length == 1) {
-            context.read<MapCubit>().updateMarkerPosition(_mapPlaces!.first.location);
-            initialCameraPosition = CameraPosition(target: _mapPlaces!.first.location, zoom: 15);
-          } else {
-            final LatLngBounds? markerLatLngBounds = _getLatLngBounds(markers: snapshot.data!);
-            context.read<MapCubit>().updateMarkerLatLngBounds(markerLatLngBounds);
-            initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
-          }
+    if (markers.value.isEmpty) {
+      initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
+    } else if (_mapPlaces!.length == 1) {
+      context.read<MapCubit>().updateMarkerPosition(_mapPlaces!.first.location);
+      initialCameraPosition = CameraPosition(target: _mapPlaces!.first.location, zoom: 15);
+    } else {
+      final LatLngBounds? markerLatLngBounds = _getLatLngBounds(markers: markers.value);
+      context.read<MapCubit>().updateMarkerLatLngBounds(markerLatLngBounds);
+      initialCameraPosition = const CameraPosition(target: LatLng(0, 0), zoom: 0);
+    }
 
-          return BlocSelector<MapCubit, MapState, MapType>(
-            selector: (state) => state.mapType,
-            builder: (context, mapType) {
-              return GoogleMap(
-                mapType: mapType,
-                initialCameraPosition: initialCameraPosition,
-                onMapCreated: (controller) => context.read<MapCubit>().mapCreated(controller),
-                myLocationButtonEnabled: false,
-                zoomControlsEnabled: false,
-                markers: snapshot.data!,
-                polylines: _polylines,
-                mapToolbarEnabled: false,
-                compassEnabled: false,
-                gestureRecognizers: _isInsideScrollView
-                    ? <Factory<OneSequenceGestureRecognizer>>{
-                        Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
-                      }
-                    : {},
-              );
-            },
-          );
-        });
+    return BlocSelector<MapCubit, MapState, MapType>(
+      selector: (state) => state.mapType,
+      builder: (context, mapType) {
+        return GoogleMap(
+          mapType: mapType,
+          initialCameraPosition: initialCameraPosition,
+          onMapCreated: (controller) => context.read<MapCubit>().mapCreated(controller),
+          myLocationButtonEnabled: false,
+          zoomControlsEnabled: false,
+          markers: markers.value,
+          polylines: _polylines,
+          mapToolbarEnabled: false,
+          compassEnabled: false,
+          gestureRecognizers: _isInsideScrollView
+              ? <Factory<OneSequenceGestureRecognizer>>{
+                  Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                }
+              : {},
+        );
+      },
+    );
   }
 
   LatLngBounds? _getLatLngBounds({required Set<Marker> markers}) {

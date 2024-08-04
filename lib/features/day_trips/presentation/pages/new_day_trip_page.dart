@@ -63,10 +63,13 @@ class _NewDayTripPageBody extends HookWidget {
               (current is! NewDayTripStateSaving && previous is NewDayTripStateSaving),
         ),
       ],
-      child: NewEditDayTripForm(
-        isSaving: isSaving.stream,
-        onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
-        saveSection: _AddDayTripButton(isSaving: isSaving.stream),
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: NewEditDayTripForm(
+          isSaving: isSaving.stream,
+          onDescriptionChanged: (String value) => cubit.descriptionChanged(value),
+          saveSection: _AddDayTripButton(isSaving: isSaving.stream),
+        ),
       ),
     );
   }

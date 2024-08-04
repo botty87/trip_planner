@@ -6,18 +6,18 @@ import '../../../trip_stops/domain/entities/trip_stop.dart';
 part 'map_place.freezed.dart';
 
 @freezed
-class MapPlace with _$MapPlace {
+sealed class MapPlace with _$MapPlace {
   factory MapPlace.existing({
     required String tripStopId,
     required String name,
     required String? description,
     required LatLng location,
     required bool isDone,
-  }) = _MapPlaceExisting;
+  }) = MapPlaceExisting;
 
   factory MapPlace.newPlace({
     required LatLng location,
-  }) = _MapPlaceNew;
+  }) = MapPlaceNew;
 }
 
 extension TripStopX on TripStop {

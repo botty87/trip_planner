@@ -44,20 +44,20 @@ mixin _$MapPlace {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MapPlaceExisting value) existing,
-    required TResult Function(_MapPlaceNew value) newPlace,
+    required TResult Function(MapPlaceExisting value) existing,
+    required TResult Function(MapPlaceNew value) newPlace,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_MapPlaceExisting value)? existing,
-    TResult? Function(_MapPlaceNew value)? newPlace,
+    TResult? Function(MapPlaceExisting value)? existing,
+    TResult? Function(MapPlaceNew value)? newPlace,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MapPlaceExisting value)? existing,
-    TResult Function(_MapPlaceNew value)? newPlace,
+    TResult Function(MapPlaceExisting value)? existing,
+    TResult Function(MapPlaceNew value)? newPlace,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -159,7 +159,7 @@ class __$$MapPlaceExistingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MapPlaceExistingImpl implements _MapPlaceExisting {
+class _$MapPlaceExistingImpl implements MapPlaceExisting {
   _$MapPlaceExistingImpl(
       {required this.tripStopId,
       required this.name,
@@ -249,8 +249,8 @@ class _$MapPlaceExistingImpl implements _MapPlaceExisting {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MapPlaceExisting value) existing,
-    required TResult Function(_MapPlaceNew value) newPlace,
+    required TResult Function(MapPlaceExisting value) existing,
+    required TResult Function(MapPlaceNew value) newPlace,
   }) {
     return existing(this);
   }
@@ -258,8 +258,8 @@ class _$MapPlaceExistingImpl implements _MapPlaceExisting {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_MapPlaceExisting value)? existing,
-    TResult? Function(_MapPlaceNew value)? newPlace,
+    TResult? Function(MapPlaceExisting value)? existing,
+    TResult? Function(MapPlaceNew value)? newPlace,
   }) {
     return existing?.call(this);
   }
@@ -267,8 +267,8 @@ class _$MapPlaceExistingImpl implements _MapPlaceExisting {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MapPlaceExisting value)? existing,
-    TResult Function(_MapPlaceNew value)? newPlace,
+    TResult Function(MapPlaceExisting value)? existing,
+    TResult Function(MapPlaceNew value)? newPlace,
     required TResult orElse(),
   }) {
     if (existing != null) {
@@ -278,8 +278,8 @@ class _$MapPlaceExistingImpl implements _MapPlaceExisting {
   }
 }
 
-abstract class _MapPlaceExisting implements MapPlace {
-  factory _MapPlaceExisting(
+abstract class MapPlaceExisting implements MapPlace {
+  factory MapPlaceExisting(
       {required final String tripStopId,
       required final String name,
       required final String? description,
@@ -333,7 +333,7 @@ class __$$MapPlaceNewImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MapPlaceNewImpl implements _MapPlaceNew {
+class _$MapPlaceNewImpl implements MapPlaceNew {
   _$MapPlaceNewImpl({required this.location});
 
   @override
@@ -402,8 +402,8 @@ class _$MapPlaceNewImpl implements _MapPlaceNew {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MapPlaceExisting value) existing,
-    required TResult Function(_MapPlaceNew value) newPlace,
+    required TResult Function(MapPlaceExisting value) existing,
+    required TResult Function(MapPlaceNew value) newPlace,
   }) {
     return newPlace(this);
   }
@@ -411,8 +411,8 @@ class _$MapPlaceNewImpl implements _MapPlaceNew {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_MapPlaceExisting value)? existing,
-    TResult? Function(_MapPlaceNew value)? newPlace,
+    TResult? Function(MapPlaceExisting value)? existing,
+    TResult? Function(MapPlaceNew value)? newPlace,
   }) {
     return newPlace?.call(this);
   }
@@ -420,8 +420,8 @@ class _$MapPlaceNewImpl implements _MapPlaceNew {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MapPlaceExisting value)? existing,
-    TResult Function(_MapPlaceNew value)? newPlace,
+    TResult Function(MapPlaceExisting value)? existing,
+    TResult Function(MapPlaceNew value)? newPlace,
     required TResult orElse(),
   }) {
     if (newPlace != null) {
@@ -431,8 +431,8 @@ class _$MapPlaceNewImpl implements _MapPlaceNew {
   }
 }
 
-abstract class _MapPlaceNew implements MapPlace {
-  factory _MapPlaceNew({required final LatLng location}) = _$MapPlaceNewImpl;
+abstract class MapPlaceNew implements MapPlace {
+  factory MapPlaceNew({required final LatLng location}) = _$MapPlaceNewImpl;
 
   @override
   LatLng get location;
