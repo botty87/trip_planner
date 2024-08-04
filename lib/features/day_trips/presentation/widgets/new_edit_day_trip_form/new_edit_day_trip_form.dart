@@ -26,54 +26,57 @@ class NewEditDayTripForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        StreamBuilder<bool>(
-          stream: isSaving,
-          builder: (context, isSaving) {
-            if (isSaving.data ?? false) {
-              return const LinearProgressIndicator(minHeight: 1);
-            } else {
-              return const SizedBox(height: 1);
-            }
-          },
-        ),
-        Flexible(
-          child: SafeArea(
-            child: LayoutBuilder(builder: (context, constraints) {
-              final isPortrait = constraints.maxHeight > constraints.maxWidth;
-              final heightFactor = isPortrait ? 0.55 : 0.25;
-              final pictureHeight = constraints.maxWidth * heightFactor;
-              return SingleChildScrollView(
-                padding: defaultPagePadding,
-                child: Column(
-                  children: [
-                    SvgPicture(
-                      height: pictureHeight,
-                      key: const Key('tripImage'),
-                      AssetBytesLoader(Assets.svg.addDayTripNewSvg),
-                    ),
-                    const SizedBox(height: verticalSpaceL),
-                    Column(
-                      children: [
-                        _DescriptionWidget(
-                          key: const Key('descriptionWidget'),
-                          onDescriptionChanged: onDescriptionChanged,
-                          initialDayTripDescription: initialDayTripDescription,
-                        ),
-                        const SizedBox(height: verticalSpaceL),
-                        saveSection,
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            }),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          StreamBuilder<bool>(
+            stream: isSaving,
+            builder: (context, isSaving) {
+              if (isSaving.data ?? false) {
+                return const LinearProgressIndicator(minHeight: 1);
+              } else {
+                return const SizedBox(height: 1);
+              }
+            },
           ),
-        ),
-      ],
+          Flexible(
+            child: SafeArea(
+              child: LayoutBuilder(builder: (context, constraints) {
+                final isPortrait = constraints.maxHeight > constraints.maxWidth;
+                final heightFactor = isPortrait ? 0.55 : 0.25;
+                final pictureHeight = constraints.maxWidth * heightFactor;
+                return SingleChildScrollView(
+                  padding: defaultPagePadding,
+                  child: Column(
+                    children: [
+                      SvgPicture(
+                        height: pictureHeight,
+                        key: const Key('tripImage'),
+                        AssetBytesLoader(Assets.svg.addDayTripNewSvg),
+                      ),
+                      const SizedBox(height: verticalSpaceL),
+                      Column(
+                        children: [
+                          _DescriptionWidget(
+                            key: const Key('descriptionWidget'),
+                            onDescriptionChanged: onDescriptionChanged,
+                            initialDayTripDescription: initialDayTripDescription,
+                          ),
+                          const SizedBox(height: verticalSpaceL),
+                          saveSection,
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
