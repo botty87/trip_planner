@@ -18,7 +18,7 @@ import '../widgets/trips_page/trips_error_widget.dart';
 import '../widgets/trips_page/trips_page_initial_widget.dart';
 
 @RoutePage()
-class TripsPage extends StatelessWidget  {
+class TripsPage extends StatelessWidget {
   const TripsPage({super.key});
 
   @override
