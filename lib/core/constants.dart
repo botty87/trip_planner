@@ -41,3 +41,5 @@ const String darkBackgroundPrefix = 'darkBackground';
 const String webpExtension = 'webp';
 
 const String deviceLocaleKey = 'deviceLocale';
+
+const int defaultRouteTransitionDuration = 250;
