@@ -16,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+import 'package:shorebird_code_push/shorebird_code_push.dart';
 
 import 'core/di/di.dart';
 import 'core/my_app.dart';
@@ -49,6 +50,16 @@ void main() async {
       getIt<FirebaseCrashlytics>().recordError(error, stack, fatal: true);
       return true;
     };
+
+    //Add patch number to the crash log
+    try {
+      final patchNumber = await ShorebirdCodePush().currentPatchNumber();
+
+      FirebaseCrashlytics.instance.setCustomKey(
+        'shorebird_patch_number',
+        '$patchNumber',
+      );
+    } catch (_) {}
   }
 
   // Require Hybrid Composition mode on Android.
@@ -60,13 +71,11 @@ void main() async {
   runApp(DevicePreview(
     enabled: !kIsWeb && !kReleaseMode && (Platform.isLinux || Platform.isMacOS || Platform.isWindows),
     builder: (context) => EasyLocalization(
-            supportedLocales: const [Locale('it'), Locale('en')],
-            path: 'assets/translations',
-            fallbackLocale: const Locale('en'),
-            useOnlyLangCode: true,
-            child: const MyApp(),
-          ),
+      supportedLocales: const [Locale('it'), Locale('en')],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en'),
+      useOnlyLangCode: true,
+      child: const MyApp(),
+    ),
   ));
-
-  
 }
