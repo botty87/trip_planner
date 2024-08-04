@@ -53,171 +53,6 @@ import 'package:trip_planner/features/user_account/presentation/pages/account_pa
 import 'package:trip_planner/features/user_account/presentation/pages/login_signup_page.dart'
     as _i10;
 
-abstract class $AppRouter extends _i19.RootStackRouter {
-  $AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, _i19.PageFactory> pagesMap = {
-    AccountRoute.name: (routeData) {
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i1.AccountPage(),
-      );
-    },
-    DayTripRoute.name: (routeData) {
-      final args = routeData.argsAs<DayTripRouteArgs>();
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i2.DayTripPage(
-          key: args.key,
-          trip: args.trip,
-          dayTrip: args.dayTrip,
-        ),
-      );
-    },
-    DiscoverNewDailyTripsRoute.name: (routeData) {
-      final args = routeData.argsAs<DiscoverNewDailyTripsRouteArgs>();
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i3.DiscoverNewDailyTripsPage(
-          key: args.key,
-          trip: args.trip,
-        ),
-      );
-    },
-    DiscoverNewTripStopRoute.name: (routeData) {
-      final args = routeData.argsAs<DiscoverNewTripStopRouteArgs>();
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i4.DiscoverNewTripStopPage(
-          key: args.key,
-          tripStop: args.tripStop,
-        ),
-      );
-    },
-    DiscoverNewTripStopsRoute.name: (routeData) {
-      final args = routeData.argsAs<DiscoverNewTripStopsRouteArgs>();
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i5.DiscoverNewTripStopsPage(
-          key: args.key,
-          trip: args.trip,
-          dayTrip: args.dayTrip,
-        ),
-      );
-    },
-    DiscoverNewTripsRoute.name: (routeData) {
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i6.DiscoverNewTripsPage(),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i7.HomePage(),
-      );
-    },
-    ImportOldTripsRoute.name: (routeData) {
-      final args = routeData.argsAs<ImportOldTripsRouteArgs>();
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i8.ImportOldTripsPage(
-          key: args.key,
-          user: args.user,
-        ),
-      );
-    },
-    InfoContactsRoute.name: (routeData) {
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i9.InfoContactsPage(),
-      );
-    },
-    LoginSignupRoute.name: (routeData) {
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i10.LoginSignupPage(),
-      );
-    },
-    NewDayTripRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<NewDayTripRouteArgs>(
-          orElse: () =>
-              NewDayTripRouteArgs(tripId: pathParams.getString('tripId')));
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i11.NewDayTripPage(
-          key: args.key,
-          tripId: args.tripId,
-        ),
-      );
-    },
-    NewTripRoute.name: (routeData) {
-      final args = routeData.argsAs<NewTripRouteArgs>(
-          orElse: () => const NewTripRouteArgs());
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i12.NewTripPage(
-          key: args.key,
-          existingTrip: args.existingTrip,
-        ),
-      );
-    },
-    NewTripStopRoute.name: (routeData) {
-      final args = routeData.argsAs<NewTripStopRouteArgs>();
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i13.NewTripStopPage(
-          key: args.key,
-          trip: args.trip,
-          dayTrip: args.dayTrip,
-        ),
-      );
-    },
-    SettingsRoute.name: (routeData) {
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i14.SettingsPage(),
-      );
-    },
-    TripRoute.name: (routeData) {
-      final args = routeData.argsAs<TripRouteArgs>();
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i15.TripPage(
-          args.trip,
-          key: args.key,
-        ),
-      );
-    },
-    TripStopRoute.name: (routeData) {
-      final args = routeData.argsAs<TripStopRouteArgs>();
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i16.TripStopPage(
-          key: args.key,
-          trip: args.trip,
-          dayTrip: args.dayTrip,
-          tripStop: args.tripStop,
-        ),
-      );
-    },
-    TripsRoute.name: (routeData) {
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i17.TripsPage(),
-      );
-    },
-    TutorialRoute.name: (routeData) {
-      return _i19.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i18.TutorialPage(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [_i1.AccountPage]
 class AccountRoute extends _i19.PageRouteInfo<void> {
@@ -229,7 +64,12 @@ class AccountRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'AccountRoute';
 
-  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AccountPage();
+    },
+  );
 }
 
 /// generated route for
@@ -252,8 +92,17 @@ class DayTripRoute extends _i19.PageRouteInfo<DayTripRouteArgs> {
 
   static const String name = 'DayTripRoute';
 
-  static const _i19.PageInfo<DayTripRouteArgs> page =
-      _i19.PageInfo<DayTripRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<DayTripRouteArgs>();
+      return _i2.DayTripPage(
+        key: args.key,
+        trip: args.trip,
+        dayTrip: args.dayTrip,
+      );
+    },
+  );
 }
 
 class DayTripRouteArgs {
@@ -294,8 +143,16 @@ class DiscoverNewDailyTripsRoute
 
   static const String name = 'DiscoverNewDailyTripsRoute';
 
-  static const _i19.PageInfo<DiscoverNewDailyTripsRouteArgs> page =
-      _i19.PageInfo<DiscoverNewDailyTripsRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<DiscoverNewDailyTripsRouteArgs>();
+      return _i3.DiscoverNewDailyTripsPage(
+        key: args.key,
+        trip: args.trip,
+      );
+    },
+  );
 }
 
 class DiscoverNewDailyTripsRouteArgs {
@@ -333,8 +190,16 @@ class DiscoverNewTripStopRoute
 
   static const String name = 'DiscoverNewTripStopRoute';
 
-  static const _i19.PageInfo<DiscoverNewTripStopRouteArgs> page =
-      _i19.PageInfo<DiscoverNewTripStopRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<DiscoverNewTripStopRouteArgs>();
+      return _i4.DiscoverNewTripStopPage(
+        key: args.key,
+        tripStop: args.tripStop,
+      );
+    },
+  );
 }
 
 class DiscoverNewTripStopRouteArgs {
@@ -374,8 +239,17 @@ class DiscoverNewTripStopsRoute
 
   static const String name = 'DiscoverNewTripStopsRoute';
 
-  static const _i19.PageInfo<DiscoverNewTripStopsRouteArgs> page =
-      _i19.PageInfo<DiscoverNewTripStopsRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<DiscoverNewTripStopsRouteArgs>();
+      return _i5.DiscoverNewTripStopsPage(
+        key: args.key,
+        trip: args.trip,
+        dayTrip: args.dayTrip,
+      );
+    },
+  );
 }
 
 class DiscoverNewTripStopsRouteArgs {
@@ -408,7 +282,12 @@ class DiscoverNewTripsRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'DiscoverNewTripsRoute';
 
-  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      return const _i6.DiscoverNewTripsPage();
+    },
+  );
 }
 
 /// generated route for
@@ -422,7 +301,12 @@ class HomeRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      return const _i7.HomePage();
+    },
+  );
 }
 
 /// generated route for
@@ -443,8 +327,16 @@ class ImportOldTripsRoute extends _i19.PageRouteInfo<ImportOldTripsRouteArgs> {
 
   static const String name = 'ImportOldTripsRoute';
 
-  static const _i19.PageInfo<ImportOldTripsRouteArgs> page =
-      _i19.PageInfo<ImportOldTripsRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ImportOldTripsRouteArgs>();
+      return _i8.ImportOldTripsPage(
+        key: args.key,
+        user: args.user,
+      );
+    },
+  );
 }
 
 class ImportOldTripsRouteArgs {
@@ -474,7 +366,12 @@ class InfoContactsRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'InfoContactsRoute';
 
-  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      return const _i9.InfoContactsPage();
+    },
+  );
 }
 
 /// generated route for
@@ -488,7 +385,12 @@ class LoginSignupRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'LoginSignupRoute';
 
-  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      return const _i10.LoginSignupPage();
+    },
+  );
 }
 
 /// generated route for
@@ -510,8 +412,19 @@ class NewDayTripRoute extends _i19.PageRouteInfo<NewDayTripRouteArgs> {
 
   static const String name = 'NewDayTripRoute';
 
-  static const _i19.PageInfo<NewDayTripRouteArgs> page =
-      _i19.PageInfo<NewDayTripRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<NewDayTripRouteArgs>(
+          orElse: () =>
+              NewDayTripRouteArgs(tripId: pathParams.getString('tripId')));
+      return _i11.NewDayTripPage(
+        key: args.key,
+        tripId: args.tripId,
+      );
+    },
+  );
 }
 
 class NewDayTripRouteArgs {
@@ -548,8 +461,17 @@ class NewTripRoute extends _i19.PageRouteInfo<NewTripRouteArgs> {
 
   static const String name = 'NewTripRoute';
 
-  static const _i19.PageInfo<NewTripRouteArgs> page =
-      _i19.PageInfo<NewTripRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args =
+          data.argsAs<NewTripRouteArgs>(orElse: () => const NewTripRouteArgs());
+      return _i12.NewTripPage(
+        key: args.key,
+        existingTrip: args.existingTrip,
+      );
+    },
+  );
 }
 
 class NewTripRouteArgs {
@@ -588,8 +510,17 @@ class NewTripStopRoute extends _i19.PageRouteInfo<NewTripStopRouteArgs> {
 
   static const String name = 'NewTripStopRoute';
 
-  static const _i19.PageInfo<NewTripStopRouteArgs> page =
-      _i19.PageInfo<NewTripStopRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NewTripStopRouteArgs>();
+      return _i13.NewTripStopPage(
+        key: args.key,
+        trip: args.trip,
+        dayTrip: args.dayTrip,
+      );
+    },
+  );
 }
 
 class NewTripStopRouteArgs {
@@ -622,7 +553,12 @@ class SettingsRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'SettingsRoute';
 
-  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      return const _i14.SettingsPage();
+    },
+  );
 }
 
 /// generated route for
@@ -643,8 +579,16 @@ class TripRoute extends _i19.PageRouteInfo<TripRouteArgs> {
 
   static const String name = 'TripRoute';
 
-  static const _i19.PageInfo<TripRouteArgs> page =
-      _i19.PageInfo<TripRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<TripRouteArgs>();
+      return _i15.TripPage(
+        args.trip,
+        key: args.key,
+      );
+    },
+  );
 }
 
 class TripRouteArgs {
@@ -685,8 +629,18 @@ class TripStopRoute extends _i19.PageRouteInfo<TripStopRouteArgs> {
 
   static const String name = 'TripStopRoute';
 
-  static const _i19.PageInfo<TripStopRouteArgs> page =
-      _i19.PageInfo<TripStopRouteArgs>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<TripStopRouteArgs>();
+      return _i16.TripStopPage(
+        key: args.key,
+        trip: args.trip,
+        dayTrip: args.dayTrip,
+        tripStop: args.tripStop,
+      );
+    },
+  );
 }
 
 class TripStopRouteArgs {
@@ -722,7 +676,12 @@ class TripsRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'TripsRoute';
 
-  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      return const _i17.TripsPage();
+    },
+  );
 }
 
 /// generated route for
@@ -736,5 +695,10 @@ class TutorialRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'TutorialRoute';
 
-  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
+  static _i19.PageInfo page = _i19.PageInfo(
+    name,
+    builder: (data) {
+      return const _i18.TutorialPage();
+    },
+  );
 }
