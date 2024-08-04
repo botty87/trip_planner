@@ -13,13 +13,11 @@ import '../../domain/entities/suggestion.dart';
 import '../../errors/google_places_exception.dart';
 
 abstract class GooglePlacesDataSource {
-  Future<List<Suggestion>> fetchSuggestions(
-      {required String query, required String lang, required String token});
+  Future<List<Suggestion>> fetchSuggestions({required String query, required String lang, required String token});
 
   Future<PlaceDetails> fetchPlaceDetails({required String placeId, required String token});
 
-  Future<List<TripStopsDirections>> fetchTripStopsDirections(
-      List<TripStop> tripStops, TravelMode travelMode);
+  Future<List<TripStopsDirections>> fetchTripStopsDirections(List<TripStop> tripStops, TravelMode travelMode);
 }
 
 @LazySingleton(as: GooglePlacesDataSource)
@@ -51,20 +49,17 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
       throw const GooglePlacesException.noInternetConnection();
     }
 
-    String request =
+    final request =
         'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$query&language=$lang&key=$key&sessiontoken=$token';
-
-    if (kIsWeb) {
-      request = proxyURL + request;
-    }
-
-    /// Add the custom header to the options
-    final options = kIsWeb ? Options(headers: {"x-requested-with": "XMLHttpRequest"}) : null;
 
     final Response response;
     _cancelToken = CancelToken();
     try {
-      response = await client.get(request, cancelToken: _cancelToken, options: options);
+      response = await client.get(
+        kIsWeb ? proxyURL : request,
+        cancelToken: _cancelToken,
+        queryParameters: kIsWeb ? {'url': request} : null,
+      );
     } on DioException catch (e) {
       if (CancelToken.isCancel(e)) {
         _cancelToken = null;
@@ -93,20 +88,17 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
       throw const GooglePlacesException.noInternetConnection();
     }
 
-    String request =
+    final request =
         "https://maps.googleapis.com/maps/api/place/details/json?placeid=$placeId&key=$key&sessiontoken=$token";
-
-    if (kIsWeb) {
-      request = proxyURL + request;
-    }
-
-    /// Add the custom header to the options
-    final options = kIsWeb ? Options(headers: {"x-requested-with": "XMLHttpRequest"}) : null;
 
     final Response response;
     _cancelToken = CancelToken();
     try {
-      response = await client.get(request, cancelToken: _cancelToken, options: options);
+      response = await client.get(
+        kIsWeb ? proxyURL : request,
+        cancelToken: _cancelToken,
+        queryParameters: kIsWeb ? {'url': request} : null,
+      );
     } on DioException catch (e) {
       if (CancelToken.isCancel(e)) {
         _cancelToken = null;
@@ -133,8 +125,7 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
   }
 
   @override
-  Future<List<TripStopsDirections>> fetchTripStopsDirections(
-      List<TripStop> tripStops, TravelMode travelMode) async {
+  Future<List<TripStopsDirections>> fetchTripStopsDirections(List<TripStop> tripStops, TravelMode travelMode) async {
     assert(tripStops.length >= 2);
 
     final hasConnection = await internetConnection.hasInternetAccess;
@@ -150,8 +141,7 @@ class GooglePlacesDataSourceImpl implements GooglePlacesDataSource {
         result = await polylinePoints.getRouteBetweenCoordinates(
           request: PolylineRequest(
             origin: PointLatLng(tripStops[i].location.latitude, tripStops[i].location.longitude),
-            destination: PointLatLng(
-                tripStops[i + 1].location.latitude, tripStops[i + 1].location.longitude),
+            destination: PointLatLng(tripStops[i + 1].location.latitude, tripStops[i + 1].location.longitude),
             mode: travelMode,
             proxy: kIsWeb ? Uri.parse(proxyURL) : null,
           ),
