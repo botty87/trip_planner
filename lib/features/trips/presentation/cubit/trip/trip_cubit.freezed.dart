@@ -110,7 +110,9 @@ mixin _$TripState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripStateCopyWith<TripState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -135,6 +137,8 @@ class _$TripStateCopyWithImpl<$Res, $Val extends TripState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,6 +152,8 @@ class _$TripStateCopyWithImpl<$Res, $Val extends TripState>
     ) as $Val);
   }
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TripCopyWith<$Res> get trip {
@@ -179,6 +185,8 @@ class __$$TripStateInitialImplCopyWithImpl<$Res>
       $Res Function(_$TripStateInitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -217,7 +225,9 @@ class _$TripStateInitialImpl implements TripStateInitial {
   @override
   int get hashCode => Object.hash(runtimeType, trip);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStateInitialImplCopyWith<_$TripStateInitialImpl> get copyWith =>
@@ -347,8 +357,11 @@ abstract class TripStateInitial implements TripState {
 
   @override
   Trip get trip;
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStateInitialImplCopyWith<_$TripStateInitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -375,6 +388,8 @@ class __$$TripStateLoadedImplCopyWithImpl<$Res>
       _$TripStateLoadedImpl _value, $Res Function(_$TripStateLoadedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -429,7 +444,9 @@ class _$TripStateLoadedImpl implements TripStateLoaded {
   int get hashCode => Object.hash(
       runtimeType, trip, const DeepCollectionEquality().hash(_dayTrips));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStateLoadedImplCopyWith<_$TripStateLoadedImpl> get copyWith =>
@@ -561,8 +578,11 @@ abstract class TripStateLoaded implements TripState {
   @override
   Trip get trip;
   List<DayTrip> get dayTrips;
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStateLoadedImplCopyWith<_$TripStateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -589,6 +609,8 @@ class __$$TripStateErrorImplCopyWithImpl<$Res>
       _$TripStateErrorImpl _value, $Res Function(_$TripStateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -645,7 +667,9 @@ class _$TripStateErrorImpl implements TripStateError {
   @override
   int get hashCode => Object.hash(runtimeType, trip, errorMessage, fatal);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStateErrorImplCopyWith<_$TripStateErrorImpl> get copyWith =>
@@ -779,8 +803,11 @@ abstract class TripStateError implements TripState {
   Trip get trip;
   String get errorMessage;
   bool get fatal;
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStateErrorImplCopyWith<_$TripStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -816,6 +843,8 @@ class __$$TripStateEditingImplCopyWithImpl<$Res>
       $Res Function(_$TripStateEditingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -951,7 +980,9 @@ class _$TripStateEditingImpl implements TripStateEditing {
       isSaving,
       errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStateEditingImplCopyWith<_$TripStateEditingImpl> get copyWith =>
@@ -1100,8 +1131,11 @@ abstract class TripStateEditing implements TripState {
   String get languageCode;
   bool get isSaving;
   String? get errorMessage;
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStateEditingImplCopyWith<_$TripStateEditingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1128,6 +1162,8 @@ class __$$TripStateDeletingImplCopyWithImpl<$Res>
       $Res Function(_$TripStateDeletingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1166,7 +1202,9 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   @override
   int get hashCode => Object.hash(runtimeType, trip);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStateDeletingImplCopyWith<_$TripStateDeletingImpl> get copyWith =>
@@ -1296,8 +1334,11 @@ abstract class TripStateDeleting implements TripState {
 
   @override
   Trip get trip;
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStateDeletingImplCopyWith<_$TripStateDeletingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1324,6 +1365,8 @@ class __$$TripStateDeletedImplCopyWithImpl<$Res>
       $Res Function(_$TripStateDeletedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1362,7 +1405,9 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   @override
   int get hashCode => Object.hash(runtimeType, trip);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStateDeletedImplCopyWith<_$TripStateDeletedImpl> get copyWith =>
@@ -1492,8 +1537,11 @@ abstract class TripStateDeleted implements TripState {
 
   @override
   Trip get trip;
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStateDeletedImplCopyWith<_$TripStateDeletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

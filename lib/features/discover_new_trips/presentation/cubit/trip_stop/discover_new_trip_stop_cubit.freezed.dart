@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DiscoverNewTripStopState {
   TripStop get tripStop => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiscoverNewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DiscoverNewTripStopStateCopyWith<DiscoverNewTripStopState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$DiscoverNewTripStopStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DiscoverNewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -58,6 +62,8 @@ class _$DiscoverNewTripStopStateCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of DiscoverNewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TripStopCopyWith<$Res> get tripStop {
@@ -89,6 +95,8 @@ class __$$NormalImplCopyWithImpl<$Res>
       _$NormalImpl _value, $Res Function(_$NormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiscoverNewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,7 +136,9 @@ class _$NormalImpl implements _Normal {
   @override
   int get hashCode => Object.hash(runtimeType, tripStop);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiscoverNewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
@@ -140,8 +150,11 @@ abstract class _Normal implements DiscoverNewTripStopState {
 
   @override
   TripStop get tripStop;
+
+  /// Create a copy of DiscoverNewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

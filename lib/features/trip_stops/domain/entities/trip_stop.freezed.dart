@@ -35,8 +35,12 @@ mixin _$TripStop {
   String? get note => throw _privateConstructorUsedError;
   TripStopPlaceholder? get placeholder => throw _privateConstructorUsedError;
 
+  /// Serializes this TripStop to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TripStop
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripStopCopyWith<TripStop> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -72,6 +76,8 @@ class _$TripStopCopyWithImpl<$Res, $Val extends TripStop>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripStop
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,6 +136,8 @@ class _$TripStopCopyWithImpl<$Res, $Val extends TripStop>
     ) as $Val);
   }
 
+  /// Create a copy of TripStop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TripStopPlaceholderCopyWith<$Res>? get placeholder {
@@ -176,6 +184,8 @@ class __$$TripStopImplCopyWithImpl<$Res>
       _$TripStopImpl _value, $Res Function(_$TripStopImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStop
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -308,12 +318,14 @@ class _$TripStopImpl implements _TripStop {
                 other.placeholder == placeholder));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, index, name, description,
       duration, location, isDone, travelTimeToNextStop, note, placeholder);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStop
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopImplCopyWith<_$TripStopImpl> get copyWith =>
@@ -352,8 +364,8 @@ abstract class _TripStop implements TripStop {
   @override
   String get name;
   @override
-  String? get description;
-  @override //Duration of the stop in minutes
+  String? get description; //Duration of the stop in minutes
+  @override
   int get duration;
   @override
   @JsonKey(toJson: geoPointFromLatLng, fromJson: latLngFromGeoPoint)
@@ -361,13 +373,16 @@ abstract class _TripStop implements TripStop {
   @override
   bool get isDone;
   @override
-  int get travelTimeToNextStop;
-  @override // in minutes
+  int get travelTimeToNextStop; // in minutes
+  @override
   String? get note;
   @override
   TripStopPlaceholder? get placeholder;
+
+  /// Create a copy of TripStop
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopImplCopyWith<_$TripStopImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -381,8 +396,12 @@ mixin _$TripStopPlaceholder {
   String get name => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
 
+  /// Serializes this TripStopPlaceholder to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TripStopPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripStopPlaceholderCopyWith<TripStopPlaceholder> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -406,6 +425,8 @@ class _$TripStopPlaceholderCopyWithImpl<$Res, $Val extends TripStopPlaceholder>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripStopPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -444,6 +465,8 @@ class __$$TripStopPlaceholderImplCopyWithImpl<$Res>
       $Res Function(_$TripStopPlaceholderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -491,11 +514,13 @@ class _$TripStopPlaceholderImpl implements _TripStopPlaceholder {
                 other.duration == duration));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, duration);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopPlaceholderImplCopyWith<_$TripStopPlaceholderImpl> get copyWith =>
@@ -522,8 +547,11 @@ abstract class _TripStopPlaceholder implements TripStopPlaceholder {
   String get name;
   @override
   int get duration;
+
+  /// Create a copy of TripStopPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopPlaceholderImplCopyWith<_$TripStopPlaceholderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

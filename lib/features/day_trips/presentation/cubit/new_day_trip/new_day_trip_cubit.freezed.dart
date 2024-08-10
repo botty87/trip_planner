@@ -68,7 +68,9 @@ mixin _$NewDayTripState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewDayTripStateCopyWith<NewDayTripState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -92,6 +94,8 @@ class _$NewDayTripStateCopyWithImpl<$Res, $Val extends NewDayTripState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,6 +130,8 @@ class __$$NewDayTripStateNormalImplCopyWithImpl<$Res>
       $Res Function(_$NewDayTripStateNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,7 +171,9 @@ class _$NewDayTripStateNormalImpl implements NewDayTripStateNormal {
   @override
   int get hashCode => Object.hash(runtimeType, description);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewDayTripStateNormalImplCopyWith<_$NewDayTripStateNormalImpl>
@@ -253,8 +261,11 @@ abstract class NewDayTripStateNormal implements NewDayTripState {
 
   @override
   String? get description;
+
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewDayTripStateNormalImplCopyWith<_$NewDayTripStateNormalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -279,6 +290,8 @@ class __$$NewDayTripStateSavingImplCopyWithImpl<$Res>
       $Res Function(_$NewDayTripStateSavingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -318,7 +331,9 @@ class _$NewDayTripStateSavingImpl implements NewDayTripStateSaving {
   @override
   int get hashCode => Object.hash(runtimeType, description);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewDayTripStateSavingImplCopyWith<_$NewDayTripStateSavingImpl>
@@ -406,8 +421,11 @@ abstract class NewDayTripStateSaving implements NewDayTripState {
 
   @override
   String? get description;
+
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewDayTripStateSavingImplCopyWith<_$NewDayTripStateSavingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -433,6 +451,8 @@ class __$$NewDayTripStateCreatedImplCopyWithImpl<$Res>
       $Res Function(_$NewDayTripStateCreatedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -472,7 +492,9 @@ class _$NewDayTripStateCreatedImpl implements NewDayTripStateCreated {
   @override
   int get hashCode => Object.hash(runtimeType, description);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewDayTripStateCreatedImplCopyWith<_$NewDayTripStateCreatedImpl>
@@ -560,8 +582,11 @@ abstract class NewDayTripStateCreated implements NewDayTripState {
 
   @override
   String? get description;
+
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewDayTripStateCreatedImplCopyWith<_$NewDayTripStateCreatedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -585,6 +610,8 @@ class __$$NewDayTripStateErrorImplCopyWithImpl<$Res>
       $Res Function(_$NewDayTripStateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -634,7 +661,9 @@ class _$NewDayTripStateErrorImpl implements NewDayTripStateError {
   @override
   int get hashCode => Object.hash(runtimeType, description, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewDayTripStateErrorImplCopyWith<_$NewDayTripStateErrorImpl>
@@ -725,8 +754,11 @@ abstract class NewDayTripStateError implements NewDayTripState {
   @override
   String? get description;
   String get errorMessage;
+
+  /// Create a copy of NewDayTripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewDayTripStateErrorImplCopyWith<_$NewDayTripStateErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

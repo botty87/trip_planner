@@ -158,7 +158,9 @@ mixin _$TripStopState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripStopStateCopyWith<TripStopState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -187,6 +189,8 @@ class _$TripStopStateCopyWithImpl<$Res, $Val extends TripStopState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -215,6 +219,8 @@ class _$TripStopStateCopyWithImpl<$Res, $Val extends TripStopState>
     ) as $Val);
   }
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TripCopyWith<$Res> get trip {
@@ -223,6 +229,8 @@ class _$TripStopStateCopyWithImpl<$Res, $Val extends TripStopState>
     });
   }
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DayTripCopyWith<$Res> get dayTrip {
@@ -231,6 +239,8 @@ class _$TripStopStateCopyWithImpl<$Res, $Val extends TripStopState>
     });
   }
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TripStopCopyWith<$Res> get tripStop {
@@ -267,6 +277,8 @@ class __$$TripStopStateNormalImplCopyWithImpl<$Res>
       $Res Function(_$TripStopStateNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -337,7 +349,9 @@ class _$TripStopStateNormalImpl implements TripStopStateNormal {
   int get hashCode =>
       Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateNormalImplCopyWith<_$TripStopStateNormalImpl> get copyWith =>
@@ -521,8 +535,11 @@ abstract class TripStopStateNormal implements TripStopState {
   TripStop get tripStop;
   @override
   bool get hasTripNoteToSave;
+
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopStateNormalImplCopyWith<_$TripStopStateNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -563,6 +580,8 @@ class __$$TripStopStateEditingImplCopyWithImpl<$Res>
       $Res Function(_$TripStopStateEditingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -702,7 +721,9 @@ class _$TripStopStateEditingImpl implements TripStopStateEditing {
       location,
       errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateEditingImplCopyWith<_$TripStopStateEditingImpl>
@@ -902,8 +923,11 @@ abstract class TripStopStateEditing implements TripStopState {
   int? get minuteDuration;
   LatLng? get location;
   String? get errorMessage;
+
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopStateEditingImplCopyWith<_$TripStopStateEditingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -935,6 +959,8 @@ class __$$TripStopStateSavingImplCopyWithImpl<$Res>
       $Res Function(_$TripStopStateSavingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1005,7 +1031,9 @@ class _$TripStopStateSavingImpl implements TripStopStateSaving {
   int get hashCode =>
       Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateSavingImplCopyWith<_$TripStopStateSavingImpl> get copyWith =>
@@ -1189,8 +1217,11 @@ abstract class TripStopStateSaving implements TripStopState {
   TripStop get tripStop;
   @override
   bool get hasTripNoteToSave;
+
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopStateSavingImplCopyWith<_$TripStopStateSavingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1224,6 +1255,8 @@ class __$$TripStopStateNoteSavingImplCopyWithImpl<$Res>
       $Res Function(_$TripStopStateNoteSavingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1294,7 +1327,9 @@ class _$TripStopStateNoteSavingImpl implements TripStopStateNoteSaving {
   int get hashCode =>
       Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateNoteSavingImplCopyWith<_$TripStopStateNoteSavingImpl>
@@ -1478,8 +1513,11 @@ abstract class TripStopStateNoteSaving implements TripStopState {
   TripStop get tripStop;
   @override
   bool get hasTripNoteToSave;
+
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopStateNoteSavingImplCopyWith<_$TripStopStateNoteSavingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1512,6 +1550,8 @@ class __$$TripStopStateDeletingImplCopyWithImpl<$Res>
       $Res Function(_$TripStopStateDeletingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1582,7 +1622,9 @@ class _$TripStopStateDeletingImpl implements TripStopStateDeleting {
   int get hashCode =>
       Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateDeletingImplCopyWith<_$TripStopStateDeletingImpl>
@@ -1766,8 +1808,11 @@ abstract class TripStopStateDeleting implements TripStopState {
   TripStop get tripStop;
   @override
   bool get hasTripNoteToSave;
+
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopStateDeletingImplCopyWith<_$TripStopStateDeletingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1799,6 +1844,8 @@ class __$$TripStopStateDeletedImplCopyWithImpl<$Res>
       $Res Function(_$TripStopStateDeletedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1869,7 +1916,9 @@ class _$TripStopStateDeletedImpl implements TripStopStateDeleted {
   int get hashCode =>
       Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateDeletedImplCopyWith<_$TripStopStateDeletedImpl>
@@ -2054,8 +2103,11 @@ abstract class TripStopStateDeleted implements TripStopState {
   TripStop get tripStop;
   @override
   bool get hasTripNoteToSave;
+
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopStateDeletedImplCopyWith<_$TripStopStateDeletedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2091,6 +2143,8 @@ class __$$TripStopStateErrorImplCopyWithImpl<$Res>
       $Res Function(_$TripStopStateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2170,7 +2224,9 @@ class _$TripStopStateErrorImpl implements TripStopStateError {
   int get hashCode => Object.hash(
       runtimeType, trip, dayTrip, tripStop, message, hasTripNoteToSave);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateErrorImplCopyWith<_$TripStopStateErrorImpl> get copyWith =>
@@ -2356,8 +2412,11 @@ abstract class TripStopStateError implements TripStopState {
   String get message;
   @override
   bool get hasTripNoteToSave;
+
+  /// Create a copy of TripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopStateErrorImplCopyWith<_$TripStopStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -19,7 +19,9 @@ mixin _$PlaceDetails {
   String get placeId => throw _privateConstructorUsedError;
   LatLng get location => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlaceDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlaceDetailsCopyWith<PlaceDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$PlaceDetailsCopyWithImpl<$Res, $Val extends PlaceDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlaceDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$PlaceDetailsImplCopyWithImpl<$Res>
       _$PlaceDetailsImpl _value, $Res Function(_$PlaceDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlaceDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,7 +134,9 @@ class _$PlaceDetailsImpl implements _PlaceDetails {
   @override
   int get hashCode => Object.hash(runtimeType, placeId, location);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlaceDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlaceDetailsImplCopyWith<_$PlaceDetailsImpl> get copyWith =>
@@ -144,8 +152,11 @@ abstract class _PlaceDetails implements PlaceDetails {
   String get placeId;
   @override
   LatLng get location;
+
+  /// Create a copy of PlaceDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlaceDetailsImplCopyWith<_$PlaceDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

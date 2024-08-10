@@ -105,6 +105,9 @@ class _$NewTripStateCopyWithImpl<$Res, $Val extends NewTripState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -130,6 +133,8 @@ class __$$NormalImplCopyWithImpl<$Res>
       _$NormalImpl _value, $Res Function(_$NormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -223,7 +228,9 @@ class _$NormalImpl implements _Normal {
   int get hashCode => Object.hash(runtimeType, tripName, tripDescription,
       startDate, isStartDateBeforeToday, isPublic, languageCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
@@ -343,7 +350,10 @@ abstract class _Normal implements NewTripState {
   bool get isStartDateBeforeToday;
   bool get isPublic;
   String get languageCode;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -362,6 +372,9 @@ class __$$SavingImplCopyWithImpl<$Res>
   __$$SavingImplCopyWithImpl(
       _$SavingImpl _value, $Res Function(_$SavingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -497,6 +510,9 @@ class __$$CreatedImplCopyWithImpl<$Res>
   __$$CreatedImplCopyWithImpl(
       _$CreatedImpl _value, $Res Function(_$CreatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -635,6 +651,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -674,7 +692,9 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -780,7 +800,10 @@ abstract class _Error implements NewTripState {
   const factory _Error({required final String errorMessage}) = _$ErrorImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

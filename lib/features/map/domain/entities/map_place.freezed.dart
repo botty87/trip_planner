@@ -62,7 +62,9 @@ mixin _$MapPlace {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MapPlace
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MapPlaceCopyWith<MapPlace> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -85,6 +87,8 @@ class _$MapPlaceCopyWithImpl<$Res, $Val extends MapPlace>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MapPlace
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +127,8 @@ class __$$MapPlaceExistingImplCopyWithImpl<$Res>
       $Res Function(_$MapPlaceExistingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MapPlace
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,7 +208,9 @@ class _$MapPlaceExistingImpl implements MapPlaceExisting {
   int get hashCode =>
       Object.hash(runtimeType, tripStopId, name, description, location, isDone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MapPlace
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MapPlaceExistingImplCopyWith<_$MapPlaceExistingImpl> get copyWith =>
@@ -292,8 +300,11 @@ abstract class MapPlaceExisting implements MapPlace {
   @override
   LatLng get location;
   bool get isDone;
+
+  /// Create a copy of MapPlace
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MapPlaceExistingImplCopyWith<_$MapPlaceExistingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -317,6 +328,8 @@ class __$$MapPlaceNewImplCopyWithImpl<$Res>
       _$MapPlaceNewImpl _value, $Res Function(_$MapPlaceNewImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MapPlace
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -356,7 +369,9 @@ class _$MapPlaceNewImpl implements MapPlaceNew {
   @override
   int get hashCode => Object.hash(runtimeType, location);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MapPlace
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MapPlaceNewImplCopyWith<_$MapPlaceNewImpl> get copyWith =>
@@ -436,8 +451,11 @@ abstract class MapPlaceNew implements MapPlace {
 
   @override
   LatLng get location;
+
+  /// Create a copy of MapPlace
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MapPlaceNewImplCopyWith<_$MapPlaceNewImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

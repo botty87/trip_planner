@@ -59,7 +59,9 @@ mixin _$TripsFailure {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripsFailureCopyWith<TripsFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -83,6 +85,8 @@ class _$TripsFailureCopyWithImpl<$Res, $Val extends TripsFailure>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,6 +120,8 @@ class __$$TripsFailureImplCopyWithImpl<$Res>
       _$TripsFailureImpl _value, $Res Function(_$TripsFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,7 +160,9 @@ class _$TripsFailureImpl implements _TripsFailure {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripsFailureImplCopyWith<_$TripsFailureImpl> get copyWith =>
@@ -231,8 +239,11 @@ abstract class _TripsFailure implements TripsFailure {
 
   @override
   String? get message;
+
+  /// Create a copy of TripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripsFailureImplCopyWith<_$TripsFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -259,6 +270,8 @@ class __$$TripsFailureNoInternetConnectionImplCopyWithImpl<$Res>
       $Res Function(_$TripsFailureNoInternetConnectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -298,7 +311,9 @@ class _$TripsFailureNoInternetConnectionImpl
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripsFailureNoInternetConnectionImplCopyWith<
@@ -378,8 +393,11 @@ abstract class TripsFailureNoInternetConnection implements TripsFailure {
 
   @override
   String? get message;
+
+  /// Create a copy of TripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripsFailureNoInternetConnectionImplCopyWith<
           _$TripsFailureNoInternetConnectionImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -436,7 +454,9 @@ mixin _$ShareTripFailure {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShareTripFailureCopyWith<ShareTripFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -460,6 +480,8 @@ class _$ShareTripFailureCopyWithImpl<$Res, $Val extends ShareTripFailure>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -493,6 +515,8 @@ class __$$ShareTripFailureImplCopyWithImpl<$Res>
       $Res Function(_$ShareTripFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -531,7 +555,9 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShareTripFailureImplCopyWith<_$ShareTripFailureImpl> get copyWith =>
@@ -616,8 +642,11 @@ abstract class _ShareTripFailure implements ShareTripFailure {
 
   @override
   String? get message;
+
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShareTripFailureImplCopyWith<_$ShareTripFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -644,6 +673,8 @@ class __$$ShareTripFailureUserNotFoundImplCopyWithImpl<$Res>
       $Res Function(_$ShareTripFailureUserNotFoundImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -683,7 +714,9 @@ class _$ShareTripFailureUserNotFoundImpl
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShareTripFailureUserNotFoundImplCopyWith<
@@ -769,8 +802,11 @@ abstract class ShareTripFailureUserNotFound implements ShareTripFailure {
 
   @override
   String? get message;
+
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShareTripFailureUserNotFoundImplCopyWith<
           _$ShareTripFailureUserNotFoundImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -798,6 +834,8 @@ class __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl<$Res>
       $Res Function(_$ShareTripFailureNoInternetConnectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -837,7 +875,9 @@ class _$ShareTripFailureNoInternetConnectionImpl
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShareTripFailureNoInternetConnectionImplCopyWith<
@@ -924,8 +964,11 @@ abstract class ShareTripFailureNoInternetConnection
 
   @override
   String? get message;
+
+  /// Create a copy of ShareTripFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShareTripFailureNoInternetConnectionImplCopyWith<
           _$ShareTripFailureNoInternetConnectionImpl>
       get copyWith => throw _privateConstructorUsedError;

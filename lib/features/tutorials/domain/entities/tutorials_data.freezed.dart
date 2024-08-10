@@ -27,8 +27,12 @@ mixin _$TutorialsData {
   bool get showShareTrip => throw _privateConstructorUsedError;
   bool get showTripStopTravelPlaceholder => throw _privateConstructorUsedError;
 
+  /// Serializes this TutorialsData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TutorialsData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TutorialsDataCopyWith<TutorialsData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$TutorialsDataCopyWithImpl<$Res, $Val extends TutorialsData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TutorialsData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$TutorialsDataImplCopyWithImpl<$Res>
       _$TutorialsDataImpl _value, $Res Function(_$TutorialsDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TutorialsData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -221,7 +229,7 @@ class _$TutorialsDataImpl implements _TutorialsData {
                     showTripStopTravelPlaceholder));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -232,7 +240,9 @@ class _$TutorialsDataImpl implements _TutorialsData {
       showShareTrip,
       showTripStopTravelPlaceholder);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TutorialsData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TutorialsDataImplCopyWith<_$TutorialsDataImpl> get copyWith =>
@@ -270,8 +280,11 @@ abstract class _TutorialsData implements TutorialsData {
   bool get showShareTrip;
   @override
   bool get showTripStopTravelPlaceholder;
+
+  /// Create a copy of TutorialsData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TutorialsDataImplCopyWith<_$TutorialsDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

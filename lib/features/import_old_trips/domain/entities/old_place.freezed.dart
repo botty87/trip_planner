@@ -22,7 +22,9 @@ mixin _$OldPlace {
   double get latitude => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OldPlace
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OldPlaceCopyWith<OldPlace> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +52,8 @@ class _$OldPlaceCopyWithImpl<$Res, $Val extends OldPlace>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OldPlace
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +112,8 @@ class __$$OldPlaceImplCopyWithImpl<$Res>
       _$OldPlaceImpl _value, $Res Function(_$OldPlaceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OldPlace
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -187,7 +193,9 @@ class _$OldPlaceImpl implements _OldPlace {
   int get hashCode =>
       Object.hash(runtimeType, name, note, position, latitude, longitude);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OldPlace
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OldPlaceImplCopyWith<_$OldPlaceImpl> get copyWith =>
@@ -212,8 +220,11 @@ abstract class _OldPlace implements OldPlace {
   double get latitude;
   @override
   double get longitude;
+
+  /// Create a copy of OldPlace
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OldPlaceImplCopyWith<_$OldPlaceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

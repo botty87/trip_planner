@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TripStopsFailure {
   String? get message => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripStopsFailureCopyWith<TripStopsFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$TripStopsFailureCopyWithImpl<$Res, $Val extends TripStopsFailure>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripStopsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$TripStopsFailureImplCopyWithImpl<$Res>
       $Res Function(_$TripStopsFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,7 +119,9 @@ class _$TripStopsFailureImpl implements _TripStopsFailure {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopsFailureImplCopyWith<_$TripStopsFailureImpl> get copyWith =>
@@ -127,8 +135,11 @@ abstract class _TripStopsFailure implements TripStopsFailure {
 
   @override
   String? get message;
+
+  /// Create a copy of TripStopsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopsFailureImplCopyWith<_$TripStopsFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

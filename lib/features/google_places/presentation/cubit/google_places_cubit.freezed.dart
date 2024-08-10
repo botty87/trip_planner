@@ -68,7 +68,9 @@ mixin _$GooglePlacesState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GooglePlacesStateCopyWith<GooglePlacesState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -92,6 +94,8 @@ class _$GooglePlacesStateCopyWithImpl<$Res, $Val extends GooglePlacesState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,6 +136,8 @@ class __$$GooglePlacesStateNormalImplCopyWithImpl<$Res>
       $Res Function(_$GooglePlacesStateNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,6 +161,8 @@ class __$$GooglePlacesStateNormalImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlaceDetailsCopyWith<$Res>? get placeDetails {
@@ -217,7 +225,9 @@ class _$GooglePlacesStateNormalImpl implements _GooglePlacesStateNormal {
       isLoading,
       placeDetails);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePlacesStateNormalImplCopyWith<_$GooglePlacesStateNormalImpl>
@@ -309,8 +319,11 @@ abstract class _GooglePlacesStateNormal implements GooglePlacesState {
   List<Suggestion> get suggestions;
   bool get isLoading;
   PlaceDetails? get placeDetails;
+
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePlacesStateNormalImplCopyWith<_$GooglePlacesStateNormalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -341,6 +354,8 @@ class __$$GooglePlacesStateErrorImplCopyWithImpl<$Res>
       $Res Function(_$GooglePlacesStateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -364,6 +379,8 @@ class __$$GooglePlacesStateErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GooglePlacesErrorCopyWith<$Res> get error {
@@ -417,7 +434,9 @@ class _$GooglePlacesStateErrorImpl implements _GooglePlacesStateError {
   int get hashCode => Object.hash(runtimeType, error,
       const DeepCollectionEquality().hash(_suggestions), showRetryButton);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePlacesStateErrorImplCopyWith<_$GooglePlacesStateErrorImpl>
@@ -509,8 +528,11 @@ abstract class _GooglePlacesStateError implements GooglePlacesState {
   @override
   List<Suggestion> get suggestions;
   bool get showRetryButton;
+
+  /// Create a copy of GooglePlacesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePlacesStateErrorImplCopyWith<_$GooglePlacesStateErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -593,6 +615,9 @@ class _$GooglePlacesErrorCopyWithImpl<$Res, $Val extends GooglePlacesError>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -612,6 +637,9 @@ class __$$GooglePlacesErrorNoInternetConnectionImplCopyWithImpl<$Res>
       _$GooglePlacesErrorNoInternetConnectionImpl _value,
       $Res Function(_$GooglePlacesErrorNoInternetConnectionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -744,6 +772,8 @@ class __$$GooglePlacesErrorRequestDeniedImplCopyWithImpl<$Res>
       $Res Function(_$GooglePlacesErrorRequestDeniedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -783,7 +813,9 @@ class _$GooglePlacesErrorRequestDeniedImpl
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePlacesErrorRequestDeniedImplCopyWith<
@@ -879,7 +911,10 @@ abstract class _GooglePlacesErrorRequestDenied implements GooglePlacesError {
       {required final String message}) = _$GooglePlacesErrorRequestDeniedImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePlacesErrorRequestDeniedImplCopyWith<
           _$GooglePlacesErrorRequestDeniedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -902,6 +937,9 @@ class __$$GooglePlacesErrorRequestCancelledImplCopyWithImpl<$Res>
       _$GooglePlacesErrorRequestCancelledImpl _value,
       $Res Function(_$GooglePlacesErrorRequestCancelledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1033,6 +1071,8 @@ class __$$GooglePlacesErrorUnknownErrorImplCopyWithImpl<$Res>
       $Res Function(_$GooglePlacesErrorUnknownErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1072,7 +1112,9 @@ class _$GooglePlacesErrorUnknownErrorImpl
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePlacesErrorUnknownErrorImplCopyWith<
@@ -1168,7 +1210,10 @@ abstract class _GooglePlacesErrorUnknownError implements GooglePlacesError {
       _$GooglePlacesErrorUnknownErrorImpl;
 
   String? get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePlacesError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePlacesErrorUnknownErrorImplCopyWith<
           _$GooglePlacesErrorUnknownErrorImpl>
       get copyWith => throw _privateConstructorUsedError;

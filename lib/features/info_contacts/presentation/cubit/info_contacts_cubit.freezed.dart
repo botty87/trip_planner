@@ -33,6 +33,9 @@ class _$InfoContactsStateCopyWithImpl<$Res, $Val extends InfoContactsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InfoContactsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -49,6 +52,9 @@ class __$$InfoContactsStateImplCopyWithImpl<$Res>
   __$$InfoContactsStateImplCopyWithImpl(_$InfoContactsStateImpl _value,
       $Res Function(_$InfoContactsStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InfoContactsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

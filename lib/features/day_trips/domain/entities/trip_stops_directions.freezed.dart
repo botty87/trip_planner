@@ -27,8 +27,12 @@ mixin _$TripStopsDirections {
   @JsonKey(includeIfNull: false)
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this TripStopsDirections to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TripStopsDirections
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripStopsDirectionsCopyWith<TripStopsDirections> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$TripStopsDirectionsCopyWithImpl<$Res, $Val extends TripStopsDirections>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripStopsDirections
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,6 +116,8 @@ class __$$TripStopsDirectionsImplCopyWithImpl<$Res>
       $Res Function(_$TripStopsDirectionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopsDirections
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -191,12 +199,14 @@ class _$TripStopsDirectionsImpl implements _TripStopsDirections {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, originId, destinationId,
       const DeepCollectionEquality().hash(_points), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopsDirections
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopsDirectionsImplCopyWith<_$TripStopsDirectionsImpl> get copyWith =>
@@ -233,8 +243,11 @@ abstract class _TripStopsDirections implements TripStopsDirections {
   @override
   @JsonKey(includeIfNull: false)
   String? get errorMessage;
+
+  /// Create a copy of TripStopsDirections
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopsDirectionsImplCopyWith<_$TripStopsDirectionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

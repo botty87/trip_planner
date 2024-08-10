@@ -101,6 +101,9 @@ class _$ImportOldTripsStateCopyWithImpl<$Res, $Val extends ImportOldTripsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -120,6 +123,9 @@ class __$$ImportOldTripsStateInitialImplCopyWithImpl<$Res>
       _$ImportOldTripsStateInitialImpl _value,
       $Res Function(_$ImportOldTripsStateInitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -259,6 +265,8 @@ class __$$ImportOldTripsStateLoadedImplCopyWithImpl<$Res>
       $Res Function(_$ImportOldTripsStateLoadedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -325,7 +333,9 @@ class _$ImportOldTripsStateLoadedImpl implements ImportOldTripsStateLoaded {
       const DeepCollectionEquality().hash(_trips),
       const DeepCollectionEquality().hash(_selectedTripsIds));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImportOldTripsStateLoadedImplCopyWith<_$ImportOldTripsStateLoadedImpl>
@@ -431,7 +441,10 @@ abstract class ImportOldTripsStateLoaded implements ImportOldTripsState {
 
   List<OldTrip> get trips;
   Set<String> get selectedTripsIds;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImportOldTripsStateLoadedImplCopyWith<_$ImportOldTripsStateLoadedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -456,6 +469,8 @@ class __$$ImportOldTripsStateErrorImplCopyWithImpl<$Res>
       $Res Function(_$ImportOldTripsStateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,7 +509,9 @@ class _$ImportOldTripsStateErrorImpl implements ImportOldTripsStateError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImportOldTripsStateErrorImplCopyWith<_$ImportOldTripsStateErrorImpl>
@@ -598,7 +615,10 @@ abstract class ImportOldTripsStateError implements ImportOldTripsState {
       _$ImportOldTripsStateErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImportOldTripsStateErrorImplCopyWith<_$ImportOldTripsStateErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -620,6 +640,9 @@ class __$$ImportOldTripsStateNoTripsImplCopyWithImpl<$Res>
       _$ImportOldTripsStateNoTripsImpl _value,
       $Res Function(_$ImportOldTripsStateNoTripsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -759,6 +782,8 @@ class __$$ImportOldTripsStateImportingImplCopyWithImpl<$Res>
       $Res Function(_$ImportOldTripsStateImportingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -826,7 +851,9 @@ class _$ImportOldTripsStateImportingImpl
       const DeepCollectionEquality().hash(_trips),
       const DeepCollectionEquality().hash(_selectedTripsIds));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImportOldTripsStateImportingImplCopyWith<
@@ -933,7 +960,10 @@ abstract class _ImportOldTripsStateImporting implements ImportOldTripsState {
 
   List<OldTrip> get trips;
   Set<String> get selectedTripsIds;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImportOldTripsStateImportingImplCopyWith<
           _$ImportOldTripsStateImportingImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -956,6 +986,9 @@ class __$$ImportOldTripsStateImportedImplCopyWithImpl<$Res>
       _$ImportOldTripsStateImportedImpl _value,
       $Res Function(_$ImportOldTripsStateImportedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ImportOldTripsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

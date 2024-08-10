@@ -20,7 +20,9 @@ mixin _$OldTrip {
   String get name => throw _privateConstructorUsedError;
   List<OldDailyTrip> get dailyTrips => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OldTrip
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OldTripCopyWith<OldTrip> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -42,6 +44,8 @@ class _$OldTripCopyWithImpl<$Res, $Val extends OldTrip>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OldTrip
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +88,8 @@ class __$$OldTripImplCopyWithImpl<$Res>
       _$OldTripImpl _value, $Res Function(_$OldTripImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OldTrip
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +155,9 @@ class _$OldTripImpl implements _OldTrip {
   int get hashCode => Object.hash(
       runtimeType, id, name, const DeepCollectionEquality().hash(_dailyTrips));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OldTrip
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OldTripImplCopyWith<_$OldTripImpl> get copyWith =>
@@ -168,8 +176,11 @@ abstract class _OldTrip implements OldTrip {
   String get name;
   @override
   List<OldDailyTrip> get dailyTrips;
+
+  /// Create a copy of OldTrip
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OldTripImplCopyWith<_$OldTripImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

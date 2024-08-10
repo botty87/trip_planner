@@ -23,8 +23,12 @@ mixin _$BackgroundsContainer {
   int? get lightBackgroundIndex => throw _privateConstructorUsedError;
   int? get darkBackgroundIndex => throw _privateConstructorUsedError;
 
+  /// Serializes this BackgroundsContainer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BackgroundsContainer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BackgroundsContainerCopyWith<BackgroundsContainer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$BackgroundsContainerCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BackgroundsContainer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$BackgroundsContainerImplCopyWithImpl<$Res>
       $Res Function(_$BackgroundsContainerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BackgroundsContainer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,12 +144,14 @@ class _$BackgroundsContainerImpl implements _BackgroundsContainer {
                 other.darkBackgroundIndex == darkBackgroundIndex));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, lightBackgroundIndex, darkBackgroundIndex);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BackgroundsContainer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl>
@@ -169,8 +179,11 @@ abstract class _BackgroundsContainer implements BackgroundsContainer {
   int? get lightBackgroundIndex;
   @override
   int? get darkBackgroundIndex;
+
+  /// Create a copy of BackgroundsContainer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

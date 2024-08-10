@@ -27,7 +27,9 @@ mixin _$LoginSignupState {
   String? get authenticationError => throw _privateConstructorUsedError;
   String? get successMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoginSignupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LoginSignupStateCopyWith<LoginSignupState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +63,8 @@ class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LoginSignupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,6 +153,8 @@ class __$$LoginSignupStateImplCopyWithImpl<$Res>
       $Res Function(_$LoginSignupStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoginSignupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -289,7 +295,9 @@ class _$LoginSignupStateImpl implements _LoginSignupState {
       authenticationError,
       successMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoginSignupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoginSignupStateImplCopyWith<_$LoginSignupStateImpl> get copyWith =>
@@ -330,8 +338,11 @@ abstract class _LoginSignupState implements LoginSignupState {
   String? get authenticationError;
   @override
   String? get successMessage;
+
+  /// Create a copy of LoginSignupState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginSignupStateImplCopyWith<_$LoginSignupStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

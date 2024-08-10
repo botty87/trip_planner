@@ -87,7 +87,9 @@ mixin _$ShareState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShareStateCopyWith<ShareState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -111,6 +113,8 @@ class _$ShareStateCopyWithImpl<$Res, $Val extends ShareState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,6 +153,8 @@ class __$$ShareStateInitialImplCopyWithImpl<$Res>
       $Res Function(_$ShareStateInitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,7 +215,9 @@ class _$ShareStateInitialImpl implements ShareStateInitial {
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_sharedUsers), userEmailQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShareStateInitialImplCopyWith<_$ShareStateInitialImpl> get copyWith =>
@@ -318,8 +326,11 @@ abstract class ShareStateInitial implements ShareState {
   Map<String, String>? get sharedUsers;
   @override
   String get userEmailQuery;
+
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShareStateInitialImplCopyWith<_$ShareStateInitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -343,6 +354,8 @@ class __$$ShareStateLoadedImplCopyWithImpl<$Res>
       $Res Function(_$ShareStateLoadedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -404,7 +417,9 @@ class _$ShareStateLoadedImpl implements ShareStateLoaded {
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_sharedUsers), userEmailQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShareStateLoadedImplCopyWith<_$ShareStateLoadedImpl> get copyWith =>
@@ -513,8 +528,11 @@ abstract class ShareStateLoaded implements ShareState {
   Map<String, String>? get sharedUsers;
   @override
   String get userEmailQuery;
+
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShareStateLoadedImplCopyWith<_$ShareStateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -541,6 +559,8 @@ class __$$ShareStateErrorImplCopyWithImpl<$Res>
       _$ShareStateErrorImpl _value, $Res Function(_$ShareStateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -614,7 +634,9 @@ class _$ShareStateErrorImpl implements ShareStateError {
       userEmailQuery,
       errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShareStateErrorImplCopyWith<_$ShareStateErrorImpl> get copyWith =>
@@ -725,8 +747,11 @@ abstract class ShareStateError implements ShareState {
   @override
   String get userEmailQuery;
   String get errorMessage;
+
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShareStateErrorImplCopyWith<_$ShareStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -750,6 +775,8 @@ class __$$ShareStateUserAddedImplCopyWithImpl<$Res>
       $Res Function(_$ShareStateUserAddedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -811,7 +838,9 @@ class _$ShareStateUserAddedImpl implements ShareStateUserAdded {
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_sharedUsers), userEmailQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShareStateUserAddedImplCopyWith<_$ShareStateUserAddedImpl> get copyWith =>
@@ -920,8 +949,11 @@ abstract class ShareStateUserAdded implements ShareState {
   Map<String, String>? get sharedUsers;
   @override
   String get userEmailQuery;
+
+  /// Create a copy of ShareState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShareStateUserAddedImplCopyWith<_$ShareStateUserAddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

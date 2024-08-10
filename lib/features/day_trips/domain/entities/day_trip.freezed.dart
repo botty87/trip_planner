@@ -35,8 +35,12 @@ mixin _$DayTrip {
   bool get showDirections => throw _privateConstructorUsedError;
   bool get useDifferentDirectionsColors => throw _privateConstructorUsedError;
 
+  /// Serializes this DayTrip to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DayTrip
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DayTripCopyWith<DayTrip> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -70,6 +74,8 @@ class _$DayTripCopyWithImpl<$Res, $Val extends DayTrip>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DayTrip
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,6 +160,8 @@ class __$$DayTripImplCopyWithImpl<$Res>
       _$DayTripImpl _value, $Res Function(_$DayTripImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DayTrip
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -296,7 +304,7 @@ class _$DayTripImpl implements _DayTrip {
                     useDifferentDirectionsColors));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -310,7 +318,9 @@ class _$DayTripImpl implements _DayTrip {
       showDirections,
       useDifferentDirectionsColors);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DayTrip
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DayTripImplCopyWith<_$DayTripImpl> get copyWith =>
@@ -363,8 +373,11 @@ abstract class _DayTrip implements DayTrip {
   bool get showDirections;
   @override
   bool get useDifferentDirectionsColors;
+
+  /// Create a copy of DayTrip
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DayTripImplCopyWith<_$DayTripImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

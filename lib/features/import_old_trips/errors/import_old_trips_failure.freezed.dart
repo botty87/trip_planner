@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ImportOldTripsFailure {
   String? get message => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImportOldTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ImportOldTripsFailureCopyWith<ImportOldTripsFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$ImportOldTripsFailureCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ImportOldTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,6 +82,8 @@ class __$$ImportOldTripsFailureImplCopyWithImpl<$Res>
       $Res Function(_$ImportOldTripsFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImportOldTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,7 +122,9 @@ class _$ImportOldTripsFailureImpl implements _ImportOldTripsFailure {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImportOldTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImportOldTripsFailureImplCopyWith<_$ImportOldTripsFailureImpl>
@@ -130,8 +138,11 @@ abstract class _ImportOldTripsFailure implements ImportOldTripsFailure {
 
   @override
   String? get message;
+
+  /// Create a copy of ImportOldTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImportOldTripsFailureImplCopyWith<_$ImportOldTripsFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

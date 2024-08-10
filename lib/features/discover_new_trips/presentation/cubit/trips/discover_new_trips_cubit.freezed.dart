@@ -109,6 +109,9 @@ class _$DiscoverNewTripsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DiscoverNewTripsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -125,6 +128,9 @@ class __$$StateInitialImplCopyWithImpl<$Res>
   __$$StateInitialImplCopyWithImpl(
       _$StateInitialImpl _value, $Res Function(_$StateInitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DiscoverNewTripsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -282,6 +288,8 @@ class __$$StateNormalImplCopyWithImpl<$Res>
       _$StateNormalImpl _value, $Res Function(_$StateNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiscoverNewTripsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -463,7 +471,9 @@ class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
       const DeepCollectionEquality().hash(_availableLanguages),
       showOnlySelectedLanguages);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiscoverNewTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StateNormalImplCopyWith<_$StateNormalImpl> get copyWith =>
@@ -616,7 +626,10 @@ abstract class _StateNormal implements DiscoverNewTripsState {
   String get languageQuery;
   Set<Language> get availableLanguages;
   bool get showOnlySelectedLanguages;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DiscoverNewTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StateNormalImplCopyWith<_$StateNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -638,6 +651,8 @@ class __$$StateErrorImplCopyWithImpl<$Res>
       _$StateErrorImpl _value, $Res Function(_$StateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiscoverNewTripsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -684,7 +699,9 @@ class _$StateErrorImpl with DiagnosticableTreeMixin implements _StateError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiscoverNewTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith =>
@@ -793,7 +810,10 @@ abstract class _StateError implements DiscoverNewTripsState {
   const factory _StateError({required final String message}) = _$StateErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DiscoverNewTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

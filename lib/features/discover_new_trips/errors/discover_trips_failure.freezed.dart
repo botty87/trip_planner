@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DiscoverTripsFailure {
   String? get message => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiscoverTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DiscoverTripsFailureCopyWith<DiscoverTripsFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$DiscoverTripsFailureCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DiscoverTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +80,8 @@ class __$$DiscoverTripsFailureImplCopyWithImpl<$Res>
       $Res Function(_$DiscoverTripsFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiscoverTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$DiscoverTripsFailureImpl implements _DiscoverTripsFailure {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiscoverTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DiscoverTripsFailureImplCopyWith<_$DiscoverTripsFailureImpl>
@@ -129,8 +137,11 @@ abstract class _DiscoverTripsFailure implements DiscoverTripsFailure {
 
   @override
   String? get message;
+
+  /// Create a copy of DiscoverTripsFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DiscoverTripsFailureImplCopyWith<_$DiscoverTripsFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -26,8 +26,12 @@ mixin _$UserDB {
   Settings get settings => throw _privateConstructorUsedError;
   TutorialsData get tutorialsData => throw _privateConstructorUsedError;
 
+  /// Serializes this UserDB to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserDB
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserDBCopyWith<UserDB> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -57,6 +61,8 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserDB
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -90,6 +96,8 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
     ) as $Val);
   }
 
+  /// Create a copy of UserDB
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SettingsCopyWith<$Res> get settings {
@@ -98,6 +106,8 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
     });
   }
 
+  /// Create a copy of UserDB
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TutorialsDataCopyWith<$Res> get tutorialsData {
@@ -135,6 +145,8 @@ class __$$UserDBImplCopyWithImpl<$Res>
       _$UserDBImpl _value, $Res Function(_$UserDBImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserDB
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,12 +228,14 @@ class _$UserDBImpl implements _UserDB {
                 other.tutorialsData == tutorialsData));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, email, name, oldTripsImported, settings, tutorialsData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserDB
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>
@@ -255,8 +269,11 @@ abstract class _UserDB implements UserDB {
   Settings get settings;
   @override
   TutorialsData get tutorialsData;
+
+  /// Create a copy of UserDB
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

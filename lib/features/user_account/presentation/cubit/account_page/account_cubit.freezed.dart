@@ -100,7 +100,9 @@ mixin _$AccountState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AccountStateCopyWith<AccountState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -126,6 +128,8 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,6 +148,8 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
     ) as $Val);
   }
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -175,6 +181,8 @@ class __$$AccountStateNormalImplCopyWithImpl<$Res>
       $Res Function(_$AccountStateNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -222,7 +230,9 @@ class _$AccountStateNormalImpl implements AccountStateNormal {
   @override
   int get hashCode => Object.hash(runtimeType, user, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountStateNormalImplCopyWith<_$AccountStateNormalImpl> get copyWith =>
@@ -344,8 +354,11 @@ abstract class AccountStateNormal implements AccountState {
   User get user;
   @override
   String? get errorMessage;
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountStateNormalImplCopyWith<_$AccountStateNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -379,6 +392,8 @@ class __$$AccountStateEditingImplCopyWithImpl<$Res>
       $Res Function(_$AccountStateEditingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -479,7 +494,9 @@ class _$AccountStateEditingImpl implements AccountStateEditing {
   int get hashCode => Object.hash(runtimeType, user, errorMessage, name, email,
       password, confirmPassword, isEditingPasswordVisible);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountStateEditingImplCopyWith<_$AccountStateEditingImpl> get copyWith =>
@@ -614,8 +631,11 @@ abstract class AccountStateEditing implements AccountState {
   String? get password;
   String? get confirmPassword;
   bool get isEditingPasswordVisible;
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountStateEditingImplCopyWith<_$AccountStateEditingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -650,6 +670,8 @@ class __$$AccountStateReauthenticatingImplCopyWithImpl<$Res>
       $Res Function(_$AccountStateReauthenticatingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -683,6 +705,8 @@ class __$$AccountStateReauthenticatingImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $EditUserDataCopyWith<$Res> get editUserData {
@@ -740,7 +764,9 @@ class _$AccountStateReauthenticatingImpl
   int get hashCode => Object.hash(
       runtimeType, user, errorMessage, password, isSaving, editUserData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountStateReauthenticatingImplCopyWith<
@@ -873,8 +899,11 @@ abstract class AccountStateReauthenticating implements AccountState {
   String? get password;
   bool get isSaving;
   EditUserData get editUserData;
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountStateReauthenticatingImplCopyWith<
           _$AccountStateReauthenticatingImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -902,6 +931,8 @@ class __$$AccountStateDeletingImplCopyWithImpl<$Res>
       $Res Function(_$AccountStateDeletingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -949,7 +980,9 @@ class _$AccountStateDeletingImpl implements AccountStateDeleting {
   @override
   int get hashCode => Object.hash(runtimeType, user, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountStateDeletingImplCopyWith<_$AccountStateDeletingImpl>
@@ -1072,8 +1105,11 @@ abstract class AccountStateDeleting implements AccountState {
   User get user;
   @override
   String? get errorMessage;
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountStateDeletingImplCopyWith<_$AccountStateDeletingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1084,7 +1120,9 @@ mixin _$EditUserData {
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditUserData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EditUserDataCopyWith<EditUserData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1108,6 +1146,8 @@ class _$EditUserDataCopyWithImpl<$Res, $Val extends EditUserData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EditUserData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1151,6 +1191,8 @@ class __$$EditUserDataImplCopyWithImpl<$Res>
       _$EditUserDataImpl _value, $Res Function(_$EditUserDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditUserData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1207,7 +1249,9 @@ class _$EditUserDataImpl implements _EditUserData {
   @override
   int get hashCode => Object.hash(runtimeType, name, email, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditUserData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EditUserDataImplCopyWith<_$EditUserDataImpl> get copyWith =>
@@ -1226,8 +1270,11 @@ abstract class _EditUserData implements EditUserData {
   String? get email;
   @override
   String? get password;
+
+  /// Create a copy of EditUserData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditUserDataImplCopyWith<_$EditUserDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

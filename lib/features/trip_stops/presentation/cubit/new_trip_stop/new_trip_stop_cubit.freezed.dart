@@ -101,7 +101,9 @@ mixin _$NewTripStopState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewTripStopStateCopyWith<NewTripStopState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -130,6 +132,8 @@ class _$NewTripStopStateCopyWithImpl<$Res, $Val extends NewTripStopState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -190,6 +194,8 @@ class __$$NewTripStopStateNormalImplCopyWithImpl<$Res>
       $Res Function(_$NewTripStopStateNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -272,7 +278,9 @@ class _$NewTripStopStateNormalImpl implements NewTripStopStateNormal {
   int get hashCode => Object.hash(
       runtimeType, name, description, hourDuration, minuteDuration, location);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewTripStopStateNormalImplCopyWith<_$NewTripStopStateNormalImpl>
@@ -402,8 +410,11 @@ abstract class NewTripStopStateNormal implements NewTripStopState {
   int get minuteDuration;
   @override
   LatLng? get location;
+
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewTripStopStateNormalImplCopyWith<_$NewTripStopStateNormalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -434,6 +445,8 @@ class __$$NewTripStopStateSavingImplCopyWithImpl<$Res>
       $Res Function(_$NewTripStopStateSavingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -514,7 +527,9 @@ class _$NewTripStopStateSavingImpl implements NewTripStopStateSaving {
   int get hashCode => Object.hash(
       runtimeType, name, description, hourDuration, minuteDuration, location);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewTripStopStateSavingImplCopyWith<_$NewTripStopStateSavingImpl>
@@ -644,8 +659,11 @@ abstract class NewTripStopStateSaving implements NewTripStopState {
   int get minuteDuration;
   @override
   LatLng get location;
+
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewTripStopStateSavingImplCopyWith<_$NewTripStopStateSavingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -676,6 +694,8 @@ class __$$NewTripStopStateCreatedImplCopyWithImpl<$Res>
       $Res Function(_$NewTripStopStateCreatedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -756,7 +776,9 @@ class _$NewTripStopStateCreatedImpl implements NewTripStopStateCreated {
   int get hashCode => Object.hash(
       runtimeType, name, description, hourDuration, minuteDuration, location);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewTripStopStateCreatedImplCopyWith<_$NewTripStopStateCreatedImpl>
@@ -886,8 +908,11 @@ abstract class NewTripStopStateCreated implements NewTripStopState {
   int get minuteDuration;
   @override
   LatLng get location;
+
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewTripStopStateCreatedImplCopyWith<_$NewTripStopStateCreatedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -918,6 +943,8 @@ class __$$NewTripStopStateErrorImplCopyWithImpl<$Res>
       $Res Function(_$NewTripStopStateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1008,7 +1035,9 @@ class _$NewTripStopStateErrorImpl implements NewTripStopStateError {
   int get hashCode => Object.hash(runtimeType, name, description, hourDuration,
       minuteDuration, location, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewTripStopStateErrorImplCopyWith<_$NewTripStopStateErrorImpl>
@@ -1142,8 +1171,11 @@ abstract class NewTripStopStateError implements NewTripStopState {
   @override
   LatLng? get location;
   String get errorMessage;
+
+  /// Create a copy of NewTripStopState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewTripStopStateErrorImplCopyWith<_$NewTripStopStateErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

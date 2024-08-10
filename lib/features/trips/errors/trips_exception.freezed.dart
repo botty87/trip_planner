@@ -72,6 +72,9 @@ class _$TripsExceptionCopyWithImpl<$Res, $Val extends TripsException>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TripsException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,8 @@ class __$$TripsExceptionImplCopyWithImpl<$Res>
       _$TripsExceptionImpl _value, $Res Function(_$TripsExceptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripsException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,7 +134,9 @@ class _$TripsExceptionImpl implements _TripsException {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripsException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripsExceptionImplCopyWith<_$TripsExceptionImpl> get copyWith =>
@@ -203,7 +210,10 @@ abstract class _TripsException implements TripsException {
   const factory _TripsException({final String? message}) = _$TripsExceptionImpl;
 
   String? get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TripsException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripsExceptionImplCopyWith<_$TripsExceptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -222,6 +232,9 @@ class __$$NoInternetConnectionImplCopyWithImpl<$Res>
   __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
       $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TripsException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -376,6 +389,9 @@ class _$ShareTripExceptionCopyWithImpl<$Res, $Val extends ShareTripException>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ShareTripException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -395,6 +411,8 @@ class __$$ShareTripExceptionImplCopyWithImpl<$Res>
       $Res Function(_$ShareTripExceptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShareTripException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -433,7 +451,9 @@ class _$ShareTripExceptionImpl implements _ShareTripException {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShareTripException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShareTripExceptionImplCopyWith<_$ShareTripExceptionImpl> get copyWith =>
@@ -515,7 +535,10 @@ abstract class _ShareTripException implements ShareTripException {
       _$ShareTripExceptionImpl;
 
   String? get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShareTripException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShareTripExceptionImplCopyWith<_$ShareTripExceptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -534,6 +557,9 @@ class __$$UserNotFoundImplCopyWithImpl<$Res>
   __$$UserNotFoundImplCopyWithImpl(
       _$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShareTripException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -644,6 +670,9 @@ class __$$SNoInternetConnectionImplCopyWithImpl<$Res>
   __$$SNoInternetConnectionImplCopyWithImpl(_$SNoInternetConnectionImpl _value,
       $Res Function(_$SNoInternetConnectionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShareTripException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

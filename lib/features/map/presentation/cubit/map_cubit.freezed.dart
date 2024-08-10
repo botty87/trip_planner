@@ -73,7 +73,9 @@ mixin _$MapState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MapStateCopyWith<MapState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -96,6 +98,8 @@ class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,6 +139,8 @@ class __$$MapStateMultipleImplCopyWithImpl<$Res>
       $Res Function(_$MapStateMultipleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -198,7 +204,9 @@ class _$MapStateMultipleImpl extends _MapStateMultiple {
   int get hashCode =>
       Object.hash(runtimeType, isMapReady, mapType, markerLatLngBounds);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MapStateMultipleImplCopyWith<_$MapStateMultipleImpl> get copyWith =>
@@ -296,8 +304,11 @@ abstract class _MapStateMultiple extends MapState {
   @override
   MapType get mapType;
   LatLngBounds? get markerLatLngBounds;
+
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MapStateMultipleImplCopyWith<_$MapStateMultipleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -321,6 +332,8 @@ class __$$MapStateSingleImplCopyWithImpl<$Res>
       _$MapStateSingleImpl _value, $Res Function(_$MapStateSingleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -384,7 +397,9 @@ class _$MapStateSingleImpl extends _MapStateSingle {
   int get hashCode =>
       Object.hash(runtimeType, isMapReady, mapType, markerPosition);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MapStateSingleImplCopyWith<_$MapStateSingleImpl> get copyWith =>
@@ -482,8 +497,11 @@ abstract class _MapStateSingle extends MapState {
   @override
   MapType get mapType;
   LatLng? get markerPosition;
+
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MapStateSingleImplCopyWith<_$MapStateSingleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -507,6 +525,8 @@ class __$$MapStateEmptyImplCopyWithImpl<$Res>
       _$MapStateEmptyImpl _value, $Res Function(_$MapStateEmptyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -558,7 +578,9 @@ class _$MapStateEmptyImpl extends _MapStateEmpty {
   @override
   int get hashCode => Object.hash(runtimeType, isMapReady, mapType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MapStateEmptyImplCopyWith<_$MapStateEmptyImpl> get copyWith =>
@@ -652,8 +674,11 @@ abstract class _MapStateEmpty extends MapState {
   bool get isMapReady;
   @override
   MapType get mapType;
+
+  /// Create a copy of MapState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MapStateEmptyImplCopyWith<_$MapStateEmptyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -722,6 +747,9 @@ class _$MapStateTypeCopyWithImpl<$Res, $Val extends MapStateType>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MapStateType
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -738,6 +766,9 @@ class __$$MapStateTypeMultipleImplCopyWithImpl<$Res>
   __$$MapStateTypeMultipleImplCopyWithImpl(_$MapStateTypeMultipleImpl _value,
       $Res Function(_$MapStateTypeMultipleImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MapStateType
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -847,6 +878,9 @@ class __$$MapStateTypeSingleImplCopyWithImpl<$Res>
   __$$MapStateTypeSingleImplCopyWithImpl(_$MapStateTypeSingleImpl _value,
       $Res Function(_$MapStateTypeSingleImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MapStateType
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -955,6 +989,9 @@ class __$$MapStateTypeEmptyImplCopyWithImpl<$Res>
   __$$MapStateTypeEmptyImplCopyWithImpl(_$MapStateTypeEmptyImpl _value,
       $Res Function(_$MapStateTypeEmptyImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MapStateType
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

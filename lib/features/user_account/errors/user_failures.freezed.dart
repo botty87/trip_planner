@@ -120,6 +120,9 @@ class _$UserFailuresCopyWithImpl<$Res, $Val extends UserFailures>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -136,6 +139,9 @@ class __$$EmailAlreadyInUseImplCopyWithImpl<$Res>
   __$$EmailAlreadyInUseImplCopyWithImpl(_$EmailAlreadyInUseImpl _value,
       $Res Function(_$EmailAlreadyInUseImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -287,6 +293,9 @@ class __$$NetworkRequestFailedImplCopyWithImpl<$Res>
   __$$NetworkRequestFailedImplCopyWithImpl(_$NetworkRequestFailedImpl _value,
       $Res Function(_$NetworkRequestFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -439,6 +448,9 @@ class __$$WeakPasswordImplCopyWithImpl<$Res>
   __$$WeakPasswordImplCopyWithImpl(
       _$WeakPasswordImpl _value, $Res Function(_$WeakPasswordImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -590,6 +602,9 @@ class __$$UserNotFoundImplCopyWithImpl<$Res>
   __$$UserNotFoundImplCopyWithImpl(
       _$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -741,6 +756,9 @@ class __$$TooManyRequestsImplCopyWithImpl<$Res>
   __$$TooManyRequestsImplCopyWithImpl(
       _$TooManyRequestsImpl _value, $Res Function(_$TooManyRequestsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -892,6 +910,9 @@ class __$$UserDisabledImplCopyWithImpl<$Res>
   __$$UserDisabledImplCopyWithImpl(
       _$UserDisabledImpl _value, $Res Function(_$UserDisabledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1043,6 +1064,9 @@ class __$$WrongPasswordImplCopyWithImpl<$Res>
   __$$WrongPasswordImplCopyWithImpl(
       _$WrongPasswordImpl _value, $Res Function(_$WrongPasswordImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1194,6 +1218,9 @@ class __$$InvalidEmailImplCopyWithImpl<$Res>
   __$$InvalidEmailImplCopyWithImpl(
       _$InvalidEmailImpl _value, $Res Function(_$InvalidEmailImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1348,6 +1375,8 @@ class __$$UnknownErrorImplCopyWithImpl<$Res>
       _$UnknownErrorImpl _value, $Res Function(_$UnknownErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1386,7 +1415,9 @@ class _$UnknownErrorImpl extends _UnknownError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
@@ -1508,7 +1539,10 @@ abstract class _UnknownError extends UserFailures {
   const _UnknownError._() : super._();
 
   String? get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1527,6 +1561,9 @@ class __$$NoInternetConnectionImplCopyWithImpl<$Res>
   __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
       $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

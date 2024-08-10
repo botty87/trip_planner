@@ -24,7 +24,9 @@ mixin _$OldDailyTrip {
   int? get year => throw _privateConstructorUsedError;
   List<OldPlace> get places => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OldDailyTrip
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OldDailyTripCopyWith<OldDailyTrip> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +57,8 @@ class _$OldDailyTripCopyWithImpl<$Res, $Val extends OldDailyTrip>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OldDailyTrip
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,6 +129,8 @@ class __$$OldDailyTripImplCopyWithImpl<$Res>
       _$OldDailyTripImpl _value, $Res Function(_$OldDailyTripImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OldDailyTrip
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -226,7 +232,9 @@ class _$OldDailyTripImpl implements _OldDailyTrip {
   int get hashCode => Object.hash(runtimeType, name, note, position, day, month,
       year, const DeepCollectionEquality().hash(_places));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OldDailyTrip
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OldDailyTripImplCopyWith<_$OldDailyTripImpl> get copyWith =>
@@ -257,8 +265,11 @@ abstract class _OldDailyTrip implements OldDailyTrip {
   int? get year;
   @override
   List<OldPlace> get places;
+
+  /// Create a copy of OldDailyTrip
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OldDailyTripImplCopyWith<_$OldDailyTripImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -72,6 +72,9 @@ class _$UserExceptionCopyWithImpl<$Res, $Val extends UserException>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UserException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,8 @@ class __$$UserExceptionImplCopyWithImpl<$Res>
       _$UserExceptionImpl _value, $Res Function(_$UserExceptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,7 +134,9 @@ class _$UserExceptionImpl implements _UserException {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserExceptionImplCopyWith<_$UserExceptionImpl> get copyWith =>
@@ -202,7 +209,10 @@ abstract class _UserException implements UserException {
   const factory _UserException({final String? message}) = _$UserExceptionImpl;
 
   String? get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserExceptionImplCopyWith<_$UserExceptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -221,6 +231,9 @@ class __$$NoInternetConnectionImplCopyWithImpl<$Res>
   __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
       $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -84,6 +84,9 @@ class _$GooglePlacesFailureCopyWithImpl<$Res, $Val extends GooglePlacesFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,9 @@ class __$$NoInternetConnectionImplCopyWithImpl<$Res>
   __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
       $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -218,6 +224,8 @@ class __$$RequestDeniedImplCopyWithImpl<$Res>
       _$RequestDeniedImpl _value, $Res Function(_$RequestDeniedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -256,7 +264,9 @@ class _$RequestDeniedImpl implements _RequestDenied {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RequestDeniedImplCopyWith<_$RequestDeniedImpl> get copyWith =>
@@ -342,7 +352,10 @@ abstract class _RequestDenied implements GooglePlacesFailure {
       _$RequestDeniedImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RequestDeniedImplCopyWith<_$RequestDeniedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -361,6 +374,9 @@ class __$$RequestCancelledImplCopyWithImpl<$Res>
   __$$RequestCancelledImplCopyWithImpl(_$RequestCancelledImpl _value,
       $Res Function(_$RequestCancelledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -478,6 +494,8 @@ class __$$UnknownErrorImplCopyWithImpl<$Res>
       _$UnknownErrorImpl _value, $Res Function(_$UnknownErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -516,7 +534,9 @@ class _$UnknownErrorImpl implements _UnknownError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
@@ -601,7 +621,10 @@ abstract class _UnknownError implements GooglePlacesFailure {
   const factory _UnknownError({final String? message}) = _$UnknownErrorImpl;
 
   String? get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePlacesFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

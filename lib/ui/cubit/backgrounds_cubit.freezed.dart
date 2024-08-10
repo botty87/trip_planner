@@ -20,7 +20,9 @@ mixin _$BackgroundsState {
   Map<int, File> get darkBackgrounds => throw _privateConstructorUsedError;
   File? get currentBackgroundImage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BackgroundsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BackgroundsStateCopyWith<BackgroundsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +49,8 @@ class _$BackgroundsStateCopyWithImpl<$Res, $Val extends BackgroundsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BackgroundsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +97,8 @@ class __$$BackgroundsStateImplCopyWithImpl<$Res>
       $Res Function(_$BackgroundsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BackgroundsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,7 +179,9 @@ class _$BackgroundsStateImpl implements _BackgroundsState {
       const DeepCollectionEquality().hash(_darkBackgrounds),
       currentBackgroundImage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BackgroundsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BackgroundsStateImplCopyWith<_$BackgroundsStateImpl> get copyWith =>
@@ -193,8 +201,11 @@ abstract class _BackgroundsState implements BackgroundsState {
   Map<int, File> get darkBackgrounds;
   @override
   File? get currentBackgroundImage;
+
+  /// Create a copy of BackgroundsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BackgroundsStateImplCopyWith<_$BackgroundsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

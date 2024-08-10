@@ -83,6 +83,9 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,9 @@ class __$$UserStateLoggedOutImplCopyWithImpl<$Res>
   __$$UserStateLoggedOutImplCopyWithImpl(_$UserStateLoggedOutImpl _value,
       $Res Function(_$UserStateLoggedOutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -218,6 +224,8 @@ class __$$UserStateLoggedInImplCopyWithImpl<$Res>
       $Res Function(_$UserStateLoggedInImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,6 +239,8 @@ class __$$UserStateLoggedInImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -264,7 +274,9 @@ class _$UserStateLoggedInImpl implements UserStateLoggedIn {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserStateLoggedInImplCopyWith<_$UserStateLoggedInImpl> get copyWith =>
@@ -351,7 +363,10 @@ abstract class UserStateLoggedIn implements UserState {
       _$UserStateLoggedInImpl;
 
   User get user;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserStateLoggedInImplCopyWith<_$UserStateLoggedInImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -370,6 +385,9 @@ class __$$UserStateLoadingImplCopyWithImpl<$Res>
   __$$UserStateLoadingImplCopyWithImpl(_$UserStateLoadingImpl _value,
       $Res Function(_$UserStateLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -484,6 +502,9 @@ class __$$UserStateErrorImplCopyWithImpl<$Res>
   __$$UserStateErrorImplCopyWithImpl(
       _$UserStateErrorImpl _value, $Res Function(_$UserStateErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

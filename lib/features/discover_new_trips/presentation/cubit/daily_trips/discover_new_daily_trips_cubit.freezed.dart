@@ -80,6 +80,9 @@ class _$DiscoverNewDailyTripsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DiscoverNewDailyTripsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,9 @@ class __$$StateInitialImplCopyWithImpl<$Res>
   __$$StateInitialImplCopyWithImpl(
       _$StateInitialImpl _value, $Res Function(_$StateInitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DiscoverNewDailyTripsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -207,6 +213,8 @@ class __$$StateLoadedImplCopyWithImpl<$Res>
       _$StateLoadedImpl _value, $Res Function(_$StateLoadedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiscoverNewDailyTripsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -264,7 +272,9 @@ class _$StateLoadedImpl implements StateLoaded {
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_dayTrips), isFabVisible);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiscoverNewDailyTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StateLoadedImplCopyWith<_$StateLoadedImpl> get copyWith =>
@@ -346,7 +356,10 @@ abstract class StateLoaded implements DiscoverNewDailyTripsState {
 
   List<DayTrip> get dayTrips;
   bool get isFabVisible;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DiscoverNewDailyTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StateLoadedImplCopyWith<_$StateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -368,6 +381,8 @@ class __$$StateErrorImplCopyWithImpl<$Res>
       _$StateErrorImpl _value, $Res Function(_$StateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiscoverNewDailyTripsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -406,7 +421,9 @@ class _$StateErrorImpl implements StateError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiscoverNewDailyTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith =>
@@ -485,7 +502,10 @@ abstract class StateError implements DiscoverNewDailyTripsState {
   const factory StateError({required final String message}) = _$StateErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DiscoverNewDailyTripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

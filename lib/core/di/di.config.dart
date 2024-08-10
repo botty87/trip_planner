@@ -204,7 +204,7 @@ import '../db/trips_collection_ref.dart' as _i992;
 import '../db/users_collection_ref.dart' as _i321;
 import '../routes/app_router.dart' as _i629;
 import '../utilities/logger.dart' as _i228;
-import 'di.dart' as _i913;
+import 'modules.dart' as _i738;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -645,16 +645,16 @@ extension GetItInjectableX on _i174.GetIt {
   }
 }
 
-class _$Network extends _i913.Network {}
+class _$Network extends _i738.Network {}
 
-class _$DeviceModule extends _i913.DeviceModule {}
+class _$DeviceModule extends _i738.DeviceModule {}
 
 class _$SettingsModule extends _i792.SettingsModule {}
 
-class _$FirebaseModule extends _i913.FirebaseModule {}
+class _$FirebaseModule extends _i738.FirebaseModule {}
 
-class _$GooglePlacesModule extends _i913.GooglePlacesModule {}
+class _$GooglePlacesModule extends _i738.GooglePlacesModule {}
 
-class _$BlocObserModule extends _i913.BlocObserModule {}
+class _$BlocObserModule extends _i738.BlocObserModule {}
 
 class _$TalkerModule extends _i228.TalkerModule {}

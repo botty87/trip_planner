@@ -64,7 +64,9 @@ mixin _$TripStopsMapState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopsMapState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripStopsMapStateCopyWith<TripStopsMapState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -95,6 +97,8 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripStopsMapState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +132,8 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
     ) as $Val);
   }
 
+  /// Create a copy of TripStopsMapState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DayTripCopyWith<$Res> get dayTrip {
@@ -166,6 +172,8 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
       $Res Function(_$TripStopsMapStateNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripStopsMapState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -252,7 +260,9 @@ class _$TripStopsMapStateNormalImpl extends _TripStopsMapStateNormal {
   int get hashCode => Object.hash(runtimeType, isLoading, dayTrip, errorMessage,
       isSelectedTab, hasTripStopsDirectionsErrors);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripStopsMapState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopsMapStateNormalImplCopyWith<_$TripStopsMapStateNormalImpl>
@@ -348,8 +358,11 @@ abstract class _TripStopsMapStateNormal extends TripStopsMapState {
   bool get isSelectedTab;
   @override
   bool get hasTripStopsDirectionsErrors;
+
+  /// Create a copy of TripStopsMapState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStopsMapStateNormalImplCopyWith<_$TripStopsMapStateNormalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
