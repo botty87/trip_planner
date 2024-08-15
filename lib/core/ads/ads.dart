@@ -15,10 +15,10 @@ abstract class Ads {
   const Ads(this._adUnitId);
 
   String get adUnitId {
-    if (kDebugMode) {
-      return _testId;
-    } else {
+    if (kReleaseMode) {
       return _adUnitId;
+    } else {
+      return _testId;
     }
   }
 
