@@ -442,6 +442,16 @@ extension GetItInjectableX on _i174.GetIt {
         _i372.FetchTripStopsDirections(gh<_i935.GooglePlacesRepository>()));
     gh.lazySingleton<_i888.FetchPlaceDetails>(
         () => _i888.FetchPlaceDetails(gh<_i935.GooglePlacesRepository>()));
+    gh.factoryParam<_i245.TripsCubit, String, dynamic>((
+      userId,
+      _,
+    ) =>
+        _i245.TripsCubit(
+          listenUserTrips: gh<_i193.ListenUserTrips>(),
+          listenSharedTrips: gh<_i193.ListenSharedTrips>(),
+          crashlytics: gh<_i141.FirebaseCrashlytics>(),
+          userId: userId,
+        )..init());
     gh.lazySingleton<_i1049.GetPublicDayTrips>(
         () => _i1049.GetPublicDayTrips(gh<_i398.DiscoverTripsRepository>()));
     gh.lazySingleton<_i893.GetPublicTripStops>(
@@ -460,18 +470,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i605.AddUserForShare(gh<_i843.TripsRepository>()));
     gh.lazySingleton<_i504.DeleteTrip>(
         () => _i504.DeleteTrip(gh<_i843.TripsRepository>()));
-    gh.factoryParam<_i245.TripsCubit, String, dynamic>((
-      userId,
-      _,
-    ) =>
-        _i245.TripsCubit(
-          listenUserTrips: gh<_i193.ListenUserTrips>(),
-          listenSharedTrips: gh<_i193.ListenSharedTrips>(),
-          crashlytics: gh<_i141.FirebaseCrashlytics>(),
-          adsTrips: gh<_i1036.AdsTrips>(),
-          logger: gh<_i228.Logger>(),
-          userId: userId,
-        )..init());
     gh.factoryParam<_i704.TripCubit, _i910.Trip, dynamic>((
       trip,
       _,
