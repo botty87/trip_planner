@@ -14,16 +14,14 @@ class LoadedWidget extends HookWidget {
     //Use this for the animation
     final previousHasTrips = usePrevious(context.select<TripsCubit, bool?>((cubit) {
       return switch (cubit.state) {
-        final TripsStateLoaded loaded =>
-          loaded.userTrips.isNotEmpty || loaded.sharedTrips.isNotEmpty,
+        final TripsStateLoaded loaded => loaded.userTrips.isNotEmpty || loaded.sharedTrips.isNotEmpty,
         _ => null
       };
     }));
 
     final hasTrips = context.select<TripsCubit, bool>((cubit) {
       return switch (cubit.state) {
-        final TripsStateLoaded loaded =>
-          loaded.userTrips.isNotEmpty || loaded.sharedTrips.isNotEmpty,
+        final TripsStateLoaded loaded => loaded.userTrips.isNotEmpty || loaded.sharedTrips.isNotEmpty,
         _ => previousHasTrips ?? false
       };
     });
