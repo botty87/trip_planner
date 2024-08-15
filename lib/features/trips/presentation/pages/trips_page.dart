@@ -31,9 +31,7 @@ class TripsPage extends StatelessWidget {
     };
 
     //It can happens during transation between pages, after user logout
-    if (userId == null) {
-      return const SizedBox.shrink();
-    }
+    if (userId == null) return const SizedBox.shrink();
 
     return BlocProvider<TripsCubit>(
       create: (context) => getIt(param1: userId),

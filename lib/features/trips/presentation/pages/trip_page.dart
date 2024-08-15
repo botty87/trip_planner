@@ -6,14 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:showcaseview/showcaseview.dart';
 
+import '../../../../core/ads/ads.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../tutorials/presentation/cubit/tutorial_cubit.dart';
+import '../../../../ui/widgets/ad/ad_container.dart';
 import '../../../../ui/widgets/background/scaffold_transparent.dart';
 import '../../../../ui/widgets/generics/snackbars.dart';
 import '../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../tutorials/presentation/cubit/tutorial_cubit.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../domain/entities/trip.dart';
 import '../cubit/share/share_cubit.dart';
@@ -158,31 +160,34 @@ class TripPage extends HookWidget {
                   },
                 ),
               ],
-              child: BlocBuilder<TripCubit, TripState>(
-                buildWhen: (previous, current) => current.maybeMap(
-                  deleting: (_) => false,
-                  error: (state) => state.fatal,
-                  deleted: (_) => false,
-                  orElse: () =>
-                      previous.runtimeType != current.runtimeType &&
-                      previous.maybeMap(
-                        error: (value) => value.fatal,
-                        orElse: () => true,
-                      ) &&
-                      current.maybeMap(
-                        editing: (_) => false,
-                        orElse: () => true,
+              child: AdContainer(
+                ads: getIt<AdsTrip>(),
+                child: BlocBuilder<TripCubit, TripState>(
+                  buildWhen: (previous, current) => current.maybeMap(
+                    deleting: (_) => false,
+                    error: (state) => state.fatal,
+                    deleted: (_) => false,
+                    orElse: () =>
+                        previous.runtimeType != current.runtimeType &&
+                        previous.maybeMap(
+                          error: (value) => value.fatal,
+                          orElse: () => true,
+                        ) &&
+                        current.maybeMap(
+                          editing: (_) => false,
+                          orElse: () => true,
+                        ),
+                  ),
+                  builder: (context, state) => TripPagesAnimatedSwitcher(
+                    child: state.maybeMap(
+                      initial: (_) => const TripPageInitialWidget(key: ValueKey('initial')),
+                      loaded: (_) => const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
+                      error: (state) => Center(
+                        key: const ValueKey('error'),
+                        child: TripErrorWidget(message: state.errorMessage),
                       ),
-                ),
-                builder: (context, state) => TripPagesAnimatedSwitcher(
-                  child: state.maybeMap(
-                    initial: (_) => const TripPageInitialWidget(key: ValueKey('initial')),
-                    loaded: (_) => const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
-                    error: (state) => Center(
-                      key: const ValueKey('error'),
-                      child: TripErrorWidget(message: state.errorMessage),
+                      orElse: () => throw UnimplementedError(),
                     ),
-                    orElse: () => throw UnimplementedError(),
                   ),
                 ),
               ),

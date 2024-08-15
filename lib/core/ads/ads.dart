@@ -37,3 +37,8 @@ abstract class Ads {
 class AdsTrips extends Ads {
   AdsTrips() : super(Env.tripsAdBanner);
 }
+
+@lazySingleton
+class AdsTrip extends Ads {
+  AdsTrip() : super(Env.tripAdBanner);
+}
