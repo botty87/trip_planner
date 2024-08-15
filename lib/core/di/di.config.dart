@@ -197,6 +197,7 @@ import '../../features/user_account/presentation/cubit/login_signup/login_signup
 import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
     as _i110;
 import '../../ui/cubit/backgrounds_cubit.dart' as _i436;
+import '../ads/ads.dart' as _i1036;
 import '../db/day_trips_collection_ref.dart' as _i432;
 import '../db/settings_collection_ref.dart' as _i571;
 import '../db/trip_stops_collection_ref.dart' as _i108;
@@ -233,6 +234,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i535.InfoContactsCubit>(() => _i535.InfoContactsCubit());
     gh.factory<_i1069.MapCubit>(() => _i1069.MapCubit());
     gh.singleton<_i629.AppRouter>(() => _i629.AppRouter());
+    gh.lazySingleton<_i1036.AdsTrips>(() => _i1036.AdsTrips());
     gh.lazySingleton<_i361.Dio>(() => network.client);
     gh.lazySingleton<_i161.InternetConnection>(
         () => network.internetConnection);
@@ -440,16 +442,6 @@ extension GetItInjectableX on _i174.GetIt {
         _i372.FetchTripStopsDirections(gh<_i935.GooglePlacesRepository>()));
     gh.lazySingleton<_i888.FetchPlaceDetails>(
         () => _i888.FetchPlaceDetails(gh<_i935.GooglePlacesRepository>()));
-    gh.factoryParam<_i245.TripsCubit, String, dynamic>((
-      userId,
-      _,
-    ) =>
-        _i245.TripsCubit(
-          listenUserTrips: gh<_i193.ListenUserTrips>(),
-          listenSharedTrips: gh<_i193.ListenSharedTrips>(),
-          crashlytics: gh<_i141.FirebaseCrashlytics>(),
-          userId: userId,
-        )..init());
     gh.lazySingleton<_i1049.GetPublicDayTrips>(
         () => _i1049.GetPublicDayTrips(gh<_i398.DiscoverTripsRepository>()));
     gh.lazySingleton<_i893.GetPublicTripStops>(
@@ -468,6 +460,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i605.AddUserForShare(gh<_i843.TripsRepository>()));
     gh.lazySingleton<_i504.DeleteTrip>(
         () => _i504.DeleteTrip(gh<_i843.TripsRepository>()));
+    gh.factoryParam<_i245.TripsCubit, String, dynamic>((
+      userId,
+      _,
+    ) =>
+        _i245.TripsCubit(
+          listenUserTrips: gh<_i193.ListenUserTrips>(),
+          listenSharedTrips: gh<_i193.ListenSharedTrips>(),
+          crashlytics: gh<_i141.FirebaseCrashlytics>(),
+          adsTrips: gh<_i1036.AdsTrips>(),
+          logger: gh<_i228.Logger>(),
+          userId: userId,
+        )..init());
     gh.factoryParam<_i704.TripCubit, _i910.Trip, dynamic>((
       trip,
       _,

@@ -74,5 +74,7 @@
 		</array>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>GADApplicationIdentifier</key>
+		<string>ca-app-pub-9694877750002081~9906959075</string>
 	</dict>
 </plist>

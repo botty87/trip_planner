@@ -16,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shorebird_code_push/shorebird_code_push.dart';
 
 import 'core/di/di.dart';
@@ -27,6 +28,9 @@ void main() async {
   if (!kIsWeb) {
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   }
+
+  MobileAds.instance.initialize();
+
   await EasyLocalization.ensureInitialized();
   await configureDependencies();
   Bloc.observer = getIt<BlocObserver>();
