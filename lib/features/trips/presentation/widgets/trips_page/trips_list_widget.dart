@@ -35,8 +35,8 @@ class TripsListWidget extends HookWidget {
     }
 
     //Divide the trips in two groups: the first 3, then ad and then the last trips
-    final firstTrips = trips.length <= 2 ? trips : trips.sublist(0, 2);
-    final secondTrips = trips.length <= 2 ? null : trips.sublist(2);
+    final firstTrip = trips.first;
+    final otherTrips = trips.length > 1 ? trips.sublist(1) : null;
 
     return SafeArea(
       child: ConstrainedBox(
@@ -50,22 +50,16 @@ class TripsListWidget extends HookWidget {
                 pageHorizontalPadding,
                 0,
               ),
-              sliver: SliverList.separated(
-                itemBuilder: (context, index) => TripCard(key: ValueKey(firstTrips[index].id), trip: firstTrips[index]),
-                separatorBuilder: (context, index) => const SizedBox(height: verticalSpace),
-                itemCount: firstTrips.length,
-              ),
+              sliver: SliverToBoxAdapter(child: TripCard(key: ValueKey(firstTrip.id), trip: firstTrip)),
             ),
             SliverToBoxAdapter(
-                child: NativeAd(
-              ads: getIt<AdsTripsNative>(),
-              padding: const EdgeInsets.only(
-                top: verticalSpace,
-                left: pageHorizontalPadding,
-                right: pageHorizontalPadding,
+              child: NativeAd(
+                ads: getIt<AdsTripsNative>(),
+                padding: const EdgeInsets.only(
+                    top: verticalSpace, left: pageHorizontalPadding, right: pageHorizontalPadding),
               ),
-            )),
-            if (secondTrips != null)
+            ),
+            if (otherTrips != null)
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(
                   pageHorizontalPadding,
@@ -75,9 +69,9 @@ class TripsListWidget extends HookWidget {
                 ),
                 sliver: SliverList.separated(
                   itemBuilder: (context, index) =>
-                      TripCard(key: ValueKey(secondTrips[index].id), trip: secondTrips[index]),
+                      TripCard(key: ValueKey(otherTrips[index].id), trip: otherTrips[index]),
                   separatorBuilder: (context, index) => const SizedBox(height: verticalSpace),
-                  itemCount: secondTrips.length,
+                  itemCount: otherTrips.length,
                 ),
               )
           ],
