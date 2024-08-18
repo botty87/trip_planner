@@ -5,10 +5,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../../../core/ads/banner_ad_entity.dart';
-import '../../../core/ads/ads.dart';
 import '../../../core/di/di.dart';
 import '../../../core/utilities/logger.dart';
+import 'ads.dart';
+import 'banner_ad_entity.dart';
 import 'banner_ad_widget.dart';
 
 class AdContainer extends StatefulWidget {

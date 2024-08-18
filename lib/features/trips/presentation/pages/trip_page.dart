@@ -6,12 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:showcaseview/showcaseview.dart';
 
-import '../../../../core/ads/ads.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/utilities/extensions.dart';
 import '../../../../ui/widgets/ad/ad_container.dart';
+import '../../../../ui/widgets/ad/ads.dart';
 import '../../../../ui/widgets/background/scaffold_transparent.dart';
 import '../../../../ui/widgets/generics/snackbars.dart';
 import '../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
@@ -161,7 +161,7 @@ class TripPage extends HookWidget {
                 ),
               ],
               child: AdContainer(
-                ads: getIt<AdsTrip>(),
+                ads: getIt<AdsTripBanner>(),
                 child: BlocBuilder<TripCubit, TripState>(
                   buildWhen: (previous, current) => current.maybeMap(
                     deleting: (_) => false,

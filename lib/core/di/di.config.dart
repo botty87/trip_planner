@@ -197,7 +197,7 @@ import '../../features/user_account/presentation/cubit/login_signup/login_signup
 import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
     as _i110;
 import '../../ui/cubit/backgrounds_cubit.dart' as _i436;
-import '../ads/ads.dart' as _i1036;
+import '../../ui/widgets/ad/ads.dart' as _i971;
 import '../db/day_trips_collection_ref.dart' as _i432;
 import '../db/settings_collection_ref.dart' as _i571;
 import '../db/trip_stops_collection_ref.dart' as _i108;
@@ -234,8 +234,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i535.InfoContactsCubit>(() => _i535.InfoContactsCubit());
     gh.factory<_i1069.MapCubit>(() => _i1069.MapCubit());
     gh.singleton<_i629.AppRouter>(() => _i629.AppRouter());
-    gh.lazySingleton<_i1036.AdsTrips>(() => _i1036.AdsTrips());
-    gh.lazySingleton<_i1036.AdsTrip>(() => _i1036.AdsTrip());
     gh.lazySingleton<_i361.Dio>(() => network.client);
     gh.lazySingleton<_i161.InternetConnection>(
         () => network.internetConnection);
@@ -252,6 +250,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => googlePlacesModule.polylinePoints);
     gh.lazySingleton<_i331.BlocObserver>(() => blocObserModule.blocObserver);
     gh.lazySingleton<_i207.Talker>(() => talkerModule.talker);
+    gh.lazySingleton<_i971.AdsTripsBanner>(() => _i971.AdsTripsBanner());
+    gh.lazySingleton<_i971.AdsTripBanner>(() => _i971.AdsTripBanner());
+    gh.lazySingleton<_i971.AdsDayTripBanner>(() => _i971.AdsDayTripBanner());
+    gh.lazySingleton<_i971.AdsTripsNative>(() => _i971.AdsTripsNative());
+    gh.lazySingleton<_i971.AdsTripNative>(() => _i971.AdsTripNative());
     gh.lazySingleton<_i0.TripsDataSource>(() => _i0.TripsDataSourceImpl(
           gh<_i974.FirebaseFirestore>(),
           gh<_i161.InternetConnection>(),

@@ -25,6 +25,11 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9694877750002081~9906959075"/>
+        
+        <!-- Disable native ad debugger -->
+        <meta-data android:name="com.google.android.gms.ads.flag.NATIVE_AD_DEBUGGER_ENABLED"
+          android:value="false" />
+
     </application>
     <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>

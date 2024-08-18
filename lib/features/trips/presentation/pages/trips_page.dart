@@ -3,13 +3,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/ads/ads.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utilities/extensions.dart';
-import '../../../../ui/widgets/ad/ad_container.dart';
 import '../../../../ui/widgets/background/scaffold_transparent.dart';
 import '../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
@@ -42,16 +40,13 @@ class TripsPage extends StatelessWidget {
           backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
           title: Text(LocaleKeys.tripsPageTitle.tr()),
         ),
-        body: AdContainer(
-          ads: getIt<AdsTrips>(),
-          child: BlocBuilder<TripsCubit, TripsState>(
-            buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
-            builder: (context, state) => TripPagesAnimatedSwitcher(
-              child: state.map(
-                initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
-                loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
-                error: (state) => Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
-              ),
+        body: BlocBuilder<TripsCubit, TripsState>(
+          buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
+          builder: (context, state) => TripPagesAnimatedSwitcher(
+            child: state.map(
+              initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
+              loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
+              error: (state) => Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
             ),
           ),
         ),

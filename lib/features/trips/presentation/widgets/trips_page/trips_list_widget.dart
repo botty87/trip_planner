@@ -6,6 +6,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/di/di.dart';
 import '../../../../../core/utilities/extensions.dart';
+import '../../../../../ui/widgets/ad/ads.dart';
+import '../../../../../ui/widgets/ad/native_ad.dart';
 import '../../../domain/entities/trip.dart';
 import '../../cubit/trips/trips_cubit.dart';
 import 'trip_card.dart';
@@ -32,16 +34,53 @@ class TripsListWidget extends HookWidget {
       trips = previousTrips!;
     }
 
+    //Divide the trips in two groups: the first 3, then ad and then the last trips
+    final firstTrips = trips.length <= 2 ? trips : trips.sublist(0, 2);
+    final secondTrips = trips.length <= 2 ? null : trips.sublist(2);
+
     return SafeArea(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-        child: ListView.separated(
-          padding: defaultPagePadding,
-          itemCount: trips.length,
-          itemBuilder: (context, index) => TripCard(
-            key: ValueKey(trips[index].id),
-            trip: trips[index]),
-          separatorBuilder: (BuildContext context, int index) => const SizedBox(height: verticalSpace),
+        child: CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(
+                pageHorizontalPadding,
+                pageVerticalPadding,
+                pageHorizontalPadding,
+                0,
+              ),
+              sliver: SliverList.separated(
+                itemBuilder: (context, index) => TripCard(key: ValueKey(firstTrips[index].id), trip: firstTrips[index]),
+                separatorBuilder: (context, index) => const SizedBox(height: verticalSpace),
+                itemCount: firstTrips.length,
+              ),
+            ),
+            SliverToBoxAdapter(
+                child: NativeAd(
+              ads: getIt<AdsTripsNative>(),
+              padding: const EdgeInsets.only(
+                top: verticalSpace,
+                left: pageHorizontalPadding,
+                right: pageHorizontalPadding,
+              ),
+            )),
+            if (secondTrips != null)
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(
+                  pageHorizontalPadding,
+                  verticalSpace,
+                  pageHorizontalPadding,
+                  pageVerticalPadding,
+                ),
+                sliver: SliverList.separated(
+                  itemBuilder: (context, index) =>
+                      TripCard(key: ValueKey(secondTrips[index].id), trip: secondTrips[index]),
+                  separatorBuilder: (context, index) => const SizedBox(height: verticalSpace),
+                  itemCount: secondTrips.length,
+                ),
+              )
+          ],
         ),
       ),
     );
