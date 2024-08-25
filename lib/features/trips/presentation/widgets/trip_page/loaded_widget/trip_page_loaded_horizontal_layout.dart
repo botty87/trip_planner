@@ -37,7 +37,7 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Flexible(child: SingleChildScrollView(child: TripHeader())),
+                      const Flexible(child: TripHeader()),
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: maxListViewWidth * 0.9),
                         child: const AddDayTripCard(),

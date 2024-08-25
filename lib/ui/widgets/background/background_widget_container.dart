@@ -25,7 +25,7 @@ class BackgroundWidgetContainer extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             )
           : null,
-      padding: context.hasBackgroundImage ? padding : const EdgeInsets.all(0),
+      padding: context.hasBackgroundImage ? padding : EdgeInsets.zero,
       child: child,
     );
   }
