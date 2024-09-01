@@ -8,7 +8,11 @@ import '../../../core/utilities/logger.dart';
 import 'ads.dart';
 
 class NativeAd extends StatefulWidget {
-  const NativeAd({super.key, required this.ads, this.padding});
+  NativeAd.trips({super.key, this.padding}) : ads = getIt<AdsTrips>();
+
+  NativeAd.dayTrip({super.key, this.padding}) : ads = getIt<AdsDayTrip>();
+
+  NativeAd.trip({super.key, this.padding}) : ads = getIt<AdsTrip>();
 
   final Ads ads;
   final EdgeInsets? padding;

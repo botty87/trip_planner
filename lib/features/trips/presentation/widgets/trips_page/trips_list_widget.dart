@@ -6,7 +6,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/di/di.dart';
 import '../../../../../core/utilities/extensions.dart';
-import '../../../../../ui/widgets/ad/ads.dart';
 import '../../../../../ui/widgets/ad/native_ad.dart';
 import '../../../domain/entities/trip.dart';
 import '../../cubit/trips/trips_cubit.dart';
@@ -53,8 +52,7 @@ class TripsListWidget extends HookWidget {
               sliver: SliverToBoxAdapter(child: TripCard(key: ValueKey(firstTrip.id), trip: firstTrip)),
             ),
             SliverToBoxAdapter(
-              child: NativeAd(
-                ads: getIt<AdsTrips>(),
+              child: NativeAd.trips(
                 padding: const EdgeInsets.only(
                     top: verticalSpace, left: pageHorizontalPadding, right: pageHorizontalPadding),
               ),

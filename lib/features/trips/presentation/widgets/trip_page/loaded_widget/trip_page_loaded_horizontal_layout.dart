@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants.dart';
-import '../../../../../../core/di/di.dart';
-import '../../../../../../ui/widgets/ad/ads.dart';
 import '../../../../../../ui/widgets/ad/native_ad.dart';
 import '../add_day_trip_card.dart';
 import '../day_trips_list_widget.dart';
@@ -40,7 +38,7 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: maxListViewWidth),
                   child: Column(
                     children: [
-                      NativeAd(ads: getIt<AdsTrip>()),
+                      NativeAd.trip(),
                       Expanded(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

@@ -5,10 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../core/constants.dart';
-import '../../../../../core/di/di.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../../../../ui/widgets/ad/ads.dart';
 import '../../../../../ui/widgets/ad/native_ad.dart';
 import '../../../../../ui/widgets/background/background_widget_container.dart';
 
@@ -21,7 +19,7 @@ class NoTripsWidget extends StatelessWidget {
       minimum: const EdgeInsets.all(verticalSpaceL),
       child: Column(
         children: [
-          NativeAd(ads: getIt<AdsTrips>()),
+          NativeAd.trips(),
           const SizedBox(height: verticalSpaceS),
           Expanded(
             child: BackgroundWidgetContainer(

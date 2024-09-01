@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants.dart';
-import '../../../../../../core/di/di.dart';
-import '../../../../../../ui/widgets/ad/ads.dart';
 import '../../../../../../ui/widgets/ad/native_ad.dart';
 import '../add_day_trip_card.dart';
 import '../day_trips_list_widget.dart';
@@ -26,7 +24,7 @@ class TripPageLoadedVerticalLayout extends StatelessWidget {
           controller: scrollController,
           slivers: [
             const SliverToBoxAdapter(child: TripHeader()),
-            SliverToBoxAdapter(child: NativeAd(ads: getIt<AdsTrip>())),
+            SliverToBoxAdapter(child: NativeAd.trip()),
             const DayTripsListWidget(orientation: Orientation.portrait),
             const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
             const SliverToBoxAdapter(child: AddDayTripCard()),
