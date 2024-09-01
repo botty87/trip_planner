@@ -13,9 +13,15 @@ final class TripStopDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     final description = context.select((TripStopCubit cubit) => cubit.state.tripStop.description);
 
-    return Padding(
-      padding: (description?.isNotEmpty ?? false) ? padding ?? EdgeInsets.zero : EdgeInsets.zero,
-      child: GenericTripDescription(description: description),
+    if (description?.isEmpty ?? true) {
+      return const SizedBox.shrink();
+    }
+
+    return Expanded(
+      child: Padding(
+        padding: (description?.isNotEmpty ?? false) ? padding ?? EdgeInsets.zero : EdgeInsets.zero,
+        child: GenericTripDescription(description: description, isScrollable: true),
+      ),
     );
   }
 }

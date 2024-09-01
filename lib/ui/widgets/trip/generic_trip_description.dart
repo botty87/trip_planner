@@ -24,9 +24,9 @@ class GenericTripDescription extends StatelessWidget {
     }
 
     return BackgroundWidgetContainer(
-      padding: const EdgeInsets.symmetric(horizontal: horizontalSpace),
+      padding: EdgeInsets.zero,
       child: SingleChildScrollView(
-        padding: contentPadding,
+        padding: contentPadding.add(const EdgeInsets.symmetric(horizontal: horizontalSpace)),
         physics: isScrollable ? const BouncingScrollPhysics() : const NeverScrollableScrollPhysics(),
         child: Linkify(
           onOpen: (link) async {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../cubit/trip_stop/trip_stop_cubit.dart';
 
@@ -16,23 +17,31 @@ class TripStopNoteWidget extends HookWidget {
 
     return Card(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            LocaleKeys.note.tr(),
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
-            child: TextField(
-              key: const Key('noteTextField'),
-              controller: textController,
-              maxLines: null,
-              textAlign: TextAlign.justify,
-              decoration: InputDecoration.collapsed(
-                hintText: LocaleKeys.noteHint.tr(),
+            padding: const EdgeInsets.only(top: verticalSpace),
+            child: Text(
+              LocaleKeys.note.tr(),
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          Flexible(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: horizontalSpace, vertical: verticalSpace),
+              child: TextField(
+                key: const Key('noteTextField'),
+                controller: textController,
+                maxLines: null,
+                textAlign: TextAlign.justify,
+                decoration: InputDecoration.collapsed(
+                  hintText: LocaleKeys.noteHint.tr(),
+                ),
+                keyboardType: TextInputType.multiline,
+                onChanged: (value) => context.read<TripStopCubit>().noteChanged(value),
               ),
-              keyboardType: TextInputType.multiline,
-              onChanged: (value) => context.read<TripStopCubit>().noteChanged(value),
             ),
           ),
         ],
