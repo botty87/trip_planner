@@ -13,7 +13,7 @@ class GenericTripDescription extends StatelessWidget {
   const GenericTripDescription({
     super.key,
     required this.description,
-    this.padding = const EdgeInsets.only(bottom: verticalSpace),
+    this.padding = const EdgeInsets.symmetric(vertical: verticalSpace),
     this.isScrollable = false,
   });
 
