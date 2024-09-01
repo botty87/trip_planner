@@ -90,8 +90,7 @@ class DayTripsList extends HookWidget {
           final dayTrip = dayTrips[index];
           //Add padding to the card to make it look better, except for the last one
           return Padding(
-            padding:
-                index == dayTrips.length - 1 ? EdgeInsets.zero : const EdgeInsets.symmetric(vertical: verticalSpaceS),
+            padding: index < (dayTrips.length - 1) ? const EdgeInsets.only(bottom: verticalSpaceS) : EdgeInsets.zero,
             child: DayTripCard(
               key: ValueKey(dayTrip.id),
               dayTrip: dayTrip,
