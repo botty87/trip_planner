@@ -237,6 +237,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i971.AdsTrips>(() => _i971.AdsTrips());
     gh.lazySingleton<_i971.AdsTrip>(() => _i971.AdsTrip());
     gh.lazySingleton<_i971.AdsDayTrip>(() => _i971.AdsDayTrip());
+    gh.lazySingleton<_i971.AdsTripStop>(() => _i971.AdsTripStop());
     gh.lazySingleton<_i361.Dio>(() => network.client);
     gh.lazySingleton<_i161.InternetConnection>(
         () => network.internetConnection);

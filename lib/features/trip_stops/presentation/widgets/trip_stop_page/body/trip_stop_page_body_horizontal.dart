@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/constants.dart';
+import '../../../../../../ui/widgets/ad/native_ad.dart';
 import '../../../cubit/trip_stop/trip_stop_cubit.dart';
 import '../delete_trip_stop_button.dart';
 import '../trip_stop_description.dart';
@@ -29,17 +30,18 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
                 Flexible(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-                    child: const SafeArea(
-                      minimum: EdgeInsets.only(bottom: pageVerticalPadding),
+                    child: SafeArea(
+                      minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
                       child: Column(
                         children: [
-                          Expanded(child: TripStopMapWidget()),
+                          NativeAd.tripStop(padding: const EdgeInsets.only(bottom: verticalSpace)),
+                          const Expanded(child: TripStopMapWidget()),
                           if (!kIsWeb) ...[
-                            SizedBox(height: verticalSpaceXL),
-                            TripStopNavigateToButton(),
+                            const SizedBox(height: verticalSpaceXL),
+                            const TripStopNavigateToButton(),
                           ],
-                          SizedBox(height: verticalSpaceL),
-                          DeleteTripStopButton(),
+                          const SizedBox(height: verticalSpaceL),
+                          const DeleteTripStopButton(),
                         ],
                       ),
                     ),

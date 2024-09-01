@@ -64,3 +64,8 @@ class AdsTrip extends Ads {
 class AdsDayTrip extends Ads {
   AdsDayTrip() : super(Env.dayTripAd, AdsType.native);
 }
+
+@lazySingleton
+class AdsTripStop extends Ads {
+  AdsTripStop() : super(Env.tripStopAd, AdsType.native);
+}

@@ -14,6 +14,8 @@ class NativeAd extends StatefulWidget {
 
   NativeAd.trip({super.key, this.padding}) : ads = getIt<AdsTrip>();
 
+  NativeAd.tripStop({super.key, this.padding}) : ads = getIt<AdsTripStop>();
+
   final Ads ads;
   final EdgeInsets? padding;
 
@@ -21,7 +23,7 @@ class NativeAd extends StatefulWidget {
   State<NativeAd> createState() => _NativeAdState();
 }
 
-class _NativeAdState extends State<NativeAd> {
+class _NativeAdState extends State<NativeAd> with AutomaticKeepAliveClientMixin {
   late final _crashlytics = getIt<FirebaseCrashlytics>();
   late final _logger = getIt<Logger>();
 
@@ -61,6 +63,8 @@ class _NativeAdState extends State<NativeAd> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       child: _ad == null
@@ -82,4 +86,7 @@ class _NativeAdState extends State<NativeAd> {
             ),
     );
   }
+  
+  @override
+  bool get wantKeepAlive => true;
 }
