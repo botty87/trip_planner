@@ -54,7 +54,7 @@ class TripsListWidget extends HookWidget {
             ),
             SliverToBoxAdapter(
               child: NativeAd(
-                ads: getIt<AdsTripsNative>(),
+                ads: getIt<AdsTrips>(),
                 padding: const EdgeInsets.only(
                     top: verticalSpace, left: pageHorizontalPadding, right: pageHorizontalPadding),
               ),

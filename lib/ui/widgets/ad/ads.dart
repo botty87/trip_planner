@@ -51,26 +51,11 @@ abstract class Ads {
 enum AdsType { banner, native }
 
 @lazySingleton
-class AdsTripsBanner extends Ads {
-  AdsTripsBanner() : super(Env.tripsAdBanner, AdsType.banner);
+class AdsTrips extends Ads {
+  AdsTrips() : super(Env.tripsAd, AdsType.native);
 }
 
 @lazySingleton
-class AdsTripBanner extends Ads {
-  AdsTripBanner() : super(Env.tripAdBanner, AdsType.banner);
-}
-
-@lazySingleton
-class AdsDayTripBanner extends Ads {
-  AdsDayTripBanner() : super(Env.dayTripAdBanner, AdsType.banner);
-}
-
-@lazySingleton
-class AdsTripsNative extends Ads {
-  AdsTripsNative() : super(Env.tripsAdNative, AdsType.native);
-}
-
-@lazySingleton
-class AdsTripNative extends Ads {
-  AdsTripNative() : super(Env.tripAdNative, AdsType.native);
+class AdsTrip extends Ads {
+  AdsTrip() : super(Env.tripAd, AdsType.native);
 }

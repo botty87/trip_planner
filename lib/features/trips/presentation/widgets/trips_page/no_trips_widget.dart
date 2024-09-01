@@ -21,7 +21,7 @@ class NoTripsWidget extends StatelessWidget {
       minimum: const EdgeInsets.all(verticalSpaceL),
       child: Column(
         children: [
-          NativeAd(ads: getIt<AdsTripsNative>()),
+          NativeAd(ads: getIt<AdsTrips>()),
           const SizedBox(height: verticalSpaceS),
           Expanded(
             child: BackgroundWidgetContainer(

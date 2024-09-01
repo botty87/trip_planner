@@ -40,7 +40,7 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: maxListViewWidth),
                   child: Column(
                     children: [
-                      NativeAd(ads: getIt<AdsTripNative>()),
+                      NativeAd(ads: getIt<AdsTrip>()),
                       Expanded(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
