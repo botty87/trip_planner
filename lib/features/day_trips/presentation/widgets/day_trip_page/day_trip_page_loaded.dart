@@ -39,7 +39,7 @@ class DayTripPageLoaded extends HookWidget {
                             child: ConstrainedBox(
                               key: const ValueKey('listViewWidget'),
                               constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-                              child: const ListViewWidget(
+                              child: const DayTripListViewWidget(
                                 orientation: Orientation.portrait,
                               ),
                             ),
@@ -58,7 +58,7 @@ class DayTripPageLoaded extends HookWidget {
                         Flexible(
                           child: ConstrainedBox(
                               constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-                              child: const ListViewWidget(orientation: Orientation.landscape)),
+                              child: const DayTripListViewWidget(orientation: Orientation.landscape)),
                         ),
                         const SizedBox(width: horizontalSpaceL),
                         Flexible(

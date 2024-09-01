@@ -14,9 +14,9 @@ import 'trip_stops_list.dart';
 
 final _showCaseTutorial = GlobalKey();
 
-class ListViewWidget extends HookWidget {
+class DayTripListViewWidget extends HookWidget {
   final Orientation orientation;
-  const ListViewWidget({super.key, required this.orientation});
+  const DayTripListViewWidget({super.key, required this.orientation});
 
   @override
   Widget build(BuildContext context) {

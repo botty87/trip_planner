@@ -15,7 +15,7 @@ final class TripHeader extends StatelessWidget {
     return Padding(
       padding: tripDescription == null ? EdgeInsets.zero : const EdgeInsets.symmetric(vertical: verticalSpace),
       child: GenericTripDescription(
-        padding: const EdgeInsets.symmetric(vertical: verticalSpace),
+        contentPadding: const EdgeInsets.symmetric(vertical: verticalSpace),
         description: tripDescription,
         isScrollable: true,
       ),

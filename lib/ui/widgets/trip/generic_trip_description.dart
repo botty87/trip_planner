@@ -7,13 +7,13 @@ import '../background/background_widget_container.dart';
 
 class GenericTripDescription extends StatelessWidget {
   final String? description;
-  final EdgeInsets padding;
+  final EdgeInsets contentPadding;
   final bool isScrollable;
 
   const GenericTripDescription({
     super.key,
     required this.description,
-    this.padding = const EdgeInsets.symmetric(vertical: verticalSpace),
+    this.contentPadding = const EdgeInsets.symmetric(vertical: verticalSpace),
     this.isScrollable = false,
   });
 
@@ -26,7 +26,7 @@ class GenericTripDescription extends StatelessWidget {
     return BackgroundWidgetContainer(
       padding: const EdgeInsets.symmetric(horizontal: horizontalSpace),
       child: SingleChildScrollView(
-        padding: padding,
+        padding: contentPadding,
         physics: isScrollable ? const BouncingScrollPhysics() : const NeverScrollableScrollPhysics(),
         child: Linkify(
           onOpen: (link) async {

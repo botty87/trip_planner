@@ -7,12 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../../../core/constants.dart';
-import '../../../../../../core/di/di.dart';
 import '../../../../../../core/error/exceptions.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/extensions.dart';
-import '../../../../../../ui/widgets/ad/ad_container.dart';
-import '../../../../../../ui/widgets/ad/ads.dart';
 import '../../../../../../ui/widgets/background/scaffold_transparent.dart';
 import '../../../../../../ui/widgets/generics/snackbars.dart';
 import '../../../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
@@ -96,39 +93,36 @@ class DayTripPageBaseLayout extends StatelessWidget {
             },
           ),
         ],
-        child: AdContainer(
-          ads: getIt<AdsDayTripBanner>(),
-          child: BlocBuilder<DayTripCubit, DayTripState>(
-            buildWhen: (previous, current) => current.maybeMap(
-              deleting: (_) => false,
-              error: (state) => state.fatal,
-              deleted: (_) => false,
-              orElse: () =>
-                  previous.runtimeType != current.runtimeType &&
-                  previous.maybeMap(
-                    error: (value) => value.fatal,
-                    orElse: () => true,
-                  ) &&
-                  current.maybeMap(
-                    editing: (_) => false,
-                    orElse: () => true,
-                  ),
-            ),
-            builder: (context, state) {
-              return TripPagesAnimatedSwitcher(
-                child: state.maybeMap(
-                  initial: (_) => const DayTripPageInitialWidget(key: ValueKey('initial')),
-                  loaded: (_) =>
-                      Center(key: const ValueKey('loaded'), child: DayTripPageLoaded(orientation: orientation)),
-                  error: (state) => Center(
-                    key: const ValueKey('error'),
-                    child: DayTripErrorWidget(message: state.errorMessage),
-                  ),
-                  orElse: () => throw UnimplementedError(),
+        child: BlocBuilder<DayTripCubit, DayTripState>(
+          buildWhen: (previous, current) => current.maybeMap(
+            deleting: (_) => false,
+            error: (state) => state.fatal,
+            deleted: (_) => false,
+            orElse: () =>
+                previous.runtimeType != current.runtimeType &&
+                previous.maybeMap(
+                  error: (value) => value.fatal,
+                  orElse: () => true,
+                ) &&
+                current.maybeMap(
+                  editing: (_) => false,
+                  orElse: () => true,
                 ),
-              );
-            },
           ),
+          builder: (context, state) {
+            return TripPagesAnimatedSwitcher(
+              child: state.maybeMap(
+                initial: (_) => const DayTripPageInitialWidget(key: ValueKey('initial')),
+                loaded: (_) =>
+                    Center(key: const ValueKey('loaded'), child: DayTripPageLoaded(orientation: orientation)),
+                error: (state) => Center(
+                  key: const ValueKey('error'),
+                  child: DayTripErrorWidget(message: state.errorMessage),
+                ),
+                orElse: () => throw UnimplementedError(),
+              ),
+            );
+          },
         ),
       ),
     );
