@@ -8,6 +8,7 @@ import '../../../../../../../core/constants.dart';
 import '../../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../../core/utilities/extensions.dart';
 import '../../../../../../../gen/assets.gen.dart';
+import '../../../../../../../ui/widgets/background/background_widget_container.dart';
 
 class NoTripStopsMapWidget extends StatelessWidget {
   final double imageHeight;
@@ -15,15 +16,8 @@ class NoTripStopsMapWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      minimum: defaultPagePadding,
-      child: _body(context),
-    );
-  }
-
-  Widget _body(BuildContext context) {
-    Widget content() {
-      return Column(
+    return BackgroundWidgetContainer(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
@@ -55,21 +49,7 @@ class NoTripStopsMapWidget extends StatelessWidget {
             ),
           ),
         ],
-      );
-    }
-
-    if (context.hasBackgroundImage) {
-      return Card(
-        color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
-        margin: defaultPagePadding,
-        elevation: 8,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: horizontalSpace),
-          child: content(),
-        ),
-      );
-    } else {
-      return content();
-    }
+      ),
+    );
   }
 }

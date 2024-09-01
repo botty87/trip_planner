@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../../../../../core/constants.dart';
 import '../../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../../ui/widgets/generics/snackbars.dart';
 import '../../../../cubit/day_trip/day_trip_cubit.dart';
@@ -83,9 +84,12 @@ class _MapView extends HookWidget {
   Widget _getMapWidget(TripStopsNumState tripStopsNumState) {
     switch (tripStopsNumState) {
       case TripStopsNumState.zero:
-        return LayoutBuilder(builder: (context, constraints) {
-          return NoTripStopsMapWidget(imageHeight: constraints.maxHeight * 0.5);
-        });
+        return SafeArea(
+          minimum: defaultPagePadding,
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Center(child: NoTripStopsMapWidget(imageHeight: constraints.maxHeight * 0.5));
+          }),
+        );
       case TripStopsNumState.one:
         return const SingleTripStopsMapWidget();
       case TripStopsNumState.moreThanOne:
