@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants.dart';
+import '../../../../../../ui/widgets/ad/native_ad.dart';
 import '../delete_trip_stop_button.dart';
 import '../trip_stop_description.dart';
 import '../trip_stop_done_duration_container.dart';
@@ -19,6 +20,10 @@ class TripStopPageBodyVertical extends StatelessWidget {
       child: ListView(
         padding: defaultPagePadding,
         children: [
+          NativeAd.tripStop(
+            key: const Key('tripStopAd'),
+            padding: const EdgeInsets.only(bottom: verticalSpaceL),
+          ),
           const TripStopDescription(padding: EdgeInsets.only(bottom: verticalSpaceL)),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.4,

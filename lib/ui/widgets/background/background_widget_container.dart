@@ -17,8 +17,8 @@ class BackgroundWidgetContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
+      width: double.infinity,
       decoration: context.hasBackgroundImage
           ? BoxDecoration(
               color: Theme.of(context).colorScheme.surface.withOpacity(0.9),

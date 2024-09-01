@@ -54,7 +54,10 @@ class TripStopPageBodyHorizontal extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TripStopDescription(padding: EdgeInsets.only(bottom: verticalSpace)),
+                          TripStopDescription(
+                            padding: EdgeInsets.only(bottom: verticalSpace),
+                            expand: true,
+                          ),
                           TripStopDoneDurationContainer(),
                           SizedBox(height: verticalSpace),
                           Expanded(child: Center(child: TripStopNoteWidget())),
