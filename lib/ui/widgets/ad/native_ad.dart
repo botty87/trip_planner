@@ -73,7 +73,7 @@ class _NativeAdState extends State<NativeAd> {
                     constraints: const BoxConstraints(
                       minWidth: 320, // minimum recommended width
                       minHeight: 93, // minimum recommended height
-                      maxHeight: 108,
+                      maxHeight: 105,
                     ),
                     child: Center(child: ads.AdWidget(ad: _ad!)),
                   );

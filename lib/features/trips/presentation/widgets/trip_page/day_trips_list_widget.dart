@@ -16,7 +16,9 @@ import 'day_trip_card.dart';
 
 class DayTripsListWidget extends HookWidget {
   final Orientation orientation;
-  const DayTripsListWidget({super.key, required this.orientation});
+  const DayTripsListWidget({super.key, required this.orientation, this.padding = EdgeInsets.zero});
+
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,9 @@ class DayTripsListWidget extends HookWidget {
         ));
 
     if (hasDayTrips) {
-      return const SliverPadding(
-        padding: EdgeInsets.only(bottom: verticalSpaceXs),
-        sliver: DayTripsList(),
+      return SliverPadding(
+        padding: padding,
+        sliver: const DayTripsList(),
       );
     } else {
       return orientation == Orientation.portrait
@@ -100,9 +102,7 @@ class DayTripsList extends HookWidget {
         },
         childCount: dayTrips.length,
       ),
-      onReorder: (oldIndex, newIndex) {
-        context.read<TripCubit>().reorderDayTrips(oldIndex, newIndex);
-      },
+      onReorder: (oldIndex, newIndex) => context.read<TripCubit>().reorderDayTrips(oldIndex, newIndex),
     );
   }
 }

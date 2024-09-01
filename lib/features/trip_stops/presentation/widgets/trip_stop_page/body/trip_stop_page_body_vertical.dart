@@ -19,7 +19,7 @@ class TripStopPageBodyVertical extends StatelessWidget {
       child: ListView(
         padding: defaultPagePadding,
         children: [
-          const TripStopDescription(),
+          const TripStopDescription(padding: EdgeInsets.only(bottom: verticalSpaceL)),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.4,
             child: const TripStopMapWidget(),

@@ -92,6 +92,7 @@ dependencies:
   shimmer: ^3.0.0
   shorebird_code_push: ^1.1.4
   showcaseview: ^3.0.0
+  sliver_tools: ^0.2.12
   talker_bloc_logger: ^4.2.4
   talker_flutter: ^4.2.4
   url_launcher: ^6.2.1

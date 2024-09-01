@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:showcaseview/showcaseview.dart';
+import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../../../core/constants.dart';
 import '../../../../../../ui/widgets/ad/native_ad.dart';
@@ -45,26 +46,30 @@ class DayTripListViewWidget extends HookWidget {
           });
         }
 
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
-          child: CustomScrollView(
-            slivers: [
-              const SliverPadding(
-                padding: EdgeInsets.only(top: pageVerticalPadding),
-                sliver: SliverToBoxAdapter(child: StartTimeWidget()),
+        return CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: defaultPagePadding,
+              sliver: MultiSliver(
+                children: [
+                  const SliverPadding(
+                    padding: EdgeInsets.only(bottom: verticalSpace),
+                    sliver: SliverToBoxAdapter(child: StartTimeWidget()),
+                  ),
+                  const SliverToBoxAdapter(child: DayTripDescription(padding: EdgeInsets.only(bottom: verticalSpace))),
+                  SliverToBoxAdapter(child: NativeAd.dayTrip(padding: const EdgeInsets.only(top: verticalSpaceS))),
+                  TripStopsList(showCaseTutorial: _showCaseTutorial),
+                  const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceS)),
+                  const SliverToBoxAdapter(child: AddDayTripStopCard()),
+                  const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
+                  const SliverPadding(
+                    padding: EdgeInsets.only(bottom: pageVerticalPadding),
+                    sliver: SliverToBoxAdapter(child: SafeArea(child: DeleteDayTripButton())),
+                  ),
+                ],
               ),
-              const SliverToBoxAdapter(child: DayTripDescription()),
-              SliverToBoxAdapter(child: NativeAd.dayTrip(padding: const EdgeInsets.only(top: verticalSpaceS))),
-              TripStopsList(showCaseTutorial: _showCaseTutorial),
-              const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceS)),
-              const SliverToBoxAdapter(child: AddDayTripStopCard()),
-              const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
-              const SliverPadding(
-                padding: EdgeInsets.only(bottom: pageVerticalPadding),
-                sliver: SliverToBoxAdapter(child: SafeArea(child: DeleteDayTripButton())),
-              ),
-            ],
-          ),
+            ),
+          ],
         );
       },
       onFinish: () {

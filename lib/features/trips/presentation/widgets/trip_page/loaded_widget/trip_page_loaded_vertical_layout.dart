@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../../../core/constants.dart';
 import '../../../../../../ui/widgets/ad/native_ad.dart';
@@ -18,23 +19,26 @@ class TripPageLoadedVerticalLayout extends StatelessWidget {
 
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: pageHorizontalPadding),
-        child: CustomScrollView(
-          controller: scrollController,
-          slivers: [
-            const SliverToBoxAdapter(child: TripHeader()),
-            SliverToBoxAdapter(child: NativeAd.trip()),
-            const DayTripsListWidget(orientation: Orientation.portrait),
-            const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
-            const SliverToBoxAdapter(child: AddDayTripCard()),
-            const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
-            const SliverPadding(
-              padding: EdgeInsets.only(bottom: pageVerticalPadding),
-              sliver: SliverToBoxAdapter(child: SafeArea(child: DeleteTripButton())),
+      child: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          SliverPadding(
+            padding: defaultPagePadding,
+            sliver: MultiSliver(
+              children: [
+                const SliverToBoxAdapter(child: TripHeader()),
+                SliverToBoxAdapter(child: NativeAd.trip(padding: const EdgeInsets.only(bottom: verticalSpace))),
+                const DayTripsListWidget(
+                  orientation: Orientation.portrait,
+                  padding: EdgeInsets.only(bottom: verticalSpace),
+                ),
+                const SliverToBoxAdapter(child: AddDayTripCard()),
+                const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
+                const SliverToBoxAdapter(child: SafeArea(child: DeleteTripButton())),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
