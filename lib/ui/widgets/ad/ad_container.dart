@@ -11,6 +11,7 @@ import 'ads.dart';
 import 'banner_ad_entity.dart';
 import 'banner_ad_widget.dart';
 
+@Deprecated('Use NativeAd instead')
 class AdContainer extends StatefulWidget {
   const AdContainer({
     super.key,
