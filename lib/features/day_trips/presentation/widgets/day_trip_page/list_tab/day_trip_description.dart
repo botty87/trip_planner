@@ -15,7 +15,7 @@ final class DayTripDescription extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (description?.isNotEmpty ?? false) const SizedBox(height: verticalSpaceS),
+        const SizedBox(height: verticalSpace),
         GenericTripDescription(description: description),
         if (description?.isNotEmpty ?? false) const SizedBox(height: verticalSpace),
       ],

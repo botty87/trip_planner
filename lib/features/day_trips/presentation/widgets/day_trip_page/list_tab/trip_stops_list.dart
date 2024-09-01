@@ -9,8 +9,8 @@ import 'package:showcaseview/showcaseview.dart';
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../../core/utilities/pair.dart';
-import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../../../../ui/widgets/day_trip/trip_stop_start_end_time_mixin.dart';
+import '../../../../../trip_stops/domain/entities/trip_stop.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 import 'trip_stop_card.dart';
 
@@ -57,39 +57,42 @@ class TripStopsList extends HookWidget with TripStopStartEndTimeMixin {
       tripStopStartEndTimes.add(Pair(tripStop, startEndTime));
     }
 
-    return ReorderableSliverList(
-      delegate: ReorderableSliverChildBuilderDelegate(
-        (context, index) {
-          final tripStopItem = tripStopStartEndTimes[index];
-          final tripStop = tripStopItem.first;
-          final startEndTime = tripStopItem.second;
+    return SliverPadding(
+      padding: tripStops.isEmpty ? EdgeInsets.zero : const EdgeInsets.only(top: verticalSpaceS),
+      sliver: ReorderableSliverList(
+        delegate: ReorderableSliverChildBuilderDelegate(
+          (context, index) {
+            final tripStopItem = tripStopStartEndTimes[index];
+            final tripStop = tripStopItem.first;
+            final startEndTime = tripStopItem.second;
 
-          final rowItem = _TripStopRowItem(
-            key: ValueKey(tripStop.id),
-            isLastItem: index == tripStopStartEndTimes.length - 1,
-            startSlidableAction: _TravelStartSlidableAction(tripStop, index),
-            endSlidableAction: _TravelEndSlidableAction(tripStop, index),
-            tripStop: tripStop,
-            startEndTime: startEndTime,
-          );
-
-          //If it is the first item wrap it in a ShowCase
-          if (index == 0) {
-            return Showcase(
-              key: _showCaseTutorial,
-              tooltipPosition: TooltipPosition.top,
-              title: LocaleKeys.tripStopSlideShowCaseTitle.tr(),
-              description: LocaleKeys.tripStopSlideShowCaseBody.tr(),
-              targetPadding: const EdgeInsets.only(top: verticalSpaceS),
-              child: rowItem,
+            final rowItem = _TripStopRowItem(
+              key: ValueKey(tripStop.id),
+              isLastItem: index == tripStopStartEndTimes.length - 1,
+              startSlidableAction: _TravelStartSlidableAction(tripStop, index),
+              endSlidableAction: _TravelEndSlidableAction(tripStop, index),
+              tripStop: tripStop,
+              startEndTime: startEndTime,
             );
-          } else {
-            return rowItem;
-          }
-        },
-        childCount: tripStopStartEndTimes.length,
+
+            //If it is the first item wrap it in a ShowCase
+            if (index == 0) {
+              return Showcase(
+                key: _showCaseTutorial,
+                tooltipPosition: TooltipPosition.top,
+                title: LocaleKeys.tripStopSlideShowCaseTitle.tr(),
+                description: LocaleKeys.tripStopSlideShowCaseBody.tr(),
+                targetPadding: const EdgeInsets.only(top: verticalSpaceS),
+                child: rowItem,
+              );
+            } else {
+              return rowItem;
+            }
+          },
+          childCount: tripStopStartEndTimes.length,
+        ),
+        onReorder: (oldIndex, newIndex) {},
       ),
-      onReorder: (oldIndex, newIndex) {},
     );
   }
 }

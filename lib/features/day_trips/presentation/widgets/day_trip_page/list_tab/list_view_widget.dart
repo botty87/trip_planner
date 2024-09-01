@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import '../../../../../../core/constants.dart';
+import '../../../../../../ui/widgets/ad/native_ad.dart';
 import '../../../../../tutorials/presentation/cubit/tutorial_cubit.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 import 'add_day_trip_stop_card.dart';
@@ -52,8 +53,8 @@ class DayTripListViewWidget extends HookWidget {
                 padding: EdgeInsets.only(top: pageVerticalPadding),
                 sliver: SliverToBoxAdapter(child: StartTimeWidget()),
               ),
-              const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceS)),
               const SliverToBoxAdapter(child: DayTripDescription()),
+              SliverToBoxAdapter(child: NativeAd.dayTrip(padding: const EdgeInsets.only(top: verticalSpaceS))),
               TripStopsList(showCaseTutorial: _showCaseTutorial),
               const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceS)),
               const SliverToBoxAdapter(child: AddDayTripStopCard()),
