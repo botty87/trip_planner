@@ -69,24 +69,28 @@ class _NativeAdState extends State<NativeAd> with AutomaticKeepAliveClientMixin 
       duration: const Duration(milliseconds: 300),
       child: _ad == null
           ? const SizedBox.shrink()
-          : Padding(
-              padding: widget.padding ?? EdgeInsets.zero,
-              child: StatefulBuilder(
-                builder: (context, setState) {
-                  return ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minWidth: 320, // minimum recommended width
-                      minHeight: 93, // minimum recommended height
-                      maxHeight: 105,
-                    ),
-                    child: Center(child: ads.AdWidget(ad: _ad!)),
-                  );
-                },
+          : Container(
+              //Add a margin to emulate the margin of the card
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              child: Padding(
+                padding: widget.padding ?? EdgeInsets.zero,
+                child: StatefulBuilder(
+                  builder: (context, setState) {
+                    return ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        minWidth: 320, // minimum recommended width
+                        minHeight: 93, // minimum recommended height
+                        maxHeight: 105,
+                      ),
+                      child: Center(child: ads.AdWidget(ad: _ad!)),
+                    );
+                  },
+                ),
               ),
             ),
     );
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }
