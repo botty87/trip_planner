@@ -15,6 +15,8 @@ const double horizontalSpace = 12.0;
 const double horizontalSpaceL = 16.0;
 
 const maxListViewWidth = 650.0;
+const maxGridViewWidth = maxListViewWidth * 2;
+const minGridViewWidth = maxListViewWidth;
 const maxRowWidth = maxListViewWidth * 2.2;
 
 const double tutorialTitleFontSize = 28.0;

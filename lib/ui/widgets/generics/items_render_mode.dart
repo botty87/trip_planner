@@ -1,0 +1,1 @@
+enum ItemsRenderMode { list, grid }

@@ -1,27 +1,23 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../../core/constants.dart';
-import '../../../../../core/di/di.dart';
-import '../../../../../core/utilities/extensions.dart';
 import '../../../../../ui/widgets/ad/native_ad.dart';
 import '../../../domain/entities/trip.dart';
 import '../../cubit/trips/trips_cubit.dart';
 import 'trip_card.dart';
+import 'trips_sort_mixin.dart';
 
-class TripsListWidget extends HookWidget {
-  final backgroundsRef = getIt<FirebaseStorage>().backgroundsRef;
-
-  TripsListWidget({super.key});
+class TripsListWidget extends HookWidget with TripsSortMixin {
+  const TripsListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     List<Trip> trips = context.select<TripsCubit, List<Trip>>((cubit) {
       return switch (cubit.state) {
-        final TripsStateLoaded loaded => _getTrips(loaded.userTrips, loaded.sharedTrips),
+        final TripsStateLoaded loaded => getSortedTrips(userTrips: loaded.userTrips, sharedTrips: loaded.sharedTrips),
         _ => []
       };
     });
@@ -49,9 +45,7 @@ class TripsListWidget extends HookWidget {
                 children: [
                   SliverToBoxAdapter(child: TripCard(key: ValueKey(firstTrip.id), trip: firstTrip)),
                   SliverToBoxAdapter(
-                    child: NativeAd.trips(
-                      padding: const EdgeInsets.only(top: verticalSpace),
-                    ),
+                    child: NativeAd.trips(padding: const EdgeInsets.only(top: verticalSpace)),
                   ),
                   if (otherTrips != null)
                     SliverPadding(
@@ -70,12 +64,5 @@ class TripsListWidget extends HookWidget {
         ),
       ),
     );
-  }
-
-  List<Trip> _getTrips(List<Trip> userTrips, List<Trip> sharedTrips) {
-    final List<Trip> trips = [...userTrips, ...sharedTrips];
-
-    trips.sort((a, b) => a.name.compareTo(b.name));
-    return trips;
   }
 }

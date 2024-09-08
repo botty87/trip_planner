@@ -8,16 +8,17 @@ import '../../../core/utilities/logger.dart';
 import 'ads.dart';
 
 class NativeAd extends StatefulWidget {
-  NativeAd.trips({super.key, this.padding}) : ads = getIt<AdsTrips>();
+  NativeAd.trips({super.key, this.padding, this.maxHeight = 105}) : ads = getIt<AdsTrips>();
 
-  NativeAd.dayTrip({super.key, this.padding}) : ads = getIt<AdsDayTrip>();
+  NativeAd.dayTrip({super.key, this.padding, this.maxHeight = 105}) : ads = getIt<AdsDayTrip>();
 
-  NativeAd.trip({super.key, this.padding}) : ads = getIt<AdsTrip>();
+  NativeAd.trip({super.key, this.padding, this.maxHeight = 105}) : ads = getIt<AdsTrip>();
 
-  NativeAd.tripStop({super.key, this.padding}) : ads = getIt<AdsTripStop>();
+  NativeAd.tripStop({super.key, this.padding, this.maxHeight = 105}) : ads = getIt<AdsTripStop>();
 
   final Ads ads;
   final EdgeInsets? padding;
+  final double maxHeight;
 
   @override
   State<NativeAd> createState() => _NativeAdState();
@@ -81,10 +82,10 @@ class _NativeAdState extends State<NativeAd> with AutomaticKeepAliveClientMixin 
                 child: StatefulBuilder(
                   builder: (context, setState) {
                     return ConstrainedBox(
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         minWidth: 320, // minimum recommended width
                         minHeight: 93, // minimum recommended height
-                        maxHeight: 105,
+                        maxHeight: widget.maxHeight,
                       ),
                       child: Center(child: ads.AdWidget(ad: _ad!)),
                     );
