@@ -19,7 +19,7 @@ class SettingsPage extends StatelessWidget {
       ),
       body: PopScope(
         canPop: false,
-        onPopInvoked: (didPop) {
+        onPopInvokedWithResult: (didPop, result) async {
           if (didPop) {
             return;
           }

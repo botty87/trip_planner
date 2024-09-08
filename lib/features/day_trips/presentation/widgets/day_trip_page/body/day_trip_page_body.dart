@@ -30,7 +30,7 @@ class DayTripPageBody extends HookWidget {
 
     return PopScope(
         canPop: false,
-        onPopInvoked: (bool didPop) async {
+        onPopInvokedWithResult: (didPop, result) async {
           if (didPop) {
             return;
           }

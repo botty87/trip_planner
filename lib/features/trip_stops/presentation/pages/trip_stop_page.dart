@@ -39,7 +39,7 @@ class TripStopPage extends StatelessWidget {
       child: Builder(builder: (context) {
         return PopScope(
           canPop: false,
-          onPopInvoked: (bool didPop) async {
+          onPopInvokedWithResult: (didPop, result) async {
             if (didPop) {
               return;
             }
