@@ -42,28 +42,32 @@ class _NativeAdState extends State<NativeAd> with AutomaticKeepAliveClientMixin 
   }
 
   void _loadAd() {
-    ads.NativeAd(
-      adUnitId: widget.ads.adUnitId,
-      request: const ads.AdRequest(),
-      nativeTemplateStyle: ads.NativeTemplateStyle(templateType: ads.TemplateType.small),
-      listener: ads.NativeAdListener(
-        onAdLoaded: (ad) {
-          setState(() => _ad = ad as ads.NativeAd);
-        },
-        onAdFailedToLoad: (ad, err) {
-          if (kReleaseMode) {
-            _crashlytics.recordError(err, StackTrace.current);
-          }
-          _logger.error('Ad ${widget.ads.adUnitId} failed to load', exception: err, stackTrace: StackTrace.current);
-          ad.dispose();
-        },
-      ),
-    ).load();
+    if (!kIsWeb) {
+      ads.NativeAd(
+        adUnitId: widget.ads.adUnitId,
+        request: const ads.AdRequest(),
+        nativeTemplateStyle: ads.NativeTemplateStyle(templateType: ads.TemplateType.small),
+        listener: ads.NativeAdListener(
+          onAdLoaded: (ad) {
+            setState(() => _ad = ad as ads.NativeAd);
+          },
+          onAdFailedToLoad: (ad, err) {
+            if (kReleaseMode) {
+              _crashlytics.recordError(err, StackTrace.current);
+            }
+            _logger.error('Ad ${widget.ads.adUnitId} failed to load', exception: err, stackTrace: StackTrace.current);
+            ad.dispose();
+          },
+        ),
+      ).load();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
+    if (kIsWeb) return const SizedBox.shrink();
 
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),

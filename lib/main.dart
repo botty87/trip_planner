@@ -27,9 +27,9 @@ void main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   if (!kIsWeb) {
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  }
 
-  MobileAds.instance.initialize();
+    MobileAds.instance.initialize();
+  }
 
   await EasyLocalization.ensureInitialized();
   await configureDependencies();
