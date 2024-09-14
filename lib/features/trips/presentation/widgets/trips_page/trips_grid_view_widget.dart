@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../../core/constants.dart';
-import '../../../../../ui/widgets/ad/native_ad.dart';
+import '../../../../ads/presentation/widgets/native_ad.dart';
 import '../../../domain/entities/trip.dart';
 import '../../cubit/trips/trips_cubit.dart';
 import 'trip_card.dart';

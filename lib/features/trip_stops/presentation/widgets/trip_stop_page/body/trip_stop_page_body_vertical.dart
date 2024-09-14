@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants.dart';
-import '../../../../../../ui/widgets/ad/native_ad.dart';
+import '../../../../../ads/presentation/widgets/native_ad.dart';
 import '../delete_trip_stop_button.dart';
 import '../trip_stop_description.dart';
 import '../trip_stop_done_duration_container.dart';

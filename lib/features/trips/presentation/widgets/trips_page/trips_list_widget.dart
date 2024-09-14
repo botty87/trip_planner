@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../../core/constants.dart';
-import '../../../../../ui/widgets/ad/native_ad.dart';
+import '../../../../ads/presentation/widgets/native_ad.dart';
 import '../../../domain/entities/trip.dart';
 import '../../cubit/trips/trips_cubit.dart';
 import 'trip_card.dart';

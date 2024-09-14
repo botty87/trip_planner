@@ -5,7 +5,7 @@ import 'package:showcaseview/showcaseview.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../../../core/constants.dart';
-import '../../../../../../ui/widgets/ad/native_ad.dart';
+import '../../../../../ads/presentation/widgets/native_ad.dart';
 import '../../../../../tutorials/presentation/cubit/tutorial_cubit.dart';
 import '../../../cubit/day_trip/day_trip_cubit.dart';
 import 'add_day_trip_stop_card.dart';
