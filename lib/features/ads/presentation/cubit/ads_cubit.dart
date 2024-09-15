@@ -46,7 +46,9 @@ class AdsCubit extends Cubit<AdsState> {
           if (kReleaseMode) {
             _crashlytics.recordError(err, StackTrace.current);
           }
-          _logger.error('Ad ${_ads.adUnitId} failed to load', exception: err, stackTrace: StackTrace.current);
+          if (!kDebugMode) {
+            _logger.error('Ad ${_ads.adUnitId} failed to load', exception: err, stackTrace: StackTrace.current);
+          }
           emit(const AdsState.error());
         },
       ),
