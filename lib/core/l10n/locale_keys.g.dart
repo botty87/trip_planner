@@ -191,5 +191,6 @@ abstract class  LocaleKeys {
   static const add = 'add';
   static const nameOptional = 'nameOptional';
   static const noAds = 'noAds';
+  static const picsBy = 'picsBy';
 
 }

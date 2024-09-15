@@ -14,10 +14,11 @@ import '../../../../core/di/di.dart';
 import '../../../../core/l10n/locale_keys.g.dart';
 import '../cubit/info_contacts_cubit.dart';
 
+part '../widgets/app_version.dart';
 part '../widgets/developed_by.dart';
+part '../widgets/pics_by.dart';
 part '../widgets/privacy_policy.dart';
 part '../widgets/terms.dart';
-part '../widgets/app_version.dart';
 
 @RoutePage()
 class InfoContactsPage extends StatelessWidget {
@@ -32,8 +33,7 @@ class InfoContactsPage extends StatelessWidget {
           title: Text(LocaleKeys.infoContact.tr()),
         ),
         body: SafeArea(
-          minimum: const EdgeInsets.only(
-              bottom: verticalSpace, left: horizontalSpace, right: horizontalSpace),
+          minimum: const EdgeInsets.only(bottom: verticalSpace, left: horizontalSpace, right: horizontalSpace),
           child: kIsWeb
               ? const _InfoContactsPagePortrait()
               : OrientationBuilder(builder: (context, orientation) {
@@ -64,6 +64,8 @@ class _InfoContactsPagePortrait extends StatelessWidget {
         const Center(child: _DevelopedBy(orientation: Orientation.portrait)),
         const SizedBox(height: verticalSpaceS),
         Center(child: _AppVersion()),
+        const SizedBox(height: verticalSpace),
+        const _PicsBy(),
       ],
     );
   }
@@ -87,9 +89,25 @@ class _InfoContactsPageLandscape extends StatelessWidget {
           ),
         ),
         const SizedBox(height: verticalSpace),
-        const Center(child: _DevelopedBy(orientation: Orientation.landscape)),
-        const SizedBox(height: verticalSpaceS),
-        Center(child: _AppVersion()),
+        Row(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Column(
+                children: [
+                  const _DevelopedBy(orientation: Orientation.landscape),
+                  const SizedBox(height: verticalSpaceS),
+                  _AppVersion(),
+                ],
+              ),
+            ),
+            const SizedBox(width: horizontalSpace),
+            const Expanded(
+              flex: 2,
+              child: _PicsBy(),
+            ),
+          ],
+        ),
       ],
     );
   }

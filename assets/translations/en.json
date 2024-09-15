@@ -191,5 +191,6 @@
     "addPlaceholder" : "Add placeholder",
     "add" : "Add",
     "nameOptional" : "Name (optional)",
-    "noAds" : "Support the development of the app by displaying ads."
+    "noAds" : "Support the development of the app by displaying ads.",
+    "picsBy" : "Pics by"
 }
