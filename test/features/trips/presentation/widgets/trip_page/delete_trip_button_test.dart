@@ -4,7 +4,9 @@ import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
+import 'package:trip_planner/features/settings/domain/entities/settings.dart';
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
+import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 import 'package:trip_planner/ui/widgets/trip/generic_delete_trip_button.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
@@ -35,6 +37,8 @@ void main() {
     email: 'email',
     name: 'name',
     tutorialsData: TutorialsData(),
+    settings: Settings(),
+    largeScreenViewMode: ViewMode.list,
   );
 
   setUp(() {

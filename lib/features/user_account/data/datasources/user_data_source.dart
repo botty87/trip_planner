@@ -90,6 +90,7 @@ final class UserDataSourceImpl implements UserDataSource {
             oldTripsImported: userDB.oldTripsImported,
             settings: userDB.settings,
             tutorialsData: userDB.tutorialsData,
+            largeScreenViewMode: userDB.largeScreenViewMode,
           ));
         });
       } else {

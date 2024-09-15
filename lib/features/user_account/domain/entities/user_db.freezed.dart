@@ -25,6 +25,7 @@ mixin _$UserDB {
   bool get oldTripsImported => throw _privateConstructorUsedError;
   Settings get settings => throw _privateConstructorUsedError;
   TutorialsData get tutorialsData => throw _privateConstructorUsedError;
+  ViewMode get largeScreenViewMode => throw _privateConstructorUsedError;
 
   /// Serializes this UserDB to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $UserDBCopyWith<$Res> {
       String name,
       bool oldTripsImported,
       Settings settings,
-      TutorialsData tutorialsData});
+      TutorialsData tutorialsData,
+      ViewMode largeScreenViewMode});
 
   $SettingsCopyWith<$Res> get settings;
   $TutorialsDataCopyWith<$Res> get tutorialsData;
@@ -71,6 +73,7 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
     Object? oldTripsImported = null,
     Object? settings = null,
     Object? tutorialsData = null,
+    Object? largeScreenViewMode = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -93,6 +96,10 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
           ? _value.tutorialsData
           : tutorialsData // ignore: cast_nullable_to_non_nullable
               as TutorialsData,
+      largeScreenViewMode: null == largeScreenViewMode
+          ? _value.largeScreenViewMode
+          : largeScreenViewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ) as $Val);
   }
 
@@ -129,7 +136,8 @@ abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
       String name,
       bool oldTripsImported,
       Settings settings,
-      TutorialsData tutorialsData});
+      TutorialsData tutorialsData,
+      ViewMode largeScreenViewMode});
 
   @override
   $SettingsCopyWith<$Res> get settings;
@@ -155,6 +163,7 @@ class __$$UserDBImplCopyWithImpl<$Res>
     Object? oldTripsImported = null,
     Object? settings = null,
     Object? tutorialsData = null,
+    Object? largeScreenViewMode = null,
   }) {
     return _then(_$UserDBImpl(
       email: null == email
@@ -177,6 +186,10 @@ class __$$UserDBImplCopyWithImpl<$Res>
           ? _value.tutorialsData
           : tutorialsData // ignore: cast_nullable_to_non_nullable
               as TutorialsData,
+      largeScreenViewMode: null == largeScreenViewMode
+          ? _value.largeScreenViewMode
+          : largeScreenViewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -189,7 +202,8 @@ class _$UserDBImpl implements _UserDB {
       required this.name,
       this.oldTripsImported = false,
       this.settings = const Settings(),
-      this.tutorialsData = const TutorialsData()});
+      this.tutorialsData = const TutorialsData(),
+      this.largeScreenViewMode = ViewMode.grid});
 
   factory _$UserDBImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDBImplFromJson(json);
@@ -207,10 +221,13 @@ class _$UserDBImpl implements _UserDB {
   @override
   @JsonKey()
   final TutorialsData tutorialsData;
+  @override
+  @JsonKey()
+  final ViewMode largeScreenViewMode;
 
   @override
   String toString() {
-    return 'UserDB(email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData)';
+    return 'UserDB(email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData, largeScreenViewMode: $largeScreenViewMode)';
   }
 
   @override
@@ -225,13 +242,15 @@ class _$UserDBImpl implements _UserDB {
             (identical(other.settings, settings) ||
                 other.settings == settings) &&
             (identical(other.tutorialsData, tutorialsData) ||
-                other.tutorialsData == tutorialsData));
+                other.tutorialsData == tutorialsData) &&
+            (identical(other.largeScreenViewMode, largeScreenViewMode) ||
+                other.largeScreenViewMode == largeScreenViewMode));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, name, oldTripsImported, settings, tutorialsData);
+  int get hashCode => Object.hash(runtimeType, email, name, oldTripsImported,
+      settings, tutorialsData, largeScreenViewMode);
 
   /// Create a copy of UserDB
   /// with the given fields replaced by the non-null parameter values.
@@ -255,7 +274,8 @@ abstract class _UserDB implements UserDB {
       required final String name,
       final bool oldTripsImported,
       final Settings settings,
-      final TutorialsData tutorialsData}) = _$UserDBImpl;
+      final TutorialsData tutorialsData,
+      final ViewMode largeScreenViewMode}) = _$UserDBImpl;
 
   factory _UserDB.fromJson(Map<String, dynamic> json) = _$UserDBImpl.fromJson;
 
@@ -269,6 +289,8 @@ abstract class _UserDB implements UserDB {
   Settings get settings;
   @override
   TutorialsData get tutorialsData;
+  @override
+  ViewMode get largeScreenViewMode;
 
   /// Create a copy of UserDB
   /// with the given fields replaced by the non-null parameter values.

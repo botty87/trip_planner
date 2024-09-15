@@ -17,6 +17,9 @@ _$UserDBImpl _$$UserDBImplFromJson(Map<String, dynamic> json) => _$UserDBImpl(
           ? const TutorialsData()
           : TutorialsData.fromJson(
               json['tutorialsData'] as Map<String, dynamic>),
+      largeScreenViewMode:
+          $enumDecodeNullable(_$ViewModeEnumMap, json['largeScreenViewMode']) ??
+              ViewMode.grid,
     );
 
 Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
@@ -26,4 +29,10 @@ Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
       'oldTripsImported': instance.oldTripsImported,
       'settings': instance.settings.toJson(),
       'tutorialsData': instance.tutorialsData.toJson(),
+      'largeScreenViewMode': _$ViewModeEnumMap[instance.largeScreenViewMode]!,
     };
+
+const _$ViewModeEnumMap = {
+  ViewMode.list: 'list',
+  ViewMode.grid: 'grid',
+};

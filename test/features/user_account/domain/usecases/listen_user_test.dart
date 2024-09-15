@@ -2,10 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/usecases/usecase.dart';
+import 'package:trip_planner/features/settings/domain/entities/settings.dart';
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/listen_user.dart';
 import 'package:trip_planner/features/user_account/errors/user_failures.dart';
+import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 
 import '../repositories/mock_user_repository.mocks.dart';
 
@@ -19,6 +21,8 @@ void main() {
     email: '',
     name: '',
     tutorialsData: TutorialsData(),
+    settings: Settings(),
+    largeScreenViewMode: ViewMode.list,
   );
 
   setUp(() {

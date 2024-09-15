@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../ui/widgets/generics/items_render_mode.dart';
 import '../../../settings/domain/entities/settings.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 
@@ -14,6 +15,7 @@ sealed class UserDB with _$UserDB {
     @Default(false) bool oldTripsImported,
     @Default(Settings()) Settings settings,
     @Default(TutorialsData()) TutorialsData tutorialsData,
+    @Default(ViewMode.grid) ViewMode largeScreenViewMode,
   }) = _UserDB;
 
   factory UserDB.fromJson(Map<String, dynamic> json) => _$UserDBFromJson(json);

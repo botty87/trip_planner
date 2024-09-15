@@ -10,6 +10,7 @@ import 'package:trip_planner/features/user_account/data/datasources/user_data_so
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/errors/user_failures.dart';
+import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 
 import 'user_repository_impl_test.mocks.dart';
 
@@ -28,6 +29,8 @@ void main() {
     email: '',
     name: '',
     tutorialsData: TutorialsData(),
+    settings: Settings(),
+    largeScreenViewMode: ViewMode.list,
   );
 
   //Settings for the test

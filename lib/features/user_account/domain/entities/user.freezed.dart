@@ -26,6 +26,7 @@ mixin _$User {
   bool get oldTripsImported => throw _privateConstructorUsedError;
   Settings get settings => throw _privateConstructorUsedError;
   TutorialsData get tutorialsData => throw _privateConstructorUsedError;
+  ViewMode get largeScreenViewMode => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,8 @@ abstract class $UserCopyWith<$Res> {
       String name,
       bool oldTripsImported,
       Settings settings,
-      TutorialsData tutorialsData});
+      TutorialsData tutorialsData,
+      ViewMode largeScreenViewMode});
 
   $SettingsCopyWith<$Res> get settings;
   $TutorialsDataCopyWith<$Res> get tutorialsData;
@@ -74,6 +76,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? oldTripsImported = null,
     Object? settings = null,
     Object? tutorialsData = null,
+    Object? largeScreenViewMode = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -100,6 +103,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.tutorialsData
           : tutorialsData // ignore: cast_nullable_to_non_nullable
               as TutorialsData,
+      largeScreenViewMode: null == largeScreenViewMode
+          ? _value.largeScreenViewMode
+          : largeScreenViewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ) as $Val);
   }
 
@@ -137,7 +144,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String name,
       bool oldTripsImported,
       Settings settings,
-      TutorialsData tutorialsData});
+      TutorialsData tutorialsData,
+      ViewMode largeScreenViewMode});
 
   @override
   $SettingsCopyWith<$Res> get settings;
@@ -163,6 +171,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? oldTripsImported = null,
     Object? settings = null,
     Object? tutorialsData = null,
+    Object? largeScreenViewMode = null,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -189,6 +198,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.tutorialsData
           : tutorialsData // ignore: cast_nullable_to_non_nullable
               as TutorialsData,
+      largeScreenViewMode: null == largeScreenViewMode
+          ? _value.largeScreenViewMode
+          : largeScreenViewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -201,8 +214,9 @@ class _$UserImpl implements _User {
       required this.email,
       required this.name,
       this.oldTripsImported = true,
-      this.settings = const Settings(),
-      required this.tutorialsData});
+      required this.settings,
+      required this.tutorialsData,
+      required this.largeScreenViewMode});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -217,14 +231,15 @@ class _$UserImpl implements _User {
   @JsonKey()
   final bool oldTripsImported;
   @override
-  @JsonKey()
   final Settings settings;
   @override
   final TutorialsData tutorialsData;
+  @override
+  final ViewMode largeScreenViewMode;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData)';
+    return 'User(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData, largeScreenViewMode: $largeScreenViewMode)';
   }
 
   @override
@@ -240,13 +255,15 @@ class _$UserImpl implements _User {
             (identical(other.settings, settings) ||
                 other.settings == settings) &&
             (identical(other.tutorialsData, tutorialsData) ||
-                other.tutorialsData == tutorialsData));
+                other.tutorialsData == tutorialsData) &&
+            (identical(other.largeScreenViewMode, largeScreenViewMode) ||
+                other.largeScreenViewMode == largeScreenViewMode));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, email, name, oldTripsImported, settings, tutorialsData);
+  int get hashCode => Object.hash(runtimeType, id, email, name,
+      oldTripsImported, settings, tutorialsData, largeScreenViewMode);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -270,8 +287,9 @@ abstract class _User implements User {
       required final String email,
       required final String name,
       final bool oldTripsImported,
-      final Settings settings,
-      required final TutorialsData tutorialsData}) = _$UserImpl;
+      required final Settings settings,
+      required final TutorialsData tutorialsData,
+      required final ViewMode largeScreenViewMode}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -287,6 +305,8 @@ abstract class _User implements User {
   Settings get settings;
   @override
   TutorialsData get tutorialsData;
+  @override
+  ViewMode get largeScreenViewMode;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

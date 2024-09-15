@@ -7,6 +7,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/core/usecases/usecase.dart';
+import 'package:trip_planner/features/settings/domain/entities/settings.dart';
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/delete_user.dart';
@@ -15,6 +16,7 @@ import 'package:trip_planner/features/user_account/domain/usecases/reauthenticat
 import 'package:trip_planner/features/user_account/domain/usecases/update_user_details.dart';
 import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/account_page/account_cubit.dart';
+import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 
 import 'account_cubit_test.mocks.dart';
 
@@ -35,6 +37,8 @@ void main() {
     name: 'John Doe',
     email: 'email@email.com',
     tutorialsData: TutorialsData(),
+    settings: Settings(),
+    largeScreenViewMode: ViewMode.list,
   );
 
   setUpAll(() async {
