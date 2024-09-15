@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../../../../../core/constants.dart';
+import '../../../../../ui/widgets/generics/grid_view_checker_mixin.dart';
 import '../../../../../ui/widgets/generics/items_render_mode.dart';
 import '../../cubit/trips/trips_cubit.dart';
 import 'no_trips_widget.dart';
@@ -34,22 +34,21 @@ class LoadedWidget extends HookWidget {
 }
 
 /// This widget is used to show the trips in the list or grid view
-class _TripsWidget extends StatelessWidget {
+class _TripsWidget extends StatelessWidget with GridViewCheckerMixin {
   const _TripsWidget();
 
   @override
   Widget build(BuildContext context) {
-    final itemsRenderMode = context.select<TripsCubit, ItemsRenderMode>((cubit) {
+    final viewMode = context.select<TripsCubit, ViewMode>((cubit) {
       return switch (cubit.state) {
-        final TripsStateLoaded loaded =>
-          MediaQuery.of(context).size.width < minGridViewWidth ? ItemsRenderMode.list : loaded.itemsRenderMode,
-        _ => ItemsRenderMode.list,
+        final TripsStateLoaded loaded => canShowGridView(context) ? loaded.viewMode : ViewMode.list,
+        _ => ViewMode.list,
       };
     });
 
-    return switch (itemsRenderMode) {
-      ItemsRenderMode.list => const TripsListWidget(key: ValueKey('listViewWidget')),
-      ItemsRenderMode.grid => const TripsGridViewWidget(key: ValueKey('gridViewWidget')),
+    return switch (viewMode) {
+      ViewMode.list => const TripsListWidget(key: ValueKey('listViewWidget')),
+      ViewMode.grid => const TripsGridViewWidget(key: ValueKey('gridViewWidget')),
     };
   }
 }

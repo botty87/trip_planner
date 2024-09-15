@@ -1,1 +1,1 @@
-enum ItemsRenderMode { list, grid }
+enum ViewMode { list, grid }

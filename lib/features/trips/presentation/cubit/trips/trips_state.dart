@@ -7,7 +7,7 @@ sealed class TripsState with _$TripsState {
   const factory TripsState.loaded({
     required List<Trip> userTrips,
     required List<Trip> sharedTrips,
-    @Default(ItemsRenderMode.grid) ItemsRenderMode itemsRenderMode,
+    @Default(ViewMode.grid) ViewMode viewMode,
   }) = TripsStateLoaded;
 
   const factory TripsState.error({required String message}) = TripsStateError;

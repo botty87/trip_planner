@@ -100,4 +100,12 @@ class TripsCubit extends Cubit<TripsState> {
     _sharedTripsSubscription?.cancel();
     return super.close();
   }
+
+  void changeViewMode() {
+    return switch (state) {
+      final TripsStateLoaded state =>
+        emit(state.copyWith(viewMode: state.viewMode == ViewMode.list ? ViewMode.grid : ViewMode.list)),
+      _ => null,
+    };
+  }
 }

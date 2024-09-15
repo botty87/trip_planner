@@ -19,8 +19,8 @@ mixin _$TripsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)
+    required TResult Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)
         loaded,
     required TResult Function(String message) error,
   }) =>
@@ -28,8 +28,8 @@ mixin _$TripsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)?
+    TResult? Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
     TResult? Function(String message)? error,
   }) =>
@@ -37,8 +37,8 @@ mixin _$TripsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)?
+    TResult Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -139,8 +139,8 @@ class _$TripsStateInitialImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)
+    required TResult Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -151,8 +151,8 @@ class _$TripsStateInitialImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)?
+    TResult? Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -163,8 +163,8 @@ class _$TripsStateInitialImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)?
+    TResult Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -220,10 +220,7 @@ abstract class _$$TripsStateLoadedImplCopyWith<$Res> {
           $Res Function(_$TripsStateLoadedImpl) then) =
       __$$TripsStateLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {List<Trip> userTrips,
-      List<Trip> sharedTrips,
-      ItemsRenderMode itemsRenderMode});
+  $Res call({List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode});
 }
 
 /// @nodoc
@@ -241,7 +238,7 @@ class __$$TripsStateLoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? userTrips = null,
     Object? sharedTrips = null,
-    Object? itemsRenderMode = null,
+    Object? viewMode = null,
   }) {
     return _then(_$TripsStateLoadedImpl(
       userTrips: null == userTrips
@@ -252,10 +249,10 @@ class __$$TripsStateLoadedImplCopyWithImpl<$Res>
           ? _value._sharedTrips
           : sharedTrips // ignore: cast_nullable_to_non_nullable
               as List<Trip>,
-      itemsRenderMode: null == itemsRenderMode
-          ? _value.itemsRenderMode
-          : itemsRenderMode // ignore: cast_nullable_to_non_nullable
-              as ItemsRenderMode,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -268,7 +265,7 @@ class _$TripsStateLoadedImpl
   const _$TripsStateLoadedImpl(
       {required final List<Trip> userTrips,
       required final List<Trip> sharedTrips,
-      this.itemsRenderMode = ItemsRenderMode.grid})
+      this.viewMode = ViewMode.grid})
       : _userTrips = userTrips,
         _sharedTrips = sharedTrips;
 
@@ -290,11 +287,11 @@ class _$TripsStateLoadedImpl
 
   @override
   @JsonKey()
-  final ItemsRenderMode itemsRenderMode;
+  final ViewMode viewMode;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TripsState.loaded(userTrips: $userTrips, sharedTrips: $sharedTrips, itemsRenderMode: $itemsRenderMode)';
+    return 'TripsState.loaded(userTrips: $userTrips, sharedTrips: $sharedTrips, viewMode: $viewMode)';
   }
 
   @override
@@ -304,7 +301,7 @@ class _$TripsStateLoadedImpl
       ..add(DiagnosticsProperty('type', 'TripsState.loaded'))
       ..add(DiagnosticsProperty('userTrips', userTrips))
       ..add(DiagnosticsProperty('sharedTrips', sharedTrips))
-      ..add(DiagnosticsProperty('itemsRenderMode', itemsRenderMode));
+      ..add(DiagnosticsProperty('viewMode', viewMode));
   }
 
   @override
@@ -316,8 +313,8 @@ class _$TripsStateLoadedImpl
                 .equals(other._userTrips, _userTrips) &&
             const DeepCollectionEquality()
                 .equals(other._sharedTrips, _sharedTrips) &&
-            (identical(other.itemsRenderMode, itemsRenderMode) ||
-                other.itemsRenderMode == itemsRenderMode));
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode));
   }
 
   @override
@@ -325,7 +322,7 @@ class _$TripsStateLoadedImpl
       runtimeType,
       const DeepCollectionEquality().hash(_userTrips),
       const DeepCollectionEquality().hash(_sharedTrips),
-      itemsRenderMode);
+      viewMode);
 
   /// Create a copy of TripsState
   /// with the given fields replaced by the non-null parameter values.
@@ -340,38 +337,38 @@ class _$TripsStateLoadedImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)
+    required TResult Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)
         loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(userTrips, sharedTrips, itemsRenderMode);
+    return loaded(userTrips, sharedTrips, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)?
+    TResult? Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(userTrips, sharedTrips, itemsRenderMode);
+    return loaded?.call(userTrips, sharedTrips, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)?
+    TResult Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(userTrips, sharedTrips, itemsRenderMode);
+      return loaded(userTrips, sharedTrips, viewMode);
     }
     return orElse();
   }
@@ -415,11 +412,11 @@ abstract class TripsStateLoaded implements TripsState {
   const factory TripsStateLoaded(
       {required final List<Trip> userTrips,
       required final List<Trip> sharedTrips,
-      final ItemsRenderMode itemsRenderMode}) = _$TripsStateLoadedImpl;
+      final ViewMode viewMode}) = _$TripsStateLoadedImpl;
 
   List<Trip> get userTrips;
   List<Trip> get sharedTrips;
-  ItemsRenderMode get itemsRenderMode;
+  ViewMode get viewMode;
 
   /// Create a copy of TripsState
   /// with the given fields replaced by the non-null parameter values.
@@ -508,8 +505,8 @@ class _$TripsStateErrorImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)
+    required TResult Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -520,8 +517,8 @@ class _$TripsStateErrorImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)?
+    TResult? Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -532,8 +529,8 @@ class _$TripsStateErrorImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Trip> userTrips, List<Trip> sharedTrips,
-            ItemsRenderMode itemsRenderMode)?
+    TResult Function(
+            List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
