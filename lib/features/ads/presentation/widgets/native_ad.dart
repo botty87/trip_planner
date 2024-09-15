@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart' as googleAds;
+import 'package:google_mobile_ads/google_mobile_ads.dart' as google_ads;
 
 import '../../../../core/di/di.dart';
 import '../../domain/entities/ads.dart';
@@ -42,7 +42,7 @@ class NativeAd extends HookWidget {
                         minHeight: 93, // minimum recommended height
                         maxHeight: maxHeight,
                       ),
-                      child: Center(child: googleAds.AdWidget(ad: ad)),
+                      child: Center(child: google_ads.AdWidget(ad: ad)),
                     ),
                   ),
                 ),

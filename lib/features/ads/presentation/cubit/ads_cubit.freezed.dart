@@ -19,7 +19,7 @@ mixin _$AdsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(googleAds.AdWithView ad) loaded,
+    required TResult Function(google_ads.AdWithView ad) loaded,
     required TResult Function() error,
     required TResult Function() notSupported,
   }) =>
@@ -27,7 +27,7 @@ mixin _$AdsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(googleAds.AdWithView ad)? loaded,
+    TResult? Function(google_ads.AdWithView ad)? loaded,
     TResult? Function()? error,
     TResult? Function()? notSupported,
   }) =>
@@ -35,7 +35,7 @@ mixin _$AdsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(googleAds.AdWithView ad)? loaded,
+    TResult Function(google_ads.AdWithView ad)? loaded,
     TResult Function()? error,
     TResult Function()? notSupported,
     required TResult orElse(),
@@ -136,7 +136,7 @@ class _$AdsInitialImpl with DiagnosticableTreeMixin implements AdsInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(googleAds.AdWithView ad) loaded,
+    required TResult Function(google_ads.AdWithView ad) loaded,
     required TResult Function() error,
     required TResult Function() notSupported,
   }) {
@@ -147,7 +147,7 @@ class _$AdsInitialImpl with DiagnosticableTreeMixin implements AdsInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(googleAds.AdWithView ad)? loaded,
+    TResult? Function(google_ads.AdWithView ad)? loaded,
     TResult? Function()? error,
     TResult? Function()? notSupported,
   }) {
@@ -158,7 +158,7 @@ class _$AdsInitialImpl with DiagnosticableTreeMixin implements AdsInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(googleAds.AdWithView ad)? loaded,
+    TResult Function(google_ads.AdWithView ad)? loaded,
     TResult Function()? error,
     TResult Function()? notSupported,
     required TResult orElse(),
@@ -217,7 +217,7 @@ abstract class _$$AdsLoadedImplCopyWith<$Res> {
           _$AdsLoadedImpl value, $Res Function(_$AdsLoadedImpl) then) =
       __$$AdsLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({googleAds.AdWithView ad});
+  $Res call({google_ads.AdWithView ad});
 }
 
 /// @nodoc
@@ -239,7 +239,7 @@ class __$$AdsLoadedImplCopyWithImpl<$Res>
       ad: null == ad
           ? _value.ad
           : ad // ignore: cast_nullable_to_non_nullable
-              as googleAds.AdWithView,
+              as google_ads.AdWithView,
     ));
   }
 }
@@ -250,7 +250,7 @@ class _$AdsLoadedImpl with DiagnosticableTreeMixin implements AdsLoaded {
   const _$AdsLoadedImpl({required this.ad});
 
   @override
-  final googleAds.AdWithView ad;
+  final google_ads.AdWithView ad;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -288,7 +288,7 @@ class _$AdsLoadedImpl with DiagnosticableTreeMixin implements AdsLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(googleAds.AdWithView ad) loaded,
+    required TResult Function(google_ads.AdWithView ad) loaded,
     required TResult Function() error,
     required TResult Function() notSupported,
   }) {
@@ -299,7 +299,7 @@ class _$AdsLoadedImpl with DiagnosticableTreeMixin implements AdsLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(googleAds.AdWithView ad)? loaded,
+    TResult? Function(google_ads.AdWithView ad)? loaded,
     TResult? Function()? error,
     TResult? Function()? notSupported,
   }) {
@@ -310,7 +310,7 @@ class _$AdsLoadedImpl with DiagnosticableTreeMixin implements AdsLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(googleAds.AdWithView ad)? loaded,
+    TResult Function(google_ads.AdWithView ad)? loaded,
     TResult Function()? error,
     TResult Function()? notSupported,
     required TResult orElse(),
@@ -360,10 +360,10 @@ class _$AdsLoadedImpl with DiagnosticableTreeMixin implements AdsLoaded {
 }
 
 abstract class AdsLoaded implements AdsState {
-  const factory AdsLoaded({required final googleAds.AdWithView ad}) =
+  const factory AdsLoaded({required final google_ads.AdWithView ad}) =
       _$AdsLoadedImpl;
 
-  googleAds.AdWithView get ad;
+  google_ads.AdWithView get ad;
 
   /// Create a copy of AdsState
   /// with the given fields replaced by the non-null parameter values.
@@ -420,7 +420,7 @@ class _$AdsErrorImpl with DiagnosticableTreeMixin implements AdsError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(googleAds.AdWithView ad) loaded,
+    required TResult Function(google_ads.AdWithView ad) loaded,
     required TResult Function() error,
     required TResult Function() notSupported,
   }) {
@@ -431,7 +431,7 @@ class _$AdsErrorImpl with DiagnosticableTreeMixin implements AdsError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(googleAds.AdWithView ad)? loaded,
+    TResult? Function(google_ads.AdWithView ad)? loaded,
     TResult? Function()? error,
     TResult? Function()? notSupported,
   }) {
@@ -442,7 +442,7 @@ class _$AdsErrorImpl with DiagnosticableTreeMixin implements AdsError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(googleAds.AdWithView ad)? loaded,
+    TResult Function(google_ads.AdWithView ad)? loaded,
     TResult Function()? error,
     TResult Function()? notSupported,
     required TResult orElse(),
@@ -545,7 +545,7 @@ class _$AdsNotSupportedImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(googleAds.AdWithView ad) loaded,
+    required TResult Function(google_ads.AdWithView ad) loaded,
     required TResult Function() error,
     required TResult Function() notSupported,
   }) {
@@ -556,7 +556,7 @@ class _$AdsNotSupportedImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(googleAds.AdWithView ad)? loaded,
+    TResult? Function(google_ads.AdWithView ad)? loaded,
     TResult? Function()? error,
     TResult? Function()? notSupported,
   }) {
@@ -567,7 +567,7 @@ class _$AdsNotSupportedImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(googleAds.AdWithView ad)? loaded,
+    TResult Function(google_ads.AdWithView ad)? loaded,
     TResult Function()? error,
     TResult Function()? notSupported,
     required TResult orElse(),

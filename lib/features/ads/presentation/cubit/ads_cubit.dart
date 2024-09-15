@@ -2,15 +2,15 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart' as google_ads;
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:injectable/injectable.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart' as googleAds;
 
 import '../../../../core/utilities/logger.dart';
 import '../../domain/entities/ads.dart';
 
-part 'ads_state.dart';
 part 'ads_cubit.freezed.dart';
+part 'ads_state.dart';
 
 @injectable
 class AdsCubit extends Cubit<AdsState> {
@@ -32,13 +32,13 @@ class AdsCubit extends Cubit<AdsState> {
       return;
     }
 
-    googleAds.NativeAd(
+    google_ads.NativeAd(
       adUnitId: _ads.adUnitId,
-      request: const googleAds.AdRequest(),
-      nativeTemplateStyle: googleAds.NativeTemplateStyle(templateType: googleAds.TemplateType.small),
-      listener: googleAds.NativeAdListener(
+      request: const google_ads.AdRequest(),
+      nativeTemplateStyle: google_ads.NativeTemplateStyle(templateType: google_ads.TemplateType.small),
+      listener: google_ads.NativeAdListener(
         onAdLoaded: (ad) {
-          emit(AdsState.loaded(ad: ad as googleAds.NativeAd));
+          emit(AdsState.loaded(ad: ad as google_ads.NativeAd));
         },
         onAdFailedToLoad: (ad, err) {
           ad.dispose();
