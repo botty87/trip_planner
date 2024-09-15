@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart' as google_ads;
 
 import '../../../../core/di/di.dart';
 import '../../domain/entities/ads.dart';
 import '../cubit/ads_cubit.dart';
+import 'native_ad_error.dart';
+import 'native_ad_loaded.dart';
 
 class NativeAd extends HookWidget {
   NativeAd.trips({super.key, this.padding, this.maxHeight = 105}) : ads = getIt<AdsTrips>();
@@ -31,21 +32,8 @@ class NativeAd extends HookWidget {
             child: switch (state) {
               AdsInitial _ => const SizedBox.shrink(),
               AdsNotSupported _ => const SizedBox.shrink(),
-              AdsError _ => const SizedBox.shrink(),
-              AdsLoaded(:final ad) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Padding(
-                    padding: padding ?? EdgeInsets.zero,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minWidth: 320, // minimum recommended width
-                        minHeight: 93, // minimum recommended height
-                        maxHeight: maxHeight,
-                      ),
-                      child: Center(child: google_ads.AdWidget(ad: ad)),
-                    ),
-                  ),
-                ),
+              AdsError _ => NativeAdError(padding: padding),
+              AdsLoaded(:final ad) => NativeAdLoaded(ad: ad, padding: padding, maxHeight: maxHeight),
             },
           );
         },

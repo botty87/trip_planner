@@ -190,5 +190,6 @@ abstract class  LocaleKeys {
   static const addPlaceholder = 'addPlaceholder';
   static const add = 'add';
   static const nameOptional = 'nameOptional';
+  static const noAds = 'noAds';
 
 }

@@ -149,6 +149,7 @@ flutter:
     - assets/svg/
     - assets/google_fonts/
     - assets/tutorial/
+    - assets/noads/
     - shorebird.yaml
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

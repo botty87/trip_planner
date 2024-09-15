@@ -111,6 +111,25 @@ class $AssetsGoogleFontsGen {
       ];
 }
 
+class $AssetsNoadsGen {
+  const $AssetsNoadsGen();
+
+  /// File path: assets/noads/noad0.webp
+  AssetGenImage get noad0 => const AssetGenImage('assets/noads/noad0.webp');
+
+  /// File path: assets/noads/noad1.webp
+  AssetGenImage get noad1 => const AssetGenImage('assets/noads/noad1.webp');
+
+  /// File path: assets/noads/noad2.webp
+  AssetGenImage get noad2 => const AssetGenImage('assets/noads/noad2.webp');
+
+  /// File path: assets/noads/noad3.webp
+  AssetGenImage get noad3 => const AssetGenImage('assets/noads/noad3.webp');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [noad0, noad1, noad2, noad3];
+}
+
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
@@ -216,6 +235,7 @@ class Assets {
   Assets._();
 
   static const $AssetsGoogleFontsGen googleFonts = $AssetsGoogleFontsGen();
+  static const $AssetsNoadsGen noads = $AssetsNoadsGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
   static const $AssetsTutorialGen tutorial = $AssetsTutorialGen();

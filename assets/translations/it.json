@@ -191,5 +191,6 @@
     "placeholder": "Segnaposto",
     "addPlaceholder" : "Aggiungi segnaposto",
     "add" : "Aggiungi",
-    "nameOptional" : "Nome (opzionale)"
+    "nameOptional" : "Nome (opzionale)",
+    "noAds" : "Supporta lo sviluppo dell'app permettendo gli annunci."
 }

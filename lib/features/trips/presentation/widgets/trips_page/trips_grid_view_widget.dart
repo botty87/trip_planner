@@ -42,7 +42,7 @@ class TripsGridViewWidget extends HookWidget with TripsSortMixin {
                   crossAxisCount: 3,
                   mainAxisSpacing: horizontalSpace,
                   crossAxisSpacing: verticalSpace,
-                  mainAxisExtent: 250,
+                  mainAxisExtent: tripGridHeight,
                 ),
                 itemCount: trips.length + 1,
                 itemBuilder: (context, index) {
