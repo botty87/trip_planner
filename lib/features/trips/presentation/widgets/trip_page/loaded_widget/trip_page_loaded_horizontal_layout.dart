@@ -36,10 +36,17 @@ class TripPageLoadedHorizontalLayout extends StatelessWidget {
                 minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-                  child: Column(
-                    children: [
-                      NativeAd.trip(),
-                      Expanded(
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: ConstrainedBox(
+                          //In case of error the height must be at maximum 1/3 ot the container height
+                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.33),
+                          child: NativeAd.trip(),
+                        ),
+                      ),
+                      SliverFillRemaining(
+                        hasScrollBody: false,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
