@@ -7,8 +7,8 @@ import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/settings/domain/entities/settings.dart';
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart';
+import 'package:trip_planner/features/user_account/data/models/user_model.dart';
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart';
-import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/errors/user_failures.dart';
 import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 
@@ -24,7 +24,7 @@ void main() {
   late UserRepositoryImpl userRepositoryImpl;
 
   //User for the test
-  const User tUser = User(
+  const tUser = UserModel(
     id: '123',
     email: '',
     name: '',

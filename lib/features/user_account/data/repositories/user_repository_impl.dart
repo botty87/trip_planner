@@ -43,7 +43,7 @@ final class UserRepositoryImpl implements UserRepository {
   @override
   Stream<Either<UserFailures, User?>> listenUser() async* {
     try {
-      yield* _userDataSource.user.map((user) => right(user));
+      yield* _userDataSource.user.map((userModel) => right(userModel?.toUser()));
     } catch (e) {
       yield left(const UserFailures.unknownError());
     }

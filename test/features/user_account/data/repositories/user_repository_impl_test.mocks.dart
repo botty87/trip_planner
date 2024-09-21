@@ -15,7 +15,7 @@ import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.d
     as _i7;
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
     as _i3;
-import 'package:trip_planner/features/user_account/domain/entities/user.dart'
+import 'package:trip_planner/features/user_account/data/models/user_model.dart'
     as _i5;
 
 // ignore_for_file: type=lint
@@ -46,11 +46,11 @@ class _FakeFirebaseApp_0 extends _i1.SmartFake implements _i2.FirebaseApp {
 /// See the documentation for Mockito's code generation for more information.
 class MockUserDataSource extends _i1.Mock implements _i3.UserDataSource {
   @override
-  _i4.Stream<_i5.User?> get user => (super.noSuchMethod(
+  _i4.Stream<_i5.UserModel?> get user => (super.noSuchMethod(
         Invocation.getter(#user),
-        returnValue: _i4.Stream<_i5.User?>.empty(),
-        returnValueForMissingStub: _i4.Stream<_i5.User?>.empty(),
-      ) as _i4.Stream<_i5.User?>);
+        returnValue: _i4.Stream<_i5.UserModel?>.empty(),
+        returnValueForMissingStub: _i4.Stream<_i5.UserModel?>.empty(),
+      ) as _i4.Stream<_i5.UserModel?>);
 
   @override
   dynamic registerUser({

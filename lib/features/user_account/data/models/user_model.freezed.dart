@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_db.dart';
+part of 'user_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UserDB _$UserDBFromJson(Map<String, dynamic> json) {
-  return _UserDB.fromJson(json);
+UserModel _$UserModelFromJson(Map<String, dynamic> json) {
+  return _UserModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserDB {
+mixin _$UserModel {
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get oldTripsImported => throw _privateConstructorUsedError;
@@ -27,22 +29,24 @@ mixin _$UserDB {
   TutorialsData get tutorialsData => throw _privateConstructorUsedError;
   ViewMode get largeScreenViewMode => throw _privateConstructorUsedError;
 
-  /// Serializes this UserDB to a JSON map.
+  /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of UserDB
+  /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserDBCopyWith<UserDB> get copyWith => throw _privateConstructorUsedError;
+  $UserModelCopyWith<UserModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserDBCopyWith<$Res> {
-  factory $UserDBCopyWith(UserDB value, $Res Function(UserDB) then) =
-      _$UserDBCopyWithImpl<$Res, UserDB>;
+abstract class $UserModelCopyWith<$Res> {
+  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
+      _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String email,
+      {@JsonKey(includeFromJson: false, includeToJson: false) String? id,
+      String email,
       String name,
       bool oldTripsImported,
       Settings settings,
@@ -54,20 +58,21 @@ abstract class $UserDBCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
-    implements $UserDBCopyWith<$Res> {
-  _$UserDBCopyWithImpl(this._value, this._then);
+class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
+    implements $UserModelCopyWith<$Res> {
+  _$UserModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UserDB
+  /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? email = null,
     Object? name = null,
     Object? oldTripsImported = null,
@@ -76,6 +81,10 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
     Object? largeScreenViewMode = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -103,7 +112,7 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
     ) as $Val);
   }
 
-  /// Create a copy of UserDB
+  /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -113,7 +122,7 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
     });
   }
 
-  /// Create a copy of UserDB
+  /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -125,14 +134,16 @@ class _$UserDBCopyWithImpl<$Res, $Val extends UserDB>
 }
 
 /// @nodoc
-abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
-  factory _$$UserDBImplCopyWith(
-          _$UserDBImpl value, $Res Function(_$UserDBImpl) then) =
-      __$$UserDBImplCopyWithImpl<$Res>;
+abstract class _$$UserModelImplCopyWith<$Res>
+    implements $UserModelCopyWith<$Res> {
+  factory _$$UserModelImplCopyWith(
+          _$UserModelImpl value, $Res Function(_$UserModelImpl) then) =
+      __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String email,
+      {@JsonKey(includeFromJson: false, includeToJson: false) String? id,
+      String email,
       String name,
       bool oldTripsImported,
       Settings settings,
@@ -146,18 +157,19 @@ abstract class _$$UserDBImplCopyWith<$Res> implements $UserDBCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$UserDBImplCopyWithImpl<$Res>
-    extends _$UserDBCopyWithImpl<$Res, _$UserDBImpl>
-    implements _$$UserDBImplCopyWith<$Res> {
-  __$$UserDBImplCopyWithImpl(
-      _$UserDBImpl _value, $Res Function(_$UserDBImpl) _then)
+class __$$UserModelImplCopyWithImpl<$Res>
+    extends _$UserModelCopyWithImpl<$Res, _$UserModelImpl>
+    implements _$$UserModelImplCopyWith<$Res> {
+  __$$UserModelImplCopyWithImpl(
+      _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UserDB
+  /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? email = null,
     Object? name = null,
     Object? oldTripsImported = null,
@@ -165,7 +177,11 @@ class __$$UserDBImplCopyWithImpl<$Res>
     Object? tutorialsData = null,
     Object? largeScreenViewMode = null,
   }) {
-    return _then(_$UserDBImpl(
+    return _then(_$UserModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -196,18 +212,23 @@ class __$$UserDBImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserDBImpl implements _UserDB {
-  const _$UserDBImpl(
-      {required this.email,
+class _$UserModelImpl extends _UserModel {
+  const _$UserModelImpl(
+      {@JsonKey(includeFromJson: false, includeToJson: false) this.id,
+      required this.email,
       required this.name,
       this.oldTripsImported = false,
       this.settings = const Settings(),
       this.tutorialsData = const TutorialsData(),
-      this.largeScreenViewMode = ViewMode.grid});
+      this.largeScreenViewMode = ViewMode.grid})
+      : super._();
 
-  factory _$UserDBImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserDBImplFromJson(json);
+  factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserModelImplFromJson(json);
 
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final String? id;
   @override
   final String email;
   @override
@@ -227,14 +248,15 @@ class _$UserDBImpl implements _UserDB {
 
   @override
   String toString() {
-    return 'UserDB(email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData, largeScreenViewMode: $largeScreenViewMode)';
+    return 'UserModel(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData, largeScreenViewMode: $largeScreenViewMode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserDBImpl &&
+            other is _$UserModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.oldTripsImported, oldTripsImported) ||
@@ -249,36 +271,42 @@ class _$UserDBImpl implements _UserDB {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, email, name, oldTripsImported,
-      settings, tutorialsData, largeScreenViewMode);
+  int get hashCode => Object.hash(runtimeType, id, email, name,
+      oldTripsImported, settings, tutorialsData, largeScreenViewMode);
 
-  /// Create a copy of UserDB
+  /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>
-      __$$UserDBImplCopyWithImpl<_$UserDBImpl>(this, _$identity);
+  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
+      __$$UserModelImplCopyWithImpl<_$UserModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserDBImplToJson(
+    return _$$UserModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserDB implements UserDB {
-  const factory _UserDB(
-      {required final String email,
+abstract class _UserModel extends UserModel {
+  const factory _UserModel(
+      {@JsonKey(includeFromJson: false, includeToJson: false) final String? id,
+      required final String email,
       required final String name,
       final bool oldTripsImported,
       final Settings settings,
       final TutorialsData tutorialsData,
-      final ViewMode largeScreenViewMode}) = _$UserDBImpl;
+      final ViewMode largeScreenViewMode}) = _$UserModelImpl;
+  const _UserModel._() : super._();
 
-  factory _UserDB.fromJson(Map<String, dynamic> json) = _$UserDBImpl.fromJson;
+  factory _UserModel.fromJson(Map<String, dynamic> json) =
+      _$UserModelImpl.fromJson;
 
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get id;
   @override
   String get email;
   @override
@@ -292,10 +320,10 @@ abstract class _UserDB implements UserDB {
   @override
   ViewMode get largeScreenViewMode;
 
-  /// Create a copy of UserDB
+  /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserDBImplCopyWith<_$UserDBImpl> get copyWith =>
+  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

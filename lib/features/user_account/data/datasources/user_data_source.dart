@@ -9,12 +9,11 @@ import '../../../../core/db/users_collection_ref.dart';
 import '../../../../core/di/di.dart';
 import '../../../settings/domain/entities/settings.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
-import '../../domain/entities/user.dart';
-import '../../domain/entities/user_db.dart';
 import '../../errors/user_exception.dart';
+import '../models/user_model.dart';
 
 abstract interface class UserDataSource {
-  Stream<User?> get user;
+  Stream<UserModel?> get user;
 
   registerUser({required String email, required String password, required String name});
 
@@ -43,10 +42,10 @@ final class UserDataSourceImpl implements UserDataSource {
   final FirebaseFirestore firebaseFirestore;
   final InternetConnection internetConnection;
 
-  final StreamController<User?> _userStreamController = StreamController<User?>();
+  final StreamController<UserModel?> _userStreamController = StreamController<UserModel?>();
 
   @override
-  late final Stream<User?> user = _userStreamController.stream;
+  late final Stream<UserModel?> user = _userStreamController.stream;
 
   late final _usersCollection = getIt<UsersCollectionRef>().withConverter;
 
@@ -57,7 +56,7 @@ final class UserDataSourceImpl implements UserDataSource {
       final userDoc = _usersCollection.doc(firebaseUser.uid);
       var userDocSnapshot = await userDoc.get();
       if (!userDocSnapshot.exists) {
-        final userDB = UserDB(
+        final userDB = UserModel(
           email: firebaseUser.email!,
           //This is needed because old users don't have a name
           name: firebaseUser.displayName ?? firebaseUser.email!.split('@').first,
@@ -82,7 +81,7 @@ final class UserDataSourceImpl implements UserDataSource {
         _userStreamSubscription =
             _usersCollection.doc(user.uid).snapshots().listen((userDocSnapshot) {
           final userDB = userDocSnapshot.data()!;
-          _userStreamController.add(User(
+          _userStreamController.add(UserModel(
             id: user.uid,
             email: user.email!,
             //This is needed because old users don't have a name
@@ -103,7 +102,7 @@ final class UserDataSourceImpl implements UserDataSource {
   registerUser({required String email, required String password, required String name}) async {
     await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
     await firebaseAuth.currentUser!.updateDisplayName(name);
-    await _usersCollection.doc(firebaseAuth.currentUser!.uid).set(UserDB(
+    await _usersCollection.doc(firebaseAuth.currentUser!.uid).set(UserModel(
           email: email,
           name: name,
           oldTripsImported: true,

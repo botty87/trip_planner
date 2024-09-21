@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_db.dart';
+part of 'user_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserDBImpl _$$UserDBImplFromJson(Map<String, dynamic> json) => _$UserDBImpl(
+_$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
+    _$UserModelImpl(
       email: json['email'] as String,
       name: json['name'] as String,
       oldTripsImported: json['oldTripsImported'] as bool? ?? false,
@@ -22,7 +23,7 @@ _$UserDBImpl _$$UserDBImplFromJson(Map<String, dynamic> json) => _$UserDBImpl(
               ViewMode.grid,
     );
 
-Map<String, dynamic> _$$UserDBImplToJson(_$UserDBImpl instance) =>
+Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
       'email': instance.email,
       'name': instance.name,
