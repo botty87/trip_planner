@@ -118,12 +118,21 @@ class MyApp extends StatelessWidget {
   BlocListener _settingsListener() {
     return BlocListener<UserCubit, UserState>(
       listenWhen: (previous, current) {
-        final previousSettings = previous.mapOrNull(loggedIn: (value) => value.user.settings);
-        final currentSettings = current.mapOrNull(loggedIn: (value) => value.user.settings);
+        final previousSettings = switch (previous) {
+          final UserStateLoggedIn loggedInState => loggedInState.user.settings,
+          _ => null,
+        };
+        final currentSettings = switch (current) {
+          final UserStateLoggedIn loggedInState => loggedInState.user.settings,
+          _ => null,
+        };
         return previousSettings != currentSettings;
       },
       listener: (context, state) {
-        final settings = state.mapOrNull(loggedIn: (value) => value.user.settings);
+        final settings = switch (state) {
+          final UserStateLoggedIn loggedInState => loggedInState.user.settings,
+          _ => null,
+        };
         context.read<SettingsCubit>().updateSettingsFromUser(settings);
       },
     );
@@ -132,12 +141,21 @@ class MyApp extends StatelessWidget {
   BlocListener _tutorialsListener() {
     return BlocListener<UserCubit, UserState>(
       listenWhen: (previous, current) {
-        final previousTutorialsData = previous.mapOrNull(loggedIn: (value) => value.user.tutorialsData);
-        final currentTutorialsData = current.mapOrNull(loggedIn: (value) => value.user.tutorialsData);
+        final previousTutorialsData = switch (previous) {
+          final UserStateLoggedIn loggedInState => loggedInState.user.tutorialsData,
+          _ => null,
+        };
+        final currentTutorialsData = switch (current) {
+          final UserStateLoggedIn loggedInState => loggedInState.user.tutorialsData,
+          _ => null,
+        };
         return previousTutorialsData != currentTutorialsData;
       },
       listener: (context, state) {
-        final tutorialsData = state.mapOrNull(loggedIn: (value) => value.user.tutorialsData);
+        final tutorialsData = switch (state) {
+          final UserStateLoggedIn loggedInState => loggedInState.user.tutorialsData,
+          _ => null,
+        };
         context.read<TutorialCubit>().updateTutorialsDataFromUser(tutorialsData);
       },
     );
