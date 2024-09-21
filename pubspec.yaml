@@ -117,6 +117,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.5.2
+  #TODO: remove this, beacuse is discontinued
   golden_toolkit: ^0.15.0
   injectable_generator: ^2.6.1
   json_serializable: ^6.7.0
