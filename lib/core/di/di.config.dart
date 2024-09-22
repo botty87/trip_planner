@@ -476,12 +476,13 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i605.AddUserForShare(gh<_i843.TripsRepository>()));
     gh.lazySingleton<_i504.DeleteTrip>(
         () => _i504.DeleteTrip(gh<_i843.TripsRepository>()));
-    gh.factoryParam<_i704.TripCubit, _i910.Trip, dynamic>((
+    gh.factoryParam<_i704.TripCubit, _i910.Trip, _i985.ViewMode>((
       trip,
-      _,
+      viewMode,
     ) =>
         _i704.TripCubit(
           trip: trip,
+          viewMode: viewMode,
           saveTrip: gh<_i687.UpdateTrip>(),
           deleteTrip: gh<_i504.DeleteTrip>(),
           listenDayTrips: gh<_i278.ListenDayTrips>(),

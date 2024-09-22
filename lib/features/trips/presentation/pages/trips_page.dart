@@ -11,7 +11,9 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../../ui/widgets/background/scaffold_transparent.dart';
 import '../../../../ui/widgets/generics/grid_view_checker_mixin.dart';
 import '../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../../ui/widgets/view_mode/view_mode_action_button.dart';
 import '../../../../ui/widgets/view_mode/view_mode_listener.dart';
+import '../../../settings/domain/entities/view_preferences.dart';
 import '../../../settings/domain/usecases/update_view_preferences.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../cubit/trips/trips_cubit.dart';
@@ -19,7 +21,6 @@ import '../widgets/trips_page/drawer.dart';
 import '../widgets/trips_page/loaded_widget.dart';
 import '../widgets/trips_page/trips_error_widget.dart';
 import '../widgets/trips_page/trips_page_initial_widget.dart';
-import '../widgets/trips_page/trips_view_mode_button.dart';
 
 @RoutePage()
 class TripsPage extends StatelessWidget with GridViewCheckerMixin {
@@ -42,35 +43,56 @@ class TripsPage extends StatelessWidget with GridViewCheckerMixin {
 
     return BlocProvider<TripsCubit>(
       create: (context) => getIt(param1: userId, param2: viewMode),
-      child: ViewModeListener(
-        viewModePage: ViewModePage.trips,
-        onViewModeChanged: (viewMode) => context.read<TripsCubit>().updateViewModeFromUser(viewMode),
-        child: ScaffoldTransparent(
-          hasBackgroundImage: context.hasBackgroundImage,
-          appBar: AppBar(
-            scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
-            backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
-            title: Text(LocaleKeys.tripsPageTitle.tr()),
-            actions: canShowGridView(context) ? [const TripsViewModeButton()] : null,
-          ),
-          body: BlocBuilder<TripsCubit, TripsState>(
-            buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
-            builder: (context, state) => TripPagesAnimatedSwitcher(
-              child: state.map(
-                initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
-                loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
-                error: (state) => Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
-              ),
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              context.pushRoute(NewTripRoute());
+      //Wrap in a builder to avoid TripsCubit not found in onViewModeChanged
+      child: Builder(
+        builder: (context) {
+          return ViewModeListener(
+            viewModePage: ViewModePage.trips,
+            onViewModeChanged: (viewMode) {
+              context.read<TripsCubit>().updateViewModeFromUser(viewMode);
             },
-            child: const Icon(Icons.add),
-          ),
-          drawer: const TripsPageDrawer(),
-        ),
+            child: ScaffoldTransparent(
+              hasBackgroundImage: context.hasBackgroundImage,
+              appBar: AppBar(
+                scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
+                backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
+                title: Text(LocaleKeys.tripsPageTitle.tr()),
+                actions: canShowGridView(context)
+                    ? [
+                        BlocSelector<TripsCubit, TripsState, ViewMode>(
+                          selector: (state) => state.viewMode,
+                          builder: (context, viewMode) {
+                            final cubit = context.read<TripsCubit>();
+                            //Future.delayed(const Duration(seconds: 3), () => cubit.changeViewMode());
+                            return ViewModeActionButton(
+                              viewMode: viewMode,
+                              onPressed: () => cubit.changeViewMode(),
+                            );
+                          },
+                        ),
+                      ]
+                    : null,
+              ),
+              body: BlocBuilder<TripsCubit, TripsState>(
+                buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
+                builder: (context, state) => TripPagesAnimatedSwitcher(
+                  child: state.map(
+                    initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
+                    loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
+                    error: (state) => Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
+                  ),
+                ),
+              ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  context.pushRoute(NewTripRoute());
+                },
+                child: const Icon(Icons.add),
+              ),
+              drawer: const TripsPageDrawer(),
+            ),
+          );
+        }
       ),
     );
   }

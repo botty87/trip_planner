@@ -1,4 +1,4 @@
-part of '../../pages/trip_page.dart';
+part of 'trip_page_app_bar.dart';
 
 _showSharingModalBottom(BuildContext context) {
   final tripCubit = context.read<TripCubit>();

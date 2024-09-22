@@ -302,6 +302,8 @@ class TripCubit extends Cubit<TripState> {
 
   void updateViewModeFromUser(ViewMode viewMode) => emit(state.copyWith(viewMode: viewMode));
 
+  void changeViewMode() => emit(state.copyWith(viewMode: state.viewMode == ViewMode.list ? ViewMode.grid : ViewMode.list));
+
   @override
   Future<void> close() {
     _dayTripsSubscription?.cancel();
