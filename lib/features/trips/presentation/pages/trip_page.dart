@@ -86,19 +86,20 @@ class TripPage extends HookWidget {
                     BlocListener<TripCubit, TripState>(
                       //Show snackbar when error is not fatal and is not editing
                       listenWhen: (previous, current) => switch (current) {
-                        TripStateError (:final fatal) => !fatal && !isModalBottomOpen.value,
+                        TripStateError(:final fatal) => !fatal && !isModalBottomOpen.value,
                         _ => false,
                       },
                       listener: (context, state) {
                         final errorMessage = switch (state) {
-                          TripStateError (:final errorMessage) => errorMessage, 
+                          TripStateError(:final errorMessage) => errorMessage,
                           _ => throw const UnexpectedStateException(),
                         };
                         ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
                       },
                     ),
+
+                    //Show editing modal bottom sheet if editing
                     BlocListener<TripCubit, TripState>(
-                      //Show editing modal bottom sheet if editing
                       listenWhen: (previous, current) => switch (current) {
                         final TripStateEditing _ => switch (previous) {
                             final TripStateEditing _ => false,
@@ -125,6 +126,7 @@ class TripPage extends HookWidget {
                         }
                       },
                     ),
+
                     //On modal error, update errorMessage stream
                     BlocListener<TripCubit, TripState>(
                       listenWhen: (previous, current) => switch (current) {
@@ -143,6 +145,7 @@ class TripPage extends HookWidget {
                         errorMessageStream.add(errorMessage);
                       },
                     ),
+
                     //Update isSaving stream
                     BlocListener<TripCubit, TripState>(
                       listenWhen: (previous, current) => switch (current) {
@@ -161,6 +164,7 @@ class TripPage extends HookWidget {
                         isSaving.add(isSavingValue);
                       },
                     ),
+                    
                     //On trip deleted, pop page
                     BlocListener<TripCubit, TripState>(
                       listenWhen: (previous, current) => switch (current) {
