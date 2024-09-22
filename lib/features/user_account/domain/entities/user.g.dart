@@ -14,8 +14,8 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       settings: Settings.fromJson(json['settings'] as Map<String, dynamic>),
       tutorialsData:
           TutorialsData.fromJson(json['tutorialsData'] as Map<String, dynamic>),
-      largeScreenViewMode:
-          $enumDecode(_$ViewModeEnumMap, json['largeScreenViewMode']),
+      viewPreferences: ViewPreferences.fromJson(
+          json['viewPreferences'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -26,10 +26,5 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'oldTripsImported': instance.oldTripsImported,
       'settings': instance.settings.toJson(),
       'tutorialsData': instance.tutorialsData.toJson(),
-      'largeScreenViewMode': _$ViewModeEnumMap[instance.largeScreenViewMode]!,
+      'viewPreferences': instance.viewPreferences.toJson(),
     };
-
-const _$ViewModeEnumMap = {
-  ViewMode.list: 'list',
-  ViewMode.grid: 'grid',
-};

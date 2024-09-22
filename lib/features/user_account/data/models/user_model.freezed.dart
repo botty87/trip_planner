@@ -27,7 +27,7 @@ mixin _$UserModel {
   bool get oldTripsImported => throw _privateConstructorUsedError;
   Settings get settings => throw _privateConstructorUsedError;
   TutorialsData get tutorialsData => throw _privateConstructorUsedError;
-  ViewMode get largeScreenViewMode => throw _privateConstructorUsedError;
+  ViewPreferences get viewPreferences => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,10 +51,11 @@ abstract class $UserModelCopyWith<$Res> {
       bool oldTripsImported,
       Settings settings,
       TutorialsData tutorialsData,
-      ViewMode largeScreenViewMode});
+      ViewPreferences viewPreferences});
 
   $SettingsCopyWith<$Res> get settings;
   $TutorialsDataCopyWith<$Res> get tutorialsData;
+  $ViewPreferencesCopyWith<$Res> get viewPreferences;
 }
 
 /// @nodoc
@@ -78,7 +79,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? oldTripsImported = null,
     Object? settings = null,
     Object? tutorialsData = null,
-    Object? largeScreenViewMode = null,
+    Object? viewPreferences = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -105,10 +106,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.tutorialsData
           : tutorialsData // ignore: cast_nullable_to_non_nullable
               as TutorialsData,
-      largeScreenViewMode: null == largeScreenViewMode
-          ? _value.largeScreenViewMode
-          : largeScreenViewMode // ignore: cast_nullable_to_non_nullable
-              as ViewMode,
+      viewPreferences: null == viewPreferences
+          ? _value.viewPreferences
+          : viewPreferences // ignore: cast_nullable_to_non_nullable
+              as ViewPreferences,
     ) as $Val);
   }
 
@@ -131,6 +132,16 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       return _then(_value.copyWith(tutorialsData: value) as $Val);
     });
   }
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ViewPreferencesCopyWith<$Res> get viewPreferences {
+    return $ViewPreferencesCopyWith<$Res>(_value.viewPreferences, (value) {
+      return _then(_value.copyWith(viewPreferences: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -148,12 +159,14 @@ abstract class _$$UserModelImplCopyWith<$Res>
       bool oldTripsImported,
       Settings settings,
       TutorialsData tutorialsData,
-      ViewMode largeScreenViewMode});
+      ViewPreferences viewPreferences});
 
   @override
   $SettingsCopyWith<$Res> get settings;
   @override
   $TutorialsDataCopyWith<$Res> get tutorialsData;
+  @override
+  $ViewPreferencesCopyWith<$Res> get viewPreferences;
 }
 
 /// @nodoc
@@ -175,7 +188,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? oldTripsImported = null,
     Object? settings = null,
     Object? tutorialsData = null,
-    Object? largeScreenViewMode = null,
+    Object? viewPreferences = null,
   }) {
     return _then(_$UserModelImpl(
       id: freezed == id
@@ -202,10 +215,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.tutorialsData
           : tutorialsData // ignore: cast_nullable_to_non_nullable
               as TutorialsData,
-      largeScreenViewMode: null == largeScreenViewMode
-          ? _value.largeScreenViewMode
-          : largeScreenViewMode // ignore: cast_nullable_to_non_nullable
-              as ViewMode,
+      viewPreferences: null == viewPreferences
+          ? _value.viewPreferences
+          : viewPreferences // ignore: cast_nullable_to_non_nullable
+              as ViewPreferences,
     ));
   }
 }
@@ -220,7 +233,7 @@ class _$UserModelImpl extends _UserModel {
       this.oldTripsImported = false,
       this.settings = const Settings(),
       this.tutorialsData = const TutorialsData(),
-      this.largeScreenViewMode = ViewMode.grid})
+      this.viewPreferences = const ViewPreferences()})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -244,11 +257,11 @@ class _$UserModelImpl extends _UserModel {
   final TutorialsData tutorialsData;
   @override
   @JsonKey()
-  final ViewMode largeScreenViewMode;
+  final ViewPreferences viewPreferences;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData, largeScreenViewMode: $largeScreenViewMode)';
+    return 'UserModel(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData, viewPreferences: $viewPreferences)';
   }
 
   @override
@@ -265,14 +278,14 @@ class _$UserModelImpl extends _UserModel {
                 other.settings == settings) &&
             (identical(other.tutorialsData, tutorialsData) ||
                 other.tutorialsData == tutorialsData) &&
-            (identical(other.largeScreenViewMode, largeScreenViewMode) ||
-                other.largeScreenViewMode == largeScreenViewMode));
+            (identical(other.viewPreferences, viewPreferences) ||
+                other.viewPreferences == viewPreferences));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, email, name,
-      oldTripsImported, settings, tutorialsData, largeScreenViewMode);
+      oldTripsImported, settings, tutorialsData, viewPreferences);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -298,7 +311,7 @@ abstract class _UserModel extends UserModel {
       final bool oldTripsImported,
       final Settings settings,
       final TutorialsData tutorialsData,
-      final ViewMode largeScreenViewMode}) = _$UserModelImpl;
+      final ViewPreferences viewPreferences}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -318,7 +331,7 @@ abstract class _UserModel extends UserModel {
   @override
   TutorialsData get tutorialsData;
   @override
-  ViewMode get largeScreenViewMode;
+  ViewPreferences get viewPreferences;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

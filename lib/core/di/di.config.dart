@@ -110,7 +110,10 @@ import '../../features/info_contacts/presentation/cubit/info_contacts_cubit.dart
     as _i535;
 import '../../features/map/presentation/cubit/map_cubit.dart' as _i523;
 import '../../features/settings/domain/entities/settings.dart' as _i247;
+import '../../features/settings/domain/entities/view_preferences.dart' as _i985;
 import '../../features/settings/domain/usecases/update_settings.dart' as _i986;
+import '../../features/settings/domain/usecases/update_view_preferences.dart'
+    as _i1049;
 import '../../features/settings/presentation/cubit/settings_cubit.dart'
     as _i792;
 import '../../features/trip_stops/data/datasources/trip_stops_data_source.dart'
@@ -446,16 +449,6 @@ extension GetItInjectableX on _i174.GetIt {
         _i372.FetchTripStopsDirections(gh<_i935.GooglePlacesRepository>()));
     gh.lazySingleton<_i888.FetchPlaceDetails>(
         () => _i888.FetchPlaceDetails(gh<_i935.GooglePlacesRepository>()));
-    gh.factoryParam<_i245.TripsCubit, String, dynamic>((
-      userId,
-      _,
-    ) =>
-        _i245.TripsCubit(
-          listenUserTrips: gh<_i193.ListenUserTrips>(),
-          listenSharedTrips: gh<_i193.ListenSharedTrips>(),
-          crashlytics: gh<_i141.FirebaseCrashlytics>(),
-          userId: userId,
-        )..init());
     gh.factoryParam<_i79.AdsCubit, _i358.Ads, dynamic>((
       ads,
       _,
@@ -622,6 +615,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i460.LoginUser(gh<_i290.UserRepository>()));
     gh.lazySingleton<_i969.UpdateTutorialsData>(
         () => _i969.UpdateTutorialsData(gh<_i290.UserRepository>()));
+    gh.lazySingleton<_i1049.UpdateViewPreferences>(
+        () => _i1049.UpdateViewPreferences(gh<_i290.UserRepository>()));
     gh.lazySingleton<_i975.UpdateUserDetails>(
         () => _i975.UpdateUserDetails(gh<_i290.UserRepository>()));
     gh.factoryParam<_i523.AccountCubit, dynamic, dynamic>((
@@ -646,6 +641,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i792.SettingsCubit(updateSettings: gh<_i986.UpdateSettings>()));
     gh.lazySingleton<_i110.UserCubit>(
         () => _i110.UserCubit(listenUserState: gh<_i62.ListenUser>()));
+    gh.factoryParam<_i245.TripsCubit, String, _i985.ViewMode>((
+      userId,
+      viewMode,
+    ) =>
+        _i245.TripsCubit(
+          listenUserTrips: gh<_i193.ListenUserTrips>(),
+          listenSharedTrips: gh<_i193.ListenSharedTrips>(),
+          updateViewPreferences: gh<_i1049.UpdateViewPreferences>(),
+          crashlytics: gh<_i141.FirebaseCrashlytics>(),
+          userId: userId,
+          viewMode: viewMode,
+        )..init());
     gh.factoryParam<_i360.ShareCubit, _i360.ShareCubitParams, dynamic>((
       params,
       _,

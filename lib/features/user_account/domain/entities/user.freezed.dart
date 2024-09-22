@@ -26,7 +26,7 @@ mixin _$User {
   bool get oldTripsImported => throw _privateConstructorUsedError;
   Settings get settings => throw _privateConstructorUsedError;
   TutorialsData get tutorialsData => throw _privateConstructorUsedError;
-  ViewMode get largeScreenViewMode => throw _privateConstructorUsedError;
+  ViewPreferences get viewPreferences => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,10 +49,11 @@ abstract class $UserCopyWith<$Res> {
       bool oldTripsImported,
       Settings settings,
       TutorialsData tutorialsData,
-      ViewMode largeScreenViewMode});
+      ViewPreferences viewPreferences});
 
   $SettingsCopyWith<$Res> get settings;
   $TutorialsDataCopyWith<$Res> get tutorialsData;
+  $ViewPreferencesCopyWith<$Res> get viewPreferences;
 }
 
 /// @nodoc
@@ -76,7 +77,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? oldTripsImported = null,
     Object? settings = null,
     Object? tutorialsData = null,
-    Object? largeScreenViewMode = null,
+    Object? viewPreferences = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -103,10 +104,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.tutorialsData
           : tutorialsData // ignore: cast_nullable_to_non_nullable
               as TutorialsData,
-      largeScreenViewMode: null == largeScreenViewMode
-          ? _value.largeScreenViewMode
-          : largeScreenViewMode // ignore: cast_nullable_to_non_nullable
-              as ViewMode,
+      viewPreferences: null == viewPreferences
+          ? _value.viewPreferences
+          : viewPreferences // ignore: cast_nullable_to_non_nullable
+              as ViewPreferences,
     ) as $Val);
   }
 
@@ -129,6 +130,16 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       return _then(_value.copyWith(tutorialsData: value) as $Val);
     });
   }
+
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ViewPreferencesCopyWith<$Res> get viewPreferences {
+    return $ViewPreferencesCopyWith<$Res>(_value.viewPreferences, (value) {
+      return _then(_value.copyWith(viewPreferences: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -145,12 +156,14 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       bool oldTripsImported,
       Settings settings,
       TutorialsData tutorialsData,
-      ViewMode largeScreenViewMode});
+      ViewPreferences viewPreferences});
 
   @override
   $SettingsCopyWith<$Res> get settings;
   @override
   $TutorialsDataCopyWith<$Res> get tutorialsData;
+  @override
+  $ViewPreferencesCopyWith<$Res> get viewPreferences;
 }
 
 /// @nodoc
@@ -171,7 +184,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? oldTripsImported = null,
     Object? settings = null,
     Object? tutorialsData = null,
-    Object? largeScreenViewMode = null,
+    Object? viewPreferences = null,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -198,10 +211,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.tutorialsData
           : tutorialsData // ignore: cast_nullable_to_non_nullable
               as TutorialsData,
-      largeScreenViewMode: null == largeScreenViewMode
-          ? _value.largeScreenViewMode
-          : largeScreenViewMode // ignore: cast_nullable_to_non_nullable
-              as ViewMode,
+      viewPreferences: null == viewPreferences
+          ? _value.viewPreferences
+          : viewPreferences // ignore: cast_nullable_to_non_nullable
+              as ViewPreferences,
     ));
   }
 }
@@ -216,7 +229,7 @@ class _$UserImpl implements _User {
       this.oldTripsImported = true,
       required this.settings,
       required this.tutorialsData,
-      required this.largeScreenViewMode});
+      required this.viewPreferences});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -235,11 +248,11 @@ class _$UserImpl implements _User {
   @override
   final TutorialsData tutorialsData;
   @override
-  final ViewMode largeScreenViewMode;
+  final ViewPreferences viewPreferences;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData, largeScreenViewMode: $largeScreenViewMode)';
+    return 'User(id: $id, email: $email, name: $name, oldTripsImported: $oldTripsImported, settings: $settings, tutorialsData: $tutorialsData, viewPreferences: $viewPreferences)';
   }
 
   @override
@@ -256,14 +269,14 @@ class _$UserImpl implements _User {
                 other.settings == settings) &&
             (identical(other.tutorialsData, tutorialsData) ||
                 other.tutorialsData == tutorialsData) &&
-            (identical(other.largeScreenViewMode, largeScreenViewMode) ||
-                other.largeScreenViewMode == largeScreenViewMode));
+            (identical(other.viewPreferences, viewPreferences) ||
+                other.viewPreferences == viewPreferences));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, email, name,
-      oldTripsImported, settings, tutorialsData, largeScreenViewMode);
+      oldTripsImported, settings, tutorialsData, viewPreferences);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -289,7 +302,7 @@ abstract class _User implements User {
       final bool oldTripsImported,
       required final Settings settings,
       required final TutorialsData tutorialsData,
-      required final ViewMode largeScreenViewMode}) = _$UserImpl;
+      required final ViewPreferences viewPreferences}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -306,7 +319,7 @@ abstract class _User implements User {
   @override
   TutorialsData get tutorialsData;
   @override
-  ViewMode get largeScreenViewMode;
+  ViewPreferences get viewPreferences;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

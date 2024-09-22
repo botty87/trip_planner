@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../ui/widgets/generics/items_render_mode.dart';
 import '../../../settings/domain/entities/settings.dart';
+import '../../../settings/domain/entities/view_preferences.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 
 part 'user.freezed.dart';
@@ -16,7 +16,7 @@ sealed class User with _$User {
     @Default(true) bool oldTripsImported,
     required Settings settings,
     required TutorialsData tutorialsData,
-    required ViewMode largeScreenViewMode,
+    required ViewPreferences viewPreferences,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

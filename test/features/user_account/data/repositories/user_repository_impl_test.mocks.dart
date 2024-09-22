@@ -6,11 +6,15 @@
 import 'dart:async' as _i4;
 
 import 'package:firebase_core/firebase_core.dart' as _i2;
-import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i8;
-import 'package:flutter/foundation.dart' as _i9;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart' as _i10;
+import 'package:flutter/foundation.dart' as _i11;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/settings/domain/entities/settings.dart'
     as _i6;
+import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart'
+    as _i8;
+import 'package:trip_planner/features/settings/domain/usecases/update_view_preferences.dart'
+    as _i9;
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart'
     as _i7;
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart'
@@ -144,13 +148,30 @@ class MockUserDataSource extends _i1.Mock implements _i3.UserDataSource {
         returnValueForMissingStub:
             _i4.Future<Map<String, String>>.value(<String, String>{}),
       ) as _i4.Future<Map<String, String>>);
+
+  @override
+  dynamic updateViewPreferences({
+    required _i8.ViewMode? viewMode,
+    required _i9.ViewModePage? viewModePage,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #updateViewPreferences,
+          [],
+          {
+            #viewMode: viewMode,
+            #viewModePage: viewModePage,
+          },
+        ),
+        returnValueForMissingStub: null,
+      );
 }
 
 /// A class which mocks [FirebaseCrashlytics].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseCrashlytics extends _i1.Mock
-    implements _i8.FirebaseCrashlytics {
+    implements _i10.FirebaseCrashlytics {
   @override
   _i2.FirebaseApp get app => (super.noSuchMethod(
         Invocation.getter(#app),
@@ -255,7 +276,7 @@ class MockFirebaseCrashlytics extends _i1.Mock
 
   @override
   _i4.Future<void> recordFlutterError(
-    _i9.FlutterErrorDetails? flutterErrorDetails, {
+    _i11.FlutterErrorDetails? flutterErrorDetails, {
     bool? fatal = false,
   }) =>
       (super.noSuchMethod(
@@ -270,7 +291,7 @@ class MockFirebaseCrashlytics extends _i1.Mock
 
   @override
   _i4.Future<void> recordFlutterFatalError(
-          _i9.FlutterErrorDetails? flutterErrorDetails) =>
+          _i11.FlutterErrorDetails? flutterErrorDetails) =>
       (super.noSuchMethod(
         Invocation.method(
           #recordFlutterFatalError,

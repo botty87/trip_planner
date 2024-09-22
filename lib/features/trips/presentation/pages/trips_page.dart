@@ -33,33 +33,56 @@ class TripsPage extends StatelessWidget with GridViewCheckerMixin {
     //It can happens during transation between pages, after user logout
     if (userId == null) return const SizedBox.shrink();
 
+    final viewMode = switch (context.read<UserCubit>().state) {
+      final UserStateLoggedIn loggedInState => loggedInState.user.viewPreferences.tripsViewMode,
+      _ => null,
+    };
+
     return BlocProvider<TripsCubit>(
-      create: (context) => getIt(param1: userId),
-      child: ScaffoldTransparent(
-        hasBackgroundImage: context.hasBackgroundImage,
-        appBar: AppBar(
-          scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
-          backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
-          title: Text(LocaleKeys.tripsPageTitle.tr()),
-          actions: canShowGridView(context) ? [const TripsViewModeButton()] : null,
-        ),
-        body: BlocBuilder<TripsCubit, TripsState>(
-          buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
-          builder: (context, state) => TripPagesAnimatedSwitcher(
-            child: state.map(
-              initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
-              loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
-              error: (state) => Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
+      create: (context) => getIt(param1: userId, param2: viewMode),
+      child: BlocListener<UserCubit, UserState>(
+        listenWhen: (previous, current) {
+          final previousViewMode = switch (previous) {
+            final UserStateLoggedIn loggedInState => loggedInState.user.viewPreferences.tripsViewMode,
+            _ => null,
+          };
+          final currentViewMode = switch (current) {
+            final UserStateLoggedIn loggedInState => loggedInState.user.viewPreferences.tripsViewMode,
+            _ => null,
+          };
+          return previousViewMode != currentViewMode;
+        },
+        listener: (context, state) {
+          if (state case final UserStateLoggedIn loggedInState) {
+            context.read<TripsCubit>().updateViewModeFromUser(loggedInState.user.viewPreferences.tripsViewMode);
+          }
+        },
+        child: ScaffoldTransparent(
+          hasBackgroundImage: context.hasBackgroundImage,
+          appBar: AppBar(
+            scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
+            backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
+            title: Text(LocaleKeys.tripsPageTitle.tr()),
+            actions: canShowGridView(context) ? [const TripsViewModeButton()] : null,
+          ),
+          body: BlocBuilder<TripsCubit, TripsState>(
+            buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
+            builder: (context, state) => TripPagesAnimatedSwitcher(
+              child: state.map(
+                initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
+                loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
+                error: (state) => Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
+              ),
             ),
           ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              context.pushRoute(NewTripRoute());
+            },
+            child: const Icon(Icons.add),
+          ),
+          drawer: const TripsPageDrawer(),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            context.pushRoute(NewTripRoute());
-          },
-          child: const Icon(Icons.add),
-        ),
-        drawer: const TripsPageDrawer(),
       ),
     );
   }

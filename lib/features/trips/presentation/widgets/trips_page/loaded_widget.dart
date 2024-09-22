@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../../ui/widgets/generics/grid_view_checker_mixin.dart';
-import '../../../../../ui/widgets/generics/items_render_mode.dart';
+import '../../../../settings/domain/entities/view_preferences.dart';
 import '../../cubit/trips/trips_cubit.dart';
 import 'no_trips_widget.dart';
 import 'trips_grid_view_widget.dart';

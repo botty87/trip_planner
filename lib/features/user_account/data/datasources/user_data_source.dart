@@ -8,6 +8,8 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import '../../../../core/db/users_collection_ref.dart';
 import '../../../../core/di/di.dart';
 import '../../../settings/domain/entities/settings.dart';
+import '../../../settings/domain/entities/view_preferences.dart';
+import '../../../settings/domain/usecases/update_view_preferences.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../errors/user_exception.dart';
 import '../models/user_model.dart';
@@ -34,6 +36,8 @@ abstract interface class UserDataSource {
   saveTutorialsData(TutorialsData tutorialsData);
 
   Future<Map<String, String>> getUsersNames(List<String> userIds);
+
+  updateViewPreferences({required ViewMode viewMode, required ViewModePage viewModePage});
 }
 
 @LazySingleton(as: UserDataSource)
@@ -78,8 +82,7 @@ final class UserDataSourceImpl implements UserDataSource {
       if (user != null) {
         await saveUserIfNotExistsInDB(user);
 
-        _userStreamSubscription =
-            _usersCollection.doc(user.uid).snapshots().listen((userDocSnapshot) {
+        _userStreamSubscription = _usersCollection.doc(user.uid).snapshots().listen((userDocSnapshot) {
           final userDB = userDocSnapshot.data()!;
           _userStreamController.add(UserModel(
             id: user.uid,
@@ -89,7 +92,7 @@ final class UserDataSourceImpl implements UserDataSource {
             oldTripsImported: userDB.oldTripsImported,
             settings: userDB.settings,
             tutorialsData: userDB.tutorialsData,
-            largeScreenViewMode: userDB.largeScreenViewMode,
+            viewPreferences: userDB.viewPreferences,
           ));
         });
       } else {
@@ -126,8 +129,7 @@ final class UserDataSourceImpl implements UserDataSource {
 
   @override
   reauthenticateUser({required String email, required String password}) async {
-    final credential =
-        firebase_auth_pack.EmailAuthProvider.credential(email: email, password: password);
+    final credential = firebase_auth_pack.EmailAuthProvider.credential(email: email, password: password);
     await firebaseAuth.currentUser!.reauthenticateWithCredential(credential);
   }
 
@@ -160,16 +162,12 @@ final class UserDataSourceImpl implements UserDataSource {
 
   @override
   saveSettings(Settings settings) async {
-    await _usersCollection
-        .doc(firebaseAuth.currentUser!.uid)
-        .update({'settings': settings.toJson()});
+    await _usersCollection.doc(firebaseAuth.currentUser!.uid).update({'settings': settings.toJson()});
   }
 
   @override
   saveTutorialsData(TutorialsData tutorialsData) async {
-    await _usersCollection
-        .doc(firebaseAuth.currentUser!.uid)
-        .update({'tutorialsData': tutorialsData.toJson()});
+    await _usersCollection.doc(firebaseAuth.currentUser!.uid).update({'tutorialsData': tutorialsData.toJson()});
   }
 
   @override
@@ -191,5 +189,20 @@ final class UserDataSourceImpl implements UserDataSource {
 
       return usersNames;
     });
+  }
+
+  @override
+  updateViewPreferences({required ViewMode viewMode, required ViewModePage viewModePage}) async {
+    final user = await _usersCollection.doc(firebaseAuth.currentUser!.uid).get();
+    var viewPreferences = user.data()!.viewPreferences;
+    switch (viewModePage) {
+      case ViewModePage.trips:
+        viewPreferences = viewPreferences.copyWith(tripsViewMode: viewMode);
+      case ViewModePage.trip:
+        viewPreferences = viewPreferences.copyWith(tripViewMode: viewMode);
+      case ViewModePage.dayTrip:
+        viewPreferences = viewPreferences.copyWith(dayTripViewMode: viewMode);
+    }
+    await _usersCollection.doc(firebaseAuth.currentUser!.uid).update({'viewPreferences': viewPreferences.toJson()});
   }
 }

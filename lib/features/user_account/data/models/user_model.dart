@@ -2,8 +2,8 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../ui/widgets/generics/items_render_mode.dart';
 import '../../../settings/domain/entities/settings.dart';
+import '../../../settings/domain/entities/view_preferences.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../domain/entities/user.dart';
 
@@ -21,7 +21,7 @@ class UserModel with _$UserModel {
     @Default(false) bool oldTripsImported,
     @Default(Settings()) Settings settings,
     @Default(TutorialsData()) TutorialsData tutorialsData,
-    @Default(ViewMode.grid) ViewMode largeScreenViewMode,
+    @Default(ViewPreferences()) ViewPreferences viewPreferences,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
@@ -34,7 +34,7 @@ class UserModel with _$UserModel {
       oldTripsImported: oldTripsImported,
       settings: settings,
       tutorialsData: tutorialsData,
-      largeScreenViewMode: largeScreenViewMode,
+      viewPreferences: viewPreferences,
     );
   }
 }

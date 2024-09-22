@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../settings/domain/entities/settings.dart';
+import '../../../settings/domain/entities/view_preferences.dart';
+import '../../../settings/domain/usecases/update_view_preferences.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../errors/user_failures.dart';
 import '../entities/user.dart';
@@ -17,8 +19,7 @@ abstract interface class UserRepository {
 
   Future<Either<UserFailures, void>> logoutUser();
 
-  Future<Either<UserFailures, void>> reauthenticateUser(
-      {required String email, required String password});
+  Future<Either<UserFailures, void>> reauthenticateUser({required String email, required String password});
 
   Future<Either<UserFailures, void>> updateUserDetails(
       {required String? name, required String? email, required String? password});
@@ -30,4 +31,9 @@ abstract interface class UserRepository {
   Future<Either<UserFailures, void>> saveTutorialsData(TutorialsData tutorialsData);
 
   Future<Either<UserFailures, Map<String, String>>> getUsersNames(List<String> userIds);
+
+  Future<Either<UserFailures, void>> updateViewPreferences({
+    required ViewMode viewMode,
+    required ViewModePage viewModePage,
+  });
 }

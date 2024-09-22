@@ -16,31 +16,32 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TripsState {
+  ViewMode get viewMode => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(ViewMode viewMode) initial,
     required TResult Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)
         loaded,
-    required TResult Function(String message) error,
+    required TResult Function(String message, ViewMode viewMode) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(ViewMode viewMode)? initial,
     TResult? Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, ViewMode viewMode)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(ViewMode viewMode)? initial,
     TResult Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
-    TResult Function(String message)? error,
+    TResult Function(String message, ViewMode viewMode)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +67,12 @@ mixin _$TripsState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of TripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TripsStateCopyWith<TripsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -73,6 +80,8 @@ abstract class $TripsStateCopyWith<$Res> {
   factory $TripsStateCopyWith(
           TripsState value, $Res Function(TripsState) then) =
       _$TripsStateCopyWithImpl<$Res, TripsState>;
+  @useResult
+  $Res call({ViewMode viewMode});
 }
 
 /// @nodoc
@@ -87,13 +96,29 @@ class _$TripsStateCopyWithImpl<$Res, $Val extends TripsState>
 
   /// Create a copy of TripsState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? viewMode = null,
+  }) {
+    return _then(_value.copyWith(
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$TripsStateInitialImplCopyWith<$Res> {
+abstract class _$$TripsStateInitialImplCopyWith<$Res>
+    implements $TripsStateCopyWith<$Res> {
   factory _$$TripsStateInitialImplCopyWith(_$TripsStateInitialImpl value,
           $Res Function(_$TripsStateInitialImpl) then) =
       __$$TripsStateInitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ViewMode viewMode});
 }
 
 /// @nodoc
@@ -106,6 +131,18 @@ class __$$TripsStateInitialImplCopyWithImpl<$Res>
 
   /// Create a copy of TripsState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? viewMode = null,
+  }) {
+    return _then(_$TripsStateInitialImpl(
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
+    ));
+  }
 }
 
 /// @nodoc
@@ -113,64 +150,81 @@ class __$$TripsStateInitialImplCopyWithImpl<$Res>
 class _$TripsStateInitialImpl
     with DiagnosticableTreeMixin
     implements TripsStateInitial {
-  const _$TripsStateInitialImpl();
+  const _$TripsStateInitialImpl({required this.viewMode});
+
+  @override
+  final ViewMode viewMode;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TripsState.initial()';
+    return 'TripsState.initial(viewMode: $viewMode)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'TripsState.initial'));
+    properties
+      ..add(DiagnosticsProperty('type', 'TripsState.initial'))
+      ..add(DiagnosticsProperty('viewMode', viewMode));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TripsStateInitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$TripsStateInitialImpl &&
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, viewMode);
+
+  /// Create a copy of TripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TripsStateInitialImplCopyWith<_$TripsStateInitialImpl> get copyWith =>
+      __$$TripsStateInitialImplCopyWithImpl<_$TripsStateInitialImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(ViewMode viewMode) initial,
     required TResult Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)
         loaded,
-    required TResult Function(String message) error,
+    required TResult Function(String message, ViewMode viewMode) error,
   }) {
-    return initial();
+    return initial(viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(ViewMode viewMode)? initial,
     TResult? Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, ViewMode viewMode)? error,
   }) {
-    return initial?.call();
+    return initial?.call(viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(ViewMode viewMode)? initial,
     TResult Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
-    TResult Function(String message)? error,
+    TResult Function(String message, ViewMode viewMode)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(viewMode);
     }
     return orElse();
   }
@@ -211,14 +265,27 @@ class _$TripsStateInitialImpl
 }
 
 abstract class TripsStateInitial implements TripsState {
-  const factory TripsStateInitial() = _$TripsStateInitialImpl;
+  const factory TripsStateInitial({required final ViewMode viewMode}) =
+      _$TripsStateInitialImpl;
+
+  @override
+  ViewMode get viewMode;
+
+  /// Create a copy of TripsState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TripsStateInitialImplCopyWith<_$TripsStateInitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripsStateLoadedImplCopyWith<$Res> {
+abstract class _$$TripsStateLoadedImplCopyWith<$Res>
+    implements $TripsStateCopyWith<$Res> {
   factory _$$TripsStateLoadedImplCopyWith(_$TripsStateLoadedImpl value,
           $Res Function(_$TripsStateLoadedImpl) then) =
       __$$TripsStateLoadedImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode});
 }
@@ -265,7 +332,7 @@ class _$TripsStateLoadedImpl
   const _$TripsStateLoadedImpl(
       {required final List<Trip> userTrips,
       required final List<Trip> sharedTrips,
-      this.viewMode = ViewMode.grid})
+      required this.viewMode})
       : _userTrips = userTrips,
         _sharedTrips = sharedTrips;
 
@@ -286,7 +353,6 @@ class _$TripsStateLoadedImpl
   }
 
   @override
-  @JsonKey()
   final ViewMode viewMode;
 
   @override
@@ -336,11 +402,11 @@ class _$TripsStateLoadedImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(ViewMode viewMode) initial,
     required TResult Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)
         loaded,
-    required TResult Function(String message) error,
+    required TResult Function(String message, ViewMode viewMode) error,
   }) {
     return loaded(userTrips, sharedTrips, viewMode);
   }
@@ -348,11 +414,11 @@ class _$TripsStateLoadedImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(ViewMode viewMode)? initial,
     TResult? Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, ViewMode viewMode)? error,
   }) {
     return loaded?.call(userTrips, sharedTrips, viewMode);
   }
@@ -360,11 +426,11 @@ class _$TripsStateLoadedImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(ViewMode viewMode)? initial,
     TResult Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
-    TResult Function(String message)? error,
+    TResult Function(String message, ViewMode viewMode)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -412,26 +478,30 @@ abstract class TripsStateLoaded implements TripsState {
   const factory TripsStateLoaded(
       {required final List<Trip> userTrips,
       required final List<Trip> sharedTrips,
-      final ViewMode viewMode}) = _$TripsStateLoadedImpl;
+      required final ViewMode viewMode}) = _$TripsStateLoadedImpl;
 
   List<Trip> get userTrips;
   List<Trip> get sharedTrips;
+  @override
   ViewMode get viewMode;
 
   /// Create a copy of TripsState
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripsStateLoadedImplCopyWith<_$TripsStateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripsStateErrorImplCopyWith<$Res> {
+abstract class _$$TripsStateErrorImplCopyWith<$Res>
+    implements $TripsStateCopyWith<$Res> {
   factory _$$TripsStateErrorImplCopyWith(_$TripsStateErrorImpl value,
           $Res Function(_$TripsStateErrorImpl) then) =
       __$$TripsStateErrorImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String message});
+  $Res call({String message, ViewMode viewMode});
 }
 
 /// @nodoc
@@ -448,12 +518,17 @@ class __$$TripsStateErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? viewMode = null,
   }) {
     return _then(_$TripsStateErrorImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -463,14 +538,16 @@ class __$$TripsStateErrorImplCopyWithImpl<$Res>
 class _$TripsStateErrorImpl
     with DiagnosticableTreeMixin
     implements TripsStateError {
-  const _$TripsStateErrorImpl({required this.message});
+  const _$TripsStateErrorImpl({required this.message, required this.viewMode});
 
   @override
   final String message;
+  @override
+  final ViewMode viewMode;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TripsState.error(message: $message)';
+    return 'TripsState.error(message: $message, viewMode: $viewMode)';
   }
 
   @override
@@ -478,7 +555,8 @@ class _$TripsStateErrorImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TripsState.error'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('message', message))
+      ..add(DiagnosticsProperty('viewMode', viewMode));
   }
 
   @override
@@ -486,11 +564,13 @@ class _$TripsStateErrorImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripsStateErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, viewMode);
 
   /// Create a copy of TripsState
   /// with the given fields replaced by the non-null parameter values.
@@ -504,39 +584,39 @@ class _$TripsStateErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(ViewMode viewMode) initial,
     required TResult Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)
         loaded,
-    required TResult Function(String message) error,
+    required TResult Function(String message, ViewMode viewMode) error,
   }) {
-    return error(message);
+    return error(message, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(ViewMode viewMode)? initial,
     TResult? Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, ViewMode viewMode)? error,
   }) {
-    return error?.call(message);
+    return error?.call(message, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(ViewMode viewMode)? initial,
     TResult Function(
             List<Trip> userTrips, List<Trip> sharedTrips, ViewMode viewMode)?
         loaded,
-    TResult Function(String message)? error,
+    TResult Function(String message, ViewMode viewMode)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(message, viewMode);
     }
     return orElse();
   }
@@ -577,13 +657,17 @@ class _$TripsStateErrorImpl
 }
 
 abstract class TripsStateError implements TripsState {
-  const factory TripsStateError({required final String message}) =
-      _$TripsStateErrorImpl;
+  const factory TripsStateError(
+      {required final String message,
+      required final ViewMode viewMode}) = _$TripsStateErrorImpl;
 
   String get message;
+  @override
+  ViewMode get viewMode;
 
   /// Create a copy of TripsState
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripsStateErrorImplCopyWith<_$TripsStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

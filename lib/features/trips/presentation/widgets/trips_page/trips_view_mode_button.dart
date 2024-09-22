@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../ui/widgets/generics/items_render_mode.dart';
+import '../../../../settings/domain/entities/view_preferences.dart';
 import '../../cubit/trips/trips_cubit.dart';
 
 class TripsViewModeButton extends StatelessWidget {

@@ -9,7 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/l10n/locale_keys.g.dart';
-import '../../../../../ui/widgets/generics/items_render_mode.dart';
+import '../../../../settings/domain/entities/view_preferences.dart';
+import '../../../../settings/domain/usecases/update_view_preferences.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/listen_trips.dart';
 import '../../../errors/trips_failure.dart';
@@ -22,16 +23,21 @@ class TripsCubit extends Cubit<TripsState> {
   TripsCubit({
     required ListenUserTrips listenUserTrips,
     required ListenSharedTrips listenSharedTrips,
+    required UpdateViewPreferences updateViewPreferences,
     required FirebaseCrashlytics crashlytics,
     @factoryParam required String userId,
+    @factoryParam required ViewMode viewMode,
   })  : _listenUserTrips = listenUserTrips,
         _listenSharedTrips = listenSharedTrips,
+        _updateViewPreferences = updateViewPreferences,
         _crashlytics = crashlytics,
         _userId = userId,
-        super(const TripsState.initial());
+        super(TripsState.initial(viewMode: viewMode));
 
   final ListenUserTrips _listenUserTrips;
   final ListenSharedTrips _listenSharedTrips;
+  final UpdateViewPreferences _updateViewPreferences;
+
   final FirebaseCrashlytics _crashlytics;
 
   final String _userId;
@@ -54,7 +60,7 @@ class TripsCubit extends Cubit<TripsState> {
     _userTripsSubscription = _listenUserTrips(ListenTripsParams(userId: _userId)).listen((result) {
       result.fold(
         (failure) {
-          emit(TripsState.error(message: LocaleKeys.dataLoadError.tr()));
+          emit(TripsState.error(message: LocaleKeys.dataLoadError.tr(), viewMode: state.viewMode));
           _crashlytics.recordError(failure, StackTrace.current);
         },
         (trips) {
@@ -65,7 +71,7 @@ class TripsCubit extends Cubit<TripsState> {
             default:
               userTrips = trips;
               if (sharedTrips != null) {
-                emit(TripsState.loaded(userTrips: userTrips!, sharedTrips: sharedTrips!));
+                emit(TripsState.loaded(userTrips: userTrips!, sharedTrips: sharedTrips!, viewMode: state.viewMode));
               }
           }
         },
@@ -75,7 +81,7 @@ class TripsCubit extends Cubit<TripsState> {
     _sharedTripsSubscription = _listenSharedTrips(ListenTripsParams(userId: _userId)).listen((result) {
       result.fold(
         (failure) {
-          emit(TripsState.error(message: LocaleKeys.dataLoadError.tr()));
+          emit(TripsState.error(message: LocaleKeys.dataLoadError.tr(), viewMode: state.viewMode));
           _crashlytics.recordError(failure, StackTrace.current);
         },
         (trips) {
@@ -86,13 +92,15 @@ class TripsCubit extends Cubit<TripsState> {
             default:
               sharedTrips = trips;
               if (userTrips != null) {
-                emit(TripsState.loaded(userTrips: userTrips!, sharedTrips: sharedTrips!));
+                emit(TripsState.loaded(userTrips: userTrips!, sharedTrips: sharedTrips!, viewMode: state.viewMode));
               }
           }
         },
       );
     });
   }
+
+  void updateViewModeFromUser(ViewMode viewMode) => emit(state.copyWith(viewMode: viewMode));
 
   @override
   Future<void> close() {
@@ -101,11 +109,12 @@ class TripsCubit extends Cubit<TripsState> {
     return super.close();
   }
 
-  void changeViewMode() {
-    return switch (state) {
-      final TripsStateLoaded state =>
-        emit(state.copyWith(viewMode: state.viewMode == ViewMode.list ? ViewMode.grid : ViewMode.list)),
-      _ => null,
-    };
+  void changeViewMode() async {
+    emit(state.copyWith(viewMode: state.viewMode == ViewMode.list ? ViewMode.grid : ViewMode.list));
+
+    final result = await _updateViewPreferences(
+        UpdateViewPreferencesParams(viewMode: state.viewMode, viewModePage: ViewModePage.trips));
+
+    result.leftMap((failure) => _crashlytics.recordError(failure, StackTrace.current));
   }
 }

@@ -9,6 +9,10 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:trip_planner/features/settings/domain/entities/settings.dart'
     as _i7;
+import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart'
+    as _i9;
+import 'package:trip_planner/features/settings/domain/usecases/update_view_preferences.dart'
+    as _i10;
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart'
     as _i8;
 import 'package:trip_planner/features/user_account/domain/entities/user.dart'
@@ -390,4 +394,45 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.UserFailures, Map<String, String>>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.UserFailures, void>> updateViewPreferences({
+    required _i9.ViewMode? viewMode,
+    required _i10.ViewModePage? viewModePage,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateViewPreferences,
+          [],
+          {
+            #viewMode: viewMode,
+            #viewModePage: viewModePage,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+            _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #updateViewPreferences,
+            [],
+            {
+              #viewMode: viewMode,
+              #viewModePage: viewModePage,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.UserFailures, void>>.value(
+                _FakeEither_0<_i5.UserFailures, void>(
+          this,
+          Invocation.method(
+            #updateViewPreferences,
+            [],
+            {
+              #viewMode: viewMode,
+              #viewModePage: viewModePage,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.UserFailures, void>>);
 }

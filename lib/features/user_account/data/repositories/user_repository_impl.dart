@@ -4,6 +4,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../settings/domain/entities/settings.dart';
+import '../../../settings/domain/entities/view_preferences.dart';
+import '../../../settings/domain/usecases/update_view_preferences.dart';
 import '../../../tutorials/domain/entities/tutorials_data.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repository.dart';
@@ -65,8 +67,7 @@ final class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Either<UserFailures, void>> loginUser(
-      {required String email, required String password}) async {
+  Future<Either<UserFailures, void>> loginUser({required String email, required String password}) async {
     try {
       await _userDataSource.loginUser(email: email, password: password);
       return right(null);
@@ -108,8 +109,7 @@ final class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Either<UserFailures, void>> reauthenticateUser(
-      {required String email, required String password}) async {
+  Future<Either<UserFailures, void>> reauthenticateUser({required String email, required String password}) async {
     try {
       await _userDataSource.reauthenticateUser(email: email, password: password);
       return right(null);
@@ -179,10 +179,21 @@ final class UserRepositoryImpl implements UserRepository {
       final usersNames = await _userDataSource.getUsersNames(userIds);
 
       //Sort the map by value (name) and return it
-      final sortedUsers =
-          Map.fromEntries(usersNames.entries.toList()..sort((a, b) => a.value.compareTo(b.value)));
+      final sortedUsers = Map.fromEntries(usersNames.entries.toList()..sort((a, b) => a.value.compareTo(b.value)));
 
       return right(sortedUsers);
+    } catch (e) {
+      _crashlytics.recordError(e, StackTrace.current);
+      return left(const UserFailures.unknownError());
+    }
+  }
+
+  @override
+  Future<Either<UserFailures, void>> updateViewPreferences(
+      {required ViewMode viewMode, required ViewModePage viewModePage}) async {
+    try {
+      await _userDataSource.updateViewPreferences(viewMode: viewMode, viewModePage: viewModePage);
+      return right(null);
     } catch (e) {
       _crashlytics.recordError(e, StackTrace.current);
       return left(const UserFailures.unknownError());
