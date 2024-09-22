@@ -17,11 +17,16 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TripState {
   Trip get trip => throw _privateConstructorUsedError;
+  ViewMode get viewMode => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip) initial,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips) loaded,
-    required TResult Function(Trip trip, String errorMessage, bool fatal) error,
+    required TResult Function(Trip trip, ViewMode viewMode) initial,
+    required TResult Function(
+            Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)
+        loaded,
+    required TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)
+        error,
     required TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -31,17 +36,21 @@ mixin _$TripState {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)
+            String? errorMessage,
+            ViewMode viewMode)
         editing,
-    required TResult Function(Trip trip) deleting,
-    required TResult Function(Trip trip) deleted,
+    required TResult Function(Trip trip, ViewMode viewMode) deleting,
+    required TResult Function(Trip trip, ViewMode viewMode) deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip)? initial,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult? Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult? Function(Trip trip, ViewMode viewMode)? initial,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult? Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult? Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -51,17 +60,21 @@ mixin _$TripState {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult? Function(Trip trip)? deleting,
-    TResult? Function(Trip trip)? deleted,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip)? initial,
-    TResult Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult Function(Trip trip, ViewMode viewMode)? initial,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -71,10 +84,11 @@ mixin _$TripState {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult Function(Trip trip)? deleting,
-    TResult Function(Trip trip)? deleted,
+    TResult Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult Function(Trip trip, ViewMode viewMode)? deleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,7 +136,7 @@ abstract class $TripStateCopyWith<$Res> {
   factory $TripStateCopyWith(TripState value, $Res Function(TripState) then) =
       _$TripStateCopyWithImpl<$Res, TripState>;
   @useResult
-  $Res call({Trip trip});
+  $Res call({Trip trip, ViewMode viewMode});
 
   $TripCopyWith<$Res> get trip;
 }
@@ -143,12 +157,17 @@ class _$TripStateCopyWithImpl<$Res, $Val extends TripState>
   @override
   $Res call({
     Object? trip = null,
+    Object? viewMode = null,
   }) {
     return _then(_value.copyWith(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as Trip,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ) as $Val);
   }
 
@@ -171,7 +190,7 @@ abstract class _$$TripStateInitialImplCopyWith<$Res>
       __$$TripStateInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Trip trip});
+  $Res call({Trip trip, ViewMode viewMode});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -191,12 +210,17 @@ class __$$TripStateInitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? trip = null,
+    Object? viewMode = null,
   }) {
     return _then(_$TripStateInitialImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as Trip,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -204,14 +228,16 @@ class __$$TripStateInitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TripStateInitialImpl implements TripStateInitial {
-  const _$TripStateInitialImpl({required this.trip});
+  const _$TripStateInitialImpl({required this.trip, required this.viewMode});
 
   @override
   final Trip trip;
+  @override
+  final ViewMode viewMode;
 
   @override
   String toString() {
-    return 'TripState.initial(trip: $trip)';
+    return 'TripState.initial(trip: $trip, viewMode: $viewMode)';
   }
 
   @override
@@ -219,11 +245,13 @@ class _$TripStateInitialImpl implements TripStateInitial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateInitialImpl &&
-            (identical(other.trip, trip) || other.trip == trip));
+            (identical(other.trip, trip) || other.trip == trip) &&
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, trip);
+  int get hashCode => Object.hash(runtimeType, trip, viewMode);
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -237,9 +265,13 @@ class _$TripStateInitialImpl implements TripStateInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip) initial,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips) loaded,
-    required TResult Function(Trip trip, String errorMessage, bool fatal) error,
+    required TResult Function(Trip trip, ViewMode viewMode) initial,
+    required TResult Function(
+            Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)
+        loaded,
+    required TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)
+        error,
     required TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -249,20 +281,24 @@ class _$TripStateInitialImpl implements TripStateInitial {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)
+            String? errorMessage,
+            ViewMode viewMode)
         editing,
-    required TResult Function(Trip trip) deleting,
-    required TResult Function(Trip trip) deleted,
+    required TResult Function(Trip trip, ViewMode viewMode) deleting,
+    required TResult Function(Trip trip, ViewMode viewMode) deleted,
   }) {
-    return initial(trip);
+    return initial(trip, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip)? initial,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult? Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult? Function(Trip trip, ViewMode viewMode)? initial,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult? Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult? Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -272,20 +308,24 @@ class _$TripStateInitialImpl implements TripStateInitial {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult? Function(Trip trip)? deleting,
-    TResult? Function(Trip trip)? deleted,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleted,
   }) {
-    return initial?.call(trip);
+    return initial?.call(trip, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip)? initial,
-    TResult Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult Function(Trip trip, ViewMode viewMode)? initial,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -295,14 +335,15 @@ class _$TripStateInitialImpl implements TripStateInitial {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult Function(Trip trip)? deleting,
-    TResult Function(Trip trip)? deleted,
+    TResult Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult Function(Trip trip, ViewMode viewMode)? deleted,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(trip);
+      return initial(trip, viewMode);
     }
     return orElse();
   }
@@ -352,11 +393,14 @@ class _$TripStateInitialImpl implements TripStateInitial {
 }
 
 abstract class TripStateInitial implements TripState {
-  const factory TripStateInitial({required final Trip trip}) =
-      _$TripStateInitialImpl;
+  const factory TripStateInitial(
+      {required final Trip trip,
+      required final ViewMode viewMode}) = _$TripStateInitialImpl;
 
   @override
   Trip get trip;
+  @override
+  ViewMode get viewMode;
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -374,7 +418,7 @@ abstract class _$$TripStateLoadedImplCopyWith<$Res>
       __$$TripStateLoadedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Trip trip, List<DayTrip> dayTrips});
+  $Res call({Trip trip, List<DayTrip> dayTrips, ViewMode viewMode});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -395,6 +439,7 @@ class __$$TripStateLoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? trip = null,
     Object? dayTrips = null,
+    Object? viewMode = null,
   }) {
     return _then(_$TripStateLoadedImpl(
       trip: null == trip
@@ -405,6 +450,10 @@ class __$$TripStateLoadedImplCopyWithImpl<$Res>
           ? _value._dayTrips
           : dayTrips // ignore: cast_nullable_to_non_nullable
               as List<DayTrip>,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -413,7 +462,9 @@ class __$$TripStateLoadedImplCopyWithImpl<$Res>
 
 class _$TripStateLoadedImpl implements TripStateLoaded {
   const _$TripStateLoadedImpl(
-      {required this.trip, required final List<DayTrip> dayTrips})
+      {required this.trip,
+      required final List<DayTrip> dayTrips,
+      required this.viewMode})
       : _dayTrips = dayTrips;
 
   @override
@@ -427,8 +478,11 @@ class _$TripStateLoadedImpl implements TripStateLoaded {
   }
 
   @override
+  final ViewMode viewMode;
+
+  @override
   String toString() {
-    return 'TripState.loaded(trip: $trip, dayTrips: $dayTrips)';
+    return 'TripState.loaded(trip: $trip, dayTrips: $dayTrips, viewMode: $viewMode)';
   }
 
   @override
@@ -437,12 +491,14 @@ class _$TripStateLoadedImpl implements TripStateLoaded {
         (other.runtimeType == runtimeType &&
             other is _$TripStateLoadedImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
-            const DeepCollectionEquality().equals(other._dayTrips, _dayTrips));
+            const DeepCollectionEquality().equals(other._dayTrips, _dayTrips) &&
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, trip, const DeepCollectionEquality().hash(_dayTrips));
+  int get hashCode => Object.hash(runtimeType, trip,
+      const DeepCollectionEquality().hash(_dayTrips), viewMode);
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -456,9 +512,13 @@ class _$TripStateLoadedImpl implements TripStateLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip) initial,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips) loaded,
-    required TResult Function(Trip trip, String errorMessage, bool fatal) error,
+    required TResult Function(Trip trip, ViewMode viewMode) initial,
+    required TResult Function(
+            Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)
+        loaded,
+    required TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)
+        error,
     required TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -468,20 +528,24 @@ class _$TripStateLoadedImpl implements TripStateLoaded {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)
+            String? errorMessage,
+            ViewMode viewMode)
         editing,
-    required TResult Function(Trip trip) deleting,
-    required TResult Function(Trip trip) deleted,
+    required TResult Function(Trip trip, ViewMode viewMode) deleting,
+    required TResult Function(Trip trip, ViewMode viewMode) deleted,
   }) {
-    return loaded(trip, dayTrips);
+    return loaded(trip, dayTrips, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip)? initial,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult? Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult? Function(Trip trip, ViewMode viewMode)? initial,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult? Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult? Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -491,20 +555,24 @@ class _$TripStateLoadedImpl implements TripStateLoaded {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult? Function(Trip trip)? deleting,
-    TResult? Function(Trip trip)? deleted,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleted,
   }) {
-    return loaded?.call(trip, dayTrips);
+    return loaded?.call(trip, dayTrips, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip)? initial,
-    TResult Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult Function(Trip trip, ViewMode viewMode)? initial,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -514,14 +582,15 @@ class _$TripStateLoadedImpl implements TripStateLoaded {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult Function(Trip trip)? deleting,
-    TResult Function(Trip trip)? deleted,
+    TResult Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult Function(Trip trip, ViewMode viewMode)? deleted,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(trip, dayTrips);
+      return loaded(trip, dayTrips, viewMode);
     }
     return orElse();
   }
@@ -573,11 +642,14 @@ class _$TripStateLoadedImpl implements TripStateLoaded {
 abstract class TripStateLoaded implements TripState {
   const factory TripStateLoaded(
       {required final Trip trip,
-      required final List<DayTrip> dayTrips}) = _$TripStateLoadedImpl;
+      required final List<DayTrip> dayTrips,
+      required final ViewMode viewMode}) = _$TripStateLoadedImpl;
 
   @override
   Trip get trip;
   List<DayTrip> get dayTrips;
+  @override
+  ViewMode get viewMode;
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -595,7 +667,7 @@ abstract class _$$TripStateErrorImplCopyWith<$Res>
       __$$TripStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Trip trip, String errorMessage, bool fatal});
+  $Res call({Trip trip, String errorMessage, ViewMode viewMode, bool fatal});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -616,6 +688,7 @@ class __$$TripStateErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? trip = null,
     Object? errorMessage = null,
+    Object? viewMode = null,
     Object? fatal = null,
   }) {
     return _then(_$TripStateErrorImpl(
@@ -627,6 +700,10 @@ class __$$TripStateErrorImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
       fatal: null == fatal
           ? _value.fatal
           : fatal // ignore: cast_nullable_to_non_nullable
@@ -639,18 +716,23 @@ class __$$TripStateErrorImplCopyWithImpl<$Res>
 
 class _$TripStateErrorImpl implements TripStateError {
   const _$TripStateErrorImpl(
-      {required this.trip, required this.errorMessage, required this.fatal});
+      {required this.trip,
+      required this.errorMessage,
+      required this.viewMode,
+      required this.fatal});
 
   @override
   final Trip trip;
   @override
   final String errorMessage;
   @override
+  final ViewMode viewMode;
+  @override
   final bool fatal;
 
   @override
   String toString() {
-    return 'TripState.error(trip: $trip, errorMessage: $errorMessage, fatal: $fatal)';
+    return 'TripState.error(trip: $trip, errorMessage: $errorMessage, viewMode: $viewMode, fatal: $fatal)';
   }
 
   @override
@@ -661,11 +743,14 @@ class _$TripStateErrorImpl implements TripStateError {
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode) &&
             (identical(other.fatal, fatal) || other.fatal == fatal));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, trip, errorMessage, fatal);
+  int get hashCode =>
+      Object.hash(runtimeType, trip, errorMessage, viewMode, fatal);
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -679,9 +764,13 @@ class _$TripStateErrorImpl implements TripStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip) initial,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips) loaded,
-    required TResult Function(Trip trip, String errorMessage, bool fatal) error,
+    required TResult Function(Trip trip, ViewMode viewMode) initial,
+    required TResult Function(
+            Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)
+        loaded,
+    required TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)
+        error,
     required TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -691,20 +780,24 @@ class _$TripStateErrorImpl implements TripStateError {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)
+            String? errorMessage,
+            ViewMode viewMode)
         editing,
-    required TResult Function(Trip trip) deleting,
-    required TResult Function(Trip trip) deleted,
+    required TResult Function(Trip trip, ViewMode viewMode) deleting,
+    required TResult Function(Trip trip, ViewMode viewMode) deleted,
   }) {
-    return error(trip, errorMessage, fatal);
+    return error(trip, errorMessage, viewMode, fatal);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip)? initial,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult? Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult? Function(Trip trip, ViewMode viewMode)? initial,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult? Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult? Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -714,20 +807,24 @@ class _$TripStateErrorImpl implements TripStateError {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult? Function(Trip trip)? deleting,
-    TResult? Function(Trip trip)? deleted,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleted,
   }) {
-    return error?.call(trip, errorMessage, fatal);
+    return error?.call(trip, errorMessage, viewMode, fatal);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip)? initial,
-    TResult Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult Function(Trip trip, ViewMode viewMode)? initial,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -737,14 +834,15 @@ class _$TripStateErrorImpl implements TripStateError {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult Function(Trip trip)? deleting,
-    TResult Function(Trip trip)? deleted,
+    TResult Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult Function(Trip trip, ViewMode viewMode)? deleted,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(trip, errorMessage, fatal);
+      return error(trip, errorMessage, viewMode, fatal);
     }
     return orElse();
   }
@@ -797,11 +895,14 @@ abstract class TripStateError implements TripState {
   const factory TripStateError(
       {required final Trip trip,
       required final String errorMessage,
+      required final ViewMode viewMode,
       required final bool fatal}) = _$TripStateErrorImpl;
 
   @override
   Trip get trip;
   String get errorMessage;
+  @override
+  ViewMode get viewMode;
   bool get fatal;
 
   /// Create a copy of TripState
@@ -829,7 +930,8 @@ abstract class _$$TripStateEditingImplCopyWith<$Res>
       bool isPublic,
       String languageCode,
       bool isSaving,
-      String? errorMessage});
+      String? errorMessage,
+      ViewMode viewMode});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -857,6 +959,7 @@ class __$$TripStateEditingImplCopyWithImpl<$Res>
     Object? languageCode = null,
     Object? isSaving = null,
     Object? errorMessage = freezed,
+    Object? viewMode = null,
   }) {
     return _then(_$TripStateEditingImpl(
       trip: null == trip
@@ -895,6 +998,10 @@ class __$$TripStateEditingImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -911,7 +1018,8 @@ class _$TripStateEditingImpl implements TripStateEditing {
       required this.isPublic,
       required this.languageCode,
       this.isSaving = false,
-      this.errorMessage})
+      this.errorMessage,
+      required this.viewMode})
       : _dayTrips = dayTrips;
 
   @override
@@ -939,10 +1047,12 @@ class _$TripStateEditingImpl implements TripStateEditing {
   final bool isSaving;
   @override
   final String? errorMessage;
+  @override
+  final ViewMode viewMode;
 
   @override
   String toString() {
-    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isPublic: $isPublic, languageCode: $languageCode, isSaving: $isSaving, errorMessage: $errorMessage)';
+    return 'TripState.editing(trip: $trip, dayTrips: $dayTrips, name: $name, description: $description, startDate: $startDate, isPublic: $isPublic, languageCode: $languageCode, isSaving: $isSaving, errorMessage: $errorMessage, viewMode: $viewMode)';
   }
 
   @override
@@ -964,7 +1074,9 @@ class _$TripStateEditingImpl implements TripStateEditing {
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode));
   }
 
   @override
@@ -978,7 +1090,8 @@ class _$TripStateEditingImpl implements TripStateEditing {
       isPublic,
       languageCode,
       isSaving,
-      errorMessage);
+      errorMessage,
+      viewMode);
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -992,9 +1105,13 @@ class _$TripStateEditingImpl implements TripStateEditing {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip) initial,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips) loaded,
-    required TResult Function(Trip trip, String errorMessage, bool fatal) error,
+    required TResult Function(Trip trip, ViewMode viewMode) initial,
+    required TResult Function(
+            Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)
+        loaded,
+    required TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)
+        error,
     required TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1004,21 +1121,25 @@ class _$TripStateEditingImpl implements TripStateEditing {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)
+            String? errorMessage,
+            ViewMode viewMode)
         editing,
-    required TResult Function(Trip trip) deleting,
-    required TResult Function(Trip trip) deleted,
+    required TResult Function(Trip trip, ViewMode viewMode) deleting,
+    required TResult Function(Trip trip, ViewMode viewMode) deleted,
   }) {
     return editing(trip, dayTrips, name, description, startDate, isPublic,
-        languageCode, isSaving, errorMessage);
+        languageCode, isSaving, errorMessage, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip)? initial,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult? Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult? Function(Trip trip, ViewMode viewMode)? initial,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult? Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult? Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1028,21 +1149,25 @@ class _$TripStateEditingImpl implements TripStateEditing {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult? Function(Trip trip)? deleting,
-    TResult? Function(Trip trip)? deleted,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleted,
   }) {
     return editing?.call(trip, dayTrips, name, description, startDate, isPublic,
-        languageCode, isSaving, errorMessage);
+        languageCode, isSaving, errorMessage, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip)? initial,
-    TResult Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult Function(Trip trip, ViewMode viewMode)? initial,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1052,15 +1177,16 @@ class _$TripStateEditingImpl implements TripStateEditing {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult Function(Trip trip)? deleting,
-    TResult Function(Trip trip)? deleted,
+    TResult Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult Function(Trip trip, ViewMode viewMode)? deleted,
     required TResult orElse(),
   }) {
     if (editing != null) {
       return editing(trip, dayTrips, name, description, startDate, isPublic,
-          languageCode, isSaving, errorMessage);
+          languageCode, isSaving, errorMessage, viewMode);
     }
     return orElse();
   }
@@ -1119,7 +1245,8 @@ abstract class TripStateEditing implements TripState {
       required final bool isPublic,
       required final String languageCode,
       final bool isSaving,
-      final String? errorMessage}) = _$TripStateEditingImpl;
+      final String? errorMessage,
+      required final ViewMode viewMode}) = _$TripStateEditingImpl;
 
   @override
   Trip get trip;
@@ -1131,6 +1258,8 @@ abstract class TripStateEditing implements TripState {
   String get languageCode;
   bool get isSaving;
   String? get errorMessage;
+  @override
+  ViewMode get viewMode;
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -1148,7 +1277,7 @@ abstract class _$$TripStateDeletingImplCopyWith<$Res>
       __$$TripStateDeletingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Trip trip});
+  $Res call({Trip trip, ViewMode viewMode});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -1168,12 +1297,17 @@ class __$$TripStateDeletingImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? trip = null,
+    Object? viewMode = null,
   }) {
     return _then(_$TripStateDeletingImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as Trip,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -1181,14 +1315,16 @@ class __$$TripStateDeletingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TripStateDeletingImpl implements TripStateDeleting {
-  const _$TripStateDeletingImpl({required this.trip});
+  const _$TripStateDeletingImpl({required this.trip, required this.viewMode});
 
   @override
   final Trip trip;
+  @override
+  final ViewMode viewMode;
 
   @override
   String toString() {
-    return 'TripState.deleting(trip: $trip)';
+    return 'TripState.deleting(trip: $trip, viewMode: $viewMode)';
   }
 
   @override
@@ -1196,11 +1332,13 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateDeletingImpl &&
-            (identical(other.trip, trip) || other.trip == trip));
+            (identical(other.trip, trip) || other.trip == trip) &&
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, trip);
+  int get hashCode => Object.hash(runtimeType, trip, viewMode);
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -1214,9 +1352,13 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip) initial,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips) loaded,
-    required TResult Function(Trip trip, String errorMessage, bool fatal) error,
+    required TResult Function(Trip trip, ViewMode viewMode) initial,
+    required TResult Function(
+            Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)
+        loaded,
+    required TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)
+        error,
     required TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1226,20 +1368,24 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)
+            String? errorMessage,
+            ViewMode viewMode)
         editing,
-    required TResult Function(Trip trip) deleting,
-    required TResult Function(Trip trip) deleted,
+    required TResult Function(Trip trip, ViewMode viewMode) deleting,
+    required TResult Function(Trip trip, ViewMode viewMode) deleted,
   }) {
-    return deleting(trip);
+    return deleting(trip, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip)? initial,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult? Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult? Function(Trip trip, ViewMode viewMode)? initial,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult? Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult? Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1249,20 +1395,24 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult? Function(Trip trip)? deleting,
-    TResult? Function(Trip trip)? deleted,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleted,
   }) {
-    return deleting?.call(trip);
+    return deleting?.call(trip, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip)? initial,
-    TResult Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult Function(Trip trip, ViewMode viewMode)? initial,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1272,14 +1422,15 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult Function(Trip trip)? deleting,
-    TResult Function(Trip trip)? deleted,
+    TResult Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult Function(Trip trip, ViewMode viewMode)? deleted,
     required TResult orElse(),
   }) {
     if (deleting != null) {
-      return deleting(trip);
+      return deleting(trip, viewMode);
     }
     return orElse();
   }
@@ -1329,11 +1480,14 @@ class _$TripStateDeletingImpl implements TripStateDeleting {
 }
 
 abstract class TripStateDeleting implements TripState {
-  const factory TripStateDeleting({required final Trip trip}) =
-      _$TripStateDeletingImpl;
+  const factory TripStateDeleting(
+      {required final Trip trip,
+      required final ViewMode viewMode}) = _$TripStateDeletingImpl;
 
   @override
   Trip get trip;
+  @override
+  ViewMode get viewMode;
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -1351,7 +1505,7 @@ abstract class _$$TripStateDeletedImplCopyWith<$Res>
       __$$TripStateDeletedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Trip trip});
+  $Res call({Trip trip, ViewMode viewMode});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -1371,12 +1525,17 @@ class __$$TripStateDeletedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? trip = null,
+    Object? viewMode = null,
   }) {
     return _then(_$TripStateDeletedImpl(
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as Trip,
+      viewMode: null == viewMode
+          ? _value.viewMode
+          : viewMode // ignore: cast_nullable_to_non_nullable
+              as ViewMode,
     ));
   }
 }
@@ -1384,14 +1543,16 @@ class __$$TripStateDeletedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TripStateDeletedImpl implements TripStateDeleted {
-  const _$TripStateDeletedImpl({required this.trip});
+  const _$TripStateDeletedImpl({required this.trip, required this.viewMode});
 
   @override
   final Trip trip;
+  @override
+  final ViewMode viewMode;
 
   @override
   String toString() {
-    return 'TripState.deleted(trip: $trip)';
+    return 'TripState.deleted(trip: $trip, viewMode: $viewMode)';
   }
 
   @override
@@ -1399,11 +1560,13 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStateDeletedImpl &&
-            (identical(other.trip, trip) || other.trip == trip));
+            (identical(other.trip, trip) || other.trip == trip) &&
+            (identical(other.viewMode, viewMode) ||
+                other.viewMode == viewMode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, trip);
+  int get hashCode => Object.hash(runtimeType, trip, viewMode);
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -1417,9 +1580,13 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip) initial,
-    required TResult Function(Trip trip, List<DayTrip> dayTrips) loaded,
-    required TResult Function(Trip trip, String errorMessage, bool fatal) error,
+    required TResult Function(Trip trip, ViewMode viewMode) initial,
+    required TResult Function(
+            Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)
+        loaded,
+    required TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)
+        error,
     required TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1429,20 +1596,24 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)
+            String? errorMessage,
+            ViewMode viewMode)
         editing,
-    required TResult Function(Trip trip) deleting,
-    required TResult Function(Trip trip) deleted,
+    required TResult Function(Trip trip, ViewMode viewMode) deleting,
+    required TResult Function(Trip trip, ViewMode viewMode) deleted,
   }) {
-    return deleted(trip);
+    return deleted(trip, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip)? initial,
-    TResult? Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult? Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult? Function(Trip trip, ViewMode viewMode)? initial,
+    TResult? Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult? Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult? Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1452,20 +1623,24 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult? Function(Trip trip)? deleting,
-    TResult? Function(Trip trip)? deleted,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult? Function(Trip trip, ViewMode viewMode)? deleted,
   }) {
-    return deleted?.call(trip);
+    return deleted?.call(trip, viewMode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip)? initial,
-    TResult Function(Trip trip, List<DayTrip> dayTrips)? loaded,
-    TResult Function(Trip trip, String errorMessage, bool fatal)? error,
+    TResult Function(Trip trip, ViewMode viewMode)? initial,
+    TResult Function(Trip trip, List<DayTrip> dayTrips, ViewMode viewMode)?
+        loaded,
+    TResult Function(
+            Trip trip, String errorMessage, ViewMode viewMode, bool fatal)?
+        error,
     TResult Function(
             Trip trip,
             List<DayTrip> dayTrips,
@@ -1475,14 +1650,15 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
             bool isPublic,
             String languageCode,
             bool isSaving,
-            String? errorMessage)?
+            String? errorMessage,
+            ViewMode viewMode)?
         editing,
-    TResult Function(Trip trip)? deleting,
-    TResult Function(Trip trip)? deleted,
+    TResult Function(Trip trip, ViewMode viewMode)? deleting,
+    TResult Function(Trip trip, ViewMode viewMode)? deleted,
     required TResult orElse(),
   }) {
     if (deleted != null) {
-      return deleted(trip);
+      return deleted(trip, viewMode);
     }
     return orElse();
   }
@@ -1532,11 +1708,14 @@ class _$TripStateDeletedImpl implements TripStateDeleted {
 }
 
 abstract class TripStateDeleted implements TripState {
-  const factory TripStateDeleted({required final Trip trip}) =
-      _$TripStateDeletedImpl;
+  const factory TripStateDeleted(
+      {required final Trip trip,
+      required final ViewMode viewMode}) = _$TripStateDeletedImpl;
 
   @override
   Trip get trip;
+  @override
+  ViewMode get viewMode;
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.

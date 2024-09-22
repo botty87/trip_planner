@@ -13,6 +13,8 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../../ui/widgets/background/scaffold_transparent.dart';
 import '../../../../ui/widgets/generics/snackbars.dart';
 import '../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../../ui/widgets/view_mode/view_mode_listener.dart';
+import '../../../settings/domain/usecases/update_view_preferences.dart';
 import '../../../tutorials/presentation/cubit/tutorial_cubit.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../../domain/entities/trip.dart';
@@ -48,148 +50,158 @@ class TripPage extends HookWidget {
       _ => throw const UnexpectedStateException(message: 'User is not logged in'),
     };
 
+    final viewMode = switch (context.read<UserCubit>().state) {
+      final UserStateLoggedIn loggedInState => loggedInState.user.viewPreferences.tripsViewMode,
+      _ => null,
+    };
+
     return BlocProvider<TripCubit>(
-      create: (context) => getIt<TripCubit>(param1: _trip),
-      child: ShowCaseWidget(
-        builder: (context) {
-          final showTutorial = context.read<TutorialCubit>().state.showShareTrip && showShareButton;
+      create: (context) => getIt<TripCubit>(param1: _trip, param2: viewMode),
+      child: ViewModeListener(
+        viewModePage: ViewModePage.trip,
+        onViewModeChanged: (viewMode) => context.read<TripCubit>().updateViewModeFromUser(viewMode),
+        child: ShowCaseWidget(
+          builder: (context) {
+            final showTutorial = context.read<TutorialCubit>().state.showShareTrip && showShareButton;
 
-          if (showTutorial && !tutorialShowed.value) {
-            tutorialShowed.value = true;
-            WidgetsBinding.instance.addPostFrameCallback((_) async {
-              await Future.delayed(const Duration(milliseconds: 500));
-              if (context.mounted) {
-                ShowCaseWidget.of(context).startShowCase([_showCaseKeyOne]);
-              }
-            });
-          }
+            if (showTutorial && !tutorialShowed.value) {
+              tutorialShowed.value = true;
+              WidgetsBinding.instance.addPostFrameCallback((_) async {
+                await Future.delayed(const Duration(milliseconds: 500));
+                if (context.mounted) {
+                  ShowCaseWidget.of(context).startShowCase([_showCaseKeyOne]);
+                }
+              });
+            }
 
-          return ScaffoldTransparent(
-            hasBackgroundImage: context.hasBackgroundImage,
-            appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: _TripPageAppBar(showShareButton),
-            ),
-            body: MultiBlocListener(
-              listeners: [
-                BlocListener<TripCubit, TripState>(
-                  //Show snackbar when error is not fatal and is not editing
-                  listenWhen: (previous, current) => current.maybeMap(
-                    error: (state) => !state.fatal && !isModalBottomOpen.value,
-                    orElse: () => false,
-                  ),
-                  listener: (context, state) {
-                    final errorMessage = state.maybeMap(
-                      error: (state) => state.errorMessage,
-                      orElse: () => throw const UnexpectedStateException(),
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
-                  },
-                ),
-                BlocListener<TripCubit, TripState>(
-                  //Show editing modal bottom sheet if editing
-                  listenWhen: (previous, current) => current.maybeMap(
-                    editing: (_) => current.runtimeType != previous.runtimeType,
-                    orElse: () => false,
-                  ),
-                  listener: (context, state) {
-                    _showEditingModalBottom(context, isSaving, isModalBottomOpen, errorMessageStream);
-                  },
-                ),
-
-                //Close modal bottom sheet if modal bottom dismissed
-                BlocListener<TripCubit, TripState>(
-                  listenWhen: (previous, current) => current.maybeMap(
-                    loaded: (_) => previous.maybeMap(
-                      editing: (_) => true,
+            return ScaffoldTransparent(
+              hasBackgroundImage: context.hasBackgroundImage,
+              appBar: PreferredSize(
+                preferredSize: const Size.fromHeight(kToolbarHeight),
+                child: _TripPageAppBar(showShareButton),
+              ),
+              body: MultiBlocListener(
+                listeners: [
+                  BlocListener<TripCubit, TripState>(
+                    //Show snackbar when error is not fatal and is not editing
+                    listenWhen: (previous, current) => current.maybeMap(
+                      error: (state) => !state.fatal && !isModalBottomOpen.value,
                       orElse: () => false,
                     ),
-                    orElse: () => false,
+                    listener: (context, state) {
+                      final errorMessage = state.maybeMap(
+                        error: (state) => state.errorMessage,
+                        orElse: () => throw const UnexpectedStateException(),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(Snackbars.error(errorMessage));
+                    },
                   ),
-                  listener: (context, state) {
-                    if (isModalBottomOpen.value) {
-                      Navigator.of(context).pop();
-                    }
-                  },
-                ),
-                //On modal error, update errorMessage stream
-                BlocListener<TripCubit, TripState>(
-                  listenWhen: (previous, current) => current.maybeMap(
-                    editing: (currentEditingState) => previous.maybeMap(
-                      editing: (previousEditingState) =>
-                          currentEditingState.errorMessage != previousEditingState.errorMessage,
+                  BlocListener<TripCubit, TripState>(
+                    //Show editing modal bottom sheet if editing
+                    listenWhen: (previous, current) => current.maybeMap(
+                      editing: (_) => current.runtimeType != previous.runtimeType,
                       orElse: () => false,
                     ),
-                    orElse: () => false,
+                    listener: (context, state) {
+                      _showEditingModalBottom(context, isSaving, isModalBottomOpen, errorMessageStream);
+                    },
                   ),
-                  listener: (context, state) {
-                    final errorMessage = state.maybeMap(
-                      editing: (state) => state.errorMessage,
-                      orElse: () => throw const UnexpectedStateException(),
-                    );
-                    errorMessageStream.add(errorMessage);
-                  },
-                ),
-                //Update isSaving stream
-                BlocListener<TripCubit, TripState>(
-                  listenWhen: (previous, current) => current.maybeMap(
-                    editing: (currentEditingState) => previous.maybeMap(
-                      editing: (previousEditingState) => currentEditingState.isSaving != previousEditingState.isSaving,
-                      orElse: () => false,
-                    ),
-                    orElse: () => false,
-                  ),
-                  listener: (context, state) {
-                    final isSavingValue = state.maybeMap(
-                      editing: (state) => state.isSaving,
-                      orElse: () => throw const UnexpectedStateException(),
-                    );
-                    isSaving.add(isSavingValue);
-                  },
-                ),
-                //On trip deleted, pop page
-                BlocListener<TripCubit, TripState>(
-                  listenWhen: (previous, current) => current.maybeMap(
-                    deleted: (_) => true,
-                    orElse: () => false,
-                  ),
-                  listener: (context, state) {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-              child: BlocBuilder<TripCubit, TripState>(
-                buildWhen: (previous, current) => current.maybeMap(
-                  deleting: (_) => false,
-                  error: (state) => state.fatal,
-                  deleted: (_) => false,
-                  orElse: () =>
-                      previous.runtimeType != current.runtimeType &&
-                      previous.maybeMap(
-                        error: (value) => value.fatal,
-                        orElse: () => true,
-                      ) &&
-                      current.maybeMap(
-                        editing: (_) => false,
-                        orElse: () => true,
+
+                  //Close modal bottom sheet if modal bottom dismissed
+                  BlocListener<TripCubit, TripState>(
+                    listenWhen: (previous, current) => current.maybeMap(
+                      loaded: (_) => previous.maybeMap(
+                        editing: (_) => true,
+                        orElse: () => false,
                       ),
-                ),
-                builder: (context, state) => TripPagesAnimatedSwitcher(
-                  child: state.maybeMap(
-                    initial: (_) => const TripPageInitialWidget(key: ValueKey('initial')),
-                    loaded: (_) => const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
-                    error: (state) => Center(
-                      key: const ValueKey('error'),
-                      child: TripErrorWidget(message: state.errorMessage),
+                      orElse: () => false,
                     ),
-                    orElse: () => throw UnimplementedError(),
+                    listener: (context, state) {
+                      if (isModalBottomOpen.value) {
+                        Navigator.of(context).pop();
+                      }
+                    },
+                  ),
+                  //On modal error, update errorMessage stream
+                  BlocListener<TripCubit, TripState>(
+                    listenWhen: (previous, current) => current.maybeMap(
+                      editing: (currentEditingState) => previous.maybeMap(
+                        editing: (previousEditingState) =>
+                            currentEditingState.errorMessage != previousEditingState.errorMessage,
+                        orElse: () => false,
+                      ),
+                      orElse: () => false,
+                    ),
+                    listener: (context, state) {
+                      final errorMessage = state.maybeMap(
+                        editing: (state) => state.errorMessage,
+                        orElse: () => throw const UnexpectedStateException(),
+                      );
+                      errorMessageStream.add(errorMessage);
+                    },
+                  ),
+                  //Update isSaving stream
+                  BlocListener<TripCubit, TripState>(
+                    listenWhen: (previous, current) => current.maybeMap(
+                      editing: (currentEditingState) => previous.maybeMap(
+                        editing: (previousEditingState) =>
+                            currentEditingState.isSaving != previousEditingState.isSaving,
+                        orElse: () => false,
+                      ),
+                      orElse: () => false,
+                    ),
+                    listener: (context, state) {
+                      final isSavingValue = state.maybeMap(
+                        editing: (state) => state.isSaving,
+                        orElse: () => throw const UnexpectedStateException(),
+                      );
+                      isSaving.add(isSavingValue);
+                    },
+                  ),
+                  //On trip deleted, pop page
+                  BlocListener<TripCubit, TripState>(
+                    listenWhen: (previous, current) => current.maybeMap(
+                      deleted: (_) => true,
+                      orElse: () => false,
+                    ),
+                    listener: (context, state) {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+                child: BlocBuilder<TripCubit, TripState>(
+                  buildWhen: (previous, current) => current.maybeMap(
+                    deleting: (_) => false,
+                    error: (state) => state.fatal,
+                    deleted: (_) => false,
+                    orElse: () =>
+                        previous.runtimeType != current.runtimeType &&
+                        previous.maybeMap(
+                          error: (value) => value.fatal,
+                          orElse: () => true,
+                        ) &&
+                        current.maybeMap(
+                          editing: (_) => false,
+                          orElse: () => true,
+                        ),
+                  ),
+                  builder: (context, state) => TripPagesAnimatedSwitcher(
+                    child: state.maybeMap(
+                      initial: (_) => const TripPageInitialWidget(key: ValueKey('initial')),
+                      loaded: (_) => const Center(key: ValueKey('loaded'), child: TripPageLoadedWidget()),
+                      error: (state) => Center(
+                        key: const ValueKey('error'),
+                        child: TripErrorWidget(message: state.errorMessage),
+                      ),
+                      orElse: () => throw UnimplementedError(),
+                    ),
                   ),
                 ),
               ),
-            ),
-          );
-        },
-        onFinish: () => context.read<TutorialCubit>().onShareTripDone(),
+            );
+          },
+          onFinish: () => context.read<TutorialCubit>().onShareTripDone(),
+        ),
       ),
     );
   }

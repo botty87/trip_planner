@@ -11,6 +11,8 @@ import '../../../../core/utilities/extensions.dart';
 import '../../../../ui/widgets/background/scaffold_transparent.dart';
 import '../../../../ui/widgets/generics/grid_view_checker_mixin.dart';
 import '../../../../ui/widgets/generics/trip_pages_animated_switcher.dart';
+import '../../../../ui/widgets/view_mode/view_mode_listener.dart';
+import '../../../settings/domain/usecases/update_view_preferences.dart';
 import '../../../user_account/presentation/cubit/user/user_cubit.dart';
 import '../cubit/trips/trips_cubit.dart';
 import '../widgets/trips_page/drawer.dart';
@@ -40,23 +42,9 @@ class TripsPage extends StatelessWidget with GridViewCheckerMixin {
 
     return BlocProvider<TripsCubit>(
       create: (context) => getIt(param1: userId, param2: viewMode),
-      child: BlocListener<UserCubit, UserState>(
-        listenWhen: (previous, current) {
-          final previousViewMode = switch (previous) {
-            final UserStateLoggedIn loggedInState => loggedInState.user.viewPreferences.tripsViewMode,
-            _ => null,
-          };
-          final currentViewMode = switch (current) {
-            final UserStateLoggedIn loggedInState => loggedInState.user.viewPreferences.tripsViewMode,
-            _ => null,
-          };
-          return previousViewMode != currentViewMode;
-        },
-        listener: (context, state) {
-          if (state case final UserStateLoggedIn loggedInState) {
-            context.read<TripsCubit>().updateViewModeFromUser(loggedInState.user.viewPreferences.tripsViewMode);
-          }
-        },
+      child: ViewModeListener(
+        viewModePage: ViewModePage.trips,
+        onViewModeChanged: (viewMode) => context.read<TripsCubit>().updateViewModeFromUser(viewMode),
         child: ScaffoldTransparent(
           hasBackgroundImage: context.hasBackgroundImage,
           appBar: AppBar(

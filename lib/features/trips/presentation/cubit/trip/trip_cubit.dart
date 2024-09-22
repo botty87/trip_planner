@@ -12,6 +12,7 @@ import '../../../../day_trips/domain/entities/day_trip.dart';
 import '../../../../day_trips/domain/usecases/listen_day_trips.dart';
 import '../../../../day_trips/domain/usecases/update_day_trips_indexes.dart';
 import '../../../../day_trips/errors/day_trips_failure.dart';
+import '../../../../settings/domain/entities/view_preferences.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/delete_trip.dart';
 import '../../../domain/usecases/listen_trip.dart';
@@ -37,6 +38,7 @@ class TripCubit extends Cubit<TripState> {
 
   TripCubit({
     @factoryParam required Trip trip,
+    @factoryParam required ViewMode viewMode,
     required UpdateTrip saveTrip,
     required DeleteTrip deleteTrip,
     required ListenDayTrips listenDayTrips,
@@ -51,7 +53,7 @@ class TripCubit extends Cubit<TripState> {
         _listenTrip = listenTrip,
         _removeUserForShare = removeUserForShare,
         _crashlytics = crashlytics,
-        super(TripState.initial(trip: trip));
+        super(TripState.initial(trip: trip, viewMode: viewMode));
 
   @PostConstruct()
   void init() {
@@ -68,12 +70,13 @@ class TripCubit extends Cubit<TripState> {
             trip: state.trip,
             errorMessage: failure.message ?? LocaleKeys.dataLoadError.tr(),
             fatal: true,
+            viewMode: state.viewMode,
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
         (dayTrips) => switch (state) {
           final TripStateEditing state => emit(state.copyWith(dayTrips: dayTrips)),
-          _ => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips)),
+          _ => emit(TripState.loaded(trip: state.trip, dayTrips: dayTrips, viewMode: state.viewMode)),
         },
       );
     });
@@ -88,6 +91,7 @@ class TripCubit extends Cubit<TripState> {
             trip: state.trip,
             errorMessage: LocaleKeys.dataLoadError.tr(),
             fatal: true,
+            viewMode: state.viewMode,
           ));
           _crashlytics.recordError(failure, StackTrace.current);
         },
@@ -111,6 +115,7 @@ class TripCubit extends Cubit<TripState> {
         startDate: state.trip.startDate,
         isPublic: state.trip.isPublic,
         languageCode: state.trip.languageCode ?? 'en',
+        viewMode: state.viewMode,
       ));
     });
   }
@@ -180,14 +185,16 @@ class TripCubit extends Cubit<TripState> {
           },
           (_) => emit(
             TripState.loaded(
-                trip: state.trip.copyWith(
-                  name: tripName,
-                  description: tripDescription,
-                  startDate: tripStartDate,
-                  isPublic: tripIsPublic,
-                  languageCode: tripLanguageCode,
-                ),
-                dayTrips: state.dayTrips),
+              trip: state.trip.copyWith(
+                name: tripName,
+                description: tripDescription,
+                startDate: tripStartDate,
+                isPublic: tripIsPublic,
+                languageCode: tripLanguageCode,
+              ),
+              dayTrips: state.dayTrips,
+              viewMode: state.viewMode,
+            ),
           ),
         );
       },
@@ -195,7 +202,7 @@ class TripCubit extends Cubit<TripState> {
   }
 
   void deleteTrip() async {
-    emit(TripState.deleting(trip: state.trip));
+    emit(TripState.deleting(trip: state.trip, viewMode: state.viewMode));
 
     final result = await _deleteTrip(DeleteTripParams(trip: state.trip));
 
@@ -210,9 +217,10 @@ class TripCubit extends Cubit<TripState> {
           trip: state.trip,
           errorMessage: errorMessage,
           fatal: false,
+          viewMode: state.viewMode,
         ));
       },
-      (_) => emit(TripState.deleted(trip: state.trip)),
+      (_) => emit(TripState.deleted(trip: state.trip, viewMode: state.viewMode)),
     );
   }
 
@@ -228,7 +236,7 @@ class TripCubit extends Cubit<TripState> {
         newDayTrips[i] = newDayTrips[i].copyWith(index: i);
       }
 
-      emit(TripState.loaded(trip: state.trip, dayTrips: newDayTrips));
+      emit(TripState.loaded(trip: state.trip, dayTrips: newDayTrips, viewMode: state.viewMode));
 
       final List<DayTrip> dayTripsToUpdate = [];
 
@@ -252,8 +260,9 @@ class TripCubit extends Cubit<TripState> {
             trip: state.trip,
             errorMessage: failure.message ?? LocaleKeys.unknownErrorRetry.tr(),
             fatal: false,
+            viewMode: state.viewMode,
           ));
-          emit(TripState.loaded(trip: state.trip, dayTrips: oldDayTrips));
+          emit(TripState.loaded(trip: state.trip, dayTrips: oldDayTrips, viewMode: state.viewMode));
         },
       );
     }
@@ -261,13 +270,14 @@ class TripCubit extends Cubit<TripState> {
 
   void modalBottomEditingDismissed() {
     return switch (state) {
-      final TripStateEditing state => emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips)),
+      final TripStateEditing state =>
+        emit(TripState.loaded(trip: state.trip, dayTrips: state.dayTrips, viewMode: state.viewMode)),
       _ => null,
     };
   }
 
   void removeTrip(String userId) async {
-    emit(TripState.deleting(trip: state.trip));
+    emit(TripState.deleting(trip: state.trip, viewMode: state.viewMode));
 
     final result = await _removeUserForShare(RemoveUserForShareParams(tripId: state.trip.id, userId: userId));
 
@@ -283,11 +293,14 @@ class TripCubit extends Cubit<TripState> {
           trip: state.trip,
           errorMessage: errorMessage,
           fatal: false,
+          viewMode: state.viewMode,
         ));
       },
-      (_) => emit(TripState.deleted(trip: state.trip)),
+      (_) => emit(TripState.deleted(trip: state.trip, viewMode: state.viewMode)),
     );
   }
+
+  void updateViewModeFromUser(ViewMode viewMode) => emit(state.copyWith(viewMode: viewMode));
 
   @override
   Future<void> close() {

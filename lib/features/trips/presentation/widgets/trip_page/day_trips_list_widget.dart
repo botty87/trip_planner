@@ -23,13 +23,15 @@ class DayTripsListWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     //Use this for the animation
-    final previousHasDayTrips = usePrevious(context
-        .select<TripCubit, bool?>((cubit) => cubit.state.whenOrNull(loaded: (trip, dayTrips) => dayTrips.isNotEmpty)));
+    final previousHasDayTrips = usePrevious(switch (context.read<TripCubit>()) {
+      TripStateLoaded(:final dayTrips) => dayTrips.isNotEmpty,
+      _ => false,
+    });
 
-    final hasDayTrips = context.select((TripCubit cubit) => cubit.state.maybeMap(
-          loaded: (state) => state.dayTrips.isNotEmpty,
-          orElse: () => previousHasDayTrips ?? false,
-        ));
+    final hasDayTrips = context.select((TripCubit cubit) => switch (cubit.state) {
+          TripStateLoaded(:final dayTrips) => dayTrips.isNotEmpty,
+          _ => previousHasDayTrips ?? false,
+        });
 
     if (hasDayTrips) {
       return SliverPadding(
@@ -76,13 +78,15 @@ class DayTripsList extends HookWidget {
   @override
   Widget build(BuildContext context) {
     //Use this for the animation
-    final previousDayTrips =
-        usePrevious(context.read<TripCubit>().state.whenOrNull(loaded: (trip, dayTrips) => dayTrips));
+    final previousDayTrips = usePrevious(switch (context.read<TripCubit>().state) {
+      TripStateLoaded(:final dayTrips) => dayTrips,
+      _ => null,
+    });
 
-    final dayTrips = context.select((TripCubit cubit) => cubit.state.maybeMap(
-          loaded: (state) => state.dayTrips,
-          orElse: () => previousDayTrips ?? [],
-        ));
+    final dayTrips = context.select((TripCubit cubit) => switch (cubit.state) {
+          TripStateLoaded(:final dayTrips) => dayTrips,
+          _ => previousDayTrips ?? [],
+        });
 
     final tripStartDate = context.select((TripCubit cubit) => cubit.state.trip.startDate);
 
