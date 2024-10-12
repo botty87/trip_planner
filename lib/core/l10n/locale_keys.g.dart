@@ -178,7 +178,8 @@ abstract class  LocaleKeys {
   static const addPublicTripFabShowCaseBody = 'addPublicTripFabShowCaseBody';
   static const tripStopSlideShowCaseTitle = 'tripStopSlideShowCaseTitle';
   static const tripStopSlideShowCaseBody = 'tripStopSlideShowCaseBody';
-  static const shareYourTrip = 'shareYourTrip';
+  static const shareYourTripTitle = 'shareYourTripTitle';
+  static const shareYourTripDescription = 'shareYourTripDescription';
   static const userEmailShareTrip = 'userEmailShareTrip';
   static const addUser = 'addUser';
   static const cannotShareWithYourself = 'cannotShareWithYourself';

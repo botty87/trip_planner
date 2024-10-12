@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showcaseview/showcaseview.dart';
@@ -5,6 +6,7 @@ import 'package:showcaseview/showcaseview.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/di/di.dart';
 import '../../../../../core/error/exceptions.dart';
+import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../core/utilities/extensions.dart';
 import '../../../../../ui/widgets/generics/grid_view_checker_mixin.dart';
 import '../../../../../ui/widgets/view_mode/view_mode_action_button.dart';
@@ -34,8 +36,8 @@ class TripPageAppBar extends StatelessWidget with GridViewCheckerMixin {
         if (showShareButton)
           Showcase(
             key: showCaseKeyOne,
-            title: 'Share',
-            description: 'Share this trip with your friends',
+            title: LocaleKeys.shareYourTripTitle.tr(),
+            description: LocaleKeys.shareYourTripDescription.tr(),
             child: IconButton(
               icon: const Icon(Icons.share),
               onPressed: () => _showSharingModalBottom(context),

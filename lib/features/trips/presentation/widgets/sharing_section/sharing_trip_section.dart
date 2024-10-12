@@ -21,7 +21,7 @@ class SharingTripSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            LocaleKeys.shareYourTrip.tr(),
+            LocaleKeys.shareYourTripTitle.tr(),
             style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: verticalSpace),
