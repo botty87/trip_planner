@@ -13,6 +13,7 @@ import '../../../../day_trips/domain/usecases/listen_day_trips.dart';
 import '../../../../day_trips/domain/usecases/update_day_trips_indexes.dart';
 import '../../../../day_trips/errors/day_trips_failure.dart';
 import '../../../../settings/domain/entities/view_preferences.dart';
+import '../../../../settings/domain/usecases/update_view_preferences.dart';
 import '../../../domain/entities/trip.dart';
 import '../../../domain/usecases/delete_trip.dart';
 import '../../../domain/usecases/listen_trip.dart';
@@ -32,6 +33,7 @@ class TripCubit extends Cubit<TripState> {
   final FirebaseCrashlytics _crashlytics;
   final ListenTrip _listenTrip;
   final RemoveUserForShare _removeUserForShare;
+  final UpdateViewPreferences _updateViewPreferences;
 
   StreamSubscription<Either<DayTripsFailure, List<DayTrip>>>? _dayTripsSubscription;
   StreamSubscription<Either<TripsFailure, Trip?>>? _tripSubscription;
@@ -46,6 +48,7 @@ class TripCubit extends Cubit<TripState> {
     required ListenTrip listenTrip,
     required RemoveUserForShare removeUserForShare,
     required FirebaseCrashlytics crashlytics,
+    required UpdateViewPreferences updateViewPreferences,
   })  : _saveTrip = saveTrip,
         _deleteTrip = deleteTrip,
         _listenDayTrips = listenDayTrips,
@@ -53,6 +56,7 @@ class TripCubit extends Cubit<TripState> {
         _listenTrip = listenTrip,
         _removeUserForShare = removeUserForShare,
         _crashlytics = crashlytics,
+        _updateViewPreferences = updateViewPreferences,
         super(TripState.initial(trip: trip, viewMode: viewMode));
 
   @PostConstruct()
@@ -302,7 +306,14 @@ class TripCubit extends Cubit<TripState> {
 
   void updateViewModeFromUser(ViewMode viewMode) => emit(state.copyWith(viewMode: viewMode));
 
-  void changeViewMode() => emit(state.copyWith(viewMode: state.viewMode == ViewMode.list ? ViewMode.grid : ViewMode.list));
+  void changeViewMode() async {
+    emit(state.copyWith(viewMode: state.viewMode == ViewMode.list ? ViewMode.grid : ViewMode.list));
+
+    final result = await _updateViewPreferences(
+        UpdateViewPreferencesParams(viewMode: state.viewMode, viewModePage: ViewModePage.trip));
+
+    result.leftMap((failure) => _crashlytics.recordError(failure, StackTrace.current));
+  }
 
   @override
   Future<void> close() {

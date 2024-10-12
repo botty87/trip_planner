@@ -8,8 +8,8 @@ import '../day_trips_list_widget.dart';
 import '../delete_trip_button.dart';
 import '../trip_header.dart';
 
-class TripPageLoadedVerticalLayout extends StatelessWidget {
-  const TripPageLoadedVerticalLayout({super.key});
+class TripPageLoadedVerticalListLayout extends StatelessWidget {
+  const TripPageLoadedVerticalListLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

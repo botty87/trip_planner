@@ -476,21 +476,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i605.AddUserForShare(gh<_i843.TripsRepository>()));
     gh.lazySingleton<_i504.DeleteTrip>(
         () => _i504.DeleteTrip(gh<_i843.TripsRepository>()));
-    gh.factoryParam<_i704.TripCubit, _i910.Trip, _i985.ViewMode>((
-      trip,
-      viewMode,
-    ) =>
-        _i704.TripCubit(
-          trip: trip,
-          viewMode: viewMode,
-          saveTrip: gh<_i687.UpdateTrip>(),
-          deleteTrip: gh<_i504.DeleteTrip>(),
-          listenDayTrips: gh<_i278.ListenDayTrips>(),
-          updateDayTripsIndexes: gh<_i730.UpdateDayTripsIndexes>(),
-          listenTrip: gh<_i228.ListenTrip>(),
-          removeUserForShare: gh<_i424.RemoveUserForShare>(),
-          crashlytics: gh<_i141.FirebaseCrashlytics>(),
-        )..init());
     gh.factoryParam<_i144.NewTripCubit, _i910.Trip?, String>((
       existingTrip,
       userId,
@@ -598,6 +583,8 @@ extension GetItInjectableX on _i174.GetIt {
           tripId: tripId,
           getPublicDayTrips: gh<_i1049.GetPublicDayTrips>(),
         )..init());
+    gh.lazySingleton<_i1049.UpdateViewPreferences>(
+        () => _i1049.UpdateViewPreferences(gh<_i290.UserRepository>()));
     gh.lazySingleton<_i986.UpdateSettings>(
         () => _i986.UpdateSettings(gh<_i290.UserRepository>()));
     gh.lazySingleton<_i636.LogoutUser>(
@@ -616,10 +603,24 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i460.LoginUser(gh<_i290.UserRepository>()));
     gh.lazySingleton<_i969.UpdateTutorialsData>(
         () => _i969.UpdateTutorialsData(gh<_i290.UserRepository>()));
-    gh.lazySingleton<_i1049.UpdateViewPreferences>(
-        () => _i1049.UpdateViewPreferences(gh<_i290.UserRepository>()));
     gh.lazySingleton<_i975.UpdateUserDetails>(
         () => _i975.UpdateUserDetails(gh<_i290.UserRepository>()));
+    gh.factoryParam<_i704.TripCubit, _i910.Trip, _i985.ViewMode>((
+      trip,
+      viewMode,
+    ) =>
+        _i704.TripCubit(
+          trip: trip,
+          viewMode: viewMode,
+          saveTrip: gh<_i687.UpdateTrip>(),
+          deleteTrip: gh<_i504.DeleteTrip>(),
+          listenDayTrips: gh<_i278.ListenDayTrips>(),
+          updateDayTripsIndexes: gh<_i730.UpdateDayTripsIndexes>(),
+          listenTrip: gh<_i228.ListenTrip>(),
+          removeUserForShare: gh<_i424.RemoveUserForShare>(),
+          crashlytics: gh<_i141.FirebaseCrashlytics>(),
+          updateViewPreferences: gh<_i1049.UpdateViewPreferences>(),
+        )..init());
     gh.factoryParam<_i523.AccountCubit, dynamic, dynamic>((
       user,
       _,

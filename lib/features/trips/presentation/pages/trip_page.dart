@@ -49,7 +49,7 @@ class TripPage extends HookWidget {
     };
 
     final viewMode = switch (context.read<UserCubit>().state) {
-      final UserStateLoggedIn loggedInState => loggedInState.user.viewPreferences.tripsViewMode,
+      final UserStateLoggedIn loggedInState => loggedInState.user.viewPreferences.tripViewMode,
       _ => null,
     };
 
@@ -164,7 +164,7 @@ class TripPage extends HookWidget {
                         isSaving.add(isSavingValue);
                       },
                     ),
-                    
+
                     //On trip deleted, pop page
                     BlocListener<TripCubit, TripState>(
                       listenWhen: (previous, current) => switch (current) {
