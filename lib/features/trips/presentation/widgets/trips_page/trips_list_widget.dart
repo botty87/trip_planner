@@ -34,34 +34,34 @@ class TripsListWidget extends HookWidget with TripsSortMixin {
     final firstTrip = trips.first;
     final otherTrips = trips.length > 1 ? trips.sublist(1) : null;
 
-    return SafeArea(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-        child: CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: defaultPagePadding,
-              sliver: MultiSliver(
-                children: [
-                  SliverToBoxAdapter(child: TripCard(key: ValueKey(firstTrip.id), trip: firstTrip)),
-                  SliverToBoxAdapter(
-                    child: NativeAd.trips(padding: const EdgeInsets.only(top: verticalSpace)),
-                  ),
-                  if (otherTrips != null)
-                    SliverPadding(
-                      padding: const EdgeInsets.only(top: verticalSpaceS),
-                      sliver: SliverList.separated(
-                        itemBuilder: (context, index) =>
-                            TripCard(key: ValueKey(otherTrips[index].id), trip: otherTrips[index]),
-                        separatorBuilder: (context, index) => const SizedBox(height: verticalSpace),
-                        itemCount: otherTrips.length,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+      child: CustomScrollView(
+        slivers: [
+          SliverSafeArea(
+            minimum: defaultPagePadding,
+            sliver: MultiSliver(
+              children: [
+                SliverToBoxAdapter(child: TripCard(key: ValueKey(firstTrip.id), trip: firstTrip)),
+                SliverToBoxAdapter(
+                  child: NativeAd.trips(padding: const EdgeInsets.only(top: verticalSpace)),
+                ),
+                if (otherTrips != null)
+                  SliverPadding(
+                    padding: const EdgeInsets.only(top: verticalSpaceS),
+                    sliver: SliverList.separated(
+                      itemBuilder: (context, index) => TripCard(
+                        key: ValueKey(otherTrips[index].id),
+                        trip: otherTrips[index],
                       ),
-                    )
-                ],
-              ),
+                      separatorBuilder: (context, index) => const SizedBox(height: verticalSpace),
+                      itemCount: otherTrips.length,
+                    ),
+                  )
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

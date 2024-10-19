@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../../../core/constants.dart';
@@ -30,13 +29,8 @@ class TripPageLoadedGridLayout extends HookWidget {
 
     final tripStartDate = context.select((TripCubit cubit) => cubit.state.trip.startDate);
 
-    //Calculate crossAxisCount. Each dayTrip card takes at least 250 width
-    final crossAxisCount = MediaQuery.of(context).size.width ~/ 250;
-
-    final hasTripDescription = context.select((TripCubit cubit) => cubit.state.trip.description?.isNotEmpty ?? false);
-
-    //Add one for add day trip card, one for the ad and one for the trip description, if it exists
-    final int childCount = dayTrips.length + 2 + (hasTripDescription ? 1 : 0);
+    //Calculate crossAxisCount.
+    final crossAxisCount = MediaQuery.of(context).size.width ~/ gridViewItemWidth;
 
     return CustomScrollView(
       slivers: [
@@ -44,38 +38,33 @@ class TripPageLoadedGridLayout extends HookWidget {
           minimum: defaultPagePadding,
           sliver: MultiSliver(
             children: [
-              SliverGrid(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    if (index == 0) {
-                      return hasTripDescription
-                          ? const TripHeader()
-                          : Center(child: NativeAd.trip(padding: const EdgeInsets.only(bottom: verticalSpace)));
-                    } else if (index == 1 && hasTripDescription) {
-                      return Center(child: NativeAd.trip(padding: const EdgeInsets.only(bottom: verticalSpace)));
-                    } else if (index case _ when index == childCount - 1) {
-                      return const AddDayTripCard();
-                    } else {
-                      return DayTripCard(
-                        key: ValueKey(dayTrips[index - (hasTripDescription ? 2 : 1)].id),
-                        dayTrip: dayTrips[index - (hasTripDescription ? 2 : 1)],
-                        tripStartDate: tripStartDate,
-                      );
-                    }
-                  },
-                  childCount: childCount,
+              SliverPadding(
+                padding: const EdgeInsets.only(bottom: verticalSpaceS),
+                sliver: SliverToBoxAdapter(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 250),
+                    child: const _HeaderSection(),
+                  ),
                 ),
-                gridDelegate: SliverQuiltedGridDelegate(
+              ),
+              SliverGrid.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: crossAxisCount,
                   mainAxisSpacing: verticalSpaceS,
                   crossAxisSpacing: horizontalSpaceS,
-                  pattern: [
-                    if (hasTripDescription) const QuiltedGridTile(1, 2),
-                    const QuiltedGridTile(1, 2),
-                    for (var i = 0; i < dayTrips.length; i++) const QuiltedGridTile(1, 1),
-                    const QuiltedGridTile(1, 1),
-                  ],
                 ),
+                itemCount: dayTrips.length + 1,
+                itemBuilder: (context, index) {
+                  if (index < dayTrips.length) {
+                    return DayTripCard(
+                      key: ValueKey(dayTrips[index].id),
+                      dayTrip: dayTrips[index],
+                      tripStartDate: tripStartDate,
+                    );
+                  } else {
+                    return const AddDayTripCard();
+                  }
+                },
               ),
               const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
               const SliverToBoxAdapter(
@@ -89,6 +78,25 @@ class TripPageLoadedGridLayout extends HookWidget {
             ],
           ),
         )
+      ],
+    );
+  }
+}
+
+class _HeaderSection extends StatelessWidget {
+  const _HeaderSection();
+
+  @override
+  Widget build(BuildContext context) {
+    final hasTripDescription = context.select((TripCubit cubit) => cubit.state.trip.description?.isNotEmpty ?? false);
+
+    return Row(
+      children: [
+        if (hasTripDescription) ...[
+          const Expanded(child: TripHeader()),
+          const SizedBox(width: horizontalSpaceS),
+        ],
+        Expanded(child: NativeAd.trip(padding: const EdgeInsets.only(bottom: verticalSpace))),
       ],
     );
   }

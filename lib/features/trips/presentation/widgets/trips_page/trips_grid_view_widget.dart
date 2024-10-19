@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../../../core/constants.dart';
 import '../../../../ads/presentation/widgets/native_ad.dart';
@@ -29,37 +30,39 @@ class TripsGridViewWidget extends HookWidget with TripsSortMixin {
       trips = previousTrips!;
     }
 
-    return SafeArea(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: maxGridViewWidth),
-        child: CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: defaultPagePadding,
-              sliver: SliverGrid.builder(
-                //3 columns
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: horizontalSpace,
-                  crossAxisSpacing: verticalSpace,
-                  mainAxisExtent: tripGridHeight,
-                ),
-                itemCount: trips.length + 1,
-                itemBuilder: (context, index) {
-                  switch (index) {
-                    case 0:
-                      return TripCard(key: ValueKey(trips[index].id), trip: trips[index]);
-                    case 1:
-                      return NativeAd.trips(maxHeight: 250);
-                    default:
-                      return TripCard(key: ValueKey(trips[index - 1].id), trip: trips[index - 1]);
-                  }
-                },
-              ),
+    final crossAxisCount = MediaQuery.of(context).size.width ~/ gridViewItemWidth;
+
+    return CustomScrollView(
+      slivers: [
+        SliverSafeArea(
+          minimum: defaultPagePadding,
+          sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                switch (index) {
+                  case 0:
+                    return TripCard(key: ValueKey(trips[index].id), trip: trips[index]);
+                  case 1:
+                    return Center(child: NativeAd.trips());
+                  default:
+                    return TripCard(key: ValueKey(trips[index - 1].id), trip: trips[index - 1]);
+                }
+              },
+              childCount: trips.length + 1,
             ),
-          ],
+            gridDelegate: SliverQuiltedGridDelegate(
+              crossAxisCount: crossAxisCount,
+              mainAxisSpacing: verticalSpaceS,
+              crossAxisSpacing: horizontalSpaceS,
+              pattern: [
+                const QuiltedGridTile(1, 1),
+                const QuiltedGridTile(1, 2),
+                for (var i = 1; i < trips.length; i++) const QuiltedGridTile(1, 1),
+              ],
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
