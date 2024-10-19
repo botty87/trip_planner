@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../../../core/constants.dart';
 import '../../../../../ads/presentation/widgets/native_ad.dart';
 import '../add_day_trip_card.dart';
-import '../list/day_trips_list_widget.dart';
 import '../delete_trip_button.dart';
+import '../list/day_trips_list_widget.dart';
 import '../trip_header.dart';
 
 class TripPageLoadedHorizontalListLayout extends StatelessWidget {
@@ -32,36 +33,40 @@ class TripPageLoadedHorizontalListLayout extends StatelessWidget {
             ),
             const SizedBox(width: horizontalSpaceL),
             Flexible(
-              child: SafeArea(
-                minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: maxListViewWidth),
-                  child: CustomScrollView(
-                    slivers: [
-                      SliverToBoxAdapter(
-                        child: ConstrainedBox(
-                          //In case of error the height must be at maximum 1/3 ot the container height
-                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.33),
-                          child: NativeAd.trip(),
-                        ),
-                      ),
-                      SliverFillRemaining(
-                        hasScrollBody: false,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Flexible(child: TripHeader()),
-                            ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: maxListViewWidth * 0.9),
-                              child: const AddDayTripCard(),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: maxListViewWidth),
+                child: CustomScrollView(
+                  slivers: [
+                    SliverSafeArea(
+                      minimum: const EdgeInsets.only(bottom: pageVerticalPadding),
+                      sliver: MultiSliver(
+                        children: [
+                          SliverToBoxAdapter(
+                            child: ConstrainedBox(
+                              //In case of error the height must be at maximum 1/3 ot the container height
+                              constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.33),
+                              child: NativeAd.trip(),
                             ),
-                            const SizedBox(height: verticalSpaceXL),
-                            const DeleteTripButton(),
-                          ],
-                        ),
+                          ),
+                          SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Flexible(child: TripHeader()),
+                                ConstrainedBox(
+                                  constraints: const BoxConstraints(maxWidth: maxListViewWidth * 0.9),
+                                  child: const AddDayTripCard(),
+                                ),
+                                const SizedBox(height: verticalSpaceXL),
+                                const DeleteTripButton(),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
