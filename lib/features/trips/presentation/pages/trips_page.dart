@@ -63,7 +63,6 @@ class TripsPage extends StatelessWidget with GridViewCheckerMixin {
                           selector: (state) => state.viewMode,
                           builder: (context, viewMode) {
                             final cubit = context.read<TripsCubit>();
-                            //Future.delayed(const Duration(seconds: 3), () => cubit.changeViewMode());
                             return ViewModeActionButton(
                               viewMode: viewMode,
                               onPressed: () => cubit.changeViewMode(),
