@@ -31,9 +31,11 @@ final class AddDestinationCard extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AspectRatio(
-                aspectRatio: 3 / 2,
-                child: SvgPicture(AssetBytesLoader(assetName)),
+              Flexible(
+                child: AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: SvgPicture(AssetBytesLoader(assetName)),
+                ),
               ),
               const SizedBox(height: verticalSpaceL),
               Text(
@@ -44,6 +46,7 @@ final class AddDestinationCard extends StatelessWidget {
                   color: Colors.black,
                 ),
                 textAlign: TextAlign.center,
+                maxLines: 2,
               ),
             ],
           ),

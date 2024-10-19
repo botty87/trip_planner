@@ -12,7 +12,7 @@ import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/day_trip_card.dart';
-import 'package:trip_planner/features/trips/presentation/widgets/trip_page/day_trips_list_widget.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/trip_page/list/day_trips_list_widget.dart';
 import 'package:trip_planner/gen/assets.gen.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 

@@ -4,7 +4,7 @@ import 'package:sliver_tools/sliver_tools.dart';
 import '../../../../../../core/constants.dart';
 import '../../../../../ads/presentation/widgets/native_ad.dart';
 import '../add_day_trip_card.dart';
-import '../day_trips_list_widget.dart';
+import '../list/day_trips_list_widget.dart';
 import '../delete_trip_button.dart';
 import '../trip_header.dart';
 
@@ -22,8 +22,8 @@ class TripPageLoadedVerticalListLayout extends StatelessWidget {
       child: CustomScrollView(
         controller: scrollController,
         slivers: [
-          SliverPadding(
-            padding: defaultPagePadding,
+          SliverSafeArea(
+            minimum: defaultPagePadding,
             sliver: MultiSliver(
               children: [
                 const SliverToBoxAdapter(child: TripHeader()),
@@ -34,7 +34,7 @@ class TripPageLoadedVerticalListLayout extends StatelessWidget {
                 ),
                 const SliverToBoxAdapter(child: AddDayTripCard()),
                 const SliverToBoxAdapter(child: SizedBox(height: verticalSpaceL)),
-                const SliverToBoxAdapter(child: SafeArea(child: DeleteTripButton())),
+                const SliverToBoxAdapter(child: DeleteTripButton()),
               ],
             ),
           ),

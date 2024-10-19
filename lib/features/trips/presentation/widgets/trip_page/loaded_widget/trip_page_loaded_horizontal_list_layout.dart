@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/constants.dart';
 import '../../../../../ads/presentation/widgets/native_ad.dart';
 import '../add_day_trip_card.dart';
-import '../day_trips_list_widget.dart';
+import '../list/day_trips_list_widget.dart';
 import '../delete_trip_button.dart';
 import '../trip_header.dart';
 
