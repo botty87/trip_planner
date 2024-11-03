@@ -253,7 +253,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i574.PolylinePoints>(
         () => googlePlacesModule.polylinePoints);
     gh.lazySingleton<_i331.BlocObserver>(() => blocObserModule.blocObserver);
-    gh.lazySingleton<_i207.Talker>(() => talkerModule.talker);
     gh.lazySingleton<_i358.AdsTrips>(() => _i358.AdsTrips());
     gh.lazySingleton<_i358.AdsTrip>(() => _i358.AdsTrip());
     gh.lazySingleton<_i358.AdsDayTrip>(() => _i358.AdsDayTrip());
@@ -339,6 +338,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i676.UpdateTripStop(gh<_i598.TripStopsRepository>()));
     gh.lazySingleton<_i851.DeleteTripStop>(
         () => _i851.DeleteTripStop(gh<_i598.TripStopsRepository>()));
+    gh.lazySingleton<_i207.Talker>(
+        () => talkerModule.talker(gh<_i228.CrashlyticsTalkerObserver>()));
     gh.lazySingleton<_i228.Logger>(
         () => _i228.LoggerTalker(gh<_i207.Talker>()));
     gh.lazySingleton<_i398.DiscoverTripsRepository>(

@@ -2,8 +2,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:injectable/injectable.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-import '../di/di.dart';
-
 abstract class Logger {
   void warning(String message);
   void debug(String message);
@@ -84,5 +82,5 @@ class CrashlyticsTalkerObserver extends TalkerObserver {
 @module
 abstract class TalkerModule {
   @lazySingleton
-  Talker get talker => TalkerFlutter.init(observer: getIt<CrashlyticsTalkerObserver>());
+  Talker talker(CrashlyticsTalkerObserver observer) => TalkerFlutter.init(observer: observer);
 }
