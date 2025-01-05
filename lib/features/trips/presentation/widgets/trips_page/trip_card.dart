@@ -11,7 +11,8 @@ import '../../../domain/entities/trip.dart';
 
 class TripCard extends StatelessWidget {
   final Trip trip;
-  const TripCard({super.key, required this.trip});
+  final bool fillDescription;
+  const TripCard({super.key, required this.trip, required this.fillDescription});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class TripCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               _TripNameWidget(name: trip.name),
-              if (trip.description != null) _TripDescriptionWidget(description: trip.description!),
+              _TripDescriptionWidget(description: trip.description, fillDescription: fillDescription),
               Row(
                 children: [
                   _TripIsPublicIcon(isPublic: trip.isPublic),
@@ -62,15 +63,26 @@ class _TripNameWidget extends StatelessWidget {
 }
 
 class _TripDescriptionWidget extends StatelessWidget {
-  final String description;
-  const _TripDescriptionWidget({required this.description});
+  final String? description;
+  final bool fillDescription;
+  const _TripDescriptionWidget({required this.description, required this.fillDescription});
 
   @override
   Widget build(BuildContext context) {
+    return fillDescription
+        ? Expanded(child: _buildDescription(context))
+        : _buildDescription(context);
+  }
+
+  Widget _buildDescription(BuildContext context) {
+    if (description?.isEmpty ?? true) {
+      return const SizedBox.shrink();
+    }
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: verticalSpaceS),
+      padding: const EdgeInsets.only(bottom: verticalSpaceS),
       child: Text(
-        description,
+        description!,
         style: Theme.of(context).textTheme.bodyLarge,
         maxLines: 4,
         textAlign: TextAlign.justify,

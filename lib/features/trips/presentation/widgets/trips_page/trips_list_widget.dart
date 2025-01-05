@@ -42,7 +42,13 @@ class TripsListWidget extends HookWidget with TripsSortMixin {
             minimum: defaultPagePadding,
             sliver: MultiSliver(
               children: [
-                SliverToBoxAdapter(child: TripCard(key: ValueKey(firstTrip.id), trip: firstTrip)),
+                SliverToBoxAdapter(
+                  child: TripCard(
+                    key: ValueKey(firstTrip.id),
+                    trip: firstTrip,
+                    fillDescription: false,
+                  ),
+                ),
                 SliverToBoxAdapter(
                   child: NativeAd.trips(padding: const EdgeInsets.only(top: verticalSpace)),
                 ),
@@ -53,6 +59,7 @@ class TripsListWidget extends HookWidget with TripsSortMixin {
                       itemBuilder: (context, index) => TripCard(
                         key: ValueKey(otherTrips[index].id),
                         trip: otherTrips[index],
+                        fillDescription: false,
                       ),
                       separatorBuilder: (context, index) => const SizedBox(height: verticalSpace),
                       itemCount: otherTrips.length,

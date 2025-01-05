@@ -41,11 +41,11 @@ class TripsGridViewWidget extends HookWidget with TripsSortMixin {
               (context, index) {
                 switch (index) {
                   case 0:
-                    return TripCard(key: ValueKey(trips[index].id), trip: trips[index]);
+                    return TripCard(key: ValueKey(trips[index].id), trip: trips[index], fillDescription: true);
                   case 1:
                     return Center(child: NativeAd.trips());
                   default:
-                    return TripCard(key: ValueKey(trips[index - 1].id), trip: trips[index - 1]);
+                    return TripCard(key: ValueKey(trips[index - 1].id), trip: trips[index - 1], fillDescription: true);
                 }
               },
               childCount: trips.length + 1,
