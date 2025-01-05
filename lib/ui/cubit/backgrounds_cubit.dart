@@ -14,7 +14,6 @@ import '../../core/constants.dart';
 import '../../core/di/di.dart';
 import '../../core/utilities/extensions.dart';
 import '../../core/utilities/logger.dart';
-import '../../core/utilities/pair.dart';
 import '../../features/settings/domain/entities/backgrounds_container.dart';
 
 part 'backgrounds_cubit.freezed.dart';

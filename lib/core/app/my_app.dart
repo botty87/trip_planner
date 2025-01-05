@@ -17,7 +17,6 @@ import '../di/di.dart';
 import '../routes/app_router.dart';
 import '../routes/app_router.gr.dart';
 import '../utilities/extensions.dart';
-import '../utilities/pair.dart';
 
 part 'listeners/user_status_listener.dart';
 part 'listeners/settings_listener.dart';
