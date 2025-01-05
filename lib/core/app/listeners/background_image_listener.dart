@@ -1,0 +1,89 @@
+part of '../my_app.dart';
+
+final class _BackgroundImageListener extends BlocListener<SettingsCubit, SettingsState> {
+  _BackgroundImageListener({required BuildContext context})
+      : super(
+          listenWhen: (previous, current) {
+            final previousBackgroundIndexType = getBackgroundIndexType(state: previous, context: context);
+            final currentBackgroundIndexType = getBackgroundIndexType(state: current, context: context);
+            return previousBackgroundIndexType != currentBackgroundIndexType;
+          },
+          listener: (context, state) {
+            final backgroundsCubit = context.read<BackgroundsCubit>();
+            final backgroundIndexType = getBackgroundIndexType(state: state, context: context);
+            backgroundsCubit.loadCurrentBackgroundFile(backgroundIndexType: backgroundIndexType);
+          },
+        );
+
+
+  static Pair<int, BackgroundType>? getBackgroundIndexType({required SettingsState state, required BuildContext context}) {
+    final BackgroundType backgroundType;
+    final int? index;
+
+    switch (state.settings.themeMode) {
+      case AdaptiveThemeMode.light:
+        backgroundType = BackgroundType.light;
+        index = state.settings.backgroundsContainer.lightBackgroundIndex;
+        break;
+      case AdaptiveThemeMode.dark:
+        backgroundType = BackgroundType.dark;
+        index = state.settings.backgroundsContainer.darkBackgroundIndex;
+        break;
+      case AdaptiveThemeMode.system:
+        backgroundType = context.isDarkMode ? BackgroundType.dark : BackgroundType.light;
+        index = context.isDarkMode
+            ? state.settings.backgroundsContainer.darkBackgroundIndex
+            : state.settings.backgroundsContainer.lightBackgroundIndex;
+        break;
+    }
+
+    if (index == null || kIsWeb) return null;
+
+    return Pair(index, backgroundType);
+  }
+}
+
+/*
+
+BlocListener _backgroundImageListener(BuildContext context) {
+    Pair<int, BackgroundType>? getBackgroundIndexType(SettingsState state) {
+      final BackgroundType backgroundType;
+      final int? index;
+
+      switch (state.settings.themeMode) {
+        case AdaptiveThemeMode.light:
+          backgroundType = BackgroundType.light;
+          index = state.settings.backgroundsContainer.lightBackgroundIndex;
+          break;
+        case AdaptiveThemeMode.dark:
+          backgroundType = BackgroundType.dark;
+          index = state.settings.backgroundsContainer.darkBackgroundIndex;
+          break;
+        case AdaptiveThemeMode.system:
+          backgroundType = context.isDarkMode ? BackgroundType.dark : BackgroundType.light;
+          index = context.isDarkMode
+              ? state.settings.backgroundsContainer.darkBackgroundIndex
+              : state.settings.backgroundsContainer.lightBackgroundIndex;
+          break;
+      }
+
+      if (index == null || kIsWeb) return null;
+
+      return Pair(index, backgroundType);
+    }
+
+    return BlocListener<SettingsCubit, SettingsState>(
+      listenWhen: (previous, current) {
+        final previousBackgroundIndexType = getBackgroundIndexType(previous);
+        final currentBackgroundIndexType = getBackgroundIndexType(current);
+        return previousBackgroundIndexType != currentBackgroundIndexType;
+      },
+      listener: (context, state) {
+        final backgroundsCubit = context.read<BackgroundsCubit>();
+        final backgroundIndexType = getBackgroundIndexType(state);
+        backgroundsCubit.loadCurrentBackgroundFile(backgroundIndexType: backgroundIndexType);
+      },
+    );
+  }
+
+*/

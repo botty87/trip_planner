@@ -89,6 +89,7 @@ dependencies:
   path_provider: ^2.1.2
   quiver: ^3.2.1
   reorderables: ^0.6.0
+  responsive_framework: ^1.5.1
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
   shorebird_code_push: ^2.0.2

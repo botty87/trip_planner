@@ -20,7 +20,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shorebird_code_push/shorebird_code_push.dart';
 
 import 'core/di/di.dart';
-import 'core/my_app.dart';
+import 'core/app/my_app.dart';
 import 'firebase_options.dart';
 
 void main() async {

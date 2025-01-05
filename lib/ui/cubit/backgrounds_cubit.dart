@@ -20,7 +20,7 @@ import '../../features/settings/domain/entities/backgrounds_container.dart';
 part 'backgrounds_cubit.freezed.dart';
 part 'backgrounds_state.dart';
 
-@injectable
+@lazySingleton
 class BackgroundsCubit extends Cubit<BackgroundsState> {
   final Reference lightBackgroundsRef;
   final Reference darkBackgroundsRef;

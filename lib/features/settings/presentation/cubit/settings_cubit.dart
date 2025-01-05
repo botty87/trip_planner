@@ -16,7 +16,7 @@ import '../../domain/usecases/update_settings.dart';
 part 'settings_cubit.freezed.dart';
 part 'settings_state.dart';
 
-@injectable
+@lazySingleton
 class SettingsCubit extends Cubit<SettingsState> {
   final UpdateSettings _updateSettings;
 

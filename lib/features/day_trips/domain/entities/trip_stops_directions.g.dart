@@ -16,19 +16,10 @@ _$TripStopsDirectionsImpl _$$TripStopsDirectionsImplFromJson(
     );
 
 Map<String, dynamic> _$$TripStopsDirectionsImplToJson(
-    _$TripStopsDirectionsImpl instance) {
-  final val = <String, dynamic>{
-    'originId': instance.originId,
-    'destinationId': instance.destinationId,
-    'points': latLngsToGeoPoints(instance.points),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('errorMessage', instance.errorMessage);
-  return val;
-}
+        _$TripStopsDirectionsImpl instance) =>
+    <String, dynamic>{
+      'originId': instance.originId,
+      'destinationId': instance.destinationId,
+      'points': latLngsToGeoPoints(instance.points),
+      if (instance.errorMessage case final value?) 'errorMessage': value,
+    };

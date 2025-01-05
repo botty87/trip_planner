@@ -347,7 +347,7 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i437.DiscoverTripsDataSource>(),
               gh<_i141.FirebaseCrashlytics>(),
             ));
-    gh.factory<_i436.BackgroundsCubit>(() =>
+    gh.lazySingleton<_i436.BackgroundsCubit>(() =>
         _i436.BackgroundsCubit(firebaseStorage: gh<_i457.FirebaseStorage>()));
     gh.lazySingleton<_i1041.TripStopDone>(
         () => _i1041.TripStopDone(gh<_i598.TripStopsRepository>()));
@@ -638,9 +638,9 @@ extension GetItInjectableX on _i174.GetIt {
           loginUser: gh<_i460.LoginUser>(),
           recoverPassword: gh<_i203.RecoverPassword>(),
         ));
-    gh.factory<_i58.TutorialCubit>(() => _i58.TutorialCubit(
+    gh.lazySingleton<_i58.TutorialCubit>(() => _i58.TutorialCubit(
         updateTutorialsData: gh<_i969.UpdateTutorialsData>()));
-    gh.factory<_i792.SettingsCubit>(
+    gh.lazySingleton<_i792.SettingsCubit>(
         () => _i792.SettingsCubit(updateSettings: gh<_i986.UpdateSettings>()));
     gh.lazySingleton<_i110.UserCubit>(
         () => _i110.UserCubit(listenUserState: gh<_i62.ListenUser>()));

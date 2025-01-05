@@ -26,24 +26,16 @@ _$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
           json['useDifferentDirectionsColors'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) {
-  final val = <String, dynamic>{
-    'index': instance.index,
-    'description': instance.description,
-    'startTime': timeOfDayToMap(instance.startTime),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('tripStopsDirections',
-      instance.tripStopsDirections?.map((e) => e.toJson()).toList());
-  val['tripStopsDirectionsUpToDate'] = instance.tripStopsDirectionsUpToDate;
-  val['travelMode'] = travelModeToInt(instance.travelMode);
-  val['showDirections'] = instance.showDirections;
-  val['useDifferentDirectionsColors'] = instance.useDifferentDirectionsColors;
-  return val;
-}
+Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) =>
+    <String, dynamic>{
+      'index': instance.index,
+      'description': instance.description,
+      'startTime': timeOfDayToMap(instance.startTime),
+      if (instance.tripStopsDirections?.map((e) => e.toJson()).toList()
+          case final value?)
+        'tripStopsDirections': value,
+      'tripStopsDirectionsUpToDate': instance.tripStopsDirectionsUpToDate,
+      'travelMode': travelModeToInt(instance.travelMode),
+      'showDirections': instance.showDirections,
+      'useDifferentDirectionsColors': instance.useDifferentDirectionsColors,
+    };
