@@ -4,19 +4,23 @@ final class _BackgroundImageListener extends BlocListener<SettingsCubit, Setting
   _BackgroundImageListener({required BuildContext context})
       : super(
           listenWhen: (previous, current) {
-            final previousBackgroundIndexType = getBackgroundIndexType(state: previous, context: context);
-            final currentBackgroundIndexType = getBackgroundIndexType(state: current, context: context);
+            final previousBackgroundIndexType = _getBackgroundIndexType(state: previous, context: context);
+            final currentBackgroundIndexType = _getBackgroundIndexType(state: current, context: context);
             return previousBackgroundIndexType != currentBackgroundIndexType;
           },
           listener: (context, state) {
             final backgroundsCubit = context.read<BackgroundsCubit>();
-            final backgroundIndexType = getBackgroundIndexType(state: state, context: context);
-            backgroundsCubit.loadCurrentBackgroundFile(backgroundIndexType: backgroundIndexType);
+            final backgroundIndexType = _getBackgroundIndexType(state: state, context: context);
+            backgroundsCubit.loadCurrentBackgroundFile(
+              backgroundIndexType: backgroundIndexType != null
+                  ? (index: backgroundIndexType.index, type: backgroundIndexType.type)
+                  : null,
+            );
           },
         );
 
-
-  static Pair<int, BackgroundType>? getBackgroundIndexType({required SettingsState state, required BuildContext context}) {
+  static ({int index, BackgroundType type, AdaptiveThemeMode themeMode})? _getBackgroundIndexType(
+      {required SettingsState state, required BuildContext context}) {
     final BackgroundType backgroundType;
     final int? index;
 
@@ -39,7 +43,7 @@ final class _BackgroundImageListener extends BlocListener<SettingsCubit, Setting
 
     if (index == null || kIsWeb) return null;
 
-    return Pair(index, backgroundType);
+    return (index: index, type: backgroundType, themeMode: state.settings.themeMode);
   }
 }
 

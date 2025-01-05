@@ -122,15 +122,15 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
     return File('${directory.path}/${_getBackgroundImageName(index: index, type: type)}');
   }
 
-  void loadCurrentBackgroundFile({required Pair<int, BackgroundType>? backgroundIndexType}) async {
+  void loadCurrentBackgroundFile({required ({int index, BackgroundType type})? backgroundIndexType}) async {
     if (backgroundIndexType != null) {
       final imageFile = await getBackgroundImageFile(
-          index: backgroundIndexType.first, type: backgroundIndexType.second);
+          index: backgroundIndexType.index, type: backgroundIndexType.type);
 
       //If the file does not exist, download it
       if (!imageFile.existsSync()) {
         final imageBytes = await _downloadBackgroundImageBytes(
-            index: backgroundIndexType.first, type: backgroundIndexType.second);
+            index: backgroundIndexType.index, type: backgroundIndexType.type);
         if (imageBytes == null) return;
 
         await imageFile.writeAsBytes(imageBytes);
