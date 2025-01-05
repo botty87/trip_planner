@@ -22,5 +22,5 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": false,
-  "dart.flutterRunAdditionalArgs": [ "--no-enable-impeller" ]
+  //"dart.flutterRunAdditionalArgs": [ "--no-enable-impeller" ]
 }

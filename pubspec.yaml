@@ -42,7 +42,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   custom_map_markers: ^0.0.2+1
   dartz: ^0.10.1
-  device_preview: ^1.2.0
+  device_preview_plus: ^2.2.2
   devicelocale: ^0.8.0
   dio: ^5.3.3
   duration_picker: ^1.1.1
