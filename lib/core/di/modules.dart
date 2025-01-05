@@ -7,7 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
@@ -15,7 +14,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../keys/env.dart';
 import '../constants.dart';
-import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
+
 
 @module
 abstract class Network {
@@ -76,10 +75,4 @@ abstract class DeviceModule {
 
   @preResolve
   Future<PackageInfo> packageInfo() => PackageInfo.fromPlatform();
-}
-
-@module
-abstract class BlocObserModule {
-  @lazySingleton
-  BlocObserver get blocObserver => TalkerBlocObserver();
 }

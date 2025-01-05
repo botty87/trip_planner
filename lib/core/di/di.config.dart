@@ -202,6 +202,7 @@ import '../../features/user_account/presentation/cubit/login_signup/login_signup
 import '../../features/user_account/presentation/cubit/user/user_cubit.dart'
     as _i110;
 import '../../ui/cubit/backgrounds_cubit.dart' as _i436;
+import '../bloc_utilities/bloc_observer.dart' as _i37;
 import '../db/day_trips_collection_ref.dart' as _i432;
 import '../db/settings_collection_ref.dart' as _i571;
 import '../db/trip_stops_collection_ref.dart' as _i108;
@@ -227,8 +228,8 @@ extension GetItInjectableX on _i174.GetIt {
     final settingsModule = _$SettingsModule();
     final firebaseModule = _$FirebaseModule();
     final googlePlacesModule = _$GooglePlacesModule();
-    final blocObserModule = _$BlocObserModule();
     final talkerModule = _$TalkerModule();
+    final blocObserModule = _$BlocObserModule();
     gh.factory<_i810.WebViewController>(() => network.webViewController);
     await gh.factoryAsync<_i655.PackageInfo>(
       () => deviceModule.packageInfo(),
@@ -252,7 +253,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => firebaseModule.firebaseStorage);
     gh.lazySingleton<_i574.PolylinePoints>(
         () => googlePlacesModule.polylinePoints);
-    gh.lazySingleton<_i331.BlocObserver>(() => blocObserModule.blocObserver);
     gh.lazySingleton<_i358.AdsTrips>(() => _i358.AdsTrips());
     gh.lazySingleton<_i358.AdsTrip>(() => _i358.AdsTrip());
     gh.lazySingleton<_i358.AdsDayTrip>(() => _i358.AdsDayTrip());
@@ -444,6 +444,8 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i1071.GooglePlacesDataSource>(),
               gh<_i141.FirebaseCrashlytics>(),
             ));
+    gh.lazySingleton<_i331.BlocObserver>(
+        () => blocObserModule.blocObserver(gh<_i207.Talker>()));
     gh.lazySingleton<_i487.FetchSuggestions>(
         () => _i487.FetchSuggestions(gh<_i935.GooglePlacesRepository>()));
     gh.lazySingleton<_i372.FetchTripStopsDirections>(() =>
@@ -680,6 +682,6 @@ class _$FirebaseModule extends _i738.FirebaseModule {}
 
 class _$GooglePlacesModule extends _i738.GooglePlacesModule {}
 
-class _$BlocObserModule extends _i738.BlocObserModule {}
-
 class _$TalkerModule extends _i228.TalkerModule {}
+
+class _$BlocObserModule extends _i37.BlocObserModule {}

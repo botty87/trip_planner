@@ -33,7 +33,6 @@ void main() async {
 
   await EasyLocalization.ensureInitialized();
   await configureDependencies();
-  Bloc.observer = getIt<BlocObserver>();
 
   //Firebase config
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -71,6 +70,8 @@ void main() async {
   if (mapsImplementation is GoogleMapsFlutterAndroid) {
     mapsImplementation.useAndroidViewSurface = false;
   }
+
+  Bloc.observer = getIt<BlocObserver>();
 
   runApp(DevicePreview(
     enabled: !kIsWeb && !kReleaseMode && (Platform.isLinux || Platform.isMacOS || Platform.isWindows),
