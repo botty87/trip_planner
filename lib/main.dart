@@ -57,11 +57,11 @@ void main() async {
 
     //Add patch number to the crash log
     try {
-      final patchNumber = await ShorebirdCodePush().currentPatchNumber();
+      final patch = await ShorebirdUpdater().readCurrentPatch();
 
       FirebaseCrashlytics.instance.setCustomKey(
         'shorebird_patch_number',
-        '$patchNumber',
+        patch?.number.toString() ?? 'Unknown',
       );
     } catch (_) {}
   }

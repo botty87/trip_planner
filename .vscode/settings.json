@@ -21,5 +21,6 @@
   "editor.minimap.side": "right",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.formatOnType": false
+  "editor.formatOnType": false,
+  "dart.flutterRunAdditionalArgs": [ "--no-enable-impeller" ]
 }
