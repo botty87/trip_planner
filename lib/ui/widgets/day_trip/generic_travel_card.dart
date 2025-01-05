@@ -52,7 +52,7 @@ class _Button extends StatelessWidget {
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.shadow.withOpacity(0.6),
+              color: Theme.of(context).colorScheme.shadow.withValues(alpha: 0.6),
               blurRadius: 5,
               offset: const Offset(0, 1),
             ),

@@ -21,7 +21,7 @@ class TransparentListDecorator extends StatelessWidget {
           child: Material(
             elevation: elevation,
             color: Colors.transparent,
-            shadowColor: Colors.grey.withOpacity(shadowAlpha),
+            shadowColor: Colors.grey.withValues(alpha: shadowAlpha),
             child: child,
           ),
         );

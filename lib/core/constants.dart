@@ -36,8 +36,8 @@ const settingsRef = 'settings';
 
 const int availableBackgrounds = 7;
 
-final appBarLightColor = Colors.white.withOpacity(0.3);
-final appBarDarkColor = Colors.black.withOpacity(0.3);
+final appBarLightColor = Colors.white.withValues(alpha: 0.3);
+final appBarDarkColor = Colors.black.withValues(alpha: 0.3);
 
 const String lightBackgroundPrefix = 'lightBackground';
 const String darkBackgroundPrefix = 'darkBackground';

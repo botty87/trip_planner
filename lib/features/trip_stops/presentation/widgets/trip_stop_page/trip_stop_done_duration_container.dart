@@ -10,17 +10,15 @@ class TripStopDoneDurationContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: context.hasBackgroundImage
           ? BoxDecoration(
-              color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
+              color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
               borderRadius: BorderRadius.circular(8),
             )
           : null,
       padding: context.hasBackgroundImage
-          ? const EdgeInsets.only(
-              bottom: verticalSpaceXs, right: horizontalSpace, left: horizontalSpace)
+          ? const EdgeInsets.only(bottom: verticalSpaceXs, right: horizontalSpace, left: horizontalSpace)
           : null,
       width: double.infinity,
       child: const Wrap(

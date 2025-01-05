@@ -50,7 +50,7 @@ class _BodyCard extends StatelessWidget {
     final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
 
     return Card(
-      color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
+      color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 220),
         child: Column(

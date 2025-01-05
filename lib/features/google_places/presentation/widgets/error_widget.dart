@@ -11,7 +11,7 @@ class _ErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(minHeight: 40),
-      color: Theme.of(context).colorScheme.error.withOpacity(0.1),
+      color: Theme.of(context).colorScheme.error.withValues(alpha: .1),
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Builder(builder: (context) {
         final bool showRetryButton = context.select<GooglePlacesCubit, bool>((cubit) {

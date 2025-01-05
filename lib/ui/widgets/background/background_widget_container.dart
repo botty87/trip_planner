@@ -21,7 +21,7 @@ class BackgroundWidgetContainer extends StatelessWidget {
       width: double.infinity,
       decoration: context.hasBackgroundImage
           ? BoxDecoration(
-              color: Theme.of(context).colorScheme.surface.withOpacity(0.9),
+              color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
               borderRadius: BorderRadius.circular(8),
             )
           : null,

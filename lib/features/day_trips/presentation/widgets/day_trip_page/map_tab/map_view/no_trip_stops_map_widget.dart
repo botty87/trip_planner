@@ -26,7 +26,7 @@ class NoTripStopsMapWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: context.isDarkMode
-                    ? Theme.of(context).colorScheme.inverseSurface.withOpacity(0.8)
+                    ? Theme.of(context).colorScheme.inverseSurface.withValues(alpha: 0.8)
                     : Colors.transparent,
               ),
               padding: const EdgeInsets.symmetric(horizontal: horizontalSpaceS),
