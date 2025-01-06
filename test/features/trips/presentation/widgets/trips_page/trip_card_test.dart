@@ -27,7 +27,7 @@ void main() {
   });
 
   patrolWidgetTest('renders TripCard with correct trip details', ($) async {
-    await $.pumpWidget(TestUtils.defaultWidget(child: TripCard(trip: trip)));
+    await $.pumpWidget(TestUtils.defaultWidget(child: TripCard(trip: trip, fillDescription: false)));
 
     expect($('Trip Name'), findsOneWidget);
     expect($('Trip Description'), findsOneWidget);
@@ -45,7 +45,7 @@ void main() {
       ])
       ..addScenario(
         name: 'TripCard',
-        widget: TestUtils.defaultWidget(child: TripCard(trip: trip)),
+        widget: TestUtils.defaultWidget(child: TripCard(trip: trip, fillDescription: false,)),
       );
 
     await tester.pumpDeviceBuilder(builder);
