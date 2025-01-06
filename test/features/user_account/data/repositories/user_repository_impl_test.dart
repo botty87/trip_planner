@@ -5,12 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/settings/domain/entities/settings.dart';
+import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/data/datasources/user_data_source.dart';
 import 'package:trip_planner/features/user_account/data/models/user_model.dart';
 import 'package:trip_planner/features/user_account/data/repositories/user_repository_impl.dart';
+import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/errors/user_failures.dart';
-import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 
 import 'user_repository_impl_test.mocks.dart';
 
@@ -23,14 +24,26 @@ void main() {
   late MockFirebaseCrashlytics mockCrashlytics;
   late UserRepositoryImpl userRepositoryImpl;
 
+  //User model for the test
+  const tUserModel = UserModel(
+    id: '123',
+    email: '',
+    name: '',
+    oldTripsImported: true,
+    tutorialsData: TutorialsData(),
+    settings: Settings(),
+    viewPreferences: ViewPreferences(),
+  );
+
   //User for the test
-  const tUser = UserModel(
+  const tUser = User(
     id: '123',
     email: '',
     name: '',
     tutorialsData: TutorialsData(),
+    oldTripsImported: true,
     settings: Settings(),
-    largeScreenViewMode: ViewMode.list,
+    viewPreferences: ViewPreferences(),
   );
 
   //Settings for the test
@@ -44,7 +57,7 @@ void main() {
 
   test('should listen user from the data source', () async {
     // arrange
-    when(mockUserDataSource.user).thenAnswer((_) => Stream.value(tUser));
+    when(mockUserDataSource.user).thenAnswer((_) => Stream.value(tUserModel));
 
     // act
     final result = userRepositoryImpl.listenUser();

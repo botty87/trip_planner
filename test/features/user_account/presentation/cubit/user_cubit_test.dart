@@ -3,12 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/settings/domain/entities/settings.dart';
+import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
 import 'package:trip_planner/features/user_account/domain/usecases/listen_user.dart';
 import 'package:trip_planner/features/user_account/presentation/cubit/user/user_cubit.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 
 import 'user_cubit_test.mocks.dart';
 
@@ -23,7 +23,7 @@ void main() {
     name: '',
     tutorialsData: TutorialsData(),
     settings: Settings(),
-    largeScreenViewMode: ViewMode.list,
+    viewPreferences: ViewPreferences(),
   );
 
   setUp(() {
