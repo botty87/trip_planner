@@ -16,12 +16,10 @@ class TravelCard extends StatelessWidget {
     return GenericTravelCard(
       tripStop: tripStop,
       onTap: () async {
-        final travelTime = await showDurationPicker(
-            context: context, initialTime: Duration(minutes: tripStop.travelTimeToNextStop));
+        final travelTime =
+            await showDurationPicker(context: context, initialTime: Duration(minutes: tripStop.travelTimeToNextStop));
         if (travelTime != null && context.mounted) {
-          context
-              .read<DayTripCubit>()
-              .updateTravelTimeToNextStop(tripStop.id, travelTime.inMinutes);
+          context.read<DayTripCubit>().updateTravelTimeToNextStop(tripStop.id, travelTime.inMinutes);
         }
       },
     );

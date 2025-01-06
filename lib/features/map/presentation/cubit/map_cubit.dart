@@ -26,10 +26,10 @@ class MapCubit extends Cubit<MapState> {
     _mapController = controller;
     isFirstMove = false;
     await state.mapOrNull(
-      multiple: (state) async => await state.markerLatLngBounds?.let((value) async =>
-          await _mapController?.moveCamera(CameraUpdate.newLatLngBounds(value, 50))),
-      single: (state) async => await state.markerPosition?.let(
-          (value) async => await _mapController?.moveCamera(CameraUpdate.newLatLngZoom(value, 15))),
+      multiple: (state) async => await state.markerLatLngBounds
+          ?.let((value) async => await _mapController?.moveCamera(CameraUpdate.newLatLngBounds(value, 50))),
+      single: (state) async => await state.markerPosition
+          ?.let((value) async => await _mapController?.moveCamera(CameraUpdate.newLatLngZoom(value, 15))),
     );
 
     emit(state.copyWith(isMapReady: true));
@@ -74,8 +74,8 @@ class MapCubit extends Cubit<MapState> {
   void updateMarkerPosition(LatLng? markerPosition) {
     state.mapOrNull(
       single: (state) => emit(state.copyWith(markerPosition: markerPosition)),
-      empty: (state) => emit(MapState.single(
-          markerPosition: markerPosition!, isMapReady: state.isMapReady, mapType: state.mapType)),
+      empty: (state) =>
+          emit(MapState.single(markerPosition: markerPosition!, isMapReady: state.isMapReady, mapType: state.mapType)),
     );
     findMarkers();
   }

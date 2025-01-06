@@ -69,9 +69,7 @@ class _TripDescriptionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return fillDescription
-        ? Expanded(child: _buildDescription(context))
-        : _buildDescription(context);
+    return fillDescription ? Expanded(child: _buildDescription(context)) : _buildDescription(context);
   }
 
   Widget _buildDescription(BuildContext context) {

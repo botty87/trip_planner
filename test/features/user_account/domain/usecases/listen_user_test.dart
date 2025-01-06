@@ -45,8 +45,7 @@ void main() {
 
   test('should return a failure when there is no user', () async {
     // arrange
-    when(mockUserRepository.listenUser())
-        .thenAnswer((_) => Stream.value(const Left(UserFailures.unknownError())));
+    when(mockUserRepository.listenUser()).thenAnswer((_) => Stream.value(const Left(UserFailures.unknownError())));
 
     // act
     final result = usecase(const NoParams());

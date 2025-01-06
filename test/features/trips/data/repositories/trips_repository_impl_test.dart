@@ -95,8 +95,7 @@ void main() {
     const tLanguageCode = 'en';
 
     test('should return right(null) when TripsDataSource.updateTrip completes', () async {
-      when(mockTripsDataSource.updateTrip(
-              tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode))
+      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode))
           .thenAnswer((_) async {});
 
       // act
@@ -107,8 +106,7 @@ void main() {
     });
 
     test('should return left(TripsFailure()) when TripsDataSource.updateTrip throws', () async {
-      when(mockTripsDataSource.updateTrip(
-              tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode))
+      when(mockTripsDataSource.updateTrip(tTripId, tTripName, tTripDescription, tStartDate, tIsPublic, tLanguageCode))
           .thenThrow(Exception());
 
       // act
@@ -168,8 +166,7 @@ void main() {
   });
 
   group('createFromExistingTrip', () {
-    test('should return right(null) when TripsDataSource.createFromExistingTrip completes',
-        () async {
+    test('should return right(null) when TripsDataSource.createFromExistingTrip completes', () async {
       when(mockTripsDataSource.createFromExistingTrip(
         existingTrip: tTrip,
         newTrip: tTrip,
@@ -188,8 +185,7 @@ void main() {
       expect(result, equals(right(null)));
     });
 
-    test('should return left(TripsFailure()) when TripsDataSource.createFromExistingTrip throws',
-        () async {
+    test('should return left(TripsFailure()) when TripsDataSource.createFromExistingTrip throws', () async {
       when(mockTripsDataSource.createFromExistingTrip(
         existingTrip: tTrip,
         newTrip: tTrip,
@@ -224,8 +220,7 @@ void main() {
       expect(result, equals(right(null)));
     });
 
-    test('should return left(ShareTripFailure) when TripsDataSource.addUserForShare throws',
-        () async {
+    test('should return left(ShareTripFailure) when TripsDataSource.addUserForShare throws', () async {
       when(mockTripsDataSource.addUserForShare(tripId, email)).thenThrow(Exception());
 
       // act
@@ -253,8 +248,7 @@ void main() {
     test(
         'should return left(ShareTripFailure.userNotFound()) when TripsDataSource.addUserForShare throws TripsException.userNotFound',
         () async {
-      when(mockTripsDataSource.addUserForShare(tripId, email))
-          .thenThrow(const ShareTripException.userNotFound());
+      when(mockTripsDataSource.addUserForShare(tripId, email)).thenThrow(const ShareTripException.userNotFound());
 
       // act
       final result = await tripsRepositoryImpl.addUserForShare(tripId, email);
@@ -290,7 +284,6 @@ void main() {
       await expectLater(result, emits(left(const TripsFailure())));
       verify(mockTripsDataSource.listenTrip(tripId));
       verifyNoMoreInteractions(mockTripsDataSource);
-      
     });
   });
 
@@ -307,8 +300,7 @@ void main() {
       expect(result, equals(right(null)));
     });
 
-    test('should return left(ShareTripFailure) when TripsDataSource.removeUserForShare throws',
-        () async {
+    test('should return left(ShareTripFailure) when TripsDataSource.removeUserForShare throws', () async {
       when(mockTripsDataSource.removeUserForShare(tripId, userId)).thenThrow(Exception());
 
       // act
@@ -336,8 +328,7 @@ void main() {
     test(
         'should return left(ShareTripFailure.userNotFound()) when TripsDataSource.removeUserForShare throws TripsException.userNotFound',
         () async {
-      when(mockTripsDataSource.removeUserForShare(tripId, userId))
-          .thenThrow(const ShareTripException.userNotFound());
+      when(mockTripsDataSource.removeUserForShare(tripId, userId)).thenThrow(const ShareTripException.userNotFound());
 
       // act
       final result = await tripsRepositoryImpl.removeUserForShare(tripId, userId);

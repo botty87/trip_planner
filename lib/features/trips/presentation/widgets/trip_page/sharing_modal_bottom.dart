@@ -29,8 +29,7 @@ _showSharingModalBottom(BuildContext context) {
         )..updatedSharedUsers(sharedUsers),
         child: BlocListener<TripCubit, TripState>(
           bloc: tripCubit,
-          listener: (context, state) =>
-              context.read<ShareCubit>().updatedSharedUsers(state.trip.sharedWith),
+          listener: (context, state) => context.read<ShareCubit>().updatedSharedUsers(state.trip.sharedWith),
           listenWhen: (previous, current) => previous.trip.sharedWith != current.trip.sharedWith,
           child: Padding(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),

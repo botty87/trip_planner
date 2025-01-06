@@ -7,6 +7,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
+import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
+import 'package:trip_planner/features/settings/domain/usecases/update_view_preferences.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/listen_trips.dart';
 import 'package:trip_planner/features/trips/errors/trips_failure.dart';
@@ -18,11 +20,13 @@ import 'trips_cubit_test.mocks.dart';
   MockSpec<ListenUserTrips>(),
   MockSpec<ListenSharedTrips>(),
   MockSpec<FirebaseCrashlytics>(),
+  MockSpec<UpdateViewPreferences>(),
 ])
 void main() {
   late MockListenUserTrips mockListenUserTrips;
   late MockListenSharedTrips mockListenSharedTrips;
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
+  late MockUpdateViewPreferences mockUpdateViewPreferences;
 
   final tTrips = [
     Trip(
@@ -48,12 +52,16 @@ void main() {
 
   const tUserId = '1';
 
+  const tDefaultViewMode = ViewMode.list;
+
   TripsCubit getTestCubit() {
     return TripsCubit(
       listenUserTrips: mockListenUserTrips,
       crashlytics: mockFirebaseCrashlytics,
       listenSharedTrips: mockListenSharedTrips,
+      updateViewPreferences: mockUpdateViewPreferences,
       userId: tUserId,
+      viewMode: tDefaultViewMode,
     );
   }
 
@@ -61,6 +69,7 @@ void main() {
     mockListenUserTrips = MockListenUserTrips();
     mockListenSharedTrips = MockListenSharedTrips();
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
+    mockUpdateViewPreferences = MockUpdateViewPreferences();
   });
 
   setUpAll(() async {
@@ -75,7 +84,7 @@ void main() {
     },
     build: () => getTestCubit(),
     act: (cubit) => cubit.startListenTrips(),
-    expect: () => [TripsState.loaded(userTrips: tTrips, sharedTrips: sTrips)],
+    expect: () => [TripsState.loaded(userTrips: tTrips, sharedTrips: sTrips, viewMode: tDefaultViewMode)],
     verify: (_) {
       verify(mockListenUserTrips(const ListenTripsParams(userId: tUserId))).called(1);
       verify(mockListenSharedTrips(const ListenTripsParams(userId: tUserId))).called(1);
@@ -91,10 +100,34 @@ void main() {
     },
     build: () => getTestCubit(),
     act: (cubit) => cubit.startListenTrips(),
-    expect: () => [const TripsState.error(message: LocaleKeys.dataLoadError)],
+    expect: () => [const TripsState.error(message: LocaleKeys.dataLoadError, viewMode: tDefaultViewMode)],
     verify: (_) {
       verify(mockListenUserTrips(const ListenTripsParams(userId: tUserId))).called(1);
       verifyNoMoreInteractions(mockListenUserTrips);
     },
   );
+
+  group('On changeViewMode', () {
+    blocTest<TripsCubit, TripsState>(
+      'on change view mode emit TripsState with ViewMode.grid when viewMode is ViewMode.list',
+      seed: () => TripsState.loaded(userTrips: tTrips, sharedTrips: sTrips, viewMode: ViewMode.list),
+      setUp: () => when(mockUpdateViewPreferences.call(
+        const UpdateViewPreferencesParams(viewMode: ViewMode.grid, viewModePage: ViewModePage.trips),
+      )).thenAnswer((_) async => const Right(null)),
+      act: (cubit) => cubit.changeViewMode(),
+      expect: () => [TripsState.loaded(userTrips: tTrips, sharedTrips: sTrips, viewMode: ViewMode.grid)],
+      build: () => getTestCubit(),
+    );
+
+    blocTest<TripsCubit, TripsState>(
+      'on change view mode emit TripsState with ViewMode.list when viewMode is ViewMode.grid',
+      seed: () => TripsState.loaded(userTrips: tTrips, sharedTrips: sTrips, viewMode: ViewMode.grid),
+      setUp: () => when(mockUpdateViewPreferences.call(
+        const UpdateViewPreferencesParams(viewMode: ViewMode.list, viewModePage: ViewModePage.trips),
+      )).thenAnswer((_) async => const Right(null)),
+      act: (cubit) => cubit.changeViewMode(),
+      expect: () => [TripsState.loaded(userTrips: tTrips, sharedTrips: sTrips, viewMode: ViewMode.list)],
+      build: () => getTestCubit(),
+    );
+  });
 }

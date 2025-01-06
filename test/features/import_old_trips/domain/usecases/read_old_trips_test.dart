@@ -25,8 +25,7 @@ void main() {
 
   test('should read old trips from the repository', () async {
     // arrange
-    when(mockOldTripsRepository.readOldTrips(userId: tUserId))
-        .thenAnswer((_) async => const Right(tOldTrips));
+    when(mockOldTripsRepository.readOldTrips(userId: tUserId)).thenAnswer((_) async => const Right(tOldTrips));
 
     // act
     final result = await usecase(ReadOldTripsParams(tUserId));

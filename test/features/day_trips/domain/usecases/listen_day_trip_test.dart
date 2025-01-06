@@ -22,8 +22,7 @@ void main() {
 
   test('should listen to day trip from the repository', () async {
     // Arrange
-    when(mockRepository.listenDayTrip(tripId, dayTripId))
-        .thenAnswer((_) => Stream.value(const Right(dayTrip)));
+    when(mockRepository.listenDayTrip(tripId, dayTripId)).thenAnswer((_) => Stream.value(const Right(dayTrip)));
 
     // Act
     final result = usecase.call(const ListenDayTripParams(tripId: tripId, dayTripId: dayTripId));

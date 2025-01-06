@@ -31,8 +31,7 @@ void main() {
 
     expect($('Trip Name'), findsOneWidget);
     expect($('Trip Description'), findsOneWidget);
-    expect($("${LocaleKeys.createdOn.tr()} ${DateFormat.yMMMMd().format(trip.createdAt)}"),
-        findsOneWidget);
+    expect($("${LocaleKeys.createdOn.tr()} ${DateFormat.yMMMMd().format(trip.createdAt)}"), findsOneWidget);
   });
 
   //Golden test

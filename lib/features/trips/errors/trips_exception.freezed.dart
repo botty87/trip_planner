@@ -58,14 +58,12 @@ mixin _$TripsException {
 
 /// @nodoc
 abstract class $TripsExceptionCopyWith<$Res> {
-  factory $TripsExceptionCopyWith(
-          TripsException value, $Res Function(TripsException) then) =
+  factory $TripsExceptionCopyWith(TripsException value, $Res Function(TripsException) then) =
       _$TripsExceptionCopyWithImpl<$Res, TripsException>;
 }
 
 /// @nodoc
-class _$TripsExceptionCopyWithImpl<$Res, $Val extends TripsException>
-    implements $TripsExceptionCopyWith<$Res> {
+class _$TripsExceptionCopyWithImpl<$Res, $Val extends TripsException> implements $TripsExceptionCopyWith<$Res> {
   _$TripsExceptionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -79,19 +77,16 @@ class _$TripsExceptionCopyWithImpl<$Res, $Val extends TripsException>
 
 /// @nodoc
 abstract class _$$TripsExceptionImplCopyWith<$Res> {
-  factory _$$TripsExceptionImplCopyWith(_$TripsExceptionImpl value,
-          $Res Function(_$TripsExceptionImpl) then) =
+  factory _$$TripsExceptionImplCopyWith(_$TripsExceptionImpl value, $Res Function(_$TripsExceptionImpl) then) =
       __$$TripsExceptionImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$TripsExceptionImplCopyWithImpl<$Res>
-    extends _$TripsExceptionCopyWithImpl<$Res, _$TripsExceptionImpl>
+class __$$TripsExceptionImplCopyWithImpl<$Res> extends _$TripsExceptionCopyWithImpl<$Res, _$TripsExceptionImpl>
     implements _$$TripsExceptionImplCopyWith<$Res> {
-  __$$TripsExceptionImplCopyWithImpl(
-      _$TripsExceptionImpl _value, $Res Function(_$TripsExceptionImpl) _then)
+  __$$TripsExceptionImplCopyWithImpl(_$TripsExceptionImpl _value, $Res Function(_$TripsExceptionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripsException
@@ -140,8 +135,7 @@ class _$TripsExceptionImpl implements _TripsException {
   @override
   @pragma('vm:prefer-inline')
   _$$TripsExceptionImplCopyWith<_$TripsExceptionImpl> get copyWith =>
-      __$$TripsExceptionImplCopyWithImpl<_$TripsExceptionImpl>(
-          this, _$identity);
+      __$$TripsExceptionImplCopyWithImpl<_$TripsExceptionImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -214,14 +208,13 @@ abstract class _TripsException implements TripsException {
   /// Create a copy of TripsException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripsExceptionImplCopyWith<_$TripsExceptionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripsExceptionImplCopyWith<_$TripsExceptionImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
-  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
-          $Res Function(_$NoInternetConnectionImpl) then) =
+  factory _$$NoInternetConnectionImplCopyWith(
+          _$NoInternetConnectionImpl value, $Res Function(_$NoInternetConnectionImpl) then) =
       __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
@@ -229,8 +222,8 @@ abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
 class __$$NoInternetConnectionImplCopyWithImpl<$Res>
     extends _$TripsExceptionCopyWithImpl<$Res, _$NoInternetConnectionImpl>
     implements _$$NoInternetConnectionImplCopyWith<$Res> {
-  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
-      $Res Function(_$NoInternetConnectionImpl) _then)
+  __$$NoInternetConnectionImplCopyWithImpl(
+      _$NoInternetConnectionImpl _value, $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripsException
@@ -249,9 +242,7 @@ class _$NoInternetConnectionImpl implements _NoInternetConnection {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NoInternetConnectionImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
   }
 
   @override
@@ -352,8 +343,7 @@ mixin _$ShareTripException {
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripException value) $default, {
     required TResult Function(_UserNotFound value) userNotFound,
-    required TResult Function(_SNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(_SNoInternetConnection value) noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -375,8 +365,7 @@ mixin _$ShareTripException {
 
 /// @nodoc
 abstract class $ShareTripExceptionCopyWith<$Res> {
-  factory $ShareTripExceptionCopyWith(
-          ShareTripException value, $Res Function(ShareTripException) then) =
+  factory $ShareTripExceptionCopyWith(ShareTripException value, $Res Function(ShareTripException) then) =
       _$ShareTripExceptionCopyWithImpl<$Res, ShareTripException>;
 }
 
@@ -396,8 +385,8 @@ class _$ShareTripExceptionCopyWithImpl<$Res, $Val extends ShareTripException>
 
 /// @nodoc
 abstract class _$$ShareTripExceptionImplCopyWith<$Res> {
-  factory _$$ShareTripExceptionImplCopyWith(_$ShareTripExceptionImpl value,
-          $Res Function(_$ShareTripExceptionImpl) then) =
+  factory _$$ShareTripExceptionImplCopyWith(
+          _$ShareTripExceptionImpl value, $Res Function(_$ShareTripExceptionImpl) then) =
       __$$ShareTripExceptionImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
@@ -407,8 +396,7 @@ abstract class _$$ShareTripExceptionImplCopyWith<$Res> {
 class __$$ShareTripExceptionImplCopyWithImpl<$Res>
     extends _$ShareTripExceptionCopyWithImpl<$Res, _$ShareTripExceptionImpl>
     implements _$$ShareTripExceptionImplCopyWith<$Res> {
-  __$$ShareTripExceptionImplCopyWithImpl(_$ShareTripExceptionImpl _value,
-      $Res Function(_$ShareTripExceptionImpl) _then)
+  __$$ShareTripExceptionImplCopyWithImpl(_$ShareTripExceptionImpl _value, $Res Function(_$ShareTripExceptionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ShareTripException
@@ -457,8 +445,7 @@ class _$ShareTripExceptionImpl implements _ShareTripException {
   @override
   @pragma('vm:prefer-inline')
   _$$ShareTripExceptionImplCopyWith<_$ShareTripExceptionImpl> get copyWith =>
-      __$$ShareTripExceptionImplCopyWithImpl<_$ShareTripExceptionImpl>(
-          this, _$identity);
+      __$$ShareTripExceptionImplCopyWithImpl<_$ShareTripExceptionImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -499,8 +486,7 @@ class _$ShareTripExceptionImpl implements _ShareTripException {
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripException value) $default, {
     required TResult Function(_UserNotFound value) userNotFound,
-    required TResult Function(_SNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(_SNoInternetConnection value) noInternetConnection,
   }) {
     return $default(this);
   }
@@ -531,31 +517,26 @@ class _$ShareTripExceptionImpl implements _ShareTripException {
 }
 
 abstract class _ShareTripException implements ShareTripException {
-  const factory _ShareTripException({final String? message}) =
-      _$ShareTripExceptionImpl;
+  const factory _ShareTripException({final String? message}) = _$ShareTripExceptionImpl;
 
   String? get message;
 
   /// Create a copy of ShareTripException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShareTripExceptionImplCopyWith<_$ShareTripExceptionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ShareTripExceptionImplCopyWith<_$ShareTripExceptionImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UserNotFoundImplCopyWith<$Res> {
-  factory _$$UserNotFoundImplCopyWith(
-          _$UserNotFoundImpl value, $Res Function(_$UserNotFoundImpl) then) =
+  factory _$$UserNotFoundImplCopyWith(_$UserNotFoundImpl value, $Res Function(_$UserNotFoundImpl) then) =
       __$$UserNotFoundImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserNotFoundImplCopyWithImpl<$Res>
-    extends _$ShareTripExceptionCopyWithImpl<$Res, _$UserNotFoundImpl>
+class __$$UserNotFoundImplCopyWithImpl<$Res> extends _$ShareTripExceptionCopyWithImpl<$Res, _$UserNotFoundImpl>
     implements _$$UserNotFoundImplCopyWith<$Res> {
-  __$$UserNotFoundImplCopyWithImpl(
-      _$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
+  __$$UserNotFoundImplCopyWithImpl(_$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ShareTripException
@@ -574,8 +555,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
   }
 
   @override
@@ -620,8 +600,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripException value) $default, {
     required TResult Function(_UserNotFound value) userNotFound,
-    required TResult Function(_SNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(_SNoInternetConnection value) noInternetConnection,
   }) {
     return userNotFound(this);
   }
@@ -658,8 +637,7 @@ abstract class _UserNotFound implements ShareTripException {
 /// @nodoc
 abstract class _$$SNoInternetConnectionImplCopyWith<$Res> {
   factory _$$SNoInternetConnectionImplCopyWith(
-          _$SNoInternetConnectionImpl value,
-          $Res Function(_$SNoInternetConnectionImpl) then) =
+          _$SNoInternetConnectionImpl value, $Res Function(_$SNoInternetConnectionImpl) then) =
       __$$SNoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
@@ -667,8 +645,8 @@ abstract class _$$SNoInternetConnectionImplCopyWith<$Res> {
 class __$$SNoInternetConnectionImplCopyWithImpl<$Res>
     extends _$ShareTripExceptionCopyWithImpl<$Res, _$SNoInternetConnectionImpl>
     implements _$$SNoInternetConnectionImplCopyWith<$Res> {
-  __$$SNoInternetConnectionImplCopyWithImpl(_$SNoInternetConnectionImpl _value,
-      $Res Function(_$SNoInternetConnectionImpl) _then)
+  __$$SNoInternetConnectionImplCopyWithImpl(
+      _$SNoInternetConnectionImpl _value, $Res Function(_$SNoInternetConnectionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ShareTripException
@@ -687,9 +665,7 @@ class _$SNoInternetConnectionImpl implements _SNoInternetConnection {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SNoInternetConnectionImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$SNoInternetConnectionImpl);
   }
 
   @override
@@ -734,8 +710,7 @@ class _$SNoInternetConnectionImpl implements _SNoInternetConnection {
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripException value) $default, {
     required TResult Function(_UserNotFound value) userNotFound,
-    required TResult Function(_SNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(_SNoInternetConnection value) noInternetConnection,
   }) {
     return noInternetConnection(this);
   }

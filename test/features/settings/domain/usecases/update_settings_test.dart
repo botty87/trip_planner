@@ -31,8 +31,7 @@ void main() {
 
   test('should return failure when updating settings fails', () async {
     // arrange
-    when(mockUserRepository.saveSettings(tSettings))
-        .thenAnswer((_) async => const Left(UserFailures.unknownError()));
+    when(mockUserRepository.saveSettings(tSettings)).thenAnswer((_) async => const Left(UserFailures.unknownError()));
     // act
     final result = await updateSettings(const UpdateSettingsParams(settings: tSettings));
     // assert

@@ -106,14 +106,12 @@ mixin _$UserFailures {
 
 /// @nodoc
 abstract class $UserFailuresCopyWith<$Res> {
-  factory $UserFailuresCopyWith(
-          UserFailures value, $Res Function(UserFailures) then) =
+  factory $UserFailuresCopyWith(UserFailures value, $Res Function(UserFailures) then) =
       _$UserFailuresCopyWithImpl<$Res, UserFailures>;
 }
 
 /// @nodoc
-class _$UserFailuresCopyWithImpl<$Res, $Val extends UserFailures>
-    implements $UserFailuresCopyWith<$Res> {
+class _$UserFailuresCopyWithImpl<$Res, $Val extends UserFailures> implements $UserFailuresCopyWith<$Res> {
   _$UserFailuresCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -127,17 +125,14 @@ class _$UserFailuresCopyWithImpl<$Res, $Val extends UserFailures>
 
 /// @nodoc
 abstract class _$$EmailAlreadyInUseImplCopyWith<$Res> {
-  factory _$$EmailAlreadyInUseImplCopyWith(_$EmailAlreadyInUseImpl value,
-          $Res Function(_$EmailAlreadyInUseImpl) then) =
+  factory _$$EmailAlreadyInUseImplCopyWith(_$EmailAlreadyInUseImpl value, $Res Function(_$EmailAlreadyInUseImpl) then) =
       __$$EmailAlreadyInUseImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EmailAlreadyInUseImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$EmailAlreadyInUseImpl>
+class __$$EmailAlreadyInUseImplCopyWithImpl<$Res> extends _$UserFailuresCopyWithImpl<$Res, _$EmailAlreadyInUseImpl>
     implements _$$EmailAlreadyInUseImplCopyWith<$Res> {
-  __$$EmailAlreadyInUseImplCopyWithImpl(_$EmailAlreadyInUseImpl _value,
-      $Res Function(_$EmailAlreadyInUseImpl) _then)
+  __$$EmailAlreadyInUseImplCopyWithImpl(_$EmailAlreadyInUseImpl _value, $Res Function(_$EmailAlreadyInUseImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -156,8 +151,7 @@ class _$EmailAlreadyInUseImpl extends _EmailAlreadyInUse {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EmailAlreadyInUseImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EmailAlreadyInUseImpl);
   }
 
   @override
@@ -281,8 +275,8 @@ abstract class _EmailAlreadyInUse extends UserFailures {
 
 /// @nodoc
 abstract class _$$NetworkRequestFailedImplCopyWith<$Res> {
-  factory _$$NetworkRequestFailedImplCopyWith(_$NetworkRequestFailedImpl value,
-          $Res Function(_$NetworkRequestFailedImpl) then) =
+  factory _$$NetworkRequestFailedImplCopyWith(
+          _$NetworkRequestFailedImpl value, $Res Function(_$NetworkRequestFailedImpl) then) =
       __$$NetworkRequestFailedImplCopyWithImpl<$Res>;
 }
 
@@ -290,8 +284,8 @@ abstract class _$$NetworkRequestFailedImplCopyWith<$Res> {
 class __$$NetworkRequestFailedImplCopyWithImpl<$Res>
     extends _$UserFailuresCopyWithImpl<$Res, _$NetworkRequestFailedImpl>
     implements _$$NetworkRequestFailedImplCopyWith<$Res> {
-  __$$NetworkRequestFailedImplCopyWithImpl(_$NetworkRequestFailedImpl _value,
-      $Res Function(_$NetworkRequestFailedImpl) _then)
+  __$$NetworkRequestFailedImplCopyWithImpl(
+      _$NetworkRequestFailedImpl _value, $Res Function(_$NetworkRequestFailedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -310,9 +304,7 @@ class _$NetworkRequestFailedImpl extends _NetworkRequestFailed {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NetworkRequestFailedImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$NetworkRequestFailedImpl);
   }
 
   @override
@@ -436,17 +428,14 @@ abstract class _NetworkRequestFailed extends UserFailures {
 
 /// @nodoc
 abstract class _$$WeakPasswordImplCopyWith<$Res> {
-  factory _$$WeakPasswordImplCopyWith(
-          _$WeakPasswordImpl value, $Res Function(_$WeakPasswordImpl) then) =
+  factory _$$WeakPasswordImplCopyWith(_$WeakPasswordImpl value, $Res Function(_$WeakPasswordImpl) then) =
       __$$WeakPasswordImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WeakPasswordImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$WeakPasswordImpl>
+class __$$WeakPasswordImplCopyWithImpl<$Res> extends _$UserFailuresCopyWithImpl<$Res, _$WeakPasswordImpl>
     implements _$$WeakPasswordImplCopyWith<$Res> {
-  __$$WeakPasswordImplCopyWithImpl(
-      _$WeakPasswordImpl _value, $Res Function(_$WeakPasswordImpl) _then)
+  __$$WeakPasswordImplCopyWithImpl(_$WeakPasswordImpl _value, $Res Function(_$WeakPasswordImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -465,8 +454,7 @@ class _$WeakPasswordImpl extends _WeakPassword {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WeakPasswordImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$WeakPasswordImpl);
   }
 
   @override
@@ -590,17 +578,14 @@ abstract class _WeakPassword extends UserFailures {
 
 /// @nodoc
 abstract class _$$UserNotFoundImplCopyWith<$Res> {
-  factory _$$UserNotFoundImplCopyWith(
-          _$UserNotFoundImpl value, $Res Function(_$UserNotFoundImpl) then) =
+  factory _$$UserNotFoundImplCopyWith(_$UserNotFoundImpl value, $Res Function(_$UserNotFoundImpl) then) =
       __$$UserNotFoundImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserNotFoundImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$UserNotFoundImpl>
+class __$$UserNotFoundImplCopyWithImpl<$Res> extends _$UserFailuresCopyWithImpl<$Res, _$UserNotFoundImpl>
     implements _$$UserNotFoundImplCopyWith<$Res> {
-  __$$UserNotFoundImplCopyWithImpl(
-      _$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
+  __$$UserNotFoundImplCopyWithImpl(_$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -619,8 +604,7 @@ class _$UserNotFoundImpl extends _UserNotFound {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
   }
 
   @override
@@ -744,17 +728,14 @@ abstract class _UserNotFound extends UserFailures {
 
 /// @nodoc
 abstract class _$$TooManyRequestsImplCopyWith<$Res> {
-  factory _$$TooManyRequestsImplCopyWith(_$TooManyRequestsImpl value,
-          $Res Function(_$TooManyRequestsImpl) then) =
+  factory _$$TooManyRequestsImplCopyWith(_$TooManyRequestsImpl value, $Res Function(_$TooManyRequestsImpl) then) =
       __$$TooManyRequestsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$TooManyRequestsImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$TooManyRequestsImpl>
+class __$$TooManyRequestsImplCopyWithImpl<$Res> extends _$UserFailuresCopyWithImpl<$Res, _$TooManyRequestsImpl>
     implements _$$TooManyRequestsImplCopyWith<$Res> {
-  __$$TooManyRequestsImplCopyWithImpl(
-      _$TooManyRequestsImpl _value, $Res Function(_$TooManyRequestsImpl) _then)
+  __$$TooManyRequestsImplCopyWithImpl(_$TooManyRequestsImpl _value, $Res Function(_$TooManyRequestsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -773,8 +754,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TooManyRequestsImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$TooManyRequestsImpl);
   }
 
   @override
@@ -898,17 +878,14 @@ abstract class _TooManyRequests extends UserFailures {
 
 /// @nodoc
 abstract class _$$UserDisabledImplCopyWith<$Res> {
-  factory _$$UserDisabledImplCopyWith(
-          _$UserDisabledImpl value, $Res Function(_$UserDisabledImpl) then) =
+  factory _$$UserDisabledImplCopyWith(_$UserDisabledImpl value, $Res Function(_$UserDisabledImpl) then) =
       __$$UserDisabledImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserDisabledImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$UserDisabledImpl>
+class __$$UserDisabledImplCopyWithImpl<$Res> extends _$UserFailuresCopyWithImpl<$Res, _$UserDisabledImpl>
     implements _$$UserDisabledImplCopyWith<$Res> {
-  __$$UserDisabledImplCopyWithImpl(
-      _$UserDisabledImpl _value, $Res Function(_$UserDisabledImpl) _then)
+  __$$UserDisabledImplCopyWithImpl(_$UserDisabledImpl _value, $Res Function(_$UserDisabledImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -927,8 +904,7 @@ class _$UserDisabledImpl extends _UserDisabled {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserDisabledImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$UserDisabledImpl);
   }
 
   @override
@@ -1052,17 +1028,14 @@ abstract class _UserDisabled extends UserFailures {
 
 /// @nodoc
 abstract class _$$WrongPasswordImplCopyWith<$Res> {
-  factory _$$WrongPasswordImplCopyWith(
-          _$WrongPasswordImpl value, $Res Function(_$WrongPasswordImpl) then) =
+  factory _$$WrongPasswordImplCopyWith(_$WrongPasswordImpl value, $Res Function(_$WrongPasswordImpl) then) =
       __$$WrongPasswordImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WrongPasswordImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$WrongPasswordImpl>
+class __$$WrongPasswordImplCopyWithImpl<$Res> extends _$UserFailuresCopyWithImpl<$Res, _$WrongPasswordImpl>
     implements _$$WrongPasswordImplCopyWith<$Res> {
-  __$$WrongPasswordImplCopyWithImpl(
-      _$WrongPasswordImpl _value, $Res Function(_$WrongPasswordImpl) _then)
+  __$$WrongPasswordImplCopyWithImpl(_$WrongPasswordImpl _value, $Res Function(_$WrongPasswordImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -1081,8 +1054,7 @@ class _$WrongPasswordImpl extends _WrongPassword {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WrongPasswordImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$WrongPasswordImpl);
   }
 
   @override
@@ -1206,17 +1178,14 @@ abstract class _WrongPassword extends UserFailures {
 
 /// @nodoc
 abstract class _$$InvalidEmailImplCopyWith<$Res> {
-  factory _$$InvalidEmailImplCopyWith(
-          _$InvalidEmailImpl value, $Res Function(_$InvalidEmailImpl) then) =
+  factory _$$InvalidEmailImplCopyWith(_$InvalidEmailImpl value, $Res Function(_$InvalidEmailImpl) then) =
       __$$InvalidEmailImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InvalidEmailImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$InvalidEmailImpl>
+class __$$InvalidEmailImplCopyWithImpl<$Res> extends _$UserFailuresCopyWithImpl<$Res, _$InvalidEmailImpl>
     implements _$$InvalidEmailImplCopyWith<$Res> {
-  __$$InvalidEmailImplCopyWithImpl(
-      _$InvalidEmailImpl _value, $Res Function(_$InvalidEmailImpl) _then)
+  __$$InvalidEmailImplCopyWithImpl(_$InvalidEmailImpl _value, $Res Function(_$InvalidEmailImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -1235,8 +1204,7 @@ class _$InvalidEmailImpl extends _InvalidEmail {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InvalidEmailImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$InvalidEmailImpl);
   }
 
   @override
@@ -1360,19 +1328,16 @@ abstract class _InvalidEmail extends UserFailures {
 
 /// @nodoc
 abstract class _$$UnknownErrorImplCopyWith<$Res> {
-  factory _$$UnknownErrorImplCopyWith(
-          _$UnknownErrorImpl value, $Res Function(_$UnknownErrorImpl) then) =
+  factory _$$UnknownErrorImplCopyWith(_$UnknownErrorImpl value, $Res Function(_$UnknownErrorImpl) then) =
       __$$UnknownErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$UnknownErrorImplCopyWithImpl<$Res>
-    extends _$UserFailuresCopyWithImpl<$Res, _$UnknownErrorImpl>
+class __$$UnknownErrorImplCopyWithImpl<$Res> extends _$UserFailuresCopyWithImpl<$Res, _$UnknownErrorImpl>
     implements _$$UnknownErrorImplCopyWith<$Res> {
-  __$$UnknownErrorImplCopyWithImpl(
-      _$UnknownErrorImpl _value, $Res Function(_$UnknownErrorImpl) _then)
+  __$$UnknownErrorImplCopyWithImpl(_$UnknownErrorImpl _value, $Res Function(_$UnknownErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -1543,14 +1508,13 @@ abstract class _UnknownError extends UserFailures {
   /// Create a copy of UserFailures
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
-  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
-          $Res Function(_$NoInternetConnectionImpl) then) =
+  factory _$$NoInternetConnectionImplCopyWith(
+          _$NoInternetConnectionImpl value, $Res Function(_$NoInternetConnectionImpl) then) =
       __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
@@ -1558,8 +1522,8 @@ abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
 class __$$NoInternetConnectionImplCopyWithImpl<$Res>
     extends _$UserFailuresCopyWithImpl<$Res, _$NoInternetConnectionImpl>
     implements _$$NoInternetConnectionImplCopyWith<$Res> {
-  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
-      $Res Function(_$NoInternetConnectionImpl) _then)
+  __$$NoInternetConnectionImplCopyWithImpl(
+      _$NoInternetConnectionImpl _value, $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserFailures
@@ -1578,9 +1542,7 @@ class _$NoInternetConnectionImpl extends _NoInternetConnection {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NoInternetConnectionImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
   }
 
   @override

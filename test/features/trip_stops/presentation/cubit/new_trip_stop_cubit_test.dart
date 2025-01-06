@@ -167,8 +167,7 @@ void main() {
         minuteDuration: 1,
         location: LatLng(1, 1),
       ),
-      setUp: () =>
-          when(mockCreateTripStop(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
+      setUp: () => when(mockCreateTripStop(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
       build: () => cubit(),
       act: (cubit) => cubit.createTripStop(),
       expect: () => [

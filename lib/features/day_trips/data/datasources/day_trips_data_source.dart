@@ -30,25 +30,17 @@ abstract class DayTripsDataSource {
   Future<void> deleteDayTrip({required String tripId, required String dayTripId});
 
   Future<void> saveTripStopsDirections(
-      {required String tripId,
-      required String dayTripId,
-      required List<TripStopsDirections> tripStopsDirections});
+      {required String tripId, required String dayTripId, required List<TripStopsDirections> tripStopsDirections});
 
   Stream<DayTrip> listenDayTrip(String tripId, String dayTripId);
 
   updateTripStopsDirectionsUpToDate(
-      {required String tripId,
-      required String dayTripId,
-      required bool isUpToDate,
-      TravelMode? travelMode});
+      {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode});
 
-  updateDayTripShowDirections(
-      {required String tripId, required String dayTripId, required bool showDirections});
+  updateDayTripShowDirections({required String tripId, required String dayTripId, required bool showDirections});
 
   updateDayTripUseDifferentDirectionsColors(
-      {required String tripId,
-      required String dayTripId,
-      required bool useDifferentDirectionsColors});
+      {required String tripId, required String dayTripId, required bool useDifferentDirectionsColors});
 }
 
 @LazySingleton(as: DayTripsDataSource)
@@ -84,8 +76,7 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
   }
 
   @override
-  Future<void> updateDayTripsIndexes(
-      {required String tripId, required List<DayTrip> dayTrips}) async {
+  Future<void> updateDayTripsIndexes({required String tripId, required List<DayTrip> dayTrips}) async {
     final batch = firebaseFirestore.batch();
     final dayTripsCollection = _dayTripsCollection(tripId);
 
@@ -98,8 +89,7 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
   }
 
   @override
-  Future<void> updateDayTrip(
-      {required String id, required String tripId, required String? description}) async {
+  Future<void> updateDayTrip({required String id, required String tripId, required String? description}) async {
     await performSync(() async => await _dayTripsCollection(tripId).doc(id).update({
           'description': description,
         }));
@@ -161,10 +151,7 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
 
   @override
   updateTripStopsDirectionsUpToDate(
-      {required String tripId,
-      required String dayTripId,
-      required bool isUpToDate,
-      TravelMode? travelMode}) async {
+      {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode}) async {
     performSync(() async {
       await _dayTripsCollection(tripId).doc(dayTripId).update({
         'tripStopsDirectionsUpToDate': isUpToDate,
@@ -174,8 +161,7 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
   }
 
   @override
-  updateDayTripShowDirections(
-      {required String tripId, required String dayTripId, required bool showDirections}) async {
+  updateDayTripShowDirections({required String tripId, required String dayTripId, required bool showDirections}) async {
     await _dayTripsCollection(tripId).doc(dayTripId).update({
       'showDirections': showDirections,
     });
@@ -183,9 +169,7 @@ class DayTripsDataSourceImpl with DataSourceFirestoreSyncMixin implements DayTri
 
   @override
   updateDayTripUseDifferentDirectionsColors(
-      {required String tripId,
-      required String dayTripId,
-      required bool useDifferentDirectionsColors}) async {
+      {required String tripId, required String dayTripId, required bool useDifferentDirectionsColors}) async {
     await _dayTripsCollection(tripId).doc(dayTripId).update({
       'useDifferentDirectionsColors': useDifferentDirectionsColors,
     });

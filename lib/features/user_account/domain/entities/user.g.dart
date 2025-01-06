@@ -12,14 +12,11 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       name: json['name'] as String,
       oldTripsImported: json['oldTripsImported'] as bool? ?? true,
       settings: Settings.fromJson(json['settings'] as Map<String, dynamic>),
-      tutorialsData:
-          TutorialsData.fromJson(json['tutorialsData'] as Map<String, dynamic>),
-      viewPreferences: ViewPreferences.fromJson(
-          json['viewPreferences'] as Map<String, dynamic>),
+      tutorialsData: TutorialsData.fromJson(json['tutorialsData'] as Map<String, dynamic>),
+      viewPreferences: ViewPreferences.fromJson(json['viewPreferences'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) => <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
       'name': instance.name,

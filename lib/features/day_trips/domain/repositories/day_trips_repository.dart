@@ -7,8 +7,7 @@ import '../../errors/day_trips_failure.dart';
 import '../entities/trip_stops_directions.dart';
 
 abstract class DayTripsRepository {
-  Future<Either<DayTripsFailure, void>> addDayTrip(
-      {required String tripId, required DayTrip dayTrip});
+  Future<Either<DayTripsFailure, void>> addDayTrip({required String tripId, required DayTrip dayTrip});
 
   Stream<Either<DayTripsFailure, List<DayTrip>>> listenDayTrips(String tripId);
 
@@ -27,8 +26,7 @@ abstract class DayTripsRepository {
     required TimeOfDay startTime,
   });
 
-  Future<Either<DayTripsFailure, void>> deleteDayTrip(
-      {required String tripId, required String dayTripId});
+  Future<Either<DayTripsFailure, void>> deleteDayTrip({required String tripId, required String dayTripId});
 
   Future<Either<DayTripsFailure, void>> saveTripStopsDirections({
     required String tripId,
@@ -39,16 +37,11 @@ abstract class DayTripsRepository {
   Stream<Either<DayTripsFailure, DayTrip>> listenDayTrip(String tripId, String dayTripId);
 
   Future<Either<DayTripsFailure, void>> updateTripStopsDirectionsUpToDate(
-      {required String tripId,
-      required String dayTripId,
-      required bool isUpToDate,
-      TravelMode? travelMode});
+      {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode});
 
   Future<Either<DayTripsFailure, void>> updateDayTripShowDirections(
       {required String tripId, required String dayTripId, required bool showDirections});
 
   Future<Either<DayTripsFailure, void>> updateDayTripUseDifferentDirectionsColors(
-      {required String tripId,
-      required String dayTripId,
-      required bool useDifferentDirectionsColors});
+      {required String tripId, required String dayTripId, required bool useDifferentDirectionsColors});
 }

@@ -24,8 +24,7 @@ class _DescriptionSearch extends StatelessWidget {
           builder: (context, searchDescription) {
             return Switch.adaptive(
               value: searchDescription,
-              onChanged: (value) =>
-                  context.read<DiscoverNewTripsCubit>().searchDescriptionChanged(value),
+              onChanged: (value) => context.read<DiscoverNewTripsCubit>().searchDescriptionChanged(value),
             );
           },
         ),

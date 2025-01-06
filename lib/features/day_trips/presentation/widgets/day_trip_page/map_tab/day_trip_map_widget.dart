@@ -22,8 +22,8 @@ class DayTripMapWidget extends HookWidget {
 
   List<TripStop> _getTripStops(BuildContext context) {
     //Use this for the animation
-    final previouTripStops = usePrevious(
-        context.read<DayTripCubit>().state.mapOrNull(loaded: (state) => state.tripStops));
+    final previouTripStops =
+        usePrevious(context.read<DayTripCubit>().state.mapOrNull(loaded: (state) => state.tripStops));
 
     return context.select((DayTripCubit cubit) => cubit.state.maybeMap(
           loaded: (state) => state.tripStops,
@@ -91,10 +91,8 @@ class DayTripMapWidget extends HookWidget {
   Set<Polyline> _getPolylines(BuildContext context) {
     final Set<Polyline> polylines = {};
 
-    final showDirections =
-        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
-    final tripStopsDirectionsUpToDate =
-        context.read<TripStopsMapCubit>().state.dayTrip.tripStopsDirectionsUpToDate;
+    final showDirections = context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.showDirections);
+    final tripStopsDirectionsUpToDate = context.read<TripStopsMapCubit>().state.dayTrip.tripStopsDirectionsUpToDate;
 
     final List<TripStopsDirections>? tripStopsDirections =
         context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.tripStopsDirections);
@@ -103,8 +101,8 @@ class DayTripMapWidget extends HookWidget {
       return polylines;
     }
 
-    final useDifferentColors = context
-        .select((TripStopsMapCubit cubit) => cubit.state.dayTrip.useDifferentDirectionsColors);
+    final useDifferentColors =
+        context.select((TripStopsMapCubit cubit) => cubit.state.dayTrip.useDifferentDirectionsColors);
 
     if (tripStopsDirections != null) {
       final List<MaterialColor> colors;

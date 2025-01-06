@@ -28,15 +28,13 @@ mixin _$OldTrip {
 
 /// @nodoc
 abstract class $OldTripCopyWith<$Res> {
-  factory $OldTripCopyWith(OldTrip value, $Res Function(OldTrip) then) =
-      _$OldTripCopyWithImpl<$Res, OldTrip>;
+  factory $OldTripCopyWith(OldTrip value, $Res Function(OldTrip) then) = _$OldTripCopyWithImpl<$Res, OldTrip>;
   @useResult
   $Res call({String id, String name, List<OldDailyTrip> dailyTrips});
 }
 
 /// @nodoc
-class _$OldTripCopyWithImpl<$Res, $Val extends OldTrip>
-    implements $OldTripCopyWith<$Res> {
+class _$OldTripCopyWithImpl<$Res, $Val extends OldTrip> implements $OldTripCopyWith<$Res> {
   _$OldTripCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -72,8 +70,7 @@ class _$OldTripCopyWithImpl<$Res, $Val extends OldTrip>
 
 /// @nodoc
 abstract class _$$OldTripImplCopyWith<$Res> implements $OldTripCopyWith<$Res> {
-  factory _$$OldTripImplCopyWith(
-          _$OldTripImpl value, $Res Function(_$OldTripImpl) then) =
+  factory _$$OldTripImplCopyWith(_$OldTripImpl value, $Res Function(_$OldTripImpl) then) =
       __$$OldTripImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -81,12 +78,9 @@ abstract class _$$OldTripImplCopyWith<$Res> implements $OldTripCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$OldTripImplCopyWithImpl<$Res>
-    extends _$OldTripCopyWithImpl<$Res, _$OldTripImpl>
+class __$$OldTripImplCopyWithImpl<$Res> extends _$OldTripCopyWithImpl<$Res, _$OldTripImpl>
     implements _$$OldTripImplCopyWith<$Res> {
-  __$$OldTripImplCopyWithImpl(
-      _$OldTripImpl _value, $Res Function(_$OldTripImpl) _then)
-      : super(_value, _then);
+  __$$OldTripImplCopyWithImpl(_$OldTripImpl _value, $Res Function(_$OldTripImpl) _then) : super(_value, _then);
 
   /// Create a copy of OldTrip
   /// with the given fields replaced by the non-null parameter values.
@@ -117,10 +111,7 @@ class __$$OldTripImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OldTripImpl implements _OldTrip {
-  const _$OldTripImpl(
-      {required this.id,
-      required this.name,
-      required final List<OldDailyTrip> dailyTrips})
+  const _$OldTripImpl({required this.id, required this.name, required final List<OldDailyTrip> dailyTrips})
       : _dailyTrips = dailyTrips;
 
   @override
@@ -147,21 +138,18 @@ class _$OldTripImpl implements _OldTrip {
             other is _$OldTripImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality()
-                .equals(other._dailyTrips, _dailyTrips));
+            const DeepCollectionEquality().equals(other._dailyTrips, _dailyTrips));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, const DeepCollectionEquality().hash(_dailyTrips));
+  int get hashCode => Object.hash(runtimeType, id, name, const DeepCollectionEquality().hash(_dailyTrips));
 
   /// Create a copy of OldTrip
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OldTripImplCopyWith<_$OldTripImpl> get copyWith =>
-      __$$OldTripImplCopyWithImpl<_$OldTripImpl>(this, _$identity);
+  _$$OldTripImplCopyWith<_$OldTripImpl> get copyWith => __$$OldTripImplCopyWithImpl<_$OldTripImpl>(this, _$identity);
 }
 
 abstract class _OldTrip implements OldTrip {
@@ -181,6 +169,5 @@ abstract class _OldTrip implements OldTrip {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OldTripImplCopyWith<_$OldTripImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OldTripImplCopyWith<_$OldTripImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -28,8 +28,10 @@ class TripStopDoneWidget extends StatelessWidget {
               duration: const Duration(milliseconds: 300),
               child: Text(
                 LocaleKeys.completed.tr(),
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: isDone ? Colors.green[colorStrength] : Colors.orange[colorStrength]),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium
+                    ?.copyWith(color: isDone ? Colors.green[colorStrength] : Colors.orange[colorStrength]),
               ),
             ),
             onTap: () => context.read<TripStopCubit>().isDoneChanged(!isDone),

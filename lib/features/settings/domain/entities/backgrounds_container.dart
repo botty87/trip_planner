@@ -10,8 +10,7 @@ class BackgroundsContainer with _$BackgroundsContainer {
     int? darkBackgroundIndex,
   }) = _BackgroundsContainer;
 
-  factory BackgroundsContainer.fromJson(Map<String, dynamic> json) =>
-      _$BackgroundsContainerFromJson(json);
+  factory BackgroundsContainer.fromJson(Map<String, dynamic> json) => _$BackgroundsContainerFromJson(json);
 }
 
 enum BackgroundType { light, dark }

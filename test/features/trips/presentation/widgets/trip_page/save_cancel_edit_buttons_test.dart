@@ -12,8 +12,7 @@ void main() {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
 
-  testWidgets('renders SaveCancelEditButtons that contains GenericSaveCancelEditButtons',
-      (tester) async {
+  testWidgets('renders SaveCancelEditButtons that contains GenericSaveCancelEditButtons', (tester) async {
     await tester.pumpWidget(TestUtils.defaultWidget(
       child: SaveCancelEditButtons(
         isSaving: const Stream.empty(),
@@ -27,8 +26,7 @@ void main() {
   });
 
   //Golden test
-  testGoldens('renders SaveCancelEditButtons that contains GenericSaveCancelEditButtons',
-      (tester) async {
+  testGoldens('renders SaveCancelEditButtons that contains GenericSaveCancelEditButtons', (tester) async {
     final builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: [
         Device.phone,

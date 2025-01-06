@@ -27,29 +27,19 @@ mixin _$OldDailyTrip {
   /// Create a copy of OldDailyTrip
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OldDailyTripCopyWith<OldDailyTrip> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OldDailyTripCopyWith<OldDailyTrip> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OldDailyTripCopyWith<$Res> {
-  factory $OldDailyTripCopyWith(
-          OldDailyTrip value, $Res Function(OldDailyTrip) then) =
+  factory $OldDailyTripCopyWith(OldDailyTrip value, $Res Function(OldDailyTrip) then) =
       _$OldDailyTripCopyWithImpl<$Res, OldDailyTrip>;
   @useResult
-  $Res call(
-      {String name,
-      String? note,
-      int position,
-      int? day,
-      int? month,
-      int? year,
-      List<OldPlace> places});
+  $Res call({String name, String? note, int position, int? day, int? month, int? year, List<OldPlace> places});
 }
 
 /// @nodoc
-class _$OldDailyTripCopyWithImpl<$Res, $Val extends OldDailyTrip>
-    implements $OldDailyTripCopyWith<$Res> {
+class _$OldDailyTripCopyWithImpl<$Res, $Val extends OldDailyTrip> implements $OldDailyTripCopyWith<$Res> {
   _$OldDailyTripCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -104,29 +94,18 @@ class _$OldDailyTripCopyWithImpl<$Res, $Val extends OldDailyTrip>
 }
 
 /// @nodoc
-abstract class _$$OldDailyTripImplCopyWith<$Res>
-    implements $OldDailyTripCopyWith<$Res> {
-  factory _$$OldDailyTripImplCopyWith(
-          _$OldDailyTripImpl value, $Res Function(_$OldDailyTripImpl) then) =
+abstract class _$$OldDailyTripImplCopyWith<$Res> implements $OldDailyTripCopyWith<$Res> {
+  factory _$$OldDailyTripImplCopyWith(_$OldDailyTripImpl value, $Res Function(_$OldDailyTripImpl) then) =
       __$$OldDailyTripImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String? note,
-      int position,
-      int? day,
-      int? month,
-      int? year,
-      List<OldPlace> places});
+  $Res call({String name, String? note, int position, int? day, int? month, int? year, List<OldPlace> places});
 }
 
 /// @nodoc
-class __$$OldDailyTripImplCopyWithImpl<$Res>
-    extends _$OldDailyTripCopyWithImpl<$Res, _$OldDailyTripImpl>
+class __$$OldDailyTripImplCopyWithImpl<$Res> extends _$OldDailyTripCopyWithImpl<$Res, _$OldDailyTripImpl>
     implements _$$OldDailyTripImplCopyWith<$Res> {
-  __$$OldDailyTripImplCopyWithImpl(
-      _$OldDailyTripImpl _value, $Res Function(_$OldDailyTripImpl) _then)
+  __$$OldDailyTripImplCopyWithImpl(_$OldDailyTripImpl _value, $Res Function(_$OldDailyTripImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of OldDailyTrip
@@ -220,8 +199,7 @@ class _$OldDailyTripImpl implements _OldDailyTrip {
             other is _$OldDailyTripImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.note, note) || other.note == note) &&
-            (identical(other.position, position) ||
-                other.position == position) &&
+            (identical(other.position, position) || other.position == position) &&
             (identical(other.day, day) || other.day == day) &&
             (identical(other.month, month) || other.month == month) &&
             (identical(other.year, year) || other.year == year) &&
@@ -229,8 +207,8 @@ class _$OldDailyTripImpl implements _OldDailyTrip {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, note, position, day, month,
-      year, const DeepCollectionEquality().hash(_places));
+  int get hashCode =>
+      Object.hash(runtimeType, name, note, position, day, month, year, const DeepCollectionEquality().hash(_places));
 
   /// Create a copy of OldDailyTrip
   /// with the given fields replaced by the non-null parameter values.
@@ -270,6 +248,5 @@ abstract class _OldDailyTrip implements OldDailyTrip {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OldDailyTripImplCopyWith<_$OldDailyTripImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OldDailyTripImplCopyWith<_$OldDailyTripImpl> get copyWith => throw _privateConstructorUsedError;
 }

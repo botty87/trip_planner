@@ -418,7 +418,7 @@ void main() {
           duration: 0,
         ),
       );
-      
+
       // assert
       expect(result, completion(left(const TripStopsFailure())));
       verify(mockCrashlytics.recordError(any, any));

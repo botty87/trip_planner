@@ -5,8 +5,7 @@ class _DescriptionWidget extends HookWidget {
 
   final String? initialDayTripDescription;
 
-  const _DescriptionWidget(
-      {super.key, required this.onDescriptionChanged, this.initialDayTripDescription});
+  const _DescriptionWidget({super.key, required this.onDescriptionChanged, this.initialDayTripDescription});
 
   @override
   Widget build(BuildContext context) {

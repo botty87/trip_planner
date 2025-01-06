@@ -15,7 +15,6 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../../keys/env.dart';
 import '../constants.dart';
 
-
 @module
 abstract class Network {
   @lazySingleton

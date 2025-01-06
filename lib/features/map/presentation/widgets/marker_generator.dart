@@ -99,8 +99,7 @@ class _MarkerHelperState extends State<_MarkerHelper> with AfterLayoutMixin {
   }
 
   Future<Uint8List> _getUint8List(GlobalKey markerKey) async {
-    final RenderRepaintBoundary boundary =
-        markerKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    final RenderRepaintBoundary boundary = markerKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
     final image = await boundary.toImage(pixelRatio: 2.0);
     final ByteData byteData = (await image.toByteData(format: ui.ImageByteFormat.png))!;
     return byteData.buffer.asUint8List();

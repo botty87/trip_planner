@@ -16,8 +16,7 @@ void main() {
   });
 
   patrolWidgetTest('Should show AddDestinationCard', ($) async {
-    await $.pumpWidget(
-        TestUtils.defaultWidget(child: const SingleChildScrollView(child: AddDayTripStopCard())));
+    await $.pumpWidget(TestUtils.defaultWidget(child: const SingleChildScrollView(child: AddDayTripStopCard())));
 
     expect($(LocaleKeys.addDestination), findsOneWidget);
     expect($(AddDestinationCard), findsOneWidget);

@@ -19,8 +19,7 @@ mixin _$InfoContactsState {}
 
 /// @nodoc
 abstract class $InfoContactsStateCopyWith<$Res> {
-  factory $InfoContactsStateCopyWith(
-          InfoContactsState value, $Res Function(InfoContactsState) then) =
+  factory $InfoContactsStateCopyWith(InfoContactsState value, $Res Function(InfoContactsState) then) =
       _$InfoContactsStateCopyWithImpl<$Res, InfoContactsState>;
 }
 
@@ -40,17 +39,14 @@ class _$InfoContactsStateCopyWithImpl<$Res, $Val extends InfoContactsState>
 
 /// @nodoc
 abstract class _$$InfoContactsStateImplCopyWith<$Res> {
-  factory _$$InfoContactsStateImplCopyWith(_$InfoContactsStateImpl value,
-          $Res Function(_$InfoContactsStateImpl) then) =
+  factory _$$InfoContactsStateImplCopyWith(_$InfoContactsStateImpl value, $Res Function(_$InfoContactsStateImpl) then) =
       __$$InfoContactsStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InfoContactsStateImplCopyWithImpl<$Res>
-    extends _$InfoContactsStateCopyWithImpl<$Res, _$InfoContactsStateImpl>
+class __$$InfoContactsStateImplCopyWithImpl<$Res> extends _$InfoContactsStateCopyWithImpl<$Res, _$InfoContactsStateImpl>
     implements _$$InfoContactsStateImplCopyWith<$Res> {
-  __$$InfoContactsStateImplCopyWithImpl(_$InfoContactsStateImpl _value,
-      $Res Function(_$InfoContactsStateImpl) _then)
+  __$$InfoContactsStateImplCopyWithImpl(_$InfoContactsStateImpl _value, $Res Function(_$InfoContactsStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of InfoContactsState
@@ -69,8 +65,7 @@ class _$InfoContactsStateImpl implements _InfoContactsState {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InfoContactsStateImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$InfoContactsStateImpl);
   }
 
   @override

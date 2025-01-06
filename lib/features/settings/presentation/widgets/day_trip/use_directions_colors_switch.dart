@@ -16,8 +16,7 @@ class _UseDirectionsColorsSwitch extends StatelessWidget {
           builder: (context, useDifferentDirectionsColors) {
             return Switch.adaptive(
               value: useDifferentDirectionsColors,
-              onChanged: (value) =>
-                  context.read<SettingsCubit>().setUseDifferentDirectionsColors(value),
+              onChanged: (value) => context.read<SettingsCubit>().setUseDifferentDirectionsColors(value),
             );
           },
         ),

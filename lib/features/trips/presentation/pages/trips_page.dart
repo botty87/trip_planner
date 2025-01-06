@@ -44,55 +44,54 @@ class TripsPage extends StatelessWidget with GridViewCheckerMixin {
     return BlocProvider<TripsCubit>(
       create: (context) => getIt(param1: userId, param2: viewMode),
       //Wrap in a builder to avoid TripsCubit not found in onViewModeChanged
-      child: Builder(
-        builder: (context) {
-          return ViewModeListener(
-            viewModePage: ViewModePage.trips,
-            onViewModeChanged: (viewMode) {
-              context.read<TripsCubit>().updateViewModeFromUser(viewMode);
-            },
-            child: ScaffoldTransparent(
-              hasBackgroundImage: context.hasBackgroundImage,
-              appBar: AppBar(
-                scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
-                backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
-                title: Text(LocaleKeys.tripsPageTitle.tr()),
-                actions: canShowGridView(context)
-                    ? [
-                        BlocSelector<TripsCubit, TripsState, ViewMode>(
-                          selector: (state) => state.viewMode,
-                          builder: (context, viewMode) {
-                            final cubit = context.read<TripsCubit>();
-                            return ViewModeActionButton(
-                              viewMode: viewMode,
-                              onPressed: () => cubit.changeViewMode(),
-                            );
-                          },
-                        ),
-                      ]
-                    : null,
-              ),
-              body: BlocBuilder<TripsCubit, TripsState>(
-                buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
-                builder: (context, state) => TripPagesAnimatedSwitcher(
-                  child: state.map(
-                    initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
-                    loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
-                    error: (state) => Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
-                  ),
+      child: Builder(builder: (context) {
+        return ViewModeListener(
+          viewModePage: ViewModePage.trips,
+          onViewModeChanged: (viewMode) {
+            context.read<TripsCubit>().updateViewModeFromUser(viewMode);
+          },
+          child: ScaffoldTransparent(
+            hasBackgroundImage: context.hasBackgroundImage,
+            appBar: AppBar(
+              scrolledUnderElevation: context.hasBackgroundImage ? 0 : null,
+              backgroundColor: context.isDarkMode ? appBarDarkColor : appBarLightColor,
+              title: Text(LocaleKeys.tripsPageTitle.tr()),
+              actions: canShowGridView(context)
+                  ? [
+                      BlocSelector<TripsCubit, TripsState, ViewMode>(
+                        selector: (state) => state.viewMode,
+                        builder: (context, viewMode) {
+                          final cubit = context.read<TripsCubit>();
+                          return ViewModeActionButton(
+                            viewMode: viewMode,
+                            onPressed: () => cubit.changeViewMode(),
+                          );
+                        },
+                      ),
+                    ]
+                  : null,
+            ),
+            body: BlocBuilder<TripsCubit, TripsState>(
+              buildWhen: (previous, current) => previous.runtimeType != current.runtimeType,
+              builder: (context, state) => TripPagesAnimatedSwitcher(
+                child: state.map(
+                  initial: (_) => const TripsPageInitialWidget(key: ValueKey('initial')),
+                  loaded: (_) => const Center(key: ValueKey('loaded'), child: LoadedWidget()),
+                  error: (state) =>
+                      Center(key: const ValueKey('error'), child: TripsErrorWidget(message: state.message)),
                 ),
               ),
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  context.pushRoute(NewTripRoute());
-                },
-                child: const Icon(Icons.add),
-              ),
-              drawer: const TripsPageDrawer(),
             ),
-          );
-        }
-      ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                context.pushRoute(NewTripRoute());
+              },
+              child: const Icon(Icons.add),
+            ),
+            drawer: const TripsPageDrawer(),
+          ),
+        );
+      }),
     );
   }
 }

@@ -46,8 +46,7 @@ class _ImageView extends StatelessWidget {
           : cubit.state.darkBackgrounds[index];
     });
 
-    return AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300), child: _buildImage(imageFile, context));
+    return AnimatedSwitcher(duration: const Duration(milliseconds: 300), child: _buildImage(imageFile, context));
   }
 
   Widget _buildImage(File? imageFile, BuildContext context) {
@@ -63,8 +62,7 @@ class _ImageView extends StatelessWidget {
     }
 
     return GestureDetector(
-      onTap: () =>
-          context.read<SettingsCubit>().setBackground(backgroundType: imageType, index: index),
+      onTap: () => context.read<SettingsCubit>().setBackground(backgroundType: imageType, index: index),
       child: Stack(
         children: [
           Image.file(
@@ -84,9 +82,8 @@ class _ImageView extends StatelessWidget {
               }
             },
             builder: (context, isSelected) {
-              final selectedColor = context.isDarkMode
-                  ? Theme.of(context).colorScheme.secondary
-                  : Theme.of(context).primaryColorDark;
+              final selectedColor =
+                  context.isDarkMode ? Theme.of(context).colorScheme.secondary : Theme.of(context).primaryColorDark;
 
               return AnimatedOpacity(
                 duration: const Duration(milliseconds: 200),

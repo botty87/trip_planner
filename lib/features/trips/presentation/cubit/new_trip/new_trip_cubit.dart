@@ -62,8 +62,7 @@ class NewTripCubit extends Cubit<NewTripState> {
     state.mapOrNull(
         normal: (state) => emit(state.copyWith(
             startDate: startDate,
-            isStartDateBeforeToday:
-                startDate.isBefore(DateTime.now().add(const Duration(days: -1))))));
+            isStartDateBeforeToday: startDate.isBefore(DateTime.now().add(const Duration(days: -1))))));
   }
 
   void isPublicChanged(bool selected) {

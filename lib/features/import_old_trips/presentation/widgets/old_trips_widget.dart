@@ -9,8 +9,7 @@ class _OldTripsWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: horizontalSpace, vertical: verticalSpaceXs),
+          padding: const EdgeInsets.symmetric(horizontal: horizontalSpace, vertical: verticalSpaceXs),
           child: Text(LocaleKeys.oldTripsWelcome.tr(), textAlign: TextAlign.center),
         ),
         Expanded(
@@ -79,8 +78,8 @@ class _TripWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedTrips = context.select((ImportOldTripsCubit cubit) =>
-            cubit.state.mapOrNull(loaded: (state) => state.selectedTripsIds)) ??
+    final selectedTrips = context
+            .select((ImportOldTripsCubit cubit) => cubit.state.mapOrNull(loaded: (state) => state.selectedTripsIds)) ??
         {};
 
     return Padding(

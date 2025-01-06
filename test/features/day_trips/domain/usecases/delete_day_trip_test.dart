@@ -16,8 +16,7 @@ void main() {
   });
 
   test('should return right(null) when deleteDayTrip', () async {
-    when(mockDayTripsRepository.deleteDayTrip(
-            tripId: anyNamed('tripId'), dayTripId: anyNamed('dayTripId')))
+    when(mockDayTripsRepository.deleteDayTrip(tripId: anyNamed('tripId'), dayTripId: anyNamed('dayTripId')))
         .thenAnswer((_) async => right(null));
 
     // act
@@ -27,8 +26,7 @@ void main() {
   });
 
   test('should return left(DayTripsFailure()) when deleteDayTrip throws', () async {
-    when(mockDayTripsRepository.deleteDayTrip(
-            tripId: anyNamed('tripId'), dayTripId: anyNamed('dayTripId')))
+    when(mockDayTripsRepository.deleteDayTrip(tripId: anyNamed('tripId'), dayTripId: anyNamed('dayTripId')))
         .thenAnswer((_) async => left(const DayTripsFailure()));
 
     // act

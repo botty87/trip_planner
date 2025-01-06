@@ -21,8 +21,7 @@ final class OldTripsRepositoryImpl implements OldTripsRepository {
   OldTripsRepositoryImpl(this._oldTripsDataSource, this._crashlytics);
 
   @override
-  Future<Either<ImportOldTripsFailure, List<OldTrip>>> readOldTrips(
-      {required String userId}) async {
+  Future<Either<ImportOldTripsFailure, List<OldTrip>>> readOldTrips({required String userId}) async {
     try {
       final oldTrips = await _oldTripsDataSource.readOldTrips(userId: userId);
       return right(oldTrips);

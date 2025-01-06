@@ -55,8 +55,7 @@ void main() {
 
   blocTest(
     'should emit [DiscoverNewDailyTripsLoading, DiscoverNewDailyTripsError] when fetchDayTrips is called and failure',
-    setUp: () => when(mockGetPublicDayTrips(any))
-        .thenAnswer((_) async => const Left(DiscoverTripsFailure())),
+    setUp: () => when(mockGetPublicDayTrips(any)).thenAnswer((_) async => const Left(DiscoverTripsFailure())),
     build: () => cubit(),
     act: (DiscoverNewDailyTripsCubit cubit) => cubit.fetchDayTrips(),
     expect: () => const [

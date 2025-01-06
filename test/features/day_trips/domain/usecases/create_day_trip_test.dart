@@ -23,8 +23,7 @@ void main() {
   });
 
   test('should return right(null) when createDayTrip', () async {
-    when(mockDayTripsRepository.addDayTrip(
-            tripId: anyNamed('tripId'), dayTrip: anyNamed('dayTrip')))
+    when(mockDayTripsRepository.addDayTrip(tripId: anyNamed('tripId'), dayTrip: anyNamed('dayTrip')))
         .thenAnswer((_) async => right(null));
 
     // act
@@ -40,8 +39,7 @@ void main() {
   });
 
   test('should return left(DayTripsFailure()) when createDayTrip throws', () async {
-    when(mockDayTripsRepository.addDayTrip(
-            tripId: anyNamed('tripId'), dayTrip: anyNamed('dayTrip')))
+    when(mockDayTripsRepository.addDayTrip(tripId: anyNamed('tripId'), dayTrip: anyNamed('dayTrip')))
         .thenAnswer((_) async => left(const DayTripsFailure()));
 
     // act

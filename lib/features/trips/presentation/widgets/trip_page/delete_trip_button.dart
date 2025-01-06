@@ -14,11 +14,7 @@ class DeleteTripButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDeleting = context.select((TripCubit cubit) {
-      return switch (cubit.state) {
-        TripStateDeleting _ => true,
-        TripStateDeleted _ => true,
-        _ => false
-      };
+      return switch (cubit.state) { TripStateDeleting _ => true, TripStateDeleted _ => true, _ => false };
     });
 
     final userId = switch (context.read<UserCubit>().state) {
@@ -31,8 +27,7 @@ class DeleteTripButton extends StatelessWidget {
     return GenericDeleteTripButton(
       isDeleting: isDeleting,
       alertDialogTitle: isUserTheOwner ? LocaleKeys.deleteTrip.tr() : LocaleKeys.removeTrip.tr(),
-      alertDialogMessage:
-          isUserTheOwner ? LocaleKeys.deleteTripQuestion.tr() : LocaleKeys.removeTripQuestion.tr(),
+      alertDialogMessage: isUserTheOwner ? LocaleKeys.deleteTripQuestion.tr() : LocaleKeys.removeTripQuestion.tr(),
       deleteButtonLabel: isUserTheOwner ? LocaleKeys.deleteTrip.tr() : LocaleKeys.removeTrip.tr(),
       deleteAction: isUserTheOwner
           ? () => context.read<TripCubit>().deleteTrip()

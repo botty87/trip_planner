@@ -22,22 +22,19 @@ mixin _$PlaceDetails {
   /// Create a copy of PlaceDetails
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PlaceDetailsCopyWith<PlaceDetails> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PlaceDetailsCopyWith<PlaceDetails> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PlaceDetailsCopyWith<$Res> {
-  factory $PlaceDetailsCopyWith(
-          PlaceDetails value, $Res Function(PlaceDetails) then) =
+  factory $PlaceDetailsCopyWith(PlaceDetails value, $Res Function(PlaceDetails) then) =
       _$PlaceDetailsCopyWithImpl<$Res, PlaceDetails>;
   @useResult
   $Res call({String placeId, LatLng location});
 }
 
 /// @nodoc
-class _$PlaceDetailsCopyWithImpl<$Res, $Val extends PlaceDetails>
-    implements $PlaceDetailsCopyWith<$Res> {
+class _$PlaceDetailsCopyWithImpl<$Res, $Val extends PlaceDetails> implements $PlaceDetailsCopyWith<$Res> {
   _$PlaceDetailsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -67,10 +64,8 @@ class _$PlaceDetailsCopyWithImpl<$Res, $Val extends PlaceDetails>
 }
 
 /// @nodoc
-abstract class _$$PlaceDetailsImplCopyWith<$Res>
-    implements $PlaceDetailsCopyWith<$Res> {
-  factory _$$PlaceDetailsImplCopyWith(
-          _$PlaceDetailsImpl value, $Res Function(_$PlaceDetailsImpl) then) =
+abstract class _$$PlaceDetailsImplCopyWith<$Res> implements $PlaceDetailsCopyWith<$Res> {
+  factory _$$PlaceDetailsImplCopyWith(_$PlaceDetailsImpl value, $Res Function(_$PlaceDetailsImpl) then) =
       __$$PlaceDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -78,11 +73,9 @@ abstract class _$$PlaceDetailsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PlaceDetailsImplCopyWithImpl<$Res>
-    extends _$PlaceDetailsCopyWithImpl<$Res, _$PlaceDetailsImpl>
+class __$$PlaceDetailsImplCopyWithImpl<$Res> extends _$PlaceDetailsCopyWithImpl<$Res, _$PlaceDetailsImpl>
     implements _$$PlaceDetailsImplCopyWith<$Res> {
-  __$$PlaceDetailsImplCopyWithImpl(
-      _$PlaceDetailsImpl _value, $Res Function(_$PlaceDetailsImpl) _then)
+  __$$PlaceDetailsImplCopyWithImpl(_$PlaceDetailsImpl _value, $Res Function(_$PlaceDetailsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of PlaceDetails
@@ -127,8 +120,7 @@ class _$PlaceDetailsImpl implements _PlaceDetails {
         (other.runtimeType == runtimeType &&
             other is _$PlaceDetailsImpl &&
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
-            (identical(other.location, location) ||
-                other.location == location));
+            (identical(other.location, location) || other.location == location));
   }
 
   @override
@@ -144,9 +136,7 @@ class _$PlaceDetailsImpl implements _PlaceDetails {
 }
 
 abstract class _PlaceDetails implements PlaceDetails {
-  const factory _PlaceDetails(
-      {required final String placeId,
-      required final LatLng location}) = _$PlaceDetailsImpl;
+  const factory _PlaceDetails({required final String placeId, required final LatLng location}) = _$PlaceDetailsImpl;
 
   @override
   String get placeId;
@@ -157,6 +147,5 @@ abstract class _PlaceDetails implements PlaceDetails {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PlaceDetailsImplCopyWith<_$PlaceDetailsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PlaceDetailsImplCopyWith<_$PlaceDetailsImpl> get copyWith => throw _privateConstructorUsedError;
 }

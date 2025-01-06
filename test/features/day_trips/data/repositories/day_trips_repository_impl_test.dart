@@ -35,8 +35,7 @@ void main() {
 
   group('createDayTrip', () {
     test('should return right(null) when createDayTrip', () async {
-      when(mockDayTripsDataSource.addDayTrip(tripId: tTripId, dayTrip: tDayTrip))
-          .thenAnswer((_) async {});
+      when(mockDayTripsDataSource.addDayTrip(tripId: tTripId, dayTrip: tDayTrip)).thenAnswer((_) async {});
 
       // act
       final result = await repository.addDayTrip(tripId: tTripId, dayTrip: tDayTrip);
@@ -45,8 +44,7 @@ void main() {
     });
 
     test('should return left(DayTripsFailure()) when createDayTrip throws', () async {
-      when(mockDayTripsDataSource.addDayTrip(tripId: tTripId, dayTrip: tDayTrip))
-          .thenThrow(Exception());
+      when(mockDayTripsDataSource.addDayTrip(tripId: tTripId, dayTrip: tDayTrip)).thenThrow(Exception());
 
       // act
       final result = await repository.addDayTrip(tripId: tTripId, dayTrip: tDayTrip);
@@ -91,8 +89,7 @@ void main() {
     });
 
     test('should return left(DayTripsFailure()) when updateDayTripsIndexes throws', () async {
-      when(mockDayTripsDataSource.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]))
-          .thenThrow(Exception());
+      when(mockDayTripsDataSource.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip])).thenThrow(Exception());
 
       // act
       final result = await repository.updateDayTripsIndexes(tripId: tTripId, dayTrips: [tDayTrip]);
@@ -106,25 +103,23 @@ void main() {
 
   group('updateDayTrip', () {
     test('should return right(null) when updateDayTrip', () async {
-      when(mockDayTripsDataSource.updateDayTrip(
-              id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
+      when(mockDayTripsDataSource.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
           .thenAnswer((_) async {});
 
       // act
-      final result = await repository.updateDayTrip(
-          id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
+      final result =
+          await repository.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
       // assert
       expect(result, equals(right(null)));
     });
 
     test('should return left(DayTripsFailure()) when updateDayTrip throws', () async {
-      when(mockDayTripsDataSource.updateDayTrip(
-              id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
+      when(mockDayTripsDataSource.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description))
           .thenThrow(Exception());
 
       // act
-      final result = await repository.updateDayTrip(
-          id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
+      final result =
+          await repository.updateDayTrip(id: tDayTrip.id, tripId: tTripId, description: tDayTrip.description);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
 
@@ -140,8 +135,8 @@ void main() {
           .thenAnswer((_) async {});
 
       // act
-      final result = await repository.updateDayTripStartTime(
-          id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime);
+      final result =
+          await repository.updateDayTripStartTime(id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime);
       // assert
       expect(result, equals(right(null)));
     });
@@ -152,8 +147,8 @@ void main() {
           .thenThrow(Exception());
 
       // act
-      final result = await repository.updateDayTripStartTime(
-          id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime);
+      final result =
+          await repository.updateDayTripStartTime(id: tDayTrip.id, tripId: tTripId, startTime: tDayTrip.startTime);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
 
@@ -164,8 +159,7 @@ void main() {
 
   group('deleteDayTrip', () {
     test('should return right(null) when deleteDayTrip', () async {
-      when(mockDayTripsDataSource.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id))
-          .thenAnswer((_) async {});
+      when(mockDayTripsDataSource.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id)).thenAnswer((_) async {});
 
       // act
       final result = await repository.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id);
@@ -174,8 +168,7 @@ void main() {
     });
 
     test('should return left(DayTripsFailure()) when deleteDayTrip throws', () async {
-      when(mockDayTripsDataSource.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id))
-          .thenThrow(Exception());
+      when(mockDayTripsDataSource.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id)).thenThrow(Exception());
 
       // act
       final result = await repository.deleteDayTrip(tripId: tTripId, dayTripId: tDayTrip.id);
@@ -190,13 +183,11 @@ void main() {
   group('saveTripStopsDirections', () {
     test('should return right(null) when saveTripStopsDirections', () async {
       when(mockDayTripsDataSource.saveTripStopsDirections(
-          tripId: tTripId,
-          dayTripId: tDayTrip.id,
-          tripStopsDirections: [])).thenAnswer((_) async {});
+          tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: [])).thenAnswer((_) async {});
 
       // act
-      final result = await repository.saveTripStopsDirections(
-          tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []);
+      final result =
+          await repository.saveTripStopsDirections(tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []);
       // assert
       expect(result, equals(right(null)));
     });
@@ -206,8 +197,8 @@ void main() {
           tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: [])).thenThrow(Exception());
 
       // act
-      final result = await repository.saveTripStopsDirections(
-          tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []);
+      final result =
+          await repository.saveTripStopsDirections(tripId: tTripId, dayTripId: tDayTrip.id, tripStopsDirections: []);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
 
@@ -218,8 +209,7 @@ void main() {
 
   group('listenDayTrip', () {
     test('should return right(DayTrip) when listenDayTrip', () async {
-      when(mockDayTripsDataSource.listenDayTrip(tTripId, tDayTrip.id))
-          .thenAnswer((_) => Stream.value(tDayTrip));
+      when(mockDayTripsDataSource.listenDayTrip(tTripId, tDayTrip.id)).thenAnswer((_) => Stream.value(tDayTrip));
 
       // act
       final result = repository.listenDayTrip(tTripId, tDayTrip.id);
@@ -244,21 +234,20 @@ void main() {
           .thenAnswer((_) async {});
 
       // act
-      final result = await repository.updateTripStopsDirectionsUpToDate(
-          tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true);
+      final result =
+          await repository.updateTripStopsDirectionsUpToDate(tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true);
       // assert
       expect(result, equals(right(null)));
     });
 
-    test('should return left(DayTripsFailure()) when updateTripStopsDirectionsUpToDate throws',
-        () async {
+    test('should return left(DayTripsFailure()) when updateTripStopsDirectionsUpToDate throws', () async {
       when(mockDayTripsDataSource.updateTripStopsDirectionsUpToDate(
               tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true))
           .thenThrow(Exception());
 
       // act
-      final result = await repository.updateTripStopsDirectionsUpToDate(
-          tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true);
+      final result =
+          await repository.updateTripStopsDirectionsUpToDate(tripId: tTripId, dayTripId: tDayTrip.id, isUpToDate: true);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
 
@@ -280,9 +269,7 @@ void main() {
       expect(result, equals(right(null)));
     });
 
-    test(
-        'should return left(DayTripsFailure()) when updateDayTripUseDifferentDirectionsColors throws',
-        () async {
+    test('should return left(DayTripsFailure()) when updateDayTripUseDifferentDirectionsColors throws', () async {
       when(mockDayTripsDataSource.updateDayTripUseDifferentDirectionsColors(
               tripId: tTripId, dayTripId: tDayTrip.id, useDifferentDirectionsColors: true))
           .thenThrow(Exception());
@@ -305,8 +292,8 @@ void main() {
           .thenAnswer((_) async {});
 
       // act
-      final result = await repository.updateDayTripShowDirections(
-          tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true);
+      final result =
+          await repository.updateDayTripShowDirections(tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true);
       // assert
       expect(result, equals(right(null)));
     });
@@ -317,8 +304,8 @@ void main() {
           .thenThrow(Exception());
 
       // act
-      final result = await repository.updateDayTripShowDirections(
-          tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true);
+      final result =
+          await repository.updateDayTripShowDirections(tripId: tTripId, dayTripId: tDayTrip.id, showDirections: true);
       // assert
       expect(result, equals(left(const DayTripsFailure())));
 

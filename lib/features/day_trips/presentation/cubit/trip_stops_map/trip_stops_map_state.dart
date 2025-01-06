@@ -12,6 +12,5 @@ class TripStopsMapState with _$TripStopsMapState {
     @Default(false) bool hasTripStopsDirectionsErrors,
   }) = _TripStopsMapStateNormal;
 
-  bool get isTripStopsDirectionsToLoad =>
-      !dayTrip.tripStopsDirectionsUpToDate && isSelectedTab && !isLoading;
+  bool get isTripStopsDirectionsToLoad => !dayTrip.tripStopsDirectionsUpToDate && isSelectedTab && !isLoading;
 }

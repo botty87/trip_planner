@@ -39,22 +39,19 @@ mixin _$TripsFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_TripsFailure value) $default, {
-    required TResult Function(TripsFailureNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(TripsFailureNoInternetConnection value) noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_TripsFailure value)? $default, {
-    TResult? Function(TripsFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult? Function(TripsFailureNoInternetConnection value)? noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_TripsFailure value)? $default, {
-    TResult Function(TripsFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult Function(TripsFailureNoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,22 +59,19 @@ mixin _$TripsFailure {
   /// Create a copy of TripsFailure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TripsFailureCopyWith<TripsFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TripsFailureCopyWith<TripsFailure> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TripsFailureCopyWith<$Res> {
-  factory $TripsFailureCopyWith(
-          TripsFailure value, $Res Function(TripsFailure) then) =
+  factory $TripsFailureCopyWith(TripsFailure value, $Res Function(TripsFailure) then) =
       _$TripsFailureCopyWithImpl<$Res, TripsFailure>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class _$TripsFailureCopyWithImpl<$Res, $Val extends TripsFailure>
-    implements $TripsFailureCopyWith<$Res> {
+class _$TripsFailureCopyWithImpl<$Res, $Val extends TripsFailure> implements $TripsFailureCopyWith<$Res> {
   _$TripsFailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -102,10 +96,8 @@ class _$TripsFailureCopyWithImpl<$Res, $Val extends TripsFailure>
 }
 
 /// @nodoc
-abstract class _$$TripsFailureImplCopyWith<$Res>
-    implements $TripsFailureCopyWith<$Res> {
-  factory _$$TripsFailureImplCopyWith(
-          _$TripsFailureImpl value, $Res Function(_$TripsFailureImpl) then) =
+abstract class _$$TripsFailureImplCopyWith<$Res> implements $TripsFailureCopyWith<$Res> {
+  factory _$$TripsFailureImplCopyWith(_$TripsFailureImpl value, $Res Function(_$TripsFailureImpl) then) =
       __$$TripsFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -113,11 +105,9 @@ abstract class _$$TripsFailureImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TripsFailureImplCopyWithImpl<$Res>
-    extends _$TripsFailureCopyWithImpl<$Res, _$TripsFailureImpl>
+class __$$TripsFailureImplCopyWithImpl<$Res> extends _$TripsFailureCopyWithImpl<$Res, _$TripsFailureImpl>
     implements _$$TripsFailureImplCopyWith<$Res> {
-  __$$TripsFailureImplCopyWithImpl(
-      _$TripsFailureImpl _value, $Res Function(_$TripsFailureImpl) _then)
+  __$$TripsFailureImplCopyWithImpl(_$TripsFailureImpl _value, $Res Function(_$TripsFailureImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripsFailure
@@ -203,8 +193,7 @@ class _$TripsFailureImpl implements _TripsFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_TripsFailure value) $default, {
-    required TResult Function(TripsFailureNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(TripsFailureNoInternetConnection value) noInternetConnection,
   }) {
     return $default(this);
   }
@@ -213,8 +202,7 @@ class _$TripsFailureImpl implements _TripsFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_TripsFailure value)? $default, {
-    TResult? Function(TripsFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult? Function(TripsFailureNoInternetConnection value)? noInternetConnection,
   }) {
     return $default?.call(this);
   }
@@ -223,8 +211,7 @@ class _$TripsFailureImpl implements _TripsFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_TripsFailure value)? $default, {
-    TResult Function(TripsFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult Function(TripsFailureNoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -244,16 +231,13 @@ abstract class _TripsFailure implements TripsFailure {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripsFailureImplCopyWith<_$TripsFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripsFailureImplCopyWith<_$TripsFailureImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripsFailureNoInternetConnectionImplCopyWith<$Res>
-    implements $TripsFailureCopyWith<$Res> {
+abstract class _$$TripsFailureNoInternetConnectionImplCopyWith<$Res> implements $TripsFailureCopyWith<$Res> {
   factory _$$TripsFailureNoInternetConnectionImplCopyWith(
-          _$TripsFailureNoInternetConnectionImpl value,
-          $Res Function(_$TripsFailureNoInternetConnectionImpl) then) =
+          _$TripsFailureNoInternetConnectionImpl value, $Res Function(_$TripsFailureNoInternetConnectionImpl) then) =
       __$$TripsFailureNoInternetConnectionImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -262,12 +246,10 @@ abstract class _$$TripsFailureNoInternetConnectionImplCopyWith<$Res>
 
 /// @nodoc
 class __$$TripsFailureNoInternetConnectionImplCopyWithImpl<$Res>
-    extends _$TripsFailureCopyWithImpl<$Res,
-        _$TripsFailureNoInternetConnectionImpl>
+    extends _$TripsFailureCopyWithImpl<$Res, _$TripsFailureNoInternetConnectionImpl>
     implements _$$TripsFailureNoInternetConnectionImplCopyWith<$Res> {
   __$$TripsFailureNoInternetConnectionImplCopyWithImpl(
-      _$TripsFailureNoInternetConnectionImpl _value,
-      $Res Function(_$TripsFailureNoInternetConnectionImpl) _then)
+      _$TripsFailureNoInternetConnectionImpl _value, $Res Function(_$TripsFailureNoInternetConnectionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripsFailure
@@ -288,8 +270,7 @@ class __$$TripsFailureNoInternetConnectionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TripsFailureNoInternetConnectionImpl
-    implements TripsFailureNoInternetConnection {
+class _$TripsFailureNoInternetConnectionImpl implements TripsFailureNoInternetConnection {
   const _$TripsFailureNoInternetConnectionImpl({this.message});
 
   @override
@@ -316,10 +297,8 @@ class _$TripsFailureNoInternetConnectionImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TripsFailureNoInternetConnectionImplCopyWith<
-          _$TripsFailureNoInternetConnectionImpl>
-      get copyWith => __$$TripsFailureNoInternetConnectionImplCopyWithImpl<
-          _$TripsFailureNoInternetConnectionImpl>(this, _$identity);
+  _$$TripsFailureNoInternetConnectionImplCopyWith<_$TripsFailureNoInternetConnectionImpl> get copyWith =>
+      __$$TripsFailureNoInternetConnectionImplCopyWithImpl<_$TripsFailureNoInternetConnectionImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -356,8 +335,7 @@ class _$TripsFailureNoInternetConnectionImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_TripsFailure value) $default, {
-    required TResult Function(TripsFailureNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(TripsFailureNoInternetConnection value) noInternetConnection,
   }) {
     return noInternetConnection(this);
   }
@@ -366,8 +344,7 @@ class _$TripsFailureNoInternetConnectionImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_TripsFailure value)? $default, {
-    TResult? Function(TripsFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult? Function(TripsFailureNoInternetConnection value)? noInternetConnection,
   }) {
     return noInternetConnection?.call(this);
   }
@@ -376,8 +353,7 @@ class _$TripsFailureNoInternetConnectionImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_TripsFailure value)? $default, {
-    TResult Function(TripsFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult Function(TripsFailureNoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -388,8 +364,7 @@ class _$TripsFailureNoInternetConnectionImpl
 }
 
 abstract class TripsFailureNoInternetConnection implements TripsFailure {
-  const factory TripsFailureNoInternetConnection({final String? message}) =
-      _$TripsFailureNoInternetConnectionImpl;
+  const factory TripsFailureNoInternetConnection({final String? message}) = _$TripsFailureNoInternetConnectionImpl;
 
   @override
   String? get message;
@@ -398,9 +373,8 @@ abstract class TripsFailureNoInternetConnection implements TripsFailure {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripsFailureNoInternetConnectionImplCopyWith<
-          _$TripsFailureNoInternetConnectionImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TripsFailureNoInternetConnectionImplCopyWith<_$TripsFailureNoInternetConnectionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -432,24 +406,21 @@ mixin _$ShareTripFailure {
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripFailure value) $default, {
     required TResult Function(ShareTripFailureUserNotFound value) userNotFound,
-    required TResult Function(ShareTripFailureNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(ShareTripFailureNoInternetConnection value) noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ShareTripFailure value)? $default, {
     TResult? Function(ShareTripFailureUserNotFound value)? userNotFound,
-    TResult? Function(ShareTripFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult? Function(ShareTripFailureNoInternetConnection value)? noInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ShareTripFailure value)? $default, {
     TResult Function(ShareTripFailureUserNotFound value)? userNotFound,
-    TResult Function(ShareTripFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult Function(ShareTripFailureNoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -457,22 +428,19 @@ mixin _$ShareTripFailure {
   /// Create a copy of ShareTripFailure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShareTripFailureCopyWith<ShareTripFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ShareTripFailureCopyWith<ShareTripFailure> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ShareTripFailureCopyWith<$Res> {
-  factory $ShareTripFailureCopyWith(
-          ShareTripFailure value, $Res Function(ShareTripFailure) then) =
+  factory $ShareTripFailureCopyWith(ShareTripFailure value, $Res Function(ShareTripFailure) then) =
       _$ShareTripFailureCopyWithImpl<$Res, ShareTripFailure>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class _$ShareTripFailureCopyWithImpl<$Res, $Val extends ShareTripFailure>
-    implements $ShareTripFailureCopyWith<$Res> {
+class _$ShareTripFailureCopyWithImpl<$Res, $Val extends ShareTripFailure> implements $ShareTripFailureCopyWith<$Res> {
   _$ShareTripFailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -497,10 +465,8 @@ class _$ShareTripFailureCopyWithImpl<$Res, $Val extends ShareTripFailure>
 }
 
 /// @nodoc
-abstract class _$$ShareTripFailureImplCopyWith<$Res>
-    implements $ShareTripFailureCopyWith<$Res> {
-  factory _$$ShareTripFailureImplCopyWith(_$ShareTripFailureImpl value,
-          $Res Function(_$ShareTripFailureImpl) then) =
+abstract class _$$ShareTripFailureImplCopyWith<$Res> implements $ShareTripFailureCopyWith<$Res> {
+  factory _$$ShareTripFailureImplCopyWith(_$ShareTripFailureImpl value, $Res Function(_$ShareTripFailureImpl) then) =
       __$$ShareTripFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -508,11 +474,9 @@ abstract class _$$ShareTripFailureImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ShareTripFailureImplCopyWithImpl<$Res>
-    extends _$ShareTripFailureCopyWithImpl<$Res, _$ShareTripFailureImpl>
+class __$$ShareTripFailureImplCopyWithImpl<$Res> extends _$ShareTripFailureCopyWithImpl<$Res, _$ShareTripFailureImpl>
     implements _$$ShareTripFailureImplCopyWith<$Res> {
-  __$$ShareTripFailureImplCopyWithImpl(_$ShareTripFailureImpl _value,
-      $Res Function(_$ShareTripFailureImpl) _then)
+  __$$ShareTripFailureImplCopyWithImpl(_$ShareTripFailureImpl _value, $Res Function(_$ShareTripFailureImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ShareTripFailure
@@ -561,8 +525,7 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
   @override
   @pragma('vm:prefer-inline')
   _$$ShareTripFailureImplCopyWith<_$ShareTripFailureImpl> get copyWith =>
-      __$$ShareTripFailureImplCopyWithImpl<_$ShareTripFailureImpl>(
-          this, _$identity);
+      __$$ShareTripFailureImplCopyWithImpl<_$ShareTripFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -603,8 +566,7 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripFailure value) $default, {
     required TResult Function(ShareTripFailureUserNotFound value) userNotFound,
-    required TResult Function(ShareTripFailureNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(ShareTripFailureNoInternetConnection value) noInternetConnection,
   }) {
     return $default(this);
   }
@@ -614,8 +576,7 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ShareTripFailure value)? $default, {
     TResult? Function(ShareTripFailureUserNotFound value)? userNotFound,
-    TResult? Function(ShareTripFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult? Function(ShareTripFailureNoInternetConnection value)? noInternetConnection,
   }) {
     return $default?.call(this);
   }
@@ -625,8 +586,7 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ShareTripFailure value)? $default, {
     TResult Function(ShareTripFailureUserNotFound value)? userNotFound,
-    TResult Function(ShareTripFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult Function(ShareTripFailureNoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -637,8 +597,7 @@ class _$ShareTripFailureImpl implements _ShareTripFailure {
 }
 
 abstract class _ShareTripFailure implements ShareTripFailure {
-  const factory _ShareTripFailure({final String? message}) =
-      _$ShareTripFailureImpl;
+  const factory _ShareTripFailure({final String? message}) = _$ShareTripFailureImpl;
 
   @override
   String? get message;
@@ -647,16 +606,13 @@ abstract class _ShareTripFailure implements ShareTripFailure {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShareTripFailureImplCopyWith<_$ShareTripFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ShareTripFailureImplCopyWith<_$ShareTripFailureImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ShareTripFailureUserNotFoundImplCopyWith<$Res>
-    implements $ShareTripFailureCopyWith<$Res> {
+abstract class _$$ShareTripFailureUserNotFoundImplCopyWith<$Res> implements $ShareTripFailureCopyWith<$Res> {
   factory _$$ShareTripFailureUserNotFoundImplCopyWith(
-          _$ShareTripFailureUserNotFoundImpl value,
-          $Res Function(_$ShareTripFailureUserNotFoundImpl) then) =
+          _$ShareTripFailureUserNotFoundImpl value, $Res Function(_$ShareTripFailureUserNotFoundImpl) then) =
       __$$ShareTripFailureUserNotFoundImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -665,12 +621,10 @@ abstract class _$$ShareTripFailureUserNotFoundImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ShareTripFailureUserNotFoundImplCopyWithImpl<$Res>
-    extends _$ShareTripFailureCopyWithImpl<$Res,
-        _$ShareTripFailureUserNotFoundImpl>
+    extends _$ShareTripFailureCopyWithImpl<$Res, _$ShareTripFailureUserNotFoundImpl>
     implements _$$ShareTripFailureUserNotFoundImplCopyWith<$Res> {
   __$$ShareTripFailureUserNotFoundImplCopyWithImpl(
-      _$ShareTripFailureUserNotFoundImpl _value,
-      $Res Function(_$ShareTripFailureUserNotFoundImpl) _then)
+      _$ShareTripFailureUserNotFoundImpl _value, $Res Function(_$ShareTripFailureUserNotFoundImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ShareTripFailure
@@ -691,8 +645,7 @@ class __$$ShareTripFailureUserNotFoundImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ShareTripFailureUserNotFoundImpl
-    implements ShareTripFailureUserNotFound {
+class _$ShareTripFailureUserNotFoundImpl implements ShareTripFailureUserNotFound {
   const _$ShareTripFailureUserNotFoundImpl({this.message});
 
   @override
@@ -719,10 +672,8 @@ class _$ShareTripFailureUserNotFoundImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShareTripFailureUserNotFoundImplCopyWith<
-          _$ShareTripFailureUserNotFoundImpl>
-      get copyWith => __$$ShareTripFailureUserNotFoundImplCopyWithImpl<
-          _$ShareTripFailureUserNotFoundImpl>(this, _$identity);
+  _$$ShareTripFailureUserNotFoundImplCopyWith<_$ShareTripFailureUserNotFoundImpl> get copyWith =>
+      __$$ShareTripFailureUserNotFoundImplCopyWithImpl<_$ShareTripFailureUserNotFoundImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -763,8 +714,7 @@ class _$ShareTripFailureUserNotFoundImpl
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripFailure value) $default, {
     required TResult Function(ShareTripFailureUserNotFound value) userNotFound,
-    required TResult Function(ShareTripFailureNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(ShareTripFailureNoInternetConnection value) noInternetConnection,
   }) {
     return userNotFound(this);
   }
@@ -774,8 +724,7 @@ class _$ShareTripFailureUserNotFoundImpl
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ShareTripFailure value)? $default, {
     TResult? Function(ShareTripFailureUserNotFound value)? userNotFound,
-    TResult? Function(ShareTripFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult? Function(ShareTripFailureNoInternetConnection value)? noInternetConnection,
   }) {
     return userNotFound?.call(this);
   }
@@ -785,8 +734,7 @@ class _$ShareTripFailureUserNotFoundImpl
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ShareTripFailure value)? $default, {
     TResult Function(ShareTripFailureUserNotFound value)? userNotFound,
-    TResult Function(ShareTripFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult Function(ShareTripFailureNoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -797,8 +745,7 @@ class _$ShareTripFailureUserNotFoundImpl
 }
 
 abstract class ShareTripFailureUserNotFound implements ShareTripFailure {
-  const factory ShareTripFailureUserNotFound({final String? message}) =
-      _$ShareTripFailureUserNotFoundImpl;
+  const factory ShareTripFailureUserNotFound({final String? message}) = _$ShareTripFailureUserNotFoundImpl;
 
   @override
   String? get message;
@@ -807,16 +754,13 @@ abstract class ShareTripFailureUserNotFound implements ShareTripFailure {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShareTripFailureUserNotFoundImplCopyWith<
-          _$ShareTripFailureUserNotFoundImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ShareTripFailureUserNotFoundImplCopyWith<_$ShareTripFailureUserNotFoundImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ShareTripFailureNoInternetConnectionImplCopyWith<$Res>
-    implements $ShareTripFailureCopyWith<$Res> {
-  factory _$$ShareTripFailureNoInternetConnectionImplCopyWith(
-          _$ShareTripFailureNoInternetConnectionImpl value,
+abstract class _$$ShareTripFailureNoInternetConnectionImplCopyWith<$Res> implements $ShareTripFailureCopyWith<$Res> {
+  factory _$$ShareTripFailureNoInternetConnectionImplCopyWith(_$ShareTripFailureNoInternetConnectionImpl value,
           $Res Function(_$ShareTripFailureNoInternetConnectionImpl) then) =
       __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl<$Res>;
   @override
@@ -826,11 +770,9 @@ abstract class _$$ShareTripFailureNoInternetConnectionImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl<$Res>
-    extends _$ShareTripFailureCopyWithImpl<$Res,
-        _$ShareTripFailureNoInternetConnectionImpl>
+    extends _$ShareTripFailureCopyWithImpl<$Res, _$ShareTripFailureNoInternetConnectionImpl>
     implements _$$ShareTripFailureNoInternetConnectionImplCopyWith<$Res> {
-  __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl(
-      _$ShareTripFailureNoInternetConnectionImpl _value,
+  __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl(_$ShareTripFailureNoInternetConnectionImpl _value,
       $Res Function(_$ShareTripFailureNoInternetConnectionImpl) _then)
       : super(_value, _then);
 
@@ -852,8 +794,7 @@ class __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ShareTripFailureNoInternetConnectionImpl
-    implements ShareTripFailureNoInternetConnection {
+class _$ShareTripFailureNoInternetConnectionImpl implements ShareTripFailureNoInternetConnection {
   const _$ShareTripFailureNoInternetConnectionImpl({this.message});
 
   @override
@@ -880,10 +821,9 @@ class _$ShareTripFailureNoInternetConnectionImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShareTripFailureNoInternetConnectionImplCopyWith<
-          _$ShareTripFailureNoInternetConnectionImpl>
-      get copyWith => __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl<
-          _$ShareTripFailureNoInternetConnectionImpl>(this, _$identity);
+  _$$ShareTripFailureNoInternetConnectionImplCopyWith<_$ShareTripFailureNoInternetConnectionImpl> get copyWith =>
+      __$$ShareTripFailureNoInternetConnectionImplCopyWithImpl<_$ShareTripFailureNoInternetConnectionImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -924,8 +864,7 @@ class _$ShareTripFailureNoInternetConnectionImpl
   TResult map<TResult extends Object?>(
     TResult Function(_ShareTripFailure value) $default, {
     required TResult Function(ShareTripFailureUserNotFound value) userNotFound,
-    required TResult Function(ShareTripFailureNoInternetConnection value)
-        noInternetConnection,
+    required TResult Function(ShareTripFailureNoInternetConnection value) noInternetConnection,
   }) {
     return noInternetConnection(this);
   }
@@ -935,8 +874,7 @@ class _$ShareTripFailureNoInternetConnectionImpl
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_ShareTripFailure value)? $default, {
     TResult? Function(ShareTripFailureUserNotFound value)? userNotFound,
-    TResult? Function(ShareTripFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult? Function(ShareTripFailureNoInternetConnection value)? noInternetConnection,
   }) {
     return noInternetConnection?.call(this);
   }
@@ -946,8 +884,7 @@ class _$ShareTripFailureNoInternetConnectionImpl
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ShareTripFailure value)? $default, {
     TResult Function(ShareTripFailureUserNotFound value)? userNotFound,
-    TResult Function(ShareTripFailureNoInternetConnection value)?
-        noInternetConnection,
+    TResult Function(ShareTripFailureNoInternetConnection value)? noInternetConnection,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -957,8 +894,7 @@ class _$ShareTripFailureNoInternetConnectionImpl
   }
 }
 
-abstract class ShareTripFailureNoInternetConnection
-    implements ShareTripFailure {
+abstract class ShareTripFailureNoInternetConnection implements ShareTripFailure {
   const factory ShareTripFailureNoInternetConnection({final String? message}) =
       _$ShareTripFailureNoInternetConnectionImpl;
 
@@ -969,7 +905,6 @@ abstract class ShareTripFailureNoInternetConnection
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShareTripFailureNoInternetConnectionImplCopyWith<
-          _$ShareTripFailureNoInternetConnectionImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ShareTripFailureNoInternetConnectionImplCopyWith<_$ShareTripFailureNoInternetConnectionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -58,14 +58,12 @@ mixin _$UserException {
 
 /// @nodoc
 abstract class $UserExceptionCopyWith<$Res> {
-  factory $UserExceptionCopyWith(
-          UserException value, $Res Function(UserException) then) =
+  factory $UserExceptionCopyWith(UserException value, $Res Function(UserException) then) =
       _$UserExceptionCopyWithImpl<$Res, UserException>;
 }
 
 /// @nodoc
-class _$UserExceptionCopyWithImpl<$Res, $Val extends UserException>
-    implements $UserExceptionCopyWith<$Res> {
+class _$UserExceptionCopyWithImpl<$Res, $Val extends UserException> implements $UserExceptionCopyWith<$Res> {
   _$UserExceptionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -79,19 +77,16 @@ class _$UserExceptionCopyWithImpl<$Res, $Val extends UserException>
 
 /// @nodoc
 abstract class _$$UserExceptionImplCopyWith<$Res> {
-  factory _$$UserExceptionImplCopyWith(
-          _$UserExceptionImpl value, $Res Function(_$UserExceptionImpl) then) =
+  factory _$$UserExceptionImplCopyWith(_$UserExceptionImpl value, $Res Function(_$UserExceptionImpl) then) =
       __$$UserExceptionImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$UserExceptionImplCopyWithImpl<$Res>
-    extends _$UserExceptionCopyWithImpl<$Res, _$UserExceptionImpl>
+class __$$UserExceptionImplCopyWithImpl<$Res> extends _$UserExceptionCopyWithImpl<$Res, _$UserExceptionImpl>
     implements _$$UserExceptionImplCopyWith<$Res> {
-  __$$UserExceptionImplCopyWithImpl(
-      _$UserExceptionImpl _value, $Res Function(_$UserExceptionImpl) _then)
+  __$$UserExceptionImplCopyWithImpl(_$UserExceptionImpl _value, $Res Function(_$UserExceptionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserException
@@ -213,14 +208,13 @@ abstract class _UserException implements UserException {
   /// Create a copy of UserException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserExceptionImplCopyWith<_$UserExceptionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserExceptionImplCopyWith<_$UserExceptionImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
-  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
-          $Res Function(_$NoInternetConnectionImpl) then) =
+  factory _$$NoInternetConnectionImplCopyWith(
+          _$NoInternetConnectionImpl value, $Res Function(_$NoInternetConnectionImpl) then) =
       __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
@@ -228,8 +222,8 @@ abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
 class __$$NoInternetConnectionImplCopyWithImpl<$Res>
     extends _$UserExceptionCopyWithImpl<$Res, _$NoInternetConnectionImpl>
     implements _$$NoInternetConnectionImplCopyWith<$Res> {
-  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
-      $Res Function(_$NoInternetConnectionImpl) _then)
+  __$$NoInternetConnectionImplCopyWithImpl(
+      _$NoInternetConnectionImpl _value, $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserException
@@ -248,9 +242,7 @@ class _$NoInternetConnectionImpl implements _NoInternetConnection {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NoInternetConnectionImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
   }
 
   @override

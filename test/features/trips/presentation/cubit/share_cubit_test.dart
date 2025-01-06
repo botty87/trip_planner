@@ -91,9 +91,8 @@ void main() {
     blocTest<ShareCubit, ShareState>(
       'When user added emit state with user added and then normal',
       build: () => getShareCubit(),
-      setUp: () =>
-          when(mockAddUserForShare(const AddUserForShareParams(tripId: tTripId, email: 'test')))
-              .thenAnswer((_) async => const Right(null)),
+      setUp: () => when(mockAddUserForShare(const AddUserForShareParams(tripId: tTripId, email: 'test')))
+          .thenAnswer((_) async => const Right(null)),
       seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
       act: (cubit) => cubit.addUser(),
       expect: () => [
@@ -105,9 +104,8 @@ void main() {
     blocTest<ShareCubit, ShareState>(
       'When add user for share fails emit state with error message',
       build: () => getShareCubit(),
-      setUp: () =>
-          when(mockAddUserForShare(const AddUserForShareParams(tripId: tTripId, email: 'test')))
-              .thenAnswer((_) async => const Left(ShareTripFailure())),
+      setUp: () => when(mockAddUserForShare(const AddUserForShareParams(tripId: tTripId, email: 'test')))
+          .thenAnswer((_) async => const Left(ShareTripFailure())),
       seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
       act: (cubit) => cubit.addUser(),
       expect: () => [
@@ -124,9 +122,8 @@ void main() {
     blocTest<ShareCubit, ShareState>(
       'When user removed emit state with user removed',
       build: () => getShareCubit(),
-      setUp: () =>
-          when(mockRemoveUserForShare(const RemoveUserForShareParams(tripId: tTripId, userId: '1')))
-              .thenAnswer((_) async => const Right(null)),
+      setUp: () => when(mockRemoveUserForShare(const RemoveUserForShareParams(tripId: tTripId, userId: '1')))
+          .thenAnswer((_) async => const Right(null)),
       seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
       act: (cubit) => cubit.removeUser('1'),
       expect: () => [
@@ -137,9 +134,8 @@ void main() {
     blocTest<ShareCubit, ShareState>(
       'When remove user for share fails emit state with error message',
       build: () => getShareCubit(),
-      setUp: () =>
-          when(mockRemoveUserForShare(const RemoveUserForShareParams(tripId: tTripId, userId: '1')))
-              .thenAnswer((_) async => const Left(ShareTripFailure())),
+      setUp: () => when(mockRemoveUserForShare(const RemoveUserForShareParams(tripId: tTripId, userId: '1')))
+          .thenAnswer((_) async => const Left(ShareTripFailure())),
       seed: () => const ShareState.loaded(userEmailQuery: 'test', sharedUsers: tSharedUsers),
       act: (cubit) => cubit.removeUser('1'),
       expect: () => [

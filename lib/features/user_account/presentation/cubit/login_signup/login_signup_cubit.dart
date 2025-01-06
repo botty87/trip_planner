@@ -18,8 +18,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
   final LoginUser loginUser;
   final RecoverPassword recoverPassword;
 
-  LoginSignupCubit(
-      {required this.registerUser, required this.loginUser, required this.recoverPassword})
+  LoginSignupCubit({required this.registerUser, required this.loginUser, required this.recoverPassword})
       : super(LoginSignupState());
 
   void emailChanged(String email) {
@@ -123,8 +122,7 @@ class LoginSignupCubit extends Cubit<LoginSignupState> {
         ));
       },
       (_) {
-        emit(state.copyWith(
-            isLoading: false, successMessage: LocaleKeys.recoverPasswordSuccess.tr()));
+        emit(state.copyWith(isLoading: false, successMessage: LocaleKeys.recoverPasswordSuccess.tr()));
       },
     );
   }

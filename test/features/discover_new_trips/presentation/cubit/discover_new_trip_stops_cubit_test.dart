@@ -51,8 +51,7 @@ void main() {
 
   blocTest(
     'should emit [DiscoverNewTripStopsLoading, DiscoverNewTripStopsError] when fetchTripStops is called and failure',
-    setUp: () => when(mockGetPublicTripStops(any))
-        .thenAnswer((_) async => const Left(DiscoverTripsFailure())),
+    setUp: () => when(mockGetPublicTripStops(any)).thenAnswer((_) async => const Left(DiscoverTripsFailure())),
     build: () => cubit(),
     act: (DiscoverNewTripStopsCubit cubit) => cubit.fetchTripStops(),
     expect: () => const [
@@ -75,8 +74,7 @@ void main() {
 
   blocTest(
     'should emit [DiscoverNewTripStopsLoaded] whith mapType hybrid when changeMapType is called',
-    seed: () =>
-        const DiscoverNewTripStopsState.loaded(tripStops: tTripStops, mapType: MapType.normal),
+    seed: () => const DiscoverNewTripStopsState.loaded(tripStops: tTripStops, mapType: MapType.normal),
     build: () => cubit(),
     act: (DiscoverNewTripStopsCubit cubit) => cubit.changeMapType(),
     expect: () => const [
@@ -88,13 +86,12 @@ void main() {
     'should emit [DiscoverNewTripStopsLoaded] whith markerLatLngBounds when updateMarkerLatLngBounds is called',
     seed: () => const DiscoverNewTripStopsState.loaded(tripStops: tTripStops),
     build: () => cubit(),
-    act: (DiscoverNewTripStopsCubit cubit) => cubit.updateMarkerLatLngBounds(
-        LatLngBounds(northeast: const LatLng(1, 1), southwest: const LatLng(1, 1))),
+    act: (DiscoverNewTripStopsCubit cubit) =>
+        cubit.updateMarkerLatLngBounds(LatLngBounds(northeast: const LatLng(1, 1), southwest: const LatLng(1, 1))),
     expect: () => [
       DiscoverNewTripStopsState.loaded(
           tripStops: tTripStops,
-          markerLatLngBounds:
-              LatLngBounds(northeast: const LatLng(1, 1), southwest: const LatLng(1, 1))),
+          markerLatLngBounds: LatLngBounds(northeast: const LatLng(1, 1), southwest: const LatLng(1, 1))),
     ],
   );
 }

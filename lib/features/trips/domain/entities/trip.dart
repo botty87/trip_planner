@@ -15,10 +15,8 @@ sealed class Trip with _$Trip {
     required String name,
     String? description,
     required String userId,
-    @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-    required DateTime createdAt,
-    @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-    required DateTime startDate,
+    @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) required DateTime createdAt,
+    @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) required DateTime startDate,
     @Default(false) bool isPublic,
     String? languageCode,
     @Default([]) List<String> sharedWith,

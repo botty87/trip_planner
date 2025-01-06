@@ -22,22 +22,19 @@ mixin _$TimePickerState {
   /// Create a copy of TimePickerState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TimePickerStateCopyWith<TimePickerState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TimePickerStateCopyWith<TimePickerState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TimePickerStateCopyWith<$Res> {
-  factory $TimePickerStateCopyWith(
-          TimePickerState value, $Res Function(TimePickerState) then) =
+  factory $TimePickerStateCopyWith(TimePickerState value, $Res Function(TimePickerState) then) =
       _$TimePickerStateCopyWithImpl<$Res, TimePickerState>;
   @useResult
   $Res call({TimeOfDay time, SelectedInput selectedInput});
 }
 
 /// @nodoc
-class _$TimePickerStateCopyWithImpl<$Res, $Val extends TimePickerState>
-    implements $TimePickerStateCopyWith<$Res> {
+class _$TimePickerStateCopyWithImpl<$Res, $Val extends TimePickerState> implements $TimePickerStateCopyWith<$Res> {
   _$TimePickerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -67,10 +64,8 @@ class _$TimePickerStateCopyWithImpl<$Res, $Val extends TimePickerState>
 }
 
 /// @nodoc
-abstract class _$$TimePickerStateImplCopyWith<$Res>
-    implements $TimePickerStateCopyWith<$Res> {
-  factory _$$TimePickerStateImplCopyWith(_$TimePickerStateImpl value,
-          $Res Function(_$TimePickerStateImpl) then) =
+abstract class _$$TimePickerStateImplCopyWith<$Res> implements $TimePickerStateCopyWith<$Res> {
+  factory _$$TimePickerStateImplCopyWith(_$TimePickerStateImpl value, $Res Function(_$TimePickerStateImpl) then) =
       __$$TimePickerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -78,11 +73,9 @@ abstract class _$$TimePickerStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TimePickerStateImplCopyWithImpl<$Res>
-    extends _$TimePickerStateCopyWithImpl<$Res, _$TimePickerStateImpl>
+class __$$TimePickerStateImplCopyWithImpl<$Res> extends _$TimePickerStateCopyWithImpl<$Res, _$TimePickerStateImpl>
     implements _$$TimePickerStateImplCopyWith<$Res> {
-  __$$TimePickerStateImplCopyWithImpl(
-      _$TimePickerStateImpl _value, $Res Function(_$TimePickerStateImpl) _then)
+  __$$TimePickerStateImplCopyWithImpl(_$TimePickerStateImpl _value, $Res Function(_$TimePickerStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TimePickerState
@@ -109,8 +102,7 @@ class __$$TimePickerStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TimePickerStateImpl implements _TimePickerState {
-  const _$TimePickerStateImpl(
-      {required this.time, this.selectedInput = SelectedInput.HOUR});
+  const _$TimePickerStateImpl({required this.time, this.selectedInput = SelectedInput.HOUR});
 
   @override
   final TimeOfDay time;
@@ -129,8 +121,7 @@ class _$TimePickerStateImpl implements _TimePickerState {
         (other.runtimeType == runtimeType &&
             other is _$TimePickerStateImpl &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.selectedInput, selectedInput) ||
-                other.selectedInput == selectedInput));
+            (identical(other.selectedInput, selectedInput) || other.selectedInput == selectedInput));
   }
 
   @override
@@ -142,14 +133,12 @@ class _$TimePickerStateImpl implements _TimePickerState {
   @override
   @pragma('vm:prefer-inline')
   _$$TimePickerStateImplCopyWith<_$TimePickerStateImpl> get copyWith =>
-      __$$TimePickerStateImplCopyWithImpl<_$TimePickerStateImpl>(
-          this, _$identity);
+      __$$TimePickerStateImplCopyWithImpl<_$TimePickerStateImpl>(this, _$identity);
 }
 
 abstract class _TimePickerState implements TimePickerState {
-  const factory _TimePickerState(
-      {required final TimeOfDay time,
-      final SelectedInput selectedInput}) = _$TimePickerStateImpl;
+  const factory _TimePickerState({required final TimeOfDay time, final SelectedInput selectedInput}) =
+      _$TimePickerStateImpl;
 
   @override
   TimeOfDay get time;
@@ -160,6 +149,5 @@ abstract class _TimePickerState implements TimePickerState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TimePickerStateImplCopyWith<_$TimePickerStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TimePickerStateImplCopyWith<_$TimePickerStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

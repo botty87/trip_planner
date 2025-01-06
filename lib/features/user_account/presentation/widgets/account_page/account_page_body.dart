@@ -21,8 +21,7 @@ class _AccountPageBody extends StatelessWidget {
         ),
         //On reauthentication show modal bottom sheet
         BlocListener<AccountCubit, AccountState>(
-          listenWhen: (previous, current) =>
-              previous is AccountStateEditing && current is AccountStateReauthenticating,
+          listenWhen: (previous, current) => previous is AccountStateEditing && current is AccountStateReauthenticating,
           listener: (context, state) {
             if (state is AccountStateReauthenticating) {
               _showReauthenticationModalBottom(context);
@@ -31,8 +30,7 @@ class _AccountPageBody extends StatelessWidget {
         ),
         //On reauthentication to normal state, hide modal bottom sheet
         BlocListener<AccountCubit, AccountState>(
-          listenWhen: (previous, current) =>
-              previous is AccountStateReauthenticating && current is AccountStateNormal,
+          listenWhen: (previous, current) => previous is AccountStateReauthenticating && current is AccountStateNormal,
           listener: (context, state) {
             Navigator.of(context).pop();
           },

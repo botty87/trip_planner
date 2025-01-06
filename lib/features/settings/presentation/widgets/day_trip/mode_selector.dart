@@ -29,8 +29,7 @@ class _ModeSelector extends StatelessWidget {
           ),
         ],
         selected: {travelMode},
-        onSelectionChanged: (selected) =>
-            context.read<SettingsCubit>().travelModeChanged(selected.first),
+        onSelectionChanged: (selected) => context.read<SettingsCubit>().travelModeChanged(selected.first),
       ),
     );
   }

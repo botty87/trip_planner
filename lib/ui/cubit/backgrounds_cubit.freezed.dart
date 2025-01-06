@@ -23,25 +23,19 @@ mixin _$BackgroundsState {
   /// Create a copy of BackgroundsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BackgroundsStateCopyWith<BackgroundsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BackgroundsStateCopyWith<BackgroundsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BackgroundsStateCopyWith<$Res> {
-  factory $BackgroundsStateCopyWith(
-          BackgroundsState value, $Res Function(BackgroundsState) then) =
+  factory $BackgroundsStateCopyWith(BackgroundsState value, $Res Function(BackgroundsState) then) =
       _$BackgroundsStateCopyWithImpl<$Res, BackgroundsState>;
   @useResult
-  $Res call(
-      {Map<int, File> lightBackgrounds,
-      Map<int, File> darkBackgrounds,
-      File? currentBackgroundImage});
+  $Res call({Map<int, File> lightBackgrounds, Map<int, File> darkBackgrounds, File? currentBackgroundImage});
 }
 
 /// @nodoc
-class _$BackgroundsStateCopyWithImpl<$Res, $Val extends BackgroundsState>
-    implements $BackgroundsStateCopyWith<$Res> {
+class _$BackgroundsStateCopyWithImpl<$Res, $Val extends BackgroundsState> implements $BackgroundsStateCopyWith<$Res> {
   _$BackgroundsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -76,25 +70,18 @@ class _$BackgroundsStateCopyWithImpl<$Res, $Val extends BackgroundsState>
 }
 
 /// @nodoc
-abstract class _$$BackgroundsStateImplCopyWith<$Res>
-    implements $BackgroundsStateCopyWith<$Res> {
-  factory _$$BackgroundsStateImplCopyWith(_$BackgroundsStateImpl value,
-          $Res Function(_$BackgroundsStateImpl) then) =
+abstract class _$$BackgroundsStateImplCopyWith<$Res> implements $BackgroundsStateCopyWith<$Res> {
+  factory _$$BackgroundsStateImplCopyWith(_$BackgroundsStateImpl value, $Res Function(_$BackgroundsStateImpl) then) =
       __$$BackgroundsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Map<int, File> lightBackgrounds,
-      Map<int, File> darkBackgrounds,
-      File? currentBackgroundImage});
+  $Res call({Map<int, File> lightBackgrounds, Map<int, File> darkBackgrounds, File? currentBackgroundImage});
 }
 
 /// @nodoc
-class __$$BackgroundsStateImplCopyWithImpl<$Res>
-    extends _$BackgroundsStateCopyWithImpl<$Res, _$BackgroundsStateImpl>
+class __$$BackgroundsStateImplCopyWithImpl<$Res> extends _$BackgroundsStateCopyWithImpl<$Res, _$BackgroundsStateImpl>
     implements _$$BackgroundsStateImplCopyWith<$Res> {
-  __$$BackgroundsStateImplCopyWithImpl(_$BackgroundsStateImpl _value,
-      $Res Function(_$BackgroundsStateImpl) _then)
+  __$$BackgroundsStateImplCopyWithImpl(_$BackgroundsStateImpl _value, $Res Function(_$BackgroundsStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of BackgroundsState
@@ -164,20 +151,15 @@ class _$BackgroundsStateImpl implements _BackgroundsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BackgroundsStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other._lightBackgrounds, _lightBackgrounds) &&
-            const DeepCollectionEquality()
-                .equals(other._darkBackgrounds, _darkBackgrounds) &&
+            const DeepCollectionEquality().equals(other._lightBackgrounds, _lightBackgrounds) &&
+            const DeepCollectionEquality().equals(other._darkBackgrounds, _darkBackgrounds) &&
             (identical(other.currentBackgroundImage, currentBackgroundImage) ||
                 other.currentBackgroundImage == currentBackgroundImage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_lightBackgrounds),
-      const DeepCollectionEquality().hash(_darkBackgrounds),
-      currentBackgroundImage);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_lightBackgrounds),
+      const DeepCollectionEquality().hash(_darkBackgrounds), currentBackgroundImage);
 
   /// Create a copy of BackgroundsState
   /// with the given fields replaced by the non-null parameter values.
@@ -185,8 +167,7 @@ class _$BackgroundsStateImpl implements _BackgroundsState {
   @override
   @pragma('vm:prefer-inline')
   _$$BackgroundsStateImplCopyWith<_$BackgroundsStateImpl> get copyWith =>
-      __$$BackgroundsStateImplCopyWithImpl<_$BackgroundsStateImpl>(
-          this, _$identity);
+      __$$BackgroundsStateImplCopyWithImpl<_$BackgroundsStateImpl>(this, _$identity);
 }
 
 abstract class _BackgroundsState implements BackgroundsState {
@@ -206,6 +187,5 @@ abstract class _BackgroundsState implements BackgroundsState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BackgroundsStateImplCopyWith<_$BackgroundsStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BackgroundsStateImplCopyWith<_$BackgroundsStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

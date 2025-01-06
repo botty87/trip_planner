@@ -73,8 +73,7 @@ void main() {
   group('register user', () {
     test('should register user on data source', () async {
       // arrange
-      when(mockUserDataSource.registerUser(email: '', password: '', name: ''))
-          .thenAnswer((_) async => null);
+      when(mockUserDataSource.registerUser(email: '', password: '', name: '')).thenAnswer((_) async => null);
 
       // act
       final result = await userRepositoryImpl.registerUser(email: '', password: '', name: '');
@@ -102,8 +101,7 @@ void main() {
 
     test('should return a failure when there is an exception on data source', () async {
       // arrange
-      when(mockUserDataSource.loginUser(email: '', password: ''))
-          .thenAnswer((realInvocation) => throw Exception());
+      when(mockUserDataSource.loginUser(email: '', password: '')).thenAnswer((realInvocation) => throw Exception());
 
       // act
       final result = await userRepositoryImpl.loginUser(email: '', password: '');
@@ -134,8 +132,7 @@ void main() {
 
     test('should return a failure when there is an exception on data source', () async {
       // arrange
-      when(mockUserDataSource.recoverPassword(''))
-          .thenAnswer((realInvocation) => throw Exception());
+      when(mockUserDataSource.recoverPassword('')).thenAnswer((realInvocation) => throw Exception());
 
       // act
       final result = await userRepositoryImpl.recoverPassword('');
@@ -182,8 +179,7 @@ void main() {
   group('reauthenticate user', () {
     test('should reauthenticate user on data source', () async {
       // arrange
-      when(mockUserDataSource.reauthenticateUser(email: '', password: ''))
-          .thenAnswer((_) async => null);
+      when(mockUserDataSource.reauthenticateUser(email: '', password: '')).thenAnswer((_) async => null);
 
       // act
       final result = await userRepositoryImpl.reauthenticateUser(email: '', password: '');
@@ -261,8 +257,7 @@ void main() {
   group('update user details', () {
     test('should update user details on data source', () async {
       // arrange
-      when(mockUserDataSource.updateUserDetails(name: '', email: '', password: ''))
-          .thenAnswer((_) async => null);
+      when(mockUserDataSource.updateUserDetails(name: '', email: '', password: '')).thenAnswer((_) async => null);
 
       // act
       final result = await userRepositoryImpl.updateUserDetails(name: '', email: '', password: '');
@@ -336,8 +331,7 @@ void main() {
 
     test('should return a failure when there is an exception on data source', () async {
       // arrange
-      when(mockUserDataSource.saveSettings(tSettings))
-          .thenAnswer((realInvocation) => throw Exception());
+      when(mockUserDataSource.saveSettings(tSettings)).thenAnswer((realInvocation) => throw Exception());
 
       // act
       final result = await userRepositoryImpl.saveSettings(tSettings);
@@ -354,8 +348,7 @@ void main() {
   group('saveTutorialsData', () {
     test('should save tutorials data on data source', () async {
       // arrange
-      when(mockUserDataSource.saveTutorialsData(const TutorialsData()))
-          .thenAnswer((_) async => null);
+      when(mockUserDataSource.saveTutorialsData(const TutorialsData())).thenAnswer((_) async => null);
 
       // act
       final result = await userRepositoryImpl.saveTutorialsData(const TutorialsData());
@@ -383,4 +376,3 @@ void main() {
     });
   });
 }
-

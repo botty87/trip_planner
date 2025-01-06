@@ -21,22 +21,19 @@ mixin _$DiscoverTripsFailure {
   /// Create a copy of DiscoverTripsFailure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DiscoverTripsFailureCopyWith<DiscoverTripsFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DiscoverTripsFailureCopyWith<DiscoverTripsFailure> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DiscoverTripsFailureCopyWith<$Res> {
-  factory $DiscoverTripsFailureCopyWith(DiscoverTripsFailure value,
-          $Res Function(DiscoverTripsFailure) then) =
+  factory $DiscoverTripsFailureCopyWith(DiscoverTripsFailure value, $Res Function(DiscoverTripsFailure) then) =
       _$DiscoverTripsFailureCopyWithImpl<$Res, DiscoverTripsFailure>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class _$DiscoverTripsFailureCopyWithImpl<$Res,
-        $Val extends DiscoverTripsFailure>
+class _$DiscoverTripsFailureCopyWithImpl<$Res, $Val extends DiscoverTripsFailure>
     implements $DiscoverTripsFailureCopyWith<$Res> {
   _$DiscoverTripsFailureCopyWithImpl(this._value, this._then);
 
@@ -62,10 +59,9 @@ class _$DiscoverTripsFailureCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$DiscoverTripsFailureImplCopyWith<$Res>
-    implements $DiscoverTripsFailureCopyWith<$Res> {
-  factory _$$DiscoverTripsFailureImplCopyWith(_$DiscoverTripsFailureImpl value,
-          $Res Function(_$DiscoverTripsFailureImpl) then) =
+abstract class _$$DiscoverTripsFailureImplCopyWith<$Res> implements $DiscoverTripsFailureCopyWith<$Res> {
+  factory _$$DiscoverTripsFailureImplCopyWith(
+          _$DiscoverTripsFailureImpl value, $Res Function(_$DiscoverTripsFailureImpl) then) =
       __$$DiscoverTripsFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -76,8 +72,8 @@ abstract class _$$DiscoverTripsFailureImplCopyWith<$Res>
 class __$$DiscoverTripsFailureImplCopyWithImpl<$Res>
     extends _$DiscoverTripsFailureCopyWithImpl<$Res, _$DiscoverTripsFailureImpl>
     implements _$$DiscoverTripsFailureImplCopyWith<$Res> {
-  __$$DiscoverTripsFailureImplCopyWithImpl(_$DiscoverTripsFailureImpl _value,
-      $Res Function(_$DiscoverTripsFailureImpl) _then)
+  __$$DiscoverTripsFailureImplCopyWithImpl(
+      _$DiscoverTripsFailureImpl _value, $Res Function(_$DiscoverTripsFailureImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DiscoverTripsFailure
@@ -125,15 +121,12 @@ class _$DiscoverTripsFailureImpl implements _DiscoverTripsFailure {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DiscoverTripsFailureImplCopyWith<_$DiscoverTripsFailureImpl>
-      get copyWith =>
-          __$$DiscoverTripsFailureImplCopyWithImpl<_$DiscoverTripsFailureImpl>(
-              this, _$identity);
+  _$$DiscoverTripsFailureImplCopyWith<_$DiscoverTripsFailureImpl> get copyWith =>
+      __$$DiscoverTripsFailureImplCopyWithImpl<_$DiscoverTripsFailureImpl>(this, _$identity);
 }
 
 abstract class _DiscoverTripsFailure implements DiscoverTripsFailure {
-  const factory _DiscoverTripsFailure({final String? message}) =
-      _$DiscoverTripsFailureImpl;
+  const factory _DiscoverTripsFailure({final String? message}) = _$DiscoverTripsFailureImpl;
 
   @override
   String? get message;
@@ -142,6 +135,5 @@ abstract class _DiscoverTripsFailure implements DiscoverTripsFailure {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DiscoverTripsFailureImplCopyWith<_$DiscoverTripsFailureImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$DiscoverTripsFailureImplCopyWith<_$DiscoverTripsFailureImpl> get copyWith => throw _privateConstructorUsedError;
 }

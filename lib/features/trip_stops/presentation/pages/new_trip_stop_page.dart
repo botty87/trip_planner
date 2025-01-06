@@ -66,8 +66,7 @@ class _NewTripStopPageBody extends HookWidget {
                   markerId: const MarkerId('location'),
                   position: state.location!,
                   draggable: true,
-                  onDragEnd: (value) =>
-                      cubit.locationChanged(LatLng(value.latitude, value.longitude)),
+                  onDragEnd: (value) => cubit.locationChanged(LatLng(value.latitude, value.longitude)),
                 )
               : null),
         ),
@@ -80,8 +79,7 @@ class _NewTripStopPageBody extends HookWidget {
         ),
         //When the state changes to created pop the page
         BlocListener<NewTripStopCubit, NewTripStopState>(
-          listener: (context, state) =>
-              state.mapOrNull(created: (created) => context.router.maybePop()),
+          listener: (context, state) => state.mapOrNull(created: (created) => context.router.maybePop()),
         ),
         //When the state changes to error, show a snackbar
         BlocListener<NewTripStopCubit, NewTripStopState>(

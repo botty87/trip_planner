@@ -10,8 +10,7 @@ import '../entities/suggestion.dart';
 abstract class GooglePlacesRepository {
   Future<Either<GooglePlacesFailure, List<Suggestion>>> fetchSuggestions(
       {required String query, required String lang, required String token});
-  Future<Either<GooglePlacesFailure, PlaceDetails>> fetchPlaceDetails(
-      {required String placeId, required String token});
+  Future<Either<GooglePlacesFailure, PlaceDetails>> fetchPlaceDetails({required String placeId, required String token});
 
   Future<Either<GooglePlacesFailure, List<TripStopsDirections>>> fetchTripStopsDirections(
       List<TripStop> tripStops, TravelMode travelMode);

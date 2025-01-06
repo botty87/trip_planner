@@ -7,6 +7,8 @@ import 'package:mockito/mockito.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/listen_day_trips.dart';
 import 'package:trip_planner/features/day_trips/domain/usecases/update_day_trips_indexes.dart';
+import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
+import 'package:trip_planner/features/settings/domain/usecases/update_view_preferences.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/delete_trip.dart';
 import 'package:trip_planner/features/trips/domain/usecases/listen_trip.dart';
@@ -25,6 +27,7 @@ import 'trip_cubit_test.mocks.dart';
   MockSpec<FirebaseCrashlytics>(),
   MockSpec<ListenTrip>(),
   MockSpec<RemoveUserForShare>(),
+  MockSpec<UpdateViewPreferences>(),
 ])
 void main() {
   late MockUpdateTrip mockUpdateTrip;
@@ -34,6 +37,7 @@ void main() {
   late MockFirebaseCrashlytics mockFirebaseCrashlytics;
   late MockListenTrip mockListenTrip;
   late MockRemoveUserForShare mockRemoveUserForShare;
+  late MockUpdateViewPreferences mockUpdateViewPreferences;
 
   final tStartDate = DateTime.now();
 
@@ -62,6 +66,8 @@ void main() {
         crashlytics: mockFirebaseCrashlytics,
         listenTrip: mockListenTrip,
         removeUserForShare: mockRemoveUserForShare,
+        updateViewPreferences: mockUpdateViewPreferences,
+        viewMode: ViewMode.list,
       );
 
   setUp(() {
@@ -72,14 +78,16 @@ void main() {
     mockFirebaseCrashlytics = MockFirebaseCrashlytics();
     mockListenTrip = MockListenTrip();
     mockRemoveUserForShare = MockRemoveUserForShare();
+    mockUpdateViewPreferences = MockUpdateViewPreferences();
   });
 
   blocTest<TripCubit, TripState>(
     'On edit emit TripStateEditing',
-    seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+    seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
     act: (cubit) => cubit.edit(),
     expect: () => [
       TripState.editing(
+        viewMode: ViewMode.list,
         trip: tTrip,
         name: tTrip.name,
         description: tTrip.description,
@@ -95,6 +103,7 @@ void main() {
   blocTest<TripCubit, TripState>(
     'On nameChanged emit TripStateEditing with name changed',
     seed: () => TripState.editing(
+      viewMode: ViewMode.list,
       trip: tTrip,
       name: tTrip.name,
       description: tTrip.description,
@@ -106,6 +115,7 @@ void main() {
     act: (cubit) => cubit.nameChanged('new name'),
     expect: () => [
       TripState.editing(
+        viewMode: ViewMode.list,
         trip: tTrip,
         name: 'new name',
         description: tTrip.description,
@@ -121,6 +131,7 @@ void main() {
   blocTest<TripCubit, TripState>(
     'On descriptionChanged emit TripStateEditing with description changed',
     seed: () => TripState.editing(
+      viewMode: ViewMode.list,
       trip: tTrip,
       name: tTrip.name,
       description: tTrip.description,
@@ -132,6 +143,7 @@ void main() {
     act: (cubit) => cubit.descriptionChanged('new description'),
     expect: () => [
       TripState.editing(
+        viewMode: ViewMode.list,
         trip: tTrip,
         name: tTrip.name,
         description: 'new description',
@@ -147,6 +159,7 @@ void main() {
   blocTest<TripCubit, TripState>(
     'On startDateChanged emit TripStateEditing with startDate changed',
     seed: () => TripState.editing(
+      viewMode: ViewMode.list,
       trip: tTrip,
       name: tTrip.name,
       description: tTrip.description,
@@ -158,6 +171,7 @@ void main() {
     act: (cubit) => cubit.startDateChanged(tStartDate),
     expect: () => [
       TripState.editing(
+        viewMode: ViewMode.list,
         trip: tTrip,
         name: tTrip.name,
         description: tTrip.description,
@@ -174,6 +188,7 @@ void main() {
     blocTest<TripCubit, TripState>(
       'On save emit TripState with updated trip',
       seed: () => TripState.editing(
+        viewMode: ViewMode.list,
         trip: tTrip,
         name: 'new name',
         isSaving: false,
@@ -187,6 +202,7 @@ void main() {
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         TripState.editing(
+          viewMode: ViewMode.list,
           trip: tTrip,
           name: 'new name',
           description: tTrip.description,
@@ -197,6 +213,7 @@ void main() {
           languageCode: 'en',
         ),
         TripState.loaded(
+          viewMode: ViewMode.list,
           trip: tTrip.copyWith(name: 'new name', isPublic: true, languageCode: 'en'),
           dayTrips: tDayTrips,
         )
@@ -207,6 +224,7 @@ void main() {
     blocTest<TripCubit, TripState>(
       'On save emit TripStateError and then TripStateEditing if updateTrip fails',
       seed: () => TripState.editing(
+        viewMode: ViewMode.list,
         trip: tTrip,
         name: 'new name',
         description: tTrip.description,
@@ -215,11 +233,11 @@ void main() {
         isPublic: true,
         languageCode: 'en',
       ),
-      setUp: () => when(mockUpdateTrip.call(any))
-          .thenAnswer((_) async => const Left(TripsFailure(message: 'error'))),
+      setUp: () => when(mockUpdateTrip.call(any)).thenAnswer((_) async => const Left(TripsFailure(message: 'error'))),
       act: (cubit) => cubit.saveChanges(),
       expect: () => [
         TripState.editing(
+          viewMode: ViewMode.list,
           trip: tTrip,
           name: 'new name',
           description: tTrip.description,
@@ -230,6 +248,7 @@ void main() {
           languageCode: 'en',
         ),
         TripState.editing(
+          viewMode: ViewMode.list,
           trip: tTrip,
           name: 'new name',
           description: tTrip.description,
@@ -254,12 +273,11 @@ void main() {
     ];
 
     blocTest<TripCubit, TripState>('On reorderDayTrips call updateDayTripsIndexes',
-        setUp: () =>
-            when(mockUpdateDayTripsIndexes.call(any)).thenAnswer((_) async => const Right(null)),
-        seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+        setUp: () => when(mockUpdateDayTripsIndexes.call(any)).thenAnswer((_) async => const Right(null)),
+        seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
         act: (cubit) => cubit.reorderDayTrips(0, 2),
         build: () => getStandardCubit(),
-        expect: () => [TripState.loaded(trip: tTrip, dayTrips: tDayTripsSorted)],
+        expect: () => [TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTripsSorted)],
         verify: (_) => verify(mockUpdateDayTripsIndexes.call(any)));
   });
 
@@ -267,6 +285,7 @@ void main() {
     blocTest<TripCubit, TripState>(
       'On modalBottomEditingDismissed emit TripState if previous state is TripStateEditing',
       seed: () => TripState.editing(
+        viewMode: ViewMode.list,
         trip: tTrip,
         dayTrips: tDayTrips,
         name: tTrip.name,
@@ -276,13 +295,13 @@ void main() {
         languageCode: 'en',
       ),
       act: (cubit) => cubit.modalBottomEditingDismissed(),
-      expect: () => [TripState.loaded(trip: tTrip, dayTrips: tDayTrips)],
+      expect: () => [TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips)],
       build: () => getStandardCubit(),
     );
 
     blocTest<TripCubit, TripState>(
       'On modalBottomEditingDismissed emit nothing if previous state is not TripStateEditing',
-      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
       act: (cubit) => cubit.modalBottomEditingDismissed(),
       expect: () => [],
       build: () => getStandardCubit(),
@@ -292,25 +311,24 @@ void main() {
   group('On delete trip', () {
     blocTest<TripCubit, TripState>(
       'emit TripStateDeleting and then TripStateDeleted',
-      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
       setUp: () => when(mockDeleteTrip.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.deleteTrip(),
       expect: () => [
-        TripState.deleting(trip: tTrip),
-        TripState.deleted(trip: tTrip),
+        TripState.deleting(viewMode: ViewMode.list, trip: tTrip),
+        TripState.deleted(viewMode: ViewMode.list, trip: tTrip),
       ],
       build: () => getStandardCubit(),
     );
 
     blocTest<TripCubit, TripState>(
       'emit TripStateError if deleteTrip fails',
-      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
-      setUp: () => when(mockDeleteTrip.call(any))
-          .thenAnswer((_) async => const Left(TripsFailure(message: 'error'))),
+      seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
+      setUp: () => when(mockDeleteTrip.call(any)).thenAnswer((_) async => const Left(TripsFailure(message: 'error'))),
       act: (cubit) => cubit.deleteTrip(),
       expect: () => [
-        TripState.deleting(trip: tTrip),
-        TripState.error(trip: tTrip, errorMessage: 'error', fatal: false),
+        TripState.deleting(viewMode: ViewMode.list, trip: tTrip),
+        TripState.error(viewMode: ViewMode.list, trip: tTrip, errorMessage: 'error', fatal: false),
       ],
       build: () => getStandardCubit(),
     );
@@ -319,26 +337,61 @@ void main() {
   group('On remove trip', () {
     blocTest<TripCubit, TripState>(
       'emit TripStateDeleting and then TripStateDeleted',
-      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
       setUp: () => when(mockRemoveUserForShare.call(any)).thenAnswer((_) async => const Right(null)),
       act: (cubit) => cubit.removeTrip('1'),
       expect: () => [
-        TripState.deleting(trip: tTrip),
-        TripState.deleted(trip: tTrip),
+        TripState.deleting(viewMode: ViewMode.list, trip: tTrip),
+        TripState.deleted(viewMode: ViewMode.list, trip: tTrip),
       ],
       build: () => getStandardCubit(),
     );
 
     blocTest<TripCubit, TripState>(
       'emit TripStateError if removeUserForShare fails',
-      seed: () => TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+      seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
       setUp: () => when(mockRemoveUserForShare.call(any))
           .thenAnswer((_) async => const Left(ShareTripFailure(message: 'error'))),
       act: (cubit) => cubit.removeTrip('1'),
       expect: () => [
-        TripState.deleting(trip: tTrip),
-        TripState.error(trip: tTrip, errorMessage: 'error', fatal: false),
+        TripState.deleting(viewMode: ViewMode.list, trip: tTrip),
+        TripState.error(viewMode: ViewMode.list, trip: tTrip, errorMessage: 'error', fatal: false),
       ],
+      build: () => getStandardCubit(),
+    );
+  });
+
+  group('On updateViewPreferences', () {
+    blocTest<TripCubit, TripState>(
+      'on change view mode emit TripState with ViewMode.grid when viewMode is ViewMode.list',
+      seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
+      setUp: () => when(mockUpdateViewPreferences.call(
+        const UpdateViewPreferencesParams(viewMode: ViewMode.grid, viewModePage: ViewModePage.trip),
+      )).thenAnswer((_) async => const Right(null)),
+      act: (cubit) => cubit.changeViewMode(),
+      expect: () => [TripState.loaded(viewMode: ViewMode.grid, trip: tTrip, dayTrips: tDayTrips)],
+      build: () => getStandardCubit(),
+    );
+
+    blocTest<TripCubit, TripState>(
+      'on change view mode emit TripState with ViewMode.list when viewMode is ViewMode.grid',
+      seed: () => TripState.loaded(viewMode: ViewMode.grid, trip: tTrip, dayTrips: tDayTrips),
+      setUp: () => when(mockUpdateViewPreferences.call(
+        const UpdateViewPreferencesParams(viewMode: ViewMode.list, viewModePage: ViewModePage.trip),
+      )).thenAnswer((_) async => const Right(null)),
+      act: (cubit) => cubit.changeViewMode(),
+      expect: () => [TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips)],
+      build: () => getStandardCubit(),
+    );
+
+    blocTest<TripCubit, TripState>(
+      'on updateViewModeFromUser emit TripState with the viewMode from the user',
+      seed: () => TripState.loaded(viewMode: ViewMode.list, trip: tTrip, dayTrips: tDayTrips),
+      setUp: () => when(mockUpdateViewPreferences.call(
+        const UpdateViewPreferencesParams(viewMode: ViewMode.grid, viewModePage: ViewModePage.trip),
+      )).thenAnswer((_) async => const Right(null)),
+      act: (cubit) => cubit.updateViewModeFromUser(ViewMode.grid),
+      expect: () => [TripState.loaded(viewMode: ViewMode.grid, trip: tTrip, dayTrips: tDayTrips)],
       build: () => getStandardCubit(),
     );
   });

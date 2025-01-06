@@ -26,8 +26,7 @@ class _SuggestionsWidget extends StatelessWidget {
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       curve: Curves.decelerate,
-      child:
-          suggestions.isEmpty ? const SizedBox.shrink() : _buildSuggestions(suggestions, context),
+      child: suggestions.isEmpty ? const SizedBox.shrink() : _buildSuggestions(suggestions, context),
     );
   }
 
@@ -42,8 +41,7 @@ class _SuggestionsWidget extends StatelessWidget {
         return ListTile(
           title: Text(suggestion.description),
           onTap: () async {
-            final result =
-                await context.read<GooglePlacesCubit>().fetchPlaceDetails(suggestion.placeId);
+            final result = await context.read<GooglePlacesCubit>().fetchPlaceDetails(suggestion.placeId);
             onSuggestionSelected(result);
             if (context.mounted) {
               FocusScope.of(context).unfocus();

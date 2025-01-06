@@ -43,10 +43,8 @@ class Languages {
   static Language get chechen => const Language('ce', 'Chechen', 'нохчийн мотт');
   static Language get chewaNyanja => const Language('ny', 'Chewa (Nyanja)', 'chiCheŵa, chinyanja');
   static Language get chinese => const Language('zh', 'Chinese', '中文 (Zhōngwén), 汉语, 漢語');
-  static Language get chineseSimplified =>
-      const Language('zh_Hans', 'Chinese (Simplified)', '简体中文');
-  static Language get chineseTraditional =>
-      const Language('zh_Hant', 'Chinese (Traditional)', '中國傳統');
+  static Language get chineseSimplified => const Language('zh_Hans', 'Chinese (Simplified)', '简体中文');
+  static Language get chineseTraditional => const Language('zh_Hant', 'Chinese (Traditional)', '中國傳統');
   static Language get churchSlavonic => const Language('cu', 'Church Slavonic', 'ѩзыкъ словѣньскъ');
   static Language get chuvash => const Language('cv', 'Chuvash', 'чӑваш чӗлхи');
   static Language get cornish => const Language('kw', 'Cornish', 'Kernewek');
@@ -94,8 +92,7 @@ class Languages {
   static Language get italian => const Language('it', 'Italian', 'Italiano');
   static Language get japanese => const Language('ja', 'Japanese', '日本語 (にほんご／にっぽんご)');
   static Language get javanese => const Language('jv', 'Javanese', 'Basa Jawa');
-  static Language get kalaallisut =>
-      const Language('kl', 'Kalaallisut', 'kalaallisut, kalaallit oqaasii');
+  static Language get kalaallisut => const Language('kl', 'Kalaallisut', 'kalaallisut, kalaallit oqaasii');
   static Language get kannada => const Language('kn', 'Kannada', 'ಕನ್ನಡ');
   static Language get kanuri => const Language('kr', 'Kanuri', 'Kanuri');
   static Language get kashmiri => const Language('ks', 'Kashmiri', 'कश्मीरी, كشميري‎');
@@ -134,8 +131,7 @@ class Languages {
   static Language get nepali => const Language('ne', 'Nepali', 'नेपाली');
   static Language get northernSami => const Language('se', 'Northern Sami', 'Davvisámegiella');
   static Language get norwegian => const Language('no', 'Norwegian', 'Norsk');
-  static Language get norwegianNynorsk =>
-      const Language('nn', 'Norwegian Nynorsk', 'Norsk nynorsk');
+  static Language get norwegianNynorsk => const Language('nn', 'Norwegian Nynorsk', 'Norsk nynorsk');
   static Language get occitan => const Language('oc', 'Occitan', 'Occitan');
   static Language get ojibwa => const Language('oj', 'Ojibwa', 'ᐊᓂᔑᓈᐯᒧᐎᓐ');
   static Language get oriya => const Language('or', 'Oriya', 'ଓଡ଼ିଆ');
@@ -179,8 +175,7 @@ class Languages {
   static Language get thai => const Language('th', 'Thai', 'ไทย');
   static Language get tibetan => const Language('bo', 'Tibetan', 'བོད་ཡིག');
   static Language get tigrinya => const Language('ti', 'Tigrinya', 'ትግርኛ');
-  static Language get tongaTongaIslands =>
-      const Language('to', 'Tonga (Tonga Islands)', 'Faka Tonga');
+  static Language get tongaTongaIslands => const Language('to', 'Tonga (Tonga Islands)', 'Faka Tonga');
   static Language get tsonga => const Language('ts', 'Tsonga', 'Xitsonga');
   static Language get tswana => const Language('tn', 'Tswana', 'Setswana');
   static Language get turkish => const Language('tr', 'Turkish', 'Türkçe');

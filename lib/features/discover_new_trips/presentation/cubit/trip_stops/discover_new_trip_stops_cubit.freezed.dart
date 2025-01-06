@@ -19,8 +19,8 @@ mixin _$DiscoverNewTripStopsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<TripStop> tripStops, bool isMapReady,
-            MapType mapType, LatLngBounds? markerLatLngBounds)
+    required TResult Function(
+            List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
         loaded,
     required TResult Function(String message) error,
   }) =>
@@ -28,8 +28,7 @@ mixin _$DiscoverNewTripStopsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<TripStop> tripStops, bool isMapReady,
-            MapType mapType, LatLngBounds? markerLatLngBounds)?
+    TResult? Function(List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
         loaded,
     TResult? Function(String message)? error,
   }) =>
@@ -37,8 +36,7 @@ mixin _$DiscoverNewTripStopsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<TripStop> tripStops, bool isMapReady, MapType mapType,
-            LatLngBounds? markerLatLngBounds)?
+    TResult Function(List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -70,14 +68,13 @@ mixin _$DiscoverNewTripStopsState {
 
 /// @nodoc
 abstract class $DiscoverNewTripStopsStateCopyWith<$Res> {
-  factory $DiscoverNewTripStopsStateCopyWith(DiscoverNewTripStopsState value,
-          $Res Function(DiscoverNewTripStopsState) then) =
+  factory $DiscoverNewTripStopsStateCopyWith(
+          DiscoverNewTripStopsState value, $Res Function(DiscoverNewTripStopsState) then) =
       _$DiscoverNewTripStopsStateCopyWithImpl<$Res, DiscoverNewTripStopsState>;
 }
 
 /// @nodoc
-class _$DiscoverNewTripStopsStateCopyWithImpl<$Res,
-        $Val extends DiscoverNewTripStopsState>
+class _$DiscoverNewTripStopsStateCopyWithImpl<$Res, $Val extends DiscoverNewTripStopsState>
     implements $DiscoverNewTripStopsStateCopyWith<$Res> {
   _$DiscoverNewTripStopsStateCopyWithImpl(this._value, this._then);
 
@@ -92,18 +89,14 @@ class _$DiscoverNewTripStopsStateCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+  factory _$$InitialImplCopyWith(_$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$DiscoverNewTripStopsStateCopyWithImpl<$Res, _$InitialImpl>
+class __$$InitialImplCopyWithImpl<$Res> extends _$DiscoverNewTripStopsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
+  __$$InitialImplCopyWithImpl(_$InitialImpl _value, $Res Function(_$InitialImpl) _then) : super(_value, _then);
 
   /// Create a copy of DiscoverNewTripStopsState
   /// with the given fields replaced by the non-null parameter values.
@@ -121,8 +114,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -132,8 +124,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<TripStop> tripStops, bool isMapReady,
-            MapType mapType, LatLngBounds? markerLatLngBounds)
+    required TResult Function(
+            List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -144,8 +136,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<TripStop> tripStops, bool isMapReady,
-            MapType mapType, LatLngBounds? markerLatLngBounds)?
+    TResult? Function(List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -156,8 +147,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<TripStop> tripStops, bool isMapReady, MapType mapType,
-            LatLngBounds? markerLatLngBounds)?
+    TResult Function(List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -209,24 +199,16 @@ abstract class _Initial implements DiscoverNewTripStopsState {
 
 /// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+  factory _$$LoadedImplCopyWith(_$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {List<TripStop> tripStops,
-      bool isMapReady,
-      MapType mapType,
-      LatLngBounds? markerLatLngBounds});
+  $Res call({List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds});
 }
 
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$DiscoverNewTripStopsStateCopyWithImpl<$Res, _$LoadedImpl>
+class __$$LoadedImplCopyWithImpl<$Res> extends _$DiscoverNewTripStopsStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
+  __$$LoadedImplCopyWithImpl(_$LoadedImpl _value, $Res Function(_$LoadedImpl) _then) : super(_value, _then);
 
   /// Create a copy of DiscoverNewTripStopsState
   /// with the given fields replaced by the non-null parameter values.
@@ -296,10 +278,8 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._tripStops, _tripStops) &&
-            (identical(other.isMapReady, isMapReady) ||
-                other.isMapReady == isMapReady) &&
+            const DeepCollectionEquality().equals(other._tripStops, _tripStops) &&
+            (identical(other.isMapReady, isMapReady) || other.isMapReady == isMapReady) &&
             (identical(other.mapType, mapType) || other.mapType == mapType) &&
             (identical(other.markerLatLngBounds, markerLatLngBounds) ||
                 other.markerLatLngBounds == markerLatLngBounds));
@@ -307,26 +287,21 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_tripStops),
-      isMapReady,
-      mapType,
-      markerLatLngBounds);
+      runtimeType, const DeepCollectionEquality().hash(_tripStops), isMapReady, mapType, markerLatLngBounds);
 
   /// Create a copy of DiscoverNewTripStopsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith => __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<TripStop> tripStops, bool isMapReady,
-            MapType mapType, LatLngBounds? markerLatLngBounds)
+    required TResult Function(
+            List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -337,8 +312,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<TripStop> tripStops, bool isMapReady,
-            MapType mapType, LatLngBounds? markerLatLngBounds)?
+    TResult? Function(List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -349,8 +323,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<TripStop> tripStops, bool isMapReady, MapType mapType,
-            LatLngBounds? markerLatLngBounds)?
+    TResult Function(List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -411,26 +384,20 @@ abstract class _Loaded implements DiscoverNewTripStopsState {
   /// Create a copy of DiscoverNewTripStopsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+  factory _$$ErrorImplCopyWith(_$ErrorImpl value, $Res Function(_$ErrorImpl) then) = __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$DiscoverNewTripStopsStateCopyWithImpl<$Res, _$ErrorImpl>
+class __$$ErrorImplCopyWithImpl<$Res> extends _$DiscoverNewTripStopsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
-      : super(_value, _then);
+  __$$ErrorImplCopyWithImpl(_$ErrorImpl _value, $Res Function(_$ErrorImpl) _then) : super(_value, _then);
 
   /// Create a copy of DiscoverNewTripStopsState
   /// with the given fields replaced by the non-null parameter values.
@@ -477,15 +444,14 @@ class _$ErrorImpl implements _Error {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith => __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<TripStop> tripStops, bool isMapReady,
-            MapType mapType, LatLngBounds? markerLatLngBounds)
+    required TResult Function(
+            List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -496,8 +462,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<TripStop> tripStops, bool isMapReady,
-            MapType mapType, LatLngBounds? markerLatLngBounds)?
+    TResult? Function(List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -508,8 +473,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<TripStop> tripStops, bool isMapReady, MapType mapType,
-            LatLngBounds? markerLatLngBounds)?
+    TResult Function(List<TripStop> tripStops, bool isMapReady, MapType mapType, LatLngBounds? markerLatLngBounds)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -563,6 +527,5 @@ abstract class _Error implements DiscoverNewTripStopsState {
   /// Create a copy of DiscoverNewTripStopsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -22,21 +22,18 @@ mixin _$MapState {
   /// Create a copy of MapState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MapStateCopyWith<MapState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MapStateCopyWith<MapState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MapStateCopyWith<$Res> {
-  factory $MapStateCopyWith(MapState value, $Res Function(MapState) then) =
-      _$MapStateCopyWithImpl<$Res, MapState>;
+  factory $MapStateCopyWith(MapState value, $Res Function(MapState) then) = _$MapStateCopyWithImpl<$Res, MapState>;
   @useResult
   $Res call({MapType mapType, bool isMapReady});
 }
 
 /// @nodoc
-class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
-    implements $MapStateCopyWith<$Res> {
+class _$MapStateCopyWithImpl<$Res, $Val extends MapState> implements $MapStateCopyWith<$Res> {
   _$MapStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -67,8 +64,7 @@ class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> implements $MapStateCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+  factory _$$InitialImplCopyWith(_$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -76,12 +72,9 @@ abstract class _$$InitialImplCopyWith<$Res> implements $MapStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res, _$InitialImpl>
+class __$$InitialImplCopyWithImpl<$Res> extends _$MapStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
+  __$$InitialImplCopyWithImpl(_$InitialImpl _value, $Res Function(_$InitialImpl) _then) : super(_value, _then);
 
   /// Create a copy of MapState
   /// with the given fields replaced by the non-null parameter values.
@@ -127,8 +120,7 @@ class _$InitialImpl implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
             (identical(other.mapType, mapType) || other.mapType == mapType) &&
-            (identical(other.isMapReady, isMapReady) ||
-                other.isMapReady == isMapReady));
+            (identical(other.isMapReady, isMapReady) || other.isMapReady == isMapReady));
   }
 
   @override
@@ -139,13 +131,11 @@ class _$InitialImpl implements _Initial {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith => __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 }
 
 abstract class _Initial implements MapState {
-  const factory _Initial({final MapType mapType, final bool isMapReady}) =
-      _$InitialImpl;
+  const factory _Initial({final MapType mapType, final bool isMapReady}) = _$InitialImpl;
 
   @override
   MapType get mapType;
@@ -156,6 +146,5 @@ abstract class _Initial implements MapState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith => throw _privateConstructorUsedError;
 }

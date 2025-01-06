@@ -8,8 +8,7 @@ import '../../errors/day_trips_failure.dart';
 import '../repositories/day_trips_repository.dart';
 
 @lazySingleton
-class UpdateTripStopsDirectionsUpToDate
-    implements UseCase<void, UpdateTripStopsDirectionsUpToDateParams> {
+class UpdateTripStopsDirectionsUpToDate implements UseCase<void, UpdateTripStopsDirectionsUpToDateParams> {
   final DayTripsRepository repository;
 
   UpdateTripStopsDirectionsUpToDate(this.repository);

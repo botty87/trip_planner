@@ -4,15 +4,14 @@ class _TripPrivacySelector extends HookWidget {
   final ValueChanged<bool> onIsPublicChanged;
   final bool initialIsPublic;
 
-  const _TripPrivacySelector(
-      {super.key, required this.onIsPublicChanged, required this.initialIsPublic});
+  const _TripPrivacySelector({super.key, required this.onIsPublicChanged, required this.initialIsPublic});
 
   @override
   Widget build(BuildContext context) {
     final isPublic = useState(initialIsPublic);
 
     final EdgeInsets showcasePadding;
-    if(kIsWeb){
+    if (kIsWeb) {
       showcasePadding = const EdgeInsets.only(top: 12);
     } else if (Platform.isAndroid) {
       showcasePadding = const EdgeInsets.only(top: 12);

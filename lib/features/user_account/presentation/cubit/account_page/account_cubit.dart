@@ -144,8 +144,7 @@ class AccountCubit extends Cubit<AccountState> {
 
       result.fold(
         (failure) {
-          emit(reauthState.copyWith(
-              errorMessage: failure.getUserFailureErrorMessage(), isSaving: false));
+          emit(reauthState.copyWith(errorMessage: failure.getUserFailureErrorMessage(), isSaving: false));
         },
         (_) {
           emit(AccountState.normal(user: state.user));
@@ -167,8 +166,7 @@ class AccountCubit extends Cubit<AccountState> {
 
     result.fold(
       (failure) {
-        emit(reauthState.copyWith(
-            errorMessage: failure.getUserFailureErrorMessage(), isSaving: false));
+        emit(reauthState.copyWith(errorMessage: failure.getUserFailureErrorMessage(), isSaving: false));
       },
       (_) {
         updateUserDetail();
@@ -190,8 +188,7 @@ class AccountCubit extends Cubit<AccountState> {
 
     result.fold(
       (failure) {
-        emit(AccountState.normal(
-            user: state.user, errorMessage: failure.getUserFailureErrorMessage()));
+        emit(AccountState.normal(user: state.user, errorMessage: failure.getUserFailureErrorMessage()));
         emit(state.copyWith(errorMessage: null));
       },
       (_) async {
@@ -199,8 +196,7 @@ class AccountCubit extends Cubit<AccountState> {
 
         result.fold(
           (failure) {
-            emit(AccountState.normal(
-                user: state.user, errorMessage: failure.getUserFailureErrorMessage()));
+            emit(AccountState.normal(user: state.user, errorMessage: failure.getUserFailureErrorMessage()));
             emit(state.copyWith(errorMessage: null));
           },
           (_) {

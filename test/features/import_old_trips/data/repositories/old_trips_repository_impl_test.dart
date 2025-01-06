@@ -44,8 +44,7 @@ void main() {
       verifyNoMoreInteractions(mockDataSource);
     });
 
-    test('should return an ImportOldTripsFailure when data source throws a FirebaseException',
-        () async {
+    test('should return an ImportOldTripsFailure when data source throws a FirebaseException', () async {
       // arrange
       const errorMessage = 'Firebase error';
       when(mockDataSource.readOldTrips(userId: userId))
@@ -61,8 +60,7 @@ void main() {
       verifyNoMoreInteractions(mockCrashlytics);
     });
 
-    test(
-        'should return an ImportOldTripsFailure with the error message when data source throws an exception',
+    test('should return an ImportOldTripsFailure with the error message when data source throws an exception',
         () async {
       // arrange
       const errorMessage = 'Unknown error';

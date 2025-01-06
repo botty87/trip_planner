@@ -10,7 +10,6 @@ class _DiscoverNewTripsErrorWidget extends StatelessWidget {
           orElse: () => throw const UnexpectedStateException(),
         );
 
-    return GenericErrorWidget(
-        message: errorMessage, onRetry: () => context.read<DiscoverNewTripsCubit>().fetchTrips());
+    return GenericErrorWidget(message: errorMessage, onRetry: () => context.read<DiscoverNewTripsCubit>().fetchTrips());
   }
 }

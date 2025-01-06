@@ -63,7 +63,6 @@ class _LanguageSelector extends StatelessWidget {
 }
 
 extension _LanguageExtension on String {
-  Language get toLanguage => Languages.defaultLanguages.firstWhere(
-      (language) => language.isoCode == this,
+  Language get toLanguage => Languages.defaultLanguages.firstWhere((language) => language.isoCode == this,
       orElse: () => Languages.defaultLanguages.firstWhere((element) => element.isoCode == 'en'));
 }

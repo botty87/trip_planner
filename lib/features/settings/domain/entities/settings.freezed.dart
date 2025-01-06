@@ -26,8 +26,7 @@ mixin _$Settings {
   bool get useDifferentDirectionsColors => throw _privateConstructorUsedError;
   @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
   TravelMode get travelMode => throw _privateConstructorUsedError;
-  BackgroundsContainer get backgroundsContainer =>
-      throw _privateConstructorUsedError;
+  BackgroundsContainer get backgroundsContainer => throw _privateConstructorUsedError;
   AdaptiveThemeMode get themeMode => throw _privateConstructorUsedError;
   bool get showBackgroundsDialog => throw _privateConstructorUsedError;
 
@@ -37,22 +36,18 @@ mixin _$Settings {
   /// Create a copy of Settings
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SettingsCopyWith<Settings> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SettingsCopyWith<Settings> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SettingsCopyWith<$Res> {
-  factory $SettingsCopyWith(Settings value, $Res Function(Settings) then) =
-      _$SettingsCopyWithImpl<$Res, Settings>;
+  factory $SettingsCopyWith(Settings value, $Res Function(Settings) then) = _$SettingsCopyWithImpl<$Res, Settings>;
   @useResult
   $Res call(
-      {@JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      TimeOfDay defaultDayTripStartTime,
+      {@JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap) TimeOfDay defaultDayTripStartTime,
       bool showDirections,
       bool useDifferentDirectionsColors,
-      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      TravelMode travelMode,
+      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) TravelMode travelMode,
       BackgroundsContainer backgroundsContainer,
       AdaptiveThemeMode themeMode,
       bool showBackgroundsDialog});
@@ -61,8 +56,7 @@ abstract class $SettingsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
-    implements $SettingsCopyWith<$Res> {
+class _$SettingsCopyWithImpl<$Res, $Val extends Settings> implements $SettingsCopyWith<$Res> {
   _$SettingsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -120,28 +114,23 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
   @override
   @pragma('vm:prefer-inline')
   $BackgroundsContainerCopyWith<$Res> get backgroundsContainer {
-    return $BackgroundsContainerCopyWith<$Res>(_value.backgroundsContainer,
-        (value) {
+    return $BackgroundsContainerCopyWith<$Res>(_value.backgroundsContainer, (value) {
       return _then(_value.copyWith(backgroundsContainer: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$SettingsImplCopyWith<$Res>
-    implements $SettingsCopyWith<$Res> {
-  factory _$$SettingsImplCopyWith(
-          _$SettingsImpl value, $Res Function(_$SettingsImpl) then) =
+abstract class _$$SettingsImplCopyWith<$Res> implements $SettingsCopyWith<$Res> {
+  factory _$$SettingsImplCopyWith(_$SettingsImpl value, $Res Function(_$SettingsImpl) then) =
       __$$SettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      TimeOfDay defaultDayTripStartTime,
+      {@JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap) TimeOfDay defaultDayTripStartTime,
       bool showDirections,
       bool useDifferentDirectionsColors,
-      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      TravelMode travelMode,
+      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) TravelMode travelMode,
       BackgroundsContainer backgroundsContainer,
       AdaptiveThemeMode themeMode,
       bool showBackgroundsDialog});
@@ -151,12 +140,9 @@ abstract class _$$SettingsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SettingsImplCopyWithImpl<$Res>
-    extends _$SettingsCopyWithImpl<$Res, _$SettingsImpl>
+class __$$SettingsImplCopyWithImpl<$Res> extends _$SettingsCopyWithImpl<$Res, _$SettingsImpl>
     implements _$$SettingsImplCopyWith<$Res> {
-  __$$SettingsImplCopyWithImpl(
-      _$SettingsImpl _value, $Res Function(_$SettingsImpl) _then)
-      : super(_value, _then);
+  __$$SettingsImplCopyWithImpl(_$SettingsImpl _value, $Res Function(_$SettingsImpl) _then) : super(_value, _then);
 
   /// Create a copy of Settings
   /// with the given fields replaced by the non-null parameter values.
@@ -212,14 +198,12 @@ class _$SettingsImpl implements _Settings {
       this.defaultDayTripStartTime = const TimeOfDay(hour: 8, minute: 0),
       this.showDirections = true,
       this.useDifferentDirectionsColors = true,
-      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      this.travelMode = TravelMode.driving,
+      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) this.travelMode = TravelMode.driving,
       this.backgroundsContainer = const BackgroundsContainer(),
       this.themeMode = AdaptiveThemeMode.system,
       this.showBackgroundsDialog = true});
 
-  factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SettingsImplFromJson(json);
+  factory _$SettingsImpl.fromJson(Map<String, dynamic> json) => _$$SettingsImplFromJson(json);
 
   @override
   @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
@@ -253,36 +237,23 @@ class _$SettingsImpl implements _Settings {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SettingsImpl &&
-            (identical(
-                    other.defaultDayTripStartTime, defaultDayTripStartTime) ||
+            (identical(other.defaultDayTripStartTime, defaultDayTripStartTime) ||
                 other.defaultDayTripStartTime == defaultDayTripStartTime) &&
-            (identical(other.showDirections, showDirections) ||
-                other.showDirections == showDirections) &&
-            (identical(other.useDifferentDirectionsColors,
-                    useDifferentDirectionsColors) ||
-                other.useDifferentDirectionsColors ==
-                    useDifferentDirectionsColors) &&
-            (identical(other.travelMode, travelMode) ||
-                other.travelMode == travelMode) &&
+            (identical(other.showDirections, showDirections) || other.showDirections == showDirections) &&
+            (identical(other.useDifferentDirectionsColors, useDifferentDirectionsColors) ||
+                other.useDifferentDirectionsColors == useDifferentDirectionsColors) &&
+            (identical(other.travelMode, travelMode) || other.travelMode == travelMode) &&
             (identical(other.backgroundsContainer, backgroundsContainer) ||
                 other.backgroundsContainer == backgroundsContainer) &&
-            (identical(other.themeMode, themeMode) ||
-                other.themeMode == themeMode) &&
+            (identical(other.themeMode, themeMode) || other.themeMode == themeMode) &&
             (identical(other.showBackgroundsDialog, showBackgroundsDialog) ||
                 other.showBackgroundsDialog == showBackgroundsDialog));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      defaultDayTripStartTime,
-      showDirections,
-      useDifferentDirectionsColors,
-      travelMode,
-      backgroundsContainer,
-      themeMode,
-      showBackgroundsDialog);
+  int get hashCode => Object.hash(runtimeType, defaultDayTripStartTime, showDirections, useDifferentDirectionsColors,
+      travelMode, backgroundsContainer, themeMode, showBackgroundsDialog);
 
   /// Create a copy of Settings
   /// with the given fields replaced by the non-null parameter values.
@@ -302,18 +273,15 @@ class _$SettingsImpl implements _Settings {
 
 abstract class _Settings implements Settings {
   const factory _Settings(
-      {@JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
-      final TimeOfDay defaultDayTripStartTime,
+      {@JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap) final TimeOfDay defaultDayTripStartTime,
       final bool showDirections,
       final bool useDifferentDirectionsColors,
-      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-      final TravelMode travelMode,
+      @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) final TravelMode travelMode,
       final BackgroundsContainer backgroundsContainer,
       final AdaptiveThemeMode themeMode,
       final bool showBackgroundsDialog}) = _$SettingsImpl;
 
-  factory _Settings.fromJson(Map<String, dynamic> json) =
-      _$SettingsImpl.fromJson;
+  factory _Settings.fromJson(Map<String, dynamic> json) = _$SettingsImpl.fromJson;
 
   @override
   @JsonKey(fromJson: timeOfDayFromMap, toJson: timeOfDayToMap)
@@ -336,6 +304,5 @@ abstract class _Settings implements Settings {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith => throw _privateConstructorUsedError;
 }

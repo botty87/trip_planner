@@ -1,7 +1,7 @@
 part of '../../pages/trip_page.dart';
 
-_showEditingModalBottom(BuildContext context, StreamController<bool> isSaving,
-    ObjectRef isModalBottomOpen, StreamController<String?> errorMessage) {
+_showEditingModalBottom(BuildContext context, StreamController<bool> isSaving, ObjectRef isModalBottomOpen,
+    StreamController<String?> errorMessage) {
   final cubit = context.read<TripCubit>();
   isModalBottomOpen.value = true;
   final deviceLocale = getIt<Locale>(instanceName: deviceLocaleKey);

@@ -23,26 +23,22 @@ mixin _$TripStopsMapState {
   bool get hasTripStopsDirectionsErrors => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isLoading,
-            DayTrip dayTrip,
-            String? errorMessage,
-            bool isSelectedTab,
+    required TResult Function(bool isLoading, DayTrip dayTrip, String? errorMessage, bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)
         normal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, DayTrip dayTrip, String? errorMessage,
-            bool isSelectedTab, bool hasTripStopsDirectionsErrors)?
+    TResult? Function(bool isLoading, DayTrip dayTrip, String? errorMessage, bool isSelectedTab,
+            bool hasTripStopsDirectionsErrors)?
         normal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, DayTrip dayTrip, String? errorMessage,
-            bool isSelectedTab, bool hasTripStopsDirectionsErrors)?
+    TResult Function(bool isLoading, DayTrip dayTrip, String? errorMessage, bool isSelectedTab,
+            bool hasTripStopsDirectionsErrors)?
         normal,
     required TResult orElse(),
   }) =>
@@ -67,22 +63,16 @@ mixin _$TripStopsMapState {
   /// Create a copy of TripStopsMapState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TripStopsMapStateCopyWith<TripStopsMapState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TripStopsMapStateCopyWith<TripStopsMapState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TripStopsMapStateCopyWith<$Res> {
-  factory $TripStopsMapStateCopyWith(
-          TripStopsMapState value, $Res Function(TripStopsMapState) then) =
+  factory $TripStopsMapStateCopyWith(TripStopsMapState value, $Res Function(TripStopsMapState) then) =
       _$TripStopsMapStateCopyWithImpl<$Res, TripStopsMapState>;
   @useResult
   $Res call(
-      {bool isLoading,
-      DayTrip dayTrip,
-      String? errorMessage,
-      bool isSelectedTab,
-      bool hasTripStopsDirectionsErrors});
+      {bool isLoading, DayTrip dayTrip, String? errorMessage, bool isSelectedTab, bool hasTripStopsDirectionsErrors});
 
   $DayTripCopyWith<$Res> get dayTrip;
 }
@@ -144,20 +134,14 @@ class _$TripStopsMapStateCopyWithImpl<$Res, $Val extends TripStopsMapState>
 }
 
 /// @nodoc
-abstract class _$$TripStopsMapStateNormalImplCopyWith<$Res>
-    implements $TripStopsMapStateCopyWith<$Res> {
+abstract class _$$TripStopsMapStateNormalImplCopyWith<$Res> implements $TripStopsMapStateCopyWith<$Res> {
   factory _$$TripStopsMapStateNormalImplCopyWith(
-          _$TripStopsMapStateNormalImpl value,
-          $Res Function(_$TripStopsMapStateNormalImpl) then) =
+          _$TripStopsMapStateNormalImpl value, $Res Function(_$TripStopsMapStateNormalImpl) then) =
       __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {bool isLoading,
-      DayTrip dayTrip,
-      String? errorMessage,
-      bool isSelectedTab,
-      bool hasTripStopsDirectionsErrors});
+      {bool isLoading, DayTrip dayTrip, String? errorMessage, bool isSelectedTab, bool hasTripStopsDirectionsErrors});
 
   @override
   $DayTripCopyWith<$Res> get dayTrip;
@@ -168,8 +152,7 @@ class __$$TripStopsMapStateNormalImplCopyWithImpl<$Res>
     extends _$TripStopsMapStateCopyWithImpl<$Res, _$TripStopsMapStateNormalImpl>
     implements _$$TripStopsMapStateNormalImplCopyWith<$Res> {
   __$$TripStopsMapStateNormalImplCopyWithImpl(
-      _$TripStopsMapStateNormalImpl _value,
-      $Res Function(_$TripStopsMapStateNormalImpl) _then)
+      _$TripStopsMapStateNormalImpl _value, $Res Function(_$TripStopsMapStateNormalImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopsMapState
@@ -243,69 +226,56 @@ class _$TripStopsMapStateNormalImpl extends _TripStopsMapStateNormal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopsMapStateNormalImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
+            (identical(other.isLoading, isLoading) || other.isLoading == isLoading) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
-            (identical(other.isSelectedTab, isSelectedTab) ||
-                other.isSelectedTab == isSelectedTab) &&
-            (identical(other.hasTripStopsDirectionsErrors,
-                    hasTripStopsDirectionsErrors) ||
-                other.hasTripStopsDirectionsErrors ==
-                    hasTripStopsDirectionsErrors));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) &&
+            (identical(other.isSelectedTab, isSelectedTab) || other.isSelectedTab == isSelectedTab) &&
+            (identical(other.hasTripStopsDirectionsErrors, hasTripStopsDirectionsErrors) ||
+                other.hasTripStopsDirectionsErrors == hasTripStopsDirectionsErrors));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, dayTrip, errorMessage,
-      isSelectedTab, hasTripStopsDirectionsErrors);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, dayTrip, errorMessage, isSelectedTab, hasTripStopsDirectionsErrors);
 
   /// Create a copy of TripStopsMapState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TripStopsMapStateNormalImplCopyWith<_$TripStopsMapStateNormalImpl>
-      get copyWith => __$$TripStopsMapStateNormalImplCopyWithImpl<
-          _$TripStopsMapStateNormalImpl>(this, _$identity);
+  _$$TripStopsMapStateNormalImplCopyWith<_$TripStopsMapStateNormalImpl> get copyWith =>
+      __$$TripStopsMapStateNormalImplCopyWithImpl<_$TripStopsMapStateNormalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isLoading,
-            DayTrip dayTrip,
-            String? errorMessage,
-            bool isSelectedTab,
+    required TResult Function(bool isLoading, DayTrip dayTrip, String? errorMessage, bool isSelectedTab,
             bool hasTripStopsDirectionsErrors)
         normal,
   }) {
-    return normal(isLoading, dayTrip, errorMessage, isSelectedTab,
-        hasTripStopsDirectionsErrors);
+    return normal(isLoading, dayTrip, errorMessage, isSelectedTab, hasTripStopsDirectionsErrors);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, DayTrip dayTrip, String? errorMessage,
-            bool isSelectedTab, bool hasTripStopsDirectionsErrors)?
+    TResult? Function(bool isLoading, DayTrip dayTrip, String? errorMessage, bool isSelectedTab,
+            bool hasTripStopsDirectionsErrors)?
         normal,
   }) {
-    return normal?.call(isLoading, dayTrip, errorMessage, isSelectedTab,
-        hasTripStopsDirectionsErrors);
+    return normal?.call(isLoading, dayTrip, errorMessage, isSelectedTab, hasTripStopsDirectionsErrors);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, DayTrip dayTrip, String? errorMessage,
-            bool isSelectedTab, bool hasTripStopsDirectionsErrors)?
+    TResult Function(bool isLoading, DayTrip dayTrip, String? errorMessage, bool isSelectedTab,
+            bool hasTripStopsDirectionsErrors)?
         normal,
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(isLoading, dayTrip, errorMessage, isSelectedTab,
-          hasTripStopsDirectionsErrors);
+      return normal(isLoading, dayTrip, errorMessage, isSelectedTab, hasTripStopsDirectionsErrors);
     }
     return orElse();
   }
@@ -363,6 +333,6 @@ abstract class _TripStopsMapStateNormal extends TripStopsMapState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopsMapStateNormalImplCopyWith<_$TripStopsMapStateNormalImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TripStopsMapStateNormalImplCopyWith<_$TripStopsMapStateNormalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

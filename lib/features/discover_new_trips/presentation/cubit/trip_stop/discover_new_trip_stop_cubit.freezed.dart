@@ -21,14 +21,13 @@ mixin _$DiscoverNewTripStopState {
   /// Create a copy of DiscoverNewTripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DiscoverNewTripStopStateCopyWith<DiscoverNewTripStopState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DiscoverNewTripStopStateCopyWith<DiscoverNewTripStopState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DiscoverNewTripStopStateCopyWith<$Res> {
-  factory $DiscoverNewTripStopStateCopyWith(DiscoverNewTripStopState value,
-          $Res Function(DiscoverNewTripStopState) then) =
+  factory $DiscoverNewTripStopStateCopyWith(
+          DiscoverNewTripStopState value, $Res Function(DiscoverNewTripStopState) then) =
       _$DiscoverNewTripStopStateCopyWithImpl<$Res, DiscoverNewTripStopState>;
   @useResult
   $Res call({TripStop tripStop});
@@ -37,8 +36,7 @@ abstract class $DiscoverNewTripStopStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DiscoverNewTripStopStateCopyWithImpl<$Res,
-        $Val extends DiscoverNewTripStopState>
+class _$DiscoverNewTripStopStateCopyWithImpl<$Res, $Val extends DiscoverNewTripStopState>
     implements $DiscoverNewTripStopStateCopyWith<$Res> {
   _$DiscoverNewTripStopStateCopyWithImpl(this._value, this._then);
 
@@ -74,10 +72,8 @@ class _$DiscoverNewTripStopStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$NormalImplCopyWith<$Res>
-    implements $DiscoverNewTripStopStateCopyWith<$Res> {
-  factory _$$NormalImplCopyWith(
-          _$NormalImpl value, $Res Function(_$NormalImpl) then) =
+abstract class _$$NormalImplCopyWith<$Res> implements $DiscoverNewTripStopStateCopyWith<$Res> {
+  factory _$$NormalImplCopyWith(_$NormalImpl value, $Res Function(_$NormalImpl) then) =
       __$$NormalImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -88,12 +84,9 @@ abstract class _$$NormalImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NormalImplCopyWithImpl<$Res>
-    extends _$DiscoverNewTripStopStateCopyWithImpl<$Res, _$NormalImpl>
+class __$$NormalImplCopyWithImpl<$Res> extends _$DiscoverNewTripStopStateCopyWithImpl<$Res, _$NormalImpl>
     implements _$$NormalImplCopyWith<$Res> {
-  __$$NormalImplCopyWithImpl(
-      _$NormalImpl _value, $Res Function(_$NormalImpl) _then)
-      : super(_value, _then);
+  __$$NormalImplCopyWithImpl(_$NormalImpl _value, $Res Function(_$NormalImpl) _then) : super(_value, _then);
 
   /// Create a copy of DiscoverNewTripStopState
   /// with the given fields replaced by the non-null parameter values.
@@ -129,8 +122,7 @@ class _$NormalImpl implements _Normal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NormalImpl &&
-            (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop));
+            (identical(other.tripStop, tripStop) || other.tripStop == tripStop));
   }
 
   @override
@@ -141,8 +133,7 @@ class _$NormalImpl implements _Normal {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
-      __$$NormalImplCopyWithImpl<_$NormalImpl>(this, _$identity);
+  _$$NormalImplCopyWith<_$NormalImpl> get copyWith => __$$NormalImplCopyWithImpl<_$NormalImpl>(this, _$identity);
 }
 
 abstract class _Normal implements DiscoverNewTripStopState {
@@ -155,6 +146,5 @@ abstract class _Normal implements DiscoverNewTripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NormalImplCopyWith<_$NormalImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NormalImplCopyWith<_$NormalImpl> get copyWith => throw _privateConstructorUsedError;
 }

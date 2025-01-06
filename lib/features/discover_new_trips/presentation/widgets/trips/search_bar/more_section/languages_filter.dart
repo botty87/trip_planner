@@ -122,23 +122,20 @@ class _ShowOnlySelectedLanguages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showOnlySelectedLanguages =
-        context.select((DiscoverNewTripsCubit cubit) => cubit.state.maybeMap(
-              normal: (state) => state.showOnlySelectedLanguages,
-              orElse: () => false,
-            ));
+    final showOnlySelectedLanguages = context.select((DiscoverNewTripsCubit cubit) => cubit.state.maybeMap(
+          normal: (state) => state.showOnlySelectedLanguages,
+          orElse: () => false,
+        ));
 
     return Row(
       children: [
         Flexible(
-          child: Text(LocaleKeys.showOnlySelectedLanguages.tr(),
-              style: Theme.of(context).textTheme.labelLarge),
+          child: Text(LocaleKeys.showOnlySelectedLanguages.tr(), style: Theme.of(context).textTheme.labelLarge),
         ),
         const SizedBox(width: horizontalSpaceXs),
         Switch(
           value: showOnlySelectedLanguages,
-          onChanged: (value) =>
-              context.read<DiscoverNewTripsCubit>().showOnlySelectedLanguages(value),
+          onChanged: (value) => context.read<DiscoverNewTripsCubit>().showOnlySelectedLanguages(value),
         ),
       ],
     );

@@ -18,8 +18,7 @@ final class AddDayTripCard extends StatelessWidget {
       assetName: Assets.svg.addDayTripSvg,
       title: LocaleKeys.addDayTrip.tr(),
       color: Colors.amberAccent[100]!,
-      onTap: () =>
-          context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id)),
+      onTap: () => context.router.push(NewDayTripRoute(tripId: context.read<TripCubit>().state.trip.id)),
     );
   }
 }

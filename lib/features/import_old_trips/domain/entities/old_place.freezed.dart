@@ -25,26 +25,18 @@ mixin _$OldPlace {
   /// Create a copy of OldPlace
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OldPlaceCopyWith<OldPlace> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OldPlaceCopyWith<OldPlace> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OldPlaceCopyWith<$Res> {
-  factory $OldPlaceCopyWith(OldPlace value, $Res Function(OldPlace) then) =
-      _$OldPlaceCopyWithImpl<$Res, OldPlace>;
+  factory $OldPlaceCopyWith(OldPlace value, $Res Function(OldPlace) then) = _$OldPlaceCopyWithImpl<$Res, OldPlace>;
   @useResult
-  $Res call(
-      {String name,
-      String? note,
-      int position,
-      double latitude,
-      double longitude});
+  $Res call({String name, String? note, int position, double latitude, double longitude});
 }
 
 /// @nodoc
-class _$OldPlaceCopyWithImpl<$Res, $Val extends OldPlace>
-    implements $OldPlaceCopyWith<$Res> {
+class _$OldPlaceCopyWithImpl<$Res, $Val extends OldPlace> implements $OldPlaceCopyWith<$Res> {
   _$OldPlaceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -89,28 +81,18 @@ class _$OldPlaceCopyWithImpl<$Res, $Val extends OldPlace>
 }
 
 /// @nodoc
-abstract class _$$OldPlaceImplCopyWith<$Res>
-    implements $OldPlaceCopyWith<$Res> {
-  factory _$$OldPlaceImplCopyWith(
-          _$OldPlaceImpl value, $Res Function(_$OldPlaceImpl) then) =
+abstract class _$$OldPlaceImplCopyWith<$Res> implements $OldPlaceCopyWith<$Res> {
+  factory _$$OldPlaceImplCopyWith(_$OldPlaceImpl value, $Res Function(_$OldPlaceImpl) then) =
       __$$OldPlaceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String? note,
-      int position,
-      double latitude,
-      double longitude});
+  $Res call({String name, String? note, int position, double latitude, double longitude});
 }
 
 /// @nodoc
-class __$$OldPlaceImplCopyWithImpl<$Res>
-    extends _$OldPlaceCopyWithImpl<$Res, _$OldPlaceImpl>
+class __$$OldPlaceImplCopyWithImpl<$Res> extends _$OldPlaceCopyWithImpl<$Res, _$OldPlaceImpl>
     implements _$$OldPlaceImplCopyWith<$Res> {
-  __$$OldPlaceImplCopyWithImpl(
-      _$OldPlaceImpl _value, $Res Function(_$OldPlaceImpl) _then)
-      : super(_value, _then);
+  __$$OldPlaceImplCopyWithImpl(_$OldPlaceImpl _value, $Res Function(_$OldPlaceImpl) _then) : super(_value, _then);
 
   /// Create a copy of OldPlace
   /// with the given fields replaced by the non-null parameter values.
@@ -181,17 +163,13 @@ class _$OldPlaceImpl implements _OldPlace {
             other is _$OldPlaceImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.note, note) || other.note == note) &&
-            (identical(other.position, position) ||
-                other.position == position) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+            (identical(other.position, position) || other.position == position) &&
+            (identical(other.latitude, latitude) || other.latitude == latitude) &&
+            (identical(other.longitude, longitude) || other.longitude == longitude));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, note, position, latitude, longitude);
+  int get hashCode => Object.hash(runtimeType, name, note, position, latitude, longitude);
 
   /// Create a copy of OldPlace
   /// with the given fields replaced by the non-null parameter values.
@@ -225,6 +203,5 @@ abstract class _OldPlace implements OldPlace {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OldPlaceImplCopyWith<_$OldPlaceImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OldPlaceImplCopyWith<_$OldPlaceImpl> get copyWith => throw _privateConstructorUsedError;
 }

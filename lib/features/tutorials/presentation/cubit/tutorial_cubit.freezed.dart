@@ -26,14 +26,12 @@ mixin _$TutorialState {
   /// Create a copy of TutorialState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TutorialStateCopyWith<TutorialState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TutorialStateCopyWith<TutorialState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TutorialStateCopyWith<$Res> {
-  factory $TutorialStateCopyWith(
-          TutorialState value, $Res Function(TutorialState) then) =
+  factory $TutorialStateCopyWith(TutorialState value, $Res Function(TutorialState) then) =
       _$TutorialStateCopyWithImpl<$Res, TutorialState>;
   @useResult
   $Res call(
@@ -46,8 +44,7 @@ abstract class $TutorialStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState>
-    implements $TutorialStateCopyWith<$Res> {
+class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState> implements $TutorialStateCopyWith<$Res> {
   _$TutorialStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -97,10 +94,8 @@ class _$TutorialStateCopyWithImpl<$Res, $Val extends TutorialState>
 }
 
 /// @nodoc
-abstract class _$$TutorialStateImplCopyWith<$Res>
-    implements $TutorialStateCopyWith<$Res> {
-  factory _$$TutorialStateImplCopyWith(
-          _$TutorialStateImpl value, $Res Function(_$TutorialStateImpl) then) =
+abstract class _$$TutorialStateImplCopyWith<$Res> implements $TutorialStateCopyWith<$Res> {
+  factory _$$TutorialStateImplCopyWith(_$TutorialStateImpl value, $Res Function(_$TutorialStateImpl) then) =
       __$$TutorialStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -114,11 +109,9 @@ abstract class _$$TutorialStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TutorialStateImplCopyWithImpl<$Res>
-    extends _$TutorialStateCopyWithImpl<$Res, _$TutorialStateImpl>
+class __$$TutorialStateImplCopyWithImpl<$Res> extends _$TutorialStateCopyWithImpl<$Res, _$TutorialStateImpl>
     implements _$$TutorialStateImplCopyWith<$Res> {
-  __$$TutorialStateImplCopyWithImpl(
-      _$TutorialStateImpl _value, $Res Function(_$TutorialStateImpl) _then)
+  __$$TutorialStateImplCopyWithImpl(_$TutorialStateImpl _value, $Res Function(_$TutorialStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TutorialState
@@ -196,32 +189,19 @@ class _$TutorialStateImpl implements _TutorialState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TutorialStateImpl &&
-            (identical(other.showWelcome, showWelcome) ||
-                other.showWelcome == showWelcome) &&
-            (identical(other.showPublicTrip, showPublicTrip) ||
-                other.showPublicTrip == showPublicTrip) &&
-            (identical(
-                    other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
+            (identical(other.showWelcome, showWelcome) || other.showWelcome == showWelcome) &&
+            (identical(other.showPublicTrip, showPublicTrip) || other.showPublicTrip == showPublicTrip) &&
+            (identical(other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
                 other.showCreateFromPublicTrip == showCreateFromPublicTrip) &&
-            (identical(other.showTripStopSlide, showTripStopSlide) ||
-                other.showTripStopSlide == showTripStopSlide) &&
-            (identical(other.showShareTrip, showShareTrip) ||
-                other.showShareTrip == showShareTrip) &&
-            (identical(other.showTripStopTravelPlaceholder,
-                    showTripStopTravelPlaceholder) ||
-                other.showTripStopTravelPlaceholder ==
-                    showTripStopTravelPlaceholder));
+            (identical(other.showTripStopSlide, showTripStopSlide) || other.showTripStopSlide == showTripStopSlide) &&
+            (identical(other.showShareTrip, showShareTrip) || other.showShareTrip == showShareTrip) &&
+            (identical(other.showTripStopTravelPlaceholder, showTripStopTravelPlaceholder) ||
+                other.showTripStopTravelPlaceholder == showTripStopTravelPlaceholder));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      showWelcome,
-      showPublicTrip,
-      showCreateFromPublicTrip,
-      showTripStopSlide,
-      showShareTrip,
-      showTripStopTravelPlaceholder);
+  int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip, showCreateFromPublicTrip, showTripStopSlide,
+      showShareTrip, showTripStopTravelPlaceholder);
 
   /// Create a copy of TutorialState
   /// with the given fields replaced by the non-null parameter values.
@@ -258,6 +238,5 @@ abstract class _TutorialState implements TutorialState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TutorialStateImplCopyWith<_$TutorialStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TutorialStateImplCopyWith<_$TutorialStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

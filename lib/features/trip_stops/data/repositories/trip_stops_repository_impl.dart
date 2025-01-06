@@ -59,9 +59,7 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
 
   @override
   Future<Either<TripStopsFailure, void>> updateTripStopsIndexes(
-      {required String tripId,
-      required String dayTripId,
-      required List<TripStop> tripStops}) async {
+      {required String tripId, required String dayTripId, required List<TripStop> tripStops}) async {
     try {
       await _tripStopsDataSource.updateTripStopsIndexes(
         tripId: tripId,
@@ -80,10 +78,7 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
 
   @override
   Future<Either<TripStopsFailure, void>> updateTravelTime(
-      {required String tripId,
-      required String dayTripId,
-      required String tripStopId,
-      required int travelTime}) async {
+      {required String tripId, required String dayTripId, required String tripStopId, required int travelTime}) async {
     try {
       await _tripStopsDataSource.updateTravelTime(
         tripId: tripId,
@@ -103,10 +98,7 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
 
   @override
   Future<Either<TripStopsFailure, void>> updateTripStopDone(
-      {required String tripId,
-      required String dayTripId,
-      required String tripStopId,
-      required bool isDone}) async {
+      {required String tripId, required String dayTripId, required String tripStopId, required bool isDone}) async {
     try {
       await _tripStopsDataSource.updateTripStopDone(
         tripId: tripId,
@@ -126,10 +118,7 @@ class TripStopsRepositoryImpl implements TripStopsRepository {
 
   @override
   Future<Either<TripStopsFailure, void>> updateTripStopNote(
-      {required String tripId,
-      required String dayTripId,
-      required String tripStopId,
-      required String? note}) async {
+      {required String tripId, required String dayTripId, required String tripStopId, required String? note}) async {
     try {
       await _tripStopsDataSource.updateTripStopNote(
         tripId: tripId,

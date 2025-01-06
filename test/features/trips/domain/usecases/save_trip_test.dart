@@ -22,8 +22,7 @@ void main() {
   });
 
   test('should save a trip', () async {
-    when(mockTripsRepository.updateTrip(any, any, any, any, any, any))
-        .thenAnswer((_) async => right(null));
+    when(mockTripsRepository.updateTrip(any, any, any, any, any, any)).thenAnswer((_) async => right(null));
     // act
     final result = await useCase(UpdateTripParams(
         id: tTripId,

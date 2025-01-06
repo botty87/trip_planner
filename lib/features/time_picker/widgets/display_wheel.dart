@@ -48,17 +48,14 @@ class DisplayWheel extends StatelessWidget {
         child: ListWheelScrollView.useDelegate(
           controller: controller,
           itemExtent: 36,
-          physics:
-              disabled ? const NeverScrollableScrollPhysics() : const FixedExtentScrollPhysics(),
+          physics: disabled ? const NeverScrollableScrollPhysics() : const FixedExtentScrollPhysics(),
           overAndUnderCenterOpacity: disabled ? 0 : 0.25,
           perspective: 0.01,
           onSelectedItemChanged: onChange,
           childDelegate: ListWheelChildBuilderDelegate(
             childCount: items.length,
             builder: (context, index) {
-              final val = (getModifiedLabel?.call(items[index]!) ?? (items[index]!))
-                  .toString()
-                  .padLeft(2, '0');
+              final val = (getModifiedLabel?.call(items[index]!) ?? (items[index]!)).toString().padLeft(2, '0');
               return Center(
                 child: Text(
                   val,

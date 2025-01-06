@@ -17,6 +17,5 @@ class TripStopsDirections with _$TripStopsDirections {
     @JsonKey(includeIfNull: false) String? errorMessage,
   }) = _TripStopsDirections;
 
-  factory TripStopsDirections.fromJson(Map<String, dynamic> json) =>
-      _$TripStopsDirectionsFromJson(json);
+  factory TripStopsDirections.fromJson(Map<String, dynamic> json) => _$TripStopsDirectionsFromJson(json);
 }

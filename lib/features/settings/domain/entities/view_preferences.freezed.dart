@@ -33,28 +33,22 @@ mixin _$ViewPreferences {
   /// Create a copy of ViewPreferences
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ViewPreferencesCopyWith<ViewPreferences> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ViewPreferencesCopyWith<ViewPreferences> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ViewPreferencesCopyWith<$Res> {
-  factory $ViewPreferencesCopyWith(
-          ViewPreferences value, $Res Function(ViewPreferences) then) =
+  factory $ViewPreferencesCopyWith(ViewPreferences value, $Res Function(ViewPreferences) then) =
       _$ViewPreferencesCopyWithImpl<$Res, ViewPreferences>;
   @useResult
   $Res call(
-      {@JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      ViewMode tripsViewMode,
-      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      ViewMode tripViewMode,
-      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      ViewMode dayTripViewMode});
+      {@JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) ViewMode tripsViewMode,
+      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) ViewMode tripViewMode,
+      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) ViewMode dayTripViewMode});
 }
 
 /// @nodoc
-class _$ViewPreferencesCopyWithImpl<$Res, $Val extends ViewPreferences>
-    implements $ViewPreferencesCopyWith<$Res> {
+class _$ViewPreferencesCopyWithImpl<$Res, $Val extends ViewPreferences> implements $ViewPreferencesCopyWith<$Res> {
   _$ViewPreferencesCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -89,28 +83,21 @@ class _$ViewPreferencesCopyWithImpl<$Res, $Val extends ViewPreferences>
 }
 
 /// @nodoc
-abstract class _$$ViewPreferencesImplCopyWith<$Res>
-    implements $ViewPreferencesCopyWith<$Res> {
-  factory _$$ViewPreferencesImplCopyWith(_$ViewPreferencesImpl value,
-          $Res Function(_$ViewPreferencesImpl) then) =
+abstract class _$$ViewPreferencesImplCopyWith<$Res> implements $ViewPreferencesCopyWith<$Res> {
+  factory _$$ViewPreferencesImplCopyWith(_$ViewPreferencesImpl value, $Res Function(_$ViewPreferencesImpl) then) =
       __$$ViewPreferencesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      ViewMode tripsViewMode,
-      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      ViewMode tripViewMode,
-      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      ViewMode dayTripViewMode});
+      {@JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) ViewMode tripsViewMode,
+      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) ViewMode tripViewMode,
+      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) ViewMode dayTripViewMode});
 }
 
 /// @nodoc
-class __$$ViewPreferencesImplCopyWithImpl<$Res>
-    extends _$ViewPreferencesCopyWithImpl<$Res, _$ViewPreferencesImpl>
+class __$$ViewPreferencesImplCopyWithImpl<$Res> extends _$ViewPreferencesCopyWithImpl<$Res, _$ViewPreferencesImpl>
     implements _$$ViewPreferencesImplCopyWith<$Res> {
-  __$$ViewPreferencesImplCopyWithImpl(
-      _$ViewPreferencesImpl _value, $Res Function(_$ViewPreferencesImpl) _then)
+  __$$ViewPreferencesImplCopyWithImpl(_$ViewPreferencesImpl _value, $Res Function(_$ViewPreferencesImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ViewPreferences
@@ -143,15 +130,11 @@ class __$$ViewPreferencesImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ViewPreferencesImpl implements _ViewPreferences {
   const _$ViewPreferencesImpl(
-      {@JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      this.tripsViewMode = ViewMode.grid,
-      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      this.tripViewMode = ViewMode.grid,
-      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      this.dayTripViewMode = ViewMode.grid});
+      {@JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) this.tripsViewMode = ViewMode.grid,
+      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) this.tripViewMode = ViewMode.grid,
+      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) this.dayTripViewMode = ViewMode.grid});
 
-  factory _$ViewPreferencesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ViewPreferencesImplFromJson(json);
+  factory _$ViewPreferencesImpl.fromJson(Map<String, dynamic> json) => _$$ViewPreferencesImplFromJson(json);
 
   @override
   @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
@@ -173,18 +156,14 @@ class _$ViewPreferencesImpl implements _ViewPreferences {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ViewPreferencesImpl &&
-            (identical(other.tripsViewMode, tripsViewMode) ||
-                other.tripsViewMode == tripsViewMode) &&
-            (identical(other.tripViewMode, tripViewMode) ||
-                other.tripViewMode == tripViewMode) &&
-            (identical(other.dayTripViewMode, dayTripViewMode) ||
-                other.dayTripViewMode == dayTripViewMode));
+            (identical(other.tripsViewMode, tripsViewMode) || other.tripsViewMode == tripsViewMode) &&
+            (identical(other.tripViewMode, tripViewMode) || other.tripViewMode == tripViewMode) &&
+            (identical(other.dayTripViewMode, dayTripViewMode) || other.dayTripViewMode == dayTripViewMode));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, tripsViewMode, tripViewMode, dayTripViewMode);
+  int get hashCode => Object.hash(runtimeType, tripsViewMode, tripViewMode, dayTripViewMode);
 
   /// Create a copy of ViewPreferences
   /// with the given fields replaced by the non-null parameter values.
@@ -192,8 +171,7 @@ class _$ViewPreferencesImpl implements _ViewPreferences {
   @override
   @pragma('vm:prefer-inline')
   _$$ViewPreferencesImplCopyWith<_$ViewPreferencesImpl> get copyWith =>
-      __$$ViewPreferencesImplCopyWithImpl<_$ViewPreferencesImpl>(
-          this, _$identity);
+      __$$ViewPreferencesImplCopyWithImpl<_$ViewPreferencesImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -205,15 +183,12 @@ class _$ViewPreferencesImpl implements _ViewPreferences {
 
 abstract class _ViewPreferences implements ViewPreferences {
   const factory _ViewPreferences(
-      {@JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      final ViewMode tripsViewMode,
-      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      final ViewMode tripViewMode,
-      @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
-      final ViewMode dayTripViewMode}) = _$ViewPreferencesImpl;
+          {@JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) final ViewMode tripsViewMode,
+          @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) final ViewMode tripViewMode,
+          @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt) final ViewMode dayTripViewMode}) =
+      _$ViewPreferencesImpl;
 
-  factory _ViewPreferences.fromJson(Map<String, dynamic> json) =
-      _$ViewPreferencesImpl.fromJson;
+  factory _ViewPreferences.fromJson(Map<String, dynamic> json) = _$ViewPreferencesImpl.fromJson;
 
   @override
   @JsonKey(fromJson: viewModeFromInt, toJson: viewModeToInt)
@@ -229,6 +204,5 @@ abstract class _ViewPreferences implements ViewPreferences {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ViewPreferencesImplCopyWith<_$ViewPreferencesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ViewPreferencesImplCopyWith<_$ViewPreferencesImpl> get copyWith => throw _privateConstructorUsedError;
 }

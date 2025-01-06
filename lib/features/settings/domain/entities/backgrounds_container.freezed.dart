@@ -29,22 +29,19 @@ mixin _$BackgroundsContainer {
   /// Create a copy of BackgroundsContainer
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BackgroundsContainerCopyWith<BackgroundsContainer> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BackgroundsContainerCopyWith<BackgroundsContainer> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BackgroundsContainerCopyWith<$Res> {
-  factory $BackgroundsContainerCopyWith(BackgroundsContainer value,
-          $Res Function(BackgroundsContainer) then) =
+  factory $BackgroundsContainerCopyWith(BackgroundsContainer value, $Res Function(BackgroundsContainer) then) =
       _$BackgroundsContainerCopyWithImpl<$Res, BackgroundsContainer>;
   @useResult
   $Res call({int? lightBackgroundIndex, int? darkBackgroundIndex});
 }
 
 /// @nodoc
-class _$BackgroundsContainerCopyWithImpl<$Res,
-        $Val extends BackgroundsContainer>
+class _$BackgroundsContainerCopyWithImpl<$Res, $Val extends BackgroundsContainer>
     implements $BackgroundsContainerCopyWith<$Res> {
   _$BackgroundsContainerCopyWithImpl(this._value, this._then);
 
@@ -75,10 +72,9 @@ class _$BackgroundsContainerCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$BackgroundsContainerImplCopyWith<$Res>
-    implements $BackgroundsContainerCopyWith<$Res> {
-  factory _$$BackgroundsContainerImplCopyWith(_$BackgroundsContainerImpl value,
-          $Res Function(_$BackgroundsContainerImpl) then) =
+abstract class _$$BackgroundsContainerImplCopyWith<$Res> implements $BackgroundsContainerCopyWith<$Res> {
+  factory _$$BackgroundsContainerImplCopyWith(
+          _$BackgroundsContainerImpl value, $Res Function(_$BackgroundsContainerImpl) then) =
       __$$BackgroundsContainerImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -89,8 +85,8 @@ abstract class _$$BackgroundsContainerImplCopyWith<$Res>
 class __$$BackgroundsContainerImplCopyWithImpl<$Res>
     extends _$BackgroundsContainerCopyWithImpl<$Res, _$BackgroundsContainerImpl>
     implements _$$BackgroundsContainerImplCopyWith<$Res> {
-  __$$BackgroundsContainerImplCopyWithImpl(_$BackgroundsContainerImpl _value,
-      $Res Function(_$BackgroundsContainerImpl) _then)
+  __$$BackgroundsContainerImplCopyWithImpl(
+      _$BackgroundsContainerImpl _value, $Res Function(_$BackgroundsContainerImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of BackgroundsContainer
@@ -117,11 +113,9 @@ class __$$BackgroundsContainerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BackgroundsContainerImpl implements _BackgroundsContainer {
-  const _$BackgroundsContainerImpl(
-      {this.lightBackgroundIndex, this.darkBackgroundIndex});
+  const _$BackgroundsContainerImpl({this.lightBackgroundIndex, this.darkBackgroundIndex});
 
-  factory _$BackgroundsContainerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BackgroundsContainerImplFromJson(json);
+  factory _$BackgroundsContainerImpl.fromJson(Map<String, dynamic> json) => _$$BackgroundsContainerImplFromJson(json);
 
   @override
   final int? lightBackgroundIndex;
@@ -146,18 +140,15 @@ class _$BackgroundsContainerImpl implements _BackgroundsContainer {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, lightBackgroundIndex, darkBackgroundIndex);
+  int get hashCode => Object.hash(runtimeType, lightBackgroundIndex, darkBackgroundIndex);
 
   /// Create a copy of BackgroundsContainer
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl>
-      get copyWith =>
-          __$$BackgroundsContainerImplCopyWithImpl<_$BackgroundsContainerImpl>(
-              this, _$identity);
+  _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl> get copyWith =>
+      __$$BackgroundsContainerImplCopyWithImpl<_$BackgroundsContainerImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -168,12 +159,10 @@ class _$BackgroundsContainerImpl implements _BackgroundsContainer {
 }
 
 abstract class _BackgroundsContainer implements BackgroundsContainer {
-  const factory _BackgroundsContainer(
-      {final int? lightBackgroundIndex,
-      final int? darkBackgroundIndex}) = _$BackgroundsContainerImpl;
+  const factory _BackgroundsContainer({final int? lightBackgroundIndex, final int? darkBackgroundIndex}) =
+      _$BackgroundsContainerImpl;
 
-  factory _BackgroundsContainer.fromJson(Map<String, dynamic> json) =
-      _$BackgroundsContainerImpl.fromJson;
+  factory _BackgroundsContainer.fromJson(Map<String, dynamic> json) = _$BackgroundsContainerImpl.fromJson;
 
   @override
   int? get lightBackgroundIndex;
@@ -184,6 +173,5 @@ abstract class _BackgroundsContainer implements BackgroundsContainer {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BackgroundsContainerImplCopyWith<_$BackgroundsContainerImpl> get copyWith => throw _privateConstructorUsedError;
 }

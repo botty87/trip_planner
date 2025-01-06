@@ -70,13 +70,11 @@ mixin _$UserState {
 
 /// @nodoc
 abstract class $UserStateCopyWith<$Res> {
-  factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
-      _$UserStateCopyWithImpl<$Res, UserState>;
+  factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) = _$UserStateCopyWithImpl<$Res, UserState>;
 }
 
 /// @nodoc
-class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
-    implements $UserStateCopyWith<$Res> {
+class _$UserStateCopyWithImpl<$Res, $Val extends UserState> implements $UserStateCopyWith<$Res> {
   _$UserStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -90,17 +88,15 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
 
 /// @nodoc
 abstract class _$$UserStateLoggedOutImplCopyWith<$Res> {
-  factory _$$UserStateLoggedOutImplCopyWith(_$UserStateLoggedOutImpl value,
-          $Res Function(_$UserStateLoggedOutImpl) then) =
+  factory _$$UserStateLoggedOutImplCopyWith(
+          _$UserStateLoggedOutImpl value, $Res Function(_$UserStateLoggedOutImpl) then) =
       __$$UserStateLoggedOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserStateLoggedOutImplCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$UserStateLoggedOutImpl>
+class __$$UserStateLoggedOutImplCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res, _$UserStateLoggedOutImpl>
     implements _$$UserStateLoggedOutImplCopyWith<$Res> {
-  __$$UserStateLoggedOutImplCopyWithImpl(_$UserStateLoggedOutImpl _value,
-      $Res Function(_$UserStateLoggedOutImpl) _then)
+  __$$UserStateLoggedOutImplCopyWithImpl(_$UserStateLoggedOutImpl _value, $Res Function(_$UserStateLoggedOutImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserState
@@ -119,8 +115,7 @@ class _$UserStateLoggedOutImpl implements UserStateLoggedOut {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserStateLoggedOutImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$UserStateLoggedOutImpl);
   }
 
   @override
@@ -207,8 +202,7 @@ abstract class UserStateLoggedOut implements UserState {
 
 /// @nodoc
 abstract class _$$UserStateLoggedInImplCopyWith<$Res> {
-  factory _$$UserStateLoggedInImplCopyWith(_$UserStateLoggedInImpl value,
-          $Res Function(_$UserStateLoggedInImpl) then) =
+  factory _$$UserStateLoggedInImplCopyWith(_$UserStateLoggedInImpl value, $Res Function(_$UserStateLoggedInImpl) then) =
       __$$UserStateLoggedInImplCopyWithImpl<$Res>;
   @useResult
   $Res call({User user});
@@ -217,11 +211,9 @@ abstract class _$$UserStateLoggedInImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$UserStateLoggedInImplCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$UserStateLoggedInImpl>
+class __$$UserStateLoggedInImplCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res, _$UserStateLoggedInImpl>
     implements _$$UserStateLoggedInImplCopyWith<$Res> {
-  __$$UserStateLoggedInImplCopyWithImpl(_$UserStateLoggedInImpl _value,
-      $Res Function(_$UserStateLoggedInImpl) _then)
+  __$$UserStateLoggedInImplCopyWithImpl(_$UserStateLoggedInImpl _value, $Res Function(_$UserStateLoggedInImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserState
@@ -280,8 +272,7 @@ class _$UserStateLoggedInImpl implements UserStateLoggedIn {
   @override
   @pragma('vm:prefer-inline')
   _$$UserStateLoggedInImplCopyWith<_$UserStateLoggedInImpl> get copyWith =>
-      __$$UserStateLoggedInImplCopyWithImpl<_$UserStateLoggedInImpl>(
-          this, _$identity);
+      __$$UserStateLoggedInImplCopyWithImpl<_$UserStateLoggedInImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -359,31 +350,26 @@ class _$UserStateLoggedInImpl implements UserStateLoggedIn {
 }
 
 abstract class UserStateLoggedIn implements UserState {
-  const factory UserStateLoggedIn({required final User user}) =
-      _$UserStateLoggedInImpl;
+  const factory UserStateLoggedIn({required final User user}) = _$UserStateLoggedInImpl;
 
   User get user;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserStateLoggedInImplCopyWith<_$UserStateLoggedInImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserStateLoggedInImplCopyWith<_$UserStateLoggedInImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UserStateLoadingImplCopyWith<$Res> {
-  factory _$$UserStateLoadingImplCopyWith(_$UserStateLoadingImpl value,
-          $Res Function(_$UserStateLoadingImpl) then) =
+  factory _$$UserStateLoadingImplCopyWith(_$UserStateLoadingImpl value, $Res Function(_$UserStateLoadingImpl) then) =
       __$$UserStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserStateLoadingImplCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$UserStateLoadingImpl>
+class __$$UserStateLoadingImplCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res, _$UserStateLoadingImpl>
     implements _$$UserStateLoadingImplCopyWith<$Res> {
-  __$$UserStateLoadingImplCopyWithImpl(_$UserStateLoadingImpl _value,
-      $Res Function(_$UserStateLoadingImpl) _then)
+  __$$UserStateLoadingImplCopyWithImpl(_$UserStateLoadingImpl _value, $Res Function(_$UserStateLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserState
@@ -402,8 +388,7 @@ class _$UserStateLoadingImpl implements UserStateLoading {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserStateLoadingImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$UserStateLoadingImpl);
   }
 
   @override
@@ -490,17 +475,14 @@ abstract class UserStateLoading implements UserState {
 
 /// @nodoc
 abstract class _$$UserStateErrorImplCopyWith<$Res> {
-  factory _$$UserStateErrorImplCopyWith(_$UserStateErrorImpl value,
-          $Res Function(_$UserStateErrorImpl) then) =
+  factory _$$UserStateErrorImplCopyWith(_$UserStateErrorImpl value, $Res Function(_$UserStateErrorImpl) then) =
       __$$UserStateErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserStateErrorImplCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$UserStateErrorImpl>
+class __$$UserStateErrorImplCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res, _$UserStateErrorImpl>
     implements _$$UserStateErrorImplCopyWith<$Res> {
-  __$$UserStateErrorImplCopyWithImpl(
-      _$UserStateErrorImpl _value, $Res Function(_$UserStateErrorImpl) _then)
+  __$$UserStateErrorImplCopyWithImpl(_$UserStateErrorImpl _value, $Res Function(_$UserStateErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserState
@@ -519,8 +501,7 @@ class _$UserStateErrorImpl implements UserStateError {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserStateErrorImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$UserStateErrorImpl);
   }
 
   @override

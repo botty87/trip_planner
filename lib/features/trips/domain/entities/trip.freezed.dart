@@ -44,26 +44,22 @@ mixin _$Trip {
 
 /// @nodoc
 abstract class $TripCopyWith<$Res> {
-  factory $TripCopyWith(Trip value, $Res Function(Trip) then) =
-      _$TripCopyWithImpl<$Res, Trip>;
+  factory $TripCopyWith(Trip value, $Res Function(Trip) then) = _$TripCopyWithImpl<$Res, Trip>;
   @useResult
   $Res call(
       {@JsonKey(includeFromJson: false, includeToJson: false) String id,
       String name,
       String? description,
       String userId,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      DateTime createdAt,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      DateTime startDate,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime startDate,
       bool isPublic,
       String? languageCode,
       List<String> sharedWith});
 }
 
 /// @nodoc
-class _$TripCopyWithImpl<$Res, $Val extends Trip>
-    implements $TripCopyWith<$Res> {
+class _$TripCopyWithImpl<$Res, $Val extends Trip> implements $TripCopyWith<$Res> {
   _$TripCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -129,9 +125,7 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
 
 /// @nodoc
 abstract class _$$TripImplCopyWith<$Res> implements $TripCopyWith<$Res> {
-  factory _$$TripImplCopyWith(
-          _$TripImpl value, $Res Function(_$TripImpl) then) =
-      __$$TripImplCopyWithImpl<$Res>;
+  factory _$$TripImplCopyWith(_$TripImpl value, $Res Function(_$TripImpl) then) = __$$TripImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,21 +133,16 @@ abstract class _$$TripImplCopyWith<$Res> implements $TripCopyWith<$Res> {
       String name,
       String? description,
       String userId,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      DateTime createdAt,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      DateTime startDate,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) DateTime startDate,
       bool isPublic,
       String? languageCode,
       List<String> sharedWith});
 }
 
 /// @nodoc
-class __$$TripImplCopyWithImpl<$Res>
-    extends _$TripCopyWithImpl<$Res, _$TripImpl>
-    implements _$$TripImplCopyWith<$Res> {
-  __$$TripImplCopyWithImpl(_$TripImpl _value, $Res Function(_$TripImpl) _then)
-      : super(_value, _then);
+class __$$TripImplCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$TripImpl> implements _$$TripImplCopyWith<$Res> {
+  __$$TripImplCopyWithImpl(_$TripImpl _value, $Res Function(_$TripImpl) _then) : super(_value, _then);
 
   /// Create a copy of Trip
   /// with the given fields replaced by the non-null parameter values.
@@ -219,17 +208,14 @@ class _$TripImpl implements _Trip {
       required this.name,
       this.description,
       required this.userId,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      required this.createdAt,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      required this.startDate,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) required this.createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) required this.startDate,
       this.isPublic = false,
       this.languageCode,
       final List<String> sharedWith = const []})
       : _sharedWith = sharedWith;
 
-  factory _$TripImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TripImplFromJson(json);
+  factory _$TripImpl.fromJson(Map<String, dynamic> json) => _$$TripImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -272,42 +258,26 @@ class _$TripImpl implements _Trip {
             other is _$TripImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
+            (identical(other.description, description) || other.description == description) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.startDate, startDate) ||
-                other.startDate == startDate) &&
-            (identical(other.isPublic, isPublic) ||
-                other.isPublic == isPublic) &&
-            (identical(other.languageCode, languageCode) ||
-                other.languageCode == languageCode) &&
-            const DeepCollectionEquality()
-                .equals(other._sharedWith, _sharedWith));
+            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
+            (identical(other.startDate, startDate) || other.startDate == startDate) &&
+            (identical(other.isPublic, isPublic) || other.isPublic == isPublic) &&
+            (identical(other.languageCode, languageCode) || other.languageCode == languageCode) &&
+            const DeepCollectionEquality().equals(other._sharedWith, _sharedWith));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      description,
-      userId,
-      createdAt,
-      startDate,
-      isPublic,
-      languageCode,
-      const DeepCollectionEquality().hash(_sharedWith));
+  int get hashCode => Object.hash(runtimeType, id, name, description, userId, createdAt, startDate, isPublic,
+      languageCode, const DeepCollectionEquality().hash(_sharedWith));
 
   /// Create a copy of Trip
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TripImplCopyWith<_$TripImpl> get copyWith =>
-      __$$TripImplCopyWithImpl<_$TripImpl>(this, _$identity);
+  _$$TripImplCopyWith<_$TripImpl> get copyWith => __$$TripImplCopyWithImpl<_$TripImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -323,10 +293,8 @@ abstract class _Trip implements Trip {
       required final String name,
       final String? description,
       required final String userId,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      required final DateTime createdAt,
-      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp)
-      required final DateTime startDate,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) required final DateTime createdAt,
+      @JsonKey(toJson: dateTimeToTimestamp, fromJson: dateTimeFromTimestamp) required final DateTime startDate,
       final bool isPublic,
       final String? languageCode,
       final List<String> sharedWith}) = _$TripImpl;
@@ -359,6 +327,5 @@ abstract class _Trip implements Trip {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripImplCopyWith<_$TripImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripImplCopyWith<_$TripImpl> get copyWith => throw _privateConstructorUsedError;
 }

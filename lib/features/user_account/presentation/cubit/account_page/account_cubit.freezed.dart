@@ -21,17 +21,11 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(User user, String? errorMessage) normal,
-    required TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)
+    required TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)
+    required TResult Function(
+            User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
     required TResult Function(User user, String? errorMessage) deleting,
   }) =>
@@ -39,17 +33,10 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(User user, String? errorMessage)? normal,
-    TResult? Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult? Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult? Function(User user, String? errorMessage)? deleting,
   }) =>
@@ -57,17 +44,10 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(User user, String? errorMessage)? normal,
-    TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
@@ -77,8 +57,7 @@ mixin _$AccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(AccountStateNormal value) normal,
     required TResult Function(AccountStateEditing value) editing,
-    required TResult Function(AccountStateReauthenticating value)
-        reauthenticating,
+    required TResult Function(AccountStateReauthenticating value) reauthenticating,
     required TResult Function(AccountStateDeleting value) deleting,
   }) =>
       throw _privateConstructorUsedError;
@@ -103,14 +82,12 @@ mixin _$AccountState {
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AccountStateCopyWith<AccountState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AccountStateCopyWith<AccountState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AccountStateCopyWith<$Res> {
-  factory $AccountStateCopyWith(
-          AccountState value, $Res Function(AccountState) then) =
+  factory $AccountStateCopyWith(AccountState value, $Res Function(AccountState) then) =
       _$AccountStateCopyWithImpl<$Res, AccountState>;
   @useResult
   $Res call({User user, String? errorMessage});
@@ -119,8 +96,7 @@ abstract class $AccountStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
-    implements $AccountStateCopyWith<$Res> {
+class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState> implements $AccountStateCopyWith<$Res> {
   _$AccountStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -160,10 +136,9 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
 }
 
 /// @nodoc
-abstract class _$$AccountStateNormalImplCopyWith<$Res>
-    implements $AccountStateCopyWith<$Res> {
-  factory _$$AccountStateNormalImplCopyWith(_$AccountStateNormalImpl value,
-          $Res Function(_$AccountStateNormalImpl) then) =
+abstract class _$$AccountStateNormalImplCopyWith<$Res> implements $AccountStateCopyWith<$Res> {
+  factory _$$AccountStateNormalImplCopyWith(
+          _$AccountStateNormalImpl value, $Res Function(_$AccountStateNormalImpl) then) =
       __$$AccountStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -174,11 +149,9 @@ abstract class _$$AccountStateNormalImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AccountStateNormalImplCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateNormalImpl>
+class __$$AccountStateNormalImplCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res, _$AccountStateNormalImpl>
     implements _$$AccountStateNormalImplCopyWith<$Res> {
-  __$$AccountStateNormalImplCopyWithImpl(_$AccountStateNormalImpl _value,
-      $Res Function(_$AccountStateNormalImpl) _then)
+  __$$AccountStateNormalImplCopyWithImpl(_$AccountStateNormalImpl _value, $Res Function(_$AccountStateNormalImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AccountState
@@ -223,8 +196,7 @@ class _$AccountStateNormalImpl implements AccountStateNormal {
         (other.runtimeType == runtimeType &&
             other is _$AccountStateNormalImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
@@ -236,24 +208,17 @@ class _$AccountStateNormalImpl implements AccountStateNormal {
   @override
   @pragma('vm:prefer-inline')
   _$$AccountStateNormalImplCopyWith<_$AccountStateNormalImpl> get copyWith =>
-      __$$AccountStateNormalImplCopyWithImpl<_$AccountStateNormalImpl>(
-          this, _$identity);
+      __$$AccountStateNormalImplCopyWithImpl<_$AccountStateNormalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(User user, String? errorMessage) normal,
-    required TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)
+    required TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)
+    required TResult Function(
+            User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
     required TResult Function(User user, String? errorMessage) deleting,
   }) {
@@ -264,17 +229,10 @@ class _$AccountStateNormalImpl implements AccountStateNormal {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(User user, String? errorMessage)? normal,
-    TResult? Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult? Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult? Function(User user, String? errorMessage)? deleting,
   }) {
@@ -285,17 +243,10 @@ class _$AccountStateNormalImpl implements AccountStateNormal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(User user, String? errorMessage)? normal,
-    TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
@@ -311,8 +262,7 @@ class _$AccountStateNormalImpl implements AccountStateNormal {
   TResult map<TResult extends Object?>({
     required TResult Function(AccountStateNormal value) normal,
     required TResult Function(AccountStateEditing value) editing,
-    required TResult Function(AccountStateReauthenticating value)
-        reauthenticating,
+    required TResult Function(AccountStateReauthenticating value) reauthenticating,
     required TResult Function(AccountStateDeleting value) deleting,
   }) {
     return normal(this);
@@ -346,9 +296,7 @@ class _$AccountStateNormalImpl implements AccountStateNormal {
 }
 
 abstract class AccountStateNormal implements AccountState {
-  const factory AccountStateNormal(
-      {required final User user,
-      final String? errorMessage}) = _$AccountStateNormalImpl;
+  const factory AccountStateNormal({required final User user, final String? errorMessage}) = _$AccountStateNormalImpl;
 
   @override
   User get user;
@@ -359,15 +307,13 @@ abstract class AccountStateNormal implements AccountState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AccountStateNormalImplCopyWith<_$AccountStateNormalImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AccountStateNormalImplCopyWith<_$AccountStateNormalImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AccountStateEditingImplCopyWith<$Res>
-    implements $AccountStateCopyWith<$Res> {
-  factory _$$AccountStateEditingImplCopyWith(_$AccountStateEditingImpl value,
-          $Res Function(_$AccountStateEditingImpl) then) =
+abstract class _$$AccountStateEditingImplCopyWith<$Res> implements $AccountStateCopyWith<$Res> {
+  factory _$$AccountStateEditingImplCopyWith(
+          _$AccountStateEditingImpl value, $Res Function(_$AccountStateEditingImpl) then) =
       __$$AccountStateEditingImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -385,11 +331,10 @@ abstract class _$$AccountStateEditingImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AccountStateEditingImplCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$AccountStateEditingImpl>
+class __$$AccountStateEditingImplCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res, _$AccountStateEditingImpl>
     implements _$$AccountStateEditingImplCopyWith<$Res> {
-  __$$AccountStateEditingImplCopyWithImpl(_$AccountStateEditingImpl _value,
-      $Res Function(_$AccountStateEditingImpl) _then)
+  __$$AccountStateEditingImplCopyWithImpl(
+      _$AccountStateEditingImpl _value, $Res Function(_$AccountStateEditingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AccountState
@@ -477,22 +422,18 @@ class _$AccountStateEditingImpl implements AccountStateEditing {
         (other.runtimeType == runtimeType &&
             other is _$AccountStateEditingImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.confirmPassword, confirmPassword) ||
-                other.confirmPassword == confirmPassword) &&
-            (identical(
-                    other.isEditingPasswordVisible, isEditingPasswordVisible) ||
+            (identical(other.password, password) || other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword) &&
+            (identical(other.isEditingPasswordVisible, isEditingPasswordVisible) ||
                 other.isEditingPasswordVisible == isEditingPasswordVisible));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, errorMessage, name, email,
-      password, confirmPassword, isEditingPasswordVisible);
+  int get hashCode =>
+      Object.hash(runtimeType, user, errorMessage, name, email, password, confirmPassword, isEditingPasswordVisible);
 
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.
@@ -500,75 +441,51 @@ class _$AccountStateEditingImpl implements AccountStateEditing {
   @override
   @pragma('vm:prefer-inline')
   _$$AccountStateEditingImplCopyWith<_$AccountStateEditingImpl> get copyWith =>
-      __$$AccountStateEditingImplCopyWithImpl<_$AccountStateEditingImpl>(
-          this, _$identity);
+      __$$AccountStateEditingImplCopyWithImpl<_$AccountStateEditingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(User user, String? errorMessage) normal,
-    required TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)
+    required TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)
+    required TResult Function(
+            User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
     required TResult Function(User user, String? errorMessage) deleting,
   }) {
-    return editing(user, errorMessage, name, email, password, confirmPassword,
-        isEditingPasswordVisible);
+    return editing(user, errorMessage, name, email, password, confirmPassword, isEditingPasswordVisible);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(User user, String? errorMessage)? normal,
-    TResult? Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult? Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult? Function(User user, String? errorMessage)? deleting,
   }) {
-    return editing?.call(user, errorMessage, name, email, password,
-        confirmPassword, isEditingPasswordVisible);
+    return editing?.call(user, errorMessage, name, email, password, confirmPassword, isEditingPasswordVisible);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(User user, String? errorMessage)? normal,
-    TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(user, errorMessage, name, email, password, confirmPassword,
-          isEditingPasswordVisible);
+      return editing(user, errorMessage, name, email, password, confirmPassword, isEditingPasswordVisible);
     }
     return orElse();
   }
@@ -578,8 +495,7 @@ class _$AccountStateEditingImpl implements AccountStateEditing {
   TResult map<TResult extends Object?>({
     required TResult Function(AccountStateNormal value) normal,
     required TResult Function(AccountStateEditing value) editing,
-    required TResult Function(AccountStateReauthenticating value)
-        reauthenticating,
+    required TResult Function(AccountStateReauthenticating value) reauthenticating,
     required TResult Function(AccountStateDeleting value) deleting,
   }) {
     return editing(this);
@@ -636,25 +552,17 @@ abstract class AccountStateEditing implements AccountState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AccountStateEditingImplCopyWith<_$AccountStateEditingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AccountStateEditingImplCopyWith<_$AccountStateEditingImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AccountStateReauthenticatingImplCopyWith<$Res>
-    implements $AccountStateCopyWith<$Res> {
+abstract class _$$AccountStateReauthenticatingImplCopyWith<$Res> implements $AccountStateCopyWith<$Res> {
   factory _$$AccountStateReauthenticatingImplCopyWith(
-          _$AccountStateReauthenticatingImpl value,
-          $Res Function(_$AccountStateReauthenticatingImpl) then) =
+          _$AccountStateReauthenticatingImpl value, $Res Function(_$AccountStateReauthenticatingImpl) then) =
       __$$AccountStateReauthenticatingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {User user,
-      String? errorMessage,
-      String? password,
-      bool isSaving,
-      EditUserData editUserData});
+  $Res call({User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -666,8 +574,7 @@ class __$$AccountStateReauthenticatingImplCopyWithImpl<$Res>
     extends _$AccountStateCopyWithImpl<$Res, _$AccountStateReauthenticatingImpl>
     implements _$$AccountStateReauthenticatingImplCopyWith<$Res> {
   __$$AccountStateReauthenticatingImplCopyWithImpl(
-      _$AccountStateReauthenticatingImpl _value,
-      $Res Function(_$AccountStateReauthenticatingImpl) _then)
+      _$AccountStateReauthenticatingImpl _value, $Res Function(_$AccountStateReauthenticatingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AccountState
@@ -718,14 +625,9 @@ class __$$AccountStateReauthenticatingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountStateReauthenticatingImpl
-    implements AccountStateReauthenticating {
+class _$AccountStateReauthenticatingImpl implements AccountStateReauthenticating {
   const _$AccountStateReauthenticatingImpl(
-      {required this.user,
-      this.errorMessage,
-      this.password,
-      this.isSaving = false,
-      required this.editUserData});
+      {required this.user, this.errorMessage, this.password, this.isSaving = false, required this.editUserData});
 
   @override
   final User user;
@@ -750,96 +652,66 @@ class _$AccountStateReauthenticatingImpl
         (other.runtimeType == runtimeType &&
             other is _$AccountStateReauthenticatingImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.isSaving, isSaving) ||
-                other.isSaving == isSaving) &&
-            (identical(other.editUserData, editUserData) ||
-                other.editUserData == editUserData));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) &&
+            (identical(other.password, password) || other.password == password) &&
+            (identical(other.isSaving, isSaving) || other.isSaving == isSaving) &&
+            (identical(other.editUserData, editUserData) || other.editUserData == editUserData));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, user, errorMessage, password, isSaving, editUserData);
+  int get hashCode => Object.hash(runtimeType, user, errorMessage, password, isSaving, editUserData);
 
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AccountStateReauthenticatingImplCopyWith<
-          _$AccountStateReauthenticatingImpl>
-      get copyWith => __$$AccountStateReauthenticatingImplCopyWithImpl<
-          _$AccountStateReauthenticatingImpl>(this, _$identity);
+  _$$AccountStateReauthenticatingImplCopyWith<_$AccountStateReauthenticatingImpl> get copyWith =>
+      __$$AccountStateReauthenticatingImplCopyWithImpl<_$AccountStateReauthenticatingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(User user, String? errorMessage) normal,
-    required TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)
+    required TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)
+    required TResult Function(
+            User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
     required TResult Function(User user, String? errorMessage) deleting,
   }) {
-    return reauthenticating(
-        user, errorMessage, password, isSaving, editUserData);
+    return reauthenticating(user, errorMessage, password, isSaving, editUserData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(User user, String? errorMessage)? normal,
-    TResult? Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult? Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult? Function(User user, String? errorMessage)? deleting,
   }) {
-    return reauthenticating?.call(
-        user, errorMessage, password, isSaving, editUserData);
+    return reauthenticating?.call(user, errorMessage, password, isSaving, editUserData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(User user, String? errorMessage)? normal,
-    TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
   }) {
     if (reauthenticating != null) {
-      return reauthenticating(
-          user, errorMessage, password, isSaving, editUserData);
+      return reauthenticating(user, errorMessage, password, isSaving, editUserData);
     }
     return orElse();
   }
@@ -849,8 +721,7 @@ class _$AccountStateReauthenticatingImpl
   TResult map<TResult extends Object?>({
     required TResult Function(AccountStateNormal value) normal,
     required TResult Function(AccountStateEditing value) editing,
-    required TResult Function(AccountStateReauthenticating value)
-        reauthenticating,
+    required TResult Function(AccountStateReauthenticating value) reauthenticating,
     required TResult Function(AccountStateDeleting value) deleting,
   }) {
     return reauthenticating(this);
@@ -885,12 +756,11 @@ class _$AccountStateReauthenticatingImpl
 
 abstract class AccountStateReauthenticating implements AccountState {
   const factory AccountStateReauthenticating(
-          {required final User user,
-          final String? errorMessage,
-          final String? password,
-          final bool isSaving,
-          required final EditUserData editUserData}) =
-      _$AccountStateReauthenticatingImpl;
+      {required final User user,
+      final String? errorMessage,
+      final String? password,
+      final bool isSaving,
+      required final EditUserData editUserData}) = _$AccountStateReauthenticatingImpl;
 
   @override
   User get user;
@@ -904,16 +774,14 @@ abstract class AccountStateReauthenticating implements AccountState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AccountStateReauthenticatingImplCopyWith<
-          _$AccountStateReauthenticatingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$AccountStateReauthenticatingImplCopyWith<_$AccountStateReauthenticatingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AccountStateDeletingImplCopyWith<$Res>
-    implements $AccountStateCopyWith<$Res> {
-  factory _$$AccountStateDeletingImplCopyWith(_$AccountStateDeletingImpl value,
-          $Res Function(_$AccountStateDeletingImpl) then) =
+abstract class _$$AccountStateDeletingImplCopyWith<$Res> implements $AccountStateCopyWith<$Res> {
+  factory _$$AccountStateDeletingImplCopyWith(
+          _$AccountStateDeletingImpl value, $Res Function(_$AccountStateDeletingImpl) then) =
       __$$AccountStateDeletingImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -927,8 +795,8 @@ abstract class _$$AccountStateDeletingImplCopyWith<$Res>
 class __$$AccountStateDeletingImplCopyWithImpl<$Res>
     extends _$AccountStateCopyWithImpl<$Res, _$AccountStateDeletingImpl>
     implements _$$AccountStateDeletingImplCopyWith<$Res> {
-  __$$AccountStateDeletingImplCopyWithImpl(_$AccountStateDeletingImpl _value,
-      $Res Function(_$AccountStateDeletingImpl) _then)
+  __$$AccountStateDeletingImplCopyWithImpl(
+      _$AccountStateDeletingImpl _value, $Res Function(_$AccountStateDeletingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AccountState
@@ -973,8 +841,7 @@ class _$AccountStateDeletingImpl implements AccountStateDeleting {
         (other.runtimeType == runtimeType &&
             other is _$AccountStateDeletingImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
@@ -985,26 +852,18 @@ class _$AccountStateDeletingImpl implements AccountStateDeleting {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AccountStateDeletingImplCopyWith<_$AccountStateDeletingImpl>
-      get copyWith =>
-          __$$AccountStateDeletingImplCopyWithImpl<_$AccountStateDeletingImpl>(
-              this, _$identity);
+  _$$AccountStateDeletingImplCopyWith<_$AccountStateDeletingImpl> get copyWith =>
+      __$$AccountStateDeletingImplCopyWithImpl<_$AccountStateDeletingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(User user, String? errorMessage) normal,
-    required TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)
+    required TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)
         editing,
-    required TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)
+    required TResult Function(
+            User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)
         reauthenticating,
     required TResult Function(User user, String? errorMessage) deleting,
   }) {
@@ -1015,17 +874,10 @@ class _$AccountStateDeletingImpl implements AccountStateDeleting {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(User user, String? errorMessage)? normal,
-    TResult? Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult? Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult? Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult? Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult? Function(User user, String? errorMessage)? deleting,
   }) {
@@ -1036,17 +888,10 @@ class _$AccountStateDeletingImpl implements AccountStateDeleting {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(User user, String? errorMessage)? normal,
-    TResult Function(
-            User user,
-            String? errorMessage,
-            String? name,
-            String? email,
-            String? password,
-            String? confirmPassword,
-            bool isEditingPasswordVisible)?
+    TResult Function(User user, String? errorMessage, String? name, String? email, String? password,
+            String? confirmPassword, bool isEditingPasswordVisible)?
         editing,
-    TResult Function(User user, String? errorMessage, String? password,
-            bool isSaving, EditUserData editUserData)?
+    TResult Function(User user, String? errorMessage, String? password, bool isSaving, EditUserData editUserData)?
         reauthenticating,
     TResult Function(User user, String? errorMessage)? deleting,
     required TResult orElse(),
@@ -1062,8 +907,7 @@ class _$AccountStateDeletingImpl implements AccountStateDeleting {
   TResult map<TResult extends Object?>({
     required TResult Function(AccountStateNormal value) normal,
     required TResult Function(AccountStateEditing value) editing,
-    required TResult Function(AccountStateReauthenticating value)
-        reauthenticating,
+    required TResult Function(AccountStateReauthenticating value) reauthenticating,
     required TResult Function(AccountStateDeleting value) deleting,
   }) {
     return deleting(this);
@@ -1097,9 +941,8 @@ class _$AccountStateDeletingImpl implements AccountStateDeleting {
 }
 
 abstract class AccountStateDeleting implements AccountState {
-  const factory AccountStateDeleting(
-      {required final User user,
-      final String? errorMessage}) = _$AccountStateDeletingImpl;
+  const factory AccountStateDeleting({required final User user, final String? errorMessage}) =
+      _$AccountStateDeletingImpl;
 
   @override
   User get user;
@@ -1110,8 +953,7 @@ abstract class AccountStateDeleting implements AccountState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AccountStateDeletingImplCopyWith<_$AccountStateDeletingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$AccountStateDeletingImplCopyWith<_$AccountStateDeletingImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1123,22 +965,19 @@ mixin _$EditUserData {
   /// Create a copy of EditUserData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EditUserDataCopyWith<EditUserData> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EditUserDataCopyWith<EditUserData> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EditUserDataCopyWith<$Res> {
-  factory $EditUserDataCopyWith(
-          EditUserData value, $Res Function(EditUserData) then) =
+  factory $EditUserDataCopyWith(EditUserData value, $Res Function(EditUserData) then) =
       _$EditUserDataCopyWithImpl<$Res, EditUserData>;
   @useResult
   $Res call({String? name, String? email, String? password});
 }
 
 /// @nodoc
-class _$EditUserDataCopyWithImpl<$Res, $Val extends EditUserData>
-    implements $EditUserDataCopyWith<$Res> {
+class _$EditUserDataCopyWithImpl<$Res, $Val extends EditUserData> implements $EditUserDataCopyWith<$Res> {
   _$EditUserDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -1173,10 +1012,8 @@ class _$EditUserDataCopyWithImpl<$Res, $Val extends EditUserData>
 }
 
 /// @nodoc
-abstract class _$$EditUserDataImplCopyWith<$Res>
-    implements $EditUserDataCopyWith<$Res> {
-  factory _$$EditUserDataImplCopyWith(
-          _$EditUserDataImpl value, $Res Function(_$EditUserDataImpl) then) =
+abstract class _$$EditUserDataImplCopyWith<$Res> implements $EditUserDataCopyWith<$Res> {
+  factory _$$EditUserDataImplCopyWith(_$EditUserDataImpl value, $Res Function(_$EditUserDataImpl) then) =
       __$$EditUserDataImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -1184,11 +1021,9 @@ abstract class _$$EditUserDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EditUserDataImplCopyWithImpl<$Res>
-    extends _$EditUserDataCopyWithImpl<$Res, _$EditUserDataImpl>
+class __$$EditUserDataImplCopyWithImpl<$Res> extends _$EditUserDataCopyWithImpl<$Res, _$EditUserDataImpl>
     implements _$$EditUserDataImplCopyWith<$Res> {
-  __$$EditUserDataImplCopyWithImpl(
-      _$EditUserDataImpl _value, $Res Function(_$EditUserDataImpl) _then)
+  __$$EditUserDataImplCopyWithImpl(_$EditUserDataImpl _value, $Res Function(_$EditUserDataImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of EditUserData
@@ -1220,8 +1055,7 @@ class __$$EditUserDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EditUserDataImpl implements _EditUserData {
-  const _$EditUserDataImpl(
-      {required this.name, required this.email, required this.password});
+  const _$EditUserDataImpl({required this.name, required this.email, required this.password});
 
   @override
   final String? name;
@@ -1242,8 +1076,7 @@ class _$EditUserDataImpl implements _EditUserData {
             other is _$EditUserDataImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            (identical(other.password, password) || other.password == password));
   }
 
   @override
@@ -1275,6 +1108,5 @@ abstract class _EditUserData implements EditUserData {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EditUserDataImplCopyWith<_$EditUserDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EditUserDataImplCopyWith<_$EditUserDataImpl> get copyWith => throw _privateConstructorUsedError;
 }

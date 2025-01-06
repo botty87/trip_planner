@@ -64,15 +64,13 @@ mixin _$DiscoverNewDailyTripsState {
 
 /// @nodoc
 abstract class $DiscoverNewDailyTripsStateCopyWith<$Res> {
-  factory $DiscoverNewDailyTripsStateCopyWith(DiscoverNewDailyTripsState value,
-          $Res Function(DiscoverNewDailyTripsState) then) =
-      _$DiscoverNewDailyTripsStateCopyWithImpl<$Res,
-          DiscoverNewDailyTripsState>;
+  factory $DiscoverNewDailyTripsStateCopyWith(
+          DiscoverNewDailyTripsState value, $Res Function(DiscoverNewDailyTripsState) then) =
+      _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, DiscoverNewDailyTripsState>;
 }
 
 /// @nodoc
-class _$DiscoverNewDailyTripsStateCopyWithImpl<$Res,
-        $Val extends DiscoverNewDailyTripsState>
+class _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, $Val extends DiscoverNewDailyTripsState>
     implements $DiscoverNewDailyTripsStateCopyWith<$Res> {
   _$DiscoverNewDailyTripsStateCopyWithImpl(this._value, this._then);
 
@@ -87,17 +85,14 @@ class _$DiscoverNewDailyTripsStateCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$StateInitialImplCopyWith<$Res> {
-  factory _$$StateInitialImplCopyWith(
-          _$StateInitialImpl value, $Res Function(_$StateInitialImpl) then) =
+  factory _$$StateInitialImplCopyWith(_$StateInitialImpl value, $Res Function(_$StateInitialImpl) then) =
       __$$StateInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StateInitialImplCopyWithImpl<$Res>
-    extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateInitialImpl>
+class __$$StateInitialImplCopyWithImpl<$Res> extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateInitialImpl>
     implements _$$StateInitialImplCopyWith<$Res> {
-  __$$StateInitialImplCopyWithImpl(
-      _$StateInitialImpl _value, $Res Function(_$StateInitialImpl) _then)
+  __$$StateInitialImplCopyWithImpl(_$StateInitialImpl _value, $Res Function(_$StateInitialImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DiscoverNewDailyTripsState
@@ -116,8 +111,7 @@ class _$StateInitialImpl implements StateInitial {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StateInitialImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$StateInitialImpl);
   }
 
   @override
@@ -198,19 +192,16 @@ abstract class StateInitial implements DiscoverNewDailyTripsState {
 
 /// @nodoc
 abstract class _$$StateLoadedImplCopyWith<$Res> {
-  factory _$$StateLoadedImplCopyWith(
-          _$StateLoadedImpl value, $Res Function(_$StateLoadedImpl) then) =
+  factory _$$StateLoadedImplCopyWith(_$StateLoadedImpl value, $Res Function(_$StateLoadedImpl) then) =
       __$$StateLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DayTrip> dayTrips, bool isFabVisible});
 }
 
 /// @nodoc
-class __$$StateLoadedImplCopyWithImpl<$Res>
-    extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateLoadedImpl>
+class __$$StateLoadedImplCopyWithImpl<$Res> extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateLoadedImpl>
     implements _$$StateLoadedImplCopyWith<$Res> {
-  __$$StateLoadedImplCopyWithImpl(
-      _$StateLoadedImpl _value, $Res Function(_$StateLoadedImpl) _then)
+  __$$StateLoadedImplCopyWithImpl(_$StateLoadedImpl _value, $Res Function(_$StateLoadedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DiscoverNewDailyTripsState
@@ -237,9 +228,7 @@ class __$$StateLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StateLoadedImpl implements StateLoaded {
-  const _$StateLoadedImpl(
-      {required final List<DayTrip> dayTrips, this.isFabVisible = true})
-      : _dayTrips = dayTrips;
+  const _$StateLoadedImpl({required final List<DayTrip> dayTrips, this.isFabVisible = true}) : _dayTrips = dayTrips;
 
   final List<DayTrip> _dayTrips;
   @override
@@ -264,13 +253,11 @@ class _$StateLoadedImpl implements StateLoaded {
         (other.runtimeType == runtimeType &&
             other is _$StateLoadedImpl &&
             const DeepCollectionEquality().equals(other._dayTrips, _dayTrips) &&
-            (identical(other.isFabVisible, isFabVisible) ||
-                other.isFabVisible == isFabVisible));
+            (identical(other.isFabVisible, isFabVisible) || other.isFabVisible == isFabVisible));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_dayTrips), isFabVisible);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_dayTrips), isFabVisible);
 
   /// Create a copy of DiscoverNewDailyTripsState
   /// with the given fields replaced by the non-null parameter values.
@@ -350,9 +337,7 @@ class _$StateLoadedImpl implements StateLoaded {
 }
 
 abstract class StateLoaded implements DiscoverNewDailyTripsState {
-  const factory StateLoaded(
-      {required final List<DayTrip> dayTrips,
-      final bool isFabVisible}) = _$StateLoadedImpl;
+  const factory StateLoaded({required final List<DayTrip> dayTrips, final bool isFabVisible}) = _$StateLoadedImpl;
 
   List<DayTrip> get dayTrips;
   bool get isFabVisible;
@@ -360,26 +345,21 @@ abstract class StateLoaded implements DiscoverNewDailyTripsState {
   /// Create a copy of DiscoverNewDailyTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StateLoadedImplCopyWith<_$StateLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StateLoadedImplCopyWith<_$StateLoadedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$StateErrorImplCopyWith<$Res> {
-  factory _$$StateErrorImplCopyWith(
-          _$StateErrorImpl value, $Res Function(_$StateErrorImpl) then) =
+  factory _$$StateErrorImplCopyWith(_$StateErrorImpl value, $Res Function(_$StateErrorImpl) then) =
       __$$StateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$StateErrorImplCopyWithImpl<$Res>
-    extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateErrorImpl>
+class __$$StateErrorImplCopyWithImpl<$Res> extends _$DiscoverNewDailyTripsStateCopyWithImpl<$Res, _$StateErrorImpl>
     implements _$$StateErrorImplCopyWith<$Res> {
-  __$$StateErrorImplCopyWithImpl(
-      _$StateErrorImpl _value, $Res Function(_$StateErrorImpl) _then)
-      : super(_value, _then);
+  __$$StateErrorImplCopyWithImpl(_$StateErrorImpl _value, $Res Function(_$StateErrorImpl) _then) : super(_value, _then);
 
   /// Create a copy of DiscoverNewDailyTripsState
   /// with the given fields replaced by the non-null parameter values.
@@ -506,6 +486,5 @@ abstract class StateError implements DiscoverNewDailyTripsState {
   /// Create a copy of DiscoverNewDailyTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }

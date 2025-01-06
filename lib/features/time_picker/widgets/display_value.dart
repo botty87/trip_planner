@@ -57,8 +57,7 @@ class _ValueWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSelected = context
-        .select<TimePickerCubit, bool>((cubit) => cubit.state.selectedInput == selectedInput);
+    final isSelected = context.select<TimePickerCubit, bool>((cubit) => cubit.state.selectedInput == selectedInput);
 
     final value = context.select<TimePickerCubit, String>((cubit) => switch (selectedInput) {
           SelectedInput.HOUR => cubit.state.time.hour.toString().padLeft(2, '0'),

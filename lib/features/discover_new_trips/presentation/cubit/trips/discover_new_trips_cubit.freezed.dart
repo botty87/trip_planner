@@ -94,14 +94,12 @@ mixin _$DiscoverNewTripsState {
 
 /// @nodoc
 abstract class $DiscoverNewTripsStateCopyWith<$Res> {
-  factory $DiscoverNewTripsStateCopyWith(DiscoverNewTripsState value,
-          $Res Function(DiscoverNewTripsState) then) =
+  factory $DiscoverNewTripsStateCopyWith(DiscoverNewTripsState value, $Res Function(DiscoverNewTripsState) then) =
       _$DiscoverNewTripsStateCopyWithImpl<$Res, DiscoverNewTripsState>;
 }
 
 /// @nodoc
-class _$DiscoverNewTripsStateCopyWithImpl<$Res,
-        $Val extends DiscoverNewTripsState>
+class _$DiscoverNewTripsStateCopyWithImpl<$Res, $Val extends DiscoverNewTripsState>
     implements $DiscoverNewTripsStateCopyWith<$Res> {
   _$DiscoverNewTripsStateCopyWithImpl(this._value, this._then);
 
@@ -116,17 +114,14 @@ class _$DiscoverNewTripsStateCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$StateInitialImplCopyWith<$Res> {
-  factory _$$StateInitialImplCopyWith(
-          _$StateInitialImpl value, $Res Function(_$StateInitialImpl) then) =
+  factory _$$StateInitialImplCopyWith(_$StateInitialImpl value, $Res Function(_$StateInitialImpl) then) =
       __$$StateInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StateInitialImplCopyWithImpl<$Res>
-    extends _$DiscoverNewTripsStateCopyWithImpl<$Res, _$StateInitialImpl>
+class __$$StateInitialImplCopyWithImpl<$Res> extends _$DiscoverNewTripsStateCopyWithImpl<$Res, _$StateInitialImpl>
     implements _$$StateInitialImplCopyWith<$Res> {
-  __$$StateInitialImplCopyWithImpl(
-      _$StateInitialImpl _value, $Res Function(_$StateInitialImpl) _then)
+  __$$StateInitialImplCopyWithImpl(_$StateInitialImpl _value, $Res Function(_$StateInitialImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DiscoverNewTripsState
@@ -146,14 +141,12 @@ class _$StateInitialImpl with DiagnosticableTreeMixin implements _StateInitial {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'DiscoverNewTripsState.initial'));
+    properties.add(DiagnosticsProperty('type', 'DiscoverNewTripsState.initial'));
   }
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StateInitialImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$StateInitialImpl);
   }
 
   @override
@@ -264,8 +257,7 @@ abstract class _StateInitial implements DiscoverNewTripsState {
 
 /// @nodoc
 abstract class _$$StateNormalImplCopyWith<$Res> {
-  factory _$$StateNormalImplCopyWith(
-          _$StateNormalImpl value, $Res Function(_$StateNormalImpl) then) =
+  factory _$$StateNormalImplCopyWith(_$StateNormalImpl value, $Res Function(_$StateNormalImpl) then) =
       __$$StateNormalImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
@@ -281,11 +273,9 @@ abstract class _$$StateNormalImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$StateNormalImplCopyWithImpl<$Res>
-    extends _$DiscoverNewTripsStateCopyWithImpl<$Res, _$StateNormalImpl>
+class __$$StateNormalImplCopyWithImpl<$Res> extends _$DiscoverNewTripsStateCopyWithImpl<$Res, _$StateNormalImpl>
     implements _$$StateNormalImplCopyWith<$Res> {
-  __$$StateNormalImplCopyWithImpl(
-      _$StateNormalImpl _value, $Res Function(_$StateNormalImpl) _then)
+  __$$StateNormalImplCopyWithImpl(_$StateNormalImpl _value, $Res Function(_$StateNormalImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DiscoverNewTripsState
@@ -390,8 +380,7 @@ class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
   final Set<Language> _selectedLanguages;
   @override
   Set<Language> get selectedLanguages {
-    if (_selectedLanguages is EqualUnmodifiableSetView)
-      return _selectedLanguages;
+    if (_selectedLanguages is EqualUnmodifiableSetView) return _selectedLanguages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_selectedLanguages);
   }
@@ -402,8 +391,7 @@ class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
   final Set<Language> _availableLanguages;
   @override
   Set<Language> get availableLanguages {
-    if (_availableLanguages is EqualUnmodifiableSetView)
-      return _availableLanguages;
+    if (_availableLanguages is EqualUnmodifiableSetView) return _availableLanguages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_availableLanguages);
   }
@@ -430,8 +418,7 @@ class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
       ..add(DiagnosticsProperty('selectedLanguages', selectedLanguages))
       ..add(DiagnosticsProperty('languageQuery', languageQuery))
       ..add(DiagnosticsProperty('availableLanguages', availableLanguages))
-      ..add(DiagnosticsProperty(
-          'showOnlySelectedLanguages', showOnlySelectedLanguages));
+      ..add(DiagnosticsProperty('showOnlySelectedLanguages', showOnlySelectedLanguages));
   }
 
   @override
@@ -441,20 +428,13 @@ class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
             other is _$StateNormalImpl &&
             (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality().equals(other._trips, _trips) &&
-            const DeepCollectionEquality()
-                .equals(other._filteredTrips, _filteredTrips) &&
-            (identical(other.searchDescription, searchDescription) ||
-                other.searchDescription == searchDescription) &&
-            (identical(other.isMoreSectionOpen, isMoreSectionOpen) ||
-                other.isMoreSectionOpen == isMoreSectionOpen) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedLanguages, _selectedLanguages) &&
-            (identical(other.languageQuery, languageQuery) ||
-                other.languageQuery == languageQuery) &&
-            const DeepCollectionEquality()
-                .equals(other._availableLanguages, _availableLanguages) &&
-            (identical(other.showOnlySelectedLanguages,
-                    showOnlySelectedLanguages) ||
+            const DeepCollectionEquality().equals(other._filteredTrips, _filteredTrips) &&
+            (identical(other.searchDescription, searchDescription) || other.searchDescription == searchDescription) &&
+            (identical(other.isMoreSectionOpen, isMoreSectionOpen) || other.isMoreSectionOpen == isMoreSectionOpen) &&
+            const DeepCollectionEquality().equals(other._selectedLanguages, _selectedLanguages) &&
+            (identical(other.languageQuery, languageQuery) || other.languageQuery == languageQuery) &&
+            const DeepCollectionEquality().equals(other._availableLanguages, _availableLanguages) &&
+            (identical(other.showOnlySelectedLanguages, showOnlySelectedLanguages) ||
                 other.showOnlySelectedLanguages == showOnlySelectedLanguages));
   }
 
@@ -496,16 +476,8 @@ class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
         normal,
     required TResult Function(String message) error,
   }) {
-    return normal(
-        query,
-        trips,
-        filteredTrips,
-        searchDescription,
-        isMoreSectionOpen,
-        selectedLanguages,
-        languageQuery,
-        availableLanguages,
-        showOnlySelectedLanguages);
+    return normal(query, trips, filteredTrips, searchDescription, isMoreSectionOpen, selectedLanguages, languageQuery,
+        availableLanguages, showOnlySelectedLanguages);
   }
 
   @override
@@ -525,16 +497,8 @@ class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
         normal,
     TResult? Function(String message)? error,
   }) {
-    return normal?.call(
-        query,
-        trips,
-        filteredTrips,
-        searchDescription,
-        isMoreSectionOpen,
-        selectedLanguages,
-        languageQuery,
-        availableLanguages,
-        showOnlySelectedLanguages);
+    return normal?.call(query, trips, filteredTrips, searchDescription, isMoreSectionOpen, selectedLanguages,
+        languageQuery, availableLanguages, showOnlySelectedLanguages);
   }
 
   @override
@@ -556,16 +520,8 @@ class _$StateNormalImpl with DiagnosticableTreeMixin implements _StateNormal {
     required TResult orElse(),
   }) {
     if (normal != null) {
-      return normal(
-          query,
-          trips,
-          filteredTrips,
-          searchDescription,
-          isMoreSectionOpen,
-          selectedLanguages,
-          languageQuery,
-          availableLanguages,
-          showOnlySelectedLanguages);
+      return normal(query, trips, filteredTrips, searchDescription, isMoreSectionOpen, selectedLanguages, languageQuery,
+          availableLanguages, showOnlySelectedLanguages);
     }
     return orElse();
   }
@@ -630,26 +586,21 @@ abstract class _StateNormal implements DiscoverNewTripsState {
   /// Create a copy of DiscoverNewTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StateNormalImplCopyWith<_$StateNormalImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StateNormalImplCopyWith<_$StateNormalImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$StateErrorImplCopyWith<$Res> {
-  factory _$$StateErrorImplCopyWith(
-          _$StateErrorImpl value, $Res Function(_$StateErrorImpl) then) =
+  factory _$$StateErrorImplCopyWith(_$StateErrorImpl value, $Res Function(_$StateErrorImpl) then) =
       __$$StateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$StateErrorImplCopyWithImpl<$Res>
-    extends _$DiscoverNewTripsStateCopyWithImpl<$Res, _$StateErrorImpl>
+class __$$StateErrorImplCopyWithImpl<$Res> extends _$DiscoverNewTripsStateCopyWithImpl<$Res, _$StateErrorImpl>
     implements _$$StateErrorImplCopyWith<$Res> {
-  __$$StateErrorImplCopyWithImpl(
-      _$StateErrorImpl _value, $Res Function(_$StateErrorImpl) _then)
-      : super(_value, _then);
+  __$$StateErrorImplCopyWithImpl(_$StateErrorImpl _value, $Res Function(_$StateErrorImpl) _then) : super(_value, _then);
 
   /// Create a copy of DiscoverNewTripsState
   /// with the given fields replaced by the non-null parameter values.
@@ -814,6 +765,5 @@ abstract class _StateError implements DiscoverNewTripsState {
   /// Create a copy of DiscoverNewTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StateErrorImplCopyWith<_$StateErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }

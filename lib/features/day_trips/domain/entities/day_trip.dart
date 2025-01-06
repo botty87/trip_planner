@@ -21,9 +21,7 @@ sealed class DayTrip with _$DayTrip {
     TimeOfDay startTime,
     @JsonKey(includeIfNull: false) List<TripStopsDirections>? tripStopsDirections,
     @Default(false) bool tripStopsDirectionsUpToDate,
-    @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-    @Default(TravelMode.driving)
-    TravelMode travelMode,
+    @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) @Default(TravelMode.driving) TravelMode travelMode,
     @Default(true) bool showDirections,
     @Default(true) bool useDifferentDirectionsColors,
   }) = _DayTrip;

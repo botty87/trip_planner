@@ -18,9 +18,7 @@ class _ModeSelector extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(verticalSpace),
-          child: Text(themeText,
-              style:
-                  Theme.of(context).textTheme.titleMedium?.copyWith(fontStyle: FontStyle.italic)),
+          child: Text(themeText, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontStyle: FontStyle.italic)),
         ),
         SegmentedButton<AdaptiveThemeMode>(
           showSelectedIcon: false,

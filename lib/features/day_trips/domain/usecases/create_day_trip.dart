@@ -47,6 +47,5 @@ class CreateDayTripParams extends Equatable {
   });
 
   @override
-  List<Object?> get props =>
-      [description, tripId, startTime, travelMode, showDirections, useDifferentDirectionsColors];
+  List<Object?> get props => [description, tripId, startTime, travelMode, showDirections, useDifferentDirectionsColors];
 }

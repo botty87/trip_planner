@@ -20,12 +20,8 @@ import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 
 import 'account_cubit_test.mocks.dart';
 
-@GenerateNiceMocks([
-  MockSpec<LogoutUser>(),
-  MockSpec<ReauthenticateUser>(),
-  MockSpec<UpdateUserDetails>(),
-  MockSpec<DeleteUser>()
-])
+@GenerateNiceMocks(
+    [MockSpec<LogoutUser>(), MockSpec<ReauthenticateUser>(), MockSpec<UpdateUserDetails>(), MockSpec<DeleteUser>()])
 void main() {
   late MockLogoutUser mockUserLogout;
   late MockReauthenticateUser mockReauthenticateUser;
@@ -85,9 +81,7 @@ void main() {
       build: () => cubit(),
       act: (cubit) => cubit.logOut(),
       expect: () => [
-        AccountState.normal(
-            user: tUser,
-            errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
+        AccountState.normal(user: tUser, errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {
@@ -132,8 +126,7 @@ void main() {
     build: () => cubit(),
     act: (cubit) => cubit.passwordChanged('new password'),
     expect: () => [
-      AccountState.editing(
-          user: tUser, name: tUser.name, email: tUser.email, password: 'new password'),
+      AccountState.editing(user: tUser, name: tUser.name, email: tUser.email, password: 'new password'),
     ],
   );
 
@@ -143,8 +136,7 @@ void main() {
     build: () => cubit(),
     act: (cubit) => cubit.confirmPasswordChanged('new password'),
     expect: () => [
-      AccountState.editing(
-          user: tUser, name: tUser.name, email: tUser.email, confirmPassword: 'new password'),
+      AccountState.editing(user: tUser, name: tUser.name, email: tUser.email, confirmPassword: 'new password'),
     ],
   );
 
@@ -154,8 +146,7 @@ void main() {
     build: () => cubit(),
     act: (cubit) => cubit.editPassword(),
     expect: () => [
-      AccountState.editing(
-          user: tUser, name: tUser.name, email: tUser.email, isEditingPasswordVisible: true),
+      AccountState.editing(user: tUser, name: tUser.name, email: tUser.email, isEditingPasswordVisible: true),
     ],
   );
 
@@ -219,27 +210,25 @@ void main() {
 
     blocTest(
       'when password is empty and confirm password is null do not emit error state',
-      seed: () => AccountState.editing(
-          user: tUser, name: tUser.name, email: tUser.email, password: '', confirmPassword: null),
+      seed: () =>
+          AccountState.editing(user: tUser, name: tUser.name, email: tUser.email, password: '', confirmPassword: null),
       build: () => cubit(),
       act: (cubit) => cubit.save(),
       expect: () => [
         AccountState.reauthenticating(
-            user: tUser,
-            editUserData: EditUserData(name: tUser.name, email: tUser.email, password: null))
+            user: tUser, editUserData: EditUserData(name: tUser.name, email: tUser.email, password: null))
       ],
     );
 
     blocTest(
       'when password is empty and confirm password is empty do not emit error state',
-      seed: () => AccountState.editing(
-          user: tUser, name: tUser.name, email: tUser.email, password: '', confirmPassword: ''),
+      seed: () =>
+          AccountState.editing(user: tUser, name: tUser.name, email: tUser.email, password: '', confirmPassword: ''),
       build: () => cubit(),
       act: (cubit) => cubit.save(),
       expect: () => [
         AccountState.reauthenticating(
-            user: tUser,
-            editUserData: EditUserData(name: tUser.name, email: tUser.email, password: null))
+            user: tUser, editUserData: EditUserData(name: tUser.name, email: tUser.email, password: null))
       ],
     );
 
@@ -250,10 +239,7 @@ void main() {
       act: (cubit) => cubit.save(),
       expect: () => [
         AccountState.editing(
-            user: tUser,
-            name: tUser.name,
-            email: 'invalid email',
-            errorMessage: LocaleKeys.invalidEmail.tr()),
+            user: tUser, name: tUser.name, email: 'invalid email', errorMessage: LocaleKeys.invalidEmail.tr()),
         AccountState.editing(user: tUser, name: tUser.name, email: 'invalid email'),
       ],
     );
@@ -261,17 +247,12 @@ void main() {
     blocTest<AccountCubit, AccountState>(
       'when email is valid adn different and password is null emit reauthenticating state',
       seed: () => const AccountState.editing(
-          user: tUser,
-          name: 'name',
-          email: 'email@test.com',
-          password: null,
-          confirmPassword: null),
+          user: tUser, name: 'name', email: 'email@test.com', password: null, confirmPassword: null),
       build: () => cubit(),
       act: (cubit) => cubit.save(),
       expect: () => [
         const AccountState.reauthenticating(
-            user: tUser,
-            editUserData: EditUserData(name: 'name', email: 'email@test.com', password: null))
+            user: tUser, editUserData: EditUserData(name: 'name', email: 'email@test.com', password: null))
       ],
     );
   });
@@ -310,8 +291,7 @@ void main() {
       password: 'password',
     ),
     setUp: () {
-      when(mockReauthenticateUser(any))
-          .thenAnswer((_) async => const Left(UserFailures.unknownError()));
+      when(mockReauthenticateUser(any)).thenAnswer((_) async => const Left(UserFailures.unknownError()));
     },
     build: () => cubit(),
     act: (cubit) => cubit.reauthenticate(),
@@ -341,8 +321,7 @@ void main() {
     ),
     setUp: () {
       when(mockReauthenticateUser(any)).thenAnswer((_) async => const Right(null));
-      when(mockUpdateUserDetails(any))
-          .thenAnswer((_) async => const Left(UserFailures.unknownError()));
+      when(mockUpdateUserDetails(any)).thenAnswer((_) async => const Left(UserFailures.unknownError()));
     },
     build: () => cubit(),
     act: (cubit) => cubit.reauthenticate(),
@@ -368,16 +347,13 @@ void main() {
       'On fail on reauthentication emit deleting state and then normal state with error message',
       seed: () => const AccountState.normal(user: tUser),
       setUp: () {
-        when(mockReauthenticateUser(any))
-            .thenAnswer((_) async => const Left(UserFailures.unknownError()));
+        when(mockReauthenticateUser(any)).thenAnswer((_) async => const Left(UserFailures.unknownError()));
       },
       build: () => cubit(),
       act: (cubit) => cubit.deleteAccount(password: 'password'),
       expect: () => [
         const AccountState.deleting(user: tUser),
-        AccountState.normal(
-            user: tUser,
-            errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
+        AccountState.normal(user: tUser, errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {
@@ -397,9 +373,7 @@ void main() {
       act: (cubit) => cubit.deleteAccount(password: 'password'),
       expect: () => [
         const AccountState.deleting(user: tUser),
-        AccountState.normal(
-            user: tUser,
-            errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
+        AccountState.normal(user: tUser, errorMessage: const UserFailures.unknownError().getUserFailureErrorMessage()),
         const AccountState.normal(user: tUser),
       ],
       verify: (_) {

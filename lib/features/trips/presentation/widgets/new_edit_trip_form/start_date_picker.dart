@@ -43,8 +43,7 @@ class _StartDatePicker extends HookWidget {
               return null;
             },
             dayBorderRadius: BorderRadius.circular(8),
-            yearBuilder: (
-                {decoration, isCurrentYear, isDisabled, isSelected, textStyle, required year}) {
+            yearBuilder: ({decoration, isCurrentYear, isDisabled, isSelected, textStyle, required year}) {
               if (isSelected ?? false) {
                 return Center(
                   child: Container(
@@ -75,16 +74,13 @@ class _StartDatePicker extends HookWidget {
           value: [initialStartDate],
           onValueChanged: (value) {
             onValueChanged(value.first);
-            isStartDateBeforeToday
-                .add(value.first.isBefore(DateTime.now().add(const Duration(days: -1))));
+            isStartDateBeforeToday.add(value.first.isBefore(DateTime.now().add(const Duration(days: -1))));
           },
         ),
         StreamBuilder<bool>(
           stream: isStartDateBeforeToday.stream,
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            return AnimatedSize(
-                duration: const Duration(milliseconds: 300),
-                child: _buildWarning(context, snapshot));
+            return AnimatedSize(duration: const Duration(milliseconds: 300), child: _buildWarning(context, snapshot));
           },
         ),
       ],

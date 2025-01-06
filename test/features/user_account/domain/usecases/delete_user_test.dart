@@ -72,8 +72,7 @@ void main() {
     () async {
       // arrange
       when(mockInternetConnection.hasInternetAccess).thenAnswer((_) async => true);
-      when(mockTripsRepository.deleteAllTrips(any))
-          .thenAnswer((_) async => left(const TripsFailure()));
+      when(mockTripsRepository.deleteAllTrips(any)).thenAnswer((_) async => left(const TripsFailure()));
       // act
       final result = await usecase(const DeleteUserParams(userId: tUserId));
       // assert
@@ -87,8 +86,7 @@ void main() {
       // arrange
       when(mockInternetConnection.hasInternetAccess).thenAnswer((_) async => true);
       when(mockTripsRepository.deleteAllTrips(any)).thenAnswer((_) async => right(null));
-      when(mockUserRepository.deleteUser())
-          .thenAnswer((_) async => left(const UserFailures.unknownError()));
+      when(mockUserRepository.deleteUser()).thenAnswer((_) async => left(const UserFailures.unknownError()));
       // act
       final result = await usecase(const DeleteUserParams(userId: tUserId));
       // assert

@@ -19,8 +19,7 @@ sealed class GooglePlacesState with _$GooglePlacesState {
 sealed class GooglePlacesError with _$GooglePlacesError {
   const factory GooglePlacesError.noInternetConnection() = _GooglePlacesErrorNoInternetConnection;
 
-  const factory GooglePlacesError.requestDenied({required String message}) =
-      _GooglePlacesErrorRequestDenied;
+  const factory GooglePlacesError.requestDenied({required String message}) = _GooglePlacesErrorRequestDenied;
 
   const factory GooglePlacesError.requestCancelled() = _GooglePlacesErrorRequestCancelled;
 

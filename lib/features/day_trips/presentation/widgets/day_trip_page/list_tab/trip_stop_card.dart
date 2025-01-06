@@ -32,8 +32,7 @@ final class TripStopCard extends StatelessWidget {
       onTap: () {
         slidableController?.close();
         final state = context.read<DayTripCubit>().state;
-        context.router
-            .push(TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop));
+        context.router.push(TripStopRoute(trip: state.trip, dayTrip: state.dayTrip, tripStop: tripStop));
       },
       color: tripStop.isDone ? Colors.green[context.isDarkMode ? 700 : 100] : null,
     );

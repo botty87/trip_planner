@@ -12,9 +12,9 @@ import 'package:trip_planner/features/import_old_trips/domain/usecases/read_old_
 import 'package:trip_planner/features/import_old_trips/errors/import_old_trips_failure.dart';
 import 'package:trip_planner/features/import_old_trips/presentation/cubit/import_old_trips_cubit.dart';
 import 'package:trip_planner/features/settings/domain/entities/settings.dart';
+import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
 import 'package:trip_planner/features/tutorials/domain/entities/tutorials_data.dart';
 import 'package:trip_planner/features/user_account/domain/entities/user.dart';
-import 'package:trip_planner/ui/widgets/generics/items_render_mode.dart';
 
 import 'import_old_trips_cubit_test.mocks.dart';
 
@@ -40,11 +40,11 @@ void main() {
     oldTripsImported: false,
     tutorialsData: tTutorialsData,
     settings: tSettings,
-    largeScreenViewMode: ViewMode.list,
+    viewPreferences: ViewPreferences(),
   );
 
-  ImportOldTripsCubit getStandartCubit() => ImportOldTripsCubit(
-      readOldTrips: mockReadOldTrips, importOldTrips: mockImportOldTrips, user: tUser);
+  ImportOldTripsCubit getStandartCubit() =>
+      ImportOldTripsCubit(readOldTrips: mockReadOldTrips, importOldTrips: mockImportOldTrips, user: tUser);
 
   group('ImportOldTripsCubit', () {
     blocTest(
@@ -75,8 +75,7 @@ void main() {
 
     blocTest(
       '_readOldTripsAction should emit error when reading old trips fails',
-      setUp: () => when(mockReadOldTrips.call(any))
-          .thenAnswer((_) async => const Left(ImportOldTripsFailure())),
+      setUp: () => when(mockReadOldTrips.call(any)).thenAnswer((_) async => const Left(ImportOldTripsFailure())),
       build: () => getStandartCubit(),
       act: (cubit) => cubit.reload(),
       expect: () => [ImportOldTripsState.error(message: LocaleKeys.unknownError.tr())],
@@ -104,8 +103,7 @@ void main() {
 
     blocTest(
       'import should emit error when importing trips fails',
-      setUp: () => when(mockImportOldTrips.call(any))
-          .thenAnswer((_) async => const Left(ImportOldTripsFailure())),
+      setUp: () => when(mockImportOldTrips.call(any)).thenAnswer((_) async => const Left(ImportOldTripsFailure())),
       seed: () => const ImportOldTripsState.loaded(trips: [], selectedTripsIds: {'1'}),
       build: () => getStandartCubit(),
       act: (cubit) async => cubit.import(),

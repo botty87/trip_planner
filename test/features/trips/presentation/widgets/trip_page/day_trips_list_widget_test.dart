@@ -131,9 +131,11 @@ void main() {
           child: BlocProvider(
             create: (context) => mockTripCubit,
             child: const CustomScrollView(
-              slivers: [DayTripsListWidget(
-                orientation: Orientation.portrait,
-              ),],
+              slivers: [
+                DayTripsListWidget(
+                  orientation: Orientation.portrait,
+                ),
+              ],
             ),
           ),
         ),
@@ -154,9 +156,11 @@ void main() {
           child: BlocProvider(
             create: (context) => mockTripCubit,
             child: const CustomScrollView(
-              slivers: [DayTripsListWidget(
-                orientation: Orientation.portrait,
-              ),],
+              slivers: [
+                DayTripsListWidget(
+                  orientation: Orientation.portrait,
+                ),
+              ],
             ),
           ),
         ),

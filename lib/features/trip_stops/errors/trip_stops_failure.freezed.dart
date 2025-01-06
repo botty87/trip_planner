@@ -21,22 +21,19 @@ mixin _$TripStopsFailure {
   /// Create a copy of TripStopsFailure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TripStopsFailureCopyWith<TripStopsFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TripStopsFailureCopyWith<TripStopsFailure> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TripStopsFailureCopyWith<$Res> {
-  factory $TripStopsFailureCopyWith(
-          TripStopsFailure value, $Res Function(TripStopsFailure) then) =
+  factory $TripStopsFailureCopyWith(TripStopsFailure value, $Res Function(TripStopsFailure) then) =
       _$TripStopsFailureCopyWithImpl<$Res, TripStopsFailure>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class _$TripStopsFailureCopyWithImpl<$Res, $Val extends TripStopsFailure>
-    implements $TripStopsFailureCopyWith<$Res> {
+class _$TripStopsFailureCopyWithImpl<$Res, $Val extends TripStopsFailure> implements $TripStopsFailureCopyWith<$Res> {
   _$TripStopsFailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -61,10 +58,8 @@ class _$TripStopsFailureCopyWithImpl<$Res, $Val extends TripStopsFailure>
 }
 
 /// @nodoc
-abstract class _$$TripStopsFailureImplCopyWith<$Res>
-    implements $TripStopsFailureCopyWith<$Res> {
-  factory _$$TripStopsFailureImplCopyWith(_$TripStopsFailureImpl value,
-          $Res Function(_$TripStopsFailureImpl) then) =
+abstract class _$$TripStopsFailureImplCopyWith<$Res> implements $TripStopsFailureCopyWith<$Res> {
+  factory _$$TripStopsFailureImplCopyWith(_$TripStopsFailureImpl value, $Res Function(_$TripStopsFailureImpl) then) =
       __$$TripStopsFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -72,11 +67,9 @@ abstract class _$$TripStopsFailureImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TripStopsFailureImplCopyWithImpl<$Res>
-    extends _$TripStopsFailureCopyWithImpl<$Res, _$TripStopsFailureImpl>
+class __$$TripStopsFailureImplCopyWithImpl<$Res> extends _$TripStopsFailureCopyWithImpl<$Res, _$TripStopsFailureImpl>
     implements _$$TripStopsFailureImplCopyWith<$Res> {
-  __$$TripStopsFailureImplCopyWithImpl(_$TripStopsFailureImpl _value,
-      $Res Function(_$TripStopsFailureImpl) _then)
+  __$$TripStopsFailureImplCopyWithImpl(_$TripStopsFailureImpl _value, $Res Function(_$TripStopsFailureImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopsFailure
@@ -125,13 +118,11 @@ class _$TripStopsFailureImpl implements _TripStopsFailure {
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopsFailureImplCopyWith<_$TripStopsFailureImpl> get copyWith =>
-      __$$TripStopsFailureImplCopyWithImpl<_$TripStopsFailureImpl>(
-          this, _$identity);
+      __$$TripStopsFailureImplCopyWithImpl<_$TripStopsFailureImpl>(this, _$identity);
 }
 
 abstract class _TripStopsFailure implements TripStopsFailure {
-  const factory _TripStopsFailure({final String? message}) =
-      _$TripStopsFailureImpl;
+  const factory _TripStopsFailure({final String? message}) = _$TripStopsFailureImpl;
 
   @override
   String? get message;
@@ -140,6 +131,5 @@ abstract class _TripStopsFailure implements TripStopsFailure {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopsFailureImplCopyWith<_$TripStopsFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripStopsFailureImplCopyWith<_$TripStopsFailureImpl> get copyWith => throw _privateConstructorUsedError;
 }

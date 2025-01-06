@@ -19,24 +19,20 @@ mixin _$ImportOldTripsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        loaded,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) loaded,
     required TResult Function(String message) error,
     required TResult Function() noTrips,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        importing,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) importing,
     required TResult Function() imported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        loaded,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? noTrips,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult? Function()? imported,
   }) =>
       throw _privateConstructorUsedError;
@@ -46,8 +42,7 @@ mixin _$ImportOldTripsState {
     TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult Function(String message)? error,
     TResult Function()? noTrips,
-    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult Function()? imported,
     required TResult orElse(),
   }) =>
@@ -87,8 +82,7 @@ mixin _$ImportOldTripsState {
 
 /// @nodoc
 abstract class $ImportOldTripsStateCopyWith<$Res> {
-  factory $ImportOldTripsStateCopyWith(
-          ImportOldTripsState value, $Res Function(ImportOldTripsState) then) =
+  factory $ImportOldTripsStateCopyWith(ImportOldTripsState value, $Res Function(ImportOldTripsState) then) =
       _$ImportOldTripsStateCopyWithImpl<$Res, ImportOldTripsState>;
 }
 
@@ -109,19 +103,16 @@ class _$ImportOldTripsStateCopyWithImpl<$Res, $Val extends ImportOldTripsState>
 /// @nodoc
 abstract class _$$ImportOldTripsStateInitialImplCopyWith<$Res> {
   factory _$$ImportOldTripsStateInitialImplCopyWith(
-          _$ImportOldTripsStateInitialImpl value,
-          $Res Function(_$ImportOldTripsStateInitialImpl) then) =
+          _$ImportOldTripsStateInitialImpl value, $Res Function(_$ImportOldTripsStateInitialImpl) then) =
       __$$ImportOldTripsStateInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ImportOldTripsStateInitialImplCopyWithImpl<$Res>
-    extends _$ImportOldTripsStateCopyWithImpl<$Res,
-        _$ImportOldTripsStateInitialImpl>
+    extends _$ImportOldTripsStateCopyWithImpl<$Res, _$ImportOldTripsStateInitialImpl>
     implements _$$ImportOldTripsStateInitialImplCopyWith<$Res> {
   __$$ImportOldTripsStateInitialImplCopyWithImpl(
-      _$ImportOldTripsStateInitialImpl _value,
-      $Res Function(_$ImportOldTripsStateInitialImpl) _then)
+      _$ImportOldTripsStateInitialImpl _value, $Res Function(_$ImportOldTripsStateInitialImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ImportOldTripsState
@@ -140,9 +131,7 @@ class _$ImportOldTripsStateInitialImpl implements _ImportOldTripsStateInitial {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ImportOldTripsStateInitialImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ImportOldTripsStateInitialImpl);
   }
 
   @override
@@ -152,12 +141,10 @@ class _$ImportOldTripsStateInitialImpl implements _ImportOldTripsStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        loaded,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) loaded,
     required TResult Function(String message) error,
     required TResult Function() noTrips,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        importing,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) importing,
     required TResult Function() imported,
   }) {
     return initial();
@@ -167,12 +154,10 @@ class _$ImportOldTripsStateInitialImpl implements _ImportOldTripsStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        loaded,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? noTrips,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult? Function()? imported,
   }) {
     return initial?.call();
@@ -185,8 +170,7 @@ class _$ImportOldTripsStateInitialImpl implements _ImportOldTripsStateInitial {
     TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult Function(String message)? error,
     TResult Function()? noTrips,
-    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult Function()? imported,
     required TResult orElse(),
   }) {
@@ -241,15 +225,13 @@ class _$ImportOldTripsStateInitialImpl implements _ImportOldTripsStateInitial {
 }
 
 abstract class _ImportOldTripsStateInitial implements ImportOldTripsState {
-  const factory _ImportOldTripsStateInitial() =
-      _$ImportOldTripsStateInitialImpl;
+  const factory _ImportOldTripsStateInitial() = _$ImportOldTripsStateInitialImpl;
 }
 
 /// @nodoc
 abstract class _$$ImportOldTripsStateLoadedImplCopyWith<$Res> {
   factory _$$ImportOldTripsStateLoadedImplCopyWith(
-          _$ImportOldTripsStateLoadedImpl value,
-          $Res Function(_$ImportOldTripsStateLoadedImpl) then) =
+          _$ImportOldTripsStateLoadedImpl value, $Res Function(_$ImportOldTripsStateLoadedImpl) then) =
       __$$ImportOldTripsStateLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<OldTrip> trips, Set<String> selectedTripsIds});
@@ -257,12 +239,10 @@ abstract class _$$ImportOldTripsStateLoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ImportOldTripsStateLoadedImplCopyWithImpl<$Res>
-    extends _$ImportOldTripsStateCopyWithImpl<$Res,
-        _$ImportOldTripsStateLoadedImpl>
+    extends _$ImportOldTripsStateCopyWithImpl<$Res, _$ImportOldTripsStateLoadedImpl>
     implements _$$ImportOldTripsStateLoadedImplCopyWith<$Res> {
   __$$ImportOldTripsStateLoadedImplCopyWithImpl(
-      _$ImportOldTripsStateLoadedImpl _value,
-      $Res Function(_$ImportOldTripsStateLoadedImpl) _then)
+      _$ImportOldTripsStateLoadedImpl _value, $Res Function(_$ImportOldTripsStateLoadedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ImportOldTripsState
@@ -290,8 +270,7 @@ class __$$ImportOldTripsStateLoadedImplCopyWithImpl<$Res>
 
 class _$ImportOldTripsStateLoadedImpl implements ImportOldTripsStateLoaded {
   const _$ImportOldTripsStateLoadedImpl(
-      {required final List<OldTrip> trips,
-      final Set<String> selectedTripsIds = const {}})
+      {required final List<OldTrip> trips, final Set<String> selectedTripsIds = const {}})
       : _trips = trips,
         _selectedTripsIds = selectedTripsIds;
 
@@ -323,35 +302,29 @@ class _$ImportOldTripsStateLoadedImpl implements ImportOldTripsStateLoaded {
         (other.runtimeType == runtimeType &&
             other is _$ImportOldTripsStateLoadedImpl &&
             const DeepCollectionEquality().equals(other._trips, _trips) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedTripsIds, _selectedTripsIds));
+            const DeepCollectionEquality().equals(other._selectedTripsIds, _selectedTripsIds));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_trips),
-      const DeepCollectionEquality().hash(_selectedTripsIds));
+      runtimeType, const DeepCollectionEquality().hash(_trips), const DeepCollectionEquality().hash(_selectedTripsIds));
 
   /// Create a copy of ImportOldTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImportOldTripsStateLoadedImplCopyWith<_$ImportOldTripsStateLoadedImpl>
-      get copyWith => __$$ImportOldTripsStateLoadedImplCopyWithImpl<
-          _$ImportOldTripsStateLoadedImpl>(this, _$identity);
+  _$$ImportOldTripsStateLoadedImplCopyWith<_$ImportOldTripsStateLoadedImpl> get copyWith =>
+      __$$ImportOldTripsStateLoadedImplCopyWithImpl<_$ImportOldTripsStateLoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        loaded,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) loaded,
     required TResult Function(String message) error,
     required TResult Function() noTrips,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        importing,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) importing,
     required TResult Function() imported,
   }) {
     return loaded(trips, selectedTripsIds);
@@ -361,12 +334,10 @@ class _$ImportOldTripsStateLoadedImpl implements ImportOldTripsStateLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        loaded,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? noTrips,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult? Function()? imported,
   }) {
     return loaded?.call(trips, selectedTripsIds);
@@ -379,8 +350,7 @@ class _$ImportOldTripsStateLoadedImpl implements ImportOldTripsStateLoaded {
     TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult Function(String message)? error,
     TResult Function()? noTrips,
-    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult Function()? imported,
     required TResult orElse(),
   }) {
@@ -435,9 +405,8 @@ class _$ImportOldTripsStateLoadedImpl implements ImportOldTripsStateLoaded {
 }
 
 abstract class ImportOldTripsStateLoaded implements ImportOldTripsState {
-  const factory ImportOldTripsStateLoaded(
-      {required final List<OldTrip> trips,
-      final Set<String> selectedTripsIds}) = _$ImportOldTripsStateLoadedImpl;
+  const factory ImportOldTripsStateLoaded({required final List<OldTrip> trips, final Set<String> selectedTripsIds}) =
+      _$ImportOldTripsStateLoadedImpl;
 
   List<OldTrip> get trips;
   Set<String> get selectedTripsIds;
@@ -445,15 +414,14 @@ abstract class ImportOldTripsStateLoaded implements ImportOldTripsState {
   /// Create a copy of ImportOldTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ImportOldTripsStateLoadedImplCopyWith<_$ImportOldTripsStateLoadedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ImportOldTripsStateLoadedImplCopyWith<_$ImportOldTripsStateLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ImportOldTripsStateErrorImplCopyWith<$Res> {
   factory _$$ImportOldTripsStateErrorImplCopyWith(
-          _$ImportOldTripsStateErrorImpl value,
-          $Res Function(_$ImportOldTripsStateErrorImpl) then) =
+          _$ImportOldTripsStateErrorImpl value, $Res Function(_$ImportOldTripsStateErrorImpl) then) =
       __$$ImportOldTripsStateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
@@ -461,12 +429,10 @@ abstract class _$$ImportOldTripsStateErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ImportOldTripsStateErrorImplCopyWithImpl<$Res>
-    extends _$ImportOldTripsStateCopyWithImpl<$Res,
-        _$ImportOldTripsStateErrorImpl>
+    extends _$ImportOldTripsStateCopyWithImpl<$Res, _$ImportOldTripsStateErrorImpl>
     implements _$$ImportOldTripsStateErrorImplCopyWith<$Res> {
   __$$ImportOldTripsStateErrorImplCopyWithImpl(
-      _$ImportOldTripsStateErrorImpl _value,
-      $Res Function(_$ImportOldTripsStateErrorImpl) _then)
+      _$ImportOldTripsStateErrorImpl _value, $Res Function(_$ImportOldTripsStateErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ImportOldTripsState
@@ -514,20 +480,17 @@ class _$ImportOldTripsStateErrorImpl implements ImportOldTripsStateError {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImportOldTripsStateErrorImplCopyWith<_$ImportOldTripsStateErrorImpl>
-      get copyWith => __$$ImportOldTripsStateErrorImplCopyWithImpl<
-          _$ImportOldTripsStateErrorImpl>(this, _$identity);
+  _$$ImportOldTripsStateErrorImplCopyWith<_$ImportOldTripsStateErrorImpl> get copyWith =>
+      __$$ImportOldTripsStateErrorImplCopyWithImpl<_$ImportOldTripsStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        loaded,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) loaded,
     required TResult Function(String message) error,
     required TResult Function() noTrips,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        importing,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) importing,
     required TResult Function() imported,
   }) {
     return error(message);
@@ -537,12 +500,10 @@ class _$ImportOldTripsStateErrorImpl implements ImportOldTripsStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        loaded,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? noTrips,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult? Function()? imported,
   }) {
     return error?.call(message);
@@ -555,8 +516,7 @@ class _$ImportOldTripsStateErrorImpl implements ImportOldTripsStateError {
     TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult Function(String message)? error,
     TResult Function()? noTrips,
-    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult Function()? imported,
     required TResult orElse(),
   }) {
@@ -611,34 +571,30 @@ class _$ImportOldTripsStateErrorImpl implements ImportOldTripsStateError {
 }
 
 abstract class ImportOldTripsStateError implements ImportOldTripsState {
-  const factory ImportOldTripsStateError({required final String message}) =
-      _$ImportOldTripsStateErrorImpl;
+  const factory ImportOldTripsStateError({required final String message}) = _$ImportOldTripsStateErrorImpl;
 
   String get message;
 
   /// Create a copy of ImportOldTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ImportOldTripsStateErrorImplCopyWith<_$ImportOldTripsStateErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ImportOldTripsStateErrorImplCopyWith<_$ImportOldTripsStateErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ImportOldTripsStateNoTripsImplCopyWith<$Res> {
   factory _$$ImportOldTripsStateNoTripsImplCopyWith(
-          _$ImportOldTripsStateNoTripsImpl value,
-          $Res Function(_$ImportOldTripsStateNoTripsImpl) then) =
+          _$ImportOldTripsStateNoTripsImpl value, $Res Function(_$ImportOldTripsStateNoTripsImpl) then) =
       __$$ImportOldTripsStateNoTripsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ImportOldTripsStateNoTripsImplCopyWithImpl<$Res>
-    extends _$ImportOldTripsStateCopyWithImpl<$Res,
-        _$ImportOldTripsStateNoTripsImpl>
+    extends _$ImportOldTripsStateCopyWithImpl<$Res, _$ImportOldTripsStateNoTripsImpl>
     implements _$$ImportOldTripsStateNoTripsImplCopyWith<$Res> {
   __$$ImportOldTripsStateNoTripsImplCopyWithImpl(
-      _$ImportOldTripsStateNoTripsImpl _value,
-      $Res Function(_$ImportOldTripsStateNoTripsImpl) _then)
+      _$ImportOldTripsStateNoTripsImpl _value, $Res Function(_$ImportOldTripsStateNoTripsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ImportOldTripsState
@@ -657,9 +613,7 @@ class _$ImportOldTripsStateNoTripsImpl implements _ImportOldTripsStateNoTrips {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ImportOldTripsStateNoTripsImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ImportOldTripsStateNoTripsImpl);
   }
 
   @override
@@ -669,12 +623,10 @@ class _$ImportOldTripsStateNoTripsImpl implements _ImportOldTripsStateNoTrips {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        loaded,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) loaded,
     required TResult Function(String message) error,
     required TResult Function() noTrips,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        importing,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) importing,
     required TResult Function() imported,
   }) {
     return noTrips();
@@ -684,12 +636,10 @@ class _$ImportOldTripsStateNoTripsImpl implements _ImportOldTripsStateNoTrips {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        loaded,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? noTrips,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult? Function()? imported,
   }) {
     return noTrips?.call();
@@ -702,8 +652,7 @@ class _$ImportOldTripsStateNoTripsImpl implements _ImportOldTripsStateNoTrips {
     TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult Function(String message)? error,
     TResult Function()? noTrips,
-    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult Function()? imported,
     required TResult orElse(),
   }) {
@@ -758,15 +707,13 @@ class _$ImportOldTripsStateNoTripsImpl implements _ImportOldTripsStateNoTrips {
 }
 
 abstract class _ImportOldTripsStateNoTrips implements ImportOldTripsState {
-  const factory _ImportOldTripsStateNoTrips() =
-      _$ImportOldTripsStateNoTripsImpl;
+  const factory _ImportOldTripsStateNoTrips() = _$ImportOldTripsStateNoTripsImpl;
 }
 
 /// @nodoc
 abstract class _$$ImportOldTripsStateImportingImplCopyWith<$Res> {
   factory _$$ImportOldTripsStateImportingImplCopyWith(
-          _$ImportOldTripsStateImportingImpl value,
-          $Res Function(_$ImportOldTripsStateImportingImpl) then) =
+          _$ImportOldTripsStateImportingImpl value, $Res Function(_$ImportOldTripsStateImportingImpl) then) =
       __$$ImportOldTripsStateImportingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<OldTrip> trips, Set<String> selectedTripsIds});
@@ -774,12 +721,10 @@ abstract class _$$ImportOldTripsStateImportingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ImportOldTripsStateImportingImplCopyWithImpl<$Res>
-    extends _$ImportOldTripsStateCopyWithImpl<$Res,
-        _$ImportOldTripsStateImportingImpl>
+    extends _$ImportOldTripsStateCopyWithImpl<$Res, _$ImportOldTripsStateImportingImpl>
     implements _$$ImportOldTripsStateImportingImplCopyWith<$Res> {
   __$$ImportOldTripsStateImportingImplCopyWithImpl(
-      _$ImportOldTripsStateImportingImpl _value,
-      $Res Function(_$ImportOldTripsStateImportingImpl) _then)
+      _$ImportOldTripsStateImportingImpl _value, $Res Function(_$ImportOldTripsStateImportingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ImportOldTripsState
@@ -805,11 +750,9 @@ class __$$ImportOldTripsStateImportingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ImportOldTripsStateImportingImpl
-    implements _ImportOldTripsStateImporting {
+class _$ImportOldTripsStateImportingImpl implements _ImportOldTripsStateImporting {
   const _$ImportOldTripsStateImportingImpl(
-      {required final List<OldTrip> trips,
-      final Set<String> selectedTripsIds = const {}})
+      {required final List<OldTrip> trips, final Set<String> selectedTripsIds = const {}})
       : _trips = trips,
         _selectedTripsIds = selectedTripsIds;
 
@@ -841,36 +784,29 @@ class _$ImportOldTripsStateImportingImpl
         (other.runtimeType == runtimeType &&
             other is _$ImportOldTripsStateImportingImpl &&
             const DeepCollectionEquality().equals(other._trips, _trips) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedTripsIds, _selectedTripsIds));
+            const DeepCollectionEquality().equals(other._selectedTripsIds, _selectedTripsIds));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_trips),
-      const DeepCollectionEquality().hash(_selectedTripsIds));
+      runtimeType, const DeepCollectionEquality().hash(_trips), const DeepCollectionEquality().hash(_selectedTripsIds));
 
   /// Create a copy of ImportOldTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImportOldTripsStateImportingImplCopyWith<
-          _$ImportOldTripsStateImportingImpl>
-      get copyWith => __$$ImportOldTripsStateImportingImplCopyWithImpl<
-          _$ImportOldTripsStateImportingImpl>(this, _$identity);
+  _$$ImportOldTripsStateImportingImplCopyWith<_$ImportOldTripsStateImportingImpl> get copyWith =>
+      __$$ImportOldTripsStateImportingImplCopyWithImpl<_$ImportOldTripsStateImportingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        loaded,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) loaded,
     required TResult Function(String message) error,
     required TResult Function() noTrips,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        importing,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) importing,
     required TResult Function() imported,
   }) {
     return importing(trips, selectedTripsIds);
@@ -880,12 +816,10 @@ class _$ImportOldTripsStateImportingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        loaded,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? noTrips,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult? Function()? imported,
   }) {
     return importing?.call(trips, selectedTripsIds);
@@ -898,8 +832,7 @@ class _$ImportOldTripsStateImportingImpl
     TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult Function(String message)? error,
     TResult Function()? noTrips,
-    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult Function()? imported,
     required TResult orElse(),
   }) {
@@ -955,8 +888,7 @@ class _$ImportOldTripsStateImportingImpl
 
 abstract class _ImportOldTripsStateImporting implements ImportOldTripsState {
   const factory _ImportOldTripsStateImporting(
-      {required final List<OldTrip> trips,
-      final Set<String> selectedTripsIds}) = _$ImportOldTripsStateImportingImpl;
+      {required final List<OldTrip> trips, final Set<String> selectedTripsIds}) = _$ImportOldTripsStateImportingImpl;
 
   List<OldTrip> get trips;
   Set<String> get selectedTripsIds;
@@ -964,27 +896,23 @@ abstract class _ImportOldTripsStateImporting implements ImportOldTripsState {
   /// Create a copy of ImportOldTripsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ImportOldTripsStateImportingImplCopyWith<
-          _$ImportOldTripsStateImportingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ImportOldTripsStateImportingImplCopyWith<_$ImportOldTripsStateImportingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ImportOldTripsStateImportedImplCopyWith<$Res> {
   factory _$$ImportOldTripsStateImportedImplCopyWith(
-          _$ImportOldTripsStateImportedImpl value,
-          $Res Function(_$ImportOldTripsStateImportedImpl) then) =
+          _$ImportOldTripsStateImportedImpl value, $Res Function(_$ImportOldTripsStateImportedImpl) then) =
       __$$ImportOldTripsStateImportedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ImportOldTripsStateImportedImplCopyWithImpl<$Res>
-    extends _$ImportOldTripsStateCopyWithImpl<$Res,
-        _$ImportOldTripsStateImportedImpl>
+    extends _$ImportOldTripsStateCopyWithImpl<$Res, _$ImportOldTripsStateImportedImpl>
     implements _$$ImportOldTripsStateImportedImplCopyWith<$Res> {
   __$$ImportOldTripsStateImportedImplCopyWithImpl(
-      _$ImportOldTripsStateImportedImpl _value,
-      $Res Function(_$ImportOldTripsStateImportedImpl) _then)
+      _$ImportOldTripsStateImportedImpl _value, $Res Function(_$ImportOldTripsStateImportedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ImportOldTripsState
@@ -993,8 +921,7 @@ class __$$ImportOldTripsStateImportedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ImportOldTripsStateImportedImpl
-    implements _ImportOldTripsStateImported {
+class _$ImportOldTripsStateImportedImpl implements _ImportOldTripsStateImported {
   const _$ImportOldTripsStateImportedImpl();
 
   @override
@@ -1004,9 +931,7 @@ class _$ImportOldTripsStateImportedImpl
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ImportOldTripsStateImportedImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ImportOldTripsStateImportedImpl);
   }
 
   @override
@@ -1016,12 +941,10 @@ class _$ImportOldTripsStateImportedImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        loaded,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) loaded,
     required TResult Function(String message) error,
     required TResult Function() noTrips,
-    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)
-        importing,
+    required TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds) importing,
     required TResult Function() imported,
   }) {
     return imported();
@@ -1031,12 +954,10 @@ class _$ImportOldTripsStateImportedImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        loaded,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? noTrips,
-    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult? Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult? Function()? imported,
   }) {
     return imported?.call();
@@ -1049,8 +970,7 @@ class _$ImportOldTripsStateImportedImpl
     TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? loaded,
     TResult Function(String message)? error,
     TResult Function()? noTrips,
-    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)?
-        importing,
+    TResult Function(List<OldTrip> trips, Set<String> selectedTripsIds)? importing,
     TResult Function()? imported,
     required TResult orElse(),
   }) {
@@ -1105,6 +1025,5 @@ class _$ImportOldTripsStateImportedImpl
 }
 
 abstract class _ImportOldTripsStateImported implements ImportOldTripsState {
-  const factory _ImportOldTripsStateImported() =
-      _$ImportOldTripsStateImportedImpl;
+  const factory _ImportOldTripsStateImported() = _$ImportOldTripsStateImportedImpl;
 }

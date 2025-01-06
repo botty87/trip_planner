@@ -70,8 +70,7 @@ mixin _$GooglePlacesFailure {
 
 /// @nodoc
 abstract class $GooglePlacesFailureCopyWith<$Res> {
-  factory $GooglePlacesFailureCopyWith(
-          GooglePlacesFailure value, $Res Function(GooglePlacesFailure) then) =
+  factory $GooglePlacesFailureCopyWith(GooglePlacesFailure value, $Res Function(GooglePlacesFailure) then) =
       _$GooglePlacesFailureCopyWithImpl<$Res, GooglePlacesFailure>;
 }
 
@@ -91,8 +90,8 @@ class _$GooglePlacesFailureCopyWithImpl<$Res, $Val extends GooglePlacesFailure>
 
 /// @nodoc
 abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
-  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
-          $Res Function(_$NoInternetConnectionImpl) then) =
+  factory _$$NoInternetConnectionImplCopyWith(
+          _$NoInternetConnectionImpl value, $Res Function(_$NoInternetConnectionImpl) then) =
       __$$NoInternetConnectionImplCopyWithImpl<$Res>;
 }
 
@@ -100,8 +99,8 @@ abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
 class __$$NoInternetConnectionImplCopyWithImpl<$Res>
     extends _$GooglePlacesFailureCopyWithImpl<$Res, _$NoInternetConnectionImpl>
     implements _$$NoInternetConnectionImplCopyWith<$Res> {
-  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
-      $Res Function(_$NoInternetConnectionImpl) _then)
+  __$$NoInternetConnectionImplCopyWithImpl(
+      _$NoInternetConnectionImpl _value, $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GooglePlacesFailure
@@ -120,9 +119,7 @@ class _$NoInternetConnectionImpl implements _NoInternetConnection {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NoInternetConnectionImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
   }
 
   @override
@@ -209,19 +206,16 @@ abstract class _NoInternetConnection implements GooglePlacesFailure {
 
 /// @nodoc
 abstract class _$$RequestDeniedImplCopyWith<$Res> {
-  factory _$$RequestDeniedImplCopyWith(
-          _$RequestDeniedImpl value, $Res Function(_$RequestDeniedImpl) then) =
+  factory _$$RequestDeniedImplCopyWith(_$RequestDeniedImpl value, $Res Function(_$RequestDeniedImpl) then) =
       __$$RequestDeniedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$RequestDeniedImplCopyWithImpl<$Res>
-    extends _$GooglePlacesFailureCopyWithImpl<$Res, _$RequestDeniedImpl>
+class __$$RequestDeniedImplCopyWithImpl<$Res> extends _$GooglePlacesFailureCopyWithImpl<$Res, _$RequestDeniedImpl>
     implements _$$RequestDeniedImplCopyWith<$Res> {
-  __$$RequestDeniedImplCopyWithImpl(
-      _$RequestDeniedImpl _value, $Res Function(_$RequestDeniedImpl) _then)
+  __$$RequestDeniedImplCopyWithImpl(_$RequestDeniedImpl _value, $Res Function(_$RequestDeniedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GooglePlacesFailure
@@ -348,31 +342,26 @@ class _$RequestDeniedImpl implements _RequestDenied {
 }
 
 abstract class _RequestDenied implements GooglePlacesFailure {
-  const factory _RequestDenied({required final String message}) =
-      _$RequestDeniedImpl;
+  const factory _RequestDenied({required final String message}) = _$RequestDeniedImpl;
 
   String get message;
 
   /// Create a copy of GooglePlacesFailure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RequestDeniedImplCopyWith<_$RequestDeniedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RequestDeniedImplCopyWith<_$RequestDeniedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$RequestCancelledImplCopyWith<$Res> {
-  factory _$$RequestCancelledImplCopyWith(_$RequestCancelledImpl value,
-          $Res Function(_$RequestCancelledImpl) then) =
+  factory _$$RequestCancelledImplCopyWith(_$RequestCancelledImpl value, $Res Function(_$RequestCancelledImpl) then) =
       __$$RequestCancelledImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RequestCancelledImplCopyWithImpl<$Res>
-    extends _$GooglePlacesFailureCopyWithImpl<$Res, _$RequestCancelledImpl>
+class __$$RequestCancelledImplCopyWithImpl<$Res> extends _$GooglePlacesFailureCopyWithImpl<$Res, _$RequestCancelledImpl>
     implements _$$RequestCancelledImplCopyWith<$Res> {
-  __$$RequestCancelledImplCopyWithImpl(_$RequestCancelledImpl _value,
-      $Res Function(_$RequestCancelledImpl) _then)
+  __$$RequestCancelledImplCopyWithImpl(_$RequestCancelledImpl _value, $Res Function(_$RequestCancelledImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GooglePlacesFailure
@@ -391,8 +380,7 @@ class _$RequestCancelledImpl implements _RequestCancelled {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RequestCancelledImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$RequestCancelledImpl);
   }
 
   @override
@@ -479,19 +467,16 @@ abstract class _RequestCancelled implements GooglePlacesFailure {
 
 /// @nodoc
 abstract class _$$UnknownErrorImplCopyWith<$Res> {
-  factory _$$UnknownErrorImplCopyWith(
-          _$UnknownErrorImpl value, $Res Function(_$UnknownErrorImpl) then) =
+  factory _$$UnknownErrorImplCopyWith(_$UnknownErrorImpl value, $Res Function(_$UnknownErrorImpl) then) =
       __$$UnknownErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$UnknownErrorImplCopyWithImpl<$Res>
-    extends _$GooglePlacesFailureCopyWithImpl<$Res, _$UnknownErrorImpl>
+class __$$UnknownErrorImplCopyWithImpl<$Res> extends _$GooglePlacesFailureCopyWithImpl<$Res, _$UnknownErrorImpl>
     implements _$$UnknownErrorImplCopyWith<$Res> {
-  __$$UnknownErrorImplCopyWithImpl(
-      _$UnknownErrorImpl _value, $Res Function(_$UnknownErrorImpl) _then)
+  __$$UnknownErrorImplCopyWithImpl(_$UnknownErrorImpl _value, $Res Function(_$UnknownErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GooglePlacesFailure
@@ -625,6 +610,5 @@ abstract class _UnknownError implements GooglePlacesFailure {
   /// Create a copy of GooglePlacesFailure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }

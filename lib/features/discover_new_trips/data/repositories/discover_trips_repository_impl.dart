@@ -46,8 +46,7 @@ class DiscoverTripsRepositoryImpl implements DiscoverTripsRepository {
   }
 
   @override
-  Future<Either<DiscoverTripsFailure, List<TripStop>>> getPublicTripStops(
-      String tripId, String dayTripId) async {
+  Future<Either<DiscoverTripsFailure, List<TripStop>>> getPublicTripStops(String tripId, String dayTripId) async {
     try {
       final tripStops = await dataSource.getPublicTripStops(tripId, dayTripId);
       return Right(tripStops);

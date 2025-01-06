@@ -70,13 +70,11 @@ mixin _$AdsState {
 
 /// @nodoc
 abstract class $AdsStateCopyWith<$Res> {
-  factory $AdsStateCopyWith(AdsState value, $Res Function(AdsState) then) =
-      _$AdsStateCopyWithImpl<$Res, AdsState>;
+  factory $AdsStateCopyWith(AdsState value, $Res Function(AdsState) then) = _$AdsStateCopyWithImpl<$Res, AdsState>;
 }
 
 /// @nodoc
-class _$AdsStateCopyWithImpl<$Res, $Val extends AdsState>
-    implements $AdsStateCopyWith<$Res> {
+class _$AdsStateCopyWithImpl<$Res, $Val extends AdsState> implements $AdsStateCopyWith<$Res> {
   _$AdsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -90,18 +88,14 @@ class _$AdsStateCopyWithImpl<$Res, $Val extends AdsState>
 
 /// @nodoc
 abstract class _$$AdsInitialImplCopyWith<$Res> {
-  factory _$$AdsInitialImplCopyWith(
-          _$AdsInitialImpl value, $Res Function(_$AdsInitialImpl) then) =
+  factory _$$AdsInitialImplCopyWith(_$AdsInitialImpl value, $Res Function(_$AdsInitialImpl) then) =
       __$$AdsInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AdsInitialImplCopyWithImpl<$Res>
-    extends _$AdsStateCopyWithImpl<$Res, _$AdsInitialImpl>
+class __$$AdsInitialImplCopyWithImpl<$Res> extends _$AdsStateCopyWithImpl<$Res, _$AdsInitialImpl>
     implements _$$AdsInitialImplCopyWith<$Res> {
-  __$$AdsInitialImplCopyWithImpl(
-      _$AdsInitialImpl _value, $Res Function(_$AdsInitialImpl) _then)
-      : super(_value, _then);
+  __$$AdsInitialImplCopyWithImpl(_$AdsInitialImpl _value, $Res Function(_$AdsInitialImpl) _then) : super(_value, _then);
 
   /// Create a copy of AdsState
   /// with the given fields replaced by the non-null parameter values.
@@ -125,8 +119,7 @@ class _$AdsInitialImpl with DiagnosticableTreeMixin implements AdsInitial {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AdsInitialImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$AdsInitialImpl);
   }
 
   @override
@@ -213,20 +206,16 @@ abstract class AdsInitial implements AdsState {
 
 /// @nodoc
 abstract class _$$AdsLoadedImplCopyWith<$Res> {
-  factory _$$AdsLoadedImplCopyWith(
-          _$AdsLoadedImpl value, $Res Function(_$AdsLoadedImpl) then) =
+  factory _$$AdsLoadedImplCopyWith(_$AdsLoadedImpl value, $Res Function(_$AdsLoadedImpl) then) =
       __$$AdsLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({google_ads.AdWithView ad});
 }
 
 /// @nodoc
-class __$$AdsLoadedImplCopyWithImpl<$Res>
-    extends _$AdsStateCopyWithImpl<$Res, _$AdsLoadedImpl>
+class __$$AdsLoadedImplCopyWithImpl<$Res> extends _$AdsStateCopyWithImpl<$Res, _$AdsLoadedImpl>
     implements _$$AdsLoadedImplCopyWith<$Res> {
-  __$$AdsLoadedImplCopyWithImpl(
-      _$AdsLoadedImpl _value, $Res Function(_$AdsLoadedImpl) _then)
-      : super(_value, _then);
+  __$$AdsLoadedImplCopyWithImpl(_$AdsLoadedImpl _value, $Res Function(_$AdsLoadedImpl) _then) : super(_value, _then);
 
   /// Create a copy of AdsState
   /// with the given fields replaced by the non-null parameter values.
@@ -268,9 +257,7 @@ class _$AdsLoadedImpl with DiagnosticableTreeMixin implements AdsLoaded {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AdsLoadedImpl &&
-            (identical(other.ad, ad) || other.ad == ad));
+        (other.runtimeType == runtimeType && other is _$AdsLoadedImpl && (identical(other.ad, ad) || other.ad == ad));
   }
 
   @override
@@ -360,32 +347,26 @@ class _$AdsLoadedImpl with DiagnosticableTreeMixin implements AdsLoaded {
 }
 
 abstract class AdsLoaded implements AdsState {
-  const factory AdsLoaded({required final google_ads.AdWithView ad}) =
-      _$AdsLoadedImpl;
+  const factory AdsLoaded({required final google_ads.AdWithView ad}) = _$AdsLoadedImpl;
 
   google_ads.AdWithView get ad;
 
   /// Create a copy of AdsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AdsLoadedImplCopyWith<_$AdsLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AdsLoadedImplCopyWith<_$AdsLoadedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AdsErrorImplCopyWith<$Res> {
-  factory _$$AdsErrorImplCopyWith(
-          _$AdsErrorImpl value, $Res Function(_$AdsErrorImpl) then) =
+  factory _$$AdsErrorImplCopyWith(_$AdsErrorImpl value, $Res Function(_$AdsErrorImpl) then) =
       __$$AdsErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AdsErrorImplCopyWithImpl<$Res>
-    extends _$AdsStateCopyWithImpl<$Res, _$AdsErrorImpl>
+class __$$AdsErrorImplCopyWithImpl<$Res> extends _$AdsStateCopyWithImpl<$Res, _$AdsErrorImpl>
     implements _$$AdsErrorImplCopyWith<$Res> {
-  __$$AdsErrorImplCopyWithImpl(
-      _$AdsErrorImpl _value, $Res Function(_$AdsErrorImpl) _then)
-      : super(_value, _then);
+  __$$AdsErrorImplCopyWithImpl(_$AdsErrorImpl _value, $Res Function(_$AdsErrorImpl) _then) : super(_value, _then);
 
   /// Create a copy of AdsState
   /// with the given fields replaced by the non-null parameter values.
@@ -409,8 +390,7 @@ class _$AdsErrorImpl with DiagnosticableTreeMixin implements AdsError {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AdsErrorImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$AdsErrorImpl);
   }
 
   @override
@@ -497,17 +477,14 @@ abstract class AdsError implements AdsState {
 
 /// @nodoc
 abstract class _$$AdsNotSupportedImplCopyWith<$Res> {
-  factory _$$AdsNotSupportedImplCopyWith(_$AdsNotSupportedImpl value,
-          $Res Function(_$AdsNotSupportedImpl) then) =
+  factory _$$AdsNotSupportedImplCopyWith(_$AdsNotSupportedImpl value, $Res Function(_$AdsNotSupportedImpl) then) =
       __$$AdsNotSupportedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AdsNotSupportedImplCopyWithImpl<$Res>
-    extends _$AdsStateCopyWithImpl<$Res, _$AdsNotSupportedImpl>
+class __$$AdsNotSupportedImplCopyWithImpl<$Res> extends _$AdsStateCopyWithImpl<$Res, _$AdsNotSupportedImpl>
     implements _$$AdsNotSupportedImplCopyWith<$Res> {
-  __$$AdsNotSupportedImplCopyWithImpl(
-      _$AdsNotSupportedImpl _value, $Res Function(_$AdsNotSupportedImpl) _then)
+  __$$AdsNotSupportedImplCopyWithImpl(_$AdsNotSupportedImpl _value, $Res Function(_$AdsNotSupportedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AdsState
@@ -516,9 +493,7 @@ class __$$AdsNotSupportedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AdsNotSupportedImpl
-    with DiagnosticableTreeMixin
-    implements AdsNotSupported {
+class _$AdsNotSupportedImpl with DiagnosticableTreeMixin implements AdsNotSupported {
   const _$AdsNotSupportedImpl();
 
   @override
@@ -534,8 +509,7 @@ class _$AdsNotSupportedImpl
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AdsNotSupportedImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$AdsNotSupportedImpl);
   }
 
   @override

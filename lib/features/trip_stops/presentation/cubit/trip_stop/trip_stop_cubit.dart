@@ -39,8 +39,7 @@ class TripStopCubit extends Cubit<TripStopState> {
         _deleteTripStop = deleteTripStop,
         _updateTripStop = updateTripStop,
         _updateTripStopsDirectionsUpToDate = updateTripStopsDirectionsUpToDate,
-        super(TripStopState.normal(
-            trip: params.trip, dayTrip: params.dayTrip, tripStop: params.tripStop));
+        super(TripStopState.normal(trip: params.trip, dayTrip: params.dayTrip, tripStop: params.tripStop));
 
   isDoneChanged(bool isDone) async {
     final currentIsDone = state.tripStop.isDone;

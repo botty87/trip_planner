@@ -30,14 +30,12 @@ mixin _$LoginSignupState {
   /// Create a copy of LoginSignupState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $LoginSignupStateCopyWith<LoginSignupState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $LoginSignupStateCopyWith<LoginSignupState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LoginSignupStateCopyWith<$Res> {
-  factory $LoginSignupStateCopyWith(
-          LoginSignupState value, $Res Function(LoginSignupState) then) =
+  factory $LoginSignupStateCopyWith(LoginSignupState value, $Res Function(LoginSignupState) then) =
       _$LoginSignupStateCopyWithImpl<$Res, LoginSignupState>;
   @useResult
   $Res call(
@@ -54,8 +52,7 @@ abstract class $LoginSignupStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState>
-    implements $LoginSignupStateCopyWith<$Res> {
+class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState> implements $LoginSignupStateCopyWith<$Res> {
   _$LoginSignupStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -125,10 +122,8 @@ class _$LoginSignupStateCopyWithImpl<$Res, $Val extends LoginSignupState>
 }
 
 /// @nodoc
-abstract class _$$LoginSignupStateImplCopyWith<$Res>
-    implements $LoginSignupStateCopyWith<$Res> {
-  factory _$$LoginSignupStateImplCopyWith(_$LoginSignupStateImpl value,
-          $Res Function(_$LoginSignupStateImpl) then) =
+abstract class _$$LoginSignupStateImplCopyWith<$Res> implements $LoginSignupStateCopyWith<$Res> {
+  factory _$$LoginSignupStateImplCopyWith(_$LoginSignupStateImpl value, $Res Function(_$LoginSignupStateImpl) then) =
       __$$LoginSignupStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -146,11 +141,9 @@ abstract class _$$LoginSignupStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$LoginSignupStateImplCopyWithImpl<$Res>
-    extends _$LoginSignupStateCopyWithImpl<$Res, _$LoginSignupStateImpl>
+class __$$LoginSignupStateImplCopyWithImpl<$Res> extends _$LoginSignupStateCopyWithImpl<$Res, _$LoginSignupStateImpl>
     implements _$$LoginSignupStateImplCopyWith<$Res> {
-  __$$LoginSignupStateImplCopyWithImpl(_$LoginSignupStateImpl _value,
-      $Res Function(_$LoginSignupStateImpl) _then)
+  __$$LoginSignupStateImplCopyWithImpl(_$LoginSignupStateImpl _value, $Res Function(_$LoginSignupStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of LoginSignupState
@@ -262,38 +255,21 @@ class _$LoginSignupStateImpl implements _LoginSignupState {
         (other.runtimeType == runtimeType &&
             other is _$LoginSignupStateImpl &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.confirmPassword, confirmPassword) ||
-                other.confirmPassword == confirmPassword) &&
+            (identical(other.password, password) || other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.emailError, emailError) ||
-                other.emailError == emailError) &&
-            (identical(other.passwordError, passwordError) ||
-                other.passwordError == passwordError) &&
-            (identical(other.nameError, nameError) ||
-                other.nameError == nameError) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
+            (identical(other.emailError, emailError) || other.emailError == emailError) &&
+            (identical(other.passwordError, passwordError) || other.passwordError == passwordError) &&
+            (identical(other.nameError, nameError) || other.nameError == nameError) &&
+            (identical(other.isLoading, isLoading) || other.isLoading == isLoading) &&
             (identical(other.authenticationError, authenticationError) ||
                 other.authenticationError == authenticationError) &&
-            (identical(other.successMessage, successMessage) ||
-                other.successMessage == successMessage));
+            (identical(other.successMessage, successMessage) || other.successMessage == successMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      email,
-      password,
-      confirmPassword,
-      name,
-      emailError,
-      passwordError,
-      nameError,
-      isLoading,
-      authenticationError,
-      successMessage);
+  int get hashCode => Object.hash(runtimeType, email, password, confirmPassword, name, emailError, passwordError,
+      nameError, isLoading, authenticationError, successMessage);
 
   /// Create a copy of LoginSignupState
   /// with the given fields replaced by the non-null parameter values.
@@ -301,8 +277,7 @@ class _$LoginSignupStateImpl implements _LoginSignupState {
   @override
   @pragma('vm:prefer-inline')
   _$$LoginSignupStateImplCopyWith<_$LoginSignupStateImpl> get copyWith =>
-      __$$LoginSignupStateImplCopyWithImpl<_$LoginSignupStateImpl>(
-          this, _$identity);
+      __$$LoginSignupStateImplCopyWithImpl<_$LoginSignupStateImpl>(this, _$identity);
 }
 
 abstract class _LoginSignupState implements LoginSignupState {
@@ -343,6 +318,5 @@ abstract class _LoginSignupState implements LoginSignupState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoginSignupStateImplCopyWith<_$LoginSignupStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LoginSignupStateImplCopyWith<_$LoginSignupStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -9,8 +9,7 @@ class TripStopDurationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final durationInMinutes =
-        context.select((TripStopCubit cubit) => cubit.state.tripStop.duration);
+    final durationInMinutes = context.select((TripStopCubit cubit) => cubit.state.tripStop.duration);
 
     return GenericDurationWidget(durationInMinutes: durationInMinutes);
   }

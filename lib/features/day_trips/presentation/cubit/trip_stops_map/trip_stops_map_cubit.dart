@@ -60,8 +60,7 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
         _updateDayTripUseDifferentDirectionsColors = updateDayTripUseDifferentDirectionsColors,
         super(TripStopsMapState.normal(dayTrip: dayTrip)) {
     _dayTripSubscription =
-        _listenDayTrip(ListenDayTripParams(tripId: _tripId, dayTripId: dayTrip.id))
-            .listen((dayTripOrFailure) {
+        _listenDayTrip(ListenDayTripParams(tripId: _tripId, dayTripId: dayTrip.id)).listen((dayTripOrFailure) {
       dayTripOrFailure.fold(
         (failure) {
           emit(state.copyWith(errorMessage: failure.message ?? LocaleKeys.unknownError.tr()));
@@ -167,9 +166,7 @@ class TripStopsMapCubit extends Cubit<TripStopsMapState> {
   }
 
   void travelModeChanged(TravelMode travelMode) {
-    emit(state.copyWith(
-        dayTrip:
-            state.dayTrip.copyWith(travelMode: travelMode, tripStopsDirectionsUpToDate: false)));
+    emit(state.copyWith(dayTrip: state.dayTrip.copyWith(travelMode: travelMode, tripStopsDirectionsUpToDate: false)));
     _updateTripStopsDirectionsUpToDate(
       UpdateTripStopsDirectionsUpToDateParams(
         tripId: _tripId,

@@ -30,8 +30,7 @@ void main() {
   group('user trips', () {
     test('should listen user trips from the repository', () async {
       // arrange
-      when(mockTripsRepository.listenUserTrips(tUserId))
-          .thenAnswer((_) => Stream.value(Right(tTrips)));
+      when(mockTripsRepository.listenUserTrips(tUserId)).thenAnswer((_) => Stream.value(Right(tTrips)));
 
       // act
       final result = usecase(const ListenTripsParams(userId: tUserId));
@@ -44,8 +43,7 @@ void main() {
 
     test('should return a failure when there is no user trips', () async {
       // arrange
-      when(mockTripsRepository.listenUserTrips(tUserId))
-          .thenAnswer((_) => Stream.value(const Left(TripsFailure())));
+      when(mockTripsRepository.listenUserTrips(tUserId)).thenAnswer((_) => Stream.value(const Left(TripsFailure())));
 
       // act
       final result = usecase(const ListenTripsParams(userId: tUserId));
@@ -60,12 +58,10 @@ void main() {
   group('shared trips', () {
     test('should listen shared trips from the repository', () async {
       // arrange
-      when(mockTripsRepository.listenSharedTrips(tUserId))
-          .thenAnswer((_) => Stream.value(Right(tTrips)));
+      when(mockTripsRepository.listenSharedTrips(tUserId)).thenAnswer((_) => Stream.value(Right(tTrips)));
 
       // act
-      final result =
-          ListenSharedTrips(mockTripsRepository)(const ListenTripsParams(userId: tUserId));
+      final result = ListenSharedTrips(mockTripsRepository)(const ListenTripsParams(userId: tUserId));
 
       // assert
       expect(result, emits(Right(tTrips)));
@@ -75,12 +71,10 @@ void main() {
 
     test('should return a failure when there is no shared trips', () async {
       // arrange
-      when(mockTripsRepository.listenSharedTrips(tUserId))
-          .thenAnswer((_) => Stream.value(const Left(TripsFailure())));
+      when(mockTripsRepository.listenSharedTrips(tUserId)).thenAnswer((_) => Stream.value(const Left(TripsFailure())));
 
       // act
-      final result =
-          ListenSharedTrips(mockTripsRepository)(const ListenTripsParams(userId: tUserId));
+      final result = ListenSharedTrips(mockTripsRepository)(const ListenTripsParams(userId: tUserId));
 
       // assert
       expect(result, emits(const Left(TripsFailure())));

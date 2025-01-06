@@ -80,8 +80,7 @@ class ShareCubit extends Cubit<ShareState> {
           userEmailQuery: state.userEmailQuery,
         ));
 
-        _removeUserForShare(RemoveUserForShareParams(tripId: _tripId, userId: userId))
-            .then((result) {
+        _removeUserForShare(RemoveUserForShareParams(tripId: _tripId, userId: userId)).then((result) {
           result.leftMap(
             (failure) {
               emit(previousState);
@@ -94,16 +93,14 @@ class ShareCubit extends Cubit<ShareState> {
   }
 
   _foldFailure(ShareTripFailure failure) {
-    final errorState = ShareState.error(
-        sharedUsers: state.sharedUsers,
-        userEmailQuery: state.userEmailQuery,
-        errorMessage: '') as ShareStateError;
+    final errorState =
+        ShareState.error(sharedUsers: state.sharedUsers, userEmailQuery: state.userEmailQuery, errorMessage: '')
+            as ShareStateError;
 
     return switch (failure) {
       ShareTripFailureNoInternetConnection _ =>
         emit(errorState.copyWith(errorMessage: LocaleKeys.noInternetConnectionMessage.tr())),
-      ShareTripFailureUserNotFound _ =>
-        emit(errorState.copyWith(errorMessage: LocaleKeys.userNotFound.tr())),
+      ShareTripFailureUserNotFound _ => emit(errorState.copyWith(errorMessage: LocaleKeys.userNotFound.tr())),
       ShareTripFailure(:final message) =>
         emit(errorState.copyWith(errorMessage: message ?? LocaleKeys.unknownErrorRetry.tr())),
     };

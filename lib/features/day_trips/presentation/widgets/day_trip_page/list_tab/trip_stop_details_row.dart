@@ -50,8 +50,7 @@ class TripStopDetailsRow extends StatelessWidget {
 
   Widget _getPlaceholderStartSlidableAction(BuildContext context) {
     return SlidableAction(
-      onPressed: (context) =>
-          context.read<DayTripCubit>().removePlaceholderFromTripStop(tripStop.id),
+      onPressed: (context) => context.read<DayTripCubit>().removePlaceholderFromTripStop(tripStop.id),
       backgroundColor: Colors.red,
       foregroundColor: Colors.white,
       icon: Icons.delete,
@@ -124,15 +123,13 @@ class _DialogContent extends HookWidget {
         BlocSelector<DayTripCubit, DayTripState, int>(
           bloc: _dayTripCubit,
           selector: (state) => switch (state) {
-            final DayTripStateLoaded loadedState =>
-              loadedState.tripStopPlaceholderEditing?.duration ?? 0,
+            final DayTripStateLoaded loadedState => loadedState.tripStopPlaceholderEditing?.duration ?? 0,
             _ => throw const UnexpectedStateException(),
           },
           builder: (context, duration) {
             return DurationPicker(
               duration: Duration(minutes: duration),
-              onChange: (duration) =>
-                  _dayTripCubit.updateTripStopPlaceholderDuration(duration.inMinutes),
+              onChange: (duration) => _dayTripCubit.updateTripStopPlaceholderDuration(duration.inMinutes),
             );
           },
         ),

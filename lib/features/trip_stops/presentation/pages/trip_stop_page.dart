@@ -20,8 +20,7 @@ class TripStopPage extends StatelessWidget {
   final DayTrip _dayTrip;
   final TripStop _tripStop;
 
-  const TripStopPage(
-      {super.key, required Trip trip, required DayTrip dayTrip, required TripStop tripStop})
+  const TripStopPage({super.key, required Trip trip, required DayTrip dayTrip, required TripStop tripStop})
       : _trip = trip,
         _dayTrip = dayTrip,
         _tripStop = tripStop;

@@ -14,14 +14,10 @@ _$TripImpl _$$TripImplFromJson(Map<String, dynamic> json) => _$TripImpl(
       startDate: dateTimeFromTimestamp(json['startDate'] as Timestamp),
       isPublic: json['isPublic'] as bool? ?? false,
       languageCode: json['languageCode'] as String?,
-      sharedWith: (json['sharedWith'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      sharedWith: (json['sharedWith'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
     );
 
-Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$TripImplToJson(_$TripImpl instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'userId': instance.userId,

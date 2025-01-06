@@ -6,8 +6,7 @@ part of 'day_trip.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
-    _$DayTripImpl(
+_$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) => _$DayTripImpl(
       index: (json['index'] as num).toInt(),
       description: json['description'] as String?,
       startTime: json['startTime'] == null
@@ -16,24 +15,18 @@ _$DayTripImpl _$$DayTripImplFromJson(Map<String, dynamic> json) =>
       tripStopsDirections: (json['tripStopsDirections'] as List<dynamic>?)
           ?.map((e) => TripStopsDirections.fromJson(e as Map<String, dynamic>))
           .toList(),
-      tripStopsDirectionsUpToDate:
-          json['tripStopsDirectionsUpToDate'] as bool? ?? false,
-      travelMode: json['travelMode'] == null
-          ? TravelMode.driving
-          : travelModeFromInt((json['travelMode'] as num).toInt()),
+      tripStopsDirectionsUpToDate: json['tripStopsDirectionsUpToDate'] as bool? ?? false,
+      travelMode:
+          json['travelMode'] == null ? TravelMode.driving : travelModeFromInt((json['travelMode'] as num).toInt()),
       showDirections: json['showDirections'] as bool? ?? true,
-      useDifferentDirectionsColors:
-          json['useDifferentDirectionsColors'] as bool? ?? true,
+      useDifferentDirectionsColors: json['useDifferentDirectionsColors'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$DayTripImplToJson(_$DayTripImpl instance) => <String, dynamic>{
       'index': instance.index,
       'description': instance.description,
       'startTime': timeOfDayToMap(instance.startTime),
-      if (instance.tripStopsDirections?.map((e) => e.toJson()).toList()
-          case final value?)
-        'tripStopsDirections': value,
+      if (instance.tripStopsDirections?.map((e) => e.toJson()).toList() case final value?) 'tripStopsDirections': value,
       'tripStopsDirectionsUpToDate': instance.tripStopsDirectionsUpToDate,
       'travelMode': travelModeToInt(instance.travelMode),
       'showDirections': instance.showDirections,

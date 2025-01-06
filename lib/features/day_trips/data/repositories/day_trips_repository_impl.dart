@@ -18,8 +18,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
   DayTripsRepositoryImpl(this._dayTripsDataSource, this._crashlytics);
 
   @override
-  Future<Either<DayTripsFailure, void>> addDayTrip(
-      {required String tripId, required DayTrip dayTrip}) async {
+  Future<Either<DayTripsFailure, void>> addDayTrip({required String tripId, required DayTrip dayTrip}) async {
     try {
       await _dayTripsDataSource.addDayTrip(tripId: tripId, dayTrip: dayTrip);
       return right(null);
@@ -83,8 +82,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
   }
 
   @override
-  Future<Either<DayTripsFailure, void>> deleteDayTrip(
-      {required String tripId, required String dayTripId}) async {
+  Future<Either<DayTripsFailure, void>> deleteDayTrip({required String tripId, required String dayTripId}) async {
     try {
       await _dayTripsDataSource.deleteDayTrip(tripId: tripId, dayTripId: dayTripId);
       return right(null);
@@ -101,8 +99,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
   Future<Either<DayTripsFailure, void>> updateDayTripStartTime(
       {required String id, required String tripId, required TimeOfDay startTime}) async {
     try {
-      await _dayTripsDataSource.updateDayTripStartTime(
-          id: id, tripId: tripId, startTime: startTime);
+      await _dayTripsDataSource.updateDayTripStartTime(id: id, tripId: tripId, startTime: startTime);
       return right(null);
     } on FirebaseException catch (e) {
       _crashlytics.recordError(e, StackTrace.current);
@@ -134,10 +131,7 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
 
   @override
   Future<Either<DayTripsFailure, void>> updateTripStopsDirectionsUpToDate(
-      {required String tripId,
-      required String dayTripId,
-      required bool isUpToDate,
-      TravelMode? travelMode}) async {
+      {required String tripId, required String dayTripId, required bool isUpToDate, TravelMode? travelMode}) async {
     try {
       await _dayTripsDataSource.updateTripStopsDirectionsUpToDate(
           tripId: tripId, dayTripId: dayTripId, isUpToDate: isUpToDate, travelMode: travelMode);
@@ -169,14 +163,10 @@ class DayTripsRepositoryImpl implements DayTripsRepository {
 
   @override
   Future<Either<DayTripsFailure, void>> updateDayTripUseDifferentDirectionsColors(
-      {required String tripId,
-      required String dayTripId,
-      required bool useDifferentDirectionsColors}) async {
+      {required String tripId, required String dayTripId, required bool useDifferentDirectionsColors}) async {
     try {
       await _dayTripsDataSource.updateDayTripUseDifferentDirectionsColors(
-          tripId: tripId,
-          dayTripId: dayTripId,
-          useDifferentDirectionsColors: useDifferentDirectionsColors);
+          tripId: tripId, dayTripId: dayTripId, useDifferentDirectionsColors: useDifferentDirectionsColors);
       return right(null);
     } on FirebaseException catch (e) {
       _crashlytics.recordError(e, StackTrace.current);

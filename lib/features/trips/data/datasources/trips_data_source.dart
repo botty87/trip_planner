@@ -72,18 +72,14 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
   @override
   Stream<List<Trip>> listenUserTrips(String userId) async* {
-    yield* _tripsCollection
-        .where('userId', isEqualTo: userId)
-        .orderBy('name')
-        .snapshots()
-        .map((snapshot) {
+    yield* _tripsCollection.where('userId', isEqualTo: userId).orderBy('name').snapshots().map((snapshot) {
       return snapshot.docs.map((doc) => doc.data()).toList();
     });
   }
 
   @override
-  Future<void> updateTrip(String id, String name, String? description, DateTime startDate,
-      bool isPublic, String languageCode) async {
+  Future<void> updateTrip(
+      String id, String name, String? description, DateTime startDate, bool isPublic, String languageCode) async {
     performSync(() async => await _tripsCollection.doc(id).update({
           'name': name,
           'description': description?.isEmpty ?? true ? null : description,
@@ -102,8 +98,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
     final tripReference = _tripsCollection.doc(trip.id);
     batchs[currentBatchIndex].delete(tripReference);
 
-    final dayTrips =
-        await firebaseFirestore.collection('trips').doc(trip.id).collection('dayTrips').get();
+    final dayTrips = await firebaseFirestore.collection('trips').doc(trip.id).collection('dayTrips').get();
 
     for (final dayTrip in dayTrips.docs) {
       _checkAndIncrementBatchSize(currentBatchSize, currentBatchIndex, batchs).let((values) {
@@ -138,13 +133,11 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
   deleteAllUserTrips(String userId) async {
     await firebaseFirestore.runTransaction((transaction) async {
       //Filter the user trips to delete
-      final trips =
-          await firebaseFirestore.collection('trips').where('userId', isEqualTo: userId).get();
+      final trips = await firebaseFirestore.collection('trips').where('userId', isEqualTo: userId).get();
 
       //Delete the trips
       for (final trip in trips.docs) {
-        final dayTrips =
-            await firebaseFirestore.collection('trips').doc(trip.id).collection('dayTrips').get();
+        final dayTrips = await firebaseFirestore.collection('trips').doc(trip.id).collection('dayTrips').get();
 
         //Delete the day trips
         for (final dayTrip in dayTrips.docs) {
@@ -168,10 +161,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
       }
 
       //Filter the trips shared with the user and remove the user from the sharedWith array
-      final sharedTrips = await firebaseFirestore
-          .collection('trips')
-          .where('sharedWith', arrayContains: userId)
-          .get();
+      final sharedTrips = await firebaseFirestore.collection('trips').where('sharedWith', arrayContains: userId).get();
 
       for (final trip in sharedTrips.docs) {
         transaction.update(trip.reference, {
@@ -214,8 +204,8 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
         useDifferentDirectionsColors: useDifferentDirectionsColors,
       );
 
-      final newTripStops = existingDayTripsStops[dayTrip]
-          .map((tripStop) => TripStop.createFromExisting(tripStop: tripStop));
+      final newTripStops =
+          existingDayTripsStops[dayTrip].map((tripStop) => TripStop.createFromExisting(tripStop: tripStop));
 
       newDayTripsStops.addValues(newDayTrip, newTripStops);
     }
@@ -242,8 +232,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
           currentBatchIndex = values.currentBatchIndex;
         });
 
-        final newTripStopReference =
-            _tripStopsCollection(newTripReference.id, newDayTripReference.id).doc();
+        final newTripStopReference = _tripStopsCollection(newTripReference.id, newDayTripReference.id).doc();
         batchs[currentBatchIndex].set(newTripStopReference, tripStop);
       }
     }
@@ -303,11 +292,7 @@ final class TripsDataSourceImpl with DataSourceFirestoreSyncMixin implements Tri
 
   @override
   Stream<List<Trip>> listenSharedTrips(String userId) async* {
-    yield* _tripsCollection
-        .where('sharedWith', arrayContains: userId)
-        .orderBy('name')
-        .snapshots()
-        .map((snapshot) {
+    yield* _tripsCollection.where('sharedWith', arrayContains: userId).orderBy('name').snapshots().map((snapshot) {
       return snapshot.docs.map((doc) => doc.data()).toList();
     });
   }

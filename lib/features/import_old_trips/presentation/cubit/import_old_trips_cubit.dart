@@ -42,8 +42,7 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
   _readOldTripsAction() async {
     final result = await _readOldTrips(ReadOldTripsParams(_user.id));
     result.fold(
-      (failure) =>
-          emit(ImportOldTripsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
+      (failure) => emit(ImportOldTripsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
       (trips) {
         if (trips.isEmpty) {
           emit(const ImportOldTripsState.noTrips());
@@ -70,20 +69,17 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
   import() async {
     assert(state is ImportOldTripsStateLoaded);
     final currentState = state as ImportOldTripsStateLoaded;
-    emit(ImportOldTripsState.importing(
-        trips: currentState.trips, selectedTripsIds: currentState.selectedTripsIds));
+    emit(ImportOldTripsState.importing(trips: currentState.trips, selectedTripsIds: currentState.selectedTripsIds));
 
-    final List<OldTrip> selectedTrips = currentState.trips
-        .where((element) => currentState.selectedTripsIds.contains(element.id))
-        .toList();
+    final List<OldTrip> selectedTrips =
+        currentState.trips.where((element) => currentState.selectedTripsIds.contains(element.id)).toList();
 
     final newTrips = ListMultimap<Trip, TripStopsContainer>();
     //Convert to new trips
     for (OldTrip oldTrip in selectedTrips) {
       final startDate = oldTrip.dailyTrips.firstOrNull?.date ?? DateTime.now();
 
-      final trip = Trip(
-          name: oldTrip.name, userId: _user.id, createdAt: DateTime.now(), startDate: startDate);
+      final trip = Trip(name: oldTrip.name, userId: _user.id, createdAt: DateTime.now(), startDate: startDate);
 
       for (OldDailyTrip oldDailyTrip in oldTrip.dailyTrips) {
         final dayTrip = DayTrip(
@@ -115,8 +111,7 @@ class ImportOldTripsCubit extends Cubit<ImportOldTripsState> {
 
     _importOldTrips(ImportOldTripsParams(_user.id, newTrips)).then((value) {
       value.fold(
-        (failure) => emit(
-            ImportOldTripsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
+        (failure) => emit(ImportOldTripsState.error(message: failure.message ?? LocaleKeys.unknownError.tr())),
         (_) {
           emit(const ImportOldTripsState.imported());
         },

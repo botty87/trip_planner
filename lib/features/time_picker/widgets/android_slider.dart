@@ -30,15 +30,11 @@ class AndroidSlider extends StatelessWidget {
           SelectedInput.MINUTE => cubit.state.time.minute
         });
 
-    final min = context.select((TimePickerCubit cubit) => switch (cubit.state.selectedInput) {
-          SelectedInput.HOUR => minHour,
-          SelectedInput.MINUTE => minMinute
-        });
+    final min = context.select((TimePickerCubit cubit) =>
+        switch (cubit.state.selectedInput) { SelectedInput.HOUR => minHour, SelectedInput.MINUTE => minMinute });
 
-    final max = context.select((TimePickerCubit cubit) => switch (cubit.state.selectedInput) {
-          SelectedInput.HOUR => maxHour,
-          SelectedInput.MINUTE => maxMinute
-        });
+    final max = context.select((TimePickerCubit cubit) =>
+        switch (cubit.state.selectedInput) { SelectedInput.HOUR => maxHour, SelectedInput.MINUTE => maxMinute });
 
     final divisions = context.select((TimePickerCubit cubit) => switch (cubit.state.selectedInput) {
           SelectedInput.HOUR => maxHour - minHour,

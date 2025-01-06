@@ -19,8 +19,7 @@ List<LatLng>? geoPointsToLatLngs(List<dynamic>? geoPoints) =>
 List<GeoPoint>? latLngsToGeoPoints(List<LatLng>? latLngs) =>
     latLngs?.map((latLng) => GeoPoint(latLng.latitude, latLng.longitude)).toList();
 
-TimeOfDay timeOfDayFromMap(Map<String, dynamic> map) =>
-    TimeOfDay(hour: map['hour'], minute: map['minute']);
+TimeOfDay timeOfDayFromMap(Map<String, dynamic> map) => TimeOfDay(hour: map['hour'], minute: map['minute']);
 
 Map<String, int> timeOfDayToMap(TimeOfDay timeOfDay) => {
       'hour': timeOfDay.hour,
@@ -47,16 +46,9 @@ int travelModeToInt(TravelMode travelMode) {
 }
 
 ViewMode viewModeFromInt(int viewMode) {
-  return switch (viewMode) {
-    0 => ViewMode.list,
-    1 => ViewMode.grid,
-    _ => throw Exception('Unknown view mode')
-  };
+  return switch (viewMode) { 0 => ViewMode.list, 1 => ViewMode.grid, _ => throw Exception('Unknown view mode') };
 }
 
 int viewModeToInt(ViewMode viewMode) {
-  return switch (viewMode) {
-    ViewMode.list => 0,
-    ViewMode.grid => 1
-  };
+  return switch (viewMode) { ViewMode.list => 0, ViewMode.grid => 1 };
 }

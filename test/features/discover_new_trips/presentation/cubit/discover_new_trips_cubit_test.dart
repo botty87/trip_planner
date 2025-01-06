@@ -87,8 +87,7 @@ void main() {
     'should emit DiscoverNewTripsState.loading() and DiscoverNewTripsState.error() when GetPublicTrips is unsuccessful',
     build: () => cubit(),
     act: (cubit) => cubit.fetchTrips(),
-    setUp: () =>
-        when(mockGetPublicTrips(any)).thenAnswer((_) async => const Left(DiscoverTripsFailure())),
+    setUp: () => when(mockGetPublicTrips(any)).thenAnswer((_) async => const Left(DiscoverTripsFailure())),
     expect: () => [
       DiscoverNewTripsState.error(
         message: LocaleKeys.unknownError.tr(),
@@ -156,10 +155,8 @@ void main() {
     seed: () => tNormalState,
     build: () => cubit(),
     act: (cubit) => cubit.onMoreSectionTapped(),
-    expect: () => [
-      tNormalState.mapOrNull(
-          normal: (state) => state.copyWith(isMoreSectionOpen: !state.isMoreSectionOpen))
-    ],
+    expect: () =>
+        [tNormalState.mapOrNull(normal: (state) => state.copyWith(isMoreSectionOpen: !state.isMoreSectionOpen))],
   );
 
   blocTest(
@@ -176,8 +173,7 @@ void main() {
 
   blocTest<DiscoverNewTripsCubit, DiscoverNewTripsState>(
     'calling filterByLanguage should emit DiscoverNewTripsState.normal() without the language in selectedLanguages if present',
-    seed: () => tNormalState.mapOrNull(
-        normal: (state) => state.copyWith(selectedLanguages: {Languages.english}))!,
+    seed: () => tNormalState.mapOrNull(normal: (state) => state.copyWith(selectedLanguages: {Languages.english}))!,
     build: () => cubit(),
     act: (cubit) => cubit.filterByLanguage(Languages.english),
     expect: () => [
@@ -199,8 +195,7 @@ void main() {
         normal: (state) => state.copyWith(
           languageQuery: 'english',
           availableLanguages: {
-            Languages.defaultLanguages
-                .firstWhere((language) => language.name.toLowerCase().contains('english'))
+            Languages.defaultLanguages.firstWhere((language) => language.name.toLowerCase().contains('english'))
           },
         ),
       ),
@@ -219,9 +214,8 @@ void main() {
       tNormalState.mapOrNull(
         normal: (state) => state.copyWith(
           showOnlySelectedLanguages: true,
-          availableLanguages: state.availableLanguages
-              .where((language) => state.selectedLanguages.contains(language))
-              .toSet(),
+          availableLanguages:
+              state.availableLanguages.where((language) => state.selectedLanguages.contains(language)).toSet(),
         ),
       ),
     ],

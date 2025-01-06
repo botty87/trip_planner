@@ -14,8 +14,7 @@ abstract class TripStopsRepository {
     required int duration,
   });
 
-  Stream<Either<TripStopsFailure, List<TripStop>>> listenTripStops(
-      {required String tripId, required String dayTripId});
+  Stream<Either<TripStopsFailure, List<TripStop>>> listenTripStops({required String tripId, required String dayTripId});
 
   Future<Either<TripStopsFailure, void>> updateTripStopsIndexes({
     required String tripId,

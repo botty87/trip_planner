@@ -40,12 +40,10 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
 
       switch (type) {
         case BackgroundType.light:
-          emit(state.copyWith(
-              lightBackgrounds: Map.from(state.lightBackgrounds)..addAll({index: imageFile})));
+          emit(state.copyWith(lightBackgrounds: Map.from(state.lightBackgrounds)..addAll({index: imageFile})));
           break;
         case BackgroundType.dark:
-          emit(state.copyWith(
-              darkBackgrounds: Map.from(state.darkBackgrounds)..addAll({index: imageFile})));
+          emit(state.copyWith(darkBackgrounds: Map.from(state.darkBackgrounds)..addAll({index: imageFile})));
           break;
       }
     }
@@ -110,8 +108,7 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
   }
 
   String _getBackgroundImageName({required int index, required BackgroundType type}) {
-    final String backgroundsPrefix =
-        type == BackgroundType.light ? lightBackgroundPrefix : darkBackgroundPrefix;
+    final String backgroundsPrefix = type == BackgroundType.light ? lightBackgroundPrefix : darkBackgroundPrefix;
     return '$backgroundsPrefix-$index.$webpExtension';
   }
 
@@ -123,13 +120,12 @@ class BackgroundsCubit extends Cubit<BackgroundsState> {
 
   void loadCurrentBackgroundFile({required ({int index, BackgroundType type})? backgroundIndexType}) async {
     if (backgroundIndexType != null) {
-      final imageFile = await getBackgroundImageFile(
-          index: backgroundIndexType.index, type: backgroundIndexType.type);
+      final imageFile = await getBackgroundImageFile(index: backgroundIndexType.index, type: backgroundIndexType.type);
 
       //If the file does not exist, download it
       if (!imageFile.existsSync()) {
-        final imageBytes = await _downloadBackgroundImageBytes(
-            index: backgroundIndexType.index, type: backgroundIndexType.type);
+        final imageBytes =
+            await _downloadBackgroundImageBytes(index: backgroundIndexType.index, type: backgroundIndexType.type);
         if (imageBytes == null) return;
 
         await imageFile.writeAsBytes(imageBytes);

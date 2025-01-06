@@ -102,8 +102,7 @@ class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripS
   }
 
   @override
-  Stream<List<TripStop>> listenTripStops(
-      {required String tripId, required String dayTripId}) async* {
+  Stream<List<TripStop>> listenTripStops({required String tripId, required String dayTripId}) async* {
     yield* _tripStopsCollection(tripId, dayTripId).orderBy('index').snapshots().map((snapshot) {
       return snapshot.docs.map((doc) => doc.data()).toList();
     });
@@ -111,9 +110,7 @@ class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripS
 
   @override
   Future<void> updateTripStopsIndexes(
-      {required String tripId,
-      required String dayTripId,
-      required List<TripStop> tripStops}) async {
+      {required String tripId, required String dayTripId, required List<TripStop> tripStops}) async {
     final batch = FirebaseFirestore.instance.batch();
     final tripStopsCollection = _tripStopsCollection(tripId, dayTripId);
 
@@ -127,10 +124,7 @@ class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripS
 
   @override
   Future<void> updateTravelTime(
-      {required String tripId,
-      required String dayTripId,
-      required String tripStopId,
-      required int travelTime}) async {
+      {required String tripId, required String dayTripId, required String tripStopId, required int travelTime}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
 
     performSync(() async => await tripStopDoc.update({'travelTimeToNextStop': travelTime}));
@@ -138,10 +132,7 @@ class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripS
 
   @override
   Future<void> updateTripStopDone(
-      {required String tripId,
-      required String dayTripId,
-      required String tripStopId,
-      required bool isDone}) async {
+      {required String tripId, required String dayTripId, required String tripStopId, required bool isDone}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
 
     performSync(() async => await tripStopDoc.update({'isDone': isDone}));
@@ -149,18 +140,14 @@ class TripStopsDataSourceImpl with DataSourceFirestoreSyncMixin implements TripS
 
   @override
   Future<void> updateTripStopNote(
-      {required String tripId,
-      required String dayTripId,
-      required String tripStopId,
-      required String? note}) async {
+      {required String tripId, required String dayTripId, required String tripStopId, required String? note}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
 
     performSync(() async => await tripStopDoc.update({'note': note}));
   }
 
   @override
-  Future<void> deleteTripStop(
-      {required String tripId, required String dayTripId, required String tripStopId}) async {
+  Future<void> deleteTripStop({required String tripId, required String dayTripId, required String tripStopId}) async {
     final tripStopDoc = _tripStopsCollection(tripId, dayTripId).doc(tripStopId);
 
     performSync(() async => await tripStopDoc.delete());

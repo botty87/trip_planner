@@ -23,8 +23,7 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
   final _debouncerQuery = Debouncer(milliseconds: 500);
   final _debounceLoading = Debouncer(milliseconds: 500);
 
-  GooglePlacesCubit(
-      {required FetchSuggestions fetchSuggestions, required FetchPlaceDetails fetchPlaceDetails})
+  GooglePlacesCubit({required FetchSuggestions fetchSuggestions, required FetchPlaceDetails fetchPlaceDetails})
       : _fetchSuggestions = fetchSuggestions,
         _fetchPlaceDetails = fetchPlaceDetails,
         super(const GooglePlacesState.normal());
@@ -36,8 +35,7 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
     }
 
     void fetch() async {
-      final result =
-          await _fetchSuggestions(FetchSuggestionsParams(query: query, lang: lang, token: token));
+      final result = await _fetchSuggestions(FetchSuggestionsParams(query: query, lang: lang, token: token));
       _debounceLoading.cancel();
       result.fold(
         (failure) {
@@ -87,8 +85,7 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
       ));
     });
 
-    final result =
-        await _fetchPlaceDetails(FetchPlaceDetailsParams(placeId: placeId, token: token));
+    final result = await _fetchPlaceDetails(FetchPlaceDetailsParams(placeId: placeId, token: token));
     _debounceLoading.cancel();
 
     return result.fold(

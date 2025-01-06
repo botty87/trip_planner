@@ -12,8 +12,7 @@ class UpdateTravelTime implements UseCase<void, UpdateTravelTimeParams> {
   UpdateTravelTime(this._tripStopsRepository);
 
   @override
-  Future<Either<TripStopsFailure, void>> call(UpdateTravelTimeParams params) =>
-      _tripStopsRepository.updateTravelTime(
+  Future<Either<TripStopsFailure, void>> call(UpdateTravelTimeParams params) => _tripStopsRepository.updateTravelTime(
         tripId: params.tripId,
         dayTripId: params.dayTripId,
         tripStopId: params.tripStopId,

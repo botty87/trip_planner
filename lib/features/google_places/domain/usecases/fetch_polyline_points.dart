@@ -16,8 +16,7 @@ class FetchTripStopsDirections implements UseCase<void, FetchTripStopsDirections
   FetchTripStopsDirections(this.repository);
 
   @override
-  Future<Either<GooglePlacesFailure, List<TripStopsDirections>>> call(
-      FetchTripStopsDirectionsParams params) async {
+  Future<Either<GooglePlacesFailure, List<TripStopsDirections>>> call(FetchTripStopsDirectionsParams params) async {
     return await repository.fetchTripStopsDirections(params.tripStops, params.travelMode);
   }
 }

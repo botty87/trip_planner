@@ -14,8 +14,7 @@ class UpdateDayTripUseDifferentDirectionsColors
   UpdateDayTripUseDifferentDirectionsColors(this.repository);
 
   @override
-  Future<Either<DayTripsFailure, void>> call(
-      UpdateDayTripUseDifferentDirectionsColorsParams params) {
+  Future<Either<DayTripsFailure, void>> call(UpdateDayTripUseDifferentDirectionsColorsParams params) {
     return repository.updateDayTripUseDifferentDirectionsColors(
       tripId: params.tripId,
       dayTripId: params.dayTripId,

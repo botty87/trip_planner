@@ -19,9 +19,7 @@ class Settings with _$Settings {
     TimeOfDay defaultDayTripStartTime,
     @Default(true) bool showDirections,
     @Default(true) bool useDifferentDirectionsColors,
-    @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt)
-    @Default(TravelMode.driving)
-    TravelMode travelMode,
+    @JsonKey(fromJson: travelModeFromInt, toJson: travelModeToInt) @Default(TravelMode.driving) TravelMode travelMode,
     @Default(BackgroundsContainer()) BackgroundsContainer backgroundsContainer,
     @Default(AdaptiveThemeMode.system) AdaptiveThemeMode themeMode,
     @Default(true) bool showBackgroundsDialog,

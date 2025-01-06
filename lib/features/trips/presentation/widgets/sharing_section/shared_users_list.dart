@@ -5,8 +5,7 @@ class _SharedUsersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sharedUsers =
-        context.select((ShareCubit cubit) => cubit.state.sharedUsers?.entries.toList());
+    final sharedUsers = context.select((ShareCubit cubit) => cubit.state.sharedUsers?.entries.toList());
 
     //If shared it means that is still loading
     //Show a loading indicator

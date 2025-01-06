@@ -33,14 +33,12 @@ mixin _$TutorialsData {
   /// Create a copy of TutorialsData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TutorialsDataCopyWith<TutorialsData> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TutorialsDataCopyWith<TutorialsData> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TutorialsDataCopyWith<$Res> {
-  factory $TutorialsDataCopyWith(
-          TutorialsData value, $Res Function(TutorialsData) then) =
+  factory $TutorialsDataCopyWith(TutorialsData value, $Res Function(TutorialsData) then) =
       _$TutorialsDataCopyWithImpl<$Res, TutorialsData>;
   @useResult
   $Res call(
@@ -53,8 +51,7 @@ abstract class $TutorialsDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TutorialsDataCopyWithImpl<$Res, $Val extends TutorialsData>
-    implements $TutorialsDataCopyWith<$Res> {
+class _$TutorialsDataCopyWithImpl<$Res, $Val extends TutorialsData> implements $TutorialsDataCopyWith<$Res> {
   _$TutorialsDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -104,10 +101,8 @@ class _$TutorialsDataCopyWithImpl<$Res, $Val extends TutorialsData>
 }
 
 /// @nodoc
-abstract class _$$TutorialsDataImplCopyWith<$Res>
-    implements $TutorialsDataCopyWith<$Res> {
-  factory _$$TutorialsDataImplCopyWith(
-          _$TutorialsDataImpl value, $Res Function(_$TutorialsDataImpl) then) =
+abstract class _$$TutorialsDataImplCopyWith<$Res> implements $TutorialsDataCopyWith<$Res> {
+  factory _$$TutorialsDataImplCopyWith(_$TutorialsDataImpl value, $Res Function(_$TutorialsDataImpl) then) =
       __$$TutorialsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -121,11 +116,9 @@ abstract class _$$TutorialsDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TutorialsDataImplCopyWithImpl<$Res>
-    extends _$TutorialsDataCopyWithImpl<$Res, _$TutorialsDataImpl>
+class __$$TutorialsDataImplCopyWithImpl<$Res> extends _$TutorialsDataCopyWithImpl<$Res, _$TutorialsDataImpl>
     implements _$$TutorialsDataImplCopyWith<$Res> {
-  __$$TutorialsDataImplCopyWithImpl(
-      _$TutorialsDataImpl _value, $Res Function(_$TutorialsDataImpl) _then)
+  __$$TutorialsDataImplCopyWithImpl(_$TutorialsDataImpl _value, $Res Function(_$TutorialsDataImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TutorialsData
@@ -180,8 +173,7 @@ class _$TutorialsDataImpl implements _TutorialsData {
       this.showShareTrip = true,
       this.showTripStopTravelPlaceholder = true});
 
-  factory _$TutorialsDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TutorialsDataImplFromJson(json);
+  factory _$TutorialsDataImpl.fromJson(Map<String, dynamic> json) => _$$TutorialsDataImplFromJson(json);
 
   @override
   @JsonKey()
@@ -212,33 +204,20 @@ class _$TutorialsDataImpl implements _TutorialsData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TutorialsDataImpl &&
-            (identical(other.showWelcome, showWelcome) ||
-                other.showWelcome == showWelcome) &&
-            (identical(other.showPublicTrip, showPublicTrip) ||
-                other.showPublicTrip == showPublicTrip) &&
-            (identical(
-                    other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
+            (identical(other.showWelcome, showWelcome) || other.showWelcome == showWelcome) &&
+            (identical(other.showPublicTrip, showPublicTrip) || other.showPublicTrip == showPublicTrip) &&
+            (identical(other.showCreateFromPublicTrip, showCreateFromPublicTrip) ||
                 other.showCreateFromPublicTrip == showCreateFromPublicTrip) &&
-            (identical(other.showTripStopSlide, showTripStopSlide) ||
-                other.showTripStopSlide == showTripStopSlide) &&
-            (identical(other.showShareTrip, showShareTrip) ||
-                other.showShareTrip == showShareTrip) &&
-            (identical(other.showTripStopTravelPlaceholder,
-                    showTripStopTravelPlaceholder) ||
-                other.showTripStopTravelPlaceholder ==
-                    showTripStopTravelPlaceholder));
+            (identical(other.showTripStopSlide, showTripStopSlide) || other.showTripStopSlide == showTripStopSlide) &&
+            (identical(other.showShareTrip, showShareTrip) || other.showShareTrip == showShareTrip) &&
+            (identical(other.showTripStopTravelPlaceholder, showTripStopTravelPlaceholder) ||
+                other.showTripStopTravelPlaceholder == showTripStopTravelPlaceholder));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      showWelcome,
-      showPublicTrip,
-      showCreateFromPublicTrip,
-      showTripStopSlide,
-      showShareTrip,
-      showTripStopTravelPlaceholder);
+  int get hashCode => Object.hash(runtimeType, showWelcome, showPublicTrip, showCreateFromPublicTrip, showTripStopSlide,
+      showShareTrip, showTripStopTravelPlaceholder);
 
   /// Create a copy of TutorialsData
   /// with the given fields replaced by the non-null parameter values.
@@ -265,8 +244,7 @@ abstract class _TutorialsData implements TutorialsData {
       final bool showShareTrip,
       final bool showTripStopTravelPlaceholder}) = _$TutorialsDataImpl;
 
-  factory _TutorialsData.fromJson(Map<String, dynamic> json) =
-      _$TutorialsDataImpl.fromJson;
+  factory _TutorialsData.fromJson(Map<String, dynamic> json) = _$TutorialsDataImpl.fromJson;
 
   @override
   bool get showWelcome;
@@ -285,6 +263,5 @@ abstract class _TutorialsData implements TutorialsData {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TutorialsDataImplCopyWith<_$TutorialsDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TutorialsDataImplCopyWith<_$TutorialsDataImpl> get copyWith => throw _privateConstructorUsedError;
 }

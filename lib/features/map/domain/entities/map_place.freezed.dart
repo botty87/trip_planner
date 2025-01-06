@@ -19,25 +19,20 @@ mixin _$MapPlace {
   LatLng get location => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String tripStopId, String name,
-            String? description, LatLng location, bool isDone)
+    required TResult Function(String tripStopId, String name, String? description, LatLng location, bool isDone)
         existing,
     required TResult Function(LatLng location) newPlace,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String tripStopId, String name, String? description,
-            LatLng location, bool isDone)?
-        existing,
+    TResult? Function(String tripStopId, String name, String? description, LatLng location, bool isDone)? existing,
     TResult? Function(LatLng location)? newPlace,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String tripStopId, String name, String? description,
-            LatLng location, bool isDone)?
-        existing,
+    TResult Function(String tripStopId, String name, String? description, LatLng location, bool isDone)? existing,
     TResult Function(LatLng location)? newPlace,
     required TResult orElse(),
   }) =>
@@ -65,21 +60,18 @@ mixin _$MapPlace {
   /// Create a copy of MapPlace
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MapPlaceCopyWith<MapPlace> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MapPlaceCopyWith<MapPlace> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MapPlaceCopyWith<$Res> {
-  factory $MapPlaceCopyWith(MapPlace value, $Res Function(MapPlace) then) =
-      _$MapPlaceCopyWithImpl<$Res, MapPlace>;
+  factory $MapPlaceCopyWith(MapPlace value, $Res Function(MapPlace) then) = _$MapPlaceCopyWithImpl<$Res, MapPlace>;
   @useResult
   $Res call({LatLng location});
 }
 
 /// @nodoc
-class _$MapPlaceCopyWithImpl<$Res, $Val extends MapPlace>
-    implements $MapPlaceCopyWith<$Res> {
+class _$MapPlaceCopyWithImpl<$Res, $Val extends MapPlace> implements $MapPlaceCopyWith<$Res> {
   _$MapPlaceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -104,27 +96,18 @@ class _$MapPlaceCopyWithImpl<$Res, $Val extends MapPlace>
 }
 
 /// @nodoc
-abstract class _$$MapPlaceExistingImplCopyWith<$Res>
-    implements $MapPlaceCopyWith<$Res> {
-  factory _$$MapPlaceExistingImplCopyWith(_$MapPlaceExistingImpl value,
-          $Res Function(_$MapPlaceExistingImpl) then) =
+abstract class _$$MapPlaceExistingImplCopyWith<$Res> implements $MapPlaceCopyWith<$Res> {
+  factory _$$MapPlaceExistingImplCopyWith(_$MapPlaceExistingImpl value, $Res Function(_$MapPlaceExistingImpl) then) =
       __$$MapPlaceExistingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String tripStopId,
-      String name,
-      String? description,
-      LatLng location,
-      bool isDone});
+  $Res call({String tripStopId, String name, String? description, LatLng location, bool isDone});
 }
 
 /// @nodoc
-class __$$MapPlaceExistingImplCopyWithImpl<$Res>
-    extends _$MapPlaceCopyWithImpl<$Res, _$MapPlaceExistingImpl>
+class __$$MapPlaceExistingImplCopyWithImpl<$Res> extends _$MapPlaceCopyWithImpl<$Res, _$MapPlaceExistingImpl>
     implements _$$MapPlaceExistingImplCopyWith<$Res> {
-  __$$MapPlaceExistingImplCopyWithImpl(_$MapPlaceExistingImpl _value,
-      $Res Function(_$MapPlaceExistingImpl) _then)
+  __$$MapPlaceExistingImplCopyWithImpl(_$MapPlaceExistingImpl _value, $Res Function(_$MapPlaceExistingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of MapPlace
@@ -194,19 +177,15 @@ class _$MapPlaceExistingImpl implements MapPlaceExisting {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapPlaceExistingImpl &&
-            (identical(other.tripStopId, tripStopId) ||
-                other.tripStopId == tripStopId) &&
+            (identical(other.tripStopId, tripStopId) || other.tripStopId == tripStopId) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.location, location) ||
-                other.location == location) &&
+            (identical(other.description, description) || other.description == description) &&
+            (identical(other.location, location) || other.location == location) &&
             (identical(other.isDone, isDone) || other.isDone == isDone));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, tripStopId, name, description, location, isDone);
+  int get hashCode => Object.hash(runtimeType, tripStopId, name, description, location, isDone);
 
   /// Create a copy of MapPlace
   /// with the given fields replaced by the non-null parameter values.
@@ -214,14 +193,12 @@ class _$MapPlaceExistingImpl implements MapPlaceExisting {
   @override
   @pragma('vm:prefer-inline')
   _$$MapPlaceExistingImplCopyWith<_$MapPlaceExistingImpl> get copyWith =>
-      __$$MapPlaceExistingImplCopyWithImpl<_$MapPlaceExistingImpl>(
-          this, _$identity);
+      __$$MapPlaceExistingImplCopyWithImpl<_$MapPlaceExistingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String tripStopId, String name,
-            String? description, LatLng location, bool isDone)
+    required TResult Function(String tripStopId, String name, String? description, LatLng location, bool isDone)
         existing,
     required TResult Function(LatLng location) newPlace,
   }) {
@@ -231,9 +208,7 @@ class _$MapPlaceExistingImpl implements MapPlaceExisting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String tripStopId, String name, String? description,
-            LatLng location, bool isDone)?
-        existing,
+    TResult? Function(String tripStopId, String name, String? description, LatLng location, bool isDone)? existing,
     TResult? Function(LatLng location)? newPlace,
   }) {
     return existing?.call(tripStopId, name, description, location, isDone);
@@ -242,9 +217,7 @@ class _$MapPlaceExistingImpl implements MapPlaceExisting {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String tripStopId, String name, String? description,
-            LatLng location, bool isDone)?
-        existing,
+    TResult Function(String tripStopId, String name, String? description, LatLng location, bool isDone)? existing,
     TResult Function(LatLng location)? newPlace,
     required TResult orElse(),
   }) {
@@ -305,15 +278,12 @@ abstract class MapPlaceExisting implements MapPlace {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MapPlaceExistingImplCopyWith<_$MapPlaceExistingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MapPlaceExistingImplCopyWith<_$MapPlaceExistingImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$MapPlaceNewImplCopyWith<$Res>
-    implements $MapPlaceCopyWith<$Res> {
-  factory _$$MapPlaceNewImplCopyWith(
-          _$MapPlaceNewImpl value, $Res Function(_$MapPlaceNewImpl) then) =
+abstract class _$$MapPlaceNewImplCopyWith<$Res> implements $MapPlaceCopyWith<$Res> {
+  factory _$$MapPlaceNewImplCopyWith(_$MapPlaceNewImpl value, $Res Function(_$MapPlaceNewImpl) then) =
       __$$MapPlaceNewImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -321,11 +291,9 @@ abstract class _$$MapPlaceNewImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MapPlaceNewImplCopyWithImpl<$Res>
-    extends _$MapPlaceCopyWithImpl<$Res, _$MapPlaceNewImpl>
+class __$$MapPlaceNewImplCopyWithImpl<$Res> extends _$MapPlaceCopyWithImpl<$Res, _$MapPlaceNewImpl>
     implements _$$MapPlaceNewImplCopyWith<$Res> {
-  __$$MapPlaceNewImplCopyWithImpl(
-      _$MapPlaceNewImpl _value, $Res Function(_$MapPlaceNewImpl) _then)
+  __$$MapPlaceNewImplCopyWithImpl(_$MapPlaceNewImpl _value, $Res Function(_$MapPlaceNewImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of MapPlace
@@ -362,8 +330,7 @@ class _$MapPlaceNewImpl implements MapPlaceNew {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapPlaceNewImpl &&
-            (identical(other.location, location) ||
-                other.location == location));
+            (identical(other.location, location) || other.location == location));
   }
 
   @override
@@ -380,8 +347,7 @@ class _$MapPlaceNewImpl implements MapPlaceNew {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String tripStopId, String name,
-            String? description, LatLng location, bool isDone)
+    required TResult Function(String tripStopId, String name, String? description, LatLng location, bool isDone)
         existing,
     required TResult Function(LatLng location) newPlace,
   }) {
@@ -391,9 +357,7 @@ class _$MapPlaceNewImpl implements MapPlaceNew {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String tripStopId, String name, String? description,
-            LatLng location, bool isDone)?
-        existing,
+    TResult? Function(String tripStopId, String name, String? description, LatLng location, bool isDone)? existing,
     TResult? Function(LatLng location)? newPlace,
   }) {
     return newPlace?.call(location);
@@ -402,9 +366,7 @@ class _$MapPlaceNewImpl implements MapPlaceNew {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String tripStopId, String name, String? description,
-            LatLng location, bool isDone)?
-        existing,
+    TResult Function(String tripStopId, String name, String? description, LatLng location, bool isDone)? existing,
     TResult Function(LatLng location)? newPlace,
     required TResult orElse(),
   }) {
@@ -456,6 +418,5 @@ abstract class MapPlaceNew implements MapPlace {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MapPlaceNewImplCopyWith<_$MapPlaceNewImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MapPlaceNewImplCopyWith<_$MapPlaceNewImpl> get copyWith => throw _privateConstructorUsedError;
 }

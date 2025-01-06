@@ -35,14 +35,12 @@ mixin _$UserModel {
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserModelCopyWith<UserModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $UserModelCopyWith<UserModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UserModelCopyWith<$Res> {
-  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
-      _$UserModelCopyWithImpl<$Res, UserModel>;
+  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) = _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
       {@JsonKey(includeFromJson: false, includeToJson: false) String? id,
@@ -59,8 +57,7 @@ abstract class $UserModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
-    implements $UserModelCopyWith<$Res> {
+class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserModelCopyWith<$Res> {
   _$UserModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -145,10 +142,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
 }
 
 /// @nodoc
-abstract class _$$UserModelImplCopyWith<$Res>
-    implements $UserModelCopyWith<$Res> {
-  factory _$$UserModelImplCopyWith(
-          _$UserModelImpl value, $Res Function(_$UserModelImpl) then) =
+abstract class _$$UserModelImplCopyWith<$Res> implements $UserModelCopyWith<$Res> {
+  factory _$$UserModelImplCopyWith(_$UserModelImpl value, $Res Function(_$UserModelImpl) then) =
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -170,12 +165,9 @@ abstract class _$$UserModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$UserModelImplCopyWithImpl<$Res>
-    extends _$UserModelCopyWithImpl<$Res, _$UserModelImpl>
+class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, _$UserModelImpl>
     implements _$$UserModelImplCopyWith<$Res> {
-  __$$UserModelImplCopyWithImpl(
-      _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
-      : super(_value, _then);
+  __$$UserModelImplCopyWithImpl(_$UserModelImpl _value, $Res Function(_$UserModelImpl) _then) : super(_value, _then);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -236,8 +228,7 @@ class _$UserModelImpl extends _UserModel {
       this.viewPreferences = const ViewPreferences()})
       : super._();
 
-  factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserModelImplFromJson(json);
+  factory _$UserModelImpl.fromJson(Map<String, dynamic> json) => _$$UserModelImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -272,20 +263,16 @@ class _$UserModelImpl extends _UserModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.oldTripsImported, oldTripsImported) ||
-                other.oldTripsImported == oldTripsImported) &&
-            (identical(other.settings, settings) ||
-                other.settings == settings) &&
-            (identical(other.tutorialsData, tutorialsData) ||
-                other.tutorialsData == tutorialsData) &&
-            (identical(other.viewPreferences, viewPreferences) ||
-                other.viewPreferences == viewPreferences));
+            (identical(other.oldTripsImported, oldTripsImported) || other.oldTripsImported == oldTripsImported) &&
+            (identical(other.settings, settings) || other.settings == settings) &&
+            (identical(other.tutorialsData, tutorialsData) || other.tutorialsData == tutorialsData) &&
+            (identical(other.viewPreferences, viewPreferences) || other.viewPreferences == viewPreferences));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, name,
-      oldTripsImported, settings, tutorialsData, viewPreferences);
+  int get hashCode =>
+      Object.hash(runtimeType, id, email, name, oldTripsImported, settings, tutorialsData, viewPreferences);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -314,8 +301,7 @@ abstract class _UserModel extends UserModel {
       final ViewPreferences viewPreferences}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
-  factory _UserModel.fromJson(Map<String, dynamic> json) =
-      _$UserModelImpl.fromJson;
+  factory _UserModel.fromJson(Map<String, dynamic> json) = _$UserModelImpl.fromJson;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -337,6 +323,5 @@ abstract class _UserModel extends UserModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

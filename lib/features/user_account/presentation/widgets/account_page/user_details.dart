@@ -53,8 +53,7 @@ class _UserDetails extends StatelessWidget {
                   child: ElevatedButton(
                     key: const Key('deleteAccountButton'),
                     onPressed: () => _deleteAccount(context),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.error),
+                    style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.error),
                     child: Text(
                       LocaleKeys.deleteAccount.tr(),
                       style: Theme.of(context)

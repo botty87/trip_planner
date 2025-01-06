@@ -33,21 +33,18 @@ mixin _$TripStopsDirections {
   /// Create a copy of TripStopsDirections
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TripStopsDirectionsCopyWith<TripStopsDirections> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TripStopsDirectionsCopyWith<TripStopsDirections> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TripStopsDirectionsCopyWith<$Res> {
-  factory $TripStopsDirectionsCopyWith(
-          TripStopsDirections value, $Res Function(TripStopsDirections) then) =
+  factory $TripStopsDirectionsCopyWith(TripStopsDirections value, $Res Function(TripStopsDirections) then) =
       _$TripStopsDirectionsCopyWithImpl<$Res, TripStopsDirections>;
   @useResult
   $Res call(
       {String originId,
       String destinationId,
-      @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
-      List<LatLng>? points,
+      @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs) List<LatLng>? points,
       @JsonKey(includeIfNull: false) String? errorMessage});
 }
 
@@ -93,18 +90,16 @@ class _$TripStopsDirectionsCopyWithImpl<$Res, $Val extends TripStopsDirections>
 }
 
 /// @nodoc
-abstract class _$$TripStopsDirectionsImplCopyWith<$Res>
-    implements $TripStopsDirectionsCopyWith<$Res> {
-  factory _$$TripStopsDirectionsImplCopyWith(_$TripStopsDirectionsImpl value,
-          $Res Function(_$TripStopsDirectionsImpl) then) =
+abstract class _$$TripStopsDirectionsImplCopyWith<$Res> implements $TripStopsDirectionsCopyWith<$Res> {
+  factory _$$TripStopsDirectionsImplCopyWith(
+          _$TripStopsDirectionsImpl value, $Res Function(_$TripStopsDirectionsImpl) then) =
       __$$TripStopsDirectionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String originId,
       String destinationId,
-      @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
-      List<LatLng>? points,
+      @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs) List<LatLng>? points,
       @JsonKey(includeIfNull: false) String? errorMessage});
 }
 
@@ -112,8 +107,8 @@ abstract class _$$TripStopsDirectionsImplCopyWith<$Res>
 class __$$TripStopsDirectionsImplCopyWithImpl<$Res>
     extends _$TripStopsDirectionsCopyWithImpl<$Res, _$TripStopsDirectionsImpl>
     implements _$$TripStopsDirectionsImplCopyWith<$Res> {
-  __$$TripStopsDirectionsImplCopyWithImpl(_$TripStopsDirectionsImpl _value,
-      $Res Function(_$TripStopsDirectionsImpl) _then)
+  __$$TripStopsDirectionsImplCopyWithImpl(
+      _$TripStopsDirectionsImpl _value, $Res Function(_$TripStopsDirectionsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopsDirections
@@ -153,13 +148,11 @@ class _$TripStopsDirectionsImpl implements _TripStopsDirections {
   _$TripStopsDirectionsImpl(
       {required this.originId,
       required this.destinationId,
-      @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
-      final List<LatLng>? points,
+      @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs) final List<LatLng>? points,
       @JsonKey(includeIfNull: false) this.errorMessage})
       : _points = points;
 
-  factory _$TripStopsDirectionsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TripStopsDirectionsImplFromJson(json);
+  factory _$TripStopsDirectionsImpl.fromJson(Map<String, dynamic> json) => _$$TripStopsDirectionsImplFromJson(json);
 
   @override
   final String originId;
@@ -190,19 +183,16 @@ class _$TripStopsDirectionsImpl implements _TripStopsDirections {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TripStopsDirectionsImpl &&
-            (identical(other.originId, originId) ||
-                other.originId == originId) &&
-            (identical(other.destinationId, destinationId) ||
-                other.destinationId == destinationId) &&
+            (identical(other.originId, originId) || other.originId == originId) &&
+            (identical(other.destinationId, destinationId) || other.destinationId == destinationId) &&
             const DeepCollectionEquality().equals(other._points, _points) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, originId, destinationId,
-      const DeepCollectionEquality().hash(_points), errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, originId, destinationId, const DeepCollectionEquality().hash(_points), errorMessage);
 
   /// Create a copy of TripStopsDirections
   /// with the given fields replaced by the non-null parameter values.
@@ -210,8 +200,7 @@ class _$TripStopsDirectionsImpl implements _TripStopsDirections {
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopsDirectionsImplCopyWith<_$TripStopsDirectionsImpl> get copyWith =>
-      __$$TripStopsDirectionsImplCopyWithImpl<_$TripStopsDirectionsImpl>(
-          this, _$identity);
+      __$$TripStopsDirectionsImplCopyWithImpl<_$TripStopsDirectionsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -223,15 +212,12 @@ class _$TripStopsDirectionsImpl implements _TripStopsDirections {
 
 abstract class _TripStopsDirections implements TripStopsDirections {
   factory _TripStopsDirections(
-          {required final String originId,
-          required final String destinationId,
-          @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs)
-          final List<LatLng>? points,
-          @JsonKey(includeIfNull: false) final String? errorMessage}) =
-      _$TripStopsDirectionsImpl;
+      {required final String originId,
+      required final String destinationId,
+      @JsonKey(toJson: latLngsToGeoPoints, fromJson: geoPointsToLatLngs) final List<LatLng>? points,
+      @JsonKey(includeIfNull: false) final String? errorMessage}) = _$TripStopsDirectionsImpl;
 
-  factory _TripStopsDirections.fromJson(Map<String, dynamic> json) =
-      _$TripStopsDirectionsImpl.fromJson;
+  factory _TripStopsDirections.fromJson(Map<String, dynamic> json) = _$TripStopsDirectionsImpl.fromJson;
 
   @override
   String get originId;
@@ -248,6 +234,5 @@ abstract class _TripStopsDirections implements TripStopsDirections {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopsDirectionsImplCopyWith<_$TripStopsDirectionsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripStopsDirectionsImplCopyWith<_$TripStopsDirectionsImpl> get copyWith => throw _privateConstructorUsedError;
 }

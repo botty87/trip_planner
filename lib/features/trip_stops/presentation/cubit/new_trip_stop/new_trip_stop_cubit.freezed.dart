@@ -23,54 +23,35 @@ mixin _$NewTripStopState {
   LatLng? get location => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? name, String? description,
-            int hourDuration, int minuteDuration, LatLng? location)
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)
         normal,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         saving,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         created,
-    required TResult Function(
-            String? name,
-            String? description,
-            int hourDuration,
-            int minuteDuration,
-            LatLng? location,
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
             String errorMessage)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
-        normal,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)? normal,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
     required TResult orElse(),
   }) =>
@@ -104,27 +85,19 @@ mixin _$NewTripStopState {
   /// Create a copy of NewTripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $NewTripStopStateCopyWith<NewTripStopState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $NewTripStopStateCopyWith<NewTripStopState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NewTripStopStateCopyWith<$Res> {
-  factory $NewTripStopStateCopyWith(
-          NewTripStopState value, $Res Function(NewTripStopState) then) =
+  factory $NewTripStopStateCopyWith(NewTripStopState value, $Res Function(NewTripStopState) then) =
       _$NewTripStopStateCopyWithImpl<$Res, NewTripStopState>;
   @useResult
-  $Res call(
-      {String name,
-      String? description,
-      int hourDuration,
-      int minuteDuration,
-      LatLng location});
+  $Res call({String name, String? description, int hourDuration, int minuteDuration, LatLng location});
 }
 
 /// @nodoc
-class _$NewTripStopStateCopyWithImpl<$Res, $Val extends NewTripStopState>
-    implements $NewTripStopStateCopyWith<$Res> {
+class _$NewTripStopStateCopyWithImpl<$Res, $Val extends NewTripStopState> implements $NewTripStopStateCopyWith<$Res> {
   _$NewTripStopStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -169,20 +142,13 @@ class _$NewTripStopStateCopyWithImpl<$Res, $Val extends NewTripStopState>
 }
 
 /// @nodoc
-abstract class _$$NewTripStopStateNormalImplCopyWith<$Res>
-    implements $NewTripStopStateCopyWith<$Res> {
+abstract class _$$NewTripStopStateNormalImplCopyWith<$Res> implements $NewTripStopStateCopyWith<$Res> {
   factory _$$NewTripStopStateNormalImplCopyWith(
-          _$NewTripStopStateNormalImpl value,
-          $Res Function(_$NewTripStopStateNormalImpl) then) =
+          _$NewTripStopStateNormalImpl value, $Res Function(_$NewTripStopStateNormalImpl) then) =
       __$$NewTripStopStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? name,
-      String? description,
-      int hourDuration,
-      int minuteDuration,
-      LatLng? location});
+  $Res call({String? name, String? description, int hourDuration, int minuteDuration, LatLng? location});
 }
 
 /// @nodoc
@@ -190,8 +156,7 @@ class __$$NewTripStopStateNormalImplCopyWithImpl<$Res>
     extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateNormalImpl>
     implements _$$NewTripStopStateNormalImplCopyWith<$Res> {
   __$$NewTripStopStateNormalImplCopyWithImpl(
-      _$NewTripStopStateNormalImpl _value,
-      $Res Function(_$NewTripStopStateNormalImpl) _then)
+      _$NewTripStopStateNormalImpl _value, $Res Function(_$NewTripStopStateNormalImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of NewTripStopState
@@ -234,11 +199,7 @@ class __$$NewTripStopStateNormalImplCopyWithImpl<$Res>
 
 class _$NewTripStopStateNormalImpl implements NewTripStopStateNormal {
   const _$NewTripStopStateNormalImpl(
-      {this.name,
-      this.description,
-      this.hourDuration = 0,
-      this.minuteDuration = 0,
-      this.location});
+      {this.name, this.description, this.hourDuration = 0, this.minuteDuration = 0, this.location});
 
   @override
   final String? name;
@@ -264,47 +225,33 @@ class _$NewTripStopStateNormalImpl implements NewTripStopStateNormal {
         (other.runtimeType == runtimeType &&
             other is _$NewTripStopStateNormalImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.hourDuration, hourDuration) ||
-                other.hourDuration == hourDuration) &&
-            (identical(other.minuteDuration, minuteDuration) ||
-                other.minuteDuration == minuteDuration) &&
-            (identical(other.location, location) ||
-                other.location == location));
+            (identical(other.description, description) || other.description == description) &&
+            (identical(other.hourDuration, hourDuration) || other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) || other.minuteDuration == minuteDuration) &&
+            (identical(other.location, location) || other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, description, hourDuration, minuteDuration, location);
+  int get hashCode => Object.hash(runtimeType, name, description, hourDuration, minuteDuration, location);
 
   /// Create a copy of NewTripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStopStateNormalImplCopyWith<_$NewTripStopStateNormalImpl>
-      get copyWith => __$$NewTripStopStateNormalImplCopyWithImpl<
-          _$NewTripStopStateNormalImpl>(this, _$identity);
+  _$$NewTripStopStateNormalImplCopyWith<_$NewTripStopStateNormalImpl> get copyWith =>
+      __$$NewTripStopStateNormalImplCopyWithImpl<_$NewTripStopStateNormalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? name, String? description,
-            int hourDuration, int minuteDuration, LatLng? location)
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)
         normal,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         saving,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         created,
-    required TResult Function(
-            String? name,
-            String? description,
-            int hourDuration,
-            int minuteDuration,
-            LatLng? location,
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
             String errorMessage)
         error,
   }) {
@@ -314,37 +261,25 @@ class _$NewTripStopStateNormalImpl implements NewTripStopStateNormal {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
   }) {
-    return normal?.call(
-        name, description, hourDuration, minuteDuration, location);
+    return normal?.call(name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
-        normal,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)? normal,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
     required TResult orElse(),
   }) {
@@ -415,25 +350,18 @@ abstract class NewTripStopStateNormal implements NewTripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NewTripStopStateNormalImplCopyWith<_$NewTripStopStateNormalImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$NewTripStopStateNormalImplCopyWith<_$NewTripStopStateNormalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStopStateSavingImplCopyWith<$Res>
-    implements $NewTripStopStateCopyWith<$Res> {
+abstract class _$$NewTripStopStateSavingImplCopyWith<$Res> implements $NewTripStopStateCopyWith<$Res> {
   factory _$$NewTripStopStateSavingImplCopyWith(
-          _$NewTripStopStateSavingImpl value,
-          $Res Function(_$NewTripStopStateSavingImpl) then) =
+          _$NewTripStopStateSavingImpl value, $Res Function(_$NewTripStopStateSavingImpl) then) =
       __$$NewTripStopStateSavingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String? description,
-      int hourDuration,
-      int minuteDuration,
-      LatLng location});
+  $Res call({String name, String? description, int hourDuration, int minuteDuration, LatLng location});
 }
 
 /// @nodoc
@@ -441,8 +369,7 @@ class __$$NewTripStopStateSavingImplCopyWithImpl<$Res>
     extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateSavingImpl>
     implements _$$NewTripStopStateSavingImplCopyWith<$Res> {
   __$$NewTripStopStateSavingImplCopyWithImpl(
-      _$NewTripStopStateSavingImpl _value,
-      $Res Function(_$NewTripStopStateSavingImpl) _then)
+      _$NewTripStopStateSavingImpl _value, $Res Function(_$NewTripStopStateSavingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of NewTripStopState
@@ -513,47 +440,33 @@ class _$NewTripStopStateSavingImpl implements NewTripStopStateSaving {
         (other.runtimeType == runtimeType &&
             other is _$NewTripStopStateSavingImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.hourDuration, hourDuration) ||
-                other.hourDuration == hourDuration) &&
-            (identical(other.minuteDuration, minuteDuration) ||
-                other.minuteDuration == minuteDuration) &&
-            (identical(other.location, location) ||
-                other.location == location));
+            (identical(other.description, description) || other.description == description) &&
+            (identical(other.hourDuration, hourDuration) || other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) || other.minuteDuration == minuteDuration) &&
+            (identical(other.location, location) || other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, description, hourDuration, minuteDuration, location);
+  int get hashCode => Object.hash(runtimeType, name, description, hourDuration, minuteDuration, location);
 
   /// Create a copy of NewTripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStopStateSavingImplCopyWith<_$NewTripStopStateSavingImpl>
-      get copyWith => __$$NewTripStopStateSavingImplCopyWithImpl<
-          _$NewTripStopStateSavingImpl>(this, _$identity);
+  _$$NewTripStopStateSavingImplCopyWith<_$NewTripStopStateSavingImpl> get copyWith =>
+      __$$NewTripStopStateSavingImplCopyWithImpl<_$NewTripStopStateSavingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? name, String? description,
-            int hourDuration, int minuteDuration, LatLng? location)
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)
         normal,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         saving,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         created,
-    required TResult Function(
-            String? name,
-            String? description,
-            int hourDuration,
-            int minuteDuration,
-            LatLng? location,
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
             String errorMessage)
         error,
   }) {
@@ -563,37 +476,25 @@ class _$NewTripStopStateSavingImpl implements NewTripStopStateSaving {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
   }) {
-    return saving?.call(
-        name, description, hourDuration, minuteDuration, location);
+    return saving?.call(name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
-        normal,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)? normal,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
     required TResult orElse(),
   }) {
@@ -664,25 +565,18 @@ abstract class NewTripStopStateSaving implements NewTripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NewTripStopStateSavingImplCopyWith<_$NewTripStopStateSavingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$NewTripStopStateSavingImplCopyWith<_$NewTripStopStateSavingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStopStateCreatedImplCopyWith<$Res>
-    implements $NewTripStopStateCopyWith<$Res> {
+abstract class _$$NewTripStopStateCreatedImplCopyWith<$Res> implements $NewTripStopStateCopyWith<$Res> {
   factory _$$NewTripStopStateCreatedImplCopyWith(
-          _$NewTripStopStateCreatedImpl value,
-          $Res Function(_$NewTripStopStateCreatedImpl) then) =
+          _$NewTripStopStateCreatedImpl value, $Res Function(_$NewTripStopStateCreatedImpl) then) =
       __$$NewTripStopStateCreatedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String? description,
-      int hourDuration,
-      int minuteDuration,
-      LatLng location});
+  $Res call({String name, String? description, int hourDuration, int minuteDuration, LatLng location});
 }
 
 /// @nodoc
@@ -690,8 +584,7 @@ class __$$NewTripStopStateCreatedImplCopyWithImpl<$Res>
     extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateCreatedImpl>
     implements _$$NewTripStopStateCreatedImplCopyWith<$Res> {
   __$$NewTripStopStateCreatedImplCopyWithImpl(
-      _$NewTripStopStateCreatedImpl _value,
-      $Res Function(_$NewTripStopStateCreatedImpl) _then)
+      _$NewTripStopStateCreatedImpl _value, $Res Function(_$NewTripStopStateCreatedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of NewTripStopState
@@ -762,47 +655,33 @@ class _$NewTripStopStateCreatedImpl implements NewTripStopStateCreated {
         (other.runtimeType == runtimeType &&
             other is _$NewTripStopStateCreatedImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.hourDuration, hourDuration) ||
-                other.hourDuration == hourDuration) &&
-            (identical(other.minuteDuration, minuteDuration) ||
-                other.minuteDuration == minuteDuration) &&
-            (identical(other.location, location) ||
-                other.location == location));
+            (identical(other.description, description) || other.description == description) &&
+            (identical(other.hourDuration, hourDuration) || other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) || other.minuteDuration == minuteDuration) &&
+            (identical(other.location, location) || other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, description, hourDuration, minuteDuration, location);
+  int get hashCode => Object.hash(runtimeType, name, description, hourDuration, minuteDuration, location);
 
   /// Create a copy of NewTripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStopStateCreatedImplCopyWith<_$NewTripStopStateCreatedImpl>
-      get copyWith => __$$NewTripStopStateCreatedImplCopyWithImpl<
-          _$NewTripStopStateCreatedImpl>(this, _$identity);
+  _$$NewTripStopStateCreatedImplCopyWith<_$NewTripStopStateCreatedImpl> get copyWith =>
+      __$$NewTripStopStateCreatedImplCopyWithImpl<_$NewTripStopStateCreatedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? name, String? description,
-            int hourDuration, int minuteDuration, LatLng? location)
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)
         normal,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         saving,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         created,
-    required TResult Function(
-            String? name,
-            String? description,
-            int hourDuration,
-            int minuteDuration,
-            LatLng? location,
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
             String errorMessage)
         error,
   }) {
@@ -812,37 +691,25 @@ class _$NewTripStopStateCreatedImpl implements NewTripStopStateCreated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
   }) {
-    return created?.call(
-        name, description, hourDuration, minuteDuration, location);
+    return created?.call(name, description, hourDuration, minuteDuration, location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
-        normal,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)? normal,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
     required TResult orElse(),
   }) {
@@ -913,34 +780,27 @@ abstract class NewTripStopStateCreated implements NewTripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NewTripStopStateCreatedImplCopyWith<_$NewTripStopStateCreatedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$NewTripStopStateCreatedImplCopyWith<_$NewTripStopStateCreatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewTripStopStateErrorImplCopyWith<$Res>
-    implements $NewTripStopStateCopyWith<$Res> {
+abstract class _$$NewTripStopStateErrorImplCopyWith<$Res> implements $NewTripStopStateCopyWith<$Res> {
   factory _$$NewTripStopStateErrorImplCopyWith(
-          _$NewTripStopStateErrorImpl value,
-          $Res Function(_$NewTripStopStateErrorImpl) then) =
+          _$NewTripStopStateErrorImpl value, $Res Function(_$NewTripStopStateErrorImpl) then) =
       __$$NewTripStopStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? name,
-      String? description,
-      int hourDuration,
-      int minuteDuration,
-      LatLng? location,
-      String errorMessage});
+      {String? name, String? description, int hourDuration, int minuteDuration, LatLng? location, String errorMessage});
 }
 
 /// @nodoc
 class __$$NewTripStopStateErrorImplCopyWithImpl<$Res>
     extends _$NewTripStopStateCopyWithImpl<$Res, _$NewTripStopStateErrorImpl>
     implements _$$NewTripStopStateErrorImplCopyWith<$Res> {
-  __$$NewTripStopStateErrorImplCopyWithImpl(_$NewTripStopStateErrorImpl _value,
-      $Res Function(_$NewTripStopStateErrorImpl) _then)
+  __$$NewTripStopStateErrorImplCopyWithImpl(
+      _$NewTripStopStateErrorImpl _value, $Res Function(_$NewTripStopStateErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of NewTripStopState
@@ -1019,96 +879,67 @@ class _$NewTripStopStateErrorImpl implements NewTripStopStateError {
         (other.runtimeType == runtimeType &&
             other is _$NewTripStopStateErrorImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.hourDuration, hourDuration) ||
-                other.hourDuration == hourDuration) &&
-            (identical(other.minuteDuration, minuteDuration) ||
-                other.minuteDuration == minuteDuration) &&
-            (identical(other.location, location) ||
-                other.location == location) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.description, description) || other.description == description) &&
+            (identical(other.hourDuration, hourDuration) || other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) || other.minuteDuration == minuteDuration) &&
+            (identical(other.location, location) || other.location == location) &&
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, hourDuration,
-      minuteDuration, location, errorMessage);
+  int get hashCode => Object.hash(runtimeType, name, description, hourDuration, minuteDuration, location, errorMessage);
 
   /// Create a copy of NewTripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewTripStopStateErrorImplCopyWith<_$NewTripStopStateErrorImpl>
-      get copyWith => __$$NewTripStopStateErrorImplCopyWithImpl<
-          _$NewTripStopStateErrorImpl>(this, _$identity);
+  _$$NewTripStopStateErrorImplCopyWith<_$NewTripStopStateErrorImpl> get copyWith =>
+      __$$NewTripStopStateErrorImplCopyWithImpl<_$NewTripStopStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? name, String? description,
-            int hourDuration, int minuteDuration, LatLng? location)
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)
         normal,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         saving,
-    required TResult Function(String name, String? description,
-            int hourDuration, int minuteDuration, LatLng location)
+    required TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)
         created,
-    required TResult Function(
-            String? name,
-            String? description,
-            int hourDuration,
-            int minuteDuration,
-            LatLng? location,
+    required TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
             String errorMessage)
         error,
   }) {
-    return error(name, description, hourDuration, minuteDuration, location,
-        errorMessage);
+    return error(name, description, hourDuration, minuteDuration, location, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)?
         normal,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult? Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult? Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult? Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult? Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
   }) {
-    return error?.call(name, description, hourDuration, minuteDuration,
-        location, errorMessage);
+    return error?.call(name, description, hourDuration, minuteDuration, location, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location)?
-        normal,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        saving,
-    TResult Function(String name, String? description, int hourDuration,
-            int minuteDuration, LatLng location)?
-        created,
-    TResult Function(String? name, String? description, int hourDuration,
-            int minuteDuration, LatLng? location, String errorMessage)?
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location)? normal,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? saving,
+    TResult Function(String name, String? description, int hourDuration, int minuteDuration, LatLng location)? created,
+    TResult Function(String? name, String? description, int hourDuration, int minuteDuration, LatLng? location,
+            String errorMessage)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(name, description, hourDuration, minuteDuration, location,
-          errorMessage);
+      return error(name, description, hourDuration, minuteDuration, location, errorMessage);
     }
     return orElse();
   }
@@ -1176,6 +1007,5 @@ abstract class NewTripStopStateError implements NewTripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NewTripStopStateErrorImplCopyWith<_$NewTripStopStateErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$NewTripStopStateErrorImplCopyWith<_$NewTripStopStateErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }

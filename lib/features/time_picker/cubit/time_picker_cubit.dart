@@ -12,11 +12,9 @@ class TimePickerCubit extends Cubit<TimePickerState> {
 
   void onHourChange(int hour) => emit(state.copyWith(time: state.time.replacing(hour: hour)));
 
-  void onMinuteChange(int minute) =>
-      emit(state.copyWith(time: state.time.replacing(minute: minute)));
+  void onMinuteChange(int minute) => emit(state.copyWith(time: state.time.replacing(minute: minute)));
 
-  void onSelectedInputChanged(SelectedInput selectedInput) =>
-      emit(state.copyWith(selectedInput: selectedInput));
+  void onSelectedInputChanged(SelectedInput selectedInput) => emit(state.copyWith(selectedInput: selectedInput));
 
   void onSliderChange(int int) => switch (state.selectedInput) {
         SelectedInput.HOUR => onHourChange(int),

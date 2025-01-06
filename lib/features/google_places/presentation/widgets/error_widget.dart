@@ -25,10 +25,7 @@ class _ErrorWidget extends StatelessWidget {
             Expanded(
               child: Text(
                 message,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: Theme.of(context).colorScheme.error),
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.error),
               ),
             ),
             if (showRetryButton)

@@ -22,14 +22,12 @@ mixin _$SettingsState {
   /// Create a copy of SettingsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SettingsStateCopyWith<SettingsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SettingsStateCopyWith<SettingsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SettingsStateCopyWith<$Res> {
-  factory $SettingsStateCopyWith(
-          SettingsState value, $Res Function(SettingsState) then) =
+  factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
   @useResult
   $Res call({Settings settings, UserFailures? failure});
@@ -39,8 +37,7 @@ abstract class $SettingsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
-    implements $SettingsStateCopyWith<$Res> {
+class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState> implements $SettingsStateCopyWith<$Res> {
   _$SettingsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -94,10 +91,8 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
 }
 
 /// @nodoc
-abstract class _$$SettingsStateImplCopyWith<$Res>
-    implements $SettingsStateCopyWith<$Res> {
-  factory _$$SettingsStateImplCopyWith(
-          _$SettingsStateImpl value, $Res Function(_$SettingsStateImpl) then) =
+abstract class _$$SettingsStateImplCopyWith<$Res> implements $SettingsStateCopyWith<$Res> {
+  factory _$$SettingsStateImplCopyWith(_$SettingsStateImpl value, $Res Function(_$SettingsStateImpl) then) =
       __$$SettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -110,11 +105,9 @@ abstract class _$$SettingsStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SettingsStateImplCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$SettingsStateImpl>
+class __$$SettingsStateImplCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res, _$SettingsStateImpl>
     implements _$$SettingsStateImplCopyWith<$Res> {
-  __$$SettingsStateImplCopyWithImpl(
-      _$SettingsStateImpl _value, $Res Function(_$SettingsStateImpl) _then)
+  __$$SettingsStateImplCopyWithImpl(_$SettingsStateImpl _value, $Res Function(_$SettingsStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of SettingsState
@@ -158,8 +151,7 @@ class _$SettingsStateImpl implements _SettingsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SettingsStateImpl &&
-            (identical(other.settings, settings) ||
-                other.settings == settings) &&
+            (identical(other.settings, settings) || other.settings == settings) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -176,9 +168,7 @@ class _$SettingsStateImpl implements _SettingsState {
 }
 
 abstract class _SettingsState implements SettingsState {
-  const factory _SettingsState(
-      {required final Settings settings,
-      final UserFailures? failure}) = _$SettingsStateImpl;
+  const factory _SettingsState({required final Settings settings, final UserFailures? failure}) = _$SettingsStateImpl;
 
   @override
   Settings get settings;
@@ -189,6 +179,5 @@ abstract class _SettingsState implements SettingsState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

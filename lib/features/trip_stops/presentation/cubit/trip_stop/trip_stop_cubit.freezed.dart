@@ -22,104 +22,42 @@ mixin _$TripStopState {
   bool get hasTripNoteToSave => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        normal,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)
         editing,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        saving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        noteSaving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleted,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleted,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,18 +99,15 @@ mixin _$TripStopState {
   /// Create a copy of TripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TripStopStateCopyWith<TripStopState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TripStopStateCopyWith<TripStopState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TripStopStateCopyWith<$Res> {
-  factory $TripStopStateCopyWith(
-          TripStopState value, $Res Function(TripStopState) then) =
+  factory $TripStopStateCopyWith(TripStopState value, $Res Function(TripStopState) then) =
       _$TripStopStateCopyWithImpl<$Res, TripStopState>;
   @useResult
-  $Res call(
-      {Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
+  $Res call({Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
 
   $TripCopyWith<$Res> get trip;
   $DayTripCopyWith<$Res> get dayTrip;
@@ -180,8 +115,7 @@ abstract class $TripStopStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TripStopStateCopyWithImpl<$Res, $Val extends TripStopState>
-    implements $TripStopStateCopyWith<$Res> {
+class _$TripStopStateCopyWithImpl<$Res, $Val extends TripStopState> implements $TripStopStateCopyWith<$Res> {
   _$TripStopStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -251,15 +185,13 @@ class _$TripStopStateCopyWithImpl<$Res, $Val extends TripStopState>
 }
 
 /// @nodoc
-abstract class _$$TripStopStateNormalImplCopyWith<$Res>
-    implements $TripStopStateCopyWith<$Res> {
-  factory _$$TripStopStateNormalImplCopyWith(_$TripStopStateNormalImpl value,
-          $Res Function(_$TripStopStateNormalImpl) then) =
+abstract class _$$TripStopStateNormalImplCopyWith<$Res> implements $TripStopStateCopyWith<$Res> {
+  factory _$$TripStopStateNormalImplCopyWith(
+          _$TripStopStateNormalImpl value, $Res Function(_$TripStopStateNormalImpl) then) =
       __$$TripStopStateNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
+  $Res call({Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -270,11 +202,10 @@ abstract class _$$TripStopStateNormalImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TripStopStateNormalImplCopyWithImpl<$Res>
-    extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateNormalImpl>
+class __$$TripStopStateNormalImplCopyWithImpl<$Res> extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateNormalImpl>
     implements _$$TripStopStateNormalImplCopyWith<$Res> {
-  __$$TripStopStateNormalImplCopyWithImpl(_$TripStopStateNormalImpl _value,
-      $Res Function(_$TripStopStateNormalImpl) _then)
+  __$$TripStopStateNormalImplCopyWithImpl(
+      _$TripStopStateNormalImpl _value, $Res Function(_$TripStopStateNormalImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopState
@@ -312,10 +243,7 @@ class __$$TripStopStateNormalImplCopyWithImpl<$Res>
 
 class _$TripStopStateNormalImpl implements TripStopStateNormal {
   const _$TripStopStateNormalImpl(
-      {required this.trip,
-      required this.dayTrip,
-      required this.tripStop,
-      this.hasTripNoteToSave = false});
+      {required this.trip, required this.dayTrip, required this.tripStop, this.hasTripNoteToSave = false});
 
   @override
   final Trip trip;
@@ -339,15 +267,12 @@ class _$TripStopStateNormalImpl implements TripStopStateNormal {
             other is _$TripStopStateNormalImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop) &&
-            (identical(other.hasTripNoteToSave, hasTripNoteToSave) ||
-                other.hasTripNoteToSave == hasTripNoteToSave));
+            (identical(other.tripStop, tripStop) || other.tripStop == tripStop) &&
+            (identical(other.hasTripNoteToSave, hasTripNoteToSave) || other.hasTripNoteToSave == hasTripNoteToSave));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
+  int get hashCode => Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
   /// Create a copy of TripStopState
   /// with the given fields replaced by the non-null parameter values.
@@ -355,41 +280,20 @@ class _$TripStopStateNormalImpl implements TripStopStateNormal {
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateNormalImplCopyWith<_$TripStopStateNormalImpl> get copyWith =>
-      __$$TripStopStateNormalImplCopyWithImpl<_$TripStopStateNormalImpl>(
-          this, _$identity);
+      __$$TripStopStateNormalImplCopyWithImpl<_$TripStopStateNormalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        normal,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)
         editing,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        saving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        noteSaving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleted,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleted,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)
         error,
   }) {
     return normal(trip, dayTrip, tripStop, hasTripNoteToSave);
@@ -398,36 +302,15 @@ class _$TripStopStateNormalImpl implements TripStopStateNormal {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
   }) {
     return normal?.call(trip, dayTrip, tripStop, hasTripNoteToSave);
   }
@@ -435,36 +318,15 @@ class _$TripStopStateNormalImpl implements TripStopStateNormal {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
     required TResult orElse(),
   }) {
     if (normal != null) {
@@ -540,15 +402,13 @@ abstract class TripStopStateNormal implements TripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopStateNormalImplCopyWith<_$TripStopStateNormalImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripStopStateNormalImplCopyWith<_$TripStopStateNormalImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripStopStateEditingImplCopyWith<$Res>
-    implements $TripStopStateCopyWith<$Res> {
-  factory _$$TripStopStateEditingImplCopyWith(_$TripStopStateEditingImpl value,
-          $Res Function(_$TripStopStateEditingImpl) then) =
+abstract class _$$TripStopStateEditingImplCopyWith<$Res> implements $TripStopStateCopyWith<$Res> {
+  factory _$$TripStopStateEditingImplCopyWith(
+          _$TripStopStateEditingImpl value, $Res Function(_$TripStopStateEditingImpl) then) =
       __$$TripStopStateEditingImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -576,8 +436,8 @@ abstract class _$$TripStopStateEditingImplCopyWith<$Res>
 class __$$TripStopStateEditingImplCopyWithImpl<$Res>
     extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateEditingImpl>
     implements _$$TripStopStateEditingImplCopyWith<$Res> {
-  __$$TripStopStateEditingImplCopyWithImpl(_$TripStopStateEditingImpl _value,
-      $Res Function(_$TripStopStateEditingImpl) _then)
+  __$$TripStopStateEditingImplCopyWithImpl(
+      _$TripStopStateEditingImpl _value, $Res Function(_$TripStopStateEditingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopState
@@ -690,161 +550,80 @@ class _$TripStopStateEditingImpl implements TripStopStateEditing {
             other is _$TripStopStateEditingImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop) &&
-            (identical(other.hasTripNoteToSave, hasTripNoteToSave) ||
-                other.hasTripNoteToSave == hasTripNoteToSave) &&
+            (identical(other.tripStop, tripStop) || other.tripStop == tripStop) &&
+            (identical(other.hasTripNoteToSave, hasTripNoteToSave) || other.hasTripNoteToSave == hasTripNoteToSave) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.hourDuration, hourDuration) ||
-                other.hourDuration == hourDuration) &&
-            (identical(other.minuteDuration, minuteDuration) ||
-                other.minuteDuration == minuteDuration) &&
-            (identical(other.location, location) ||
-                other.location == location) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.description, description) || other.description == description) &&
+            (identical(other.hourDuration, hourDuration) || other.hourDuration == hourDuration) &&
+            (identical(other.minuteDuration, minuteDuration) || other.minuteDuration == minuteDuration) &&
+            (identical(other.location, location) || other.location == location) &&
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      trip,
-      dayTrip,
-      tripStop,
-      hasTripNoteToSave,
-      name,
-      description,
-      hourDuration,
-      minuteDuration,
-      location,
-      errorMessage);
+  int get hashCode => Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave, name, description,
+      hourDuration, minuteDuration, location, errorMessage);
 
   /// Create a copy of TripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TripStopStateEditingImplCopyWith<_$TripStopStateEditingImpl>
-      get copyWith =>
-          __$$TripStopStateEditingImplCopyWithImpl<_$TripStopStateEditingImpl>(
-              this, _$identity);
+  _$$TripStopStateEditingImplCopyWith<_$TripStopStateEditingImpl> get copyWith =>
+      __$$TripStopStateEditingImplCopyWithImpl<_$TripStopStateEditingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        normal,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)
         editing,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        saving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        noteSaving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleted,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleted,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)
         error,
   }) {
-    return editing(trip, dayTrip, tripStop, hasTripNoteToSave, name,
-        description, hourDuration, minuteDuration, location, errorMessage);
+    return editing(trip, dayTrip, tripStop, hasTripNoteToSave, name, description, hourDuration, minuteDuration,
+        location, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
   }) {
-    return editing?.call(trip, dayTrip, tripStop, hasTripNoteToSave, name,
-        description, hourDuration, minuteDuration, location, errorMessage);
+    return editing?.call(trip, dayTrip, tripStop, hasTripNoteToSave, name, description, hourDuration, minuteDuration,
+        location, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(trip, dayTrip, tripStop, hasTripNoteToSave, name,
-          description, hourDuration, minuteDuration, location, errorMessage);
+      return editing(trip, dayTrip, tripStop, hasTripNoteToSave, name, description, hourDuration, minuteDuration,
+          location, errorMessage);
     }
     return orElse();
   }
@@ -928,20 +707,17 @@ abstract class TripStopStateEditing implements TripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopStateEditingImplCopyWith<_$TripStopStateEditingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TripStopStateEditingImplCopyWith<_$TripStopStateEditingImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripStopStateSavingImplCopyWith<$Res>
-    implements $TripStopStateCopyWith<$Res> {
-  factory _$$TripStopStateSavingImplCopyWith(_$TripStopStateSavingImpl value,
-          $Res Function(_$TripStopStateSavingImpl) then) =
+abstract class _$$TripStopStateSavingImplCopyWith<$Res> implements $TripStopStateCopyWith<$Res> {
+  factory _$$TripStopStateSavingImplCopyWith(
+          _$TripStopStateSavingImpl value, $Res Function(_$TripStopStateSavingImpl) then) =
       __$$TripStopStateSavingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
+  $Res call({Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -952,11 +728,10 @@ abstract class _$$TripStopStateSavingImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TripStopStateSavingImplCopyWithImpl<$Res>
-    extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateSavingImpl>
+class __$$TripStopStateSavingImplCopyWithImpl<$Res> extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateSavingImpl>
     implements _$$TripStopStateSavingImplCopyWith<$Res> {
-  __$$TripStopStateSavingImplCopyWithImpl(_$TripStopStateSavingImpl _value,
-      $Res Function(_$TripStopStateSavingImpl) _then)
+  __$$TripStopStateSavingImplCopyWithImpl(
+      _$TripStopStateSavingImpl _value, $Res Function(_$TripStopStateSavingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopState
@@ -994,10 +769,7 @@ class __$$TripStopStateSavingImplCopyWithImpl<$Res>
 
 class _$TripStopStateSavingImpl implements TripStopStateSaving {
   const _$TripStopStateSavingImpl(
-      {required this.trip,
-      required this.dayTrip,
-      required this.tripStop,
-      this.hasTripNoteToSave = false});
+      {required this.trip, required this.dayTrip, required this.tripStop, this.hasTripNoteToSave = false});
 
   @override
   final Trip trip;
@@ -1021,15 +793,12 @@ class _$TripStopStateSavingImpl implements TripStopStateSaving {
             other is _$TripStopStateSavingImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop) &&
-            (identical(other.hasTripNoteToSave, hasTripNoteToSave) ||
-                other.hasTripNoteToSave == hasTripNoteToSave));
+            (identical(other.tripStop, tripStop) || other.tripStop == tripStop) &&
+            (identical(other.hasTripNoteToSave, hasTripNoteToSave) || other.hasTripNoteToSave == hasTripNoteToSave));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
+  int get hashCode => Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
   /// Create a copy of TripStopState
   /// with the given fields replaced by the non-null parameter values.
@@ -1037,41 +806,20 @@ class _$TripStopStateSavingImpl implements TripStopStateSaving {
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateSavingImplCopyWith<_$TripStopStateSavingImpl> get copyWith =>
-      __$$TripStopStateSavingImplCopyWithImpl<_$TripStopStateSavingImpl>(
-          this, _$identity);
+      __$$TripStopStateSavingImplCopyWithImpl<_$TripStopStateSavingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        normal,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)
         editing,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        saving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        noteSaving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleted,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleted,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)
         error,
   }) {
     return saving(trip, dayTrip, tripStop, hasTripNoteToSave);
@@ -1080,36 +828,15 @@ class _$TripStopStateSavingImpl implements TripStopStateSaving {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
   }) {
     return saving?.call(trip, dayTrip, tripStop, hasTripNoteToSave);
   }
@@ -1117,36 +844,15 @@ class _$TripStopStateSavingImpl implements TripStopStateSaving {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
     required TResult orElse(),
   }) {
     if (saving != null) {
@@ -1222,21 +928,17 @@ abstract class TripStopStateSaving implements TripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopStateSavingImplCopyWith<_$TripStopStateSavingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripStopStateSavingImplCopyWith<_$TripStopStateSavingImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripStopStateNoteSavingImplCopyWith<$Res>
-    implements $TripStopStateCopyWith<$Res> {
+abstract class _$$TripStopStateNoteSavingImplCopyWith<$Res> implements $TripStopStateCopyWith<$Res> {
   factory _$$TripStopStateNoteSavingImplCopyWith(
-          _$TripStopStateNoteSavingImpl value,
-          $Res Function(_$TripStopStateNoteSavingImpl) then) =
+          _$TripStopStateNoteSavingImpl value, $Res Function(_$TripStopStateNoteSavingImpl) then) =
       __$$TripStopStateNoteSavingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
+  $Res call({Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -1251,8 +953,7 @@ class __$$TripStopStateNoteSavingImplCopyWithImpl<$Res>
     extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateNoteSavingImpl>
     implements _$$TripStopStateNoteSavingImplCopyWith<$Res> {
   __$$TripStopStateNoteSavingImplCopyWithImpl(
-      _$TripStopStateNoteSavingImpl _value,
-      $Res Function(_$TripStopStateNoteSavingImpl) _then)
+      _$TripStopStateNoteSavingImpl _value, $Res Function(_$TripStopStateNoteSavingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopState
@@ -1290,10 +991,7 @@ class __$$TripStopStateNoteSavingImplCopyWithImpl<$Res>
 
 class _$TripStopStateNoteSavingImpl implements TripStopStateNoteSaving {
   const _$TripStopStateNoteSavingImpl(
-      {required this.trip,
-      required this.dayTrip,
-      required this.tripStop,
-      this.hasTripNoteToSave = false});
+      {required this.trip, required this.dayTrip, required this.tripStop, this.hasTripNoteToSave = false});
 
   @override
   final Trip trip;
@@ -1317,57 +1015,33 @@ class _$TripStopStateNoteSavingImpl implements TripStopStateNoteSaving {
             other is _$TripStopStateNoteSavingImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop) &&
-            (identical(other.hasTripNoteToSave, hasTripNoteToSave) ||
-                other.hasTripNoteToSave == hasTripNoteToSave));
+            (identical(other.tripStop, tripStop) || other.tripStop == tripStop) &&
+            (identical(other.hasTripNoteToSave, hasTripNoteToSave) || other.hasTripNoteToSave == hasTripNoteToSave));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
+  int get hashCode => Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
   /// Create a copy of TripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TripStopStateNoteSavingImplCopyWith<_$TripStopStateNoteSavingImpl>
-      get copyWith => __$$TripStopStateNoteSavingImplCopyWithImpl<
-          _$TripStopStateNoteSavingImpl>(this, _$identity);
+  _$$TripStopStateNoteSavingImplCopyWith<_$TripStopStateNoteSavingImpl> get copyWith =>
+      __$$TripStopStateNoteSavingImplCopyWithImpl<_$TripStopStateNoteSavingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        normal,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)
         editing,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        saving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        noteSaving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleted,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleted,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)
         error,
   }) {
     return noteSaving(trip, dayTrip, tripStop, hasTripNoteToSave);
@@ -1376,36 +1050,15 @@ class _$TripStopStateNoteSavingImpl implements TripStopStateNoteSaving {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
   }) {
     return noteSaving?.call(trip, dayTrip, tripStop, hasTripNoteToSave);
   }
@@ -1413,36 +1066,15 @@ class _$TripStopStateNoteSavingImpl implements TripStopStateNoteSaving {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
     required TResult orElse(),
   }) {
     if (noteSaving != null) {
@@ -1518,21 +1150,18 @@ abstract class TripStopStateNoteSaving implements TripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopStateNoteSavingImplCopyWith<_$TripStopStateNoteSavingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TripStopStateNoteSavingImplCopyWith<_$TripStopStateNoteSavingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripStopStateDeletingImplCopyWith<$Res>
-    implements $TripStopStateCopyWith<$Res> {
+abstract class _$$TripStopStateDeletingImplCopyWith<$Res> implements $TripStopStateCopyWith<$Res> {
   factory _$$TripStopStateDeletingImplCopyWith(
-          _$TripStopStateDeletingImpl value,
-          $Res Function(_$TripStopStateDeletingImpl) then) =
+          _$TripStopStateDeletingImpl value, $Res Function(_$TripStopStateDeletingImpl) then) =
       __$$TripStopStateDeletingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
+  $Res call({Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -1546,8 +1175,8 @@ abstract class _$$TripStopStateDeletingImplCopyWith<$Res>
 class __$$TripStopStateDeletingImplCopyWithImpl<$Res>
     extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateDeletingImpl>
     implements _$$TripStopStateDeletingImplCopyWith<$Res> {
-  __$$TripStopStateDeletingImplCopyWithImpl(_$TripStopStateDeletingImpl _value,
-      $Res Function(_$TripStopStateDeletingImpl) _then)
+  __$$TripStopStateDeletingImplCopyWithImpl(
+      _$TripStopStateDeletingImpl _value, $Res Function(_$TripStopStateDeletingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopState
@@ -1585,10 +1214,7 @@ class __$$TripStopStateDeletingImplCopyWithImpl<$Res>
 
 class _$TripStopStateDeletingImpl implements TripStopStateDeleting {
   const _$TripStopStateDeletingImpl(
-      {required this.trip,
-      required this.dayTrip,
-      required this.tripStop,
-      this.hasTripNoteToSave = false});
+      {required this.trip, required this.dayTrip, required this.tripStop, this.hasTripNoteToSave = false});
 
   @override
   final Trip trip;
@@ -1612,57 +1238,33 @@ class _$TripStopStateDeletingImpl implements TripStopStateDeleting {
             other is _$TripStopStateDeletingImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop) &&
-            (identical(other.hasTripNoteToSave, hasTripNoteToSave) ||
-                other.hasTripNoteToSave == hasTripNoteToSave));
+            (identical(other.tripStop, tripStop) || other.tripStop == tripStop) &&
+            (identical(other.hasTripNoteToSave, hasTripNoteToSave) || other.hasTripNoteToSave == hasTripNoteToSave));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
+  int get hashCode => Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
   /// Create a copy of TripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TripStopStateDeletingImplCopyWith<_$TripStopStateDeletingImpl>
-      get copyWith => __$$TripStopStateDeletingImplCopyWithImpl<
-          _$TripStopStateDeletingImpl>(this, _$identity);
+  _$$TripStopStateDeletingImplCopyWith<_$TripStopStateDeletingImpl> get copyWith =>
+      __$$TripStopStateDeletingImplCopyWithImpl<_$TripStopStateDeletingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        normal,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)
         editing,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        saving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        noteSaving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleted,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleted,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)
         error,
   }) {
     return deleting(trip, dayTrip, tripStop, hasTripNoteToSave);
@@ -1671,36 +1273,15 @@ class _$TripStopStateDeletingImpl implements TripStopStateDeleting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
   }) {
     return deleting?.call(trip, dayTrip, tripStop, hasTripNoteToSave);
   }
@@ -1708,36 +1289,15 @@ class _$TripStopStateDeletingImpl implements TripStopStateDeleting {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
     required TResult orElse(),
   }) {
     if (deleting != null) {
@@ -1813,20 +1373,17 @@ abstract class TripStopStateDeleting implements TripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopStateDeletingImplCopyWith<_$TripStopStateDeletingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TripStopStateDeletingImplCopyWith<_$TripStopStateDeletingImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripStopStateDeletedImplCopyWith<$Res>
-    implements $TripStopStateCopyWith<$Res> {
-  factory _$$TripStopStateDeletedImplCopyWith(_$TripStopStateDeletedImpl value,
-          $Res Function(_$TripStopStateDeletedImpl) then) =
+abstract class _$$TripStopStateDeletedImplCopyWith<$Res> implements $TripStopStateCopyWith<$Res> {
+  factory _$$TripStopStateDeletedImplCopyWith(
+          _$TripStopStateDeletedImpl value, $Res Function(_$TripStopStateDeletedImpl) then) =
       __$$TripStopStateDeletedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
+  $Res call({Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -1840,8 +1397,8 @@ abstract class _$$TripStopStateDeletedImplCopyWith<$Res>
 class __$$TripStopStateDeletedImplCopyWithImpl<$Res>
     extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateDeletedImpl>
     implements _$$TripStopStateDeletedImplCopyWith<$Res> {
-  __$$TripStopStateDeletedImplCopyWithImpl(_$TripStopStateDeletedImpl _value,
-      $Res Function(_$TripStopStateDeletedImpl) _then)
+  __$$TripStopStateDeletedImplCopyWithImpl(
+      _$TripStopStateDeletedImpl _value, $Res Function(_$TripStopStateDeletedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopState
@@ -1879,10 +1436,7 @@ class __$$TripStopStateDeletedImplCopyWithImpl<$Res>
 
 class _$TripStopStateDeletedImpl implements TripStopStateDeleted {
   const _$TripStopStateDeletedImpl(
-      {required this.trip,
-      required this.dayTrip,
-      required this.tripStop,
-      this.hasTripNoteToSave = false});
+      {required this.trip, required this.dayTrip, required this.tripStop, this.hasTripNoteToSave = false});
 
   @override
   final Trip trip;
@@ -1906,58 +1460,33 @@ class _$TripStopStateDeletedImpl implements TripStopStateDeleted {
             other is _$TripStopStateDeletedImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop) &&
-            (identical(other.hasTripNoteToSave, hasTripNoteToSave) ||
-                other.hasTripNoteToSave == hasTripNoteToSave));
+            (identical(other.tripStop, tripStop) || other.tripStop == tripStop) &&
+            (identical(other.hasTripNoteToSave, hasTripNoteToSave) || other.hasTripNoteToSave == hasTripNoteToSave));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
+  int get hashCode => Object.hash(runtimeType, trip, dayTrip, tripStop, hasTripNoteToSave);
 
   /// Create a copy of TripStopState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TripStopStateDeletedImplCopyWith<_$TripStopStateDeletedImpl>
-      get copyWith =>
-          __$$TripStopStateDeletedImplCopyWithImpl<_$TripStopStateDeletedImpl>(
-              this, _$identity);
+  _$$TripStopStateDeletedImplCopyWith<_$TripStopStateDeletedImpl> get copyWith =>
+      __$$TripStopStateDeletedImplCopyWithImpl<_$TripStopStateDeletedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        normal,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)
         editing,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        saving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        noteSaving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleted,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleted,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)
         error,
   }) {
     return deleted(trip, dayTrip, tripStop, hasTripNoteToSave);
@@ -1966,36 +1495,15 @@ class _$TripStopStateDeletedImpl implements TripStopStateDeleted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
   }) {
     return deleted?.call(trip, dayTrip, tripStop, hasTripNoteToSave);
   }
@@ -2003,36 +1511,15 @@ class _$TripStopStateDeletedImpl implements TripStopStateDeleted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
     required TResult orElse(),
   }) {
     if (deleted != null) {
@@ -2108,24 +1595,17 @@ abstract class TripStopStateDeleted implements TripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopStateDeletedImplCopyWith<_$TripStopStateDeletedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TripStopStateDeletedImplCopyWith<_$TripStopStateDeletedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TripStopStateErrorImplCopyWith<$Res>
-    implements $TripStopStateCopyWith<$Res> {
-  factory _$$TripStopStateErrorImplCopyWith(_$TripStopStateErrorImpl value,
-          $Res Function(_$TripStopStateErrorImpl) then) =
+abstract class _$$TripStopStateErrorImplCopyWith<$Res> implements $TripStopStateCopyWith<$Res> {
+  factory _$$TripStopStateErrorImplCopyWith(
+          _$TripStopStateErrorImpl value, $Res Function(_$TripStopStateErrorImpl) then) =
       __$$TripStopStateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Trip trip,
-      DayTrip dayTrip,
-      TripStop tripStop,
-      String message,
-      bool hasTripNoteToSave});
+  $Res call({Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave});
 
   @override
   $TripCopyWith<$Res> get trip;
@@ -2136,11 +1616,9 @@ abstract class _$$TripStopStateErrorImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TripStopStateErrorImplCopyWithImpl<$Res>
-    extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateErrorImpl>
+class __$$TripStopStateErrorImplCopyWithImpl<$Res> extends _$TripStopStateCopyWithImpl<$Res, _$TripStopStateErrorImpl>
     implements _$$TripStopStateErrorImplCopyWith<$Res> {
-  __$$TripStopStateErrorImplCopyWithImpl(_$TripStopStateErrorImpl _value,
-      $Res Function(_$TripStopStateErrorImpl) _then)
+  __$$TripStopStateErrorImplCopyWithImpl(_$TripStopStateErrorImpl _value, $Res Function(_$TripStopStateErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TripStopState
@@ -2213,16 +1691,13 @@ class _$TripStopStateErrorImpl implements TripStopStateError {
             other is _$TripStopStateErrorImpl &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.dayTrip, dayTrip) || other.dayTrip == dayTrip) &&
-            (identical(other.tripStop, tripStop) ||
-                other.tripStop == tripStop) &&
+            (identical(other.tripStop, tripStop) || other.tripStop == tripStop) &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.hasTripNoteToSave, hasTripNoteToSave) ||
-                other.hasTripNoteToSave == hasTripNoteToSave));
+            (identical(other.hasTripNoteToSave, hasTripNoteToSave) || other.hasTripNoteToSave == hasTripNoteToSave));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, trip, dayTrip, tripStop, message, hasTripNoteToSave);
+  int get hashCode => Object.hash(runtimeType, trip, dayTrip, tripStop, message, hasTripNoteToSave);
 
   /// Create a copy of TripStopState
   /// with the given fields replaced by the non-null parameter values.
@@ -2230,41 +1705,20 @@ class _$TripStopStateErrorImpl implements TripStopStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$TripStopStateErrorImplCopyWith<_$TripStopStateErrorImpl> get copyWith =>
-      __$$TripStopStateErrorImplCopyWithImpl<_$TripStopStateErrorImpl>(
-          this, _$identity);
+      __$$TripStopStateErrorImplCopyWithImpl<_$TripStopStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        normal,
-    required TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) normal,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)
         editing,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        saving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        noteSaving,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleting,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)
-        deleted,
-    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) saving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) noteSaving,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleting,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave) deleted,
+    required TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)
         error,
   }) {
     return error(trip, dayTrip, tripStop, message, hasTripNoteToSave);
@@ -2273,36 +1727,15 @@ class _$TripStopStateErrorImpl implements TripStopStateError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult? Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult? Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
   }) {
     return error?.call(trip, dayTrip, tripStop, message, hasTripNoteToSave);
   }
@@ -2310,36 +1743,15 @@ class _$TripStopStateErrorImpl implements TripStopStateError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        normal,
-    TResult Function(
-            Trip trip,
-            DayTrip dayTrip,
-            TripStop tripStop,
-            bool hasTripNoteToSave,
-            String? name,
-            String? description,
-            int? hourDuration,
-            int? minuteDuration,
-            LatLng? location,
-            String? errorMessage)?
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? normal,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave, String? name,
+            String? description, int? hourDuration, int? minuteDuration, LatLng? location, String? errorMessage)?
         editing,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        saving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        noteSaving,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleting,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            bool hasTripNoteToSave)?
-        deleted,
-    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop,
-            String message, bool hasTripNoteToSave)?
-        error,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? saving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? noteSaving,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleting,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, bool hasTripNoteToSave)? deleted,
+    TResult Function(Trip trip, DayTrip dayTrip, TripStop tripStop, String message, bool hasTripNoteToSave)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -2417,6 +1829,5 @@ abstract class TripStopStateError implements TripStopState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TripStopStateErrorImplCopyWith<_$TripStopStateErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TripStopStateErrorImplCopyWith<_$TripStopStateErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }

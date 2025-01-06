@@ -29,8 +29,7 @@ void main() {
       index: 0,
     );
     final tDayTrips = [tDayTip];
-    when(mockDayTripsRepository.listenDayTrips(any))
-        .thenAnswer((_) => Stream.value(right(tDayTrips)));
+    when(mockDayTripsRepository.listenDayTrips(any)).thenAnswer((_) => Stream.value(right(tDayTrips)));
 
     // act
     final result = useCase(tParams);
@@ -40,8 +39,7 @@ void main() {
 
   test('should return failure when listening to day trips fails', () async {
     // arrange
-    when(mockDayTripsRepository.listenDayTrips(any))
-        .thenAnswer((_) => Stream.value(left(const DayTripsFailure())));
+    when(mockDayTripsRepository.listenDayTrips(any)).thenAnswer((_) => Stream.value(left(const DayTripsFailure())));
 
     // act
     final result = useCase(tParams);

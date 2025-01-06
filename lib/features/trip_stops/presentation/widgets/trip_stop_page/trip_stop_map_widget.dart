@@ -7,7 +7,7 @@ import '../../../../map/domain/entities/map_place.dart';
 import '../../../../map/presentation/widgets/map_widget.dart';
 import '../../cubit/trip_stop/trip_stop_cubit.dart';
 
-class TripStopMapWidget extends HookWidget  {
+class TripStopMapWidget extends HookWidget {
   const TripStopMapWidget({super.key});
 
   @override

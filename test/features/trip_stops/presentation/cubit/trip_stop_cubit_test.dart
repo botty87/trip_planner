@@ -107,8 +107,7 @@ void main() {
 
     blocTest<TripStopCubit, TripStopState>(
       'On failure, emits [TripStopState.error]',
-      setUp: () =>
-          when(mockTripStopDone(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
+      setUp: () => when(mockTripStopDone(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
       build: () => getStandardTripStopCubit(),
       act: (cubit) => cubit.isDoneChanged(true),
       expect: () => [
@@ -216,8 +215,7 @@ void main() {
 
     blocTest<TripStopCubit, TripStopState>(
       'on forced = false on fail emit TripStopState.error then TripStopState.normal',
-      setUp: () =>
-          when(mockUpdateTripStopNote(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
+      setUp: () => when(mockUpdateTripStopNote(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
       seed: () => TripStopState.normal(
         trip: tTrip,
         dayTrip: tDayTrip,
@@ -271,8 +269,7 @@ void main() {
 
     blocTest<TripStopCubit, TripStopState>(
       'On failure, emits [TripStopState.deleting, TripStopState.error, TripStopState.normal]',
-      setUp: () =>
-          when(mockDeleteTripStop(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
+      setUp: () => when(mockDeleteTripStop(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
       build: () => getStandardTripStopCubit(),
       act: (cubit) => cubit.deleteTripStop(),
       expect: () => [
@@ -437,8 +434,7 @@ void main() {
 
       blocTest(
         'On failure, emits [TripStopState.saving, TripStopState.error, TripStopState.editing]',
-        setUp: () =>
-            when(mockUpdateTripStop(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
+        setUp: () => when(mockUpdateTripStop(any)).thenAnswer((_) async => const Left(TripStopsFailure())),
         seed: () => TripStopState.editing(
           trip: tTrip,
           dayTrip: tDayTrip,

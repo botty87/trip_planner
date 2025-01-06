@@ -32,8 +32,7 @@ void main() {
   });
 
   test('on failure should return failure', () async {
-    when(mockRepository.getPublicDayTrips(tTripId))
-        .thenAnswer((_) async => const Left(DiscoverTripsFailure()));
+    when(mockRepository.getPublicDayTrips(tTripId)).thenAnswer((_) async => const Left(DiscoverTripsFailure()));
 
     // act
     final result = await usecase(const GetPublicDayTripsParams(tripId: tTripId));

@@ -76,8 +76,7 @@ class TripStopPlaceholder with _$TripStopPlaceholder {
     required int duration,
   }) = _TripStopPlaceholder;
 
-  factory TripStopPlaceholder.fromJson(Map<String, dynamic> json) =>
-      _$TripStopPlaceholderFromJson(json);
+  factory TripStopPlaceholder.fromJson(Map<String, dynamic> json) => _$TripStopPlaceholderFromJson(json);
 
   factory TripStopPlaceholder.create() => const TripStopPlaceholder(
         name: '',

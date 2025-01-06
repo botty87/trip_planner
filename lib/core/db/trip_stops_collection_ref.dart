@@ -11,8 +11,7 @@ class TripStopsCollectionRef implements AbstractCollectionRef<TripStop> {
   final String tripId;
   final String dayTripId;
 
-  TripStopsCollectionRef(
-      this.firebaseFirestore, @factoryParam this.tripId, @factoryParam this.dayTripId);
+  TripStopsCollectionRef(this.firebaseFirestore, @factoryParam this.tripId, @factoryParam this.dayTripId);
 
   @override
   CollectionReference get collectionRef {

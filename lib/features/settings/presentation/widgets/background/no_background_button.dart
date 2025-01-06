@@ -16,9 +16,8 @@ class _NoBackgroundButton extends StatelessWidget {
       }
     });
 
-    final selectedColor = context.isDarkMode
-        ? Theme.of(context).colorScheme.secondary
-        : Theme.of(context).primaryColorDark;
+    final selectedColor =
+        context.isDarkMode ? Theme.of(context).colorScheme.secondary : Theme.of(context).primaryColorDark;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
