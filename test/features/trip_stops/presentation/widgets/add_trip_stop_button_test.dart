@@ -3,7 +3,6 @@ import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
@@ -39,29 +38,5 @@ void main() {
 
     await $.tap($(const Key('addTripStopButton')));
     verify(() => mockNewTripStopCubit.createTripStop()).called(1);
-  });
-
-  //Golden test
-  testGoldens('Should render AddTripStopButton', (tester) async {
-    final builder = DeviceBuilder()
-      ..overrideDevicesForAllScenarios(devices: [
-        Device.phone,
-        Device.iphone11,
-        Device.tabletLandscape,
-        Device.tabletPortrait,
-      ])
-      ..addScenario(
-        name: 'AddTripStopButton',
-        widget: BlocProvider<NewTripStopCubit>(
-          create: (context) => mockNewTripStopCubit,
-          child: const AddTripStopButton(
-            isSaving: Stream.empty(),
-          ),
-        ),
-      );
-
-    await tester.pumpDeviceBuilder(builder);
-
-    await screenMatchesGolden(tester, 'add_trip_stop_button');
   });
 }

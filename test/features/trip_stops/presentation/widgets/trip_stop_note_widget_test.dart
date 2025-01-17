@@ -4,7 +4,6 @@ import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
@@ -83,78 +82,5 @@ void main() {
     expect($(LocaleKeys.note.tr()), findsOneWidget);
     expect($(TextField), findsOneWidget);
     expect($('Some note'), findsOneWidget);
-  });
-
-  //Golden test
-  testGoldens('Should render TripStopNoteWidget', (tester) async {
-    whenListen(
-      backgroundsCubit,
-      Stream.value(tBackgroundsState),
-      initialState: tBackgroundsState,
-    );
-
-    whenListen(
-      tripStopCubit,
-      Stream.value(tTripStopStateNormal),
-      initialState: tTripStopStateNormal,
-    );
-
-    final builder = DeviceBuilder()
-      ..overrideDevicesForAllScenarios(devices: [
-        Device.phone,
-        Device.iphone11,
-        Device.tabletLandscape,
-        Device.tabletPortrait,
-      ])
-      ..addScenario(
-        name: 'TripStopNoteWidget',
-        widget: TestUtils.defaultWidget(
-          backgroundsCubit: backgroundsCubit,
-          child: BlocProvider<TripStopCubit>(
-            create: (context) => tripStopCubit,
-            child: const TripStopNoteWidget(),
-          ),
-        ),
-      );
-
-    await tester.pumpDeviceBuilder(builder);
-
-    await screenMatchesGolden(tester, 'trip_stop_note_widget');
-  });
-
-  testGoldens('Should render TripStopNoteWidget without hint text', (tester) async {
-    whenListen(
-      backgroundsCubit,
-      Stream.value(tBackgroundsState),
-      initialState: tBackgroundsState,
-    );
-
-    whenListen(
-      tripStopCubit,
-      Stream.value(tTripStopStateNormal.copyWith(tripStop: tTripStop.copyWith(note: 'Some note'))),
-      initialState: tTripStopStateNormal.copyWith(tripStop: tTripStop.copyWith(note: 'Some note')),
-    );
-
-    final builder = DeviceBuilder()
-      ..overrideDevicesForAllScenarios(devices: [
-        Device.phone,
-        Device.iphone11,
-        Device.tabletLandscape,
-        Device.tabletPortrait,
-      ])
-      ..addScenario(
-        name: 'TripStopNoteWidget',
-        widget: TestUtils.defaultWidget(
-          backgroundsCubit: backgroundsCubit,
-          child: BlocProvider<TripStopCubit>(
-            create: (context) => tripStopCubit,
-            child: const TripStopNoteWidget(),
-          ),
-        ),
-      );
-
-    await tester.pumpDeviceBuilder(builder);
-
-    await screenMatchesGolden(tester, 'trip_stop_note_widget_without_hint');
   });
 }

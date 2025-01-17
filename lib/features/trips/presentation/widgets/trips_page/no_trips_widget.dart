@@ -7,7 +7,6 @@ import 'package:vector_graphics/vector_graphics.dart';
 import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../../../../ui/widgets/adaptive/gap.dart';
 import '../../../../../ui/widgets/adaptive/row_column.dart';
 import '../../../../../ui/widgets/background/background_widget_container.dart';
 import '../../../../ads/presentation/widgets/native_ad.dart';
@@ -20,6 +19,7 @@ class NoTripsWidget extends StatelessWidget {
     return SafeArea(
       minimum: const EdgeInsets.all(verticalSpaceL),
       child: RowColumn(
+        spacing: verticalSpaceS,
         children: [
           ConstrainedBox(
             constraints: BoxConstraints(
@@ -32,7 +32,6 @@ class NoTripsWidget extends StatelessWidget {
             ),
             child: NativeAd.trips(),
           ),
-          const Gap(verticalSpaceS),
           Expanded(
             child: BackgroundWidgetContainer(
               child: Column(

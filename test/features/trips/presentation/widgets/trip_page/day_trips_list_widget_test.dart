@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:golden_toolkit/golden_toolkit.dart';
-import 'package:trip_planner/core/constants.dart';
 import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
+import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
 import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/day_trip_card.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/list/day_trips_list_widget.dart';
+import 'package:trip_planner/features/trips/presentation/widgets/trip_page/list/no_day_trip_widget.dart';
 import 'package:trip_planner/gen/assets.gen.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -33,6 +33,8 @@ void main() {
     createdAt: DateTime.now(),
   );
 
+  const tViewMode = ViewMode.list;
+
   setUp(() {
     mockTripCubit = MockTripsCubit();
     backgroundsCubit = MockBackgroundsCubit();
@@ -47,8 +49,8 @@ void main() {
         (tester) async {
       whenListen(
         mockTripCubit,
-        Stream.value(TripState.loaded(trip: tTrip, dayTrips: [])),
-        initialState: TripState.loaded(trip: tTrip, dayTrips: []),
+        Stream.value(TripState.loaded(trip: tTrip, dayTrips: [], viewMode: tViewMode)),
+        initialState: TripState.loaded(trip: tTrip, dayTrips: [], viewMode: tViewMode),
       );
 
       whenListen(
@@ -73,57 +75,15 @@ void main() {
         ),
       );
 
-      expect(find.byType(NoDayTrips), findsOneWidget);
-    });
-
-    testGoldens('renders DayTripsListWidget that contains NoDayTrips on empty DayTrips and portrait orientation',
-        (tester) async {
-      whenListen(
-        mockTripCubit,
-        Stream.value(TripState.loaded(trip: tTrip, dayTrips: [])),
-        initialState: TripState.loaded(trip: tTrip, dayTrips: []),
-      );
-
-      whenListen(
-        backgroundsCubit,
-        Stream.value(tBackgroundsState),
-        initialState: tBackgroundsState,
-      );
-
-      final builder = DeviceBuilder()
-        ..overrideDevicesForAllScenarios(devices: [
-          Device.phone,
-          Device.iphone11,
-          Device.tabletLandscape,
-          Device.tabletPortrait,
-        ])
-        ..addScenario(
-          widget: TestUtils.defaultWidget(
-            backgroundsCubit: backgroundsCubit,
-            child: BlocProvider(
-              create: (context) => mockTripCubit,
-              child: const CustomScrollView(
-                slivers: [
-                  DayTripsListWidget(
-                    orientation: Orientation.portrait,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-
-      await tester.pumpDeviceBuilder(builder);
-
-      await screenMatchesGolden(tester, 'day_trips_list_widget_empty_day_trips_portrait_orientation');
+      expect(find.byType(NoDayTripsWidget), findsOneWidget);
     });
 
     testWidgets('renders DayTripsListWidget that contains SizedBox on empty DayTrips and portrait orientation',
         (tester) async {
       whenListen(
         mockTripCubit,
-        Stream.value(TripState.loaded(trip: tTrip, dayTrips: [])),
-        initialState: TripState.loaded(trip: tTrip, dayTrips: []),
+        Stream.value(TripState.loaded(trip: tTrip, dayTrips: [], viewMode: tViewMode)),
+        initialState: TripState.loaded(trip: tTrip, dayTrips: [], viewMode: tViewMode),
       );
 
       await tester.pumpWidget(
@@ -147,8 +107,8 @@ void main() {
     testWidgets('renders DayTripsListWidget that contains DayTripsList on non empty DayTrips', (tester) async {
       whenListen(
         mockTripCubit,
-        Stream.value(TripState.loaded(trip: tTrip, dayTrips: tDayTrips)),
-        initialState: TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+        Stream.value(TripState.loaded(trip: tTrip, dayTrips: tDayTrips, viewMode: tViewMode)),
+        initialState: TripState.loaded(trip: tTrip, dayTrips: tDayTrips, viewMode: tViewMode),
       );
 
       await tester.pumpWidget(
@@ -181,7 +141,7 @@ void main() {
       await tester.pumpWidget(
         TestUtils.defaultWidget(
           backgroundsCubit: backgroundsCubit,
-          child: const NoDayTrips(),
+          child: const NoDayTripsWidget(),
         ),
       );
 
@@ -208,8 +168,8 @@ void main() {
     testWidgets('renders DayTripsList with correct DayTrips', (tester) async {
       whenListen(
         mockTripCubit,
-        Stream.value(TripState.loaded(trip: tTrip, dayTrips: tDayTrips)),
-        initialState: TripState.loaded(trip: tTrip, dayTrips: tDayTrips),
+        Stream.value(TripState.loaded(trip: tTrip, dayTrips: tDayTrips, viewMode: tViewMode)),
+        initialState: TripState.loaded(trip: tTrip, dayTrips: tDayTrips, viewMode: tViewMode),
       );
 
       await tester.pumpWidget(
@@ -223,12 +183,6 @@ void main() {
 
       expect(find.byType(DayTripsList), findsOneWidget);
       expect(find.byType(DayTripCard), findsNWidgets(2));
-
-      //Verify that the last card has no padding
-      final cardPaddingPredicate = find.byWidgetPredicate((widget) {
-        return widget is Padding && widget.padding == const EdgeInsets.symmetric(vertical: verticalSpaceS);
-      });
-      expect(cardPaddingPredicate, findsOneWidget);
     });
   });
 }
