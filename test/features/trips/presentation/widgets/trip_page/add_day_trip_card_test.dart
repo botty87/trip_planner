@@ -1,3 +1,4 @@
+import 'package:alchemist/alchemist.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
@@ -23,5 +24,16 @@ void main() {
     expect(find.byType(AddDestinationCard), findsOneWidget);
     expect($(LocaleKeys.addDayTrip), findsOneWidget);
     expect(find.byType(SvgPicture), findsOneWidget);
+  });
+
+  goldenTest('renders AddDayTripCard that contains AddDestinationCard', fileName: 'add_day_trip_card', builder: () {
+    return GoldenTestGroup(
+      children: [
+        GoldenTestScenario(
+          name: 'normal',
+          child: const AddDayTripCard(),
+        ),
+      ],
+    );
   });
 }
