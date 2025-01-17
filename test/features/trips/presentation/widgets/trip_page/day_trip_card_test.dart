@@ -1,3 +1,4 @@
+import 'package:alchemist/alchemist.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
@@ -33,5 +34,21 @@ void main() {
     expect($("${LocaleKeys.day.tr()} 1"), findsOneWidget);
     expect($(DateFormat.yMMMMd().format(tTripStartDate)), findsOneWidget);
     expect($(tDayTrip.description), findsOneWidget);
+  });
+
+  goldenTest('renders DayTripCard that contains GenericTripCard', fileName: 'day_trip_card', builder: () {
+    return GoldenTestGroup(
+      children: [
+        GoldenTestScenario(
+          constraints: const BoxConstraints(minWidth: 200),
+          name: 'normal',
+          child: DayTripCard(
+            key: ValueKey(tDayTrip.id),
+            dayTrip: tDayTrip,
+            tripStartDate: tTripStartDate,
+          ),
+        ),
+      ],
+    );
   });
 }
