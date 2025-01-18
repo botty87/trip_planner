@@ -1,3 +1,4 @@
+import 'package:alchemist/alchemist.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
@@ -79,5 +80,42 @@ void main() {
     ));
 
     expect(find.byType(GenericDeleteTripButton), findsOneWidget);
+  });
+
+  goldenTest('renders DeleteTripButton that contains GenericDeleteTripButton', fileName: 'delete_trip_button',
+      builder: () {
+    
+    whenListen(
+      mockTripCubit,
+      Stream.value(TripState.loaded(trip: tTrip, dayTrips: [], viewMode: tViewMode)),
+      initialState: TripState.loaded(trip: tTrip, dayTrips: [], viewMode: tViewMode),
+    );
+
+    whenListen(
+      mockUserCubit,
+      Stream.value(const UserState.loggedIn(user: tUser)),
+      initialState: const UserState.loggedIn(user: tUser),
+    );
+
+    return GoldenTestGroup(
+      children: [
+        GoldenTestScenario(
+          name: 'normal',
+          child: TestUtils.defaultWidgetNoScaffold(
+            child: MultiBlocProvider(
+              providers: [
+                BlocProvider<TripCubit>(
+                  create: (context) => mockTripCubit,
+                ),
+                BlocProvider<UserCubit>(
+                  create: (context) => mockUserCubit,
+                ),
+              ],
+              child: const DeleteTripButton(),
+            ),
+          ),
+        ),
+      ],
+    );
   });
 }

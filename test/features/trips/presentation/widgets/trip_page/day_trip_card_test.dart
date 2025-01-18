@@ -38,9 +38,9 @@ void main() {
 
   goldenTest('renders DayTripCard that contains GenericTripCard', fileName: 'day_trip_card', builder: () {
     return GoldenTestGroup(
+      scenarioConstraints: const BoxConstraints(minWidth: 200),
       children: [
         GoldenTestScenario(
-          constraints: const BoxConstraints(minWidth: 200),
           name: 'normal',
           child: DayTripCard(
             key: ValueKey(tDayTrip.id),
