@@ -89,6 +89,6 @@ class TestUtils {
           BlocProvider(create: (context) => settingsCubit ?? MockSettingsCubit()),
           BlocProvider(create: (context) => backgroundsCubit ?? MockBackgroundsCubit()),
         ],
-        child: MaterialApp(home: child),
+        child: MaterialApp(home: child, debugShowCheckedModeBanner: false),
       );
 }
