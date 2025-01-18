@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:patrol/patrol.dart';
 import 'package:trip_planner/features/settings/domain/entities/settings.dart';
 import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
@@ -52,7 +53,7 @@ void main() {
     EasyLocalization.logger.enableLevels = [LevelMessages.error, LevelMessages.debug];
   });
 
-  testWidgets('renders DeleteTripButton that contains GenericDeleteTripButton', (tester) async {
+  patrolWidgetTest('renders DeleteTripButton that contains GenericDeleteTripButton', ($) async {
     whenListen(
       mockTripCubit,
       Stream.value(TripState.loaded(trip: tTrip, dayTrips: [], viewMode: tViewMode)),
@@ -65,7 +66,7 @@ void main() {
       initialState: const UserState.loggedIn(user: tUser),
     );
 
-    await tester.pumpWidget(TestUtils.defaultWidget(
+    await $.pumpWidget(TestUtils.defaultWidget(
       child: MultiBlocProvider(
         providers: [
           BlocProvider<TripCubit>(
@@ -79,7 +80,7 @@ void main() {
       ),
     ));
 
-    expect(find.byType(GenericDeleteTripButton), findsOneWidget);
+    expect($(GenericDeleteTripButton), findsOneWidget);
   });
 
   goldenTest('renders DeleteTripButton that contains GenericDeleteTripButton', fileName: 'delete_trip_button',
