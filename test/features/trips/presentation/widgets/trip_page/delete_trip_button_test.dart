@@ -5,6 +5,7 @@ import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
+import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/settings/domain/entities/settings.dart';
 import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
@@ -81,6 +82,7 @@ void main() {
     ));
 
     expect($(GenericDeleteTripButton), findsOneWidget);
+    expect($(LocaleKeys.removeTrip.tr()), findsOneWidget);
   });
 
   goldenTest('renders DeleteTripButton that contains GenericDeleteTripButton', fileName: 'delete_trip_button',
