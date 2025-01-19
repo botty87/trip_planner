@@ -9,6 +9,7 @@ import '../../../../../core/constants.dart';
 import '../../../../../core/l10n/languages.dart';
 import '../../../../../core/l10n/locale_keys.g.dart';
 import '../../../../tutorials/presentation/cubit/tutorial_cubit.dart';
+import 'trip_form_privacy_showcase.dart';
 import 'trip_privacy_selector.dart';
 
 part 'language_selector.dart';
@@ -90,11 +91,13 @@ class NewEditTripForm extends HookWidget {
                               onChanged: onDescriptionChanged,
                               initialTripDescription: initialTripDescription),
                           const SizedBox(height: verticalSpaceL),
-                          NewEditTripFormPrivacySelector(
-                            key: const Key('tripPrivacySelector'),
-                            initialIsPublic: initialIsPublic ?? false,
-                            onIsPublicChanged: onIsPublicChanged,
+                          NewEditTripFormPrivacyShowcase(
                             showCaseKey: _showCaseKeyOne,
+                            child: NewEditTripFormPrivacySelector(
+                              key: const Key('tripPrivacySelector'),
+                              initialIsPublic: initialIsPublic ?? false,
+                              onIsPublicChanged: onIsPublicChanged,
+                            ),
                           ),
                           const SizedBox(height: verticalSpaceL),
                           _LanguageSelector(
