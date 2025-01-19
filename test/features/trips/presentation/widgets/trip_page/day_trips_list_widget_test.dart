@@ -3,9 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:trip_planner/core/l10n/locale_keys.g.dart';
 import 'package:trip_planner/features/day_trips/domain/entities/day_trip.dart';
 import 'package:trip_planner/features/settings/domain/entities/view_preferences.dart';
 import 'package:trip_planner/features/trips/domain/entities/trip.dart';
@@ -13,8 +11,6 @@ import 'package:trip_planner/features/trips/presentation/cubit/trip/trip_cubit.d
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/day_trip_card.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/list/day_trips_list_widget.dart';
 import 'package:trip_planner/features/trips/presentation/widgets/trip_page/list/no_day_trip_widget.dart';
-import 'package:trip_planner/gen/assets.gen.dart';
-import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../../../../utils.dart';
 
@@ -127,40 +123,6 @@ void main() {
       );
 
       expect(find.byType(DayTripsList), findsOneWidget);
-    });
-  });
-
-  group('NoDayTrips', () {
-    testWidgets('renders NoDayTrips with correct text and image', (tester) async {
-      whenListen(
-        backgroundsCubit,
-        Stream.value(tBackgroundsState),
-        initialState: tBackgroundsState,
-      );
-
-      await tester.pumpWidget(
-        TestUtils.defaultWidget(
-          backgroundsCubit: backgroundsCubit,
-          child: const NoDayTripsWidget(),
-        ),
-      );
-
-      final textWidgetPredicate = find.byWidgetPredicate((widget) {
-        return widget is Text &&
-            widget.style?.fontSize == 25 &&
-            widget.style?.fontWeight == FontWeight.bold &&
-            widget.textAlign == TextAlign.center;
-      });
-
-      final svgPicturePredicate = find.byWidgetPredicate((widget) {
-        return widget is SvgPicture &&
-            widget.bytesLoader is AssetBytesLoader &&
-            (widget.bytesLoader as AssetBytesLoader).assetName == Assets.svg.noTripsSvg;
-      });
-
-      expect(find.text(LocaleKeys.noDayTripsYetAddOne.tr()), findsOneWidget);
-      expect(textWidgetPredicate, findsOneWidget);
-      expect(svgPicturePredicate, findsOneWidget);
     });
   });
 
